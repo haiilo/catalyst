@@ -6,6 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CatDummy {
+        "logNum": (data: number) => Promise<void>;
+        "logString": (data: string) => Promise<void>;
+        "propBool": boolean;
+        "propBoolArr": boolean[];
+        "propNum": number;
+        "propNumArr": number[];
+        "propObj": object;
+        "propObjArr": object[];
+        "propStr": string;
+        "propStrArr": string[];
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +34,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCatDummyElement extends Components.CatDummy, HTMLStencilElement {
+    }
+    var HTMLCatDummyElement: {
+        prototype: HTMLCatDummyElement;
+        new (): HTMLCatDummyElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +47,23 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "cat-dummy": HTMLCatDummyElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CatDummy {
+        "onEventNum"?: (event: CustomEvent<number>) => void;
+        "onEventStr"?: (event: CustomEvent<string>) => void;
+        "propBool"?: boolean;
+        "propBoolArr"?: boolean[];
+        "propNum"?: number;
+        "propNumArr"?: number[];
+        "propObj"?: object;
+        "propObjArr"?: object[];
+        "propStr"?: string;
+        "propStrArr"?: string[];
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +79,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "cat-dummy": CatDummy;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +87,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cat-dummy": LocalJSX.CatDummy & JSXBase.HTMLAttributes<HTMLCatDummyElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
