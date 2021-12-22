@@ -1,0 +1,17 @@
+{
+  "name": "@coyoapp/catalyst-angular",
+  "version": "0.0.2",
+  "description": "Angular wrapper for Catalyst Design System",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0"
+  },
+  "dependencies": {
+    "@coyoapp/catalyst": "^0.0.2",
+    "tslib": "^2.3.0"
+  }
+}
