@@ -114,6 +114,30 @@ export class CatButton {
   @Prop() iconClass?: string;
 
   /**
+   * Use this property to add an `aria-controls` attribute to the button. Use
+   * the attribute to point to the unique ID of the content that the button
+   * manages.
+   */
+  @Prop() a11yControls?: string;
+
+  /**
+   * Indicates the ID of a component that describes the button.
+   */
+  @Prop() a11yDescribedBy?: string;
+
+  /**
+   * Adds accessible label for the button that is only shown for screen
+   * readers. Typically, this label text replaces the visible text on the
+   * button for users who use assistive technology.
+   */
+  @Prop() a11yLabel?: string;
+
+  /**
+   * Indicates the ID of a component owned by the button.
+   */
+  @Prop() a11yOwns?: string;
+
+  /**
    * Emitted when the button received focus.
    */
   @Event() catFocus!: EventEmitter<FocusEvent>;
@@ -202,6 +226,11 @@ export class CatButton {
           ref={el => (this.button = el as HTMLAnchorElement)}
           href={this.disabled ? undefined : this.url}
           target={this.urlTarget}
+          aria-disabled={this.disabled ? 'true' : null}
+          aria-controls={this.a11yControls}
+          aria-described-by={this.a11yDescribedBy}
+          aria-label={this.a11yLabel}
+          aria-owns={this.a11yOwns}
           id={this.buttonId}
           class={{
             'cat-button': true,
@@ -228,6 +257,10 @@ export class CatButton {
           value={this.value}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : null}
+          aria-controls={this.a11yControls}
+          aria-described-by={this.a11yDescribedBy}
+          aria-label={this.a11yLabel}
+          aria-owns={this.a11yOwns}
           id={this.buttonId}
           class={{
             'cat-button': true,
