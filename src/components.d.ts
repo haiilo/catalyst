@@ -6,89 +6,255 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CatDummy {
-        "logNum": (data: number) => Promise<void>;
-        "logString": (data: string) => Promise<void>;
-        "propBool": boolean;
-        "propBoolArr": boolean[];
-        "propNum": number;
-        "propNumArr": number[];
-        "propObj": object;
-        "propObjArr": object[];
-        "propStr": string;
-        "propStrArr": string[];
+    interface CatButton {
+        /**
+          * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
+         */
+        "buttonClass"?: string;
+        /**
+          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
+         */
+        "buttonId"?: string;
+        /**
+          * A custom class to be added to the button's textual content.
+         */
+        "contentClass"?: string;
+        /**
+          * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled": boolean;
+        /**
+          * Ellipse overflowing button content.
+         */
+        "ellipsed": boolean;
+        /**
+          * A custom class to be added to the button's prefix and suffix icons.
+         */
+        "iconClass"?: string;
+        /**
+          * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+         */
+        "inactive": boolean;
+        /**
+          * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+         */
+        "loading": boolean;
+        /**
+          * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
+         */
+        "name"?: string;
+        /**
+          * The name of an icon to be displayed before the button content.
+         */
+        "prefixIcon"?: string;
+        /**
+          * Use round button edges.
+         */
+        "round": boolean;
+        /**
+          * Sets focus on the button. Use this method instead of `button.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
+          * The size of the button.
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Allows the button to submit a form.
+         */
+        "submit": boolean;
+        /**
+          * The name of an icon to be displayed after the button content.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The theme color palette of the button.
+         */
+        "theme": 'primary' | 'secondary';
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+        /**
+          * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
+         */
+        "value"?: string;
     }
-    interface MyComponent {
+    interface CatIcon {
         /**
-          * The first name
+          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
          */
-        "first": string;
+        "a11yLabel"?: string;
         /**
-          * The last name
+          * The name of the icon.
          */
-        "last": string;
+        "name": string;
         /**
-          * The middle name
+          * The size of the icon.
          */
-        "middle": string;
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    interface CatSpinner {
+        /**
+          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
+         */
+        "a11yLabel"?: string;
+        /**
+          * The size of the button.
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
 }
 declare global {
-    interface HTMLCatDummyElement extends Components.CatDummy, HTMLStencilElement {
+    interface HTMLCatButtonElement extends Components.CatButton, HTMLStencilElement {
     }
-    var HTMLCatDummyElement: {
-        prototype: HTMLCatDummyElement;
-        new (): HTMLCatDummyElement;
+    var HTMLCatButtonElement: {
+        prototype: HTMLCatButtonElement;
+        new (): HTMLCatButtonElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLCatIconElement: {
+        prototype: HTMLCatIconElement;
+        new (): HTMLCatIconElement;
+    };
+    interface HTMLCatSpinnerElement extends Components.CatSpinner, HTMLStencilElement {
+    }
+    var HTMLCatSpinnerElement: {
+        prototype: HTMLCatSpinnerElement;
+        new (): HTMLCatSpinnerElement;
     };
     interface HTMLElementTagNameMap {
-        "cat-dummy": HTMLCatDummyElement;
-        "my-component": HTMLMyComponentElement;
+        "cat-button": HTMLCatButtonElement;
+        "cat-icon": HTMLCatIconElement;
+        "cat-spinner": HTMLCatSpinnerElement;
     }
 }
 declare namespace LocalJSX {
-    interface CatDummy {
-        "onEventNum"?: (event: CustomEvent<number>) => void;
-        "onEventStr"?: (event: CustomEvent<string>) => void;
-        "propBool"?: boolean;
-        "propBoolArr"?: boolean[];
-        "propNum"?: number;
-        "propNumArr"?: number[];
-        "propObj"?: object;
-        "propObjArr"?: object[];
-        "propStr"?: string;
-        "propStrArr"?: string[];
+    interface CatButton {
+        /**
+          * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
+         */
+        "buttonClass"?: string;
+        /**
+          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
+         */
+        "buttonId"?: string;
+        /**
+          * A custom class to be added to the button's textual content.
+         */
+        "contentClass"?: string;
+        /**
+          * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled"?: boolean;
+        /**
+          * Ellipse overflowing button content.
+         */
+        "ellipsed"?: boolean;
+        /**
+          * A custom class to be added to the button's prefix and suffix icons.
+         */
+        "iconClass"?: string;
+        /**
+          * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+         */
+        "inactive"?: boolean;
+        /**
+          * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the button received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * The name of an icon to be displayed before the button content.
+         */
+        "prefixIcon"?: string;
+        /**
+          * Use round button edges.
+         */
+        "round"?: boolean;
+        /**
+          * The size of the button.
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Allows the button to submit a form.
+         */
+        "submit"?: boolean;
+        /**
+          * The name of an icon to be displayed after the button content.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The theme color palette of the button.
+         */
+        "theme"?: 'primary' | 'secondary';
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+        /**
+          * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
+         */
+        "value"?: string;
     }
-    interface MyComponent {
+    interface CatIcon {
         /**
-          * The first name
+          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
          */
-        "first"?: string;
+        "a11yLabel"?: string;
         /**
-          * The last name
+          * The name of the icon.
          */
-        "last"?: string;
+        "name"?: string;
         /**
-          * The middle name
+          * The size of the icon.
          */
-        "middle"?: string;
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    interface CatSpinner {
+        /**
+          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
+         */
+        "a11yLabel"?: string;
+        /**
+          * The size of the button.
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface IntrinsicElements {
-        "cat-dummy": CatDummy;
-        "my-component": MyComponent;
+        "cat-button": CatButton;
+        "cat-icon": CatIcon;
+        "cat-spinner": CatSpinner;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "cat-dummy": LocalJSX.CatDummy & JSXBase.HTMLAttributes<HTMLCatDummyElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
         }
     }
 }

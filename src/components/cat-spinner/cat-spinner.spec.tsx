@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CatDummy } from '../cat-dummy';
+import { CatSpinner } from './cat-spinner';
 
-describe('cat-dummy', () => {
+describe('cat-spinner', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CatDummy],
-      html: `<cat-dummy></cat-dummy>`,
+      components: [CatSpinner],
+      html: `<cat-spinner></cat-spinner>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-dummy>
+      <cat-spinner>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </cat-dummy>
+      </cat-spinner>
     `);
   });
 });

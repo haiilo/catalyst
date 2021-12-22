@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script nomodule src="/build/catalyst.js"></script>
+    <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-    <cat-dummy prop-str="sdfsdfd">Hello World!</cat-dummy>
+    <cat-spinner size="xs"></cat-spinner>
+    <cat-spinner size="s"></cat-spinner>
+    <cat-spinner size="m"></cat-spinner>
+    <cat-spinner size="l"></cat-spinner>
+    <cat-spinner size="xl"></cat-spinner>
+    <!-- <cat-icon name="user"></cat-icon> -->
+    <cat-button prefix-icon="user" suffix-icon="lock" size="xs">Click Me</cat-button>
+    <cat-button prefix-icon="user" suffix-icon="lock" size="s">Click Me</cat-button>
+    <cat-button prefix-icon="user" suffix-icon="lock" size="m">Click Me</cat-button>
+    <cat-button prefix-icon="user" suffix-icon="lock" size="l">Click Me</cat-button>
+    <cat-button prefix-icon="user" suffix-icon="lock" size="xl">Click Me</cat-button>
+    <br />
+    <cat-button url="http://www.google.de" size="xs">Click Me</cat-button>
+    <cat-button url="http://www.google.de" size="s" url-target="_blank">Click Me</cat-button>
+    <cat-button url="http://www.google.de" disabled="true" size="m">Click Me</cat-button>
+    <cat-button url="http://www.google.de" disabled="true" size="l">Click Me</cat-button>
+    <cat-button url="http://www.google.de" disabled="true" size="xl">Click Me</cat-button>
+    <br />
+    <cat-button round="true" size="xs" theme="secondary">Click Me</cat-button>
+    <cat-button round="true" size="s" theme="secondary">Click Me</cat-button>
+    <cat-button round="true" size="m" theme="secondary">Click Me</cat-button>
+    <cat-button round="true" size="l" theme="secondary">Click Me</cat-button>
+    <cat-button round="true" size="xl" theme="secondary">Click Me</cat-button>
+    <br />
+    <cat-button disabled="true" size="xs">Click Me</cat-button>
+    <cat-button disabled="true" size="s">Click Me</cat-button>
+    <cat-button disabled="true" size="m">Click Me</cat-button>
+    <cat-button disabled="true" size="l">Click Me</cat-button>
+    <cat-button disabled="true" size="xl">Click Me</cat-button>
+    <div style="width: 200px; border: 1px solid red">
+      <cat-button size="m" ellipsed="false" prefix-icon="user" suffix-icon="lock"
+        >Click MeClick MeClick MeClick MeClick MeClick MeClick MeClick Me</cat-button
+      >
+      <br /><cat-button size="m" prefix-icon="user" suffix-icon="lock"
+        >Click MeClick MeClick MeClick MeClick MeClick MeClick MeClick Me</cat-button
+      >
+    </div>
+    <div style="width: 200px; border: 1px solid red">
+      <cat-button class="cat-d-b" size="m" prefix-icon="user" suffix-icon="lock" content-class="cat-left"
+        >Click</cat-button
+      >
+      <cat-button size="m" prefix-icon="user" suffix-icon="lock">Click</cat-button>
+    </div>
   </body>
 </html>

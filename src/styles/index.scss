@@ -1,0 +1,29 @@
+html {
+  color: gray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+// ----- utils
+
+.cat-d-i {
+  display: inline;
+  &[hidden] {
+    display: none;
+  }
+}
+.cat-d-b {
+  display: block;
+  &[hidden] {
+    display: none;
+  }
+}
+.cat-d-ib {
+  display: inline-block;
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cat-left {
+  text-align: left;
+}

@@ -1,0 +1,49 @@
+@use 'sass:map';
+
+@import 'variables';
+
+@function cat-size($size) {
+  @return map.get($cat-size, $size);
+}
+
+@function cat-body-font-size($size) {
+  @return map.get($cat-body-font-size, $size);
+}
+
+@function cat-body-line-height($size) {
+  @return map.get($cat-body-line-height, $size);
+}
+
+@mixin cat-body($size, $weight: $cat-body-font-weight) {
+  font-size: cat-body-font-size($size);
+  line-height: cat-body-line-height($size);
+  font-weight: $weight;
+}
+
+@function cat-border-radius($size) {
+  @return map.get($cat-border-radius, $size);
+}
+
+@mixin cat-break-word {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+@mixin cat-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@mixin cat-no-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

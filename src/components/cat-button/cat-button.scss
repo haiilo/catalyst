@@ -1,0 +1,125 @@
+@use 'sass:map';
+
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+cat-button {
+  display: inline-block;
+  max-width: 100%;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cat-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  border-radius: cat-border-radius(m);
+  text-decoration: none;
+  width: 100%;
+  @include cat-no-select;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: color $cat-color-transition, background-color $cat-color-transition,
+    box-shadow 0.15s $cat-focus-transition;
+
+  &:focus-visible {
+    // outline: 0;
+    // box-shadow: 0 0 0 2px $cat-focus-color;
+    outline: 2px solid $cat-focus-color;
+    outline-offset: 1px;
+  }
+
+  // ----- block
+
+  // .cat-d-b & {
+  //   width: 100%;
+  // }
+}
+
+// ----- content
+
+.cat-button-content {
+  flex: 1 1 auto;
+  text-align: center;
+
+  .cat-button-ellipsed & {
+    @include cat-ellipsis;
+  }
+}
+
+// ----- disabled
+
+.cat-button-disabled {
+  cursor: not-allowed;
+  opacity: $cat-disabled-opacity;
+}
+
+// ----- round
+
+.cat-button-round {
+  border-radius: 10rem;
+}
+
+// ----- loading
+
+.cat-button-loading {
+  .cat-spinner {
+    position: absolute;
+  }
+
+  > *:not(.cat-spinner) {
+    visibility: hidden;
+  }
+}
+
+// ----- theme
+
+@mixin theme($theme) {
+  .cat-button-#{$theme} {
+    background-color: map-get(map-get($cat-theme, $theme), bg);
+    color: map-get(map-get($cat-theme, $theme), fill);
+
+    &:hover:where(:not(.cat-button-disabled)) {
+      background-color: map-get(map-get($cat-theme, $theme), bg-hover);
+      color: map-get(map-get($cat-theme, $theme), fill-hover);
+    }
+
+    &:active:where(:not(.cat-button-disabled)) {
+      background-color: map-get(map-get($cat-theme, $theme), bg-active);
+      color: map-get(map-get($cat-theme, $theme), fill-active);
+    }
+  }
+}
+
+@include theme(primary);
+@include theme(secondary);
+
+// ----- size
+
+@mixin size($size, $fontSize, $padding) {
+  $-line-height: cat-body-line-height($fontSize);
+  $-total-height: cat-size($size);
+
+  .cat-button-#{$size} {
+    min-width: cat-size($size);
+    padding: ($-total-height - $-line-height) * 0.5 $padding;
+    @include cat-body($fontSize);
+
+    .cat-button-prefix {
+      margin-right: $padding * 0.5;
+    }
+    .cat-button-suffix {
+      margin-left: $padding * 0.5;
+    }
+  }
+}
+
+@include size(xs, s, 0.5rem);
+@include size(s, m, 0.5rem);
+@include size(m, m, 1rem);
+@include size(l, m, 1.5rem);
+@include size(xl, l, 1.5rem);

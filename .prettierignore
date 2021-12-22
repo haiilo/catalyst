@@ -1,0 +1,5 @@
+dist
+loader
+node_modules
+www
+*.d.ts
