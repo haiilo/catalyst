@@ -5,17 +5,8 @@
     "core"
   ],
   "scripts": {
-    "test": "d",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "d"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@storybook/addon-actions": "^6.4.9",
-    "@storybook/addon-essentials": "^6.4.9",
-    "@storybook/addon-links": "^6.4.9",
-    "@storybook/web-components": "^6.4.9",
-    "babel-loader": "^8.2.3"
-  },
-  "dependencies": {}
+  }
 }
