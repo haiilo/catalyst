@@ -3,10 +3,5 @@
   "workspaces": [
     "angular",
     "core"
-  ],
-  "scripts": {
-    "test": "d"
-  },
-  "devDependencies": {
-  }
+  ]
 }

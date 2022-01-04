@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property          | Attribute             | Description                                                                                                                                                                                                        | Type                                | Default       |
@@ -30,14 +29,12 @@
 | `urlTarget`       | `url-target`          | Specifies where to open the linked document.                                                                                                                                                                       | `"_blank" \| "_self" \| undefined`  | `undefined`   |
 | `value`           | `value`               | The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.                                                              | `string \| undefined`               | `undefined`   |
 
-
 ## Events
 
 | Event      | Description                             | Type                      |
 | ---------- | --------------------------------------- | ------------------------- |
 | `catBlur`  | Emitted when the button loses focus.    | `CustomEvent<FocusEvent>` |
 | `catFocus` | Emitted when the button received focus. | `CustomEvent<FocusEvent>` |
-
 
 ## Methods
 
@@ -49,9 +46,6 @@ Sets focus on the button. Use this method instead of `button.focus()`.
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
@@ -60,6 +54,7 @@ Type: `Promise<void>`
 - [cat-spinner](../cat-spinner)
 
 ### Graph
+
 ```mermaid
 graph TD;
   cat-button --> cat-icon
@@ -67,6 +62,6 @@ graph TD;
   style cat-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

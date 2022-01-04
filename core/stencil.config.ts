@@ -2,7 +2,6 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 
-
 export const config: Config = {
   namespace: 'catalyst',
   plugins: [sass()],
@@ -10,7 +9,7 @@ export const config: Config = {
   outputTargets: [
     angularOutputTarget({
       componentCorePackage: '@coyoapp/catalyst',
-      directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts',
+      directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts'
     }),
     {
       type: 'dist',

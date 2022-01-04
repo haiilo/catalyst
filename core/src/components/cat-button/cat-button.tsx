@@ -212,10 +212,12 @@ export class CatButton {
   }
 
   private onFocus(event: FocusEvent) {
+    console.log(1);
     this.catFocus.emit(event);
   }
 
   private onBlur(event: FocusEvent) {
+    console.log(2);
     this.catBlur.emit(event);
   }
 
