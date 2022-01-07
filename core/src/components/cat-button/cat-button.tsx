@@ -149,7 +149,7 @@ export class CatButton {
 
   @Listen('click')
   haltDisabledEvents(event: Event) {
-    if (this.disabled || this.inactive) {
+    if (this.disabled || this.inactive || this.loading) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }

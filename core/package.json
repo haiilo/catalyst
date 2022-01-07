@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "Catalyst Design System",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coyoapp/catalyst.git"
+  },
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",

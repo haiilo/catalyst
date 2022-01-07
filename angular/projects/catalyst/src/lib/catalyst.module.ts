@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { defineCustomElements } from '@coyoapp/catalyst/loader';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { defineCustomElements } from '@coyoapp/catalyst';
 import * as Components from './directives/proxies';
 
 const CatComponents = [
@@ -8,12 +8,18 @@ const CatComponents = [
   Components.CatSpinner
 ];
 
-defineCustomElements();
-
 @NgModule({
   imports: [],
   declarations: [...CatComponents],
   exports: [...CatComponents],
   providers: []
 })
-export class CatalystModule {}
+export class CatalystModule {
+
+  static forRoot(): ModuleWithProviders<CatalystModule> {
+    defineCustomElements();
+    return {
+      ngModule: CatalystModule
+    };
+  }
+}

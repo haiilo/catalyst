@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property    | Attribute      | Description                                                                                                                                  | Type                                            | Default     |
@@ -10,20 +11,20 @@
 | `name`      | `name`         | The name of the icon.                                                                                                                        | `string`                                        | `''`        |
 | `size`      | `size`         | The size of the icon.                                                                                                                        | `"inline" \| "l" \| "m" \| "s" \| "xl" \| "xs"` | `'m'`       |
 
+
 ## Dependencies
 
 ### Used by
 
-- [cat-button](../cat-button)
+ - [cat-button](../cat-button)
 
 ### Graph
-
 ```mermaid
 graph TD;
   cat-button --> cat-icon
   style cat-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

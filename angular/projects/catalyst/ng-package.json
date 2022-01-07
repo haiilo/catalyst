@@ -3,6 +3,5 @@
   "dest": "../../dist/catalyst",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "allowedNonPeerDependencies": ["@coyoapp/catalyst"]
+  }
 }
