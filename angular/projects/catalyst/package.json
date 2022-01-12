@@ -8,8 +8,7 @@
   },
   "peerDependencies": {
     "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "@coyoapp/catalyst": "^0.0.2"
+    "@angular/core": "^12.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { defineCustomElements } from '@coyoapp/catalyst';
+import { defineCustomElements } from '@coyoapp/catalyst/loader';
 import * as Components from './directives/proxies';
 
 const CatComponents = [
