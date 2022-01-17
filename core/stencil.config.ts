@@ -9,7 +9,13 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: './index.cdn.js',
+          warn: true
+        }
+      ]
     },
     {
       type: 'dist-custom-elements'

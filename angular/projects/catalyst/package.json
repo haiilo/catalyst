@@ -1,6 +1,6 @@
 {
   "name": "@coyoapp/catalyst-angular",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
