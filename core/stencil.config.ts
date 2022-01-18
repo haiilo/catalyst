@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'catalyst',
@@ -36,8 +37,11 @@ export const config: Config = {
     }),
     reactOutputTarget({
       componentCorePackage: '@coyoapp/catalyst',
-      proxiesFile: '../react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true
+      proxiesFile: '../react/src/components/stencil-generated/index.ts'
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@coyoapp/catalyst',
+      proxiesFile: '../vue/src/components.ts'
     })
   ]
 };
