@@ -33,6 +33,5 @@ export const config: Config = {
       componentCorePackage: '@coyoapp/catalyst',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts'
     })
-  ],
-  buildEs5: 'prod'
+  ]
 };
