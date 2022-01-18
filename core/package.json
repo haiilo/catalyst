@@ -42,6 +42,7 @@
     "@babel/core": "^7.16.5",
     "@coyoapp/icons": "^2.0.0",
     "@stencil/angular-output-target": "^0.4.0",
+    "@stencil/react-output-target": "^0.2.1",
     "@stencil/sass": "^1.5.2",
     "@types/jest": "^26.0.24",
     "babel-loader": "^8.2.3",
