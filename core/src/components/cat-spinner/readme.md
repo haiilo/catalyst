@@ -26,4 +26,4 @@ graph TD;
 
 ----------------------------------------------
 
-*Built with [StencilJS](https://stenciljs.com/)*
+Made with love in Hamburg, Germany

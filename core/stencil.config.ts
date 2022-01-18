@@ -21,7 +21,9 @@ export const config: Config = {
       type: 'dist-custom-elements'
     },
     {
-      type: 'docs-readme'
+      type: 'docs-readme',
+      footer: 'Made with love in Hamburg, Germany',
+      strict: true
     },
     {
       type: 'www',
@@ -31,5 +33,6 @@ export const config: Config = {
       componentCorePackage: '@coyoapp/catalyst',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts'
     })
-  ]
+  ],
+  buildEs5: 'prod'
 };
