@@ -23,6 +23,7 @@ export namespace Components {
           * Indicates the ID of a component owned by the button.
          */
         "a11yOwns"?: string;
+        "appearance": 'filled' | 'outlined' | 'text';
         /**
           * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
          */
@@ -169,6 +170,7 @@ declare namespace LocalJSX {
           * Indicates the ID of a component owned by the button.
          */
         "a11yOwns"?: string;
+        "appearance"?: 'filled' | 'outlined' | 'text';
         /**
           * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
          */

@@ -4,7 +4,7 @@
 cat-spinner {
   display: inline-flex;
   vertical-align: middle;
-  @include cat-no-select;
+  @include cat-select(none);
 
   &[hidden] {
     display: none;

@@ -22,14 +22,14 @@ export declare interface CatButton extends Components.CatButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yControls', 'a11yDescribedBy', 'a11yLabel', 'a11yOwns', 'buttonClass', 'buttonId', 'contentClass', 'disabled', 'ellipsed', 'iconClass', 'inactive', 'loading', 'name', 'prefixIcon', 'round', 'size', 'submit', 'suffixIcon', 'theme', 'url', 'urlTarget', 'value'],
+  inputs: ['a11yControls', 'a11yDescribedBy', 'a11yLabel', 'a11yOwns', 'appearance', 'buttonClass', 'buttonId', 'contentClass', 'disabled', 'ellipsed', 'iconClass', 'inactive', 'loading', 'name', 'prefixIcon', 'round', 'size', 'submit', 'suffixIcon', 'theme', 'url', 'urlTarget', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yControls', 'a11yDescribedBy', 'a11yLabel', 'a11yOwns', 'buttonClass', 'buttonId', 'contentClass', 'disabled', 'ellipsed', 'iconClass', 'inactive', 'loading', 'name', 'prefixIcon', 'round', 'size', 'submit', 'suffixIcon', 'theme', 'url', 'urlTarget', 'value']
+  inputs: ['a11yControls', 'a11yDescribedBy', 'a11yLabel', 'a11yOwns', 'appearance', 'buttonClass', 'buttonId', 'contentClass', 'disabled', 'ellipsed', 'iconClass', 'inactive', 'loading', 'name', 'prefixIcon', 'round', 'size', 'submit', 'suffixIcon', 'theme', 'url', 'urlTarget', 'value']
 })
 export class CatButton {
   protected el: HTMLElement;

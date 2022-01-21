@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use '../variables' as *;
+
+@mixin cat-elevation($level) {
+  box-shadow: map.get($cat-elevation, $level);
+}
+
+@mixin cat-elevation-transition {
+  transition: $cat-elevation-transition;
+}

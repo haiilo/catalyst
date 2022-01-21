@@ -17,7 +17,7 @@ cat-icon {
   display: inline-flex;
   flex-shrink: 0;
   vertical-align: middle;
-  @include cat-no-select;
+  @include cat-select(none);
 
   &[hidden] {
     display: none;

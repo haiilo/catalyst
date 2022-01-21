@@ -1,6 +1,11 @@
 @use 'sass:map';
 
-@import 'variables';
+@forward 'utils/elevation.mixins';
+@forward 'utils/responsive.mixins';
+@forward 'utils/typography.mixins';
+@forward 'utils/visibility.mixins';
+
+@import 'variables'; //TODO
 
 @function cat-size($size) {
   @return map.get($cat-size, $size);
@@ -22,28 +27,4 @@
 
 @function cat-border-radius($size) {
   @return map.get($cat-border-radius, $size);
-}
-
-@mixin cat-break-word {
-  word-wrap: break-word;
-  word-break: break-word;
-}
-
-@mixin cat-ellipsis($lines: 1) {
-  @if $lines == 1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  } @else {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: $lines;
-    -webkit-box-orient: vertical;
-  }
-}
-
-@mixin cat-no-select {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }

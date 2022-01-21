@@ -1,0 +1,13 @@
+@use 'visibility.mixins' as *;
+
+.cat-visually-hidden {
+  @include cat-visually-hidden;
+}
+
+.cat-visually-hidden-focusable {
+  @include cat-visually-hidden-focusable;
+}
+
+.cat-visually-hidden-hoverable {
+  @include cat-visually-hidden-hoverable;
+}

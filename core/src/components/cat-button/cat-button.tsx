@@ -10,6 +10,10 @@ import { Component, Event, EventEmitter, h, Listen, Method, Prop } from '@stenci
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
 
+  @Prop() appearance: 'filled' | 'outlined' | 'text' = 'filled';
+
+  // @Prop() color: 'filled' | 'outlined' | 'text' = 'filled';
+
   /**
    * The theme color palette of the button.
    */

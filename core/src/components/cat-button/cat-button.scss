@@ -19,7 +19,7 @@ cat-button {
   border-radius: cat-border-radius(m);
   text-decoration: none;
   width: 100%;
-  @include cat-no-select;
+  @include cat-select(none);
   box-sizing: border-box;
   cursor: pointer;
   transition: color $cat-color-transition, background-color $cat-color-transition,

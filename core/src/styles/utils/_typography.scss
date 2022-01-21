@@ -1,0 +1,32 @@
+@use 'typography.mixins' as *;
+
+.cat-text-left {
+  text-align: left !important;
+}
+.cat-text-center {
+  text-align: center !important;
+}
+.cat-text-right {
+  text-align: right !important;
+}
+
+.cat-ellipsis {
+  @include cat-ellipsis;
+}
+@for $i from 1 through 5 {
+  .cat-ellipsis-#{$i} {
+    @include cat-ellipsis($i);
+  }
+}
+
+.cat-select {
+  @include cat-select;
+}
+
+.cat-no-select {
+  @include cat-select(none);
+}
+
+.cat-break-word {
+  @include cat-break-word;
+}

@@ -1,29 +1,9 @@
 html {
-  color: gray;
   font-family: 'Lato', sans-serif;
 }
 
-// ----- utils
-
-.cat-d-i {
-  display: inline;
-  &[hidden] {
-    display: none;
-  }
-}
-.cat-d-b {
-  display: block;
-  &[hidden] {
-    display: none;
-  }
-}
-.cat-d-ib {
-  display: inline-block;
-  &[hidden] {
-    display: none;
-  }
-}
-
-.cat-left {
-  text-align: left;
-}
+@import 'utils/display';
+@import 'utils/elevation';
+@import 'utils/typography';
+@import 'utils/spacing';
+@import 'utils/visibility';
