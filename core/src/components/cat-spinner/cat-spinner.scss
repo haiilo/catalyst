@@ -1,7 +1,7 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@use 'variables' as *;
+@use 'mixins' as *;
 
-cat-spinner {
+:host {
   display: inline-flex;
   vertical-align: middle;
   @include cat-select(none);
@@ -9,34 +9,40 @@ cat-spinner {
   &[hidden] {
     display: none;
   }
-
-  svg {
-    fill: none;
-    stroke: currentColor;
-    stroke-dasharray: 135px;
-    stroke-dashoffset: 95px;
-    stroke-linecap: round;
-    stroke-width: 5px;
-    transform-origin: center center;
-    animation: cat-spinner 0.75s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
-    width: 1em;
-    height: 1em;
-  }
-
-  // ----- sizes
-
-  @mixin size($size) {
-    &.cat-spinner-#{$size} svg {
-      font-size: cat-size($size) * 0.5;
-    }
-  }
-
-  @include size(xs);
-  @include size(s);
-  @include size(m);
-  @include size(l);
-  @include size(xl);
 }
+
+span {
+  display: inline-flex;
+}
+
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 135px;
+  stroke-dashoffset: 95px;
+  stroke-linecap: round;
+  stroke-width: 5px;
+  transform-origin: center center;
+  animation: cat-spinner 0.75s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
+  width: 1em;
+  height: 1em;
+}
+
+// ----- sizes
+
+@mixin size($size) {
+  .cat-spinner-#{$size} svg {
+    font-size: cat-size($size) * 0.5;
+  }
+}
+
+@include size(xs);
+@include size(s);
+@include size(m);
+@include size(l);
+@include size(xl);
+
+// ----- animation
 
 @keyframes cat-spinner {
   from {

@@ -1,11 +1,12 @@
 @use 'sass:map';
+@use 'variables' as *;
+@use 'mixins' as *;
 
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
-
-cat-button {
+:host {
   display: inline-block;
   max-width: 100%;
+  vertical-align: middle;
+  @include cat-select(none);
 
   &[hidden] {
     display: none;
@@ -15,28 +16,20 @@ cat-button {
 .cat-button {
   display: flex;
   align-items: center;
+  justify-content: center;
   border: none;
   border-radius: cat-border-radius(m);
   text-decoration: none;
   width: 100%;
-  @include cat-select(none);
   box-sizing: border-box;
   cursor: pointer;
   transition: color $cat-color-transition, background-color $cat-color-transition,
     box-shadow 0.15s $cat-focus-transition;
 
   &:focus-visible {
-    // outline: 0;
-    // box-shadow: 0 0 0 2px $cat-focus-color;
     outline: 2px solid $cat-focus-color;
     outline-offset: 1px;
   }
-
-  // ----- block
-
-  // .cat-d-b & {
-  //   width: 100%;
-  // }
 }
 
 // ----- content
@@ -66,16 +59,25 @@ cat-button {
 // ----- loading
 
 .cat-button-loading {
-  .cat-spinner {
+  cat-spinner {
     position: absolute;
   }
 
-  > *:not(.cat-spinner) {
+  > *:not(cat-spinner) {
     visibility: hidden;
   }
 }
 
 // ----- theme
+
+@mixin appearance($appearance) {
+  .cat-button-#{$appearance} {
+  }
+}
+
+@include appearance(filled);
+@include appearance(outlined);
+@include appearance(text);
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
@@ -113,6 +115,12 @@ cat-button {
     }
     .cat-button-suffix {
       margin-left: $padding * 0.5;
+    }
+
+    &.cat-button-icon {
+      width: $-total-height;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

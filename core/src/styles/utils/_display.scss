@@ -1,5 +1,5 @@
 @use '../variables' as *;
-@use 'responsive.mixins' as *;
+@use 'media.mixins' as *;
 
 $-display-props: none, inline, inline-block, block, grid, flex, inline-flex;
 

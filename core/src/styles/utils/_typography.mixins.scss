@@ -1,3 +1,20 @@
+@use 'sass:map';
+@use '../variables' as *;
+
+@function cat-body-font-size($size) {
+  @return map.get($cat-body-font-size, $size);
+}
+
+@function cat-body-line-height($size) {
+  @return map.get($cat-body-line-height, $size);
+}
+
+@mixin cat-body($size, $weight: $cat-body-font-weight) {
+  font-size: cat-body-font-size($size);
+  line-height: cat-body-line-height($size);
+  font-weight: $weight;
+}
+
 @mixin cat-break-word {
   word-wrap: break-word;
   word-break: break-word;

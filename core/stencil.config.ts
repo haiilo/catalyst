@@ -6,7 +6,11 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'catalyst',
-  plugins: [sass()],
+  plugins: [
+    sass({
+      includePaths: ['src/styles']
+    })
+  ],
   globalStyle: 'src/styles/index.scss',
   outputTargets: [
     {

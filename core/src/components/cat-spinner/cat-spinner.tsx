@@ -1,15 +1,16 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 /**
  * Spinners are used to indicate users that their action is being processed.
  */
 @Component({
   tag: 'cat-spinner',
-  styleUrl: 'cat-spinner.scss'
+  styleUrl: 'cat-spinner.scss',
+  shadow: true
 })
 export class CatSpinner {
   /**
-   * The size of the button.
+   * The size of the spinner.
    */
   @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline' = 'm';
 
@@ -21,18 +22,17 @@ export class CatSpinner {
 
   render() {
     return (
-      <Host
+      <span
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         class={{
-          'cat-spinner': true,
           [`cat-spinner-${this.size}`]: this.size !== 'inline'
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
           <circle cx="24" cy="24" r="21.5"></circle>
         </svg>
-      </Host>
+      </span>
     );
   }
 }

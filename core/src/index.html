@@ -12,48 +12,45 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
-    <p class="cui-p-l">foo</p>
+    <h2>Spinner</h2>
     <cat-spinner size="xs"></cat-spinner>
     <cat-spinner size="s"></cat-spinner>
     <cat-spinner size="m"></cat-spinner>
     <cat-spinner size="l"></cat-spinner>
     <cat-spinner size="xl"></cat-spinner>
-    <!-- <cat-icon name="user"></cat-icon> -->
-    <cat-button prefix-icon="user" suffix-icon="lock" theme="primary" size="xs">Click Me</cat-button>
-    <cat-button prefix-icon="user" suffix-icon="lock" theme="primary" size="s">Click Me</cat-button>
-    <cat-button prefix-icon="user" suffix-icon="lock" theme="primary" size="m">Click Me</cat-button>
-    <cat-button prefix-icon="user" suffix-icon="lock" theme="primary" size="l">Click Me</cat-button>
-    <cat-button prefix-icon="user" suffix-icon="lock" theme="primary" size="xl">Click Me</cat-button>
-    <br />
-    <cat-button url="http://www.google.de" size="xs">Click Me</cat-button>
-    <cat-button url="http://www.google.de" size="s" url-target="_blank">Click Me</cat-button>
-    <cat-button url="http://www.google.de" disabled="true" size="m">Click Me</cat-button>
-    <cat-button url="http://www.google.de" disabled="true" size="l">Click Me</cat-button>
-    <cat-button url="http://www.google.de" disabled="true" size="xl">Click Me</cat-button>
-    <br />
-    <cat-button round="true" size="xs" theme="secondary">Click Me</cat-button>
-    <cat-button round="true" size="s" theme="secondary">Click Me</cat-button>
-    <cat-button round="true" size="m" theme="secondary">Click Me</cat-button>
-    <cat-button round="true" size="l" theme="secondary">Click Me</cat-button>
-    <cat-button round="true" size="xl" theme="secondary">Click Me</cat-button>
-    <br />
-    <cat-button disabled="true" size="xs">Click Me</cat-button>
-    <cat-button disabled="true" size="s">Click Me</cat-button>
-    <cat-button disabled="true" size="m">Click Me</cat-button>
-    <cat-button disabled="true" size="l">Click Me</cat-button>
-    <cat-button disabled="true" size="xl">Click Me</cat-button>
-    <div style="width: 200px; border: 1px solid red">
+
+    <hr />
+
+    <h2>Button</h2>
+    <h3>Appearance</h3>
+    <h3>Color</h3>
+    <h3>Size</h3>
+    <cat-button size="xs">Size XS</cat-button>
+    <cat-button size="s">Size S</cat-button>
+    <cat-button size="m">Size M</cat-button>
+    <cat-button size="l">Size L</cat-button>
+    <cat-button size="xl">Size XL</cat-button>
+    <h3>Icons</h3>
+    <cat-button icon="user">Prefix</cat-button>
+    <cat-button icon="user" icon-suffix="true">Suffix</cat-button>
+    <cat-button icon="user" icon-only="true">Suffix</cat-button>
+    <h3>Links</h3>
+    <cat-button url="http://www.google.de">Google</cat-button>
+    <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
+    <h3>Interaction</h3>
+    <cat-button disabled="true">Disabled</cat-button>
+    <cat-button inactive="true">Inactive</cat-button>
+    <cat-button loading="true">Loading</cat-button>
+    <h3>Layout</h3>
+    <div style="width: 200px; border: 1px solid gray">
       <cat-button size="m" ellipsed="false" prefix-icon="user" suffix-icon="lock"
-        >Click MeClick MeClick MeClick MeClick MeClick MeClick MeClick Me</cat-button
+        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
       >
       <br /><cat-button size="m" prefix-icon="user" suffix-icon="lock"
-        >Click MeClick MeClick MeClick MeClick MeClick MeClick MeClick Me</cat-button
+        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
       >
-    </div>
-    <div style="width: 200px; border: 1px solid red">
-      <cat-button class="cat-d-b" size="m" prefix-icon="user" suffix-icon="lock" content-class="cat-text-left"
-        >Click</cat-button
-      >
+      <br /><cat-button class="cat-d-block">Block</cat-button>
+      <cat-button class="cat-d-block cat-text-left">Block (left)</cat-button>
       <cat-button size="m" prefix-icon="user" suffix-icon="lock">Click</cat-button>
     </div>
   </body>

@@ -23,19 +23,18 @@ export namespace Components {
           * Indicates the ID of a component owned by the button.
          */
         "a11yOwns"?: string;
-        "appearance": 'filled' | 'outlined' | 'text';
         /**
-          * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
+          * The rendering style of the button.
          */
-        "buttonClass"?: string;
+        "appearance": 'filled' | 'outlined' | 'text';
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
         /**
-          * A custom class to be added to the button's textual content.
+          * The color palette of the button.
          */
-        "contentClass"?: string;
+        "color": 'primary' | 'secondary';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -45,9 +44,17 @@ export namespace Components {
          */
         "ellipsed": boolean;
         /**
-          * A custom class to be added to the button's prefix and suffix icons.
+          * The name of an icon to be displayed in the button.
          */
-        "iconClass"?: string;
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly": boolean;
+        /**
+          * Display the icon as a suffix.
+         */
+        "iconSuffix": boolean;
         /**
           * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -61,13 +68,9 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * The name of an icon to be displayed before the button content.
+          * Use round button edges. Defaults to false unless `iconOnly` is set.
          */
-        "prefixIcon"?: string;
-        /**
-          * Use round button edges.
-         */
-        "round": boolean;
+        "round"?: boolean;
         /**
           * Sets focus on the button. Use this method instead of `button.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
@@ -81,14 +84,6 @@ export namespace Components {
           * Allows the button to submit a form.
          */
         "submit": boolean;
-        /**
-          * The name of an icon to be displayed after the button content.
-         */
-        "suffixIcon"?: string;
-        /**
-          * The theme color palette of the button.
-         */
-        "theme": 'primary' | 'secondary';
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -122,7 +117,7 @@ export namespace Components {
          */
         "a11yLabel"?: string;
         /**
-          * The size of the button.
+          * The size of the spinner.
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
@@ -170,19 +165,18 @@ declare namespace LocalJSX {
           * Indicates the ID of a component owned by the button.
          */
         "a11yOwns"?: string;
-        "appearance"?: 'filled' | 'outlined' | 'text';
         /**
-          * Adds a class for the button. Please note that with this particular component this ID is added inside the web component. If you need a class on the HTML element, use the regular `class` attribute instead.
+          * The rendering style of the button.
          */
-        "buttonClass"?: string;
+        "appearance"?: 'filled' | 'outlined' | 'text';
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
         /**
-          * A custom class to be added to the button's textual content.
+          * The color palette of the button.
          */
-        "contentClass"?: string;
+        "color"?: 'primary' | 'secondary';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -192,9 +186,17 @@ declare namespace LocalJSX {
          */
         "ellipsed"?: boolean;
         /**
-          * A custom class to be added to the button's prefix and suffix icons.
+          * The name of an icon to be displayed in the button.
          */
-        "iconClass"?: string;
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly"?: boolean;
+        /**
+          * Display the icon as a suffix.
+         */
+        "iconSuffix"?: boolean;
         /**
           * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -216,11 +218,7 @@ declare namespace LocalJSX {
          */
         "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * The name of an icon to be displayed before the button content.
-         */
-        "prefixIcon"?: string;
-        /**
-          * Use round button edges.
+          * Use round button edges. Defaults to false unless `iconOnly` is set.
          */
         "round"?: boolean;
         /**
@@ -231,14 +229,6 @@ declare namespace LocalJSX {
           * Allows the button to submit a form.
          */
         "submit"?: boolean;
-        /**
-          * The name of an icon to be displayed after the button content.
-         */
-        "suffixIcon"?: string;
-        /**
-          * The theme color palette of the button.
-         */
-        "theme"?: 'primary' | 'secondary';
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -272,7 +262,7 @@ declare namespace LocalJSX {
          */
         "a11yLabel"?: string;
         /**
-          * The size of the button.
+          * The size of the spinner.
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }

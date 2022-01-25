@@ -2,22 +2,29 @@ import { Component, Event, EventEmitter, h, Listen, Method, Prop } from '@stenci
 
 /**
  * Buttons are used for interface actions.
+ *
+ * @part button - The native anchor or button element.
+ * @part content - The textual content of the button.
+ * @part prefix - The prefix icon.
+ * @part suffix - The suffix icon.
  */
 @Component({
   tag: 'cat-button',
-  styleUrl: 'cat-button.scss'
+  styleUrl: 'cat-button.scss',
+  shadow: true
 })
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
 
+  /**
+   * The rendering style of the button.
+   */
   @Prop() appearance: 'filled' | 'outlined' | 'text' = 'filled';
 
-  // @Prop() color: 'filled' | 'outlined' | 'text' = 'filled';
-
   /**
-   * The theme color palette of the button.
+   * The color palette of the button.
    */
-  @Prop() theme: 'primary' | 'secondary' = 'secondary';
+  @Prop() color: 'primary' | 'secondary' = 'secondary';
 
   /**
    * The size of the button.
@@ -69,9 +76,9 @@ export class CatButton {
   @Prop() ellipsed = true;
 
   /**
-   * Use round button edges.
+   * Use round button edges. Defaults to false unless `iconOnly` is set.
    */
-  @Prop() round = false;
+  @Prop() round?: boolean;
 
   /**
    * A destination to link to, rendered in the href attribute of a link.
@@ -84,14 +91,19 @@ export class CatButton {
   @Prop() urlTarget?: '_blank' | '_self';
 
   /**
-   * The name of an icon to be displayed before the button content.
+   * The name of an icon to be displayed in the button.
    */
-  @Prop() prefixIcon?: string;
+  @Prop() icon?: string;
 
   /**
-   * The name of an icon to be displayed after the button content.
+   * Hide the actual button content and only display the icon.
    */
-  @Prop() suffixIcon?: string;
+  @Prop() iconOnly = false;
+
+  /**
+   * Display the icon as a suffix.
+   */
+  @Prop() iconSuffix = false;
 
   /**
    * Adds a unique identifier for the button. Please note that with this
@@ -99,23 +111,6 @@ export class CatButton {
    * an ID on the HTML element, use the regular `id` attribute instead.
    */
   @Prop() buttonId?: string;
-
-  /**
-   * Adds a class for the button. Please note that with this particular
-   * component this ID is added inside the web component. If you need a class
-   * on the HTML element, use the regular `class` attribute instead.
-   */
-  @Prop() buttonClass?: string;
-
-  /**
-   * A custom class to be added to the button's textual content.
-   */
-  @Prop() contentClass?: string;
-
-  /**
-   * A custom class to be added to the button's prefix and suffix icons.
-   */
-  @Prop() iconClass?: string;
 
   /**
    * Use this property to add an `aria-controls` attribute to the button. Use
@@ -181,47 +176,42 @@ export class CatButton {
     }
   }
 
+  private get isIconButton(): boolean {
+    return Boolean(this.icon) && this.iconOnly;
+  }
+
+  private get hasPrefixIcon(): boolean {
+    return Boolean(this.icon) && !this.iconOnly && !this.iconSuffix;
+  }
+
+  private get hasSuffixIcon(): boolean {
+    return Boolean(this.icon) && !this.iconOnly && this.iconSuffix;
+  }
+
   private get content() {
     return [
-      this.prefixIcon ? (
-        <cat-icon
-          name={this.prefixIcon}
-          size={this.iconSize}
-          class={{
-            'cat-button-prefix': true,
-            [`${this.iconClass}`]: Boolean(this.iconClass)
-          }}
-        ></cat-icon>
+      this.hasPrefixIcon ? (
+        <cat-icon name={this.icon} size={this.iconSize} class="cat-button-prefix" part="prefix"></cat-icon>
       ) : null,
-      <span
-        class={{
-          'cat-button-content': true,
-          [`${this.contentClass}`]: Boolean(this.contentClass)
-        }}
-      >
-        <slot></slot>
-      </span>,
-      this.suffixIcon ? (
-        <cat-icon
-          name={this.suffixIcon}
-          size={this.iconSize}
-          class={{
-            'cat-button-suffix': true,
-            [`${this.iconClass}`]: Boolean(this.iconClass)
-          }}
-        ></cat-icon>
+      this.isIconButton ? (
+        <cat-icon name={this.icon} size={this.iconSize}></cat-icon>
+      ) : (
+        <span class="cat-button-content" part="content">
+          <slot></slot>
+        </span>
+      ),
+      this.hasSuffixIcon ? (
+        <cat-icon name={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
       ) : null,
       this.loading ? <cat-spinner size={this.iconSize}></cat-spinner> : null
     ];
   }
 
   private onFocus(event: FocusEvent) {
-    console.log(1);
     this.catFocus.emit(event);
   }
 
   private onBlur(event: FocusEvent) {
-    console.log(2);
     this.catBlur.emit(event);
   }
 
@@ -238,14 +228,16 @@ export class CatButton {
           aria-label={this.a11yLabel}
           aria-owns={this.a11yOwns}
           id={this.buttonId}
+          part="button"
           class={{
             'cat-button': true,
-            'cat-button-round': this.round,
+            'cat-button-icon': this.isIconButton,
+            'cat-button-round': this.round ?? this.isIconButton,
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': this.ellipsed,
-            [`${this.buttonClass}`]: Boolean(this.buttonClass),
-            [`cat-button-${this.theme}`]: Boolean(this.theme),
+            'cat-button-ellipsed': this.ellipsed && !this.isIconButton,
+            [`cat-button-${this.appearance}`]: Boolean(this.appearance),
+            [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}
           onFocus={this.onFocus.bind(this)}
@@ -268,14 +260,16 @@ export class CatButton {
           aria-label={this.a11yLabel}
           aria-owns={this.a11yOwns}
           id={this.buttonId}
+          part="button"
           class={{
             'cat-button': true,
-            'cat-button-round': this.round,
+            'cat-button-icon': this.isIconButton,
+            'cat-button-round': this.round ?? this.isIconButton,
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': this.ellipsed,
-            [`${this.buttonClass}`]: Boolean(this.buttonClass),
-            [`cat-button-${this.theme}`]: Boolean(this.theme),
+            'cat-button-ellipsed': this.ellipsed && !this.isIconButton,
+            [`cat-button-${this.appearance}`]: Boolean(this.appearance),
+            [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}
           onFocus={this.onFocus.bind(this)}
