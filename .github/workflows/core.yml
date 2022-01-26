@@ -4,6 +4,17 @@ defaults:
   run:
     working-directory: core
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        cache: 'npm'
+        cache-dependency-path: core/package-lock.json
+    - run: npm ci
+    - run: npm run build:ci
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -14,6 +25,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: core/package-lock.json
     - run: npm ci
+    - run: npm run prettier:check
     - run: npm run lint
   test:
     runs-on: ubuntu-latest
