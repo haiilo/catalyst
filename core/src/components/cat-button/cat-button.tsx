@@ -224,7 +224,7 @@ export class CatButton {
 
   render() {
     if (this.url) {
-      return (
+      return  (
         <a
           ref={el => (this.button = el as HTMLAnchorElement)}
           href={this.disabled ? undefined : this.url}
