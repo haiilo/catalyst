@@ -1,8 +1,11 @@
-name: CI
+name: Core
 on: push
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
+    defaults:
+      run:
+        working-directory: dart_project
     steps:
     - uses: actions/checkout@v2
     - run: cd ./core 
