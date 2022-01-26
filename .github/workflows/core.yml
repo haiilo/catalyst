@@ -4,7 +4,7 @@ defaults:
   run:
     working-directory: core
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
