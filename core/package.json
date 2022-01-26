@@ -29,7 +29,8 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@stencil/core": "^2.7.0",
@@ -43,12 +44,17 @@
     "@coyoapp/icons": "^2.0.0",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/react-output-target": "^0.2.1",
-    "@stencil/vue-output-target": "^0.6.0",
     "@stencil/sass": "^1.5.2",
+    "@stencil/vue-output-target": "^0.6.0",
     "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
     "babel-loader": "^8.2.3",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "modern-css-reset": "^1.4.0",
     "prettier": "^2.5.1",
     "puppeteer": "^10.0.0"
   }

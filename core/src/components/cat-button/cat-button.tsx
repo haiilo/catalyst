@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Listen, Method, Prop } from '@stencil/core';
+import log from 'loglevel';
 
 /**
  * Buttons are used for interface actions.
@@ -147,10 +148,16 @@ export class CatButton {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   @Listen('click')
-  haltDisabledEvents(event: Event) {
+  haltDisabledEvents(event: Event): void {
     if (this.disabled || this.inactive || this.loading) {
       event.preventDefault();
       event.stopImmediatePropagation();
+    }
+  }
+
+  componentWillRender(): void {
+    if (this.isIconButton && !this.a11yLabel) {
+      log.warn('[A11Y] Missing ARIA label on icon button', this);
     }
   }
 
@@ -161,7 +168,7 @@ export class CatButton {
    * the focusing process.
    */
   @Method()
-  async setFocus(options?: FocusOptions) {
+  async setFocus(options?: FocusOptions): Promise<void> {
     this.button.focus(options);
   }
 

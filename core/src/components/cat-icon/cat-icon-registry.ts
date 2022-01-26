@@ -5,7 +5,9 @@ export class CatIconRegistry {
 
   private readonly icons: Map<string, string> = new Map();
 
-  private constructor() {}
+  private constructor() {
+    // hide constructor
+  }
 
   static getInstance(): CatIconRegistry {
     if (!CatIconRegistry.instance) {

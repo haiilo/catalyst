@@ -15,7 +15,7 @@ export class CatIcon {
   /**
    * The name of the icon.
    */
-  @Prop() name: string = '';
+  @Prop() name = '';
 
   /**
    * The size of the icon.

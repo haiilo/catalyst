@@ -1,10 +1,8 @@
-html {
-  font-family: 'Lato', sans-serif;
-}
+@use 'core/base';
 
-@import 'utils/display';
-@import 'utils/elevation';
-@import 'utils/sizing';
-@import 'utils/spacing';
-@import 'utils/typography';
-@import 'utils/visibility';
+@use 'utils/display';
+@use 'utils/elevation';
+@use 'utils/sizing';
+@use 'utils/spacing';
+@use 'utils/typography';
+@use 'utils/visibility';

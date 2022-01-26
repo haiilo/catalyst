@@ -1,0 +1,6 @@
+dist
+loader
+node_modules
+www
+.eslintrc.js
+stencil.config.ts

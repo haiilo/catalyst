@@ -10,7 +10,7 @@
   // parts.push('...');
   var url = parts.join('/');
 
-  var scriptElm = doc.createElement('script');
+  scriptElm = doc.createElement('script');
   scriptElm.setAttribute('type', 'module');
   scriptElm.src = url + '/catalyst.esm.js';
   warn.push(scriptElm.outerHTML);
