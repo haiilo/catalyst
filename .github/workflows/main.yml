@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: cd ./core 
     - name: Install dependencies
       run: npm ci
     - name: Run ESLint
-      run: eslint ./core --ext .js,.jsx,.ts,.tsx
+      run: eslint . --ext .js,.jsx,.ts,.tsx
