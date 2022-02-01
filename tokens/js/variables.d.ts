@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 01 Feb 2022 10:39:37 GMT
+ * Generated on Tue, 01 Feb 2022 11:07:12 GMT
  */
 
 export const SizingXs : string;
@@ -13,3 +13,4 @@ export const SpacingS : string;
 export const SpacingM : string;
 export const SpacingL : string;
 export const SpacingXl : string;
+export const ColorsRed : string;
