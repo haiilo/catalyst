@@ -4,9 +4,8 @@
     "scss": {
       "transformGroup": "scss",
       "prefix": "cat",
-      "buildPath": "build/scss/",
       "files": [{
-        "destination": "_variables.scss",
+        "destination": "scss/_variables.scss",
         "format": "scss/variables"
       }]
     },
@@ -16,6 +15,19 @@
         {
           "destination": "css/variables.css",
           "format": "css/variables"
+        }
+      ]
+    },
+    "ts": {
+      "transformGroup": "js",
+      "files": [
+        {
+          "format": "javascript/es6",
+          "destination": "js/variables.js"
+        },
+        {
+          "format": "typescript/es6-declarations",
+          "destination": "js/variables.d.ts"
         }
       ]
     }
