@@ -1,16 +1,17 @@
 /**
  * Do not edit directly
- * Generated on Sun, 31 Oct 2021 22:22:51 GMT
+ * Generated on Tue, 01 Feb 2022 09:40:50 GMT
  */
 
 :root {
-  --colors-red-300: #FCA5A5;
-  --colors-red-500: #EF4444;
-  --colors-red-700: #B91C1C;
-  --colors-black: #000000;
-  --colors-white: #ffffff;
-  --spacing-sm: 4;
-  --spacing-md: 8;
-  --spacing-lg: 16;
-  --spacing-xl: 32;
+  --sizing-xs: 1.5rem;
+  --sizing-s: 2rem;
+  --sizing-m: 2.5rem;
+  --sizing-l: 3rem;
+  --sizing-xl: 3.5rem;
+  --spacing-xs: 0.25rem;
+  --spacing-s: 0.5rem;
+  --spacing-m: 1rem;
+  --spacing-l: 1.5rem;
+  --spacing-xl: 2rem;
 }

@@ -1,43 +1,45 @@
 {
-  "colors": {
-    "red": {
-      "300": {
-        "value": "#FCA5A5",
-        "type": "color"
-      },
-      "500": {
-        "value": "#EF4444",
-        "type": "color"
-      },
-      "700": {
-        "value": "#B91C1C",
-        "type": "color"
-      }
+  "sizing": {
+    "xs": {
+      "value": "1.5rem",
+      "type": "sizing"
     },
-    "black": {
-      "value": "#000000",
-      "type": "color"
+    "s": {
+      "value": "2rem",
+      "type": "sizing"
     },
-    "white": {
-      "value": "#ffffff",
-      "type": "color"
+    "m": {
+      "value": "2.5rem",
+      "type": "sizing"
+    },
+    "l": {
+      "value": "3rem",
+      "type": "sizing"
+    },
+    "xl": {
+      "value": "3.5rem",
+      "type": "sizing"
     }
   },
   "spacing": {
-    "sm": {
-      "value": 4,
+    "xs": {
+      "value": "0.25rem",
       "type": "spacing"
     },
-    "md": {
-      "value": 8,
+    "s": {
+      "value": "0.5rem",
       "type": "spacing"
     },
-    "lg": {
-      "value": 16,
+    "m": {
+      "value": "1rem",
+      "type": "spacing"
+    },
+    "l": {
+      "value": "1.5rem",
       "type": "spacing"
     },
     "xl": {
-      "value": 32,
+      "value": "2rem",
       "type": "spacing"
     }
   }
