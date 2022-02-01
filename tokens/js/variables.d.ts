@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 01 Feb 2022 09:59:57 GMT
+ * Generated on Tue, 01 Feb 2022 10:37:24 GMT
  */
 
 export const SizingXs : string;
