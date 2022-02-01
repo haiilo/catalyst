@@ -1,8 +1,9 @@
 name: Core
-on: push
+on: [push]
 defaults:
   run:
     working-directory: core
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +15,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: core/package-lock.json
     - run: npm ci
-    - run: npm run build:ci    
+    - run: npm run build:ci
   prettier:
     runs-on: ubuntu-latest
     steps:
