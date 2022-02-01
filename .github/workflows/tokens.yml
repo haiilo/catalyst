@@ -2,7 +2,8 @@ name: Tokens
 on:
   push:
     paths:
-    - 'tokens/**'
+    - 'tokens/config.json'
+    - 'tokens/tokens.json'
 defaults:
   run:
     working-directory: tokens
