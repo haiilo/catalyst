@@ -1,5 +1,8 @@
 name: Core
-on: [push]
+on:
+  push:
+    paths:
+    - 'core/**'
 defaults:
   run:
     working-directory: core

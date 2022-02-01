@@ -1,5 +1,8 @@
 name: Tokens
-on: [push]
+on:
+  push:
+    paths:
+    - 'tokens/**'
 defaults:
   run:
     working-directory: tokens
