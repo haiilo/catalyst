@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 01 Feb 2022 11:07:12 GMT
+ * Generated on Wed, 02 Feb 2022 10:20:15 GMT
  */
 
 export const SizingXs = "1.5rem";
@@ -13,4 +13,4 @@ export const SpacingS = "0.5rem";
 export const SpacingM = "1rem";
 export const SpacingL = "1.5rem";
 export const SpacingXl = "2rem";
-export const ColorsRed = "#f70730";
+export const ColorsRed = "#221451";
