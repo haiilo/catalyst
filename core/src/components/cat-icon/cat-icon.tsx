@@ -1,13 +1,16 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { CatIconRegistry } from './cat-icon-registry';
 
 /**
  * Icons are used to provide additional meaning or in places where text label
  * doesn't fit.
+ *
+ * @part icon - The native span element wrapping the SVG icon.
  */
 @Component({
   tag: 'cat-icon',
-  styleUrl: 'cat-icon.scss'
+  styleUrl: 'cat-icon.scss',
+  shadow: true
 })
 export class CatIcon {
   private static readonly iconRegistry = CatIconRegistry.getInstance();
@@ -15,7 +18,7 @@ export class CatIcon {
   /**
    * The name of the icon.
    */
-  @Prop() name = '';
+  @Prop() icon = '';
 
   /**
    * The size of the icon.
@@ -23,22 +26,22 @@ export class CatIcon {
   @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline' = 'm';
 
   /**
-   * Adds accessible label for the spinner that is only shown for screen
+   * Adds accessible label for the icon that is only shown for screen
    * readers. The `aria-hidden` attribute will be set if no label is present.
    */
   @Prop() a11yLabel?: string;
 
   render() {
     return (
-      <Host
-        innerHTML={CatIcon.iconRegistry.getIcon(this.name)}
+      <span
+        innerHTML={CatIcon.iconRegistry.getIcon(this.icon)}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
+        part="icon"
         class={{
-          'cat-icon': true,
           [`cat-icon-${this.size}`]: this.size !== 'inline'
         }}
-      ></Host>
+      ></span>
     );
   }
 }

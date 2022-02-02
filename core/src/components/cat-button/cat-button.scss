@@ -23,8 +23,8 @@
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: color $cat-color-transition, background-color $cat-color-transition,
-    box-shadow 0.15s $cat-focus-transition;
+  transition: color $cat-color-transition, border-color $cat-color-transition, background-color $cat-color-transition,
+    box-shadow $cat-color-transition;
 
   &:focus-visible {
     outline: 2px solid $cat-focus-color;
@@ -70,28 +70,53 @@
 
 // ----- theme
 
-@mixin appearance($appearance) {
-  .cat-button-#{$appearance} {
+.cat-button-filled {
+  background-color: var(--bg);
+  color: var(--fill);
+}
+
+.cat-button-outlined {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px $cat-n50;
+  color: var(--text);
+
+  &:hover:where(:not(.cat-button-disabled)) {
+    background-color: $cat-n50;
+    box-shadow: inset 0 0 0 1px $cat-n75;
+  }
+
+  &:active:where(:not(.cat-button-disabled)) {
+    background-color: $cat-n75;
+    box-shadow: inset 0 0 0 1px $cat-n100;
   }
 }
 
-@include appearance(filled);
-@include appearance(outlined);
-@include appearance(text);
+.cat-button-text {
+  background-color: transparent;
+  color: var(--text);
+  text-decoration: $cat-link-text-decoration;
+
+  &:hover:where(:not(.cat-button-disabled)) {
+    text-decoration: $cat-link-text-decoration-hover;
+  }
+}
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    background-color: map-get(map-get($cat-theme, $theme), bg);
-    color: map-get(map-get($cat-theme, $theme), fill);
+    --bg: #{map-get(map-get($cat-theme, $theme), bg)};
+    --fill: #{map-get(map-get($cat-theme, $theme), fill)};
+    --text: #{map-get(map-get($cat-theme, $theme), text)};
 
     &:hover:where(:not(.cat-button-disabled)) {
-      background-color: map-get(map-get($cat-theme, $theme), bg-hover);
-      color: map-get(map-get($cat-theme, $theme), fill-hover);
+      --bg: #{map-get(map-get($cat-theme, $theme), bg-hover)};
+      --fill: #{map-get(map-get($cat-theme, $theme), fill-hover)};
+      --text: #{map-get(map-get($cat-theme, $theme), text-hover)};
     }
 
     &:active:where(:not(.cat-button-disabled)) {
-      background-color: map-get(map-get($cat-theme, $theme), bg-active);
-      color: map-get(map-get($cat-theme, $theme), fill-active);
+      --bg: #{map-get(map-get($cat-theme, $theme), bg-active)};
+      --fill: #{map-get(map-get($cat-theme, $theme), fill-active)};
+      --text: #{map-get(map-get($cat-theme, $theme), text-active)};
     }
   }
 }

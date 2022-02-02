@@ -11,6 +11,7 @@ export const config: Config = {
       includePaths: ['src/styles']
     })
   ],
+  globalScript: 'src/init.ts',
   globalStyle: 'src/styles/index.scss',
   outputTargets: [
     {

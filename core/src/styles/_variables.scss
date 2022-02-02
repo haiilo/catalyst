@@ -15,7 +15,7 @@ $cat-size: (
 );
 
 $cat-color-transition: 0.15s linear;
-$cat-focus-transition: 0.15s linear;
+// $cat-focus-transition: 0.15s linear;
 
 // --------
 // -- Breakpoints
@@ -45,6 +45,7 @@ $cat-spacings: (
 // -- Theming
 // --------
 
+$cat-border-color: $cat-n50;
 $cat-focus-color: var(--cat-focus-color, $cat-b200);
 
 // ---- Color palettes
@@ -77,6 +78,9 @@ $cat-theme: (
 // --------
 // -- Typography
 // --------
+
+$cat-link-text-decoration: none;
+$cat-link-text-decoration-hover: underline;
 
 // ---- Head
 

@@ -20,7 +20,7 @@ export class CatButton {
   /**
    * The rendering style of the button.
    */
-  @Prop() appearance: 'filled' | 'outlined' | 'text' = 'filled';
+  @Prop() variant: 'filled' | 'outlined' | 'text' = 'filled';
 
   /**
    * The color palette of the button.
@@ -157,7 +157,7 @@ export class CatButton {
 
   componentWillRender(): void {
     if (this.isIconButton && !this.a11yLabel) {
-      log.warn('[A11Y] Missing ARIA label on icon button', this);
+      log.warn('[A11y] Missing ARIA label on icon button', this);
     }
   }
 
@@ -198,17 +198,17 @@ export class CatButton {
   private get content() {
     return [
       this.hasPrefixIcon ? (
-        <cat-icon name={this.icon} size={this.iconSize} class="cat-button-prefix" part="prefix"></cat-icon>
+        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-prefix" part="prefix"></cat-icon>
       ) : null,
       this.isIconButton ? (
-        <cat-icon name={this.icon} size={this.iconSize}></cat-icon>
+        <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
       ) : (
         <span class="cat-button-content" part="content">
           <slot></slot>
         </span>
       ),
       this.hasSuffixIcon ? (
-        <cat-icon name={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
+        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
       ) : null,
       this.loading ? <cat-spinner size={this.iconSize}></cat-spinner> : null
     ];
@@ -243,7 +243,7 @@ export class CatButton {
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
             'cat-button-ellipsed': this.ellipsed && !this.isIconButton,
-            [`cat-button-${this.appearance}`]: Boolean(this.appearance),
+            [`cat-button-${this.variant}`]: Boolean(this.variant),
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}
@@ -275,7 +275,7 @@ export class CatButton {
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
             'cat-button-ellipsed': this.ellipsed && !this.isIconButton,
-            [`cat-button-${this.appearance}`]: Boolean(this.appearance),
+            [`cat-button-${this.variant}`]: Boolean(this.variant),
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}

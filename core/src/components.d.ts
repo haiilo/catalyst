@@ -24,10 +24,6 @@ export namespace Components {
          */
         "a11yOwns"?: string;
         /**
-          * The rendering style of the button.
-         */
-        "appearance": 'filled' | 'outlined' | 'text';
-        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -96,16 +92,20 @@ export namespace Components {
           * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
          */
         "value"?: string;
+        /**
+          * The rendering style of the button.
+         */
+        "variant": 'filled' | 'outlined' | 'text';
     }
     interface CatIcon {
         /**
-          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
+          * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
          */
         "a11yLabel"?: string;
         /**
           * The name of the icon.
          */
-        "name": string;
+        "icon": string;
         /**
           * The size of the icon.
          */
@@ -165,10 +165,6 @@ declare namespace LocalJSX {
           * Indicates the ID of a component owned by the button.
          */
         "a11yOwns"?: string;
-        /**
-          * The rendering style of the button.
-         */
-        "appearance"?: 'filled' | 'outlined' | 'text';
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
@@ -241,16 +237,20 @@ declare namespace LocalJSX {
           * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
          */
         "value"?: string;
+        /**
+          * The rendering style of the button.
+         */
+        "variant"?: 'filled' | 'outlined' | 'text';
     }
     interface CatIcon {
         /**
-          * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
+          * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
          */
         "a11yLabel"?: string;
         /**
           * The name of the icon.
          */
-        "name"?: string;
+        "icon"?: string;
         /**
           * The size of the icon.
          */

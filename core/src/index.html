@@ -13,23 +13,64 @@
   </head>
   <body>
     <h2>Spinner</h2>
+    <cat-spinner></cat-spinner>
+
+    <h3>Color</h3>
+    <cat-spinner style="color: red"></cat-spinner>
+    <cat-spinner style="color: blue"></cat-spinner>
+    <cat-spinner style="color: green"></cat-spinner>
+
+    <h3>Size</h3>
     <cat-spinner size="xs"></cat-spinner>
     <cat-spinner size="s"></cat-spinner>
     <cat-spinner size="m"></cat-spinner>
     <cat-spinner size="l"></cat-spinner>
     <cat-spinner size="xl"></cat-spinner>
+    <cat-spinner size="inline" style="font-size: 2.5rem"></cat-spinner>
+
+    <hr />
+
+    <h2>Icons</h2>
+    <cat-icon icon="user"></cat-icon>
+
+    <h3>Color</h3>
+    <cat-icon icon="user" style="color: red"></cat-icon>
+    <cat-icon icon="user" style="color: blue"></cat-icon>
+    <cat-icon icon="user" style="color: green"></cat-icon>
+
+    <h3>Size</h3>
+    <cat-icon icon="user" size="xs"></cat-icon>
+    <cat-icon icon="user" size="s"></cat-icon>
+    <cat-icon icon="user" size="m"></cat-icon>
+    <cat-icon icon="user" size="l"></cat-icon>
+    <cat-icon icon="user" size="xl"></cat-icon>
+    <cat-icon icon="user" size="inline" style="font-size: 2.5rem"></cat-icon>
 
     <hr />
 
     <h2>Button</h2>
-    <h3>Appearance</h3>
+    <cat-button>Button</cat-button>
+
+    <h3>Variant</h3>
+    <cat-button variant="filled">Filled</cat-button>
+    <cat-button variant="outlined">Outlined</cat-button>
+    <cat-button variant="text">Text</cat-button>
+
     <h3>Color</h3>
+    <cat-button variant="filled" color="primary">Primary</cat-button>
+    <cat-button variant="outlined" color="primary">Primary</cat-button>
+    <cat-button variant="text" color="primary">Primary</cat-button>
+    <br /><br />
+    <cat-button variant="filled" color="secondary">Secondary</cat-button>
+    <cat-button variant="outlined" color="secondary">Secondary</cat-button>
+    <cat-button variant="text" color="secondary">Secondary</cat-button>
+
     <h3>Size</h3>
-    <cat-button size="xs">Size XS</cat-button>
-    <cat-button size="s">Size S</cat-button>
-    <cat-button size="m">Size M</cat-button>
-    <cat-button size="l">Size L</cat-button>
-    <cat-button size="xl">Size XL</cat-button>
+    <cat-button size="xs" icon="user">Size XS</cat-button>
+    <cat-button size="s" icon="user">Size S</cat-button>
+    <cat-button size="m" icon="user">Size M</cat-button>
+    <cat-button size="l" icon="user">Size L</cat-button>
+    <cat-button size="xl" icon="user">Size XL</cat-button>
     <h3>Icons</h3>
     <cat-button icon="user">Prefix</cat-button>
     <cat-button icon="user" icon-suffix="true">Suffix</cat-button>
@@ -53,5 +94,7 @@
       <cat-button class="cat-d-block cat-text-left">Block (left)</cat-button>
       <cat-button size="m" prefix-icon="user" suffix-icon="lock">Click</cat-button>
     </div>
+
+    <hr />
   </body>
 </html>

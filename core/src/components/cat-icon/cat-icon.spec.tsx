@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { CatIcon } from './cat-icon';
 import { CatIconRegistry } from './cat-icon-registry';
 
-jest.mock('./cat-icon-registry')
+jest.mock('./cat-icon-registry');
 
 describe('cat-icon', () => {
   it('renders', async () => {

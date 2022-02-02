@@ -1,5 +1,3 @@
-import { ci } from '@coyoapp/icons';
-
 export class CatIconRegistry {
   private static instance: CatIconRegistry;
 
@@ -12,7 +10,6 @@ export class CatIconRegistry {
   static getInstance(): CatIconRegistry {
     if (!CatIconRegistry.instance) {
       CatIconRegistry.instance = new CatIconRegistry();
-      CatIconRegistry.instance.addIcons(ci);
     }
     return CatIconRegistry.instance;
   }
