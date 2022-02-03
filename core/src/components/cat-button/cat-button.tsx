@@ -1,5 +1,7 @@
-import { Component, Event, EventEmitter, h, Listen, Method, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
+import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
+import { MediaMatcher } from '../../utils/media-matcher';
 
 /**
  * Buttons are used for interface actions.
@@ -16,6 +18,11 @@ import log from 'loglevel';
 })
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
+  private mediaMatcher?: MediaMatcher;
+  private mediaQueryList?: MediaQueryList;
+  private mediaQueryListener?: (event: MediaQueryListEvent) => void;
+
+  @State() _iconOnly = true;
 
   /**
    * The rendering style of the button.
@@ -99,7 +106,7 @@ export class CatButton {
   /**
    * Hide the actual button content and only display the icon.
    */
-  @Prop() iconOnly = false;
+  @Prop() iconOnly: boolean | Breakpoint = false;
 
   /**
    * Display the icon as a suffix.
@@ -137,6 +144,25 @@ export class CatButton {
    */
   @Prop() a11yOwns?: string;
 
+  @Watch('iconOnly')
+  onIconOnlyChanged(value: boolean | Breakpoint): void {
+    // teardown
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.mediaQueryList?.removeEventListener('change', this.mediaQueryListener!);
+    this.mediaQueryList = undefined;
+    this.mediaQueryListener = undefined;
+    // setup
+    if (isBreakpoint(value)) {
+      this.mediaMatcher ??= new MediaMatcher();
+      this.mediaQueryList = this.mediaMatcher.matchMedia(Breakpoints[value]);
+      this.mediaQueryListener = (event: MediaQueryListEvent) => (this._iconOnly = event.matches);
+      this.mediaQueryList.addEventListener('change', this.mediaQueryListener);
+      this._iconOnly = this.mediaQueryList.matches;
+    } else {
+      this._iconOnly = value;
+    }
+  }
+
   /**
    * Emitted when the button received focus.
    */
@@ -147,17 +173,21 @@ export class CatButton {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
-  @Listen('click')
-  haltDisabledEvents(event: Event): void {
-    if (this.disabled || this.inactive || this.loading) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
+  componentWillLoad(): void {
+    this.onIconOnlyChanged(this.iconOnly);
   }
 
   componentWillRender(): void {
     if (this.isIconButton && !this.a11yLabel) {
       log.warn('[A11y] Missing ARIA label on icon button', this);
+    }
+  }
+
+  @Listen('click')
+  haltDisabledEvents(event: Event): void {
+    if (this.disabled || this.inactive || this.loading) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
     }
   }
 
@@ -183,16 +213,16 @@ export class CatButton {
     }
   }
 
-  private get isIconButton(): boolean {
-    return Boolean(this.icon) && this.iconOnly;
+  private get isIconButton() {
+    return Boolean(this.icon) && this._iconOnly;
   }
 
-  private get hasPrefixIcon(): boolean {
-    return Boolean(this.icon) && !this.iconOnly && !this.iconSuffix;
+  private get hasPrefixIcon() {
+    return Boolean(this.icon) && !this._iconOnly && !this.iconSuffix;
   }
 
-  private get hasSuffixIcon(): boolean {
-    return Boolean(this.icon) && !this.iconOnly && this.iconSuffix;
+  private get hasSuffixIcon() {
+    return Boolean(this.icon) && !this._iconOnly && this.iconSuffix;
   }
 
   private get content() {

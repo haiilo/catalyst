@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Breakpoint } from "./utils/breakpoints";
 export namespace Components {
     interface CatButton {
         /**
@@ -46,7 +47,7 @@ export namespace Components {
         /**
           * Hide the actual button content and only display the icon.
          */
-        "iconOnly": boolean;
+        "iconOnly": boolean | Breakpoint;
         /**
           * Display the icon as a suffix.
          */
@@ -188,7 +189,7 @@ declare namespace LocalJSX {
         /**
           * Hide the actual button content and only display the icon.
          */
-        "iconOnly"?: boolean;
+        "iconOnly"?: boolean | Breakpoint;
         /**
           * Display the icon as a suffix.
          */
