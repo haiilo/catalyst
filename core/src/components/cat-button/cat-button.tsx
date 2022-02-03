@@ -125,24 +125,24 @@ export class CatButton {
    * the attribute to point to the unique ID of the content that the button
    * manages.
    */
-  @Prop() a11yControls?: string;
+  @Prop({ attribute: 'a11y-controls' }) a11yControls?: string;
 
   /**
    * Indicates the ID of a component that describes the button.
    */
-  @Prop() a11yDescribedBy?: string;
+  @Prop({ attribute: 'a11y-described-by' }) a11yDescribedBy?: string;
 
   /**
    * Adds accessible label for the button that is only shown for screen
    * readers. Typically, this label text replaces the visible text on the
    * button for users who use assistive technology.
    */
-  @Prop() a11yLabel?: string;
+  @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
   /**
    * Indicates the ID of a component owned by the button.
    */
-  @Prop() a11yOwns?: string;
+  @Prop({ attribute: 'a11y-owns' }) a11yOwns?: string;
 
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {

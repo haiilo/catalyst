@@ -18,7 +18,7 @@ export class CatSpinner {
    * Adds accessible label for the spinner that is only shown for screen
    * readers. The `aria-hidden` attribute will be set if no label is present.
    */
-  @Prop() a11yLabel?: string;
+  @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
   render() {
     return (

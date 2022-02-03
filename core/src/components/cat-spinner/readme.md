@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Property    | Attribute      | Description                                                                                                                                  | Type                                            | Default     |
-| ----------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
-| `a11yLabel` | `a-1-1y-label` | Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present. | `string \| undefined`                           | `undefined` |
-| `size`      | `size`         | The size of the spinner.                                                                                                                     | `"inline" \| "l" \| "m" \| "s" \| "xl" \| "xs"` | `'m'`       |
+| Property    | Attribute    | Description                                                                                                                                  | Type                                            | Default     |
+| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| `a11yLabel` | `a11y-label` | Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present. | `string \| undefined`                           | `undefined` |
+| `size`      | `size`       | The size of the spinner.                                                                                                                     | `"inline" \| "l" \| "m" \| "s" \| "xl" \| "xs"` | `'m'`       |
 
 
 ## Dependencies

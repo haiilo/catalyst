@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property    | Attribute      | Description                                                                                                                               | Type                                            | Default     |
-| ----------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
-| `a11yLabel` | `a-1-1y-label` | Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present. | `string \| undefined`                           | `undefined` |
-| `icon`      | `icon`         | The name of the icon.                                                                                                                     | `string`                                        | `''`        |
-| `size`      | `size`         | The size of the icon.                                                                                                                     | `"inline" \| "l" \| "m" \| "s" \| "xl" \| "xs"` | `'m'`       |
+| Property    | Attribute    | Description                                                                                                                               | Type                                            | Default     |
+| ----------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| `a11yLabel` | `a11y-label` | Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present. | `string \| undefined`                           | `undefined` |
+| `icon`      | `icon`       | The name of the icon.                                                                                                                     | `string`                                        | `''`        |
+| `size`      | `size`       | The size of the icon.                                                                                                                     | `"inline" \| "l" \| "m" \| "s" \| "xl" \| "xs"` | `'m'`       |
 
 
 ## Shadow Parts
