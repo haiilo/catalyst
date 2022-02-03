@@ -9,7 +9,7 @@ import type { JSX } from '@coyoapp/catalyst';
 
 
 export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-button', undefined, [
-  'appearance',
+  'variant',
   'color',
   'size',
   'name',
@@ -36,7 +36,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
 
 
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
-  'name',
+  'icon',
   'size',
   'a11yLabel'
 ]);
