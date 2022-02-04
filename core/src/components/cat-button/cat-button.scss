@@ -27,7 +27,7 @@
     box-shadow $cat-color-transition;
 
   &:focus-visible {
-    outline: 2px solid $cat-focus-color;
+    outline: $cat-focus-outline;
     outline-offset: 1px;
   }
 }

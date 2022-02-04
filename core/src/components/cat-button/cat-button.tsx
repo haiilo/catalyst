@@ -202,56 +202,6 @@ export class CatButton {
     this.button.focus(options);
   }
 
-  private get iconSize(): 'xs' | 's' | 'm' | 'l' | 'xl' {
-    switch (this.size) {
-      case 'xs':
-        return 's';
-      case 'xl':
-        return 'l';
-      default:
-        return 'm';
-    }
-  }
-
-  private get isIconButton() {
-    return Boolean(this.icon) && this._iconOnly;
-  }
-
-  private get hasPrefixIcon() {
-    return Boolean(this.icon) && !this._iconOnly && !this.iconSuffix;
-  }
-
-  private get hasSuffixIcon() {
-    return Boolean(this.icon) && !this._iconOnly && this.iconSuffix;
-  }
-
-  private get content() {
-    return [
-      this.hasPrefixIcon ? (
-        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-prefix" part="prefix"></cat-icon>
-      ) : null,
-      this.isIconButton ? (
-        <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
-      ) : (
-        <span class="cat-button-content" part="content">
-          <slot></slot>
-        </span>
-      ),
-      this.hasSuffixIcon ? (
-        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
-      ) : null,
-      this.loading ? <cat-spinner size={this.iconSize}></cat-spinner> : null
-    ];
-  }
-
-  private onFocus(event: FocusEvent) {
-    this.catFocus.emit(event);
-  }
-
-  private onBlur(event: FocusEvent) {
-    this.catBlur.emit(event);
-  }
-
   render() {
     if (this.url) {
       return (
@@ -316,5 +266,55 @@ export class CatButton {
         </button>
       );
     }
+  }
+
+  private get iconSize(): 'xs' | 's' | 'm' | 'l' | 'xl' {
+    switch (this.size) {
+      case 'xs':
+        return 's';
+      case 'xl':
+        return 'l';
+      default:
+        return 'm';
+    }
+  }
+
+  private get isIconButton() {
+    return Boolean(this.icon) && this._iconOnly;
+  }
+
+  private get hasPrefixIcon() {
+    return Boolean(this.icon) && !this._iconOnly && !this.iconSuffix;
+  }
+
+  private get hasSuffixIcon() {
+    return Boolean(this.icon) && !this._iconOnly && this.iconSuffix;
+  }
+
+  private get content() {
+    return [
+      this.hasPrefixIcon ? (
+        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-prefix" part="prefix"></cat-icon>
+      ) : null,
+      this.isIconButton ? (
+        <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
+      ) : (
+        <span class="cat-button-content" part="content">
+          <slot></slot>
+        </span>
+      ),
+      this.hasSuffixIcon ? (
+        <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
+      ) : null,
+      this.loading ? <cat-spinner size={this.iconSize}></cat-spinner> : null
+    ];
+  }
+
+  private onFocus(event: FocusEvent) {
+    this.catFocus.emit(event);
+  }
+
+  private onBlur(event: FocusEvent) {
+    this.catBlur.emit(event);
   }
 }

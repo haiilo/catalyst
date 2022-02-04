@@ -1,4 +1,15 @@
-@use 'core/base';
+// -- Reset
+
+@use '../../node_modules/sanitize.css/sanitize.css';
+@use '../../node_modules/sanitize.css/assets.css';
+@use '../../node_modules/sanitize.css/reduce-motion.css';
+
+// -- Core
+
+@use 'core/base' as *;
+@use 'core/typography' as *;
+
+// -- Utils
 
 @use 'utils/display';
 @use 'utils/elevation';

@@ -4,8 +4,6 @@
 
 @forward 'variables.colors';
 
-$cat-disabled-opacity: 0.65;
-
 $cat-size: (
   xs: 1.5rem,
   s: 2rem,
@@ -13,9 +11,6 @@ $cat-size: (
   l: 3rem,
   xl: 3.5rem
 );
-
-$cat-color-transition: 0.15s linear;
-// $cat-focus-transition: 0.15s linear;
 
 // --------
 // -- Breakpoints
@@ -45,8 +40,17 @@ $cat-spacings: (
 // -- Theming
 // --------
 
-$cat-border-color: $cat-n50;
-$cat-focus-color: var(--cat-focus-color, $cat-b200);
+// $cat-focus-transition: 0.15s linear;
+$cat-disabled-opacity: 0.65;
+$cat-color-transition: 0.15s linear;
+$cat-focus-outline: 2px solid var(--cat-focus-color, $cat-b200);
+
+$cat-border-color: $cat-n100; //TODO
+$cat-border-color-weak: $cat-n50; //TODO
+$cat-border-color-strong: $cat-n200; //TODO
+$cat-mark-color: red; //TODO
+$cat-quote-color: red; //TODO
+$cat-quote-source-color: blue; //TODO
 
 // ---- Color palettes
 
@@ -79,11 +83,14 @@ $cat-theme: (
 // -- Typography
 // --------
 
+$cat-head-margin-bottom: 0.5rem;
+$cat-body-margin-bottom: 1rem;
 $cat-link-text-decoration: none;
 $cat-link-text-decoration-hover: underline;
 
 // ---- Head
 
+$cat-head-font-face: 'Lato', sans-serif;
 $cat-head-font-weight: 600;
 $cat-head-font-size: (
   1: 1.75rem,
@@ -104,6 +111,7 @@ $cat-head-line-height: (
 
 // ---- Body
 
+$cat-body-font-face: 'Lato', sans-serif;
 $cat-body-font-weight: 400;
 $cat-body-font-size: (
   xl: 1.25rem,
@@ -125,6 +133,10 @@ $cat-border-radius: (
   m: var(--cat-border-radius-m, 0.25rem),
   l: var(--cat-border-radius-l, 0.5rem)
 );
+
+// ---- Mono
+
+$cat-mono-font-face: Menlo, monospace;
 
 // --------
 // -- Elevations

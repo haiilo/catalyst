@@ -1,6 +1,14 @@
 @use '../variables' as *;
-@use '../mixins' as *;
+
+// ---- Typography
 
 html {
-  font-family: 'Lato', sans-serif;
+  font-family: $cat-body-font-face;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: $cat-mono-font-face;
 }
