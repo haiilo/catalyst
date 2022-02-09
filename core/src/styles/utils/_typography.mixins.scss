@@ -35,6 +35,7 @@
 }
 
 @mixin cat-ellipsis($lines: 1) {
+  /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
   @if $lines == 1 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -45,10 +46,13 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  /* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix */
 }
 
 @mixin cat-select($select: auto) {
+  /* stylelint-disable property-no-vendor-prefix */
   -webkit-user-select: $select;
   -ms-user-select: $select;
   user-select: $select;
+  /* stylelint-enable property-no-vendor-prefix */
 }

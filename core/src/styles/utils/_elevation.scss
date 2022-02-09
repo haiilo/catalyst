@@ -2,7 +2,7 @@
 @use 'elevation.mixins' as *;
 
 .cat-elevation-transition {
-  @include cat-elevation-transition();
+  @include cat-elevation-transition;
 }
 
 @each $level, $_def in $cat-elevation {

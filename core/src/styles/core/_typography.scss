@@ -26,22 +26,27 @@ h1,
 .cat-h1 {
   @include cat-head(1);
 }
+
 h2,
 .cat-h2 {
   @include cat-head(2);
 }
+
 h3,
 .cat-h3 {
   @include cat-head(3);
 }
+
 h4,
 .cat-h4 {
   @include cat-head(4);
 }
+
 h5,
 .cat-h5 {
   @include cat-head(5);
 }
+
 h6,
 .cat-h6 {
   @include cat-head(6);
@@ -62,17 +67,17 @@ hr {
 // ----- links
 
 a {
-  color: map-get(map-get($cat-theme, primary), text);
+  color: map.get(map.get($cat-theme, primary), text);
   text-decoration: $cat-link-text-decoration;
   transition: color $cat-color-transition;
 
   &:hover {
-    color: map-get(map-get($cat-theme, primary), text-hover);
+    color: map.get(map.get($cat-theme, primary), text-hover);
     text-decoration: $cat-link-text-decoration-hover;
   }
 
   &:active {
-    color: map-get(map-get($cat-theme, primary), text-active);
+    color: map.get(map.get($cat-theme, primary), text-active);
   }
 
   &:focus-visible {
