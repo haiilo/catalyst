@@ -77,15 +77,15 @@
 
 .cat-button-outlined {
   background-color: transparent;
-  box-shadow: inset 0 0 0 1px rgba(var(--bg), 0.20);
+  box-shadow: inset 0 0 0 1px rgba(var(--base), 0.20);
   color: rgb(var(--text));
 
   &:hover:where(:not(.cat-button-disabled)) {
-    background-color: rgba(var(--bg), 0.05);
+    background-color: rgba(var(--base), 0.05);
   }
 
   &:active:where(:not(.cat-button-disabled)) {
-    background-color: rgba(var(--bg), 0.1);
+    background-color: rgba(var(--base), 0.1);
   }
 }
 
@@ -101,6 +101,7 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
+    --base: #{map-get(map-get($cat-theme, $theme), bg)};
     --bg: #{map-get(map-get($cat-theme, $theme), bg)};
     --fill: #{map-get(map-get($cat-theme, $theme), fill)};
     --text: #{map-get(map-get($cat-theme, $theme), text)};
