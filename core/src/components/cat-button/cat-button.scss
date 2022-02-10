@@ -14,6 +14,7 @@
 }
 
 .cat-button {
+  font: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,6 +74,8 @@
 .cat-button-filled {
   background-color: rgb(var(--bg));
   color: var(--fill);
+  -webkit-font-smoothing: antialiased; //TODO
+  font-weight: 600;
 }
 
 .cat-button-outlined {

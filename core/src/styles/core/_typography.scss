@@ -2,7 +2,7 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-html {
+body {
   @include cat-body(m);
 }
 
