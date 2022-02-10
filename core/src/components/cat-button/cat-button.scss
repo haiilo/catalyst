@@ -71,29 +71,27 @@
 // ----- theme
 
 .cat-button-filled {
-  background-color: var(--bg);
+  background-color: rgb(var(--bg));
   color: var(--fill);
 }
 
 .cat-button-outlined {
   background-color: transparent;
-  box-shadow: inset 0 0 0 1px $cat-n50;
-  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(var(--bg), 0.20);
+  color: rgb(var(--text));
 
   &:hover:where(:not(.cat-button-disabled)) {
-    background-color: $cat-n50;
-    box-shadow: inset 0 0 0 1px $cat-n75;
+    background-color: rgba(var(--bg), 0.05);
   }
 
   &:active:where(:not(.cat-button-disabled)) {
-    background-color: $cat-n75;
-    box-shadow: inset 0 0 0 1px $cat-n100;
+    background-color: rgba(var(--bg), 0.1);
   }
 }
 
 .cat-button-text {
   background-color: transparent;
-  color: var(--text);
+  color: rgb(var(--text));
   text-decoration: $cat-link-text-decoration;
 
   &:hover:where(:not(.cat-button-disabled)) {
@@ -103,26 +101,28 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --bg: #{map.get(map.get($cat-theme, $theme), bg)};
-    --fill: #{map.get(map.get($cat-theme, $theme), fill)};
-    --text: #{map.get(map.get($cat-theme, $theme), text)};
+    --bg: #{map-get(map-get($cat-theme, $theme), bg)};
+    --fill: #{map-get(map-get($cat-theme, $theme), fill)};
+    --text: #{map-get(map-get($cat-theme, $theme), text)};
 
     &:hover:where(:not(.cat-button-disabled)) {
-      --bg: #{map.get(map.get($cat-theme, $theme), bg-hover)};
-      --fill: #{map.get(map.get($cat-theme, $theme), fill-hover)};
-      --text: #{map.get(map.get($cat-theme, $theme), text-hover)};
+      --bg: #{map-get(map-get($cat-theme, $theme), bg-hover)};
+      --fill: #{map-get(map-get($cat-theme, $theme), fill-hover)};
+      --text: #{map-get(map-get($cat-theme, $theme), text-hover)};
     }
 
     &:active:where(:not(.cat-button-disabled)) {
-      --bg: #{map.get(map.get($cat-theme, $theme), bg-active)};
-      --fill: #{map.get(map.get($cat-theme, $theme), fill-active)};
-      --text: #{map.get(map.get($cat-theme, $theme), text-active)};
+      --bg: #{map-get(map-get($cat-theme, $theme), bg-active)};
+      --fill: #{map-get(map-get($cat-theme, $theme), fill-active)};
+      --text: #{map-get(map-get($cat-theme, $theme), text-active)};
     }
   }
 }
 
 @include theme(primary);
 @include theme(secondary);
+@include theme(error);
+@include theme(success);
 
 // ----- size
 
@@ -138,7 +138,6 @@
     .cat-button-prefix {
       margin-right: $padding * 0.5;
     }
-
     .cat-button-suffix {
       margin-left: $padding * 0.5;
     }

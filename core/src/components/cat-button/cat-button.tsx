@@ -32,7 +32,7 @@ export class CatButton {
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' = 'secondary';
+  @Prop() color: 'primary' | 'secondary' | 'error' | 'success' = 'secondary';
 
   /**
    * The size of the button.

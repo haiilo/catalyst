@@ -13,7 +13,7 @@ import { CatIconRegistry } from './cat-icon-registry';
   shadow: true
 })
 export class CatIcon {
-  private static readonly iconRegistry = CatIconRegistry.getInstance();
+  private readonly iconRegistry = CatIconRegistry.getInstance();
 
   /**
    * The name of the icon.
@@ -34,7 +34,7 @@ export class CatIcon {
   render() {
     return (
       <span
-        innerHTML={CatIcon.iconRegistry.getIcon(this.icon)}
+        innerHTML={this.iconRegistry.getIcon(this.icon)}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"

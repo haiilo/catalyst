@@ -31,7 +31,7 @@ export namespace Components {
         /**
           * The color palette of the button.
          */
-        "color": 'primary' | 'secondary';
+        "color": 'primary' | 'secondary' | 'error' | 'success';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -173,7 +173,7 @@ declare namespace LocalJSX {
         /**
           * The color palette of the button.
          */
-        "color"?: 'primary' | 'secondary';
+        "color"?: 'primary' | 'secondary' | 'error' | 'success';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
