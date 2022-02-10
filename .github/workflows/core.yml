@@ -1,65 +1,84 @@
-name: Core
+name: core
 on:
   push:
     paths:
-    - 'core/**'
+      - 'core/**'
 defaults:
   run:
     working-directory: core
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-        cache-dependency-path: core/package-lock.json
-    - run: npm ci
-    - run: npm run build:ci
+      - name: Checkout 🛒
+        uses: actions/checkout@v2
+      - name: Setup 🔨
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Build 🛠️
+        run: |
+          npm ci
+          npm run build:ci
   prettier:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-        cache-dependency-path: core/package-lock.json
-    - run: npm ci
-    - run: npm run prettier:check
+      - name: Checkout 🛒
+        uses: actions/checkout@v2
+      - name: Setup 🔨
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Check 🛠️
+        run: |
+          npm ci
+          npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-        cache-dependency-path: core/package-lock.json
-    - run: npm ci
-    - run: npm run lint
+      - name: Checkout 🛒
+        uses: actions/checkout@v2
+      - name: Setup 🔨
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Lint 🛠️
+        run: |
+          npm ci
+          npm run lint
   stylelint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-        cache-dependency-path: core/package-lock.json
-    - run: npm ci
-    - run: npm run lint:style
+      - name: Checkout 🛒
+        uses: actions/checkout@v2
+      - name: Setup 🔨
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Lint 🛠️
+        run: |
+          npm ci
+          npm run lint:style
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-        cache-dependency-path: core/package-lock.json
-    - run: npm ci
-    - run: npm run test
+      - name: Checkout 🛒
+        uses: actions/checkout@v2
+      - name: Setup 🔨
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Test 🛠️
+        run: |
+          npm ci
+          npm run test

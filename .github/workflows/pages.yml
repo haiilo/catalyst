@@ -1,10 +1,10 @@
-name: Pages
+name: pages
 on:
   push:
     branches:
       - main
     paths:
-    - 'core/**'
+      - 'core/**'
 defaults:
   run:
     working-directory: core
@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout 🛒
         uses: actions/checkout@v2
-      - name: Install and Build 🔧
+      - name: Install and Build 🛠️
         run: |
           npm ci
           npm run build:ci
