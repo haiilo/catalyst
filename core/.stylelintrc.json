@@ -1,9 +1,11 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "rules": {
-    "scss/dollar-variable-empty-line-before": null
+    "color-function-notation": null,
+    "declaration-empty-line-before": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/no-global-function-names": null,
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor"]}]
   }
 }

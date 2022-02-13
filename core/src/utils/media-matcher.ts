@@ -11,10 +11,11 @@ let mediaQueryStyleNode: HTMLStyleElement | undefined;
 
 /** A utility for calling matchMedia queries. */
 export class MediaMatcher {
-  private readonly _platform = new Platform();
+  private _platform;
   private _matchMedia: (query: string) => MediaQueryList;
 
   constructor() {
+    this._platform = new Platform();
     this._matchMedia = window.matchMedia.bind(window);
   }
 
@@ -28,7 +29,6 @@ export class MediaMatcher {
     if (this._platform.WEBKIT || this._platform.BLINK) {
       createEmptyStyleRule(query);
     }
-    console.log(this._platform)
     return this._matchMedia(query);
   }
 }

@@ -62,7 +62,7 @@ hr {
   margin: $cat-body-margin-bottom 0;
   height: 1px;
   border: 0;
-  background-color: $cat-border-color;
+  background-color: $cat-border-color-light;
 }
 
 // ----- links
@@ -145,6 +145,12 @@ dt {
 dd {
   margin-bottom: 0.5rem;
   margin-left: 0;
+}
+
+// ----- lead
+
+.cat-lead {
+  @include cat-body(xl, 300);
 }
 
 // ----- blockquotes & figures

@@ -73,14 +73,14 @@
 
 .cat-button-filled {
   background-color: rgb(var(--bg));
-  color: var(--fill);
-  -webkit-font-smoothing: antialiased; //TODO
+  color: rgb(var(--fill));
   font-weight: 600;
+  @include cat-font-smooth;
 }
 
 .cat-button-outlined {
   background-color: transparent;
-  box-shadow: inset 0 0 0 1px rgba(var(--base), 0.20);
+  box-shadow: inset 0 0 0 1px rgba(var(--base), 0.2);
   color: rgb(var(--text));
 
   &:hover:where(:not(.cat-button-disabled)) {
@@ -104,7 +104,7 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --base: #{map-get(map-get($cat-theme, $theme), bg)};
+    --base: #{map-get(map-get($cat-theme, $theme), text)};
     --bg: #{map-get(map-get($cat-theme, $theme), bg)};
     --fill: #{map-get(map-get($cat-theme, $theme), fill)};
     --text: #{map-get(map-get($cat-theme, $theme), text)};
@@ -127,6 +127,7 @@
 @include theme(secondary);
 @include theme(error);
 @include theme(success);
+@include theme(warning);
 
 // ----- size
 
@@ -142,6 +143,7 @@
     .cat-button-prefix {
       margin-right: $padding * 0.5;
     }
+
     .cat-button-suffix {
       margin-left: $padding * 0.5;
     }

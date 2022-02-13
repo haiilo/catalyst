@@ -36,9 +36,9 @@
     "lint:style": "stylelint **/*.scss"
   },
   "dependencies": {
-    "@stencil/core": "^2.7.0",
-    "loglevel": "^1.8.0",
-    "sanitize.css": "^13.0.0"
+    "@stencil/core": "2.13.0",
+    "loglevel": "1.8.0",
+    "sanitize.css": "13.0.0"
   },
   "peerDependencies": {
     "@coyoapp/icons": ">=2.0.0"
@@ -50,14 +50,14 @@
     "@stencil/react-output-target": "^0.2.1",
     "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.6.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "babel-loader": "^8.2.3",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
     "prettier": "^2.5.1",
     "puppeteer": "^10.0.0",
     "stylelint": "^14.4.0",

@@ -56,3 +56,8 @@
   user-select: $select;
   /* stylelint-enable property-no-vendor-prefix */
 }
+
+@mixin cat-font-smooth() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: greyscale;
+}
