@@ -10,75 +10,75 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup 🔨
+      - name: Setup
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Install and Build 🛠️
+      - name: Install and Build
         run: |
           npm ci
           npm run build:ci
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup 🔨
+      - name: Setup
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Install and Check 🛠️
+      - name: Install and Check
         run: |
           npm ci
           npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup 🔨
+      - name: Setup
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Install and Lint 🛠️
+      - name: Install and Lint
         run: |
           npm ci
           npm run lint
   stylelint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup 🔨
+      - name: Setup
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Install and Lint 🛠️
+      - name: Install and Lint
         run: |
           npm ci
           npm run lint:style
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup 🔨
+      - name: Setup
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Install and Test 🛠️
+      - name: Install and Test
         run: |
           npm ci
           npm run test

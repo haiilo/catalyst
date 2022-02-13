@@ -21,11 +21,11 @@ jobs:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
-      - name: Transform Figma Tokens 🛠️
+      - name: Transform Figma Tokens
         run: npx token-transformer tokens.json build/tokens.json
-      - name: Run Style Dictionary 🛠️
+      - name: Run Style Dictionary
         run: npx style-dictionary build --config config.json
-      - name: Commit files 🚀
+      - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'CI: update tokens'
