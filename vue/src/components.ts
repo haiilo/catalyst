@@ -15,7 +15,6 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'name',
   'value',
   'disabled',
-  'inactive',
   'loading',
   'submit',
   'ellipsed',
@@ -26,10 +25,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'iconOnly',
   'iconSuffix',
   'buttonId',
-  'a11yControls',
-  'a11yDescribedBy',
   'a11yLabel',
-  'a11yOwns',
   'catFocus',
   'catBlur'
 ]);

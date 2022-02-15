@@ -40,7 +40,6 @@ $cat-spacings: (
 // -- Theming
 // --------
 
-// $cat-focus-transition: 0.15s linear;
 $cat-disabled-opacity: 0.65;
 $cat-color-transition: 0.15s linear;
 $cat-focus-outline: 2px solid var(--cat-focus-color, $cat-blue-200);
@@ -48,7 +47,7 @@ $cat-focus-outline: 2px solid var(--cat-focus-color, $cat-blue-200);
 $cat-border-color-light: $cat-base-100;
 $cat-border-color-dark: $cat-base-200;
 $cat-mark-color: color.adjust($cat-cyan-400, $alpha: -0.8);
-$cat-quote-color: $cat-base-700;
+$cat-quote-color: null;
 $cat-quote-source-color: $cat-base-400;
 
 // ---- Color palettes
@@ -84,8 +83,8 @@ $cat-theme: (
   ),
   secondary: (
     bg: var(--cat-secondary-bg, rgb-parts($cat-base-100)),
-    bg-hover: var(--cat-secondary-bg-hover, rgb-parts($cat-base-100)),
-    bg-active: var(--cat-secondary-bg-active, rgb-parts($cat-base-100)),
+    bg-hover: var(--cat-secondary-bg-hover, rgb-parts($cat-base-200)),
+    bg-active: var(--cat-secondary-bg-active, rgb-parts($cat-base-200)),
     fill: var(--cat-secondary-fill, rgb-parts($cat-base-900)),
     fill-hover: var(--cat-secondary-fill-hover, rgb-parts($cat-base-900)),
     fill-active: var(--cat-secondary-fill-active, rgb-parts($cat-base-900)),
@@ -139,7 +138,7 @@ $cat-link-text-decoration-hover: underline;
 
 // ---- Head
 
-$cat-head-font-face: 'Lato', sans-serif;
+$cat-head-font-face: var(--cat-head-font-face, 'Lato', sans-serif);
 $cat-head-font-weight: 600;
 $cat-head-font-size: (
   1: 1.75rem,
@@ -160,7 +159,7 @@ $cat-head-line-height: (
 
 // ---- Body
 
-$cat-body-font-face: 'Lato', sans-serif;
+$cat-body-font-face: var(--cat-body-font-face, 'Lato', sans-serif);
 $cat-body-font-weight: 400;
 $cat-body-font-size: (
   xl: 1.25rem,
@@ -177,15 +176,19 @@ $cat-body-line-height: (
   xs: 1rem
 );
 
+// ---- Mono
+
+$cat-mono-font-face: var(--cat-mono-font-face, 'Menlo', monospace);
+
+// --------
+// -- Borders
+// --------
+
 $cat-border-radius: (
   s: var(--cat-border-radius-s, 0.125rem),
   m: var(--cat-border-radius-m, 0.25rem),
   l: var(--cat-border-radius-l, 0.5rem)
 );
-
-// ---- Mono
-
-$cat-mono-font-face: 'Menlo', monospace;
 
 // --------
 // -- Elevations

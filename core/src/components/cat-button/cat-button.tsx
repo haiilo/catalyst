@@ -60,13 +60,6 @@ export class CatButton {
   @Prop() disabled = false;
 
   /**
-   * Specifies that the button should be inactive. Just like a disabled button,
-   * an inactive button is unusable and un-clickable. However, it retains the
-   * current focus state.
-   */
-  @Prop() inactive = false;
-
-  /**
    * Displays the button in a loading state with a spinner. Just like a disabled
    * button, an inactive button is unusable and un-clickable. However, it
    * retains the current focus state.
@@ -121,28 +114,11 @@ export class CatButton {
   @Prop() buttonId?: string;
 
   /**
-   * Use this property to add an `aria-controls` attribute to the button. Use
-   * the attribute to point to the unique ID of the content that the button
-   * manages.
-   */
-  @Prop({ attribute: 'a11y-controls' }) a11yControls?: string;
-
-  /**
-   * Indicates the ID of a component that describes the button.
-   */
-  @Prop({ attribute: 'a11y-described-by' }) a11yDescribedBy?: string;
-
-  /**
    * Adds accessible label for the button that is only shown for screen
    * readers. Typically, this label text replaces the visible text on the
    * button for users who use assistive technology.
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
-
-  /**
-   * Indicates the ID of a component owned by the button.
-   */
-  @Prop({ attribute: 'a11y-owns' }) a11yOwns?: string;
 
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
@@ -185,7 +161,7 @@ export class CatButton {
 
   @Listen('click')
   haltDisabledEvents(event: Event): void {
-    if (this.disabled || this.inactive || this.loading) {
+    if (this.disabled || this.loading) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
@@ -210,10 +186,7 @@ export class CatButton {
           href={this.disabled ? undefined : this.url}
           target={this.urlTarget}
           aria-disabled={this.disabled ? 'true' : null}
-          aria-controls={this.a11yControls}
-          aria-described-by={this.a11yDescribedBy}
           aria-label={this.a11yLabel}
-          aria-owns={this.a11yOwns}
           id={this.buttonId}
           part="button"
           class={{
@@ -242,10 +215,7 @@ export class CatButton {
           value={this.value}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : null}
-          aria-controls={this.a11yControls}
-          aria-described-by={this.a11yDescribedBy}
           aria-label={this.a11yLabel}
-          aria-owns={this.a11yOwns}
           id={this.buttonId}
           part="button"
           class={{

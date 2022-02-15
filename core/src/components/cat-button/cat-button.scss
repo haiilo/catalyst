@@ -60,6 +60,8 @@
 // ----- loading
 
 .cat-button-loading {
+  cursor: default;
+
   cat-spinner {
     position: absolute;
   }
@@ -83,11 +85,11 @@
   box-shadow: inset 0 0 0 1px rgba(var(--base), 0.2);
   color: rgb(var(--text));
 
-  &:hover:where(:not(.cat-button-disabled)) {
+  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
     background-color: rgba(var(--base), 0.05);
   }
 
-  &:active:where(:not(.cat-button-disabled)) {
+  &:active:not(.cat-button-disabled):not(.cat-button-loading) {
     background-color: rgba(var(--base), 0.1);
   }
 }
@@ -97,7 +99,7 @@
   color: rgb(var(--text));
   text-decoration: $cat-link-text-decoration;
 
-  &:hover:where(:not(.cat-button-disabled)) {
+  &:hover::not(.cat-button-disabled):not(.cat-button-loading) {
     text-decoration: $cat-link-text-decoration-hover;
   }
 }
@@ -109,13 +111,13 @@
     --fill: #{map-get(map-get($cat-theme, $theme), fill)};
     --text: #{map-get(map-get($cat-theme, $theme), text)};
 
-    &:hover:where(:not(.cat-button-disabled)) {
+    &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
       --bg: #{map-get(map-get($cat-theme, $theme), bg-hover)};
       --fill: #{map-get(map-get($cat-theme, $theme), fill-hover)};
       --text: #{map-get(map-get($cat-theme, $theme), text-hover)};
     }
 
-    &:active:where(:not(.cat-button-disabled)) {
+    &:active:not(.cat-button-disabled):not(.cat-button-loading) {
       --bg: #{map-get(map-get($cat-theme, $theme), bg-active)};
       --fill: #{map-get(map-get($cat-theme, $theme), fill-active)};
       --text: #{map-get(map-get($cat-theme, $theme), text-active)};

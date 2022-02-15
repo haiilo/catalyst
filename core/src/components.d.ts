@@ -9,21 +9,9 @@ import { Breakpoint } from "./utils/breakpoints";
 export namespace Components {
     interface CatButton {
         /**
-          * Use this property to add an `aria-controls` attribute to the button. Use the attribute to point to the unique ID of the content that the button manages.
-         */
-        "a11yControls"?: string;
-        /**
-          * Indicates the ID of a component that describes the button.
-         */
-        "a11yDescribedBy"?: string;
-        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
-        /**
-          * Indicates the ID of a component owned by the button.
-         */
-        "a11yOwns"?: string;
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
@@ -52,10 +40,6 @@ export namespace Components {
           * Display the icon as a suffix.
          */
         "iconSuffix": boolean;
-        /**
-          * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
-         */
-        "inactive": boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -151,21 +135,9 @@ declare global {
 declare namespace LocalJSX {
     interface CatButton {
         /**
-          * Use this property to add an `aria-controls` attribute to the button. Use the attribute to point to the unique ID of the content that the button manages.
-         */
-        "a11yControls"?: string;
-        /**
-          * Indicates the ID of a component that describes the button.
-         */
-        "a11yDescribedBy"?: string;
-        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
-        /**
-          * Indicates the ID of a component owned by the button.
-         */
-        "a11yOwns"?: string;
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
@@ -194,10 +166,6 @@ declare namespace LocalJSX {
           * Display the icon as a suffix.
          */
         "iconSuffix"?: boolean;
-        /**
-          * Specifies that the button should be inactive. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
-         */
-        "inactive"?: boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
