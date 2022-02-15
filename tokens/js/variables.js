@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 15 Feb 2022 12:59:45 GMT
+ * Generated on Tue, 15 Feb 2022 16:07:51 GMT
  */
 
 export const CoreNeutral0 = "#ffffff";
@@ -48,38 +48,3 @@ export const InterfaceTextColorSecondary = "#697687";
 export const InterfaceTextColorSuccess = "#008458";
 export const InterfaceTextColorWarning = "#ebb663";
 export const InterfaceTextColorDanger = "#d9340d";
-export const FontFamiliesLato = "Lato";
-export const FontFamiliesDmSans = "DM Sans";
-export const LineHeights0 = 26;
-export const LineHeights1 = 24;
-export const LineHeights2 = 22;
-export const LineHeights3 = 18;
-export const LineHeights4 = 16;
-export const LineHeights5 = 32;
-export const LineHeights6 = 28;
-export const LineHeights7 = 20;
-export const FontWeightsLato0 = "Regular";
-export const FontWeightsDmSans1 = "Medium";
-export const FontSize0 = 12;
-export const FontSize1 = 14;
-export const FontSize2 = 15;
-export const FontSize3 = 16;
-export const FontSize4 = 18;
-export const FontSize5 = 20;
-export const FontSize6 = 24;
-export const FontSize7 = 28;
-export const LetterSpacing0 = "0%";
-export const ParagraphSpacing0 = 0;
-export const BodyXl = {"fontFamily":"Lato","fontWeight":"Regular","lineHeight":26,"fontSize":20,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const BodyLg = {"fontFamily":"Lato","fontWeight":"Regular","lineHeight":24,"fontSize":18,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const BodyMd = {"fontFamily":"Lato","fontWeight":"Regular","lineHeight":22,"fontSize":16,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const BodySm = {"fontFamily":"Lato","fontWeight":"Regular","lineHeight":18,"fontSize":14,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const BodyXs = {"fontFamily":"Lato","fontWeight":"Regular","lineHeight":16,"fontSize":12,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head1 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":32,"fontSize":28,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head2 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":28,"fontSize":24,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head3 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":24,"fontSize":20,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head4 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":24,"fontSize":18,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head5 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":20,"fontSize":15,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const Head6 = {"fontFamily":"DM Sans","fontWeight":"Medium","lineHeight":16,"fontSize":14,"letterSpacing":"0%","paragraphSpacing":0,"textCase":"none","textDecoration":"none"};
-export const TextCaseNone = "none";
-export const TextDecorationNone = "none";

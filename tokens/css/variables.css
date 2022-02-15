@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 15 Feb 2022 12:59:45 GMT
+ * Generated on Tue, 15 Feb 2022 16:07:51 GMT
  */
 
 :root {
@@ -49,39 +49,4 @@
   --interface-text-color-success: #008458;
   --interface-text-color-warning: #ebb663;
   --interface-text-color-danger: #d9340d;
-  --font-families-lato: Lato;
-  --font-families-dm-sans: DM Sans;
-  --line-heights-0: 26;
-  --line-heights-1: 24;
-  --line-heights-2: 22;
-  --line-heights-3: 18;
-  --line-heights-4: 16;
-  --line-heights-5: 32;
-  --line-heights-6: 28;
-  --line-heights-7: 20;
-  --font-weights-lato-0: Regular;
-  --font-weights-dm-sans-1: Medium;
-  --font-size-0: 12;
-  --font-size-1: 14;
-  --font-size-2: 15;
-  --font-size-3: 16;
-  --font-size-4: 18;
-  --font-size-5: 20;
-  --font-size-6: 24;
-  --font-size-7: 28;
-  --letter-spacing-0: 0%;
-  --paragraph-spacing-0: 0;
-  --body-xl: [object Object];
-  --body-lg: [object Object];
-  --body-md: [object Object];
-  --body-sm: [object Object];
-  --body-xs: [object Object];
-  --head-1: [object Object];
-  --head-2: [object Object];
-  --head-3: [object Object];
-  --head-4: [object Object];
-  --head-5: [object Object];
-  --head-6: [object Object];
-  --text-case-none: none;
-  --text-decoration-none: none;
 }
