@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 15 Feb 2022 12:59:45 GMT
+ * Generated on Tue, 15 Feb 2022 16:10:05 GMT
  */
 
 export const CoreNeutral0 = "#ffffff";
