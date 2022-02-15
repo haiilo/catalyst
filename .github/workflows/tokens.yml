@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Transform Figma Tokens
-        run: npx token-transformer tokens.json build/tokens.json
+        run: npx token-transformer tokens.json build/tokens.json --expandTypography=true
       - name: Run Style Dictionary
         run: npx style-dictionary build --config config.json
       - name: Commit files
