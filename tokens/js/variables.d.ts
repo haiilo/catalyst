@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 15 Feb 2022 16:07:51 GMT
+ * Generated on Tue, 15 Feb 2022 16:10:05 GMT
  */
 
 export const CoreNeutral0 : string;
@@ -48,3 +48,38 @@ export const InterfaceTextColorSecondary : string;
 export const InterfaceTextColorSuccess : string;
 export const InterfaceTextColorWarning : string;
 export const InterfaceTextColorDanger : string;
+export const FontFamiliesLato : string;
+export const FontFamiliesDmSans : string;
+export const LineHeights0 : number;
+export const LineHeights1 : number;
+export const LineHeights2 : number;
+export const LineHeights3 : number;
+export const LineHeights4 : number;
+export const LineHeights5 : number;
+export const LineHeights6 : number;
+export const LineHeights7 : number;
+export const FontWeightsLato0 : string;
+export const FontWeightsDmSans1 : string;
+export const FontSize0 : number;
+export const FontSize1 : number;
+export const FontSize2 : number;
+export const FontSize3 : number;
+export const FontSize4 : number;
+export const FontSize5 : number;
+export const FontSize6 : number;
+export const FontSize7 : number;
+export const LetterSpacing0 : string;
+export const ParagraphSpacing0 : number;
+export const BodyXl : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const BodyLg : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const BodyMd : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const BodySm : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const BodyXs : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head1 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head2 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head3 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head4 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head5 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const Head6 : { fontFamily: string, fontWeight: string, lineHeight: number, fontSize: number, letterSpacing: string, paragraphSpacing: number, textCase: string, textDecoration: string };
+export const TextCaseNone : string;
+export const TextDecorationNone : string;
