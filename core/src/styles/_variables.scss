@@ -46,7 +46,7 @@ $cat-focus-outline: 2px solid var(--cat-focus-color, $cat-blue-200);
 
 $cat-border-color-light: $cat-base-100;
 $cat-border-color-dark: $cat-base-200;
-$cat-mark-color: color.adjust($cat-cyan-400, $alpha: -0.8);
+$cat-mark-color: color.adjust($cat-primary-400, $alpha: -0.8);
 $cat-quote-color: null;
 $cat-quote-source-color: $cat-base-400;
 
@@ -71,15 +71,15 @@ $cat-quote-source-color: $cat-base-400;
 
 $cat-theme: (
   primary: (
-    bg: var(--cat-primary-bg, rgb-parts($cat-cyan-400)),
-    bg-hover: var(--cat-primary-bg-hover, rgb-parts($cat-cyan-500)),
-    bg-active: var(--cat-primary-bg-active, rgb-parts($cat-cyan-600)),
-    fill: var(--cat-primary-fill, rgb-parts($cat-white)),
-    fill-hover: var(--cat-primary-fill-hover, rgb-parts($cat-white)),
-    fill-active: var(--cat-primary-fill-active, rgb-parts($cat-white)),
-    text: var(--cat-primary-text, rgb-parts($cat-cyan-400)),
-    text-hover: var(--cat-primary-text-hover, rgb-parts($cat-cyan-600)),
-    text-active: var(--cat-primary-text-active, rgb-parts($cat-cyan-600))
+    bg: var(--cat-primary-bg, rgb-parts($cat-primary-400)),
+    bg-hover: var(--cat-primary-bg-hover, rgb-parts($cat-primary-500)),
+    bg-active: var(--cat-primary-bg-active, rgb-parts($cat-primary-600)),
+    fill: var(--cat-primary-fill, rgb-parts($cat-neutral-0)),
+    fill-hover: var(--cat-primary-fill-hover, rgb-parts($cat-neutral-0)),
+    fill-active: var(--cat-primary-fill-active, rgb-parts($cat-neutral-0)),
+    text: var(--cat-primary-text, rgb-parts($cat-primary-400)),
+    text-hover: var(--cat-primary-text-hover, rgb-parts($cat-primary-500)),
+    text-active: var(--cat-primary-text-active, rgb-parts($cat-primary-600))
   ),
   secondary: (
     bg: var(--cat-secondary-bg, rgb-parts($cat-base-100)),
@@ -93,37 +93,37 @@ $cat-theme: (
     text-active: var(--cat-secondary-text-active, rgb-parts($cat-base-900))
   ),
   error: (
-    bg: var(--cat-error-bg, rgb-parts($cat-red-400)),
-    bg-hover: var(--cat-error-bg-hover, rgb-parts($cat-red-500)),
-    bg-active: var(--cat-error-bg-active, rgb-parts($cat-red-600)),
-    fill: var(--cat-error-fill, rgb-parts($cat-white)),
-    fill-hover: var(--cat-error-fill-hover, rgb-parts($cat-white)),
-    fill-active: var(--cat-error-fill-active, rgb-parts($cat-white)),
-    text: var(--cat-error-text, rgb-parts($cat-red-400)),
-    text-hover: var(--cat-error-text-hover, rgb-parts($cat-red-600)),
-    text-active: var(--cat-error-text-active, rgb-parts($cat-red-600))
+    bg: var(--cat-error-bg, rgb-parts($cat-danger-400)),
+    bg-hover: var(--cat-error-bg-hover, rgb-parts($cat-danger-500)),
+    bg-active: var(--cat-error-bg-active, rgb-parts($cat-danger-600)),
+    fill: var(--cat-error-fill, rgb-parts($cat-neutral-0)),
+    fill-hover: var(--cat-error-fill-hover, rgb-parts($cat-neutral-0)),
+    fill-active: var(--cat-error-fill-active, rgb-parts($cat-neutral-0)),
+    text: var(--cat-error-text, rgb-parts($cat-danger-400)),
+    text-hover: var(--cat-error-text-hover, rgb-parts($cat-danger-500)),
+    text-active: var(--cat-error-text-active, rgb-parts($cat-danger-600))
   ),
   success: (
-    bg: var(--cat-success-bg, rgb-parts($cat-green-400)),
-    bg-hover: var(--cat-success-bg-hover, rgb-parts($cat-green-500)),
-    bg-active: var(--cat-success-bg-active, rgb-parts($cat-green-600)),
-    fill: var(--cat-success-fill, rgb-parts($cat-white)),
-    fill-hover: var(--cat-success-fill-hover, rgb-parts($cat-white)),
-    fill-active: var(--cat-success-fill-active, rgb-parts($cat-white)),
-    text: var(--cat-success-text, rgb-parts($cat-green-400)),
-    text-hover: var(--cat-success-text-hover, rgb-parts($cat-green-600)),
-    text-active: var(--cat-success-text-active, rgb-parts($cat-green-600))
+    bg: var(--cat-success-bg, rgb-parts($cat-success-400)),
+    bg-hover: var(--cat-success-bg-hover, rgb-parts($cat-success-500)),
+    bg-active: var(--cat-success-bg-active, rgb-parts($cat-success-600)),
+    fill: var(--cat-success-fill, rgb-parts($cat-neutral-0)),
+    fill-hover: var(--cat-success-fill-hover, rgb-parts($cat-neutral-0)),
+    fill-active: var(--cat-success-fill-active, rgb-parts($cat-neutral-0)),
+    text: var(--cat-success-text, rgb-parts($cat-success-400)),
+    text-hover: var(--cat-success-text-hover, rgb-parts($cat-success-500)),
+    text-active: var(--cat-success-text-active, rgb-parts($cat-success-600))
   ),
   warning: (
-    bg: var(--cat-warning-bg, rgb-parts($cat-citron-200)),
-    bg-hover: var(--cat-warning-bg-hover, rgb-parts($cat-citron-100)),
-    bg-active: var(--cat-warning-bg-active, rgb-parts($cat-citron-50)),
-    fill: var(--cat-warning-fill, rgb-parts($cat-base-900)),
-    fill-hover: var(--cat-warning-fill-hover, rgb-parts($cat-base-900)),
-    fill-active: var(--cat-warning-fill-active, rgb-parts($cat-base-900)),
-    text: var(--cat-warning-text, rgb-parts($cat-citron-400)),
-    text-hover: var(--cat-warning-text-hover, rgb-parts($cat-citron-700)),
-    text-active: var(--cat-warning-text-active, rgb-parts($cat-citron-700))
+    bg: var(--cat-warning-bg, rgb-parts($cat-warning-300)),
+    bg-hover: var(--cat-warning-bg-hover, rgb-parts($cat-warning-200)),
+    bg-active: var(--cat-warning-bg-active, rgb-parts($cat-warning-100)),
+    fill: var(--cat-warning-fill, rgb-parts($cat-neutral-700)),
+    fill-hover: var(--cat-warning-fill-hover, rgb-parts($cat-neutral-700)),
+    fill-active: var(--cat-warning-fill-active, rgb-parts($cat-neutral-700)),
+    text: var(--cat-warning-text, rgb-parts($cat-warning-400)),
+    text-hover: var(--cat-warning-text-hover, rgb-parts($cat-warning-500)),
+    text-active: var(--cat-warning-text-active, rgb-parts($cat-warning-600))
   )
 );
 

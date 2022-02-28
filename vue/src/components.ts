@@ -3,7 +3,7 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@coyoapp/catalyst';
+import type { JSX } from '@haiilo/catalyst';
 
 
 

@@ -1,4 +1,4 @@
-# @coyoapp/catalyst-tokens
+# @haiilo/catalyst-tokens
 
 Figma design tokens for the Catalyst design system.  
 &nbsp;&nbsp;&nbsp;&nbsp;⇒ https://docs.tokens.studio  

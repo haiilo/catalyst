@@ -3,7 +3,7 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from '@coyoapp/catalyst';
+import type { JSX } from '@haiilo/catalyst';
 
 
 

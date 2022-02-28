@@ -1,11 +1,11 @@
 {
-  "name": "@coyoapp/catalyst",
+  "name": "@haiilo/catalyst",
   "version": "0.0.10",
   "description": "Catalyst Design System",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coyoapp/catalyst.git"
+    "url": "git+https://github.com/haiilo/catalyst.git"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

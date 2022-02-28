@@ -1,5 +1,5 @@
 {
-  "name": "@coyoapp/catalyst-angular",
+  "name": "@haiilo/catalyst-angular",
   "version": "0.0.6",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",

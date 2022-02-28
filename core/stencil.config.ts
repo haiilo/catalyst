@@ -37,15 +37,15 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     },
     angularOutputTarget({
-      componentCorePackage: '@coyoapp/catalyst',
+      componentCorePackage: '@haiilo/catalyst',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts'
     }),
     reactOutputTarget({
-      componentCorePackage: '@coyoapp/catalyst',
+      componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../react/src/components/stencil-generated/index.ts'
     }),
     vueOutputTarget({
-      componentCorePackage: '@coyoapp/catalyst',
+      componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../vue/src/components.ts'
     })
   ]

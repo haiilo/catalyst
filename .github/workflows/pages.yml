@@ -23,7 +23,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "/build/"
-          replace: "https://coyoapp.github.io/catalyst/build/"
+          replace: "https://haiilo.github.io/catalyst/build/"
           regex: false
           include: "core/www/index.html"
       - name: Deploy
