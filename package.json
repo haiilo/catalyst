@@ -6,9 +6,14 @@
     "link-angular": "cd angular && npm run build catalyst && cd dist/catalyst && yarn link && npm link && cd ../../"
   },
   "workspaces": [
-    "angular",
     "core",
-    "rect",
+    "token",
+    "angular",
+    "react",
     "vue"
-  ]
+  ],
+  "engines" : {
+    "npm" : ">=8.0.0",
+    "node" : ">=16.0.0"
+  }
 }

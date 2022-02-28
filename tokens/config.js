@@ -15,7 +15,11 @@ module.exports = {
       prefix: 'cat',
       files: [{
         destination: 'dist/scss/_variables.scss',
-        format: 'scss/variables'
+        format: 'scss/map-deep',
+        options: {
+          outputReferences: true,
+          themeable: true
+        }
       }]
     }
   }
