@@ -3,12 +3,14 @@
 // ---- Typography
 
 html {
-  font-family: $cat-body-font-face;
+  font-family: cat-token('font.family.body');
+  font-weight: cat-token('font.weight.body');
 }
 
 code,
 kbd,
 samp,
 pre {
-  font-family: $cat-mono-font-face;
+  font-family: cat-token('font.family.mono');
+  font-weight: cat-token('font.weight.mono');
 }

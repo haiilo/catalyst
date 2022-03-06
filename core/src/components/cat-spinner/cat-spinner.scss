@@ -36,11 +36,11 @@ svg {
   }
 }
 
-@include size(xs);
-@include size(s);
-@include size(m);
-@include size(l);
-@include size(xl);
+@include size('xs');
+@include size('s');
+@include size('m');
+@include size('l');
+@include size('xl');
 
 // ----- animation
 

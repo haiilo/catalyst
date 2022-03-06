@@ -19,13 +19,13 @@
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: cat-border-radius(m);
+  border-radius: cat-border-radius('s');
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: color $cat-color-transition, border-color $cat-color-transition, background-color $cat-color-transition,
-    box-shadow $cat-color-transition;
+  transition: color cat-token('time.transition.s') linear, border-color cat-token('time.transition.s') linear, background-color cat-token('time.transition.s') linear,
+    box-shadow cat-token('time.transition.s') linear;
 
   &:focus-visible {
     outline: $cat-focus-outline;
@@ -48,7 +48,7 @@
 
 .cat-button-disabled {
   cursor: not-allowed;
-  opacity: $cat-disabled-opacity;
+  opacity: cat-token('opacity.disabled');
 }
 
 // ----- round
@@ -106,30 +106,30 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --base: #{map-get(map-get($cat-theme, $theme), text)};
-    --bg: #{map-get(map-get($cat-theme, $theme), bg)};
-    --fill: #{map-get(map-get($cat-theme, $theme), fill)};
-    --text: #{map-get(map-get($cat-theme, $theme), text)};
+    --base: #{cat-token('color.theme.#{$theme}.text')};
+    --bg: #{cat-token('color.theme.#{$theme}.bg')};
+    --fill: #{cat-token('color.theme.#{$theme}.fill')};
+    --text: #{cat-token('color.theme.#{$theme}.text')};
 
     &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{map-get(map-get($cat-theme, $theme), bg-hover)};
-      --fill: #{map-get(map-get($cat-theme, $theme), fill-hover)};
-      --text: #{map-get(map-get($cat-theme, $theme), text-hover)};
+      --bg: #{cat-token('color.theme.#{$theme}.bgHover')};
+      --fill: #{cat-token('color.theme.#{$theme}.fillHover')};
+      --text: #{cat-token('color.theme.#{$theme}.textHover')};
     }
 
     &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{map-get(map-get($cat-theme, $theme), bg-active)};
-      --fill: #{map-get(map-get($cat-theme, $theme), fill-active)};
-      --text: #{map-get(map-get($cat-theme, $theme), text-active)};
+      --bg: #{cat-token('color.theme.#{$theme}.bgActive')};
+      --fill: #{cat-token('color.theme.#{$theme}.fillActive')};
+      --text: #{cat-token('color.theme.#{$theme}.textActive')};
     }
   }
 }
 
-@include theme(primary);
-@include theme(secondary);
-@include theme(error);
-@include theme(success);
-@include theme(warning);
+@include theme('primary');
+@include theme('secondary');
+@include theme('success');
+@include theme('warning');
+@include theme('danger');
 
 // ----- size
 
@@ -158,8 +158,8 @@
   }
 }
 
-@include size(xs, s, 0.5rem);
-@include size(s, m, 0.5rem);
-@include size(m, m, 1rem);
-@include size(l, m, 1.5rem);
-@include size(xl, l, 1.5rem);
+@include size('xs', 's', 0.5rem);
+@include size('s', 'm', 0.5rem);
+@include size('m', 'm', 1rem);
+@include size('l', 'm', 1.5rem);
+@include size('xl', 'l', 1.5rem);

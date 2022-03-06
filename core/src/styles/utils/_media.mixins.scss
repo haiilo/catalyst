@@ -1,16 +1,15 @@
-@use 'sass:map';
 @use '../variables' as *;
 
 // ---- Responsive
 
-@mixin until($breakpoint, $media-type: screen) {
-  @media #{$media-type} and (max-width: #{map.get($cat-breakpoints, $breakpoint) - 1px}) {
+@mixin until($size, $media-type: screen) {
+  @media #{$media-type} and (max-width: #{cat-token('size.screen.#{$size}') - 1px}) {
     @content;
   }
 }
 
-@mixin from($breakpoint, $media-type: screen) {
-  @media #{$media-type} and (min-width: #{map.get($cat-breakpoints, $breakpoint)}) {
+@mixin from($size, $media-type: screen) {
+  @media #{$media-type} and (min-width: #{cat-token('size.screen.#{$size}')}) {
     @content;
   }
 }

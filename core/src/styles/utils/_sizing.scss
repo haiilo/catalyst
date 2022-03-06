@@ -1,7 +1,7 @@
 @use '../variables' as *;
 @use 'sizing.mixins' as *;
 
-@each $size, $_def in $cat-border-radius {
+@each $size, $_def in cat-token('size.border.radius') {
   .cat-radius-#{$size} {
     border-radius: cat-border-radius($size);
   }

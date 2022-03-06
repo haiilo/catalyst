@@ -1,9 +1,8 @@
-@use 'sass:map';
 @use '../variables' as *;
 @use '../mixins' as *;
 
 body {
-  @include cat-body(m);
+  @include cat-body('m');
 }
 
 h1,
@@ -20,7 +19,7 @@ h6,
 .cat-h6 {
   margin-top: 0;
   margin-bottom: $cat-head-margin-bottom;
-  font-weight: $cat-head-font-weight;
+  font-weight: cat-token('font.weight.head');
 }
 
 h1,
@@ -62,23 +61,23 @@ hr {
   margin: $cat-body-margin-bottom 0;
   height: 1px;
   border: 0;
-  background-color: $cat-border-color-light;
+  background-color: cat-token('color.ui.border.default');
 }
 
 // ----- links
 
 a {
-  color: map.get(map.get($cat-theme, primary), text);
+  color: cat-token('color.theme.primary.text');
   text-decoration: $cat-link-text-decoration;
-  transition: color $cat-color-transition;
+  transition: color cat-token('time.transition.s') linear;
 
   &:hover {
-    color: map.get(map.get($cat-theme, primary), text-hover);
+    color: cat-token('color.theme.primary.textHover');
     text-decoration: $cat-link-text-decoration-hover;
   }
 
   &:active {
-    color: map.get(map.get($cat-theme, primary), text-active);
+    color: cat-token('color.theme.primary.textActive');
   }
 
   &:focus-visible {
@@ -150,7 +149,7 @@ dd {
 // ----- lead
 
 .cat-lead {
-  @include cat-body(xl, 300);
+  @include cat-body('xl', 300);
 }
 
 // ----- blockquotes & figures
@@ -158,8 +157,8 @@ dd {
 blockquote {
   margin: 0 0 $cat-body-margin-bottom;
   font-style: italic;
-  @include cat-body(l);
-  color: $cat-quote-color;
+  @include cat-body('l');
+  color: cat-token('color.ui.font.quote');
 
   > :last-child {
     margin-bottom: 0;
@@ -172,8 +171,8 @@ figure {
   figcaption {
     margin-top: -$cat-body-margin-bottom * 0.5;
     margin-bottom: 0;
-    @include cat-body(s);
-    color: $cat-quote-source-color;
+    @include cat-body('s');
+    color: cat-token('color.ui.font.quoteSource');
 
     &::before {
       content: '\2014\00A0'; // em dash, nbsp

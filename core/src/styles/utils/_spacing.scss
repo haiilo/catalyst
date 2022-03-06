@@ -1,12 +1,13 @@
 @use 'sass:map';
 @use '../variables' as *;
+@use 'spacing.mixins' as *;
 
 $-spacings: map.merge(
   (
-    0: 0,
-    auto: auto
+    'auto': auto,
+    '0': 0
   ),
-  $cat-spacings
+  cat-token('size.spacing')
 );
 
 @each $name, $spacing in $-spacings {

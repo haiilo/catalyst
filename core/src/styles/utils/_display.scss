@@ -9,7 +9,7 @@ $-display-props: none, inline, inline-block, block, grid, flex, inline-flex;
   }
 }
 
-@each $key, $value in $cat-breakpoints {
+@each $key, $value in cat-token('size.screen') {
   @include from($key) {
     @each $prop in $-display-props {
       .cat-d-#{$prop}\:#{$key} {

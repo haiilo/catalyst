@@ -1,4 +1,5 @@
 const StyleDictionary = require('style-dictionary');
+const tinycolor = require("tinycolor2");
 
 StyleDictionary.registerTransform({
   type: `value`,
@@ -7,11 +8,30 @@ StyleDictionary.registerTransform({
   transformer: token => `${token.value}${token.attributes.unit || 'rem'}`
 });
 
+StyleDictionary.registerTransform({
+  type: `value`,
+  name: `cat/rgbParts`,
+  transitive: true,
+  matcher: token => token.attributes.category === 'color' && token.attributes.unit === 'rgbParts',
+  transformer: token => {
+    var rgb = tinycolor(token.value).toRgb();
+    return `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+  }
+});
+
+StyleDictionary.registerTransform({
+  type: `value`,
+  name: `cat/cssProp`,
+  transitive: true,
+  matcher: token => !!token.attributes.cssProp,
+  transformer: token => `var(--cat-${token.attributes.cssProp}, ${token.value})`
+});
+
 module.exports = {
   source: ['src/**/*.js'],
   platforms: {
     scss: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'cat/size', 'color/css'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'cat/size', 'color/css', 'cat/rgbParts', 'cat/cssProp'],
       prefix: 'cat',
       files: [{
         destination: 'dist/scss/_variables.scss',

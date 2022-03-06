@@ -1,194 +1,21 @@
-@use 'sass:color';
-@use 'sass:map';
-@use 'variables.colors' as *;
-
-@forward 'variables.colors';
-
-$cat-size: (
-  xs: 1.5rem,
-  s: 2rem,
-  m: 2.5rem,
-  l: 3rem,
-  xl: 3.5rem
-);
+@use 'variables.tokens' as *;
+@forward 'variables.tokens';
 
 // --------
-// -- Breakpoints
+// -- Composits
 // --------
 
-$cat-breakpoints: (
-  xs: 540px,
-  s: 768px,
-  m: 992px,
-  l: 1200px,
-  xl: 1400px
-);
-
-// --------
-// -- Spacings
-// --------
-
-$cat-spacings: (
-  xs: 0.25rem,
-  s: 0.5rem,
-  m: 1rem,
-  l: 1.5rem,
-  xl: 2rem
-);
-
-// --------
-// -- Theming
-// --------
-
-$cat-disabled-opacity: 0.65;
-$cat-color-transition: 0.15s linear;
-$cat-focus-outline: 2px solid var(--cat-focus-color, $cat-blue-200);
-
-$cat-border-color-light: $cat-base-100;
-$cat-border-color-dark: $cat-base-200;
-$cat-mark-color: color.adjust($cat-primary-400, $alpha: -0.8);
-$cat-quote-color: null;
-$cat-quote-source-color: $cat-base-400;
-
-// ---- Color palettes
-
-// Color variables of the color themes are saved as RGB parts (e.g. 32, 126, 138)
-// and need thus to be wrapped with rgb() upon usage. This is to allow for dynamic
-// opacity values such as rgb(var(--bg), 0.2). To allow for a simpler usage, colors
-// should be accessed using the cat-theme function which automatically wraps the
-// color in rgb() and allows a custom opacity value (e.g. cat-theme(primary, bg, 0.2)).
-
-@function rgb-parts($hex) {
-  @return color.red($hex), color.green($hex), color.blue($hex);
-}
-
-@function cat-theme($theme, $mod, $opacity: 1) {
-  @if $opacity != 1 {
-    @return rgb(#{map-get(map-get($cat-theme, $theme), $mod)}, $opacity);
-  }
-  @return rgb(#{map-get(map-get($cat-theme, $theme), $mod)});
-}
-
-$cat-theme: (
-  primary: (
-    bg: var(--cat-primary-bg, rgb-parts($cat-primary-400)),
-    bg-hover: var(--cat-primary-bg-hover, rgb-parts($cat-primary-500)),
-    bg-active: var(--cat-primary-bg-active, rgb-parts($cat-primary-600)),
-    fill: var(--cat-primary-fill, rgb-parts($cat-neutral-0)),
-    fill-hover: var(--cat-primary-fill-hover, rgb-parts($cat-neutral-0)),
-    fill-active: var(--cat-primary-fill-active, rgb-parts($cat-neutral-0)),
-    text: var(--cat-primary-text, rgb-parts($cat-primary-400)),
-    text-hover: var(--cat-primary-text-hover, rgb-parts($cat-primary-500)),
-    text-active: var(--cat-primary-text-active, rgb-parts($cat-primary-600))
-  ),
-  secondary: (
-    bg: var(--cat-secondary-bg, rgb-parts($cat-base-100)),
-    bg-hover: var(--cat-secondary-bg-hover, rgb-parts($cat-base-200)),
-    bg-active: var(--cat-secondary-bg-active, rgb-parts($cat-base-200)),
-    fill: var(--cat-secondary-fill, rgb-parts($cat-base-900)),
-    fill-hover: var(--cat-secondary-fill-hover, rgb-parts($cat-base-900)),
-    fill-active: var(--cat-secondary-fill-active, rgb-parts($cat-base-900)),
-    text: var(--cat-secondary-text, rgb-parts($cat-base-400)),
-    text-hover: var(--cat-secondary-text-hover, rgb-parts($cat-base-900)),
-    text-active: var(--cat-secondary-text-active, rgb-parts($cat-base-900))
-  ),
-  error: (
-    bg: var(--cat-error-bg, rgb-parts($cat-danger-400)),
-    bg-hover: var(--cat-error-bg-hover, rgb-parts($cat-danger-500)),
-    bg-active: var(--cat-error-bg-active, rgb-parts($cat-danger-600)),
-    fill: var(--cat-error-fill, rgb-parts($cat-neutral-0)),
-    fill-hover: var(--cat-error-fill-hover, rgb-parts($cat-neutral-0)),
-    fill-active: var(--cat-error-fill-active, rgb-parts($cat-neutral-0)),
-    text: var(--cat-error-text, rgb-parts($cat-danger-400)),
-    text-hover: var(--cat-error-text-hover, rgb-parts($cat-danger-500)),
-    text-active: var(--cat-error-text-active, rgb-parts($cat-danger-600))
-  ),
-  success: (
-    bg: var(--cat-success-bg, rgb-parts($cat-success-400)),
-    bg-hover: var(--cat-success-bg-hover, rgb-parts($cat-success-500)),
-    bg-active: var(--cat-success-bg-active, rgb-parts($cat-success-600)),
-    fill: var(--cat-success-fill, rgb-parts($cat-neutral-0)),
-    fill-hover: var(--cat-success-fill-hover, rgb-parts($cat-neutral-0)),
-    fill-active: var(--cat-success-fill-active, rgb-parts($cat-neutral-0)),
-    text: var(--cat-success-text, rgb-parts($cat-success-400)),
-    text-hover: var(--cat-success-text-hover, rgb-parts($cat-success-500)),
-    text-active: var(--cat-success-text-active, rgb-parts($cat-success-600))
-  ),
-  warning: (
-    bg: var(--cat-warning-bg, rgb-parts($cat-warning-300)),
-    bg-hover: var(--cat-warning-bg-hover, rgb-parts($cat-warning-200)),
-    bg-active: var(--cat-warning-bg-active, rgb-parts($cat-warning-100)),
-    fill: var(--cat-warning-fill, rgb-parts($cat-neutral-700)),
-    fill-hover: var(--cat-warning-fill-hover, rgb-parts($cat-neutral-700)),
-    fill-active: var(--cat-warning-fill-active, rgb-parts($cat-neutral-700)),
-    text: var(--cat-warning-text, rgb-parts($cat-warning-400)),
-    text-hover: var(--cat-warning-text-hover, rgb-parts($cat-warning-500)),
-    text-active: var(--cat-warning-text-active, rgb-parts($cat-warning-600))
-  )
-);
+$cat-head-margin-bottom: cat-token('size.spacing.s');
+$cat-body-margin-bottom: cat-token('size.spacing.m');
+$cat-focus-outline: cat-token('size.outline.focus') solid cat-token('color.ui.border.focus');
 
 // --------
 // -- Typography
 // --------
 
-$cat-head-margin-bottom: 0.5rem;
-$cat-body-margin-bottom: 1rem;
 $cat-link-text-decoration: none;
 $cat-link-text-decoration-hover: underline;
-
-// ---- Head
-
-$cat-head-font-face: var(--cat-head-font-face, 'Lato', sans-serif);
-$cat-head-font-weight: 600;
-$cat-head-font-size: (
-  1: 1.75rem,
-  2: 1.5rem,
-  3: 1.25rem,
-  4: 1.125rem,
-  5: 0.9375rem,
-  6: 0.875rem
-);
-$cat-head-line-height: (
-  1: 2rem,
-  2: 1.75rem,
-  3: 1.5rem,
-  4: 1.5rem,
-  5: 1.25rem,
-  6: 1rem
-);
-
-// ---- Body
-
-$cat-body-font-face: var(--cat-body-font-face, 'Lato', sans-serif);
-$cat-body-font-weight: 400;
-$cat-body-font-size: (
-  xl: 1.25rem,
-  l: 1.125rem,
-  m: 0.9375rem,
-  s: 0.875rem,
-  xs: 0.75rem
-);
-$cat-body-line-height: (
-  xl: 1.5rem,
-  l: 1.5rem,
-  m: 1.25rem,
-  s: 1rem,
-  xs: 1rem
-);
-
-// ---- Mono
-
-$cat-mono-font-face: var(--cat-mono-font-face, 'Menlo', monospace);
-
-// --------
-// -- Borders
-// --------
-
-$cat-border-radius: (
-  s: var(--cat-border-radius-s, 0.125rem),
-  m: var(--cat-border-radius-m, 0.25rem),
-  l: var(--cat-border-radius-l, 0.5rem)
-);
+$cat-mark-color: cat-token('color.theme.primary.bg', 0.75);
 
 // --------
 // -- Elevations

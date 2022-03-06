@@ -3,9 +3,9 @@
   "rules": {
     "color-function-notation": null,
     "declaration-empty-line-before": null,
-    "scss/double-slash-comment-empty-line-before": null,
+    "string-quotes": "single",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor"] }],
     "scss/dollar-variable-empty-line-before": null,
-    "scss/no-global-function-names": null,
-    "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor"] }]
+    "scss/double-slash-comment-empty-line-before": null
   }
 }

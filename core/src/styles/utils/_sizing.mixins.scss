@@ -1,10 +1,9 @@
-@use 'sass:map';
 @use '../variables' as *;
 
 @function cat-size($size) {
-  @return map.get($cat-size, $size);
+  @return cat-token('size.base.#{$size}');
 }
 
 @function cat-border-radius($size) {
-  @return map.get($cat-border-radius, $size);
+  @return cat-token('size.border.radius.#{$size}');
 }

@@ -1,125 +1,202 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 28 Feb 2022 08:45:18 GMT
+ * Generated on Fri, 04 Mar 2022 20:05:53 GMT
  */
 
-$cat-size-screen-xl: 1400px;
-$cat-size-screen-l: 1200px;
-$cat-size-screen-m: 992px;
-$cat-size-screen-s: 768px;
-$cat-size-screen-xs: 540px;
-$cat-size-line-body-xs: 1rem;
-$cat-size-line-body-sm: 1rem;
-$cat-size-line-body-md: 1.25rem;
-$cat-size-line-body-lg: 1.5rem;
-$cat-size-line-body-xl: 1.5rem;
-$cat-size-line-head-6: 1rem;
-$cat-size-line-head-5: 1.25rem;
-$cat-size-line-head-4: 1.5rem;
-$cat-size-line-head-3: 1.5rem;
-$cat-size-line-head-2: 1.75rem;
-$cat-size-line-head-1: 2rem;
-$cat-size-font-body-xs: 0.75rem;
-$cat-size-font-body-sm: 0.875rem;
-$cat-size-font-body-md: 0.9375rem;
-$cat-size-font-body-lg: 1.125rem;
-$cat-size-font-body-xl: 1.25rem;
-$cat-size-font-head-6: 0.875rem;
-$cat-size-font-head-5: 0.9375rem;
-$cat-size-font-head-4: 1.125rem;
-$cat-size-font-head-3: 1.25rem;
-$cat-size-font-head-2: 1.5rem;
-$cat-size-font-head-1: 1.75rem;
-$cat-color-ui-border-focus: #0071ff;
-$cat-color-base-red-700: #9e2609;
-$cat-color-base-red-600: #ae2a0a;
-$cat-color-base-red-500: #c22e0b;
-$cat-color-base-red-400: #d9340d;
-$cat-color-base-red-300: #f46a49;
-$cat-color-base-red-200: #f68368;
-$cat-color-base-red-100: #fbc7bb;
-$cat-color-base-orange-700: #9f6100;
-$cat-color-base-orange-600: #b0853e;
-$cat-color-base-orange-500: #d6a75a;
-$cat-color-base-orange-400: #ebb663;
-$cat-color-base-orange-300: #ffce80;
-$cat-color-base-orange-200: #ffd694;
-$cat-color-base-orange-100: #ffdea8;
-$cat-color-base-green-700: #005f40;
-$cat-color-base-green-600: #006946;
-$cat-color-base-green-500: #00754e;
-$cat-color-base-green-400: #008458;
-$cat-color-base-green-300: #00aa71;
-$cat-color-base-green-200: #00bb7d;
-$cat-color-base-green-100: #d4ede4;
-$cat-color-base-brand-700: #175b63;
-$cat-color-base-brand-600: #19656e;
-$cat-color-base-brand-500: #1c707a;
-$cat-color-base-brand-400: #207f8a;
-$cat-color-base-brand-300: #29a3b1;
-$cat-color-base-brand-200: #2db3c3;
-$cat-color-base-brand-100: #c9e5e8;
-$cat-color-base-grey-400: #697687;
-$cat-color-base-grey-300: #d7dbe0;
-$cat-color-base-grey-200: #ebecf0;
-$cat-color-base-grey-100: #f8f8fb;
-$cat-color-base-black: #000000;
-$cat-color-base-white: #ffffff;
-$cat-asset-font-mono-ttf-regular: "assets/fonts/DMMono-Regular.ttf";
-$cat-asset-font-mono-ttf-medium-italic: "assets/fonts/DMMono-MediumItalic.ttf";
-$cat-asset-font-mono-ttf-medium: "assets/fonts/DMMono-Medium.ttf";
-$cat-asset-font-mono-ttf-light-italic: "assets/fonts/DMMono-LightItalic.ttf";
-$cat-asset-font-mono-ttf-light: "assets/fonts/DMMono-Light.ttf";
-$cat-asset-font-mono-ttf-italic: "assets/fonts/DMMono-Italic.ttf";
-$cat-asset-font-mono-name: "DM Mono";
-$cat-asset-font-body-ttf-thin-italic: "assets/fonts/Lato-ThinItalic.ttf";
-$cat-asset-font-body-ttf-thin: "assets/fonts/Lato-Thin.ttf";
-$cat-asset-font-body-ttf-semibold-italic: "assets/fonts/Lato-SemiboldItalic.ttf";
-$cat-asset-font-body-ttf-semibold: "assets/fonts/Lato-Semibold.ttf";
-$cat-asset-font-body-ttf-regular: "assets/fonts/Lato-Regular.ttf";
-$cat-asset-font-body-ttf-medium-italic: "assets/fonts/Lato-MediumItalic.ttf";
-$cat-asset-font-body-ttf-medium: "assets/fonts/Lato-Medium.ttf";
-$cat-asset-font-body-ttf-light-italic: "assets/fonts/Lato-LightItalic.ttf";
-$cat-asset-font-body-ttf-light: "assets/fonts/Lato-Light.ttf";
-$cat-asset-font-body-ttf-italic: "assets/fonts/Lato-Italic.ttf";
-$cat-asset-font-body-ttf-heavy-italic: "assets/fonts/Lato-HeavyItalic.ttf";
-$cat-asset-font-body-ttf-heavy: "assets/fonts/Lato-Heavy.ttf";
-$cat-asset-font-body-ttf-hairline-italic: "assets/fonts/Lato-HairlineItalic.ttf";
-$cat-asset-font-body-ttf-hairline: "assets/fonts/Lato-Hairline.ttf";
-$cat-asset-font-body-ttf-bold-italic: "assets/fonts/Lato-BoldItalic.ttf";
-$cat-asset-font-body-ttf-bold: "assets/fonts/Lato-Bold.ttf";
-$cat-asset-font-body-ttf-black-italic: "assets/fonts/Lato-BlackItalic.ttf";
-$cat-asset-font-body-ttf-black: "assets/fonts/Lato-Black.ttf";
-$cat-asset-font-body-name: "Lato";
-$cat-asset-font-head-ttf-regular: "assets/fonts/DMSans-Regular.ttf";
-$cat-asset-font-head-ttf-medium-italic: "assets/fonts/DMSans-MediumItalic.ttf";
-$cat-asset-font-head-ttf-medium: "assets/fonts/DMSans-Medium.ttf";
-$cat-asset-font-head-ttf-italic: "assets/fonts/DMSans-Italic.ttf";
-$cat-asset-font-head-ttf-bold-italic: "assets/fonts/DMSans-BoldItalic.ttf";
-$cat-asset-font-head-ttf-bold: "assets/fonts/DMSans-Bold.ttf";
-$cat-asset-font-head-name: "DM Sans";
-$cat-size-line-mono-xs: $cat-size-line-body-xs;
-$cat-size-line-mono-sm: $cat-size-line-body-sm;
-$cat-size-line-mono-md: $cat-size-line-body-md;
-$cat-size-line-mono-lg: $cat-size-line-body-lg;
-$cat-size-line-mono-xl: $cat-size-line-body-xl;
-$cat-size-font-mono-xs: $cat-size-font-body-xs;
-$cat-size-font-mono-sm: $cat-size-font-body-sm;
-$cat-size-font-mono-md: $cat-size-font-body-md;
-$cat-size-font-mono-lg: $cat-size-font-body-lg;
-$cat-size-font-mono-xl: $cat-size-font-body-xl;
-$cat-color-ui-font-danger: $cat-color-base-red-400;
-$cat-color-ui-font-warning: $cat-color-base-orange-400;
-$cat-color-ui-font-success: $cat-color-base-green-400;
-$cat-color-ui-font-secondary: $cat-color-base-grey-200;
-$cat-color-ui-font-primary: $cat-color-base-black;
-$cat-color-ui-border-dark: $cat-color-base-grey-300;
-$cat-color-ui-border-light: $cat-color-base-grey-200;
-$cat-color-ui-background-notification: $cat-color-base-red-400;
-$cat-color-ui-background-interaction: $cat-color-base-brand-400;
-$cat-color-ui-background-body: $cat-color-base-white;
-$cat-color-ui-background-canvas: $cat-color-base-grey-100;
+$cat-time-duration-s: 0.25s !default;
+$cat-time-duration-m: 0.50s !default;
+$cat-time-duration-l: 1.00s !default;
+$cat-time-delay-s: 0.13s !default;
+$cat-time-delay-m: 0.25s !default;
+$cat-time-delay-l: 0.50s !default;
+$cat-time-transition-s: 0.13s !default;
+$cat-time-transition-m: 0.25s !default;
+$cat-time-transition-l: 0.50s !default;
+$cat-size-spacing-xs: 0.25rem !default;
+$cat-size-spacing-s: 0.5rem !default;
+$cat-size-spacing-m: 1rem !default;
+$cat-size-spacing-l: 1.5rem !default;
+$cat-size-spacing-xl: 2rem !default;
+$cat-size-screen-xl: 1400px !default;
+$cat-size-screen-l: 1200px !default;
+$cat-size-screen-m: 992px !default;
+$cat-size-screen-s: 768px !default;
+$cat-size-screen-xs: 540px !default;
+$cat-size-line-body-xs: 1rem !default;
+$cat-size-line-body-s: 1rem !default;
+$cat-size-line-body-m: 1.25rem !default;
+$cat-size-line-body-l: 1.5rem !default;
+$cat-size-line-body-xl: 1.5rem !default;
+$cat-size-line-head-6: 1rem !default;
+$cat-size-line-head-5: 1.25rem !default;
+$cat-size-line-head-4: 1.5rem !default;
+$cat-size-line-head-3: 1.5rem !default;
+$cat-size-line-head-2: 1.75rem !default;
+$cat-size-line-head-1: 2rem !default;
+$cat-size-font-body-xs: 0.75rem !default;
+$cat-size-font-body-s: 0.875rem !default;
+$cat-size-font-body-m: 0.9375rem !default;
+$cat-size-font-body-l: 1.125rem !default;
+$cat-size-font-body-xl: 1.25rem !default;
+$cat-size-font-head-6: 0.875rem !default;
+$cat-size-font-head-5: 0.9375rem !default;
+$cat-size-font-head-4: 1.125rem !default;
+$cat-size-font-head-3: 1.25rem !default;
+$cat-size-font-head-2: 1.5rem !default;
+$cat-size-font-head-1: 1.75rem !default;
+$cat-size-border-radius-s: 0.125rem !default;
+$cat-size-border-radius-m: 0.25rem !default;
+$cat-size-border-radius-l: 0.5rem !default;
+$cat-size-outline-focus: 2px !default;
+$cat-size-base-xs: 1.5rem !default;
+$cat-size-base-s: 2rem !default;
+$cat-size-base-m: 2.5rem !default;
+$cat-size-base-l: 3rem !default;
+$cat-size-base-xl: 3.5rem !default;
+$cat-opacity-disabled: 0.65 !default;
+$cat-font-weight-body: 400 !default;
+$cat-font-weight-head: 600 !default;
+$cat-color-ui-border-focus: #0071ff !default;
+$cat-color-base-red-700: #9e2609 !default;
+$cat-color-base-red-600: #ae2a0a !default;
+$cat-color-base-red-500: #c22e0b !default;
+$cat-color-base-red-400: #d9340d !default;
+$cat-color-base-red-300: #f46a49 !default;
+$cat-color-base-red-200: #f68368 !default;
+$cat-color-base-red-100: #fbc7bb !default;
+$cat-color-base-orange-700: #9f6100 !default;
+$cat-color-base-orange-600: #b0853e !default;
+$cat-color-base-orange-500: #d6a75a !default;
+$cat-color-base-orange-400: #ebb663 !default;
+$cat-color-base-orange-300: #ffce80 !default;
+$cat-color-base-orange-200: #ffd694 !default;
+$cat-color-base-orange-100: #ffdea8 !default;
+$cat-color-base-green-700: #005f40 !default;
+$cat-color-base-green-600: #006946 !default;
+$cat-color-base-green-500: #00754e !default;
+$cat-color-base-green-400: #008458 !default;
+$cat-color-base-green-300: #00aa71 !default;
+$cat-color-base-green-200: #00bb7d !default;
+$cat-color-base-green-100: #d4ede4 !default;
+$cat-color-base-brand-700: #175b63 !default;
+$cat-color-base-brand-600: #19656e !default;
+$cat-color-base-brand-500: #1c707a !default;
+$cat-color-base-brand-400: #207f8a !default;
+$cat-color-base-brand-300: #29a3b1 !default;
+$cat-color-base-brand-200: #2db3c3 !default;
+$cat-color-base-brand-100: #c9e5e8 !default;
+$cat-color-base-neutral-900: #ffffff !default;
+$cat-color-base-neutral-400: #697687 !default;
+$cat-color-base-neutral-300: #d7dbe0 !default;
+$cat-color-base-neutral-200: #ebecf0 !default;
+$cat-color-base-neutral-100: #f8f8fb !default;
+$cat-color-base-neutral-0: #ffffff !default;
+$cat-asset-font-mono-ttf-regular: "assets/fonts/DMMono-Regular.ttf" !default;
+$cat-asset-font-mono-ttf-medium-italic: "assets/fonts/DMMono-MediumItalic.ttf" !default;
+$cat-asset-font-mono-ttf-medium: "assets/fonts/DMMono-Medium.ttf" !default;
+$cat-asset-font-mono-ttf-light-italic: "assets/fonts/DMMono-LightItalic.ttf" !default;
+$cat-asset-font-mono-ttf-light: "assets/fonts/DMMono-Light.ttf" !default;
+$cat-asset-font-mono-ttf-italic: "assets/fonts/DMMono-Italic.ttf" !default;
+$cat-asset-font-mono-name: "DM Mono" !default;
+$cat-asset-font-body-ttf-thin-italic: "assets/fonts/Lato-ThinItalic.ttf" !default;
+$cat-asset-font-body-ttf-thin: "assets/fonts/Lato-Thin.ttf" !default;
+$cat-asset-font-body-ttf-semibold-italic: "assets/fonts/Lato-SemiboldItalic.ttf" !default;
+$cat-asset-font-body-ttf-semibold: "assets/fonts/Lato-Semibold.ttf" !default;
+$cat-asset-font-body-ttf-regular: "assets/fonts/Lato-Regular.ttf" !default;
+$cat-asset-font-body-ttf-medium-italic: "assets/fonts/Lato-MediumItalic.ttf" !default;
+$cat-asset-font-body-ttf-medium: "assets/fonts/Lato-Medium.ttf" !default;
+$cat-asset-font-body-ttf-light-italic: "assets/fonts/Lato-LightItalic.ttf" !default;
+$cat-asset-font-body-ttf-light: "assets/fonts/Lato-Light.ttf" !default;
+$cat-asset-font-body-ttf-italic: "assets/fonts/Lato-Italic.ttf" !default;
+$cat-asset-font-body-ttf-heavy-italic: "assets/fonts/Lato-HeavyItalic.ttf" !default;
+$cat-asset-font-body-ttf-heavy: "assets/fonts/Lato-Heavy.ttf" !default;
+$cat-asset-font-body-ttf-hairline-italic: "assets/fonts/Lato-HairlineItalic.ttf" !default;
+$cat-asset-font-body-ttf-hairline: "assets/fonts/Lato-Hairline.ttf" !default;
+$cat-asset-font-body-ttf-bold-italic: "assets/fonts/Lato-BoldItalic.ttf" !default;
+$cat-asset-font-body-ttf-bold: "assets/fonts/Lato-Bold.ttf" !default;
+$cat-asset-font-body-ttf-black-italic: "assets/fonts/Lato-BlackItalic.ttf" !default;
+$cat-asset-font-body-ttf-black: "assets/fonts/Lato-Black.ttf" !default;
+$cat-asset-font-body-name: "Lato" !default;
+$cat-asset-font-head-ttf-regular: "assets/fonts/DMSans-Regular.ttf" !default;
+$cat-asset-font-head-ttf-medium-italic: "assets/fonts/DMSans-MediumItalic.ttf" !default;
+$cat-asset-font-head-ttf-medium: "assets/fonts/DMSans-Medium.ttf" !default;
+$cat-asset-font-head-ttf-italic: "assets/fonts/DMSans-Italic.ttf" !default;
+$cat-asset-font-head-ttf-bold-italic: "assets/fonts/DMSans-BoldItalic.ttf" !default;
+$cat-asset-font-head-ttf-bold: "assets/fonts/DMSans-Bold.ttf" !default;
+$cat-asset-font-head-name: "DM Sans" !default;
+$cat-size-line-mono-xs: $cat-size-line-body-xs !default;
+$cat-size-line-mono-s: $cat-size-line-body-s !default;
+$cat-size-line-mono-m: $cat-size-line-body-m !default;
+$cat-size-line-mono-l: $cat-size-line-body-l !default;
+$cat-size-line-mono-xl: $cat-size-line-body-xl !default;
+$cat-size-font-mono-xs: $cat-size-font-body-xs !default;
+$cat-size-font-mono-s: $cat-size-font-body-s !default;
+$cat-size-font-mono-m: $cat-size-font-body-m !default;
+$cat-size-font-mono-l: $cat-size-font-body-l !default;
+$cat-size-font-mono-xl: $cat-size-font-body-xl !default;
+$cat-font-weight-mono: 400 !default;
+$cat-font-family-mono: $cat-asset-font-mono-name !default;
+$cat-font-family-body: $cat-asset-font-body-name !default;
+$cat-font-family-head: $cat-asset-font-head-name !default;
+$cat-color-ui-font-danger: $cat-color-base-red-400 !default;
+$cat-color-ui-font-warning: $cat-color-base-orange-400 !default;
+$cat-color-ui-font-success: $cat-color-base-green-400 !default;
+$cat-color-ui-font-secondary: $cat-color-base-neutral-200 !default;
+$cat-color-ui-font-primary: $cat-color-base-neutral-900 !default;
+$cat-color-ui-border-dark: $cat-color-base-neutral-300 !default;
+$cat-color-ui-border-default: $cat-color-base-neutral-200 !default;
+$cat-color-ui-background-notification: $cat-color-base-red-400 !default;
+$cat-color-ui-background-interaction: $cat-color-base-brand-400 !default;
+$cat-color-ui-background-body: $cat-color-base-neutral-0 !default;
+$cat-color-ui-background-canvas: $cat-color-base-neutral-100 !default;
+$cat-color-theme-danger-text-active: 174, 42, 10 !default;
+$cat-color-theme-danger-text-hover: 194, 46, 11 !default;
+$cat-color-theme-danger-text: 217, 52, 13 !default;
+$cat-color-theme-danger-fill-active: 255, 255, 255 !default;
+$cat-color-theme-danger-fill-hover: 255, 255, 255 !default;
+$cat-color-theme-danger-fill: 255, 255, 255 !default;
+$cat-color-theme-danger-bg-active: 174, 42, 10 !default;
+$cat-color-theme-danger-bg-hover: 194, 46, 11 !default;
+$cat-color-theme-danger-bg: 217, 52, 13 !default;
+$cat-color-theme-warning-text-active: 176, 133, 62 !default;
+$cat-color-theme-warning-text-hover: 214, 167, 90 !default;
+$cat-color-theme-warning-text: 235, 182, 99 !default;
+$cat-color-theme-warning-fill-active: 255, 255, 255 !default;
+$cat-color-theme-warning-fill-hover: 255, 255, 255 !default;
+$cat-color-theme-warning-fill: 255, 255, 255 !default;
+$cat-color-theme-warning-bg-active: 255, 222, 168 !default;
+$cat-color-theme-warning-bg-hover: 255, 214, 148 !default;
+$cat-color-theme-warning-bg: 255, 206, 128 !default;
+$cat-color-theme-success-text-active: 0, 105, 70 !default;
+$cat-color-theme-success-text-hover: 0, 117, 78 !default;
+$cat-color-theme-success-text: 0, 132, 88 !default;
+$cat-color-theme-success-fill-active: 255, 255, 255 !default;
+$cat-color-theme-success-fill-hover: 255, 255, 255 !default;
+$cat-color-theme-success-fill: 255, 255, 255 !default;
+$cat-color-theme-success-bg-active: 0, 105, 70 !default;
+$cat-color-theme-success-bg-hover: 0, 117, 78 !default;
+$cat-color-theme-success-bg: 0, 132, 88 !default;
+$cat-color-theme-secondary-text-active: 255, 255, 255 !default;
+$cat-color-theme-secondary-text-hover: 255, 255, 255 !default;
+$cat-color-theme-secondary-text: 105, 118, 135 !default;
+$cat-color-theme-secondary-fill-active: 255, 255, 255 !default;
+$cat-color-theme-secondary-fill-hover: 255, 255, 255 !default;
+$cat-color-theme-secondary-fill: 255, 255, 255 !default;
+$cat-color-theme-secondary-bg-active: 235, 236, 240 !default;
+$cat-color-theme-secondary-bg-hover: 235, 236, 240 !default;
+$cat-color-theme-secondary-bg: 248, 248, 251 !default;
+$cat-color-theme-primary-text-active: 25, 101, 110 !default;
+$cat-color-theme-primary-text-hover: 28, 112, 122 !default;
+$cat-color-theme-primary-text: 32, 127, 138 !default;
+$cat-color-theme-primary-fill-active: 255, 255, 255 !default;
+$cat-color-theme-primary-fill-hover: 255, 255, 255 !default;
+$cat-color-theme-primary-fill: 255, 255, 255 !default;
+$cat-color-theme-primary-bg-active: 25, 101, 110 !default;
+$cat-color-theme-primary-bg-hover: 28, 112, 122 !default;
+$cat-color-theme-primary-bg: 32, 127, 138 !default;
+$cat-color-ui-font-quote-source: $cat-color-ui-font-secondary !default;
+$cat-color-ui-font-quote: $cat-color-ui-font-primary !default;
 
 $tokens: (
   'asset': (
@@ -167,13 +244,13 @@ $tokens: (
   ),
   'color': (
     'base': (
-      'white': $cat-color-base-white,
-      'black': $cat-color-base-black,
-      'grey': (
-        '100': $cat-color-base-grey-100,
-        '200': $cat-color-base-grey-200,
-        '300': $cat-color-base-grey-300,
-        '400': $cat-color-base-grey-400
+      'neutral': (
+        '0': $cat-color-base-neutral-0,
+        '100': $cat-color-base-neutral-100,
+        '200': $cat-color-base-neutral-200,
+        '300': $cat-color-base-neutral-300,
+        '400': $cat-color-base-neutral-400,
+        '900': $cat-color-base-neutral-900
       ),
       'brand': (
         '100': $cat-color-base-brand-100,
@@ -212,6 +289,63 @@ $tokens: (
         '700': $cat-color-base-red-700
       )
     ),
+    'theme': (
+      'primary': (
+        'bg': $cat-color-theme-primary-bg,
+        'bgHover': $cat-color-theme-primary-bg-hover,
+        'bgActive': $cat-color-theme-primary-bg-active,
+        'fill': $cat-color-theme-primary-fill,
+        'fillHover': $cat-color-theme-primary-fill-hover,
+        'fillActive': $cat-color-theme-primary-fill-active,
+        'text': $cat-color-theme-primary-text,
+        'textHover': $cat-color-theme-primary-text-hover,
+        'textActive': $cat-color-theme-primary-text-active
+      ),
+      'secondary': (
+        'bg': $cat-color-theme-secondary-bg,
+        'bgHover': $cat-color-theme-secondary-bg-hover,
+        'bgActive': $cat-color-theme-secondary-bg-active,
+        'fill': $cat-color-theme-secondary-fill,
+        'fillHover': $cat-color-theme-secondary-fill-hover,
+        'fillActive': $cat-color-theme-secondary-fill-active,
+        'text': $cat-color-theme-secondary-text,
+        'textHover': $cat-color-theme-secondary-text-hover,
+        'textActive': $cat-color-theme-secondary-text-active
+      ),
+      'success': (
+        'bg': $cat-color-theme-success-bg,
+        'bgHover': $cat-color-theme-success-bg-hover,
+        'bgActive': $cat-color-theme-success-bg-active,
+        'fill': $cat-color-theme-success-fill,
+        'fillHover': $cat-color-theme-success-fill-hover,
+        'fillActive': $cat-color-theme-success-fill-active,
+        'text': $cat-color-theme-success-text,
+        'textHover': $cat-color-theme-success-text-hover,
+        'textActive': $cat-color-theme-success-text-active
+      ),
+      'warning': (
+        'bg': $cat-color-theme-warning-bg,
+        'bgHover': $cat-color-theme-warning-bg-hover,
+        'bgActive': $cat-color-theme-warning-bg-active,
+        'fill': $cat-color-theme-warning-fill,
+        'fillHover': $cat-color-theme-warning-fill-hover,
+        'fillActive': $cat-color-theme-warning-fill-active,
+        'text': $cat-color-theme-warning-text,
+        'textHover': $cat-color-theme-warning-text-hover,
+        'textActive': $cat-color-theme-warning-text-active
+      ),
+      'danger': (
+        'bg': $cat-color-theme-danger-bg,
+        'bgHover': $cat-color-theme-danger-bg-hover,
+        'bgActive': $cat-color-theme-danger-bg-active,
+        'fill': $cat-color-theme-danger-fill,
+        'fillHover': $cat-color-theme-danger-fill-hover,
+        'fillActive': $cat-color-theme-danger-fill-active,
+        'text': $cat-color-theme-danger-text,
+        'textHover': $cat-color-theme-danger-text-hover,
+        'textActive': $cat-color-theme-danger-text-active
+      )
+    ),
     'ui': (
       'background': (
         'canvas': $cat-color-ui-background-canvas,
@@ -220,7 +354,7 @@ $tokens: (
         'notification': $cat-color-ui-background-notification
       ),
       'border': (
-        'light': $cat-color-ui-border-light,
+        'default': $cat-color-ui-border-default,
         'dark': $cat-color-ui-border-dark,
         'focus': $cat-color-ui-border-focus
       ),
@@ -229,11 +363,45 @@ $tokens: (
         'secondary': $cat-color-ui-font-secondary,
         'success': $cat-color-ui-font-success,
         'warning': $cat-color-ui-font-warning,
-        'danger': $cat-color-ui-font-danger
+        'danger': $cat-color-ui-font-danger,
+        'quote': $cat-color-ui-font-quote,
+        'quoteSource': $cat-color-ui-font-quote-source
       )
     )
   ),
+  'font': (
+    'family': (
+      'head': $cat-font-family-head,
+      'body': $cat-font-family-body,
+      'mono': $cat-font-family-mono
+    ),
+    'weight': (
+      'head': $cat-font-weight-head,
+      'body': $cat-font-weight-body,
+      'mono': $cat-font-weight-mono
+    )
+  ),
+  'opacity': (
+    'disabled': $cat-opacity-disabled
+  ),
   'size': (
+    'base': (
+      'xl': $cat-size-base-xl,
+      'l': $cat-size-base-l,
+      'm': $cat-size-base-m,
+      's': $cat-size-base-s,
+      'xs': $cat-size-base-xs
+    ),
+    'outline': (
+      'focus': $cat-size-outline-focus
+    ),
+    'border': (
+      'radius': (
+        'l': $cat-size-border-radius-l,
+        'm': $cat-size-border-radius-m,
+        's': $cat-size-border-radius-s
+      )
+    ),
     'font': (
       'head': (
         '1': $cat-size-font-head-1,
@@ -245,16 +413,16 @@ $tokens: (
       ),
       'body': (
         'xl': $cat-size-font-body-xl,
-        'lg': $cat-size-font-body-lg,
-        'md': $cat-size-font-body-md,
-        'sm': $cat-size-font-body-sm,
+        'l': $cat-size-font-body-l,
+        'm': $cat-size-font-body-m,
+        's': $cat-size-font-body-s,
         'xs': $cat-size-font-body-xs
       ),
       'mono': (
         'xl': $cat-size-font-mono-xl,
-        'lg': $cat-size-font-mono-lg,
-        'md': $cat-size-font-mono-md,
-        'sm': $cat-size-font-mono-sm,
+        'l': $cat-size-font-mono-l,
+        'm': $cat-size-font-mono-m,
+        's': $cat-size-font-mono-s,
         'xs': $cat-size-font-mono-xs
       )
     ),
@@ -269,16 +437,16 @@ $tokens: (
       ),
       'body': (
         'xl': $cat-size-line-body-xl,
-        'lg': $cat-size-line-body-lg,
-        'md': $cat-size-line-body-md,
-        'sm': $cat-size-line-body-sm,
+        'l': $cat-size-line-body-l,
+        'm': $cat-size-line-body-m,
+        's': $cat-size-line-body-s,
         'xs': $cat-size-line-body-xs
       ),
       'mono': (
         'xl': $cat-size-line-mono-xl,
-        'lg': $cat-size-line-mono-lg,
-        'md': $cat-size-line-mono-md,
-        'sm': $cat-size-line-mono-sm,
+        'l': $cat-size-line-mono-l,
+        'm': $cat-size-line-mono-m,
+        's': $cat-size-line-mono-s,
         'xs': $cat-size-line-mono-xs
       )
     ),
@@ -288,6 +456,30 @@ $tokens: (
       'm': $cat-size-screen-m,
       'l': $cat-size-screen-l,
       'xl': $cat-size-screen-xl
+    ),
+    'spacing': (
+      'xl': $cat-size-spacing-xl,
+      'l': $cat-size-spacing-l,
+      'm': $cat-size-spacing-m,
+      's': $cat-size-spacing-s,
+      'xs': $cat-size-spacing-xs
+    )
+  ),
+  'time': (
+    'transition': (
+      'l': $cat-time-transition-l,
+      'm': $cat-time-transition-m,
+      's': $cat-time-transition-s
+    ),
+    'delay': (
+      'l': $cat-time-delay-l,
+      'm': $cat-time-delay-m,
+      's': $cat-time-delay-s
+    ),
+    'duration': (
+      'l': $cat-time-duration-l,
+      'm': $cat-time-duration-m,
+      's': $cat-time-duration-s
     )
   )
 );

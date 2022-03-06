@@ -1,0 +1,5 @@
+@use '../variables' as *;
+
+@function cat-spacing($size) {
+  @return cat-token('size.spacing.#{$size}');
+}

@@ -11,17 +11,17 @@ module.exports = {
       },
       body: {
         xl: { value: 1.25 },
-        lg: { value: 1.125 },
-        md: { value: 0.9375 },
-        sm: { value: 0.875 },
-        xs: { value: 0.75 },
+        l: { value: 1.125 },
+        m: { value: 0.9375 },
+        s: { value: 0.875 },
+        xs: { value: 0.75 }
       },
       mono: {
         xl: { value: '{size.font.body.xl.value}' },
-        lg: { value: '{size.font.body.lg.value}' },
-        md: { value: '{size.font.body.md.value}' },
-        sm: { value: '{size.font.body.sm.value}' },
-        xs: { value: '{size.font.body.xs.value}' },
+        l: { value: '{size.font.body.l.value}' },
+        m: { value: '{size.font.body.m.value}' },
+        s: { value: '{size.font.body.s.value}' },
+        xs: { value: '{size.font.body.xs.value}' }
       }
     },
     line: {
@@ -35,17 +35,17 @@ module.exports = {
       },
       body: {
         xl: { value: 1.5 },
-        lg: { value: 1.5 },
-        md: { value: 1.25 },
-        sm: { value: 1 },
-        xs: { value: 1 },
+        l: { value: 1.5 },
+        m: { value: 1.25 },
+        s: { value: 1 },
+        xs: { value: 1 }
       },
       mono: {
         xl: { value: '{size.line.body.xl.value}' },
-        lg: { value: '{size.line.body.lg.value}' },
-        md: { value: '{size.line.body.md.value}' },
-        sm: { value: '{size.line.body.sm.value}' },
-        xs: { value: '{size.line.body.xs.value}' },
+        l: { value: '{size.line.body.l.value}' },
+        m: { value: '{size.line.body.m.value}' },
+        s: { value: '{size.line.body.s.value}' },
+        xs: { value: '{size.line.body.xs.value}' }
       }
     }
   }

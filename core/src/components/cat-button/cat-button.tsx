@@ -242,10 +242,8 @@ export class CatButton {
     switch (this.size) {
       case 'xs':
         return 's';
-      case 'xl':
-        return 'l';
       default:
-        return 'm';
+        return 'l';
     }
   }
 

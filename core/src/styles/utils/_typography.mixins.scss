@@ -1,12 +1,11 @@
-@use 'sass:map';
 @use '../variables' as *;
 
 @function cat-head-font-size($size) {
-  @return map.get($cat-head-font-size, $size);
+  @return cat-token('size.font.head.#{$size}');
 }
 
 @function cat-head-line-height($size) {
-  @return map.get($cat-head-line-height, $size);
+  @return cat-token('size.line.head.#{$size}');
 }
 
 @mixin cat-head($size, $weight: null) {
@@ -16,11 +15,11 @@
 }
 
 @function cat-body-font-size($size) {
-  @return map.get($cat-body-font-size, $size);
+  @return cat-token('size.font.body.#{$size}');
 }
 
 @function cat-body-line-height($size) {
-  @return map.get($cat-body-line-height, $size);
+  @return cat-token('size.line.body.#{$size}');
 }
 
 @mixin cat-body($size, $weight: null) {
