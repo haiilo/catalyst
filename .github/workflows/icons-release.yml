@@ -31,3 +31,4 @@ jobs:
           commit_user_name: GitHub Actions
           commit_user_email: actions@github.com
           push_options: '--follow-tags'
+          skip_dirty_check: true
