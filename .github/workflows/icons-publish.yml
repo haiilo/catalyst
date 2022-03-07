@@ -3,6 +3,10 @@ on:
   create:
     tags:
       - '@haiilo/catalyst-icons/v*'
+  workflow_run:
+    workflows: [icons-release]
+    types:
+      - completed
 defaults:
   run:
     working-directory: icons
