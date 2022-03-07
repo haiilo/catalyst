@@ -1,4 +1,4 @@
-name: icons tags
+name: icons-tags
 on:
   create:
     tags:
