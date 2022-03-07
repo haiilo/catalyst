@@ -1,9 +1,6 @@
 name: 'Tokens: build & test'
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
     paths:
       - 'tokens/src/**'
       - 'tokens/assets/**'
