@@ -1,0 +1,23 @@
+{
+  "name": "@haiilo/catalyst-tokens",
+  "version": "0.0.1",
+  "description": "Design tokens for Catalyst Design System",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haiilo/catalyst.git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "style-dictionary build --config config.js"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.1.1",
+    "tinycolor2": "^1.4.2"
+  }
+}

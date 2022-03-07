@@ -99,7 +99,7 @@
   color: cat-token-wrap(var(--text));
   text-decoration: $cat-link-text-decoration;
 
-  &:hover::not(.cat-button-disabled):not(.cat-button-loading) {
+  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
     text-decoration: $cat-link-text-decoration-hover;
   }
 }
