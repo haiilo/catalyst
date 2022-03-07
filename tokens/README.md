@@ -1,23 +1,15 @@
-# Catalyst: Icons
+# Catalyst: Tokens
 
-This project contains all icons for the Catalyst custom SVG icon set.
+This project contains all design tokens for the Catalyst design system.
 
 ## Getting started
 
-Install `@haiilo/catalyst-icons` in your Node.js powered apps with the
-[npm package](https://www.npmjs.com/package/@haiilo/catalyst-icons):
+Install `@haiilo/catalyst-tokens` in your Node.js powered apps with the
+[npm package](https://www.npmjs.com/package/@haiilo/catalyst-tokens):
 
 ```shell
-npm install @haiilo/catalyst-icons
+npm install @haiilo/catalyst-tokens
 ```
-
-## Add new icons via web
-
-1. Go to [Code > icons > src](https://github.com/haiilo/catalyst/tree/main/icons/src)
-and upload your new icon to the `src` directory. This can be done via the menu
-on the top right or simply by dragging your icon into the web browser.
-2. Navigate to [Actions > icons-release](https://github.com/haiilo/catalyst/actions/workflows/icons-release.yml) and trigger a manual CI release by clicking the `Run workflow`
-button (Branch: `main`).
 
 ## Contributing
 

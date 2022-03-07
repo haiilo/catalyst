@@ -1,19 +1,17 @@
-name: 'Tokens: build & test'
+name: 'Tokens: publish release'
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'tokens/src/**'
-      - 'tokens/assets/**'
-      - 'tokens/config.js'
-      - 'tokens/package.json'
+  create:
+    tags:
+      - '@haiilo/catalyst-tokens/v*'
+  workflow_run:
+    workflows: [tokens-release]
+    types:
+      - completed
 defaults:
   run:
     working-directory: tokens
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,9 +26,8 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Commit files
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Publish
+        uses: JS-DevTools/npm-publish@v1
         with:
-          commit_message: 'CI: update tokens'
-          commit_user_name: GitHub Actions
-          commit_user_email: actions@github.com
+          token: ${{ secrets.NPM_TOKEN }}
+          package: tokens/package.json

@@ -1,4 +1,4 @@
-name: icons
+name: 'Icons: build & test'
 on:
   push:
     paths:
