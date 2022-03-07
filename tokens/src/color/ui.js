@@ -14,11 +14,10 @@ module.exports = {
       },
       font: {
         primary: { value: '{color.base.neutral.900.value}' },
-        secondary: { value: '{color.base.neutral.200.value}' },
-        success: { value: '{color.base.green.400.value}' },
-        warning: { value: '{color.base.orange.400.value}' },
-        danger: { value: '{color.base.red.400.value}' },
-
+        secondary: { value: '{color.base.neutral.400.value}' },
+        success: { value: '{color.theme.success.text.value}' },
+        warning: { value: '{color.theme.warning.text.value}' },
+        danger: { value: '{color.theme.danger.text.value}' },
         quote: { value: '{color.ui.font.primary.value}' },
         quoteSource: { value: '{color.ui.font.secondary.value}' }
       }

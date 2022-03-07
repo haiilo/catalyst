@@ -19,7 +19,7 @@ export namespace Components {
         /**
           * The color palette of the button.
          */
-        "color": 'primary' | 'secondary' | 'error' | 'success' | 'warning';
+        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -49,9 +49,9 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Use round button edges. Defaults to false unless `iconOnly` is set.
+          * Use round button edges.
          */
-        "round"?: boolean;
+        "round": boolean;
         /**
           * Sets focus on the button. Use this method instead of `button.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
@@ -145,7 +145,7 @@ declare namespace LocalJSX {
         /**
           * The color palette of the button.
          */
-        "color"?: 'primary' | 'secondary' | 'error' | 'success' | 'warning';
+        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -183,7 +183,7 @@ declare namespace LocalJSX {
          */
         "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Use round button edges. Defaults to false unless `iconOnly` is set.
+          * Use round button edges.
          */
         "round"?: boolean;
         /**

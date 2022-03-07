@@ -19,13 +19,13 @@
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: cat-border-radius('s');
+  border-radius: cat-border-radius('m');
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: color cat-token('time.transition.s') linear, border-color cat-token('time.transition.s') linear, background-color cat-token('time.transition.s') linear,
-    box-shadow cat-token('time.transition.s') linear;
+  transition: color cat-token('time.transition.s') linear, border-color cat-token('time.transition.s') linear,
+    background-color cat-token('time.transition.s') linear, box-shadow cat-token('time.transition.s') linear;
 
   &:focus-visible {
     outline: $cat-focus-outline;
@@ -74,29 +74,29 @@
 // ----- theme
 
 .cat-button-filled {
-  background-color: rgb(var(--bg));
-  color: rgb(var(--fill));
+  background-color: cat-token-wrap(var(--bg));
+  color: cat-token-wrap(var(--fill));
   font-weight: 600;
   @include cat-font-smooth;
 }
 
 .cat-button-outlined {
   background-color: transparent;
-  box-shadow: inset 0 0 0 1px rgba(var(--base), 0.2);
-  color: rgb(var(--text));
+  box-shadow: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
+  color: cat-token-wrap(var(--text));
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: rgba(var(--base), 0.05);
+    background-color: cat-token-wrap(var(--base), $alpha: 0.05);
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: rgba(var(--base), 0.1);
+    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
   }
 }
 
 .cat-button-text {
   background-color: transparent;
-  color: rgb(var(--text));
+  color: cat-token-wrap(var(--text));
   text-decoration: $cat-link-text-decoration;
 
   &:hover::not(.cat-button-disabled):not(.cat-button-loading) {
@@ -106,21 +106,21 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --base: #{cat-token('color.theme.#{$theme}.text')};
-    --bg: #{cat-token('color.theme.#{$theme}.bg')};
-    --fill: #{cat-token('color.theme.#{$theme}.fill')};
-    --text: #{cat-token('color.theme.#{$theme}.text')};
+    --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
+    --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
 
     &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{cat-token('color.theme.#{$theme}.bgHover')};
-      --fill: #{cat-token('color.theme.#{$theme}.fillHover')};
-      --text: #{cat-token('color.theme.#{$theme}.textHover')};
+      --bg: #{cat-token('color.theme.#{$theme}.bgHover', $wrap: false)};
+      --fill: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
+      --text: #{cat-token('color.theme.#{$theme}.textHover', $wrap: false)};
     }
 
     &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{cat-token('color.theme.#{$theme}.bgActive')};
-      --fill: #{cat-token('color.theme.#{$theme}.fillActive')};
-      --text: #{cat-token('color.theme.#{$theme}.textActive')};
+      --bg: #{cat-token('color.theme.#{$theme}.bgActive', $wrap: false)};
+      --fill: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
+      --text: #{cat-token('color.theme.#{$theme}.textActive', $wrap: false)};
     }
   }
 }
@@ -143,11 +143,19 @@
     @include cat-body($fontSize);
 
     .cat-button-prefix {
-      margin-right: $padding * 0.5;
+      margin-right: 0.25rem;
     }
 
     .cat-button-suffix {
-      margin-left: $padding * 0.5;
+      margin-left: 0.25rem;
+    }
+
+    // normalize icon size for line height
+    @if $fontSize == 'm' {
+      cat-icon {
+        margin-top: -0.125rem;
+        margin-bottom: -0.125rem;
+      }
     }
 
     &.cat-button-icon {
@@ -158,8 +166,8 @@
   }
 }
 
-@include size('xs', 's', 0.5rem);
+@include size('xs', 's', 0.25rem);
 @include size('s', 'm', 0.5rem);
-@include size('m', 'm', 1rem);
-@include size('l', 'm', 1.5rem);
-@include size('xl', 'l', 1.5rem);
+@include size('m', 'm', 0.75rem);
+@include size('l', 'm', 1rem);
+@include size('xl', 'l', 1.25rem);

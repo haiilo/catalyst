@@ -1,8 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
-@use 'sass:color';
-@use 'sass:math';
 @use 'sass:meta';
+@use 'sass:color';
 @use 'sass:string';
 
 @use '../../../tokens/dist/scss/variables' as *;
@@ -12,16 +11,16 @@
 // -- Split a string using the given separator.
 // -----
 @function -cat-split($string, $separator: ' ') {
-    $result: ();
-    $index : string.index($string, $separator);
-    @while $index != null {
-      $item: string.slice($string, 1, $index - 1);
-      $result: list.append($result, $item);
-      $string: string.slice($string, $index + string.length($separator));
-      $index : string.index($string, $separator);
-    }
-    $result: list.append($result, $string);
-    @return $result;
+  $result: ();
+  $index: string.index($string, $separator);
+  @while $index != null {
+    $item: string.slice($string, 1, $index - 1);
+    $result: list.append($result, $item);
+    $string: string.slice($string, $index + string.length($separator));
+    $index: string.index($string, $separator);
+  }
+  $result: list.append($result, $string);
+  @return $result;
 }
 
 // -----
@@ -48,92 +47,34 @@
   @return $map;
 }
 
-
-
-
-
-
-@function -cat-to-number($value) {
-  $type: meta.type-of($value);
-  @if $type == 'number' {
-    @return $value;
-  } @else if $type == "list" {
-    $result: ();
-    @each $elem in $value {
-      $result: list.append($result, -cat-to-number($elem));
-    }
-    @return $result;
-  } @else if $type != "string" {
-    @return null;
-  }
-
-  $result: 0;
-  $digits: 0;
-  $minus: str-slice($value, 1, 1) == '-';
-  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
-
-  @for $i from if($minus, 2, 1) through str-length($value) {
-    $character: str-slice($value, $i, $i);
-    @if not (index(map-keys($numbers), $character) or $character == '.') {
-      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
-    }
-    @if $character == '.' {
-      $digits: 1;
-    } @else if $digits == 0 {
-      $result: $result * 10 + map-get($numbers, $character);
-    } @else {
-      $digits: $digits * 10;
-      $result: $result + map-get($numbers, $character) / $digits;
-    }
-  }
-  @return if($minus, -$result, $result);
-}
-
-@function -cat-is-rgb-part($value) {
-  @if meta.type-of($value) == "string" {
-    @if string.slice($value, 1, 6) == "var(--" {
-      $value: string.slice($value, string.index($value, ",") + 2, -2);
-    }
-    $value: -cat-split($value, $separator: ', ');
-  }
-  @if meta.type-of($value) == "list" and list.length($value == 3) {
-    $value: -cat-to-number($value);
-    @each $elem in $value {
-      @if meta.type-of($elem) != "number" or $elem < 0 or $elem > 255 {
-        @return false;
-      }
-    }
-    @return true;
-  }
-  @return false;
-}
-
-@function -cat-wrap-rgb-part($value, $opacity: 1) {
-  $type: meta.type-of($value);
-  @if $type == "list" {
-    @debug $value;
-    @return color.adjust(#00000000, $red: list.nth($value, 1), $green: list.nth($value, 2), $blue: list.nth($value, 3), $alpha: $opacity);
-  }
-  @if $opacity == 1 {
-    @return rgb($value);
+@function cat-token-wrap($value, $alpha: 1) {
+  @if meta.type-of($value) == 'list' {
+    @return color.adjust(
+      #00000000,
+      $red: list.nth($value, 1),
+      $green: list.nth($value, 2),
+      $blue: list.nth($value, 3),
+      $alpha: $alpha
+    );
+  } @else if $alpha < 1 {
+    @return rgba($value, $alpha);
   } @else {
-    @return rgba($value, $opacity);
+    @return rgb($value);
   }
 }
-
 
 // -----
 // -- Accessor for $tokens using a dot-separated key.
 // -- Automatically wraps RGB partials into an rgb() expression and
-// -- optionally adds an RGB opacity value.
+// -- optionally adds an RGB alpha value.
 // -----
-@function cat-token($key, $opacity: 1) {
+@function cat-token($key, $alpha: 1, $wrap: true) {
   $value: -cat-get($tokens, $key);
   @if not $value {
     @error 'Unknown token "#{-cat-join($key, '.')}".';
   }
-  @if -cat-is-rgb-part($value) {
-    @return -cat-wrap-rgb-part($value, $opacity);
+  @if $wrap and string.index($key, 'color.') == 1 {
+    @return cat-token-wrap($value, $alpha);
   }
   @return $value;
 }

@@ -7,7 +7,7 @@ module.exports = {
         200: { value: '#ebecf0' },
         300: { value: '#d7dbe0' },
         400: { value: '#697687' },
-        900: { value: '#ffffff' }
+        900: { value: '#000000' }
       },
       brand: {
         100: { value: '#c9e5e8' },

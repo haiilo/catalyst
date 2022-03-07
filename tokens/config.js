@@ -2,17 +2,16 @@ const StyleDictionary = require('style-dictionary');
 const tinycolor = require("tinycolor2");
 
 StyleDictionary.registerTransform({
-  type: `value`,
-  name: `cat/size`,
+  type: 'value',
+  name: 'cat/size',
   matcher: token => token.attributes.category === 'size',
   transformer: token => `${token.value}${token.attributes.unit || 'rem'}`
 });
 
 StyleDictionary.registerTransform({
-  type: `value`,
-  name: `cat/rgbParts`,
-  transitive: true,
-  matcher: token => token.attributes.category === 'color' && token.attributes.unit === 'rgbParts',
+  type: 'value',
+  name: 'cat/rgbParts',
+  matcher: token => token.attributes.category === 'color',
   transformer: token => {
     var rgb = tinycolor(token.value).toRgb();
     return `${rgb.r}, ${rgb.g}, ${rgb.b}`;
@@ -20,8 +19,8 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerTransform({
-  type: `value`,
-  name: `cat/cssProp`,
+  type: 'value',
+  name: 'cat/cssProp',
   transitive: true,
   matcher: token => !!token.attributes.cssProp,
   transformer: token => `var(--cat-${token.attributes.cssProp}, ${token.value})`

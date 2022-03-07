@@ -32,7 +32,7 @@ export class CatButton {
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' | 'error' | 'success' | 'warning' = 'secondary';
+  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
 
   /**
    * The size of the button.
@@ -77,9 +77,9 @@ export class CatButton {
   @Prop() ellipsed = true;
 
   /**
-   * Use round button edges. Defaults to false unless `iconOnly` is set.
+   * Use round button edges.
    */
-  @Prop() round?: boolean;
+  @Prop() round = false;
 
   /**
    * A destination to link to, rendered in the href attribute of a link.
@@ -192,7 +192,7 @@ export class CatButton {
           class={{
             'cat-button': true,
             'cat-button-icon': this.isIconButton,
-            'cat-button-round': this.round ?? this.isIconButton,
+            'cat-button-round': this.round,
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
             'cat-button-ellipsed': this.ellipsed && !this.isIconButton,
