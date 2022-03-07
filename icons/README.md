@@ -3,11 +3,11 @@
 This project contains all icons for the Catalyst custom SVG icon set.
 ## Getting started
 
-Install Bootstrap in your Node.js powered apps with the
+Install `@haiilo/catalyst-icons` in your Node.js powered apps with the
 [npm package](https://www.npmjs.com/package/@haiilo/catalyst-icons):
 
 ```shell
-npm install bootstrap
+npm install @haiilo/catalyst-icons
 ```
 
 ## Add new icons via web
@@ -63,3 +63,8 @@ These commands will automatically increase the version number in the
 `package.json` and `package-lock.json`, commit the changed files, create a
 corresponding git tag and push everything to the remote branch. This will then
 automatically publish a new library version.
+
+## License
+
+The license is available within the main repository in the [LICENSE][license]
+file.
