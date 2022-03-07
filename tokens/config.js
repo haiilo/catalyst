@@ -1,6 +1,11 @@
 const StyleDictionary = require('style-dictionary');
 const tinycolor = require("tinycolor2");
 
+StyleDictionary.registerFileHeader({
+  name: 'cat/header',
+  fileHeader: () => ['Auto-generated file. Do not edit directly.']
+});
+
 StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/size',
@@ -36,6 +41,7 @@ module.exports = {
         destination: 'dist/scss/_variables.scss',
         format: 'scss/map-deep',
         options: {
+          fileHeader: 'cat/header',
           outputReferences: true,
           themeable: true
         }
