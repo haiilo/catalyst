@@ -1,5 +1,7 @@
 # Catalyst: Tokens
 
+[![Tokens: build & test](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml)
+
 This project contains all design tokens for the Catalyst design system.
 
 ## Getting started
