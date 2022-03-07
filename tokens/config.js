@@ -34,8 +34,36 @@ StyleDictionary.registerTransform({
 module.exports = {
   source: ['src/**/*.js'],
   platforms: {
+    js: {
+      transforms: ['attribute/cti', 'name/cti/pascal', 'size/rem', 'color/hex'],
+      files: [{
+        destination: 'dist/js/_variables.js',
+        format: "javascript/es6",
+        options: {
+          fileHeader: 'cat/header'
+        }
+      }, {
+        destination: 'dist/js/_variables.d.ts',
+        format: 'typescript/es6-declarations',
+        options: {
+          fileHeader: 'cat/header'
+        }
+      }]
+    },
+    css: {
+      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts'],
+      prefix: 'cat',
+      files: [{
+        destination: 'dist/css/_variables.css',
+        format: 'css/variables',
+        options: {
+          fileHeader: 'cat/header',
+          outputReferences: false
+        }
+      }]
+    },
     scss: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'cat/size', 'color/css', 'cat/rgbParts', 'cat/cssProp'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts', 'cat/cssProp'],
       prefix: 'cat',
       files: [{
         destination: 'dist/scss/_variables.scss',
