@@ -1,5 +1,7 @@
 # Catalyst: Icons
 
+[![Icons: build & test](https://github.com/haiilo/catalyst/actions/workflows/icons.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/icons.yml)
+
 This project contains all icons for the Catalyst custom SVG icon set.
 
 ## Getting started
