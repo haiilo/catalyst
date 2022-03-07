@@ -4,7 +4,7 @@ on:
     tags:
       - '@haiilo/catalyst-icons/v*'
   workflow_run:
-    workflows: [icons-release]
+    workflows: ['Icons: create release']
     types:
       - completed
 defaults:
