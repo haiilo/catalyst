@@ -20,8 +20,8 @@
   "scripts": {
     "sprite": "node sprite.js",
     "svgo": "node svgo.js",
-    "svgts:object": "svg-to-ts -c object -s './src/**/*.svg' -f icons.object -o ./tmp -d KEBAB --objectName ci",
-    "svgts:constants": "svg-to-ts -c constants -s './src/**/*.svg' -i CoyoIcon -t coyoIcon -p ci -f icons.constants -o ./tmp -d KEBAB",
+    "svgts:object": "svg-to-ts-object -s './src/**/*.svg' -f icons.object -o ./tmp -d KEBAB --objectName ci",
+    "svgts:constants": "svg-to-ts-constants -s './src/**/*.svg' -i CoyoIcon -t coyoIcon -p ci -f icons.constants -o ./tmp -d KEBAB",
     "transpile": "node transpile.js",
     "tsc": "tsc",
     "prebuild": "npm run clean",
