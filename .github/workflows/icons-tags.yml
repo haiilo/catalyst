@@ -1,13 +1,13 @@
 name: icons
-on:
-  push:
-    paths:
-      - 'icons/**'
+  on:
+    create:
+      tags:
+        - '*'
 defaults:
   run:
     working-directory: icons
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +18,10 @@ jobs:
           node-version: '16'
           cache: 'npm'
           cache-dependency-path: icons/package-lock.json
-      - name: Install and Build
+      - name: Install
         run: |
           npm ci
-          npm run build
+      - name: Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
