@@ -1,0 +1,43 @@
+{
+  "name": "@haiilo/catalyst-icons",
+  "version": "0.0.1",
+  "description": "Icon set for Catalyst Design System",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haiilo/catalyst.git"
+  },
+  "main": "dist/js/index.js",
+  "files": [
+    "tmp/assets",
+    "dist/style",
+    "dist/svg",
+    "dist/js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "sprite": "node sprite.js",
+    "svgo": "node svgo.js",
+    "svgts:object": "svg-to-ts -c object -s './src/**/*.svg' -f icons.object -o ./tmp -d KEBAB --objectName ci",
+    "svgts:constants": "svg-to-ts -c constants -s './src/**/*.svg' -i CoyoIcon -t coyoIcon -p ci -f icons.constants -o ./tmp -d KEBAB",
+    "transpile": "node transpile.js",
+    "tsc": "tsc",
+    "prebuild": "npm run clean",
+    "build": "run-s sprite svgts:** transpile tsc",
+    "release:major": "npm version major && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:patch": "npm version patch && git push --follow-tags",
+    "clean": "rm -rf ./dist ./tmp",
+    "reset": "rm -rf ./dist ./tmp ./node_modules"
+  },
+  "devDependencies": {
+    "glob": "^7.2.0",
+    "lodash": "^4.17.21",
+    "npm-run-all": "^4.1.5",
+    "svg-sprite": "^1.5.3",
+    "svg-to-ts": "^7.0.0",
+    "typescript": "^4.4.3"
+  }
+}
