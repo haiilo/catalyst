@@ -66,5 +66,5 @@ automatically publish a new library version.
 
 ## License
 
-The license is available within the main repository in the [LICENSE][license]
-file.
+The license is available within the main repository in the
+[LICENSE][https://github.com/haiilo/catalyst/blob/main/LICENSE] file.

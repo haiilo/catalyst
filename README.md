@@ -20,4 +20,5 @@ This project exists thanks to all the people who contribute.
 
 ## License
 
-The license is available within the repository in the [LICENSE][license] file.
+The license is available within the repository in the
+[LICENSE][https://github.com/haiilo/catalyst/blob/main/LICENSE] file.
