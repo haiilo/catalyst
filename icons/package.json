@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-icons",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Icon set for Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -26,17 +26,10 @@
     "tsc": "tsc",
     "prebuild": "npm run clean",
     "build": "run-s sprite svgts:** transpile tsc",
-
-
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-
-
-    // "release:major": "npm version major && git push --follow-tags",
-    // "release:minor": "npm version minor && git push --follow-tags",
-    // "release:patch": "npm version patch && git push --follow-tags",
     "clean": "rm -rf ./dist ./tmp",
     "reset": "rm -rf ./dist ./tmp ./node_modules"
   },
