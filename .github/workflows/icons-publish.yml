@@ -1,5 +1,8 @@
-name: icons-tags
-on: workflow_dispatch
+name: icons-publish
+on:
+  create:
+    tags:
+      - '@haiilo/catalyst-icons/v*'
 defaults:
   run:
     working-directory: icons
@@ -15,11 +18,12 @@ jobs:
           node-version: '16'
           cache: 'npm'
           cache-dependency-path: icons/package-lock.json
-      - name: Install
+      - name: Install and Build
         run: |
           npm ci
+          npm run build
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: core/package.json
+          package: icons/package.json

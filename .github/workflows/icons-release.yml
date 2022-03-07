@@ -1,0 +1,31 @@
+name: icons-release
+on: workflow_dispatch
+defaults:
+  run:
+    working-directory: icons
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: icons/package-lock.json
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+      - name: Create Release
+        run: |
+          npm run release:patch
+      - name: Commit files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'CI: create release'
+          commit_user_name: GitHub Actions
+          commit_user_email: actions@github.com
+          push_options: '--follow-tags'
