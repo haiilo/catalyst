@@ -1,8 +1,8 @@
-name: icons
+name: icons tags
   on:
     create:
       tags:
-        - '*'
+        - '@haiilo/catalyst-icons/v*'
 defaults:
   run:
     working-directory: icons
