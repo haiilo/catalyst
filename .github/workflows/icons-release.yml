@@ -25,10 +25,8 @@ jobs:
           git config user.email "actions@github.com"
           npm run release:patch
       - name: Commit files
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'CI: create release'
-          commit_user_name: GitHub Actions
-          commit_user_email: actions@github.com
-          push_options: '--follow-tags'
-          skip_dirty_check: true
+        uses: actions/checkout@v2
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git push --follow-tags
