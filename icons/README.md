@@ -19,7 +19,7 @@ npm install @haiilo/catalyst-icons
 and upload your new icon to the `src` directory. This can be done via the menu
 on the top right or simply by dragging your icon into the web browser.
 2. Navigate to [Actions > icons-release](https://github.com/haiilo/catalyst/actions/workflows/icons-release.yml) and trigger a manual CI release by clicking the `Run workflow`
-button (Branch: `main`).
+button (Branch: `main` / Release level: `patch`).
 
 ## Contributing
 
