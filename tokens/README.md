@@ -2,6 +2,17 @@
 
 This project contains all design tokens for the Catalyst design system.
 
+Tokens are being transformed using
+[Amazon Style Dictionary](https://amzn.github.io/style-dictionary/#/).
+
+> Style Dictionary is a build system that allows you to define styles once, in
+> a way for any platform or language to consume. A single place to create and
+> edit your styles, and a single command exports these rules to all the places
+> you need them - iOS, Android, CSS, JS, HTML, sketch files, style
+> documentation, or anything you can think of. It is available as a CLI through
+> npm, but can also be used like any normal node module if you want to extend
+> its functionality.
+
 ## Getting started
 
 Install `@haiilo/catalyst-tokens` in your Node.js powered apps with the
@@ -13,14 +24,9 @@ npm install @haiilo/catalyst-tokens
 
 ## Contributing
 
-If you want to add a new icon to this repository, please make sure that your SVG
-icon conforms with the overall structure of the other SVG icons:
-
-```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path d="{{ICON_PATH}}"/>
-</svg>
-```
+If you want to add or update tokens in this repository, please make sure to
+adhere to the design token structure outlined at
+[Design token structure](https://amzn.github.io/style-dictionary/#/tokens?id=design-token-structure).
 
 ### Package management
 
@@ -34,17 +40,15 @@ lock.
 ### Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in
-the `dist` directory. SVG sprites and style definitions for different
-preprocessors will automatically be generated in `dist/style` and `dist/svg`
-respectively. Also, standalone HTML previews will become available in the `dist`
-directory.
+the `dist` directory. Artifacts will automatically be generated on the basis of
+the output configuration defined in `config.js`.
 
 ### Publishing
 
 The library can be published by running `npm publish`. However, the preferred
 way to publish a new version of the library is via the CI setup. A new version
 of the library will automatically be published to
-[npm](https://www.npmjs.com/package/@haiilo/catalyst-icons) when pushing a new
+[npm](https://www.npmjs.com/package/@haiilo/catalyst-tokens) when pushing a new
 tag on the main branch. To simplyfy this process, you can use the following npm
 commands:
 
