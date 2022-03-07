@@ -1,8 +1,5 @@
 name: icons-tags
-on:
-  create:
-    tags:
-      - '@haiilo/catalyst-icons/v*'
+on: workflow_dispatch
 defaults:
   run:
     working-directory: icons
