@@ -41,11 +41,11 @@
     "sanitize.css": "13.0.0"
   },
   "peerDependencies": {
-    "@haiilo/catalyst-icons": ">=0.0.14"
+    "@haiilo/catalyst-icons": ">=0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
-    "@haiilo/catalyst-icons": "^0.0.14",
+    "@haiilo/catalyst-icons": "^0.1.0",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/react-output-target": "^0.2.1",
     "@stencil/sass": "^1.5.2",
