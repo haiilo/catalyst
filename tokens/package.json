@@ -14,9 +14,16 @@
     "access": "public"
   },
   "scripts": {
-    "build": "style-dictionary build --config config.js"
+    "build": "style-dictionary build --config config.js",
+    "release": "standard-version",
+    "release:patch": "standard-version -t @haiilo/catalyst-tokens/v --release-as patch",
+    "release:minor": "standard-version -t @haiilo/catalyst-tokens/v --release-as minor",
+    "release:major": "standard-version -t @haiilo/catalyst-tokens/v --release-as major",
+    "clean": "rm -rf ./dist",
+    "reset": "rm -rf ./dist ./tmp ./node_modules"
   },
   "devDependencies": {
+    "standard-version": "^9.3.2",
     "style-dictionary": "^3.1.1",
     "tinycolor2": "^1.4.2"
   }

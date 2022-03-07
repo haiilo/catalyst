@@ -41,9 +41,9 @@ module.exports = {
         fill: { value: '{color.base.neutral.900}' },
         fillHover: { value: '{color.base.neutral.900}' },
         fillActive: { value: '{color.base.neutral.900}' },
-        text: { value: '{color.base.orange.500}' },
-        textHover: { value: '{color.base.orange.600}' },
-        textActive: { value: '{color.base.orange.600}' }
+        text: { value: '{color.base.orange.700}' },
+        textHover: { value: '{color.base.orange.700}' },
+        textActive: { value: '{color.base.orange.700}' }
       },
       danger: {
         bg: { value: '{color.base.red.400}' },

@@ -11,17 +11,17 @@ const spriter = new SVGSpriter(config);
 const _ = require('lodash');
 
 // Find SVG files recursively via `glob`
-glob.glob('**/*.svg', {cwd: cwd}, function (err, files) {
+glob.glob('**/*.svg', { cwd: cwd }, function (err, files) {
 
   // Create temporary assets folder
-  if (!fs.existsSync('tmp/assets')){
-    fs.mkdirSync('tmp/assets', {recursive: true});
+  if (!fs.existsSync('tmp/assets')) {
+    fs.mkdirSync('tmp/assets', { recursive: true });
   }
 
   // Add each SVG
   files.forEach(function (file) {
     const fileExtension = path.extname(file);
-    const fileName = _.kebabCase(file.substr(0, file.length-fileExtension.length)) + fileExtension;
+    const fileName = _.kebabCase(file.substr(0, file.length - fileExtension.length)) + fileExtension;
     const fileContent = fs.readFileSync(path.join(cwd, file), 'utf-8');
     const filePath = path.join(path.resolve('tmp/assets'), fileName);
     fs.writeFileSync(filePath, fileContent, 'utf-8');
