@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "postinstall": "husky install",
     "link-lib": "npm run link-core && npm run link-angular",
     "link-core": "cd core && npm link && yarn link && cd ../angular/projects/catalyst && npm link @haiilo/catalyst && cd ../../ && npm link @haiilo/catalyst && cd ..",
     "link-angular": "cd angular && npm run build catalyst && cd dist/catalyst && yarn link && npm link && cd ../../"
@@ -12,8 +13,18 @@
     "react",
     "vue"
   ],
-  "engines" : {
-    "npm" : ">=8.0.0",
-    "node" : ">=16.0.0"
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "husky": "^7.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
