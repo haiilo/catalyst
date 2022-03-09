@@ -1,0 +1,7 @@
+@use '../variables' as *;
+
+@mixin cat-disabled() {
+  cursor: not-allowed;
+  opacity: cat-token('opacity.disabled');
+  filter: grayscale(100%);
+}

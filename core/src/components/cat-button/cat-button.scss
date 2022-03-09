@@ -47,8 +47,7 @@
 // ----- disabled
 
 .cat-button-disabled {
-  cursor: not-allowed;
-  opacity: cat-token('opacity.disabled');
+  @include cat-disabled();
 }
 
 // ----- round
