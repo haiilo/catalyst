@@ -18,6 +18,7 @@
   font-family: cat-head-font-family();
   font-size: cat-head-font-size($size);
   line-height: cat-head-line-height($size);
+  color: cat-token('color.ui.font.head');
   font-weight: $weight;
 }
 
@@ -37,6 +38,7 @@
 
 @mixin cat-body($size, $weight: null) {
   // skip font family, as it is set on the body
+  // skip color, as it is set on the body
   font-size: cat-body-font-size($size);
   line-height: cat-body-line-height($size);
   font-weight: $weight;
@@ -60,6 +62,7 @@
   font-family: cat-mono-font-family();
   font-size: cat-mono-font-size($size);
   line-height: cat-mono-line-height($size);
+  color: cat-token('color.ui.font.mono');
   font-weight: $weight;
 }
 

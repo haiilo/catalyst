@@ -19,7 +19,7 @@ module.exports = {
         fill: { value: '{color.base.neutral.900}' },
         fillHover: { value: '{color.base.neutral.900}' },
         fillActive: { value: '{color.base.neutral.900}' },
-        text: { value: '{color.base.neutral.400}' },
+        text: { value: '{color.base.neutral.900}' },
         textHover: { value: '{color.base.neutral.900}' },
         textActive: { value: '{color.base.neutral.900}' }
       },

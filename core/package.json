@@ -33,7 +33,9 @@
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:style": "stylelint **/*.scss"
+    "lint:style": "stylelint **/*.scss",
+    "link:icons": "cd ../icons && npm link && cd ../core && npm link @haiilo/catalyst-icons",
+    "link:tokens": "cd ../tokens && npm link && cd ../core && npm link @haiilo/catalyst-tokens"
   },
   "dependencies": {
     "@stencil/core": "2.13.0",

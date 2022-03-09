@@ -1,10 +1,6 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-body {
-  @include cat-body('m');
-}
-
 h1,
 h2,
 h3,

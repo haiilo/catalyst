@@ -2,7 +2,7 @@ module.exports = {
   color: {
     ui: {
       background: {
-        canvas: { value: '{color.base.neutral.100.value}' },
+        canvas: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "bg" } },
         body: { value: '{color.base.neutral.0.value}' },
         interaction: { value: '{color.base.brand.400.value}' },
         notification: { value: '{color.base.red.400.value}' }
@@ -13,13 +13,12 @@ module.exports = {
         focus: { value: '#0071ff' }
       },
       font: {
-        primary: { value: '{color.base.neutral.900.value}' },
-        secondary: { value: '{color.base.neutral.400.value}' },
-        success: { value: '{color.theme.success.text.value}' },
-        warning: { value: '{color.theme.warning.text.value}' },
-        danger: { value: '{color.theme.danger.text.value}' },
-        quote: { value: '{color.ui.font.primary.value}' },
-        quoteSource: { value: '{color.ui.font.secondary.value}' }
+        head: { value: '{color.base.neutral.0.value}', attributes: { cssProp: "font-color-head" } },
+        body: { value: '{color.base.neutral.0.value}', attributes: { cssProp: "font-color-body" } },
+        mono: { value: '{color.base.neutral.0.value}', attributes: { cssProp: "font-color-mono" } },
+        muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
+        quote: { value: '{color.ui.font.body.value}' },
+        quoteSource: { value: '{color.ui.font.muted.value}' }
       }
     }
   }
