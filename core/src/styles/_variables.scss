@@ -13,11 +13,14 @@ $cat-focus-outline: cat-token('size.outline.focus') solid cat-token('color.ui.bo
 // -- Typography
 // --------
 
-$font-fallback-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+/* stylelint-disable value-keyword-case */
+$font-fallback-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans',
+  'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $cat-link-text-decoration: none;
 $cat-link-text-decoration-hover: underline;
 $cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
+/* stylelint-enable value-keyword-case */
 
 // --------
 // -- Elevations
