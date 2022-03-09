@@ -34,7 +34,11 @@ export const config: Config = {
     },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      serviceWorker: null, // disable service workers
+      copy: [{
+        src: '../node_modules/@haiilo/catalyst-tokens/assets',
+        dest: 'assets'
+      }]
     },
     angularOutputTarget({
       componentCorePackage: '@haiilo/catalyst',

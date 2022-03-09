@@ -9,6 +9,10 @@
 @use 'core/base' as *;
 @use 'core/typography' as *;
 
+// -- Fonts
+
+@use 'fonts/fonts' as *;
+
 // -- Utils
 
 @use 'utils/display';

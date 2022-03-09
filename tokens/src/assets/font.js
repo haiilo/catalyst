@@ -1,44 +1,58 @@
 module.exports = {
   asset: {
     font: {
-      head: {
+      dmSans: {
         name: { value: "DM Sans" },
-        ttfBold: { value: "assets/fonts/DMSans-Bold.ttf" },
-        ttfBoldItalic: { value: "assets/fonts/DMSans-BoldItalic.ttf" },
-        ttfItalic: { value: "assets/fonts/DMSans-Italic.ttf" },
-        ttfMedium: { value: "assets/fonts/DMSans-Medium.ttf" },
-        ttfMediumItalic: { value: "assets/fonts/DMSans-MediumItalic.ttf" },
-        ttfRegular: { value: "assets/fonts/DMSans-Regular.ttf" }
+        woff2Bold: { value: "DMSans-Bold.woff2" },
+        woff2BoldItalic: { value: "DMSans-BoldItalic.woff2" },
+        woff2Italic: { value: "DMSans-Italic.woff2" },
+        woff2Medium: { value: "DMSans-Medium.woff2" },
+        woff2MediumItalic: { value: "DMSans-MediumItalic.woff2" },
+        woff2Regular: { value: "DMSans-Regular.woff2" }
       },
-      body: {
+      lato: {
         name: { value: "Lato" },
-        ttfBlack: { value: "assets/fonts/Lato-Black.ttf" },
-        ttfBlackItalic: { value: "assets/fonts/Lato-BlackItalic.ttf" },
-        ttfBold: { value: "assets/fonts/Lato-Bold.ttf" },
-        ttfBoldItalic: { value: "assets/fonts/Lato-BoldItalic.ttf" },
-        ttfHairline: { value: "assets/fonts/Lato-Hairline.ttf" },
-        ttfHairlineItalic: { value: "assets/fonts/Lato-HairlineItalic.ttf" },
-        ttfHeavy: { value: "assets/fonts/Lato-Heavy.ttf" },
-        ttfHeavyItalic: { value: "assets/fonts/Lato-HeavyItalic.ttf" },
-        ttfItalic: { value: "assets/fonts/Lato-Italic.ttf" },
-        ttfLight: { value: "assets/fonts/Lato-Light.ttf" },
-        ttfLightItalic: { value: "assets/fonts/Lato-LightItalic.ttf" },
-        ttfMedium: { value: "assets/fonts/Lato-Medium.ttf" },
-        ttfMediumItalic: { value: "assets/fonts/Lato-MediumItalic.ttf" },
-        ttfRegular: { value: "assets/fonts/Lato-Regular.ttf" },
-        ttfSemibold: { value: "assets/fonts/Lato-Semibold.ttf" },
-        ttfSemiboldItalic: { value: "assets/fonts/Lato-SemiboldItalic.ttf" },
-        ttfThin: { value: "assets/fonts/Lato-Thin.ttf" },
-        ttfThinItalic: { value: "assets/fonts/Lato-ThinItalic.ttf" }
+        woffBlack: { value: "Lato-Black.woff" },
+        woff2Black: { value: "Lato-Black.woff2" },
+        woffBlackItalic: { value: "Lato-BlackItalic.woff" },
+        woff2BlackItalic: { value: "Lato-BlackItalic.woff2" },
+        woffBold: { value: "Lato-Bold.woff" },
+        woff2Bold: { value: "Lato-Bold.woff2" },
+        woffBoldItalic: { value: "Lato-BoldItalic.woff" },
+        woff2BoldItalic: { value: "Lato-BoldItalic.woff2" },
+        woffHairline: { value: "Lato-Hairline.woff" },
+        woff2Hairline: { value: "Lato-Hairline.woff2" },
+        woffHairlineItalic: { value: "Lato-HairlineItalic.woff" },
+        woff2HairlineItalic: { value: "Lato-HairlineItalic.woff2" },
+        woffHeavy: { value: "Lato-Heavy.woff" },
+        woff2Heavy: { value: "Lato-Heavy.woff2" },
+        woffHeavyItalic: { value: "Lato-HeavyItalic.woff" },
+        woff2HeavyItalic: { value: "Lato-HeavyItalic.woff2" },
+        woffItalic: { value: "Lato-Italic.woff" },
+        woff2Italic: { value: "Lato-Italic.woff2" },
+        woffLight: { value: "Lato-Light.woff" },
+        woff2Light: { value: "Lato-Light.woff2" },
+        woffLightItalic: { value: "Lato-LightItalic.woff" },
+        woff2LightItalic: { value: "Lato-LightItalic.woff2" },
+        woffMedium: { value: "Lato-Medium.woff" },
+        woff2Medium: { value: "Lato-Medium.woff2" },
+        woffMediumItalic: { value: "Lato-MediumItalic.woff" },
+        woff2MediumItalic: { value: "Lato-MediumItalic.woff2" },
+        woffRegular: { value: "Lato-Regular.woff" },
+        woff2Regular: { value: "Lato-Regular.woff2" },
+        woffSemibold: { value: "Lato-Semibold.woff" },
+        woff2Semibold: { value: "Lato-Semibold.woff2" },
+        woffSemiboldItalic: { value: "Lato-SemiboldItalic.woff" },
+        woff2SemiboldItalic: { value: "Lato-SemiboldItalic.woff2" },
+        woffThin: { value: "Lato-Thin.woff" },
+        woff2Thin: { value: "Lato-Thin.woff2" },
+        woffThinItalic: { value: "Lato-ThinItalic.woff" },
+        woff2ThinItalic: { value: "Lato-ThinItalic.woff2" }
       },
-      mono: {
-        name: { value: "DM Mono" },
-        ttfItalic: { value: "assets/fonts/DMMono-Italic.ttf" },
-        ttfLight: { value: "assets/fonts/DMMono-Light.ttf" },
-        ttfLightItalic: { value: "assets/fonts/DMMono-LightItalic.ttf" },
-        ttfMedium: { value: "assets/fonts/DMMono-Medium.ttf" },
-        ttfMediumItalic: { value: "assets/fonts/DMMono-MediumItalic.ttf" },
-        ttfRegular: { value: "assets/fonts/DMMono-Regular.ttf" }
+      azeretMono: {
+        name: { value: "Azeret Mono" },
+        woff2Regular: { value: "AzeretMono-Regular.woff2" },
+        woff2SemiBold: { value: "AzeretMono-SemiBold.woff2" }
       }
     }
   }

@@ -1,0 +1,22 @@
+@use 'sass:list';
+@use '../variables' as *;
+
+@mixin cat-font-azeret($path, $weights...) {
+  @if list.index($weights, 400) {
+    @font-face {
+      font-family: 'Azeret Mono';
+      src: url('#{$path}#{cat-token("asset.font.azeretMono.woff2Regular")}') format('woff2');
+      font-style: normal;
+      font-weight: 400;
+      @content;
+    }
+  }
+  @if list.index($weights, 600) {
+    @font-face {
+      font-family: 'Azeret Mono';
+      src: url('#{$path}#{cat-token("asset.font.azeretMono.woff2SemiBold")}') format('woff2');
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+}

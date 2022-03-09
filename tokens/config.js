@@ -36,14 +36,15 @@ module.exports = {
   platforms: {
     js: {
       transforms: ['attribute/cti', 'name/cti/pascal', 'size/rem', 'color/hex'],
+      buildPath: 'dist/js/',
       files: [{
-        destination: 'dist/js/_variables.js',
+        destination: '_variables.js',
         format: "javascript/es6",
         options: {
           fileHeader: 'cat/header'
         }
       }, {
-        destination: 'dist/js/_variables.d.ts',
+        destination: '_variables.d.ts',
         format: 'typescript/es6-declarations',
         options: {
           fileHeader: 'cat/header'
@@ -53,8 +54,9 @@ module.exports = {
     css: {
       transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts'],
       prefix: 'cat',
+      buildPath: 'dist/css/',
       files: [{
-        destination: 'dist/css/_variables.css',
+        destination: '_variables.css',
         format: 'css/variables',
         options: {
           fileHeader: 'cat/header',
@@ -65,8 +67,9 @@ module.exports = {
     scss: {
       transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts', 'cat/cssProp'],
       prefix: 'cat',
+      buildPath: 'dist/scss/',
       files: [{
-        destination: 'dist/scss/_variables.scss',
+        destination: '_variables.scss',
         format: 'scss/map-deep',
         options: {
           fileHeader: 'cat/header',

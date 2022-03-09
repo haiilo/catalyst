@@ -1,9 +1,10 @@
 @use '../variables' as *;
+@use '../mixins' as *;
 
 // ---- Typography
 
 html {
-  font-family: cat-token('font.family.body');
+  font-family: cat-body-font-family();
   font-weight: cat-token('font.weight.body');
 }
 
@@ -11,6 +12,6 @@ code,
 kbd,
 samp,
 pre {
-  font-family: cat-token('font.family.mono');
+  font-family: cat-mono-font-family();
   font-weight: cat-token('font.weight.mono');
 }

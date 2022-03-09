@@ -1,5 +1,11 @@
 @use '../variables' as *;
 
+// ---- Head
+
+@function cat-head-font-family() {
+  @return cat-token('font.family.head'), $font-fallback-sans-serif;
+}
+
 @function cat-head-font-size($size) {
   @return cat-token('size.font.head.#{$size}');
 }
@@ -9,9 +15,16 @@
 }
 
 @mixin cat-head($size, $weight: null) {
+  font-family: cat-head-font-family();
   font-size: cat-head-font-size($size);
   line-height: cat-head-line-height($size);
   font-weight: $weight;
+}
+
+// ---- Body
+
+@function cat-body-font-family() {
+  @return cat-token('font.family.body'), $font-fallback-sans-serif;
 }
 
 @function cat-body-font-size($size) {
@@ -23,10 +36,34 @@
 }
 
 @mixin cat-body($size, $weight: null) {
+  // skip font family, as it is set on the body
   font-size: cat-body-font-size($size);
   line-height: cat-body-line-height($size);
   font-weight: $weight;
 }
+
+// ---- Mono
+
+@function cat-mono-font-family() {
+  @return cat-token('font.family.mono'), $font-fallback-monospace;
+}
+
+@function cat-mono-font-size($size) {
+  @return cat-token('size.font.mono.#{$size}');
+}
+
+@function cat-mono-line-height($size) {
+  @return cat-token('size.line.mono.#{$size}');
+}
+
+@mixin cat-mono($size, $weight: null) {
+  font-family: cat-mono-font-family();
+  font-size: cat-mono-font-size($size);
+  line-height: cat-mono-line-height($size);
+  font-weight: $weight;
+}
+
+// ---- Utils
 
 @mixin cat-break-word {
   word-wrap: break-word;

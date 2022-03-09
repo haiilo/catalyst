@@ -8,7 +8,8 @@
     "url": "git+https://github.com/haiilo/catalyst.git"
   },
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "publishConfig": {
     "access": "public"
