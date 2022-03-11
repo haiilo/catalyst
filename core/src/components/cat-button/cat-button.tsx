@@ -32,7 +32,7 @@ export class CatButton {
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
+  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
 
   /**
    * The size of the button.
@@ -247,6 +247,15 @@ export class CatButton {
     }
   }
 
+  private get spinnerSize(): 'xs' | 's' | 'm' | 'l' | 'xl' {
+    switch (this.size) {
+      case 'xs':
+        return 'xs';
+      default:
+        return 'm';
+    }
+  }
+
   private get isIconButton() {
     return Boolean(this.icon) && this._iconOnly;
   }
@@ -274,7 +283,7 @@ export class CatButton {
       this.hasSuffixIcon ? (
         <cat-icon icon={this.icon} size={this.iconSize} class="cat-button-suffix" part="suffix"></cat-icon>
       ) : null,
-      this.loading ? <cat-spinner size={this.iconSize}></cat-spinner> : null
+      this.loading ? <cat-spinner size={this.spinnerSize}></cat-spinner> : null
     ];
   }
 

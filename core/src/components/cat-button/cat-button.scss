@@ -105,10 +105,14 @@
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    @if $theme == 'secondary' {
+      --base: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    } @else {
+      --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    }
 
     &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
       --bg: #{cat-token('color.theme.#{$theme}.bgHover', $wrap: false)};

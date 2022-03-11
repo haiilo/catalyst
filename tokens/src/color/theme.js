@@ -13,12 +13,12 @@ module.exports = {
         textActive: { value: '{color.base.brand.600}', attributes: { cssProp: "primary-text-active" } }
       },
       secondary: {
-        bg: { value: '{color.base.neutral.100}' },
-        bgHover: { value: '{color.base.neutral.200}' },
-        bgActive: { value: '{color.base.neutral.200}' },
-        fill: { value: '{color.base.neutral.900}' },
-        fillHover: { value: '{color.base.neutral.900}' },
-        fillActive: { value: '{color.base.neutral.900}' },
+        bg: { value: '{color.base.neutral.400}' },
+        bgHover: { value: '{color.base.neutral.400}' },
+        bgActive: { value: '{color.base.neutral.400}' },
+        fill: { value: '{color.base.neutral.0}' },
+        fillHover: { value: '{color.base.neutral.0}' },
+        fillActive: { value: '{color.base.neutral.0}' },
         text: { value: '{color.base.neutral.900}' },
         textHover: { value: '{color.base.neutral.900}' },
         textActive: { value: '{color.base.neutral.900}' }
