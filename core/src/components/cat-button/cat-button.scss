@@ -47,7 +47,7 @@
 // ----- disabled
 
 .cat-button-disabled {
-  @include cat-disabled();
+  @include cat-disabled;
 }
 
 // ----- round
