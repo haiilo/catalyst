@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'mixins';
+
+$-min-width: 8rem;
+$-max-width: 16rem;
+$-min-height: 2rem;
+$-max-height: calc(100vh - 48px);
+
+.content {
+  position: absolute;
+  background: cat-token('color.ui.background.body');
+  display: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: $-min-width;
+  max-width: $-max-width;
+  min-height: $-min-height;
+  max-height: $-max-height;
+  @include cat-elevation(1);
+  border-radius: cat-border-radius('m');
+}

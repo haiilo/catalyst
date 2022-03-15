@@ -51,8 +51,7 @@ module.exports = {
       },
       azeretMono: {
         name: { value: "Azeret Mono" },
-        woff2Regular: { value: "AzeretMono-Regular.woff2" },
-        woff2SemiBold: { value: "AzeretMono-SemiBold.woff2" }
+        woff2Regular: { value: "AzeretMono-Regular.woff2" }
       }
     }
   }
