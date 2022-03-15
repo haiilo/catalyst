@@ -4,7 +4,8 @@ on:
     tags:
       - '@haiilo/catalyst-tokens/v*'
   workflow_run:
-    workflows: ['Tokens: create release']
+    workflows:
+      - 'Tokens: create release'
     types:
       - completed
 defaults:
@@ -13,6 +14,7 @@ defaults:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
