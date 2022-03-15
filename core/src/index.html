@@ -12,6 +12,33 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <cat-menu>
+      <cat-button slot="trigger">Button</cat-button>
+      <nav slot="content">
+        <ul>
+          <li class="cat-h5">Headline</li>
+          <li><cat-button variant="outlined" color="secondary" onclick="console.log(1)">Nav item 1</cat-button></li>
+          <li><cat-button variant="outlined" color="secondary" onclick="console.log(2)">Nav item 2</cat-button></li>
+          <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
+          <li>
+            <cat-button variant="outlined" color="secondary" disabled onclick="console.log(4)">Nav item 4</cat-button>
+          </li>
+          <li>
+            <cat-button variant="outlined" color="secondary" onclick="console.log(5)">Nav item 5 (long)</cat-button>
+          </li>
+          <li>
+            <cat-button variant="outlined" color="secondary" onclick="console.log(6)"
+              >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
+            >
+          </li>
+        </ul>
+        <hr />
+        <ul>
+          <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
+        </ul>
+      </nav>
+    </cat-menu>
+
     <h2>Typography</h2>
     <p>
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -97,20 +124,20 @@
     <hr />
 
     <h2>Icons</h2>
-    <cat-icon icon="pages"></cat-icon>
+    <cat-icon icon="sparkle-filled"></cat-icon>
 
     <h3>Color</h3>
-    <cat-icon icon="pages" style="color: red"></cat-icon>
-    <cat-icon icon="pages" style="color: blue"></cat-icon>
-    <cat-icon icon="pages" style="color: green"></cat-icon>
+    <cat-icon icon="sparkle-filled" style="color: red"></cat-icon>
+    <cat-icon icon="sparkle-filled" style="color: blue"></cat-icon>
+    <cat-icon icon="sparkle-filled" style="color: green"></cat-icon>
 
     <h3>Size</h3>
-    <cat-icon icon="pages" size="xs"></cat-icon>
-    <cat-icon icon="pages" size="s"></cat-icon>
-    <cat-icon icon="pages" size="m"></cat-icon>
-    <cat-icon icon="pages" size="l"></cat-icon>
-    <cat-icon icon="pages" size="xl"></cat-icon>
-    <cat-icon icon="pages" size="inline" style="font-size: 2.5rem"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="xs"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="s"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="m"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="l"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="xl"></cat-icon>
+    <cat-icon icon="sparkle-filled" size="inline" style="font-size: 2.5rem"></cat-icon>
 
     <hr />
 
@@ -123,69 +150,69 @@
     <cat-button variant="text">Text</cat-button>
 
     <h3>Color</h3>
-    <cat-button icon="pages" variant="filled" color="primary">Primary</cat-button>
-    <cat-button icon="pages" variant="outlined" color="primary">Primary</cat-button>
-    <cat-button icon="pages" variant="text" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" variant="filled" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" variant="outlined" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" variant="text" color="primary">Primary</cat-button>
     <br /><br />
-    <cat-button icon="pages" variant="filled" color="secondary">Secondary</cat-button>
-    <cat-button icon="pages" variant="outlined" color="secondary">Secondary</cat-button>
-    <cat-button icon="pages" variant="text" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" variant="filled" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" variant="outlined" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" variant="text" color="secondary">Secondary</cat-button>
     <br /><br />
-    <cat-button icon="pages" variant="filled" color="danger">Danger</cat-button>
-    <cat-button icon="pages" variant="outlined" color="danger">Danger</cat-button>
-    <cat-button icon="pages" variant="text" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" variant="filled" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" variant="outlined" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" variant="text" color="danger">Danger</cat-button>
     <br /><br />
-    <cat-button icon="pages" variant="filled" color="success">Success</cat-button>
-    <cat-button icon="pages" variant="outlined" color="success">Success</cat-button>
-    <cat-button icon="pages" variant="text" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" variant="filled" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" variant="outlined" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" variant="text" color="success">Success</cat-button>
     <br /><br />
-    <cat-button icon="pages" variant="filled" color="warning">Warning</cat-button>
-    <cat-button icon="pages" variant="outlined" color="warning">Warning</cat-button>
-    <cat-button icon="pages" variant="text" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" variant="filled" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" variant="outlined" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" variant="text" color="warning">Warning</cat-button>
 
     <h3>Size</h3>
-    <cat-button size="xs" icon="pages">Size XS</cat-button>
-    <cat-button size="s" icon="pages">Size S</cat-button>
-    <cat-button size="m" icon="pages">Size M</cat-button>
-    <cat-button size="l" icon="pages">Size L</cat-button>
-    <cat-button size="xl" icon="pages">Size XL</cat-button>
+    <cat-button size="xs" icon="sparkle-filled">Size XS</cat-button>
+    <cat-button size="s" icon="sparkle-filled">Size S</cat-button>
+    <cat-button size="m" icon="sparkle-filled">Size M</cat-button>
+    <cat-button size="l" icon="sparkle-filled">Size L</cat-button>
+    <cat-button size="xl" icon="sparkle-filled">Size XL</cat-button>
 
     <h3>Icons</h3>
-    <cat-button icon="pages">Prefix</cat-button>
-    <cat-button icon="pages" icon-suffix="true">Suffix</cat-button>
-    <cat-button icon="pages" icon-only="true">Suffix</cat-button>
+    <cat-button icon="sparkle-filled">Prefix</cat-button>
+    <cat-button icon="sparkle-filled" icon-suffix="true">Suffix</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="true" a11y-label="ARIA">Suffix</cat-button>
 
     <h3>Icons (Responsive)</h3>
-    <cat-button icon="pages" icon-only="xs">xs</cat-button>
-    <cat-button icon="pages" icon-only="s">s</cat-button>
-    <cat-button icon="pages" icon-only="m">m</cat-button>
-    <cat-button icon="pages" icon-only="l">l</cat-button>
-    <cat-button icon="pages" icon-only="xl">xl</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="xs" a11y-label="ARIA">xs</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="s" a11y-label="ARIA">s</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="m" a11y-label="ARIA">m</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="l" a11y-label="ARIA">l</cat-button>
+    <cat-button icon="sparkle-filled" icon-only="xl" a11y-label="ARIA">xl</cat-button>
 
     <h3>Links</h3>
     <cat-button url="http://www.google.de">Google</cat-button>
     <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
 
     <h3>Disabled</h3>
-    <cat-button icon="pages" disabled="true" variant="filled" color="primary">Primary</cat-button>
-    <cat-button icon="pages" disabled="true" variant="outlined" color="primary">Primary</cat-button>
-    <cat-button icon="pages" disabled="true" variant="text" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="primary">Primary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="primary">Primary</cat-button>
     <br /><br />
-    <cat-button icon="pages" disabled="true" variant="filled" color="secondary">Secondary</cat-button>
-    <cat-button icon="pages" disabled="true" variant="outlined" color="secondary">Secondary</cat-button>
-    <cat-button icon="pages" disabled="true" variant="text" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="secondary">Secondary</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="secondary">Secondary</cat-button>
     <br /><br />
-    <cat-button icon="pages" disabled="true" variant="filled" color="danger">Danger</cat-button>
-    <cat-button icon="pages" disabled="true" variant="outlined" color="danger">Danger</cat-button>
-    <cat-button icon="pages" disabled="true" variant="text" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="danger">Danger</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="danger">Danger</cat-button>
     <br /><br />
-    <cat-button icon="pages" disabled="true" variant="filled" color="success">Success</cat-button>
-    <cat-button icon="pages" disabled="true" variant="outlined" color="success">Success</cat-button>
-    <cat-button icon="pages" disabled="true" variant="text" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="success">Success</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="success">Success</cat-button>
     <br /><br />
-    <cat-button icon="pages" disabled="true" variant="filled" color="warning">Warning</cat-button>
-    <cat-button icon="pages" disabled="true" variant="outlined" color="warning">Warning</cat-button>
-    <cat-button icon="pages" disabled="true" variant="text" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="warning">Warning</cat-button>
+    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="warning">Warning</cat-button>
 
     <h3>Loading</h3>
     <cat-button loading="true" variant="filled" color="primary">Primary</cat-button>
@@ -210,15 +237,15 @@
 
     <h3>Layout</h3>
     <div style="width: 200px; border: 1px solid gray">
-      <cat-button size="m" ellipsed="false" prefix-icon="pages" suffix-icon="lock"
+      <cat-button size="m" ellipsed="false" prefix-icon="sparkle-filled" suffix-icon="lock"
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
       >
-      <br /><cat-button size="m" prefix-icon="pages" suffix-icon="lock"
+      <br /><cat-button size="m" prefix-icon="sparkle-filled" suffix-icon="lock"
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
       >
       <br /><cat-button class="cat-d-block">Block</cat-button>
       <cat-button class="cat-d-block cat-text-left">Block (left)</cat-button>
-      <cat-button size="m" prefix-icon="pages" suffix-icon="lock">Click</cat-button>
+      <cat-button size="m" prefix-icon="sparkle-filled" suffix-icon="lock">Click</cat-button>
     </div>
   </body>
 </html>

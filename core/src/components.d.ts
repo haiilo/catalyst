@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { Placement } from "@floating-ui/dom";
 export namespace Components {
     interface CatButton {
         /**
@@ -96,6 +97,9 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatMenu {
+        "placement": Placement;
+    }
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -120,6 +124,12 @@ declare global {
         prototype: HTMLCatIconElement;
         new (): HTMLCatIconElement;
     };
+    interface HTMLCatMenuElement extends Components.CatMenu, HTMLStencilElement {
+    }
+    var HTMLCatMenuElement: {
+        prototype: HTMLCatMenuElement;
+        new (): HTMLCatMenuElement;
+    };
     interface HTMLCatSpinnerElement extends Components.CatSpinner, HTMLStencilElement {
     }
     var HTMLCatSpinnerElement: {
@@ -129,6 +139,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
+        "cat-menu": HTMLCatMenuElement;
         "cat-spinner": HTMLCatSpinnerElement;
     }
 }
@@ -225,6 +236,17 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatMenu {
+        /**
+          * Emitted when the menu is closed.
+         */
+        "onCatClose"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the menu is opened.
+         */
+        "onCatOpen"?: (event: CustomEvent<FocusEvent>) => void;
+        "placement"?: Placement;
+    }
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -238,6 +260,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "cat-button": CatButton;
         "cat-icon": CatIcon;
+        "cat-menu": CatMenu;
         "cat-spinner": CatSpinner;
     }
 }
@@ -247,6 +270,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
         }
     }

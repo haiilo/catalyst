@@ -133,6 +133,15 @@ dl {
   }
 }
 
+nav {
+  ol,
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 dt {
   font-weight: 600;
 }

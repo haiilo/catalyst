@@ -11,12 +11,4 @@
       @content;
     }
   }
-  @if list.index($weights, 600) {
-    @font-face {
-      font-family: 'Azeret Mono';
-      src: url('#{$path}#{cat-token("asset.font.azeretMono.woff2SemiBold")}') format('woff2');
-      font-style: normal;
-      font-weight: 600;
-    }
-  }
 }
