@@ -27,12 +27,12 @@ export class CatButton {
   /**
    * The rendering style of the button.
    */
-  @Prop() variant: 'filled' | 'outlined' | 'text' = 'filled';
+  @Prop() variant: 'filled' | 'outlined' | 'text' = 'outlined';
 
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
 
   /**
    * The size of the button.
@@ -140,6 +140,11 @@ export class CatButton {
   }
 
   /**
+   * Emitted when the button is clicked.
+   */
+  @Event() catClick!: EventEmitter<MouseEvent>;
+
+  /**
    * Emitted when the button received focus.
    */
   @Event() catFocus!: EventEmitter<FocusEvent>;
@@ -200,6 +205,7 @@ export class CatButton {
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}
+          onClick={this.onClick.bind(this)}
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
         >
@@ -229,6 +235,7 @@ export class CatButton {
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
           }}
+          onClick={this.onClick.bind(this)}
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
         >
@@ -285,6 +292,10 @@ export class CatButton {
       ) : null,
       this.loading ? <cat-spinner size={this.spinnerSize}></cat-spinner> : null
     ];
+  }
+
+  private onClick(event: MouseEvent) {
+    this.catClick.emit(event);
   }
 
   private onFocus(event: FocusEvent) {

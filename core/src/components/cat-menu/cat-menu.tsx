@@ -1,19 +1,23 @@
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import { tabbable } from 'tabbable';
+import { FocusableElement, tabbable } from 'tabbable';
+
+let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-menu',
-  styleUrl: 'cat-menu.scss'
+  styleUrl: 'cat-menu.scss',
+  shadow: true
 })
 export class CatMenu {
-  private static OFFSET = 4;
-  private trigger: HTMLElement | null = null;
-  private content: HTMLElement | null = null;
+  private static readonly OFFSET = 4;
+  private readonly id = nextUniqueId++;
+  private triggerSlot?: Element;
+  private trigger?: FocusableElement;
+  private content?: HTMLElement;
   private trap?: focusTrap.FocusTrap;
-
-  @Element() host!: HTMLElement;
+  private keyListener?: (event: KeyboardEvent) => void;
 
   @Prop() placement: Placement = 'bottom-start';
 
@@ -27,43 +31,65 @@ export class CatMenu {
    */
   @Event() catClose!: EventEmitter<FocusEvent>;
 
+  @Listen('catClick')
+  clickHandler(event: CustomEvent<MouseEvent>) {
+    // hide menu on button click
+    if (this.content && event.composedPath().includes(this.content)) {
+      this.trap?.deactivate();
+      this.hide();
+    }
+  }
+
   componentDidLoad(): void {
-    this.trigger = this.host.querySelector<HTMLElement>('[slot="trigger"]');
-    this.content = this.host.querySelector<HTMLElement>('.content');
+    this.trigger = this.firstTabbable(this.triggerSlot);
+    this.trigger?.setAttribute('aria-haspopup', 'true');
+    this.trigger?.setAttribute('aria-expanded', 'false');
+    this.trigger?.setAttribute('aria-controls', this.contentId);
+    this.content?.setAttribute('id', this.contentId);
     if (this.trigger && this.content) {
       this.trigger?.addEventListener('click', () => this.show());
       autoUpdate(this.trigger, this.content, () => this.update());
     }
 
-    document.addEventListener('keydown', event => {
+    this.keyListener = event => {
       if (this.content && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
         const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });
-        const activeElement = document.activeElement
-          ? tabbable(document.activeElement, { includeContainer: true, getShadowRoot: true })
-          : [];
-        const activeIdx = activeElement.length ? targetElements.indexOf(activeElement[0]) : -1;
+        const activeElement = this.firstTabbable(document.activeElement);
+        const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
         const activeOff = event.key === 'ArrowDown' ? 1 : -1;
         const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
         targetElements[targetIdx].focus();
         event.preventDefault();
       }
-    });
+    };
+    document.addEventListener('keydown', this.keyListener);
+  }
+
+  disconnectedCallback(): void {
+    if (this.keyListener) {
+      document.removeEventListener('keydown', this.keyListener);
+    }
   }
 
   render() {
     return (
       <Host>
-        <slot name="trigger"></slot>
-        <div class="content">
+        <slot name="trigger" ref={el => (this.triggerSlot = el)}></slot>
+        <div class="content" ref={el => (this.content = el)}>
           <slot name="content"></slot>
         </div>
       </Host>
     );
   }
 
+  private get contentId() {
+    return `cat-menu-${this.id}`;
+  }
+
   private show() {
     if (this.content) {
       this.content.style.display = 'block';
+      this.trigger?.setAttribute('aria-expanded', 'true');
       this.catOpen.emit();
       this.trap = this.trap
         ? this.trap.updateContainerElements(this.content)
@@ -82,6 +108,7 @@ export class CatMenu {
   private hide() {
     if (this.content) {
       this.content.style.display = '';
+      this.trigger?.setAttribute('aria-expanded', 'false');
       this.catClose.emit();
     }
   }
@@ -100,5 +127,9 @@ export class CatMenu {
         }
       });
     }
+  }
+
+  private firstTabbable(container?: Element | null) {
+    return (container ? tabbable(container, { includeContainer: true, getShadowRoot: true }) : []).shift();
   }
 }

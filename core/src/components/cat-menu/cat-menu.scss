@@ -6,7 +6,17 @@ $-max-width: 16rem;
 $-min-height: 2rem;
 $-max-height: calc(100vh - 48px);
 
+:host {
+  display: inline-block;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
 .content {
+  padding-top: $cat-body-margin-bottom * 0.5;
+  padding-bottom: $cat-body-margin-bottom * 0.5;
   position: absolute;
   background: cat-token('color.ui.background.body');
   display: none;

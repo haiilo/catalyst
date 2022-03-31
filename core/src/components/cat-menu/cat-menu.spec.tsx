@@ -5,7 +5,10 @@ describe('cat-menu', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatMenu],
-      html: `<cat-menu></cat-menu>`
+      html: `<cat-menu>
+        <button slot="trigger"></button>
+        <nav slot="content"></nav>
+      </cat-menu>`
     });
     expect(page.root).toEqualHtml(`
       <cat-menu>

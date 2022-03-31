@@ -17,4 +17,5 @@ samp,
 pre {
   @include cat-mono('m');
   font-weight: cat-token('font.weight.mono');
+  color: cat-token('color.ui.font.mono');
 }

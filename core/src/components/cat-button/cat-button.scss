@@ -166,6 +166,11 @@
       padding-left: 0;
       padding-right: 0;
     }
+
+    :host-context(nav) & {
+      padding-left: $cat-nav-padding-horizontal;
+      padding-right: $cat-nav-padding-horizontal;
+    }
   }
 }
 

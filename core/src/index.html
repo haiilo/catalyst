@@ -13,21 +13,23 @@
   </head>
   <body>
     <cat-menu>
-      <cat-button slot="trigger">Button</cat-button>
+      <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
       <nav slot="content">
         <ul>
-          <li class="cat-h5">Headline</li>
-          <li><cat-button variant="outlined" color="secondary" onclick="console.log(1)">Nav item 1</cat-button></li>
-          <li><cat-button variant="outlined" color="secondary" onclick="console.log(2)">Nav item 2</cat-button></li>
-          <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
+          <li class="cat-head">Headline</li>
+          <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+          <li><cat-button color="primary">Nav item 1</cat-button></li>
+          <li><cat-button>Nav item 2</cat-button></li>
+          <li><cat-button color="warning">Nav item 3</cat-button></li>
           <li>
-            <cat-button variant="outlined" color="secondary" disabled onclick="console.log(4)">Nav item 4</cat-button>
+            <cat-button disabled>Nav item 4</cat-button>
           </li>
           <li>
-            <cat-button variant="outlined" color="secondary" onclick="console.log(5)">Nav item 5 (long)</cat-button>
+            <cat-button>Nav item 5 (long)</cat-button>
           </li>
+          <li class="cat-hr"></li>
           <li>
-            <cat-button variant="outlined" color="secondary" onclick="console.log(6)"
+            <cat-button color="danger" onclick="console.log(6)"
               >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
             >
           </li>

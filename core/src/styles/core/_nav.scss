@@ -1,0 +1,23 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+nav {
+  hr,
+  .cat-hr {
+    margin-top: $cat-nav-padding-horizontal * 0.5;
+    margin-bottom: $cat-nav-padding-horizontal * 0.5;
+  }
+
+  .cat-head,
+  .cat-text {
+    padding: $cat-nav-padding-horizontal * 0.5 $cat-nav-padding-horizontal;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .cat-head {
+    @include cat-head(5);
+  }
+}
