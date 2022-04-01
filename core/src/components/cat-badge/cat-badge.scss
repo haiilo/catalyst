@@ -45,7 +45,7 @@
   @include cat-font-smooth;
 }
 
-$-outline: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
+$-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 .cat-badge-outlined {
   background-color: cat-token('color.ui.background.body');
   box-shadow: $-outline;
@@ -58,9 +58,9 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     @if $theme == 'secondary' {
-      --base: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+      --border: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     } @else {
-      --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+      --border: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     }
   }
 }

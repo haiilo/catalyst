@@ -8,6 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 export namespace Components {
+    interface CatAlert {
+        /**
+          * The color palette of the alert.
+         */
+        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+    }
     interface CatBadge {
         /**
           * The color palette of the badge.
@@ -134,6 +140,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
+    }
+    var HTMLCatAlertElement: {
+        prototype: HTMLCatAlertElement;
+        new (): HTMLCatAlertElement;
+    };
     interface HTMLCatBadgeElement extends Components.CatBadge, HTMLStencilElement {
     }
     var HTMLCatBadgeElement: {
@@ -165,6 +177,7 @@ declare global {
         new (): HTMLCatSpinnerElement;
     };
     interface HTMLElementTagNameMap {
+        "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
@@ -173,6 +186,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CatAlert {
+        /**
+          * The color palette of the alert.
+         */
+        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+    }
     interface CatBadge {
         /**
           * The color palette of the badge.
@@ -313,6 +332,7 @@ declare namespace LocalJSX {
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface IntrinsicElements {
+        "cat-alert": CatAlert;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
         "cat-icon": CatIcon;
@@ -324,6 +344,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;

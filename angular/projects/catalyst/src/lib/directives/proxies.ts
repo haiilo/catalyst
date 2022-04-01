@@ -8,6 +8,27 @@ import { Components } from '@haiilo/catalyst';
 
 
 
+export declare interface CatAlert extends Components.CatAlert {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['color']
+})
+@Component({
+  selector: 'cat-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color']
+})
+export class CatAlert {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatBadge extends Components.CatBadge {}
 
 @ProxyCmp({

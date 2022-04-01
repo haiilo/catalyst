@@ -1,0 +1,45 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: block;
+  margin-bottom: $cat-body-margin-bottom;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cat-alert {
+  font: inherit;
+  color: cat-token-wrap(var(--text));
+  background-color: cat-token-wrap(var(--bg), $alpha: 0.1);
+  box-shadow: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
+  border-radius: cat-border-radius('m');
+  padding: cat-size('xs') * 0.5 cat-size('s') * 0.5;
+  width: 100%;
+}
+
+::slotted(:last-child) {
+  margin-bottom: 0 !important;
+}
+
+// ----- theme
+
+@mixin theme($theme) {
+  .cat-alert-#{$theme} {
+    --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    @if $theme == 'secondary' {
+      --border: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    } @else {
+      --border: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    }
+  }
+}
+
+@include theme('primary');
+@include theme('secondary');
+@include theme('success');
+@include theme('warning');
+@include theme('danger');

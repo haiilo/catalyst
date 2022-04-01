@@ -7,6 +7,7 @@ import type { JSX } from '@haiilo/catalyst';
 
 
 
+export const CatAlert = /*@__PURE__*/createReactComponent<JSX.CatAlert, HTMLCatAlertElement>('cat-alert');
 export const CatBadge = /*@__PURE__*/createReactComponent<JSX.CatBadge, HTMLCatBadgeElement>('cat-badge');
 export const CatButton = /*@__PURE__*/createReactComponent<JSX.CatButton, HTMLCatButtonElement>('cat-button');
 export const CatIcon = /*@__PURE__*/createReactComponent<JSX.CatIcon, HTMLCatIconElement>('cat-icon');

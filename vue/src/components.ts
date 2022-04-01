@@ -8,6 +8,11 @@ import type { JSX } from '@haiilo/catalyst';
 
 
 
+export const CatAlert = /*@__PURE__*/ defineContainer<JSX.CatAlert>('cat-alert', undefined, [
+  'color'
+]);
+
+
 export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge', undefined, [
   'variant',
   'color',
