@@ -126,6 +126,9 @@ export namespace Components {
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface CatMenu {
+        /**
+          * The placement of the menu.
+         */
         "placement": Placement;
     }
     interface CatSpinner {
@@ -319,6 +322,9 @@ declare namespace LocalJSX {
           * Emitted when the menu is opened.
          */
         "onCatOpen"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * The placement of the menu.
+         */
         "placement"?: Placement;
     }
     interface CatSpinner {

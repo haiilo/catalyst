@@ -2,6 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 /**
  * Alerts are used to display important messages inline.
+ *
+ * @part alert - The content of the alert.
  */
 @Component({
   tag: 'cat-alert',

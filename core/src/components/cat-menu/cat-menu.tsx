@@ -19,6 +19,9 @@ export class CatMenu {
   private trap?: focusTrap.FocusTrap;
   private keyListener?: (event: KeyboardEvent) => void;
 
+  /**
+   * The placement of the menu.
+   */
   @Prop() placement: Placement = 'bottom-start';
 
   /**
