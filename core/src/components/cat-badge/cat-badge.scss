@@ -1,0 +1,128 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-flex;
+  max-width: 100%;
+  vertical-align: baseline;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cat-badge {
+  font: inherit;
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: cat-border-radius('s');
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1;
+  white-space: nowrap;
+
+  slot {
+    display: inline-block;
+    @include cat-ellipsis;
+  }
+}
+
+// ----- round
+
+.cat-badge-round {
+  border-radius: 10rem;
+}
+
+// ----- theme
+
+.cat-badge-filled {
+  background-color: cat-token-wrap(var(--bg));
+  color: cat-token-wrap(var(--fill));
+  font-weight: 600;
+  @include cat-font-smooth;
+}
+
+$-outline: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
+.cat-badge-outlined {
+  background-color: cat-token('color.ui.background.body');
+  box-shadow: $-outline;
+  color: cat-token-wrap(var(--text));
+}
+
+@mixin theme($theme) {
+  .cat-badge-#{$theme} {
+    --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
+    --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    @if $theme == 'secondary' {
+      --base: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    } @else {
+      --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    }
+  }
+}
+
+@include theme('primary');
+@include theme('secondary');
+@include theme('success');
+@include theme('warning');
+@include theme('danger');
+
+// ----- size
+
+@mixin size($size, $fontSize) {
+  .cat-badge-#{$size} {
+    height: cat-size($size) * 0.5;
+    min-width: cat-size($size) * 0.5;
+    font-size: cat-body-font-size($fontSize);
+    padding: 0 cat-size($size) * 0.125;
+  }
+}
+
+@include size('xs', 'xs');
+@include size('s', 'xs');
+@include size('m', 'xs');
+@include size('l', 's');
+@include size('xl', 'm');
+
+// ----- pulse
+
+$-pulse-0: 0 0 0 0 cat-token-wrap(var(--bg));
+$-pulse-70: transparent 0px 0px 0px 0.5rem;
+$-pulse-100: transparent 0px 0px 0px 0px;
+
+.cat-badge-pulse {
+  &.cat-badge-filled {
+    animation: 1.5s ease 0s infinite normal none running pulse;
+  }
+  &.cat-badge-outlined {
+    animation: 1.5s ease 0s infinite normal none running pulse-outlined;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: $-pulse-0;
+  }
+  70% {
+    box-shadow: $-pulse-70;
+  }
+  100% {
+    box-shadow: $-pulse-100;
+  }
+}
+
+@keyframes pulse-outlined {
+  0% {
+    box-shadow: $-pulse-0, $-outline;
+  }
+  70% {
+    box-shadow: $-pulse-70, $-outline;
+  }
+  100% {
+    box-shadow: $-pulse-100, $-outline;
+  }
+}

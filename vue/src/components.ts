@@ -8,6 +8,15 @@ import type { JSX } from '@haiilo/catalyst';
 
 
 
+export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge', undefined, [
+  'variant',
+  'color',
+  'size',
+  'round',
+  'pulse'
+]);
+
+
 export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-button', undefined, [
   'variant',
   'color',
@@ -26,6 +35,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'iconSuffix',
   'buttonId',
   'a11yLabel',
+  'catClick',
   'catFocus',
   'catBlur'
 ]);
@@ -35,6 +45,13 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
   'icon',
   'size',
   'a11yLabel'
+]);
+
+
+export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', undefined, [
+  'placement',
+  'catOpen',
+  'catClose'
 ]);
 
 

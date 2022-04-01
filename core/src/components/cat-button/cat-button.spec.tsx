@@ -5,7 +5,7 @@ describe('cat-button', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatButton],
-      html: `<cat-button>Hello World</cat-button>`
+      html: `<cat-button></cat-button>`
     });
     expect(page.root?.shadowRoot).toEqualHtml(`
           <button class="cat-button cat-button-ellipsed cat-button-outlined cat-button-m cat-button-secondary" part="button" type="button">

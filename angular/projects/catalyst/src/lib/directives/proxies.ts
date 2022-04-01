@@ -8,7 +8,32 @@ import { Components } from '@haiilo/catalyst';
 
 
 
+export declare interface CatBadge extends Components.CatBadge {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['color', 'pulse', 'round', 'size', 'variant']
+})
+@Component({
+  selector: 'cat-badge',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'pulse', 'round', 'size', 'variant']
+})
+export class CatBadge {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatButton extends Components.CatButton {
+  /**
+   * Emitted when the button is clicked. 
+   */
+  catClick: EventEmitter<CustomEvent<MouseEvent>>;
   /**
    * Emitted when the button received focus. 
    */
@@ -36,7 +61,7 @@ export class CatButton {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catFocus', 'catBlur']);
+    proxyOutputs(this, this.el, ['catClick', 'catFocus', 'catBlur']);
   }
 }
 
@@ -58,6 +83,38 @@ export class CatIcon {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatMenu extends Components.CatMenu {
+  /**
+   * Emitted when the menu is opened. 
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the menu is closed. 
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['placement']
+})
+@Component({
+  selector: 'cat-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['placement']
+})
+export class CatMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catOpen', 'catClose']);
   }
 }
 

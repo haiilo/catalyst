@@ -8,6 +8,28 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 export namespace Components {
+    interface CatBadge {
+        /**
+          * The color palette of the badge.
+         */
+        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        /**
+          * Draw attention to the badge with a subtle animation.
+         */
+        "pulse": boolean;
+        /**
+          * Use round badge edges.
+         */
+        "round": boolean;
+        /**
+          * The size of the badge.
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * The rendering style of the badge.
+         */
+        "variant": 'filled' | 'outlined';
+    }
     interface CatButton {
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
@@ -112,6 +134,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCatBadgeElement extends Components.CatBadge, HTMLStencilElement {
+    }
+    var HTMLCatBadgeElement: {
+        prototype: HTMLCatBadgeElement;
+        new (): HTMLCatBadgeElement;
+    };
     interface HTMLCatButtonElement extends Components.CatButton, HTMLStencilElement {
     }
     var HTMLCatButtonElement: {
@@ -137,6 +165,7 @@ declare global {
         new (): HTMLCatSpinnerElement;
     };
     interface HTMLElementTagNameMap {
+        "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
@@ -144,6 +173,28 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CatBadge {
+        /**
+          * The color palette of the badge.
+         */
+        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        /**
+          * Draw attention to the badge with a subtle animation.
+         */
+        "pulse"?: boolean;
+        /**
+          * Use round badge edges.
+         */
+        "round"?: boolean;
+        /**
+          * The size of the badge.
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * The rendering style of the badge.
+         */
+        "variant"?: 'filled' | 'outlined';
+    }
     interface CatButton {
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
@@ -262,6 +313,7 @@ declare namespace LocalJSX {
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface IntrinsicElements {
+        "cat-badge": CatBadge;
         "cat-button": CatButton;
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
@@ -272,6 +324,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;

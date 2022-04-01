@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { CatMenu } from './cat-menu';
 
-describe('cat-menu', () => {
+describe.skip('cat-menu', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatMenu],
