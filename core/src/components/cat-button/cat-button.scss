@@ -6,10 +6,10 @@
   max-width: 100%;
   vertical-align: middle;
   @include cat-select(none);
+}
 
-  &[hidden] {
-    display: none;
-  }
+:host([hidden]) {
+  display: none;
 }
 
 .cat-button {

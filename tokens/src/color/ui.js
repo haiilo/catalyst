@@ -5,7 +5,9 @@ module.exports = {
         canvas: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "bg" } },
         body: { value: '{color.base.neutral.0.value}' },
         interaction: { value: '{color.base.brand.400.value}' },
-        notification: { value: '{color.base.red.400.value}' }
+        notification: { value: '{color.base.red.400.value}' },
+        skeleton: { value: '{color.base.neutral.200.value}' },
+        skeletonHighlight: { value: '{color.base.neutral.300.value}' }
       },
       border: {
         default: { value: '{color.base.neutral.200.value}' },

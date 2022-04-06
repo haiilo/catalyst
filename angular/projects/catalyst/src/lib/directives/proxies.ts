@@ -140,6 +140,27 @@ export class CatMenu {
 }
 
 
+export declare interface CatSkeleton extends Components.CatSkeleton {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['effect', 'lines', 'size', 'variant']
+})
+@Component({
+  selector: 'cat-skeleton',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['effect', 'lines', 'size', 'variant']
+})
+export class CatSkeleton {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatSpinner extends Components.CatSpinner {}
 
 @ProxyCmp({
