@@ -1,0 +1,51 @@
+@use '../variables' as *;
+
+@each $name, $theme in cat-token('color.theme') {
+  .cat-bg-#{$name} {
+    background-color: cat-token('color.theme.#{$name}.bg') !important;
+    color: cat-token('color.theme.#{$name}.fill') !important;
+  }
+
+  .cat-bg-#{$name}-hover {
+    transition: background-color cat-token('time.transition.s'), color cat-token('time.transition.s');
+
+    &:hover {
+      background-color: cat-token('color.theme.#{$name}.bgHover') !important;
+      color: cat-token('color.theme.#{$name}.fillHover') !important;
+    }
+  }
+
+  .cat-text-#{$name},
+  .cat-link-#{$name} {
+    color: cat-token('color.theme.#{$name}.text') !important;
+  }
+
+  .cat-link-#{$name},
+  .cat-text-#{$name}-hover {
+    transition: color cat-token('time.transition.s');
+
+    &:hover {
+      color: cat-token('color.theme.#{$name}.textHover') !important;
+    }
+    &:active {
+      color: cat-token('color.theme.#{$name}.textActive') !important;
+    }
+  }
+}
+
+.cat-active {
+  color: cat-token('color.theme.primary.text') !important;
+}
+
+.cat-muted {
+  opacity: cat-token('opacity.disabled') !important;
+}
+
+.cat-text-reset {
+  color: inherit !important;
+}
+
+.cat-link-reset {
+  color: inherit !important;
+  text-decoration: inherit !important;
+}
