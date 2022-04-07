@@ -1,0 +1,30 @@
+:host {
+  display: contents;
+}
+
+.tooltip-wrapper {
+  &:hover {
+    .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+  }
+}
+
+.tooltip {
+  position: absolute;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 4px;
+  color: #fff;
+  white-space: nowrap;
+  transition: .2s linear;
+  transition-delay: 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tooltip-content {
+  display: inline-block;
+}

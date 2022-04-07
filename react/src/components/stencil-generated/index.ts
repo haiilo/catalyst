@@ -13,3 +13,4 @@ export const CatButton = /*@__PURE__*/createReactComponent<JSX.CatButton, HTMLCa
 export const CatIcon = /*@__PURE__*/createReactComponent<JSX.CatIcon, HTMLCatIconElement>('cat-icon');
 export const CatMenu = /*@__PURE__*/createReactComponent<JSX.CatMenu, HTMLCatMenuElement>('cat-menu');
 export const CatSpinner = /*@__PURE__*/createReactComponent<JSX.CatSpinner, HTMLCatSpinnerElement>('cat-spinner');
+export const CatTooltip = /*@__PURE__*/createReactComponent<JSX.CatTooltip, HTMLCatTooltipElement>('cat-tooltip');

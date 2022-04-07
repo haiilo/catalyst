@@ -141,6 +141,20 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTooltip {
+        /**
+          * The content of the tooltip
+         */
+        "content": string;
+        /**
+          * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled": boolean;
+        /**
+          * The placement of the tooltip.
+         */
+        "placement": Placement;
+    }
 }
 declare global {
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
@@ -179,6 +193,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
+    }
+    var HTMLCatTooltipElement: {
+        prototype: HTMLCatTooltipElement;
+        new (): HTMLCatTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
@@ -186,6 +206,7 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-tooltip": HTMLCatTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -337,6 +358,20 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTooltip {
+        /**
+          * The content of the tooltip
+         */
+        "content": string;
+        /**
+          * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled"?: boolean;
+        /**
+          * The placement of the tooltip.
+         */
+        "placement"?: Placement;
+    }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
@@ -344,6 +379,7 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
         "cat-spinner": CatSpinner;
+        "cat-tooltip": CatTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -356,6 +392,7 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
 }
