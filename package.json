@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "link-lib": "npm run link-core && npm run link-angular",
     "link-core": "cd core && npm link && yarn link && cd ../angular/projects/catalyst && npm link @haiilo/catalyst && cd ../../ && npm link @haiilo/catalyst && cd ..",
     "link-angular": "cd angular && npm run build catalyst && cd dist/catalyst && yarn link && npm link && cd ../../"
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "is-ci": "^3.0.1"
   }
 }
