@@ -131,6 +131,20 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatScrollable {
+        /**
+          * Flags to enable/disable overflow.
+         */
+        "overflow": { x?: boolean; y?: boolean; };
+        /**
+          * Flag to enable/disable overscroll behavior.
+         */
+        "overscroll": boolean;
+        /**
+          * Flags to enable/disable scroll shadows.
+         */
+        "shadow": { x?: boolean; y?: boolean; };
+    }
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -173,6 +187,12 @@ declare global {
         prototype: HTMLCatMenuElement;
         new (): HTMLCatMenuElement;
     };
+    interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
+    }
+    var HTMLCatScrollableElement: {
+        prototype: HTMLCatScrollableElement;
+        new (): HTMLCatScrollableElement;
+    };
     interface HTMLCatSpinnerElement extends Components.CatSpinner, HTMLStencilElement {
     }
     var HTMLCatSpinnerElement: {
@@ -185,6 +205,7 @@ declare global {
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
+        "cat-scrollable": HTMLCatScrollableElement;
         "cat-spinner": HTMLCatSpinnerElement;
     }
 }
@@ -327,6 +348,20 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatScrollable {
+        /**
+          * Flags to enable/disable overflow.
+         */
+        "overflow"?: { x?: boolean; y?: boolean; };
+        /**
+          * Flag to enable/disable overscroll behavior.
+         */
+        "overscroll"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadows.
+         */
+        "shadow"?: { x?: boolean; y?: boolean; };
+    }
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -343,6 +378,7 @@ declare namespace LocalJSX {
         "cat-button": CatButton;
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
+        "cat-scrollable": CatScrollable;
         "cat-spinner": CatSpinner;
     }
 }
@@ -355,6 +391,7 @@ declare module "@stencil/core" {
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
         }
     }
