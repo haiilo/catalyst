@@ -5,10 +5,10 @@
   display: inline-flex;
   vertical-align: middle;
   @include cat-select(none);
+}
 
-  &[hidden] {
-    display: none;
-  }
+:host([hidden]) {
+  display: none;
 }
 
 span {
