@@ -20,7 +20,7 @@ export namespace Components {
          */
         "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
-          * Draw attention to the badge with a subtle pulse animation.
+          * Draw attention to the badge with a subtle animation.
          */
         "pulse": boolean;
         /**
@@ -226,7 +226,7 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
-          * Draw attention to the badge with a subtle pulse animation.
+          * Draw attention to the badge with a subtle animation.
          */
         "pulse"?: boolean;
         /**

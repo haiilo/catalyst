@@ -43,12 +43,12 @@
     "reset": "rm -rf ./dist ./loader ./node_modules ./www"
   },
   "dependencies": {
-    "@floating-ui/dom": "^0.4.1",
-    "@stencil/core": "2.13.0",
-    "focus-trap": "^6.8.0-beta.2",
+    "@floating-ui/dom": "0.4.1",
+    "@stencil/core": "2.15.0",
+    "focus-trap": "6.8.0-beta.2",
     "loglevel": "1.8.0",
     "sanitize.css": "13.0.0",
-    "tabbable": "^5.3.0-beta.1"
+    "tabbable": "5.3.0-beta.1"
   },
   "peerDependencies": {
     "@haiilo/catalyst-icons": ">=0.1.2",
@@ -59,7 +59,7 @@
     "@haiilo/catalyst-icons": "^0.1.2",
     "@haiilo/catalyst-tokens": "^0.1.4",
     "@stencil/angular-output-target": "^0.4.0",
-    "@stencil/react-output-target": "^0.2.1",
+    "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.6.0",
     "@types/jest": "^27.4.0",
@@ -71,7 +71,7 @@
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
     "prettier": "^2.5.1",
-    "puppeteer": "^10.0.0",
+    "puppeteer": "^13.5.2",
     "standard-version": "^9.3.2",
     "stylelint": "^14.4.0",
     "stylelint-config-prettier-scss": "^0.0.1",
