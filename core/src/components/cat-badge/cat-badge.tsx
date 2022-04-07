@@ -32,7 +32,7 @@ export class CatBadge {
   @Prop() round = false;
 
   /**
-   * Draw attention to the badge with a subtle animation.
+   * Draw attention to the badge with a subtle pulse animation.
    */
   @Prop() pulse = false;
 
