@@ -137,9 +137,13 @@ export namespace Components {
          */
         "cuiScrolledBuffer": number;
         /**
-          * Flags to enable/disable overflow.
+          * Flags to enable/disable overflowX.
          */
-        "overflow": { x?: boolean; y?: boolean; };
+        "overflowX": boolean;
+        /**
+          * Flags to enable/disable overflowY.
+         */
+        "overflowY": boolean;
         /**
           * Flag to enable/disable overscroll behavior.
          */
@@ -149,9 +153,13 @@ export namespace Components {
          */
         "scrolledInit": boolean;
         /**
-          * Flags to enable/disable scroll shadows.
+          * Flags to enable/disable scroll shadowX.
          */
-        "shadow": { x?: boolean; y?: boolean; };
+        "shadowX": boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "shadowY": boolean;
     }
     interface CatSpinner {
         /**
@@ -366,9 +374,13 @@ declare namespace LocalJSX {
         "onScrolledRight"?: (event: CustomEvent<boolean>) => void;
         "onScrolledTop"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Flags to enable/disable overflow.
+          * Flags to enable/disable overflowX.
          */
-        "overflow"?: { x?: boolean; y?: boolean; };
+        "overflowX"?: boolean;
+        /**
+          * Flags to enable/disable overflowY.
+         */
+        "overflowY"?: boolean;
         /**
           * Flag to enable/disable overscroll behavior.
          */
@@ -378,9 +390,13 @@ declare namespace LocalJSX {
          */
         "scrolledInit"?: boolean;
         /**
-          * Flags to enable/disable scroll shadows.
+          * Flags to enable/disable scroll shadowX.
          */
-        "shadow"?: { x?: boolean; y?: boolean; };
+        "shadowX"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "shadowY"?: boolean;
     }
     interface CatSpinner {
         /**

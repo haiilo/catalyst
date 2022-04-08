@@ -15,13 +15,21 @@ export class CatScrollable {
 
   @Element() el!: HTMLElement;
 
-  /** Flags to enable/disable scroll shadows. */
+  /** Flags to enable/disable scroll shadowX. */
   @Prop()
-  shadow: { x?: boolean; y?: boolean; } = { x: true, y: true };
+  shadowX = true;
 
-  /** Flags to enable/disable overflow. */
+  /** Flags to enable/disable scroll shadowY. */
   @Prop()
-  overflow: { x?: boolean; y?: boolean; } = { y: true };
+  shadowY = true;
+
+  /** Flags to enable/disable overflowX. */
+  @Prop()
+  overflowX = true;
+
+  /** Flags to enable/disable overflowY. */
+  @Prop()
+  overflowY = true;
 
   /** Flag to enable/disable overscroll behavior. */
   @Prop()
@@ -87,13 +95,12 @@ export class CatScrollable {
           ref={el => (this.scrollElement = el)}
           class={{
             'scrollable-content': true,
-            'scroll-x': !!this.overflow.x,
-            'scroll-y': !!this.overflow.y,
+            'scroll-x': this.overflowX,
+            'scroll-y': this.overflowY,
             'no-overscroll': !this.overscroll
           }}>
           <slot></slot>
         </div>
-
         <div class="shadow-right"></div>
         <div class="shadow-bottom"></div>
       </Host>
