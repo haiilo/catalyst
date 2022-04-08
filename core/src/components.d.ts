@@ -133,10 +133,6 @@ export namespace Components {
     }
     interface CatScrollable {
         /**
-          * Buffer to be used to calculate the scroll distance.
-         */
-        "cuiScrolledBuffer": number;
-        /**
           * Flags to enable/disable overflowX.
          */
         "overflowX": boolean;
@@ -148,6 +144,10 @@ export namespace Components {
           * Flag to enable/disable overscroll behavior.
          */
         "overscroll": boolean;
+        /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "scrolledBuffer": number;
         /**
           * Flag to fire an initial event after content initialization.
          */
@@ -390,14 +390,10 @@ declare namespace LocalJSX {
         "placement"?: Placement;
     }
     interface CatScrollable {
-        /**
-          * Buffer to be used to calculate the scroll distance.
-         */
-        "cuiScrolledBuffer"?: number;
-        "onScrolledBottom"?: (event: CustomEvent<boolean>) => void;
-        "onScrolledLeft"?: (event: CustomEvent<boolean>) => void;
-        "onScrolledRight"?: (event: CustomEvent<boolean>) => void;
-        "onScrolledTop"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledBottom"?: (event: CustomEvent<void>) => void;
+        "onScrolledLeft"?: (event: CustomEvent<void>) => void;
+        "onScrolledRight"?: (event: CustomEvent<void>) => void;
+        "onScrolledTop"?: (event: CustomEvent<void>) => void;
         /**
           * Flags to enable/disable overflowX.
          */
@@ -410,6 +406,10 @@ declare namespace LocalJSX {
           * Flag to enable/disable overscroll behavior.
          */
         "overscroll"?: boolean;
+        /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "scrolledBuffer"?: number;
         /**
           * Flag to fire an initial event after content initialization.
          */

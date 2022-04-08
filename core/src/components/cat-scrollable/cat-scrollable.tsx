@@ -5,7 +5,7 @@ import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 @Component({
   tag: 'cat-scrollable',
   styleUrl: 'cat-scrollable.scss',
-  shadow: true,
+  shadow: true
 })
 export class CatScrollable {
   scrollElement?: HTMLElement;
@@ -44,40 +44,43 @@ export class CatScrollable {
    * Buffer to be used to calculate the scroll distance.
    */
   @Prop()
-  cuiScrolledBuffer = 0;
+  scrolledBuffer = 0;
 
-  @Event() scrolledBottom!: EventEmitter<boolean>;
-  @Event() scrolledTop!: EventEmitter<boolean>;
-  @Event() scrolledLeft!: EventEmitter<boolean>;
-  @Event() scrolledRight!: EventEmitter<boolean>;
+  @Event() scrolledBottom!: EventEmitter<void>;
+  @Event() scrolledTop!: EventEmitter<void>;
+  @Event() scrolledLeft!: EventEmitter<void>;
+  @Event() scrolledRight!: EventEmitter<void>;
 
   componentDidRender() {
     if (this.scrollElement) {
-      this.scrolled = fromEvent(this.scrollElement, 'scroll')
+      console.log(this.scrollElement);
+      this.scrolled = fromEvent(this.el, 'scroll')
         .pipe(takeUntil(this.destroyed));
     }
+    this.attachEmitter('left', this.scrolledLeft, this.scrolledBuffer);
+    this.attachEmitter('right', this.scrolledLeft, this.scrolledBuffer);
+    this.attachEmitter('bottom', this.scrolledLeft, this.scrolledBuffer);
+    this.attachEmitter('top', this.scrolledLeft, this.scrolledBuffer);
+    merge(this.init, this.scrolled)
+      .pipe(map(() => ({
+          top: this.getScrollOffset('top') > 0,
+          left: this.getScrollOffset('left') > 0,
+          right: this.getScrollOffset('right') > 0,
+          bottom: this.getScrollOffset('bottom') > 0
+        })),
+        distinctUntilChanged(),
+        takeUntil(this.destroyed)
+      )
+      .subscribe(({ top, left, right, bottom }) => {
+        this.toggleClass('cat-scrollable-top', top);
+        this.toggleClass('cat-scrollable-left', left);
+        this.toggleClass('cat-scrollable-right', right);
+        this.toggleClass('cat-scrollable-bottom', bottom);
+      });
   }
 
   componentDidLoad() {
     this.checkInit(this.scrolledInit);
-  }
-
-  componentDidUpdate() {
-    merge(this.init, this.scrolled)
-      .pipe(map(() => ({
-        top: this.getScrollOffset('top') > 0,
-        left: this.getScrollOffset('left') > 0,
-        right: this.getScrollOffset('right') > 0,
-        bottom: this.getScrollOffset('bottom') > 0
-      })))
-      .pipe(distinctUntilChanged())
-      .pipe(takeUntil(this.destroyed))
-      .subscribe(({ top, left, right, bottom }) => {
-        this.toggleClass('cui-scrollable-top', top);
-        this.toggleClass('cui-scrollable-left', left);
-        this.toggleClass('cui-scrollable-right', right);
-        this.toggleClass('cui-scrollable-bottom', bottom);
-      });
   }
 
   disconnectedCallback() {
@@ -88,21 +91,19 @@ export class CatScrollable {
 
   render() {
     return (
-      <Host>
-        <div class="shadow-top"></div>
-        <div class="shadow-left"></div>
-        <div
-          ref={el => (this.scrollElement = el)}
-          class={{
-            'scrollable-content': true,
-            'scroll-x': this.overflowX,
-            'scroll-y': this.overflowY,
-            'no-overscroll': !this.overscroll
-          }}>
+      <Host class={{
+        'scrollable-content': true,
+        'scroll-x': this.overflowX,
+        'scroll-y': this.overflowY,
+        'no-overscroll': !this.overscroll
+      }}>
+        {this.shadowY && <div class='shadow-top'></div>}
+        {this.shadowX && <div class='shadow-left'></div>}
+
           <slot></slot>
-        </div>
-        <div class="shadow-right"></div>
-        <div class="shadow-bottom"></div>
+
+        {this.shadowX && <div class='shadow-right'></div>}
+        {this.shadowY && <div class='shadow-bottom'></div>}
       </Host>
     );
   }
@@ -124,18 +125,21 @@ export class CatScrollable {
   }
 
   protected getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom'): number {
-    switch (from) {
-      case 'top':
-        return this.el.scrollTop;
-      case 'left':
-        return this.el.scrollLeft;
-      case 'right':
-        return this.el.scrollWidth - this.el.clientWidth - this.el.scrollLeft;
-      case 'bottom':
-        return this.el.scrollHeight - this.el.clientHeight - this.el.scrollTop;
-      default:
-        return 0;
+    if (this.el) {
+      switch (from) {
+        case 'top':
+          return this.el.scrollTop;
+        case 'left':
+          return this.el.scrollLeft;
+        case 'right':
+          return this.el.scrollWidth - this.el.clientWidth - this.el.scrollLeft;
+        case 'bottom':
+          return this.el.scrollHeight - this.el.clientHeight - this.el.scrollTop;
+        default:
+          return 0;
+      }
     }
+    return 0;
   }
 
   protected toggleClass(name: string, value: boolean): void {
