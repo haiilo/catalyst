@@ -133,6 +133,10 @@ export namespace Components {
     }
     interface CatScrollable {
         /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "cuiScrolledBuffer": number;
+        /**
           * Flags to enable/disable overflow.
          */
         "overflow": { x?: boolean; y?: boolean; };
@@ -141,27 +145,13 @@ export namespace Components {
          */
         "overscroll": boolean;
         /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "scrolledInit": boolean;
+        /**
           * Flags to enable/disable scroll shadows.
          */
         "shadow": { x?: boolean; y?: boolean; };
-    }
-    interface CatSkeleton {
-        /**
-          * The animation style of the skeleton.
-         */
-        "effect": 'plain' | 'sheen' | 'pulse';
-        /**
-          * The number of text lines to be rendered for "head" and "body" variants. Defaults to 1 for "head" and 3 for "body". Will be ignored for other variants.
-         */
-        "lines"?: number;
-        /**
-          * The size of the skeleton. If the variant is set to "head", the size values "xs" to "xl" translate to the head levels `h1` to `h5`.
-         */
-        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
-        /**
-          * The rendering style of the skeleton.
-         */
-        "variant": 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
     interface CatSpinner {
         /**
@@ -211,12 +201,6 @@ declare global {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
-    interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
-    }
-    var HTMLCatSkeletonElement: {
-        prototype: HTMLCatSkeletonElement;
-        new (): HTMLCatSkeletonElement;
-    };
     interface HTMLCatSpinnerElement extends Components.CatSpinner, HTMLStencilElement {
     }
     var HTMLCatSpinnerElement: {
@@ -230,7 +214,6 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
         "cat-scrollable": HTMLCatScrollableElement;
-        "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
     }
 }
@@ -375,6 +358,14 @@ declare namespace LocalJSX {
     }
     interface CatScrollable {
         /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "cuiScrolledBuffer"?: number;
+        "onScrolledBottom"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledLeft"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledRight"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledTop"?: (event: CustomEvent<boolean>) => void;
+        /**
           * Flags to enable/disable overflow.
          */
         "overflow"?: { x?: boolean; y?: boolean; };
@@ -383,27 +374,13 @@ declare namespace LocalJSX {
          */
         "overscroll"?: boolean;
         /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "scrolledInit"?: boolean;
+        /**
           * Flags to enable/disable scroll shadows.
          */
         "shadow"?: { x?: boolean; y?: boolean; };
-    }
-    interface CatSkeleton {
-        /**
-          * The animation style of the skeleton.
-         */
-        "effect"?: 'plain' | 'sheen' | 'pulse';
-        /**
-          * The number of text lines to be rendered for "head" and "body" variants. Defaults to 1 for "head" and 3 for "body". Will be ignored for other variants.
-         */
-        "lines"?: number;
-        /**
-          * The size of the skeleton. If the variant is set to "head", the size values "xs" to "xl" translate to the head levels `h1` to `h5`.
-         */
-        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
-        /**
-          * The rendering style of the skeleton.
-         */
-        "variant"?: 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
     interface CatSpinner {
         /**
@@ -422,7 +399,6 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
         "cat-scrollable": CatScrollable;
-        "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
     }
 }
@@ -436,7 +412,6 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
-            "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
         }
     }
