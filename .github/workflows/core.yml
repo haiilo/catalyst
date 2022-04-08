@@ -1,5 +1,6 @@
 name: 'Core: buid & test'
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'core/**'
