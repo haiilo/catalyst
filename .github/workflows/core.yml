@@ -1,22 +1,27 @@
 name: 'Core: buid & test'
-
 on:
-  workflow_dispatch:
   push:
     paths:
       - 'core/**'
-
 defaults:
   run:
     working-directory: core
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/init.yml
     steps:
-      - name: Build
-        run: npm run build:ci
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: core/package-lock.json
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build:ci
   prettier:
     runs-on: ubuntu-latest
     steps:
