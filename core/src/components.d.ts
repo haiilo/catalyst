@@ -131,6 +131,35 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatScrollable {
+        /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "cuiScrolledBuffer": number;
+        /**
+          * Flags to enable/disable overflowX.
+         */
+        "overflowX": boolean;
+        /**
+          * Flags to enable/disable overflowY.
+         */
+        "overflowY": boolean;
+        /**
+          * Flag to enable/disable overscroll behavior.
+         */
+        "overscroll": boolean;
+        /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "scrolledInit": boolean;
+        /**
+          * Flags to enable/disable scroll shadowX.
+         */
+        "shadowX": boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "shadowY": boolean;
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -191,6 +220,11 @@ declare global {
         prototype: HTMLCatMenuElement;
         new (): HTMLCatMenuElement;
     };
+    interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
+    }
+    var HTMLCatScrollableElement: {
+        prototype: HTMLCatScrollableElement;
+        new (): HTMLCatScrollableElement;
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
@@ -209,6 +243,7 @@ declare global {
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
+        "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
     }
@@ -352,6 +387,39 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatScrollable {
+        /**
+          * Buffer to be used to calculate the scroll distance.
+         */
+        "cuiScrolledBuffer"?: number;
+        "onScrolledBottom"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledLeft"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledRight"?: (event: CustomEvent<boolean>) => void;
+        "onScrolledTop"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Flags to enable/disable overflowX.
+         */
+        "overflowX"?: boolean;
+        /**
+          * Flags to enable/disable overflowY.
+         */
+        "overflowY"?: boolean;
+        /**
+          * Flag to enable/disable overscroll behavior.
+         */
+        "overscroll"?: boolean;
+        /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "scrolledInit"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadowX.
+         */
+        "shadowX"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "shadowY"?: boolean;
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -386,6 +454,7 @@ declare namespace LocalJSX {
         "cat-button": CatButton;
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
+        "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
     }
@@ -399,6 +468,7 @@ declare module "@stencil/core" {
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
         }

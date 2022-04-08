@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  $elevation-transition: box-shadow 0.3s cubic-bezier(.25, .8, .25, 1);
+  $scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
+
+  .scrollable-content {
+    overflow: hidden;
+    flex: 1 1 auto;
+
+    &.scroll-x {
+      overflow-x: auto;
+    }
+
+    &.scroll-y {
+      overflow-y: auto;
+    }
+
+    &.no-overscroll {
+      overscroll-behavior: contain;
+    }
+  }
+
+  // ----- scroll shadows
+
+  %shadow {
+    position: absolute;
+    transition: $elevation-transition;
+  }
+
+  .shadow-top {
+    @extend %shadow;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+  }
+
+  .shadow-left {
+    @extend %shadow;
+    z-index: 4;
+    height: 100%;
+    left: 0;
+  }
+
+  .shadow-right {
+    @extend %shadow;
+    z-index: 4;
+    height: 100%;
+    right: 0;
+  }
+
+  .shadow-bottom {
+    @extend %shadow;
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+  }
+
+  &.cui-scrollable-top .shadow-top,
+  &.cui-scrollable-left .shadow-left,
+  &.cui-scrollable-right .shadow-right,
+  &.cui-scrollable-bottom .shadow-bottom {
+    box-shadow: $scrollable-shadow;
+  }
+
+}
