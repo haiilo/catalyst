@@ -7,7 +7,7 @@
 
 This project contains the Catalyst design system standalone Web Components using Stencil.
 
-# Stencil test
+# Stencil
 
 Stencil is a compiler for building fast web apps using Web Components.
 
