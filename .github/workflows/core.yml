@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'core/**'
+env:
+  HUSKY: 0
 defaults:
   run:
     working-directory: core
