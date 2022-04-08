@@ -160,6 +160,7 @@ export namespace Components {
           * Flags to enable/disable scroll shadowY.
          */
         "shadowY": boolean;
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -225,6 +226,7 @@ declare global {
     var HTMLCatScrollableElement: {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
+    };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
@@ -420,6 +422,7 @@ declare namespace LocalJSX {
           * Flags to enable/disable scroll shadowY.
          */
         "shadowY"?: boolean;
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.

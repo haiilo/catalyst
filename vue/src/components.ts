@@ -60,6 +60,21 @@ export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', un
 ]);
 
 
+export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('cat-scrollable', undefined, [
+  'shadowX',
+  'shadowY',
+  'overflowX',
+  'overflowY',
+  'overscroll',
+  'scrolledInit',
+  'cuiScrolledBuffer',
+  'scrolledBottom',
+  'scrolledTop',
+  'scrolledLeft',
+  'scrolledRight'
+]);
+
+
 export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [
   'effect',
   'variant',
