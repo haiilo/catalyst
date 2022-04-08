@@ -8,10 +8,10 @@ $-max-height: calc(100vh - 48px);
 
 :host {
   display: inline-block;
+}
 
-  &[hidden] {
-    display: none;
-  }
+:host([hidden]) {
+  display: none;
 }
 
 .content {

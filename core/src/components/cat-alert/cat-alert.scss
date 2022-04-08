@@ -4,10 +4,10 @@
 :host {
   display: block;
   margin-bottom: $cat-body-margin-bottom;
+}
 
-  &[hidden] {
-    display: none;
-  }
+:host([hidden]) {
+  display: none;
 }
 
 .cat-alert {

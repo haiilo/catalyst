@@ -48,7 +48,13 @@
 }
 
 @function cat-token-wrap($value, $alpha: 1) {
-  @if meta.type-of($value) == 'list' {
+  @if meta.type-of($value) == 'string' {
+    @if $alpha < 1 {
+      @return rgba($value, $alpha);
+    } @else {
+      @return rgb($value);
+    }
+  } @else if meta.type-of($value) == 'list' {
     @return color.adjust(
       #00000000,
       $red: list.nth($value, 1),
@@ -56,10 +62,8 @@
       $blue: list.nth($value, 3),
       $alpha: $alpha
     );
-  } @else if $alpha < 1 {
-    @return rgba($value, $alpha);
   } @else {
-    @return rgb($value);
+    @return $value;
   }
 }
 

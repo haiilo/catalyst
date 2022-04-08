@@ -5,10 +5,10 @@
   display: inline-flex;
   max-width: 100%;
   vertical-align: baseline;
+}
 
-  &[hidden] {
-    display: none;
-  }
+:host([hidden]) {
+  display: none;
 }
 
 .cat-badge {

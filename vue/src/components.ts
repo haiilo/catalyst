@@ -60,6 +60,14 @@ export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', un
 ]);
 
 
+export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [
+  'effect',
+  'variant',
+  'size',
+  'lines'
+]);
+
+
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
   'a11yLabel'
