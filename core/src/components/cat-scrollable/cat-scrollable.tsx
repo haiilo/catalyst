@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, EventEmitter, Event } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
@@ -52,8 +52,8 @@ export class CatScrollable {
   @Event() scrolledRight!: EventEmitter<void>;
 
   componentDidRender() {
-    if (this.el) {
-      this.scrolled = fromEvent(this.el, 'scroll')
+    if (this.scrollElement) {
+      this.scrolled = fromEvent(this.scrollElement, 'scroll')
         .pipe(takeUntil(this.destroyed));
     }
     this.attachEmitter('left', this.scrolledLeft, this.scrolledBuffer);
@@ -90,7 +90,9 @@ export class CatScrollable {
 
   render() {
     return (
-      <Host class={{
+      <div
+        ref={el => (this.scrollElement = el)}
+        class={{
         'scrollable-content': true,
         'scroll-x': this.overflowX,
         'scroll-y': this.overflowY,
@@ -103,7 +105,7 @@ export class CatScrollable {
 
         {this.shadowX && <div class='shadow-right'></div>}
         {this.shadowY && <div class='shadow-bottom'></div>}
-      </Host>
+      </div>
     );
   }
 
@@ -124,16 +126,16 @@ export class CatScrollable {
   }
 
   private getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom'): number {
-    if (this.el) {
+    if (this.scrollElement) {
       switch (from) {
         case 'top':
-          return this.el.scrollTop;
+          return this.scrollElement.scrollTop;
         case 'left':
-          return this.el.scrollLeft;
+          return this.scrollElement.scrollLeft;
         case 'right':
-          return this.el.scrollWidth - this.el.clientWidth - this.el.scrollLeft;
+          return this.scrollElement.scrollWidth - this.scrollElement.clientWidth - this.scrollElement.scrollLeft;
         case 'bottom':
-          return this.el.scrollHeight - this.el.clientHeight - this.el.scrollTop;
+          return this.scrollElement.scrollHeight - this.scrollElement.clientHeight - this.scrollElement.scrollTop;
         default:
           return 0;
       }
@@ -143,9 +145,9 @@ export class CatScrollable {
 
   private toggleClass(name: string, value: boolean): void {
     if (value) {
-      this.el.classList.add(name);
+      this.scrollElement?.classList.add(name);
     } else {
-      this.el.classList.remove(name);
+      this.scrollElement?.classList.remove(name);
     }
   }
 }

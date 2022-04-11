@@ -3,27 +3,33 @@ $scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
 
 :host {
   display: block;
+  overflow: auto;
+}
+.scrollable-content {
+  display: block;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
+  width: 100%;
+  height: 100%;
 }
 
-:host(.scroll-x) {
+.scrollable-content.scroll-x {
   overflow-x: auto;
 }
 
-:host(.scroll-y) {
+.scrollable-content.scroll-y {
   overflow-y: auto;
 }
 
-:host(.no-overscroll) {
+.scrollable-content.no-overscroll {
   overscroll-behavior: contain;
 }
 
-:host(.cat-scrollable-top) .shadow-top,
-:host(.cat-scrollable-bottom) .shadow-bottom,
-:host(.cat-scrollable-left) .shadow-left,
-:host(.cat-scrollable-right) .shadow-right {
+.scrollable-content.cat-scrollable-top .shadow-top,
+.scrollable-content.cat-scrollable-bottom .shadow-bottom,
+.scrollable-content.cat-scrollable-left .shadow-left,
+.scrollable-content.cat-scrollable-right .shadow-right {
   box-shadow: $scrollable-shadow;
 }
 
