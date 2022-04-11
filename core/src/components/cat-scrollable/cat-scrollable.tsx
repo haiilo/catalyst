@@ -52,15 +52,14 @@ export class CatScrollable {
   @Event() scrolledRight!: EventEmitter<void>;
 
   componentDidRender() {
-    if (this.scrollElement) {
-      console.log(this.scrollElement);
+    if (this.el) {
       this.scrolled = fromEvent(this.el, 'scroll')
         .pipe(takeUntil(this.destroyed));
     }
     this.attachEmitter('left', this.scrolledLeft, this.scrolledBuffer);
-    this.attachEmitter('right', this.scrolledLeft, this.scrolledBuffer);
-    this.attachEmitter('bottom', this.scrolledLeft, this.scrolledBuffer);
-    this.attachEmitter('top', this.scrolledLeft, this.scrolledBuffer);
+    this.attachEmitter('right', this.scrolledRight, this.scrolledBuffer);
+    this.attachEmitter('bottom', this.scrolledBottom, this.scrolledBuffer);
+    this.attachEmitter('top', this.scrolledTop, this.scrolledBuffer);
     merge(this.init, this.scrolled)
       .pipe(map(() => ({
           top: this.getScrollOffset('top') > 0,
