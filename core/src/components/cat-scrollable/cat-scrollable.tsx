@@ -107,7 +107,7 @@ export class CatScrollable {
     );
   }
 
-  protected attachEmitter(from: 'top' | 'left' | 'right' | 'bottom', emitter: EventEmitter<void>, buffer: number) {
+  private attachEmitter(from: 'top' | 'left' | 'right' | 'bottom', emitter: EventEmitter<void>, buffer: number) {
     merge(this.init, this.scrolled)
       .pipe(map(() => this.getScrollOffset(from)))
       .pipe(map(offset => offset <= buffer))
@@ -117,13 +117,13 @@ export class CatScrollable {
       .subscribe(() => emitter.emit());
   }
 
-  protected checkInit(init = true): void {
+  private checkInit(init = true): void {
     if (init) {
       this.init.next();
     }
   }
 
-  protected getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom'): number {
+  private getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom'): number {
     if (this.el) {
       switch (from) {
         case 'top':
@@ -141,7 +141,7 @@ export class CatScrollable {
     return 0;
   }
 
-  protected toggleClass(name: string, value: boolean): void {
+  private toggleClass(name: string, value: boolean): void {
     if (value) {
       this.el.classList.add(name);
     } else {
