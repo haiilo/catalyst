@@ -38,7 +38,7 @@
 }
 
 .cat-muted {
-  opacity: cat-token('opacity.disabled') !important;
+  color: cat-token('color.ui.font.muted') !important;
 }
 
 .cat-text-reset {

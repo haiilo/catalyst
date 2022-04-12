@@ -1,0 +1,78 @@
+@use '../variables' as *;
+
+@mixin -layout-property($name, $property, $value) {
+  .cat-#{$name} {
+    #{$property}: #{$value};
+    @content;
+  }
+}
+
+// -- Direction
+
+@include -layout-property('flex-row', 'flex-direction', 'row');
+@include -layout-property('flex-col', 'flex-direction', 'column');
+
+// -- Flex
+
+@include -layout-property('flex-1', 'flex', '1 1 0%');
+@include -layout-property('flex-auto', 'flex', '1 1 auto');
+@include -layout-property('flex-init', 'flex', '0 1 auto');
+@include -layout-property('flex-none', 'flex', 'none');
+
+// -- Wrap
+
+@include -layout-property('flex-wrap', 'flex-wrap', 'wrap');
+@include -layout-property('flex-nowrap', 'flex-wrap', 'nowrap');
+
+// -- Gap
+
+@each $size, $value in cat-token('size.spacing') {
+  @include -layout-property('gap-#{$size}', 'gap', $value);
+  @include -layout-property('gap-x-#{$size}', 'column-gap', $value);
+  @include -layout-property('gap-y-#{$size}', 'row-gap', $value);
+}
+
+// -- Alignment
+
+@include -layout-property('justify-start', 'justify-content', 'flex-start');
+@include -layout-property('justify-end', 'justify-content', 'flex-end');
+@include -layout-property('justify-center', 'justify-content', 'center');
+@include -layout-property('justify-between', 'justify-content', 'space-between');
+// @include -layout-property('justify-around', 'justify-content', 'space-around');
+// @include -layout-property('justify-evenly', 'justify-content', 'space-evenly');
+
+@include -layout-property('justify-items-start', 'justify-items', 'flex-start');
+@include -layout-property('justify-items-end', 'justify-items', 'flex-end');
+@include -layout-property('justify-items-center', 'justify-items', 'flex-center');
+@include -layout-property('justify-items-stretch', 'justify-items', 'flex-stretch');
+
+@include -layout-property('content-start', 'align-content', 'flex-start');
+@include -layout-property('content-end', 'align-content', 'flex-end');
+@include -layout-property('content-center', 'align-content', 'center');
+@include -layout-property('content-between', 'align-content', 'space-between');
+// @include -layout-property('content-around', 'align-content', 'space-around');
+// @include -layout-property('content-evenly', 'align-content', 'space-evenly');
+
+@include -layout-property('items-start', 'align-items', 'flex-start');
+@include -layout-property('items-end', 'align-items', 'flex-end');
+@include -layout-property('items-center', 'align-items', 'flex-center');
+@include -layout-property('items-stretch', 'align-items', 'flex-stretch');
+
+// -- Grid
+
+@for $i from 1 through 12 {
+  @include -layout-property('grid-#{$i}', 'grid-template-columns', 'repeat(#{$i}, minmax(0, 1fr))');
+  @include -layout-property('grid-col-#{$i}', 'grid-column', 'span #{$i} / span #{$i}');
+}
+
+@for $i from 1 through 6 {
+  @include -layout-property('grid-row-#{$i}', 'grid-row', 'span #{$i} / span #{$i}');
+}
+
+@include -layout-property(
+  'grid-auto',
+  'grid-template-columns',
+  'repeat(auto-fill,minmax(min(var(--grid-min),100%),1fr))'
+) {
+  --grid-min: 100%;
+}
