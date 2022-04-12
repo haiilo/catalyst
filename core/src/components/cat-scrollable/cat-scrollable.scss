@@ -1,39 +1,48 @@
 $elevation-transition: box-shadow 0.3s cubic-bezier(.25, .8, .25, 1);
-$scrollable-shadow: 0 0 14px 10px rgba(16, 29, 48, 0.20);
+$scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
 
 :host {
-  display: flex;
   overflow: hidden;
+  position: relative;
+  display: flex;
 }
 
-.slot-content {
-  width: 100%;
-  height: 100%;
+:host(.scroll-x) {
+  .scrollable-content {
+    overflow-x: auto;
+  }
+}
+
+:host(.scroll-y) {
+  .scrollable-content {
+    overflow-y: auto;
+  }
+}
+
+:host(.no-overscroll) {
+  .scrollable-content {
+    overscroll-behavior: contain;
+  }
 }
 
 .scrollable-content {
-  display: block;
-  flex: 1 1 100%;
-  position: relative;
+  overflow: hidden;
   white-space: nowrap;
 }
 
-.scrollable-content.scroll-x {
-  overflow-x: auto;
+.shadow-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
 }
 
-.scrollable-content.scroll-y {
-  overflow-y: auto;
-}
-
-.scrollable-content.no-overscroll {
-  overscroll-behavior: contain;
-}
-
-.scrollable-content.cat-scrollable-top .shadow-top,
-.scrollable-content.cat-scrollable-bottom .shadow-bottom,
-.scrollable-content.cat-scrollable-left .shadow-left,
-.scrollable-content.cat-scrollable-right .shadow-right {
+.shadow-wrapper.cat-scrollable-top .shadow-top,
+.shadow-wrapper.cat-scrollable-bottom .shadow-bottom,
+.shadow-wrapper.cat-scrollable-left .shadow-left,
+.shadow-wrapper.cat-scrollable-right .shadow-right {
   box-shadow: $scrollable-shadow;
 }
 

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
@@ -8,6 +8,7 @@ import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
   shadow: true
 })
 export class CatScrollable {
+  scrollShadowElement?: HTMLElement;
   scrollElement?: HTMLElement;
   private init = new Subject<void>();
   private destroyed = new Subject<void>();
@@ -90,22 +91,24 @@ export class CatScrollable {
 
   render() {
     return (
-      <div
-        ref={el => (this.scrollElement = el)}
-        class={{
-          'scrollable-content': true,
-          'scroll-x': this.overflowX,
-          'scroll-y': this.overflowY,
-          'no-overscroll': !this.overscroll
-        }}>
-        {this.shadowY && <div class='shadow-top'></div>}
-        {this.shadowX && <div class='shadow-left'></div>}
-
-        <slot></slot>
-
-        {this.shadowX && <div class='shadow-right'></div>}
-        {this.shadowY && <div class='shadow-bottom'></div>}
-      </div>
+      <Host class={{
+        'scroll-x': this.overflowX,
+        'scroll-y': this.overflowY,
+        'no-overscroll': !this.overscroll
+      }}>
+        <div class='shadow-wrapper'
+             ref={el => (this.scrollShadowElement = el)}>
+          {this.shadowY && <div class='shadow-top'></div>}
+          {this.shadowX && <div class='shadow-left'></div>}
+          {this.shadowX && <div class='shadow-right'></div>}
+          {this.shadowY && <div class='shadow-bottom'></div>}
+        </div>
+        <div
+          ref={el => (this.scrollElement = el)}
+          class='scrollable-content'>
+          <slot></slot>
+        </div>
+      </Host>
     );
   }
 
@@ -145,9 +148,9 @@ export class CatScrollable {
 
   private toggleClass(name: string, value: boolean): void {
     if (value) {
-      this.scrollElement?.classList.add(name);
+      this.scrollShadowElement?.classList.add(name);
     } else {
-      this.scrollElement?.classList.remove(name);
+      this.scrollShadowElement?.classList.remove(name);
     }
   }
 }
