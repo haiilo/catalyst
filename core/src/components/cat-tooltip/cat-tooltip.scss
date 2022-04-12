@@ -2,16 +2,6 @@
   display: contents;
 }
 
-.tooltip-wrapper {
-  &:hover {
-    .tooltip {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s;
-    }
-  }
-}
-
 .tooltip {
   position: absolute;
   padding: 5px 10px;
@@ -20,9 +10,13 @@
   color: #fff;
   white-space: nowrap;
   transition: .2s linear;
-  transition-delay: 500ms;
   visibility: hidden;
   opacity: 0;
+
+  &-show {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .tooltip-content {

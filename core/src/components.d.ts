@@ -169,9 +169,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The delay time for hiding tooltip in ms
+         */
+        "hideDelay": number;
+        /**
           * The placement of the tooltip.
          */
         "placement": Placement;
+        /**
+          * The delay time for showing tooltip in ms
+         */
+        "showDelay": number;
     }
 }
 declare global {
@@ -405,15 +413,23 @@ declare namespace LocalJSX {
         /**
           * The content of the tooltip
          */
-        "content": string;
+        "content"?: string;
         /**
           * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
          */
         "disabled"?: boolean;
         /**
+          * The delay time for hiding tooltip in ms
+         */
+        "hideDelay"?: number;
+        /**
           * The placement of the tooltip.
          */
         "placement"?: Placement;
+        /**
+          * The delay time for showing tooltip in ms
+         */
+        "showDelay"?: number;
     }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
