@@ -93,15 +93,15 @@ export class CatScrollable {
       <div
         ref={el => (this.scrollElement = el)}
         class={{
-        'scrollable-content': true,
-        'scroll-x': this.overflowX,
-        'scroll-y': this.overflowY,
-        'no-overscroll': !this.overscroll
-      }}>
+          'scrollable-content': true,
+          'scroll-x': this.overflowX,
+          'scroll-y': this.overflowY,
+          'no-overscroll': !this.overscroll
+        }}>
         {this.shadowY && <div class='shadow-top'></div>}
         {this.shadowX && <div class='shadow-left'></div>}
 
-          <slot></slot>
+        <slot></slot>
 
         {this.shadowX && <div class='shadow-right'></div>}
         {this.shadowY && <div class='shadow-bottom'></div>}

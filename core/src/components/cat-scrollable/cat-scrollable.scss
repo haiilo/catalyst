@@ -1,17 +1,21 @@
 $elevation-transition: box-shadow 0.3s cubic-bezier(.25, .8, .25, 1);
-$scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
+$scrollable-shadow: 0 0 14px 10px rgba(16, 29, 48, 0.20);
 
 :host {
-  display: block;
-  overflow: auto;
-}
-.scrollable-content {
-  display: block;
-  position: relative;
+  display: flex;
   overflow: hidden;
-  white-space: nowrap;
+}
+
+.slot-content {
   width: 100%;
   height: 100%;
+}
+
+.scrollable-content {
+  display: block;
+  flex: 1 1 100%;
+  position: relative;
+  white-space: nowrap;
 }
 
 .scrollable-content.scroll-x {
