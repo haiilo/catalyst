@@ -7,7 +7,8 @@ module.exports = {
         interaction: { value: '{color.base.brand.400.value}' },
         notification: { value: '{color.base.red.400.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
-        skeletonHighlight: { value: '{color.base.neutral.300.value}' }
+        skeletonHighlight: { value: '{color.base.neutral.300.value}' },
+        tooltip: { value: 'rgba(0, 0, 0, .7)' }
       },
       border: {
         default: { value: '{color.base.neutral.200.value}' },
@@ -20,7 +21,8 @@ module.exports = {
         mono: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-mono" } },
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.ui.font.body.value}' },
-        quoteSource: { value: '{color.ui.font.muted.value}' }
+        quoteSource: { value: '{color.ui.font.muted.value}' },
+        tooltip: { value: 'color.ui.base.neutral.0.value' }
       }
     }
   }

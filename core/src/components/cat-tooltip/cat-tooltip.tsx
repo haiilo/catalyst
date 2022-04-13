@@ -7,10 +7,11 @@ import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui
   shadow: true,
 })
 export class CatTooltip {
+  private static readonly OFFSET = 4;
   private tooltip?: HTMLElement;
-  private trigger?: Element;
-  private showTimeout: NodeJS.Timeout;
-  private hideTimeout: NodeJS.Timeout;
+  private trigger?: HTMLElement;
+  private showTimeout: number;
+  private hideTimeout: number;
 
   /**
    * The content of the tooltip
@@ -31,19 +32,18 @@ export class CatTooltip {
   /**
    * The delay time for showing tooltip in ms
    */
-  @Prop() showDelay = 500;
+  @Prop() showDelay = 1000;
 
   /**
    * The delay time for hiding tooltip in ms
    */
-  @Prop() hideDelay = 500;
+  @Prop() hideDelay = 0;
 
   componentDidLoad(): void {
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
     this.trigger?.addEventListener('mouseenter', this.showListener.bind(this));
-
     this.trigger?.addEventListener('mouseleave', this.hideListener.bind(this));
   }
 
@@ -55,7 +55,7 @@ export class CatTooltip {
   render() {
     return (
       <Host>
-        <div class="tooltip-content" ref={el => (this.trigger = el)}>
+        <div class="tooltip-trigger" ref={el => (this.trigger = el)}>
           <slot/>
         </div>
         {
@@ -76,7 +76,7 @@ export class CatTooltip {
     if (this.trigger && this.tooltip) {
       computePosition(this.trigger, this.tooltip, {
         placement: this.placement,
-        middleware: [offset(4), flip()]
+        middleware: [offset(CatTooltip.OFFSET), flip()]
       }).then(({x, y}) => {
         if (this.tooltip) {
           Object.assign(this.tooltip.style, {
@@ -89,15 +89,15 @@ export class CatTooltip {
   }
 
   private showListener() {
-    clearTimeout(this.hideTimeout);
-    this.showTimeout = setTimeout(() => {
+    window.clearTimeout(this.hideTimeout);
+    this.showTimeout = window.setTimeout(() => {
       this.tooltip?.classList.add('tooltip-show');
     }, this.showDelay);
   }
 
   private hideListener() {
-    clearTimeout(this.showTimeout);
-    this.hideTimeout = setTimeout(() => {
+    window.clearTimeout(this.showTimeout);
+    this.hideTimeout = window.setTimeout(() => {
       this.tooltip?.classList.remove('tooltip-show');
     }, this.hideDelay);
   }

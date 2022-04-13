@@ -1,12 +1,20 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 :host {
   display: contents;
 }
 
+:host([hidden]) {
+  display: none;
+}
+
 .tooltip {
   position: absolute;
+  @include cat-body('s');
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, .7);
-  border-radius: 4px;
+  border-radius: cat-border-radius('s');
   color: #fff;
   white-space: nowrap;
   transition: .2s linear;
@@ -19,6 +27,6 @@
   }
 }
 
-.tooltip-content {
-  display: inline-block;
+.tooltip-trigger {
+  display: contents;
 }
