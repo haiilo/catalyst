@@ -122,13 +122,13 @@ export class CatScrollable {
       .subscribe(() => emitter.emit());
   }
 
-  private checkInit(init = true): void {
+  private checkInit(init = true) {
     if (init) {
       this.init.next();
     }
   }
 
-  private getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom'): number {
+  private getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom') {
     if (this.scrollElement) {
       switch (from) {
         case 'top':
@@ -146,7 +146,7 @@ export class CatScrollable {
     return 0;
   }
 
-  private toggleClass(name: string, value: boolean): void {
+  private toggleClass(name: string, value: boolean) {
     if (value) {
       this.scrollShadowElement?.classList.add(name);
     } else {
