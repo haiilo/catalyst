@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/haiilo/catalyst/compare/@haiilo/catalyst/v0.2.1...@haiilo/catalyst/v0.2.2) (2022-04-12)
+
+
+### Features
+
+* **core:** flex & grid helpers ([4152d04](https://github.com/haiilo/catalyst/commit/4152d041190d7f31693d024cd6519e2ffb220e23))
+
 ### [0.2.1](https://github.com/haiilo/catalyst/compare/@haiilo/catalyst/v0.2.0...@haiilo/catalyst/v0.2.1) (2022-04-08)
 
 
