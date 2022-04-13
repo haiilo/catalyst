@@ -1,5 +1,5 @@
-$elevation-transition: box-shadow 0.3s cubic-bezier(.25, .8, .25, 1);
-$scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
+$-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.2);
+$-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 :host {
   overflow: hidden;
@@ -7,50 +7,46 @@ $scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.20);
   display: flex;
 }
 
-:host(.scroll-x) {
-  .scrollable-content {
-    overflow-x: auto;
-  }
+:host([hidden]) {
+  display: none;
 }
 
-:host(.scroll-y) {
-  .scrollable-content {
-    overflow-y: auto;
-  }
-}
+.scrollable-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
 
-:host(.no-overscroll) {
-  .scrollable-content {
-    overscroll-behavior: contain;
+  &.cat-scrollable-top .shadow-top,
+  &.cat-scrollable-bottom .shadow-bottom,
+  &.cat-scrollable-left .shadow-left,
+  &.cat-scrollable-right .shadow-right {
+    box-shadow: $-shadow;
   }
 }
 
 .scrollable-content {
   overflow: hidden;
   white-space: nowrap;
-}
 
-.shadow-wrapper {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.shadow-wrapper.cat-scrollable-top .shadow-top,
-.shadow-wrapper.cat-scrollable-bottom .shadow-bottom,
-.shadow-wrapper.cat-scrollable-left .shadow-left,
-.shadow-wrapper.cat-scrollable-right .shadow-right {
-  box-shadow: $scrollable-shadow;
+  &.scroll-x {
+    overflow-x: auto;
+  }
+  &.scroll-y {
+    overflow-y: auto;
+  }
+  &.no-overscroll {
+    overscroll-behavior: contain;
+  }
 }
 
 // ----- scroll shadows
 
 %shadow {
   position: absolute;
-  transition: $elevation-transition;
+  transition: $-shadow-transition;
 }
 
 .shadow-top {
