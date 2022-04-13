@@ -6,3 +6,11 @@
     border-radius: cat-border-radius($size);
   }
 }
+
+.cat-radius-0 {
+  border-radius: cat-border-radius('0');
+}
+
+.cat-radius-full {
+  border-radius: cat-border-radius('full');
+}
