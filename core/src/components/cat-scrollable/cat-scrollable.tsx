@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
@@ -8,10 +8,10 @@ import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
   shadow: true
 })
 export class CatScrollable {
-  scrollShadowElement?: HTMLElement;
   scrollElement?: HTMLElement;
-  private init = new Subject<void>();
-  private destroyed = new Subject<void>();
+  scrollWrapperElement?: HTMLElement;
+  private readonly init = new Subject<void>();
+  private readonly destroyed = new Subject<void>();
   private scrolled!: Observable<Event>;
 
   @Element() el!: HTMLElement;
@@ -54,15 +54,15 @@ export class CatScrollable {
 
   componentDidRender() {
     if (this.scrollElement) {
-      this.scrolled = fromEvent(this.scrollElement, 'scroll')
-        .pipe(takeUntil(this.destroyed));
+      this.scrolled = fromEvent(this.scrollElement, 'scroll').pipe(takeUntil(this.destroyed));
     }
     this.attachEmitter('left', this.scrolledLeft, this.scrolledBuffer);
     this.attachEmitter('right', this.scrolledRight, this.scrolledBuffer);
     this.attachEmitter('bottom', this.scrolledBottom, this.scrolledBuffer);
     this.attachEmitter('top', this.scrolledTop, this.scrolledBuffer);
     merge(this.init, this.scrolled)
-      .pipe(map(() => ({
+      .pipe(
+        map(() => ({
           top: this.getScrollOffset('top') > 0,
           left: this.getScrollOffset('left') > 0,
           right: this.getScrollOffset('right') > 0,
@@ -80,7 +80,9 @@ export class CatScrollable {
   }
 
   componentDidLoad() {
-    this.checkInit(this.scrolledInit);
+    if (this.scrolledInit) {
+      this.init.next();
+    }
   }
 
   disconnectedCallback() {
@@ -90,26 +92,25 @@ export class CatScrollable {
   }
 
   render() {
-    return (
-      <Host class={{
-        'scroll-x': this.overflowX,
-        'scroll-y': this.overflowY,
-        'no-overscroll': !this.overscroll
-      }}>
-        <div class='shadow-wrapper'
-             ref={el => (this.scrollShadowElement = el)}>
-          {this.shadowY && <div class='shadow-top'></div>}
-          {this.shadowX && <div class='shadow-left'></div>}
-          {this.shadowX && <div class='shadow-right'></div>}
-          {this.shadowY && <div class='shadow-bottom'></div>}
-        </div>
-        <div
-          ref={el => (this.scrollElement = el)}
-          class='scrollable-content'>
-          <slot></slot>
-        </div>
-      </Host>
-    );
+    return [
+      <div class="scrollable-wrapper" ref={el => (this.scrollWrapperElement = el)}>
+        {this.shadowY && <div class="shadow-top"></div>}
+        {this.shadowX && <div class="shadow-left"></div>}
+        {this.shadowX && <div class="shadow-right"></div>}
+        {this.shadowY && <div class="shadow-bottom"></div>}
+      </div>,
+      <div
+        ref={el => (this.scrollElement = el)}
+        class={{
+          'scrollable-content': true,
+          'scroll-x': this.overflowX,
+          'scroll-y': this.overflowY,
+          'no-overscroll': !this.overscroll
+        }}
+      >
+        <slot></slot>
+      </div>
+    ];
   }
 
   private attachEmitter(from: 'top' | 'left' | 'right' | 'bottom', emitter: EventEmitter<void>, buffer: number) {
@@ -120,12 +121,6 @@ export class CatScrollable {
       .pipe(filter(isLower => isLower))
       .pipe(takeUntil(this.destroyed))
       .subscribe(() => emitter.emit());
-  }
-
-  private checkInit(init = true) {
-    if (init) {
-      this.init.next();
-    }
   }
 
   private getScrollOffset(from: 'top' | 'left' | 'right' | 'bottom') {
@@ -148,9 +143,9 @@ export class CatScrollable {
 
   private toggleClass(name: string, value: boolean) {
     if (value) {
-      this.scrollShadowElement?.classList.add(name);
+      this.scrollWrapperElement?.classList.add(name);
     } else {
-      this.scrollShadowElement?.classList.remove(name);
+      this.scrollWrapperElement?.classList.remove(name);
     }
   }
 }

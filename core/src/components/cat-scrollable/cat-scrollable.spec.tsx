@@ -8,16 +8,17 @@ describe('cat-scrollable', () => {
       html: `<cat-scrollable></cat-scrollable>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-scrollable class="scroll-x scroll-y">
+      <cat-scrollable>
        <mock:shadow-root>
-         <div class='shadow-wrapper'>
-           <div class='shadow-top'></div>
-           <div class='shadow-left'></div>
-           <div class='shadow-right'></div>
-           <div class='shadow-bottom'></div>
+         <div class="scrollable-wrapper">
+           <div class="shadow-top"></div>
+           <div class="shadow-left"></div>
+           <div class="shadow-right"></div>
+           <div class="shadow-bottom"></div>
          </div>
-         <div class='scrollable-content'>
+         <div class="scrollable-content scroll-x scroll-y">
            <slot></slot>
+        </div>
       </cat-scrollable>
     `);
   });
