@@ -38,7 +38,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Check
         run: |
-          npm ci
+          npm ci --include=dev
           npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
