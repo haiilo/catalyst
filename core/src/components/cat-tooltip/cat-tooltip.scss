@@ -1,6 +1,9 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
+$tooltip-padding: 5px 10px;
+$tooltip-transition: .2s linear;
+
 :host {
   display: contents;
 }
@@ -12,21 +15,21 @@
 .tooltip {
   position: absolute;
   @include cat-body('s');
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, .7);
+  padding: $tooltip-padding;
+  background-color: rgba(cat-token('color.ui.background.tooltip'), .7);
   border-radius: cat-border-radius('s');
-  color: #fff;
+  color: cat-token('color.ui.font.tooltip');
   white-space: nowrap;
-  transition: .2s linear;
+  transition: $tooltip-transition;
   visibility: hidden;
-  opacity: 0;
+  opacity: cat-token('opacity.hidden');
 
   &-show {
-    opacity: 1;
+    opacity: cat-token('opacity.visible');
     visibility: visible;
   }
 }
 
 .tooltip-trigger {
-  display: contents;
+  display: inline-block;
 }

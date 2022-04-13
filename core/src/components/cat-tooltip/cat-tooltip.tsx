@@ -1,6 +1,8 @@
 import {Component, h, Host, Prop} from '@stencil/core';
 import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui/dom";
 
+let nextUniqueId = 0;
+
 @Component({
   tag: 'cat-tooltip',
   styleUrl: 'cat-tooltip.scss',
@@ -8,15 +10,16 @@ import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui
 })
 export class CatTooltip {
   private static readonly OFFSET = 4;
+  private readonly id = nextUniqueId++;
   private tooltip?: HTMLElement;
   private trigger?: HTMLElement;
-  private showTimeout: number;
-  private hideTimeout: number;
+  private showTimeout?: number;
+  private hideTimeout?: number;
 
   /**
    * The content of the tooltip
    */
-  @Prop() content: string;
+  @Prop() content?: string;
 
   /**
    * Specifies that the tooltip should be disabled. A disabled tooltip is unusable,
@@ -40,6 +43,7 @@ export class CatTooltip {
   @Prop() hideDelay = 0;
 
   componentDidLoad(): void {
+    this.tooltip?.setAttribute('id', this.contentId);
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
@@ -55,21 +59,28 @@ export class CatTooltip {
   render() {
     return (
       <Host>
-        <div class="tooltip-trigger" ref={el => (this.trigger = el)}>
+        <div
+          ref={el => (this.trigger = el)}
+          aria-describedby={this.contentId}
+          class="tooltip-trigger"
+        >
           <slot/>
         </div>
         {
           this.content && !this.disabled &&
           <div
             ref={el => (this.tooltip = el)}
-            aria-describedby={this.content}
-            class="tooltip"
+            class="tooltip tooltip-show"
           >
             {this.content}
           </div>
         }
       </Host>
     );
+  }
+
+  private get contentId() {
+    return `cat-tooltip-${this.id}`;
   }
 
   private update() {
