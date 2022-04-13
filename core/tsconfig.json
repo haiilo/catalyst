@@ -12,8 +12,7 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "strict": true,
-    "strictPropertyInitialization": false
+    "strict": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]

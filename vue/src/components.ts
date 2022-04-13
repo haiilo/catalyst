@@ -77,6 +77,8 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 export const CatTooltip = /*@__PURE__*/ defineContainer<JSX.CatTooltip>('cat-tooltip', undefined, [
   'content',
   'disabled',
-  'placement'
+  'placement',
+  'showDelay',
+  'hideDelay'
 ]);
 
