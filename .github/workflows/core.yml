@@ -20,10 +20,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: ./package-lock.json
       - name: Install and Build
         run: |
-          npm set-script prepare ""
           npm ci
           npm run build:ci
   prettier:
