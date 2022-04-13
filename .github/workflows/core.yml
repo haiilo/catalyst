@@ -1,8 +1,11 @@
 name: 'Core: buid & test'
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'core/**'
+env:
+  HUSKY: 0
 defaults:
   run:
     working-directory: core

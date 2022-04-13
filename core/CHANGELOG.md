@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/haiilo/catalyst/compare/@haiilo/catalyst/v0.2.1...@haiilo/catalyst/v0.2.2) (2022-04-12)
+
+
+### Features
+
+* **core:** flex & grid helpers ([4152d04](https://github.com/haiilo/catalyst/commit/4152d041190d7f31693d024cd6519e2ffb220e23))
+
+### [0.2.1](https://github.com/haiilo/catalyst/compare/@haiilo/catalyst/v0.2.0...@haiilo/catalyst/v0.2.1) (2022-04-08)
+
+
+### Features
+
+* **core:** typo and color styles ([b20fa87](https://github.com/haiilo/catalyst/commit/b20fa87cf62dfdb142fc6fbb819d4899e4eb1158))
+
+
+### Bug Fixes
+
+* **core:** fix cat-token function for map types ([ee63111](https://github.com/haiilo/catalyst/commit/ee63111ea583cecacb8cdb92f120f6f495140b2e))
+* **core:** update broken token dependency ([03b2241](https://github.com/haiilo/catalyst/commit/03b22411afb0944f89ab45217766234df08ff865))
+
 ## [0.2.0](https://github.com/haiilo/catalyst/compare/@haiilo/catalyst/v0.1.1...@haiilo/catalyst/v0.2.0) (2022-04-06)
 
 
