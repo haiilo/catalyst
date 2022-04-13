@@ -70,7 +70,7 @@ export class CatTooltip {
           this.content && !this.disabled &&
           <div
             ref={el => (this.tooltip = el)}
-            class="tooltip tooltip-show"
+            class="tooltip"
           >
             {this.content}
           </div>
