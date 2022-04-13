@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install and Build
         run: |
           npm ci
@@ -38,7 +38,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Check
         run: |
-          npm ci --include=dev
+          npm ci
           npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
