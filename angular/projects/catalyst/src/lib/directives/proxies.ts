@@ -142,40 +142,40 @@ export class CatMenu {
 
 export declare interface CatScrollable extends Components.CatScrollable {
   /**
-   *  
+   * Emitted when the content is fully scrolled to the top. 
    */
-  scrolledBottom: EventEmitter<CustomEvent<boolean>>;
+  scrolledTop: EventEmitter<CustomEvent<void>>;
   /**
-   *  
+   * Emitted when the content is fully scrolled to the left. 
    */
-  scrolledTop: EventEmitter<CustomEvent<boolean>>;
+  scrolledLeft: EventEmitter<CustomEvent<void>>;
   /**
-   *  
+   * Emitted when the content is fully scrolled to the right. 
    */
-  scrolledLeft: EventEmitter<CustomEvent<boolean>>;
+  scrolledRight: EventEmitter<CustomEvent<void>>;
   /**
-   *  
+   * Emitted when the content is fully scrolled to the bottom. 
    */
-  scrolledRight: EventEmitter<CustomEvent<boolean>>;
+  scrolledBottom: EventEmitter<CustomEvent<void>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['cuiScrolledBuffer', 'overflowX', 'overflowY', 'overscroll', 'scrolledInit', 'shadowX', 'shadowY']
+  inputs: ['overflowX', 'overflowY', 'overscroll', 'scrolledBuffer', 'scrolledInit', 'shadowX', 'shadowY']
 })
 @Component({
   selector: 'cat-scrollable',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['cuiScrolledBuffer', 'overflowX', 'overflowY', 'overscroll', 'scrolledInit', 'shadowX', 'shadowY']
+  inputs: ['overflowX', 'overflowY', 'overscroll', 'scrolledBuffer', 'scrolledInit', 'shadowX', 'shadowY']
 })
 export class CatScrollable {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['scrolledBottom', 'scrolledTop', 'scrolledLeft', 'scrolledRight']);
+    proxyOutputs(this, this.el, ['scrolledTop', 'scrolledLeft', 'scrolledRight', 'scrolledBottom']);
   }
 }
 

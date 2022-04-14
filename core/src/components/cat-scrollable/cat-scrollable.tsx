@@ -47,10 +47,25 @@ export class CatScrollable {
   @Prop()
   scrolledBuffer = 0;
 
-  @Event() scrolledBottom!: EventEmitter<void>;
+  /**
+   * Emitted when the content is fully scrolled to the top.
+   */
   @Event() scrolledTop!: EventEmitter<void>;
+
+  /**
+   * Emitted when the content is fully scrolled to the left.
+   */
   @Event() scrolledLeft!: EventEmitter<void>;
+
+  /**
+   * Emitted when the content is fully scrolled to the right.
+   */
   @Event() scrolledRight!: EventEmitter<void>;
+
+  /**
+   * Emitted when the content is fully scrolled to the bottom.
+   */
+  @Event() scrolledBottom!: EventEmitter<void>;
 
   componentDidRender() {
     if (this.scrollElement) {
