@@ -140,6 +140,46 @@ export class CatMenu {
 }
 
 
+export declare interface CatScrollable extends Components.CatScrollable {
+  /**
+   *  
+   */
+  scrolledBottom: EventEmitter<CustomEvent<boolean>>;
+  /**
+   *  
+   */
+  scrolledTop: EventEmitter<CustomEvent<boolean>>;
+  /**
+   *  
+   */
+  scrolledLeft: EventEmitter<CustomEvent<boolean>>;
+  /**
+   *  
+   */
+  scrolledRight: EventEmitter<CustomEvent<boolean>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['cuiScrolledBuffer', 'overflowX', 'overflowY', 'overscroll', 'scrolledInit', 'shadowX', 'shadowY']
+})
+@Component({
+  selector: 'cat-scrollable',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['cuiScrolledBuffer', 'overflowX', 'overflowY', 'overscroll', 'scrolledInit', 'shadowX', 'shadowY']
+})
+export class CatScrollable {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['scrolledBottom', 'scrolledTop', 'scrolledLeft', 'scrolledRight']);
+  }
+}
+
+
 export declare interface CatSkeleton extends Components.CatSkeleton {}
 
 @ProxyCmp({
