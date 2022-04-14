@@ -8,10 +8,6 @@
   @include cat-select(none);
 }
 
-:host([hidden]) {
-  display: none;
-}
-
 .cat-button {
   font: inherit;
   display: flex;
@@ -196,4 +192,8 @@
   .cat-button-content {
     text-align: left;
   }
+}
+
+:host([hidden]) {
+  display: none;
 }

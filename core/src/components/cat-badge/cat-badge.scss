@@ -46,6 +46,7 @@
 }
 
 $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
+
 .cat-badge-outlined {
   background-color: cat-token('color.ui.background.body');
   box-shadow: $-outline;
@@ -91,13 +92,14 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 // ----- pulse
 
 $-pulse-0: 0 0 0 0 cat-token-wrap(var(--bg));
-$-pulse-70: transparent 0px 0px 0px 0.5rem;
-$-pulse-100: transparent 0px 0px 0px 0px;
+$-pulse-70: transparent 0 0 0 0.5rem;
+$-pulse-100: transparent 0 0 0 0;
 
 .cat-badge-pulse {
   &.cat-badge-filled {
     animation: 1.5s ease 0s infinite normal none running pulse;
   }
+
   &.cat-badge-outlined {
     animation: 1.5s ease 0s infinite normal none running pulse-outlined;
   }
@@ -107,9 +109,11 @@ $-pulse-100: transparent 0px 0px 0px 0px;
   0% {
     box-shadow: $-pulse-0;
   }
+
   70% {
     box-shadow: $-pulse-70;
   }
+
   100% {
     box-shadow: $-pulse-100;
   }
@@ -119,9 +123,11 @@ $-pulse-100: transparent 0px 0px 0px 0px;
   0% {
     box-shadow: $-pulse-0, $-outline;
   }
+
   70% {
     box-shadow: $-pulse-70, $-outline;
   }
+
   100% {
     box-shadow: $-pulse-100, $-outline;
   }
