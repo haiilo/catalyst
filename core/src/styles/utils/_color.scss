@@ -27,6 +27,7 @@
     &:hover {
       color: cat-token('color.theme.#{$name}.textHover') !important;
     }
+
     &:active {
       color: cat-token('color.theme.#{$name}.textActive') !important;
     }
