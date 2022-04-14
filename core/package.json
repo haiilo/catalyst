@@ -52,7 +52,8 @@
   },
   "peerDependencies": {
     "@haiilo/catalyst-icons": ">=0.1.2",
-    "@haiilo/catalyst-tokens": ">=0.1.4"
+    "@haiilo/catalyst-tokens": ">=0.1.4",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",

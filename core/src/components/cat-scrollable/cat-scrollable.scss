@@ -1,5 +1,4 @@
-$-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.2);
-$-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+@import 'variables';
 
 :host {
   overflow: hidden;
@@ -23,7 +22,7 @@ $-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &.cat-scrollable-bottom .shadow-bottom,
   &.cat-scrollable-left .shadow-left,
   &.cat-scrollable-right .shadow-right {
-    box-shadow: $-shadow;
+    box-shadow: $cat-scrollable-shadow;
   }
 }
 
@@ -46,7 +45,7 @@ $-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 %shadow {
   position: absolute;
-  transition: $-shadow-transition;
+  transition: $cat-scrollable-shadow-transition;
 }
 
 .shadow-top {
