@@ -27,7 +27,7 @@ $cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
 // -- Scrollable
 // --------
 
-$cat-scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 0.2);
+$cat-scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 20%);
 $cat-scrollable-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 // --------

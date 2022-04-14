@@ -390,9 +390,21 @@ declare namespace LocalJSX {
         "placement"?: Placement;
     }
     interface CatScrollable {
+        /**
+          * Emitted when the content is fully scrolled to the bottom.
+         */
         "onScrolledBottom"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the content is fully scrolled to the left.
+         */
         "onScrolledLeft"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the content is fully scrolled to the right.
+         */
         "onScrolledRight"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the content is fully scrolled to the top.
+         */
         "onScrolledTop"?: (event: CustomEvent<void>) => void;
         /**
           * Flags to enable/disable overflowX.

@@ -67,11 +67,11 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
   'overflowY',
   'overscroll',
   'scrolledInit',
-  'cuiScrolledBuffer',
-  'scrolledBottom',
+  'scrolledBuffer',
   'scrolledTop',
   'scrolledLeft',
-  'scrolledRight'
+  'scrolledRight',
+  'scrolledBottom'
 ]);
 
 
