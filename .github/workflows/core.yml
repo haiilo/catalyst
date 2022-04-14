@@ -23,6 +23,10 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Build
         run: |
+          npm run prebuild:tokens && npm run build:tokens && npm run build:tokens
+          npm run prebuild:icons && npm run build:icons && npm run build:icons
+          npm run link:tokens
+          npm run link:icons
           npm ci
           npm run build:ci
   prettier:
