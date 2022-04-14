@@ -1,0 +1,77 @@
+@import 'variables';
+
+:host {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.scrollable-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+
+  &.cat-scrollable-top .shadow-top,
+  &.cat-scrollable-bottom .shadow-bottom,
+  &.cat-scrollable-left .shadow-left,
+  &.cat-scrollable-right .shadow-right {
+    box-shadow: $cat-scrollable-shadow;
+  }
+}
+
+.scrollable-content {
+  overflow: hidden;
+  white-space: nowrap;
+
+  &.scroll-x {
+    overflow-x: auto;
+  }
+  &.scroll-y {
+    overflow-y: auto;
+  }
+  &.no-overscroll {
+    overscroll-behavior: contain;
+  }
+}
+
+// ----- scroll shadows
+
+%shadow {
+  position: absolute;
+  transition: $cat-scrollable-shadow-transition;
+}
+
+.shadow-top {
+  @extend %shadow;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+}
+
+.shadow-left {
+  @extend %shadow;
+  z-index: 4;
+  height: 100%;
+  left: 0;
+}
+
+.shadow-right {
+  @extend %shadow;
+  z-index: 4;
+  height: 100%;
+  right: 0;
+}
+
+.shadow-bottom {
+  @extend %shadow;
+  z-index: 2;
+  width: 100%;
+  bottom: 0;
+}

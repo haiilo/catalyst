@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "node ./prepare.js",
     "link-lib": "npm run link-core && npm run link-angular",
     "link-core": "cd core && npm link && yarn link && cd ../angular/projects/catalyst && npm link @haiilo/catalyst && cd ../../ && npm link @haiilo/catalyst && cd ..",
     "link-angular": "cd angular && npm run build catalyst && cd dist/catalyst && yarn link && npm link && cd ../../"

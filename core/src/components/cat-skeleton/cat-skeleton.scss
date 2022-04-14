@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+
   --background: #{cat-token('color.ui.background.skeleton')};
   --highlight: #{cat-token('color.ui.background.skeletonHighlight')};
   --speed: 2s;
@@ -51,19 +52,23 @@
       width: var(--width, 100%);
       height: var(--height, #{cat-size($size)});
     }
+
     &.cat-skeleton-square,
     &.cat-skeleton-circle {
       width: var(--width, #{cat-size($size)});
       height: var(--height, #{cat-size($size)});
     }
+
     &.cat-skeleton-head,
     &.cat-skeleton-body {
       width: var(--width, var(--line-width, 100%));
     }
+
     &.cat-skeleton-head {
       height: calc(#{cat-head-font-size($lvl)} - #{$-text-offset});
       margin: calc((#{cat-head-line-height($lvl)} - #{cat-head-font-size($lvl)} + #{$-text-offset}) * 0.5) 0;
     }
+
     &.cat-skeleton-body {
       height: calc(#{cat-body-font-size($size)} - #{$-text-offset});
       margin: calc((#{cat-body-line-height($size)} - #{cat-body-font-size($size)} + #{$-text-offset}) * 0.5) 0;
@@ -85,6 +90,7 @@
   background-size: 300% 100%;
   animation: sheen var(--speed) ease-in-out infinite;
 }
+
 .cat-skeleton-pulse {
   position: relative;
   overflow: hidden;
