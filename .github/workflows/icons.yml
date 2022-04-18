@@ -1,5 +1,6 @@
 name: 'Icons: build & test'
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'icons/**'
