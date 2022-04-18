@@ -2,10 +2,7 @@ name: 'Tokens: build & test'
 on:
   push:
     paths:
-      - 'tokens/src/**'
-      - 'tokens/assets/**'
-      - 'tokens/config.js'
-      - 'tokens/package.json'
+      - 'tokens/**'
 defaults:
   run:
     working-directory: tokens
