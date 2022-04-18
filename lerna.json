@@ -1,0 +1,12 @@
+{
+  "version": "independent",
+  "npmClient": "npm",
+  "packages": [
+    "angular",
+    "core",
+    "icons",
+    "react",
+    "tokens",
+    "vue"
+  ]
+}

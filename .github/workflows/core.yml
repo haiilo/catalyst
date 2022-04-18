@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - 'core/**'
-env:
-  HUSKY: 0
 defaults:
   run:
     working-directory: core
@@ -18,7 +16,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13.1'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Install and Build

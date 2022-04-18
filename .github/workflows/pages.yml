@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - 'core/**'
-env:
-  HUSKY: 0
 defaults:
   run:
     working-directory: core
