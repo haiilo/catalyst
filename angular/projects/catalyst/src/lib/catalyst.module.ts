@@ -5,7 +5,11 @@ import * as Components from './directives/proxies';
 const CatComponents = [
   Components.CatButton,
   Components.CatIcon,
-  Components.CatSpinner
+  Components.CatSpinner,
+  Components.CatScrollable,
+  Components.CatAlert,
+  Components.CatBadge,
+  Components.CatSkeleton
 ];
 
 @NgModule({
@@ -17,7 +21,7 @@ const CatComponents = [
 export class CatalystModule {
 
   static forRoot(): ModuleWithProviders<CatalystModule> {
-    defineCustomElements();
+    defineCustomElements(window);
     return {
       ngModule: CatalystModule
     };
