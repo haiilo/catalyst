@@ -43,7 +43,6 @@ export class CatTooltip {
   @Prop() hideDelay = 0;
 
   componentDidLoad(): void {
-    this.tooltip?.setAttribute('id', this.contentId);
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
@@ -70,6 +69,7 @@ export class CatTooltip {
           this.content && !this.disabled &&
           <div
             ref={el => (this.tooltip = el)}
+            id={this.contentId}
             class="tooltip"
           >
             {this.content}
