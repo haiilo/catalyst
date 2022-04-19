@@ -1,11 +1,9 @@
 name: 'Tokens: build & test'
 on:
+  workflow_dispatch:
   push:
     paths:
-      - 'tokens/src/**'
-      - 'tokens/assets/**'
-      - 'tokens/config.js'
-      - 'tokens/package.json'
+      - 'tokens/**'
 defaults:
   run:
     working-directory: tokens
@@ -18,7 +16,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: tokens/package-lock.json
       - name: Install and Build
