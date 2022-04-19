@@ -16,7 +16,7 @@ $tooltip-transition: .2s linear;
   position: absolute;
   @include cat-body('s');
   padding: $tooltip-padding;
-  background-color: rgba(cat-token('color.ui.background.tooltip'), .7);
+  background-color: rgba(cat-token('color.ui.background.tooltip'), cat-token('opacity.tooltip'));
   border-radius: cat-border-radius('s');
   color: cat-token('color.ui.font.tooltip');
   white-space: nowrap;
