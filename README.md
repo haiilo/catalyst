@@ -9,6 +9,10 @@
 | `@haiilo/catalyst-react`     | React bindings for components     |  | [README](https://github.com/haiilo/catalyst/blob/main/react/README.md) |
 | `@haiilo/catalyst-vue`       | View bindings for components      |  | [README](https://github.com/haiilo/catalyst/blob/main/vue/README.md) |
 
+## Setup
+
+Please take a look at the official design documentation at https://design.haiilo.com and follow the [Getting Started](https://design.haiilo.com/7a807c8eb/p/12e811-getting-started) guide to learn how to setup your project locally.
+
 ## Code Contributors
 
 This project exists thanks to all the people who contribute.
