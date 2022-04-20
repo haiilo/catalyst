@@ -102,9 +102,9 @@ export class CatButton {
   @Prop() iconOnly: boolean | Breakpoint = false;
 
   /**
-   * Display the icon as a suffix.
+   * Display the icon on the right.
    */
-  @Prop() iconSuffix = false;
+  @Prop() iconRight = false;
 
   /**
    * Adds a unique identifier for the button. Please note that with this
@@ -268,11 +268,11 @@ export class CatButton {
   }
 
   private get hasPrefixIcon() {
-    return Boolean(this.icon) && !this._iconOnly && !this.iconSuffix;
+    return Boolean(this.icon) && !this._iconOnly && !this.iconRight;
   }
 
   private get hasSuffixIcon() {
-    return Boolean(this.icon) && !this._iconOnly && this.iconSuffix;
+    return Boolean(this.icon) && !this._iconOnly && this.iconRight;
   }
 
   private get content() {

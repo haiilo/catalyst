@@ -1,0 +1,49 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  @include cat-body('m');
+}
+
+.cat-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: cat-border-radius('s');
+  //padding: cat-size('s') * 0.25 cat-size('l') * 0.25;
+  //column-gap: cat-size('s') * 0.25;
+}
+
+
+label {
+}
+
+.cat-input-optional {
+  @include cat-body('xs');
+  color: cat-token('color.ui.font.muted');
+  margin-left: .25rem;
+}
+
+.cat-text-prefix,
+.cat-text-suffix {
+  background: lightgray;
+  padding: cat-size('s') * 0.25;
+  @include cat-select(none);
+}
+
+
+
+input {
+  font: inherit;
+  border: none;
+  outline: none;
+  flex: 1 1 auto;
+  //padding: cat-size('s') * 0.25 cat-size('l') * 0.25;
+
+}
+
+.cat-input-hint {
+  color: cat-token('color.ui.font.muted');
+}
