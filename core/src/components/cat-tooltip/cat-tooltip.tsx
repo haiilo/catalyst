@@ -10,7 +10,7 @@ let nextUniqueId = 0;
 })
 export class CatTooltip {
   private static readonly OFFSET = 4;
-  private readonly id = nextUniqueId++;
+  private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
   private trigger?: HTMLElement;
   private showTimeout?: number;
@@ -19,7 +19,7 @@ export class CatTooltip {
   /**
    * The content of the tooltip
    */
-  @Prop() content?: string;
+  @Prop() content = '';
 
   /**
    * Specifies that the tooltip should be disabled. A disabled tooltip is unusable,
@@ -60,7 +60,7 @@ export class CatTooltip {
       <Host>
         <div
           ref={el => (this.trigger = el)}
-          aria-describedby={this.contentId}
+          aria-describedby={this.id}
           class="tooltip-trigger"
         >
           <slot/>
@@ -69,7 +69,7 @@ export class CatTooltip {
           this.content && !this.disabled &&
           <div
             ref={el => (this.tooltip = el)}
-            id={this.contentId}
+            id={this.id}
             class="tooltip"
           >
             {this.content}
@@ -77,10 +77,6 @@ export class CatTooltip {
         }
       </Host>
     );
-  }
-
-  private get contentId() {
-    return `cat-tooltip-${this.id}`;
   }
 
   private update() {

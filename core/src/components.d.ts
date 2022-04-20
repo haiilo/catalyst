@@ -193,7 +193,7 @@ export namespace Components {
         /**
           * The content of the tooltip
          */
-        "content"?: string;
+        "content": string;
         /**
           * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
          */
