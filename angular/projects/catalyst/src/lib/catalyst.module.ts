@@ -21,7 +21,7 @@ const CatComponents = [
 export class CatalystModule {
 
   static forRoot(): ModuleWithProviders<CatalystModule> {
-    defineCustomElements(window);
+    defineCustomElements();
     return {
       ngModule: CatalystModule
     };
