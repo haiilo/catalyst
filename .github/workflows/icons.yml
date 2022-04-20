@@ -1,5 +1,6 @@
 name: 'Icons: build & test'
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'icons/**'
@@ -15,7 +16,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: icons/package-lock.json
       - name: Install and Build
