@@ -189,6 +189,12 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToast {
+        /**
+          * Type of toast
+         */
+        "type": 'success' | 'warning' | 'info' | 'tip' | 'alert';
+    }
 }
 declare global {
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
@@ -239,6 +245,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatToastElement extends Components.CatToast, HTMLStencilElement {
+    }
+    var HTMLCatToastElement: {
+        prototype: HTMLCatToastElement;
+        new (): HTMLCatToastElement;
+    };
     interface HTMLElementTagNameMap {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
@@ -248,6 +260,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-toast": HTMLCatToastElement;
     }
 }
 declare namespace LocalJSX {
@@ -463,6 +476,12 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToast {
+        /**
+          * Type of toast
+         */
+        "type"?: 'success' | 'warning' | 'info' | 'tip' | 'alert';
+    }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
@@ -472,6 +491,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-toast": CatToast;
     }
 }
 export { LocalJSX as JSX };
@@ -486,6 +506,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-toast": LocalJSX.CatToast & JSXBase.HTMLAttributes<HTMLCatToastElement>;
         }
     }
 }

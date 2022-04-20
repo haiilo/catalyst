@@ -1,0 +1,15 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@import "../../../node_modules/awesome-notifications/src/styles/style";
+
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.cat-toast {
+
+}
