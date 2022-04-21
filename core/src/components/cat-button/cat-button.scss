@@ -31,8 +31,8 @@
 // ----- content
 
 .cat-button-content {
-  flex: 1 1 auto;
-  text-align: center;
+  // flex: 1 1 auto;
+  // text-align: center;
 
   .cat-button-ellipsed & {
     @include cat-ellipsis;
@@ -175,7 +175,7 @@
 @include size('l', 'm', 1rem);
 @include size('xl', 'l', 1.25rem);
 
-// ----- context: nav
+// ----- context
 
 :host-context(nav) {
   width: 100%;
@@ -196,4 +196,12 @@
 
 :host([hidden]) {
   display: none;
+}
+
+:host(.cat-text-left) .cat-button {
+  justify-content: left;
+}
+
+:host(.cat-text-right) .cat-button {
+  justify-content: right;
 }
