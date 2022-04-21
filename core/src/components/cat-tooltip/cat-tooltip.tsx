@@ -15,6 +15,7 @@ export class CatTooltip {
   private static readonly OFFSET = 4;
   private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
+  private triggerElement?: HTMLElement;
   private trigger?: FocusableElement;
   private showTimeout?: number;
   private hideTimeout?: number;
@@ -57,6 +58,7 @@ export class CatTooltip {
   }
 
   componentDidLoad(): void {
+    this.trigger = firstTabbable(this.triggerElement) || this.triggerElement;
     if (!this.isTabbable) {
       this.trigger?.setAttribute('tabindex', '0');
     }
@@ -91,7 +93,7 @@ export class CatTooltip {
     return (
       <Host>
         <div
-          ref={el => (this.trigger = firstTabbable(el) || el)}
+          ref={el => (this.triggerElement = el)}
           aria-describedby={this.id}
           class="tooltip-trigger"
         >
