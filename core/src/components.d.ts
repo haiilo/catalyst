@@ -203,6 +203,10 @@ export namespace Components {
          */
         "hideDelay": number;
         /**
+          * The duration of tap to show the tooltip
+         */
+        "longTouchDuration": number;
+        /**
           * The placement of the tooltip.
          */
         "placement": Placement;
@@ -505,6 +509,10 @@ declare namespace LocalJSX {
           * The delay time for hiding tooltip in ms
          */
         "hideDelay"?: number;
+        /**
+          * The duration of tap to show the tooltip
+         */
+        "longTouchDuration"?: number;
         /**
           * The placement of the tooltip.
          */

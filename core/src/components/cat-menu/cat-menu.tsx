@@ -2,6 +2,7 @@ import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-
 import { Component, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import { FocusableElement, tabbable } from 'tabbable';
+import firstTabbable from "../../utils/first-tabbable";
 
 let nextUniqueId = 0;
 
@@ -44,7 +45,7 @@ export class CatMenu {
   }
 
   componentDidLoad(): void {
-    this.trigger = this.firstTabbable(this.triggerSlot);
+    this.trigger = firstTabbable(this.triggerSlot);
     this.trigger?.setAttribute('aria-haspopup', 'true');
     this.trigger?.setAttribute('aria-expanded', 'false');
     this.trigger?.setAttribute('aria-controls', this.contentId);
@@ -57,7 +58,7 @@ export class CatMenu {
     this.keyListener = event => {
       if (this.content && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
         const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });
-        const activeElement = this.firstTabbable(document.activeElement);
+        const activeElement = firstTabbable(document.activeElement);
         const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
         const activeOff = event.key === 'ArrowDown' ? 1 : -1;
         const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
@@ -130,9 +131,5 @@ export class CatMenu {
         }
       });
     }
-  }
-
-  private firstTabbable(container?: Element | null) {
-    return (container ? tabbable(container, { includeContainer: true, getShadowRoot: true }) : []).shift();
   }
 }

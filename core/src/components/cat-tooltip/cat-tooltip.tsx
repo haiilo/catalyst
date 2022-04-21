@@ -1,6 +1,7 @@
 import {Component, h, Host, Listen, Prop} from '@stencil/core';
 import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui/dom";
 import isTouchScreen from "../../utils/is-touch-screen";
+import firstTabbable from "../../utils/first-tabbable";
 
 let nextUniqueId = 0;
 
@@ -55,6 +56,9 @@ export class CatTooltip {
   }
 
   componentDidLoad(): void {
+    if (!this.isTabbable) {
+      this.trigger?.setAttribute('tabindex', '0');
+    }
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
@@ -89,7 +93,6 @@ export class CatTooltip {
           ref={el => (this.trigger = el)}
           aria-describedby={this.id}
           class="tooltip-trigger"
-          tabindex="0"
         >
           <slot/>
         </div>
@@ -105,6 +108,10 @@ export class CatTooltip {
         }
       </Host>
     );
+  }
+
+  private get isTabbable() {
+    return firstTabbable(this.trigger);
   }
 
   private update() {
