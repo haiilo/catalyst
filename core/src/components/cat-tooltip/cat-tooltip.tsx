@@ -2,6 +2,7 @@ import {Component, h, Host, Listen, Prop} from '@stencil/core';
 import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui/dom";
 import isTouchScreen from "../../utils/is-touch-screen";
 import firstTabbable from "../../utils/first-tabbable";
+import {FocusableElement} from "tabbable";
 
 let nextUniqueId = 0;
 
@@ -14,7 +15,7 @@ export class CatTooltip {
   private static readonly OFFSET = 4;
   private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
-  private trigger?: HTMLElement;
+  private trigger?: FocusableElement;
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
@@ -90,7 +91,7 @@ export class CatTooltip {
     return (
       <Host>
         <div
-          ref={el => (this.trigger = el)}
+          ref={el => (this.trigger = firstTabbable(el) || el)}
           aria-describedby={this.id}
           class="tooltip-trigger"
         >
