@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <h3>Tooltip</h3>
+    <div style="display: inline-block;">
+      <cat-tooltip content="This is a tooltip">
+        <p>Hover Me</p>
+      </cat-tooltip>
+    </div>
     <h2>Scrollable</h2>
     <cat-scrollable style="max-width: 200px; max-height: 120px">
       <div>
@@ -389,12 +395,6 @@
       <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
-    </div>
-    <h3>Tooltip</h3>
-    <div style="display: inline-block;">
-      <cat-tooltip content="This is a tooltip" show-delay="100" hide-delay="100">
-        <cat-button>Hover Me</cat-button>
-      </cat-tooltip>
     </div>
   </body>
 </html>

@@ -32,4 +32,8 @@ $tooltip-transition: .2s linear;
 
 .tooltip-trigger {
   display: inline-block;
+
+  &:focus {
+    outline: none;
+  }
 }
