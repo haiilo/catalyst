@@ -11,34 +11,48 @@
   display: flex;
   align-items: center;
   border: 1px solid red;
-  border-radius: cat-border-radius('s');
+  border-radius: cat-border-radius('m');
+  background: cat-token('color.ui.background.input');
+  overflow: hidden;
   //padding: cat-size('s') * 0.25 cat-size('l') * 0.25;
   //column-gap: cat-size('s') * 0.25;
 }
 
 
 label {
+  display: block;
+  // color: cat-token('color.ui.font.muted');
+  // @include cat-body('s');
+  // padding: 0;
+  margin: 0 0 0.25rem;
 }
 
 .cat-input-optional {
-  @include cat-body('xs');
+  @include cat-body('s');
   color: cat-token('color.ui.font.muted');
   margin-left: .25rem;
 }
 
 .cat-text-prefix,
 .cat-text-suffix {
-  background: lightgray;
+  background: cat-token('color.ui.background.inputPrefix');
+  color: cat-token('color.ui.font.muted');
   padding: cat-size('s') * 0.25;
   @include cat-select(none);
 }
 
-
+.cat-icon-prefix,
+.cat-icon-suffix {
+  margin: .5rem;
+}
 
 input {
   font: inherit;
   border: none;
   outline: none;
+  background: none;
+  margin: 0;
+  padding: 0;
   flex: 1 1 auto;
   //padding: cat-size('s') * 0.25 cat-size('l') * 0.25;
 
@@ -46,4 +60,7 @@ input {
 
 .cat-input-hint {
   color: cat-token('color.ui.font.muted');
+  @include cat-body('s');
+  padding: 0;
+  margin: 0.25rem 0 0;
 }
