@@ -9,5 +9,10 @@
     "react",
     "tokens",
     "vue"
-  ]
+  ],
+  "command": {
+    "version": {
+      "message": "chore(release): publish %s"
+    }
+  }
 }
