@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
@@ -35,8 +35,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^3.3.4000"
-  },
-  "dependencies": {
   },
   "peerDependencies": {
     "react": "^17.0.2",
