@@ -1,7 +1,7 @@
 {
   "extends": ["@commitlint/config-conventional"],
   "rules": {
-    "scope-enum": [2, "always", ["angular", "core", "icons", "react", "tokens", "vue", "other"]],
+    "scope-enum": [2, "always", ["angular", "core", "icons", "react", "tokens", "vue"]],
     "scope-case": [2, "always", "lower-case"]
   }
 }
