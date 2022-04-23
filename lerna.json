@@ -1,11 +1,9 @@
 {
-  "version": "independent",
   "npmClient": "npm",
   "packages": [
     "angular",
     "angular/projects/catalyst",
     "core",
-    "icons",
     "react",
     "tokens",
     "vue"

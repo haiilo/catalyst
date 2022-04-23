@@ -1,7 +1,11 @@
 {
-	"name": "angular",
-	"version": "0.0.1",
+	"name": "@haiilo/catalyst-angular-workspace",
+	"version": "0.3.0",
 	"private": true,
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "reset": "rm -rf ./dist ./node_modules"
+  },
 	"dependencies": {
 		"@angular/animations": "~13.3.3",
 		"@angular/common": "~13.3.3",
