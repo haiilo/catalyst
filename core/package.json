@@ -38,12 +38,12 @@
     "reset": "rm -rf ./dist ./loader ./www ./node_modules"
   },
   "peerDependencies": {
-    "@haiilo/catalyst-icons": ">=0.1.4",
-    "@haiilo/catalyst-tokens": ">=0.1.4",
+    "@haiilo/catalyst-icons": ">=0.2.0",
     "rxjs": "^7.5.5"
   },
   "dependencies": {
     "@floating-ui/dom": "0.4.1",
+    "@haiilo/catalyst-tokens": "0.3.0",
     "@stencil/core": "2.15.0",
     "focus-trap": "6.8.0-beta.2",
     "loglevel": "1.8.0",
@@ -52,8 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
-    "@haiilo/catalyst-icons": "^0.1.5",
-    "@haiilo/catalyst-tokens": "^0.1.5",
+    "@haiilo/catalyst-icons": "^0.2.0",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
