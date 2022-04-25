@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { CatToast } from './cat-toast';
 
-describe('cat-tast', () => {
+describe('cat-toast', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatToast],

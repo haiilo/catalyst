@@ -1,0 +1,45 @@
+@use '../variables' as *;
+
+.toastify {
+  &.cat-toastify {
+    background: $cat-toast-background-color;
+    color: $cat-toast-text-color;
+    padding: 0;
+
+    .toast-close {
+      float: right;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .cat-toastify-wrapper {
+      display: block;
+
+      .cat-toastify-title-wrapper {
+        width: 100%;
+        padding: 0.5rem;
+
+        &.with-border {
+          .cat-toastify-title-wrapper {
+            border-bottom: 1px solid $cat-toast-title-border;
+          }
+        }
+
+        .cat-toastify-title {
+          width: calc(100% - 30px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 15px;
+          line-height: 20px;
+          font-weight: 500;
+        }
+
+      }
+
+      .cat-toastify-message {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import { Component, h, Prop } from '@stencil/core';
-import { GlobalNotifications } from '../../utils/notifications';
+import { Component, h } from '@stencil/core';
+import { NotificationsService, ToastOptions } from '../../utils/notifications-service';
 
 /**
  * Toast Component
@@ -11,11 +11,6 @@ import { GlobalNotifications } from '../../utils/notifications';
   styleUrl: 'cat-toast.scss'
 })
 export class CatToast {
-  /**
-   * Type of toast
-   */
-  @Prop() type: 'success' | 'warning' | 'info' | 'tip' | 'alert' = 'success';
-
   render() {
     return (
       <button onClick={this.onClick.bind(this)}>
@@ -25,7 +20,15 @@ export class CatToast {
   }
 
   private onClick() {
-    GlobalNotifications.notifier.success('Success Click');
-    GlobalNotifications.notifier.warning('Warning Click');
+    const infoOptions: ToastOptions = {
+      duration: 2000
+    };
+    const successOptions: ToastOptions = {
+      duration: 2000
+    };
+    NotificationsService.error('Error Click');
+    NotificationsService.info('Info Click', 'Info message', infoOptions);
+    NotificationsService.success('Success Click', ' ', successOptions);
+
   }
 }

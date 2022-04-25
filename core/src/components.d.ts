@@ -190,10 +190,6 @@ export namespace Components {
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface CatToast {
-        /**
-          * Type of toast
-         */
-        "type": 'success' | 'warning' | 'info' | 'tip' | 'alert';
     }
 }
 declare global {
@@ -477,10 +473,6 @@ declare namespace LocalJSX {
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
     interface CatToast {
-        /**
-          * Type of toast
-         */
-        "type"?: 'success' | 'warning' | 'info' | 'tip' | 'alert';
     }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
