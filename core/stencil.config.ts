@@ -43,7 +43,7 @@ export const config: Config = {
       copy: [
         {
           src: '../node_modules/@haiilo/catalyst-tokens/assets',
-          dest: 'assets'
+          dest: 'build/assets'
         }
       ]
     },
