@@ -112,12 +112,33 @@ export namespace Components {
         "variant": 'filled' | 'outlined' | 'text';
     }
     interface CatCheckbox {
+        /**
+          * Checked state of the checkbox
+         */
         "checked"?: boolean;
+        /**
+          * Disabled state of the checkbox
+         */
         "disabled"?: boolean;
+        /**
+          * Flag to show/hide the label
+         */
         "hideLabel": boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
         "indeterminate": boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
         "label"?: string;
+        /**
+          * The name of the input
+         */
         "name"?: string;
+        /**
+          * Required state of the checkbox
+         */
         "required"?: boolean;
         "value"?: string;
     }
@@ -379,13 +400,37 @@ declare namespace LocalJSX {
         "variant"?: 'filled' | 'outlined' | 'text';
     }
     interface CatCheckbox {
+        /**
+          * Checked state of the checkbox
+         */
         "checked"?: boolean;
+        /**
+          * Disabled state of the checkbox
+         */
         "disabled"?: boolean;
+        /**
+          * Flag to show/hide the label
+         */
         "hideLabel"?: boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
         "indeterminate"?: boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
         "label"?: string;
+        /**
+          * The name of the input
+         */
         "name"?: string;
+        /**
+          * Emitted when the checked status of the checkbox is changed
+         */
         "onCheckboxChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Required state of the checkbox
+         */
         "required"?: boolean;
         "value"?: string;
     }
