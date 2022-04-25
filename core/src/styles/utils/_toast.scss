@@ -8,7 +8,7 @@
 
     .toast-close {
       float: right;
-      font-size: 1rem;
+      font-size: 20px;
       margin-top: 0.5rem;
     }
 
@@ -20,13 +20,11 @@
         padding: 0.5rem;
 
         &.with-border {
-          .cat-toastify-title-wrapper {
-            border-bottom: 1px solid $cat-toast-title-border;
-          }
+          border-bottom: 1px solid $cat-toast-title-border;
         }
 
         .cat-toastify-title {
-          width: calc(100% - 30px);
+          width: calc(100% - 22px);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -39,6 +37,7 @@
 
       .cat-toastify-message {
         width: 100%;
+        padding: 0.5rem;
       }
     }
   }

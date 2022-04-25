@@ -17,11 +17,12 @@ class NotificationsWrapper {
     const template = document.createElement('template');
     title = title.trim();
     message = message.trim();
-    const borderClass = message && message !== '' ? 'with-border' : '';
+    const hasMessage = message && message !== '';
+    const borderClass = hasMessage ? 'with-border' : '';
     template.innerHTML = `<div class="cat-toastify-wrapper">
         <div class="cat-toastify-title-wrapper ${borderClass}">
             <div class="cat-toastify-title">${title}</div></div>
-        <div class="cat-toastify-message">${message}</div>
+        ${hasMessage ? `<div class="cat-toastify-message">${message}</div>` : ''}
       </div>`;
     return template.content.firstChild as HTMLElement;
   }
