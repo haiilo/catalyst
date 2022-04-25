@@ -19,34 +19,33 @@ $checkbox-label-padding-left: 12px;
 .form-check {
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
 
-.form-check-input {
-  width: $checkbox-width;
-  height: $checkbox-height;
-  background-color: cat-token('color.ui.background.checkbox.standard');
-  vertical-align: middle;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: $checkbox-border-width solid cat-token('color.ui.border.checkbox');
-  border-radius: cat-border-radius('m');
-  appearance: none;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
-  cursor: pointer;
+  &-input {
+    width: $checkbox-width;
+    height: $checkbox-height;
+    background-color: cat-token('color.ui.background.checkbox.standard');
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: $checkbox-border-width solid cat-token('color.ui.border.checkbox');
+    border-radius: cat-border-radius('m');
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    cursor: pointer;
 
-  &:checked {
-    background-color: cat-token('color.ui.background.checkbox.checked');
-    background-image: url($checkbox-checked-bg);
-    background-size: $checkbox-checked-bg-size;
-    border-color: cat-token('color.ui.background.checkbox.checked');
+    &:checked {
+      background-color: cat-token('color.ui.background.checkbox.checked');
+      background-image: url($checkbox-checked-bg);
+      background-size: $checkbox-checked-bg-size;
+      border-color: cat-token('color.ui.background.checkbox.checked');
+    }
   }
-}
 
-.form-check-label {
-  @include cat-body('m');
-  color: cat-token('color.ui.font.checkbox');
-  padding-left: $checkbox-label-padding-left;
-  cursor: pointer;
+  &-label {
+    @include cat-body('m');
+    color: cat-token('color.ui.font.checkbox');
+    padding-left: $checkbox-label-padding-left;
+    cursor: pointer;
+  }
 }
