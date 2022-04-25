@@ -1,11 +1,11 @@
-import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 
 let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-checkbox',
   styleUrl: 'cat-checkbox.scss',
-  shadow: true,
+  shadow: true
 })
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
@@ -66,8 +66,8 @@ export class CatCheckbox {
     return (
       <div class="form-check">
         <input
-          ref={(el) => this.inputRef = el}
-          onInput={(event) => this.handleChange(event)}
+          ref={el => (this.inputRef = el)}
+          onInput={event => this.handleChange(event)}
           id={this.id}
           type="checkbox"
           name={this.name}
@@ -77,7 +77,11 @@ export class CatCheckbox {
           disabled={this.disabled}
           class="form-check-input"
         />
-        {!this.hideLabel && <label class="form-check-label" htmlFor={this.id}>{this.label}</label>}
+        {!this.hideLabel && (
+          <label class="form-check-label" htmlFor={this.id}>
+            {this.label}
+          </label>
+        )}
       </div>
     );
   }

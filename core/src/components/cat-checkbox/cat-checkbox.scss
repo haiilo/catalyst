@@ -31,8 +31,6 @@ $checkbox-label-padding-left: 12px;
   background-position: center;
   border: $checkbox-border-width solid cat-token('color.ui.border.checkbox');
   border-radius: cat-border-radius('m');
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   -webkit-print-color-adjust: exact;
   color-adjust: exact;
