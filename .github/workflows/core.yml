@@ -1,6 +1,5 @@
-name: 'Core: build & test'
+name: 'Core'
 on:
-  workflow_dispatch:
   push:
     paths:
       - 'core/**'
