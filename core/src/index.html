@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <h2>Checkbox</h2>
+    <cat-checkbox required label="Hello world" value="1"></cat-checkbox>
     <h2>Scrollable</h2>
     <cat-scrollable style="max-width: 200px; max-height: 120px">
       <div>
@@ -390,5 +392,11 @@
       <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
     </div>
+    <script>
+      const todoListElement = document.querySelector('cat-checkbox');
+      todoListElement.addEventListener('checkbox-change', event => {
+        console.log(event);
+      })
+    </script>
   </body>
 </html>

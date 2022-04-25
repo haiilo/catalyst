@@ -111,6 +111,16 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    interface CatCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "hideLabel": boolean;
+        "indeterminate": boolean;
+        "label"?: string;
+        "name"?: string;
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -209,6 +219,12 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
+    }
+    var HTMLCatCheckboxElement: {
+        prototype: HTMLCatCheckboxElement;
+        new (): HTMLCatCheckboxElement;
+    };
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
@@ -243,6 +259,7 @@ declare global {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
+        "cat-checkbox": HTMLCatCheckboxElement;
         "cat-icon": HTMLCatIconElement;
         "cat-menu": HTMLCatMenuElement;
         "cat-scrollable": HTMLCatScrollableElement;
@@ -361,6 +378,17 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    interface CatCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "hideLabel"?: boolean;
+        "indeterminate"?: boolean;
+        "label"?: string;
+        "name"?: string;
+        "onCheckboxChange"?: (event: CustomEvent<any>) => void;
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -467,6 +495,7 @@ declare namespace LocalJSX {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
+        "cat-checkbox": CatCheckbox;
         "cat-icon": CatIcon;
         "cat-menu": CatMenu;
         "cat-scrollable": CatScrollable;
@@ -481,6 +510,7 @@ declare module "@stencil/core" {
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
