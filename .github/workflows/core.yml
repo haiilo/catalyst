@@ -1,6 +1,5 @@
-name: 'Core: build & test'
+name: 'Core'
 on:
-  workflow_dispatch:
   push:
     paths:
       - 'core/**'
@@ -31,7 +30,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13.1'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Install and Check
@@ -46,7 +45,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13.1'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
@@ -61,7 +60,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13.1'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
@@ -76,7 +75,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13.1'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: core/package-lock.json
       - name: Install and Test

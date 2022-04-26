@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-react",
-  "version": "0.0.6",
+  "version": "0.3.2",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
@@ -13,10 +13,11 @@
   },
   "scripts": {
     "build": "npm run clean && npm run compile",
-    "clean": "rm -rf dist",
     "compile": "npm run tsc",
     "tsc": "tsc -p .",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "clean": "rm -rf ./dist",
+    "reset": "rm -rf ./dist ./node_modules"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -24,6 +25,10 @@
   "files": [
     "dist/"
   ],
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
     "@types/jest": "23.3.9",
     "@types/node": "^15.12.2",
@@ -35,12 +40,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^3.3.4000"
-  },
-  "dependencies": {
-  },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   },
   "jest": {
     "preset": "ts-jest",

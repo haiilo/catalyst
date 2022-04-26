@@ -5,8 +5,8 @@
     "baseUrl": "./",
     "paths": {
       "catalyst": [
-        "dist/catalyst/catalyst",
-        "dist/catalyst"
+        "dist/catalyst",
+        "dist/catalyst/*"
       ]
     },
     "outDir": "./dist/out-tsc",
