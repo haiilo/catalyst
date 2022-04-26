@@ -5,19 +5,25 @@ describe('cat-tooltip', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatTooltip],
-      html: `<cat-tooltip content="tooltip">hover me</cat-tooltip>`
+      html: `
+        <cat-tooltip content="This is a tooltip">
+            <p>Hover me</p>
+        </cat-tooltip>
+        `
     });
     expect(page.root).toEqualHtml(`
-       <cat-tooltip content="tooltip">
+     <cat-tooltip content="This is a tooltip">
        <mock:shadow-root>
-         <div class="tooltip-content">
+         <div aria-describedby="cat-tooltip-0" class="tooltip-trigger" tabindex="0">
            <slot></slot>
          </div>
-         <div aria-describedby="tooltip" class="tooltip">
-          tooltip
+         <div class="tooltip" id="cat-tooltip-0">
+          This is a tooltip
          </div>
        </mock:shadow-root>
-       hover me
+       <p>
+         Hover me
+       </p>
      </cat-tooltip>
     `);
   });
