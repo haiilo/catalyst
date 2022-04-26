@@ -1,0 +1,36 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: contents;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.tooltip {
+  position: absolute;
+  @include cat-body('s');
+  padding: 0.25rem;
+  background-color: rgba(cat-token('color.ui.background.tooltip'), cat-token('opacity.tooltip'));
+  border-radius: cat-border-radius('s');
+  color: cat-token('color.ui.font.tooltip');
+  white-space: nowrap;
+  transition: cat-token('time.transition.s') linear;
+  visibility: hidden;
+  opacity: 0;
+
+  &-show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.tooltip-trigger {
+  display: inline-block;
+
+  &:focus {
+    outline: none;
+  }
+}

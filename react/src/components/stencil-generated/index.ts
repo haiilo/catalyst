@@ -15,3 +15,4 @@ export const CatMenu = /*@__PURE__*/createReactComponent<JSX.CatMenu, HTMLCatMen
 export const CatScrollable = /*@__PURE__*/createReactComponent<JSX.CatScrollable, HTMLCatScrollableElement>('cat-scrollable');
 export const CatSkeleton = /*@__PURE__*/createReactComponent<JSX.CatSkeleton, HTMLCatSkeletonElement>('cat-skeleton');
 export const CatSpinner = /*@__PURE__*/createReactComponent<JSX.CatSpinner, HTMLCatSpinnerElement>('cat-spinner');
+export const CatTooltip = /*@__PURE__*/createReactComponent<JSX.CatTooltip, HTMLCatTooltipElement>('cat-tooltip');
