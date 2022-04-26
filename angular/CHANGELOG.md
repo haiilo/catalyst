@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/haiilo/catalyst/compare/v0.3.2...v0.4.0) (2022-04-26)
+
+
+### Features
+
+* **core:** add tooltip component ([8134e98](https://github.com/haiilo/catalyst/commit/8134e98cde4f7b9e746c2179ffafdbfe8eff4128))
+
+
+
+
+
 ## [0.3.2](https://github.com/haiilo/catalyst/compare/v0.3.1...v0.3.2) (2022-04-25)
 
 **Note:** Version bump only for package @haiilo/catalyst-angular-workspace
