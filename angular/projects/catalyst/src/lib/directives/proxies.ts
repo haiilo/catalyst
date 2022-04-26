@@ -140,6 +140,34 @@ export class CatMenu {
 }
 
 
+export declare interface CatRadio extends Components.CatRadio {
+  /**
+   * Emitted when the radio is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['checked', 'disabled', 'hideLabel', 'label', 'name', 'required', 'value']
+})
+@Component({
+  selector: 'cat-radio',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['checked', 'disabled', 'hideLabel', 'label', 'name', 'required', 'value']
+})
+export class CatRadio {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
+  }
+}
+
+
 export declare interface CatScrollable extends Components.CatScrollable {
   /**
    * Emitted when the content is fully scrolled to the top. 

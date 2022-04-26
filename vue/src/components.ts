@@ -60,6 +60,18 @@ export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', un
 ]);
 
 
+export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio', undefined, [
+  'checked',
+  'required',
+  'disabled',
+  'name',
+  'value',
+  'label',
+  'hideLabel',
+  'catChange'
+]);
+
+
 export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('cat-scrollable', undefined, [
   'shadowX',
   'shadowY',
