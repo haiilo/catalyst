@@ -22,7 +22,7 @@ export class CatTooltip {
   private touchTimeout?: number;
 
   /**
-   * The content of the tooltip
+   * The content of the tooltip.
    */
   @Prop() content = '';
 
@@ -38,17 +38,17 @@ export class CatTooltip {
   @Prop() placement: Placement = 'top';
 
   /**
-   * The delay time for showing tooltip in ms
+   * The delay time for showing tooltip in ms.
    */
   @Prop() showDelay = 1000;
 
   /**
-   * The delay time for hiding tooltip in ms
+   * The delay time for hiding tooltip in ms.
    */
   @Prop() hideDelay = 0;
 
   /**
-  * The duration of tap to show the tooltip
+  * The duration of tap to show the tooltip.
   */
   @Prop() longTouchDuration = 1000;
 

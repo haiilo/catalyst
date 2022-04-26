@@ -191,7 +191,7 @@ export namespace Components {
     }
     interface CatTooltip {
         /**
-          * The content of the tooltip
+          * The content of the tooltip.
          */
         "content": string;
         /**
@@ -199,11 +199,11 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * The delay time for hiding tooltip in ms
+          * The delay time for hiding tooltip in ms.
          */
         "hideDelay": number;
         /**
-          * The duration of tap to show the tooltip
+          * The duration of tap to show the tooltip.
          */
         "longTouchDuration": number;
         /**
@@ -211,7 +211,7 @@ export namespace Components {
          */
         "placement": Placement;
         /**
-          * The delay time for showing tooltip in ms
+          * The delay time for showing tooltip in ms.
          */
         "showDelay": number;
     }
@@ -498,7 +498,7 @@ declare namespace LocalJSX {
     }
     interface CatTooltip {
         /**
-          * The content of the tooltip
+          * The content of the tooltip.
          */
         "content"?: string;
         /**
@@ -506,11 +506,11 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The delay time for hiding tooltip in ms
+          * The delay time for hiding tooltip in ms.
          */
         "hideDelay"?: number;
         /**
-          * The duration of tap to show the tooltip
+          * The duration of tap to show the tooltip.
          */
         "longTouchDuration"?: number;
         /**
@@ -518,7 +518,7 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
         /**
-          * The delay time for showing tooltip in ms
+          * The delay time for showing tooltip in ms.
          */
         "showDelay"?: number;
     }
