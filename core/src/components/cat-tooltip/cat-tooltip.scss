@@ -12,7 +12,7 @@
 .tooltip {
   position: absolute;
   @include cat-body('s');
-  padding: .25rem;
+  padding: 0.25rem;
   background-color: rgba(cat-token('color.ui.background.tooltip'), cat-token('opacity.tooltip'));
   border-radius: cat-border-radius('s');
   color: cat-token('color.ui.font.tooltip');

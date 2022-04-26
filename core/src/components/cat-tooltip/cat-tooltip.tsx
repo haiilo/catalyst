@@ -1,15 +1,15 @@
-import {Component, h, Host, Listen, Prop} from '@stencil/core';
-import {autoUpdate, computePosition, flip, offset, Placement} from "@floating-ui/dom";
-import isTouchScreen from "../../utils/is-touch-screen";
-import firstTabbable from "../../utils/first-tabbable";
-import {FocusableElement} from "tabbable";
+import { Component, h, Host, Listen, Prop } from '@stencil/core';
+import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import isTouchScreen from '../../utils/is-touch-screen';
+import firstTabbable from '../../utils/first-tabbable';
+import { FocusableElement } from 'tabbable';
 
 let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-tooltip',
   styleUrl: 'cat-tooltip.scss',
-  shadow: true,
+  shadow: true
 })
 export class CatTooltip {
   private static readonly OFFSET = 4;
@@ -48,12 +48,12 @@ export class CatTooltip {
   @Prop() hideDelay = 0;
 
   /**
-  * The duration of tap to show the tooltip.
-  */
+   * The duration of tap to show the tooltip.
+   */
   @Prop() longTouchDuration = 1000;
 
   @Listen('keydown')
-  handleKeyDown({key}: KeyboardEvent) {
+  handleKeyDown({ key }: KeyboardEvent) {
     key === 'Escape' && this.hideListener();
   }
 
@@ -84,31 +84,22 @@ export class CatTooltip {
     } else {
       this.trigger?.removeEventListener('mouseenter', this.showListener.bind(this));
       this.trigger?.removeEventListener('mouseleave', this.hideListener.bind(this));
-      this.trigger?.removeEventListener('focusin', this.showListener.bind(this))
-      this.trigger?.removeEventListener('focusout', this.hideListener.bind(this))
+      this.trigger?.removeEventListener('focusin', this.showListener.bind(this));
+      this.trigger?.removeEventListener('focusout', this.hideListener.bind(this));
     }
   }
 
   render() {
     return (
       <Host>
-        <div
-          ref={el => (this.triggerElement = el)}
-          aria-describedby={this.id}
-          class="tooltip-trigger"
-        >
-          <slot/>
+        <div ref={el => (this.triggerElement = el)} aria-describedby={this.id} class="tooltip-trigger">
+          <slot />
         </div>
-        {
-          this.content && !this.disabled &&
-          <div
-            ref={el => (this.tooltip = el)}
-            id={this.id}
-            class="tooltip"
-          >
+        {this.content && !this.disabled && (
+          <div ref={el => (this.tooltip = el)} id={this.id} class="tooltip">
             {this.content}
           </div>
-        }
+        )}
       </Host>
     );
   }
@@ -122,7 +113,7 @@ export class CatTooltip {
       computePosition(this.trigger, this.tooltip, {
         placement: this.placement,
         middleware: [offset(CatTooltip.OFFSET), flip()]
-      }).then(({x, y}) => {
+      }).then(({ x, y }) => {
         if (this.tooltip) {
           Object.assign(this.tooltip.style, {
             left: `${Math.max(0, x)}px`,
@@ -152,7 +143,7 @@ export class CatTooltip {
   private touchStartListener() {
     this.touchTimeout = window.setTimeout(() => {
       this.tooltip?.classList.add('tooltip-show');
-    }, this.longTouchDuration)
+    }, this.longTouchDuration);
   }
 
   private touchEndListener() {

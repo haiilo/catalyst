@@ -2,7 +2,7 @@ import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-
 import { Component, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import { FocusableElement, tabbable } from 'tabbable';
-import firstTabbable from "../../utils/first-tabbable";
+import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
 
