@@ -10,9 +10,8 @@ describe('cat-radio', () => {
     expect(page.root).toEqualHtml(`
       <cat-radio>
         <mock:shadow-root>
-          <label>
-            <input type="radio">
-          </label>
+          <input class="cat-radio-input" part="radio" type="radio">
+          <label class="cat-radio-label" part="label"></label>
         </mock:shadow-root>
       </cat-radio>
     `);

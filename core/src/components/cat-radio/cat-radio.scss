@@ -1,3 +1,31 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+$radio-checked-bg: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMiAxMkMyMiAxNy41MjI4IDE3LjUyMjggMjIgMTIgMjJDNi40NzcxNSAyMiAyIDE3LjUyMjggMiAxMkMyIDYuNDc3MTUgNi40NzcxNSAyIDEyIDJDMTcuNTIyOCAyIDIyIDYuNDc3MTUgMjIgMTJaTTE0LjE4MDcgOC45OTg1NUwxMiA1TDkuODE5MyA4Ljk5ODU1TDUuMzQyNTkgOS44MzY4OEw4LjQ3MTU3IDEzLjE0NjVMNy44ODU0OSAxNy42NjMxTDEyIDE1LjcxTDE2LjExNDUgMTcuNjYzMUwxNS41Mjg0IDEzLjE0NjVMMTguNjU3NCA5LjgzNjg4TDE0LjE4MDcgOC45OTg1NVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=';
+
 :host {
   display: block;
+}
+
+.cat-radio-label {
+  @include cat-body('m');
+  color: #000;
+}
+
+.cat-radio-input {
+  width: 20px;
+  height: 20px;
+
+  appearance: none;
+
+  background: #FFF;
+  border: 1px solid #E7E8EE;
+  box-sizing: border-box;
+  border-radius: 36px;
+
+  &:checked {
+    background: #FFF url($radio-checked-bg);
+    border: 1px solid #207F8A;
+    box-sizing: border-box;
+    border-radius: 36px;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import {Component, Event, EventEmitter, h, Host, Prop} from '@stencil/core';
 
 @Component({
   tag: 'cat-radio',
@@ -49,18 +49,25 @@ export class CatRadio {
 
   render() {
     return (
-      <label aria-label={this.label}>
+      <Host>
         <input
-          type="radio"
-          checked={this.checked}
-          required={this.required}
-          disabled={this.disabled}
-          name={this.name}
-          value={this.value}
-          onChange={this.onChange.bind(this)}
-        />
-        {!this.hideLabel && this.label}
-      </label>
+            part="radio"
+            type="radio"
+            class="cat-radio-input"
+            checked={this.checked}
+            required={this.required}
+            disabled={this.disabled}
+            name={this.name}
+            value={this.value}
+            onChange={this.onChange.bind(this)}
+          />
+        <label
+          part="label"
+          class="cat-radio-label"
+          aria-label={this.label}>
+          {!this.hideLabel && this.label}
+        </label>
+      </Host>
     );
   }
 

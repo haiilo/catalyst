@@ -18,6 +18,7 @@
         <p>Hover Me</p>
       </cat-tooltip>
     </div>
+    <cat-radio label="Radio"></cat-radio>
     <h2>Scrollable</h2>
     <cat-scrollable style="max-width: 200px; max-height: 120px">
       <div>
@@ -397,4 +398,10 @@
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
     </div>
   </body>
+  <script>
+    const todoListElement = document.querySelector('cat-radio');
+    todoListElement.addEventListener('catChange', event => {
+      console.log(1);
+    });
+  </script>
 </html>
