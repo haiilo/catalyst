@@ -226,13 +226,13 @@ export declare interface CatTooltip extends Components.CatTooltip {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['content', 'disabled', 'hideDelay', 'placement', 'showDelay']
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
 })
 @Component({
   selector: 'cat-tooltip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['content', 'disabled', 'hideDelay', 'placement', 'showDelay']
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
 })
 export class CatTooltip {
   protected el: HTMLElement;

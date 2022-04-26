@@ -94,6 +94,7 @@ export const CatTooltip = /*@__PURE__*/ defineContainer<JSX.CatTooltip>('cat-too
   'disabled',
   'placement',
   'showDelay',
-  'hideDelay'
+  'hideDelay',
+  'longTouchDuration'
 ]);
 
