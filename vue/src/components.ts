@@ -88,3 +88,12 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
   'a11yLabel'
 ]);
 
+
+export const CatTooltip = /*@__PURE__*/ defineContainer<JSX.CatTooltip>('cat-tooltip', undefined, [
+  'content',
+  'disabled',
+  'placement',
+  'showDelay',
+  'hideDelay'
+]);
+
