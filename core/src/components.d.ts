@@ -234,10 +234,6 @@ export namespace Components {
          */
         "hideLabel": boolean;
         /**
-          * Indeterminate state of the toggle
-         */
-        "indeterminate": boolean;
-        /**
           * Label of the toggle which is presented in the UI
          */
         "label"?: string;
@@ -620,10 +616,6 @@ declare namespace LocalJSX {
           * Flag to show/hide the label
          */
         "hideLabel"?: boolean;
-        /**
-          * Indeterminate state of the toggle
-         */
-        "indeterminate"?: boolean;
         /**
           * Label of the toggle which is presented in the UI
          */
