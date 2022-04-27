@@ -12,7 +12,7 @@
   align-items: center;
   border: 1px solid red;
   border-radius: cat-border-radius('m');
-  background: cat-token('color.ui.background.input');
+  // background: cat-token('color.ui.background.input');
   overflow: hidden;
   //padding: cat-size('s') * 0.25 cat-size('l') * 0.25;
   //column-gap: cat-size('s') * 0.25;
@@ -35,7 +35,7 @@ label {
 
 .cat-text-prefix,
 .cat-text-suffix {
-  background: cat-token('color.ui.background.inputPrefix');
+  // background: cat-token('color.ui.background.inputPrefix');
   color: cat-token('color.ui.font.muted');
   padding: cat-size('s') * 0.25;
   @include cat-select(none);

@@ -14,7 +14,10 @@ module.exports = {
       border: {
         default: { value: '{color.base.neutral.200.value}' },
         dark: { value: '{color.base.neutral.300.value}' },
-        focus: { value: '#0071ff' }
+        focus: { value: '#0071ff' },
+        input: { value: '{color.base.neutral.200.value}' },
+        inputHover: { value: '{color.base.neutral.200.value}' },
+        inputFocus: { value: '{color.base.neutral.200.value}' },
       },
       font: {
         head: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-head" } },
