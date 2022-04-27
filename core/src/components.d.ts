@@ -220,6 +220,37 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToggle {
+        /**
+          * Checked state of the checkbox
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state of the checkbox
+         */
+        "disabled"?: boolean;
+        /**
+          * Flag to show/hide the label
+         */
+        "hideLabel": boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
+        "indeterminate": boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
+        "label"?: string;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Required state of the checkbox
+         */
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -302,6 +333,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
+    }
+    var HTMLCatToggleElement: {
+        prototype: HTMLCatToggleElement;
+        new (): HTMLCatToggleElement;
+    };
     interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
     }
     var HTMLCatTooltipElement: {
@@ -318,6 +355,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
 }
@@ -569,6 +607,41 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToggle {
+        /**
+          * Checked state of the checkbox
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state of the checkbox
+         */
+        "disabled"?: boolean;
+        /**
+          * Flag to show/hide the label
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
+        "indeterminate"?: boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
+        "label"?: string;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked status of the checkbox is changed
+         */
+        "onToggleChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Required state of the checkbox
+         */
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -605,6 +678,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
 }
@@ -621,6 +695,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
