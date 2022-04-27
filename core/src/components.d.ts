@@ -222,11 +222,11 @@ export namespace Components {
     }
     interface CatToggle {
         /**
-          * Checked state of the checkbox
+          * Checked state of the toggle
          */
         "checked"?: boolean;
         /**
-          * Disabled state of the checkbox
+          * Disabled state of the toggle
          */
         "disabled"?: boolean;
         /**
@@ -234,11 +234,11 @@ export namespace Components {
          */
         "hideLabel": boolean;
         /**
-          * Indeterminate state of the checkbox
+          * Indeterminate state of the toggle
          */
         "indeterminate": boolean;
         /**
-          * Label of the checkbox which is presented in the UI
+          * Label of the toggle which is presented in the UI
          */
         "label"?: string;
         /**
@@ -246,7 +246,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Required state of the checkbox
+          * Required state of the toggle
          */
         "required"?: boolean;
         "value"?: string;
@@ -609,11 +609,11 @@ declare namespace LocalJSX {
     }
     interface CatToggle {
         /**
-          * Checked state of the checkbox
+          * Checked state of the toggle
          */
         "checked"?: boolean;
         /**
-          * Disabled state of the checkbox
+          * Disabled state of the toggle
          */
         "disabled"?: boolean;
         /**
@@ -621,11 +621,11 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: boolean;
         /**
-          * Indeterminate state of the checkbox
+          * Indeterminate state of the toggle
          */
         "indeterminate"?: boolean;
         /**
-          * Label of the checkbox which is presented in the UI
+          * Label of the toggle which is presented in the UI
          */
         "label"?: string;
         /**
@@ -633,11 +633,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checked status of the checkbox is changed
+          * Emitted when the checked status of the toggle is changed
          */
         "onToggleChange"?: (event: CustomEvent<any>) => void;
         /**
-          * Required state of the checkbox
+          * Required state of the toggle
          */
         "required"?: boolean;
         "value"?: string;
