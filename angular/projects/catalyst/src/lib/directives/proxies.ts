@@ -220,3 +220,24 @@ export class CatSpinner {
     this.el = r.nativeElement;
   }
 }
+
+
+export declare interface CatTooltip extends Components.CatTooltip {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
+})
+@Component({
+  selector: 'cat-tooltip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
+})
+export class CatTooltip {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}

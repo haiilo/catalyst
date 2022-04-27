@@ -20,6 +20,10 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         {
+          src: '../node_modules/@haiilo/catalyst-tokens/assets',
+          dest: 'assets'
+        },
+        {
           src: './index.cdn.js',
           warn: true
         }
@@ -39,7 +43,7 @@ export const config: Config = {
       copy: [
         {
           src: '../node_modules/@haiilo/catalyst-tokens/assets',
-          dest: 'assets'
+          dest: 'build/assets'
         }
       ]
     },
