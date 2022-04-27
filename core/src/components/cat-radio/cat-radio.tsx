@@ -1,11 +1,18 @@
-import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 
+/**
+ *
+ * @part radio - The input type radio element.
+ * @part label - The label of the input.
+ */
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
   shadow: true
 })
 export class CatRadio {
+  private radioRef?: HTMLInputElement;
+
   /**
    * Whether this radio is checked.
    * */
@@ -19,7 +26,7 @@ export class CatRadio {
   /**
    *  Whether this radio is disabled.
    *  */
-  @Prop() disabled?: boolean;
+  @Prop() disabled = false;
 
   /**
    * The name of the radio component.
@@ -49,8 +56,14 @@ export class CatRadio {
 
   render() {
     return (
-      <div class="cat-radio-wrapper">
+      <div class={{
+         "cat-radio-wrapper": true,
+         "cat-radio-disabled": this.disabled
+      }}
+           onClick={this.checkRadio.bind(this)}
+      >
         <input
+            ref={(el) => this.radioRef = el}
             part="radio"
             type="radio"
             class="cat-radio-input"
@@ -61,7 +74,7 @@ export class CatRadio {
             value={this.value}
             onChange={this.onChange.bind(this)}
           />
-        <i/>
+        <span class="cat-radio-checked-circle"/>
         <label
           part="label"
           class="cat-radio-label"
@@ -74,5 +87,9 @@ export class CatRadio {
 
   private onChange(event: Event) {
     this.catChange.emit(event);
+  }
+
+  private checkRadio() {
+    this.radioRef?.click();
   }
 }

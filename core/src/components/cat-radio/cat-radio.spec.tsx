@@ -12,7 +12,7 @@ describe('cat-radio', () => {
         <mock:shadow-root>
           <div class="cat-radio-wrapper">
             <input class="cat-radio-input" part="radio" type="radio">
-            <i></i>
+            <span class="cat-radio-checked-circle"></span>
             <label class="cat-radio-label" part="label"></label>
           </div>
         </mock:shadow-root>

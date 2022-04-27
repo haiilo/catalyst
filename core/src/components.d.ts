@@ -139,7 +139,7 @@ export namespace Components {
         /**
           * Whether this radio is disabled.
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Hides the visibility of the label but still shows it to users who use assistive technology.
          */
