@@ -191,6 +191,32 @@ export namespace Components {
     }
     interface CatToast {
     }
+    interface CatTooltip {
+        /**
+          * The content of the tooltip.
+         */
+        "content": string;
+        /**
+          * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled": boolean;
+        /**
+          * The delay time for hiding tooltip in ms.
+         */
+        "hideDelay": number;
+        /**
+          * The duration of tap to show the tooltip.
+         */
+        "longTouchDuration": number;
+        /**
+          * The placement of the tooltip.
+         */
+        "placement": Placement;
+        /**
+          * The delay time for showing tooltip in ms.
+         */
+        "showDelay": number;
+    }
 }
 declare global {
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
@@ -247,6 +273,12 @@ declare global {
         prototype: HTMLCatToastElement;
         new (): HTMLCatToastElement;
     };
+    interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
+    }
+    var HTMLCatTooltipElement: {
+        prototype: HTMLCatTooltipElement;
+        new (): HTMLCatTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
@@ -257,6 +289,7 @@ declare global {
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-toast": HTMLCatToastElement;
+        "cat-tooltip": HTMLCatTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -474,6 +507,32 @@ declare namespace LocalJSX {
     }
     interface CatToast {
     }
+    interface CatTooltip {
+        /**
+          * The content of the tooltip.
+         */
+        "content"?: string;
+        /**
+          * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+         */
+        "disabled"?: boolean;
+        /**
+          * The delay time for hiding tooltip in ms.
+         */
+        "hideDelay"?: number;
+        /**
+          * The duration of tap to show the tooltip.
+         */
+        "longTouchDuration"?: number;
+        /**
+          * The placement of the tooltip.
+         */
+        "placement"?: Placement;
+        /**
+          * The delay time for showing tooltip in ms.
+         */
+        "showDelay"?: number;
+    }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
@@ -484,6 +543,7 @@ declare namespace LocalJSX {
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-toast": CatToast;
+        "cat-tooltip": CatTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -499,6 +559,7 @@ declare module "@stencil/core" {
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-toast": LocalJSX.CatToast & JSXBase.HTMLAttributes<HTMLCatToastElement>;
+            "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
 }
