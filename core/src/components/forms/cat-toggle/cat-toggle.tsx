@@ -36,11 +36,6 @@ export class CatToggle {
   @Prop() name?: string;
 
   /**
-   * Indeterminate state of the toggle
-   */
-  @Prop() indeterminate = false;
-
-  /**
    * Required state of the toggle
    */
   @Prop() required?: boolean;
