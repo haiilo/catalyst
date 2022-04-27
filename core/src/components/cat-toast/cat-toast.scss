@@ -1,14 +1,3 @@
-@use 'variables' as *;
-@use 'mixins' as *;
-
 :host {
   display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-
-.cat-toast {
-
 }

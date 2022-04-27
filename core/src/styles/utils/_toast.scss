@@ -1,36 +1,63 @@
-@use '../variables' as *;
+@import 'variables';
+@import 'mixins';
 
 .toastify {
   &.cat-toastify {
     background: $cat-toast-background-color;
     color: $cat-toast-text-color;
     padding: 0;
+    @include cat-elevation(1);
 
     .toast-close {
       float: right;
       font-size: 20px;
       margin-top: 0.5rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
     }
 
     .cat-toastify-wrapper {
       display: block;
+      position: relative;
+
+      .cat-toastify-icon-wrapper {
+        position: absolute;
+        top: 6px;
+        left: 5px;
+
+        &.info {
+          color: $cat-toast-info-color;
+        }
+
+        &.error {
+          color: $cat-toast-error-color;
+        }
+
+        &.success {
+          color: $cat-toast-success-color;
+        }
+      }
 
       .cat-toastify-title-wrapper {
         width: 100%;
-        padding: 0.5rem;
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
 
-        &.with-border {
+        &.has-message {
           border-bottom: 1px solid $cat-toast-title-border;
         }
 
         .cat-toastify-title {
-          width: calc(100% - 22px);
+          width: 100%;
+          padding-right: 25px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 15px;
           line-height: 20px;
-          font-weight: 500;
+          font-weight: 600;
+          color: $cat-toast-text-color;
         }
 
       }
@@ -38,6 +65,7 @@
       .cat-toastify-message {
         width: 100%;
         padding: 0.5rem;
+        color: $cat-toast-text-color;
       }
     }
   }

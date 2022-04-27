@@ -1,26 +1,72 @@
-import Toastify from 'toastify-js'
+import Toastify, { Offset } from 'toastify-js'
+
+export enum TypeIcons {
+  'success' = 'check-circle-filled',
+  'error' = 'sparkle-filled',
+  'info' = 'sparkle-filled'
+}
 
 export interface ToastOptions {
-  duration: number;
+  text?: string | undefined;
+  node?: Node | undefined;
+  duration?: number | undefined;
+  selector?: string | Node | undefined;
+  /**
+   * Add link to toast
+   */
+  destination?: string | undefined;
+  /**
+   * Open link in new window
+   */
+  newWindow?: boolean | undefined;
+  /**
+   * Show close button
+   */
+  close?: boolean | undefined;
+  /**
+   * Push direction for toast
+   */
+  gravity?: 'top' | 'bottom' | undefined;
+  /**
+   * Toast position
+   */
+  position?: 'left' | 'center' | 'right' | undefined;
+  className?: string | undefined;
+  stopOnFocus?: boolean | undefined;
+  type?: 'success' | 'info' | 'error' | undefined;
+  /**
+   * Invoked when the toast is dismissed
+   */
+  callback?: (() => void) | undefined;
+  onClick?: (() => void) | undefined;
+  offset?: Offset | undefined;
+  /**
+   * Toggle the default behavior of escaping HTML markup
+   */
+  escapeMarkup?: boolean | undefined;
+  /**
+   * HTML DOM Style properties to add any style directly to toast
+   */
+  style?: { [cssRule: string]: string };
+  /**
+   * Set the order in which toasts are stacked in page
+   */
+  oldestFirst?: boolean | undefined;
 }
 
 class NotificationsWrapper {
-
-  htmlToElement(html: string): HTMLElement {
+  toastHTMLTemplate(title: string, message = ' ', options?: ToastOptions): HTMLElement {
     const template = document.createElement('template');
-    html = html.trim(); // Never return a text node of whitespace as the result
-    template.innerHTML = html;
-    return template.content.firstChild as HTMLElement;
-  }
-
-  toastHTMLTemplate(title: string, message = ' '): HTMLElement {
-    const template = document.createElement('template');
+    const typeIcon = options?.type ? TypeIcons[options.type] : TypeIcons.info;
     title = title.trim();
     message = message.trim();
     const hasMessage = message && message !== '';
-    const borderClass = hasMessage ? 'with-border' : '';
+    const hasMessageClass = hasMessage ? 'has-message' : '';
     template.innerHTML = `<div class="cat-toastify-wrapper">
-        <div class="cat-toastify-title-wrapper ${borderClass}">
+        <div class="cat-toastify-icon-wrapper ${options?.type ?? 'info'}">
+             <cat-icon icon="${typeIcon}"></cat-icon>
+        </div>
+        <div class="cat-toastify-title-wrapper ${hasMessageClass}">
             <div class="cat-toastify-title">${title}</div></div>
         ${hasMessage ? `<div class="cat-toastify-message">${message}</div>` : ''}
       </div>`;
@@ -28,60 +74,49 @@ class NotificationsWrapper {
   }
 
   error(title: string, message = ' ', options?: ToastOptions): void {
-    Toastify({
-      node: this.toastHTMLTemplate(title, message),
-      duration: 30000,
-      newWindow: true,
-      close: true,
-      className: 'cat-toastify',
-      gravity: "top", // `top` or `bottom`
-      position: "left", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      onClick: function () {
-      } // Callback after click
-    }).showToast();
+    options = {
+      ...{
+        node: this.toastHTMLTemplate(title, message, options),
+        duration: 300000,
+        close: true,
+        className: 'cat-toastify',
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+      }, ...options
+    };
+    Toastify(options).showToast();
   }
 
   success(title: string, message = ' ', options?: ToastOptions): void {
-    Toastify({
-      node: this.toastHTMLTemplate(title, message),
-      duration: 3000,
-      newWindow: true,
-      close: true,
-      className: 'cat-toastify',
-      gravity: "top", // `top` or `bottom`
-      position: "left", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      onClick: function () {
-      } // Callback after click
-    }).showToast();
+    options = {
+      ...{
+        node: this.toastHTMLTemplate(title, message, options),
+        duration: 3000000,
+        close: true,
+        className: 'cat-toastify',
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true
+      }, ...options
+    };
+    Toastify(options).showToast();
   }
 
   info(title: string, message = ' ', options?: ToastOptions): void {
-    Toastify({
-      node: this.toastHTMLTemplate(title, message),
-      duration: 90000,
-      newWindow: true,
-      close: true,
-      className: 'cat-toastify',
-      gravity: "top", // `top` or `bottom`
-      position: "left", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      onClick: function () {
-      } // Callback after click
-    }).showToast();
+    options = {
+      ...{
+        node: this.toastHTMLTemplate(title, message, options),
+        duration: 3000000,
+        close: true,
+        className: 'cat-toastify',
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true
+      }, ...options
+    };
+    Toastify(options).showToast();
   }
 }
 
 export const NotificationsService = new NotificationsWrapper();
-
-
-//   it is easy to just show a toast with title and (optional) text
-//
-//   there is a way to show  buttons with actions.
-//
-//     some way of providing a template (dont know how)
-//
-//   provide html content
-//
-//   make it configurable and dynamically render them

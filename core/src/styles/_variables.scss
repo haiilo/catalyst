@@ -33,9 +33,13 @@ $cat-scrollable-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25,
 // --------
 // -- Toast
 // --------
-$cat-toast-background-color: cat-token('color.base.neutral.200');
+$cat-toast-background-color: cat-token('color.base.neutral.0');
 $cat-toast-text-color: cat-token('color.base.neutral.900');
 $cat-toast-title-border: cat-token('color.base.neutral.300');
+$cat-toast-shadow: cat-token('color.ui.border.dark');
+$cat-toast-error-color: cat-token('color.theme.danger.text');
+$cat-toast-info-color: cat-token('color.theme.secondary.text');
+$cat-toast-success-color: cat-token('color.theme.success.text');
 
 // --------
 // -- Elevations

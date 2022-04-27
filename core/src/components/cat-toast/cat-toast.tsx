@@ -21,14 +21,31 @@ export class CatToast {
 
   private onClick() {
     const infoOptions: ToastOptions = {
-      duration: 2000
+      duration: 200000,
+      gravity: "top",
     };
-    const successOptions: ToastOptions = {
-      duration: 2000
+    const errorOptions: ToastOptions = {
+      duration: 200000,
+      gravity: "bottom",
+      type: 'error'
     };
-    NotificationsService.error('Error Click');
+    const errorOptions2: ToastOptions = {
+      duration: 200000,
+      gravity: "bottom",
+      position: 'left',
+      type: 'error'
+    };
+    const successOptions3: ToastOptions = {
+      duration: 200000,
+      gravity: "top",
+      position: 'left',
+      type: 'success'
+    };
+    NotificationsService.error('Default Click');
+    NotificationsService.error('Long default title, long default title, long default title, long default title');
     NotificationsService.info('Info Click', 'Info message', infoOptions);
-    NotificationsService.success('Success Click', ' ', successOptions);
-
+    NotificationsService.success('Error Title', ' ', errorOptions);
+    NotificationsService.success('Error 2 Title', 'Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message,Very long message, Very long message, Very long message, Very long message, Very long message, ', errorOptions2);
+    NotificationsService.success('Success Title - very long title without message', ' ', successOptions3);
   }
 }
