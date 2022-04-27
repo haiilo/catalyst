@@ -56,29 +56,27 @@ export class CatRadio {
 
   render() {
     return (
-      <div class={{
-         "cat-radio-wrapper": true,
-         "cat-radio-disabled": this.disabled
-      }}
-           onClick={this.checkRadio.bind(this)}
+      <div
+        class={{
+          'cat-radio-wrapper': true,
+          'cat-radio-disabled': this.disabled
+        }}
+        onClick={this.checkRadio.bind(this)}
       >
         <input
-            ref={(el) => this.radioRef = el}
-            part="radio"
-            type="radio"
-            class="cat-radio-input"
-            checked={this.checked}
-            required={this.required}
-            disabled={this.disabled}
-            name={this.name}
-            value={this.value}
-            onChange={this.onChange.bind(this)}
-          />
-        <span class="cat-radio-checked-circle"/>
-        <label
-          part="label"
-          class="cat-radio-label"
-          aria-label={this.label}>
+          ref={el => (this.radioRef = el)}
+          part="radio"
+          type="radio"
+          class="cat-radio-input"
+          checked={this.checked}
+          required={this.required}
+          disabled={this.disabled}
+          name={this.name}
+          value={this.value}
+          onChange={this.onChange.bind(this)}
+        />
+        <span class="cat-radio-checked-circle" />
+        <label part="label" class="cat-radio-label" aria-label={this.label}>
           {!this.hideLabel && this.label}
         </label>
       </div>

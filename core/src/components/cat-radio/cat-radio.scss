@@ -24,7 +24,7 @@
     appearance: none;
 
     background-color: cat-token('color.base.neutral.0');
-    border: 1px solid #E7E8EE;
+    border: 1px solid #e7e8ee;
     box-sizing: border-box;
     border-radius: 36px;
     margin: 0;
@@ -32,7 +32,7 @@
 
     &:checked {
       background-color: cat-token('color.base.neutral.0');
-      border: 1px solid #207F8A;
+      border: 1px solid #207f8a;
       box-sizing: border-box;
       border-radius: 36px;
     }
@@ -44,7 +44,7 @@
       left: 4px;
       top: 4px;
 
-      background-color: cat-token('color.theme.primary.bg');;
+      background-color: cat-token('color.theme.primary.bg');
       border-radius: 32px;
       cursor: pointer;
     }
