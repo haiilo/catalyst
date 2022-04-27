@@ -3,16 +3,15 @@ import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 let nextUniqueId = 0;
 
 @Component({
-  tag: 'cat-checkbox',
-  styleUrl: 'cat-checkbox.scss',
+  tag: 'cat-toggle',
+  styleUrls: ['../form-check.scss', 'cat-toggle.scss'],
   shadow: true
 })
-export class CatCheckbox {
-  private readonly id = `cat-checkbox-${nextUniqueId++}`;
-  private inputRef?: HTMLInputElement;
+export class CatToggle {
+  private readonly id = `cat-toggle-${nextUniqueId++}`;
 
   /**
-   * Checked state of the checkbox
+   * Checked state of the toggle
    */
   @Prop() checked?: boolean;
 
@@ -22,7 +21,7 @@ export class CatCheckbox {
   @Prop() value?: string;
 
   /**
-   * Label of the checkbox which is presented in the UI
+   * Label of the toggle which is presented in the UI
    */
   @Prop() label?: string;
 
@@ -37,36 +36,29 @@ export class CatCheckbox {
   @Prop() name?: string;
 
   /**
-   * Indeterminate state of the checkbox
+   * Indeterminate state of the toggle
    */
   @Prop() indeterminate = false;
 
   /**
-   * Required state of the checkbox
+   * Required state of the toggle
    */
   @Prop() required?: boolean;
 
   /**
-   * Disabled state of the checkbox
+   * Disabled state of the toggle
    */
   @Prop() disabled?: boolean;
 
   /**
-   * Emitted when the checked status of the checkbox is changed
+   * Emitted when the checked status of the toggle is changed
    */
-  @Event() checkboxChange!: EventEmitter;
-
-  componentDidLoad() {
-    if (this.inputRef && this.indeterminate) {
-      this.inputRef.indeterminate = true;
-    }
-  }
+  @Event() toggleChange!: EventEmitter;
 
   render() {
     return (
-      <div class="form-check">
+      <div class="form-check form-switch">
         <input
-          ref={el => (this.inputRef = el)}
           onInput={event => this.handleChange(event)}
           id={this.id}
           type="checkbox"
@@ -76,6 +68,7 @@ export class CatCheckbox {
           checked={this.checked}
           disabled={this.disabled}
           class="form-check-input"
+          role="switch"
         />
         {!this.hideLabel && (
           <label class="form-check-label" htmlFor={this.id}>
@@ -87,6 +80,6 @@ export class CatCheckbox {
   }
 
   private handleChange(event: Event) {
-    this.checkboxChange.emit(event);
+    this.toggleChange.emit(event);
   }
 }

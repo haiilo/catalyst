@@ -12,6 +12,10 @@ module.exports = {
           standard: { value: '{color.base.neutral.0.value}' },
           checked: { value: '{color.base.brand.400.value}' }
         },
+        toggle: {
+          standard: { value: '{color.base.neutral.300.value}' },
+          checked: { value: '{color.base.brand.400.value}' }
+        },
         tooltip: { value: '{color.base.neutral.900.value}' }
       },
       border: {
