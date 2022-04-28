@@ -1,0 +1,20 @@
+@use 'ratio.mixins' as *;
+
+$aspect-ratios: (
+  '1x1': 1,
+  '3x1': 3,
+  '6x1': 6,
+  '4x3': calc(4 / 3),
+  '16x9': calc(16 / 9),
+  '21x9': calc(21 / 9)
+);
+
+.cat-ratio {
+  @include cat-ratio(var(--cat-aspect-ratio));
+}
+
+@each $key, $ratio in $aspect-ratios {
+  .cat-ratio-#{$key} {
+    --cat-aspect-ratio: #{$ratio};
+  }
+}
