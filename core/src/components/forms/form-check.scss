@@ -46,6 +46,10 @@ $toggle-transition: background-position 0.15s ease-in-out;
       background-size: $checkbox-checked-bg-size;
       border-color: cat-token('color.ui.background.checkbox.checked');
     }
+
+    &:disabled {
+      @include cat-disabled;
+    }
   }
 
   &-label {
