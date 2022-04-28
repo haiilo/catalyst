@@ -66,9 +66,9 @@ export namespace Components {
          */
         "iconOnly": boolean | Breakpoint;
         /**
-          * Display the icon as a suffix.
+          * Display the icon on the right.
          */
-        "iconSuffix": boolean;
+        "iconRight": boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -372,8 +372,6 @@ declare global {
         prototype: HTMLCatTooltipElement;
         new (): HTMLCatTooltipElement;
     };
-    interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
-    }
     interface HTMLElementTagNameMap {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
@@ -687,6 +685,8 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToast {
+    }
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -712,8 +712,6 @@ declare namespace LocalJSX {
           * The delay time for showing tooltip in ms.
          */
         "showDelay"?: number;
-    }
-    interface CatToast {
     }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
@@ -742,6 +740,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-toast": LocalJSX.CatToast & JSXBase.HTMLAttributes<HTMLCatToastElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
