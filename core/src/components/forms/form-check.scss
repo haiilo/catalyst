@@ -66,9 +66,6 @@ $toggle-transition: background-position 0.15s ease-in-out;
     border-radius: $toggle-border-radius;
     transition: $toggle-transition;
 
-    &:indeterminate {
-    }
-
     &:checked {
       background-position: right -1px top -1px;
       background-color: cat-token('color.ui.background.toggle.checked');
