@@ -19,3 +19,24 @@ pre {
   font-weight: cat-token('font.weight.mono');
   color: cat-token('color.ui.font.mono');
 }
+
+kbd,
+code {
+  color: cat-token('color.ui.font.muted');
+  font-size: 14px;
+  padding: 3px 6px;
+
+  background: cat-token('color.base.neutral.0');
+
+  border: 2px solid #f2f4f7;
+
+  border-radius: 4px;
+
+  text-align: center;
+  margin: 0 2px;
+  min-width: 28px;
+}
+
+code {
+  font-size: 12px;
+}
