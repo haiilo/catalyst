@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import log from "loglevel";
 
 let nextUniqueId = 0;
 
@@ -49,6 +50,12 @@ export class CatToggle {
    * Emitted when the checked status of the toggle is changed
    */
   @Event() toggleChange!: EventEmitter;
+
+  componentWillRender(): void {
+    if (!this.label) {
+      log.error('Missing label on radio element', this);
+    }
+  }
 
   render() {
     return (

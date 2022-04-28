@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import log from "loglevel";
 
 let nextUniqueId = 0;
 
@@ -59,6 +60,12 @@ export class CatCheckbox {
   componentDidLoad() {
     if (this.inputRef && this.indeterminate) {
       this.inputRef.indeterminate = true;
+    }
+  }
+
+  componentWillRender(): void {
+    if (!this.label) {
+      log.error('Missing label on radio element', this);
     }
   }
 
