@@ -48,6 +48,7 @@
     "focus-trap": "6.8.1",
     "loglevel": "1.8.0",
     "sanitize.css": "13.0.0",
+    "toastify-js": "^1.11.2",
     "tabbable": "5.3.1"
   },
   "devDependencies": {
