@@ -11,7 +11,7 @@ export class CatScrollable {
   scrollElement?: HTMLElement;
   scrollWrapperElement?: HTMLElement;
   private readonly init = new Subject<void>();
-  private readonly destroyed = new  Subject<void>();
+  private readonly destroyed = new Subject<void>();
   private scrolled!: Observable<Event>;
 
   /** Flags to enable/disable scroll shadowX. */

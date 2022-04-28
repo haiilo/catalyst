@@ -129,12 +129,19 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete": string;
+        "autoComplete"?: string;
+        "clear": () => Promise<void>;
+        /**
+          * Whether the input should show a clear button.
+         */
         "clearable": boolean;
         /**
-          * Whether the form control is disabled.
+          * Whether the input is disabled.
          */
         "disabled": boolean;
+        /**
+          * Optional hint text to be displayed with the input.
+         */
         "hint"?: string;
         /**
           * The name of an icon to be displayed in the input.
@@ -145,27 +152,35 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
-          * Maximum value for numeric values.
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum value for numeric values.
          */
         "max"?: number;
         /**
-          * Maximum length (number of characters) for textual values.
+          * A maximum length (number of characters) for textual values.
          */
         "maxLength"?: number;
         /**
-          * Minimum value for numeric values.
+          * A minimum value for numeric values.
          */
         "min"?: number;
         /**
-          * Minimum length (number of characters) for textual values.
+          * A minimum length (number of characters) for textual values.
          */
         "minLength"?: number;
         /**
-          * Name of the form control. Submitted with the form as part of a name/value pair.
+          * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name": string;
         /**
-          * Text that appears in the form control when it has no value set
+          * The placeholder text to display within the input.
          */
         "placeholder"?: string;
         /**
@@ -180,12 +195,18 @@ export namespace Components {
           * Use round input edges.
          */
         "round": boolean;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
         "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
         "textSuffix"?: string;
         /**
           * Type of form control.
          */
-        "type": "text" | "email" | "password" | "tel" | "url" | "search" | "number";
+        "type": 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
         /**
           * The initial value of the control.
          */
@@ -486,11 +507,17 @@ declare namespace LocalJSX {
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
         "clearable"?: boolean;
         /**
-          * Whether the form control is disabled.
+          * Whether the input is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text to be displayed with the input.
+         */
         "hint"?: string;
         /**
           * The name of an icon to be displayed in the input.
@@ -501,27 +528,35 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
-          * Maximum value for numeric values.
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum value for numeric values.
          */
         "max"?: number;
         /**
-          * Maximum length (number of characters) for textual values.
+          * A maximum length (number of characters) for textual values.
          */
         "maxLength"?: number;
         /**
-          * Minimum value for numeric values.
+          * A minimum value for numeric values.
          */
         "min"?: number;
         /**
-          * Minimum length (number of characters) for textual values.
+          * A minimum length (number of characters) for textual values.
          */
         "minLength"?: number;
         /**
-          * Name of the form control. Submitted with the form as part of a name/value pair.
+          * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
         /**
-          * Text that appears in the form control when it has no value set
+          * The placeholder text to display within the input.
          */
         "placeholder"?: string;
         /**
@@ -536,12 +571,18 @@ declare namespace LocalJSX {
           * Use round input edges.
          */
         "round"?: boolean;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
         "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
         "textSuffix"?: string;
         /**
           * Type of form control.
          */
-        "type"?: "text" | "email" | "password" | "tel" | "url" | "search" | "number";
+        "type"?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
         /**
           * The initial value of the control.
          */

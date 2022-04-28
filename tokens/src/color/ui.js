@@ -6,7 +6,7 @@ module.exports = {
         body: { value: '{color.base.neutral.0.value}' },
         interaction: { value: '{color.base.brand.400.value}' },
         input: { value: '{color.base.neutral.0.value}' },
-        inputPrefix: { value: '{color.base.neutral.200.value}' },
+        inputDisabled: { value: '{color.base.neutral.100.value}' },
         notification: { value: '{color.base.red.400.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
@@ -16,9 +16,7 @@ module.exports = {
         default: { value: '{color.base.neutral.200.value}' },
         dark: { value: '{color.base.neutral.300.value}' },
         focus: { value: '#0071ff' },
-        input: { value: '{color.base.neutral.200.value}' },
-        inputHover: { value: '{color.base.neutral.200.value}' },
-        inputFocus: { value: '{color.base.neutral.200.value}' },
+        input: { value: '{color.base.neutral.300.value}' }
       },
       font: {
         head: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-head" } },
