@@ -1,6 +1,5 @@
-name: 'Tokens: build & test'
+name: 'Tokens'
 on:
-  workflow_dispatch:
   push:
     paths:
       - 'tokens/**'

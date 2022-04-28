@@ -37,7 +37,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'urlTarget',
   'icon',
   'iconOnly',
-  'iconSuffix',
+  'iconRight',
   'buttonId',
   'a11yLabel',
   'catClick',
@@ -50,6 +50,31 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
   'icon',
   'size',
   'a11yLabel'
+]);
+
+
+export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input', undefined, [
+  'autoComplete',
+  'clearable',
+  'disabled',
+  'hint',
+  'icon',
+  'iconRight',
+  'label',
+  'labelHidden',
+  'max',
+  'maxLength',
+  'min',
+  'minLength',
+  'name',
+  'placeholder',
+  'textPrefix',
+  'textSuffix',
+  'readonly',
+  'required',
+  'round',
+  'type',
+  'value'
 ]);
 
 
@@ -86,5 +111,15 @@ export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-s
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
   'a11yLabel'
+]);
+
+
+export const CatTooltip = /*@__PURE__*/ defineContainer<JSX.CatTooltip>('cat-tooltip', undefined, [
+  'content',
+  'disabled',
+  'placement',
+  'showDelay',
+  'hideDelay',
+  'longTouchDuration'
 ]);
 

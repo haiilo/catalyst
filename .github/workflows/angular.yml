@@ -1,0 +1,24 @@
+name: 'Angular'
+on:
+  push:
+    paths:
+      - 'angular/**'
+defaults:
+  run:
+    working-directory: angular
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+          cache: 'npm'
+          cache-dependency-path: angular/package-lock.json
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build

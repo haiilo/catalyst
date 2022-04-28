@@ -68,14 +68,14 @@ export declare interface CatButton extends Components.CatButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconSuffix', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconSuffix', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
+  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -100,6 +100,28 @@ export declare interface CatIcon extends Components.CatIcon {}
   inputs: ['a11yLabel', 'icon', 'size']
 })
 export class CatIcon {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatInput extends Components.CatInput {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  methods: ['clear']
+})
+@Component({
+  selector: 'cat-input',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
+})
+export class CatInput {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -214,6 +236,27 @@ export declare interface CatSpinner extends Components.CatSpinner {}
   inputs: ['a11yLabel', 'size']
 })
 export class CatSpinner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatTooltip extends Components.CatTooltip {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
+})
+@Component({
+  selector: 'cat-tooltip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'showDelay']
+})
+export class CatTooltip {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

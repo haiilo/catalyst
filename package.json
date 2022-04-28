@@ -5,7 +5,8 @@
     "prepare": "node ./prepare.js",
     "lerna": "lerna",
     "lerna:bs": "lerna bootstrap",
-    "lerna:rm": "lerna clean --yes"
+    "lerna:publish": "lerna publish --conventional-commits",
+    "lerna:rm": "lerna clean"
   },
   "engines": {
     "npm": ">=8.0.0",

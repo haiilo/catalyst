@@ -1,12 +1,17 @@
 {
-  "version": "independent",
+  "version": "0.4.0",
   "npmClient": "npm",
   "packages": [
     "angular",
+    "angular/projects/catalyst",
     "core",
-    "icons",
     "react",
     "tokens",
     "vue"
-  ]
+  ],
+  "command": {
+    "version": {
+      "message": "chore(release): publish %s"
+    }
+  }
 }
