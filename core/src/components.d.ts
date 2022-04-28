@@ -115,11 +115,11 @@ export namespace Components {
         /**
           * Checked state of the checkbox
          */
-        "checked"?: boolean;
+        "checked": boolean;
         /**
           * Disabled state of the checkbox
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Flag to show/hide the label
          */
@@ -131,7 +131,7 @@ export namespace Components {
         /**
           * Label of the checkbox which is presented in the UI
          */
-        "label"?: string;
+        "label": string;
         /**
           * The name of the input
          */
@@ -139,7 +139,10 @@ export namespace Components {
         /**
           * Required state of the checkbox
          */
-        "required"?: boolean;
+        "required": boolean;
+        /**
+          * The value of the checkbox
+         */
         "value"?: string;
     }
     interface CatIcon {
@@ -224,11 +227,11 @@ export namespace Components {
         /**
           * Checked state of the toggle
          */
-        "checked"?: boolean;
+        "checked": boolean;
         /**
           * Disabled state of the toggle
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Flag to show/hide the label
          */
@@ -236,7 +239,7 @@ export namespace Components {
         /**
           * Label of the toggle which is presented in the UI
          */
-        "label"?: string;
+        "label": string;
         /**
           * The name of the input
          */
@@ -244,7 +247,10 @@ export namespace Components {
         /**
           * Required state of the toggle
          */
-        "required"?: boolean;
+        "required": boolean;
+        /**
+          * The value of the toggle
+         */
         "value"?: string;
     }
     interface CatTooltip {
@@ -499,6 +505,9 @@ declare namespace LocalJSX {
           * Required state of the checkbox
          */
         "required"?: boolean;
+        /**
+          * The value of the checkbox
+         */
         "value"?: string;
     }
     interface CatIcon {
@@ -632,6 +641,9 @@ declare namespace LocalJSX {
           * Required state of the toggle
          */
         "required"?: boolean;
+        /**
+          * The value of the toggle
+         */
         "value"?: string;
     }
     interface CatTooltip {

@@ -13,17 +13,17 @@ export class CatToggle {
   /**
    * Checked state of the toggle
    */
-  @Prop() checked?: boolean;
+  @Prop() checked = false;
 
   /**
-   *
+   * The value of the toggle
    */
   @Prop() value?: string;
 
   /**
    * Label of the toggle which is presented in the UI
    */
-  @Prop() label?: string;
+  @Prop() label = '';
 
   /**
    * Flag to show/hide the label
@@ -38,12 +38,12 @@ export class CatToggle {
   /**
    * Required state of the toggle
    */
-  @Prop() required?: boolean;
+  @Prop() required = false;
 
   /**
    * Disabled state of the toggle
    */
-  @Prop() disabled?: boolean;
+  @Prop() disabled = false;
 
   /**
    * Emitted when the checked status of the toggle is changed

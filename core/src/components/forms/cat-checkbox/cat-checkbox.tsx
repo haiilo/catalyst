@@ -14,17 +14,17 @@ export class CatCheckbox {
   /**
    * Checked state of the checkbox
    */
-  @Prop() checked?: boolean;
+  @Prop() checked = false;
 
   /**
-   *
+   * The value of the checkbox
    */
   @Prop() value?: string;
 
   /**
    * Label of the checkbox which is presented in the UI
    */
-  @Prop() label?: string;
+  @Prop() label = '';
 
   /**
    * Flag to show/hide the label
@@ -44,12 +44,12 @@ export class CatCheckbox {
   /**
    * Required state of the checkbox
    */
-  @Prop() required?: boolean;
+  @Prop() required = false;
 
   /**
    * Disabled state of the checkbox
    */
-  @Prop() disabled?: boolean;
+  @Prop() disabled = false;
 
   /**
    * Emitted when the checked status of the checkbox is changed
