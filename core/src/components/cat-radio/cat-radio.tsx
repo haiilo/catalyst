@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
-import log from "loglevel";
+import log from 'loglevel';
 
 let nextUniqueId = 0;
 /**
@@ -83,7 +83,11 @@ export class CatRadio {
           onChange={this.onChange.bind(this)}
         />
         <span class="cat-radio-checked-circle" />
-        <label htmlFor={this.id} part="label" class={{"cat-radio-label": true, "cat-radio-hidden-label": this.hideLabel}}>
+        <label
+          htmlFor={this.id}
+          part="label"
+          class={{ 'cat-radio-label': true, 'cat-radio-hidden-label': this.hideLabel }}
+        >
           {this.label}
         </label>
       </div>
