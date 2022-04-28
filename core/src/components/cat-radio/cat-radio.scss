@@ -17,6 +17,10 @@
     cursor: pointer;
   }
 
+  .cat-radio-hidden-label {
+    @include cat-visually-hidden;
+  }
+
   .cat-radio-input {
     width: 20px;
     height: 20px;

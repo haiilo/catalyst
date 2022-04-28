@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import log from "loglevel";
 
 let nextUniqueId = 0;
 /**
@@ -17,12 +18,12 @@ export class CatRadio {
   /**
    * Whether this radio is checked.
    * */
-  @Prop() checked?: boolean;
+  @Prop() checked = false;
 
   /**
    * Whether the radio is required.
    * */
-  @Prop() required?: boolean;
+  @Prop() required = false;
 
   /**
    *  Whether this radio is disabled.
@@ -42,18 +43,24 @@ export class CatRadio {
   /**
    * The label of the radio that is visible.
    */
-  @Prop() label?: string;
+  @Prop() label = '';
 
   /**
    * Hides the visibility of the label but still shows it to users
    * who use assistive technology.
    */
-  @Prop() hideLabel?: boolean;
+  @Prop() hideLabel = false;
 
   /**
    * Emitted when the radio is changed.
    */
   @Event() catChange!: EventEmitter;
+
+  componentWillRender(): void {
+    if (!this.label) {
+      log.error('Missing label on radio element', this);
+    }
+  }
 
   render() {
     return (
@@ -76,8 +83,8 @@ export class CatRadio {
           onChange={this.onChange.bind(this)}
         />
         <span class="cat-radio-checked-circle" />
-        <label htmlFor={this.id} part="label" class="cat-radio-label" aria-label={this.label}>
-          {!this.hideLabel && this.label}
+        <label htmlFor={this.id} part="label" class={{"cat-radio-label": true, "cat-radio-hidden-label": this.hideLabel}}>
+          {this.label}
         </label>
       </div>
     );

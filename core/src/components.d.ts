@@ -135,7 +135,7 @@ export namespace Components {
         /**
           * Whether this radio is checked.
          */
-        "checked"?: boolean;
+        "checked": boolean;
         /**
           * Whether this radio is disabled.
          */
@@ -143,11 +143,11 @@ export namespace Components {
         /**
           * Hides the visibility of the label but still shows it to users who use assistive technology.
          */
-        "hideLabel"?: boolean;
+        "hideLabel": boolean;
         /**
           * The label of the radio that is visible.
          */
-        "label"?: string;
+        "label": string;
         /**
           * The name of the radio component.
          */
@@ -155,7 +155,7 @@ export namespace Components {
         /**
           * Whether the radio is required.
          */
-        "required"?: boolean;
+        "required": boolean;
         /**
           * The value of the radio component.
          */
