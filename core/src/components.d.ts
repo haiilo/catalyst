@@ -218,6 +218,36 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatRadio {
+        /**
+          * Whether this radio is checked.
+         */
+        "checked": boolean;
+        /**
+          * Whether this radio is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The label of the radio that is visible.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the radio component.
+         */
+        "name"?: string;
+        /**
+          * Whether the radio is required.
+         */
+        "required": boolean;
+        /**
+          * The value of the radio component.
+         */
+        "value"?: string;
+    }
     interface CatScrollable {
         /**
           * Flags to enable/disable overflowX.
@@ -340,6 +370,12 @@ declare global {
         prototype: HTMLCatMenuElement;
         new (): HTMLCatMenuElement;
     };
+    interface HTMLCatRadioElement extends Components.CatRadio, HTMLStencilElement {
+    }
+    var HTMLCatRadioElement: {
+        prototype: HTMLCatRadioElement;
+        new (): HTMLCatRadioElement;
+    };
     interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
     }
     var HTMLCatScrollableElement: {
@@ -371,6 +407,7 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-menu": HTMLCatMenuElement;
+        "cat-radio": HTMLCatRadioElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
@@ -602,6 +639,40 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatRadio {
+        /**
+          * Whether this radio is checked.
+         */
+        "checked"?: boolean;
+        /**
+          * Whether this radio is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The label of the radio that is visible.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the radio component.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the radio is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Whether the radio is required.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the radio component.
+         */
+        "value"?: string;
+    }
     interface CatScrollable {
         /**
           * Emitted when the content is fully scrolled to the bottom.
@@ -709,6 +780,7 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-menu": CatMenu;
+        "cat-radio": CatRadio;
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
@@ -725,6 +797,7 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
