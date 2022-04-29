@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 
 :host {
-  display: inline-block;
+  display: inline-flex;
 }
 
 :host([hidden]) {
@@ -16,7 +16,7 @@ label {
   cursor: pointer;
 }
 
-.checkbox {
+.radio {
   display: flex;
   position: relative;
 }
@@ -38,16 +38,21 @@ input {
   height: calc(cat-size('m') / 2);
   appearance: none;
   background-color: cat-token('color.ui.background.input');
-  box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+  border: 1px solid cat-token('color.ui.border.input');
   border-radius: 10rem;
   cursor: inherit;
 
   &:checked {
-    box-shadow: 0 0 0 1px cat-token('color.theme.primary.bg');
+    border-color: cat-token('color.theme.primary.bg');
 
     + .circle {
       visibility: visible;
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid cat-token('color.ui.border.focus');
+    outline-offset: 1px;
   }
 }
 
@@ -65,7 +70,7 @@ input {
     background-color: cat-token('color.ui.background.inputDisabled');
 
     &:checked {
-      box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+      border-color: cat-token('color.ui.border.input');
     }
   }
 

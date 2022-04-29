@@ -10,12 +10,3 @@ body {
   color: cat-token('color.ui.font.body');
   background-color: cat-token('color.ui.background.canvas');
 }
-
-code,
-kbd,
-samp,
-pre {
-  @include cat-mono('m');
-  font-weight: cat-token('font.weight.mono');
-  color: cat-token('color.ui.font.mono');
-}

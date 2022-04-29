@@ -136,6 +136,9 @@ export class CatInput {
     this.onValueChange(this.value);
   }
 
+  /**
+   * Clear the input.
+   */
   @Method()
   async clear(): Promise<void> {
     this.inputValue = '';

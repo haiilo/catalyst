@@ -46,6 +46,19 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
 ]);
 
 
+export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-checkbox', undefined, [
+  'checked',
+  'disabled',
+  'indeterminate',
+  'label',
+  'labelHidden',
+  'name',
+  'required',
+  'value',
+  'checkboxChange'
+]);
+
+
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
   'icon',
   'size',
@@ -123,6 +136,18 @@ export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-s
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
   'a11yLabel'
+]);
+
+
+export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
+  'checked',
+  'disabled',
+  'label',
+  'labelHidden',
+  'name',
+  'required',
+  'value',
+  'toggleChange'
 ]);
 
 
