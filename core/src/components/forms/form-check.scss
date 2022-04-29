@@ -59,20 +59,3 @@ $toggle-transition: background-position 0.15s ease-in-out;
     cursor: pointer;
   }
 }
-
-.form-switch {
-  .form-check-input {
-    width: $toggle-width;
-    background-color: cat-token('color.ui.background.toggle.standard');
-    background-image: url($toggle-bg);
-    background-position: left -1px top -1px;
-    background-size: $toggle-bg-size;
-    border-radius: $toggle-border-radius;
-    transition: $toggle-transition;
-
-    &:checked {
-      background-position: right -1px top -1px;
-      background-color: cat-token('color.ui.background.toggle.checked');
-    }
-  }
-}

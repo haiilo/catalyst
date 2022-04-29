@@ -1,11 +1,11 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
-import log from "loglevel";
+import log from 'loglevel';
 
 let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-checkbox',
-  styleUrls: ['../form-check.scss', 'cat-checkbox.scss'],
+  styleUrls: ['cat-checkbox.scss'],
   shadow: true
 })
 export class CatCheckbox {
@@ -18,24 +18,9 @@ export class CatCheckbox {
   @Prop() checked = false;
 
   /**
-   * The value of the checkbox
+   * Disabled state of the checkbox
    */
-  @Prop() value?: string;
-
-  /**
-   * Label of the checkbox which is presented in the UI
-   */
-  @Prop() label = '';
-
-  /**
-   * Flag to show/hide the label
-   */
-  @Prop() hideLabel = false;
-
-  /**
-   * The name of the input
-   */
-  @Prop() name?: string;
+  @Prop() disabled = false;
 
   /**
    * Indeterminate state of the checkbox
@@ -43,14 +28,29 @@ export class CatCheckbox {
   @Prop() indeterminate = false;
 
   /**
+   * Label of the checkbox which is presented in the UI
+   */
+  @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
+   * The name of the input
+   */
+  @Prop() name?: string;
+
+  /**
    * Required state of the checkbox
    */
   @Prop() required = false;
 
   /**
-   * Disabled state of the checkbox
+   * The value of the checkbox
    */
-  @Prop() disabled = false;
+  @Prop() value?: string;
 
   /**
    * Emitted when the checked status of the checkbox is changed
@@ -65,31 +65,34 @@ export class CatCheckbox {
 
   componentWillRender(): void {
     if (!this.label) {
-      log.error('Missing label on radio element', this);
+      log.error('[A11y] Missing ARIA label on checkbox', this);
     }
   }
 
   render() {
     return (
-      <div class="form-check">
+      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
         <input
           ref={el => (this.inputRef = el)}
-          onInput={event => this.handleChange(event)}
           id={this.id}
           type="checkbox"
           name={this.name}
           value={this.value}
-          required={this.required}
           checked={this.checked}
+          required={this.required}
           disabled={this.disabled}
-          class="form-check-input"
+          onInput={this.handleChange.bind(this)}
         />
-        {!this.hideLabel && (
-          <label class="form-check-label" htmlFor={this.id}>
-            {this.label}
-          </label>
-        )}
-      </div>
+        <span class="box" aria-hidden="true">
+          <svg class="check" viewBox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+          <svg class="dash" viewBox="0 0 12 10">
+            <polyline points="1.5 5 10.5 5"></polyline>
+          </svg>
+        </span>
+        <span class="label">{this.label}</span>
+      </label>
     );
   }
 

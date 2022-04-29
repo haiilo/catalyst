@@ -13,9 +13,27 @@
   </head>
   <body>
     <h2>Checkbox</h2>
-    <cat-checkbox required label="Hello world" value="1" indeterminate="true"></cat-checkbox>
+    <cat-checkbox label="Toggle"></cat-checkbox>
+    <cat-checkbox label="Disabled" disabled></cat-checkbox>
+    <cat-checkbox label="Checked" checked></cat-checkbox>
+    <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
+    <cat-checkbox label="Indeterminate" indeterminate="true"></cat-checkbox>
+    <cat-checkbox label="Hidden label" label-hidden="true"></cat-checkbox>
+
     <h2>Toggle</h2>
-    <cat-toggle required label="Hello world" value="1"></cat-toggle>
+    <cat-toggle label="Toggle"></cat-toggle>
+    <cat-toggle label="Disabled" disabled></cat-toggle>
+    <cat-toggle label="Checked" checked></cat-toggle>
+    <cat-toggle label="Checked disabled" checked disabled></cat-toggle>
+    <cat-toggle label="Hidden label" label-hidden="true"></cat-toggle>
+
+    <h2>Radio</h2>
+    <cat-radio label="Radio"></cat-radio>
+    <cat-radio label="Disabled" disabled></cat-radio>
+    <cat-radio label="Checked" checked></cat-radio>
+    <cat-radio label="Checked disabled" checked disabled></cat-radio>
+    <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
+
     <h2>Input</h2>
     <cat-input></cat-input>
 
@@ -63,13 +81,6 @@
         <p>Hover Me</p>
       </cat-tooltip>
     </div>
-
-    <h2>Radio</h2>
-    <cat-radio label="Radio"></cat-radio>
-    <cat-radio label="Disabled" disabled></cat-radio>
-    <cat-radio label="Checked" checked></cat-radio>
-    <cat-radio label="Checked disabled" checked disabled></cat-radio>
-    <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
 
     <h2>Scrollable</h2>
     <cat-scrollable style="max-width: 200px; max-height: 120px">

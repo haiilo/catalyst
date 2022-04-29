@@ -13,12 +13,12 @@ export class CatRadio {
 
   /**
    * Whether this radio is checked.
-   * */
+   */
   @Prop() checked = false;
 
   /**
-   *  Whether this radio is disabled.
-   *  */
+   * Whether this radio is disabled.
+   */
   @Prop() disabled = false;
 
   /**
@@ -38,7 +38,7 @@ export class CatRadio {
 
   /**
    * Whether the radio is required.
-   * */
+   */
   @Prop() required = false;
 
   /**
@@ -53,14 +53,14 @@ export class CatRadio {
 
   componentWillRender(): void {
     if (!this.label) {
-      log.error('[A11y] Missing ARIA label on radio button', this);
+      log.error('[A11y] Missing ARIA label on radio', this);
     }
   }
 
   render() {
     return (
       <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
-        <span class="checkbox">
+        <span class="radio">
           <input
             id={this.id}
             type="radio"

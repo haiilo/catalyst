@@ -1,35 +1,35 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
-import log from "loglevel";
+import log from 'loglevel';
 
 let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-toggle',
-  styleUrls: ['../form-check.scss', 'cat-toggle.scss'],
+  styleUrls: ['cat-toggle.scss'],
   shadow: true
 })
 export class CatToggle {
   private readonly id = `cat-toggle-${nextUniqueId++}`;
 
   /**
-   * Checked state of the toggle
+   * Checked state of the toggle.
    */
   @Prop() checked = false;
 
   /**
-   * The value of the toggle
+   * Disabled state of the toggle.
    */
-  @Prop() value?: string;
+  @Prop() disabled = false;
 
   /**
-   * Label of the toggle which is presented in the UI
+   * The label of the toggle that is visible.
    */
   @Prop() label = '';
 
   /**
-   * Flag to show/hide the label
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
    */
-  @Prop() hideLabel = false;
+  @Prop() labelHidden = false;
 
   /**
    * The name of the input
@@ -42,9 +42,9 @@ export class CatToggle {
   @Prop() required = false;
 
   /**
-   * Disabled state of the toggle
+   * The value of the toggle
    */
-  @Prop() disabled = false;
+  @Prop() value?: string;
 
   /**
    * Emitted when the checked status of the toggle is changed
@@ -53,31 +53,28 @@ export class CatToggle {
 
   componentWillRender(): void {
     if (!this.label) {
-      log.error('Missing label on radio element', this);
+      log.error('[A11y] Missing ARIA label on toggle', this);
     }
   }
 
   render() {
     return (
-      <div class="form-check form-switch">
+      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
         <input
-          onInput={event => this.handleChange(event)}
           id={this.id}
           type="checkbox"
           name={this.name}
           value={this.value}
-          required={this.required}
           checked={this.checked}
+          required={this.required}
           disabled={this.disabled}
           class="form-check-input"
           role="switch"
+          onInput={event => this.handleChange(event)}
         />
-        {!this.hideLabel && (
-          <label class="form-check-label" htmlFor={this.id}>
-            {this.label}
-          </label>
-        )}
-      </div>
+        <span class="toggle"></span>
+        <span class="label">{this.label}</span>
+      </label>
     );
   }
 

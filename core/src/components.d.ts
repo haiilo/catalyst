@@ -121,10 +121,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Flag to show/hide the label
-         */
-        "hideLabel": boolean;
-        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate": boolean;
@@ -132,6 +128,10 @@ export namespace Components {
           * Label of the checkbox which is presented in the UI
          */
         "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
         /**
           * The name of the input
          */
@@ -164,6 +164,9 @@ export namespace Components {
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
+        /**
+          * Clear the input.
+         */
         "clear": () => Promise<void>;
         /**
           * Whether the input should show a clear button.
@@ -342,21 +345,21 @@ export namespace Components {
     }
     interface CatToggle {
         /**
-          * Checked state of the toggle
+          * Checked state of the toggle.
          */
         "checked": boolean;
         /**
-          * Disabled state of the toggle
+          * Disabled state of the toggle.
          */
         "disabled": boolean;
         /**
-          * Flag to show/hide the label
-         */
-        "hideLabel": boolean;
-        /**
-          * Label of the toggle which is presented in the UI
+          * The label of the toggle that is visible.
          */
         "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
         /**
           * The name of the input
          */
@@ -613,10 +616,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Flag to show/hide the label
-         */
-        "hideLabel"?: boolean;
-        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate"?: boolean;
@@ -624,6 +623,10 @@ declare namespace LocalJSX {
           * Label of the checkbox which is presented in the UI
          */
         "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
         /**
           * The name of the input
          */
@@ -865,21 +868,21 @@ declare namespace LocalJSX {
     }
     interface CatToggle {
         /**
-          * Checked state of the toggle
+          * Checked state of the toggle.
          */
         "checked"?: boolean;
         /**
-          * Disabled state of the toggle
+          * Disabled state of the toggle.
          */
         "disabled"?: boolean;
         /**
-          * Flag to show/hide the label
-         */
-        "hideLabel"?: boolean;
-        /**
-          * Label of the toggle which is presented in the UI
+          * The label of the toggle that is visible.
          */
         "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
         /**
           * The name of the input
          */
