@@ -8,7 +8,7 @@ describe('cat-toggle', () => {
       html: `<cat-toggle label="Label"></cat-toggle>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-toggle>
+      <cat-toggle label="Label">
         <mock:shadow-root>
           <label htmlfor="cat-toggle-0">
             <input class="form-check-input" id="cat-toggle-0" role="switch" type="checkbox">
