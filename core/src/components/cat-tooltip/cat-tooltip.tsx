@@ -67,6 +67,7 @@ export class CatTooltip {
     }
 
     if (isTouchScreen) {
+      window.addEventListener('touchstart', this.windowTouchStartListener.bind(this));
       this.trigger?.addEventListener('touchstart', this.touchStartListener.bind(this));
       this.trigger?.addEventListener('touchend', this.touchEndListener.bind(this));
     } else {
@@ -79,6 +80,7 @@ export class CatTooltip {
 
   disconnectedCallback(): void {
     if (isTouchScreen) {
+      window.removeEventListener('touchstart', this.windowTouchStartListener.bind(this));
       this.trigger?.removeEventListener('touchstart', this.touchStartListener.bind(this));
       this.trigger?.removeEventListener('touchend', this.touchEndListener.bind(this));
     } else {
@@ -140,14 +142,20 @@ export class CatTooltip {
     }, this.hideDelay);
   }
 
-  private touchStartListener() {
+  private touchStartListener(event: Event) {
+    event.stopPropagation();
     this.touchTimeout = window.setTimeout(() => {
       this.tooltip?.classList.add('tooltip-show');
     }, this.longTouchDuration);
   }
 
   private touchEndListener() {
-    window.clearTimeout(this.touchTimeout);
+    if (this.touchTimeout) {
+      window.clearTimeout(this.touchTimeout);
+    }
+  }
+
+  private windowTouchStartListener() {
     this.tooltip?.classList.remove('tooltip-show');
   }
 }
