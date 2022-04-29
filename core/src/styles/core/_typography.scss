@@ -72,7 +72,7 @@ a {
   }
 
   &:focus-visible {
-    outline: $cat-focus-outline;
+    outline: 2px solid cat-token('color.ui.border.focus');
     // outline-offset: -2px;
   }
 }
@@ -182,4 +182,55 @@ figure {
       content: '\2014\00A0'; // em dash, nbsp
     }
   }
+}
+
+// ----- code
+
+code,
+kbd,
+samp,
+pre {
+  @include cat-mono('m');
+  font-weight: cat-token('font.weight.mono');
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: $cat-body-margin-bottom;
+  overflow: auto;
+
+  code {
+    margin: 0;
+    padding: 0;
+    display: initial;
+    vertical-align: initial;
+    font-size: inherit;
+    color: inherit;
+    word-wrap: normal;
+    word-break: normal;
+    background: inherit;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+kbd,
+code {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0.125rem;
+  padding: 0 0.375rem;
+  background: cat-token('color.ui.background.body');
+  box-shadow: 0 0 0 2px cat-token('color.ui.border.default');
+  border-radius: cat-border-radius('m');
+  color: cat-token('color.ui.font.muted');
+}
+
+kbd {
+  min-width: cat-mono-line-height('m');
+  text-align: center;
+}
+
+code {
+  @include cat-break-word;
 }

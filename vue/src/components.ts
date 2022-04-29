@@ -37,7 +37,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'urlTarget',
   'icon',
   'iconOnly',
-  'iconSuffix',
+  'iconRight',
   'buttonId',
   'a11yLabel',
   'catClick',
@@ -53,10 +53,47 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
 ]);
 
 
+export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input', undefined, [
+  'autoComplete',
+  'clearable',
+  'disabled',
+  'hint',
+  'icon',
+  'iconRight',
+  'label',
+  'labelHidden',
+  'max',
+  'maxLength',
+  'min',
+  'minLength',
+  'name',
+  'placeholder',
+  'textPrefix',
+  'textSuffix',
+  'readonly',
+  'required',
+  'round',
+  'type',
+  'value'
+]);
+
+
 export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', undefined, [
   'placement',
   'catOpen',
   'catClose'
+]);
+
+
+export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio', undefined, [
+  'checked',
+  'disabled',
+  'label',
+  'labelHidden',
+  'name',
+  'required',
+  'value',
+  'catChange'
 ]);
 
 

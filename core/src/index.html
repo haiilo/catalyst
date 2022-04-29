@@ -16,12 +16,61 @@
     <cat-checkbox required label="Hello world" value="1" indeterminate="true"></cat-checkbox>
     <h2>Toggle</h2>
     <cat-toggle required label="Hello world" value="1"></cat-toggle>
-    <h3>Tooltip</h3>
+    <h2>Input</h2>
+    <cat-input></cat-input>
+
+    <h2>Aspect ratio</h2>
+    <div
+      class="cat-ratio cat-ratio-1x1 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>1x1</div>
+    </div>
+    <div
+      class="cat-ratio cat-ratio-4x3 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>4x3</div>
+    </div>
+    <div
+      class="cat-ratio cat-ratio-16x9 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>16x9</div>
+    </div>
+    <div
+      class="cat-ratio cat-ratio-21x9 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>21x9</div>
+    </div>
+    <div
+      class="cat-ratio cat-ratio-3x1 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>3x1</div>
+    </div>
+    <div
+      class="cat-ratio cat-ratio-6x1 cat-bg-secondary"
+      style="display: inline-block; width: 125px; margin-right: 16px"
+    >
+      <div>6x1</div>
+    </div>
+
+    <h2>Tooltip</h2>
     <div style="display: inline-block">
       <cat-tooltip content="This is a tooltip">
         <p>Hover Me</p>
       </cat-tooltip>
     </div>
+
+    <h2>Radio</h2>
+    <cat-radio label="Radio"></cat-radio>
+    <cat-radio label="Disabled" disabled></cat-radio>
+    <cat-radio label="Checked" checked></cat-radio>
+    <cat-radio label="Checked disabled" checked disabled></cat-radio>
+    <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
+
     <h2>Scrollable</h2>
     <cat-scrollable style="max-width: 200px; max-height: 120px">
       <div>
@@ -205,7 +254,29 @@
     </p>
 
     <h3>Code</h3>
-    <pre>This is code!</pre>
+    <code>This is code!</code>
+
+    <h3>KBD</h3>
+    <p>
+      Press <kbd>Ctrl</kbd> + <kbd class="symbol">↑</kbd> key to submit or <kbd class="symbol">↓</kbd> +
+      <kbd class="symbol">←</kbd> + <kbd class="symbol">→</kbd> to Cancel
+    </p>
+
+    <h3>Pre</h3>
+    <pre>
+Here is some code
+        Here is some code
+        Here is some code
+        Here is some code</pre
+    >
+    <pre>
+          <code>Here is some code</code>
+          <code>Here is some code</code>
+          <code>Here is some code</code>
+        </pre>
+
+    <h3>Samp</h3>
+    <samp>This text is meant to be treated as <br />sample output from a computer program.</samp>
 
     <h3>Lead</h3>
     <p class="cat-lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
