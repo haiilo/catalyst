@@ -8,7 +8,7 @@ describe('cat-checkbox', () => {
       html: `<cat-checkbox label="Label"></cat-checkbox>`
     });
     expect(page.root).toEqualHtml(`
-     <cat-checkbox>
+     <cat-checkbox label="Label">
         <mock:shadow-root>
           <label htmlfor="cat-checkbox-0">
             <input id="cat-checkbox-0" type="checkbox">
