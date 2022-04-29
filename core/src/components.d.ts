@@ -66,9 +66,9 @@ export namespace Components {
          */
         "iconOnly": boolean | Breakpoint;
         /**
-          * Display the icon as a suffix.
+          * Display the icon on the right.
          */
-        "iconSuffix": boolean;
+        "iconRight": boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -124,6 +124,93 @@ export namespace Components {
           * The size of the icon.
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    interface CatInput {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        "clear": () => Promise<void>;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Optional hint text to be displayed with the input.
+         */
+        "hint"?: string;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum value for numeric values.
+         */
+        "max"?: number;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum value for numeric values.
+         */
+        "min"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name": string;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Use round input edges.
+         */
+        "round": boolean;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * Type of form control.
+         */
+        "type": 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
     }
     interface CatMenu {
         /**
@@ -241,6 +328,12 @@ declare global {
         prototype: HTMLCatIconElement;
         new (): HTMLCatIconElement;
     };
+    interface HTMLCatInputElement extends Components.CatInput, HTMLStencilElement {
+    }
+    var HTMLCatInputElement: {
+        prototype: HTMLCatInputElement;
+        new (): HTMLCatInputElement;
+    };
     interface HTMLCatMenuElement extends Components.CatMenu, HTMLStencilElement {
     }
     var HTMLCatMenuElement: {
@@ -276,6 +369,7 @@ declare global {
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
         "cat-icon": HTMLCatIconElement;
+        "cat-input": HTMLCatInputElement;
         "cat-menu": HTMLCatMenuElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
@@ -342,9 +436,9 @@ declare namespace LocalJSX {
          */
         "iconOnly"?: boolean | Breakpoint;
         /**
-          * Display the icon as a suffix.
+          * Display the icon on the right.
          */
-        "iconSuffix"?: boolean;
+        "iconRight"?: boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -407,6 +501,92 @@ declare namespace LocalJSX {
           * The size of the icon.
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    interface CatInput {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional hint text to be displayed with the input.
+         */
+        "hint"?: string;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum value for numeric values.
+         */
+        "max"?: number;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum value for numeric values.
+         */
+        "min"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Use round input edges.
+         */
+        "round"?: boolean;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * Type of form control.
+         */
+        "type"?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
     }
     interface CatMenu {
         /**
@@ -527,6 +707,7 @@ declare namespace LocalJSX {
         "cat-badge": CatBadge;
         "cat-button": CatButton;
         "cat-icon": CatIcon;
+        "cat-input": CatInput;
         "cat-menu": CatMenu;
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
@@ -542,6 +723,7 @@ declare module "@stencil/core" {
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
