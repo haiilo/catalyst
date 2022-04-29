@@ -2,11 +2,7 @@ import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
-/**
- *
- * @part radio - The input type radio element.
- * @part label - The label of the input.
- */
+
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
@@ -21,24 +17,9 @@ export class CatRadio {
   @Prop() checked = false;
 
   /**
-   * Whether the radio is required.
-   * */
-  @Prop() required = false;
-
-  /**
    *  Whether this radio is disabled.
    *  */
   @Prop() disabled = false;
-
-  /**
-   * The name of the radio component.
-   */
-  @Prop() name?: string;
-
-  /**
-   * The value of the radio component.
-   */
-  @Prop() value?: string;
 
   /**
    * The label of the radio that is visible.
@@ -46,10 +27,24 @@ export class CatRadio {
   @Prop() label = '';
 
   /**
-   * Hides the visibility of the label but still shows it to users
-   * who use assistive technology.
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
    */
-  @Prop() hideLabel = false;
+  @Prop() labelHidden = false;
+
+  /**
+   * The name of the radio component.
+   */
+  @Prop() name?: string;
+
+  /**
+   * Whether the radio is required.
+   * */
+  @Prop() required = false;
+
+  /**
+   * The value of the radio component.
+   */
+  @Prop() value?: string;
 
   /**
    * Emitted when the radio is changed.
@@ -58,39 +53,28 @@ export class CatRadio {
 
   componentWillRender(): void {
     if (!this.label) {
-      log.error('Missing label on radio element', this);
+      log.error('[A11y] Missing ARIA label on radio button', this);
     }
   }
 
   render() {
     return (
-      <div
-        class={{
-          'cat-radio-wrapper': true,
-          'cat-radio-disabled': this.disabled
-        }}
-      >
-        <input
-          id={this.id}
-          part="radio"
-          type="radio"
-          class="cat-radio-input"
-          checked={this.checked}
-          required={this.required}
-          disabled={this.disabled}
-          name={this.name}
-          value={this.value}
-          onChange={this.onChange.bind(this)}
-        />
-        <span class="cat-radio-checked-circle" />
-        <label
-          htmlFor={this.id}
-          part="label"
-          class={{ 'cat-radio-label': true, 'cat-radio-hidden-label': this.hideLabel }}
-        >
-          {this.label}
-        </label>
-      </div>
+      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+        <span class="checkbox">
+          <input
+            id={this.id}
+            type="radio"
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            required={this.required}
+            disabled={this.disabled}
+            onChange={this.onChange.bind(this)}
+          />
+          <span class="circle"></span>
+        </span>
+        <span class="label">{this.label}</span>
+      </label>
     );
   }
 

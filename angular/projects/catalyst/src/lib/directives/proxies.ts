@@ -172,13 +172,13 @@ export declare interface CatRadio extends Components.CatRadio {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hideLabel', 'label', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
 })
 @Component({
   selector: 'cat-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hideLabel', 'label', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
 })
 export class CatRadio {
   protected el: HTMLElement;

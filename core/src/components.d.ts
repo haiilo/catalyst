@@ -228,13 +228,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Hides the visibility of the label but still shows it to users who use assistive technology.
-         */
-        "hideLabel": boolean;
-        /**
           * The label of the radio that is visible.
          */
         "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
         /**
           * The name of the radio component.
          */
@@ -649,13 +649,13 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Hides the visibility of the label but still shows it to users who use assistive technology.
-         */
-        "hideLabel"?: boolean;
-        /**
           * The label of the radio that is visible.
          */
         "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
         /**
           * The name of the radio component.
          */

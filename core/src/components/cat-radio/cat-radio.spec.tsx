@@ -5,16 +5,18 @@ describe('cat-radio', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatRadio],
-      html: `<cat-radio></cat-radio>`
+      html: `<cat-radio label="Label"></cat-radio>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-radio>
+      <cat-radio label="Label">
         <mock:shadow-root>
-          <div class="cat-radio-wrapper">
-            <input class="cat-radio-input" id="cat-radio-1" part="radio" type="radio">
-            <span class="cat-radio-checked-circle"></span>
-            <label class="cat-radio-label" htmlfor="cat-radio-1" part="label"></label>
-          </div>
+          <label htmlfor="cat-radio-1">
+            <span class="checkbox">
+              <input id="cat-radio-1" type="radio">
+              <span class="circle"></span>
+            </span>
+            <span class="label">Label</span>
+          </label>
         </mock:shadow-root>
       </cat-radio>
     `);

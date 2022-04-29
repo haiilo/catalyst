@@ -5,56 +5,71 @@
   display: inline-block;
 }
 
-.cat-radio-wrapper {
+:host([hidden]) {
+  display: none;
+}
+
+label {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0;
+  gap: 0.5rem;
+  @include cat-body('m');
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
   position: relative;
+}
 
-  .cat-radio-label {
-    padding-left: 12px;
-    cursor: pointer;
+.circle {
+  position: absolute;
+  width: calc(cat-size('xs') / 2);
+  height: calc(cat-size('xs') / 2);
+  background-color: cat-token('color.theme.primary.bg');
+  border-radius: 10rem;
+  top: calc(50% - cat-size('xs') / 4);
+  left: calc(50% - cat-size('xs') / 4);
+  visibility: hidden;
+}
+
+input {
+  margin: 0;
+  width: calc(cat-size('m') / 2);
+  height: calc(cat-size('m') / 2);
+  appearance: none;
+  background-color: cat-token('color.ui.background.input');
+  box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+  border-radius: 10rem;
+  cursor: inherit;
+
+  &:checked {
+    box-shadow: 0 0 0 1px cat-token('color.theme.primary.bg');
+
+    + .circle {
+      visibility: visible;
+    }
   }
+}
 
-  .cat-radio-hidden-label {
+.label {
+  .is-hidden & {
     @include cat-visually-hidden;
   }
+}
 
-  .cat-radio-input {
-    width: 20px;
-    height: 20px;
+.is-disabled {
+  cursor: not-allowed;
+  color: cat-token('color.ui.font.muted');
 
-    appearance: none;
-
-    background-color: cat-token('color.base.neutral.0');
-    border: 1px solid #e7e8ee;
-    box-sizing: border-box;
-    border-radius: 36px;
-    margin: 0;
-    cursor: pointer;
+  input {
+    background-color: cat-token('color.ui.background.inputDisabled');
 
     &:checked {
-      background-color: cat-token('color.base.neutral.0');
-      border: 1px solid #207f8a;
-      box-sizing: border-box;
-      border-radius: 36px;
-    }
-
-    &:checked + .cat-radio-checked-circle {
-      width: 12px;
-      height: 12px;
-      position: absolute;
-      left: 4px;
-      top: 4px;
-
-      background-color: cat-token('color.theme.primary.bg');
-      border-radius: 32px;
-      cursor: pointer;
+      box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
     }
   }
 
-  &.cat-radio-disabled > * {
-    @include cat-disabled;
+  .circle {
+    background-color: cat-token('color.ui.border.input');
   }
 }
