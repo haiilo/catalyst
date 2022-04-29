@@ -11,7 +11,7 @@
 
 .tooltip {
   position: absolute;
-  @include cat-body('s',  500);
+  @include cat-body('s', 500);
   font-size: 0.85rem;
   padding: 0.75rem;
   background-color: rgb(255, 255, 255);
@@ -21,7 +21,7 @@
   transition: all 0.25s linear 0s;
   visibility: hidden;
   opacity: 0;
-  box-shadow: rgb(0 0 0 / 8%) 0px 1px 8px 0px;
+  box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
   border: 1px solid rgb(231, 232, 238);
 
   &-show {
