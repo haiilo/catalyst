@@ -11,6 +11,7 @@ module.exports = {
         tooltip: { value: '{color.base.neutral.900.value}' }
       },
       border: {
+        light: { value: '{color.base.neutral.100.value}' },
         default: { value: '{color.base.neutral.200.value}' },
         dark: { value: '{color.base.neutral.300.value}' },
         focus: { value: '#0071ff' }
