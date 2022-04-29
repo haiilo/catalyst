@@ -11,15 +11,18 @@
 
 .tooltip {
   position: absolute;
-  @include cat-body('s');
-  padding: 0.25rem;
-  background-color: rgba(cat-token('color.ui.background.tooltip'), cat-token('opacity.tooltip'));
-  border-radius: cat-border-radius('s');
-  color: cat-token('color.ui.font.tooltip');
+  @include cat-body('s',  500);
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.25rem;
+  color: rgb(0, 0, 0);
   white-space: nowrap;
-  transition: cat-token('time.transition.s') linear;
+  transition: all 0.25s linear 0s;
   visibility: hidden;
   opacity: 0;
+  box-shadow: rgb(0 0 0 / 8%) 0px 1px 8px 0px;
+  border: 1px solid rgb(231, 232, 238);
 
   &-show {
     opacity: 1;
