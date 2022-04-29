@@ -23,7 +23,7 @@
     background-color cat-token('time.transition.s') linear, box-shadow cat-token('time.transition.s') linear;
 
   &:focus-visible {
-    outline: $cat-focus-outline;
+    outline: 2px solid cat-token('color.ui.border.focus');
     outline-offset: 1px;
   }
 }

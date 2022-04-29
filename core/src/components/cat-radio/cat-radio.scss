@@ -1,0 +1,75 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+label {
+  display: flex;
+  gap: 0.5rem;
+  @include cat-body('m');
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  width: calc(cat-size('xs') / 2);
+  height: calc(cat-size('xs') / 2);
+  background-color: cat-token('color.theme.primary.bg');
+  border-radius: 10rem;
+  top: calc(50% - cat-size('xs') / 4);
+  left: calc(50% - cat-size('xs') / 4);
+  visibility: hidden;
+}
+
+input {
+  margin: 0;
+  width: calc(cat-size('m') / 2);
+  height: calc(cat-size('m') / 2);
+  appearance: none;
+  background-color: cat-token('color.ui.background.input');
+  box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+  border-radius: 10rem;
+  cursor: inherit;
+
+  &:checked {
+    box-shadow: 0 0 0 1px cat-token('color.theme.primary.bg');
+
+    + .circle {
+      visibility: visible;
+    }
+  }
+}
+
+.label {
+  .is-hidden & {
+    @include cat-visually-hidden;
+  }
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  color: cat-token('color.ui.font.muted');
+
+  input {
+    background-color: cat-token('color.ui.background.inputDisabled');
+
+    &:checked {
+      box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+    }
+  }
+
+  .circle {
+    background-color: cat-token('color.ui.border.input');
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
@@ -13,8 +13,6 @@ export class CatScrollable {
   private readonly init = new Subject<void>();
   private readonly destroyed = new Subject<void>();
   private scrolled!: Observable<Event>;
-
-  @Element() el!: HTMLElement;
 
   /** Flags to enable/disable scroll shadowX. */
   @Prop()
