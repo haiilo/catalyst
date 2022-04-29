@@ -111,6 +111,40 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    interface CatCheckbox {
+        /**
+          * Checked state of the checkbox
+         */
+        "checked": boolean;
+        /**
+          * Disabled state of the checkbox
+         */
+        "disabled": boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
+        "indeterminate": boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Required state of the checkbox
+         */
+        "required": boolean;
+        /**
+          * The value of the checkbox
+         */
+        "value"?: string;
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -130,6 +164,9 @@ export namespace Components {
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
+        /**
+          * Clear the input.
+         */
         "clear": () => Promise<void>;
         /**
           * Whether the input should show a clear button.
@@ -306,6 +343,36 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToggle {
+        /**
+          * Checked state of the toggle.
+         */
+        "checked": boolean;
+        /**
+          * Disabled state of the toggle.
+         */
+        "disabled": boolean;
+        /**
+          * The label of the toggle that is visible.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Required state of the toggle
+         */
+        "required": boolean;
+        /**
+          * The value of the toggle
+         */
+        "value"?: string;
+    }
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -352,6 +419,12 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
+    }
+    var HTMLCatCheckboxElement: {
+        prototype: HTMLCatCheckboxElement;
+        new (): HTMLCatCheckboxElement;
+    };
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
@@ -394,6 +467,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
+    }
+    var HTMLCatToggleElement: {
+        prototype: HTMLCatToggleElement;
+        new (): HTMLCatToggleElement;
+    };
     interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
     }
     var HTMLCatTooltipElement: {
@@ -404,6 +483,7 @@ declare global {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
+        "cat-checkbox": HTMLCatCheckboxElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-menu": HTMLCatMenuElement;
@@ -411,6 +491,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
 }
@@ -524,6 +605,44 @@ declare namespace LocalJSX {
           * The rendering style of the button.
          */
         "variant"?: 'filled' | 'outlined' | 'text';
+    }
+    interface CatCheckbox {
+        /**
+          * Checked state of the checkbox
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state of the checkbox
+         */
+        "disabled"?: boolean;
+        /**
+          * Indeterminate state of the checkbox
+         */
+        "indeterminate"?: boolean;
+        /**
+          * Label of the checkbox which is presented in the UI
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked status of the checkbox is changed
+         */
+        "onCheckboxChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Required state of the checkbox
+         */
+        "required"?: boolean;
+        /**
+          * The value of the checkbox
+         */
+        "value"?: string;
     }
     interface CatIcon {
         /**
@@ -747,6 +866,40 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatToggle {
+        /**
+          * Checked state of the toggle.
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state of the toggle.
+         */
+        "disabled"?: boolean;
+        /**
+          * The label of the toggle that is visible.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the input
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked status of the toggle is changed
+         */
+        "onToggleChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Required state of the toggle
+         */
+        "required"?: boolean;
+        /**
+          * The value of the toggle
+         */
+        "value"?: string;
+    }
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -777,6 +930,7 @@ declare namespace LocalJSX {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
+        "cat-checkbox": CatCheckbox;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-menu": CatMenu;
@@ -784,6 +938,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
 }
@@ -794,6 +949,7 @@ declare module "@stencil/core" {
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
@@ -801,6 +957,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
