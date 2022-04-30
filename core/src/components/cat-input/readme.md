@@ -36,7 +36,7 @@
 
 ### `clear() => Promise<void>`
 
-
+Clear the input.
 
 #### Returns
 

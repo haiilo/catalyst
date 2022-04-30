@@ -87,6 +87,34 @@ export class CatButton {
 }
 
 
+export declare interface CatCheckbox extends Components.CatCheckbox {
+  /**
+   * Emitted when the checked status of the checkbox is changed 
+   */
+  checkboxChange: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+@Component({
+  selector: 'cat-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+export class CatCheckbox {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['checkboxChange']);
+  }
+}
+
+
 export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
@@ -158,6 +186,34 @@ export class CatMenu {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['catOpen', 'catClose']);
+  }
+}
+
+
+export declare interface CatRadio extends Components.CatRadio {
+  /**
+   * Emitted when the radio is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+@Component({
+  selector: 'cat-radio',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+export class CatRadio {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -240,6 +296,53 @@ export class CatSpinner {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatToast extends Components.CatToast {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-toast',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatToast {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatToggle extends Components.CatToggle {
+  /**
+   * Emitted when the checked status of the toggle is changed 
+   */
+  toggleChange: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+@Component({
+  selector: 'cat-toggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+})
+export class CatToggle {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleChange']);
   }
 }
 

@@ -11,15 +11,17 @@
 
 .tooltip {
   position: absolute;
-  @include cat-body('s');
-  padding: 0.25rem;
-  background-color: rgba(cat-token('color.ui.background.tooltip'), cat-token('opacity.tooltip'));
-  border-radius: cat-border-radius('s');
+  @include cat-body('s', 500);
+  padding: 0.5rem 0.75rem;
+  background-color: cat-token('color.ui.background.tooltip');
+  border-radius: cat-border-radius('m');
   color: cat-token('color.ui.font.tooltip');
   white-space: nowrap;
-  transition: cat-token('time.transition.s') linear;
+  transition: all 0.25s linear 0s;
   visibility: hidden;
   opacity: 0;
+  box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
+  border: 1px solid cat-token('color.ui.border.default');
 
   &-show {
     opacity: 1;
