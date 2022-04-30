@@ -40,7 +40,7 @@ export class CatTooltip {
   /**
    * The delay time for showing tooltip in ms.
    */
-  @Prop() showDelay = 1000;
+  @Prop() showDelay = 500;
 
   /**
    * The delay time for hiding tooltip in ms.

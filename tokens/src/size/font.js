@@ -17,11 +17,11 @@ module.exports = {
         xs: { value: 0.75 }
       },
       mono: {
-        xl: { value: '{size.font.body.xl.value}' },
-        l: { value: '{size.font.body.l.value}' },
-        m: { value: '{size.font.body.m.value}' },
-        s: { value: '{size.font.body.s.value}' },
-        xs: { value: '{size.font.body.xs.value}' }
+        xl: { value: 1.125 },
+        l: { value: 0.9375 },
+        m: { value: 0.875 },
+        s: { value: 0.75 },
+        xs: { value: 0.625 }
       }
     },
     line: {

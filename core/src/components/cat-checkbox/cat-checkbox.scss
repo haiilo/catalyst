@@ -1,0 +1,88 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-flex;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+label {
+  flex: 0 1 auto;
+  display: flex;
+  gap: 0.5rem;
+  @include cat-body('m');
+  @include cat-select(none);
+  cursor: pointer;
+}
+
+input {
+  @include cat-visually-hidden;
+}
+
+.box {
+  flex: 0 0 auto;
+  display: flex;
+  position: relative;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: cat-token('color.ui.background.input');
+  border: 1px solid cat-token('color.ui.border.input');
+  border-radius: cat-border-radius(s);
+  transition: background-color cat-token('time.transition.s') ease, border-color cat-token('time.transition.s') ease;
+
+  svg {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all cat-token('time.transition.s') ease;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.99);
+  }
+
+  :checked + & {
+    background-color: cat-token('color.theme.primary.bg');
+    border-color: cat-token('color.theme.primary.bg');
+    stroke: cat-token('color.theme.primary.fill');
+
+    .check {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  :indeterminate + & {
+    background-color: cat-token('color.theme.primary.bg');
+    border-color: cat-token('color.theme.primary.bg');
+    stroke: cat-token('color.theme.primary.fill');
+
+    .dash {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  :focus-visible + & {
+    outline: 2px solid cat-token('color.ui.border.focus');
+    outline-offset: 1px;
+  }
+}
+
+.label {
+  flex: 1 1 auto;
+
+  .is-hidden & {
+    @include cat-visually-hidden;
+  }
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  color: cat-token('color.ui.font.muted');
+}
