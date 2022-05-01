@@ -176,7 +176,7 @@ figure {
     margin-top: -$cat-body-margin-bottom * 0.5;
     margin-bottom: 0;
     @include cat-body('s');
-    color: cat-token('color.ui.font.quoteSource');
+    color: cat-token('color.ui.font.muted');
 
     &::before {
       content: '\2014\00A0'; // em dash, nbsp
