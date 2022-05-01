@@ -14,9 +14,9 @@
 
 ## Shadow Parts
 
-| Part      | Description               |
-| --------- | ------------------------- |
-| `"alert"` | The content of the alert. |
+| Part      | Description        |
+| --------- | ------------------ |
+| `"alert"` | The alert element. |
 
 
 ----------------------------------------------

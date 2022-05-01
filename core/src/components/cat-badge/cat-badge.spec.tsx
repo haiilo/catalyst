@@ -10,7 +10,7 @@ describe('cat-badge', () => {
     expect(page.root).toEqualHtml(`
       <cat-badge>
         <mock:shadow-root>
-          <span class="cat-badge cat-badge-filled cat-badge-m cat-badge-primary" part="badge">
+          <span class="badge badge-filled badge-m badge-primary" part="badge">
             <slot></slot>
           </span>
         </mock:shadow-root>

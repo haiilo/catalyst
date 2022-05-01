@@ -141,6 +141,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * The value of the checkbox
          */
         "value"?: string;
@@ -233,6 +238,11 @@ export namespace Components {
          */
         "round": boolean;
         /**
+          * Sets focus on the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -280,6 +290,11 @@ export namespace Components {
           * Whether the radio is required.
          */
         "required": boolean;
+        /**
+          * Sets focus on the radio. Use this method instead of `radio.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the radio component.
          */
@@ -368,6 +383,11 @@ export namespace Components {
           * Required state of the toggle
          */
         "required": boolean;
+        /**
+          * Sets focus on the toggle. Use this method instead of `toggle.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the toggle
          */
@@ -632,9 +652,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checked status of the checkbox is changed
+          * Emitted when the checkbox loses focus.
          */
-        "onCheckboxChange"?: (event: CustomEvent<any>) => void;
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked status of the checkbox is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Required state of the checkbox
          */
@@ -712,6 +740,18 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
@@ -780,9 +820,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the radio loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the radio is changed.
          */
         "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the radio received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Whether the radio is required.
          */
@@ -888,9 +936,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checked status of the toggle is changed
+          * Emitted when the toggle loses focus.
          */
-        "onToggleChange"?: (event: CustomEvent<any>) => void;
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked status of the toggle is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the toggle received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Required state of the toggle
          */

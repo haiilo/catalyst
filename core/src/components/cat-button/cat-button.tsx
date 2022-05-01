@@ -4,7 +4,8 @@ import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
 
 /**
- * Buttons are used for interface actions.
+ * Buttons are used for interface actions. Primary style should be used only
+ * once per view for main call-to-action.
  *
  * @part button - The native anchor or button element.
  * @part content - The textual content of the button.

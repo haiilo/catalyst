@@ -20,9 +20,32 @@
 
 ## Events
 
-| Event          | Description                                              | Type               |
-| -------------- | -------------------------------------------------------- | ------------------ |
-| `toggleChange` | Emitted when the checked status of the toggle is changed | `CustomEvent<any>` |
+| Event       | Description                                               | Type                      |
+| ----------- | --------------------------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the toggle loses focus.                      | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the checked status of the toggle is changed. | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the toggle received focus.                   | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Sets focus on the toggle. Use this method instead of `toggle.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Shadow Parts
+
+| Part       | Description         |
+| ---------- | ------------------- |
+| `"label"`  | The label content.  |
+| `"toggle"` | The toggle element. |
 
 
 ----------------------------------------------

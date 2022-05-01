@@ -1,8 +1,14 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
 
+/**
+ * Radio Buttons are graphical interface elements that allow user to choose
+ * only one of a predefined set of mutually exclusive options.
+ *
+ * @part label - The label content.
+ */
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
@@ -10,6 +16,7 @@ let nextUniqueId = 0;
 })
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
+  private input!: HTMLInputElement;
 
   /**
    * Whether this radio is checked.
@@ -51,10 +58,31 @@ export class CatRadio {
    */
   @Event() catChange!: EventEmitter;
 
+  /**
+   * Emitted when the radio received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the radio loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   componentWillRender(): void {
     if (!this.label) {
       log.error('[A11y] Missing ARIA label on radio', this);
     }
+  }
+
+  /**
+   * Sets focus on the radio. Use this method instead of `radio.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async setFocus(options?: FocusOptions): Promise<void> {
+    this.input.focus(options);
   }
 
   render() {
@@ -62,6 +90,7 @@ export class CatRadio {
       <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
         <span class="radio">
           <input
+            ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
             type="radio"
             name={this.name}
@@ -69,16 +98,28 @@ export class CatRadio {
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
-            onChange={this.onChange.bind(this)}
+            onInput={this.onChange.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
           />
           <span class="circle"></span>
         </span>
-        <span class="label">{this.label}</span>
+        <span class="label" part="label">
+          {this.label}
+        </span>
       </label>
     );
   }
 
   private onChange(event: Event) {
     this.catChange.emit(event);
+  }
+
+  private onFocus(event: FocusEvent) {
+    this.catFocus.emit(event);
+  }
+
+  private onBlur(event: FocusEvent) {
+    this.catBlur.emit(event);
   }
 }

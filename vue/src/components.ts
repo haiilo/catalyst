@@ -55,7 +55,9 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'name',
   'required',
   'value',
-  'checkboxChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -87,7 +89,10 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'required',
   'round',
   'type',
-  'value'
+  'value',
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -106,7 +111,9 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
   'name',
   'required',
   'value',
-  'catChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -147,7 +154,9 @@ export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggl
   'name',
   'required',
   'value',
-  'toggleChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 

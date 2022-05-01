@@ -12,8 +12,8 @@ describe('cat-toggle', () => {
         <mock:shadow-root>
           <label htmlfor="cat-toggle-0">
             <input class="form-check-input" id="cat-toggle-0" role="switch" type="checkbox">
-            <span class="toggle"></span>
-            <span class="label">Label</span>
+            <span class="toggle" part="toggle"></span>
+            <span class="label" part="label">Label</span>
           </label>
         </mock:shadow-root>
       </cat-toggle>

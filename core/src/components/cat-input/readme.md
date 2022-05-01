@@ -32,6 +32,15 @@
 | `value`        | `value`         | The initial value of the control.                                                         | `number \| string \| undefined`                                             | `undefined` |
 
 
+## Events
+
+| Event       | Description                            | Type                      |
+| ----------- | -------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the value is changed.     | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
+
+
 ## Methods
 
 ### `clear() => Promise<void>`
@@ -43,6 +52,25 @@ Clear the input.
 Type: `Promise<void>`
 
 
+
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Sets focus on the input. Use this method instead of `input.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Shadow Parts
+
+| Part       | Description        |
+| ---------- | ------------------ |
+| `"label"`  | The label content. |
+| `"prefix"` | The text prefix.   |
+| `"suffix"` | The text suffix.   |
 
 
 ## Dependencies

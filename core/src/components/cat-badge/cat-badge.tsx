@@ -1,9 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
 
 /**
- * Badges are used to draw attention and display statuses or counts.
+ * Badges are used to inform users of the status of an object or of an action
+ * that’s been taken.
  *
- * @part badge - The content of the badge.
+ * @part badge - The badge element.
  */
 @Component({
   tag: 'cat-badge',
@@ -41,12 +42,12 @@ export class CatBadge {
       <span
         part="badge"
         class={{
-          'cat-badge': true,
-          'cat-badge-round': this.round,
-          'cat-badge-pulse': this.pulse,
-          [`cat-badge-${this.variant}`]: Boolean(this.variant),
-          [`cat-badge-${this.color}`]: Boolean(this.color),
-          [`cat-badge-${this.size}`]: Boolean(this.size)
+          badge: true,
+          'badge-round': this.round,
+          'badge-pulse': this.pulse,
+          [`badge-${this.variant}`]: Boolean(this.variant),
+          [`badge-${this.color}`]: Boolean(this.color),
+          [`badge-${this.size}`]: Boolean(this.size)
         }}
       >
         <slot></slot>

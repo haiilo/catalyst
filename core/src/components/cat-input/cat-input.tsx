@@ -1,4 +1,5 @@
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import log from 'loglevel';
 
 let nextUniqueId = 0;
 
@@ -6,6 +7,10 @@ let nextUniqueId = 0;
  * Inputs are used to allow users to provide text input when the expected input
  * is short. As well as plain text, Input supports various types of text,
  * including passwords and numbers.
+ *
+ * @part label - The label content.
+ * @part prefix - The text prefix.
+ * @part suffix - The text suffix.
  */
 @Component({
   tag: 'cat-input',
@@ -123,9 +128,20 @@ export class CatInput {
    */
   @Prop() value?: string | number;
 
-  handleChange() {
-    this.inputValue = this.input.value;
-  }
+  /**
+   * Emitted when the value is changed.
+   */
+  @Event() catChange!: EventEmitter;
+
+  /**
+   * Emitted when the input received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
 
   @Watch('value')
   onValueChange(value?: string | number) {
@@ -134,6 +150,23 @@ export class CatInput {
 
   componentWillLoad() {
     this.onValueChange(this.value);
+  }
+
+  componentWillRender(): void {
+    if (!this.label) {
+      log.error('[A11y] Missing ARIA label on input', this);
+    }
+  }
+
+  /**
+   * Sets focus on the input. Use this method instead of `input.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async setFocus(options?: FocusOptions): Promise<void> {
+    this.input.focus(options);
   }
 
   /**
@@ -149,30 +182,36 @@ export class CatInput {
       <Host>
         {this.label && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-            {this.label}
-            {!this.required && (
-              <span class="cat-input-optional" aria-hidden="true">
-                (Optional)
-              </span>
-            )}
+            <span part="label">
+              {this.label}
+              {!this.required && (
+                <span class="input-optional" aria-hidden="true">
+                  (Optional)
+                </span>
+              )}
+            </span>
           </label>
         )}
         <div
           class={{
-            'cat-input-wrapper': true,
-            'cat-input-round': this.round,
-            'cat-input-disabled': this.disabled
+            'input-wrapper': true,
+            'input-round': this.round,
+            'input-disabled': this.disabled
           }}
           onClick={() => this.input.focus()}
         >
-          {this.textPrefix && <span class="cat-text-prefix">{this.textPrefix}</span>}
-          {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="cat-icon-prefix"></cat-icon>}
-          <div class="cat-input-inner-wrapper">
+          {this.textPrefix && (
+            <span class="text-prefix" part="prefix">
+              {this.textPrefix}
+            </span>
+          )}
+          {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix"></cat-icon>}
+          <div class="input-inner-wrapper">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
               id={this.id}
               class={{
-                'cat-has-clearable': this.clearable && !this.disabled
+                'has-clearable': this.clearable && !this.disabled
               }}
               autocomplete={this.autoComplete}
               disabled={this.disabled}
@@ -186,11 +225,13 @@ export class CatInput {
               required={this.required}
               type={this.type}
               value={this.inputValue}
-              onInput={() => this.handleChange()}
+              onInput={this.onInput.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              onBlur={this.onBlur.bind(this)}
             ></input>
             {this.clearable && !this.disabled && this.inputValue && (
               <cat-button
-                class="cat-clearable"
+                class="clearable"
                 icon="cross-circle-outlined"
                 icon-only="true"
                 size="s"
@@ -203,11 +244,28 @@ export class CatInput {
               </cat-button>
             )}
           </div>
-          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="cat-icon-suffix"></cat-icon>}
-          {this.textSuffix && <span class="cat-text-suffix">{this.textSuffix}</span>}
+          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="icon-suffix"></cat-icon>}
+          {this.textSuffix && (
+            <span class="text-suffix" part="suffix">
+              {this.textSuffix}
+            </span>
+          )}
         </div>
-        {this.hint && <p class="cat-input-hint">{this.hint}</p>}
+        {this.hint && <p class="input-hint">{this.hint}</p>}
       </Host>
     );
+  }
+
+  private onInput(event: Event) {
+    this.inputValue = this.input.value;
+    this.catChange.emit(event);
+  }
+
+  private onFocus(event: FocusEvent) {
+    this.catFocus.emit(event);
+  }
+
+  private onBlur(event: FocusEvent) {
+    this.catBlur.emit(event);
   }
 }

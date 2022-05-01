@@ -23,7 +23,7 @@ svg {
   stroke-linecap: round;
   stroke-width: 5px;
   transform-origin: center center;
-  animation: cat-spinner 0.75s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
+  animation: spin 0.75s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
   width: 1em;
   height: 1em;
 }
@@ -31,7 +31,7 @@ svg {
 // ----- sizes
 
 @mixin size($size) {
-  .cat-spinner-#{$size} svg {
+  .spinner-#{$size} svg {
     font-size: cat-size($size) * 0.5;
   }
 }
@@ -44,7 +44,7 @@ svg {
 
 // ----- animation
 
-@keyframes cat-spinner {
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
