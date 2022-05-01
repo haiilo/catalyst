@@ -358,6 +358,61 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTextarea {
+        /**
+          * Whether the textarea is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Optional hint text to be displayed with the textarea.
+         */
+        "hint"?: string;
+        /**
+          * The label for the textarea.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name": string;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Specifies the initial number of lines in the textarea.
+         */
+        "rows": number;
+        /**
+          * Sets focus on the textarea. Use this method instead of `textarea.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
+    }
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -487,6 +542,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
+    }
+    var HTMLCatTextareaElement: {
+        prototype: HTMLCatTextareaElement;
+        new (): HTMLCatTextareaElement;
+    };
     interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
     }
     var HTMLCatToggleElement: {
@@ -511,6 +572,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-textarea": HTMLCatTextareaElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
@@ -914,6 +976,68 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTextarea {
+        /**
+          * Whether the textarea is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional hint text to be displayed with the textarea.
+         */
+        "hint"?: string;
+        /**
+          * The label for the textarea.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the textarea received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Specifies the initial number of lines in the textarea.
+         */
+        "rows"?: number;
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
+    }
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -994,6 +1118,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-textarea": CatTextarea;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
@@ -1013,6 +1138,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }

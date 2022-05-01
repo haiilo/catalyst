@@ -333,6 +333,43 @@ export class CatSpinner {
 }
 
 
+export declare interface CatTextarea extends Components.CatTextarea {
+  /**
+   * Emitted when the value is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the textarea received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the textarea loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'cat-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value']
+})
+export class CatTextarea {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+
 export declare interface CatToggle extends Components.CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed. 

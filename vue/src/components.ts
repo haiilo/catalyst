@@ -146,6 +146,25 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 ]);
 
 
+export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
+  'disabled',
+  'hint',
+  'label',
+  'labelHidden',
+  'maxLength',
+  'minLength',
+  'name',
+  'placeholder',
+  'readonly',
+  'required',
+  'rows',
+  'value',
+  'catChange',
+  'catFocus',
+  'catBlur'
+]);
+
+
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',
