@@ -111,6 +111,8 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    interface CatCard {
+    }
     interface CatCheckbox {
         /**
           * Checked state of the checkbox
@@ -494,6 +496,12 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    interface HTMLCatCardElement extends Components.CatCard, HTMLStencilElement {
+    }
+    var HTMLCatCardElement: {
+        prototype: HTMLCatCardElement;
+        new (): HTMLCatCardElement;
+    };
     interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
     }
     var HTMLCatCheckboxElement: {
@@ -564,6 +572,7 @@ declare global {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
+        "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
@@ -687,6 +696,8 @@ declare namespace LocalJSX {
           * The rendering style of the button.
          */
         "variant"?: 'filled' | 'outlined' | 'text';
+    }
+    interface CatCard {
     }
     interface CatCheckbox {
         /**
@@ -1110,6 +1121,7 @@ declare namespace LocalJSX {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
+        "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
@@ -1130,6 +1142,7 @@ declare module "@stencil/core" {
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;

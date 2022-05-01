@@ -87,6 +87,25 @@ export class CatButton {
 }
 
 
+export declare interface CatCard extends Components.CatCard {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed. 
