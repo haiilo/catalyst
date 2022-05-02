@@ -42,6 +42,10 @@ export namespace Components {
          */
         "a11yLabel"?: string;
         /**
+          * Show an active status indicator on the left side of the button.
+         */
+        "active": boolean;
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -620,6 +624,10 @@ declare namespace LocalJSX {
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
+        /**
+          * Show an active status indicator on the left side of the button.
+         */
+        "active"?: boolean;
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */

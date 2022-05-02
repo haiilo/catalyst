@@ -36,6 +36,11 @@ export class CatButton {
   @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
 
   /**
+   * Show an active status indicator on the left side of the button.
+   */
+  @Prop() active = false;
+
+  /**
    * The size of the button.
    */
   @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
@@ -227,6 +232,7 @@ export class CatButton {
           part="button"
           class={{
             'cat-button': true,
+            'cat-button-active': this.active,
             'cat-button-icon': this.isIconButton,
             'cat-button-round': this.round ?? this.isIconButton,
             'cat-button-loading': this.loading,

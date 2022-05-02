@@ -7,7 +7,7 @@ $-min-height: 2rem;
 $-max-height: calc(100vh - 48px);
 
 :host {
-  display: inline-block;
+  display: contents;
 }
 
 :host([hidden]) {
@@ -28,4 +28,5 @@ $-max-height: calc(100vh - 48px);
   max-height: $-max-height;
   @include cat-elevation(1);
   border-radius: cat-border-radius('m');
+  z-index: $cat-menu-z-index;
 }

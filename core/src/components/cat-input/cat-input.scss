@@ -2,11 +2,11 @@
 @use 'mixins' as *;
 
 :host {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  vertical-align: top;
   @include cat-body('m');
+  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {

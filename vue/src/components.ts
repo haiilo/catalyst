@@ -25,6 +25,7 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
 export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-button', undefined, [
   'variant',
   'color',
+  'active',
   'size',
   'name',
   'value',
