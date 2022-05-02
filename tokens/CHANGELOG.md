@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/haiilo/catalyst/compare/v0.4.0...v0.5.0) (2022-05-02)
+
+
+### Bug Fixes
+
+* **core:** adjust tooltip styles ([e32fe78](https://github.com/haiilo/catalyst/commit/e32fe787483ba0b9173864cd42c05b994f2593c5))
+
+
+### Features
+
+* **core:** add input component ([337649a](https://github.com/haiilo/catalyst/commit/337649a44001f908110372c3341963bbbd0167f9))
+* **core:** add style to kbd and code element ([844059d](https://github.com/haiilo/catalyst/commit/844059d8b4e89a4c7bf76f2b125515f24f2e8383))
+
+
+
+
+
 # [0.4.0](https://github.com/haiilo/catalyst/compare/v0.3.2...v0.4.0) (2022-04-26)
 
 

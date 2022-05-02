@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/haiilo/catalyst/compare/v0.4.0...v0.5.0) (2022-05-02)
+
+
+### Bug Fixes
+
+* **core:** adjust tooltip styles ([e32fe78](https://github.com/haiilo/catalyst/commit/e32fe787483ba0b9173864cd42c05b994f2593c5))
+* **core:** fix menu & tooltip z-indexes ([5f7dc67](https://github.com/haiilo/catalyst/commit/5f7dc6763c1d591adea6952982f2c64eb76ae318))
+* **core:** fixed tooltip test ([#12](https://github.com/haiilo/catalyst/issues/12)) ([868da66](https://github.com/haiilo/catalyst/commit/868da66e93e53b32a8f5bda88a6dd0db50b1b84b))
+
+
+### Features
+
+* add radio button component ([642cff0](https://github.com/haiilo/catalyst/commit/642cff0d7f037202c5abf65f1bf8381970bcdd69))
+* **core:** add aspect ratio utility classes ([ff29637](https://github.com/haiilo/catalyst/commit/ff296379411af1efb613b5b22ccb8c3288d9940c))
+* **core:** add card component ([3be7246](https://github.com/haiilo/catalyst/commit/3be724616b8fa924e719a73aa688aa29a9c2f891))
+* **core:** add input component ([337649a](https://github.com/haiilo/catalyst/commit/337649a44001f908110372c3341963bbbd0167f9))
+* **core:** add navigation styles ([6afb6e9](https://github.com/haiilo/catalyst/commit/6afb6e9017f0dafb2c0712d914f43f895b4b9124))
+* **core:** add style to kbd and code element ([844059d](https://github.com/haiilo/catalyst/commit/844059d8b4e89a4c7bf76f2b125515f24f2e8383))
+* **core:** add textarea component ([9f94637](https://github.com/haiilo/catalyst/commit/9f94637fddd03f4bf98b6d90fa93ce814341efdb))
+* **core:** added checkbox & toggle component ([205b0d0](https://github.com/haiilo/catalyst/commit/205b0d0cc468d40fe742a22fb1608ef25525918f))
+
+
+
+
+
 # [0.4.0](https://github.com/haiilo/catalyst/compare/v0.3.2...v0.4.0) (2022-04-26)
 
 
