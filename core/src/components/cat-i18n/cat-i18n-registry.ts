@@ -41,7 +41,8 @@ export class CatI18nRegistry {
   }
 
   addMessages(lang: string, i18n: { [key: string]: string }): CatI18nRegistry {
-    this.messages.set(lang, { ...this.getDict(lang), ...i18n });
+    const dict = this.getDict(lang);
+    Object.entries(i18n).forEach(([key, message]) => dict.set(key, message));
     log.info(`[CatI18nRegistry] Added message for lang ${lang}: ${Object.keys(i18n).concat(', ')}`);
     window.dispatchEvent(this.buildEvent('cat-i18n-added', { lang, keys: Object.keys(i18n) }));
     return this;
