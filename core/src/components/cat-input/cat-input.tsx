@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -18,6 +19,7 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatInput {
+  private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
 
@@ -186,7 +188,7 @@ export class CatInput {
               {this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
-                  (Optional)
+                  ({this.i18n.getMessage('input.optional')})
                 </span>
               )}
             </span>
@@ -240,7 +242,7 @@ export class CatInput {
                 a11y-label="sdf"
                 onClick={this.clear.bind(this)}
               >
-                Reset
+                {this.i18n.getMessage('input.clear')}
               </cat-button>
             )}
           </div>
