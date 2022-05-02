@@ -20,7 +20,7 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         {
-          src: '../../node_modules/@haiilo/catalyst-tokens/assets',
+          src: '../node_modules/@haiilo/catalyst-tokens/assets',
           dest: 'assets'
         },
         {
@@ -42,7 +42,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [
         {
-          src: '../../node_modules/@haiilo/catalyst-tokens/assets',
+          src: '../node_modules/@haiilo/catalyst-tokens/assets',
           dest: 'build/assets'
         }
       ]
