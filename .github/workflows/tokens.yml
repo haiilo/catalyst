@@ -20,8 +20,9 @@ jobs:
           cache-dependency-path: tokens/package-lock.json
       - name: Install and Build
         run: |
-          npm ci --workspaces=false
-          npm run build
+          cd ..
+          npm ci
+          npm run build -w tokens
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
