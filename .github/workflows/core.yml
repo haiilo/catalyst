@@ -20,7 +20,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Build
         run: |
-          npm ci
+          npm ci --workspaces=false
           npm run build:ci
   prettier:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Check
         run: |
-          npm ci
+          npm ci --workspaces=false
           npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
         run: |
-          npm ci
+          npm ci --workspaces=false
           npm run lint
   stylelint:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
         run: |
-          npm ci
+          npm ci --workspaces=false
           npm run lint:style
   test:
     runs-on: ubuntu-latest
@@ -80,5 +80,5 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Test
         run: |
-          npm ci
+          npm ci --workspaces=false
           npm run test
