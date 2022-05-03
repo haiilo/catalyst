@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
-    "postinstall": "npm run build -w tokens",
     "reset": "rm -rf ./node_modules ./core/node_modules ./react/node_modules ./angular/node_modules ./angular/projects/catalyst/node_modules  ./vue/node_modules ./tokens/node_modules ./core/www ./core/dist ./core/loader ./angular/dist ./tokens/dist"
   },
   "workspaces": [
@@ -19,7 +18,7 @@
   },
   "engines": {
     "npm": ">=8.0.0",
-    "node": ">=17.0.0"
+    "node": ">=16.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
