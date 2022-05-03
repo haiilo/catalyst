@@ -20,8 +20,10 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Build
         run: |
-          npm ci --workspaces=false
-          npm run build:ci
+          cd ..
+          npm ci
+          npm run build -w token
+          npm run build:ci -w core
   prettier:
     runs-on: ubuntu-latest
     steps:
@@ -80,5 +82,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Test
         run: |
-          npm ci --workspaces=false
-          npm run test
+          cd ..
+          npm ci
+          npm run build -w token
+          npm run test -w core
