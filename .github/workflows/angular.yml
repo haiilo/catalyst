@@ -15,10 +15,11 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '17'
           cache: 'npm'
           cache-dependency-path: angular/package-lock.json
       - name: Install and Build
         run: |
-          npm ci --workspaces=false
-          npm run build
+          cd ..
+          npm ci
+          npm run build -w angular
