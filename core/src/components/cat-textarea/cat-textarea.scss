@@ -14,7 +14,6 @@
 }
 
 label {
-  display: block;
   align-self: flex-start;
 
   &.hidden {
@@ -31,7 +30,6 @@ label {
 textarea {
   margin: 0;
   padding: 0.625rem 0.75rem;
-  width: 100%;
   min-height: cat-size('m');
   font: inherit;
   background: cat-token('color.ui.background.input');

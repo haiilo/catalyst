@@ -207,7 +207,7 @@ export class CatInput {
               {this.textPrefix}
             </span>
           )}
-          {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix"></cat-icon>}
+          {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
           <div class="input-inner-wrapper">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
@@ -238,15 +238,12 @@ export class CatInput {
                 icon-only="true"
                 size="s"
                 variant="text"
-                round
-                a11y-label="sdf"
+                a11y-label={this.i18n.getMessage('input.clear')}
                 onClick={this.clear.bind(this)}
-              >
-                {this.i18n.getMessage('input.clear')}
-              </cat-button>
+              ></cat-button>
             )}
           </div>
-          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="icon-suffix"></cat-icon>}
+          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>}
           {this.textSuffix && (
             <span class="text-suffix" part="suffix">
               {this.textSuffix}

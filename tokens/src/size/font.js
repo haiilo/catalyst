@@ -41,11 +41,11 @@ module.exports = {
         xs: { value: 1 }
       },
       mono: {
-        xl: { value: '{size.line.body.xl.value}' },
-        l: { value: '{size.line.body.l.value}' },
-        m: { value: '{size.line.body.m.value}' },
-        s: { value: '{size.line.body.s.value}' },
-        xs: { value: '{size.line.body.xs.value}' }
+        xl: { value: 1.5 },
+        l: { value: 1.25 },
+        m: { value: 1.125 },
+        s: { value: 1 },
+        xs: { value: 0.875 }
       }
     }
   }
