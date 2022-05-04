@@ -16,6 +16,30 @@ Please take a look at the official design documentation at
 https://design.haiilo.com and follow the [Getting Started](https://design.haiilo.com/7a807c8eb/p/12e811-getting-started)
 guide to learn how to setup your project locally.
 
+## Working with workspaces
+
+### Install dependencies
+
+Using `npm install` in the root project will install projects' dependencies and automate link procedures, avoiding using `npm link`.
+
+To install all dependencies of a workspace in isolation, at the specific project level, use `npm install --workspaces=false` or `npm install -ws false`.
+
+To add a new dependency, at the specific project, use `npm install <dependecy>`. In the root project level, use `npm install <dependency> -w <workspace>`.
+
+### Running commands
+
+Using the workspace option in the root project, it is possible to run a command on a specific workspace. `npm run <script> -w <workspace>`.
+
+It is also possible to run all with the option workspaces: `npm run <script> -ws`.
+Use `--if-present` to ignore missing scripts, e.g: 
+```
+npm run test -ws --if-present
+``` 
+
+### Publish
+
+Use `npm publish` to publish. The command will publish the workspaces as well.
+
 ## Code Contributors
 
 This project exists thanks to all the people who contribute.
