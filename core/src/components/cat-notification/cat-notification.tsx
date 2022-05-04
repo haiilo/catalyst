@@ -1,4 +1,4 @@
-import Toastify, { Offset } from 'toastify-js'
+import Toastify from 'toastify-js'
 
 export enum TypeIcons {
   'success' = 'check-circle-filled',
@@ -6,56 +6,86 @@ export enum TypeIcons {
   'info' = 'sparkle-filled'
 }
 
+interface Offset {
+  x: number | string;
+  y: number | string;
+}
+
 export interface ToastOptions {
-  text?: string | undefined;
-  node?: Node | undefined;
-  duration?: number | undefined;
-  selector?: string | Node | undefined;
   /**
-   * Add link to toast
+   * HTML content of the toast
    */
-  destination?: string | undefined;
+  node: Node;
+  /**
+   * Duration of the toast
+   */
+  duration: number;
+  /**
+   * CSS Selector or Element Node on which the toast should be added
+   */
+  selector: string | Node;
+  /**
+   * URL to which the browser should be navigated on click of the toast
+   */
+  destination: string;
   /**
    * Open link in new window
    */
-  newWindow?: boolean | undefined;
+  newWindow: boolean;
   /**
    * Show close button
    */
-  close?: boolean | undefined;
+  close: boolean;
   /**
    * Push direction for toast
    */
-  gravity?: 'top' | 'bottom' | undefined;
+  gravity: 'top' | 'bottom';
   /**
    * Toast position
    */
-  position?: 'left' | 'center' | 'right' | undefined;
-  className?: string | undefined;
-  stopOnFocus?: boolean | undefined;
-  type?: 'success' | 'info' | 'error' | undefined;
+  position: 'left' | 'center' | 'right';
+  /**
+   *  Provide custom class name for further customization
+   */
+  className: string;
+  /**
+   *  Stop timer when hovered over the toast
+   */
+  stopOnFocus: boolean;
+  /**
+   *  Type of toast
+   */
+  type: 'success' | 'info' | 'error';
   /**
    * Invoked when the toast is dismissed
    */
-  callback?: (() => void) | undefined;
-  onClick?: (() => void) | undefined;
-  offset?: Offset | undefined;
+  callback: (() => void);
+  /**
+   *  Invoked when the toast is clicked
+   */
+  onClick: (() => void);
+  /**
+   *  Add some offset to axis
+   */
+  offset: Offset;
   /**
    * Toggle the default behavior of escaping HTML markup
    */
-  escapeMarkup?: boolean | undefined;
+  escapeMarkup: boolean;
   /**
    * HTML DOM Style properties to add any style directly to toast
    */
-  style?: { [cssRule: string]: string };
+  style: { [cssRule: string]: string };
   /**
    * Set the order in which toasts are stacked in page
    */
-  oldestFirst?: boolean | undefined;
+  oldestFirst: boolean;
 }
 
-class NotificationsWrapper {
-  toastHTMLTemplate(title: string, message = ' ', options?: ToastOptions): HTMLElement {
+class CatNotificationService {
+  private static DURATION = 8000;
+
+  toastHTMLTemplate(title: string, message = ' ', options?: Partial<ToastOptions>): HTMLElement {
     const template = document.createElement('template');
     const typeIcon = options?.type ? TypeIcons[options.type] : TypeIcons.info;
     title = title.trim();
@@ -73,11 +103,11 @@ class NotificationsWrapper {
     return template.content.firstChild as HTMLElement;
   }
 
-  error(title: string, message = ' ', options?: ToastOptions): void {
+  error(title: string, message = ' ', options?: Partial<ToastOptions>): void {
     options = {
       ...{
         node: this.toastHTMLTemplate(title, message, options),
-        duration: 300000,
+        duration: CatNotificationService.DURATION,
         close: true,
         className: 'cat-toastify',
         gravity: "bottom",
@@ -88,11 +118,11 @@ class NotificationsWrapper {
     Toastify(options).showToast();
   }
 
-  success(title: string, message = ' ', options?: ToastOptions): void {
+  success(title: string, message = ' ', options?: Partial<ToastOptions>): void {
     options = {
       ...{
         node: this.toastHTMLTemplate(title, message, options),
-        duration: 3000000,
+        duration: CatNotificationService.DURATION,
         close: true,
         className: 'cat-toastify',
         gravity: "bottom",
@@ -103,11 +133,11 @@ class NotificationsWrapper {
     Toastify(options).showToast();
   }
 
-  info(title: string, message = ' ', options?: ToastOptions): void {
+  info(title: string, message = ' ', options?: Partial<ToastOptions>): void {
     options = {
       ...{
         node: this.toastHTMLTemplate(title, message, options),
-        duration: 3000000,
+        duration: CatNotificationService.DURATION,
         close: true,
         className: 'cat-toastify',
         gravity: "bottom",
@@ -119,4 +149,4 @@ class NotificationsWrapper {
   }
 }
 
-export const NotificationsService = new NotificationsWrapper();
+export const NotificationsService = new CatNotificationService();

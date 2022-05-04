@@ -1,5 +1,5 @@
 import { Component, h } from '@stencil/core';
-import { NotificationsService, ToastOptions } from '../../utils/notifications-service';
+import { NotificationsService, ToastOptions } from '../cat-notification/cat-notification';
 
 /**
  * Toast Component
@@ -20,22 +20,22 @@ export class CatToast {
   }
 
   private onClick() {
-    const infoOptions: ToastOptions = {
+    const infoOptions: Partial<ToastOptions> = {
       duration: 200000,
       gravity: "top",
     };
-    const errorOptions: ToastOptions = {
+    const errorOptions: Partial<ToastOptions> = {
       duration: 200000,
       gravity: "bottom",
       type: 'error'
     };
-    const errorOptions2: ToastOptions = {
+    const errorOptions2: Partial<ToastOptions> = {
       duration: 200000,
       gravity: "bottom",
       position: 'left',
       type: 'error'
     };
-    const successOptions3: ToastOptions = {
+    const successOptions3: Partial<ToastOptions> = {
       duration: 200000,
       gravity: "top",
       position: 'left',

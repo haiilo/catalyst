@@ -4,6 +4,10 @@
 @use '~sanitize.css/assets.css';
 @use '~sanitize.css/reduce-motion.css';
 
+// -- Vendor
+
+@use  '../../node_modules/toastify-js/src/toastify.css';
+
 // -- Core
 
 @use 'core/base' as *;
@@ -26,7 +30,5 @@
 @use 'utils/visibility';
 @use 'utils/ratio';
 @use 'utils/toast';
-
-@import  '../../node_modules/toastify-js/src/toastify.css';
 
 
