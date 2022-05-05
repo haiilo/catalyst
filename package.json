@@ -3,19 +3,41 @@
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
+    "postbump": "npm i @haiilo/catalyst-tokens --save -w core",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
     "clean": "npm run clean -ws --if-present",
     "reset": "npm run reset -ws --if-present && rm -rf ./node_modules"
   },
   "workspaces": [
-      "angular",
-      "angular/projects/catalyst",
-      "core",
-      "react",
-      "tokens",
-      "vue"
-    ],
+    "angular",
+    "angular/projects/catalyst",
+    "core",
+    "react",
+    "tokens",
+    "vue"
+  ],
   "publishConfig": {
     "workspaces": true
+  },
+  "standard-version": {
+    "packageFiles": [
+      "./angular/projects/catalyst/package.json",
+      "./core/package.json",
+      "./react/package.json",
+      "./tokens/package.json"
+    ],
+    "bumpFiles": [
+      "./angular/projects/catalyst/package.json",
+      "./angular/projects/catalyst/package-lock.json",
+      "./core/package.json",
+      "./core/package-lock.json",
+      "./react/package.json",
+      "./react/package-lock.json",
+      "./tokens/package.json",
+      "./tokens/package-lock.json"
+    ]
   },
   "engines": {
     "npm": ">=8.0.0",
@@ -24,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "standard-version": "^9.3.2"
   }
 }
