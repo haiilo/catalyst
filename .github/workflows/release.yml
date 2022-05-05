@@ -39,11 +39,26 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git push --follow-tags
-      - name: Publish to npm
+      - name: Publish @haiilo/catalyst-tokens to npm
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: package.json
+          package: ./tokens/package.json
+      - name: Publish @haiilo/catalyst to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./core/package.json
+      - name: Publish @haiilo/catalyst-angular to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./angular/projects/catalyst/package.json
+      - name: Publish @haiilo/catalyst-react to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./react/package.json
       - name: 'Get release tag'
         uses: 'WyriHaximus/github-action-get-previous-tag@v1'
         id: previoustag

@@ -17,9 +17,6 @@
     "tokens",
     "vue"
   ],
-  "publishConfig": {
-    "workspaces": true
-  },
   "standard-version": {
     "packageFiles": [
       "./angular/projects/catalyst/package.json",
