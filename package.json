@@ -25,14 +25,11 @@
       "./tokens/package.json"
     ],
     "bumpFiles": [
+      "./package-lock.json",
       "./angular/projects/catalyst/package.json",
-      "./angular/projects/catalyst/package-lock.json",
       "./core/package.json",
-      "./core/package-lock.json",
       "./react/package.json",
-      "./react/package-lock.json",
-      "./tokens/package.json",
-      "./tokens/package-lock.json"
+      "./tokens/package.json"
     ],
     "scripts": {
       "postbump": "npm i @haiilo/catalyst-tokens --save -w core && npm i @haiilo/catalyst --save -w angular/projects/catalyst"
