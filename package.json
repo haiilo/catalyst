@@ -38,7 +38,7 @@
       "./tokens/package-lock.json"
     ],
     "scripts": {
-      "postbump": "npm up @haiilo/catalyst-tokens --save -w core && npm up @haiilo/catalyst --save -w angular/projects/catalyst"
+      "postbump": "npm i @haiilo/catalyst-tokens --save -w core && npm i @haiilo/catalyst --save -w angular/projects/catalyst"
     }
   },
   "engines": {
