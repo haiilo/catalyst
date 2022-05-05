@@ -1,7 +1,14 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.5.2](https://github.com/haiilo/catalyst/compare/v0.5.1...v0.5.2) (2022-05-05)
+
+
+### Features
+
+* **core:** move back to node 16 (LTS) ([1947a1f](https://github.com/haiilo/catalyst/commit/1947a1faa8940758379098feefcea18f7e25b10c))
+* move from lerna to npm workspaces ([d051ead](https://github.com/haiilo/catalyst/commit/d051eadc909d09b2badf5aee22e1e4f78652bd7c))
 
 ## [0.5.1](https://github.com/haiilo/catalyst/compare/v0.5.0...v0.5.1) (2022-05-02)
 
