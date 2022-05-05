@@ -352,25 +352,6 @@ export class CatSpinner {
 }
 
 
-export declare interface CatTest extends Components.CatTest {}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined
-})
-@Component({
-  selector: 'cat-test',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class CatTest {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface CatTextarea extends Components.CatTextarea {
   /**
    * Emitted when the value is changed. 

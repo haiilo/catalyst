@@ -150,9 +150,6 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 ]);
 
 
-export const CatTest = /*@__PURE__*/ defineContainer<JSX.CatTest>('cat-test', undefined);
-
-
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'disabled',
   'hint',

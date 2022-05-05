@@ -364,8 +364,6 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
-    interface CatTest {
-    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -556,12 +554,6 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
-    interface HTMLCatTestElement extends Components.CatTest, HTMLStencilElement {
-    }
-    var HTMLCatTestElement: {
-        prototype: HTMLCatTestElement;
-        new (): HTMLCatTestElement;
-    };
     interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
     }
     var HTMLCatTextareaElement: {
@@ -593,7 +585,6 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
-        "cat-test": HTMLCatTestElement;
         "cat-textarea": HTMLCatTextareaElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
@@ -1004,8 +995,6 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
-    interface CatTest {
-    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -1149,7 +1138,6 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
-        "cat-test": CatTest;
         "cat-textarea": CatTextarea;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
@@ -1171,7 +1159,6 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
-            "cat-test": LocalJSX.CatTest & JSXBase.HTMLAttributes<HTMLCatTestElement>;
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
