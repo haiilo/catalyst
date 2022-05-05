@@ -3,9 +3,6 @@ on:
   push:
     paths:
       - 'tokens/**'
-defaults:
-  run:
-    working-directory: tokens
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,13 +12,13 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Build
         run: |
-          npm ci -ws false
-          npm run build
+          npm ci
+          npm run build -w tokens
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

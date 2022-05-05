@@ -5,9 +5,6 @@ on:
       - main
     paths:
       - 'core/**'
-defaults:
-  run:
-    working-directory: core
 jobs:
   gh-pages:
     concurrency: ci-${{ github.ref }}
@@ -17,17 +14,16 @@ jobs:
         uses: actions/checkout@v2
       - name: Install and Build
         run: |
-          cd ..
           npm ci
           npm run build -w tokens
           npm run build:ci -w core
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2
         with:
-          find: "/build/"
-          replace: "https://haiilo.github.io/catalyst/build/"
+          find: '/build/'
+          replace: 'https://haiilo.github.io/catalyst/build/'
           regex: false
-          include: "core/www/index.html"
+          include: core/www/index.html
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
