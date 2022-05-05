@@ -1,3 +1,3 @@
 function showNotifications() {
-  console.log('test');
+  console.log('show notifications');
 }

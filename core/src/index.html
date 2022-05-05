@@ -6,7 +6,7 @@
     <title>Stencil Component Starter</title>
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script nomodule src="/build/catalyst.js"></script>
-    <script type="text/javascript" src="./demo.js"></script>
+    <script src="/build/demo.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" />
@@ -14,7 +14,7 @@
   </head>
   <body>
     <h2>Toast</h2>
-    <cat-button onclick="console.log(NotificationsService.success('okay'))">show notifications</cat-button>
+    <cat-button onclick="showNotifications()">show notifications</cat-button>
     <cat-toast></cat-toast>
     <h2>Checkbox</h2>
     <cat-checkbox label="Toggle"></cat-checkbox>

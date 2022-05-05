@@ -44,7 +44,11 @@ export const config: Config = {
         {
           src: '../node_modules/@haiilo/catalyst-tokens/assets',
           dest: 'build/assets'
-        }
+        },
+        {
+          src: './demo.js',
+          dest: 'build/demo.js'
+        },
       ]
     },
     angularOutputTarget({

@@ -1,4 +1,4 @@
-import Toastify from 'toastify-js'
+import Toastify, { Options } from 'toastify-js'
 
 export enum TypeIcons {
   'success' = 'check-circle-filled',
@@ -6,80 +6,63 @@ export enum TypeIcons {
   'info' = 'sparkle-filled'
 }
 
-interface Offset {
-  x: number | string;
-  y: number | string;
+export const ToastPositions: { [key: string]: { gravity: 'top' | 'bottom', position: 'left' | 'center' | 'right' } } = {
+  'top-left': {
+    gravity: 'top',
+    position: 'left'
+  },
+  'top-center': {
+    gravity: 'top',
+    position: 'center'
+  },
+  'top-right': {
+    gravity: 'top',
+    position: 'right'
+  },
+  'bottom-left': {
+    gravity: 'bottom',
+    position: 'left'
+  },
+  'bottom-center': {
+    gravity: 'bottom',
+    position: 'center'
+  },
+  'bottom-right': {
+    gravity: 'bottom',
+    position: 'right'
+  }
+}
+
+export interface ToastPosition {
+  gravity: 'top' | 'bottom';
+  position: 'left' | 'center' | 'right';
 }
 
 export interface ToastOptions {
   /**
    * HTML content of the toast
    */
-  node: Node;
-  /**
-   * Duration of the toast
-   */
-  duration: number;
-  /**
-   * CSS Selector or Element Node on which the toast should be added
-   */
-  selector: string | Node;
-  /**
-   * URL to which the browser should be navigated on click of the toast
-   */
-  destination: string;
-  /**
-   * Open link in new window
-   */
-  newWindow: boolean;
+  content: Node;
   /**
    * Show close button
    */
   close: boolean;
   /**
-   * Push direction for toast
-   */
-  gravity: 'top' | 'bottom';
-  /**
    * Toast position
    */
-  position: 'left' | 'center' | 'right';
-  /**
-   *  Provide custom class name for further customization
-   */
-  className: string;
-  /**
-   *  Stop timer when hovered over the toast
-   */
-  stopOnFocus: boolean;
+  position: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
   /**
    *  Type of toast
    */
   type: 'success' | 'info' | 'error';
   /**
-   * Invoked when the toast is dismissed
-   */
-  callback: (() => void);
-  /**
    *  Invoked when the toast is clicked
    */
   onClick: (() => void);
   /**
-   *  Add some offset to axis
-   */
-  offset: Offset;
-  /**
    * Toggle the default behavior of escaping HTML markup
    */
   escapeMarkup: boolean;
-  /**
-   * HTML DOM Style properties to add any style directly to toast
-   */
-  style: { [cssRule: string]: string };
-  /**
-   * Set the order in which toasts are stacked in page
-   */
-  oldestFirst: boolean;
 }
 
 class CatNotificationService {
@@ -104,48 +87,57 @@ class CatNotificationService {
   }
 
   error(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    options = {
-      ...{
-        node: this.toastHTMLTemplate(title, message, options),
-        duration: CatNotificationService.DURATION,
-        close: true,
-        className: 'cat-toastify',
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true,
-      }, ...options
+    const position: ToastPosition = this.getPosition(options);
+    const toastOptions: Options = {
+      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
+      duration: CatNotificationService.DURATION,
+      close: true,
+      className: 'cat-toastify',
+      gravity: position.gravity,
+      position: position.position,
+      stopOnFocus: true
     };
-    Toastify(options).showToast();
+    Toastify(toastOptions).showToast();
   }
 
   success(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    options = {
-      ...{
-        node: this.toastHTMLTemplate(title, message, options),
-        duration: CatNotificationService.DURATION,
-        close: true,
-        className: 'cat-toastify',
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true
-      }, ...options
+    const position: ToastPosition = this.getPosition(options);
+    const toastOptions: Options = {
+      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
+      duration: CatNotificationService.DURATION,
+      close: true,
+      className: 'cat-toastify',
+      gravity: position.gravity,
+      position: position.position,
+      stopOnFocus: true
     };
-    Toastify(options).showToast();
+    Toastify(toastOptions).showToast();
   }
 
   info(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    options = {
-      ...{
-        node: this.toastHTMLTemplate(title, message, options),
-        duration: CatNotificationService.DURATION,
-        close: true,
-        className: 'cat-toastify',
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true
-      }, ...options
+    const position: ToastPosition = this.getPosition(options);
+    const toastOptions: Options = {
+      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
+      duration: CatNotificationService.DURATION,
+      close: true,
+      className: 'cat-toastify',
+      gravity: position.gravity,
+      position: position.position,
+      stopOnFocus: true
     };
-    Toastify(options).showToast();
+    Toastify(toastOptions).showToast();
+  }
+
+  private getPosition(options?: Partial<ToastOptions>): ToastPosition {
+    const position: ToastPosition = {
+      gravity: 'bottom',
+      position: 'right'
+    }
+    if (options?.position && ToastPositions[options.position]) {
+      position.position = ToastPositions[options.position].position;
+      position.gravity = ToastPositions[options.position].gravity;
+    }
+    return position;
   }
 }
 
