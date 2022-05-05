@@ -20,8 +20,10 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Build
         run: |
+          cd ..
           npm ci
-          npm run build:ci
+          npm run build -w tokens
+          npm run build:ci -w core
   prettier:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +37,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Check
         run: |
-          npm ci
+          npm ci -ws false
           npm run prettier:check
   eslint:
     runs-on: ubuntu-latest
@@ -50,7 +52,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
         run: |
-          npm ci
+          npm ci -ws false
           npm run lint
   stylelint:
     runs-on: ubuntu-latest
@@ -65,7 +67,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Lint
         run: |
-          npm ci
+          npm ci -ws false
           npm run lint:style
   test:
     runs-on: ubuntu-latest
@@ -80,5 +82,7 @@ jobs:
           cache-dependency-path: core/package-lock.json
       - name: Install and Test
         run: |
+          cd ..
           npm ci
-          npm run test
+          npm run build -w tokens
+          npm run test -w core

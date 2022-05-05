@@ -20,5 +20,8 @@ jobs:
           cache-dependency-path: angular/package-lock.json
       - name: Install and Build
         run: |
+          cd ..
           npm ci
-          npm run build
+          npm run build -w tokens
+          npm run build:ci -w core
+          npm run build -w angular
