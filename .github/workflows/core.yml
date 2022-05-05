@@ -17,7 +17,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
       - name: Install and Build
         run: |
           cd ..
@@ -34,7 +34,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
       - name: Install and Check
         run: |
           npm ci -ws false
@@ -49,7 +49,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
       - name: Install and Lint
         run: |
           npm ci -ws false
@@ -64,7 +64,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
       - name: Install and Lint
         run: |
           npm ci -ws false
@@ -79,7 +79,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
       - name: Install and Test
         run: |
           cd ..
