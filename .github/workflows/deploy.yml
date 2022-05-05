@@ -17,8 +17,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install and Build
         run: |
+          cd ..
           npm ci
-          npm run build:ci
+          npm run build -w tokens
+          npm run build:ci -w core
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2
         with:
