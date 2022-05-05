@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
-    "postbump": "npm i @haiilo/catalyst-tokens --save -w core",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
@@ -37,7 +36,10 @@
       "./react/package-lock.json",
       "./tokens/package.json",
       "./tokens/package-lock.json"
-    ]
+    ],
+    "scripts": {
+      "postbump": "npm up @haiilo/catalyst-tokens --save -w core && npm up @haiilo/catalyst --save -w angular/projects/catalyst"
+    }
   },
   "engines": {
     "npm": ">=8.0.0",
