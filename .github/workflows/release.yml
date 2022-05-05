@@ -1,0 +1,52 @@
+name: 'Release'
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Release level'
+        required: true
+        default: patch
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+      - name: Create release
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          npm run release:${{ github.event.inputs.release }}
+      - name: Commit files
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git push --follow-tags
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: package.json
+      - name: 'Get release tag'
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+        id: previoustag
+      - name: Publish to GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.previoustag.outputs.tag }}
+          body_path: CHANGELOG.md
