@@ -26,7 +26,9 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          npm run build
+          npm run build -w tokens
+          npm run build:ci -w core
+          npm run build -w angular
       - name: Create release
         run: |
           git config user.name "GitHub Actions"
