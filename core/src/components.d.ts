@@ -271,6 +271,12 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatModal {
+        /**
+          * The size of the modal.
+         */
+        "size": 's' | 'm' | 'l';
+    }
     interface CatRadio {
         /**
           * Whether this radio is checked.
@@ -530,6 +536,12 @@ declare global {
         prototype: HTMLCatMenuElement;
         new (): HTMLCatMenuElement;
     };
+    interface HTMLCatModalElement extends Components.CatModal, HTMLStencilElement {
+    }
+    var HTMLCatModalElement: {
+        prototype: HTMLCatModalElement;
+        new (): HTMLCatModalElement;
+    };
     interface HTMLCatRadioElement extends Components.CatRadio, HTMLStencilElement {
     }
     var HTMLCatRadioElement: {
@@ -581,6 +593,7 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-menu": HTMLCatMenuElement;
+        "cat-modal": HTMLCatModalElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
@@ -879,6 +892,12 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatModal {
+        /**
+          * The size of the modal.
+         */
+        "size"?: 's' | 'm' | 'l';
+    }
     interface CatRadio {
         /**
           * Whether this radio is checked.
@@ -1134,6 +1153,7 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-menu": CatMenu;
+        "cat-modal": CatModal;
         "cat-radio": CatRadio;
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
@@ -1155,6 +1175,7 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
