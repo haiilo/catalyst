@@ -7,7 +7,7 @@ on:
         required: true
         type: input
 jobs:
-  gh-pages:
+  bump:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
@@ -17,21 +17,21 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: '"@haiilo\/catalyst-icons":\s">=[\d+]\.[\d+]\.[\d+]"'
-          replace: '@haiilo/catalyst-icons": ">=${{ github.event.inputs.icon }}"'
+          replace: '"@haiilo/catalyst-icons": ">=${{ github.event.inputs.icon }}"'
           regex: true
           include: core/package.json
       - name: Find and Replace (^)
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: '"@haiilo\/catalyst-icons":\s"\^[\d+]\.[\d+]\.[\d+]"'
-          replace: '@haiilo/catalyst-icons": "^${{ github.event.inputs.icon }}"'
+          replace: '"@haiilo/catalyst-icons": "^${{ github.event.inputs.icon }}"'
           regex: true
           include: core/package.json
       - name: Find and Replace (~)
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: '"@haiilo\/catalyst-icons":\s"~[\d+]\.[\d+]\.[\d+]"'
-          replace: '@haiilo/catalyst-icons": "~${{ github.event.inputs.icon }}"'
+          replace: '"@haiilo/catalyst-icons": "~${{ github.event.inputs.icon }}"'
           regex: true
           include: core/package.json
       - name: Install and Build
