@@ -26,7 +26,7 @@ export class CatSpinner {
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         class={{
-          [`cat-spinner-${this.size}`]: this.size !== 'inline'
+          [`spinner-${this.size}`]: this.size !== 'inline'
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">

@@ -7,24 +7,20 @@ describe('cat-tooltip', () => {
       components: [CatTooltip],
       html: `
         <cat-tooltip content="This is a tooltip">
-            <p>Hover me</p>
+          <p>Hover me</p>
         </cat-tooltip>
         `
     });
     expect(page.root).toEqualHtml(`
-     <cat-tooltip content="This is a tooltip">
-       <mock:shadow-root>
-         <div aria-describedby="cat-tooltip-0" class="tooltip-trigger" tabindex="0">
-           <slot></slot>
-         </div>
-         <div class="tooltip" id="cat-tooltip-0">
-          This is a tooltip
-         </div>
-       </mock:shadow-root>
-       <p>
-         Hover me
-       </p>
-     </cat-tooltip>
+      <cat-tooltip content="This is a tooltip">
+        <mock:shadow-root>
+          <div aria-describedby="cat-tooltip-0" class="tooltip-trigger" tabindex="0">
+            <slot></slot>
+          </div>
+          <div class="tooltip" id="cat-tooltip-0">This is a tooltip</div>
+        </mock:shadow-root>
+        <p>Hover me</p>
+      </cat-tooltip>
     `);
   });
 });

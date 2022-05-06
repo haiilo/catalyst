@@ -8,9 +8,9 @@ describe('cat-alert', () => {
       html: `<cat-alert></cat-alert>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-alert>
+      <cat-alert role="status" tabindex="0">
         <mock:shadow-root>
-          <div class="cat-alert cat-alert-primary" part="alert">
+          <div class="alert alert-primary" part="alert">
             <slot></slot>
           </div>
         </mock:shadow-root>

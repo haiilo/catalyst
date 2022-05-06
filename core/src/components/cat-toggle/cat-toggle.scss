@@ -2,7 +2,8 @@
 @use 'mixins' as *;
 
 :host {
-  display: inline-flex;
+  display: flex;
+  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {

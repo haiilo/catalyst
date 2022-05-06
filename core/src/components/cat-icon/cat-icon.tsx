@@ -5,7 +5,7 @@ import { CatIconRegistry } from './cat-icon-registry';
  * Icons are used to provide additional meaning or in places where text label
  * doesn't fit.
  *
- * @part icon - The native span element wrapping the SVG icon.
+ * @part icon - The span element wrapping the SVG icon.
  */
 @Component({
   tag: 'cat-icon',
@@ -39,7 +39,8 @@ export class CatIcon {
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"
         class={{
-          [`cat-icon-${this.size}`]: this.size !== 'inline'
+          icon: true,
+          [`icon-${this.size}`]: this.size !== 'inline'
         }}
       ></span>
     );

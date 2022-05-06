@@ -33,13 +33,13 @@
   margin-bottom: $cat-body-margin-bottom;
 }
 
-.cat-skeleton {
+.skeleton {
   display: block;
   border-radius: cat-border-radius('m');
   background: var(--background);
 }
 
-.cat-skeleton-circle {
+.skeleton-circle {
   border-radius: 10rem;
 }
 
@@ -47,29 +47,29 @@
 
 @mixin size($size, $lvl) {
   $-text-offset: 4px;
-  .cat-skeleton-#{$size} {
-    &.cat-skeleton-rectangle {
+  .skeleton-#{$size} {
+    &.skeleton-rectangle {
       width: var(--width, 100%);
       height: var(--height, #{cat-size($size)});
     }
 
-    &.cat-skeleton-square,
-    &.cat-skeleton-circle {
+    &.skeleton-square,
+    &.skeleton-circle {
       width: var(--width, #{cat-size($size)});
       height: var(--height, #{cat-size($size)});
     }
 
-    &.cat-skeleton-head,
-    &.cat-skeleton-body {
+    &.skeleton-head,
+    &.skeleton-body {
       width: var(--width, var(--line-width, 100%));
     }
 
-    &.cat-skeleton-head {
+    &.skeleton-head {
       height: calc(#{cat-head-font-size($lvl)} - #{$-text-offset});
       margin: calc((#{cat-head-line-height($lvl)} - #{cat-head-font-size($lvl)} + #{$-text-offset}) * 0.5) 0;
     }
 
-    &.cat-skeleton-body {
+    &.skeleton-body {
       height: calc(#{cat-body-font-size($size)} - #{$-text-offset});
       margin: calc((#{cat-body-line-height($size)} - #{cat-body-font-size($size)} + #{$-text-offset}) * 0.5) 0;
     }
@@ -84,14 +84,14 @@
 
 // ----- animation
 
-.cat-skeleton-sheen {
+.skeleton-sheen {
   background: linear-gradient(90deg, var(--background) 33%, var(--highlight) 50%, var(--background) 66%)
     var(--background);
   background-size: 300% 100%;
   animation: sheen var(--speed) ease-in-out infinite;
 }
 
-.cat-skeleton-pulse {
+.skeleton-pulse {
   position: relative;
   overflow: hidden;
 

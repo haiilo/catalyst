@@ -3,6 +3,12 @@ import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
+import { existsSync } from 'fs';
+
+function getAssetsTokensPath() {
+  const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/assets';
+  return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
+}
 
 export const config: Config = {
   namespace: 'catalyst',
@@ -20,7 +26,7 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         {
-          src: '../node_modules/@haiilo/catalyst-tokens/assets',
+          src: getAssetsTokensPath(),
           dest: 'assets'
         },
         {
@@ -42,7 +48,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [
         {
-          src: '../node_modules/@haiilo/catalyst-tokens/assets',
+          src: getAssetsTokensPath(),
           dest: 'build/assets'
         },
         {

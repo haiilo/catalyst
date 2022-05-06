@@ -176,7 +176,7 @@ figure {
     margin-top: -$cat-body-margin-bottom * 0.5;
     margin-bottom: 0;
     @include cat-body('s');
-    color: cat-token('color.ui.font.quoteSource');
+    color: cat-token('color.ui.font.muted');
 
     &::before {
       content: '\2014\00A0'; // em dash, nbsp
@@ -187,8 +187,8 @@ figure {
 // ----- code
 
 code,
-kbd,
 samp,
+kbd,
 pre {
   @include cat-mono('m');
   font-weight: cat-token('font.weight.mono');
@@ -202,35 +202,36 @@ pre {
   code {
     margin: 0;
     padding: 0;
-    display: initial;
-    vertical-align: initial;
-    font-size: inherit;
     color: inherit;
-    word-wrap: normal;
-    word-break: normal;
-    background: inherit;
+    background: none;
     box-shadow: none;
     border-radius: 0;
+    word-wrap: normal;
+    word-break: normal;
   }
 }
 
 kbd,
 code {
-  display: inline-block;
-  vertical-align: top;
   margin: 0 0.125rem;
-  padding: 0 0.375rem;
+  color: cat-token('color.ui.font.muted');
   background: cat-token('color.ui.background.body');
   box-shadow: 0 0 0 2px cat-token('color.ui.border.default');
-  border-radius: cat-border-radius('m');
-  color: cat-token('color.ui.font.muted');
+  border-radius: cat-border-radius('s');
 }
 
 kbd {
-  min-width: cat-mono-line-height('m');
+  font-size: cat-mono-font-size('s');
+  display: inline-block;
+  min-width: 1.5rem;
+  line-height: cat-body-line-height('m');
+  padding: 0 0.375rem;
   text-align: center;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 code {
   @include cat-break-word;
+  padding: 0.0625rem 0.25rem;
 }

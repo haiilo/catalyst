@@ -14,9 +14,9 @@
 
 ## Shadow Parts
 
-| Part     | Description                                    |
-| -------- | ---------------------------------------------- |
-| `"icon"` | The native span element wrapping the SVG icon. |
+| Part     | Description                             |
+| -------- | --------------------------------------- |
+| `"icon"` | The span element wrapping the SVG icon. |
 
 
 ## Dependencies

@@ -11,7 +11,7 @@
   display: none;
 }
 
-.cat-badge {
+.badge {
   font: inherit;
   flex: 1 1 auto;
   display: inline-flex;
@@ -32,13 +32,13 @@
 
 // ----- round
 
-.cat-badge-round {
+.badge-round {
   border-radius: 10rem;
 }
 
 // ----- theme
 
-.cat-badge-filled {
+.badge-filled {
   background-color: cat-token-wrap(var(--bg));
   color: cat-token-wrap(var(--fill));
   font-weight: 600;
@@ -47,14 +47,14 @@
 
 $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 
-.cat-badge-outlined {
+.badge-outlined {
   background-color: cat-token('color.ui.background.body');
   box-shadow: $-outline;
   color: cat-token-wrap(var(--text));
 }
 
 @mixin theme($theme) {
-  .cat-badge-#{$theme} {
+  .badge-#{$theme} {
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
@@ -75,7 +75,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 // ----- size
 
 @mixin size($size, $fontSize) {
-  .cat-badge-#{$size} {
+  .badge-#{$size} {
     height: cat-size($size) * 0.5;
     min-width: cat-size($size) * 0.5;
     font-size: cat-body-font-size($fontSize);
@@ -95,12 +95,12 @@ $-pulse-0: 0 0 0 0 cat-token-wrap(var(--bg));
 $-pulse-70: transparent 0 0 0 0.5rem;
 $-pulse-100: transparent 0 0 0 0;
 
-.cat-badge-pulse {
-  &.cat-badge-filled {
+.badge-pulse {
+  &.badge-filled {
     animation: 1.5s ease 0s infinite normal none running pulse;
   }
 
-  &.cat-badge-outlined {
+  &.badge-outlined {
     animation: 1.5s ease 0s infinite normal none running pulse-outlined;
   }
 }

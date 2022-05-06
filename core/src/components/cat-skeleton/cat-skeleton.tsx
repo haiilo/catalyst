@@ -39,10 +39,10 @@ export class CatSkeleton {
           <div
             style={this.style}
             class={{
-              'cat-skeleton': true,
-              [`cat-skeleton-${this.effect}`]: Boolean(this.effect),
-              [`cat-skeleton-${this.variant}`]: Boolean(this.variant),
-              [`cat-skeleton-${this.size}`]: Boolean(this.size)
+              skeleton: true,
+              [`skeleton-${this.effect}`]: Boolean(this.effect),
+              [`skeleton-${this.variant}`]: Boolean(this.variant),
+              [`skeleton-${this.size}`]: Boolean(this.size)
             }}
           ></div>
         ))}

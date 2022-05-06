@@ -8,7 +8,12 @@
   @include cat-select(none);
 }
 
+:host([hidden]) {
+  display: none;
+}
+
 .cat-button {
+  position: relative;
   font: inherit;
   display: flex;
   align-items: center;
@@ -175,6 +180,19 @@
 @include size('l', 'm', 1rem);
 @include size('xl', 'l', 1.25rem);
 
+// -- active state
+
+.cat-button-active::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.25rem;
+  height: 100%;
+  background: cat-token-wrap(var(--base));
+}
+
 // ----- context
 
 :host-context(nav) {
@@ -183,19 +201,12 @@
   .cat-button {
     box-shadow: none;
     border-radius: 0;
+    justify-content: left;
 
     &:focus-visible {
       outline-offset: -2px;
     }
   }
-
-  .cat-button-content {
-    text-align: left;
-  }
-}
-
-:host([hidden]) {
-  display: none;
 }
 
 :host(.cat-text-left) .cat-button {

@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst",
-  "version": "0.4.0",
+  "version": "0.5.9",
   "description": "Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -38,26 +38,28 @@
     "reset": "rm -rf ./dist ./loader ./www ./node_modules"
   },
   "peerDependencies": {
-    "@haiilo/catalyst-icons": ">=0.2.6",
+    "@haiilo/catalyst-icons": ">=0.3.1",
     "rxjs": "^7.5.5"
   },
   "dependencies": {
     "@floating-ui/dom": "0.4.1",
-    "@haiilo/catalyst-tokens": "^0.4.0",
+    "@haiilo/catalyst-tokens": "^0.5.9",
     "@stencil/core": "2.15.0",
+    "autosize": "^5.0.1",
     "focus-trap": "6.8.1",
     "loglevel": "1.8.0",
     "sanitize.css": "13.0.0",
-    "toastify-js": "^1.11.2",
-    "tabbable": "5.3.1"
+    "tabbable": "5.3.1",
+    "toastify-js": "^1.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
-    "@haiilo/catalyst-icons": "^0.2.6",
+    "@haiilo/catalyst-icons": "^0.3.1",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.6.0",
+    "@types/autosize": "^4.0.1",
     "@types/jest": "^27.4.0",
     "@types/toastify-js": "^1.11.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",

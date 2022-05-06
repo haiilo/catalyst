@@ -6,18 +6,22 @@
   margin-bottom: $cat-body-margin-bottom;
 }
 
+:host(:focus-visible) {
+  outline: 2px solid cat-token('color.ui.border.focus');
+  outline-offset: 1px;
+}
+
 :host([hidden]) {
   display: none;
 }
 
-.cat-alert {
+.alert {
   font: inherit;
   color: cat-token-wrap(var(--text));
   background-color: cat-token-wrap(var(--bg), $alpha: 0.1);
   box-shadow: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
   border-radius: cat-border-radius('m');
-  padding: cat-size('xs') * 0.5 cat-size('s') * 0.5;
-  width: 100%;
+  padding: 0.75rem 1rem;
 }
 
 ::slotted(:last-child) {
@@ -27,7 +31,7 @@
 // ----- theme
 
 @mixin theme($theme) {
-  .cat-alert-#{$theme} {
+  .alert-#{$theme} {
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     @if $theme == 'secondary' {

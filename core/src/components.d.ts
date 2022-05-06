@@ -42,6 +42,10 @@ export namespace Components {
          */
         "a11yLabel"?: string;
         /**
+          * Show an active status indicator on the left side of the button.
+         */
+        "active": boolean;
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -111,6 +115,8 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    interface CatCard {
+    }
     interface CatCheckbox {
         /**
           * Checked state of the checkbox
@@ -140,6 +146,11 @@ export namespace Components {
           * Required state of the checkbox
          */
         "required": boolean;
+        /**
+          * Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the checkbox
          */
@@ -233,6 +244,11 @@ export namespace Components {
          */
         "round": boolean;
         /**
+          * Sets focus on the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -280,6 +296,11 @@ export namespace Components {
           * Whether the radio is required.
          */
         "required": boolean;
+        /**
+          * Sets focus on the radio. Use this method instead of `radio.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the radio component.
          */
@@ -343,6 +364,61 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTextarea {
+        /**
+          * Whether the textarea is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Optional hint text to be displayed with the textarea.
+         */
+        "hint"?: string;
+        /**
+          * The label for the textarea.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name": string;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Specifies the initial number of lines in the textarea.
+         */
+        "rows": number;
+        /**
+          * Sets focus on the textarea. Use this method instead of `textarea.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
+    }
     interface CatToast {
     }
     interface CatToggle {
@@ -370,6 +446,11 @@ export namespace Components {
           * Required state of the toggle
          */
         "required": boolean;
+        /**
+          * Sets focus on the toggle. Use this method instead of `toggle.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the toggle
          */
@@ -421,6 +502,12 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    interface HTMLCatCardElement extends Components.CatCard, HTMLStencilElement {
+    }
+    var HTMLCatCardElement: {
+        prototype: HTMLCatCardElement;
+        new (): HTMLCatCardElement;
+    };
     interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
     }
     var HTMLCatCheckboxElement: {
@@ -469,6 +556,12 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
+    }
+    var HTMLCatTextareaElement: {
+        prototype: HTMLCatTextareaElement;
+        new (): HTMLCatTextareaElement;
+    };
     interface HTMLCatToastElement extends Components.CatToast, HTMLStencilElement {
     }
     var HTMLCatToastElement: {
@@ -491,6 +584,7 @@ declare global {
         "cat-alert": HTMLCatAlertElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
+        "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
@@ -499,6 +593,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-textarea": HTMLCatTextareaElement;
         "cat-toast": HTMLCatToastElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
@@ -538,6 +633,10 @@ declare namespace LocalJSX {
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
+        /**
+          * Show an active status indicator on the left side of the button.
+         */
+        "active"?: boolean;
         /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
@@ -615,6 +714,8 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    interface CatCard {
+    }
     interface CatCheckbox {
         /**
           * Checked state of the checkbox
@@ -641,9 +742,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checked status of the checkbox is changed
+          * Emitted when the checkbox loses focus.
          */
-        "onCheckboxChange"?: (event: CustomEvent<any>) => void;
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked status of the checkbox is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the checkbox received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Required state of the checkbox
          */
@@ -721,6 +830,18 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
@@ -789,9 +910,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the radio loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the radio is changed.
          */
         "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the radio received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Whether the radio is required.
          */
@@ -875,6 +1004,68 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTextarea {
+        /**
+          * Whether the textarea is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional hint text to be displayed with the textarea.
+         */
+        "hint"?: string;
+        /**
+          * The label for the textarea.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum length (number of characters) for textual values.
+         */
+        "maxLength"?: number;
+        /**
+          * A minimum length (number of characters) for textual values.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the textarea received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Specifies the initial number of lines in the textarea.
+         */
+        "rows"?: number;
+        /**
+          * The initial value of the control.
+         */
+        "value"?: string | number;
+    }
     interface CatToast {
     }
     interface CatToggle {
@@ -899,9 +1090,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checked status of the toggle is changed
+          * Emitted when the toggle loses focus.
          */
-        "onToggleChange"?: (event: CustomEvent<any>) => void;
+        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked status of the toggle is changed.
+         */
+        "onCatChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the toggle received focus.
+         */
+        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Required state of the toggle
          */
@@ -941,6 +1140,7 @@ declare namespace LocalJSX {
         "cat-alert": CatAlert;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
+        "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
@@ -949,6 +1149,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-textarea": CatTextarea;
         "cat-toast": CatToast;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
@@ -961,6 +1162,7 @@ declare module "@stencil/core" {
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
@@ -969,6 +1171,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             "cat-toast": LocalJSX.CatToast & JSXBase.HTMLAttributes<HTMLCatToastElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;

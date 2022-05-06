@@ -21,9 +21,32 @@
 
 ## Events
 
-| Event            | Description                                                | Type               |
-| ---------------- | ---------------------------------------------------------- | ------------------ |
-| `checkboxChange` | Emitted when the checked status of the checkbox is changed | `CustomEvent<any>` |
+| Event       | Description                                                 | Type                      |
+| ----------- | ----------------------------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the checkbox loses focus.                      | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the checked status of the checkbox is changed. | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the checkbox received focus.                   | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Shadow Parts
+
+| Part         | Description           |
+| ------------ | --------------------- |
+| `"checkbox"` | The checkbox element. |
+| `"label"`    | The label content.    |
 
 
 ----------------------------------------------
