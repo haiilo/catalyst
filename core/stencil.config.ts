@@ -50,11 +50,7 @@ export const config: Config = {
         {
           src: getAssetsTokensPath(),
           dest: 'build/assets'
-        },
-        {
-          src: './demo.js',
-          dest: 'build/demo.js'
-        },
+        }
       ]
     },
     angularOutputTarget({

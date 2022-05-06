@@ -1,4 +1,4 @@
-import Toastify, { Options } from 'toastify-js'
+import Toastify, { Options } from 'toastify-js';
 
 export enum TypeIcons {
   'success' = 'check-circle-filled',
@@ -6,7 +6,7 @@ export enum TypeIcons {
   'info' = 'sparkle-filled'
 }
 
-export const ToastPositions: { [key: string]: { gravity: 'top' | 'bottom', position: 'left' | 'center' | 'right' } } = {
+export const ToastPositions: { [key: string]: { gravity: 'top' | 'bottom'; position: 'left' | 'center' | 'right' } } = {
   'top-left': {
     gravity: 'top',
     position: 'left'
@@ -31,7 +31,7 @@ export const ToastPositions: { [key: string]: { gravity: 'top' | 'bottom', posit
     gravity: 'bottom',
     position: 'right'
   }
-}
+};
 
 export interface ToastPosition {
   gravity: 'top' | 'bottom';
@@ -58,7 +58,7 @@ export interface ToastOptions {
   /**
    *  Invoked when the toast is clicked
    */
-  onClick: (() => void);
+  onClick: () => void;
   /**
    * Toggle the default behavior of escaping HTML markup
    */
@@ -132,7 +132,7 @@ class CatNotificationService {
     const position: ToastPosition = {
       gravity: 'bottom',
       position: 'right'
-    }
+    };
     if (options?.position && ToastPositions[options.position]) {
       position.position = ToastPositions[options.position].position;
       position.gravity = ToastPositions[options.position].gravity;

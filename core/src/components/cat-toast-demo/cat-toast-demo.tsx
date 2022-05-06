@@ -2,26 +2,22 @@ import { Component, h } from '@stencil/core';
 import { NotificationsService, ToastOptions } from '../cat-notification/cat-notification';
 
 /**
- * Toast Component
+ * Toast Component Demo
  *
  * @part toast - The content of the toast.
  */
 @Component({
-  tag: 'cat-toast',
-  styleUrl: 'cat-toast.scss'
+  tag: 'cat-toast-demo',
+  styleUrl: 'cat-toast-demo.scss'
 })
-export class CatToast {
+export class CatToastDemo {
   render() {
-    return (
-      <button onClick={this.onClick.bind(this)}>
-        show toast
-      </button>
-    );
+    return <cat-button onClick={this.onClick.bind(this)}>Show Notifications</cat-button>;
   }
 
   private onClick() {
     const infoOptions: Partial<ToastOptions> = {
-      position: 'top-left',
+      position: 'top-left'
     };
     const errorOptions: Partial<ToastOptions> = {
       position: 'top-center',
@@ -48,7 +44,11 @@ export class CatToast {
     NotificationsService.info('Info Click', 'Info message', infoOptions);
     NotificationsService.success('', ' ', successOptions4);
     NotificationsService.error('Error Title', ' ', errorOptions);
-    NotificationsService.error('Error 2 Title', 'Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message,Very long message, Very long message, Very long message, Very long message, Very long message, ', errorOptions2);
+    NotificationsService.error(
+      'Error 2 Title',
+      'Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message, Very long message,Very long message, Very long message, Very long message, Very long message, Very long message, ',
+      errorOptions2
+    );
     NotificationsService.success('Success Title - very long title without message', ' ', successOptions3);
   }
 }
