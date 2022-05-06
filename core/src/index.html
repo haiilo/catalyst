@@ -13,7 +13,8 @@
   </head>
   <body>
     <h3>Modal</h3>
-    <cat-modal>it works</cat-modal>
+    <cat-button color="primary" onclick="modal.show()">Open modal</cat-button>
+    <cat-modal><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
     <h2>Navigation</h2>
     <cat-card>
       <nav>
@@ -543,4 +544,7 @@ Here is some code
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
     </div>
   </body>
+  <script>
+    const modal = document.querySelector('cat-modal');
+  </script>
 </html>

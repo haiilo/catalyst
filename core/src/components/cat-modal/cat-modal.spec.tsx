@@ -5,7 +5,7 @@ describe('cat-modal', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatModal],
-      html: `<cat-modal></cat-modal>`,
+      html: `<cat-modal></cat-modal>`
     });
     expect(page.root).toEqualHtml(`
       <cat-modal>

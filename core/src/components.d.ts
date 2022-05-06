@@ -272,6 +272,7 @@ export namespace Components {
         "placement": Placement;
     }
     interface CatModal {
+        "show": () => Promise<void>;
         /**
           * The size of the modal.
          */
