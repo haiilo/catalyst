@@ -53,7 +53,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: ./angular/projects/catalyst/package.json
+          package: ./angular/dist/catalyst/package.json
       - name: Publish @haiilo/catalyst-react to npm
         uses: JS-DevTools/npm-publish@v1
         with:
