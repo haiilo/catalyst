@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.5.9 (2022-05-06)
+
+
+### Features
+
+* move to @haiilo/catalyst-icons@0.3.1 ([1c6c50c](https://github.com/haiilo/catalyst/commit/1c6c50c7e3fe249139a4fde43efe4c993738413f))
+
 ### 0.5.8 (2022-05-05)
 
 ### 0.5.7 (2022-05-05)
