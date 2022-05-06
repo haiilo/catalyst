@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "description": "Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "0.4.1",
-    "@haiilo/catalyst-tokens": "^0.5.11",
+    "@haiilo/catalyst-tokens": "^0.5.12",
     "@stencil/core": "2.15.0",
     "autosize": "^5.0.1",
     "focus-trap": "6.8.1",
