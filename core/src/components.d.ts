@@ -419,6 +419,8 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface CatToastDemo {
+    }
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -560,6 +562,12 @@ declare global {
         prototype: HTMLCatTextareaElement;
         new (): HTMLCatTextareaElement;
     };
+    interface HTMLCatToastDemoElement extends Components.CatToastDemo, HTMLStencilElement {
+    }
+    var HTMLCatToastDemoElement: {
+        prototype: HTMLCatToastDemoElement;
+        new (): HTMLCatToastDemoElement;
+    };
     interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
     }
     var HTMLCatToggleElement: {
@@ -586,6 +594,7 @@ declare global {
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-textarea": HTMLCatTextareaElement;
+        "cat-toast-demo": HTMLCatToastDemoElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
@@ -1057,6 +1066,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface CatToastDemo {
+    }
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -1139,6 +1150,7 @@ declare namespace LocalJSX {
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-textarea": CatTextarea;
+        "cat-toast-demo": CatToastDemo;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
@@ -1160,6 +1172,7 @@ declare module "@stencil/core" {
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            "cat-toast-demo": LocalJSX.CatToastDemo & JSXBase.HTMLAttributes<HTMLCatToastDemoElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
