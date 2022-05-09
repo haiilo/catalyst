@@ -1,5 +1,6 @@
 import { Component, h, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
+import firstTabbable from "../../utils/first-tabbable";
 
 @Component({
   tag: 'cat-modal',
@@ -24,7 +25,13 @@ export class CatModal {
             tabbableOptions: {
               getShadowRoot: true
             },
-            onPostDeactivate: () => this.modalWrapper?.classList.remove('visible')
+            allowOutsideClick: true,
+            clickOutsideDeactivates: event => !this.modal || !event.composedPath().includes(this.modal),
+            onDeactivate: () => this.modalWrapper?.classList.remove('visible'),
+            setReturnFocus: previousActiveElement =>
+              previousActiveElement instanceof HTMLElement
+                ? (firstTabbable(previousActiveElement) as HTMLElement)
+                : previousActiveElement
           });
     }
   }
@@ -40,9 +47,14 @@ export class CatModal {
       <div class={{ wrapper: true }} ref={el => (this.modalWrapper = el)}>
         <div class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }} ref={el => (this.modal = el)}>
           <div class="header">
-            <cat-button class="modal-close-button" onCatClick={() => this.trap?.deactivate()}>
-              aaa
-            </cat-button>
+            <cat-button
+              icon="cross-outlined"
+              class="modal-close-button"
+              size="s"
+              onCatClick={() => {
+                this.trap?.deactivate();
+              }}
+            ></cat-button>
           </div>
           <div class="content">
             <slot></slot>
