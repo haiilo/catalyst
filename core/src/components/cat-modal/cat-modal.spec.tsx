@@ -10,7 +10,16 @@ describe('cat-modal', () => {
     expect(page.root).toEqualHtml(`
       <cat-modal>
         <mock:shadow-root>
-          <slot></slot>
+           <div class="wrapper">
+              <div class="modal modal-m" role="modal">
+                <div class="header">
+                   <cat-button class="close-button" icon="cross-outlined" size="s"></cat-button>
+                </div>
+                <div class="content">
+                    <slot></slot>
+                </div>
+              </div>
+           </div>
         </mock:shadow-root>
       </cat-modal>
     `);

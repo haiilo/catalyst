@@ -1,6 +1,6 @@
 import { Component, h, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import firstTabbable from "../../utils/first-tabbable";
+import firstTabbable from '../../utils/first-tabbable';
 
 @Component({
   tag: 'cat-modal',
@@ -11,6 +11,7 @@ export class CatModal {
   private trap?: focusTrap.FocusTrap;
   private modal?: HTMLElement;
   private modalWrapper?: HTMLElement;
+  private closeButton?: HTMLElement;
 
   /**
    * The size of the modal.
@@ -19,41 +20,45 @@ export class CatModal {
 
   componentDidLoad() {
     if (this.modal) {
-      this.trap = this.trap
-        ? this.trap.updateContainerElements(this.modal)
-        : focusTrap.createFocusTrap(this.modal, {
-            tabbableOptions: {
-              getShadowRoot: true
-            },
-            allowOutsideClick: true,
-            clickOutsideDeactivates: event => !this.modal || !event.composedPath().includes(this.modal),
-            onDeactivate: () => this.modalWrapper?.classList.remove('visible'),
-            setReturnFocus: previousActiveElement =>
-              previousActiveElement instanceof HTMLElement
-                ? (firstTabbable(previousActiveElement) as HTMLElement)
-                : previousActiveElement
-          });
+      this.trap = focusTrap.createFocusTrap(this.modal, {
+        tabbableOptions: {
+          getShadowRoot: true
+        },
+        initialFocus: firstTabbable(this.closeButton),
+        allowOutsideClick: true,
+        clickOutsideDeactivates: event => !this.modal || !event.composedPath().includes(this.modal),
+        onDeactivate: () => this.modalWrapper?.classList.remove('is-visible'),
+        setReturnFocus: previousActiveElement =>
+          previousActiveElement instanceof HTMLElement
+            ? (firstTabbable(previousActiveElement) as HTMLElement)
+            : previousActiveElement
+      });
     }
   }
 
   @Method()
   async show() {
-    this.modalWrapper?.classList.add('visible');
+    this.modalWrapper?.classList.add('is-visible');
     this.trap?.activate();
   }
 
   render() {
     return (
-      <div class={{ wrapper: true }} ref={el => (this.modalWrapper = el)}>
-        <div class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }} ref={el => (this.modal = el)}>
+      <div ref={el => (this.modalWrapper = el)} class={{ wrapper: true }}>
+        <div
+          ref={el => (this.modal = el)}
+          role="modal"
+          class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }}
+        >
           <div class="header">
             <cat-button
+              ref={el => (this.closeButton = el)}
               icon="cross-outlined"
-              class="modal-close-button"
+              class="close-button"
               size="s"
-              onCatClick={() => {
-                this.trap?.deactivate();
-              }}
+              iconOnly
+              a11yLabel="close"
+              onCatClick={this.onClick.bind(this)}
             ></cat-button>
           </div>
           <div class="content">
@@ -62,5 +67,9 @@ export class CatModal {
         </div>
       </div>
     );
+  }
+
+  private onClick() {
+    this.trap?.deactivate();
   }
 }

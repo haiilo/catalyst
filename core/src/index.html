@@ -13,8 +13,14 @@
   </head>
   <body>
     <h3>Modal</h3>
-    <cat-button color="primary" onclick="modal.show()">Open modal</cat-button>
-    <cat-modal><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
+    <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
+    <cat-modal id="modal-s" size="s"><cat-input label="Label"/><cat-button>aloo</cat-button></cat-modal>
+
+    <cat-button color="primary" onclick="modalM.show()">Open modal m</cat-button>
+    <cat-modal id="modal-m"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
+
+    <cat-button color="primary" onclick="modalL.show()">Open modal l</cat-button>
+    <cat-modal id="modal-l" size="l"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
     <h2>Navigation</h2>
     <cat-card>
       <nav>
@@ -545,6 +551,8 @@ Here is some code
     </div>
   </body>
   <script>
-    const modal = document.querySelector('cat-modal');
+    const modalS = document.querySelector('#modal-s');
+    const modalM = document.querySelector('#modal-m');
+    const modalL = document.querySelector('#modal-l');
   </script>
 </html>
