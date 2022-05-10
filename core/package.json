@@ -49,7 +49,8 @@
     "focus-trap": "6.8.1",
     "loglevel": "1.8.0",
     "sanitize.css": "13.0.0",
-    "tabbable": "5.3.1"
+    "tabbable": "5.3.1",
+    "toastify-js": "^1.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -60,6 +61,7 @@
     "@stencil/vue-output-target": "^0.6.0",
     "@types/autosize": "^4.0.1",
     "@types/jest": "^27.4.0",
+    "@types/toastify-js": "^1.11.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "babel-loader": "^8.2.3",
