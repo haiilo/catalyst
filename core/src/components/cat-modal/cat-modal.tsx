@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import firstTabbable from '../../utils/first-tabbable';
 
@@ -10,8 +10,9 @@ import firstTabbable from '../../utils/first-tabbable';
 export class CatModal {
   private trap?: focusTrap.FocusTrap;
   private modal?: HTMLElement;
-  private modalWrapper?: HTMLElement;
   private closeButton?: HTMLElement;
+
+  @State() private isVisible = false;
 
   /**
    * The size of the modal.
@@ -27,7 +28,7 @@ export class CatModal {
         initialFocus: firstTabbable(this.closeButton),
         allowOutsideClick: true,
         clickOutsideDeactivates: event => !this.modal || !event.composedPath().includes(this.modal),
-        onDeactivate: () => this.modalWrapper?.classList.remove('is-visible'),
+        onDeactivate: () => (this.isVisible = false),
         setReturnFocus: previousActiveElement =>
           previousActiveElement instanceof HTMLElement
             ? (firstTabbable(previousActiveElement) as HTMLElement)
@@ -36,18 +37,21 @@ export class CatModal {
     }
   }
 
+  componentDidUpdate() {
+    if (this.isVisible) this.trap?.activate();
+  }
+
   /**
    * Shows the modal.
    */
   @Method()
   async show() {
-    this.modalWrapper?.classList.add('is-visible');
-    this.trap?.activate();
+    this.isVisible = true;
   }
 
   render() {
     return (
-      <div ref={el => (this.modalWrapper = el)} class={{ wrapper: true }}>
+      <div class={{ wrapper: true, 'is-visible': this.isVisible }}>
         <div
           ref={el => (this.modal = el)}
           role="modal"
