@@ -13,7 +13,7 @@ describe('cat-modal', () => {
            <div class="wrapper">
               <div class="modal modal-m" role="modal">
                 <div class="header">
-                   <cat-button class="close-button" icon="cross-outlined" size="s"></cat-button>
+                    <cat-button a11ylabel="close" class="close-button" icon="cross-outlined" icononly="" size="s"></cat-button>
                 </div>
                 <div class="content">
                     <slot></slot>

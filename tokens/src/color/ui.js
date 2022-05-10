@@ -9,7 +9,11 @@ module.exports = {
         inputDisabled: { value: '{color.base.neutral.100.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
-        tooltip: { value: '{color.base.neutral.0.value}' }
+        tooltip: { value: '{color.base.neutral.0.value}' },
+        modal: {
+          body: { value: '{color.base.neutral.0.value}' },
+          wrapper : { value: '{color.base.neutral.900.value}' }
+        }
       },
       border: {
         light: { value: '{color.base.neutral.100.value}' },

@@ -36,6 +36,9 @@ export class CatModal {
     }
   }
 
+  /**
+   * Shows the modal.
+   */
   @Method()
   async show() {
     this.modalWrapper?.classList.add('is-visible');

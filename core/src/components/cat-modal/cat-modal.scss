@@ -11,7 +11,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 60%);
+  background-color: rgb(cat-token('color.ui.background.modal.wrapper'), 60%);
   opacity: 0;
   visibility: hidden;
   z-index: 1;
@@ -28,12 +28,13 @@
   align-items: flex-start;
   padding: 32px 0;
 
-  background: cat-token('color.ui.background.body');
+  background: cat-token('color.ui.background.modal.body');
   border-radius: cat-border-radius('l');
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 100%;
 }
 
 .header {
@@ -57,13 +58,12 @@
   margin: 16px 0;
 }
 
-@mixin size($size){
+@mixin size($size) {
   .modal-#{$size} {
-      min-width: cat-token('size.modal.#{$size}');
+    width: cat-token('size.modal.#{$size}');
   }
 }
 
 @include size('s');
 @include size('m');
 @include size('l');
-

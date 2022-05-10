@@ -14,13 +14,22 @@
   <body>
     <h3>Modal</h3>
     <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
-    <cat-modal id="modal-s" size="s"><cat-input label="Label"/><cat-button>aloo</cat-button></cat-modal>
+    <cat-modal id="modal-s" size="s"><cat-input label="Label" /><cat-button>aloo</cat-button></cat-modal>
 
     <cat-button color="primary" onclick="modalM.show()">Open modal m</cat-button>
     <cat-modal id="modal-m"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
 
     <cat-button color="primary" onclick="modalL.show()">Open modal l</cat-button>
-    <cat-modal id="modal-l" size="l"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
+    <cat-modal id="modal-l" size="l">
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+        takimata sanctus est Lorem ipsum dolor sit amet.
+      </p>
+    </cat-modal>
     <h2>Navigation</h2>
     <cat-card>
       <nav>
