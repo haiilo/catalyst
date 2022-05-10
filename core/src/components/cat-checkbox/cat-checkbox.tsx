@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Method, Prop } from '@stencil/core';
+import {Component, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -60,6 +60,11 @@ export class CatCheckbox {
   @Prop() value?: string;
 
   /**
+   * Optional hint text to be displayed with the textarea.
+   */
+  @Prop() hint?: string;
+
+  /**
    * Emitted when the checked status of the checkbox is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -99,32 +104,35 @@ export class CatCheckbox {
 
   render() {
     return (
-      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
-        <input
-          ref={el => (this.input = el as HTMLInputElement)}
-          id={this.id}
-          type="checkbox"
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          required={this.required}
-          disabled={this.disabled}
-          onInput={this.onInput.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        />
-        <span class="box" aria-hidden="true" part="checkbox">
-          <svg class="check" viewBox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-          <svg class="dash" viewBox="0 0 12 10">
-            <polyline points="1.5 5 10.5 5"></polyline>
-          </svg>
-        </span>
-        <span class="label" part="label">
-          {this.label}
-        </span>
-      </label>
+      <Host>
+        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+          <input
+            ref={el => (this.input = el as HTMLInputElement)}
+            id={this.id}
+            type="checkbox"
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            required={this.required}
+            disabled={this.disabled}
+            onInput={this.onInput.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          />
+          <span class="box" aria-hidden="true" part="checkbox">
+            <svg class="check" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </svg>
+            <svg class="dash" viewBox="0 0 12 10">
+              <polyline points="1.5 5 10.5 5"></polyline>
+            </svg>
+          </span>
+          <span class="label" part="label">
+            {this.label}
+          </span>
+        </label>
+        {this.hint && <p class="input-hint">{this.hint}</p>}
+      </Host>
     );
   }
 

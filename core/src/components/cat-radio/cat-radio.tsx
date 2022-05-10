@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method, Host } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -54,6 +54,11 @@ export class CatRadio {
   @Prop() value?: string;
 
   /**
+   * Optional hint text to be displayed with the radio.
+   */
+  @Prop() hint?: string;
+
+  /**
    * Emitted when the radio is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -87,27 +92,30 @@ export class CatRadio {
 
   render() {
     return (
-      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
-        <span class="radio">
-          <input
-            ref={el => (this.input = el as HTMLInputElement)}
-            id={this.id}
-            type="radio"
-            name={this.name}
-            value={this.value}
-            checked={this.checked}
-            required={this.required}
-            disabled={this.disabled}
-            onInput={this.onChange.bind(this)}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-          />
-          <span class="circle"></span>
-        </span>
-        <span class="label" part="label">
-          {this.label}
-        </span>
-      </label>
+      <Host>
+        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+          <span class="radio">
+            <input
+              ref={el => (this.input = el as HTMLInputElement)}
+              id={this.id}
+              type="radio"
+              name={this.name}
+              value={this.value}
+              checked={this.checked}
+              required={this.required}
+              disabled={this.disabled}
+              onInput={this.onChange.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              onBlur={this.onBlur.bind(this)}
+            />
+            <span class="circle"></span>
+          </span>
+          <span class="label" part="label">
+            {this.label}
+          </span>
+        </label>
+        {this.hint && <p class="input-hint">{this.hint}</p>}
+      </Host>
     );
   }
 

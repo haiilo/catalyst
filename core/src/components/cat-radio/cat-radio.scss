@@ -3,6 +3,8 @@
 
 :host {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: $cat-body-margin-bottom;
 }
 
@@ -78,4 +80,9 @@ input {
   .circle {
     background-color: cat-token('color.ui.border.input');
   }
+}
+
+.input-hint {
+  @include cat-body('s');
+  margin: 0;
 }

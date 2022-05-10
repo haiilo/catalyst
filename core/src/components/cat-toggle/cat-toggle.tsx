@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
+import {Component, Event, EventEmitter, h, Prop, Method, Host} from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -55,6 +55,11 @@ export class CatToggle {
   @Prop() value?: string;
 
   /**
+   * Optional hint text to be displayed with the toggle.
+   */
+  @Prop() hint?: string;
+
+  /**
    * Emitted when the checked status of the toggle is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -88,27 +93,30 @@ export class CatToggle {
 
   render() {
     return (
-      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
-        <input
-          ref={el => (this.input = el as HTMLInputElement)}
-          id={this.id}
-          type="checkbox"
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          required={this.required}
-          disabled={this.disabled}
-          class="form-check-input"
-          role="switch"
-          onInput={this.onInput.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        />
-        <span class="toggle" part="toggle"></span>
-        <span class="label" part="label">
+      <Host>
+        <label htmlFor={this.id} class={{'is-hidden': this.labelHidden, 'is-disabled': this.disabled}}>
+          <input
+            ref={el => (this.input = el as HTMLInputElement)}
+            id={this.id}
+            type="checkbox"
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            required={this.required}
+            disabled={this.disabled}
+            class="form-check-input"
+            role="switch"
+            onInput={this.onInput.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          />
+          <span class="toggle" part="toggle"></span>
+          <span class="label" part="label">
           {this.label}
         </span>
-      </label>
+        </label>
+        {this.hint && <p class="input-hint">{this.hint}</p>}
+      </Host>
     );
   }
 
