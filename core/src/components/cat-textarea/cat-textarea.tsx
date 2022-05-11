@@ -1,6 +1,7 @@
-import {Component, Element, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import log from 'loglevel';
 import autosize from 'autosize';
+import { CatFormFieldHintSection } from '../cat-form-field-hint-section/cat-form-field-hint-section';
 
 let nextUniqueId = 0;
 
@@ -165,18 +166,7 @@ export class CatTextarea {
     const hasSlottedHint = this.hostElement.children.length > 0;
 
     return hasSlottedHint || this.hint ? (
-      <div class="hint-section">
-        {[
-          this.hint ? (
-            Array.isArray(this.hint) ? (
-              this.hint.map(item => <p class="input-hint">{item}</p>)
-            ) : (
-              <p class="input-hint">{this.hint}</p>
-            )
-          ) : null,
-          hasSlottedHint && <slot name="hint" />
-        ]}
-      </div>
+      <CatFormFieldHintSection hint={this.hint} slot={hasSlottedHint && <slot name="hint"></slot>} />
     ) : null;
   }
 

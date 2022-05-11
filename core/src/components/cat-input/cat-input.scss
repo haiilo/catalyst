@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'src/components/cat-form-field-hint-section/cat-form-field-hint-section';
 
 :host {
   display: flex;
@@ -116,14 +117,4 @@ input {
   position: absolute;
   top: calc(50% - cat-size('s') / 2);
   right: -0.5rem;
-}
-
-.hint-section {
-  display: flex;
-  gap: 1rem;
-
-  .input-hint, ::slotted([slot="hint"]) {
-    @include cat-body('s');
-    margin: 0;
-  }
 }
