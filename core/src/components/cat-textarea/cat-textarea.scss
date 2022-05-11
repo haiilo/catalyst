@@ -58,7 +58,12 @@ textarea {
   }
 }
 
-.input-hint {
-  @include cat-body('s');
-  margin: 0;
+.hint-section {
+  display: flex;
+  gap: 1rem;
+
+  .input-hint, ::slotted([slot="hint"]) {
+    @include cat-body('s');
+    margin: 0;
+  }
 }

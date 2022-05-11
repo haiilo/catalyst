@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method, Host } from '@stencil/core';
+import {Component, Event, EventEmitter, h, Prop, Method, Host, Element} from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -17,6 +17,7 @@ let nextUniqueId = 0;
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
   private input!: HTMLInputElement;
+  @Element() hostElement!: HTMLElement;
 
   /**
    * Whether this radio is checked.
@@ -120,13 +121,23 @@ export class CatRadio {
   }
 
   private get hintSection() {
-    return this.hint && Array.isArray(this.hint) ? (
-      this.hint.map(item => <p class="input-hint">{item}</p>)
-    ) : (
-      <p class="input-hint">{this.hint}</p>
-    );
-  }
+    const hasSlottedHint = this.hostElement.children.length > 0;
 
+    return hasSlottedHint || this.hint ? (
+      <div class="hint-section">
+        {[
+          this.hint ? (
+            Array.isArray(this.hint) ? (
+              this.hint.map(item => <p class="input-hint">{item}</p>)
+            ) : (
+              <p class="input-hint">{this.hint}</p>
+            )
+          ) : null,
+          hasSlottedHint && <slot name="hint" />
+        ]}
+      </div>
+    ) : null;
+  }
 
   private onChange(event: Event) {
     this.catChange.emit(event);

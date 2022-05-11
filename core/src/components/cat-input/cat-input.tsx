@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
@@ -22,6 +22,7 @@ export class CatInput {
   private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+  @Element() hostElement!: HTMLElement;
 
   @State() private inputValue = '';
 
@@ -250,20 +251,28 @@ export class CatInput {
             </span>
           )}
         </div>
-        <div class='hint-section'>
-          {this.hintSection}
-        </div>
+        {this.hintSection}
       </Host>
     );
   }
 
   private get hintSection() {
-    return [this.hint && Array.isArray(this.hint) ? (
-      this.hint.map(item => <p class="input-hint">{item}</p>)
-    ) : (
-      <p class="input-hint">{this.hint}</p>
-    ),
-      <slot name="hint"/>];
+    const hasSlottedHint = this.hostElement.children.length > 0;
+
+    return hasSlottedHint || this.hint ? (
+      <div class="hint-section">
+        {[
+          this.hint ? (
+            Array.isArray(this.hint) ? (
+              this.hint.map(item => <p class="input-hint">{item}</p>)
+            ) : (
+              <p class="input-hint">{this.hint}</p>
+            )
+          ) : null,
+          hasSlottedHint && <slot name="hint" />
+        ]}
+      </div>
+    ) : null;
   }
 
   private onInput(event: Event) {

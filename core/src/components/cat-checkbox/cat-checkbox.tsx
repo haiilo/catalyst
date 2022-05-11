@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import {Component, Element, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -18,6 +18,7 @@ let nextUniqueId = 0;
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+  @Element() hostElement!: HTMLElement;
 
   /**
    * Checked state of the checkbox
@@ -137,11 +138,22 @@ export class CatCheckbox {
   }
 
   private get hintSection() {
-    return this.hint && Array.isArray(this.hint) ? (
-      this.hint.map(item => <p class="input-hint">{item}</p>)
-    ) : (
-      <p class="input-hint">{this.hint}</p>
-    );
+    const hasSlottedHint = this.hostElement.children.length > 0;
+
+    return hasSlottedHint || this.hint ? (
+      <div class="hint-section">
+        {[
+          this.hint ? (
+            Array.isArray(this.hint) ? (
+              this.hint.map(item => <p class="input-hint">{item}</p>)
+            ) : (
+              <p class="input-hint">{this.hint}</p>
+            )
+          ) : null,
+          hasSlottedHint && <slot name="hint" />
+        ]}
+      </div>
+    ) : null;
   }
 
   private onInput(event: Event) {
