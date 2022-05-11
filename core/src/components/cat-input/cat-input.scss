@@ -118,7 +118,13 @@ input {
   right: -0.5rem;
 }
 
-.input-hint {
-  @include cat-body('s');
-  margin: 0;
+.hint-section {
+  display: flex;
+  gap: 1rem;
+
+  * {
+    @include cat-body('s');
+    margin: 0;
+  }
+
 }

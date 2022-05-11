@@ -151,7 +151,6 @@ export class CatInput {
   }
 
   componentWillLoad() {
-    this.hint = ['aaaa', 'vvvvv'];
     this.onValueChange(this.value);
   }
 
@@ -251,16 +250,20 @@ export class CatInput {
             </span>
           )}
         </div>
-        {this.hintSection}
+        <div class='hint-section'>
+          {this.hintSection}
+        </div>
       </Host>
     );
   }
+
   private get hintSection() {
-    return this.hint && Array.isArray(this.hint) ? (
+    return [this.hint && Array.isArray(this.hint) ? (
       this.hint.map(item => <p class="input-hint">{item}</p>)
     ) : (
       <p class="input-hint">{this.hint}</p>
-    );
+    ),
+      <slot name="hint"/>];
   }
 
   private onInput(event: Event) {
