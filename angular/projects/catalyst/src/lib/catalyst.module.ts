@@ -9,7 +9,15 @@ const CatComponents = [
   Components.CatScrollable,
   Components.CatAlert,
   Components.CatBadge,
-  Components.CatSkeleton
+  Components.CatSkeleton,
+  Components.CatCard,
+  Components.CatInput,
+  Components.CatCheckbox,
+  Components.CatMenu,
+  Components.CatRadio,
+  Components.CatTextarea,
+  Components.CatToggle,
+  Components.CatTooltip
 ];
 
 @NgModule({
