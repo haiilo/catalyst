@@ -43,7 +43,7 @@ export class CatInput {
   /**
    * Optional hint text to be displayed with the input.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The name of an icon to be displayed in the input.
@@ -151,6 +151,7 @@ export class CatInput {
   }
 
   componentWillLoad() {
+    this.hint = ['aaaa', 'vvvvv'];
     this.onValueChange(this.value);
   }
 
@@ -250,8 +251,15 @@ export class CatInput {
             </span>
           )}
         </div>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
+    );
+  }
+  private get hintSection() {
+    return this.hint && Array.isArray(this.hint) ? (
+      this.hint.map(item => <p class="input-hint">{item}</p>)
+    ) : (
+      <p class="input-hint">{this.hint}</p>
     );
   }
 

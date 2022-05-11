@@ -56,7 +56,7 @@ export class CatRadio {
   /**
    * Optional hint text to be displayed with the radio.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * Emitted when the radio is changed.
@@ -114,10 +114,19 @@ export class CatRadio {
             {this.label}
           </span>
         </label>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
     );
   }
+
+  private get hintSection() {
+    return this.hint && Array.isArray(this.hint) ? (
+      this.hint.map(item => <p class="input-hint">{item}</p>)
+    ) : (
+      <p class="input-hint">{this.hint}</p>
+    );
+  }
+
 
   private onChange(event: Event) {
     this.catChange.emit(event);

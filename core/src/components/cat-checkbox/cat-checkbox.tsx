@@ -1,4 +1,4 @@
-import {Component, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -62,7 +62,7 @@ export class CatCheckbox {
   /**
    * Optional hint text to be displayed with the textarea.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * Emitted when the checked status of the checkbox is changed.
@@ -131,8 +131,16 @@ export class CatCheckbox {
             {this.label}
           </span>
         </label>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
+    );
+  }
+
+  private get hintSection() {
+    return this.hint && Array.isArray(this.hint) ? (
+      this.hint.map(item => <p class="input-hint">{item}</p>)
+    ) : (
+      <p class="input-hint">{this.hint}</p>
     );
   }
 

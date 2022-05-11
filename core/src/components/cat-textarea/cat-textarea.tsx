@@ -28,7 +28,7 @@ export class CatTextarea {
   /**
    * Optional hint text to be displayed with the textarea.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The label for the textarea.
@@ -155,8 +155,16 @@ export class CatTextarea {
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
         ></textarea>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
+    );
+  }
+
+  private get hintSection() {
+    return this.hint && Array.isArray(this.hint) ? (
+      this.hint.map(item => <p class="input-hint">{item}</p>)
+    ) : (
+      <p class="input-hint">{this.hint}</p>
     );
   }
 

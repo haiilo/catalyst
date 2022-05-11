@@ -129,7 +129,7 @@ export namespace Components {
         /**
           * Optional hint text to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * Indeterminate state of the checkbox
          */
@@ -194,7 +194,7 @@ export namespace Components {
         /**
           * Optional hint text to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -287,7 +287,7 @@ export namespace Components {
         /**
           * Optional hint text to be displayed with the radio.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -380,7 +380,7 @@ export namespace Components {
         /**
           * Optional hint text to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -441,7 +441,7 @@ export namespace Components {
         /**
           * Optional hint text to be displayed with the toggle.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */
@@ -740,7 +740,7 @@ declare namespace LocalJSX {
         /**
           * Optional hint text to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * Indeterminate state of the checkbox
          */
@@ -808,7 +808,7 @@ declare namespace LocalJSX {
         /**
           * Optional hint text to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -916,7 +916,7 @@ declare namespace LocalJSX {
         /**
           * Optional hint text to be displayed with the radio.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -1032,7 +1032,7 @@ declare namespace LocalJSX {
         /**
           * Optional hint text to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -1100,7 +1100,7 @@ declare namespace LocalJSX {
         /**
           * Optional hint text to be displayed with the toggle.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */

@@ -1,4 +1,4 @@
-import {Component, Event, EventEmitter, h, Prop, Method, Host} from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method, Host } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -57,7 +57,7 @@ export class CatToggle {
   /**
    * Optional hint text to be displayed with the toggle.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * Emitted when the checked status of the toggle is changed.
@@ -94,7 +94,7 @@ export class CatToggle {
   render() {
     return (
       <Host>
-        <label htmlFor={this.id} class={{'is-hidden': this.labelHidden, 'is-disabled': this.disabled}}>
+        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
           <input
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
@@ -112,13 +112,22 @@ export class CatToggle {
           />
           <span class="toggle" part="toggle"></span>
           <span class="label" part="label">
-          {this.label}
-        </span>
+            {this.label}
+          </span>
         </label>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
     );
   }
+
+  private get hintSection() {
+    return this.hint && Array.isArray(this.hint) ? (
+      this.hint.map(item => <p class="input-hint">{item}</p>)
+    ) : (
+      <p class="input-hint">{this.hint}</p>
+    );
+  }
+
 
   private onInput(event: Event) {
     this.catChange.emit(event);
