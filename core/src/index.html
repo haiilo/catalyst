@@ -113,14 +113,16 @@
     <cat-toggle label="Hidden label" label-hidden="true"></cat-toggle>
 
     <h2>Radio</h2>
-    <cat-radio label="Radio" hint="This is a hint"></cat-radio>
+    <cat-radio label="Radio" hint="This is a hint!"><span slot="hint">This is another!</span></cat-radio>
     <cat-radio label="Disabled" disabled></cat-radio>
     <cat-radio label="Checked" checked></cat-radio>
     <cat-radio label="Checked disabled" checked disabled></cat-radio>
     <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
 
     <h2>Input</h2>
-    <cat-input></cat-input>
+    <cat-input hint="This is a hint!">
+      <span slot="hint">This is another!</span>
+    </cat-input>
 
     <h2>Aspect ratio</h2>
     <div

@@ -28,7 +28,7 @@ export class CatTextarea {
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the textarea.
+   * Optional hint text(s) to be displayed with the textarea.
    */
   @Prop() hint?: string | string[];
 

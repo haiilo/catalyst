@@ -127,7 +127,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the checkbox.
          */
         "hint"?: string | string[];
         /**
@@ -192,7 +192,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
         /**
@@ -285,7 +285,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the radio.
+          * Optional hint text(s) to be displayed with the radio.
          */
         "hint"?: string | string[];
         /**
@@ -378,7 +378,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
         /**
@@ -439,7 +439,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the toggle.
+          * Optional hint text(s) to be displayed with the toggle.
          */
         "hint"?: string | string[];
         /**
@@ -738,7 +738,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the checkbox.
          */
         "hint"?: string | string[];
         /**
@@ -806,7 +806,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
         /**
@@ -914,7 +914,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the radio.
+          * Optional hint text(s) to be displayed with the radio.
          */
         "hint"?: string | string[];
         /**
@@ -1030,7 +1030,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
         /**
@@ -1098,7 +1098,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the toggle.
+          * Optional hint text(s) to be displayed with the toggle.
          */
         "hint"?: string | string[];
         /**

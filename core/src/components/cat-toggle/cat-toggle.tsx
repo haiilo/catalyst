@@ -57,7 +57,7 @@ export class CatToggle {
   @Prop() value?: string;
 
   /**
-   * Optional hint text to be displayed with the toggle.
+   * Optional hint text(s) to be displayed with the toggle.
    */
   @Prop() hint?: string | string[];
 

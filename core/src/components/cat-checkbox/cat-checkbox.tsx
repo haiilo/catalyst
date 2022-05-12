@@ -62,7 +62,7 @@ export class CatCheckbox {
   @Prop() value?: string;
 
   /**
-   * Optional hint text to be displayed with the textarea.
+   * Optional hint text(s) to be displayed with the checkbox.
    */
   @Prop() hint?: string | string[];
 

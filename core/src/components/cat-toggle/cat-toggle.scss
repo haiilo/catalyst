@@ -1,6 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
-@use 'src/components/cat-form-field-hint-section/cat-form-field-hint-section';
+@use '../cat-form-field-hint-section/cat-form-field-hint-section';
 
 :host {
   display: flex;

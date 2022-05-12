@@ -43,7 +43,7 @@ export class CatInput {
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the input.
+   * Optional hint text(s) to be displayed with the input.
    */
   @Prop() hint?: string | string[];
 

@@ -56,7 +56,7 @@ export class CatRadio {
   @Prop() value?: string;
 
   /**
-   * Optional hint text to be displayed with the radio.
+   * Optional hint text(s) to be displayed with the radio.
    */
   @Prop() hint?: string | string[];
 
