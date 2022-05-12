@@ -34,6 +34,7 @@ export class CatSelect {
   @Prop() value = '';
   @Prop() multiple = false;
   @Prop() options?: Option[] = [];
+  @Prop() searchEnabled = false;
 
   @Event() catSelectChange!: EventEmitter;
 
@@ -43,7 +44,7 @@ export class CatSelect {
 
   componentDidLoad(): void {
     if (this.hostElement) {
-      this.choice = new Choices(this.selectElement, { allowHTML: true });
+      this.choice = new Choices(this.selectElement, { allowHTML: true, searchEnabled: this.searchEnabled });
       this.choicesInner = this.getChoiceInnerElement();
 
       if (this.choicesInner) {

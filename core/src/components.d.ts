@@ -340,6 +340,7 @@ export namespace Components {
     interface CatSelect {
         "multiple": boolean;
         "options"?: Option[];
+        "searchEnabled": boolean;
         "value": string;
     }
     interface CatSkeleton {
@@ -993,6 +994,7 @@ declare namespace LocalJSX {
         "multiple"?: boolean;
         "onCatSelectChange"?: (event: CustomEvent<any>) => void;
         "options"?: Option[];
+        "searchEnabled"?: boolean;
         "value"?: string;
     }
     interface CatSkeleton {
