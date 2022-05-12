@@ -123,11 +123,17 @@ export class CatToggle {
   }
 
   private get hintSection() {
-    const hasSlottedHint = this.hostElement.children.length > 0;
+    const hasSlottedHint = this.hasSlottedHint();
 
     return hasSlottedHint || this.hint ? (
       <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
     ) : null;
+  }
+
+  private hasSlottedHint() {
+    const children = this.hostElement.children;
+
+    return children.length > 0 && Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onInput(event: Event) {
