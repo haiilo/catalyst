@@ -250,8 +250,8 @@ export class CatInput {
     return (
       (this.label || this.hasSlottedLabel()) && (
         <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-          <span part="label">
-            {this.label || <slot name="label"></slot>}
+          <span class={{ 'label-group': Boolean(this.label) && this.hasSlottedLabel() }} part="label">
+            {[this.label, <slot name="label"></slot>]}
             {!this.required && (
               <span class="input-optional" aria-hidden="true">
                 ({this.i18n.getMessage('input.optional')})
