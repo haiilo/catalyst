@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
+import { Option } from "./components/cat-select/cat-select";
 export namespace Components {
     interface CatAlert {
         /**
@@ -336,6 +337,11 @@ export namespace Components {
          */
         "shadowY": boolean;
     }
+    interface CatSelect {
+        "multiple": boolean;
+        "options"?: Option[];
+        "value": string;
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -544,6 +550,12 @@ declare global {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
+    interface HTMLCatSelectElement extends Components.CatSelect, HTMLStencilElement {
+    }
+    var HTMLCatSelectElement: {
+        prototype: HTMLCatSelectElement;
+        new (): HTMLCatSelectElement;
+    };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
@@ -591,6 +603,7 @@ declare global {
         "cat-menu": HTMLCatMenuElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-scrollable": HTMLCatScrollableElement;
+        "cat-select": HTMLCatSelectElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-textarea": HTMLCatTextareaElement;
@@ -976,6 +989,12 @@ declare namespace LocalJSX {
          */
         "shadowY"?: boolean;
     }
+    interface CatSelect {
+        "multiple"?: boolean;
+        "onCatSelectChange"?: (event: CustomEvent<any>) => void;
+        "options"?: Option[];
+        "value"?: string;
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -1147,6 +1166,7 @@ declare namespace LocalJSX {
         "cat-menu": CatMenu;
         "cat-radio": CatRadio;
         "cat-scrollable": CatScrollable;
+        "cat-select": CatSelect;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-textarea": CatTextarea;
@@ -1169,6 +1189,7 @@ declare module "@stencil/core" {
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
+            "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
