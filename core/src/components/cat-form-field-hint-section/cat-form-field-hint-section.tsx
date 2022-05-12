@@ -1,10 +1,10 @@
 import { h, FunctionalComponent } from '@stencil/core';
 interface CatFormFieldHintSectionProps {
   hint?: string | string[];
-  slot?: HTMLElement;
+  slottedHint?: HTMLElement;
 }
 export const CatFormFieldHintSection: FunctionalComponent<CatFormFieldHintSectionProps> = props => {
-  const { hint, slot } = props;
+  const { hint, slottedHint } = props;
   return (
     <div class="hint-section">
       {[
@@ -15,7 +15,7 @@ export const CatFormFieldHintSection: FunctionalComponent<CatFormFieldHintSectio
             <p class="input-hint">{hint}</p>
           )
         ) : null,
-        slot
+        slottedHint
       ]}
     </div>
   );

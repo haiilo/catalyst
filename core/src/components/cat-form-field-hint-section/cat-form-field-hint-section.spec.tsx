@@ -5,7 +5,7 @@ import { CatFormFieldHintSection } from './cat-form-field-hint-section';
 @Component({ tag: 'test-hint-section' })
 class TestHintSection {}
 
-describe('cat-hint', () => {
+describe('CatFormFieldHintSection', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [TestHintSection],

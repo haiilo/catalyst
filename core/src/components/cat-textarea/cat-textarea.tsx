@@ -166,7 +166,7 @@ export class CatTextarea {
     const hasSlottedHint = this.hostElement.children.length > 0;
 
     return hasSlottedHint || this.hint ? (
-      <CatFormFieldHintSection hint={this.hint} slot={hasSlottedHint && <slot name="hint"></slot>} />
+      <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
     ) : null;
   }
 
