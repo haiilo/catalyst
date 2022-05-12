@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
@@ -22,6 +22,8 @@ export class CatInput {
   private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
 
   @State() private inputValue = '';
 
@@ -155,7 +157,7 @@ export class CatInput {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hasSlottedLabel()) {
       log.error('[A11y] Missing ARIA label on input', this);
     }
   }
@@ -182,18 +184,7 @@ export class CatInput {
   render() {
     return (
       <Host>
-        {this.label && (
-          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-            <span part="label">
-              {this.label}
-              {!this.required && (
-                <span class="input-optional" aria-hidden="true">
-                  ({this.i18n.getMessage('input.optional')})
-                </span>
-              )}
-            </span>
-          </label>
-        )}
+        {this.labelSection}
         <div
           class={{
             'input-wrapper': true,
@@ -252,6 +243,30 @@ export class CatInput {
         </div>
         {this.hint && <p class="input-hint">{this.hint}</p>}
       </Host>
+    );
+  }
+
+  private get labelSection() {
+    return (
+      (this.label || this.hasSlottedLabel()) && (
+        <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+          <span part="label">
+            {this.label || <slot name="label"></slot>}
+            {!this.required && (
+              <span class="input-optional" aria-hidden="true">
+                ({this.i18n.getMessage('input.optional')})
+              </span>
+            )}
+          </span>
+        </label>
+      )
+    );
+  }
+
+  private hasSlottedLabel() {
+    return (
+      this.hostElement.children &&
+      Array.from(this.hostElement.children).some(child => child.getAttribute('slot') === 'label')
     );
   }
 

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method, Element } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -18,6 +18,8 @@ let nextUniqueId = 0;
 export class CatToggle {
   private readonly id = `cat-toggle-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
 
   /**
    * Checked state of the toggle.
@@ -70,7 +72,7 @@ export class CatToggle {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hasSlottedLabel()) {
       log.error('[A11y] Missing ARIA label on toggle', this);
     }
   }
@@ -106,9 +108,16 @@ export class CatToggle {
         />
         <span class="toggle" part="toggle"></span>
         <span class="label" part="label">
-          {this.label}
+          {this.label || <slot name="label"></slot>}
         </span>
       </label>
+    );
+  }
+
+  private hasSlottedLabel() {
+    return (
+      this.hostElement.children &&
+      Array.from(this.hostElement.children).some(value1 => value1.getAttribute('slot') === 'label')
     );
   }
 

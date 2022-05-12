@@ -98,7 +98,8 @@
     </cat-card>
 
     <h2>Checkbox</h2>
-    <cat-checkbox label="Toggle"></cat-checkbox>
+    <cat-checkbox label="Label"></cat-checkbox>
+    <cat-checkbox label-hidden><label slot="label">Slotted Label</label></cat-checkbox>
     <cat-checkbox label="Disabled" disabled></cat-checkbox>
     <cat-checkbox label="Checked" checked></cat-checkbox>
     <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
@@ -107,6 +108,7 @@
 
     <h2>Toggle</h2>
     <cat-toggle label="Toggle"></cat-toggle>
+    <cat-toggle label-hidden><label slot="label">Slotted Label</label></cat-toggle>
     <cat-toggle label="Disabled" disabled></cat-toggle>
     <cat-toggle label="Checked" checked></cat-toggle>
     <cat-toggle label="Checked disabled" checked disabled></cat-toggle>
@@ -114,14 +116,20 @@
 
     <h2>Radio</h2>
     <cat-radio label="Radio"></cat-radio>
+    <cat-radio label-hidden><label slot="label">Slotted Label</label></cat-radio>
     <cat-radio label="Disabled" disabled></cat-radio>
     <cat-radio label="Checked" checked></cat-radio>
     <cat-radio label="Checked disabled" checked disabled></cat-radio>
     <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
 
     <h2>Input</h2>
-    <cat-input></cat-input>
+    <cat-input label-hidden>
+      <label slot="label">Label</label>
+    </cat-input>
 
+    <h2>TextArea</h2>
+    <cat-textarea label="Label"></cat-textarea>
+    <cat-textarea label-hidden><label slot="label">Slotted Label</label></cat-textarea>
     <h2>Aspect ratio</h2>
     <div
       class="cat-ratio cat-ratio-1x1 cat-bg-secondary"

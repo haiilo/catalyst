@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -18,6 +18,8 @@ let nextUniqueId = 0;
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
 
   /**
    * Checked state of the checkbox
@@ -81,7 +83,7 @@ export class CatCheckbox {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hasSlottedLabel()) {
       log.error('[A11y] Missing ARIA label on checkbox', this);
     }
   }
@@ -122,9 +124,16 @@ export class CatCheckbox {
           </svg>
         </span>
         <span class="label" part="label">
-          {this.label}
+          {this.label || <slot name="label"></slot>}
         </span>
       </label>
+    );
+  }
+
+  private hasSlottedLabel() {
+    return (
+      this.hostElement.children &&
+      Array.from(this.hostElement.children).some(child => child.getAttribute('slot') === 'label')
     );
   }
 
