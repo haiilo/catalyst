@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.5.14 (2022-05-11)
+
+### 0.5.13 (2022-05-11)
+
+
+### Features
+
+* **core:** add missing exported components to angular module ([1323e0d](https://github.com/haiilo/catalyst/commit/1323e0d1fb7b0a12dc58ee0f34f925b10c98d49e))
+
 ### 0.5.12 (2022-05-06)
 
 ### 0.5.11 (2022-05-06)

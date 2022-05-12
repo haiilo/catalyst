@@ -23,12 +23,9 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: package-lock.json
-      - name: Install and Build
+      - name: Install
         run: |
           npm ci
-          npm run build -w tokens
-          npm run build:ci -w core
-          npm run build -w angular
       - name: Create release
         run: |
           git config user.name "GitHub Actions"
@@ -39,6 +36,12 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git push --follow-tags
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build -w tokens
+          npm run build:ci -w core
+          npm run build -w angular
       - name: Publish @haiilo/catalyst-tokens to npm
         uses: JS-DevTools/npm-publish@v1
         with:
