@@ -58,10 +58,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed": boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -81,6 +77,10 @@ export namespace Components {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Ellipse overflowing button content.
+         */
+        "noEllipsed": boolean;
         /**
           * Use round button edges.
          */
@@ -650,10 +650,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed"?: boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -673,6 +669,10 @@ declare namespace LocalJSX {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Ellipse overflowing button content.
+         */
+        "noEllipsed"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
