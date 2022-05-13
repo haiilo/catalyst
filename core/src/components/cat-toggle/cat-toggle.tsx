@@ -125,9 +125,11 @@ export class CatToggle {
   private get hintSection() {
     const hasSlottedHint = this.hasSlottedHint();
 
-    return hasSlottedHint || this.hint ? (
-      <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-    ) : null;
+    return (
+      (hasSlottedHint || this.hint) && (
+        <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
+    );
   }
 
   private hasSlottedHint() {

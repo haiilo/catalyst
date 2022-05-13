@@ -8,13 +8,8 @@ export const CatFormFieldHintSection: FunctionalComponent<CatFormFieldHintSectio
   return (
     <div class="hint-section">
       {[
-        hint ? (
-          Array.isArray(hint) ? (
-            hint.map(item => <p class="input-hint">{item}</p>)
-          ) : (
-            <p class="input-hint">{hint}</p>
-          )
-        ) : null,
+        hint &&
+          (Array.isArray(hint) ? hint.map(item => <p class="input-hint">{item}</p>) : <p class="input-hint">{hint}</p>),
         slottedHint
       ]}
     </div>
