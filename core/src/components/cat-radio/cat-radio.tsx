@@ -106,8 +106,8 @@ export class CatRadio {
           />
           <span class="circle"></span>
         </span>
-        <span class="label" part="label">
-          {this.label || <slot name="label"></slot>}
+        <span class={{ label: true, 'label-group': Boolean(this.label) && this.hasSlottedLabel() }} part="label">
+          {[this.label, this.hasSlottedLabel() && <slot name="label"></slot>]}
         </span>
       </label>
     );

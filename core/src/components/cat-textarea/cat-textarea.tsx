@@ -129,7 +129,18 @@ export class CatTextarea {
   render() {
     return (
       <Host>
-        {this.labelSection}
+        {(this.label || this.hasSlottedLabel()) && (
+          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+            <span class={{ 'label-group': Boolean(this.label) && this.hasSlottedLabel() }} part="label">
+              {[this.label, this.hasSlottedLabel() && <slot name="label"></slot>]}
+              {!this.required && (
+                <span class="input-optional" aria-hidden="true">
+                  (Optional)
+                </span>
+              )}
+            </span>
+          </label>
+        )}
         <textarea
           ref={el => (this.textarea = el as HTMLTextAreaElement)}
           id={this.id}
@@ -148,23 +159,6 @@ export class CatTextarea {
         ></textarea>
         {this.hint && <p class="input-hint">{this.hint}</p>}
       </Host>
-    );
-  }
-
-  private get labelSection() {
-    return (
-      (this.label || this.hasSlottedLabel()) && (
-        <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-          <span part="label">
-            {this.label || <slot name="label"></slot>}
-            {!this.required && (
-              <span class="input-optional" aria-hidden="true">
-                (Optional)
-              </span>
-            )}
-          </span>
-        </label>
-      )
     );
   }
 

@@ -73,3 +73,9 @@ input {
   cursor: not-allowed;
   color: cat-token('color.ui.font.muted');
 }
+
+.label-group {
+  ::slotted([slot='label']) {
+    margin-left: 5px;
+  }
+}

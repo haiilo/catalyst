@@ -79,3 +79,9 @@ input {
     background-color: cat-token('color.ui.border.input');
   }
 }
+
+.label-group {
+  ::slotted([slot='label']) {
+    margin-left: 5px;
+  }
+}

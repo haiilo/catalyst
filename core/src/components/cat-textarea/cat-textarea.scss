@@ -62,3 +62,9 @@ textarea {
   @include cat-body('s');
   margin: 0;
 }
+
+.label-group {
+  ::slotted([slot='label']) {
+    margin-left: 5px;
+  }
+}
