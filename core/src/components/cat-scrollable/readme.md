@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property         | Attribute         | Description                                                 | Type      | Default |
-| ---------------- | ----------------- | ----------------------------------------------------------- | --------- | ------- |
-| `overflowX`      | `overflow-x`      | Flags to enable/disable overflowX.                          | `boolean` | `true`  |
-| `overflowY`      | `overflow-y`      | Flags to enable/disable overflowY.                          | `boolean` | `true`  |
-| `overscroll`     | `overscroll`      | Flag to enable/disable overscroll behavior.                 | `boolean` | `true`  |
-| `scrolledBuffer` | `scrolled-buffer` | Buffer to be used to calculate the scroll distance.         | `number`  | `0`     |
-| `scrolledInit`   | `scrolled-init`   | Flag to fire an initial event after content initialization. | `boolean` | `true`  |
-| `shadowX`        | `shadow-x`        | Flags to enable/disable scroll shadowX.                     | `boolean` | `true`  |
-| `shadowY`        | `shadow-y`        | Flags to enable/disable scroll shadowY.                     | `boolean` | `true`  |
+| Property         | Attribute          | Description                                                     | Type      | Default |
+| ---------------- | ------------------ | --------------------------------------------------------------- | --------- | ------- |
+| `noOverflowX`    | `no-overflow-x`    | Flags to disable/enable overflowX.                              | `boolean` | `false` |
+| `noOverflowY`    | `no-overflow-y`    | Flags to disable/enable overflowY.                              | `boolean` | `false` |
+| `noOverscroll`   | `no-overscroll`    | Flag to disable/enable overscroll behavior.                     | `boolean` | `false` |
+| `noScrolledInit` | `no-scrolled-init` | Flag to not fire an initial event after content initialization. | `boolean` | `false` |
+| `noShadowX`      | `no-shadow-x`      | Flags to disable/enable scroll shadowX.                         | `boolean` | `false` |
+| `noShadowY`      | `no-shadow-y`      | Flags to disable/enable scroll shadowY.                         | `boolean` | `false` |
+| `scrolledBuffer` | `scrolled-buffer`  | Buffer to be used to calculate the scroll distance.             | `number`  | `0`     |
 
 
 ## Events

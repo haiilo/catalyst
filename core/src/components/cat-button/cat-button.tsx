@@ -78,7 +78,7 @@ export class CatButton {
   @Prop() submit = false;
 
   /**
-   * Ellipse overflowing button content.
+   * Disables ellipse overflowing button content.
    */
   @Prop() noEllipsed = false;
 

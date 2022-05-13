@@ -78,7 +78,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Ellipse overflowing button content.
+          * Disables ellipse overflowing button content.
          */
         "noEllipsed": boolean;
         /**
@@ -308,27 +308,27 @@ export namespace Components {
     }
     interface CatScrollable {
         /**
-          * Flags to enable/disable overflowX.
+          * Flags to disable/enable overflowX.
          */
         "noOverflowX": boolean;
         /**
-          * Flags to enable/disable overflowY.
+          * Flags to disable/enable overflowY.
          */
         "noOverflowY": boolean;
         /**
-          * Flag to enable/disable overscroll behavior.
+          * Flag to disable/enable overscroll behavior.
          */
         "noOverscroll": boolean;
         /**
-          * Flag to fire an initial event after content initialization.
+          * Flag to not fire an initial event after content initialization.
          */
         "noScrolledInit": boolean;
         /**
-          * Flags to enable/disable scroll shadowX.
+          * Flags to disable/enable scroll shadowX.
          */
         "noShadowX": boolean;
         /**
-          * Flags to enable/disable scroll shadowY.
+          * Flags to disable/enable scroll shadowY.
          */
         "noShadowY": boolean;
         /**
@@ -670,7 +670,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Ellipse overflowing button content.
+          * Disables ellipse overflowing button content.
          */
         "noEllipsed"?: boolean;
         /**
@@ -932,27 +932,27 @@ declare namespace LocalJSX {
     }
     interface CatScrollable {
         /**
-          * Flags to enable/disable overflowX.
+          * Flags to disable/enable overflowX.
          */
         "noOverflowX"?: boolean;
         /**
-          * Flags to enable/disable overflowY.
+          * Flags to disable/enable overflowY.
          */
         "noOverflowY"?: boolean;
         /**
-          * Flag to enable/disable overscroll behavior.
+          * Flag to disable/enable overscroll behavior.
          */
         "noOverscroll"?: boolean;
         /**
-          * Flag to fire an initial event after content initialization.
+          * Flag to not fire an initial event after content initialization.
          */
         "noScrolledInit"?: boolean;
         /**
-          * Flags to enable/disable scroll shadowX.
+          * Flags to disable/enable scroll shadowX.
          */
         "noShadowX"?: boolean;
         /**
-          * Flags to enable/disable scroll shadowY.
+          * Flags to disable/enable scroll shadowY.
          */
         "noShadowY"?: boolean;
         /**

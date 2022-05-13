@@ -17,28 +17,28 @@ export class CatScrollable {
   private readonly destroyed = new Subject<void>();
   private scrolled!: Observable<Event>;
 
-  /** Flags to enable/disable scroll shadowX. */
+  /** Flags to disable/enable scroll shadowX. */
   @Prop()
   noShadowX = false;
 
-  /** Flags to enable/disable scroll shadowY. */
+  /** Flags to disable/enable scroll shadowY. */
   @Prop()
   noShadowY = false;
 
-  /** Flags to enable/disable overflowX. */
+  /** Flags to disable/enable overflowX. */
   @Prop()
   noOverflowX = false;
 
-  /** Flags to enable/disable overflowY. */
+  /** Flags to disable/enable overflowY. */
   @Prop()
   noOverflowY = false;
 
-  /** Flag to enable/disable overscroll behavior. */
+  /** Flag to disable/enable overscroll behavior. */
   @Prop()
   noOverscroll = false;
 
   /**
-   * Flag to fire an initial event after content initialization.
+   * Flag to not fire an initial event after content initialization.
    */
   @Prop() noScrolledInit = false;
 

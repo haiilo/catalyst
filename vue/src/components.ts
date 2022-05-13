@@ -32,7 +32,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'disabled',
   'loading',
   'submit',
-  'ellipsed',
+  'noEllipsed',
   'round',
   'url',
   'urlTarget',
@@ -122,12 +122,12 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
 
 
 export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('cat-scrollable', undefined, [
-  'shadowX',
-  'shadowY',
-  'overflowX',
-  'overflowY',
-  'overscroll',
-  'scrolledInit',
+  'noShadowX',
+  'noShadowY',
+  'noOverflowX',
+  'noOverflowY',
+  'noOverscroll',
+  'noScrolledInit',
   'scrolledBuffer',
   'scrolledTop',
   'scrolledLeft',
@@ -167,6 +167,9 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
   'catFocus',
   'catBlur'
 ]);
+
+
+export const CatToastDemo = /*@__PURE__*/ defineContainer<JSX.CatToastDemo>('cat-toast-demo', undefined);
 
 
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
