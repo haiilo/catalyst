@@ -310,31 +310,31 @@ export namespace Components {
         /**
           * Flags to enable/disable overflowX.
          */
-        "overflowX": boolean;
+        "noOverflowX": boolean;
         /**
           * Flags to enable/disable overflowY.
          */
-        "overflowY": boolean;
+        "noOverflowY": boolean;
         /**
           * Flag to enable/disable overscroll behavior.
          */
-        "overscroll": boolean;
+        "noOverscroll": boolean;
+        /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "noScrolledInit": boolean;
+        /**
+          * Flags to enable/disable scroll shadowX.
+         */
+        "noShadowX": boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "noShadowY": boolean;
         /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer": number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit": boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX": boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY": boolean;
     }
     interface CatSkeleton {
         /**
@@ -932,6 +932,30 @@ declare namespace LocalJSX {
     }
     interface CatScrollable {
         /**
+          * Flags to enable/disable overflowX.
+         */
+        "noOverflowX"?: boolean;
+        /**
+          * Flags to enable/disable overflowY.
+         */
+        "noOverflowY"?: boolean;
+        /**
+          * Flag to enable/disable overscroll behavior.
+         */
+        "noOverscroll"?: boolean;
+        /**
+          * Flag to fire an initial event after content initialization.
+         */
+        "noScrolledInit"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadowX.
+         */
+        "noShadowX"?: boolean;
+        /**
+          * Flags to enable/disable scroll shadowY.
+         */
+        "noShadowY"?: boolean;
+        /**
           * Emitted when the content is fully scrolled to the bottom.
          */
         "onScrolledBottom"?: (event: CustomEvent<void>) => void;
@@ -948,33 +972,9 @@ declare namespace LocalJSX {
          */
         "onScrolledTop"?: (event: CustomEvent<void>) => void;
         /**
-          * Flags to enable/disable overflowX.
-         */
-        "overflowX"?: boolean;
-        /**
-          * Flags to enable/disable overflowY.
-         */
-        "overflowY"?: boolean;
-        /**
-          * Flag to enable/disable overscroll behavior.
-         */
-        "overscroll"?: boolean;
-        /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer"?: number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY"?: boolean;
     }
     interface CatSkeleton {
         /**
