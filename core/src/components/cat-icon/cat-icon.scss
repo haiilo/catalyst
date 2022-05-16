@@ -26,7 +26,7 @@ svg {
 // ----- size
 
 @mixin size($size) {
-  .cat-icon-#{$size} svg {
+  .icon-#{$size} svg {
     font-size: cat-size($size) * 0.5;
   }
 }

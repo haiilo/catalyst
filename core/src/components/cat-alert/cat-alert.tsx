@@ -1,9 +1,10 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
- * Alerts are used to display important messages inline.
+ * Informs user about important changes or conditions in the interface. Use this
+ * component if you need to capture user’s attention in a prominent way.
  *
- * @part alert - The content of the alert.
+ * @part alert - The alert element.
  */
 @Component({
   tag: 'cat-alert',
@@ -18,15 +19,27 @@ export class CatAlert {
 
   render() {
     return (
-      <div
-        part="alert"
-        class={{
-          'cat-alert': true,
-          [`cat-alert-${this.color}`]: Boolean(this.color)
-        }}
-      >
-        <slot></slot>
-      </div>
+      <Host tabindex="0" role={this.role}>
+        <div
+          part="alert"
+          class={{
+            alert: true,
+            [`alert-${this.color}`]: Boolean(this.color)
+          }}
+        >
+          <slot></slot>
+        </div>
+      </Host>
     );
+  }
+
+  private get role() {
+    switch (this.color) {
+      case 'danger':
+      case 'warning':
+        return 'alert';
+      default:
+        return 'status';
+    }
   }
 }

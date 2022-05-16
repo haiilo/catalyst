@@ -1,0 +1,24 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+$-padding: 1.5rem;
+
+:host {
+  display: block;
+  margin-bottom: $cat-body-margin-bottom;
+  border-radius: cat-border-radius('l');
+  background-color: cat-token('color.ui.background.body');
+  padding: $-padding;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+::slotted(nav) {
+  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
+}
+
+::slotted(:last-child) {
+  margin-bottom: 0;
+}

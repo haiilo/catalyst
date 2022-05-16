@@ -1,7 +1,81 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 0.5.14 (2022-05-11)
+
+### 0.5.13 (2022-05-11)
+
+
+### Features
+
+* **core:** add missing exported components to angular module ([1323e0d](https://github.com/haiilo/catalyst/commit/1323e0d1fb7b0a12dc58ee0f34f925b10c98d49e))
+
+### 0.5.12 (2022-05-06)
+
+### 0.5.11 (2022-05-06)
+
+### 0.5.10 (2022-05-06)
+
+### 0.5.9 (2022-05-06)
+
+
+### Features
+
+* move to @haiilo/catalyst-icons@0.3.1 ([1c6c50c](https://github.com/haiilo/catalyst/commit/1c6c50c7e3fe249139a4fde43efe4c993738413f))
+
+### 0.5.8 (2022-05-05)
+
+### 0.5.7 (2022-05-05)
+
+### 0.5.6 (2022-05-05)
+
+### [0.5.5](https://github.com/haiilo/catalyst/compare/v0.5.4...v0.5.5) (2022-05-05)
+
+### [0.5.4](https://github.com/haiilo/catalyst/compare/v0.5.3...v0.5.4) (2022-05-05)
+
+### [0.5.3](https://github.com/haiilo/catalyst/compare/v0.5.2...v0.5.3) (2022-05-05)
+
+### [0.5.2](https://github.com/haiilo/catalyst/compare/v0.5.1...v0.5.2) (2022-05-05)
+
+
+### Features
+
+* **core:** move back to node 16 (LTS) ([1947a1f](https://github.com/haiilo/catalyst/commit/1947a1faa8940758379098feefcea18f7e25b10c))
+* move from lerna to npm workspaces ([d051ead](https://github.com/haiilo/catalyst/commit/d051eadc909d09b2badf5aee22e1e4f78652bd7c))
+
+## [0.5.1](https://github.com/haiilo/catalyst/compare/v0.5.0...v0.5.1) (2022-05-02)
+
+**Note:** Version bump only for package catalyst
+
+
+
+
+
+# [0.5.0](https://github.com/haiilo/catalyst/compare/v0.4.0...v0.5.0) (2022-05-02)
+
+
+### Bug Fixes
+
+* **core:** adjust tooltip styles ([e32fe78](https://github.com/haiilo/catalyst/commit/e32fe787483ba0b9173864cd42c05b994f2593c5))
+* **core:** fix menu & tooltip z-indexes ([5f7dc67](https://github.com/haiilo/catalyst/commit/5f7dc6763c1d591adea6952982f2c64eb76ae318))
+* **core:** fixed tooltip test ([#12](https://github.com/haiilo/catalyst/issues/12)) ([868da66](https://github.com/haiilo/catalyst/commit/868da66e93e53b32a8f5bda88a6dd0db50b1b84b))
+
+
+### Features
+
+* add radio button component ([642cff0](https://github.com/haiilo/catalyst/commit/642cff0d7f037202c5abf65f1bf8381970bcdd69))
+* **core:** add aspect ratio utility classes ([ff29637](https://github.com/haiilo/catalyst/commit/ff296379411af1efb613b5b22ccb8c3288d9940c))
+* **core:** add card component ([3be7246](https://github.com/haiilo/catalyst/commit/3be724616b8fa924e719a73aa688aa29a9c2f891))
+* **core:** add input component ([337649a](https://github.com/haiilo/catalyst/commit/337649a44001f908110372c3341963bbbd0167f9))
+* **core:** add navigation styles ([6afb6e9](https://github.com/haiilo/catalyst/commit/6afb6e9017f0dafb2c0712d914f43f895b4b9124))
+* **core:** add style to kbd and code element ([844059d](https://github.com/haiilo/catalyst/commit/844059d8b4e89a4c7bf76f2b125515f24f2e8383))
+* **core:** add textarea component ([9f94637](https://github.com/haiilo/catalyst/commit/9f94637fddd03f4bf98b6d90fa93ce814341efdb))
+* **core:** added checkbox & toggle component ([205b0d0](https://github.com/haiilo/catalyst/commit/205b0d0cc468d40fe742a22fb1608ef25525918f))
+
+
+
+
 
 # [0.4.0](https://github.com/haiilo/catalyst/compare/v0.3.2...v0.4.0) (2022-04-26)
 

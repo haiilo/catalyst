@@ -18,9 +18,31 @@
 
 ## Events
 
-| Event       | Description                        | Type               |
-| ----------- | ---------------------------------- | ------------------ |
-| `catChange` | Emitted when the radio is changed. | `CustomEvent<any>` |
+| Event       | Description                            | Type                      |
+| ----------- | -------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the radio loses focus.    | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the radio is changed.     | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the radio received focus. | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Sets focus on the radio. Use this method instead of `radio.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Shadow Parts
+
+| Part      | Description        |
+| --------- | ------------------ |
+| `"label"` | The label content. |
 
 
 ----------------------------------------------

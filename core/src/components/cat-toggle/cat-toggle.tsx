@@ -1,8 +1,15 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
 
+/**
+ * Toggles are graphical interface switches that give user control over a
+ * feature or option that can be turned on or off.
+ *
+ * @part toggle - The toggle element.
+ * @part label - The label content.
+ */
 @Component({
   tag: 'cat-toggle',
   styleUrls: ['cat-toggle.scss'],
@@ -10,6 +17,7 @@ let nextUniqueId = 0;
 })
 export class CatToggle {
   private readonly id = `cat-toggle-${nextUniqueId++}`;
+  private input!: HTMLInputElement;
 
   /**
    * Checked state of the toggle.
@@ -47,9 +55,19 @@ export class CatToggle {
   @Prop() value?: string;
 
   /**
-   * Emitted when the checked status of the toggle is changed
+   * Emitted when the checked status of the toggle is changed.
    */
-  @Event() toggleChange!: EventEmitter;
+  @Event() catChange!: EventEmitter;
+
+  /**
+   * Emitted when the toggle received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
     if (!this.label) {
@@ -57,10 +75,22 @@ export class CatToggle {
     }
   }
 
+  /**
+   * Sets focus on the toggle. Use this method instead of `toggle.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async setFocus(options?: FocusOptions): Promise<void> {
+    this.input.focus(options);
+  }
+
   render() {
     return (
       <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
         <input
+          ref={el => (this.input = el as HTMLInputElement)}
           id={this.id}
           type="checkbox"
           name={this.name}
@@ -70,15 +100,27 @@ export class CatToggle {
           disabled={this.disabled}
           class="form-check-input"
           role="switch"
-          onInput={event => this.handleChange(event)}
+          onInput={this.onInput.bind(this)}
+          onFocus={this.onFocus.bind(this)}
+          onBlur={this.onBlur.bind(this)}
         />
-        <span class="toggle"></span>
-        <span class="label">{this.label}</span>
+        <span class="toggle" part="toggle"></span>
+        <span class="label" part="label">
+          {this.label}
+        </span>
       </label>
     );
   }
 
-  private handleChange(event: Event) {
-    this.toggleChange.emit(event);
+  private onInput(event: Event) {
+    this.catChange.emit(event);
+  }
+
+  private onFocus(event: FocusEvent) {
+    this.catFocus.emit(event);
+  }
+
+  private onBlur(event: FocusEvent) {
+    this.catBlur.emit(event);
   }
 }

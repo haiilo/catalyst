@@ -2,21 +2,21 @@
 @use 'mixins' as *;
 
 :host {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  vertical-align: top;
   @include cat-body('m');
+  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {
   display: none;
 }
 
-.cat-input-wrapper {
+.input-wrapper {
   display: flex;
   align-items: stretch;
-  gap: 0.5rem;
+  gap: 0.75rem;
   padding: 0 0.75rem;
   height: cat-size('m');
   overflow: hidden;
@@ -25,17 +25,17 @@
   box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
   transition: box-shadow cat-token('time.transition.s') linear;
 
-  &.cat-input-round {
+  &.input-round {
     border-radius: 10rem;
   }
 
-  &.cat-input-disabled {
+  &.input-disabled {
     background: cat-token('color.ui.background.inputDisabled');
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
   }
 
-  &:not(.cat-input-disabled) {
+  &:not(.input-disabled) {
     &:hover {
       box-shadow: 0 0 0 2px cat-token('color.ui.border.input');
     }
@@ -47,7 +47,6 @@
 }
 
 label {
-  display: block;
   align-self: flex-start;
 
   &.hidden {
@@ -55,37 +54,38 @@ label {
   }
 }
 
-.cat-input-optional {
+.input-optional {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');
 }
 
-.cat-text-prefix,
-.cat-text-suffix {
+.text-prefix,
+.text-suffix {
   display: inline-flex;
   align-items: center;
   @include cat-select(none);
 }
 
-.cat-text-prefix {
+.text-prefix {
   border-right: 1px solid cat-token('color.ui.border.input');
-  padding-right: 0.5rem;
+  padding-right: 0.75rem;
 }
 
-.cat-text-suffix {
+.text-suffix {
   border-left: 1px solid cat-token('color.ui.border.input');
-  padding-left: 0.5rem;
+  padding-left: 0.75rem;
 }
 
-.cat-icon-prefix,
-.cat-icon-suffix {
+.icon-prefix,
+.icon-suffix {
   align-self: center;
 }
 
-.cat-input-inner-wrapper {
+.input-inner-wrapper {
   display: flex;
   position: relative;
+  flex: 1 1 auto;
 }
 
 input {
@@ -98,13 +98,13 @@ input {
   outline: none;
   background: none;
 
-  .cat-input-disabled & {
+  .input-disabled & {
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
   }
 
-  &.cat-has-clearable {
-    padding-right: cat-size('s');
+  &.has-clearable {
+    padding-right: calc(cat-size('s') - 0.5rem);
   }
 
   &::placeholder {
@@ -112,13 +112,13 @@ input {
   }
 }
 
-.cat-clearable {
+.clearable {
   position: absolute;
   top: calc(50% - cat-size('s') / 2);
-  right: -0.25rem;
+  right: -0.5rem;
 }
 
-.cat-input-hint {
+.input-hint {
   @include cat-body('s');
   margin: 0;
 }

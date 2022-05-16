@@ -18,9 +18,9 @@
 
 ## Shadow Parts
 
-| Part      | Description               |
-| --------- | ------------------------- |
-| `"badge"` | The content of the badge. |
+| Part      | Description        |
+| --------- | ------------------ |
+| `"badge"` | The badge element. |
 
 
 ----------------------------------------------

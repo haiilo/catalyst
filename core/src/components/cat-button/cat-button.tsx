@@ -4,7 +4,8 @@ import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
 
 /**
- * Buttons are used for interface actions.
+ * Buttons are used for interface actions. Primary style should be used only
+ * once per view for main call-to-action.
  *
  * @part button - The native anchor or button element.
  * @part content - The textual content of the button.
@@ -33,6 +34,11 @@ export class CatButton {
    * The color palette of the button.
    */
   @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
+
+  /**
+   * Show an active status indicator on the left side of the button.
+   */
+  @Prop() active = false;
 
   /**
    * The size of the button.
@@ -226,6 +232,7 @@ export class CatButton {
           part="button"
           class={{
             'cat-button': true,
+            'cat-button-active': this.active,
             'cat-button-icon': this.isIconButton,
             'cat-button-round': this.round ?? this.isIconButton,
             'cat-button-loading': this.loading,

@@ -25,6 +25,7 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
 export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-button', undefined, [
   'variant',
   'color',
+  'active',
   'size',
   'name',
   'value',
@@ -46,6 +47,9 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
 ]);
 
 
+export const CatCard = /*@__PURE__*/ defineContainer<JSX.CatCard>('cat-card', undefined);
+
+
 export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-checkbox', undefined, [
   'checked',
   'disabled',
@@ -55,7 +59,9 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'name',
   'required',
   'value',
-  'checkboxChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -87,7 +93,10 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'required',
   'round',
   'type',
-  'value'
+  'value',
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -106,7 +115,9 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
   'name',
   'required',
   'value',
-  'catChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 
@@ -139,6 +150,25 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 ]);
 
 
+export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
+  'disabled',
+  'hint',
+  'label',
+  'labelHidden',
+  'maxLength',
+  'minLength',
+  'name',
+  'placeholder',
+  'readonly',
+  'required',
+  'rows',
+  'value',
+  'catChange',
+  'catFocus',
+  'catBlur'
+]);
+
+
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',
@@ -147,7 +177,9 @@ export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggl
   'name',
   'required',
   'value',
-  'toggleChange'
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 

@@ -1,7 +1,6 @@
 @use 'typography.mixins' as *;
 
-.cat-text-left,
-cat-button.cat-text-left::part(content) {
+.cat-text-left {
   text-align: left !important;
 }
 
@@ -9,8 +8,7 @@ cat-button.cat-text-left::part(content) {
   text-align: center !important;
 }
 
-.cat-text-right,
-cat-button.cat-text-right::part(content) {
+.cat-text-right {
   text-align: right !important;
 }
 

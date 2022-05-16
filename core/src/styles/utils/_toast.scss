@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'mixins';
+
+$-background-color: cat-token('color.base.neutral.0');
+$-text-color: cat-token('color.base.neutral.900');
+$-title-border: cat-token('color.base.neutral.300');
+$-shadow: cat-token('color.ui.border.dark');
+$-error-color: cat-token('color.theme.danger.text');
+$-info-color: cat-token('color.theme.secondary.text');
+$-success-color: cat-token('color.theme.success.text');
+
+.cat-toastify {
+  background: $-background-color;
+  color: $-text-color;
+  padding: 0;
+  @include cat-elevation(1);
+
+  .toast-close {
+    float: right;
+    font-size: 20px;
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .cat-toastify-wrapper {
+    display: block;
+    position: relative;
+
+    .cat-toastify-icon-wrapper {
+      position: absolute;
+      top: 6px;
+      left: 5px;
+
+      &.info {
+        color: $-info-color;
+      }
+
+      &.error {
+        color: $-error-color;
+      }
+
+      &.success {
+        color: $-success-color;
+      }
+    }
+
+    .cat-toastify-title-wrapper {
+      width: 100%;
+      padding: 0.5rem 0.5rem 0.5rem 2rem;
+
+      &.has-message {
+        border-bottom: 1px solid $-title-border;
+      }
+
+      .cat-toastify-title {
+        width: 100%;
+        padding-right: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 600;
+        color: $-text-color;
+      }
+    }
+
+    .cat-toastify-message {
+      width: 100%;
+      padding: 0.5rem;
+      color: $-text-color;
+    }
+  }
+}

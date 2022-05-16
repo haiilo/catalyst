@@ -2,6 +2,9 @@ import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
+/**
+ * An element to display scrollable content.
+ */
 @Component({
   tag: 'cat-scrollable',
   styleUrl: 'cat-scrollable.scss',
@@ -42,8 +45,7 @@ export class CatScrollable {
   /**
    * Buffer to be used to calculate the scroll distance.
    */
-  @Prop()
-  scrolledBuffer = 0;
+  @Prop() scrolledBuffer = 0;
 
   /**
    * Emitted when the content is fully scrolled to the top.

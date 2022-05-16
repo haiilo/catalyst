@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/haiilo/catalyst/compare/v0.5.0...v0.5.1) (2022-05-02)
+
+**Note:** Version bump only for package @haiilo/catalyst-angular
+
+
+
+
+
+# [0.5.0](https://github.com/haiilo/catalyst/compare/v0.4.0...v0.5.0) (2022-05-02)
+
+
+### Features
+
+* add radio button component ([642cff0](https://github.com/haiilo/catalyst/commit/642cff0d7f037202c5abf65f1bf8381970bcdd69))
+* **core:** add card component ([3be7246](https://github.com/haiilo/catalyst/commit/3be724616b8fa924e719a73aa688aa29a9c2f891))
+* **core:** add input component ([337649a](https://github.com/haiilo/catalyst/commit/337649a44001f908110372c3341963bbbd0167f9))
+* **core:** add navigation styles ([6afb6e9](https://github.com/haiilo/catalyst/commit/6afb6e9017f0dafb2c0712d914f43f895b4b9124))
+* **core:** add textarea component ([9f94637](https://github.com/haiilo/catalyst/commit/9f94637fddd03f4bf98b6d90fa93ce814341efdb))
+* **core:** added checkbox & toggle component ([205b0d0](https://github.com/haiilo/catalyst/commit/205b0d0cc468d40fe742a22fb1608ef25525918f))
+
+
+
+
+
 # [0.4.0](https://github.com/haiilo/catalyst/compare/v0.3.2...v0.4.0) (2022-04-26)
 
 

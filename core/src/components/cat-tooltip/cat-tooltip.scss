@@ -1,6 +1,9 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
+$-max-width: 16rem;
+$-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
+
 :host {
   display: contents;
 }
@@ -12,16 +15,17 @@
 .tooltip {
   position: absolute;
   @include cat-body('s', 500);
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   background-color: cat-token('color.ui.background.tooltip');
   border-radius: cat-border-radius('m');
   color: cat-token('color.ui.font.tooltip');
-  white-space: nowrap;
-  transition: all 0.25s linear 0s;
+  transition: opacity cat-token('time.transition.m') linear, visibility cat-token('time.transition.m') linear;
   visibility: hidden;
   opacity: 0;
-  box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
+  box-shadow: $-box-shadow;
   border: 1px solid cat-token('color.ui.border.default');
+  z-index: $cat-tooltip-z-index;
+  max-width: $-max-width;
 
   &-show {
     opacity: 1;

@@ -68,14 +68,14 @@ export declare interface CatButton extends Components.CatButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
+  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -87,17 +87,45 @@ export class CatButton {
 }
 
 
+export declare interface CatCard extends Components.CatCard {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
-   * Emitted when the checked status of the checkbox is changed 
+   * Emitted when the checked status of the checkbox is changed. 
    */
-  checkboxChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the checkbox received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the checkbox loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'cat-checkbox',
@@ -110,7 +138,7 @@ export class CatCheckbox {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['checkboxChange']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -136,12 +164,26 @@ export class CatIcon {
 }
 
 
-export declare interface CatInput extends Components.CatInput {}
+export declare interface CatInput extends Components.CatInput {
+  /**
+   * Emitted when the value is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the input received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the input loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
-  methods: ['clear']
+  methods: ['setFocus', 'clear']
 })
 @Component({
   selector: 'cat-input',
@@ -154,6 +196,7 @@ export class CatInput {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -195,12 +238,21 @@ export declare interface CatRadio extends Components.CatRadio {
    * Emitted when the radio is changed. 
    */
   catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the radio received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the radio loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'cat-radio',
@@ -213,7 +265,7 @@ export class CatRadio {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -300,17 +352,63 @@ export class CatSpinner {
 }
 
 
-export declare interface CatToggle extends Components.CatToggle {
+export declare interface CatTextarea extends Components.CatTextarea {
   /**
-   * Emitted when the checked status of the toggle is changed 
+   * Emitted when the value is changed. 
    */
-  toggleChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the textarea received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the textarea loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'cat-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value']
+})
+export class CatTextarea {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+
+export declare interface CatToggle extends Components.CatToggle {
+  /**
+   * Emitted when the checked status of the toggle is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the toggle received focus. 
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the toggle loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'cat-toggle',
@@ -323,7 +421,7 @@ export class CatToggle {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['toggleChange']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
