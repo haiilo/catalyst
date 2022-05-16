@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <h2>Notifications</h2>
+    <cat-toast-demo></cat-toast-demo>
     <h2>Navigation</h2>
     <cat-card>
       <nav>
@@ -118,12 +120,7 @@
     <cat-radio label="Hidden label" label-hidden="true"></cat-radio>
 
     <h2>Input</h2>
-    <cat-input label="Label" value="Hello World!" hint="This is a hint"></cat-input>
-    <cat-input label="Label" disabled></cat-input>
-
-    <h2>Textarea</h2>
-    <cat-textarea label="Label" value="Hello World!" hint="This is a hint"></cat-textarea>
-    <cat-textarea label="Label" disabled></cat-textarea>
+    <cat-input></cat-input>
 
     <h2>Aspect ratio</h2>
     <div
@@ -311,6 +308,36 @@
     <div style="width: 200px; border: 1px solid black">
       <cat-badge>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-badge>
     </div>
+
+    <h2>Menu</h2>
+    <cat-menu>
+      <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
+      <nav slot="content">
+        <ul>
+          <li class="cat-head">Headline</li>
+          <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+          <li><cat-button color="primary">Nav item 1</cat-button></li>
+          <li><cat-button>Nav item 2</cat-button></li>
+          <li><cat-button color="warning">Nav item 3</cat-button></li>
+          <li>
+            <cat-button disabled>Nav item 4</cat-button>
+          </li>
+          <li>
+            <cat-button>Nav item 5 (long)</cat-button>
+          </li>
+          <li class="cat-hr"></li>
+          <li>
+            <cat-button color="danger" onclick="console.log(6)"
+              >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
+            >
+          </li>
+        </ul>
+        <hr />
+        <ul>
+          <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
+        </ul>
+      </nav>
+    </cat-menu>
 
     <h2>Typography</h2>
     <p>

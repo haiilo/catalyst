@@ -3,9 +3,6 @@ on:
   push:
     paths:
       - 'core/**'
-defaults:
-  run:
-    working-directory: core
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,72 +10,74 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Build
         run: |
           npm ci
-          npm run build:ci
+          npm run build -w tokens
+          npm run build:ci -w core
   prettier:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Check
         run: |
           npm ci
-          npm run prettier:check
+          npm run prettier:check -w core
   eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Lint
         run: |
           npm ci
-          npm run lint
+          npm run lint -w core
   stylelint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Lint
         run: |
           npm ci
-          npm run lint:style
+          npm run lint:style -w core
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: core/package-lock.json
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install and Test
         run: |
           npm ci
-          npm run test
+          npm run build -w tokens
+          npm run test -w core

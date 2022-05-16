@@ -1,6 +1,5 @@
 {
   "name": "@haiilo/catalyst-angular-workspace",
-  "version": "0.5.1",
   "private": true,
   "scripts": {
     "ng": "ng",

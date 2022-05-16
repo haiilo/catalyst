@@ -1,0 +1,47 @@
+name: 'Icons'
+on:
+  workflow_dispatch:
+    inputs:
+      icon:
+        description: 'Icon Version'
+        required: true
+        type: input
+jobs:
+  bump:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Find and Replace (>=)
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '"@haiilo\/catalyst-icons":\s">=[\d+]\.[\d+]\.[\d+]"'
+          replace: '"@haiilo/catalyst-icons": ">=${{ github.event.inputs.icon }}"'
+          regex: true
+          include: core/package.json
+      - name: Find and Replace (^)
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '"@haiilo\/catalyst-icons":\s"\^[\d+]\.[\d+]\.[\d+]"'
+          replace: '"@haiilo/catalyst-icons": "^${{ github.event.inputs.icon }}"'
+          regex: true
+          include: core/package.json
+      - name: Find and Replace (~)
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '"@haiilo\/catalyst-icons":\s"~[\d+]\.[\d+]\.[\d+]"'
+          replace: '"@haiilo/catalyst-icons": "~${{ github.event.inputs.icon }}"'
+          regex: true
+          include: core/package.json
+      - name: Install and Build
+        run: |
+          npm i -w core
+      - name: Commit files
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add core/package.json
+          git add package-lock.json
+          git commit -m "feat: move to @haiilo/catalyst-icons@${{ github.event.inputs.icon }}"
+          git push

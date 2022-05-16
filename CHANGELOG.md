@@ -1,7 +1,48 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 0.5.14 (2022-05-11)
+
+### 0.5.13 (2022-05-11)
+
+
+### Features
+
+* **core:** add missing exported components to angular module ([1323e0d](https://github.com/haiilo/catalyst/commit/1323e0d1fb7b0a12dc58ee0f34f925b10c98d49e))
+
+### 0.5.12 (2022-05-06)
+
+### 0.5.11 (2022-05-06)
+
+### 0.5.10 (2022-05-06)
+
+### 0.5.9 (2022-05-06)
+
+
+### Features
+
+* move to @haiilo/catalyst-icons@0.3.1 ([1c6c50c](https://github.com/haiilo/catalyst/commit/1c6c50c7e3fe249139a4fde43efe4c993738413f))
+
+### 0.5.8 (2022-05-05)
+
+### 0.5.7 (2022-05-05)
+
+### 0.5.6 (2022-05-05)
+
+### [0.5.5](https://github.com/haiilo/catalyst/compare/v0.5.4...v0.5.5) (2022-05-05)
+
+### [0.5.4](https://github.com/haiilo/catalyst/compare/v0.5.3...v0.5.4) (2022-05-05)
+
+### [0.5.3](https://github.com/haiilo/catalyst/compare/v0.5.2...v0.5.3) (2022-05-05)
+
+### [0.5.2](https://github.com/haiilo/catalyst/compare/v0.5.1...v0.5.2) (2022-05-05)
+
+
+### Features
+
+* **core:** move back to node 16 (LTS) ([1947a1f](https://github.com/haiilo/catalyst/commit/1947a1faa8940758379098feefcea18f7e25b10c))
+* move from lerna to npm workspaces ([d051ead](https://github.com/haiilo/catalyst/commit/d051eadc909d09b2badf5aee22e1e4f78652bd7c))
 
 ## [0.5.1](https://github.com/haiilo/catalyst/compare/v0.5.0...v0.5.1) (2022-05-02)
 
