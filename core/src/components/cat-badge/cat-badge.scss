@@ -79,7 +79,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
     height: cat-size($size) * 0.5;
     min-width: cat-size($size) * 0.5;
     font-size: cat-body-font-size($fontSize);
-    padding: 0 cat-size($size) * 0.125;
+    padding: 0.5 * (cat-size($size) - 1.5) (cat-size($size) - 1) * 0.5;
   }
 }
 
