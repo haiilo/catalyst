@@ -136,6 +136,54 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
 ]);
 
 
+export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-select', undefined, [
+  'multiple',
+  'options',
+  'searchEnabled',
+  'searchPlaceholderValue',
+  'placeholder',
+  'placeholderValue',
+  'silent',
+  'items',
+  'renderChoiceLimit',
+  'maxItemCount',
+  'addItems',
+  'removeItems',
+  'removeItemButton',
+  'editItems',
+  'duplicateItemsAllowed',
+  'delimiter',
+  'paste',
+  'searchChoices',
+  'searchFields',
+  'searchFloor',
+  'searchResultLimit',
+  'position',
+  'resetScrollPosition',
+  'shouldSort',
+  'shouldSortItems',
+  'sorter',
+  'prependValue',
+  'appendValue',
+  'renderSelectedChoices',
+  'loadingText',
+  'noResultsText',
+  'noChoicesText',
+  'itemSelectText',
+  'addItemText',
+  'maxItemText',
+  'uniqueItemText',
+  'classNames',
+  'fuseOptions',
+  'addItemFilter',
+  'customAddItemText',
+  'callbackOnInit',
+  'callbackOnCreateTemplates',
+  'valueComparer',
+  'catSelectChange'
+]);
+
+
 export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [
   'effect',
   'variant',
@@ -167,6 +215,9 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
   'catFocus',
   'catBlur'
 ]);
+
+
+export const CatToastDemo = /*@__PURE__*/ defineContainer<JSX.CatToastDemo>('cat-toast-demo', undefined);
 
 
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [

@@ -28,7 +28,7 @@ export type ClassNames = {
 };
 
 export type WeightedField = {
-  [key: string]: never;
+  [key: string]: unknown;
   weight: number;
 };
 
