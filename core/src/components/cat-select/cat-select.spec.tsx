@@ -10,7 +10,7 @@ describe('cat-select', () => {
     expect(page.root).toEqualHtml(`
       <cat-select>
         <mock:shadow-root>
-          <slot></slot>
+          <select></select>
         </mock:shadow-root>
       </cat-select>
     `);

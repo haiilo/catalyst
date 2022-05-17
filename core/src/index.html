@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <h2>Select</h2>
+    <div style="width: 300px; display: inline-block; padding: 10px">
+      <cat-select multiple></cat-select>
+    </div>
     <h2>Notifications</h2>
     <cat-toast-demo></cat-toast-demo>
     <h2>Navigation</h2>
@@ -83,11 +87,6 @@
         </ul>
       </nav>
     </cat-menu>
-
-    <h2>Select</h2>
-    <div style="width: 300px; display: inline-block">
-      <cat-select></cat-select>
-    </div>
 
     <h2>Card</h2>
     <cat-card>
@@ -576,10 +575,6 @@ Here is some code
       const select = document.querySelector('cat-select');
       select.options = [
         {
-          value: '',
-          label: 'Default label'
-        },
-        {
           value: '1',
           label: 'select option 1'
         },
@@ -589,7 +584,7 @@ Here is some code
         },
         {
           value: '3',
-          label: 'select option 3'
+          label: 'select option 31231'
         }
       ];
     </script>
