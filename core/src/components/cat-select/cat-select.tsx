@@ -94,112 +94,112 @@ export class CatSelect {
   @Event() catSelectChange!: EventEmitter;
 
   @Method()
-  public async highlightItem(item: Item, runEvent?: boolean) {
+  async highlightItem(item: Item, runEvent?: boolean) {
     this.choice?.highlightItem(item, runEvent);
 
     return this;
   }
 
   @Method()
-  public async unhighlightItem(item: Item) {
+  async unhighlightItem(item: Item) {
     this.choice?.unhighlightItem(item);
 
     return this;
   }
 
   @Method()
-  public async highlightAll() {
+  async highlightAll() {
     this.choice?.highlightAll();
 
     return this;
   }
 
   @Method()
-  public async unhighlightAll() {
+  async unhighlightAll() {
     this.choice?.unhighlightAll();
 
     return this;
   }
 
   @Method()
-  public async removeActiveItemsByValue(value: string) {
+  async removeActiveItemsByValue(value: string) {
     this.choice?.removeActiveItemsByValue(value);
 
     return this;
   }
 
   @Method()
-  public async removeActiveItems(excludedId: number) {
+  async removeActiveItems(excludedId: number) {
     this.choice?.removeActiveItems(excludedId);
 
     return this;
   }
 
   @Method()
-  public async removeHighlightedItems(runEvent?: boolean) {
+  async removeHighlightedItems(runEvent?: boolean) {
     this.choice?.removeHighlightedItems(runEvent);
 
     return this;
   }
 
   @Method()
-  public async hideDropdown(blurInput?: boolean) {
+  async hideDropdown(blurInput?: boolean) {
     this.choice?.hideDropdown(blurInput);
 
     return this;
   }
 
   @Method()
-  public async setValue(args: Array<any>) {
+  async setValue(args: Array<any>) {
     this.choice?.setValue(args);
 
     return this;
   }
 
   @Method()
-  public async setChoiceByValue(value: string) {
+  async setChoiceByValue(value: string) {
     this.choice?.setChoiceByValue(value);
 
     return this;
   }
 
   @Method()
-  public async setChoices(choices: Array<any>, value: string, label: string, replaceChoices?: boolean) {
+  async setChoices(choices: Array<any>, value: string, label: string, replaceChoices?: boolean) {
     this.choice?.setChoices(choices, value, label, replaceChoices);
 
     return this;
   }
 
   @Method()
-  public async clearChoices() {
+  async clearChoices() {
     this.choice?.clearChoices();
 
     return this;
   }
 
   @Method()
-  public async clearStore() {
+  async clearStore() {
     this.choice?.clearStore();
 
     return this;
   }
 
   @Method()
-  public async clearInput() {
+  async clearInput() {
     this.choice?.clearInput();
 
     return this;
   }
 
   @Method()
-  public async enable() {
+  async enable() {
     this.choice?.enable();
 
     return this;
   }
 
   @Method()
-  public async disable() {
+  async disable() {
     this.choice?.disable();
 
     return this;
