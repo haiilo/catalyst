@@ -364,6 +364,30 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTab {
+        /**
+          * Activate the tab
+         */
+        "active": boolean;
+        /**
+          * The name of an icon to be displayed in the tab.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the tab.
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * The label of the tab
+         */
+        "label": string;
+    }
+    interface CatTabs {
+    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -556,6 +580,18 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTabElement extends Components.CatTab, HTMLStencilElement {
+    }
+    var HTMLCatTabElement: {
+        prototype: HTMLCatTabElement;
+        new (): HTMLCatTabElement;
+    };
+    interface HTMLCatTabsElement extends Components.CatTabs, HTMLStencilElement {
+    }
+    var HTMLCatTabsElement: {
+        prototype: HTMLCatTabsElement;
+        new (): HTMLCatTabsElement;
+    };
     interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
     }
     var HTMLCatTextareaElement: {
@@ -593,6 +629,8 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-tab": HTMLCatTabElement;
+        "cat-tabs": HTMLCatTabsElement;
         "cat-textarea": HTMLCatTextareaElement;
         "cat-toast-demo": HTMLCatToastDemoElement;
         "cat-toggle": HTMLCatToggleElement;
@@ -1004,6 +1042,30 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTab {
+        /**
+          * Activate the tab
+         */
+        "active"?: boolean;
+        /**
+          * The name of an icon to be displayed in the tab.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the tab.
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * The label of the tab
+         */
+        "label"?: string;
+    }
+    interface CatTabs {
+    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -1149,6 +1211,8 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-tab": CatTab;
+        "cat-tabs": CatTabs;
         "cat-textarea": CatTextarea;
         "cat-toast-demo": CatToastDemo;
         "cat-toggle": CatToggle;
@@ -1171,6 +1235,8 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;
+            "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             "cat-toast-demo": LocalJSX.CatToastDemo & JSXBase.HTMLAttributes<HTMLCatToastDemoElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
