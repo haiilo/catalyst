@@ -385,6 +385,14 @@ export namespace Components {
           * The label of the tab
          */
         "label": string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
     }
@@ -1063,6 +1071,15 @@ declare namespace LocalJSX {
           * The label of the tab
          */
         "label"?: string;
+        "onTabClick"?: (event: CustomEvent<CustomEvent<MouseEvent>>) => void;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
     }

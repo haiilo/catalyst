@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 @Component({
@@ -32,11 +32,37 @@ export class CatTab {
    */
   @Prop() iconRight = false;
 
+  /**
+   * A destination to link to, rendered in the href attribute of a link.
+   */
+  @Prop() url?: string;
+
+  /**
+   * Specifies where to open the linked document.
+   */
+  @Prop() urlTarget?: '_blank' | '_self';
+
+  @Event() tabClick!: EventEmitter<CustomEvent<MouseEvent>>;
+
   render() {
     return (
-      <Host>
-        <slot></slot>
-      </Host>
+      <cat-button
+        class={{ 'tab-active': this.active }}
+        color={this.active ? 'primary' : 'secondary'}
+        variant="text"
+        icon={this.icon}
+        iconOnly={this.iconOnly}
+        iconRight={this.iconRight}
+        url={this.url}
+        urlTarget={this.urlTarget}
+        onCatClick={this.onCatClick.bind(this)}
+      >
+        {this.label}
+      </cat-button>
     );
+  }
+
+  private onCatClick(event: CustomEvent<MouseEvent>) {
+    this.tabClick.emit(event);
   }
 }

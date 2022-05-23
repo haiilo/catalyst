@@ -1,7 +1,6 @@
 :host {
-  display: flex;
+  display: inline-block;
 }
-
-.tab-active {
-  box-shadow: inset 0 -3px 0 0 #207f8a;
+.tabs {
+  display: flex;
 }

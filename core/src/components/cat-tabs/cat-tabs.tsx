@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, h, Element, State, Watch } from '@stencil/core';
 
 @Component({
   tag: 'cat-tabs',
@@ -7,38 +7,35 @@ import { Component, Host, h, Element, State } from '@stencil/core';
 })
 export class CatTabs {
   private tabs: HTMLCatTabElement[] = [];
-  @State() activeTab = -1;
+
   @Element() hostElement!: HTMLElement;
+
+  @State() activeTab = -1;
+
+  @Watch('activeTab')
+  watchActiveTabHandler(newActiveTab: number, prevActiveTab: number) {
+    if (prevActiveTab !== -1) {
+      this.tabs[prevActiveTab].active = false;
+      this.tabs[newActiveTab].active = true;
+    }
+  }
 
   componentWillLoad(): void {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
     this.activeTab = this.tabs.findIndex(value => value.active);
   }
 
-  componentWillRender() {
-    this.tabs.forEach(value => (value.active = false));
-    this.tabs[this.activeTab].active = true;
-  }
-
   render() {
     return (
-      <Host>
-        {this.tabs.map((tab: HTMLCatTabElement, index: number) => {
-          return (
-            <cat-button
-              class={{ 'tab-active': tab.active }}
-              color={tab.active ? 'primary' : 'secondary'}
-              variant="text"
-              icon={tab.icon}
-              iconOnly={tab.iconOnly}
-              iconRight={tab.iconRight}
-              onCatClick={() => (this.activeTab = index)}
-            >
-              {tab.label}
-            </cat-button>
-          );
-        })}
-      </Host>
+      <div class="tabs" onClick={this.onClick.bind(this)}>
+        <slot></slot>
+      </div>
     );
+  }
+
+  private onClick(event: MouseEvent) {
+    const tab = event.target as HTMLCatTabElement;
+    const number = this.tabs.findIndex(value => value === tab);
+    if (number >= 0) this.activeTab = number;
   }
 }
