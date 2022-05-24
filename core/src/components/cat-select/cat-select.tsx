@@ -205,8 +205,15 @@ export class CatSelect {
     return this;
   }
 
+  @Method()
+  async showDropdown() {
+    this.choice?.showDropdown();
+
+    return this;
+  }
+
   constructor() {
-    this.showDropdown = this.showDropdown.bind(this);
+    this.showDropdownHandler = this.showDropdownHandler.bind(this);
   }
 
   componentDidLoad(): void {
@@ -215,14 +222,14 @@ export class CatSelect {
       this.choicesInner = this.getChoiceInnerElement();
 
       if (this.choicesInner) {
-        this.choicesInner.addEventListener('click', this.showDropdown);
+        this.choicesInner.addEventListener('click', this.showDropdownHandler);
       }
     }
   }
 
   disconnectedCallback(): void {
     this.destroy();
-    this.choicesInner?.removeEventListener('click', this.showDropdown);
+    this.choicesInner?.removeEventListener('click', this.showDropdownHandler);
   }
 
   render() {
@@ -239,7 +246,7 @@ export class CatSelect {
     );
   }
 
-  private showDropdown() {
+  private showDropdownHandler() {
     this.choice?.showDropdown();
   }
 
