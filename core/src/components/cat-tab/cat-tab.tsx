@@ -13,6 +13,8 @@ export class CatTab {
    */
   @Prop() label = '';
 
+  @Prop() tabAlign: 'left' | 'center' | 'justify' = 'center';
+
   /**
    * Activate the tab
    */
@@ -68,7 +70,8 @@ export class CatTab {
     return (
       <cat-button
         ref={el => (this.catButtonElement = el)}
-        class={{ 'tab-active': this.active }}
+        part="tab"
+        class={{ tab: true, 'tab-active': this.active, [`tab-align-${this.tabAlign}`]: Boolean(this.tabAlign) }}
         color={this.active ? 'primary' : 'secondary'}
         variant="text"
         icon={this.icon}

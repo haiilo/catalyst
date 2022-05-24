@@ -390,6 +390,7 @@ export namespace Components {
           * @param options An optional object providing options to control aspects of the focusing process.
          */
         "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "tabAlign": 'left' | 'center' | 'justify';
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -400,6 +401,7 @@ export namespace Components {
         "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
+        "tabsAlign"?: 'left' | 'center' | 'justify';
     }
     interface CatTextarea {
         /**
@@ -1080,6 +1082,7 @@ declare namespace LocalJSX {
           * Emitted when tab is clicked.
          */
         "onTabClick"?: (event: CustomEvent<CustomEvent<MouseEvent>>) => void;
+        "tabAlign"?: 'left' | 'center' | 'justify';
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -1090,6 +1093,7 @@ declare namespace LocalJSX {
         "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
+        "tabsAlign"?: 'left' | 'center' | 'justify';
     }
     interface CatTextarea {
         /**

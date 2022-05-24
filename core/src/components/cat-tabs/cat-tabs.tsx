@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Watch, Listen, Host } from '@stencil/core';
+import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'cat-tabs',
@@ -12,6 +12,8 @@ export class CatTabs {
 
   @State() activeTab = -1;
 
+  @Prop() tabsAlign?: 'left' | 'center' | 'justify';
+
   @Watch('activeTab')
   watchActiveTabHandler(newActiveTab: number, prevActiveTab: number) {
     if (prevActiveTab >= 0) {
@@ -23,6 +25,7 @@ export class CatTabs {
   componentWillLoad(): void {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
     this.activeTab = this.tabs.findIndex(value => value.active);
+    this.tabs.forEach(tab => this.tabsAlign && (tab.tabAlign = this.tabsAlign));
   }
 
   @Listen('click')
