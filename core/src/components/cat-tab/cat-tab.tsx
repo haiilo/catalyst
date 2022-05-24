@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 @Component({
@@ -7,6 +7,7 @@ import { Breakpoint } from '../../utils/breakpoints';
   shadow: true
 })
 export class CatTab {
+  private catButtonElement?: HTMLCatButtonElement;
   /**
    * The label of the tab
    */
@@ -42,11 +43,31 @@ export class CatTab {
    */
   @Prop() urlTarget?: '_blank' | '_self';
 
+  /**
+   * Emitted when tab is clicked.
+   */
   @Event() tabClick!: EventEmitter<CustomEvent<MouseEvent>>;
+
+  componentDidRender() {
+    const firstElement = this.catButtonElement?.shadowRoot?.querySelector('.cat-button');
+    firstElement?.setAttribute('tabindex', this.active ? '0' : '-1');
+  }
+
+  /**
+   * Sets focus on the tab. Use this method instead of `tab.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async setFocus(options?: FocusOptions): Promise<void> {
+    this.catButtonElement?.setFocus(options);
+  }
 
   render() {
     return (
       <cat-button
+        ref={el => (this.catButtonElement = el)}
         class={{ 'tab-active': this.active }}
         color={this.active ? 'primary' : 'secondary'}
         variant="text"

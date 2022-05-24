@@ -386,6 +386,11 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Sets focus on the tab. Use this method instead of `tab.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -1071,6 +1076,9 @@ declare namespace LocalJSX {
           * The label of the tab
          */
         "label"?: string;
+        /**
+          * Emitted when tab is clicked.
+         */
         "onTabClick"?: (event: CustomEvent<CustomEvent<MouseEvent>>) => void;
         /**
           * A destination to link to, rendered in the href attribute of a link.

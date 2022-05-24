@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Watch } from '@stencil/core';
+import { Component, h, Element, State, Watch, Listen, Host } from '@stencil/core';
 
 @Component({
   tag: 'cat-tabs',
@@ -14,7 +14,7 @@ export class CatTabs {
 
   @Watch('activeTab')
   watchActiveTabHandler(newActiveTab: number, prevActiveTab: number) {
-    if (prevActiveTab !== -1) {
+    if (prevActiveTab >= 0) {
       this.tabs[prevActiveTab].active = false;
       this.tabs[newActiveTab].active = true;
     }
@@ -25,17 +25,30 @@ export class CatTabs {
     this.activeTab = this.tabs.findIndex(value => value.active);
   }
 
-  render() {
-    return (
-      <div class="tabs" onClick={this.onClick.bind(this)}>
-        <slot></slot>
-      </div>
-    );
+  @Listen('click')
+  onClick(event: MouseEvent) {
+    const tab = event.target as HTMLCatTabElement;
+    const tabIndex = this.tabs.indexOf(tab);
+    if (tabIndex >= 0) this.activeTab = tabIndex;
   }
 
-  private onClick(event: MouseEvent) {
-    const tab = event.target as HTMLCatTabElement;
-    const number = this.tabs.findIndex(value => value === tab);
-    if (number >= 0) this.activeTab = number;
+  @Listen('keydown')
+  onKeydown(event: KeyboardEvent) {
+    if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
+      const activeTabElement = document.activeElement as HTMLCatTabElement;
+      const activeIdx = activeTabElement ? this.tabs.indexOf(activeTabElement) : -1;
+      const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
+      const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + this.tabs.length) % this.tabs.length;
+      this.tabs[targetIdx].setFocus();
+      event.preventDefault();
+    }
+  }
+
+  render() {
+    return (
+      <Host>
+        <slot></slot>
+      </Host>
+    );
   }
 }
