@@ -19,6 +19,7 @@ let nextUniqueId = 0;
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
   @Element() hostElement!: HTMLElement;
 
   /**
@@ -140,9 +141,8 @@ export class CatCheckbox {
 
   private get hintSection() {
     const hasSlottedHint = this.hasSlottedHint();
-
     return (
-      (hasSlottedHint || this.hint) && (
+      (this.hint || hasSlottedHint) && (
         <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
@@ -150,8 +150,7 @@ export class CatCheckbox {
 
   private hasSlottedHint() {
     const children = this.hostElement.children;
-
-    return children.length > 0 && Array.from(children).some(child => child.getAttribute('slot') === 'hint');
+    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onInput(event: Event) {

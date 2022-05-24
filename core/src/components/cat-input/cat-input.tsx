@@ -23,6 +23,7 @@ export class CatInput {
   private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
   @Element() hostElement!: HTMLElement;
 
   @State() private inputValue = '';
@@ -259,9 +260,8 @@ export class CatInput {
 
   private get hintSection() {
     const hasSlottedHint = this.hasSlottedHint();
-
     return (
-      (hasSlottedHint || this.hint) && (
+      (this.hint || hasSlottedHint) && (
         <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
@@ -269,8 +269,7 @@ export class CatInput {
 
   private hasSlottedHint() {
     const children = this.hostElement.children;
-
-    return children.length > 0 && Array.from(children).some(child => child.getAttribute('slot') === 'hint');
+    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onInput(event: Event) {

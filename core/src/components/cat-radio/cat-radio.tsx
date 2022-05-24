@@ -18,6 +18,7 @@ let nextUniqueId = 0;
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
   private input!: HTMLInputElement;
+
   @Element() hostElement!: HTMLElement;
 
   /**
@@ -123,9 +124,8 @@ export class CatRadio {
 
   private get hintSection() {
     const hasSlottedHint = this.hasSlottedHint();
-
     return (
-      (hasSlottedHint || this.hint) && (
+      (this.hint || hasSlottedHint) && (
         <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
@@ -133,8 +133,7 @@ export class CatRadio {
 
   private hasSlottedHint() {
     const children = this.hostElement.children;
-
-    return children.length > 0 && Array.from(children).some(child => child.getAttribute('slot') === 'hint');
+    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onChange(event: Event) {
