@@ -9,7 +9,6 @@
 
 | Property    | Attribute    | Description                                                         | Type                                           | Default     |
 | ----------- | ------------ | ------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `active`    | `active`     | Activate the tab                                                    | `boolean`                                      | `false`     |
 | `icon`      | `icon`       | The name of an icon to be displayed in the tab.                     | `string \| undefined`                          | `undefined` |
 | `iconOnly`  | `icon-only`  | Hide the actual button content and only display the tab.            | `"l" \| "m" \| "s" \| "xl" \| "xs" \| boolean` | `false`     |
 | `iconRight` | `icon-right` | Display the icon on the right.                                      | `boolean`                                      | `false`     |

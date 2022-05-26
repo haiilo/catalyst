@@ -13,19 +13,19 @@
   </head>
   <body>
     <h2>Tabs</h2>
-    <cat-tabs tabs-align="justify">
-      <cat-tab label="First" active></cat-tab>
-      <cat-tab label="Second"></cat-tab>
+    <cat-tabs tabs-align="justify" active-tab="second">
+      <cat-tab label="First"></cat-tab>
+      <cat-tab label="Second" id="second"></cat-tab>
       <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
     </cat-tabs>
     <cat-tabs tabs-align="left">
-      <cat-tab label="First" active></cat-tab>
+      <cat-tab label="First"></cat-tab>
       <cat-tab label="Second"></cat-tab>
       <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
     </cat-tabs>
 
     <cat-tabs tabs-align="center">
-      <cat-tab label="First" active></cat-tab>
+      <cat-tab label="First"></cat-tab>
       <cat-tab label="Second"></cat-tab>
       <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
     </cat-tabs>
@@ -585,12 +585,6 @@ Here is some code
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
     </div>
   </body>
-  <script>
-    const todoListElement = document.querySelector('cat-tab');
-    todoListElement.addEventListener('tabClick', event => {
-      console.log('works');
-    });
-  </script>
   <style>
     cat-tabs::part(tab) {
       width: 7.5rem;

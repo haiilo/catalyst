@@ -152,7 +152,6 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 
 export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undefined, [
   'label',
-  'active',
   'icon',
   'iconOnly',
   'iconRight',
@@ -163,6 +162,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
 
 
 export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', undefined, [
+  'activeTab',
   'tabsAlign'
 ]);
 

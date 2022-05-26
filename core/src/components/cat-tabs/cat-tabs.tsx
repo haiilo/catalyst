@@ -1,5 +1,8 @@
 import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stencil/core';
 
+/**
+ * @part tab - The header of the tab.
+ */
 @Component({
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
@@ -11,29 +14,39 @@ export class CatTabs {
 
   @Element() hostElement!: HTMLElement;
 
-  @State() activeTab = 0;
+  @State() activeTabId?: string;
+
+  /**
+   * The ID of the active tab.
+   */
+  @Prop() activeTab = '';
 
   /**
    * The tabs alignment
    */
   @Prop() tabsAlign: 'left' | 'center' | 'justify' = 'left';
 
-  @Watch('activeTab')
-  onActiveTabChanged(newActiveTab: number, prevActiveTab = 0): void {
-    this.tabs[prevActiveTab].active = false;
-    this.tabs[newActiveTab].active = true;
-    this.tabs[newActiveTab].click();
+  @Watch('activeTabId')
+  onActiveTabChanged(newActiveTab: string): void {
+    const activeTab = this.tabs.find(value => value.id === newActiveTab);
+    activeTab?.click();
   }
 
   componentWillLoad(): void {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
-    if (this.tabs.length > 0) this.activeTab = this.tabs.findIndex(value => value.active);
+    if (this.tabs.length > 0) {
+      let nextUniqueId = 0;
+      this.tabs.forEach(tab => {
+        if (!tab.id) tab.id = `cat-checkbox-${nextUniqueId++}`;
+      });
+      this.activeTabId = this.activeTab;
+    }
   }
 
   componentDidRender(): void {
-    this.buttons.forEach((button: HTMLCatButtonElement, index: number) => {
+    this.buttons.forEach((button: HTMLCatButtonElement) => {
       const element = button.shadowRoot?.querySelector('button');
-      element?.setAttribute('tabindex', this.tabs[index].active ? '0' : '-1');
+      element?.setAttribute('tabindex', button.buttonId === this.activeTabId ? '0' : '-1');
     });
   }
 
@@ -53,24 +66,26 @@ export class CatTabs {
   render() {
     return (
       <Host>
-        {this.tabs.map((tab: HTMLCatTabElement, index: number) => {
+        {this.tabs.map((tab: HTMLCatTabElement) => {
           return (
             <cat-button
               ref={el => el && this.updateButtonsRef(el)}
+              buttonId={tab.id}
+              role="tab"
               part="tab"
               class={{
                 tab: true,
-                'tab-active': tab.active,
+                'tab-active': tab.id === this.activeTabId,
                 [`tab-align-${this.tabsAlign}`]: Boolean(this.tabsAlign)
               }}
-              color={tab.active ? 'primary' : 'secondary'}
+              color={tab.id === this.activeTabId ? 'primary' : 'secondary'}
               variant="text"
               icon={tab.icon}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
               url={tab.url}
               urlTarget={tab.urlTarget}
-              onCatClick={() => (this.activeTab = index)}
+              onCatClick={() => (this.activeTabId = tab.id)}
             >
               {tab.label}
             </cat-button>
@@ -79,6 +94,7 @@ export class CatTabs {
       </Host>
     );
   }
+
   private updateButtonsRef(button: HTMLCatButtonElement) {
     const indexOf = this.buttons.indexOf(button);
 

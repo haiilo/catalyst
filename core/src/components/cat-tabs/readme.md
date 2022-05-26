@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property    | Attribute    | Description        | Type                              | Default  |
-| ----------- | ------------ | ------------------ | --------------------------------- | -------- |
-| `tabsAlign` | `tabs-align` | The tabs alignment | `"center" \| "justify" \| "left"` | `'left'` |
+| Property    | Attribute    | Description               | Type                              | Default  |
+| ----------- | ------------ | ------------------------- | --------------------------------- | -------- |
+| `activeTab` | `active-tab` | The ID of the active tab. | `string`                          | `''`     |
+| `tabsAlign` | `tabs-align` | The tabs alignment        | `"center" \| "justify" \| "left"` | `'left'` |
 
 
 ## Shadow Parts
 
-| Part    | Description |
-| ------- | ----------- |
-| `"tab"` |             |
+| Part    | Description            |
+| ------- | ---------------------- |
+| `"tab"` | The header of the tab. |
 
 
 ## Dependencies

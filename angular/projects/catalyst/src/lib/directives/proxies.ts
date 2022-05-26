@@ -362,13 +362,13 @@ export declare interface CatTab extends Components.CatTab {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['active', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['active', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
 })
 export class CatTab {
   protected el: HTMLElement;
@@ -384,13 +384,13 @@ export declare interface CatTabs extends Components.CatTabs {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['tabsAlign']
+  inputs: ['activeTab', 'tabsAlign']
 })
 @Component({
   selector: 'cat-tabs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['tabsAlign']
+  inputs: ['activeTab', 'tabsAlign']
 })
 export class CatTabs {
   protected el: HTMLElement;

@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 :host {
   display: flex;
   flex-direction: row;
@@ -8,12 +11,12 @@
 }
 
 .tab {
-  box-shadow: inset 0 -1px 0 0 #d7dbe0;
+  box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.tab');
   padding: 0.5rem;
 }
 
 .tab-active {
-  box-shadow: inset 0 -3px 0 0 #207f8a;
+  box-shadow: inset 0 -3px 0 0 cat-token('color.ui.border.activeTab');
 }
 
 .tab-align-left::part(button) {

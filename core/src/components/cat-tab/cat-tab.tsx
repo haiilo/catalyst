@@ -13,11 +13,6 @@ export class CatTab {
   @Prop() label = '';
 
   /**
-   * Activate the tab
-   */
-  @Prop() active = false;
-
-  /**
    * The name of an icon to be displayed in the tab.
    */
   @Prop() icon?: string;

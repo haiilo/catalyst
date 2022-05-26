@@ -366,10 +366,6 @@ export namespace Components {
     }
     interface CatTab {
         /**
-          * Activate the tab
-         */
-        "active": boolean;
-        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -395,6 +391,10 @@ export namespace Components {
         "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
+        /**
+          * The ID of the active tab.
+         */
+        "activeTab": string;
         /**
           * The tabs alignment
          */
@@ -1056,10 +1056,6 @@ declare namespace LocalJSX {
     }
     interface CatTab {
         /**
-          * Activate the tab
-         */
-        "active"?: boolean;
-        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -1089,6 +1085,10 @@ declare namespace LocalJSX {
         "urlTarget"?: '_blank' | '_self';
     }
     interface CatTabs {
+        /**
+          * The ID of the active tab.
+         */
+        "activeTab"?: string;
         /**
           * The tabs alignment
          */
