@@ -1,19 +1,16 @@
-import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Listen, Host } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 @Component({
   tag: 'cat-tab',
-  styleUrl: 'cat-tab.css',
+  styleUrl: 'cat-tab.scss',
   shadow: true
 })
 export class CatTab {
-  private catButtonElement?: HTMLCatButtonElement;
   /**
    * The label of the tab
    */
   @Prop() label = '';
-
-  @Prop() tabAlign: 'left' | 'center' | 'justify' = 'center';
 
   /**
    * Activate the tab
@@ -48,45 +45,18 @@ export class CatTab {
   /**
    * Emitted when tab is clicked.
    */
-  @Event() tabClick!: EventEmitter<CustomEvent<MouseEvent>>;
+  @Event() tabClick!: EventEmitter<MouseEvent>;
 
-  componentDidRender() {
-    const firstElement = this.catButtonElement?.shadowRoot?.querySelector('.cat-button');
-    firstElement?.setAttribute('tabindex', this.active ? '0' : '-1');
-  }
-
-  /**
-   * Sets focus on the tab. Use this method instead of `tab.focus()`.
-   *
-   * @param options An optional object providing options to control aspects of
-   * the focusing process.
-   */
-  @Method()
-  async setFocus(options?: FocusOptions): Promise<void> {
-    this.catButtonElement?.setFocus(options);
+  @Listen('click')
+  onClick(event: MouseEvent) {
+    this.tabClick.emit(event);
   }
 
   render() {
     return (
-      <cat-button
-        ref={el => (this.catButtonElement = el)}
-        part="tab"
-        class={{ tab: true, 'tab-active': this.active, [`tab-align-${this.tabAlign}`]: Boolean(this.tabAlign) }}
-        color={this.active ? 'primary' : 'secondary'}
-        variant="text"
-        icon={this.icon}
-        iconOnly={this.iconOnly}
-        iconRight={this.iconRight}
-        url={this.url}
-        urlTarget={this.urlTarget}
-        onCatClick={this.onCatClick.bind(this)}
-      >
-        {this.label}
-      </cat-button>
+      <Host>
+        <slot></slot>
+      </Host>
     );
-  }
-
-  private onCatClick(event: CustomEvent<MouseEvent>) {
-    this.tabClick.emit(event);
   }
 }

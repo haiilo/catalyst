@@ -10,7 +10,6 @@ describe('cat-tabs', () => {
     expect(page.root).toEqualHtml(`
       <cat-tabs>
         <mock:shadow-root>
-          <slot></slot>
         </mock:shadow-root>
       </cat-tabs>
     `);
