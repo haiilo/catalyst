@@ -150,6 +150,23 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 ]);
 
 
+export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undefined, [
+  'label',
+  'active',
+  'icon',
+  'iconOnly',
+  'iconRight',
+  'url',
+  'urlTarget',
+  'tabClick'
+]);
+
+
+export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', undefined, [
+  'tabsAlign'
+]);
+
+
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'disabled',
   'hint',
@@ -167,6 +184,9 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
   'catFocus',
   'catBlur'
 ]);
+
+
+export const CatToastDemo = /*@__PURE__*/ defineContainer<JSX.CatToastDemo>('cat-toast-demo', undefined);
 
 
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [

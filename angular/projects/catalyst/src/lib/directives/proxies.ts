@@ -352,6 +352,55 @@ export class CatSpinner {
 }
 
 
+export declare interface CatTab extends Components.CatTab {
+  /**
+   * Emitted when tab is clicked. 
+   */
+  tabClick: EventEmitter<CustomEvent<MouseEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['active', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+})
+@Component({
+  selector: 'cat-tab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['active', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+})
+export class CatTab {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['tabClick']);
+  }
+}
+
+
+export declare interface CatTabs extends Components.CatTabs {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['tabsAlign']
+})
+@Component({
+  selector: 'cat-tabs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['tabsAlign']
+})
+export class CatTabs {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatTextarea extends Components.CatTextarea {
   /**
    * Emitted when the value is changed. 
@@ -385,6 +434,25 @@ export class CatTextarea {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+
+export declare interface CatToastDemo extends Components.CatToastDemo {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-toast-demo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatToastDemo {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
