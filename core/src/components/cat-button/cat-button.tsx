@@ -80,7 +80,7 @@ export class CatButton {
   /**
    * Disables ellipse overflowing button content.
    */
-  @Prop() noEllipsed = false;
+  @Prop() noEllipsis = false;
 
   /**
    * Use round button edges.
@@ -206,7 +206,7 @@ export class CatButton {
             'cat-button-round': this.round,
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsed && !this.isIconButton,
+            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
             [`cat-button-${this.variant}`]: Boolean(this.variant),
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)
@@ -237,7 +237,7 @@ export class CatButton {
             'cat-button-round': this.round ?? this.isIconButton,
             'cat-button-loading': this.loading,
             'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsed && !this.isIconButton,
+            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
             [`cat-button-${this.variant}`]: Boolean(this.variant),
             [`cat-button-${this.color}`]: Boolean(this.color),
             [`cat-button-${this.size}`]: Boolean(this.size)

@@ -32,7 +32,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'disabled',
   'loading',
   'submit',
-  'noEllipsed',
+  'noEllipsis',
   'round',
   'url',
   'urlTarget',

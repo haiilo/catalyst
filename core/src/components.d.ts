@@ -80,7 +80,7 @@ export namespace Components {
         /**
           * Disables ellipse overflowing button content.
          */
-        "noEllipsed": boolean;
+        "noEllipsis": boolean;
         /**
           * Use round button edges.
          */
@@ -672,7 +672,7 @@ declare namespace LocalJSX {
         /**
           * Disables ellipse overflowing button content.
          */
-        "noEllipsed"?: boolean;
+        "noEllipsis"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
