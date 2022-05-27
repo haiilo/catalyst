@@ -45,6 +45,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot     | Description                                              |
+| -------- | -------------------------------------------------------- |
+| `"hint"` | Optional hint element to be displayed with the textarea. |
+
+
 ## Shadow Parts
 
 | Part      | Description        |

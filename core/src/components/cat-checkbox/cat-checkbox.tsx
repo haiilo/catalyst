@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import log from 'loglevel';
-import { CatFormFieldHintSection } from '../cat-form-field-hint-section/cat-form-field-hint-section';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -8,6 +8,7 @@ let nextUniqueId = 0;
  * Checkboxes are used to let a user choose one or more options from a limited
  * number of options.
  *
+ * @slot hint - Optional hint element to be displayed with the checkbox.
  * @part checkbox - The checkbox element.
  * @part label - The label content.
  */
@@ -140,17 +141,12 @@ export class CatCheckbox {
   }
 
   private get hintSection() {
-    const hasSlottedHint = this.hasSlottedHint();
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
-        <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
-  }
-
-  private hasSlottedHint() {
-    const children = this.hostElement.children;
-    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onInput(event: Event) {

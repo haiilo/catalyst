@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, h, Prop, Method, Host, Element } from '@stencil/core';
 import log from 'loglevel';
-import { CatFormFieldHintSection } from '../cat-form-field-hint-section/cat-form-field-hint-section';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -8,6 +8,7 @@ let nextUniqueId = 0;
  * Radio Buttons are graphical interface elements that allow user to choose
  * only one of a predefined set of mutually exclusive options.
  *
+ * @slot hint - Optional hint element to be displayed with the radio.
  * @part label - The label content.
  */
 @Component({
@@ -123,17 +124,12 @@ export class CatRadio {
   }
 
   private get hintSection() {
-    const hasSlottedHint = this.hasSlottedHint();
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
-        <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
-  }
-
-  private hasSlottedHint() {
-    const children = this.hostElement.children;
-    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onChange(event: Event) {

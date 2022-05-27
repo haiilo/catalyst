@@ -41,6 +41,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot     | Description                                            |
+| -------- | ------------------------------------------------------ |
+| `"hint"` | Optional hint element to be displayed with the toggle. |
+
+
 ## Shadow Parts
 
 | Part       | Description         |

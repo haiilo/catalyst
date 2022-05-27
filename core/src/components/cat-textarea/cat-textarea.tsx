@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import log from 'loglevel';
 import autosize from 'autosize';
-import { CatFormFieldHintSection } from '../cat-form-field-hint-section/cat-form-field-hint-section';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -10,6 +10,7 @@ let nextUniqueId = 0;
  * rows. Used when the expected user input is long. For shorter input, use the
  * input component.
  *
+ * @slot hint - Optional hint element to be displayed with the textarea.
  * @part label - The label content.
  */
 @Component({
@@ -164,17 +165,12 @@ export class CatTextarea {
   }
 
   private get hintSection() {
-    const hasSlottedHint = this.hasSlottedHint();
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
-        <CatFormFieldHintSection hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
-  }
-
-  private hasSlottedHint() {
-    const children = this.hostElement.children;
-    return Array.from(children).some(child => child.getAttribute('slot') === 'hint');
   }
 
   private onInput(event: Event) {
