@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 import autosize from 'autosize';
 
@@ -9,6 +9,7 @@ let nextUniqueId = 0;
  * rows. Used when the expected user input is long. For shorter input, use the
  * input component.
  *
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
 @Component({
@@ -21,6 +22,8 @@ export class CatTextarea {
   private textarea!: HTMLTextAreaElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Whether the textarea is disabled.
@@ -98,7 +101,9 @@ export class CatTextarea {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label && !this.hasSlottedLabel()) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+
+    if (!this.hasSlottedLabel && !this.label) {
       log.error('[A11y] Missing ARIA label on textarea', this);
     }
   }
@@ -129,10 +134,10 @@ export class CatTextarea {
   render() {
     return (
       <Host>
-        {(this.label || this.hasSlottedLabel()) && (
+        {(this.hasSlottedLabel || this.label) && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-            <span class={{ 'label-group': Boolean(this.label) && this.hasSlottedLabel() }} part="label">
-              {[this.label, this.hasSlottedLabel() && <slot name="label"></slot>]}
+            <span part="label">
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
                   (Optional)
@@ -159,13 +164,6 @@ export class CatTextarea {
         ></textarea>
         {this.hint && <p class="input-hint">{this.hint}</p>}
       </Host>
-    );
-  }
-
-  private hasSlottedLabel() {
-    return (
-      this.hostElement.children &&
-      Array.from(this.hostElement.children).some(child => child.getAttribute('slot') === 'label')
     );
   }
 

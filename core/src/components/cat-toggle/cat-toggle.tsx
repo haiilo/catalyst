@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method, Element } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method, Element, State } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -7,6 +7,7 @@ let nextUniqueId = 0;
  * Toggles are graphical interface switches that give user control over a
  * feature or option that can be turned on or off.
  *
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part toggle - The toggle element.
  * @part label - The label content.
  */
@@ -20,6 +21,8 @@ export class CatToggle {
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Checked state of the toggle.
@@ -72,7 +75,9 @@ export class CatToggle {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label && !this.hasSlottedLabel()) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+
+    if (!this.hasSlottedLabel && !this.label) {
       log.error('[A11y] Missing ARIA label on toggle', this);
     }
   }
@@ -107,17 +112,10 @@ export class CatToggle {
           onBlur={this.onBlur.bind(this)}
         />
         <span class="toggle" part="toggle"></span>
-        <span class={{ label: true, 'label-group': Boolean(this.label) && this.hasSlottedLabel() }} part="label">
-          {[this.label, this.hasSlottedLabel() && <slot name="label"></slot>]}
+        <span class="label" part="label">
+          {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
         </span>
       </label>
-    );
-  }
-
-  private hasSlottedLabel() {
-    return (
-      this.hostElement.children &&
-      Array.from(this.hostElement.children).some(value1 => value1.getAttribute('slot') === 'label')
     );
   }
 

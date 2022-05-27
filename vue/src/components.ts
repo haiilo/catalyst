@@ -169,6 +169,9 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
 ]);
 
 
+export const CatToastDemo = /*@__PURE__*/ defineContainer<JSX.CatToastDemo>('cat-toast-demo', undefined);
+
+
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',
