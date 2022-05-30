@@ -48,8 +48,8 @@ export class CatSelect {
   private choicesInner?: Element | null = null;
 
   @Prop() multiple = false;
-  @Prop() options?: Option[] = [];
-  @Prop() searchEnabled = false;
+  @Prop() choices?: Option[];
+  @Prop() searchEnabled = true;
   @Prop() searchPlaceholderValue = 'Search...';
   @Prop() placeholder?: string | boolean;
   @Prop() placeholderValue = '';
@@ -57,14 +57,14 @@ export class CatSelect {
   @Prop() items?: Array<any>;
   @Prop() renderChoiceLimit?: number;
   @Prop() maxItemCount = false;
-  @Prop() addItems = false;
-  @Prop() removeItems = false;
-  @Prop() removeItemButton = false;
+  @Prop() addItems = true;
+  @Prop() removeItems = true;
+  @Prop() removeItemButton = true;
   @Prop() editItems = false;
   @Prop() duplicateItemsAllowed = false;
   @Prop() delimiter = '';
   @Prop() paste = false;
-  @Prop() searchChoices = false;
+  @Prop() searchChoices = true;
   @Prop() searchFields?: Array<string> | string;
   @Prop() searchFloor?: number;
   @Prop() searchResultLimit?: number;
@@ -240,7 +240,7 @@ export class CatSelect {
           onChange={this.onCatSelectChange.bind(this)}
           multiple={this.multiple}
         >
-          {!!this.options?.length && <Options options={this.options} />}
+          {!!this.choices?.length && <Options options={this.choices} />}
         </select>
       </Host>
     );
@@ -252,9 +252,9 @@ export class CatSelect {
 
   private init() {
     const props = {
+      allowHTML: true,
       silent: this.silent,
       items: this.items,
-      choices: this.options,
       renderChoiceLimit: this.renderChoiceLimit,
       maxItemCount: this.maxItemCount,
       addItems: this.addItems,

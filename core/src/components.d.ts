@@ -346,6 +346,7 @@ export namespace Components {
         "appendValue": string;
         "callbackOnCreateTemplates"?: OnCreateTemplates;
         "callbackOnInit"?: OnInit;
+        "choices"?: Option[];
         "classNames"?: ClassNames;
         "clearChoices": () => Promise<this>;
         "clearInput": () => Promise<this>;
@@ -368,7 +369,6 @@ export namespace Components {
         "multiple": boolean;
         "noChoicesText"?: string | NoChoicesTextFn;
         "noResultsText"?: string | NoResultsTextFn;
-        "options"?: Option[];
         "paste": boolean;
         "placeholder"?: string | boolean;
         "placeholderValue": string;
@@ -393,6 +393,7 @@ export namespace Components {
         "setValue": (args: Array<any>) => Promise<this>;
         "shouldSort": boolean;
         "shouldSortItems": boolean;
+        "showDropdown": () => Promise<this>;
         "silent": boolean;
         "sorter"?: SortFn;
         "unhighlightAll": () => Promise<this>;
@@ -1054,6 +1055,7 @@ declare namespace LocalJSX {
         "appendValue"?: string;
         "callbackOnCreateTemplates"?: OnCreateTemplates;
         "callbackOnInit"?: OnInit;
+        "choices"?: Option[];
         "classNames"?: ClassNames;
         "customAddItemText"?: CustomAddItemText;
         "delimiter"?: string;
@@ -1069,7 +1071,6 @@ declare namespace LocalJSX {
         "noChoicesText"?: string | NoChoicesTextFn;
         "noResultsText"?: string | NoResultsTextFn;
         "onCatSelectChange"?: (event: CustomEvent<any>) => void;
-        "options"?: Option[];
         "paste"?: boolean;
         "placeholder"?: string | boolean;
         "placeholderValue"?: string;
