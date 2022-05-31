@@ -1,10 +1,22 @@
 import { h, FunctionalComponent } from '@stencil/core';
 
+/**
+ * Properties of CatFormHint.
+ *
+ * @property hint - Optional hint text(s) of the form field.
+ * @property slottedHint - Optional hint element of the form field.
+ */
 interface CatFormHintProps {
   hint?: string | string[];
-  slottedHint?: HTMLElement;
+  slottedHint?: HTMLSlotElement;
 }
 
+/**
+ * CatFormHint is a functional component that represents the hint area of form elements.
+ *
+ * @param props - {@link CatFormHintProps}
+ * @return a JSX.Element
+ */
 export const CatFormHint: FunctionalComponent<CatFormHintProps> = props => {
   const { hint, slottedHint } = props;
   return (
