@@ -7,7 +7,7 @@ function registerIcons() {
 }
 
 function registerTranslations() {
-  CatI18nRegistry.getInstance().addMessages('en', {
+  CatI18nRegistry.getInstance().register('en', {
     'input.clear': 'Clear',
     'input.optional': 'Optional'
   });

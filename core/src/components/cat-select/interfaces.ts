@@ -55,19 +55,6 @@ export type FuseOptions = {
 
 export type ItemFilterFn = (value: string) => boolean;
 
-export type NoResultsTextFn = () => string;
-
-export type NoChoicesTextFn = () => string;
-
-export type AddItemTextFn = ((value: string) => string) | string;
-
-export type MaxItemTextFn = (maxItemCount: number) => string;
-
-export type SortFn = (el1: never, el2: never) => number;
-
-export type UniqueItemText = ((value: string) => string) | string;
-export type CustomAddItemText = ((value: string) => string) | string;
-
 export type OnInit = () => void;
 
 export type OnCreateTemplates = (template: unknown) => never;

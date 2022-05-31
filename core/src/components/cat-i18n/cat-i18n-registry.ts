@@ -3,8 +3,8 @@ import log from 'loglevel';
 export class CatI18nRegistry {
   private static instance: CatI18nRegistry;
 
-  private lang = 'en';
-  private readonly messages: Map<string, Map<string, string>> = new Map();
+  private _locale = 'en';
+  private readonly _dicts: Map<string, Map<string, string>> = new Map();
 
   private constructor() {
     // hide constructor
@@ -17,50 +17,42 @@ export class CatI18nRegistry {
     return CatI18nRegistry.instance;
   }
 
-  getLanguage(): string {
-    return this.lang;
-  }
-
-  setLanguage(lang: string): void {
-    this.lang = lang;
-  }
-
-  getMessage(key: string): string | undefined {
-    const message = this.messages.get(this.lang)?.get(key);
-    if (!message) {
-      log.error(`[CatI18nRegistry] Unknown message for lang ${this.lang}: ${key}`);
+  locale(locale?: string): string {
+    if (locale) {
+      this._locale = locale;
+      log.info(`[CatI18nRegistry] Locale set to ${locale}`);
+      window.dispatchEvent(this.buildEvent('cat-i18n-locale', { locale }));
     }
-    return message;
+    return this._locale;
   }
 
-  addMessage(lang: string, key: string, message: string): CatI18nRegistry {
-    this.getDict(lang).set(key, message);
-    log.info(`[CatI18nRegistry] Added message for lang ${lang}: ${key}`);
-    window.dispatchEvent(this.buildEvent('cat-i18n-added', { lang, key }));
-    return this;
-  }
-
-  addMessages(lang: string, i18n: { [key: string]: string }): CatI18nRegistry {
-    const dict = this.getDict(lang);
+  register(locale: string, i18n: { [key: string]: string }): void {
+    const dict = this.getDict(locale);
     Object.entries(i18n).forEach(([key, message]) => dict.set(key, message));
-    log.info(`[CatI18nRegistry] Added message for lang ${lang}: ${Object.keys(i18n).concat(', ')}`);
-    window.dispatchEvent(this.buildEvent('cat-i18n-added', { lang, keys: Object.keys(i18n) }));
-    return this;
+    log.info(`[CatI18nRegistry] Registered messages for ${locale}`, i18n);
+    window.dispatchEvent(this.buildEvent('cat-i18n-register', { i18n }));
   }
 
-  removeMessage(lang: string, key: string): CatI18nRegistry {
-    this.getDict(lang).delete(key);
-    log.info(`[CatI18nRegistry] Removed message for lang ${lang}: ${key}`);
-    window.dispatchEvent(this.buildEvent('cat-i18n-removed', { lang, key }));
-    return this;
+  clear(locale?: string): void {
+    if (locale) {
+      this.getDict(locale).clear();
+      log.info(`[CatI18nRegistry] Cleared messages for ${locale}`);
+      window.dispatchEvent(this.buildEvent('cat-i18n-clear', { locale }));
+    } else {
+      this._dicts.clear();
+      log.info(`[CatI18nRegistry] Cleared messages`);
+      window.dispatchEvent(this.buildEvent('cat-i18n-clear'));
+    }
   }
 
-  removeMessages(lang: string, keys: string[]): CatI18nRegistry {
-    const dict = this.getDict(lang);
-    keys.forEach(key => dict.delete(key));
-    log.info(`[CatI18nRegistry] Removed messages for lang ${lang}: ${keys.concat(', ')}`);
-    window.dispatchEvent(this.buildEvent('cat-i18n-added', { lang, keys }));
-    return this;
+  t(key: string, params?: { [key: string]: string | number }): string | undefined {
+    const message = this._dicts.get(this._locale)?.get(key);
+    if (!message) {
+      log.error(`[CatI18nRegistry] Unknown message for ${this._locale}: ${key}`);
+    }
+    return message?.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => {
+      return `${params?.[key] ?? ''}`;
+    });
   }
 
   private buildEvent<T>(name: string, detail?: T) {
@@ -72,11 +64,11 @@ export class CatI18nRegistry {
   }
 
   private getDict(lang: string) {
-    let messages = this.messages.get(lang);
-    if (!messages) {
-      messages = new Map();
-      this.messages.set(lang, messages);
+    let dict = this._dicts.get(lang);
+    if (!dict) {
+      dict = new Map();
+      this._dicts.set(lang, dict);
     }
-    return messages;
+    return dict;
   }
 }

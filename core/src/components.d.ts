@@ -8,8 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { Option } from "./components/cat-select/cat-select";
-import { AddItemTextFn, ClassNames, CustomAddItemText, FuseOptions, ItemFilterFn, MaxItemTextFn, NoChoicesTextFn, NoResultsTextFn, OnCreateTemplates, OnInit, SortFn, UniqueItemText, ValueCompareFunction } from "./components/cat-select/interfaces";
-import { Item } from "choices.js";
+import { FuseOptions, ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
 export namespace Components {
     interface CatAlert {
         /**
@@ -341,64 +340,33 @@ export namespace Components {
     }
     interface CatSelect {
         "addItemFilter"?: string | RegExp | ItemFilterFn;
-        "addItemText"?: string | AddItemTextFn;
         "addItems": boolean;
-        "appendValue": string;
-        "callbackOnCreateTemplates"?: OnCreateTemplates;
-        "callbackOnInit"?: OnInit;
         "choices"?: Option[];
-        "classNames"?: ClassNames;
         "clearChoices": () => Promise<this>;
         "clearInput": () => Promise<this>;
         "clearStore": () => Promise<this>;
-        "customAddItemText"?: CustomAddItemText;
         "delimiter": string;
         "disable": () => Promise<this>;
-        "duplicateItemsAllowed": boolean;
         "editItems": boolean;
         "enable": () => Promise<this>;
         "fuseOptions"?: FuseOptions;
-        "hideDropdown": (blurInput?: boolean | undefined) => Promise<this>;
-        "highlightAll": () => Promise<this>;
-        "highlightItem": (item: Item, runEvent?: boolean | undefined) => Promise<this>;
-        "itemSelectText": string;
         "items"?: Array<any>;
-        "loadingText": string;
         "maxItemCount": boolean;
-        "maxItemText"?: string | MaxItemTextFn;
         "multiple": boolean;
-        "noChoicesText"?: string | NoChoicesTextFn;
-        "noResultsText"?: string | NoResultsTextFn;
         "paste": boolean;
         "placeholder"?: string | boolean;
         "placeholderValue": string;
-        "position"?: 'auto' | 'top' | 'bottom';
-        "prependValue": string;
-        "removeActiveItems": (excludedId: number) => Promise<this>;
-        "removeActiveItemsByValue": (value: string) => Promise<this>;
-        "removeHighlightedItems": (runEvent?: boolean | undefined) => Promise<this>;
+        "position": 'auto' | 'top' | 'bottom';
         "removeItemButton": boolean;
-        "removeItems": boolean;
         "renderChoiceLimit"?: number;
-        "renderSelectedChoices"?: 'always' | 'auto';
         "resetScrollPosition": boolean;
         "searchChoices": boolean;
-        "searchEnabled": boolean;
         "searchFields"?: Array<string> | string;
-        "searchFloor"?: number;
-        "searchPlaceholderValue": string;
         "searchResultLimit"?: number;
+        "searchable": boolean;
         "setChoiceByValue": (value: string) => Promise<this>;
         "setChoices": (choices: Array<any>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
         "setValue": (args: Array<any>) => Promise<this>;
-        "shouldSort": boolean;
-        "shouldSortItems": boolean;
-        "showDropdown": () => Promise<this>;
-        "silent": boolean;
-        "sorter"?: SortFn;
-        "unhighlightAll": () => Promise<this>;
-        "unhighlightItem": (item: Item) => Promise<this>;
-        "uniqueItemText"?: UniqueItemText;
         "valueComparer"?: ValueCompareFunction;
     }
     interface CatSkeleton {
@@ -1050,48 +1018,26 @@ declare namespace LocalJSX {
     }
     interface CatSelect {
         "addItemFilter"?: string | RegExp | ItemFilterFn;
-        "addItemText"?: string | AddItemTextFn;
         "addItems"?: boolean;
-        "appendValue"?: string;
-        "callbackOnCreateTemplates"?: OnCreateTemplates;
-        "callbackOnInit"?: OnInit;
         "choices"?: Option[];
-        "classNames"?: ClassNames;
-        "customAddItemText"?: CustomAddItemText;
         "delimiter"?: string;
-        "duplicateItemsAllowed"?: boolean;
         "editItems"?: boolean;
         "fuseOptions"?: FuseOptions;
-        "itemSelectText"?: string;
         "items"?: Array<any>;
-        "loadingText"?: string;
         "maxItemCount"?: boolean;
-        "maxItemText"?: string | MaxItemTextFn;
         "multiple"?: boolean;
-        "noChoicesText"?: string | NoChoicesTextFn;
-        "noResultsText"?: string | NoResultsTextFn;
-        "onCatSelectChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CustomEvent<any>) => void;
         "paste"?: boolean;
         "placeholder"?: string | boolean;
         "placeholderValue"?: string;
         "position"?: 'auto' | 'top' | 'bottom';
-        "prependValue"?: string;
         "removeItemButton"?: boolean;
-        "removeItems"?: boolean;
         "renderChoiceLimit"?: number;
-        "renderSelectedChoices"?: 'always' | 'auto';
         "resetScrollPosition"?: boolean;
         "searchChoices"?: boolean;
-        "searchEnabled"?: boolean;
         "searchFields"?: Array<string> | string;
-        "searchFloor"?: number;
-        "searchPlaceholderValue"?: string;
         "searchResultLimit"?: number;
-        "shouldSort"?: boolean;
-        "shouldSortItems"?: boolean;
-        "silent"?: boolean;
-        "sorter"?: SortFn;
-        "uniqueItemText"?: UniqueItemText;
+        "searchable"?: boolean;
         "valueComparer"?: ValueCompareFunction;
     }
     interface CatSkeleton {
