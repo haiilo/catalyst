@@ -2,6 +2,12 @@
 @use 'mixins' as *;
 
 :host {
+  /**
+   * @prop --cat-avatar-bg: The background color of the avatar.
+   * @prop --cat-avatar-fill: The text color of the avatar.
+   * @prop --cat-avatar-size: The size of the avatar.
+   * @prop --cat-avatar-font-size: The font size of the avatar.
+   */
   display: inline-block;
   vertical-align: middle;
   @include cat-select(none);
