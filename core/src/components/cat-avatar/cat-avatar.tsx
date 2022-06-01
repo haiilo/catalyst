@@ -100,6 +100,7 @@ export class CatAvatar {
   private get cssStyle() {
     return { 'background-image': this.backgroundImage };
   }
+
   private get cssClass() {
     return {
       avatar: true,
