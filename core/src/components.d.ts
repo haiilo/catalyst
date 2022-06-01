@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { Option } from "./components/cat-select/cat-select";
-import { FuseOptions, ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
+import { ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
 export namespace Components {
     interface CatAlert {
         /**
@@ -346,23 +346,18 @@ export namespace Components {
         "clearInput": () => Promise<this>;
         "clearStore": () => Promise<this>;
         "delimiter": string;
-        "disable": () => Promise<this>;
+        "disabled": boolean;
         "editItems": boolean;
-        "enable": () => Promise<this>;
-        "fuseOptions"?: FuseOptions;
         "items"?: Array<any>;
         "maxItemCount": boolean;
         "multiple": boolean;
         "paste": boolean;
-        "placeholder"?: string | boolean;
-        "placeholderValue": string;
+        "placeholder": string;
         "position": 'auto' | 'top' | 'bottom';
         "removeItemButton": boolean;
-        "renderChoiceLimit"?: number;
         "resetScrollPosition": boolean;
         "searchChoices": boolean;
         "searchFields"?: Array<string> | string;
-        "searchResultLimit"?: number;
         "searchable": boolean;
         "setChoiceByValue": (value: string) => Promise<this>;
         "setChoices": (choices: Array<any>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
@@ -1021,22 +1016,19 @@ declare namespace LocalJSX {
         "addItems"?: boolean;
         "choices"?: Option[];
         "delimiter"?: string;
+        "disabled"?: boolean;
         "editItems"?: boolean;
-        "fuseOptions"?: FuseOptions;
         "items"?: Array<any>;
         "maxItemCount"?: boolean;
         "multiple"?: boolean;
         "onCatChange"?: (event: CustomEvent<any>) => void;
         "paste"?: boolean;
-        "placeholder"?: string | boolean;
-        "placeholderValue"?: string;
+        "placeholder"?: string;
         "position"?: 'auto' | 'top' | 'bottom';
         "removeItemButton"?: boolean;
-        "renderChoiceLimit"?: number;
         "resetScrollPosition"?: boolean;
         "searchChoices"?: boolean;
         "searchFields"?: Array<string> | string;
-        "searchResultLimit"?: number;
         "searchable"?: boolean;
         "valueComparer"?: ValueCompareFunction;
     }

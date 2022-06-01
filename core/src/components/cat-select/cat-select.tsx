@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import Choices from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
-import { FuseOptions, ItemFilterFn, ValueCompareFunction } from './interfaces';
+import { ItemFilterFn, ValueCompareFunction } from './interfaces';
 import { filterObject, isDefined } from './utils';
 
 export interface Option {
@@ -26,6 +26,7 @@ const Options = ({ options }: { options: Option[] }) => {
 })
 export class CatSelect {
   private readonly i18n = CatI18nRegistry.getInstance();
+  private readonly searchResultLimit = 24;
 
   private choice?: Choices | null = null;
   private hostElement: HTMLElement | null = null;
@@ -35,6 +36,7 @@ export class CatSelect {
   @Prop() multiple = false;
   @Prop() position: 'auto' | 'top' | 'bottom' = 'auto';
   @Prop() searchable = true;
+  @Prop() disabled = false;
 
   // tags?
   @Prop() addItems = true;
@@ -42,18 +44,14 @@ export class CatSelect {
   @Prop() paste = false;
 
   @Prop() choices?: Option[];
-  @Prop() placeholder?: string | boolean;
-  @Prop() placeholderValue = '';
+  @Prop() placeholder = '';
   @Prop() items?: Array<any>;
-  @Prop() renderChoiceLimit?: number;
   @Prop() maxItemCount = false;
   @Prop() removeItemButton = true;
   @Prop() delimiter = '';
   @Prop() searchChoices = true;
   @Prop() searchFields?: Array<string> | string;
-  @Prop() searchResultLimit?: number;
   @Prop() resetScrollPosition = false;
-  @Prop() fuseOptions?: FuseOptions;
   @Prop() addItemFilter?: string | RegExp | ItemFilterFn;
   @Prop() valueComparer?: ValueCompareFunction;
 
@@ -101,20 +99,6 @@ export class CatSelect {
     return this;
   }
 
-  @Method()
-  async enable() {
-    this.choice?.enable();
-
-    return this;
-  }
-
-  @Method()
-  async disable() {
-    this.choice?.disable();
-
-    return this;
-  }
-
   constructor() {
     this.showDropdownHandler = this.showDropdownHandler.bind(this);
   }
@@ -123,7 +107,7 @@ export class CatSelect {
     if (this.hostElement) {
       this.init();
       this.choicesInner = this.getChoiceInnerElement();
-      this.choicesInner?.addEventListener('click', () => this.showDropdownHandler);
+      this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
     }
   }
 
@@ -136,7 +120,12 @@ export class CatSelect {
   render() {
     return (
       <Host ref={el => (this.hostElement = el)}>
-        <select ref={el => (this.selectElement = el)} onChange={this.onChange.bind(this)} multiple={this.multiple}>
+        <select
+          ref={el => (this.selectElement = el)}
+          onChange={this.onChange.bind(this)}
+          multiple={this.multiple}
+          disabled={this.disabled}
+        >
           {!!this.choices?.length && <Options options={this.choices} />}
         </select>
       </Host>
@@ -144,44 +133,46 @@ export class CatSelect {
   }
 
   private showDropdownHandler() {
-    this.choice?.showDropdown();
+    if (!this.disabled) {
+      this.choice?.showDropdown();
+    }
   }
 
   private init() {
-    const settings = filterObject({
-      allowHTML: true,
-      items: this.items,
-      renderChoiceLimit: this.renderChoiceLimit,
-      maxItemCount: this.maxItemCount,
-      addItems: this.addItems,
-      removeItems: true,
-      removeItemButton: this.removeItemButton,
-      editItems: this.editItems,
-      duplicateItemsAllowed: false,
-      delimiter: this.delimiter,
-      paste: this.paste,
-      searchEnabled: this.searchable,
-      searchChoices: this.searchChoices,
-      searchFields: this.searchFields,
-      searchResultLimit: this.searchResultLimit,
-      position: this.position,
-      resetScrollPosition: this.resetScrollPosition,
-      placeholder: true,
-      placeholderValue: this.placeholderValue || (typeof this.placeholder === 'string' && this.placeholder) || '',
-      searchPlaceholderValue: this.i18n.t('select.searchPlaceholder'),
-      renderSelectedChoices: 'always',
-      loadingText: this.i18n.t('select.loading'),
-      noResultsText: this.i18n.t('select.noResults'),
-      noChoicesText: this.i18n.t('select.noChoices'),
-      itemSelectText: this.i18n.t('select.selectItem'),
-      addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
-      maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
-      uniqueItemText: this.i18n.t('select.uniqueItem'),
-      fuseOptions: this.fuseOptions,
-      valueComparer: this.valueComparer,
-      addItemFilter: this.addItemFilter,
-      customAddItemText: this.i18n.t('select.customAddItem')
-    }, isDefined);
+    const settings = filterObject(
+      {
+        allowHTML: true,
+        items: this.items,
+        maxItemCount: this.maxItemCount,
+        addItems: this.addItems,
+        removeItemButton: this.removeItemButton,
+        editItems: this.editItems,
+        duplicateItemsAllowed: false,
+        delimiter: this.delimiter,
+        paste: this.paste,
+        searchEnabled: this.searchable,
+        searchChoices: this.searchChoices,
+        searchFields: this.searchFields,
+        searchResultLimit: this.searchResultLimit,
+        position: this.position,
+        resetScrollPosition: this.resetScrollPosition,
+        placeholder: this.placeholder?.length,
+        placeholderValue: this.placeholder,
+        searchPlaceholderValue: this.i18n.t('select.searchPlaceholder'),
+        renderSelectedChoices: 'always',
+        loadingText: this.i18n.t('select.loading'),
+        noResultsText: this.i18n.t('select.noResults'),
+        noChoicesText: this.i18n.t('select.noChoices'),
+        itemSelectText: this.i18n.t('select.selectItem'),
+        addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
+        maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
+        uniqueItemText: this.i18n.t('select.uniqueItem'),
+        valueComparer: this.valueComparer,
+        addItemFilter: this.addItemFilter,
+        customAddItemText: this.i18n.t('select.customAddItem')
+      },
+      isDefined
+    );
 
     this.choice = new Choices(this.selectElement, settings);
   }

@@ -3,9 +3,7 @@ import { CatInput } from './cat-input';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 const tMock = jest.fn((key: string) => key);
-jest
-  .spyOn(CatI18nRegistry, 'getInstance')
-  .mockImplementation(() => ({ t: tMock } as unknown as CatI18nRegistry));
+jest.spyOn(CatI18nRegistry, 'getInstance').mockImplementation(() => ({ t: tMock } as unknown as CatI18nRegistry));
 
 describe('cat-input', () => {
   it('renders', async () => {
