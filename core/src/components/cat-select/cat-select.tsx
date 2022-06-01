@@ -169,6 +169,12 @@ export class CatSelect {
         uniqueItemText: this.i18n.t('select.uniqueItem'),
         valueComparer: this.valueComparer,
         addItemFilter: this.addItemFilter,
+        fuseOptions: {
+          findAllMatches: true,
+          includeScore: true,
+          includeMatches: true,
+          threshold: 0
+        },
         customAddItemText: this.i18n.t('select.customAddItem')
       },
       isDefined
