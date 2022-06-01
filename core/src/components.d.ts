@@ -58,10 +58,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed": boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -81,6 +77,10 @@ export namespace Components {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Disables ellipse overflowing button content.
+         */
+        "noEllipsis": boolean;
         /**
           * Use round button edges.
          */
@@ -308,33 +308,33 @@ export namespace Components {
     }
     interface CatScrollable {
         /**
-          * Flags to enable/disable overflowX.
+          * Flags to disable/enable overflowX.
          */
-        "overflowX": boolean;
+        "noOverflowX": boolean;
         /**
-          * Flags to enable/disable overflowY.
+          * Flags to disable/enable overflowY.
          */
-        "overflowY": boolean;
+        "noOverflowY": boolean;
         /**
-          * Flag to enable/disable overscroll behavior.
+          * Flag to disable/enable overscroll behavior.
          */
-        "overscroll": boolean;
+        "noOverscroll": boolean;
+        /**
+          * Flag to not fire an initial event after content initialization.
+         */
+        "noScrolledInit": boolean;
+        /**
+          * Flags to disable/enable scroll shadowX.
+         */
+        "noShadowX": boolean;
+        /**
+          * Flags to disable/enable scroll shadowY.
+         */
+        "noShadowY": boolean;
         /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer": number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit": boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX": boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY": boolean;
     }
     interface CatSkeleton {
         /**
@@ -650,10 +650,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed"?: boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -673,6 +669,10 @@ declare namespace LocalJSX {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Disables ellipse overflowing button content.
+         */
+        "noEllipsis"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
@@ -932,6 +932,30 @@ declare namespace LocalJSX {
     }
     interface CatScrollable {
         /**
+          * Flags to disable/enable overflowX.
+         */
+        "noOverflowX"?: boolean;
+        /**
+          * Flags to disable/enable overflowY.
+         */
+        "noOverflowY"?: boolean;
+        /**
+          * Flag to disable/enable overscroll behavior.
+         */
+        "noOverscroll"?: boolean;
+        /**
+          * Flag to not fire an initial event after content initialization.
+         */
+        "noScrolledInit"?: boolean;
+        /**
+          * Flags to disable/enable scroll shadowX.
+         */
+        "noShadowX"?: boolean;
+        /**
+          * Flags to disable/enable scroll shadowY.
+         */
+        "noShadowY"?: boolean;
+        /**
           * Emitted when the content is fully scrolled to the bottom.
          */
         "onScrolledBottom"?: (event: CustomEvent<void>) => void;
@@ -948,33 +972,9 @@ declare namespace LocalJSX {
          */
         "onScrolledTop"?: (event: CustomEvent<void>) => void;
         /**
-          * Flags to enable/disable overflowX.
-         */
-        "overflowX"?: boolean;
-        /**
-          * Flags to enable/disable overflowY.
-         */
-        "overflowY"?: boolean;
-        /**
-          * Flag to enable/disable overscroll behavior.
-         */
-        "overscroll"?: boolean;
-        /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer"?: number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY"?: boolean;
     }
     interface CatSkeleton {
         /**

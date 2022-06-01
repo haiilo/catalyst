@@ -68,14 +68,14 @@ export declare interface CatButton extends Components.CatButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'ellipsed', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
+  inputs: ['a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -292,13 +292,13 @@ export declare interface CatScrollable extends Components.CatScrollable {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['overflowX', 'overflowY', 'overscroll', 'scrolledBuffer', 'scrolledInit', 'shadowX', 'shadowY']
+  inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
 @Component({
   selector: 'cat-scrollable',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['overflowX', 'overflowY', 'overscroll', 'scrolledBuffer', 'scrolledInit', 'shadowX', 'shadowY']
+  inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
 export class CatScrollable {
   protected el: HTMLElement;
@@ -385,6 +385,25 @@ export class CatTextarea {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+
+export declare interface CatToastDemo extends Components.CatToastDemo {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-toast-demo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatToastDemo {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
