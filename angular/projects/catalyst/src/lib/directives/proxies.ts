@@ -29,6 +29,27 @@ export class CatAlert {
 }
 
 
+export declare interface CatAvatar extends Components.CatAvatar {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
+})
+@Component({
+  selector: 'cat-avatar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
+})
+export class CatAvatar {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatBadge extends Components.CatBadge {}
 
 @ProxyCmp({
