@@ -13,6 +13,18 @@ export const CatAlert = /*@__PURE__*/ defineContainer<JSX.CatAlert>('cat-alert',
 ]);
 
 
+export const CatAvatar = /*@__PURE__*/ defineContainer<JSX.CatAvatar>('cat-avatar', undefined, [
+  'size',
+  'round',
+  'label',
+  'initials',
+  'src',
+  'icon',
+  'url',
+  'urlTarget'
+]);
+
+
 export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge', undefined, [
   'variant',
   'color',
@@ -32,7 +44,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'disabled',
   'loading',
   'submit',
-  'ellipsed',
+  'noEllipsis',
   'round',
   'url',
   'urlTarget',
@@ -124,12 +136,12 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
 
 
 export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('cat-scrollable', undefined, [
-  'shadowX',
-  'shadowY',
-  'overflowX',
-  'overflowY',
-  'overscroll',
-  'scrolledInit',
+  'noShadowX',
+  'noShadowY',
+  'noOverflowX',
+  'noOverflowY',
+  'noOverscroll',
+  'noScrolledInit',
   'scrolledBuffer',
   'scrolledTop',
   'scrolledLeft',
