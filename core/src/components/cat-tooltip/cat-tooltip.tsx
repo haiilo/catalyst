@@ -129,7 +129,6 @@ export class CatTooltip {
   private showListener() {
     window.clearTimeout(this.hideTimeout);
     this.showTimeout = window.setTimeout(() => {
-      this.trigger?.focus();
       this.tooltip?.classList.add('tooltip-show');
     }, this.showDelay);
   }
@@ -137,7 +136,6 @@ export class CatTooltip {
   private hideListener() {
     window.clearTimeout(this.showTimeout);
     this.hideTimeout = window.setTimeout(() => {
-      this.trigger?.blur();
       this.tooltip?.classList.remove('tooltip-show');
     }, this.hideDelay);
   }
