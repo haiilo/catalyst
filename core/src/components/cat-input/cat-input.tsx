@@ -23,8 +23,6 @@ export class CatInput {
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
 
-  @State() private inputValue = '';
-
   /**
    * Hint for form autofill feature.
    */
@@ -128,7 +126,7 @@ export class CatInput {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
@@ -144,15 +142,6 @@ export class CatInput {
    * Emitted when the input loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
-
-  @Watch('value')
-  onValueChange(value?: string | number) {
-    this.inputValue = '' + (value ?? '');
-  }
-
-  componentWillLoad() {
-    this.onValueChange(this.value);
-  }
 
   componentWillRender(): void {
     if (!this.label) {
@@ -176,7 +165,7 @@ export class CatInput {
    */
   @Method()
   async clear(): Promise<void> {
-    this.inputValue = '';
+    this.value = '';
   }
 
   render() {
@@ -226,12 +215,12 @@ export class CatInput {
               readonly={this.readonly}
               required={this.required}
               type={this.type}
-              value={this.inputValue}
+              value={this.value}
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
             ></input>
-            {this.clearable && !this.disabled && this.inputValue && (
+            {this.clearable && !this.disabled && this.value && (
               <cat-button
                 class="clearable"
                 icon="cross-circle-outlined"
@@ -256,7 +245,7 @@ export class CatInput {
   }
 
   private onInput(event: Event) {
-    this.inputValue = this.input.value;
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 
