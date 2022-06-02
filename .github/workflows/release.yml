@@ -41,7 +41,7 @@ jobs:
           package: ./tokens/package.json
       - name: Install and Build Core Package
         run: |
-          npm i @haiilo/catalyst-tokens --save -w core
+          npm i @haiilo/catalyst-tokens --save -w core --force
           npm run build:ci -w core
       - name: Publish @haiilo/catalyst to npm
         uses: JS-DevTools/npm-publish@v1
@@ -50,7 +50,7 @@ jobs:
           package: ./core/package.json
       - name: Install and Build
         run: |
-          npm i @haiilo/catalyst --save -w angular/projects/catalyst
+          npm i @haiilo/catalyst --save -w angular/projects/catalyst --force
           npm run build -w angular
       - name: Publish @haiilo/catalyst-angular to npm
         uses: JS-DevTools/npm-publish@v1
