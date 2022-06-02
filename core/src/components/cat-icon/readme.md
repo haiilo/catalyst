@@ -23,12 +23,14 @@
 
 ### Used by
 
+ - [cat-avatar](../cat-avatar)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
 
 ### Graph
 ```mermaid
 graph TD;
+  cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon
   style cat-icon fill:#f9f,stroke:#333,stroke-width:4px

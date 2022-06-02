@@ -1,7 +1,7 @@
 module.exports = {
   font: {
     family: {
-      head: { value: "{asset.font.dmSans.name.value}", attributes: { cssProp: "font-family-head" } },
+      head: { value: "{asset.font.lato.name.value}", attributes: { cssProp: "font-family-head" } },
       body: { value: "{asset.font.lato.name.value}", attributes: { cssProp: "font-family-body" } },
       mono: { value: "{asset.font.azeretMono.name.value}", attributes: { cssProp: "font-family-mono" } }
     },
