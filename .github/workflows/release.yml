@@ -33,7 +33,6 @@ jobs:
           npm run release:${{ github.event.inputs.release }}
       - name: Install and Build Tokens
         run: |
-          npm ci
           npm run build -w tokens
       - name: Publish @haiilo/catalyst-tokens to npm
         uses: JS-DevTools/npm-publish@v1
@@ -42,7 +41,6 @@ jobs:
           package: ./tokens/package.json
       - name: Install and Build Core Package
         run: |
-          npm ci
           npm i @haiilo/catalyst-tokens --save -w core
           npm run build:ci -w core
       - name: Publish @haiilo/catalyst to npm
@@ -52,7 +50,6 @@ jobs:
           package: ./core/package.json
       - name: Install and Build
         run: |
-          npm ci
           npm i @haiilo/catalyst --save -w angular/projects/catalyst
           npm run build -w angular
       - name: Publish @haiilo/catalyst-angular to npm
