@@ -400,6 +400,10 @@ export namespace Components {
     }
     interface CatTab {
         /**
+          * Specifies that the tab should be deactivated.
+         */
+        "deactivated": boolean;
+        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -412,7 +416,7 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
-          * The label of the tab
+          * The label of the tab.
          */
         "label": string;
         /**
@@ -430,9 +434,9 @@ export namespace Components {
          */
         "activeTab": string;
         /**
-          * The tabs alignment
+          * The alignment of the tabs.
          */
-        "tabsAlign": 'left' | 'center' | 'justify';
+        "tabsAlign": 'left' | 'center' | 'justify' | 'right';
     }
     interface CatTextarea {
         /**
@@ -1131,6 +1135,10 @@ declare namespace LocalJSX {
     }
     interface CatTab {
         /**
+          * Specifies that the tab should be deactivated.
+         */
+        "deactivated"?: boolean;
+        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -1143,7 +1151,7 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
-          * The label of the tab
+          * The label of the tab.
          */
         "label"?: string;
         /**
@@ -1165,9 +1173,9 @@ declare namespace LocalJSX {
          */
         "activeTab"?: string;
         /**
-          * The tabs alignment
+          * The alignment of the tabs.
          */
-        "tabsAlign"?: 'left' | 'center' | 'justify';
+        "tabsAlign"?: 'left' | 'center' | 'justify' | 'right';
     }
     interface CatTextarea {
         /**

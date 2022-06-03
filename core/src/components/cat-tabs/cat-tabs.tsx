@@ -22,9 +22,9 @@ export class CatTabs {
   @Prop() activeTab = '';
 
   /**
-   * The tabs alignment
+   * The alignment of the tabs.
    */
-  @Prop() tabsAlign: 'left' | 'center' | 'justify' = 'left';
+  @Prop() tabsAlign: 'left' | 'center' | 'justify' | 'right' = 'left';
 
   @Watch('activeTabId')
   onActiveTabChanged(newActiveTab: string): void {
@@ -34,26 +34,15 @@ export class CatTabs {
 
   componentWillLoad(): void {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
-    if (this.tabs.length > 0) {
-      let nextUniqueId = 0;
-      this.tabs.forEach(tab => {
-        if (!tab.id) tab.id = `cat-checkbox-${nextUniqueId++}`;
-      });
+    if (this.tabs.length) {
       this.activeTabId = this.activeTab;
     }
-  }
-
-  componentDidRender(): void {
-    this.buttons.forEach((button: HTMLCatButtonElement) => {
-      const element = button.shadowRoot?.querySelector('button');
-      element?.setAttribute('tabindex', button.buttonId === this.activeTabId ? '0' : '-1');
-    });
   }
 
   @Listen('keydown')
   onKeydown(event: KeyboardEvent): void {
     if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
-      const targetElements = this.buttons;
+      const targetElements = this.buttons.filter(button => !button.disabled);
       const activeElement = this.hostElement.shadowRoot?.activeElement as HTMLCatButtonElement;
       const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
       const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
@@ -75,15 +64,15 @@ export class CatTabs {
               part="tab"
               class={{
                 tab: true,
-                'tab-active': tab.id === this.activeTabId,
-                [`tab-align-${this.tabsAlign}`]: Boolean(this.tabsAlign)
+                'tab-active': Boolean(this.activeTabId && tab.id === this.activeTabId)
               }}
-              color={tab.id === this.activeTabId ? 'primary' : 'secondary'}
+              color={this.activeTabId && tab.id === this.activeTabId ? 'primary' : 'secondary'}
               variant="text"
               icon={tab.icon}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
               url={tab.url}
+              disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
               onCatClick={() => (this.activeTabId = tab.id)}
             >

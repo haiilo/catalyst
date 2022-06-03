@@ -1,5 +1,7 @@
-import { Component, h, Prop, Event, EventEmitter, Listen, Host } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Listen, Host, Element } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
+
+let nextUniqueId = 0;
 
 @Component({
   tag: 'cat-tab',
@@ -7,8 +9,10 @@ import { Breakpoint } from '../../utils/breakpoints';
   shadow: true
 })
 export class CatTab {
+  @Element() hostElement!: HTMLElement;
+
   /**
-   * The label of the tab
+   * The label of the tab.
    */
   @Prop() label = '';
 
@@ -38,9 +42,18 @@ export class CatTab {
   @Prop() urlTarget?: '_blank' | '_self';
 
   /**
+   * Specifies that the tab should be deactivated.
+   */
+  @Prop() deactivated = false;
+
+  /**
    * Emitted when tab is clicked.
    */
   @Event() tabClick!: EventEmitter<MouseEvent>;
+
+  connectedCallback() {
+    if (!this.hostElement.id) this.hostElement.id = `cat-tab-${nextUniqueId++}`;
+  }
 
   @Listen('click')
   onClick(event: MouseEvent) {
@@ -48,10 +61,6 @@ export class CatTab {
   }
 
   render() {
-    return (
-      <Host>
-        <slot></slot>
-      </Host>
-    );
+    return <Host></Host>;
   }
 }

@@ -8,9 +8,8 @@ describe('cat-tab', () => {
       html: `<cat-tab></cat-tab>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-tab>
+      <cat-tab id="cat-tab-0">
         <mock:shadow-root>
-         <slot></slot>
         </mock:shadow-root>
       </cat-tab>
     `);

@@ -383,13 +383,13 @@ export declare interface CatTab extends Components.CatTab {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
 })
 export class CatTab {
   protected el: HTMLElement;
