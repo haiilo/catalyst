@@ -7,6 +7,10 @@
   box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.tab');
 }
 
+:host([hidden]) {
+  display: none;
+}
+
 :host([tabs-align='center']) {
   cat-button {
     flex: 1 0 auto;
@@ -19,10 +23,6 @@
 
 :host([tabs-align='right']) {
   justify-content: end;
-}
-
-:host([hidden]) {
-  display: none;
 }
 
 .tab {
