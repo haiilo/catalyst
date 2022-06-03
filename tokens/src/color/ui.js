@@ -18,7 +18,7 @@ module.exports = {
         dark: { value: '{color.base.neutral.300.value}' },
         focus: { value: '#0071ff', attributes: { cssProp: "border-color-focus" }  },
         input: { value: '{color.base.neutral.300.value}' },
-        tab: { value: '{color.base.neutral.300.value}' },
+        tabs: { value: '{color.base.neutral.300.value}' },
         activeTab: { value: '{color.base.brand.400.value}' }
       },
       font: {
