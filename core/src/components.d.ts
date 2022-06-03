@@ -14,6 +14,40 @@ export namespace Components {
          */
         "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
     }
+    interface CatAvatar {
+        /**
+          * An icon to be used instead of the initials.
+         */
+        "icon"?: string;
+        /**
+          * Custom initials for the avatar.
+         */
+        "initials"?: string;
+        /**
+          * The label of the avatar.
+         */
+        "label": string;
+        /**
+          * Use round avatar edges.
+         */
+        "round": boolean;
+        /**
+          * The size of the avatar.
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * An optional avatar image.
+         */
+        "src"?: string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+    }
     interface CatBadge {
         /**
           * The color palette of the badge.
@@ -58,10 +92,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed": boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -81,6 +111,10 @@ export namespace Components {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Disables ellipse overflowing button content.
+         */
+        "noEllipsis": boolean;
         /**
           * Use round button edges.
          */
@@ -308,33 +342,33 @@ export namespace Components {
     }
     interface CatScrollable {
         /**
-          * Flags to enable/disable overflowX.
+          * Flags to disable/enable overflowX.
          */
-        "overflowX": boolean;
+        "noOverflowX": boolean;
         /**
-          * Flags to enable/disable overflowY.
+          * Flags to disable/enable overflowY.
          */
-        "overflowY": boolean;
+        "noOverflowY": boolean;
         /**
-          * Flag to enable/disable overscroll behavior.
+          * Flag to disable/enable overscroll behavior.
          */
-        "overscroll": boolean;
+        "noOverscroll": boolean;
+        /**
+          * Flag to not fire an initial event after content initialization.
+         */
+        "noScrolledInit": boolean;
+        /**
+          * Flags to disable/enable scroll shadowX.
+         */
+        "noShadowX": boolean;
+        /**
+          * Flags to disable/enable scroll shadowY.
+         */
+        "noShadowY": boolean;
         /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer": number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit": boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX": boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY": boolean;
     }
     interface CatSkeleton {
         /**
@@ -526,6 +560,12 @@ declare global {
         prototype: HTMLCatAlertElement;
         new (): HTMLCatAlertElement;
     };
+    interface HTMLCatAvatarElement extends Components.CatAvatar, HTMLStencilElement {
+    }
+    var HTMLCatAvatarElement: {
+        prototype: HTMLCatAvatarElement;
+        new (): HTMLCatAvatarElement;
+    };
     interface HTMLCatBadgeElement extends Components.CatBadge, HTMLStencilElement {
     }
     var HTMLCatBadgeElement: {
@@ -630,6 +670,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "cat-alert": HTMLCatAlertElement;
+        "cat-avatar": HTMLCatAvatarElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
         "cat-card": HTMLCatCardElement;
@@ -655,6 +696,40 @@ declare namespace LocalJSX {
           * The color palette of the alert.
          */
         "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+    }
+    interface CatAvatar {
+        /**
+          * An icon to be used instead of the initials.
+         */
+        "icon"?: string;
+        /**
+          * Custom initials for the avatar.
+         */
+        "initials"?: string;
+        /**
+          * The label of the avatar.
+         */
+        "label"?: string;
+        /**
+          * Use round avatar edges.
+         */
+        "round"?: boolean;
+        /**
+          * The size of the avatar.
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * An optional avatar image.
+         */
+        "src"?: string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
     }
     interface CatBadge {
         /**
@@ -700,10 +775,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Ellipse overflowing button content.
-         */
-        "ellipsed"?: boolean;
-        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -723,6 +794,10 @@ declare namespace LocalJSX {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Disables ellipse overflowing button content.
+         */
+        "noEllipsis"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
@@ -982,6 +1057,30 @@ declare namespace LocalJSX {
     }
     interface CatScrollable {
         /**
+          * Flags to disable/enable overflowX.
+         */
+        "noOverflowX"?: boolean;
+        /**
+          * Flags to disable/enable overflowY.
+         */
+        "noOverflowY"?: boolean;
+        /**
+          * Flag to disable/enable overscroll behavior.
+         */
+        "noOverscroll"?: boolean;
+        /**
+          * Flag to not fire an initial event after content initialization.
+         */
+        "noScrolledInit"?: boolean;
+        /**
+          * Flags to disable/enable scroll shadowX.
+         */
+        "noShadowX"?: boolean;
+        /**
+          * Flags to disable/enable scroll shadowY.
+         */
+        "noShadowY"?: boolean;
+        /**
           * Emitted when the content is fully scrolled to the bottom.
          */
         "onScrolledBottom"?: (event: CustomEvent<void>) => void;
@@ -998,33 +1097,9 @@ declare namespace LocalJSX {
          */
         "onScrolledTop"?: (event: CustomEvent<void>) => void;
         /**
-          * Flags to enable/disable overflowX.
-         */
-        "overflowX"?: boolean;
-        /**
-          * Flags to enable/disable overflowY.
-         */
-        "overflowY"?: boolean;
-        /**
-          * Flag to enable/disable overscroll behavior.
-         */
-        "overscroll"?: boolean;
-        /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer"?: number;
-        /**
-          * Flag to fire an initial event after content initialization.
-         */
-        "scrolledInit"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowX.
-         */
-        "shadowX"?: boolean;
-        /**
-          * Flags to enable/disable scroll shadowY.
-         */
-        "shadowY"?: boolean;
     }
     interface CatSkeleton {
         /**
@@ -1228,6 +1303,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "cat-alert": CatAlert;
+        "cat-avatar": CatAvatar;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
         "cat-card": CatCard;
@@ -1252,6 +1328,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
+            "cat-avatar": LocalJSX.CatAvatar & JSXBase.HTMLAttributes<HTMLCatAvatarElement>;
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;

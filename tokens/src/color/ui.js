@@ -9,7 +9,8 @@ module.exports = {
         inputDisabled: { value: '{color.base.neutral.100.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
-        tooltip: { value: '{color.base.neutral.0.value}' }
+        tooltip: { value: '{color.base.neutral.0.value}' },
+        avatar: { value: '{color.base.neutral.400.value}' }
       },
       border: {
         light: { value: '{color.base.neutral.100.value}' },
@@ -26,7 +27,8 @@ module.exports = {
         mono: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-mono" } },
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.ui.font.body.value}' },
-        tooltip: { value: '{color.base.neutral.900.value}' }
+        tooltip: { value: '{color.base.neutral.900.value}' },
+        avatar: { value: '{color.base.neutral.0.value}' }
       }
     }
   }

@@ -17,30 +17,30 @@ export class CatScrollable {
   private readonly destroyed = new Subject<void>();
   private scrolled!: Observable<Event>;
 
-  /** Flags to enable/disable scroll shadowX. */
+  /** Flags to disable/enable scroll shadowX. */
   @Prop()
-  shadowX = true;
+  noShadowX = false;
 
-  /** Flags to enable/disable scroll shadowY. */
+  /** Flags to disable/enable scroll shadowY. */
   @Prop()
-  shadowY = true;
+  noShadowY = false;
 
-  /** Flags to enable/disable overflowX. */
+  /** Flags to disable/enable overflowX. */
   @Prop()
-  overflowX = true;
+  noOverflowX = false;
 
-  /** Flags to enable/disable overflowY. */
+  /** Flags to disable/enable overflowY. */
   @Prop()
-  overflowY = true;
+  noOverflowY = false;
 
-  /** Flag to enable/disable overscroll behavior. */
+  /** Flag to disable/enable overscroll behavior. */
   @Prop()
-  overscroll = true;
+  noOverscroll = false;
 
   /**
-   * Flag to fire an initial event after content initialization.
+   * Flag to not fire an initial event after content initialization.
    */
-  @Prop() scrolledInit = true;
+  @Prop() noScrolledInit = false;
 
   /**
    * Buffer to be used to calculate the scroll distance.
@@ -95,7 +95,7 @@ export class CatScrollable {
   }
 
   componentDidLoad() {
-    if (this.scrolledInit) {
+    if (!this.noScrolledInit) {
       this.init.next();
     }
   }
@@ -109,18 +109,18 @@ export class CatScrollable {
   render() {
     return [
       <div class="scrollable-wrapper" ref={el => (this.scrollWrapperElement = el)}>
-        {this.shadowY && <div class="shadow-top"></div>}
-        {this.shadowX && <div class="shadow-left"></div>}
-        {this.shadowX && <div class="shadow-right"></div>}
-        {this.shadowY && <div class="shadow-bottom"></div>}
+        {!this.noShadowY && <div class="shadow-top"></div>}
+        {!this.noShadowX && <div class="shadow-left"></div>}
+        {!this.noShadowX && <div class="shadow-right"></div>}
+        {!this.noShadowY && <div class="shadow-bottom"></div>}
       </div>,
       <div
         ref={el => (this.scrollElement = el)}
         class={{
           'scrollable-content': true,
-          'scroll-x': this.overflowX,
-          'scroll-y': this.overflowY,
-          'no-overscroll': !this.overscroll
+          'scroll-x': !this.noOverflowX,
+          'scroll-y': !this.noOverflowY,
+          'no-overscroll': this.noOverscroll
         }}
       >
         <slot></slot>

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/haiilo/catalyst/compare/v0.5.14...v0.6.0) (2022-06-02)
+
+
+### Features
+
+* **core:** adjust spacing of badges ([#21](https://github.com/haiilo/catalyst/issues/21)) ([b0401ee](https://github.com/haiilo/catalyst/commit/b0401eea9d0730b355716be29c1d29107a6ca40f))
+* **core:** implement user avatars ([#29](https://github.com/haiilo/catalyst/issues/29)) ([55be9dd](https://github.com/haiilo/catalyst/commit/55be9dd07b2f8adc29833c169f9f0da379496b66))
+
+
+### Bug Fixes
+
+* **core:** make boolean properties false by default ([#25](https://github.com/haiilo/catalyst/issues/25)) ([b18cf91](https://github.com/haiilo/catalyst/commit/b18cf910e3572ffefe0055a6429b085398b6aad7))
+* **core:** used "lato-medium" for headings ([#28](https://github.com/haiilo/catalyst/issues/28)) ([c984056](https://github.com/haiilo/catalyst/commit/c984056331194d54a95cc6eca7990a5bff744134))
+
 ### 0.5.14 (2022-05-11)
 
 ### 0.5.13 (2022-05-11)
