@@ -108,6 +108,10 @@ export class CatSelect {
       this.init();
       this.choicesInner = this.getChoiceInnerElement();
       this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
+      document.addEventListener('catChange', (e) => {
+        console.log(1111, e);
+        e.stopPropagation();
+      })
     }
   }
 
@@ -126,7 +130,7 @@ export class CatSelect {
           multiple={this.multiple}
           disabled={this.disabled}
         >
-          {!!this.choices?.length && <Options options={this.choices} />}
+          {!!this.choices?.length && <Options options={this.choices}/>}
         </select>
       </Host>
     );
@@ -175,7 +179,62 @@ export class CatSelect {
           includeMatches: true,
           threshold: 0
         },
-        customAddItemText: this.i18n.t('select.customAddItem')
+        customAddItemText: this.i18n.t('select.customAddItem'),
+        callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
+          const itemSelectText = this.choice?.config.itemSelectText;
+          return {
+            choice: function ({ classNames }: { classNames: any }, data: any) {
+              console.log(data);
+              // const className = ` ${String(classNames.item)} ${String(classNames.itemChoice)} ${String(
+              //   data.disabled
+              //     ? classNames.itemDisabled
+              //     : classNames.itemSelectable
+              // )}`;
+              /*return <div
+                class={className}
+                data-select-text={` ${String(itemSelectText)}`}
+                data-choice={` ${String(
+                  data.disabled
+                    ? 'data-choice-disabled aria-disabled="true"'
+                    : 'data-choice-selectable'
+                )}`}
+                data-id={` ${String(data.id)}`}
+                data-value={` ${String(data.value)} ${String(
+                  data.groupId > 0 ? 'role="treeitem"' : 'role="option"'
+                )}`}
+              >
+                <Checkbox/>
+                {String(data.label)}
+              </div>*/
+              return strToEl(
+                `
+                <div
+                  class="${String(classNames.item)} ${String(classNames.itemChoice)}
+                    ${String(
+                  data.disabled
+                    ? classNames.itemDisabled
+                    : classNames.itemSelectable
+                )}"
+                    data-select-text="${String(itemSelectText)}"
+                    data-choice="${String(
+                  data.disabled
+                    ? 'data-choice-disabled aria-disabled="true"'
+                    : 'data-choice-selectable'
+                )}"
+                    data-id=" ${String(data.id)}"
+                    data-value="
+                        ${String(data.value)}
+                        ${String(data.groupId > 0 ? 'role="treeitem"' : 'role="option"')}
+                      "
+                >
+                    <cat-checkbox></cat-checkbox>
+                    <span>${data.label}</span>
+                </div>
+                `
+              );
+            },
+          }
+        }
       },
       isDefined
     );
