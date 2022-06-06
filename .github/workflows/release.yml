@@ -31,27 +31,27 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           npm run release:${{ github.event.inputs.release }}
-      - name: Commit files
+      - name: Install and Build Tokens
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git push --follow-tags
-      - name: Install and Build
-        run: |
-          npm ci
           npm run build -w tokens
-          npm run build:ci -w core
-          npm run build -w angular
       - name: Publish @haiilo/catalyst-tokens to npm
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./tokens/package.json
+      - name: Install and Build Core Package
+        run: |
+          npm i @haiilo/catalyst-tokens --save -w core --force
+          npm run build:ci -w core
       - name: Publish @haiilo/catalyst to npm
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./core/package.json
+      - name: Install and Build
+        run: |
+          npm i @haiilo/catalyst --save -w angular/projects/catalyst --force
+          npm run build -w angular
       - name: Publish @haiilo/catalyst-angular to npm
         uses: JS-DevTools/npm-publish@v1
         with:
@@ -62,6 +62,11 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./react/package.json
+      - name: Commit files
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git push --follow-tags
       - name: 'Get release tag'
         uses: 'WyriHaximus/github-action-get-previous-tag@v1'
         id: previoustag
