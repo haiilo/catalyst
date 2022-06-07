@@ -110,7 +110,7 @@ export class CatRadio {
       </label>
     );
   }
-  
+
   private onChange(event: Event) {
     this.value = this.input.value;
     this.catChange.emit(event);

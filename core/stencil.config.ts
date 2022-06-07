@@ -15,22 +15,21 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     elementSelectors: ['cat-input', 'cat-textarea'],
     event: 'catChange',
     targetAttr: 'value',
-    type: 'text',
+    type: 'text'
   },
   {
     elementSelectors: ['cat-checkbox', 'cat-toggle'],
     event: 'catChange',
     targetAttr: 'value',
-    type: 'boolean',
+    type: 'boolean'
   },
   {
     elementSelectors: ['cat-radio'],
     event: 'catChange',
     targetAttr: 'value',
-    type: 'radio',
+    type: 'radio'
   }
 ];
-
 
 export const config: Config = {
   namespace: 'catalyst',
@@ -78,7 +77,7 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts',
-      valueAccessorConfigs: angularValueAccessorBindings,
+      valueAccessorConfigs: angularValueAccessorBindings
     }),
     reactOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
