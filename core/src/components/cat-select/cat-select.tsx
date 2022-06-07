@@ -126,7 +126,7 @@ export class CatSelect {
           multiple={this.multiple}
           disabled={this.disabled}
         >
-          {!!this.choices?.length && <Options options={this.choices}/>}
+          {!!this.choices?.length && <Options options={this.choices} />}
         </select>
       </Host>
     );
@@ -184,16 +184,10 @@ export class CatSelect {
                 `
                 <div
                   class="${String(classNames.item)} ${String(classNames.itemChoice)}
-                    ${String(
-                  data.disabled
-                    ? classNames.itemDisabled
-                    : classNames.itemSelectable
-                  )}"
+                    ${String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable)}"
                     data-select-text="${String(itemSelectText)}"
                     data-choice="${String(
-                    data.disabled
-                      ? 'data-choice-disabled aria-disabled="true"'
-                      : 'data-choice-selectable'
+                      data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'
                     )}"
                     data-id="${String(data.id)}"
                     data-value="
@@ -206,8 +200,8 @@ export class CatSelect {
                 </div>
                 `
               );
-            },
-          }
+            }
+          };
         }
       },
       isDefined
