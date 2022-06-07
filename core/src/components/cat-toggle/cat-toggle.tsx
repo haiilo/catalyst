@@ -113,6 +113,7 @@ export class CatToggle {
   }
 
   private onInput(event: Event) {
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 

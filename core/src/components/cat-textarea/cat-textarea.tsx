@@ -116,14 +116,6 @@ export class CatTextarea {
     this.textarea.focus(options);
   }
 
-  // /**
-  //  * Clear the input.
-  //  */
-  // @Method()
-  // async clear(): Promise<void> {
-  //   this.inputValue = '';
-  // }
-
   render() {
     return (
       <Host>
@@ -161,7 +153,7 @@ export class CatTextarea {
   }
 
   private onInput(event: Event) {
-    // this.inputValue = πthis.input.value;
+    this.value = this.textarea.value;
     this.catChange.emit(event);
   }
 
