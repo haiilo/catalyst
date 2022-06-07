@@ -30,10 +30,7 @@
       "./core/package.json",
       "./react/package.json",
       "./tokens/package.json"
-    ],
-    "scripts": {
-      "postbump": "npm i @haiilo/catalyst-tokens --save -w core && npm i @haiilo/catalyst --save -w angular/projects/catalyst"
-    }
+    ]
   },
   "engines": {
     "npm": ">=8.0.0",

@@ -1,0 +1,58 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  /**
+   * @prop --cat-avatar-bg: The background color of the avatar.
+   * @prop --cat-avatar-fill: The text color of the avatar.
+   * @prop --cat-avatar-size: The size of the avatar.
+   * @prop --cat-avatar-font-size: The font size of the avatar.
+   */
+  display: inline-block;
+  vertical-align: middle;
+  @include cat-select(none);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: cat-border-radius('m');
+  text-decoration: inherit;
+  color: var(--cat-avatar-fill, cat-token('color.ui.font.avatar'));
+  background-color: var(--cat-avatar-bg, cat-token('color.ui.background.avatar'));
+  background-size: cover;
+  background-position: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:focus-visible {
+    outline: 2px solid cat-token('color.ui.border.focus');
+    outline-offset: 1px;
+  }
+}
+
+.avatar-round {
+  border-radius: 50%;
+}
+
+// ----- size
+
+@mixin size($size, $fontSize) {
+  .avatar-#{$size} {
+    width: var(--cat-avatar-size, cat-size($size));
+    height: var(--cat-avatar-size, cat-size($size));
+    line-height: var(--cat-avatar-size, cat-size($size));
+    font-size: var(--cat-avatar-font-size, cat-body-font-size($fontSize));
+  }
+}
+
+@include size('xs', 'xs');
+@include size('s', 's');
+@include size('m', 'm');
+@include size('l', 'l');
+@include size('xl', 'xl');
