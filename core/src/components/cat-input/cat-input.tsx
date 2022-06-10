@@ -1,7 +1,7 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -25,6 +25,10 @@ export class CatInput {
   private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Hint for form autofill feature.
