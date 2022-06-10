@@ -7,15 +7,16 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                               | Type                  | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `checked`     | `checked`      | Checked state of the toggle.                                                              | `boolean`             | `false`     |
-| `disabled`    | `disabled`     | Disabled state of the toggle.                                                             | `boolean`             | `false`     |
-| `label`       | `label`        | The label of the toggle that is visible.                                                  | `string`              | `''`        |
-| `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`             | `false`     |
-| `name`        | `name`         | The name of the input                                                                     | `string \| undefined` | `undefined` |
-| `required`    | `required`     | Required state of the toggle                                                              | `boolean`             | `false`     |
-| `value`       | `value`        | The value of the toggle                                                                   | `string \| undefined` | `undefined` |
+| Property      | Attribute      | Description                                                                               | Type                              | Default     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------- | --------------------------------- | ----------- |
+| `checked`     | `checked`      | Checked state of the toggle.                                                              | `boolean`                         | `false`     |
+| `disabled`    | `disabled`     | Disabled state of the toggle.                                                             | `boolean`                         | `false`     |
+| `hint`        | `hint`         | Optional hint text(s) to be displayed with the toggle.                                    | `string \| string[] \| undefined` | `undefined` |
+| `label`       | `label`        | The label of the toggle that is visible.                                                  | `string`                          | `''`        |
+| `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                         | `false`     |
+| `name`        | `name`         | The name of the input                                                                     | `string \| undefined`             | `undefined` |
+| `required`    | `required`     | Required state of the toggle                                                              | `boolean`                         | `false`     |
+| `value`       | `value`        | The value of the toggle                                                                   | `string \| undefined`             | `undefined` |
 
 
 ## Events
@@ -38,6 +39,14 @@ Sets focus on the toggle. Use this method instead of `toggle.focus()`.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot      | Description                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"hint"`  | Optional hint element to be displayed with the toggle.                                                               |
+| `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
 
 
 ## Shadow Parts

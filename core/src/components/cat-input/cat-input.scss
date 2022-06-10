@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'src/components/cat-form-hint/cat-form-hint';
 
 :host {
   display: flex;
@@ -116,9 +117,4 @@ input {
   position: absolute;
   top: calc(50% - cat-size('s') / 2);
   right: -0.5rem;
-}
-
-.input-hint {
-  @include cat-body('s');
-  margin: 0;
 }
