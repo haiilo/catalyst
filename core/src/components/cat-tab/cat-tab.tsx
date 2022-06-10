@@ -3,6 +3,9 @@ import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
 
+/**
+ * A single tab inside a tabs component.
+ */
 @Component({
   tag: 'cat-tab',
   styleUrl: 'cat-tab.scss',
@@ -52,7 +55,9 @@ export class CatTab {
   @Event() tabClick!: EventEmitter<MouseEvent>;
 
   connectedCallback() {
-    if (!this.hostElement.id) this.hostElement.id = `cat-tab-${nextUniqueId++}`;
+    if (!this.hostElement.id) {
+      this.hostElement.id = `cat-tab-${nextUniqueId++}`;
+    }
   }
 
   @Listen('click')

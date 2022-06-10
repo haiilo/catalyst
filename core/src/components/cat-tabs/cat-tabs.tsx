@@ -1,6 +1,9 @@
 import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stencil/core';
 
 /**
+ * Tabs are used to display multiple panels to be contained within a single
+ * window, using tabs as a navigational element.
+ *
  * @part tab - The header of the tab.
  */
 @Component({
@@ -24,7 +27,7 @@ export class CatTabs {
   /**
    * The alignment of the tabs.
    */
-  @Prop() tabsAlign: 'left' | 'center' | 'justify' | 'right' = 'left';
+  @Prop() tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
 
   @Watch('activeTabId')
   onActiveTabChanged(newActiveTab: string): void {

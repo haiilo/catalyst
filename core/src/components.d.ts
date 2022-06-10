@@ -444,7 +444,7 @@ export namespace Components {
         /**
           * The alignment of the tabs.
          */
-        "tabsAlign": 'left' | 'center' | 'justify' | 'right';
+        "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
     interface CatTextarea {
         /**
@@ -1195,7 +1195,7 @@ declare namespace LocalJSX {
         /**
           * The alignment of the tabs.
          */
-        "tabsAlign"?: 'left' | 'center' | 'justify' | 'right';
+        "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
     interface CatTextarea {
         /**
