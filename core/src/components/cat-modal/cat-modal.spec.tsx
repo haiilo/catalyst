@@ -12,7 +12,7 @@ describe('cat-modal', () => {
         <mock:shadow-root>
             <div aria-hidden="true" aria-modal="" class="modal-wrapper" role="dialog">
                <div class="modal modal-m">
-                <div class="header">
+                <div class="modal-header">
                     <cat-button a11ylabel="close" class="close-button" icon="cross-outlined" icononly="" size="s"></cat-button>
                 </div>
                 <div class="modal-content">
