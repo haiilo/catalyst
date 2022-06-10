@@ -14,7 +14,7 @@ export class CatModal {
 
   @Element() hostElement!: HTMLElement;
 
-  @State() private isVisible = false;
+  @State() isVisible = false;
 
   /**
    * The size of the modal.
@@ -54,7 +54,7 @@ export class CatModal {
 
   render() {
     return (
-      <div aria-modal={true} role="dialog" aria-hidden={!this.isVisible ? 'true' : 'false'} class="modal-wrapper">
+      <div aria-modal role="dialog" aria-hidden={!this.isVisible ? 'true' : 'false'} class="modal-wrapper">
         <div ref={el => (this.modal = el)} class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }}>
           <div class="modal-header">
             <cat-button
@@ -89,7 +89,9 @@ export class CatModal {
         }
       });
 
-      if (element.parentElement !== document.body) this.updateAccessibility(element.parentElement);
+      if (element.parentElement !== document.body) {
+        this.updateAccessibility(element.parentElement);
+      }
     }
   }
 }
