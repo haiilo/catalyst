@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -9,6 +10,7 @@ let nextUniqueId = 0;
  * is short. As well as plain text, Input supports various types of text,
  * including passwords and numbers.
  *
+ * @slot hint - Optional hint element to be displayed with the input.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  * @part prefix - The text prefix.
@@ -46,9 +48,9 @@ export class CatInput {
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the input.
+   * Optional hint text(s) to be displayed with the input.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The name of an icon to be displayed in the input.
@@ -160,9 +162,7 @@ export class CatInput {
   }
 
   componentWillRender(): void {
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-
-    if (!this.hasSlottedLabel && !this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on input', this);
     }
   }
@@ -257,8 +257,17 @@ export class CatInput {
             </span>
           )}
         </div>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
+    );
+  }
+
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
     );
   }
 

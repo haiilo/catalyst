@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
-import log from 'loglevel';
 import autosize from 'autosize';
+import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -9,6 +10,7 @@ let nextUniqueId = 0;
  * rows. Used when the expected user input is long. For shorter input, use the
  * input component.
  *
+ * @slot hint - Optional hint element to be displayed with the textarea.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
@@ -31,9 +33,9 @@ export class CatTextarea {
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the textarea.
+   * Optional hint text(s) to be displayed with the textarea.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The label for the textarea.
@@ -101,9 +103,7 @@ export class CatTextarea {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-
-    if (!this.hasSlottedLabel && !this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on textarea', this);
     }
   }
@@ -162,8 +162,17 @@ export class CatTextarea {
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
         ></textarea>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
+    );
+  }
+
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
     );
   }
 

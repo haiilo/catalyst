@@ -12,7 +12,7 @@
 | `autoComplete` | `auto-complete` | Hint for form autofill feature.                                                           | `string \| undefined`                                                       | `undefined` |
 | `clearable`    | `clearable`     | Whether the input should show a clear button.                                             | `boolean`                                                                   | `false`     |
 | `disabled`     | `disabled`      | Whether the input is disabled.                                                            | `boolean`                                                                   | `false`     |
-| `hint`         | `hint`          | Optional hint text to be displayed with the input.                                        | `string \| undefined`                                                       | `undefined` |
+| `hint`         | `hint`          | Optional hint text(s) to be displayed with the input.                                     | `string \| string[] \| undefined`                                           | `undefined` |
 | `icon`         | `icon`          | The name of an icon to be displayed in the input.                                         | `string \| undefined`                                                       | `undefined` |
 | `iconRight`    | `icon-right`    | Display the icon on the right.                                                            | `boolean`                                                                   | `false`     |
 | `label`        | `label`         | The label for the input.                                                                  | `string`                                                                    | `''`        |
@@ -68,6 +68,7 @@ Type: `Promise<void>`
 
 | Slot      | Description                                                                                                          |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"hint"`  | Optional hint element to be displayed with the input.                                                                |
 | `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
 
 
