@@ -12,17 +12,17 @@
 }
 
 :host([tabs-align='center']) {
-  cat-button {
-    flex: 1 0 auto;
-  }
-}
-
-:host([tabs-align='justify']) {
   justify-content: center;
 }
 
 :host([tabs-align='right']) {
   justify-content: end;
+}
+
+:host([tabs-align='justify']) {
+  cat-button {
+    flex: 1 0 auto;
+  }
 }
 
 .tab {
