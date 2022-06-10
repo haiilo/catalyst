@@ -1,3 +1,7 @@
+const OFF = 0,
+  WARN = 1,
+  ERROR = 2;
+
 module.exports = {
   env: {
     browser: true,
@@ -12,5 +16,8 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   plugins: ['@typescript-eslint'],
-  rules: {}
+  rules: {
+    // quickfix: 'h' is defined but never used
+    '@typescript-eslint/no-unused-vars': [WARN, { varsIgnorePattern: '^h$' }]
+  }
 };

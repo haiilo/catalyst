@@ -22,7 +22,7 @@ describe('cat-input', () => {
           </label>
           <div class="input-wrapper">
             <div class="input-inner-wrapper">
-              <input id="cat-input-0" type="text" value="">
+              <input id="cat-input-0" type="text">
             </div>
           </div>
         </mock:shadow-root>

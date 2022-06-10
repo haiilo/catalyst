@@ -161,6 +161,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Optional hint text(s) to be displayed with the checkbox.
+         */
+        "hint"?: string | string[];
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate": boolean;
@@ -222,9 +226,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -314,6 +318,10 @@ export namespace Components {
           * Whether this radio is disabled.
          */
         "disabled": boolean;
+        /**
+          * Optional hint text(s) to be displayed with the radio.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -444,9 +452,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -504,6 +512,10 @@ export namespace Components {
           * Disabled state of the toggle.
          */
         "disabled": boolean;
+        /**
+          * Optional hint text(s) to be displayed with the toggle.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */
@@ -855,6 +867,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Optional hint text(s) to be displayed with the checkbox.
+         */
+        "hint"?: string | string[];
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate"?: boolean;
@@ -919,9 +935,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -1026,6 +1042,10 @@ declare namespace LocalJSX {
           * Whether this radio is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text(s) to be displayed with the radio.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -1183,9 +1203,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -1250,6 +1270,10 @@ declare namespace LocalJSX {
           * Disabled state of the toggle.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text(s) to be displayed with the toggle.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */
