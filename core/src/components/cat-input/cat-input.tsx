@@ -11,6 +11,7 @@ let nextUniqueId = 0;
  * including passwords and numbers.
  *
  * @slot hint - Optional hint element to be displayed with the input.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  * @part prefix - The text prefix.
  * @part suffix - The text suffix.
@@ -28,6 +29,8 @@ export class CatInput {
   @Element() hostElement!: HTMLElement;
 
   @State() private inputValue = '';
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Hint for form autofill feature.
@@ -159,7 +162,7 @@ export class CatInput {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on input', this);
     }
   }
@@ -186,10 +189,10 @@ export class CatInput {
   render() {
     return (
       <Host>
-        {this.label && (
+        {(this.hasSlottedLabel || this.label) && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
-              {this.label}
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
                   ({this.i18n.getMessage('input.optional')})

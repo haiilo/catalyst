@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method, Host, Element } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -9,6 +9,7 @@ let nextUniqueId = 0;
  * only one of a predefined set of mutually exclusive options.
  *
  * @slot hint - Optional hint element to be displayed with the radio.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
 @Component({
@@ -21,6 +22,8 @@ export class CatRadio {
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Whether this radio is checked.
@@ -78,7 +81,7 @@ export class CatRadio {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on radio', this);
     }
   }
@@ -115,7 +118,7 @@ export class CatRadio {
             <span class="circle"></span>
           </span>
           <span class="label" part="label">
-            {this.label}
+            {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
         </label>
         {this.hintSection}

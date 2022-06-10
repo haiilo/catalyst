@@ -41,9 +41,10 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot     | Description                                           |
-| -------- | ----------------------------------------------------- |
-| `"hint"` | Optional hint element to be displayed with the radio. |
+| Slot      | Description                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"hint"`  | Optional hint element to be displayed with the radio.                                                                |
+| `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
 
 
 ## Shadow Parts

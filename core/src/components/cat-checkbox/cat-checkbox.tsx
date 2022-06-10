@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -9,6 +9,7 @@ let nextUniqueId = 0;
  * number of options.
  *
  * @slot hint - Optional hint element to be displayed with the checkbox.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part checkbox - The checkbox element.
  * @part label - The label content.
  */
@@ -22,6 +23,8 @@ export class CatCheckbox {
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Checked state of the checkbox
@@ -90,7 +93,7 @@ export class CatCheckbox {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on checkbox', this);
     }
   }
@@ -132,7 +135,7 @@ export class CatCheckbox {
             </svg>
           </span>
           <span class="label" part="label">
-            {this.label}
+            {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
         </label>
         {this.hintSection}

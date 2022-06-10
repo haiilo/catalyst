@@ -1,6 +1,6 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
-import log from 'loglevel';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import autosize from 'autosize';
+import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
@@ -11,6 +11,7 @@ let nextUniqueId = 0;
  * input component.
  *
  * @slot hint - Optional hint element to be displayed with the textarea.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
 @Component({
@@ -23,6 +24,8 @@ export class CatTextarea {
   private textarea!: HTMLTextAreaElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Whether the textarea is disabled.
@@ -100,7 +103,7 @@ export class CatTextarea {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label) {
+    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
       log.error('[A11y] Missing ARIA label on textarea', this);
     }
   }
@@ -131,10 +134,10 @@ export class CatTextarea {
   render() {
     return (
       <Host>
-        {this.label && (
+        {(this.hasSlottedLabel || this.label) && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
-              {this.label}
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
                   (Optional)
