@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -7,6 +7,7 @@ let nextUniqueId = 0;
  * Checkboxes are used to let a user choose one or more options from a limited
  * number of options.
  *
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part checkbox - The checkbox element.
  * @part label - The label content.
  */
@@ -18,6 +19,10 @@ let nextUniqueId = 0;
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Checked state of the checkbox
@@ -81,7 +86,9 @@ export class CatCheckbox {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+
+    if (!this.hasSlottedLabel && !this.label) {
       log.error('[A11y] Missing ARIA label on checkbox', this);
     }
   }
@@ -122,7 +129,7 @@ export class CatCheckbox {
           </svg>
         </span>
         <span class="label" part="label">
-          {this.label}
+          {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
         </span>
       </label>
     );

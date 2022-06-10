@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Method } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Method, Element, State } from '@stencil/core';
 import log from 'loglevel';
 
 let nextUniqueId = 0;
@@ -7,6 +7,7 @@ let nextUniqueId = 0;
  * Radio Buttons are graphical interface elements that allow user to choose
  * only one of a predefined set of mutually exclusive options.
  *
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
 @Component({
@@ -17,6 +18,10 @@ let nextUniqueId = 0;
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Whether this radio is checked.
@@ -69,7 +74,9 @@ export class CatRadio {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+
+    if (!this.hasSlottedLabel && !this.label) {
       log.error('[A11y] Missing ARIA label on radio', this);
     }
   }
@@ -105,7 +112,7 @@ export class CatRadio {
           <span class="circle"></span>
         </span>
         <span class="label" part="label">
-          {this.label}
+          {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
         </span>
       </label>
     );
