@@ -1,0 +1,34 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: flex;
+  flex-direction: row;
+  box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.tabs');
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([tabs-align='center']) {
+  justify-content: center;
+}
+
+:host([tabs-align='right']) {
+  justify-content: end;
+}
+
+:host([tabs-align='justify']) {
+  cat-button {
+    flex: 1 0 auto;
+  }
+}
+
+.tab {
+  padding: 0.5rem;
+
+  &.tab-active {
+    box-shadow: inset 0 -3px 0 0 cat-token('color.ui.border.activeTab');
+  }
+}
