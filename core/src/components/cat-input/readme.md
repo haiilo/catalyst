@@ -64,6 +64,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot      | Description                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
+
+
 ## Shadow Parts
 
 | Part       | Description        |
