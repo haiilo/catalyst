@@ -21,7 +21,7 @@ export class CatModal {
    */
   @Prop() size: 's' | 'm' | 'l' = 'm';
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     if (this.modal) {
       this.trap = focusTrap.createFocusTrap(this.modal, {
         tabbableOptions: {
@@ -39,7 +39,7 @@ export class CatModal {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     if (this.isVisible) this.trap?.activate();
     this.updateAccessibility(this.hostElement);
   }
@@ -48,7 +48,7 @@ export class CatModal {
    * Shows the modal.
    */
   @Method()
-  async show() {
+  async show(): Promise<void> {
     this.isVisible = true;
   }
 
