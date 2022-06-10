@@ -64,7 +64,7 @@ export class CatCheckbox {
   /**
    * The value of the checkbox
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Optional hint text(s) to be displayed with the checkbox.
@@ -153,6 +153,7 @@ export class CatCheckbox {
   }
 
   private onInput(event: Event) {
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 

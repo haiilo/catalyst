@@ -85,7 +85,7 @@ export class CatTextarea {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
@@ -122,14 +122,6 @@ export class CatTextarea {
   async setFocus(options?: FocusOptions): Promise<void> {
     this.textarea.focus(options);
   }
-
-  // /**
-  //  * Clear the input.
-  //  */
-  // @Method()
-  // async clear(): Promise<void> {
-  //   this.inputValue = '';
-  // }
 
   render() {
     return (
@@ -177,7 +169,7 @@ export class CatTextarea {
   }
 
   private onInput(event: Event) {
-    // this.inputValue = πthis.input.value;
+    this.value = this.textarea.value;
     this.catChange.emit(event);
   }
 

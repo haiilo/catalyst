@@ -58,7 +58,7 @@ export class CatRadio {
   /**
    * The value of the radio component.
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Optional hint text(s) to be displayed with the radio.
@@ -136,6 +136,7 @@ export class CatRadio {
   }
 
   private onChange(event: Event) {
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 

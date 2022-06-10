@@ -59,7 +59,7 @@ export class CatToggle {
   /**
    * The value of the toggle
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Optional hint text(s) to be displayed with the toggle.
@@ -137,6 +137,7 @@ export class CatToggle {
   }
 
   private onInput(event: Event) {
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 

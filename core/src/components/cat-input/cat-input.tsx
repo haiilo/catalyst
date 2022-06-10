@@ -1,7 +1,7 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -27,8 +27,6 @@ export class CatInput {
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
-
-  @State() private inputValue = '';
 
   @State() hasSlottedLabel = false;
 
@@ -135,7 +133,7 @@ export class CatInput {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
@@ -151,15 +149,6 @@ export class CatInput {
    * Emitted when the input loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
-
-  @Watch('value')
-  onValueChange(value?: string | number) {
-    this.inputValue = '' + (value ?? '');
-  }
-
-  componentWillLoad() {
-    this.onValueChange(this.value);
-  }
 
   componentWillRender(): void {
     if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
@@ -183,7 +172,7 @@ export class CatInput {
    */
   @Method()
   async clear(): Promise<void> {
-    this.inputValue = '';
+    this.value = '';
   }
 
   render() {
@@ -233,12 +222,12 @@ export class CatInput {
               readonly={this.readonly}
               required={this.required}
               type={this.type}
-              value={this.inputValue}
+              value={this.value}
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
             ></input>
-            {this.clearable && !this.disabled && this.inputValue && (
+            {this.clearable && !this.disabled && this.value && (
               <cat-button
                 class="clearable"
                 icon="cross-circle-outlined"
@@ -272,7 +261,7 @@ export class CatInput {
   }
 
   private onInput(event: Event) {
-    this.inputValue = this.input.value;
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 
