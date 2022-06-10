@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import firstTabbable from '../../utils/first-tabbable';
 
@@ -11,6 +11,8 @@ export class CatModal {
   private trap?: focusTrap.FocusTrap;
   private modal?: HTMLElement;
   private closeButton?: HTMLElement;
+
+  @Element() hostElement!: HTMLElement;
 
   @State() private isVisible = false;
 
@@ -39,6 +41,7 @@ export class CatModal {
 
   componentDidUpdate() {
     if (this.isVisible) this.trap?.activate();
+    this.updateAccessibility(this.hostElement);
   }
 
   /**
@@ -51,13 +54,9 @@ export class CatModal {
 
   render() {
     return (
-      <div class={{ wrapper: true, 'is-visible': this.isVisible }}>
-        <div
-          ref={el => (this.modal = el)}
-          role="modal"
-          class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }}
-        >
-          <div class="header">
+      <div aria-modal={true} role="dialog" aria-hidden={!this.isVisible ? 'true' : 'false'} class="modal-wrapper">
+        <div ref={el => (this.modal = el)} class={{ modal: true, [`modal-${this.size}`]: Boolean(this.size) }}>
+          <div class="modal-header">
             <cat-button
               ref={el => (this.closeButton = el)}
               icon="cross-outlined"
@@ -68,7 +67,7 @@ export class CatModal {
               onCatClick={this.onClick.bind(this)}
             ></cat-button>
           </div>
-          <div class="content">
+          <div class="modal-content">
             <slot></slot>
           </div>
         </div>
@@ -78,5 +77,19 @@ export class CatModal {
 
   private onClick() {
     this.trap?.deactivate();
+  }
+
+  private updateAccessibility(element: HTMLElement) {
+    if (element.parentElement) {
+      Array.from(element.parentElement.children).forEach(elementSibling => {
+        if (elementSibling !== element) {
+          this.isVisible
+            ? elementSibling.setAttribute('aria-hidden', 'true')
+            : elementSibling.removeAttribute('aria-hidden');
+        }
+      });
+
+      if (element.parentElement !== document.body) this.updateAccessibility(element.parentElement);
+    }
   }
 }
