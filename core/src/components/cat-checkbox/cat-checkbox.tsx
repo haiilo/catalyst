@@ -57,7 +57,7 @@ export class CatCheckbox {
   /**
    * The value of the checkbox
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Emitted when the checked status of the checkbox is changed.

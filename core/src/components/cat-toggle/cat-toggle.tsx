@@ -52,7 +52,7 @@ export class CatToggle {
   /**
    * The value of the toggle
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Emitted when the checked status of the toggle is changed.

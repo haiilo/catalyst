@@ -51,7 +51,7 @@ export class CatRadio {
   /**
    * The value of the radio component.
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Emitted when the radio is changed.

@@ -78,7 +78,7 @@ export class CatTextarea {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
