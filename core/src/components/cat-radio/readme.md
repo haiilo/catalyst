@@ -5,15 +5,16 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                               | Type                  | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `checked`     | `checked`      | Whether this radio is checked.                                                            | `boolean`             | `false`     |
-| `disabled`    | `disabled`     | Whether this radio is disabled.                                                           | `boolean`             | `false`     |
-| `label`       | `label`        | The label of the radio that is visible.                                                   | `string`              | `''`        |
-| `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`             | `false`     |
-| `name`        | `name`         | The name of the radio component.                                                          | `string \| undefined` | `undefined` |
-| `required`    | `required`     | Whether the radio is required.                                                            | `boolean`             | `false`     |
-| `value`       | `value`        | The value of the radio component.                                                         | `string \| undefined` | `undefined` |
+| Property      | Attribute      | Description                                                                               | Type                              | Default     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------- | --------------------------------- | ----------- |
+| `checked`     | `checked`      | Whether this radio is checked.                                                            | `boolean`                         | `false`     |
+| `disabled`    | `disabled`     | Whether this radio is disabled.                                                           | `boolean`                         | `false`     |
+| `hint`        | `hint`         | Optional hint text(s) to be displayed with the radio.                                     | `string \| string[] \| undefined` | `undefined` |
+| `label`       | `label`        | The label of the radio that is visible.                                                   | `string`                          | `''`        |
+| `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                         | `false`     |
+| `name`        | `name`         | The name of the radio component.                                                          | `string \| undefined`             | `undefined` |
+| `required`    | `required`     | Whether the radio is required.                                                            | `boolean`                         | `false`     |
+| `value`       | `value`        | The value of the radio component.                                                         | `string \| undefined`             | `undefined` |
 
 
 ## Events
@@ -42,6 +43,7 @@ Type: `Promise<void>`
 
 | Slot      | Description                                                                                                          |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"hint"`  | Optional hint element to be displayed with the radio.                                                                |
 | `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
 
 
