@@ -3,18 +3,21 @@ import { defineCustomElements } from '@haiilo/catalyst/loader';
 import * as Components from './directives/proxies';
 
 const CatComponents = [
-  Components.CatButton,
-  Components.CatIcon,
-  Components.CatSpinner,
-  Components.CatScrollable,
   Components.CatAlert,
+  Components.CatAvatar,
   Components.CatBadge,
-  Components.CatSkeleton,
+  Components.CatButton,
   Components.CatCard,
-  Components.CatInput,
   Components.CatCheckbox,
+  Components.CatIcon,
+  Components.CatInput,
   Components.CatMenu,
   Components.CatRadio,
+  Components.CatScrollable,
+  Components.CatSkeleton,
+  Components.CatSpinner,
+  Components.CatTab,
+  Components.CatTabs,
   Components.CatTextarea,
   Components.CatToggle,
   Components.CatTooltip
