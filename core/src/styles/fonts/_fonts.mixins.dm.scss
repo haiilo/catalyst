@@ -5,14 +5,14 @@
   @if list.index($weights, 400) {
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2Regular")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2Regular")}') format('woff2');
       font-style: normal;
       font-weight: 400;
       @content;
     }
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2Italic")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2Italic")}') format('woff2');
       font-style: italic;
       font-weight: 400;
       @content;
@@ -21,14 +21,14 @@
   @if list.index($weights, 500) {
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2Medium")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2Medium")}') format('woff2');
       font-style: normal;
       font-weight: 500;
       @content;
     }
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2MediumItalic")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2MediumItalic")}') format('woff2');
       font-style: italic;
       font-weight: 500;
       @content;
@@ -37,14 +37,14 @@
   @if list.index($weights, 700) {
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2Bold")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2Bold")}') format('woff2');
       font-style: normal;
       font-weight: 700;
       font-display: swap;
     }
     @font-face {
       font-family: 'DM Sans';
-      src: url('#{$path}#{cat-token("asset.font.dmSans.woff2BoldItalic")}') format('woff2');
+      src: url('#{$path}/#{cat-token("asset.font.dmSans.woff2BoldItalic")}') format('woff2');
       font-style: italic;
       font-weight: 700;
       font-display: swap;
