@@ -27,11 +27,15 @@ export const config: Config = {
       copy: [
         {
           src: getAssetsTokensPath(),
-          dest: 'assets'
+          dest: 'styles/fonts/assets'
         },
         {
           src: './index.cdn.js',
           warn: true
+        },
+        {
+          src: 'styles',
+          dest: 'styles'
         }
       ]
     },
