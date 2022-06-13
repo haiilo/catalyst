@@ -151,7 +151,8 @@ export class CatInput {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label && !this.hostElement.querySelector('[slot="label"]')) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
       log.error('[A11y] Missing ARIA label on input', this);
     }
   }
