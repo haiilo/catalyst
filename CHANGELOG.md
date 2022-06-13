@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/haiilo/catalyst/compare/v0.7.0...v0.7.1) (2022-06-13)
+
+
+### Features
+
+* **core:** icon component supports icons with a non 24px*24px viewbox ([63438c0](https://github.com/haiilo/catalyst/commit/63438c0d1bbea9fff08611ba9105e5b3e3f773a8))
+
+
+### Bug Fixes
+
+* **core:** slotted labels are displayed correctly ([e887985](https://github.com/haiilo/catalyst/commit/e887985e56f32620b50c6519ec4a4cf79e3b59a0))
+
 ## [0.7.0](https://github.com/haiilo/catalyst/compare/v0.6.0...v0.7.0) (2022-06-10)
 
 
