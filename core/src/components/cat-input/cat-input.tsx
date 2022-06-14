@@ -1,5 +1,6 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
@@ -9,6 +10,8 @@ let nextUniqueId = 0;
  * is short. As well as plain text, Input supports various types of text,
  * including passwords and numbers.
  *
+ * @slot hint - Optional hint element to be displayed with the input.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  * @part prefix - The text prefix.
  * @part suffix - The text suffix.
@@ -23,7 +26,9 @@ export class CatInput {
   private readonly id = `cat-input-${nextUniqueId++}`;
   private input!: HTMLInputElement;
 
-  @State() private inputValue = '';
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Hint for form autofill feature.
@@ -41,9 +46,9 @@ export class CatInput {
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the input.
+   * Optional hint text(s) to be displayed with the input.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The name of an icon to be displayed in the input.
@@ -128,7 +133,7 @@ export class CatInput {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
@@ -145,17 +150,9 @@ export class CatInput {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
-  @Watch('value')
-  onValueChange(value?: string | number) {
-    this.inputValue = '' + (value ?? '');
-  }
-
-  componentWillLoad() {
-    this.onValueChange(this.value);
-  }
-
   componentWillRender(): void {
-    if (!this.label) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
       log.error('[A11y] Missing ARIA label on input', this);
     }
   }
@@ -176,16 +173,16 @@ export class CatInput {
    */
   @Method()
   async clear(): Promise<void> {
-    this.inputValue = '';
+    this.value = '';
   }
 
   render() {
     return (
       <Host>
-        {this.label && (
+        {(this.hasSlottedLabel || this.label) && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
-              {this.label}
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
                   ({this.i18n.getMessage('input.optional')})
@@ -226,12 +223,12 @@ export class CatInput {
               readonly={this.readonly}
               required={this.required}
               type={this.type}
-              value={this.inputValue}
+              value={this.value}
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
             ></input>
-            {this.clearable && !this.disabled && this.inputValue && (
+            {this.clearable && !this.disabled && this.value && (
               <cat-button
                 class="clearable"
                 icon="cross-circle-outlined"
@@ -250,13 +247,22 @@ export class CatInput {
             </span>
           )}
         </div>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
     );
   }
 
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
+    );
+  }
+
   private onInput(event: Event) {
-    this.inputValue = this.input.value;
+    this.value = this.input.value;
     this.catChange.emit(event);
   }
 

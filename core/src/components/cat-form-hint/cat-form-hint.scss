@@ -1,0 +1,14 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hint-section {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+
+  .input-hint,
+  ::slotted([slot='hint']) {
+    @include cat-body('s');
+    margin: 0;
+  }
+}

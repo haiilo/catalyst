@@ -1,6 +1,7 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
-import log from 'loglevel';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import autosize from 'autosize';
+import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -9,6 +10,8 @@ let nextUniqueId = 0;
  * rows. Used when the expected user input is long. For shorter input, use the
  * input component.
  *
+ * @slot hint - Optional hint element to be displayed with the textarea.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
  */
 @Component({
@@ -20,15 +23,19 @@ export class CatTextarea {
   private readonly id = `cat-textarea-${nextUniqueId++}`;
   private textarea!: HTMLTextAreaElement;
 
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
   /**
    * Whether the textarea is disabled.
    */
   @Prop() disabled = false;
 
   /**
-   * Optional hint text to be displayed with the textarea.
+   * Optional hint text(s) to be displayed with the textarea.
    */
-  @Prop() hint?: string;
+  @Prop() hint?: string | string[];
 
   /**
    * The label for the textarea.
@@ -78,7 +85,7 @@ export class CatTextarea {
   /**
    * The initial value of the control.
    */
-  @Prop() value?: string | number;
+  @Prop({ mutable: true }) value?: string | number;
 
   /**
    * Emitted when the value is changed.
@@ -96,7 +103,8 @@ export class CatTextarea {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    if (!this.label) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
       log.error('[A11y] Missing ARIA label on textarea', this);
     }
   }
@@ -116,21 +124,13 @@ export class CatTextarea {
     this.textarea.focus(options);
   }
 
-  // /**
-  //  * Clear the input.
-  //  */
-  // @Method()
-  // async clear(): Promise<void> {
-  //   this.inputValue = '';
-  // }
-
   render() {
     return (
       <Host>
-        {this.label && (
+        {(this.hasSlottedLabel || this.label) && (
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
-              {this.label}
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
                   (Optional)
@@ -155,13 +155,22 @@ export class CatTextarea {
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
         ></textarea>
-        {this.hint && <p class="input-hint">{this.hint}</p>}
+        {this.hintSection}
       </Host>
     );
   }
 
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
+    );
+  }
+
   private onInput(event: Event) {
-    // this.inputValue = πthis.input.value;
+    this.value = this.textarea.value;
     this.catChange.emit(event);
   }
 

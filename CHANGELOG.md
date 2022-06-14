@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/haiilo/catalyst/compare/v0.7.0...v0.7.1) (2022-06-13)
+
+
+### Features
+
+* **core:** icon component supports icons with a non 24px*24px viewbox ([63438c0](https://github.com/haiilo/catalyst/commit/63438c0d1bbea9fff08611ba9105e5b3e3f773a8))
+
+
+### Bug Fixes
+
+* **core:** slotted labels are displayed correctly ([e887985](https://github.com/haiilo/catalyst/commit/e887985e56f32620b50c6519ec4a4cf79e3b59a0))
+
+## [0.7.0](https://github.com/haiilo/catalyst/compare/v0.6.0...v0.7.0) (2022-06-10)
+
+
+### Features
+
+* **core:** support slotted hints ([#23](https://github.com/haiilo/catalyst/issues/23)) ([e9d3c37](https://github.com/haiilo/catalyst/commit/e9d3c37ec66e1b315cb7e2f762a833d6e0dfb43a))
+* **core:** support slotted labels ([#24](https://github.com/haiilo/catalyst/issues/24)) ([0dda269](https://github.com/haiilo/catalyst/commit/0dda26990dc55d25b2386adfb927245e8d47a4cd))
+* implement tabs ([#27](https://github.com/haiilo/catalyst/issues/27)) ([0b468ed](https://github.com/haiilo/catalyst/commit/0b468ed4cc04b6169e41f38e4d3cee1c1fae5855))
+
+
+### Bug Fixes
+
+* **core:** correct form value accessor functions ([#30](https://github.com/haiilo/catalyst/issues/30)) ([23422b3](https://github.com/haiilo/catalyst/commit/23422b398d1f06a4a2b86bd29c9998846e76c66f))
+* **core:** tooltip correctly working on mobile [#18](https://github.com/haiilo/catalyst/issues/18) ([e30f908](https://github.com/haiilo/catalyst/commit/e30f9088dabf6436d8a5cd940476e4ea9832a3a9))
+
 ## [0.6.0](https://github.com/haiilo/catalyst/compare/v0.5.14...v0.6.0) (2022-06-02)
 
 
