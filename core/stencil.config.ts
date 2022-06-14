@@ -47,6 +47,10 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         {
+          src: './styles',
+          dest: './scss'
+        },
+        {
           src: getAssetsTokensPath(),
           dest: 'assets'
         },

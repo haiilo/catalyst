@@ -1,32 +1,34 @@
 // -- Reset
 
-@use '~sanitize.css/sanitize.css';
-@use '~sanitize.css/assets.css';
-@use '~sanitize.css/reduce-motion.css';
+@import '~sanitize.css/sanitize.css';
+@import '~sanitize.css/assets.css';
+@import '~sanitize.css/reduce-motion.css';
 
 // -- Vendor
 
-@use '../../../node_modules/toastify-js/src/toastify.css';
-
-// -- Core
-
-@use 'core/base' as *;
-@use 'core/nav' as *;
-@use 'core/typography' as *;
+@import '~toastify-js/src/toastify.css';
 
 // -- Fonts
 
-@use 'fonts/fonts' as *;
+@import 'fonts/fonts.mixins';
+$cat-font-path: 'assets/fonts' !default;
+@include cat-fonts($cat-font-path);
+
+// -- Core
+
+@import 'core/base';
+@import 'core/nav';
+@import 'core/toast';
+@import 'core/typography';
 
 // -- Utils
 
-@use 'utils/color';
-@use 'utils/display';
-@use 'utils/elevation';
-@use 'utils/layout';
-@use 'utils/sizing';
-@use 'utils/spacing';
-@use 'utils/typography';
-@use 'utils/visibility';
-@use 'utils/ratio';
-@use 'utils/toast';
+@import 'utils/color';
+@import 'utils/display';
+@import 'utils/elevation';
+@import 'utils/layout';
+@import 'utils/sizing';
+@import 'utils/spacing';
+@import 'utils/typography';
+@import 'utils/visibility';
+@import 'utils/ratio';

@@ -1,3 +1,17 @@
-@forward 'fonts.mixins.azeret';
-@forward 'fonts.mixins.dm';
-@forward 'fonts.mixins.lato';
+@use 'fonts.mixins.azeret' as *;
+@use 'fonts.mixins.dm' as *;
+@use 'fonts.mixins.lato' as *;
+
+@mixin cat-fonts($path) {
+  @include cat-font-dm-sans($path, 500) {
+    font-display: swap;
+  }
+
+  @include cat-font-lato($path, 300, 400, 500, 700) {
+    font-display: fallback;
+  }
+
+  @include cat-font-azeret($path, 400) {
+    font-display: fallback;
+  }
+}

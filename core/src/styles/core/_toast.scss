@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@use '../variables' as *;
+@use '../mixins' as *;
 
 $-background-color: cat-token('color.base.neutral.0');
 $-text-color: cat-token('color.base.neutral.900');
