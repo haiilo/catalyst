@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
-import Choices from 'choices.js';
+import Choices, { Item } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import { ItemFilterFn, ValueCompareFunction } from './interfaces';
 import { filterObject, isDefined } from './utils';
@@ -108,6 +108,7 @@ export class CatSelect {
       this.init();
       this.choicesInner = this.getChoiceInnerElement();
       this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
+      this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
     }
   }
 
@@ -115,6 +116,7 @@ export class CatSelect {
     this.choice?.destroy();
     this.choice = null;
     this.choicesInner?.removeEventListener('click', this.showDropdownHandler);
+    this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
   }
 
   render() {
@@ -139,71 +141,73 @@ export class CatSelect {
   }
 
   private init() {
+    const config = {
+      allowHTML: true,
+      items: this.items,
+      maxItemCount: this.maxItemCount,
+      addItems: this.addItems,
+      removeItemButton: this.removeItemButton,
+      editItems: this.editItems,
+      duplicateItemsAllowed: false,
+      delimiter: this.delimiter,
+      paste: this.paste,
+      searchEnabled: this.searchable,
+      searchChoices: this.searchChoices,
+      searchFields: this.searchFields,
+      searchResultLimit: this.searchResultLimit,
+      position: this.position,
+      resetScrollPosition: this.resetScrollPosition,
+      placeholder: this.placeholder?.length,
+      placeholderValue: this.placeholder,
+      searchPlaceholderValue: this.i18n.t('select.searchPlaceholder'),
+      renderSelectedChoices: 'always',
+      loadingText: this.i18n.t('select.loading'),
+      noResultsText: this.i18n.t('select.noResults'),
+      noChoicesText: this.i18n.t('select.noChoices'),
+      itemSelectText: this.i18n.t('select.selectItem'),
+      addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
+      maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
+      uniqueItemText: this.i18n.t('select.uniqueItem'),
+      valueComparer: this.valueComparer,
+      addItemFilter: this.addItemFilter,
+      fuseOptions: {
+        findAllMatches: true,
+        includeScore: true,
+        includeMatches: true,
+        threshold: 0
+      },
+      customAddItemText: this.i18n.t('select.customAddItem')
+    };
+
     const settings = filterObject(
-      {
-        allowHTML: true,
-        items: this.items,
-        maxItemCount: this.maxItemCount,
-        addItems: this.addItems,
-        removeItemButton: this.removeItemButton,
-        editItems: this.editItems,
-        duplicateItemsAllowed: false,
-        delimiter: this.delimiter,
-        paste: this.paste,
-        searchEnabled: this.searchable,
-        searchChoices: this.searchChoices,
-        searchFields: this.searchFields,
-        searchResultLimit: this.searchResultLimit,
-        position: this.position,
-        resetScrollPosition: this.resetScrollPosition,
-        placeholder: this.placeholder?.length,
-        placeholderValue: this.placeholder,
-        searchPlaceholderValue: this.i18n.t('select.searchPlaceholder'),
-        renderSelectedChoices: 'always',
-        loadingText: this.i18n.t('select.loading'),
-        noResultsText: this.i18n.t('select.noResults'),
-        noChoicesText: this.i18n.t('select.noChoices'),
-        itemSelectText: this.i18n.t('select.selectItem'),
-        addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
-        maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
-        uniqueItemText: this.i18n.t('select.uniqueItem'),
-        valueComparer: this.valueComparer,
-        addItemFilter: this.addItemFilter,
-        fuseOptions: {
-          findAllMatches: true,
-          includeScore: true,
-          includeMatches: true,
-          threshold: 0
-        },
-        customAddItemText: this.i18n.t('select.customAddItem'),
-        callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
-          const itemSelectText = this.choice?.config.itemSelectText;
-          return {
-            choice: function ({ classNames }: { classNames: any }, data: any) {
-              return strToEl(
-                `
+      this.multiple
+        ? {
+            ...config,
+            callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
+              const itemSelectText = config.itemSelectText;
+              return {
+                choice: function ({ classNames }: { classNames: any }, data: any) {
+                  return strToEl(
+                    `
                 <div
                   class="${String(classNames.item)} ${String(classNames.itemChoice)}
                     ${String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable)}"
-                    data-select-text="${String(itemSelectText)}"
-                    data-choice="${String(
-                      data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'
-                    )}"
-                    data-id="${String(data.id)}"
-                    data-value="
-                        ${String(data.value)}
-                        ${String(data.groupId > 0 ? 'role="treeitem"' : 'role="option"')}
-                    "
+                  data-select-text="${itemSelectText}"
+                  data-choice
+                  ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
+                  data-id="${String(data.id)}"
+                  data-value="${String(data.value)}"
+                  ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
                 >
-                    <cat-checkbox checked="${data.selected}"></cat-checkbox>
-                    <span>${data.label}</span>
+                    <cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>
                 </div>
                 `
-              );
+                  );
+                }
+              };
             }
-          };
-        }
-      },
+          }
+        : config,
       isDefined
     );
 
@@ -216,5 +220,14 @@ export class CatSelect {
 
   private onChange() {
     this.catChange.emit(this.choice?.getValue());
+  }
+
+  private onChoice(event: Event) {
+    const customEvent = event as CustomEvent;
+    const items = Array.from(this.choice?.getValue() as Item[]);
+    const item = items.find(value => value.choiceId === customEvent.detail.choice.id);
+    if (item) {
+      this.choice?._removeItem(item);
+    }
   }
 }
