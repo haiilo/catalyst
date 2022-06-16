@@ -219,6 +219,7 @@ export class CatSelect {
 
   private onChange() {
     this.catChange.emit(this.choice?.getValue());
+    if (this.multiple) this.modifyChoicesInnerElement();
   }
 
   private onChoice(event: Event) {
@@ -228,5 +229,30 @@ export class CatSelect {
     if (item) {
       this.choice?._removeItem(item);
     }
+  }
+
+  private modifyChoicesInnerElement() {
+    const catButton = this.choicesInner?.querySelector('cat-button');
+    const items = Array.from(this.choice?.getValue() as Item[]);
+    if (items.length && !catButton) {
+      this.createRemoveItemsButton();
+    } else if (!items.length) {
+      catButton?.removeEventListener('click', this.onRemoveItemsClick.bind(this));
+      catButton?.remove();
+    }
+  }
+
+  private createRemoveItemsButton() {
+    const button = document.createElement('cat-button') as HTMLCatButtonElement;
+    button.icon = 'cross-circle-outlined';
+    button.iconOnly = true;
+    button.a11yLabel = 'Remove items';
+    button.addEventListener('click', this.onRemoveItemsClick.bind(this));
+    this.choicesInner?.appendChild(button);
+  }
+
+  private onRemoveItemsClick(event: Event) {
+    event.stopPropagation();
+    this.choice?.removeActiveItems(-1);
   }
 }
