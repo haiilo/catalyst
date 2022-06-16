@@ -145,14 +145,14 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
 })
 export class CatCheckbox {
   protected el: HTMLElement;
@@ -272,14 +272,14 @@ export declare interface CatRadio extends Components.CatRadio {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value']
 })
 export class CatRadio {
   protected el: HTMLElement;
@@ -402,6 +402,55 @@ export class CatSpinner {
 }
 
 
+export declare interface CatTab extends Components.CatTab {
+  /**
+   * Emitted when tab is clicked. 
+   */
+  tabClick: EventEmitter<CustomEvent<MouseEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+})
+@Component({
+  selector: 'cat-tab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+})
+export class CatTab {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['tabClick']);
+  }
+}
+
+
+export declare interface CatTabs extends Components.CatTabs {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['activeTab', 'tabsAlign']
+})
+@Component({
+  selector: 'cat-tabs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['activeTab', 'tabsAlign']
+})
+export class CatTabs {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatTextarea extends Components.CatTextarea {
   /**
    * Emitted when the value is changed. 
@@ -476,14 +525,14 @@ export declare interface CatToggle extends Components.CatToggle {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value']
 })
 export class CatToggle {
   protected el: HTMLElement;

@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'src/components/cat-form-hint/cat-form-hint';
 
 :host {
   display: flex;
@@ -56,9 +57,4 @@ textarea {
   &::placeholder {
     color: cat-token('color.ui.font.muted');
   }
-}
-
-.input-hint {
-  @include cat-body('s');
-  margin: 0;
 }

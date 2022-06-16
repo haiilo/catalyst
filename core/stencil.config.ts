@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import { angularOutputTarget } from '@stencil/angular-output-target';
+import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
@@ -9,6 +9,27 @@ function getAssetsTokensPath() {
   const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/assets';
   return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
 }
+
+const angularValueAccessorBindings: ValueAccessorConfig[] = [
+  {
+    elementSelectors: ['cat-input', 'cat-textarea'],
+    event: 'catChange',
+    targetAttr: 'value',
+    type: 'text'
+  },
+  {
+    elementSelectors: ['cat-checkbox', 'cat-toggle'],
+    event: 'catChange',
+    targetAttr: 'value',
+    type: 'boolean'
+  },
+  {
+    elementSelectors: ['cat-radio'],
+    event: 'catChange',
+    targetAttr: 'value',
+    type: 'radio'
+  }
+];
 
 export const config: Config = {
   namespace: 'catalyst',
@@ -25,6 +46,10 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       copy: [
+        {
+          src: './styles',
+          dest: './scss'
+        },
         {
           src: getAssetsTokensPath(),
           dest: 'assets'
@@ -55,7 +80,8 @@ export const config: Config = {
     },
     angularOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
-      directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts'
+      directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts',
+      valueAccessorConfigs: angularValueAccessorBindings
     }),
     reactOutputTarget({
       componentCorePackage: '@haiilo/catalyst',

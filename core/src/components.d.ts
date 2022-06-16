@@ -163,6 +163,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Optional hint text(s) to be displayed with the checkbox.
+         */
+        "hint"?: string | string[];
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate": boolean;
@@ -224,9 +228,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -316,6 +320,10 @@ export namespace Components {
           * Whether this radio is disabled.
          */
         "disabled": boolean;
+        /**
+          * Optional hint text(s) to be displayed with the radio.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -426,15 +434,55 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTab {
+        /**
+          * Specifies that the tab should be deactivated.
+         */
+        "deactivated": boolean;
+        /**
+          * The name of an icon to be displayed in the tab.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the tab.
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * The label of the tab.
+         */
+        "label": string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+    }
+    interface CatTabs {
+        /**
+          * The ID of the active tab.
+         */
+        "activeTab": string;
+        /**
+          * The alignment of the tabs.
+         */
+        "tabsAlign": 'left' | 'center' | 'right' | 'justify';
+    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
          */
         "disabled": boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -492,6 +540,10 @@ export namespace Components {
           * Disabled state of the toggle.
          */
         "disabled": boolean;
+        /**
+          * Optional hint text(s) to be displayed with the toggle.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */
@@ -630,6 +682,18 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTabElement extends Components.CatTab, HTMLStencilElement {
+    }
+    var HTMLCatTabElement: {
+        prototype: HTMLCatTabElement;
+        new (): HTMLCatTabElement;
+    };
+    interface HTMLCatTabsElement extends Components.CatTabs, HTMLStencilElement {
+    }
+    var HTMLCatTabsElement: {
+        prototype: HTMLCatTabsElement;
+        new (): HTMLCatTabsElement;
+    };
     interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
     }
     var HTMLCatTextareaElement: {
@@ -669,6 +733,8 @@ declare global {
         "cat-select": HTMLCatSelectElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
+        "cat-tab": HTMLCatTabElement;
+        "cat-tabs": HTMLCatTabsElement;
         "cat-textarea": HTMLCatTextareaElement;
         "cat-toast-demo": HTMLCatToastDemoElement;
         "cat-toggle": HTMLCatToggleElement;
@@ -836,6 +902,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Optional hint text(s) to be displayed with the checkbox.
+         */
+        "hint"?: string | string[];
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate"?: boolean;
@@ -900,9 +970,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the input.
+          * Optional hint text(s) to be displayed with the input.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -1007,6 +1077,10 @@ declare namespace LocalJSX {
           * Whether this radio is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text(s) to be displayed with the radio.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the radio that is visible.
          */
@@ -1135,15 +1209,59 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    interface CatTab {
+        /**
+          * Specifies that the tab should be deactivated.
+         */
+        "deactivated"?: boolean;
+        /**
+          * The name of an icon to be displayed in the tab.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the tab.
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * The label of the tab.
+         */
+        "label"?: string;
+        /**
+          * Emitted when tab is clicked.
+         */
+        "onTabClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+    }
+    interface CatTabs {
+        /**
+          * The ID of the active tab.
+         */
+        "activeTab"?: string;
+        /**
+          * The alignment of the tabs.
+         */
+        "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
+    }
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text to be displayed with the textarea.
+          * Optional hint text(s) to be displayed with the textarea.
          */
-        "hint"?: string;
+        "hint"?: string | string[];
         /**
           * The label for the textarea.
          */
@@ -1208,6 +1326,10 @@ declare namespace LocalJSX {
           * Disabled state of the toggle.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text(s) to be displayed with the toggle.
+         */
+        "hint"?: string | string[];
         /**
           * The label of the toggle that is visible.
          */
@@ -1282,6 +1404,8 @@ declare namespace LocalJSX {
         "cat-select": CatSelect;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
+        "cat-tab": CatTab;
+        "cat-tabs": CatTabs;
         "cat-textarea": CatTextarea;
         "cat-toast-demo": CatToastDemo;
         "cat-toggle": CatToggle;
@@ -1306,6 +1430,8 @@ declare module "@stencil/core" {
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;
+            "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             "cat-toast-demo": LocalJSX.CatToastDemo & JSXBase.HTMLAttributes<HTMLCatToastDemoElement>;
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;

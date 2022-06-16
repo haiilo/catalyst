@@ -1,5 +1,6 @@
-import { Component, Event, EventEmitter, h, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
 
@@ -7,6 +8,8 @@ let nextUniqueId = 0;
  * Checkboxes are used to let a user choose one or more options from a limited
  * number of options.
  *
+ * @slot hint - Optional hint element to be displayed with the checkbox.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part checkbox - The checkbox element.
  * @part label - The label content.
  */
@@ -18,6 +21,10 @@ let nextUniqueId = 0;
 export class CatCheckbox {
   private readonly id = `cat-checkbox-${nextUniqueId++}`;
   private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
 
   /**
    * Checked state of the checkbox
@@ -57,7 +64,12 @@ export class CatCheckbox {
   /**
    * The value of the checkbox
    */
-  @Prop() value?: string;
+  @Prop({ mutable: true }) value?: string;
+
+  /**
+   * Optional hint text(s) to be displayed with the checkbox.
+   */
+  @Prop() hint?: string | string[];
 
   /**
    * Emitted when the checked status of the checkbox is changed.
@@ -81,7 +93,8 @@ export class CatCheckbox {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
       log.error('[A11y] Missing ARIA label on checkbox', this);
     }
   }
@@ -99,36 +112,49 @@ export class CatCheckbox {
 
   render() {
     return (
-      <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
-        <input
-          ref={el => (this.input = el as HTMLInputElement)}
-          id={this.id}
-          type="checkbox"
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          required={this.required}
-          disabled={this.disabled}
-          onInput={this.onInput.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        />
-        <span class="box" aria-hidden="true" part="checkbox">
-          <svg class="check" viewBox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-          <svg class="dash" viewBox="0 0 12 10">
-            <polyline points="1.5 5 10.5 5"></polyline>
-          </svg>
-        </span>
-        <span class="label" part="label">
-          {this.label}
-        </span>
-      </label>
+      <Host>
+        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+          <input
+            ref={el => (this.input = el as HTMLInputElement)}
+            id={this.id}
+            type="checkbox"
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            required={this.required}
+            disabled={this.disabled}
+            onInput={this.onInput.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          />
+          <span class="box" aria-hidden="true" part="checkbox">
+            <svg class="check" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </svg>
+            <svg class="dash" viewBox="0 0 12 10">
+              <polyline points="1.5 5 10.5 5"></polyline>
+            </svg>
+          </span>
+          <span class="label" part="label">
+            {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+          </span>
+        </label>
+        {this.hintSection}
+      </Host>
+    );
+  }
+
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
     );
   }
 
   private onInput(event: Event) {
+    this.value = this.input.value;
     this.catChange.emit(event);
     console.log(event);
   }
