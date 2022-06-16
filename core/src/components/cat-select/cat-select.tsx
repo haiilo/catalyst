@@ -109,6 +109,8 @@ export class CatSelect {
       this.choicesInner = this.getChoiceInnerElement();
       this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
       this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
+      this.selectElement?.addEventListener('addItem', this.onChange.bind(this));
+      this.selectElement?.addEventListener('removeItem', this.onChange.bind(this));
     }
   }
 
@@ -117,17 +119,14 @@ export class CatSelect {
     this.choice = null;
     this.choicesInner?.removeEventListener('click', this.showDropdownHandler);
     this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
+    this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
+    this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
   }
 
   render() {
     return (
       <Host ref={el => (this.hostElement = el)}>
-        <select
-          ref={el => (this.selectElement = el)}
-          onChange={this.onChange.bind(this)}
-          multiple={this.multiple}
-          disabled={this.disabled}
-        >
+        <select ref={el => (this.selectElement = el)} multiple={this.multiple} disabled={this.disabled}>
           {!!this.choices?.length && <Options options={this.choices} />}
         </select>
       </Host>
