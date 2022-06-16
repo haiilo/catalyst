@@ -76,6 +76,11 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   .#{$choices-selector}__inner {
     padding-bottom: 7.5px;
   }
+
+  .#{$choices-selector}__list--dropdown .#{$choices-selector}__list {
+    padding-top: 0.5rem;
+  }
+
   .#{$choices-selector}__input {
     display: block;
     width: 100%;
@@ -138,11 +143,16 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   }
 
   .#{$choices-selector}__item {
-    cat-checkbox,
-    cat-checkbox::part(label) {
+    cat-checkbox{
       @include cat-ellipsis;
+      margin: 0;
+
+      &::part(label) {
+        @include cat-ellipsis;
+      }
     }
   }
+
   .#{$choices-selector}__button {
     position: relative;
     display: inline-block;
@@ -286,6 +296,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   border: 1px solid $choices-keyline-color;
   top: 100%;
   margin-top: -1px;
+  padding-bottom: 12px;
   border-bottom-left-radius: $choices-border-radius;
   border-bottom-right-radius: $choices-border-radius;
   overflow: hidden;
