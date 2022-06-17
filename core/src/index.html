@@ -13,9 +13,10 @@
   </head>
   <body>
     <h2>Select</h2>
-    <div style="width: 300px; display: flex; flex-direction: column; padding: 10px; gap: 0.5rem">
+    <div style="width: 400px; display: flex; flex-direction: column; padding: 10px; gap: 0.5rem">
       <cat-select></cat-select>
       <cat-select class="second" multiple></cat-select>
+      <cat-select class="third" multiple></cat-select>
     </div>
     <h2>Tabs</h2>
     <div style="width: 40%">
@@ -633,6 +634,7 @@ Here is some code
     <script>
       const select = document.querySelector('cat-select');
       const select2 = document.querySelector('cat-select.second');
+      const select3 = document.querySelector('cat-select.third');
       select.choices = [
         {
           value: '1',
@@ -650,18 +652,36 @@ Here is some code
       select2.choices = [
         {
           value: '1',
-          label: 'select option 1 extra large',
-          customProperties: {
-            icon: 'borradp'
-          }
+          label: 'select option 1 extra large extra large'
         },
         {
           value: '2',
-          label: 'select option 2'
+          label: 'select option 2',
+          selected: true
         },
         {
           value: '3',
           label: 'select option 31231'
+        }
+      ];
+      select3.choices = [
+        {
+          label: 'Group one',
+          disabled: false,
+          choices: [
+            { value: 'Child One', label: 'Child One', selected: true },
+            { value: 'Child Two', label: 'Child Two' },
+            { value: 'Child Three', label: 'Child Three' }
+          ]
+        },
+        {
+          label: 'Group two',
+          disabled: false,
+          choices: [
+            { value: 'Child Four', label: 'Child Four', disabled: true },
+            { value: 'Child Five', label: 'Child Five' },
+            { value: 'Child Six', label: 'Child Six' }
+          ]
         }
       ];
     </script>

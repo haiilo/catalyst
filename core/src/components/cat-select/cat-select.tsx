@@ -11,6 +11,7 @@ export interface Option {
   label: string;
   selected?: boolean;
   disabled?: boolean;
+  choices?: Option[];
 }
 
 @Component({
@@ -220,7 +221,7 @@ export class CatSelect {
 
   private onChange() {
     this.catChange.emit(this.choice?.getValue());
-    if (this.multiple) this.modifyChoicesInnerElement();
+    if (this.multiple) this.updateRemoveItemsVisibility();
   }
 
   private onChoice(event: Event) {
@@ -232,7 +233,7 @@ export class CatSelect {
     }
   }
 
-  private modifyChoicesInnerElement() {
+  private updateRemoveItemsVisibility() {
     const items = Array.from(this.choice?.getValue() as Item[]);
     if (items.length) {
       this.removeItemsButton?.removeAttribute('hidden');
@@ -246,7 +247,7 @@ export class CatSelect {
     this.removeItemsButton.icon = 'cross-circle-outlined';
     this.removeItemsButton.iconOnly = true;
     this.removeItemsButton.a11yLabel = 'Remove items';
-    this.removeItemsButton.hidden = true;
+    this.updateRemoveItemsVisibility();
     this.removeItemsButton.addEventListener('click', this.onRemoveItemsClick.bind(this));
     this.choicesInner?.appendChild(this.removeItemsButton);
   }
