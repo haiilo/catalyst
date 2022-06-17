@@ -13,8 +13,9 @@
   </head>
   <body>
     <h2>Select</h2>
-    <div style="width: 300px; display: inline-block; padding: 10px">
-      <cat-select multiple></cat-select>
+    <div style="width: 300px; display: flex; flex-direction: column; padding: 10px; gap: 0.5rem">
+      <cat-select></cat-select>
+      <cat-select class="second" multiple></cat-select>
     </div>
     <h2>Tabs</h2>
     <div style="width: 40%">
@@ -631,10 +632,28 @@ Here is some code
     </div>
     <script>
       const select = document.querySelector('cat-select');
+      const select2 = document.querySelector('cat-select.second');
       select.choices = [
         {
           value: '1',
-          label: 'select option 1'
+          label: 'select option 1 select option 1 extra large'
+        },
+        {
+          value: '2',
+          label: 'select option 2'
+        },
+        {
+          value: '3',
+          label: 'select option 31231'
+        }
+      ];
+      select2.choices = [
+        {
+          value: '1',
+          label: 'select option 1 extra large',
+          customProperties: {
+            icon: 'borradp'
+          }
         },
         {
           value: '2',

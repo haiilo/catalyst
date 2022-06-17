@@ -1,8 +1,10 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import Choices, { Item } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
-import { ItemFilterFn, ValueCompareFunction } from './interfaces';
+import { ClassNames, ItemFilterFn, ValueCompareFunction } from './interfaces';
 import { filterObject, isDefined } from './utils';
+import { Choice } from 'choices.js/src/scripts/interfaces/choice';
+import { Group } from 'choices.js/public/types/src/scripts/interfaces/group';
 
 export interface Option {
   value: string;
@@ -10,14 +12,6 @@ export interface Option {
   selected?: boolean;
   disabled?: boolean;
 }
-
-const Options = ({ options }: { options: Option[] }) => {
-  return options.map((option: Option) => (
-    <option value={option.value} selected={option.selected} disabled={option.disabled}>
-      {option.label}
-    </option>
-  ));
-};
 
 @Component({
   tag: 'cat-select',
@@ -29,9 +23,11 @@ export class CatSelect {
   private readonly searchResultLimit = 24;
 
   private choice?: Choices | null = null;
-  private hostElement: HTMLElement | null = null;
   private selectElement?: HTMLSelectElement;
+  private removeItemsButton?: HTMLCatButtonElement;
   private choicesInner?: Element | null = null;
+
+  @Element() hostElement!: HTMLElement;
 
   @Prop() multiple = false;
   @Prop() position: 'auto' | 'top' | 'bottom' = 'auto';
@@ -45,7 +41,7 @@ export class CatSelect {
 
   @Prop() choices?: Option[];
   @Prop() placeholder = '';
-  @Prop() items?: Array<any>;
+  @Prop() items?: Array<string> | Array<Choice>;
   @Prop() maxItemCount = false;
   @Prop() removeItemButton = true;
   @Prop() delimiter = '';
@@ -57,8 +53,36 @@ export class CatSelect {
 
   @Event() catChange!: EventEmitter;
 
+  constructor() {
+    this.showDropdownHandler = this.showDropdownHandler.bind(this);
+  }
+
+  componentDidLoad(): void {
+    this.init();
+    this.choicesInner = this.getChoiceInnerElement();
+    this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
+    this.selectElement?.addEventListener('addItem', this.onChange.bind(this));
+    this.selectElement?.addEventListener('removeItem', this.onChange.bind(this));
+    if (this.multiple) {
+      this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
+      this.createRemoveItemsButton();
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.choice?.destroy();
+    this.choice = null;
+    this.choicesInner?.removeEventListener('click', this.showDropdownHandler);
+    this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
+    this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
+    if (this.multiple) {
+      this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
+      this.removeItemsButton?.removeEventListener('click', this.onRemoveItemsClick.bind(this));
+    }
+  }
+
   @Method()
-  async setValue(args: Array<any>) {
+  async setValue(args: Array<string> | Array<Item>) {
     this.choice?.setValue(args);
 
     return this;
@@ -72,7 +96,7 @@ export class CatSelect {
   }
 
   @Method()
-  async setChoices(choices: Array<any>, value: string, label: string, replaceChoices?: boolean) {
+  async setChoices(choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean) {
     this.choice?.setChoices(choices, value, label, replaceChoices);
 
     return this;
@@ -99,36 +123,10 @@ export class CatSelect {
     return this;
   }
 
-  constructor() {
-    this.showDropdownHandler = this.showDropdownHandler.bind(this);
-  }
-
-  componentDidLoad(): void {
-    if (this.hostElement) {
-      this.init();
-      this.choicesInner = this.getChoiceInnerElement();
-      this.choicesInner?.addEventListener('click', () => this.showDropdownHandler());
-      this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
-      this.selectElement?.addEventListener('addItem', this.onChange.bind(this));
-      this.selectElement?.addEventListener('removeItem', this.onChange.bind(this));
-    }
-  }
-
-  disconnectedCallback(): void {
-    this.choice?.destroy();
-    this.choice = null;
-    this.choicesInner?.removeEventListener('click', this.showDropdownHandler);
-    this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
-    this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
-    this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
-  }
-
   render() {
     return (
-      <Host ref={el => (this.hostElement = el)}>
-        <select ref={el => (this.selectElement = el)} multiple={this.multiple} disabled={this.disabled}>
-          {!!this.choices?.length && <Options options={this.choices} />}
-        </select>
+      <Host>
+        <select ref={el => (this.selectElement = el)} multiple={this.multiple} disabled={this.disabled}></select>
       </Host>
     );
   }
@@ -185,7 +183,7 @@ export class CatSelect {
             callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
               const itemSelectText = config.itemSelectText;
               return {
-                choice: function ({ classNames }: { classNames: any }, data: any) {
+                choice: function ({ classNames }: { classNames: ClassNames }, data: Item) {
                   return strToEl(
                     `
                 <div
@@ -196,7 +194,7 @@ export class CatSelect {
                   ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
                   data-id="${String(data.id)}"
                   data-value="${String(data.value)}"
-                  ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
+                  ${data.groupId && data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
                 >
                     <cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>
                 </div>
@@ -211,10 +209,13 @@ export class CatSelect {
     );
 
     this.choice = new Choices(this.selectElement, settings);
+    if (this.choices?.length) {
+      this.choice.setChoices(this.choices);
+    }
   }
 
   private getChoiceInnerElement() {
-    return this.hostElement?.attachInternals?.().shadowRoot?.querySelector('.choices__inner');
+    return this.hostElement.attachInternals?.().shadowRoot?.querySelector('.choices__inner');
   }
 
   private onChange() {
@@ -232,23 +233,22 @@ export class CatSelect {
   }
 
   private modifyChoicesInnerElement() {
-    const catButton = this.choicesInner?.querySelector('cat-button');
     const items = Array.from(this.choice?.getValue() as Item[]);
-    if (items.length && !catButton) {
-      this.createRemoveItemsButton();
+    if (items.length) {
+      this.removeItemsButton?.removeAttribute('hidden');
     } else if (!items.length) {
-      catButton?.removeEventListener('click', this.onRemoveItemsClick.bind(this));
-      catButton?.remove();
+      this.removeItemsButton?.setAttribute('hidden', 'true');
     }
   }
 
   private createRemoveItemsButton() {
-    const button = document.createElement('cat-button') as HTMLCatButtonElement;
-    button.icon = 'cross-circle-outlined';
-    button.iconOnly = true;
-    button.a11yLabel = 'Remove items';
-    button.addEventListener('click', this.onRemoveItemsClick.bind(this));
-    this.choicesInner?.appendChild(button);
+    this.removeItemsButton = document.createElement('cat-button') as HTMLCatButtonElement;
+    this.removeItemsButton.icon = 'cross-circle-outlined';
+    this.removeItemsButton.iconOnly = true;
+    this.removeItemsButton.a11yLabel = 'Remove items';
+    this.removeItemsButton.hidden = true;
+    this.removeItemsButton.addEventListener('click', this.onRemoveItemsClick.bind(this));
+    this.choicesInner?.appendChild(this.removeItemsButton);
   }
 
   private onRemoveItemsClick(event: Event) {

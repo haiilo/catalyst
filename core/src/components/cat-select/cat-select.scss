@@ -84,11 +84,11 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   .#{$choices-selector}__input {
     display: block;
     width: 100%;
-    padding: 10px 10px 10px 30px;
+    padding: 12px 16px 12px 40px;
     border-bottom: 1px solid $choices-keyline-color;
     margin: 0;
-    color: #697687;
-    background: #fff $choices-search-icon no-repeat left 5px center;
+    color: #000;
+    background: #fff $choices-search-icon no-repeat left 12px center;
 
     &::before {
       content: 'abc';
@@ -139,11 +139,11 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 4px 4px 0;
+    padding: 4px 60px 0 4px;
   }
 
   .#{$choices-selector}__item {
-    cat-checkbox{
+    cat-checkbox {
       @include cat-ellipsis;
       margin: 0;
 
@@ -238,7 +238,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
 
 .#{$choices-selector}__list--single {
   display: inline-block;
-  padding: 4px 16px 4px 4px;
+  padding: 4px 50px 4px 4px;
   width: 100%;
 
   [dir='rtl'] & {
@@ -296,13 +296,11 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   border: 1px solid $choices-keyline-color;
   top: 100%;
   margin-top: -1px;
-  padding-bottom: 12px;
-  border-bottom-left-radius: $choices-border-radius;
-  border-bottom-right-radius: $choices-border-radius;
   overflow: hidden;
   word-break: break-all;
   will-change: visibility;
   box-shadow: 0 2px 4px 0 #101d3033;
+  border-radius: $choices-border-radius;
 
   &.is-active {
     visibility: visible;
@@ -318,6 +316,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   .#{$choices-selector}__list {
     position: relative;
     max-height: 300px;
+    padding: 8px 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
@@ -326,6 +325,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
     @include cat-body('m', 500);
     position: relative;
     padding: 10px;
+    min-height: 40px;
 
     [dir='rtl'] & {
       text-align: right;

@@ -8,7 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { Option } from "./components/cat-select/cat-select";
+import { Choice } from "choices.js/src/scripts/interfaces/choice";
 import { ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
+import { Item } from "choices.js";
+import { Group } from "choices.js/public/types/src/scripts/interfaces/group";
 export namespace Components {
     interface CatAlert {
         /**
@@ -390,7 +393,7 @@ export namespace Components {
         "delimiter": string;
         "disabled": boolean;
         "editItems": boolean;
-        "items"?: Array<any>;
+        "items"?: Array<string> | Array<Choice>;
         "maxItemCount": boolean;
         "multiple": boolean;
         "paste": boolean;
@@ -402,8 +405,8 @@ export namespace Components {
         "searchFields"?: Array<string> | string;
         "searchable": boolean;
         "setChoiceByValue": (value: string) => Promise<this>;
-        "setChoices": (choices: Array<any>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
-        "setValue": (args: Array<any>) => Promise<this>;
+        "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
+        "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
         "valueComparer"?: ValueCompareFunction;
     }
     interface CatSkeleton {
@@ -1167,7 +1170,7 @@ declare namespace LocalJSX {
         "delimiter"?: string;
         "disabled"?: boolean;
         "editItems"?: boolean;
-        "items"?: Array<any>;
+        "items"?: Array<string> | Array<Choice>;
         "maxItemCount"?: boolean;
         "multiple"?: boolean;
         "onCatChange"?: (event: CustomEvent<any>) => void;
