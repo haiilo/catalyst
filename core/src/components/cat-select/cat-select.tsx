@@ -14,6 +14,18 @@ export interface Option {
   choices?: Option[];
 }
 
+const getOptionTemplate = (data: Item): string => {
+  if (data.customProperties?.imageUrl) {
+    return `
+    <div class="d-flex align-items-center">
+      <img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />
+      ${data.label}
+    </div>
+    `;
+  }
+  return `<cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>`;
+};
+
 @Component({
   tag: 'cat-select',
   styleUrl: 'cat-select.scss',
@@ -184,28 +196,71 @@ export class CatSelect {
             callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
               const itemSelectText = config.itemSelectText;
               return {
-                choice: function ({ classNames }: { classNames: ClassNames }, data: Item) {
+                item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
+                  const template = data.customProperties?.imageUrl
+                    ? `<img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />`
+                    : '';
                   return strToEl(
                     `
-                <div
-                  class="${String(classNames.item)} ${String(classNames.itemChoice)}
-                    ${String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable)}"
-                  data-select-text="${itemSelectText}"
-                  data-choice
-                  ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
-                  data-id="${String(data.id)}"
-                  data-value="${String(data.value)}"
-                  ${data.groupId && data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
-                >
-                    <cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>
-                </div>
-                `
+                    <div class="${classNames.item} ${
+                      data.highlighted ? classNames.highlightedState : classNames.itemSelectable
+                    } ${data.placeholder ? classNames.placeholder : ''}" data-item data-id="${data.id}" data-value="${
+                      data.value
+                    }" ${data.active ? 'aria-selected="true"' : ''} ${data.disabled ? 'aria-disabled="true"' : ''}>
+                        ${template}
+                        ${data.label}
+                    </div>
+                    `
+                  );
+                },
+                choice: function ({ classNames }: { classNames: ClassNames }, data: Item) {
+                  const template = getOptionTemplate(data);
+                  const className = `${String(classNames.item)} ${String(classNames.itemChoice)}
+                        ${String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable)}
+                        ${data.selected ? 'choices__item--selected' : ''}
+                        `;
+                  return strToEl(
+                    `
+                    <div
+                      class="${className}"
+                      data-select-text="${itemSelectText}"
+                      data-choice
+                      ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
+                      data-id="${String(data.id)}"
+                      data-value="${String(data.value)}"
+                      ${data.groupId && data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
+                    >
+                        ${template}
+                    </div>
+                    `
                   );
                 }
               };
             }
           }
-        : config,
+        : {
+            ...config,
+            callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
+              return {
+                item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
+                  const template = data.customProperties?.imageUrl
+                    ? `<img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />`
+                    : '';
+                  return strToEl(
+                    `
+                    <div class="${classNames.item} ${
+                      data.highlighted ? classNames.highlightedState : classNames.itemSelectable
+                    } ${data.placeholder ? classNames.placeholder : ''}" data-item data-id="${data.id}" data-value="${
+                      data.value
+                    }" ${data.active ? 'aria-selected="true"' : ''} ${data.disabled ? 'aria-disabled="true"' : ''}>
+                        <span>${template}</span> ${data.label}
+                    </div>
+                    `
+                  );
+                }
+              };
+            }
+          },
       isDefined
     );
 

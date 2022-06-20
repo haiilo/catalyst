@@ -635,6 +635,7 @@ Here is some code
       const select = document.querySelector('cat-select');
       const select2 = document.querySelector('cat-select.second');
       const select3 = document.querySelector('cat-select.third');
+      const select4 = document.querySelector('cat-select.fourth');
       select.choices = [
         {
           value: '1',
@@ -672,6 +673,31 @@ Here is some code
             { value: 'Child One', label: 'Child One', selected: true },
             { value: 'Child Two', label: 'Child Two' },
             { value: 'Child Three', label: 'Child Three' }
+          ]
+        },
+        {
+          label: 'Group two',
+          disabled: false,
+          choices: [
+            { value: 'Child Four', label: 'Child Four', disabled: true },
+            { value: 'Child Five', label: 'Child Five' },
+            { value: 'Child Six', label: 'Child Six' }
+          ]
+        }
+      ];
+      select4.choices = [
+        {
+          label: 'Group one',
+          disabled: false,
+          choices: [
+            {
+              value: 'Child Seven',
+              label: 'Child Seven',
+              disabled: true,
+              customProperties: { imageUrl: 'https://picsum.photos/20' }
+            },
+            { value: 'Child Eight', label: 'Child Eight', customProperties: { imageUrl: 'https://picsum.photos/20' } },
+            { value: 'Child Nine', label: 'Child Nine', customProperties: { imageUrl: 'https://picsum.photos/20' } }
           ]
         },
         {
