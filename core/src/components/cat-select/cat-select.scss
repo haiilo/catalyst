@@ -380,6 +380,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
 .#{$choices-selector}__item {
   cursor: default;
   border-left: 3px solid transparent;
+  transition: cat-token('time.transition.m') linear;
 }
 
 .#{$choices-selector}__item--selectable {
