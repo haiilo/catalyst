@@ -18,7 +18,7 @@ const getOptionTemplate = (data: Item): string => {
   if (data.customProperties?.imageUrl) {
     return `
     <div class="d-flex align-items-center">
-      <img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />
+      <img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />
       ${data.label}
     </div>
     `;
