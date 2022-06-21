@@ -174,7 +174,7 @@ export class CatSelect {
       loadingText: this.i18n.t('select.loading'),
       noResultsText: this.i18n.t('select.noResults'),
       noChoicesText: this.i18n.t('select.noChoices'),
-      itemSelectText: '',
+      itemSelectText: this.i18n.t('select.selectItem') || '',
       addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
       maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
       uniqueItemText: this.i18n.t('select.uniqueItem'),
