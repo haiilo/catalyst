@@ -1,10 +1,10 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
-import Choices, { Item } from 'choices.js';
+import Choices, { ClassNames, Item } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
-import { ClassNames, ItemFilterFn, ValueCompareFunction } from './interfaces';
 import { filterObject, isDefined } from './utils';
 import { Choice } from 'choices.js/src/scripts/interfaces/choice';
 import { Group } from 'choices.js/public/types/src/scripts/interfaces/group';
+import { Types } from 'choices.js/public/types/src/scripts/interfaces/types';
 
 export interface Option {
   value: string;
@@ -61,8 +61,8 @@ export class CatSelect {
   @Prop() searchChoices = true;
   @Prop() searchFields?: Array<string> | string;
   @Prop() resetScrollPosition = false;
-  @Prop() addItemFilter?: string | RegExp | ItemFilterFn;
-  @Prop() valueComparer?: ValueCompareFunction;
+  @Prop() addItemFilter?: string | RegExp | Types.FilterFunction | null;
+  @Prop() valueComparer?: Types.ValueCompareFunction;
 
   @Event() catChange!: EventEmitter;
 
@@ -174,7 +174,7 @@ export class CatSelect {
       loadingText: this.i18n.t('select.loading'),
       noResultsText: this.i18n.t('select.noResults'),
       noChoicesText: this.i18n.t('select.noChoices'),
-      itemSelectText: this.i18n.t('select.selectItem'),
+      itemSelectText: '',
       addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
       maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
       uniqueItemText: this.i18n.t('select.uniqueItem'),

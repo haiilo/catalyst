@@ -156,7 +156,6 @@ export class CatCheckbox {
   private onInput(event: Event) {
     this.value = this.input.value;
     this.catChange.emit(event);
-    console.log(event);
   }
 
   private onFocus(event: FocusEvent) {

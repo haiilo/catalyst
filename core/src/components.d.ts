@@ -9,7 +9,7 @@ import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { Option } from "./components/cat-select/cat-select";
 import { Choice } from "choices.js/src/scripts/interfaces/choice";
-import { ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
+import { Types } from "choices.js/public/types/src/scripts/interfaces/types";
 import { Item } from "choices.js";
 import { Group } from "choices.js/public/types/src/scripts/interfaces/group";
 export namespace Components {
@@ -394,7 +394,7 @@ export namespace Components {
         "scrolledBuffer": number;
     }
     interface CatSelect {
-        "addItemFilter"?: string | RegExp | ItemFilterFn;
+        "addItemFilter"?: string | RegExp | Types.FilterFunction | null;
         "addItems": boolean;
         "choices"?: Option[];
         "clearChoices": () => Promise<this>;
@@ -417,7 +417,7 @@ export namespace Components {
         "setChoiceByValue": (value: string) => Promise<this>;
         "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
         "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
-        "valueComparer"?: ValueCompareFunction;
+        "valueComparer"?: Types.ValueCompareFunction;
     }
     interface CatSkeleton {
         /**
@@ -1187,7 +1187,7 @@ declare namespace LocalJSX {
         "scrolledBuffer"?: number;
     }
     interface CatSelect {
-        "addItemFilter"?: string | RegExp | ItemFilterFn;
+        "addItemFilter"?: string | RegExp | Types.FilterFunction | null;
         "addItems"?: boolean;
         "choices"?: Option[];
         "delimiter"?: string;
@@ -1205,7 +1205,7 @@ declare namespace LocalJSX {
         "searchChoices"?: boolean;
         "searchFields"?: Array<string> | string;
         "searchable"?: boolean;
-        "valueComparer"?: ValueCompareFunction;
+        "valueComparer"?: Types.ValueCompareFunction;
     }
     interface CatSkeleton {
         /**
