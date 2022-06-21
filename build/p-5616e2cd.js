@@ -1,2 +1,0 @@
-import{h as t}from"./p-12b96af6.js";const s=s=>{const{hint:n,slottedHint:i}=s;return t("div",{class:"hint-section"},[n&&(Array.isArray(n)?n.map((s=>t("p",{class:"input-hint"},s))):t("p",{class:"input-hint"},n)),i])};export{s as C};
-//# sourceMappingURL=p-5616e2cd.js.map
