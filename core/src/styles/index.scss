@@ -10,9 +10,7 @@
 
 // -- Fonts
 
-@import 'fonts/fonts.mixins';
-$cat-font-path: 'assets/fonts' !default;
-@include cat-fonts($cat-font-path);
+@import 'fonts/fonts-mixins';
 
 // -- Core
 
@@ -32,3 +30,6 @@ $cat-font-path: 'assets/fonts' !default;
 @import 'utils/typography';
 @import 'utils/visibility';
 @import 'utils/ratio';
+
+$cat-font-path: 'assets/fonts' !default;
+@include cat-fonts($cat-font-path);

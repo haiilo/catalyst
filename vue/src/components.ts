@@ -120,6 +120,11 @@ export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', un
 ]);
 
 
+export const CatModal = /*@__PURE__*/ defineContainer<JSX.CatModal>('cat-modal', undefined, [
+  'size'
+]);
+
+
 export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio', undefined, [
   'checked',
   'disabled',
