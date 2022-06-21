@@ -16,6 +16,7 @@ export const CatCheckbox = /*@__PURE__*/createReactComponent<JSX.CatCheckbox, HT
 export const CatIcon = /*@__PURE__*/createReactComponent<JSX.CatIcon, HTMLCatIconElement>('cat-icon');
 export const CatInput = /*@__PURE__*/createReactComponent<JSX.CatInput, HTMLCatInputElement>('cat-input');
 export const CatMenu = /*@__PURE__*/createReactComponent<JSX.CatMenu, HTMLCatMenuElement>('cat-menu');
+export const CatModal = /*@__PURE__*/createReactComponent<JSX.CatModal, HTMLCatModalElement>('cat-modal');
 export const CatRadio = /*@__PURE__*/createReactComponent<JSX.CatRadio, HTMLCatRadioElement>('cat-radio');
 export const CatScrollable = /*@__PURE__*/createReactComponent<JSX.CatScrollable, HTMLCatScrollableElement>('cat-scrollable');
 export const CatSelect = /*@__PURE__*/createReactComponent<JSX.CatSelect, HTMLCatSelectElement>('cat-select');

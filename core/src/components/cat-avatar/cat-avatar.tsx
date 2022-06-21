@@ -112,7 +112,7 @@ export class CatAvatar {
   private getInitials(): string {
     return (
       this.initials ??
-      this.label
+      (this.label ?? '')
         .split(' ')
         .map(n => n[0])
         .join('')

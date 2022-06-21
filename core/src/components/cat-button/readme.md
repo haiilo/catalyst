@@ -64,6 +64,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [cat-input](../cat-input)
+ - [cat-modal](../cat-modal)
  - [cat-tabs](../cat-tabs)
  - [cat-toast-demo](../cat-toast-demo)
 
@@ -78,6 +79,7 @@ graph TD;
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-input --> cat-button
+  cat-modal --> cat-button
   cat-tabs --> cat-button
   cat-toast-demo --> cat-button
   style cat-button fill:#f9f,stroke:#333,stroke-width:4px
