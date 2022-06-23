@@ -27,36 +27,6 @@ export type ClassNames = {
   noChoices?: string;
 };
 
-export type WeightedField = {
-  [key: string]: unknown;
-  weight: number;
-};
-
-export type FuseOptions = {
-  id?: string;
-  caseSensitive?: boolean;
-  includeMatches?: boolean;
-  includeScore?: boolean;
-  shouldSort?: boolean;
-  keys?: Array<string> | Array<object> | Array<WeightedField>;
-  verbose?: boolean;
-  tokenize?: boolean;
-  tokenSeparator?: RegExp;
-  matchAllTokens?: boolean;
-  location?: number;
-  distance?: number;
-  threshold?: number;
-  maxPatternLength?: number;
-  minMatchCharLength?: number;
-  findAllMatches?: boolean;
-  sortFn?(a: { score: number }, b: { score: number }): number;
-  getFn?(obj: never, path: string): never;
-};
-
 export type ItemFilterFn = (value: string) => boolean;
-
-export type OnInit = () => void;
-
-export type OnCreateTemplates = (template: unknown) => never;
 
 export type ValueCompareFunction = (value1: string, value2: string) => boolean;

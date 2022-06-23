@@ -1,10 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
-import Choices, { Item } from 'choices.js';
+import Choices, { Choice, Group, Item } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import { ClassNames, ItemFilterFn, ValueCompareFunction } from './interfaces';
 import { filterObject, isDefined } from './utils';
-import { Choice } from 'choices.js/src/scripts/interfaces/choice';
-import { Group } from 'choices.js/public/types/src/scripts/interfaces/group';
 
 export interface Option {
   value: string;

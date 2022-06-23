@@ -8,10 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { Option } from "./components/cat-select/cat-select";
-import { Choice } from "choices.js/src/scripts/interfaces/choice";
+import { Choice, Group, Item } from "choices.js";
 import { ItemFilterFn, ValueCompareFunction } from "./components/cat-select/interfaces";
-import { Item } from "choices.js";
-import { Group } from "choices.js/public/types/src/scripts/interfaces/group";
 export namespace Components {
     interface CatAlert {
         /**
