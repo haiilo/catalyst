@@ -357,27 +357,27 @@ export declare interface CatSelect extends Components.CatSelect {
   /**
    *  
    */
-  catSelectChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<any>>;
 
 }
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['addItemFilter', 'addItemText', 'addItems', 'appendValue', 'callbackOnCreateTemplates', 'callbackOnInit', 'classNames', 'customAddItemText', 'delimiter', 'duplicateItemsAllowed', 'editItems', 'fuseOptions', 'itemSelectText', 'items', 'loadingText', 'maxItemCount', 'maxItemText', 'multiple', 'noChoicesText', 'noResultsText', 'options', 'paste', 'placeholder', 'placeholderValue', 'position', 'prependValue', 'removeItemButton', 'removeItems', 'renderChoiceLimit', 'renderSelectedChoices', 'resetScrollPosition', 'searchChoices', 'searchEnabled', 'searchFields', 'searchFloor', 'searchPlaceholderValue', 'searchResultLimit', 'shouldSort', 'shouldSortItems', 'silent', 'sorter', 'uniqueItemText', 'valueComparer'],
-  methods: ['highlightItem', 'unhighlightItem', 'highlightAll', 'unhighlightAll', 'removeActiveItemsByValue', 'removeActiveItems', 'removeHighlightedItems', 'hideDropdown', 'setValue', 'setChoiceByValue', 'setChoices', 'clearChoices', 'clearStore', 'clearInput', 'enable', 'disable']
+  inputs: ['addItemFilter', 'addItems', 'choices', 'delimiter', 'disabled', 'editItems', 'items', 'maxItemCount', 'multiple', 'paste', 'placeholder', 'position', 'removeItemButton', 'resetScrollPosition', 'searchChoices', 'searchFields', 'searchable', 'valueComparer'],
+  methods: ['setValue', 'setChoiceByValue', 'setChoices', 'clearChoices', 'clearStore', 'clearInput']
 })
 @Component({
   selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['addItemFilter', 'addItemText', 'addItems', 'appendValue', 'callbackOnCreateTemplates', 'callbackOnInit', 'classNames', 'customAddItemText', 'delimiter', 'duplicateItemsAllowed', 'editItems', 'fuseOptions', 'itemSelectText', 'items', 'loadingText', 'maxItemCount', 'maxItemText', 'multiple', 'noChoicesText', 'noResultsText', 'options', 'paste', 'placeholder', 'placeholderValue', 'position', 'prependValue', 'removeItemButton', 'removeItems', 'renderChoiceLimit', 'renderSelectedChoices', 'resetScrollPosition', 'searchChoices', 'searchEnabled', 'searchFields', 'searchFloor', 'searchPlaceholderValue', 'searchResultLimit', 'shouldSort', 'shouldSortItems', 'silent', 'sorter', 'uniqueItemText', 'valueComparer']
+  inputs: ['addItemFilter', 'addItems', 'choices', 'delimiter', 'disabled', 'editItems', 'items', 'maxItemCount', 'multiple', 'paste', 'placeholder', 'position', 'removeItemButton', 'resetScrollPosition', 'searchChoices', 'searchFields', 'searchable', 'valueComparer']
 })
 export class CatSelect {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catSelectChange']);
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 

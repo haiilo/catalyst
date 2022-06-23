@@ -15,15 +15,6 @@
 | `variant` | `variant` | The rendering style of the skeleton.                                                                                                                   | `"body" \| "circle" \| "head" \| "rectangle" \| "square"` | `'rectangle'` |
 
 
-## CSS Custom Properties
-
-| Name           | Description                           |
-| -------------- | ------------------------------------- |
-| `--background` | The background color of the skeleton. |
-| `--highlight`  | The highlight color of the skeleton.  |
-| `--speed`      | The animation speed.                  |
-
-
 ----------------------------------------------
 
 Made with love in Hamburg, Germany
