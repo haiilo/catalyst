@@ -353,6 +353,39 @@ export class CatScrollable {
 }
 
 
+export declare interface CatSelect extends Components.CatSelect {
+  /**
+   * Emitted when the value is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the search is triggered. 
+   */
+  catSearch: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['choices', 'disabled', 'items', 'multiple', 'noSearch', 'placeholder', 'position'],
+  methods: ['setValue', 'setChoices', 'clearChoices', 'clearInput']
+})
+@Component({
+  selector: 'cat-select',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['choices', 'disabled', 'items', 'multiple', 'noSearch', 'placeholder', 'position']
+})
+export class CatSelect {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catSearch']);
+  }
+}
+
+
 export declare interface CatSkeleton extends Components.CatSkeleton {}
 
 @ProxyCmp({

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
+import { Choice, Group, Item } from "choices.js";
 export namespace Components {
     interface CatAlert {
         /**
@@ -388,6 +389,52 @@ export namespace Components {
          */
         "scrolledBuffer": number;
     }
+    interface CatSelect {
+        /**
+          * The available options for the input.
+         */
+        "choices": Choice[];
+        /**
+          * Clear all choices from select.
+         */
+        "clearChoices": () => Promise<this>;
+        /**
+          * Clear input of any user inputted text.
+         */
+        "clearInput": () => Promise<this>;
+        /**
+          * Disable the select.
+         */
+        "disabled": boolean;
+        /**
+          * The pre-selected items for the input.
+         */
+        "items": Choice[] | string[];
+        /**
+          * Enable multiple selection.
+         */
+        "multiple": boolean;
+        /**
+          * Enable search for the select.
+         */
+        "noSearch": boolean;
+        /**
+          * The placeholder for the select.
+         */
+        "placeholder": string;
+        /**
+          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
+         */
+        "position": 'auto' | 'top' | 'bottom';
+        /**
+          * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
+         */
+        "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
+        /**
+          * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
+         */
+        "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -579,6 +626,46 @@ export namespace Components {
         "showDelay": number;
     }
 }
+export interface CatButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatButtonElement;
+}
+export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatCheckboxElement;
+}
+export interface CatInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatInputElement;
+}
+export interface CatMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatMenuElement;
+}
+export interface CatRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatRadioElement;
+}
+export interface CatScrollableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatScrollableElement;
+}
+export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatSelectElement;
+}
+export interface CatTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTabElement;
+}
+export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTextareaElement;
+}
+export interface CatToggleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatToggleElement;
+}
 declare global {
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
     }
@@ -652,6 +739,12 @@ declare global {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
+    interface HTMLCatSelectElement extends Components.CatSelect, HTMLStencilElement {
+    }
+    var HTMLCatSelectElement: {
+        prototype: HTMLCatSelectElement;
+        new (): HTMLCatSelectElement;
+    };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
@@ -713,6 +806,7 @@ declare global {
         "cat-modal": HTMLCatModalElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-scrollable": HTMLCatScrollableElement;
+        "cat-select": HTMLCatSelectElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
@@ -834,15 +928,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatButtonCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the button is clicked.
          */
-        "onCatClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onCatClick"?: (event: CatButtonCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the button received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatButtonCustomEvent<FocusEvent>) => void;
         /**
           * Use round button edges.
          */
@@ -906,15 +1000,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the checkbox is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the checkbox received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the checkbox
          */
@@ -994,15 +1088,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatInputCustomEvent<any>) => void;
         /**
           * Emitted when the input received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatInputCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the input.
          */
@@ -1040,11 +1134,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the menu is closed.
          */
-        "onCatClose"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatClose"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the menu is opened.
          */
-        "onCatOpen"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
         /**
           * The placement of the menu.
          */
@@ -1084,15 +1178,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatRadioCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the radio is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatRadioCustomEvent<any>) => void;
         /**
           * Emitted when the radio received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatRadioCustomEvent<FocusEvent>) => void;
         /**
           * Whether the radio is required.
          */
@@ -1130,23 +1224,61 @@ declare namespace LocalJSX {
         /**
           * Emitted when the content is fully scrolled to the bottom.
          */
-        "onScrolledBottom"?: (event: CustomEvent<void>) => void;
+        "onScrolledBottom"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the left.
          */
-        "onScrolledLeft"?: (event: CustomEvent<void>) => void;
+        "onScrolledLeft"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the right.
          */
-        "onScrolledRight"?: (event: CustomEvent<void>) => void;
+        "onScrolledRight"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the top.
          */
-        "onScrolledTop"?: (event: CustomEvent<void>) => void;
+        "onScrolledTop"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Buffer to be used to calculate the scroll distance.
          */
         "scrolledBuffer"?: number;
+    }
+    interface CatSelect {
+        /**
+          * The available options for the input.
+         */
+        "choices"?: Choice[];
+        /**
+          * Disable the select.
+         */
+        "disabled"?: boolean;
+        /**
+          * The pre-selected items for the input.
+         */
+        "items"?: Choice[] | string[];
+        /**
+          * Enable multiple selection.
+         */
+        "multiple"?: boolean;
+        /**
+          * Enable search for the select.
+         */
+        "noSearch"?: boolean;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
+        /**
+          * Emitted when the search is triggered.
+         */
+        "onCatSearch"?: (event: CatSelectCustomEvent<any>) => void;
+        /**
+          * The placeholder for the select.
+         */
+        "placeholder"?: string;
+        /**
+          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
+         */
+        "position"?: 'auto' | 'top' | 'bottom';
     }
     interface CatSkeleton {
         /**
@@ -1200,7 +1332,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when tab is clicked.
          */
-        "onTabClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onTabClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -1252,15 +1384,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the textarea received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatTextareaCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the input.
          */
@@ -1312,15 +1444,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the toggle is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatToggleCustomEvent<any>) => void;
         /**
           * Emitted when the toggle received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the toggle
          */
@@ -1369,6 +1501,7 @@ declare namespace LocalJSX {
         "cat-modal": CatModal;
         "cat-radio": CatRadio;
         "cat-scrollable": CatScrollable;
+        "cat-select": CatSelect;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
@@ -1395,6 +1528,7 @@ declare module "@stencil/core" {
             "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
+            "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;

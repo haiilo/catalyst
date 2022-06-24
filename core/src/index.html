@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>
+    <h2>Select</h2>
+    <div style="width: 400px; display: flex; flex-direction: column; padding: 10px; gap: 0.5rem">
+      <cat-select></cat-select>
+      <cat-select class="second" multiple placeholder="fssdf"></cat-select>
+      <cat-select class="third" multiple></cat-select>
+      <cat-select class="fourth" multiple></cat-select>
+    </div>
     <h3>Modal</h3>
     <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
     <cat-modal id="modal-s" size="s"><cat-input label="Label" /><cat-button>aloo</cat-button></cat-modal>
@@ -643,6 +650,86 @@ Here is some code
       <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
     </div>
+    <script>
+      const select = document.querySelector('cat-select');
+      const select2 = document.querySelector('cat-select.second');
+      const select3 = document.querySelector('cat-select.third');
+      const select4 = document.querySelector('cat-select.fourth');
+      select.choices = [
+        {
+          value: '1',
+          label: 'select option 1 select option 1 extra large'
+        },
+        {
+          value: '2',
+          label: 'select option 2'
+        },
+        {
+          value: '3',
+          label: 'select option 31231'
+        }
+      ];
+      select2.choices = [
+        {
+          value: '1',
+          label: 'select option 1 extra large extra large'
+        },
+        {
+          value: '2',
+          label: 'select option 2',
+          selected: true
+        },
+        {
+          value: '3',
+          label: 'select option 31231'
+        }
+      ];
+      select3.choices = [
+        {
+          label: 'Group one',
+          disabled: false,
+          choices: [
+            { value: 'Child One', label: 'Child One', selected: true },
+            { value: 'Child Two', label: 'Child Two' },
+            { value: 'Child Three', label: 'Child Three' }
+          ]
+        },
+        {
+          label: 'Group two',
+          disabled: false,
+          choices: [
+            { value: 'Child Four', label: 'Child Four', disabled: true },
+            { value: 'Child Five', label: 'Child Five' },
+            { value: 'Child Six', label: 'Child Six' }
+          ]
+        }
+      ];
+      select4.choices = [
+        {
+          label: 'Group one',
+          disabled: false,
+          choices: [
+            {
+              value: 'Child Seven',
+              label: 'Child Seven',
+              disabled: true,
+              customProperties: { imageUrl: 'https://picsum.photos/20' }
+            },
+            { value: 'Child Eight', label: 'Child Eight', customProperties: { imageUrl: 'https://picsum.photos/20' } },
+            { value: 'Child Nine', label: 'Child Nine', customProperties: { imageUrl: 'https://picsum.photos/20' } }
+          ]
+        },
+        {
+          label: 'Group two',
+          disabled: false,
+          choices: [
+            { value: 'Child Four', label: 'Child Four', disabled: true },
+            { value: 'Child Five', label: 'Child Five' },
+            { value: 'Child Six', label: 'Child Six' }
+          ]
+        }
+      ];
+    </script>
   </body>
   <script>
     const modalS = document.querySelector('#modal-s');

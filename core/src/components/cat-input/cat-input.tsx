@@ -185,7 +185,7 @@ export class CatInput {
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
-                  ({this.i18n.getMessage('input.optional')})
+                  ({this.i18n.t('input.optional')})
                 </span>
               )}
             </span>
@@ -235,7 +235,7 @@ export class CatInput {
                 icon-only="true"
                 size="s"
                 variant="text"
-                a11y-label={this.i18n.getMessage('input.clear')}
+                a11y-label={this.i18n.t('input.clear')}
                 onClick={this.clear.bind(this)}
               ></cat-button>
             )}
