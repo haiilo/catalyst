@@ -626,6 +626,46 @@ export namespace Components {
         "showDelay": number;
     }
 }
+export interface CatButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatButtonElement;
+}
+export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatCheckboxElement;
+}
+export interface CatInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatInputElement;
+}
+export interface CatMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatMenuElement;
+}
+export interface CatRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatRadioElement;
+}
+export interface CatScrollableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatScrollableElement;
+}
+export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatSelectElement;
+}
+export interface CatTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTabElement;
+}
+export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTextareaElement;
+}
+export interface CatToggleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatToggleElement;
+}
 declare global {
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
     }
@@ -888,15 +928,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatButtonCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the button is clicked.
          */
-        "onCatClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onCatClick"?: (event: CatButtonCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the button received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatButtonCustomEvent<FocusEvent>) => void;
         /**
           * Use round button edges.
          */
@@ -960,15 +1000,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the checkbox is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the checkbox received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the checkbox
          */
@@ -1048,15 +1088,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatInputCustomEvent<any>) => void;
         /**
           * Emitted when the input received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatInputCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the input.
          */
@@ -1094,11 +1134,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the menu is closed.
          */
-        "onCatClose"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatClose"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the menu is opened.
          */
-        "onCatOpen"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
         /**
           * The placement of the menu.
          */
@@ -1138,15 +1178,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatRadioCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the radio is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatRadioCustomEvent<any>) => void;
         /**
           * Emitted when the radio received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatRadioCustomEvent<FocusEvent>) => void;
         /**
           * Whether the radio is required.
          */
@@ -1184,19 +1224,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the content is fully scrolled to the bottom.
          */
-        "onScrolledBottom"?: (event: CustomEvent<void>) => void;
+        "onScrolledBottom"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the left.
          */
-        "onScrolledLeft"?: (event: CustomEvent<void>) => void;
+        "onScrolledLeft"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the right.
          */
-        "onScrolledRight"?: (event: CustomEvent<void>) => void;
+        "onScrolledRight"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Emitted when the content is fully scrolled to the top.
          */
-        "onScrolledTop"?: (event: CustomEvent<void>) => void;
+        "onScrolledTop"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Buffer to be used to calculate the scroll distance.
          */
@@ -1226,11 +1266,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
         /**
           * Emitted when the search is triggered.
          */
-        "onCatSearch"?: (event: CustomEvent<any>) => void;
+        "onCatSearch"?: (event: CatSelectCustomEvent<any>) => void;
         /**
           * The placeholder for the select.
          */
@@ -1292,7 +1332,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when tab is clicked.
          */
-        "onTabClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onTabClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -1344,15 +1384,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the textarea received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatTextareaCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the input.
          */
@@ -1404,15 +1444,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onCatBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the toggle is changed.
          */
-        "onCatChange"?: (event: CustomEvent<any>) => void;
+        "onCatChange"?: (event: CatToggleCustomEvent<any>) => void;
         /**
           * Emitted when the toggle received focus.
          */
-        "onCatFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onCatFocus"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the toggle
          */

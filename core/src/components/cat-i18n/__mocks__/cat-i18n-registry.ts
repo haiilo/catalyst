@@ -1,13 +1,6 @@
 export class CatI18nRegistry {
-  private static instance: CatI18nRegistry;
-
-  private constructor() {}
-
   static getInstance() {
-    if (!CatI18nRegistry.instance) {
-      CatI18nRegistry.instance = new CatI18nRegistry();
-    }
-    return CatI18nRegistry.instance;
+    return new CatI18nRegistry();
   }
 
   locale(_locale?: string): string {
