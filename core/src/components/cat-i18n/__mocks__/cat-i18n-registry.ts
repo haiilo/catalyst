@@ -10,19 +10,19 @@ export class CatI18nRegistry {
     return CatI18nRegistry.instance;
   }
 
-  locale(locale?: string): string {
+  locale(_locale?: string): string {
     return '';
   }
 
-  register(locale: string, i18n: { [key: string]: string }): void {
+  register(_locale: string, _i18n: { [key: string]: string }): void {
     // NOOP
   }
 
-  clear(locale?: string): void {
+  clear(_locale?: string): void {
     // NOOP
   }
 
-  t(key: string, params?: { [key: string]: string | number }): string {
+  t(key: string, _params?: { [key: string]: string | number }): string {
     return key;
   }
 }
