@@ -7,8 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
-import { Option } from "./components/cat-select/cat-select";
-import { Choice, Group, Item, Types } from "choices.js";
+import { Choice, Group, Item } from "choices.js";
 export namespace Components {
     interface CatAlert {
         /**
@@ -391,30 +390,50 @@ export namespace Components {
         "scrolledBuffer": number;
     }
     interface CatSelect {
-        "addItemFilter"?: string | RegExp | Types.FilterFunction | null;
-        "addItems": boolean;
-        "choices"?: Option[];
+        /**
+          * The available options for the input.
+         */
+        "choices": Choice[];
+        /**
+          * Clear all choices from select.
+         */
         "clearChoices": () => Promise<this>;
+        /**
+          * Clear input of any user inputted text.
+         */
         "clearInput": () => Promise<this>;
-        "clearStore": () => Promise<this>;
-        "delimiter": string;
+        /**
+          * Disable the select.
+         */
         "disabled": boolean;
-        "editItems": boolean;
-        "items"?: Array<string> | Array<Choice>;
-        "maxItemCount": boolean;
+        /**
+          * The pre-selected items for the input.
+         */
+        "items": Choice[] | string[];
+        /**
+          * Enable multiple selection.
+         */
         "multiple": boolean;
-        "paste": boolean;
+        /**
+          * Enable search for the select.
+         */
+        "noSearch": boolean;
+        /**
+          * The placeholder for the select.
+         */
         "placeholder": string;
+        /**
+          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
+         */
         "position": 'auto' | 'top' | 'bottom';
-        "removeItemButton": boolean;
-        "resetScrollPosition": boolean;
-        "searchChoices": boolean;
-        "searchFields"?: Array<string> | string;
-        "searchable": boolean;
-        "setChoiceByValue": (value: string) => Promise<this>;
+        /**
+          * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
+         */
         "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
+        /**
+          * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
+         */
         "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
-        "valueComparer"?: Types.ValueCompareFunction;
     }
     interface CatSkeleton {
         /**
@@ -1184,25 +1203,42 @@ declare namespace LocalJSX {
         "scrolledBuffer"?: number;
     }
     interface CatSelect {
-        "addItemFilter"?: string | RegExp | Types.FilterFunction | null;
-        "addItems"?: boolean;
-        "choices"?: Option[];
-        "delimiter"?: string;
+        /**
+          * The available options for the input.
+         */
+        "choices"?: Choice[];
+        /**
+          * Disable the select.
+         */
         "disabled"?: boolean;
-        "editItems"?: boolean;
-        "items"?: Array<string> | Array<Choice>;
-        "maxItemCount"?: boolean;
+        /**
+          * The pre-selected items for the input.
+         */
+        "items"?: Choice[] | string[];
+        /**
+          * Enable multiple selection.
+         */
         "multiple"?: boolean;
+        /**
+          * Enable search for the select.
+         */
+        "noSearch"?: boolean;
+        /**
+          * Emitted when the value is changed.
+         */
         "onCatChange"?: (event: CustomEvent<any>) => void;
-        "paste"?: boolean;
+        /**
+          * Emitted when the search is triggered.
+         */
+        "onCatSearch"?: (event: CustomEvent<any>) => void;
+        /**
+          * The placeholder for the select.
+         */
         "placeholder"?: string;
+        /**
+          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
+         */
         "position"?: 'auto' | 'top' | 'bottom';
-        "removeItemButton"?: boolean;
-        "resetScrollPosition"?: boolean;
-        "searchChoices"?: boolean;
-        "searchFields"?: Array<string> | string;
-        "searchable"?: boolean;
-        "valueComparer"?: Types.ValueCompareFunction;
     }
     interface CatSkeleton {
         /**

@@ -1,2 +1,5 @@
 export type Item = {};
-export default class Choices {}
+
+export default class Choices {
+  setChoices: () => {}
+}

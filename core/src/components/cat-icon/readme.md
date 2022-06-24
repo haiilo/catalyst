@@ -19,13 +19,6 @@
 | `"icon"` | The span element wrapping the SVG icon. |
 
 
-## CSS Custom Properties
-
-| Name               | Description                     |
-| ------------------ | ------------------------------- |
-| `--cat-icon-ratio` | The aspect ratio of the avatar. |
-
-
 ## Dependencies
 
 ### Used by

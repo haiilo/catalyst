@@ -7,40 +7,30 @@
 
 ## Properties
 
-| Property              | Attribute               | Description | Type                                                                    | Default     |
-| --------------------- | ----------------------- | ----------- | ----------------------------------------------------------------------- | ----------- |
-| `addItemFilter`       | `add-item-filter`       |             | `((value: string) => boolean) \| RegExp \| null \| string \| undefined` | `undefined` |
-| `addItems`            | `add-items`             |             | `boolean`                                                               | `true`      |
-| `choices`             | --                      |             | `Option[] \| undefined`                                                 | `undefined` |
-| `delimiter`           | `delimiter`             |             | `string`                                                                | `''`        |
-| `disabled`            | `disabled`              |             | `boolean`                                                               | `false`     |
-| `editItems`           | `edit-items`            |             | `boolean`                                                               | `false`     |
-| `items`               | --                      |             | `Choice[] \| string[] \| undefined`                                     | `undefined` |
-| `maxItemCount`        | `max-item-count`        |             | `boolean`                                                               | `false`     |
-| `multiple`            | `multiple`              |             | `boolean`                                                               | `false`     |
-| `paste`               | `paste`                 |             | `boolean`                                                               | `false`     |
-| `placeholder`         | `placeholder`           |             | `string`                                                                | `''`        |
-| `position`            | `position`              |             | `"auto" \| "bottom" \| "top"`                                           | `'auto'`    |
-| `removeItemButton`    | `remove-item-button`    |             | `boolean`                                                               | `true`      |
-| `resetScrollPosition` | `reset-scroll-position` |             | `boolean`                                                               | `false`     |
-| `searchChoices`       | `search-choices`        |             | `boolean`                                                               | `true`      |
-| `searchFields`        | `search-fields`         |             | `string \| string[] \| undefined`                                       | `undefined` |
-| `searchable`          | `searchable`            |             | `boolean`                                                               | `true`      |
-| `valueComparer`       | --                      |             | `((value1: string, value2: string) => boolean) \| undefined`            | `undefined` |
+| Property      | Attribute     | Description                                                                                                                                                                                              | Type                          | Default  |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | -------- |
+| `choices`     | --            | The available options for the input.                                                                                                                                                                     | `Choice[]`                    | `[]`     |
+| `disabled`    | `disabled`    | Disable the select.                                                                                                                                                                                      | `boolean`                     | `false`  |
+| `items`       | --            | The pre-selected items for the input.                                                                                                                                                                    | `Choice[] \| string[]`        | `[]`     |
+| `multiple`    | `multiple`    | Enable multiple selection.                                                                                                                                                                               | `boolean`                     | `false`  |
+| `noSearch`    | `no-search`   | Enable search for the select.                                                                                                                                                                            | `boolean`                     | `false`  |
+| `placeholder` | `placeholder` | The placeholder for the select.                                                                                                                                                                          | `string`                      | `''`     |
+| `position`    | `position`    | Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it. | `"auto" \| "bottom" \| "top"` | `'auto'` |
 
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `catChange` |             | `CustomEvent<any>` |
+| Event       | Description                           | Type               |
+| ----------- | ------------------------------------- | ------------------ |
+| `catChange` | Emitted when the value is changed.    | `CustomEvent<any>` |
+| `catSearch` | Emitted when the search is triggered. | `CustomEvent<any>` |
 
 
 ## Methods
 
 ### `clearChoices() => Promise<this>`
 
-
+Clear all choices from select.
 
 #### Returns
 
@@ -50,27 +40,7 @@ Type: `Promise<this>`
 
 ### `clearInput() => Promise<this>`
 
-
-
-#### Returns
-
-Type: `Promise<this>`
-
-
-
-### `clearStore() => Promise<this>`
-
-
-
-#### Returns
-
-Type: `Promise<this>`
-
-
-
-### `setChoiceByValue(value: string) => Promise<this>`
-
-
+Clear input of any user inputted text.
 
 #### Returns
 
@@ -80,7 +50,9 @@ Type: `Promise<this>`
 
 ### `setChoices(choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>`
 
-
+Set choices of select input via an array of objects (or function that
+returns array of object or promise of it), a value field name and a label
+field name.
 
 #### Returns
 
@@ -90,7 +62,9 @@ Type: `Promise<this>`
 
 ### `setValue(args: Array<string> | Array<Item>) => Promise<this>`
 
-
+Set value of input based on an array of objects or strings. This behaves
+exactly the same as passing items via the items option but can be called
+after initialisation.
 
 #### Returns
 

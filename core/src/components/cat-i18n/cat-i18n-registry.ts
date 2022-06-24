@@ -45,14 +45,12 @@ export class CatI18nRegistry {
     }
   }
 
-  t(key: string, params?: { [key: string]: string | number }): string | undefined {
+  t(key: string, params?: { [key: string]: string | number }): string {
     const message = this._dicts.get(this._locale)?.get(key);
     if (!message) {
       log.error(`[CatI18nRegistry] Unknown message for ${this._locale}: ${key}`);
     }
-    return message?.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => {
-      return `${params?.[key] ?? ''}`;
-    });
+    return message?.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => `${params?.[key] ?? ''}`) || '';
   }
 
   private buildEvent<T>(name: string, detail?: T) {
