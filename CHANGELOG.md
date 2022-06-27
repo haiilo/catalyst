@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/haiilo/catalyst/compare/v0.8.0...v0.8.1) (2022-06-24)
+
+## [0.8.0](https://github.com/haiilo/catalyst/compare/v0.7.0...v0.8.0) (2022-06-24)
+
+
+### Features
+
+* **core:** added select ([#26](https://github.com/haiilo/catalyst/issues/26)) ([c24557a](https://github.com/haiilo/catalyst/commit/c24557a5e9bdae6993a580a135c16276a38120cd))
+* **core:** icon component supports icons with a non 24px*24px viewbox ([63438c0](https://github.com/haiilo/catalyst/commit/63438c0d1bbea9fff08611ba9105e5b3e3f773a8))
+* **core:** implement modal ([#22](https://github.com/haiilo/catalyst/issues/22)) ([3bd53fd](https://github.com/haiilo/catalyst/commit/3bd53fd9a1122c26eeea8b6366a32c59e5c63187))
+
+
+### Bug Fixes
+
+* **angular:** added missing exports ([4e1cf92](https://github.com/haiilo/catalyst/commit/4e1cf92f95a723505afe882ace868276c18f4578))
+* **core:** index imports ([4ef2dbb](https://github.com/haiilo/catalyst/commit/4ef2dbb835336b2c1daf01eb55aef1298975fedd))
+* **core:** slotted labels are displayed correctly ([e887985](https://github.com/haiilo/catalyst/commit/e887985e56f32620b50c6519ec4a4cf79e3b59a0))
+
 ### [0.7.1](https://github.com/haiilo/catalyst/compare/v0.7.0...v0.7.1) (2022-06-13)
 
 
