@@ -85,7 +85,7 @@ export class CatSelect {
   setChoicesHandler(choices: Choice[]) {
     if (!choices?.length) return;
 
-    this.setChoices(choices,'value', 'label', true);
+    this.setChoices(choices, 'value', 'label', true);
   }
 
   componentDidLoad(): void {
