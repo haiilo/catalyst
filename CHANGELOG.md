@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/haiilo/catalyst/compare/v0.8.1...v0.8.2) (2022-06-27)
+
+
+### Features
+
+* **core:** added select and modal components in declarations and exports ([#32](https://github.com/haiilo/catalyst/issues/32)) ([2be7173](https://github.com/haiilo/catalyst/commit/2be71730e8902aef629cc991ece7358c732a4edc))
+
 ### [0.8.1](https://github.com/haiilo/catalyst/compare/v0.8.0...v0.8.1) (2022-06-24)
 
 ## [0.8.0](https://github.com/haiilo/catalyst/compare/v0.7.0...v0.8.0) (2022-06-24)

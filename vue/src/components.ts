@@ -160,7 +160,7 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'labelHidden',
   'required',
   'choices',
-  'items',
+  'value',
   'disabled',
   'multiple',
   'placeholder',

@@ -407,22 +407,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Optional hint text(s) to be displayed with the select.
-         */
-        "hint"?: string | string[];
-        /**
-          * The pre-selected items for the input.
-         */
-        "items": Choice[] | string[];
-        /**
-          * The label for the select.
-         */
-        "label": string;
-        /**
-          * Visually hide the label, but still show it to assistive technologies like screen readers.
-         */
-        "labelHidden": boolean;
-        /**
           * Enable multiple selection.
          */
         "multiple": boolean;
@@ -439,10 +423,6 @@ export namespace Components {
          */
         "position": 'auto' | 'top' | 'bottom';
         /**
-          * A value is required or must be check for the form to be submittable.
-         */
-        "required": boolean;
-        /**
           * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
          */
         "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
@@ -450,6 +430,10 @@ export namespace Components {
           * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
          */
         "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
+        /**
+          * The pre-selected items for the input.
+         */
+        "value"?: string | string[] | Choice | Choice[];
     }
     interface CatSkeleton {
         /**
@@ -1268,22 +1252,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text(s) to be displayed with the select.
-         */
-        "hint"?: string | string[];
-        /**
-          * The pre-selected items for the input.
-         */
-        "items"?: Choice[] | string[];
-        /**
-          * The label for the select.
-         */
-        "label"?: string;
-        /**
-          * Visually hide the label, but still show it to assistive technologies like screen readers.
-         */
-        "labelHidden"?: boolean;
-        /**
           * Enable multiple selection.
          */
         "multiple"?: boolean;
@@ -1308,9 +1276,9 @@ declare namespace LocalJSX {
          */
         "position"?: 'auto' | 'top' | 'bottom';
         /**
-          * A value is required or must be check for the form to be submittable.
+          * The pre-selected items for the input.
          */
-        "required"?: boolean;
+        "value"?: string | string[] | Choice | Choice[];
     }
     interface CatSkeleton {
         /**

@@ -68,7 +68,7 @@ export class CatSelect {
   /**
    * The pre-selected items for the input.
    */
-  @Prop() items: Choice[] | string[] = [];
+  @Prop({ mutable: true }) value?: string | string[] | Choice | Choice[];
 
   /**
    * Disable the select.
@@ -216,9 +216,10 @@ export class CatSelect {
   }
 
   private init() {
+    const value = this.value || [];
     const config = {
       allowHTML: true,
-      items: this.items,
+      items: Array.isArray(value) ? value : ([value] as string[] | Choice[]),
       removeItemButton: true,
       duplicateItemsAllowed: false,
       delimiter: '',
@@ -321,6 +322,7 @@ export class CatSelect {
   }
 
   private onChange() {
+    this.value = this.choice?.getValue();
     this.catChange.emit(this.choice?.getValue());
     if (this.multiple) {
       this.updateRemoveItemButtonVisibility();

@@ -367,14 +367,14 @@ export declare interface CatSelect extends Components.CatSelect {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['choices', 'disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'noSearch', 'placeholder', 'position', 'required'],
+  inputs: ['choices', 'disabled', 'multiple', 'noSearch', 'placeholder', 'position', 'value'],
   methods: ['setValue', 'setChoices', 'clearChoices', 'clearInput']
 })
 @Component({
   selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['choices', 'disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'noSearch', 'placeholder', 'position', 'required']
+  inputs: ['choices', 'disabled', 'multiple', 'noSearch', 'placeholder', 'position', 'value']
 })
 export class CatSelect {
   protected el: HTMLElement;
