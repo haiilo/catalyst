@@ -1,6 +1,10 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import Choices, { Choice, ClassNames, Group, Item, Options } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+
+let nextUniqueId = 0;
 
 const getOptionTemplate = (data: Item): string => {
   if (data.customProperties?.imageUrl) {
@@ -18,6 +22,10 @@ const getOptionTemplate = (data: Item): string => {
  * Select lets user choose one option from an options menu. Consider using
  * select when you have 6 or more options. Select component supports any content
  * type.
+ *
+ * @slot hint - Optional hint element to be displayed with the select.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @part label - The label content.
  */
 @Component({
   tag: 'cat-select',
@@ -26,6 +34,7 @@ const getOptionTemplate = (data: Item): string => {
 })
 export class CatSelect {
   private readonly i18n = CatI18nRegistry.getInstance();
+  private readonly id = `cat-select-${nextUniqueId++}`;
 
   private choice?: Choices;
   private choiceInner?: Element;
@@ -33,6 +42,23 @@ export class CatSelect {
   private removeElement?: HTMLCatButtonElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
+  /**
+   * The label for the select.
+   */
+  @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
+   * A value is required or must be check for the form to be submittable.
+   */
+  @Prop() required = false;
 
   /**
    * The available options for the input.
@@ -72,6 +98,11 @@ export class CatSelect {
   @Prop() noSearch = false;
 
   /**
+   * Optional hint text(s) to be displayed with the select.
+   */
+  @Prop() hint?: string | string[];
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -80,6 +111,13 @@ export class CatSelect {
    * Emitted when the search is triggered.
    */
   @Event() catSearch!: EventEmitter;
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
+      log.error('[A11y] Missing ARIA label on select', this);
+    }
+  }
 
   componentDidLoad(): void {
     this.init();
@@ -154,13 +192,32 @@ export class CatSelect {
   render() {
     return (
       <Host>
-        <select ref={el => (this.selectElement = el)} multiple={this.multiple} disabled={this.disabled}></select>
+        {(this.hasSlottedLabel || this.label) && (
+          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+            <span part="label">
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+              {!this.required && (
+                <span class="input-optional" aria-hidden="true">
+                  ({this.i18n.t('input.optional')})
+                </span>
+              )}
+            </span>
+          </label>
+        )}
+        <select
+          id={this.id}
+          ref={el => (this.selectElement = el)}
+          multiple={this.multiple}
+          disabled={this.disabled}
+        ></select>
+        {this.hintSection}
       </Host>
     );
   }
 
   private init() {
     const config = {
+      allowHTML: true,
       items: this.items,
       removeItemButton: true,
       duplicateItemsAllowed: false,
@@ -252,6 +309,15 @@ export class CatSelect {
       : { ...config, ...configSingle };
     this.choice = new Choices(this.selectElement, settings);
     this.choice.setChoices(this.choices);
+  }
+
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
+    );
   }
 
   private onChange() {

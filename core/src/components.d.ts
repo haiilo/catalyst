@@ -407,9 +407,21 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
           * The pre-selected items for the input.
          */
         "items": Choice[] | string[];
+        /**
+          * The label for the select.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
         /**
           * Enable multiple selection.
          */
@@ -426,6 +438,10 @@ export namespace Components {
           * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
          */
         "position": 'auto' | 'top' | 'bottom';
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
         /**
           * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
          */
@@ -1252,9 +1268,21 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
           * The pre-selected items for the input.
          */
         "items"?: Choice[] | string[];
+        /**
+          * The label for the select.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
         /**
           * Enable multiple selection.
          */
@@ -1279,6 +1307,10 @@ declare namespace LocalJSX {
           * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
          */
         "position"?: 'auto' | 'top' | 'bottom';
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
     }
     interface CatSkeleton {
         /**

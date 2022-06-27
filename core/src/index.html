@@ -13,11 +13,13 @@
   </head>
   <body>
     <h2>Select</h2>
-    <div style="width: 400px; display: flex; flex-direction: column; padding: 10px; gap: 0.5rem">
-      <cat-select></cat-select>
-      <cat-select class="second" multiple placeholder="fssdf"></cat-select>
-      <cat-select class="third" multiple></cat-select>
-      <cat-select class="fourth" multiple></cat-select>
+    <div style="width: 400px; display: flex; flex-direction: column; padding-left: 10px">
+      <cat-select label="Label"></cat-select>
+      <cat-select class="second" multiple placeholder="fssdf"><span slot="label">Slot Label</span></cat-select>
+      <cat-select class="third" multiple label="label" label-hidden hint="This is a hint!">
+        <span slot="hint">This is another!</span>
+      </cat-select>
+      <cat-select class="fourth" multiple label="Label"><span slot="label">Priority Label</span></cat-select>
     </div>
     <h3>Modal</h3>
     <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
@@ -159,7 +161,7 @@
     </cat-card>
 
     <h2>Checkbox</h2>
-    <cat-checkbox label="Toggle" hint="This is a hint!"><span slot="hint">This is another!</span>></cat-checkbox>
+    <cat-checkbox label="Toggle" hint="This is a hint!"><span slot="hint">This is another!</span></cat-checkbox>
     <cat-checkbox label="Label"></cat-checkbox>
     <cat-checkbox><label slot="label">Slotted Label</label></cat-checkbox>
     <cat-checkbox label="Disabled" disabled></cat-checkbox>
