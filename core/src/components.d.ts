@@ -429,7 +429,7 @@ export namespace Components {
         /**
           * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
          */
-        "setChoices": (choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>;
+        "setChoices": (choices: Array<Choice> | Array<Group>, value?: string | undefined, label?: string | undefined, replaceChoices?: boolean | undefined) => Promise<this>;
         /**
           * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
          */

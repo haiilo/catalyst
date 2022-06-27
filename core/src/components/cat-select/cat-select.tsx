@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
 import Choices, { Choice, ClassNames, Group, Item, Options } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
@@ -6,7 +6,7 @@ const getOptionTemplate = (data: Item): string => {
   if (data.customProperties?.imageUrl) {
     return `
     <div class="d-flex align-items-center">
-      <img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />
+      <img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />
       ${data.label}
     </div>
     `;
@@ -81,6 +81,13 @@ export class CatSelect {
    */
   @Event() catSearch!: EventEmitter;
 
+  @Watch('choices')
+  setChoicesHandler(choices: Choice[]) {
+    if (!choices?.length) return;
+
+    this.setChoices(choices,'value', 'label', true);
+  }
+
   componentDidLoad(): void {
     this.init();
     this.choiceInner = this.hostElement.attachInternals?.().shadowRoot?.querySelector('.choices__inner') || undefined;
@@ -125,7 +132,7 @@ export class CatSelect {
    * field name.
    */
   @Method()
-  async setChoices(choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean) {
+  async setChoices(choices: Array<Choice> | Array<Group>, value?: string, label?: string, replaceChoices?: boolean) {
     this.choice?.setChoices(choices, value, label, replaceChoices);
 
     return this;
@@ -189,7 +196,7 @@ export class CatSelect {
         return {
           item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
             const template = data.customProperties?.imageUrl
-              ? `<img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />`
+              ? `<img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />`
               : '';
             return strToEl(
               `
@@ -213,7 +220,7 @@ export class CatSelect {
         return {
           item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
             const template = data.customProperties?.imageUrl
-              ? `<img src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />`
+              ? `<img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />`
               : '';
             return strToEl(
               `<div class="
