@@ -157,7 +157,7 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
 
 export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-select', undefined, [
   'choices',
-  'items',
+  'value',
   'disabled',
   'multiple',
   'placeholder',

@@ -407,10 +407,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * The pre-selected items for the input.
-         */
-        "items": Choice[] | string[];
-        /**
           * Enable multiple selection.
          */
         "multiple": boolean;
@@ -434,6 +430,10 @@ export namespace Components {
           * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
          */
         "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
+        /**
+          * The pre-selected items for the input.
+         */
+        "value"?: string | string[] | Choice | Choice[];
     }
     interface CatSkeleton {
         /**
@@ -1252,10 +1252,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The pre-selected items for the input.
-         */
-        "items"?: Choice[] | string[];
-        /**
           * Enable multiple selection.
          */
         "multiple"?: boolean;
@@ -1279,6 +1275,10 @@ declare namespace LocalJSX {
           * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
          */
         "position"?: 'auto' | 'top' | 'bottom';
+        /**
+          * The pre-selected items for the input.
+         */
+        "value"?: string | string[] | Choice | Choice[];
     }
     interface CatSkeleton {
         /**
