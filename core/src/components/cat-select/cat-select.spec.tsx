@@ -7,12 +7,20 @@ describe('cat-select', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatSelect],
-      html: `<cat-select></cat-select>`
+      html: `<cat-select label="Label"></cat-select>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-select>
+      <cat-select label="Label">
         <mock:shadow-root>
-          <select></select>
+            <label htmlfor="cat-select-0">
+              <span part="label">
+                Label
+                <span aria-hidden="true" class="input-optional">
+                  (input.optional)
+                </span>
+              </span>
+            </label>
+            <select id="cat-select-0"></select>
         </mock:shadow-root>
       </cat-select>
     `);

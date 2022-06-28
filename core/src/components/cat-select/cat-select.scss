@@ -2,20 +2,41 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use '~choices.js/src/styles/base';
+@use 'src/components/cat-form-hint/cat-form-hint';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  @include cat-body('m');
+  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {
   display: none;
 }
 
+label {
+  align-self: flex-start;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+
+  &.hidden {
+    @include cat-visually-hidden;
+  }
+}
+
+.input-optional {
+  margin-left: 0.25rem;
+  @include cat-body('xs');
+  color: cat-token('color.ui.font.muted');
+}
+
 $choices-selector: 'choices' !default;
 $choices-font-size-lg: 16px !default;
 $choices-font-size-md: 15px !default;
 $choices-font-size-sm: 12px !default;
-$choices-guttering: 24px !default;
 $choices-border-radius: 4px !default;
 $choices-border-radius-item: 2px !default;
 $choices-bg-color: #fff !default;
@@ -37,7 +58,6 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
 .#{$choices-selector} {
   position: relative;
   overflow: hidden;
-  margin-bottom: $choices-guttering;
   font-size: $choices-font-size-lg;
 
   &:focus {
