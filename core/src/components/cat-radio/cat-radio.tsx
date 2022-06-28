@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -20,6 +20,7 @@ let nextUniqueId = 0;
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
   private input!: HTMLInputElement;
+  private catRadioGroup!: HTMLCatRadioElement[];
 
   @Element() hostElement!: HTMLElement;
 
@@ -28,7 +29,7 @@ export class CatRadio {
   /**
    * Whether this radio is checked.
    */
-  @Prop() checked = false;
+  @Prop({ mutable: true }) checked = false;
 
   /**
    * Whether this radio is disabled.
@@ -65,6 +66,14 @@ export class CatRadio {
    */
   @Prop() hint?: string | string[];
 
+  @Watch('checked')
+  onCheckedChanged(newValue: boolean) {
+    if (this.catRadioGroup.length && newValue) {
+      const catRadioSiblingGroup = this.catRadioGroup.filter(value1 => value1 !== this.hostElement);
+      catRadioSiblingGroup.forEach(value1 => (value1.checked = false));
+    }
+  }
+
   /**
    * Emitted when the radio is changed.
    */
@@ -79,6 +88,11 @@ export class CatRadio {
    * Emitted when the radio loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
+
+  componentWillLoad() {
+    this.catRadioGroup = Array.from(document.querySelectorAll(`cat-radio[name="${this.name}"]`));
+    this.onCheckedChanged(this.checked);
+  }
 
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
@@ -112,6 +126,7 @@ export class CatRadio {
               checked={this.checked}
               required={this.required}
               disabled={this.disabled}
+              onClick={this.onClick.bind(this)}
               onInput={this.onChange.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
@@ -134,6 +149,10 @@ export class CatRadio {
         <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
       )
     );
+  }
+
+  private onClick() {
+      this.checked = true;
   }
 
   private onChange(event: Event) {
