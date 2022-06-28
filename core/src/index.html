@@ -671,6 +671,14 @@ Here is some code
           label: 'select option 31231'
         }
       ];
+      setTimeout(() => {
+        select.choices = [
+          {
+            value: '1',
+            label: 'select option 1 select option 1 extra large'
+          }
+        ];
+      }, 5000);
       select2.choices = [
         {
           value: '1',
