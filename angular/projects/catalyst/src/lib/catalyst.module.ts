@@ -2,8 +2,16 @@ import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
 import * as Components from './directives/proxies';
+import { TextValueAccessor } from "./directives/text-value-accessor";
+import { SelectValueAccessor } from "./directives/select-value-accessor";
+import { RadioValueAccessor } from "./directives/radio-value-accessor";
+import { BooleanValueAccessor } from "./directives/boolean-value-accessor";
 
 const CatComponents = [
+  TextValueAccessor,
+  SelectValueAccessor,
+  RadioValueAccessor,
+  BooleanValueAccessor,
   Components.CatAlert,
   Components.CatAvatar,
   Components.CatBadge,
