@@ -121,7 +121,7 @@ export class CatSelect {
 
   @Watch('value')
   setItemsHandles(value: string[] | Choice[]) {
-    if (!value?.length) return;
+    if (!value) return;
 
     this.choice?.setValue(value);
   }
