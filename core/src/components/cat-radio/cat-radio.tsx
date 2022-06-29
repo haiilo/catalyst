@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -101,6 +101,18 @@ export class CatRadio {
     }
   }
 
+  componentDidRender(): void {
+    if (this.catRadioGroup.length) {
+      let tabIndex;
+      if (this.catRadioGroup.some(value1 => value1.checked)) {
+        tabIndex = this.checked ? '0' : '-1';
+      } else {
+        tabIndex = this.catRadioGroup[0] === this.hostElement ? '0' : '-1';
+      }
+      this.input.setAttribute('tabindex', tabIndex);
+    }
+  }
+
   /**
    * Sets focus on the radio. Use this method instead of `radio.focus()`.
    *
@@ -110,6 +122,19 @@ export class CatRadio {
   @Method()
   async setFocus(options?: FocusOptions): Promise<void> {
     this.input.focus(options);
+  }
+
+  @Listen('keydown')
+  onKeydown(event: KeyboardEvent): void {
+    if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key) && this.catRadioGroup.length) {
+      const targetElements = this.catRadioGroup;
+      const activeIdx = this.catRadioGroup.findIndex(value1 => value1 === this.hostElement);
+      const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
+      const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
+      targetElements[targetIdx].setFocus();
+      targetElements[targetIdx].shadowRoot?.querySelector('input')?.click();
+      event.preventDefault();
+    }
   }
 
   render() {
