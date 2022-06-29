@@ -69,8 +69,8 @@ export class CatRadio {
   @Watch('checked')
   onCheckedChanged(newValue: boolean) {
     if (this.catRadioGroup.length && newValue) {
-      const catRadioSiblingGroup = this.catRadioGroup.filter(value1 => value1 !== this.hostElement);
-      catRadioSiblingGroup.forEach(value1 => (value1.checked = false));
+      const catRadioSiblingGroup = this.catRadioGroup.filter(catRadio => catRadio !== this.hostElement);
+      catRadioSiblingGroup.forEach(catRadio => (catRadio.checked = false));
     }
   }
 
@@ -115,7 +115,12 @@ export class CatRadio {
   render() {
     return (
       <Host>
-        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+        <label
+          htmlFor={this.id}
+          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}
+          role="radio"
+          aria-checked={this.checked ? 'true' : 'false'}
+        >
           <span class="radio">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
@@ -152,7 +157,7 @@ export class CatRadio {
   }
 
   private onClick() {
-      this.checked = true;
+    this.checked = true;
   }
 
   private onChange(event: Event) {
