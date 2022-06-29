@@ -7,15 +7,19 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                                                                                                                              | Type                          | Default  |
-| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | -------- |
-| `choices`     | --            | The available options for the input.                                                                                                                                                                     | `Choice[]`                    | `[]`     |
-| `disabled`    | `disabled`    | Disable the select.                                                                                                                                                                                      | `boolean`                     | `false`  |
-| `items`       | --            | The pre-selected items for the input.                                                                                                                                                                    | `Choice[] \| string[]`        | `[]`     |
-| `multiple`    | `multiple`    | Enable multiple selection.                                                                                                                                                                               | `boolean`                     | `false`  |
-| `noSearch`    | `no-search`   | Enable search for the select.                                                                                                                                                                            | `boolean`                     | `false`  |
-| `placeholder` | `placeholder` | The placeholder for the select.                                                                                                                                                                          | `string`                      | `''`     |
-| `position`    | `position`    | Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it. | `"auto" \| "bottom" \| "top"` | `'auto'` |
+| Property      | Attribute      | Description                                                                                                                                                                                              | Type                                                    | Default     |
+| ------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| `choices`     | --             | The available options for the input.                                                                                                                                                                     | `Choice[]`                                              | `[]`        |
+| `disabled`    | `disabled`     | Disable the select.                                                                                                                                                                                      | `boolean`                                               | `false`     |
+| `hint`        | `hint`         | Optional hint text(s) to be displayed with the select.                                                                                                                                                   | `string \| string[] \| undefined`                       | `undefined` |
+| `label`       | `label`        | The label for the select.                                                                                                                                                                                | `string`                                                | `''`        |
+| `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers.                                                                                                                | `boolean`                                               | `false`     |
+| `multiple`    | `multiple`     | Enable multiple selection.                                                                                                                                                                               | `boolean`                                               | `false`     |
+| `noSearch`    | `no-search`    | Enable search for the select.                                                                                                                                                                            | `boolean`                                               | `false`     |
+| `placeholder` | `placeholder`  | The placeholder for the select.                                                                                                                                                                          | `string`                                                | `''`        |
+| `position`    | `position`     | Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it. | `"auto" \| "bottom" \| "top"`                           | `'auto'`    |
+| `required`    | `required`     | A value is required or must be check for the form to be submittable.                                                                                                                                     | `boolean`                                               | `false`     |
+| `value`       | `value`        | The pre-selected items for the input.                                                                                                                                                                    | `Choice \| Choice[] \| string \| string[] \| undefined` | `undefined` |
 
 
 ## Events
@@ -48,7 +52,7 @@ Type: `Promise<this>`
 
 
 
-### `setChoices(choices: Array<Choice> | Array<Group>, value: string, label: string, replaceChoices?: boolean | undefined) => Promise<this>`
+### `setChoices(choices: Array<Choice> | Array<Group>, value?: string | undefined, label?: string | undefined, replaceChoices?: boolean | undefined) => Promise<this>`
 
 Set choices of select input via an array of objects (or function that
 returns array of object or promise of it), a value field name and a label
@@ -71,6 +75,21 @@ after initialisation.
 Type: `Promise<this>`
 
 
+
+
+## Slots
+
+| Slot      | Description                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `"hint"`  | Optional hint element to be displayed with the select.                                                               |
+| `"label"` | The slotted label. If both the label property and the label slot are present, only the label slot will be displayed. |
+
+
+## Shadow Parts
+
+| Part      | Description        |
+| --------- | ------------------ |
+| `"label"` | The label content. |
 
 
 ## Dependencies
