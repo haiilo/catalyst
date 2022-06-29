@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "0.4.1",
-    "@haiilo/catalyst-tokens": "0.8.3",
+    "@haiilo/catalyst-tokens": "0.9.0",
     "@stencil/core": "2.17.0",
     "autosize": "5.0.1",
     "choices.js": "10.1.0",
