@@ -1,4 +1,5 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
+import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
 import * as Components from './directives/proxies';
 
@@ -24,6 +25,16 @@ const CatComponents = [
   Components.CatToggle,
   Components.CatTooltip
 ];
+
+export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
+  providedIn: 'root',
+  factory: () => CatI18nRegistry.getInstance(),
+});
+
+export const CAT_ICON_REGISTRY_TOKEN = new InjectionToken<CatIconRegistry>('CAT_ICON_REGISTRY', {
+  providedIn: 'root',
+  factory: () => CatIconRegistry.getInstance(),
+});
 
 @NgModule({
   imports: [],
