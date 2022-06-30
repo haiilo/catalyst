@@ -1,5 +1,3 @@
-jest.mock('./cat-icon-registry');
-
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('cat-icon', () => {

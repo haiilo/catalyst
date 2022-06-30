@@ -10,6 +10,11 @@ function getAssetsTokensPath() {
   return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
 }
 
+function getAssetsIconsPath() {
+  const assetsTokensPath = './node_modules/@haiilo/catalyst-icons/dist';
+  return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
+}
+
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['cat-input', 'cat-textarea'],
@@ -45,7 +50,6 @@ export const config: Config = {
     })
   ],
   sourceMap: true,
-  globalScript: 'src/init.ts',
   globalStyle: 'src/styles/index.scss',
   outputTargets: [
     {
@@ -81,6 +85,10 @@ export const config: Config = {
         {
           src: getAssetsTokensPath(),
           dest: 'build/assets'
+        },
+        {
+          src: getAssetsIconsPath(),
+          dest: 'build/assets/icons'
         }
       ]
     },

@@ -3,12 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Catalyst | StencilJS</title>
     <script type="module" src="/build/catalyst.esm.js"></script>
+    <script type="module">
+      import { ci } from '/build/assets/icons/js/icons.object.js';
+      import { CatIconRegistry, CatI18nRegistry } from '/build/index.esm.js';
+      CatIconRegistry.getInstance().addIcons(ci);
+      CatI18nRegistry.getInstance().register('en', {
+        'input.clear': 'Clear',
+        'input.optional': 'Optional',
+        'select.addItem': 'Add item',
+        'select.customAddItem': 'Custom add item',
+        'select.loading': 'Loading',
+        'select.noResults': 'No results',
+        'select.noChoices': 'No choices',
+        'select.removeItem': 'Remove item',
+        'select.searchPlaceholder': 'Search',
+        'select.selectItem': 'Select item',
+        'select.uniqueItem': 'Unique item'
+      });
+    </script>
     <script nomodule src="/build/catalyst.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" />
     <link rel="stylesheet" href="/build/catalyst.css" />
   </head>
   <body>

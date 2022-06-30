@@ -1,26 +1,21 @@
 // -- Reset
-
 @import '~sanitize.css/sanitize.css';
 @import '~sanitize.css/assets.css';
 @import '~sanitize.css/reduce-motion.css';
 
 // -- Vendor
-
 @import '~toastify-js/src/toastify.css';
 
 // -- Fonts
-
 @import 'fonts/fonts-mixins';
 
 // -- Core
-
 @import 'core/base';
 @import 'core/nav';
 @import 'core/toast';
 @import 'core/typography';
 
 // -- Utils
-
 @import 'utils/color';
 @import 'utils/display';
 @import 'utils/elevation';
@@ -31,5 +26,6 @@
 @import 'utils/visibility';
 @import 'utils/ratio';
 
+// -- Includes
 $cat-font-path: 'assets/fonts' !default;
 @include cat-fonts($cat-font-path);
