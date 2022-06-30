@@ -132,8 +132,10 @@ dl {
   }
 }
 
-nav ol, nav ul,
-ol.cat-plain, ul.cat-plain {
+nav ol,
+nav ul,
+ol.cat-plain,
+ul.cat-plain {
   list-style: none;
   margin: 0;
   padding: 0;
