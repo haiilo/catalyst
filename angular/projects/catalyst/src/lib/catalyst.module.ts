@@ -8,10 +8,6 @@ import { RadioValueAccessor } from "./directives/radio-value-accessor";
 import { BooleanValueAccessor } from "./directives/boolean-value-accessor";
 
 const CatComponents = [
-  TextValueAccessor,
-  SelectValueAccessor,
-  RadioValueAccessor,
-  BooleanValueAccessor,
   Components.CatAlert,
   Components.CatAvatar,
   Components.CatBadge,
@@ -34,6 +30,13 @@ const CatComponents = [
   Components.CatTooltip
 ];
 
+const CatDirectives = [
+  TextValueAccessor,
+  SelectValueAccessor,
+  RadioValueAccessor,
+  BooleanValueAccessor
+]
+
 export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
   providedIn: 'root',
   factory: () => CatI18nRegistry.getInstance(),
@@ -46,8 +49,8 @@ export const CAT_ICON_REGISTRY_TOKEN = new InjectionToken<CatIconRegistry>('CAT_
 
 @NgModule({
   imports: [],
-  declarations: [...CatComponents],
-  exports: [...CatComponents],
+  declarations: [...CatComponents, ...CatDirectives],
+  exports: [...CatComponents, ...CatDirectives],
   providers: []
 })
 export class CatalystModule {
