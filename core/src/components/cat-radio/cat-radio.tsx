@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -20,7 +20,6 @@ let nextUniqueId = 0;
 export class CatRadio {
   private readonly id = `cat-radio-${++nextUniqueId}`;
   private input!: HTMLInputElement;
-  private catRadioGroup!: HTMLCatRadioElement[];
 
   @Element() hostElement!: HTMLElement;
 
@@ -66,14 +65,6 @@ export class CatRadio {
    */
   @Prop() hint?: string | string[];
 
-  @Watch('checked')
-  onCheckedChanged(newValue: boolean) {
-    if (this.catRadioGroup.length && newValue) {
-      const catRadioSiblingGroup = this.catRadioGroup.filter(catRadio => catRadio !== this.hostElement);
-      catRadioSiblingGroup.forEach(catRadio => (catRadio.checked = false));
-    }
-  }
-
   /**
    * Emitted when the radio is changed.
    */
@@ -89,27 +80,10 @@ export class CatRadio {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
-  componentWillLoad() {
-    this.catRadioGroup = Array.from(document.querySelectorAll(`cat-radio[name="${this.name}"]`));
-    this.onCheckedChanged(this.checked);
-  }
-
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.error('[A11y] Missing ARIA label on radio', this);
-    }
-  }
-
-  componentDidRender(): void {
-    if (this.catRadioGroup.length) {
-      let tabIndex;
-      if (this.catRadioGroup.some(value1 => value1.checked)) {
-        tabIndex = this.checked ? '0' : '-1';
-      } else {
-        tabIndex = this.catRadioGroup[0] === this.hostElement ? '0' : '-1';
-      }
-      this.input.setAttribute('tabindex', tabIndex);
     }
   }
 
@@ -122,19 +96,6 @@ export class CatRadio {
   @Method()
   async setFocus(options?: FocusOptions): Promise<void> {
     this.input.focus(options);
-  }
-
-  @Listen('keydown')
-  onKeydown(event: KeyboardEvent): void {
-    if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key) && this.catRadioGroup.length) {
-      const targetElements = this.catRadioGroup;
-      const activeIdx = this.catRadioGroup.findIndex(value1 => value1 === this.hostElement);
-      const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
-      const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
-      targetElements[targetIdx].setFocus();
-      targetElements[targetIdx].shadowRoot?.querySelector('input')?.click();
-      event.preventDefault();
-    }
   }
 
   render() {
