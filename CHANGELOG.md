@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/haiilo/catalyst/compare/v0.9.0...v0.10.0) (2022-06-30)
+
+
+### Features
+
+* **core:** add .cat-plain class to lists ([4007849](https://github.com/haiilo/catalyst/commit/40078498b30cf032d4c9c77215522fe28012ea47))
+* **core:** add pull-out helper classes for cards ([ae803a0](https://github.com/haiilo/catalyst/commit/ae803a01f38ccfedc69281258af61c954b30dc6c))
+* **core:** fix value accessor ([697b15d](https://github.com/haiilo/catalyst/commit/697b15d44a276c1edcf94271cf047032b91987d2))
+* **core:** fix value accessor ([8e7c20b](https://github.com/haiilo/catalyst/commit/8e7c20b8c5aed15b2aea094ff3753c18aba8cd35))
+
+
+### Bug Fixes
+
+* **core:** hotfix for the select multiple component ([#37](https://github.com/haiilo/catalyst/issues/37)) ([c604584](https://github.com/haiilo/catalyst/commit/c604584a14d1891accca3b4f7ebbc4fa3f74c187))
+* **core:** remove global scripts from bundle ([5cb52ec](https://github.com/haiilo/catalyst/commit/5cb52eccc4dae6eaf4a29f16891786fda2f72467))
+
 ## [0.9.0](https://github.com/haiilo/catalyst/compare/v0.8.3...v0.9.0) (2022-06-29)
 
 
