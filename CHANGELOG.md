@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/haiilo/catalyst/compare/v0.8.3...v0.9.0) (2022-06-29)
+
+
+### Features
+
+* **angular:** add injector for singleton services ([067b50e](https://github.com/haiilo/catalyst/commit/067b50ebee5367044f9ae7d35fdf21fd0a1ad5e6))
+* **core:** watcher for the value property added ([#35](https://github.com/haiilo/catalyst/issues/35)) ([c3cf098](https://github.com/haiilo/catalyst/commit/c3cf098af4d68406f5057f2883bd0d4e47ce5d67))
+
 ### [0.8.3](https://github.com/haiilo/catalyst/compare/v0.8.1...v0.8.3) (2022-06-28)
 
 

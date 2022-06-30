@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -11,7 +11,7 @@
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
   "es2017": "dist/esm/index.js",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/catalyst/catalyst.esm.js",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "0.4.1",
-    "@haiilo/catalyst-tokens": "0.8.3",
+    "@haiilo/catalyst-tokens": "0.9.0",
     "@stencil/core": "2.17.0",
     "autosize": "5.0.1",
     "choices.js": "10.1.0",
