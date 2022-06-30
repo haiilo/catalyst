@@ -22,3 +22,39 @@ $-padding: 1.5rem;
 ::slotted(:last-child) {
   margin-bottom: 0;
 }
+
+// --- pull out helper classes
+
+::slotted(.cat-card-pull) {
+  margin: -$-padding !important;
+  width: calc(100% + #{2 * $-padding}) !important;
+  height: calc(100% + #{2 * $-padding}) !important;
+}
+
+::slotted(.cat-card-pull-h) {
+  margin-left: -$-padding !important;
+  margin-right: -$-padding !important;
+  width: calc(100% + #{2 * $-padding}) !important;
+}
+
+::slotted(.cat-card-pull-v) {
+  margin-top: -$-padding !important;
+  margin-bottom: -$-padding !important;
+  height: calc(100% + #{2 * $-padding}) !important;
+}
+
+::slotted(.cat-card-pull-t) {
+  margin-top: -$-padding !important;
+}
+
+::slotted(.cat-card-pull-l) {
+  margin-left: -$-padding !important;
+}
+
+::slotted(.cat-card-pull-r) {
+  margin-right: -$-padding !important;
+}
+
+::slotted(.cat-card-pull-b) {
+  margin-bottom: -$-padding !important;
+}

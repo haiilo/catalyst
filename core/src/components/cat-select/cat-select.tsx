@@ -119,6 +119,13 @@ export class CatSelect {
     this.setChoices(choices, 'value', 'label', true);
   }
 
+  @Watch('value')
+  setValueHandler(value?: string[] | Choice[]) {
+    if (this.multiple) return;
+
+    this.setValue(value || []);
+  }
+
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {

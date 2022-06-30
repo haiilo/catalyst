@@ -132,13 +132,13 @@ dl {
   }
 }
 
-nav {
-  ol,
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+nav ol,
+nav ul,
+ol.cat-plain,
+ul.cat-plain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 dt {
