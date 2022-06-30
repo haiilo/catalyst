@@ -120,8 +120,10 @@ export class CatSelect {
   }
 
   @Watch('value')
-  setValueHandles(value?: string[] | Choice[]) {
-    this.choice?.setValue(value || []);
+  setValueHandler(value?: string[] | Choice[]) {
+    if (this.multiple) return;
+
+    this.setValue(value || []);
   }
 
   componentWillRender(): void {
