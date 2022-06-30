@@ -28,7 +28,7 @@ export class CatRadioGroup {
       }
       catRadio.name = this.name;
     });
-    this.updateIndex();
+    this.updateTabIndex();
   }
 
   @Listen('keydown')
@@ -41,7 +41,7 @@ export class CatRadioGroup {
       const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
       targetElements[targetIdx].setFocus();
       targetElements[targetIdx].shadowRoot?.querySelector('input')?.click();
-      this.updateIndex();
+      this.updateTabIndex();
       event.preventDefault();
     }
   }
@@ -52,6 +52,7 @@ export class CatRadioGroup {
     if (catRadioElement && catRadioElement.checked) {
       const catRadioElements = this.catRadioGroup.filter(value => value !== catRadioElement);
       catRadioElements.forEach(value => (value.checked = false));
+      this.updateTabIndex();
     }
   }
 
@@ -63,7 +64,7 @@ export class CatRadioGroup {
     );
   }
 
-  private updateIndex() {
+  private updateTabIndex() {
     if (this.catRadioGroup.length) {
       this.catRadioGroup.forEach(value => value.shadowRoot?.querySelector('input')?.setAttribute('tabindex', '-1'));
       const checkedRadioIndex = this.catRadioGroup.findIndex(value => value.checked);
