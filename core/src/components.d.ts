@@ -361,6 +361,10 @@ export namespace Components {
     }
     interface CatRadioGroup {
         /**
+          * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
+        /**
           * Whether this radio group is disabled.
          */
         "disabled": boolean;
@@ -1230,6 +1234,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface CatRadioGroup {
+        /**
+          * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
         /**
           * Whether this radio group is disabled.
          */

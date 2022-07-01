@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Listen, Watch } from '@stencil/core';
 
 @Component({
   tag: 'cat-radio-group',
@@ -20,14 +20,32 @@ export class CatRadioGroup {
    */
   @Prop() disabled = false;
 
-  componentDidLoad(): void {
-    this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
+  /**
+   * Adds an accessible label for the radio group that
+   * it is only shown in assistive technologies, like screen readers.
+   */
+  @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
+
+  @Watch('name')
+  onNameChanged(newName?: string) {
     this.catRadioGroup.forEach(catRadio => {
-      if (this.disabled) {
+      catRadio.name = newName;
+    });
+  }
+
+  @Watch('disabled')
+  onDisabledChanged(disabled: boolean) {
+    this.catRadioGroup.forEach(catRadio => {
+      if (disabled) {
         catRadio.disabled = this.disabled;
       }
-      catRadio.name = this.name;
     });
+  }
+
+  componentDidLoad(): void {
+    this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
+    this.onNameChanged(this.name);
+    this.onDisabledChanged(this.disabled);
     this.updateTabIndex();
   }
 
@@ -46,8 +64,8 @@ export class CatRadioGroup {
     }
   }
 
-  @Listen('click')
-  onClick(event: MouseEvent): void {
+  @Listen('input')
+  onInput(event: MouseEvent): void {
     const catRadioElement = this.catRadioGroup.find(value => value === event.target);
     if (catRadioElement && catRadioElement.checked) {
       const catRadioElements = this.catRadioGroup.filter(value => value !== catRadioElement);
@@ -58,8 +76,10 @@ export class CatRadioGroup {
 
   render() {
     return (
-      <Host role="radiogroup">
-        <slot></slot>
+      <Host>
+        <div role="radiogroup" aria-label={this.a11yLabel}>
+          <slot></slot>
+        </div>
       </Host>
     );
   }
@@ -68,7 +88,7 @@ export class CatRadioGroup {
     if (this.catRadioGroup.length) {
       this.catRadioGroup.forEach(value => value.shadowRoot?.querySelector('input')?.setAttribute('tabindex', '-1'));
       const checkedRadioIndex = this.catRadioGroup.findIndex(value => value.checked);
-      this.catRadioGroup[checkedRadioIndex >= -1 ? checkedRadioIndex : 0].shadowRoot
+      this.catRadioGroup[checkedRadioIndex >= 0 ? checkedRadioIndex : 0].shadowRoot
         ?.querySelector('input')
         ?.setAttribute('tabindex', '0');
     }

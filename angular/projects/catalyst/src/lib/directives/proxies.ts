@@ -317,13 +317,13 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['disabled', 'name']
+  inputs: ['a11yLabel', 'disabled', 'name']
 })
 @Component({
   selector: 'cat-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'name']
+  inputs: ['a11yLabel', 'disabled', 'name']
 })
 export class CatRadioGroup {
   protected el: HTMLElement;

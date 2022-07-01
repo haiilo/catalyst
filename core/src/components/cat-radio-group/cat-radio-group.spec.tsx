@@ -8,9 +8,11 @@ describe('cat-radio-group', () => {
       html: `<cat-radio-group></cat-radio-group>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-radio-group role="radiogroup">
+      <cat-radio-group>
         <mock:shadow-root>
-          <slot></slot>
+          <div role="radiogroup">
+            <slot></slot>
+          </div>
         </mock:shadow-root>
       </cat-radio-group>
     `);

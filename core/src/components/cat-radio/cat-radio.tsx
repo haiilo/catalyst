@@ -117,7 +117,6 @@ export class CatRadio {
               checked={this.checked}
               required={this.required}
               disabled={this.disabled}
-              onClick={this.onClick.bind(this)}
               onInput={this.onChange.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
@@ -142,11 +141,8 @@ export class CatRadio {
     );
   }
 
-  private onClick() {
-    this.checked = true;
-  }
-
   private onChange(event: Event) {
+    this.checked = true;
     this.value = this.input.value;
     this.catChange.emit(event);
   }
