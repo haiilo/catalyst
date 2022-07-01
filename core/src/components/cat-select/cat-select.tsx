@@ -231,6 +231,7 @@ export class CatSelect {
 
   private init() {
     const value = this.value || [];
+    const removeItemText = (value: string) => this.i18n.t('select.removeItem', { value });
     const config = {
       allowHTML: true,
       items: Array.isArray(value) ? value : ([value] as string[] | Choice[]),
@@ -271,6 +272,10 @@ export class CatSelect {
                 data.value
               }" ${data.active ? 'aria-selected="true"' : ''} ${data.disabled ? 'aria-disabled="true"' : ''}>
                   <span>${template}</span> ${data.label}
+                  <button type="button"
+                    class="${classNames.button}"
+                    aria-label="${removeItemText(data.label)}"
+                    data-button>${removeItemText(data.label)}</button>
               </div>
               `
             );
@@ -297,6 +302,10 @@ export class CatSelect {
                 ${data.disabled ? 'aria-disabled="true"' : ''}>
                   ${template}
                   ${data.label}
+                  <button type="button"
+                    class="${classNames.button}"
+                    aria-label="${removeItemText(data.label)}"
+                    data-button>${removeItemText(data.label)}</button>
               </div>`
             );
           },
