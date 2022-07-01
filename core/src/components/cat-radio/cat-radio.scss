@@ -20,6 +20,15 @@ label {
   cursor: pointer;
 }
 
+.label-left{
+  .label {
+    order: 1;
+  }
+
+  .radio {
+    order: 2;
+  }
+}
 .radio {
   display: flex;
   position: relative;

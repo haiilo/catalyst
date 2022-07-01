@@ -65,6 +65,7 @@ export class CatRadio {
    */
   @Prop() hint?: string | string[];
 
+  @Prop() labelLeft = false;
   /**
    * Emitted when the radio is changed.
    */
@@ -103,7 +104,7 @@ export class CatRadio {
       <Host>
         <label
           htmlFor={this.id}
-          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}
+          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}
           role="radio"
           aria-checked={this.checked ? 'true' : 'false'}
         >

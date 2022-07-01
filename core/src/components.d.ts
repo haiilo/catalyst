@@ -341,6 +341,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        "labelLeft": boolean;
         /**
           * The name of the radio component.
          */
@@ -368,6 +369,7 @@ export namespace Components {
           * Whether this radio group is disabled.
          */
         "disabled": boolean;
+        "labelLeft": boolean;
         /**
           * The name of the radio group component.
          */
@@ -1208,6 +1210,7 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        "labelLeft"?: boolean;
         /**
           * The name of the radio component.
          */
@@ -1242,6 +1245,7 @@ declare namespace LocalJSX {
           * Whether this radio group is disabled.
          */
         "disabled"?: boolean;
+        "labelLeft"?: boolean;
         /**
           * The name of the radio group component.
          */
