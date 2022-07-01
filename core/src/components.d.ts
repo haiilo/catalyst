@@ -359,6 +359,20 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface CatRadioGroup {
+        /**
+          * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
+        /**
+          * Whether this radio group is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The name of the radio group component.
+         */
+        "name"?: string;
+    }
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
@@ -749,6 +763,12 @@ declare global {
         prototype: HTMLCatRadioElement;
         new (): HTMLCatRadioElement;
     };
+    interface HTMLCatRadioGroupElement extends Components.CatRadioGroup, HTMLStencilElement {
+    }
+    var HTMLCatRadioGroupElement: {
+        prototype: HTMLCatRadioGroupElement;
+        new (): HTMLCatRadioGroupElement;
+    };
     interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
     }
     var HTMLCatScrollableElement: {
@@ -821,6 +841,7 @@ declare global {
         "cat-menu": HTMLCatMenuElement;
         "cat-modal": HTMLCatModalElement;
         "cat-radio": HTMLCatRadioElement;
+        "cat-radio-group": HTMLCatRadioGroupElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-select": HTMLCatSelectElement;
         "cat-skeleton": HTMLCatSkeletonElement;
@@ -1212,6 +1233,20 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface CatRadioGroup {
+        /**
+          * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
+        /**
+          * Whether this radio group is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the radio group component.
+         */
+        "name"?: string;
+    }
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
@@ -1532,6 +1567,7 @@ declare namespace LocalJSX {
         "cat-menu": CatMenu;
         "cat-modal": CatModal;
         "cat-radio": CatRadio;
+        "cat-radio-group": CatRadioGroup;
         "cat-scrollable": CatScrollable;
         "cat-select": CatSelect;
         "cat-skeleton": CatSkeleton;
@@ -1559,6 +1595,7 @@ declare module "@stencil/core" {
             "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
+            "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;

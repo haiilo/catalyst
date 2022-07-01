@@ -313,6 +313,27 @@ export class CatRadio {
 }
 
 
+export declare interface CatRadioGroup extends Components.CatRadioGroup {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['a11yLabel', 'disabled', 'name']
+})
+@Component({
+  selector: 'cat-radio-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['a11yLabel', 'disabled', 'name']
+})
+export class CatRadioGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatScrollable extends Components.CatScrollable {
   /**
    * Emitted when the content is fully scrolled to the top. 

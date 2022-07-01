@@ -28,7 +28,7 @@ export class CatRadio {
   /**
    * Whether this radio is checked.
    */
-  @Prop() checked = false;
+  @Prop({ mutable: true }) checked = false;
 
   /**
    * Whether this radio is disabled.
@@ -101,7 +101,12 @@ export class CatRadio {
   render() {
     return (
       <Host>
-        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+        <label
+          htmlFor={this.id}
+          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}
+          role="radio"
+          aria-checked={this.checked ? 'true' : 'false'}
+        >
           <span class="radio">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
@@ -137,6 +142,7 @@ export class CatRadio {
   }
 
   private onChange(event: Event) {
+    this.checked = true;
     this.value = this.input.value;
     this.catChange.emit(event);
   }
