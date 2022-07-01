@@ -99,7 +99,8 @@
   text-decoration: $cat-link-text-decoration;
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: $cat-link-text-decoration-hover;
+    text-decoration: $cat-button-text-decoration-hover;
+    background-color: rgba(var(--base), 0.05);
   }
 }
 
