@@ -72,6 +72,11 @@ export class CatCheckbox {
   @Prop() hint?: string | string[];
 
   /**
+   * Whether the label should appear to the left of the checkbox.
+   */
+  @Prop() labelLeft = false;
+
+  /**
    * Emitted when the checked status of the checkbox is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -113,7 +118,10 @@ export class CatCheckbox {
   render() {
     return (
       <Host>
-        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+        <label
+          htmlFor={this.id}
+          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}
+        >
           <input
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}

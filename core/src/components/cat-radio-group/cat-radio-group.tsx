@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Listen, Watch } from '@stencil/core';
 
 @Component({
   tag: 'cat-radio-group',
@@ -26,6 +26,11 @@ export class CatRadioGroup {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  /**
+   * Whether the label of the radios should appear to the left of them.
+   */
+  @Prop() labelLeft = false;
+
   @Watch('name')
   onNameChanged(newName?: string) {
     this.catRadioGroup.forEach(catRadio => {
@@ -37,7 +42,16 @@ export class CatRadioGroup {
   onDisabledChanged(disabled: boolean) {
     this.catRadioGroup.forEach(catRadio => {
       if (disabled) {
-        catRadio.disabled = this.disabled;
+        catRadio.disabled = disabled;
+      }
+    });
+  }
+
+  @Watch('labelLeft')
+  onLabelLeftChanged(labelLeft: boolean) {
+    this.catRadioGroup.forEach(catRadio => {
+      if (labelLeft) {
+        catRadio.labelLeft = labelLeft;
       }
     });
   }
@@ -46,6 +60,7 @@ export class CatRadioGroup {
     this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
     this.onNameChanged(this.name);
     this.onDisabledChanged(this.disabled);
+    this.onLabelLeftChanged(this.labelLeft);
     this.updateTabIndex();
   }
 
@@ -76,11 +91,9 @@ export class CatRadioGroup {
 
   render() {
     return (
-      <Host>
-        <div role="radiogroup" aria-label={this.a11yLabel}>
-          <slot></slot>
-        </div>
-      </Host>
+      <div role="radiogroup" aria-label={this.a11yLabel}>
+        <slot></slot>
+      </div>
     );
   }
 
