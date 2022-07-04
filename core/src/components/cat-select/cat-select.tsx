@@ -165,7 +165,7 @@ export class CatSelect {
     this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
     this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
     this.selectElement?.removeEventListener('search', this.onSearch.bind(this));
-    this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this))
+    this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this));
     if (this.multiple) {
       this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
       this.removeElement?.removeEventListener('click', this.onRemoveItemButtonClick.bind(this));
@@ -371,9 +371,9 @@ export class CatSelect {
   }
 
   private onScrolledBottom() {
-    const scrolledBottom: boolean = this.choiceDropdown?.scrollHeight ===
-      (this.choiceDropdown?.scrollTop || 0) +
-      (this.choiceDropdown?.clientHeight || 0)
+    const scrolledBottom: boolean =
+      this.choiceDropdown?.scrollHeight ===
+      (this.choiceDropdown?.scrollTop || 0) + (this.choiceDropdown?.clientHeight || 0);
 
     if (scrolledBottom) {
       this.catScrolledBottom.emit();
