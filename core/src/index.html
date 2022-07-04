@@ -176,7 +176,9 @@
     </cat-card>
 
     <h2>Checkbox</h2>
-    <cat-checkbox label="Toggle" hint="This is a hint!"><span slot="hint">This is another!</span></cat-checkbox>
+    <cat-checkbox label="Toggle" hint="This is a hint!" label-left style="width: 500px">
+      <span slot="hint">This is another!</span>
+    </cat-checkbox>
     <cat-checkbox label="Label"></cat-checkbox>
     <cat-checkbox><label slot="label">Slotted Label</label></cat-checkbox>
     <cat-checkbox label="Disabled" disabled></cat-checkbox>
@@ -187,7 +189,9 @@
     <cat-checkbox label="Hidden label" label-hidden="true"></cat-checkbox>
 
     <h2>Toggle</h2>
-    <cat-toggle label="Toggle" hint="This is a hint!"><span slot="hint">This is another!</span>></cat-toggle>
+    <cat-toggle label="Toggle" hint="This is a hint!" label-left style="width: 500px">
+      <span slot="hint">This is another!</span>
+    </cat-toggle>
     <cat-toggle label="Toggle"></cat-toggle>
     <cat-toggle><label slot="label">Slotted Label</label></cat-toggle>
     <cat-toggle label="Disabled" disabled></cat-toggle>
@@ -197,13 +201,20 @@
     <cat-toggle label="Hidden label" label-hidden="true"></cat-toggle>
 
     <h2>Radio</h2>
-    <cat-radio-group a11y-label="Radio Group 1">
+    <cat-radio-group a11y-label="Radio Group 1" label-left style="width: 500px">
       <cat-radio label="Option 1 - Group 1" hint="This is a hint!">
         <span slot="hint">This is another!</span>
       </cat-radio>
       <cat-radio label="Option 2- Group 1" checked></cat-radio>
     </cat-radio-group>
-    <cat-radio label="Not priority label"><label slot="label">Priority Label</label></cat-radio>
+
+    <cat-radio label="Not priority label" label-left style="width: 170px">
+      <label slot="label">
+        Priority Label<br />
+        Second Label <br />
+        Another Label
+      </label>
+    </cat-radio>
     <cat-radio label="Disabled" disabled></cat-radio>
     <cat-radio label="Checked" checked></cat-radio>
     <cat-radio label="Checked disabled" checked disabled></cat-radio>

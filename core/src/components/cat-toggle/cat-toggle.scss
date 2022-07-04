@@ -22,6 +22,10 @@ label {
   cursor: pointer;
 }
 
+.label-left {
+  flex-direction: row-reverse;
+}
+
 input {
   @include cat-visually-hidden;
 }

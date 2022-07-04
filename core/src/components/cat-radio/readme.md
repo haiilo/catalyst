@@ -12,6 +12,7 @@
 | `hint`        | `hint`         | Optional hint text(s) to be displayed with the radio.                                     | `string \| string[] \| undefined` | `undefined` |
 | `label`       | `label`        | The label of the radio that is visible.                                                   | `string`                          | `''`        |
 | `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                         | `false`     |
+| `labelLeft`   | `label-left`   | Whether the label should appear to the left of the radio component.                       | `boolean`                         | `false`     |
 | `name`        | `name`         | The name of the radio component.                                                          | `string \| undefined`             | `undefined` |
 | `required`    | `required`     | Whether the radio is required.                                                            | `boolean`                         | `false`     |
 | `value`       | `value`        | The value of the radio component.                                                         | `string \| undefined`             | `undefined` |
