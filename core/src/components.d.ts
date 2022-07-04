@@ -1327,6 +1327,10 @@ declare namespace LocalJSX {
          */
         "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
         /**
+          * Emitted when scrolled to the bottom.
+         */
+        "onCatScrolledBottom"?: (event: CatSelectCustomEvent<any>) => void;
+        /**
           * Emitted when the search is triggered.
          */
         "onCatSearch"?: (event: CatSelectCustomEvent<any>) => void;
