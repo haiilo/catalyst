@@ -159,7 +159,8 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding: 4px 60px 0 4px;
+    padding: 4px 60px 4px 4px;
+    gap: 4px;
   }
 
   .#{$choices-selector}__item {
@@ -286,8 +287,6 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
     justify-content: space-between;
     border-radius: $choices-border-radius-item;
     padding: 5px 8px 5px 4px;
-    margin-right: 4px;
-    margin-bottom: 4px;
     background-color: $choices-primary-color;
     color: #000;
     word-break: break-all;
@@ -359,7 +358,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   }
   .#{$choices-selector}__item--selectable {
     @media (min-width: 640px) {
-      &[data-select-text] {
+      &[data-select-text]:not([data-select-text=""]) {
         padding-right: 100px;
       }
 
@@ -447,7 +446,6 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   background-color: cat-token('color.ui.background.body');
   font-size: $choices-font-size-md;
   font-family: cat-body-font-family();
-  margin-bottom: 5px;
   border: 0;
   border-radius: 0;
   max-width: 100%;

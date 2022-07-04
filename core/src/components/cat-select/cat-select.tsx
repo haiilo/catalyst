@@ -329,7 +329,7 @@ export class CatSelect {
                   ${data.selected ? 'choices__item--selected' : ''}`;
             return strToEl(
               `<div class="${className}"
-                ${itemSelectText ? `data-select-text="${itemSelectText}"` : ''}
+                data-select-text="${itemSelectText}"
                 data-choice data-id="${String(data.id)}" data-value="${String(data.value)}"
                 ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
                 ${data.groupId && data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
