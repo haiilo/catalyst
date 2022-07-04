@@ -71,6 +71,9 @@ export class CatCheckbox {
    */
   @Prop() hint?: string | string[];
 
+  /**
+   * Whether the label should appear to the left of the checkbox.
+   */
   @Prop() labelLeft = false;
 
   /**

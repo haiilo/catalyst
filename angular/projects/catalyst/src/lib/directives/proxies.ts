@@ -145,14 +145,14 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatCheckbox {
   protected el: HTMLElement;
@@ -294,14 +294,14 @@ export declare interface CatRadio extends Components.CatRadio {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatRadio {
   protected el: HTMLElement;
@@ -317,13 +317,13 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'disabled', 'name']
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name']
 })
 @Component({
   selector: 'cat-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'disabled', 'name']
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name']
 })
 export class CatRadioGroup {
   protected el: HTMLElement;
@@ -572,14 +572,14 @@ export declare interface CatToggle extends Components.CatToggle {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'cat-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatToggle {
   protected el: HTMLElement;

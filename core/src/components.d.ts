@@ -177,6 +177,9 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Whether the label should appear to the left of the checkbox.
+         */
         "labelLeft": boolean;
         /**
           * The name of the input
@@ -342,6 +345,9 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Whether the label should appear to the left of the radio component.
+         */
         "labelLeft": boolean;
         /**
           * The name of the radio component.
@@ -370,6 +376,9 @@ export namespace Components {
           * Whether this radio group is disabled.
          */
         "disabled": boolean;
+        /**
+          * Whether the label of the radios should appear to the left of them.
+         */
         "labelLeft": boolean;
         /**
           * The name of the radio group component.
@@ -614,13 +623,16 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Whether the label should appear to the left of the toggle.
+         */
         "labelLeft": boolean;
         /**
           * The name of the input
          */
         "name"?: string;
         /**
-          * Required state of the toggle
+          * Required state of the toggle.
          */
         "required": boolean;
         /**
@@ -1034,6 +1046,9 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Whether the label should appear to the left of the checkbox.
+         */
         "labelLeft"?: boolean;
         /**
           * The name of the input
@@ -1213,6 +1228,9 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Whether the label should appear to the left of the radio component.
+         */
         "labelLeft"?: boolean;
         /**
           * The name of the radio component.
@@ -1248,6 +1266,9 @@ declare namespace LocalJSX {
           * Whether this radio group is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Whether the label of the radios should appear to the left of them.
+         */
         "labelLeft"?: boolean;
         /**
           * The name of the radio group component.
@@ -1511,6 +1532,9 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Whether the label should appear to the left of the toggle.
+         */
         "labelLeft"?: boolean;
         /**
           * The name of the input
@@ -1529,7 +1553,7 @@ declare namespace LocalJSX {
          */
         "onCatFocus"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
-          * Required state of the toggle
+          * Required state of the toggle.
          */
         "required"?: boolean;
         /**

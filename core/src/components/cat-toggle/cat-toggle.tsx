@@ -52,7 +52,7 @@ export class CatToggle {
   @Prop() name?: string;
 
   /**
-   * Required state of the toggle
+   * Required state of the toggle.
    */
   @Prop() required = false;
 
@@ -66,6 +66,9 @@ export class CatToggle {
    */
   @Prop() hint?: string | string[];
 
+  /**
+   * Whether the label should appear to the left of the toggle.
+   */
   @Prop() labelLeft = false;
 
   /**

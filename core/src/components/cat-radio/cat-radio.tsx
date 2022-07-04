@@ -65,6 +65,9 @@ export class CatRadio {
    */
   @Prop() hint?: string | string[];
 
+  /**
+   * Whether the label should appear to the left of the radio component.
+   */
   @Prop() labelLeft = false;
   /**
    * Emitted when the radio is changed.

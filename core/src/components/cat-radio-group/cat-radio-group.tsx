@@ -26,6 +26,9 @@ export class CatRadioGroup {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  /**
+   * Whether the label of the radios should appear to the left of them.
+   */
   @Prop() labelLeft = false;
 
   @Watch('name')
