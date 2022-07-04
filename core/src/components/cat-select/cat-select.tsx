@@ -38,6 +38,7 @@ export class CatSelect {
 
   private choice?: Choices;
   private choiceInner?: Element;
+  private choiceDropdown?: Element;
   private selectElement?: HTMLSelectElement;
   private removeElement?: HTMLCatButtonElement;
 
@@ -112,6 +113,11 @@ export class CatSelect {
    */
   @Event() catSearch!: EventEmitter;
 
+  /**
+   * Emitted when scrolled to the bottom.
+   */
+  @Event() catScrolledBottom!: EventEmitter;
+
   @Watch('choices')
   setChoicesHandler(choices: Choice[]) {
     if (!choices?.length) return;
@@ -135,11 +141,17 @@ export class CatSelect {
 
   componentDidLoad(): void {
     this.init();
-    this.choiceInner = this.hostElement.attachInternals?.().shadowRoot?.querySelector('.choices__inner') || undefined;
+    const attachedInternals: ElementInternals | undefined = this.hostElement.attachInternals?.();
+    if (attachedInternals) {
+      this.choiceInner = attachedInternals.shadowRoot?.querySelector('.choices__inner') || undefined;
+      this.choiceDropdown =
+        attachedInternals.shadowRoot?.querySelector('.choices__list--dropdown')?.firstElementChild || undefined;
+    }
     this.choiceInner?.addEventListener('click', this.showDropdownHandler.bind(this));
     this.selectElement?.addEventListener('addItem', this.onChange.bind(this));
     this.selectElement?.addEventListener('removeItem', this.onChange.bind(this));
     this.selectElement?.addEventListener('search', this.onSearch.bind(this));
+    this.choiceDropdown?.addEventListener('scroll', this.onScrolledBottom.bind(this));
     if (this.multiple) {
       this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
       this.createRemoveItemButton();
@@ -153,6 +165,7 @@ export class CatSelect {
     this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
     this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
     this.selectElement?.removeEventListener('search', this.onSearch.bind(this));
+    this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this))
     if (this.multiple) {
       this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
       this.removeElement?.removeEventListener('click', this.onRemoveItemButtonClick.bind(this));
@@ -355,6 +368,16 @@ export class CatSelect {
   private onSearch(event: Event) {
     const customEvent = event as CustomEvent<{ value: string }>;
     this.catSearch.emit(customEvent.detail.value);
+  }
+
+  private onScrolledBottom() {
+    const scrolledBottom: boolean = this.choiceDropdown?.scrollHeight ===
+      (this.choiceDropdown?.scrollTop || 0) +
+      (this.choiceDropdown?.clientHeight || 0)
+
+    if (scrolledBottom) {
+      this.catScrolledBottom.emit();
+    }
   }
 
   private onChoice(event: Event) {
