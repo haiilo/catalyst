@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.1](https://github.com/haiilo/catalyst/compare/v0.10.0...v0.10.1) (2022-07-04)
+
+
+### Features
+
+* **core:** add label alignment options to checkbox / radio / toggle ([#41](https://github.com/haiilo/catalyst/issues/41)) ([4a4d803](https://github.com/haiilo/catalyst/commit/4a4d803888825c8c76f87596046563b74543bc0a))
+
+
+### Bug Fixes
+
+* **core:** add remove item button, add scrolled bottom emitter ([#40](https://github.com/haiilo/catalyst/issues/40)) ([46b80ed](https://github.com/haiilo/catalyst/commit/46b80edf9d5393c071a54d3b28d9b3df0dbc7ada))
+* **core:** button hover style change ([#39](https://github.com/haiilo/catalyst/issues/39)) ([e67f375](https://github.com/haiilo/catalyst/commit/e67f3753046cb2c747763b6b12a92782339e1b3e))
+* Fix radio buttons in a radio group ([#38](https://github.com/haiilo/catalyst/issues/38)) ([cf2a453](https://github.com/haiilo/catalyst/commit/cf2a45305fd121370ec3b9cfbb83d3293ad6439c))
+
 ## [0.10.0](https://github.com/haiilo/catalyst/compare/v0.9.0...v0.10.0) (2022-06-30)
 
 
