@@ -66,6 +66,8 @@ export class CatToggle {
    */
   @Prop() hint?: string | string[];
 
+  @Prop() labelLeft = false;
+
   /**
    * Emitted when the checked status of the toggle is changed.
    */
@@ -102,7 +104,10 @@ export class CatToggle {
   render() {
     return (
       <Host>
-        <label htmlFor={this.id} class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled }}>
+        <label
+          htmlFor={this.id}
+          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}
+        >
           <input
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}

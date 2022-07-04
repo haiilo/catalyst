@@ -48,7 +48,7 @@ export class CatRadioGroup {
   onLabelLeftChanged(labelLeft: boolean) {
     this.catRadioGroup.forEach(catRadio => {
       if (labelLeft) {
-        catRadio.labelLeft= labelLeft;
+        catRadio.labelLeft = labelLeft;
       }
     });
   }
@@ -88,9 +88,9 @@ export class CatRadioGroup {
 
   render() {
     return (
-        <div role="radiogroup" aria-label={this.a11yLabel}>
-          <slot></slot>
-        </div>
+      <div role="radiogroup" aria-label={this.a11yLabel}>
+        <slot></slot>
+      </div>
     );
   }
 

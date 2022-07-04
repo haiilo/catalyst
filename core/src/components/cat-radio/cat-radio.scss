@@ -20,15 +20,10 @@ label {
   cursor: pointer;
 }
 
-.label-left{
-  .label {
-    order: 1;
-  }
-
-  .radio {
-    order: 2;
-  }
+.label-left {
+  flex-direction: row-reverse;
 }
+
 .radio {
   display: flex;
   position: relative;
@@ -70,6 +65,8 @@ input {
 }
 
 .label {
+  flex: 1 1 auto;
+
   .is-hidden & {
     @include cat-visually-hidden;
   }

@@ -177,6 +177,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        "labelLeft": boolean;
         /**
           * The name of the input
          */
@@ -613,6 +614,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        "labelLeft": boolean;
         /**
           * The name of the input
          */
@@ -1032,6 +1034,7 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        "labelLeft"?: boolean;
         /**
           * The name of the input
          */
@@ -1508,6 +1511,7 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        "labelLeft"?: boolean;
         /**
           * The name of the input
          */
