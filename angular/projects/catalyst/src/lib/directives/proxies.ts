@@ -383,6 +383,10 @@ export declare interface CatSelect extends Components.CatSelect {
    * Emitted when the search is triggered. 
    */
   catSearch: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when scrolled to the bottom. 
+   */
+  catScrolledBottom: EventEmitter<CustomEvent<any>>;
 
 }
 
@@ -402,7 +406,7 @@ export class CatSelect {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catSearch']);
+    proxyOutputs(this, this.el, ['catChange', 'catSearch', 'catScrolledBottom']);
   }
 }
 
