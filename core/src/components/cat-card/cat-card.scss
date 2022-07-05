@@ -9,6 +9,7 @@ $-padding: 1.5rem;
   border-radius: cat-border-radius('l');
   background-color: cat-token('color.ui.background.body');
   padding: $-padding;
+
 }
 
 :host([hidden]) {
@@ -16,7 +17,7 @@ $-padding: 1.5rem;
 }
 
 ::slotted(nav) {
-  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
+  margin: #{$cat-body-margin-bottom - $-padding} #{-$-padding} !important;
 }
 
 ::slotted(:last-child) {
