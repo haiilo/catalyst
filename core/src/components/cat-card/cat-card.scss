@@ -9,7 +9,6 @@ $-padding: 1.5rem;
   border-radius: cat-border-radius('l');
   background-color: cat-token('color.ui.background.body');
   padding: $-padding;
-
 }
 
 :host([hidden]) {
