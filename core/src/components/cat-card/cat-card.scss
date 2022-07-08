@@ -1,7 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-$-padding: 1.5rem;
+$-padding: 1.25rem;
 
 :host {
   display: block;
@@ -16,7 +16,7 @@ $-padding: 1.5rem;
 }
 
 ::slotted(nav) {
-  margin: #{$cat-body-margin-bottom - $-padding} #{-$-padding} !important;
+  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
 }
 
 ::slotted(:last-child) {
