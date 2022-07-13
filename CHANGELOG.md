@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.5](https://github.com/haiilo/catalyst/compare/v0.10.2...v0.10.5) (2022-07-12)
+
+
+### Features
+
+* **core:** update card component spacings ([#44](https://github.com/haiilo/catalyst/issues/44)) ([5992ad1](https://github.com/haiilo/catalyst/commit/5992ad1bd8661475db3576e875c6ca86789bfefc))
+
+### [0.10.2](https://github.com/haiilo/catalyst/compare/v0.10.1...v0.10.2) (2022-07-07)
+
+
+### Features
+
+* **core:** add some improvements to select component ([0ffd310](https://github.com/haiilo/catalyst/commit/0ffd310b73148386c93acdf7acefc33d2629b493))
+* **core:** adjust spacings of card navigation ([dc2ac7b](https://github.com/haiilo/catalyst/commit/dc2ac7be134565de63ea7150f280d7bb202eef41))
+
 ### [0.10.1](https://github.com/haiilo/catalyst/compare/v0.10.0...v0.10.1) (2022-07-04)
 
 
