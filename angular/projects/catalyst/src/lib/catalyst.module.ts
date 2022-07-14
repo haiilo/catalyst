@@ -19,6 +19,7 @@ const CatComponents = [
   Components.CatMenu,
   Components.CatModal,
   Components.CatRadio,
+  Components.CatRadioGroup,
   Components.CatScrollable,
   Components.CatSelect,
   Components.CatSkeleton,
