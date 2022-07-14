@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Listen, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'cat-radio-group',
@@ -85,9 +85,17 @@ export class CatRadioGroup {
     if (catRadioElement && catRadioElement.checked) {
       const catRadioElements = this.catRadioGroup.filter(value => value !== catRadioElement);
       catRadioElements.forEach(value => (value.checked = false));
-      this.updateTabIndex();
+      this.value = catRadioElement.value;
+    } else {
+      this.value = undefined;
     }
+    this.updateTabIndex();
+    this.catChange.emit();
   }
+
+  @Prop({ mutable: true }) value?: string;
+
+  @Event() catChange!: EventEmitter;
 
   render() {
     return (
