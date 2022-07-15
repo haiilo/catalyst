@@ -7,7 +7,8 @@
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script type="module">
       import { ci } from '/build/assets/icons/js/icons.object.js';
-      import { CatIconRegistry, CatI18nRegistry } from '/build/index.esm.js';
+      import { CatI18nRegistry, CatIconRegistry } from '/build/index.esm.js';
+
       CatIconRegistry.getInstance().addIcons(ci);
       CatI18nRegistry.getInstance().register('en', {
         'input.clear': 'Clear',
@@ -236,10 +237,8 @@
 
     <h3>Layout</h3>
     <div style="width: 200px; border: 1px solid gray">
-      <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button><br />
-      <cat-button icon="sparkle-filled" ellipsed="false"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
-      ><br />
+      <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur elitr</cat-button><br />
+      <cat-button icon="sparkle-filled" no-ellipsis>Lorem ipsum dolor sit amet, consetetur elitr</cat-button><br />
       <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
       <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
@@ -448,8 +447,13 @@
             <br />
             testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
             <br />
+            <cat-button icon="sparkle-filled" ellipsed="false"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+            </cat-button>
             <br />
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+            <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
+            <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
+            <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
           </div>
         </cat-scrollable>
       </section>
@@ -480,23 +484,6 @@
           select1.value = '2';
           select2.items = items;
           select2.value = ['2', '3'];
-
-setTimeout(() => {
-  select2.items = [
-  {
-    value: '1',
-    label: 'select option 1 select option 1 extra large'
-  },
-            {
-              value: '2',
-              label: 'select option 2'
-            },
-];
-}, 3000);
-
-setTimeout(() => {
-  select2.items = items;
-}, 5000);
         </script>
       </section>
 
