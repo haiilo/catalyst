@@ -692,6 +692,10 @@ export interface CatRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatRadioElement;
 }
+export interface CatRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatRadioGroupElement;
+}
 export interface CatScrollableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatScrollableElement;
@@ -1274,6 +1278,10 @@ declare namespace LocalJSX {
           * The name of the radio group component.
          */
         "name"?: string;
+        /**
+          * Emitted when the radio group loses focus.
+         */
+        "onCatBlur"?: (event: CatRadioGroupCustomEvent<FocusEvent>) => void;
     }
     interface CatScrollable {
         /**

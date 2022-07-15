@@ -146,7 +146,8 @@ export const CatRadioGroup = /*@__PURE__*/ defineContainer<JSX.CatRadioGroup>('c
   'name',
   'disabled',
   'a11yLabel',
-  'labelLeft'
+  'labelLeft',
+  'catBlur'
 ]);
 
 

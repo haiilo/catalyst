@@ -15,6 +15,13 @@
 | `name`      | `name`       | The name of the radio group component.                                                                             | `string \| undefined` | `undefined` |
 
 
+## Events
+
+| Event     | Description                               | Type                      |
+| --------- | ----------------------------------------- | ------------------------- |
+| `catBlur` | Emitted when the radio group loses focus. | `CustomEvent<FocusEvent>` |
+
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany

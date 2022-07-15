@@ -313,7 +313,13 @@ export class CatRadio {
 }
 
 
-export declare interface CatRadioGroup extends Components.CatRadioGroup {}
+export declare interface CatRadioGroup extends Components.CatRadioGroup {
+  /**
+   * Emitted when the radio group loses focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
@@ -330,6 +336,7 @@ export class CatRadioGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catBlur']);
   }
 }
 

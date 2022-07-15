@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Listen, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Listen, Watch, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'cat-radio-group',
@@ -56,6 +56,11 @@ export class CatRadioGroup {
     });
   }
 
+  /**
+   * Emitted when the radio group loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   componentDidLoad(): void {
     this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
     this.onNameChanged(this.name);
@@ -87,6 +92,11 @@ export class CatRadioGroup {
       catRadioElements.forEach(value => (value.checked = false));
       this.updateTabIndex();
     }
+  }
+
+  @Listen('blur', { capture: true })
+  onBlur(event: FocusEvent): void {
+    this.catBlur.emit(event);
   }
 
   render() {
