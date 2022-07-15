@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch, State, Listen } from '@stencil/core';
 import Choices, { Choice, ClassNames, Group, Item, Options } from 'choices.js';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import log from 'loglevel';
@@ -118,6 +118,11 @@ export class CatSelect {
    */
   @Event() catScrolledBottom!: EventEmitter;
 
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   @Watch('choices')
   setChoicesHandler(choices: Choice[]) {
     if (!choices?.length) return;
@@ -170,6 +175,11 @@ export class CatSelect {
       this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
       this.removeElement?.removeEventListener('click', this.onRemoveItemButtonClick.bind(this));
     }
+  }
+
+  @Listen('blur', { capture: true })
+  onBlur(event: FocusEvent): void {
+    this.catBlur.emit(event);
   }
 
   /**

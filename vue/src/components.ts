@@ -180,7 +180,8 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'hint',
   'catChange',
   'catSearch',
-  'catScrolledBottom'
+  'catScrolledBottom',
+  'catBlur'
 ]);
 
 

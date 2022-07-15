@@ -1359,6 +1359,10 @@ declare namespace LocalJSX {
          */
         "noSearch"?: boolean;
         /**
+          * Emitted when the select loses focus.
+         */
+        "onCatBlur"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
