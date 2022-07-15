@@ -76,18 +76,18 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 
 @mixin size($size, $fontSize) {
   .badge-#{$size} {
-    height: cat-size($size) * 0.5;
+    height: cat-token('size.badge.height.#{$size}');
     min-width: cat-size($size) * 0.5;
-    font-size: cat-body-font-size($fontSize);
-    padding: 0.5 * (cat-size($size) - 1.5) (cat-size($size) - 1) * 0.5;
+    font-size: cat-token('size.badge.font.#{$size}');
+    padding: 0 cat-token('size.badge.padding.horizontal.#{$size}');
   }
 }
 
 @include size('xs', 'xs');
-@include size('s', 'xs');
-@include size('m', 'xs');
-@include size('l', 's');
-@include size('xl', 'm');
+@include size('s', 's');
+@include size('m', 'm');
+@include size('l', 'l');
+@include size('xl', 'xl');
 
 // ----- pulse
 
