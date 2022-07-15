@@ -7,7 +7,8 @@
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script type="module">
       import { ci } from '/build/assets/icons/js/icons.object.js';
-      import { CatIconRegistry, CatI18nRegistry } from '/build/index.esm.js';
+      import { CatI18nRegistry, CatIconRegistry } from '/build/index.esm.js';
+
       CatIconRegistry.getInstance().addIcons(ci);
       CatI18nRegistry.getInstance().register('en', {
         'input.clear': 'Clear',
@@ -130,8 +131,8 @@
           <h3>Layout</h3>
           <cat-badge
             >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua.</cat-badge
-          >
+            et dolore magna aliquyam erat, sed diam voluptua.
+          </cat-badge>
         </section>
 
         <section id="button">
@@ -231,10 +232,12 @@
 
           <h3>Layout</h3>
           <div style="width: 200px; border: 1px solid gray">
-            <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button><br />
+            <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button>
+            <br />
             <cat-button icon="sparkle-filled" ellipsed="false"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</cat-button
-            ><br />
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+            </cat-button>
+            <br />
             <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
@@ -261,9 +264,15 @@
               <ul>
                 <li class="cat-head">Headline</li>
                 <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                <li><cat-button color="primary" active>Nav item 1</cat-button></li>
-                <li><cat-button active>Nav item 2</cat-button></li>
-                <li><cat-button color="warning" active>Nav item 3</cat-button></li>
+                <li>
+                  <cat-button color="primary" active>Nav item 1</cat-button>
+                </li>
+                <li>
+                  <cat-button active>Nav item 2</cat-button>
+                </li>
+                <li>
+                  <cat-button color="warning" active>Nav item 3</cat-button>
+                </li>
                 <li>
                   <cat-button disabled>Nav item 4</cat-button>
                 </li>
@@ -273,8 +282,8 @@
                 <li class="cat-hr"></li>
                 <li>
                   <cat-button color="danger" onclick="console.log(6)" active
-                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
-                  >
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-button>
                 </li>
               </ul>
               <hr />
@@ -350,9 +359,15 @@
               <ul>
                 <li class="cat-head">Headline</li>
                 <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                <li><cat-button color="primary">Nav item 1</cat-button></li>
-                <li><cat-button>Nav item 2</cat-button></li>
-                <li><cat-button color="warning">Nav item 3</cat-button></li>
+                <li>
+                  <cat-button color="primary">Nav item 1</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 2</cat-button>
+                </li>
+                <li>
+                  <cat-button color="warning">Nav item 3</cat-button>
+                </li>
                 <li>
                   <cat-button disabled>Nav item 4</cat-button>
                 </li>
@@ -362,8 +377,8 @@
                 <li class="cat-hr"></li>
                 <li>
                   <cat-button color="danger" onclick="console.log(6)"
-                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
-                  >
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-button>
                 </li>
               </ul>
               <hr />
@@ -379,10 +394,15 @@
         <section id="modal">
           <h2>Modal</h2>
           <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
-          <cat-modal id="modal-s" size="s"><cat-input label="Label" /><cat-button>aloo</cat-button></cat-modal>
+          <cat-modal id="modal-s" size="s">
+            <cat-input label="Label" />
+            <cat-button>aloo</cat-button>
+          </cat-modal>
 
           <cat-button color="primary" onclick="modalM.show()">Open modal m</cat-button>
-          <cat-modal id="modal-m"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
+          <cat-modal id="modal-m">
+            <cat-button onclick="console.log(2)">Do nothing</cat-button>
+          </cat-modal>
 
           <cat-button color="primary" onclick="modalL.show()">Open modal l</cat-button>
           <cat-modal id="modal-l" size="l">
@@ -654,7 +674,6 @@
         </section>
       </div>
     </div>
-
     <script>
       // --- init navigation
       const navbar = document.getElementById('nav');
