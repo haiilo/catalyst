@@ -1,5 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from '@stencil/core';
 
+/**
+ * A group of radio buttons.
+ */
 @Component({
   tag: 'cat-radio-group',
   styleUrl: 'cat-radio-group.scss',
@@ -14,6 +17,11 @@ export class CatRadioGroup {
    * The name of the radio group component.
    */
   @Prop() name?: string;
+
+  /**
+   * The value of the radio group.
+   */
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Whether this radio group is disabled.
@@ -31,11 +39,24 @@ export class CatRadioGroup {
    */
   @Prop() labelLeft = false;
 
+  /**
+   * Emitted when the value is changed.
+   */
+  @Event() catChange!: EventEmitter;
+
   @Watch('name')
   onNameChanged(newName?: string) {
     this.catRadioGroup.forEach(catRadio => {
       catRadio.name = newName;
     });
+  }
+
+  @Watch('value')
+  onValueChanged(newValue?: string) {
+    this.catRadioGroup.forEach(catRadio => {
+      catRadio.checked = catRadio.value === newValue;
+    });
+    this.updateTabIndex();
   }
 
   @Watch('disabled')
@@ -59,9 +80,9 @@ export class CatRadioGroup {
   componentDidLoad(): void {
     this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
     this.onNameChanged(this.name);
+    this.onValueChanged(this.value);
     this.onDisabledChanged(this.disabled);
     this.onLabelLeftChanged(this.labelLeft);
-    this.updateTabIndex();
   }
 
   @Listen('keydown')
@@ -82,20 +103,9 @@ export class CatRadioGroup {
   @Listen('input')
   onInput(event: MouseEvent): void {
     const catRadioElement = this.catRadioGroup.find(value => value === event.target);
-    if (catRadioElement && catRadioElement.checked) {
-      const catRadioElements = this.catRadioGroup.filter(value => value !== catRadioElement);
-      catRadioElements.forEach(value => (value.checked = false));
-      this.value = catRadioElement.value;
-    } else {
-      this.value = undefined;
-    }
-    this.updateTabIndex();
+    this.value = catRadioElement?.value;
     this.catChange.emit();
   }
-
-  @Prop({ mutable: true }) value?: string;
-
-  @Event() catChange!: EventEmitter;
 
   render() {
     return (

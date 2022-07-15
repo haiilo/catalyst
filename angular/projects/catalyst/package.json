@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-angular",
-  "version": "0.10.6",
+  "version": "0.10.8",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,7 @@
     "rxjs": ">=6.6.0"
   },
   "dependencies": {
-    "@haiilo/catalyst": "0.10.5",
+    "@haiilo/catalyst": "0.10.8",
     "tslib": "^2.3.0"
   }
 }

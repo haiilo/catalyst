@@ -1,8 +1,8 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch, State } from '@stencil/core';
-import Choices, { Choice, ClassNames, Group, Item, Options } from 'choices.js';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import Choices, { Choice, ClassNames, Item, Options } from 'choices.js';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -17,6 +17,11 @@ const getOptionTemplate = (data: Item): string => {
   }
   return `<cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>`;
 };
+
+/**
+ * A single option in the select.
+ */
+export type CatSelectItem = Pick<Choice, 'label' | 'value' | 'customProperties'>;
 
 /**
  * Select lets user choose one option from an options menu. Consider using
@@ -35,6 +40,7 @@ const getOptionTemplate = (data: Item): string => {
 export class CatSelect {
   private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-select-${nextUniqueId++}`;
+  private resetItemsOnNextValueChange = true;
 
   private choice?: Choices;
   private choiceInner?: Element;
@@ -64,12 +70,12 @@ export class CatSelect {
   /**
    * The available options for the input.
    */
-  @Prop() choices: Choice[] = [];
+  @Prop() items: CatSelectItem[] = [];
 
   /**
-   * The pre-selected items for the input.
+   * The value of the select.
    */
-  @Prop({ mutable: true }) value?: string | string[] | Choice | Choice[];
+  @Prop({ mutable: true }) value?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * Disable the select.
@@ -96,7 +102,7 @@ export class CatSelect {
   /**
    * Enable search for the select.
    */
-  @Prop() noSearch = false;
+  @Prop() search = false;
 
   /**
    * Optional hint text(s) to be displayed with the select.
@@ -118,18 +124,38 @@ export class CatSelect {
    */
   @Event() catScrolledBottom!: EventEmitter;
 
-  @Watch('choices')
-  setChoicesHandler(choices: Choice[]) {
-    if (!choices?.length) return;
+  @Watch('items')
+  setChoicesHandler(items: CatSelectItem[]) {
+    const isSelected = (item: CatSelectItem) => this.value?.includes(item.value);
+    const choices = items.map(item => ({ ...item, selected: isSelected(item) }));
+    this.choice?.setChoices(choices, 'value', 'label', true);
 
-    this.setChoices(choices, 'value', 'label', true);
+    const vItems = this.choice?.getValue() || [];
+    const vItemsArray = (Array.isArray(vItems) ? vItems : [vItems]) as Item[];
+    const vItemValues = [...this.value];
+
+    // remove duplicate items
+    this.choice?.unhighlightAll();
+    vItemsArray.forEach(vItem => {
+      const index = vItemValues.indexOf(vItem.value);
+      if (index > -1) {
+        vItemValues.splice(index, 1);
+      } else {
+        vItem.choiceId = -1; // disconnect item from choice
+        this.choice?.highlightItem(vItem, false);
+      }
+    });
+    this.choice?.removeHighlightedItems(false);
   }
 
   @Watch('value')
-  setValueHandler(value?: string[] | Choice[]) {
-    if (this.multiple) return;
-
-    this.setValue(value || []);
+  setValueHandler(value?: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+    if (this.resetItemsOnNextValueChange) {
+      this.choice?.removeActiveItems(-1);
+    }
+    this.resetItemsOnNextValueChange = true;
+    this.choice?.setChoiceByValue(value);
+    this.multiple && this.updateRemoveItemButtonVisibility();
   }
 
   componentWillRender(): void {
@@ -143,13 +169,12 @@ export class CatSelect {
     this.init();
     const attachedInternals: ElementInternals | undefined = this.hostElement.attachInternals?.();
     if (attachedInternals) {
-      this.choiceInner = attachedInternals.shadowRoot?.querySelector('.choices__inner') || undefined;
-      this.choiceDropdown =
-        attachedInternals.shadowRoot?.querySelector('.choices__list--dropdown')?.firstElementChild || undefined;
+      const root = attachedInternals.shadowRoot;
+      this.choiceInner = root?.querySelector('.choices__inner') || undefined;
+      this.choiceDropdown = root?.querySelector('.choices__list--dropdown')?.firstElementChild || undefined;
     }
     this.choiceInner?.addEventListener('click', this.showDropdownHandler.bind(this));
-    this.selectElement?.addEventListener('addItem', this.onChange.bind(this));
-    this.selectElement?.addEventListener('removeItem', this.onChange.bind(this));
+    this.selectElement?.addEventListener('change', this.onChange.bind(this));
     this.selectElement?.addEventListener('search', this.onSearch.bind(this));
     this.choiceDropdown?.addEventListener('scroll', this.onScrolledBottom.bind(this));
     if (this.multiple) {
@@ -162,58 +187,12 @@ export class CatSelect {
     this.choice?.destroy();
     this.choice = undefined;
     this.choiceInner?.removeEventListener('click', this.showDropdownHandler.bind(this));
-    this.selectElement?.removeEventListener('addItem', this.onChange.bind(this));
-    this.selectElement?.removeEventListener('removeItem', this.onChange.bind(this));
+    this.selectElement?.removeEventListener('change', this.onChange.bind(this));
     this.selectElement?.removeEventListener('search', this.onSearch.bind(this));
     this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this));
     if (this.multiple) {
-      this.selectElement?.removeEventListener('choice', this.onChoice.bind(this));
-      this.removeElement?.removeEventListener('click', this.onRemoveItemButtonClick.bind(this));
+      this.removeElement?.removeEventListener('choice', this.onChoice.bind(this));
     }
-  }
-
-  /**
-   * Set value of input based on an array of objects or strings. This behaves
-   * exactly the same as passing items via the items option but can be called
-   * after initialisation.
-   */
-  @Method()
-  async setValue(args: Array<string> | Array<Item>) {
-    this.choice?.setValue(args);
-
-    return this;
-  }
-
-  /**
-   * Set choices of select input via an array of objects (or function that
-   * returns array of object or promise of it), a value field name and a label
-   * field name.
-   */
-  @Method()
-  async setChoices(choices: Array<Choice> | Array<Group>, value?: string, label?: string, replaceChoices?: boolean) {
-    this.choice?.setChoices(choices, value, label, replaceChoices);
-
-    return this;
-  }
-
-  /**
-   * Clear all choices from select.
-   */
-  @Method()
-  async clearChoices() {
-    this.choice?.clearChoices();
-
-    return this;
-  }
-
-  /**
-   * Clear input of any user inputted text.
-   */
-  @Method()
-  async clearInput() {
-    this.choice?.clearInput();
-
-    return this;
   }
 
   render() {
@@ -243,16 +222,15 @@ export class CatSelect {
   }
 
   private init() {
-    const value = this.value || [];
+    const component = this; // eslint-disable-line @typescript-eslint/no-this-alias
     const removeItemText = (value: string) => this.i18n.t('select.removeItem', { value });
     const config = {
       allowHTML: true,
-      items: Array.isArray(value) ? value : ([value] as string[] | Choice[]),
       removeItemButton: true,
       duplicateItemsAllowed: false,
       delimiter: '',
       paste: false,
-      searchEnabled: !this.noSearch,
+      searchEnabled: this.search,
       searchChoices: false,
       position: this.position,
       resetScrollPosition: false,
@@ -267,7 +245,12 @@ export class CatSelect {
       addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
       maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
       uniqueItemText: this.i18n.t('select.uniqueItem'),
-      customAddItemText: this.i18n.t('select.customAddItem')
+      customAddItemText: this.i18n.t('select.customAddItem'),
+      callbackOnInit: function () {
+        const choice = this as unknown as Choices;
+        choice.setChoices(component.items, 'value', 'label', true);
+        choice.setChoiceByValue(component.value);
+      }
     };
 
     const configSingle = {
@@ -345,7 +328,6 @@ export class CatSelect {
       ? { ...config, ...configMultiple }
       : { ...config, ...configSingle };
     this.choice = new Choices(this.selectElement, settings);
-    this.choice.setChoices(this.choices);
   }
 
   private get hintSection() {
@@ -358,10 +340,17 @@ export class CatSelect {
   }
 
   private onChange() {
-    this.value = this.choice?.getValue();
-    this.catChange.emit(this.choice?.getValue());
-    if (this.multiple) {
-      this.updateRemoveItemButtonVisibility();
+    this.resetItemsOnNextValueChange = false;
+    this.value = this.choice?.getValue(true);
+    this.catChange.emit(this.value);
+  }
+
+  private onChoice(event: Event) {
+    const customEvent = event as CustomEvent<{ choice: Choice }>;
+    const coice = customEvent.detail.choice;
+    if (coice.selected) {
+      this.choice?.removeActiveItemsByValue(coice.value);
+      this.onChange();
     }
   }
 
@@ -371,28 +360,16 @@ export class CatSelect {
   }
 
   private onScrolledBottom() {
-    const scrolledBottom: boolean =
+    const scrolledBottom =
       this.choiceDropdown?.scrollHeight ===
       (this.choiceDropdown?.scrollTop || 0) + (this.choiceDropdown?.clientHeight || 0);
-
     if (scrolledBottom) {
       this.catScrolledBottom.emit();
     }
   }
 
-  private onChoice(event: Event) {
-    const customEvent = event as CustomEvent<{ choice: Choice }>;
-    const items = Array.from(this.choice?.getValue() as Item[]);
-    const item = items.find(value => value.choiceId === customEvent.detail.choice.id);
-    if (item) {
-      this.choice?._removeItem(item);
-    }
-  }
-
   private showDropdownHandler() {
-    if (!this.disabled) {
-      this.choice?.showDropdown();
-    }
+    !this.disabled && this.choice?.showDropdown();
   }
 
   private createRemoveItemButton() {
@@ -409,7 +386,7 @@ export class CatSelect {
     const items = Array.from(this.choice?.getValue() as Item[]);
     if (items.length) {
       this.removeElement?.removeAttribute('hidden');
-    } else if (!items.length) {
+    } else {
       this.removeElement?.setAttribute('hidden', 'true');
     }
   }
@@ -417,5 +394,6 @@ export class CatSelect {
   private onRemoveItemButtonClick(event: Event) {
     event.stopPropagation();
     this.choice?.removeActiveItems(-1);
+    this.updateRemoveItemButtonVisibility();
   }
 }

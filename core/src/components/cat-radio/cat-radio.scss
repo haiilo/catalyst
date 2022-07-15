@@ -27,6 +27,7 @@ label {
 .radio {
   display: flex;
   position: relative;
+  align-self: flex-start;
 }
 
 .circle {

@@ -413,9 +413,9 @@
 
         <h3>Group</h3>
         <cat-radio-group a11y-label="Radio Group 1" label-left>
-          <cat-radio label="Option 1 - Group 1" checked></cat-radio>
-          <cat-radio label="Option 2 - Group 1"></cat-radio>
-          <cat-radio label="Option 3 - Group 3" disabled></cat-radio>
+          <cat-radio value="one" label="Option 1 - Group 1" checked></cat-radio>
+          <cat-radio value="two" label="Option 2 - Group 1"></cat-radio>
+          <cat-radio value="three" label="Option 3 - Group 3" disabled></cat-radio>
         </cat-radio-group>
 
         <h3>State</h3>
@@ -456,102 +456,48 @@
 
       <section id="select">
         <h2>Select</h2>
-        <cat-select label="Label"></cat-select>
-        <cat-select class="second" multiple placeholder="fssdf"><span slot="label">Slot Label</span></cat-select>
-        <cat-select class="third" multiple label="label" label-hidden hint="This is a hint!">
-          <span slot="hint">This is another!</span>
-        </cat-select>
-        <cat-select class="fourth" multiple label="Label"><span slot="label">Priority Label</span></cat-select>
+        <cat-select class="select-single" label="Label"></cat-select>
+        <cat-select class="select-multiple" label="Label" multiple></cat-select>
 
-    <script>
-      const select = document.querySelector('cat-select');
-      const select2 = document.querySelector('cat-select.second');
-      const select3 = document.querySelector('cat-select.third');
-      const select4 = document.querySelector('cat-select.fourth');
-      select.choices = [
-        {
-          value: '1',
-          label: 'select option 1 select option 1 extra large'
-        },
-        {
-          value: '2',
-          label: 'select option 2'
-        },
-        {
-          value: '3',
-          label: 'select option 31231'
-        }
-      ];
-      setTimeout(() => {
-        select.choices = [
-          {
-            value: '1',
-            label: 'select option 1 select option 1 extra large'
-          }
-        ];
-        select.value = ['Test'];
-      }, 5000);
-      select2.choices = [
-        {
-          value: '1',
-          label: 'select option 1 extra large extra large'
-        },
-        {
-          value: '2',
-          label: 'select option 2',
-          selected: true
-        },
-        {
-          value: '3',
-          label: 'select option 31231'
-        }
-      ];
-      select3.choices = [
-        {
-          label: 'Group one',
-          disabled: false,
-          choices: [
-            { value: 'Child One', label: 'Child One', selected: true },
-            { value: 'Child Two', label: 'Child Two' },
-            { value: 'Child Three', label: 'Child Three' }
-          ]
-        },
-        {
-          label: 'Group two',
-          disabled: false,
-          choices: [
-            { value: 'Child Four', label: 'Child Four', disabled: true },
-            { value: 'Child Five', label: 'Child Five' },
-            { value: 'Child Six', label: 'Child Six' }
-          ]
-        }
-      ];
-      select4.choices = [
-        {
-          label: 'Group one',
-          disabled: false,
-          choices: [
+        <script>
+          const select1 = document.querySelector('cat-select.select-single');
+          const select2 = document.querySelector('cat-select.select-multiple');
+          const items = [
             {
-              value: 'Child Seven',
-              label: 'Child Seven',
-              disabled: true,
-              customProperties: { imageUrl: 'https://picsum.photos/20' }
+              value: '1',
+              label: 'select option 1 select option 1 extra large'
             },
-            { value: 'Child Eight', label: 'Child Eight', customProperties: { imageUrl: 'https://picsum.photos/20' } },
-            { value: 'Child Nine', label: 'Child Nine', customProperties: { imageUrl: 'https://picsum.photos/20' } }
-          ]
-        },
-        {
-          label: 'Group two',
-          disabled: false,
-          choices: [
-            { value: 'Child Four', label: 'Child Four', disabled: true },
-            { value: 'Child Five', label: 'Child Five' },
-            { value: 'Child Six', label: 'Child Six' }
-          ]
-        }
-      ];
-    </script>
+            {
+              value: '2',
+              label: 'select option 2'
+            },
+            {
+              value: '3',
+              label: 'select option 31231'
+            }
+          ];
+          select1.items = items;
+          select1.value = '2';
+          select2.items = items;
+          select2.value = ['2', '3'];
+
+setTimeout(() => {
+  select2.items = [
+  {
+    value: '1',
+    label: 'select option 1 select option 1 extra large'
+  },
+            {
+              value: '2',
+              label: 'select option 2'
+            },
+];
+}, 3000);
+
+setTimeout(() => {
+  select2.items = items;
+}, 5000);
+        </script>
       </section>
 
       <section id="skeleton">
@@ -651,7 +597,5 @@
       const scrollspy = VanillaScrollspy(navbar);
       scrollspy.init();
     </script>
-
   </body>
-
 </html>
