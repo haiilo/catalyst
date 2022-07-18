@@ -144,10 +144,11 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
 
 export const CatRadioGroup = /*@__PURE__*/ defineContainer<JSX.CatRadioGroup>('cat-radio-group', undefined, [
   'name',
+  'value',
   'disabled',
   'a11yLabel',
   'labelLeft',
-  'catBlur'
+  'catChange'
 ]);
 
 
@@ -170,18 +171,17 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'label',
   'labelHidden',
   'required',
-  'choices',
+  'items',
   'value',
   'disabled',
   'multiple',
   'placeholder',
   'position',
-  'noSearch',
+  'search',
   'hint',
   'catChange',
   'catSearch',
-  'catScrolledBottom',
-  'catBlur'
+  'catScrolledBottom'
 ]);
 
 

@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
-import { Choice, Group, Item } from "choices.js";
+import { CatSelectItem } from "./components/cat-select/cat-select";
 export namespace Components {
     interface CatAlert {
         /**
@@ -304,7 +304,7 @@ export namespace Components {
          */
         "type": 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
         /**
-          * The initial value of the control.
+          * The value of the control.
          */
         "value"?: string | number;
     }
@@ -384,6 +384,10 @@ export namespace Components {
           * The name of the radio group component.
          */
         "name"?: string;
+        /**
+          * The value of the radio group.
+         */
+        "value"?: string;
     }
     interface CatScrollable {
         /**
@@ -417,18 +421,6 @@ export namespace Components {
     }
     interface CatSelect {
         /**
-          * The available options for the input.
-         */
-        "choices": Choice[];
-        /**
-          * Clear all choices from select.
-         */
-        "clearChoices": () => Promise<this>;
-        /**
-          * Clear input of any user inputted text.
-         */
-        "clearInput": () => Promise<this>;
-        /**
           * Disable the select.
          */
         "disabled": boolean;
@@ -436,6 +428,10 @@ export namespace Components {
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
+        /**
+          * The available options for the input.
+         */
+        "items": CatSelectItem[];
         /**
           * The label for the select.
          */
@@ -449,10 +445,6 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
-          * Enable search for the select.
-         */
-        "noSearch": boolean;
-        /**
           * The placeholder for the select.
          */
         "placeholder": string;
@@ -465,17 +457,13 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Set choices of select input via an array of objects (or function that returns array of object or promise of it), a value field name and a label field name.
+          * Enable search for the select.
          */
-        "setChoices": (choices: Array<Choice> | Array<Group>, value?: string | undefined, label?: string | undefined, replaceChoices?: boolean | undefined) => Promise<this>;
+        "search": boolean;
         /**
-          * Set value of input based on an array of objects or strings. This behaves exactly the same as passing items via the items option but can be called after initialisation.
+          * The value of the select.
          */
-        "setValue": (args: Array<string> | Array<Item>) => Promise<this>;
-        /**
-          * The pre-selected items for the input.
-         */
-        "value"?: string | string[] | Choice | Choice[];
+        "value"?: any;
     }
     interface CatSkeleton {
         /**
@@ -1187,7 +1175,7 @@ declare namespace LocalJSX {
          */
         "type"?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
         /**
-          * The initial value of the control.
+          * The value of the control.
          */
         "value"?: string | number;
     }
@@ -1279,9 +1267,13 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the radio group loses focus.
+          * Emitted when the value is changed.
          */
-        "onCatBlur"?: (event: CatRadioGroupCustomEvent<FocusEvent>) => void;
+        "onCatChange"?: (event: CatRadioGroupCustomEvent<any>) => void;
+        /**
+          * The value of the radio group.
+         */
+        "value"?: string;
     }
     interface CatScrollable {
         /**
@@ -1331,10 +1323,6 @@ declare namespace LocalJSX {
     }
     interface CatSelect {
         /**
-          * The available options for the input.
-         */
-        "choices"?: Choice[];
-        /**
           * Disable the select.
          */
         "disabled"?: boolean;
@@ -1342,6 +1330,10 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
+        /**
+          * The available options for the input.
+         */
+        "items"?: CatSelectItem[];
         /**
           * The label for the select.
          */
@@ -1354,14 +1346,6 @@ declare namespace LocalJSX {
           * Enable multiple selection.
          */
         "multiple"?: boolean;
-        /**
-          * Enable search for the select.
-         */
-        "noSearch"?: boolean;
-        /**
-          * Emitted when the select loses focus.
-         */
-        "onCatBlur"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
@@ -1387,9 +1371,13 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The pre-selected items for the input.
+          * Enable search for the select.
          */
-        "value"?: string | string[] | Choice | Choice[];
+        "search"?: boolean;
+        /**
+          * The value of the select.
+         */
+        "value"?: any;
     }
     interface CatSkeleton {
         /**

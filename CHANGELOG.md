@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/haiilo/catalyst/compare/v0.10.2...v0.11.0) (2022-07-15)
+
+
+### Features
+
+* **angular:** export radio groups ([2bd037a](https://github.com/haiilo/catalyst/commit/2bd037ab31dd3d2b0c22886bbcd3660de042b661))
+* **core:** update card component spacings ([#44](https://github.com/haiilo/catalyst/issues/44)) ([5992ad1](https://github.com/haiilo/catalyst/commit/5992ad1bd8661475db3576e875c6ca86789bfefc))
+* **core:** updated badge ([#46](https://github.com/haiilo/catalyst/issues/46)) ([40711e5](https://github.com/haiilo/catalyst/commit/40711e5113f44d6fc4b3caa936c20c11271f5ea2))
+
+
+### Bug Fixes
+
+* **core:** radio group value access ([eeafc9e](https://github.com/haiilo/catalyst/commit/eeafc9e2f034e4e4f25e271a5a8c89d09cb1e80d))
+* **core:** rework select component ([dbf30bc](https://github.com/haiilo/catalyst/commit/dbf30bcf83ace4cc8b9f3346c496f2f038b898f1))
+
 ### [0.10.5](https://github.com/haiilo/catalyst/compare/v0.10.2...v0.10.5) (2022-07-12)
 
 

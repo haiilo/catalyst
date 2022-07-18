@@ -131,7 +131,7 @@ export class CatInput {
   @Prop() type: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number' = 'text';
 
   /**
-   * The initial value of the control.
+   * The value of the control.
    */
   @Prop({ mutable: true }) value?: string | number;
 

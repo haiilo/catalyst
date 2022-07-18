@@ -29,7 +29,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean'
   },
   {
-    elementSelectors: ['cat-radio'],
+    elementSelectors: ['cat-radio', 'cat-radio-group'],
     event: 'catChange',
     targetAttr: 'value',
     type: 'radio'

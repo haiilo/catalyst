@@ -29,7 +29,7 @@
 | `textPrefix`   | `text-prefix`   | A textual prefix to be displayed in the input.                                            | `string \| undefined`                                                       | `undefined` |
 | `textSuffix`   | `text-suffix`   | A textual suffix to be displayed in the input.                                            | `string \| undefined`                                                       | `undefined` |
 | `type`         | `type`          | Type of form control.                                                                     | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `'text'`    |
-| `value`        | `value`         | The initial value of the control.                                                         | `number \| string \| undefined`                                             | `undefined` |
+| `value`        | `value`         | The value of the control.                                                                 | `number \| string \| undefined`                                             | `undefined` |
 
 
 ## Events
