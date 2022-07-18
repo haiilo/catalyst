@@ -44,6 +44,11 @@ export class CatRadioGroup {
    */
   @Event() catChange!: EventEmitter;
 
+  /**
+   * Emitted when the radio group loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   @Watch('name')
   onNameChanged(newName?: string) {
     this.catRadioGroup.forEach(catRadio => {
@@ -76,11 +81,6 @@ export class CatRadioGroup {
       }
     });
   }
-
-  /**
-   * Emitted when the radio group loses focus.
-   */
-  @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentDidLoad(): void {
     this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
