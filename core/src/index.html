@@ -30,560 +30,580 @@
   </head>
   <body>
     <div class="wrapper">
-    <nav id="nav">
-      <ul>
-        <li><a href="#alert">Alert</a></li>
-        <li><a href="#avatar">Avatar</a></li>
-        <li><a href="#badge">Badge</a></li>
-        <li><a href="#button">Button</a></li>
-        <li><a href="#card">Card</a></li>
-        <li><a href="#checkbox">Checkbox</a></li>
-        <li><a href="#divider">Divider</a></li>
-        <li><a href="#icon">Icon</a></li>
-        <li><a href="#input">Input</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#modal">Modal</a></li>
-        <li><a href="#notification">Notification</a></li>
-        <li><a href="#radio">Radio</a></li>
-        <li><a href="#scrollable">Scrollable</a></li>
-        <li><a href="#select">Select</a></li>
-        <li><a href="#skeleton">Skeleton</a></li>
-        <li><a href="#spinner">Spinner</a></li>
-        <li><a href="#tabs">Tabs</a></li>
-        <li><a href="#textarea">Textarea</a></li>
-        <li><a href="#toggle">Toggle</a></li>
-        <li><a href="#tooltip">Tooltip</a></li>
-      </ul>
-    </nav>
-    <div class="content">
-      <h1>Catalyst</h1>
+      <nav id="nav">
+        <ul>
+          <li><a href="#alert">Alert</a></li>
+          <li><a href="#avatar">Avatar</a></li>
+          <li><a href="#badge">Badge</a></li>
+          <li><a href="#button">Button</a></li>
+          <li><a href="#card">Card</a></li>
+          <li><a href="#checkbox">Checkbox</a></li>
+          <li><a href="#divider">Divider</a></li>
+          <li><a href="#icon">Icon</a></li>
+          <li><a href="#input">Input</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#modal">Modal</a></li>
+          <li><a href="#notification">Notification</a></li>
+          <li><a href="#radio">Radio</a></li>
+          <li><a href="#scrollable">Scrollable</a></li>
+          <li><a href="#select">Select</a></li>
+          <li><a href="#skeleton">Skeleton</a></li>
+          <li><a href="#spinner">Spinner</a></li>
+          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#textarea">Textarea</a></li>
+          <li><a href="#toggle">Toggle</a></li>
+          <li><a href="#tooltip">Tooltip</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <h1>Catalyst</h1>
 
-      <section id="alert">
-        <h2>Alert</h2>
-        <cat-alert color="primary">
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua.
-          </p>
-        </cat-alert>
-        <h3>Color</h3>
-        <cat-alert color="secondary">
-          <p>
-            Lorem ipsum dolor sit amet.
-          </p>
-        </cat-alert>
-        <cat-alert color="success">
-          <p>
-            Lorem ipsum dolor sit amet.
-          </p>
-        </cat-alert>
-        <cat-alert color="warning">
-          <p>
-            Lorem ipsum dolor sit amet.
-          </p>
-        </cat-alert>
-        <cat-alert color="danger">
-          <p>
-            Lorem ipsum dolor sit amet.
-          </p>
-        </cat-alert>
-      </section>
+        <section id="alert">
+          <h2>Alert</h2>
+          <cat-alert color="primary">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua.
+            </p>
+          </cat-alert>
+          <h3>Color</h3>
+          <cat-alert color="secondary">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </cat-alert>
+          <cat-alert color="success">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </cat-alert>
+          <cat-alert color="warning">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </cat-alert>
+          <cat-alert color="danger">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </cat-alert>
+        </section>
 
-      <section id="avatar">
-        <h2>Avatar</h2>
-        <cat-avatar label="John Doe" size="m" url="http://google.com" src="https://picsum.photos/40"></cat-avatar>
-        <h3>Variations</h3>
-        <cat-avatar label="John Doe" size="xs" icon="sparkle-filled"></cat-avatar>
-        <cat-avatar label="John Doe" size="s" round></cat-avatar>
-        <cat-avatar label="John Doe" size="m" url="http://google.com" src="https://picsum.photos/40"></cat-avatar>
-        <cat-avatar
-          label="John Doe"
-          size="l"
-          round
-          url="http://google.com"
-          src="invalidSrc"
-          icon="sparkle-filled"
-        ></cat-avatar>
-        <cat-avatar label="John Doe" size="xl" initials="Init"></cat-avatar>
-      </section>
+        <section id="avatar">
+          <h2>Avatar</h2>
+          <cat-avatar label="John Doe" size="m" url="http://google.com" src="https://picsum.photos/40"></cat-avatar>
+          <h3>Variations</h3>
+          <cat-avatar label="John Doe" size="xs" icon="sparkle-filled"></cat-avatar>
+          <cat-avatar label="John Doe" size="s" round></cat-avatar>
+          <cat-avatar label="John Doe" size="m" url="http://google.com" src="https://picsum.photos/40"></cat-avatar>
+          <cat-avatar
+            label="John Doe"
+            size="l"
+            round
+            url="http://google.com"
+            src="invalidSrc"
+            icon="sparkle-filled"
+          ></cat-avatar>
+          <cat-avatar label="John Doe" size="xl" initials="Init"></cat-avatar>
+        </section>
 
-      <section id="badge">
-        <h2>Badge</h2>
-        <cat-badge>Default</cat-badge>
+        <section id="badge">
+          <h2>Badge</h2>
+          <cat-badge>Default</cat-badge>
 
-        <h3>Variant</h3>
-        <cat-badge variant="filled">Filled</cat-badge>
-        <cat-badge variant="outlined">Outlined</cat-badge>
+          <h3>Variant</h3>
+          <cat-badge variant="filled">Filled</cat-badge>
+          <cat-badge variant="outlined">Outlined</cat-badge>
 
-        <h3>Color</h3>
-        <cat-badge color="primary">Primary</cat-badge>
-        <cat-badge color="secondary">Secondary</cat-badge>
-        <cat-badge color="success">Success</cat-badge>
-        <cat-badge color="warning">Warning</cat-badge>
-        <cat-badge color="danger">Danger</cat-badge>
+          <h3>Color</h3>
+          <cat-badge color="primary">Primary</cat-badge>
+          <cat-badge color="secondary">Secondary</cat-badge>
+          <cat-badge color="success">Success</cat-badge>
+          <cat-badge color="warning">Warning</cat-badge>
+          <cat-badge color="danger">Danger</cat-badge>
 
-        <h3>Size</h3>
-        <cat-badge size="xs">Size XS</cat-badge>
-        <cat-badge size="s">Size S</cat-badge>
-        <cat-badge size="m">Size M</cat-badge>
-        <cat-badge size="l">Size L</cat-badge>
-        <cat-badge size="xl">Size XL</cat-badge>
+          <h3>Size</h3>
+          <cat-badge size="xs">Size XS</cat-badge>
+          <cat-badge size="s">Size S</cat-badge>
+          <cat-badge size="m">Size M</cat-badge>
+          <cat-badge size="l">Size L</cat-badge>
+          <cat-badge size="xl">Size XL</cat-badge>
 
-        <h3>Round</h3>
-        <cat-badge round="true">Round</cat-badge>
-        <cat-badge round="true" color="danger" size="xs"></cat-badge>
+          <h3>Round</h3>
+          <cat-badge round="true">Round</cat-badge>
+          <cat-badge round="true" color="danger" size="xs"></cat-badge>
 
-        <h3>Pulse</h3>
-        <cat-badge pulse="true">Pulse</cat-badge>
-        <cat-badge pulse="true" round="true" color="danger" size="xs"></cat-badge>
+          <h3>Pulse</h3>
+          <cat-badge pulse="true">Pulse</cat-badge>
+          <cat-badge pulse="true" round="true" color="danger" size="xs"></cat-badge>
 
-        <h3>Layout</h3>
-        <cat-badge>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</cat-badge>
-      </section>
+          <h3>Layout</h3>
+          <cat-badge
+            >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua.
+          </cat-badge>
+        </section>
 
-      <section id="button">
-        <h2>Button</h2>
-        <cat-button>Button</cat-button>
+        <section id="button">
+          <h2>Button</h2>
+          <cat-button>Button</cat-button>
 
-    <h3>Variant</h3>
-    <cat-button variant="filled">Filled</cat-button>
-    <cat-button variant="outlined">Outlined</cat-button>
-    <cat-button variant="text">Text</cat-button>
+          <h3>Variant</h3>
+          <cat-button variant="filled">Filled</cat-button>
+          <cat-button variant="outlined">Outlined</cat-button>
+          <cat-button variant="text">Text</cat-button>
 
-    <h3>Color</h3>
-    <cat-button icon="sparkle-filled" variant="filled" color="primary">Primary</cat-button>
-    <cat-button icon="sparkle-filled" variant="outlined" color="primary">Primary</cat-button>
-    <cat-button icon="sparkle-filled" variant="text" color="primary">Primary</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" variant="filled" color="secondary">Secondary</cat-button>
-    <cat-button icon="sparkle-filled" variant="outlined" color="secondary">Secondary</cat-button>
-    <cat-button icon="sparkle-filled" variant="text" color="secondary">Secondary</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" variant="filled" color="danger">Danger</cat-button>
-    <cat-button icon="sparkle-filled" variant="outlined" color="danger">Danger</cat-button>
-    <cat-button icon="sparkle-filled" variant="text" color="danger">Danger</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" variant="filled" color="success">Success</cat-button>
-    <cat-button icon="sparkle-filled" variant="outlined" color="success">Success</cat-button>
-    <cat-button icon="sparkle-filled" variant="text" color="success">Success</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" variant="filled" color="warning">Warning</cat-button>
-    <cat-button icon="sparkle-filled" variant="outlined" color="warning">Warning</cat-button>
-    <cat-button icon="sparkle-filled" variant="text" color="warning">Warning</cat-button>
+          <h3>Color</h3>
+          <cat-button icon="sparkle-filled" variant="filled" color="primary">Primary</cat-button>
+          <cat-button icon="sparkle-filled" variant="outlined" color="primary">Primary</cat-button>
+          <cat-button icon="sparkle-filled" variant="text" color="primary">Primary</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" variant="filled" color="secondary">Secondary</cat-button>
+          <cat-button icon="sparkle-filled" variant="outlined" color="secondary">Secondary</cat-button>
+          <cat-button icon="sparkle-filled" variant="text" color="secondary">Secondary</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" variant="filled" color="danger">Danger</cat-button>
+          <cat-button icon="sparkle-filled" variant="outlined" color="danger">Danger</cat-button>
+          <cat-button icon="sparkle-filled" variant="text" color="danger">Danger</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" variant="filled" color="success">Success</cat-button>
+          <cat-button icon="sparkle-filled" variant="outlined" color="success">Success</cat-button>
+          <cat-button icon="sparkle-filled" variant="text" color="success">Success</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" variant="filled" color="warning">Warning</cat-button>
+          <cat-button icon="sparkle-filled" variant="outlined" color="warning">Warning</cat-button>
+          <cat-button icon="sparkle-filled" variant="text" color="warning">Warning</cat-button>
 
-    <h3>Size</h3>
-    <cat-button size="xs" icon="sparkle-filled">Size XS</cat-button>
-    <cat-button size="s" icon="sparkle-filled">Size S</cat-button>
-    <cat-button size="m" icon="sparkle-filled">Size M</cat-button>
-    <cat-button size="l" icon="sparkle-filled">Size L</cat-button>
-    <cat-button size="xl" icon="sparkle-filled">Size XL</cat-button>
+          <h3>Size</h3>
+          <cat-button size="xs" icon="sparkle-filled">Size XS</cat-button>
+          <cat-button size="s" icon="sparkle-filled">Size S</cat-button>
+          <cat-button size="m" icon="sparkle-filled">Size M</cat-button>
+          <cat-button size="l" icon="sparkle-filled">Size L</cat-button>
+          <cat-button size="xl" icon="sparkle-filled">Size XL</cat-button>
 
-    <h3>Icons</h3>
-    <cat-button icon="sparkle-filled">Prefix</cat-button>
-    <cat-button icon="sparkle-filled" icon-suffix="true">Suffix</cat-button>
-    <cat-button icon="sparkle-filled" icon-only="true" a11y-label="ARIA">Suffix</cat-button>
+          <h3>Icons</h3>
+          <cat-button icon="sparkle-filled">Prefix</cat-button>
+          <cat-button icon="sparkle-filled" icon-suffix="true">Suffix</cat-button>
+          <cat-button icon="sparkle-filled" icon-only="true" a11y-label="ARIA">Suffix</cat-button>
 
-    <h3>Icons (Responsive)</h3>
-    <cat-button icon="sparkle-filled" icon-only="xs" a11y-label="ARIA">xs</cat-button>
-    <cat-button icon="sparkle-filled" icon-only="s" a11y-label="ARIA">s</cat-button>
-    <cat-button icon="sparkle-filled" icon-only="m" a11y-label="ARIA">m</cat-button>
-    <cat-button icon="sparkle-filled" icon-only="l" a11y-label="ARIA">l</cat-button>
-    <cat-button icon="sparkle-filled" icon-only="xl" a11y-label="ARIA">xl</cat-button>
+          <h3>Icons (Responsive)</h3>
+          <cat-button icon="sparkle-filled" icon-only="xs" a11y-label="ARIA">xs</cat-button>
+          <cat-button icon="sparkle-filled" icon-only="s" a11y-label="ARIA">s</cat-button>
+          <cat-button icon="sparkle-filled" icon-only="m" a11y-label="ARIA">m</cat-button>
+          <cat-button icon="sparkle-filled" icon-only="l" a11y-label="ARIA">l</cat-button>
+          <cat-button icon="sparkle-filled" icon-only="xl" a11y-label="ARIA">xl</cat-button>
 
-    <h3>Links</h3>
-    <cat-button url="http://www.google.de">Google</cat-button>
-    <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
+          <h3>Links</h3>
+          <cat-button url="http://www.google.de">Google</cat-button>
+          <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
 
-    <h3>Disabled</h3>
-    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="primary">Primary</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="primary">Primary</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="primary">Primary</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="secondary">Secondary</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="secondary">Secondary</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="secondary">Secondary</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="danger">Danger</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="danger">Danger</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="danger">Danger</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="success">Success</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="success">Success</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="success">Success</cat-button>
-    <br /><br />
-    <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="warning">Warning</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="warning">Warning</cat-button>
-    <cat-button icon="sparkle-filled" disabled="true" variant="text" color="warning">Warning</cat-button>
+          <h3>Disabled</h3>
+          <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="primary">Primary</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="primary">Primary</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="text" color="primary">Primary</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="secondary">Secondary</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="secondary">Secondary</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="text" color="secondary">Secondary</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="danger">Danger</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="danger">Danger</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="text" color="danger">Danger</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="success">Success</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="success">Success</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="text" color="success">Success</cat-button>
+          <br /><br />
+          <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="warning">Warning</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="warning">Warning</cat-button>
+          <cat-button icon="sparkle-filled" disabled="true" variant="text" color="warning">Warning</cat-button>
 
-    <h3>Loading</h3>
-    <cat-button loading="true" variant="filled" color="primary">Primary</cat-button>
-    <cat-button loading="true" variant="outlined" color="primary">Primary</cat-button>
-    <cat-button loading="true" variant="text" color="primary">Primary</cat-button>
-    <br /><br />
-    <cat-button loading="true" variant="filled" color="secondary">Secondary</cat-button>
-    <cat-button loading="true" variant="outlined" color="secondary">Secondary</cat-button>
-    <cat-button loading="true" variant="text" color="secondary">Secondary</cat-button>
-    <br /><br />
-    <cat-button loading="true" variant="filled" color="danger">Danger</cat-button>
-    <cat-button loading="true" variant="outlined" color="danger">Danger</cat-button>
-    <cat-button loading="true" variant="text" color="danger">Danger</cat-button>
-    <br /><br />
-    <cat-button loading="true" variant="filled" color="success">Success</cat-button>
-    <cat-button loading="true" variant="outlined" color="success">Success</cat-button>
-    <cat-button loading="true" variant="text" color="success">Success</cat-button>
-    <br /><br />
-    <cat-button loading="true" variant="filled" color="warning">Warning</cat-button>
-    <cat-button loading="true" variant="outlined" color="warning">Warning</cat-button>
-    <cat-button loading="true" variant="text" color="warning">Warning</cat-button>
+          <h3>Loading</h3>
+          <cat-button loading="true" variant="filled" color="primary">Primary</cat-button>
+          <cat-button loading="true" variant="outlined" color="primary">Primary</cat-button>
+          <cat-button loading="true" variant="text" color="primary">Primary</cat-button>
+          <br /><br />
+          <cat-button loading="true" variant="filled" color="secondary">Secondary</cat-button>
+          <cat-button loading="true" variant="outlined" color="secondary">Secondary</cat-button>
+          <cat-button loading="true" variant="text" color="secondary">Secondary</cat-button>
+          <br /><br />
+          <cat-button loading="true" variant="filled" color="danger">Danger</cat-button>
+          <cat-button loading="true" variant="outlined" color="danger">Danger</cat-button>
+          <cat-button loading="true" variant="text" color="danger">Danger</cat-button>
+          <br /><br />
+          <cat-button loading="true" variant="filled" color="success">Success</cat-button>
+          <cat-button loading="true" variant="outlined" color="success">Success</cat-button>
+          <cat-button loading="true" variant="text" color="success">Success</cat-button>
+          <br /><br />
+          <cat-button loading="true" variant="filled" color="warning">Warning</cat-button>
+          <cat-button loading="true" variant="outlined" color="warning">Warning</cat-button>
+          <cat-button loading="true" variant="text" color="warning">Warning</cat-button>
 
-    <h3>Layout</h3>
-    <div style="width: 200px; border: 1px solid gray">
-      <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur elitr</cat-button><br />
-      <cat-button icon="sparkle-filled" no-ellipsis>Lorem ipsum dolor sit amet, consetetur elitr</cat-button><br />
-      <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
-      <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
-      <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
-    </div>
-      </section>
-
-      <section id="card">
-        <h2>Card</h2>
-        <cat-card>
-          <h3>Lorem ipsum dolor sit amet</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua.
-          </p>
-          <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-            est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          </p>
-        </cat-card>
-        <h3>Navigation</h3>
-        <cat-card>
-          <nav>
-            <ul>
-              <li class="cat-head">Headline</li>
-              <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-              <li><cat-button color="primary" active>Nav item 1</cat-button></li>
-              <li><cat-button active>Nav item 2</cat-button></li>
-              <li><cat-button color="warning" active>Nav item 3</cat-button></li>
-              <li>
-                <cat-button disabled>Nav item 4</cat-button>
-              </li>
-              <li>
-                <cat-button>Nav item 5 (long)</cat-button>
-              </li>
-              <li class="cat-hr"></li>
-              <li>
-                <cat-button color="danger" onclick="console.log(6)" active
-                  >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
-                >
-              </li>
-            </ul>
-            <hr />
-            <ul>
-              <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
-            </ul>
-          </nav>
-        </cat-card>
-      </section>
-
-      <section id="checkbox">
-        <h2>Checkbox</h2>
-        <cat-checkbox label="Label"></cat-checkbox>
-
-        <h3>State</h3>
-        <cat-checkbox label="Disabled" disabled></cat-checkbox>
-        <cat-checkbox label="Checked" checked></cat-checkbox>
-        <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
-        <cat-checkbox label="Indeterminate" indeterminate="true"></cat-checkbox>
-
-        <h3>Alignment</h3>
-        <cat-checkbox label="Label" label-left></cat-checkbox>
-
-        <h3>Slots</h3>
-        <cat-checkbox hint="This is a hint!">
-          <span slot="label">This is the <b>label</b></span>
-          <span slot="hint">This is another!</span>
-        </cat-checkbox>
-      </section>
-
-      <section id="divider">
-        <h2>Divider</h2>
-      </section>
-
-      <section id="icon">
-        <h2>Icon</h2>
-        <cat-icon icon="sparkle-filled"></cat-icon>
-
-        <h3>Color</h3>
-        <cat-icon icon="sparkle-filled" style="color: red"></cat-icon>
-        <cat-icon icon="sparkle-filled" style="color: blue"></cat-icon>
-        <cat-icon icon="sparkle-filled" style="color: green"></cat-icon>
-
-        <h3>Size</h3>
-        <cat-icon icon="sparkle-filled" size="xs"></cat-icon>
-        <cat-icon icon="sparkle-filled" size="s"></cat-icon>
-        <cat-icon icon="sparkle-filled" size="m"></cat-icon>
-        <cat-icon icon="sparkle-filled" size="l"></cat-icon>
-        <cat-icon icon="sparkle-filled" size="xl"></cat-icon>
-        <cat-icon icon="sparkle-filled" size="inline" style="font-size: 2.5rem"></cat-icon>
-
-        <h3>Ratio</h3>
-        <cat-icon icon="sp-grid-3-cols" style="--cat-icon-ratio: 2.5"></cat-icon>
-      </section>
-
-      <section id="input">
-        <h2>Input</h2>
-        <cat-input label="Label" hint="This a hint!">
-          <span slot="hint">This is another!</span>
-        </cat-input>
-        <cat-input label="Label">
-          <label slot="label">Priority Label</label>
-        </cat-input>
-      </section>
-
-      <section id="menu">
-        <h2>Menu</h2>
-        <cat-menu>
-          <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
-          <nav slot="content">
-            <ul>
-              <li class="cat-head">Headline</li>
-              <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-              <li><cat-button color="primary">Nav item 1</cat-button></li>
-              <li><cat-button>Nav item 2</cat-button></li>
-              <li><cat-button color="warning">Nav item 3</cat-button></li>
-              <li>
-                <cat-button disabled>Nav item 4</cat-button>
-              </li>
-              <li>
-                <cat-button>Nav item 5 (long)</cat-button>
-              </li>
-              <li class="cat-hr"></li>
-              <li>
-                <cat-button color="danger" onclick="console.log(6)"
-                  >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-button
-                >
-              </li>
-            </ul>
-            <hr />
-            <ul>
-              <li><cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button></li>
-            </ul>
-          </nav>
-        </cat-menu>
-      </section>
-
-      <section id="modal">
-        <h2>Modal</h2>
-        <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
-        <cat-modal id="modal-s" size="s"><cat-input label="Label" /><cat-button>aloo</cat-button></cat-modal>
-
-        <cat-button color="primary" onclick="modalM.show()">Open modal m</cat-button>
-        <cat-modal id="modal-m"><cat-button onclick="console.log(2)">Do nothing</cat-button></cat-modal>
-
-        <cat-button color="primary" onclick="modalL.show()">Open modal l</cat-button>
-        <cat-modal id="modal-l" size="l">
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-            diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-            takimata sanctus est Lorem ipsum dolor sit amet.
-          </p>
-        </cat-modal>
-        <script>
-          const modalS = document.querySelector('#modal-s');
-          const modalM = document.querySelector('#modal-m');
-          const modalL = document.querySelector('#modal-l');
-        </script>
-      </section>
-
-      <section id="notification">
-        <h2>Notification</h2>
-        <cat-toast-demo></cat-toast-demo>
-      </section>
-
-      <section id="radio">
-        <h2>Radio</h2>
-        <cat-radio label="Label"></cat-radio>
-
-        <h3>Group</h3>
-        <cat-radio-group a11y-label="Radio Group 1" label-left>
-          <cat-radio value="one" label="Option 1 - Group 1" checked></cat-radio>
-          <cat-radio value="two" label="Option 2 - Group 1"></cat-radio>
-          <cat-radio value="three" label="Option 3 - Group 3" disabled></cat-radio>
-        </cat-radio-group>
-
-        <h3>State</h3>
-        <cat-radio label="Disabled" disabled></cat-radio>
-        <cat-radio label="Checked" checked></cat-radio>
-        <cat-radio label="Checked disabled" checked disabled></cat-radio>
-
-        <h3>Alignment</h3>
-        <cat-radio label="Label" label-left></cat-radio>
-
-        <h3>Slots</h3>
-        <cat-radio hint="This is a hint!">
-          <span slot="label">This is the <b>label</b></span>
-          <span slot="hint">This is another!</span>
-        </cat-radio>
-      </section>
-
-      <section id="scrollable">
-        <h2>Scrollable</h2>
-        <cat-scrollable style="max-height: 8rem;">
-          <div>
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+          <h3>Layout</h3>
+          <div style="width: 200px; border: 1px solid gray">
+            <cat-button icon="sparkle-filled">Lorem ipsum dolor sit amet, consetetur elitr</cat-button>
             <br />
-            <br />
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-            <br />
-            <br />
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-            <br />
-            <br />
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-            <br />
-            <cat-button icon="sparkle-filled" ellipsed="false"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-            </cat-button>
+            <cat-button icon="sparkle-filled" no-ellipsis>Lorem ipsum dolor sit amet, consetetur elitr</cat-button>
             <br />
             <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
           </div>
-        </cat-scrollable>
-      </section>
+        </section>
 
-      <section id="select">
-        <h2>Select</h2>
-        <cat-select class="select-single" label="Label"></cat-select>
-        <cat-select class="select-multiple" label="Label" multiple></cat-select>
+        <section id="card">
+          <h2>Card</h2>
+          <cat-card>
+            <h3>Lorem ipsum dolor sit amet</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua.
+            </p>
+            <p>
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            </p>
+          </cat-card>
+          <h3>Navigation</h3>
+          <cat-card>
+            <nav>
+              <ul>
+                <li class="cat-head">Headline</li>
+                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                <li>
+                  <cat-button color="primary" active>Nav item 1</cat-button>
+                </li>
+                <li>
+                  <cat-button active>Nav item 2</cat-button>
+                </li>
+                <li>
+                  <cat-button color="warning" active>Nav item 3</cat-button>
+                </li>
+                <li>
+                  <cat-button disabled>Nav item 4</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 5 (long)</cat-button>
+                </li>
+                <li class="cat-hr"></li>
+                <li>
+                  <cat-button color="danger" onclick="console.log(6)" active
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-button>
+                </li>
+              </ul>
+              <hr />
+              <ul>
+                <li>
+                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
+                </li>
+              </ul>
+            </nav>
+          </cat-card>
+        </section>
 
-        <script>
-          const select1 = document.querySelector('cat-select.select-single');
-          const select2 = document.querySelector('cat-select.select-multiple');
-          const items = [
-            {
-              value: '1',
-              label: 'select option 1 select option 1 extra large'
-            },
-            {
-              value: '2',
-              label: 'select option 2'
-            },
-            {
-              value: '3',
-              label: 'select option 31231'
-            }
-          ];
-          select1.items = items;
-          select1.value = '2';
-          select2.items = items;
-          select2.value = ['2', '3'];
-        </script>
-      </section>
+        <section id="checkbox">
+          <h2>Checkbox</h2>
+          <cat-checkbox label="Label"></cat-checkbox>
 
-      <section id="skeleton">
-        <h2>Skeleton</h2>
-        <cat-skeleton></cat-skeleton>
+          <h3>State</h3>
+          <cat-checkbox label="Disabled" disabled></cat-checkbox>
+          <cat-checkbox label="Checked" checked></cat-checkbox>
+          <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
+          <cat-checkbox label="Indeterminate" indeterminate="true"></cat-checkbox>
 
-        <h3>Effect</h3>
-        <cat-skeleton effect="plain"></cat-skeleton>
-        <br />
-        <cat-skeleton effect="sheen"></cat-skeleton>
-        <br />
-        <cat-skeleton effect="pulse"></cat-skeleton>
+          <h3>Alignment</h3>
+          <cat-checkbox label="Label" label-left></cat-checkbox>
 
-        <h3>Variant</h3>
-        <cat-skeleton variant="square"></cat-skeleton>
-        <cat-skeleton variant="circle"></cat-skeleton>
-        <cat-skeleton variant="rectangle"></cat-skeleton>
-        <cat-skeleton variant="head"></cat-skeleton>
-        <cat-skeleton variant="body"></cat-skeleton>
-      </section>
+          <h3>Slots</h3>
+          <cat-checkbox hint="This is a hint!">
+            <span slot="label">This is the <b>label</b></span>
+            <span slot="hint">This is another!</span>
+          </cat-checkbox>
+        </section>
 
-      <section id="spinner">
-        <h2>Spinner</h2>
-        <cat-spinner></cat-spinner>
+        <section id="divider">
+          <h2>Divider</h2>
+        </section>
 
-        <h3>Color</h3>
-        <cat-spinner style="color: red"></cat-spinner>
-        <cat-spinner style="color: blue"></cat-spinner>
-        <cat-spinner style="color: green"></cat-spinner>
+        <section id="icon">
+          <h2>Icon</h2>
+          <cat-icon icon="sparkle-filled"></cat-icon>
 
-        <h3>Size</h3>
-        <cat-spinner size="xs"></cat-spinner>
-        <cat-spinner size="s"></cat-spinner>
-        <cat-spinner size="m"></cat-spinner>
-        <cat-spinner size="l"></cat-spinner>
-        <cat-spinner size="xl"></cat-spinner>
-        <cat-spinner size="inline" style="font-size: 2.5rem"></cat-spinner>
-      </section>
+          <h3>Color</h3>
+          <cat-icon icon="sparkle-filled" style="color: red"></cat-icon>
+          <cat-icon icon="sparkle-filled" style="color: blue"></cat-icon>
+          <cat-icon icon="sparkle-filled" style="color: green"></cat-icon>
 
-      <section id="tabs">
-        <h2>Tabs</h2>
-        <cat-tabs>
-          <cat-tab label="First"></cat-tab>
-          <cat-tab label="Second"></cat-tab>
-          <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
-        </cat-tabs>
-        <h3>Alignment</h3>
-        <cat-tabs tabs-align="center">
-          <cat-tab label="First"></cat-tab>
-          <cat-tab label="Second"></cat-tab>
-          <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
-        </cat-tabs>
-        <br>
-        <br>
-        <cat-tabs tabs-align="right">
-          <cat-tab label="First"></cat-tab>
-          <cat-tab label="Second"></cat-tab>
-          <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
-        </cat-tabs>
-        <br>
-        <br>
-        <cat-tabs tabs-align="justify" active-tab="second">
-          <cat-tab label="First" deactivate></cat-tab>
-          <cat-tab label="Second" id="second"></cat-tab>
-          <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
-        </cat-tabs>
-      </section>
+          <h3>Size</h3>
+          <cat-icon icon="sparkle-filled" size="xs"></cat-icon>
+          <cat-icon icon="sparkle-filled" size="s"></cat-icon>
+          <cat-icon icon="sparkle-filled" size="m"></cat-icon>
+          <cat-icon icon="sparkle-filled" size="l"></cat-icon>
+          <cat-icon icon="sparkle-filled" size="xl"></cat-icon>
+          <cat-icon icon="sparkle-filled" size="inline" style="font-size: 2.5rem"></cat-icon>
 
-      <section id="textarea">
-        <h2>Textarea</h2>
-      </section>
+          <h3>Ratio</h3>
+          <cat-icon icon="sp-grid-3-cols" style="--cat-icon-ratio: 2.5"></cat-icon>
+        </section>
 
-      <section id="toggle">
-        <h2>Toggle</h2>
-        <cat-toggle label="Toggle" hint="This is a hint!" label-left style="width: 500px">
-          <span slot="hint">This is another!</span>
-        </cat-toggle>
-        <cat-toggle label="Toggle"></cat-toggle>
-        <cat-toggle><label slot="label">Slotted Label</label></cat-toggle>
-        <cat-toggle label="Disabled" disabled></cat-toggle>
-        <cat-toggle label="Checked" checked></cat-toggle>
-        <cat-toggle label="Checked disabled" checked disabled></cat-toggle>
-        <cat-toggle label="Not priority label"><label slot="label">Priority Label</label></cat-toggle>
-        <cat-toggle label="Hidden label" label-hidden="true"></cat-toggle>
-      </section>
+        <section id="input">
+          <h2>Input</h2>
+          <cat-input label="Label" hint="This a hint!">
+            <span slot="hint">This is another!</span>
+          </cat-input>
+          <cat-input label="Label">
+            <label slot="label">Priority Label</label>
+          </cat-input>
+        </section>
 
-      <section id="tooltip">
-        <h2>Tooltip</h2>
-        <cat-tooltip content="This is a tooltip">
-          <p>Hover Me</p>
-        </cat-tooltip>
-      </section>
+        <section id="menu">
+          <h2>Menu</h2>
+          <cat-menu>
+            <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
+            <nav slot="content">
+              <ul>
+                <li class="cat-head">Headline</li>
+                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                <li>
+                  <cat-button color="primary">Nav item 1</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 2</cat-button>
+                </li>
+                <li>
+                  <cat-button color="warning">Nav item 3</cat-button>
+                </li>
+                <li>
+                  <cat-button disabled>Nav item 4</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 5 (long)</cat-button>
+                </li>
+                <li class="cat-hr"></li>
+                <li>
+                  <cat-button color="danger" onclick="console.log(6)"
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-button>
+                </li>
+              </ul>
+              <hr />
+              <ul>
+                <li>
+                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
+                </li>
+              </ul>
+            </nav>
+          </cat-menu>
+        </section>
 
-    <script>
-      // --- init navigation
-      const navbar = document.getElementById('nav');
-      const scrollspy = VanillaScrollspy(navbar);
-      scrollspy.init();
-    </script>
+        <section id="modal">
+          <h2>Modal</h2>
+          <cat-button color="primary" onclick="modalS.show()">Open modal s</cat-button>
+          <cat-modal id="modal-s" size="s">
+            <cat-input label="Label" />
+            <cat-button>aloo</cat-button>
+          </cat-modal>
+
+          <cat-button color="primary" onclick="modalM.show()">Open modal m</cat-button>
+          <cat-modal id="modal-m">
+            <cat-button onclick="console.log(2)">Do nothing</cat-button>
+          </cat-modal>
+
+          <cat-button color="primary" onclick="modalL.show()">Open modal l</cat-button>
+          <cat-modal id="modal-l" size="l">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+              gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+          </cat-modal>
+          <script>
+            const modalS = document.querySelector('#modal-s');
+            const modalM = document.querySelector('#modal-m');
+            const modalL = document.querySelector('#modal-l');
+          </script>
+        </section>
+
+        <section id="notification">
+          <h2>Notification</h2>
+          <cat-toast-demo></cat-toast-demo>
+        </section>
+
+        <section id="radio">
+          <h2>Radio</h2>
+          <cat-radio label="Label"></cat-radio>
+
+          <h3>Group</h3>
+          <cat-radio-group a11y-label="Radio Group 1" label-left>
+            <cat-radio value="one" label="Option 1 - Group 1" checked></cat-radio>
+            <cat-radio value="two" label="Option 2 - Group 1"></cat-radio>
+            <cat-radio value="three" label="Option 3 - Group 3" disabled></cat-radio>
+          </cat-radio-group>
+
+          <h3>State</h3>
+          <cat-radio label="Disabled" disabled></cat-radio>
+          <cat-radio label="Checked" checked></cat-radio>
+          <cat-radio label="Checked disabled" checked disabled></cat-radio>
+
+          <h3>Alignment</h3>
+          <cat-radio label="Label" label-left></cat-radio>
+
+          <h3>Slots</h3>
+          <cat-radio hint="This is a hint!">
+            <span slot="label">This is the <b>label</b></span>
+            <span slot="hint">This is another!</span>
+          </cat-radio>
+        </section>
+
+        <section id="scrollable">
+          <h2>Scrollable</h2>
+          <cat-scrollable style="max-height: 8rem">
+            <div>
+              testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+              <br />
+              <br />
+              testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+              <br />
+              <br />
+              testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+              <br />
+              <br />
+              testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+              <br />
+              <cat-button icon="sparkle-filled" ellipsed="false"
+                >Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+              </cat-button>
+              <br />
+              <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
+              <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
+              <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
+            </div>
+          </cat-scrollable>
+        </section>
+
+        <section id="select">
+          <h2>Select</h2>
+          <cat-select class="select-single" label="Label"></cat-select>
+          <cat-select class="select-multiple" label="Label" multiple></cat-select>
+
+          <script>
+            const select1 = document.querySelector('cat-select.select-single');
+            const select2 = document.querySelector('cat-select.select-multiple');
+            const items = [
+              {
+                value: '1',
+                label: 'select option 1 select option 1 extra large'
+              },
+              {
+                value: '2',
+                label: 'select option 2'
+              },
+              {
+                value: '3',
+                label: 'select option 31231'
+              }
+            ];
+            select1.items = items;
+            select1.value = '2';
+            select2.items = items;
+            select2.value = ['2', '3'];
+          </script>
+        </section>
+
+        <section id="skeleton">
+          <h2>Skeleton</h2>
+          <cat-skeleton></cat-skeleton>
+
+          <h3>Effect</h3>
+          <cat-skeleton effect="plain"></cat-skeleton>
+          <br />
+          <cat-skeleton effect="sheen"></cat-skeleton>
+          <br />
+          <cat-skeleton effect="pulse"></cat-skeleton>
+
+          <h3>Variant</h3>
+          <cat-skeleton variant="square"></cat-skeleton>
+          <cat-skeleton variant="circle"></cat-skeleton>
+          <cat-skeleton variant="rectangle"></cat-skeleton>
+          <cat-skeleton variant="head"></cat-skeleton>
+          <cat-skeleton variant="body"></cat-skeleton>
+        </section>
+
+        <section id="spinner">
+          <h2>Spinner</h2>
+          <cat-spinner></cat-spinner>
+
+          <h3>Color</h3>
+          <cat-spinner style="color: red"></cat-spinner>
+          <cat-spinner style="color: blue"></cat-spinner>
+          <cat-spinner style="color: green"></cat-spinner>
+
+          <h3>Size</h3>
+          <cat-spinner size="xs"></cat-spinner>
+          <cat-spinner size="s"></cat-spinner>
+          <cat-spinner size="m"></cat-spinner>
+          <cat-spinner size="l"></cat-spinner>
+          <cat-spinner size="xl"></cat-spinner>
+          <cat-spinner size="inline" style="font-size: 2.5rem"></cat-spinner>
+        </section>
+
+        <section id="tabs">
+          <h2>Tabs</h2>
+          <cat-tabs>
+            <cat-tab label="First"></cat-tab>
+            <cat-tab label="Second"></cat-tab>
+            <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
+          </cat-tabs>
+          <h3>Alignment</h3>
+          <cat-tabs tabs-align="center">
+            <cat-tab label="First"></cat-tab>
+            <cat-tab label="Second"></cat-tab>
+            <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
+          </cat-tabs>
+          <br />
+          <br />
+          <cat-tabs tabs-align="right">
+            <cat-tab label="First"></cat-tab>
+            <cat-tab label="Second"></cat-tab>
+            <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
+          </cat-tabs>
+          <br />
+          <br />
+          <cat-tabs tabs-align="justify" active-tab="second">
+            <cat-tab label="First" deactivate></cat-tab>
+            <cat-tab label="Second" id="second"></cat-tab>
+            <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
+          </cat-tabs>
+        </section>
+
+        <section id="textarea">
+          <h2>Textarea</h2>
+        </section>
+
+        <section id="toggle">
+          <h2>Toggle</h2>
+          <cat-toggle label="Toggle" hint="This is a hint!" label-left style="width: 500px">
+            <span slot="hint">This is another!</span>
+          </cat-toggle>
+          <cat-toggle label="Toggle"></cat-toggle>
+          <cat-toggle><label slot="label">Slotted Label</label></cat-toggle>
+          <cat-toggle label="Disabled" disabled></cat-toggle>
+          <cat-toggle label="Checked" checked></cat-toggle>
+          <cat-toggle label="Checked disabled" checked disabled></cat-toggle>
+          <cat-toggle label="Not priority label"><label slot="label">Priority Label</label></cat-toggle>
+          <cat-toggle label="Hidden label" label-hidden="true"></cat-toggle>
+        </section>
+
+        <section id="tooltip">
+          <h2>Tooltip</h2>
+          <cat-tooltip content="This is a tooltip">
+            <p>Hover Me</p>
+          </cat-tooltip>
+        </section>
+      </div>
+      <script>
+        // --- init navigation
+        const navbar = document.getElementById('nav');
+        const scrollspy = VanillaScrollspy(navbar);
+        scrollspy.init();
+      </script>
+    </div>
   </body>
 </html>
