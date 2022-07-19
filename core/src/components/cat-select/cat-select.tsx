@@ -149,7 +149,7 @@ export class CatSelect {
   }
 
   @Watch('value')
-  setValueHandler(value?: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+  setValueHandler(value?: never) {
     if (this.resetItemsOnNextValueChange) {
       this.choice?.removeActiveItems(-1);
     }
