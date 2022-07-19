@@ -17,7 +17,8 @@ export class CatToastDemo {
 
   private onClick() {
     const infoOptions: Partial<ToastOptions> = {
-      position: 'top-left'
+      position: 'top-left',
+      type: 'info'
     };
     const errorOptions: Partial<ToastOptions> = {
       position: 'top-center',
@@ -38,7 +39,18 @@ export class CatToastDemo {
       type: 'success',
       content: template.content.firstChild as HTMLElement
     };
+    const primaryOptions: Partial<ToastOptions> = {
+      position: 'bottom-right',
+      type: 'primary'
+    };
 
+    const secondaryOptions: Partial<ToastOptions> = {
+      position: 'bottom-right',
+      type: 'secondary'
+    };
+
+    NotificationsService.secondary('Secondary Click', 'secondary info', secondaryOptions);
+    NotificationsService.primary('primary Click', 'secondary info', primaryOptions);
     NotificationsService.error('Default Click');
     NotificationsService.error('Long default title, long default title, long default title, long default title');
     NotificationsService.info('Info Click', 'Info message', infoOptions);

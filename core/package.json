@@ -38,7 +38,7 @@
     "reset": "rm -rf ./dist ./loader ./www ./node_modules"
   },
   "peerDependencies": {
-    "@haiilo/catalyst-icons": ">=0.3.1",
+    "@haiilo/catalyst-icons": ">=0.3.9",
     "rxjs": "^7.5.5"
   },
   "dependencies": {
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
-    "@haiilo/catalyst-icons": "^0.3.1",
+    "@haiilo/catalyst-icons": "^0.3.9",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
