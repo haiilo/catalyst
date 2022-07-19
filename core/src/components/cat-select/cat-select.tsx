@@ -154,7 +154,7 @@ export class CatSelect {
       this.choice?.removeActiveItems(-1);
     }
     this.resetItemsOnNextValueChange = true;
-    this.choice?.setChoiceByValue(value);
+    this.choice?.setChoiceByValue(value || '');
     this.multiple && this.updateRemoveItemButtonVisibility();
   }
 
