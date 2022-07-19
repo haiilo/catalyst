@@ -313,23 +313,30 @@ export class CatRadio {
 }
 
 
-export declare interface CatRadioGroup extends Components.CatRadioGroup {}
+export declare interface CatRadioGroup extends Components.CatRadioGroup {
+  /**
+   * Emitted when the value is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+
+}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name']
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
 @Component({
   selector: 'cat-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name']
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
 export class CatRadioGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -392,14 +399,13 @@ export declare interface CatSelect extends Components.CatSelect {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['choices', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'noSearch', 'placeholder', 'position', 'required', 'value'],
-  methods: ['setValue', 'setChoices', 'clearChoices', 'clearInput']
+  inputs: ['disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'placeholder', 'position', 'required', 'search', 'value']
 })
 @Component({
   selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['choices', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'noSearch', 'placeholder', 'position', 'required', 'value']
+  inputs: ['disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'placeholder', 'position', 'required', 'search', 'value']
 })
 export class CatSelect {
   protected el: HTMLElement;
