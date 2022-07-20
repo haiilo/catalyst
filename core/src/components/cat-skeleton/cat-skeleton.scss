@@ -1,5 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+$skeletonSizes: (
+  'xl': 3.5rem,
+  'l': 3rem,
+  'm': 2.5rem,
+  's': 2rem,
+  'xs': 1.5rem
+);
 
 :host {
   /**
@@ -50,13 +59,13 @@
   .skeleton-#{$size} {
     &.skeleton-rectangle {
       width: var(--width, 100%);
-      height: var(--height, #{cat-size($size)});
+      height: var(--height, map.get($skeletonSizes, $size));
     }
 
     &.skeleton-square,
     &.skeleton-circle {
-      width: var(--width, #{cat-size($size)});
-      height: var(--height, #{cat-size($size)});
+      width: var(--width, map.get($skeletonSizes, $size));
+      height: var(--height, map.get($skeletonSizes, $size));
     }
 
     &.skeleton-head,
@@ -85,8 +94,7 @@
 // ----- animation
 
 .skeleton-sheen {
-  background: linear-gradient(90deg, var(--background) 33%, var(--highlight) 50%, var(--background) 66%)
-    var(--background);
+  background: linear-gradient(90deg, var(--background) 33%, var(--highlight) 50%, var(--background) 66%) var(--background);
   background-size: 300% 100%;
   animation: sheen var(--speed) ease-in-out infinite;
 }

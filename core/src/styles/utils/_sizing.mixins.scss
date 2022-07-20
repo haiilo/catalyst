@@ -1,9 +1,5 @@
 @use '../variables' as *;
 
-@function cat-size($size) {
-  @return cat-token('size.base.#{$size}');
-}
-
 @function cat-border-radius($size) {
   @if $size == '0' or $size == 0 {
     @return none;

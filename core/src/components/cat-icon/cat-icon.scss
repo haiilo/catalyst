@@ -1,5 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+$iconSizes: (
+  'xl': 1.75rem,
+  'l': 1.5rem,
+  'm': 1.25rem,
+  's': 1rem,
+  'xs': 0.75rem
+);
 
 :host {
   /**
@@ -30,7 +39,7 @@ svg {
 
 @mixin size($size) {
   .icon-#{$size} svg {
-    font-size: cat-size($size) * 0.5;
+    font-size:  map.get($iconSizes, $size);
   }
 }
 
