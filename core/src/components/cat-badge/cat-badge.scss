@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-$badgeSizes: (
+$badge-sizes: (
   'xl': 1.75rem,
   'l': 1.5rem,
   'm': 1.25rem,
@@ -86,7 +86,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 @mixin size($size, $fontSize) {
   .badge-#{$size} {
     height: cat-token('size.badge.height.#{$size}');
-    min-width: map.get($badgeSizes, $size);
+    min-width: map.get($badge-sizes, $size);
     font-size: cat-token('size.badge.font.#{$size}');
     padding: 0 cat-token('size.badge.padding.horizontal.#{$size}');
   }

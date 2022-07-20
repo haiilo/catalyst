@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-$avatarSizes: (
+$avatar-sizes: (
   'xl': 3.5rem,
   'l': 3rem,
   'm': 2.5rem,
@@ -53,9 +53,9 @@ $avatarSizes: (
 
 @mixin size($size, $fontSize) {
   .avatar-#{$size} {
-    width: var(--cat-avatar-size, map.get($avatarSizes, $size));
-    height: var(--cat-avatar-size, map.get($avatarSizes, $size));
-    line-height: var(--cat-avatar-size, map.get($avatarSizes, $size));
+    width: var(--cat-avatar-size, map.get($avatar-sizes, $size));
+    height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
+    line-height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
     font-size: var(--cat-avatar-font-size, cat-body-font-size($fontSize));
   }
 }

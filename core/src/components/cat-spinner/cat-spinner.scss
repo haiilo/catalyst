@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-$spinnerSizes: (
+$spinner-sizes: (
   'xl': 1.75rem,
   'l': 1.5rem,
   'm': 1.25rem,
@@ -41,7 +41,7 @@ svg {
 
 @mixin size($size) {
   .spinner-#{$size} svg {
-    font-size: map.get($spinnerSizes, $size);
+    font-size: map.get($spinner-sizes, $size);
   }
 }
 
