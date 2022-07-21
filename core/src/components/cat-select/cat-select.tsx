@@ -138,7 +138,8 @@ export class CatSelect {
 
     const vItems = this.choice?.getValue() || [];
     const vItemsArray = (Array.isArray(vItems) ? vItems : [vItems]) as Item[];
-    const vItemValues = [...this.value];
+    const value = this.value || [];
+    const vItemValues = [...value];
 
     // remove duplicate items
     this.choice?.unhighlightAll();
@@ -435,5 +436,6 @@ export class CatSelect {
     event.stopPropagation();
     this.choice?.removeActiveItems(-1);
     this.updateRemoveItemButtonVisibility();
+    this.onChange();
   }
 }
