@@ -60,6 +60,7 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
   overflow: hidden;
   font-size: $choices-font-size-lg;
 
+  &.is-focused,
   &:focus {
     outline: none;
     box-shadow: 0 1px 4px 0 #101d3033;
@@ -71,7 +72,6 @@ $choices-search-icon: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWd
 
   &.is-open {
     overflow: visible;
-    box-shadow: 0 1px 4px 0 #101d3033;
   }
 
   &.is-disabled {

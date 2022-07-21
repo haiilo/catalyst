@@ -2,6 +2,9 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 
+$checkbox-width: 1.25rem;
+$checkbox-height: 1.25rem;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -20,26 +23,40 @@ label {
   @include cat-body('m');
   @include cat-select(none);
   cursor: pointer;
+  position: relative;
 }
 
 .label-left {
   flex-direction: row-reverse;
+
+  input {
+    right: 1px;
+    left: unset;
+  }
 }
 
 input {
-  @include cat-visually-hidden;
+  position: absolute;
+  width: $checkbox-width;
+  height: $checkbox-height;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+  left: 1px;
+  top: 0.5px;
 }
 
 .box {
   flex: 0 0 auto;
   display: flex;
   position: relative;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: $checkbox-height;
+  width: $checkbox-width;
   background-color: cat-token('color.ui.background.input');
   border: 1px solid cat-token('color.ui.border.input');
   border-radius: cat-border-radius(s);
   transition: background-color cat-token('time.transition.s') ease, border-color cat-token('time.transition.s') ease;
+  pointer-events: none;
 
   svg {
     fill: none;

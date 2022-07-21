@@ -18,9 +18,10 @@
 
 ## Events
 
-| Event       | Description                        | Type               |
-| ----------- | ---------------------------------- | ------------------ |
-| `catChange` | Emitted when the value is changed. | `CustomEvent<any>` |
+| Event       | Description                               | Type                      |
+| ----------- | ----------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the radio group loses focus. | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the value is changed.        | `CustomEvent<any>`        |
 
 
 ----------------------------------------------

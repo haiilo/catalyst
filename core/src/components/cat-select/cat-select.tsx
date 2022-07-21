@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch, Listen } from '@stencil/core';
 import Choices, { Choice, ClassNames, Item, Options } from 'choices.js';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
@@ -43,6 +43,7 @@ export class CatSelect {
   private resetItemsOnNextValueChange = true;
 
   private choice?: Choices;
+  private choicesElement?: HTMLElement;
   private choiceInner?: Element;
   private choiceDropdown?: Element;
   private selectElement?: HTMLSelectElement;
@@ -124,6 +125,11 @@ export class CatSelect {
    */
   @Event() catScrolledBottom!: EventEmitter;
 
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   @Watch('items')
   setChoicesHandler(items: CatSelectItem[]) {
     const isSelected = (item: CatSelectItem) => this.value?.includes(item.value);
@@ -132,7 +138,8 @@ export class CatSelect {
 
     const vItems = this.choice?.getValue() || [];
     const vItemsArray = (Array.isArray(vItems) ? vItems : [vItems]) as Item[];
-    const vItemValues = [...this.value];
+    const value = this.value || [];
+    const vItemValues = [...value];
 
     // remove duplicate items
     this.choice?.unhighlightAll();
@@ -149,8 +156,8 @@ export class CatSelect {
   }
 
   @Watch('value')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValueHandler(value?: any) {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     if (this.resetItemsOnNextValueChange) {
       this.choice?.removeActiveItems(-1);
     }
@@ -171,10 +178,15 @@ export class CatSelect {
     const attachedInternals: ElementInternals | undefined = this.hostElement.attachInternals?.();
     if (attachedInternals) {
       const root = attachedInternals.shadowRoot;
+      this.choicesElement = root?.querySelector('.choices') || undefined;
       this.choiceInner = root?.querySelector('.choices__inner') || undefined;
       this.choiceDropdown = root?.querySelector('.choices__list--dropdown')?.firstElementChild || undefined;
     }
+    this.choicesElement?.addEventListener('click', this.resetFocus.bind(this));
     this.choiceInner?.addEventListener('click', this.showDropdownHandler.bind(this));
+    this.selectElement?.addEventListener('hideDropdown', this.showMultipleFocus.bind(this));
+    this.selectElement?.addEventListener('showDropdown', this.showMultipleFocus.bind(this));
+    this.selectElement?.addEventListener('removeItem', this.resetFocus.bind(this));
     this.selectElement?.addEventListener('change', this.onChange.bind(this));
     this.selectElement?.addEventListener('search', this.onSearch.bind(this));
     this.choiceDropdown?.addEventListener('scroll', this.onScrolledBottom.bind(this));
@@ -187,13 +199,22 @@ export class CatSelect {
   disconnectedCallback(): void {
     this.choice?.destroy();
     this.choice = undefined;
+    this.choicesElement?.removeEventListener('click', this.resetFocus.bind(this));
     this.choiceInner?.removeEventListener('click', this.showDropdownHandler.bind(this));
+    this.selectElement?.removeEventListener('hideDropdown', this.showMultipleFocus.bind(this));
+    this.selectElement?.removeEventListener('showDropdown', this.showMultipleFocus.bind(this));
+    this.selectElement?.removeEventListener('removeItem', this.resetFocus.bind(this));
     this.selectElement?.removeEventListener('change', this.onChange.bind(this));
     this.selectElement?.removeEventListener('search', this.onSearch.bind(this));
     this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this));
     if (this.multiple) {
       this.removeElement?.removeEventListener('choice', this.onChoice.bind(this));
     }
+  }
+
+  @Listen('blur', { capture: true })
+  onBlur(event: FocusEvent): void {
+    this.catBlur.emit(event);
   }
 
   render() {
@@ -346,11 +367,30 @@ export class CatSelect {
     this.catChange.emit(this.value);
   }
 
+  private showMultipleFocus() {
+    if (this.multiple && this.isFocused() && !this.choicesElement?.classList.contains('is-focused')) {
+      this.choicesElement?.classList.add('is-focused');
+    }
+  }
+
+  private resetFocus() {
+    if (!this.isFocused()) {
+      if (!this.choicesElement?.hasAttribute('tabindex')) {
+        this.choicesElement?.setAttribute('tabindex', '0');
+      }
+      this.choicesElement?.focus();
+    }
+  }
+
+  private isFocused() {
+    return document.activeElement === this.hostElement;
+  }
+
   private onChoice(event: Event) {
     const customEvent = event as CustomEvent<{ choice: Choice }>;
-    const coice = customEvent.detail.choice;
-    if (coice.selected) {
-      this.choice?.removeActiveItemsByValue(coice.value);
+    const choice = customEvent.detail.choice;
+    if (choice.selected) {
+      this.choice?.removeActiveItemsByValue(choice.value);
       this.onChange();
     }
   }
@@ -396,5 +436,6 @@ export class CatSelect {
     event.stopPropagation();
     this.choice?.removeActiveItems(-1);
     this.updateRemoveItemButtonVisibility();
+    this.onChange();
   }
 }
