@@ -97,7 +97,11 @@ class CatNotificationService {
       className: 'cat-toastify',
       gravity: position.gravity,
       position: position.position,
-      stopOnFocus: true
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      },
     };
     Toastify(toastOptions).showToast();
   }
@@ -111,7 +115,11 @@ class CatNotificationService {
       className: 'cat-toastify',
       gravity: position.gravity,
       position: position.position,
-      stopOnFocus: true
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      },
     };
     Toastify(toastOptions).showToast();
   }
@@ -125,7 +133,11 @@ class CatNotificationService {
       className: 'cat-toastify',
       gravity: position.gravity,
       position: position.position,
-      stopOnFocus: true
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      },
     };
     Toastify(toastOptions).showToast();
   }
@@ -139,7 +151,11 @@ class CatNotificationService {
       className: 'cat-toastify',
       gravity: position.gravity,
       position: position.position,
-      stopOnFocus: true
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      },
     };
     Toastify(toastOptions).showToast();
   }
@@ -153,7 +169,11 @@ class CatNotificationService {
       className: 'cat-toastify',
       gravity: position.gravity,
       position: position.position,
-      stopOnFocus: true
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      },
     };
     Toastify(toastOptions).showToast();
   }
