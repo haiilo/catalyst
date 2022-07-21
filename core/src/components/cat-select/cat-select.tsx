@@ -435,6 +435,5 @@ export class CatSelect {
     event.stopPropagation();
     this.choice?.removeActiveItems(-1);
     this.onChange();
-    this.updateRemoveItemButtonVisibility();
   }
 }
