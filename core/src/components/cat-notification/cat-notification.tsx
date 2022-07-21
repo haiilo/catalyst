@@ -101,7 +101,7 @@ class CatNotificationService {
       offset: {
         x: '1.5rem',
         y: '1.5rem'
-      },
+      }
     };
     Toastify(toastOptions).showToast();
   }
@@ -119,7 +119,7 @@ class CatNotificationService {
       offset: {
         x: '1.5rem',
         y: '1.5rem'
-      },
+      }
     };
     Toastify(toastOptions).showToast();
   }
@@ -137,7 +137,7 @@ class CatNotificationService {
       offset: {
         x: '1.5rem',
         y: '1.5rem'
-      },
+      }
     };
     Toastify(toastOptions).showToast();
   }
@@ -155,7 +155,7 @@ class CatNotificationService {
       offset: {
         x: '1.5rem',
         y: '1.5rem'
-      },
+      }
     };
     Toastify(toastOptions).showToast();
   }
@@ -173,7 +173,7 @@ class CatNotificationService {
       offset: {
         x: '1.5rem',
         y: '1.5rem'
-      },
+      }
     };
     Toastify(toastOptions).showToast();
   }
