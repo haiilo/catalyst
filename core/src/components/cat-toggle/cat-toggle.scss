@@ -2,6 +2,9 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 
+$toggle-width: 2rem;
+$toggle-height: 1.25rem;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -27,7 +30,12 @@ label {
 }
 
 input {
-  @include cat-visually-hidden;
+  position: absolute;
+  margin: 0;
+  width: $toggle-width;
+  height: $toggle-height;
+  opacity: 0;
+  cursor: inherit;
 }
 
 .toggle {
@@ -36,11 +44,12 @@ input {
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 2rem;
-  height: 1.25rem;
+  width: $toggle-width;
+  height: $toggle-height;
   border-radius: 10rem;
   background-color: cat-token('color.ui.border.input');
   transition: background-color cat-token('time.transition.s') ease;
+  pointer-events: none;
 
   :checked + & {
     background-color: cat-token('color.theme.primary.bg');

@@ -1267,6 +1267,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the radio group loses focus.
+         */
+        "onCatBlur"?: (event: CatRadioGroupCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatRadioGroupCustomEvent<any>) => void;
@@ -1346,6 +1350,10 @@ declare namespace LocalJSX {
           * Enable multiple selection.
          */
         "multiple"?: boolean;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onCatBlur"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */

@@ -148,7 +148,8 @@ export const CatRadioGroup = /*@__PURE__*/ defineContainer<JSX.CatRadioGroup>('c
   'disabled',
   'a11yLabel',
   'labelLeft',
-  'catChange'
+  'catChange',
+  'catBlur'
 ]);
 
 
@@ -181,7 +182,8 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'hint',
   'catChange',
   'catSearch',
-  'catScrolledBottom'
+  'catScrolledBottom',
+  'catBlur'
 ]);
 
 

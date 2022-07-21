@@ -39,6 +39,7 @@ label {
   top: calc(50% - 0.375rem);
   left: calc(50% - 0.375rem);
   visibility: hidden;
+  pointer-events: none;
 }
 
 input {

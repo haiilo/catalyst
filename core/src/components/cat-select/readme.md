@@ -24,11 +24,12 @@
 
 ## Events
 
-| Event               | Description                           | Type               |
-| ------------------- | ------------------------------------- | ------------------ |
-| `catChange`         | Emitted when the value is changed.    | `CustomEvent<any>` |
-| `catScrolledBottom` | Emitted when scrolled to the bottom.  | `CustomEvent<any>` |
-| `catSearch`         | Emitted when the search is triggered. | `CustomEvent<any>` |
+| Event               | Description                           | Type                      |
+| ------------------- | ------------------------------------- | ------------------------- |
+| `catBlur`           | Emitted when the select loses focus.  | `CustomEvent<FocusEvent>` |
+| `catChange`         | Emitted when the value is changed.    | `CustomEvent<any>`        |
+| `catScrolledBottom` | Emitted when scrolled to the bottom.  | `CustomEvent<any>`        |
+| `catSearch`         | Emitted when the search is triggered. | `CustomEvent<any>`        |
 
 
 ## Slots

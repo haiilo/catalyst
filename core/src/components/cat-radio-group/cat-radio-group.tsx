@@ -44,6 +44,11 @@ export class CatRadioGroup {
    */
   @Event() catChange!: EventEmitter;
 
+  /**
+   * Emitted when the radio group loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   @Watch('name')
   onNameChanged(newName?: string) {
     this.catRadioGroup.forEach(catRadio => {
@@ -105,6 +110,13 @@ export class CatRadioGroup {
     const catRadioElement = this.catRadioGroup.find(value => value === event.target);
     this.value = catRadioElement?.value;
     this.catChange.emit();
+  }
+
+  @Listen('blur', { capture: true })
+  onBlur(event: FocusEvent): void {
+    if (!event.relatedTarget) {
+      this.catBlur.emit(event);
+    }
   }
 
   render() {
