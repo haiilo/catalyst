@@ -43,8 +43,8 @@
 
 @include -layout-property('justify-items-start', 'justify-items', 'flex-start');
 @include -layout-property('justify-items-end', 'justify-items', 'flex-end');
-@include -layout-property('justify-items-center', 'justify-items', 'flex-center');
-@include -layout-property('justify-items-stretch', 'justify-items', 'flex-stretch');
+@include -layout-property('justify-items-center', 'justify-items', 'center');
+@include -layout-property('justify-items-stretch', 'justify-items', 'stretch');
 
 @include -layout-property('content-start', 'align-content', 'flex-start');
 @include -layout-property('content-end', 'align-content', 'flex-end');
@@ -55,8 +55,8 @@
 
 @include -layout-property('items-start', 'align-items', 'flex-start');
 @include -layout-property('items-end', 'align-items', 'flex-end');
-@include -layout-property('items-center', 'align-items', 'flex-center');
-@include -layout-property('items-stretch', 'align-items', 'flex-stretch');
+@include -layout-property('items-center', 'align-items', 'center');
+@include -layout-property('items-stretch', 'align-items', 'stretch');
 
 // -- Grid
 
