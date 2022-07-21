@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/haiilo/catalyst/compare/v0.11.0...v0.12.0) (2022-07-21)
+
+
+### Features
+
+* **core:** blur support ([#47](https://github.com/haiilo/catalyst/issues/47)) ([68744a8](https://github.com/haiilo/catalyst/commit/68744a8939b09d9ad5f9a6ae1e4d79510288e056))
+* **core:** fixed console errors ([#51](https://github.com/haiilo/catalyst/issues/51)) ([ac78bbe](https://github.com/haiilo/catalyst/commit/ac78bbe1e40176eebcb3f6bb588b1fde6a4052a2))
+* **core:** implement pull-out classes ([8a2de32](https://github.com/haiilo/catalyst/commit/8a2de322e3b6c39b6a9209b589a5841707e5af1f))
+* **core:** updated tooltip ui ([#48](https://github.com/haiilo/catalyst/issues/48)) ([caba631](https://github.com/haiilo/catalyst/commit/caba631d446ade9a78ec7e0a7fdcb1021498096d))
+
+
+### Bug Fixes
+
+* **core:** fix wrong values in flex utility classes ([c59cb62](https://github.com/haiilo/catalyst/commit/c59cb626284c2dfc29be106db1373a04c8b310ee))
+* **core:** update docs ([c8dbd6c](https://github.com/haiilo/catalyst/commit/c8dbd6cb2a1d6b8fdeefb98333bcb5e3c6fa9326))
+
 ## [0.11.0](https://github.com/haiilo/catalyst/compare/v0.10.2...v0.11.0) (2022-07-15)
 
 

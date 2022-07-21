@@ -140,10 +140,12 @@
 @mixin size($size, $fontSize, $padding) {
   $-line-height: cat-body-line-height($fontSize);
   $-total-height: cat-size($size);
+  $-padding-v: ($-total-height - $-line-height) * 0.5;
+  $-padding-h: $padding;
 
   .cat-button-#{$size} {
     min-width: cat-size($size);
-    padding: ($-total-height - $-line-height) * 0.5 $padding;
+    padding: $-padding-v $-padding-h;
     @include cat-body($fontSize);
 
     .cat-button-prefix {
@@ -173,6 +175,66 @@
       padding-right: $cat-nav-padding-horizontal;
     }
   }
+
+  :host(.cat-button-pull[size='#{$size}']) {
+    margin: $-padding-v * -1 $-padding-h * -1;
+  }
+
+  :host(.cat-button-pull-h[size='#{$size}']) {
+    margin-left: $-padding-h * -1;
+    margin-right: $-padding-h * -1;
+  }
+
+  :host(.cat-button-pull-v[size='#{$size}']) {
+    margin-top: $-padding-v * -1;
+    margin-bottom: $-padding-v * -1;
+  }
+
+  :host(.cat-button-pull-t[size='#{$size}']) {
+    margin-top: $-padding-v * -1;
+  }
+
+  :host(.cat-button-pull-l[size='#{$size}']) {
+    margin-left: $-padding-h * -1;
+  }
+
+  :host(.cat-button-pull-b[size='#{$size}']) {
+    margin-bottom: $-padding-v * -1;
+  }
+
+  :host(.cat-button-pull-r[size='#{$size}']) {
+    margin-right: $-padding-h * -1;
+  }
+}
+
+:host(.cat-button-pull:not([size])) {
+  margin: -0.625rem -0.75rem;
+}
+
+:host(.cat-button-pull-h:not([size])) {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+:host(.cat-button-pull-v:not([size])) {
+  margin-top: -0.625rem;
+  margin-bottom: -0.625rem;
+}
+
+:host(.cat-button-pull-t:not([size])) {
+  margin-top: -0.625rem;
+}
+
+:host(.cat-button-pull-l:not([size])) {
+  margin-left: -0.75rem;
+}
+
+:host(.cat-button-pull-b:not([size])) {
+  margin-bottom: -0.625rem;
+}
+
+:host(.cat-button-pull-r:not([size])) {
+  margin-right: -0.75rem;
 }
 
 @include size('xs', 's', 0.25rem);

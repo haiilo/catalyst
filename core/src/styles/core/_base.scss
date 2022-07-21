@@ -6,7 +6,6 @@
 body {
   @include cat-body('m');
   font-family: cat-body-font-family();
-  font-weight: cat-token('font.weight.body');
   color: cat-token('color.ui.font.body');
   background-color: cat-token('color.ui.background.canvas');
 }
