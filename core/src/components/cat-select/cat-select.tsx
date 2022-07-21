@@ -424,9 +424,7 @@ export class CatSelect {
   }
 
   private updateRemoveItemButtonVisibility() {
-    const value: Item[] = (this.choice?.getValue() as Item[]) || [];
-    const items = Array.from(value);
-    if (items.length) {
+    if (this.value?.length) {
       this.removeElement?.removeAttribute('hidden');
     } else {
       this.removeElement?.setAttribute('hidden', 'true');
@@ -436,7 +434,7 @@ export class CatSelect {
   private onRemoveItemButtonClick(event: Event) {
     event.stopPropagation();
     this.choice?.removeActiveItems(-1);
-    this.updateRemoveItemButtonVisibility();
     this.onChange();
+    this.updateRemoveItemButtonVisibility();
   }
 }
