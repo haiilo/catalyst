@@ -39,6 +39,7 @@ label {
   top: calc(50% - cat-size('xs') / 4);
   left: calc(50% - cat-size('xs') / 4);
   visibility: hidden;
+  pointer-events: none;
 }
 
 input {

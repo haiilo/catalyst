@@ -114,7 +114,9 @@ export class CatRadioGroup {
 
   @Listen('blur', { capture: true })
   onBlur(event: FocusEvent): void {
-    this.catBlur.emit(event);
+    if (!event.relatedTarget) {
+      this.catBlur.emit(event);
+    }
   }
 
   render() {
