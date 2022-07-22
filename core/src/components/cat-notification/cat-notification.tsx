@@ -70,24 +70,6 @@ export interface ToastOptions {
 class CatNotificationService {
   private static DURATION = 80000;
 
-  toastHTMLTemplate(title: string, message = ' ', options?: Partial<ToastOptions>): HTMLElement {
-    const template = document.createElement('template');
-    const typeIcon = options?.type ? TypeIcons[options.type] : TypeIcons.secondary;
-    title = title.trim();
-    message = message.trim();
-    const hasMessage = message && message !== '';
-    const hasMessageClass = hasMessage ? 'has-message' : '';
-    template.innerHTML = `<div class="cat-toastify-wrapper">
-        <div class="cat-toastify-icon-wrapper ${options?.type ?? 'secondary'}">
-             <cat-icon icon="${typeIcon}"></cat-icon>
-        </div>
-        <div class="cat-toastify-title-wrapper ${hasMessageClass}">
-            <div class="cat-toastify-title">${title}</div></div>
-        ${hasMessage ? `<div class="cat-toastify-message">${message}</div>` : ''}
-      </div>`;
-    return template.content.firstChild as HTMLElement;
-  }
-
   error(title: string, message = ' ', options?: Partial<ToastOptions>): void {
     const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
@@ -111,6 +93,24 @@ class CatNotificationService {
   secondary(title: string, message = ' ', options?: Partial<ToastOptions>): void {
     const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
+  }
+
+  private toastHTMLTemplate(title: string, message = ' ', options?: Partial<ToastOptions>): HTMLElement {
+    const template = document.createElement('template');
+    const typeIcon = options?.type ? TypeIcons[options.type] : TypeIcons.secondary;
+    title = title.trim();
+    message = message.trim();
+    const hasMessage = message && message !== '';
+    const hasMessageClass = hasMessage ? 'has-message' : '';
+    template.innerHTML = `<div class="cat-toastify-wrapper">
+        <div class="cat-toastify-icon-wrapper ${options?.type ?? 'secondary'}">
+             <cat-icon icon="${typeIcon}"></cat-icon>
+        </div>
+        <div class="cat-toastify-title-wrapper ${hasMessageClass}">
+            <div class="cat-toastify-title">${title}</div></div>
+        ${hasMessage ? `<div class="cat-toastify-message">${message}</div>` : ''}
+      </div>`;
+    return template.content.firstChild as HTMLElement;
   }
 
   private getPosition(options?: Partial<ToastOptions>): ToastPosition {
