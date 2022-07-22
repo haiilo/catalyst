@@ -14,6 +14,50 @@ export declare const ci16ChevronUp: {
     name: '16-chevron-up';
     data: string;
 };
+export declare const ci16EditorH1: {
+    name: '16-editor-h-1';
+    data: string;
+};
+export declare const ci16EditorH2: {
+    name: '16-editor-h-2';
+    data: string;
+};
+export declare const ci16EditorH3: {
+    name: '16-editor-h-3';
+    data: string;
+};
+export declare const ci16EditorH4: {
+    name: '16-editor-h-4';
+    data: string;
+};
+export declare const ci16EditorH5: {
+    name: '16-editor-h-5';
+    data: string;
+};
+export declare const ci16EditorH6: {
+    name: '16-editor-h-6';
+    data: string;
+};
+export declare const ci16EditorHeadline: {
+    name: '16-editor-headline';
+    data: string;
+};
+export declare const ci16EditorIndentDecrease: {
+    name: '16-editor-indent-decrease';
+    data: string;
+};
+export declare const ci16EditorIndentIncrease: {
+    name: '16-editor-indent-increase';
+    data: string;
+};
+export declare const ci16EditorOl: {
+    name: '16-editor-ol';
+    data: string;
+};
+export declare const ci16EditorUl: {
+    name: '16-editor-ul';
+    data: string;
+};
 export declare const ci16FlashCircleOutlined: {
     name: '16-flash-circle-outlined';
     data: string;
@@ -28,22 +72,6 @@ export declare const ci16ThumbsUpOutlined: {
 };
 export declare const ci16TranslateBoxOutlined: {
     name: '16-translate-box-outlined';
-    data: string;
-};
-export declare const ciArrowDownOutlined: {
-    name: 'arrow-down-outlined';
-    data: string;
-};
-export declare const ciArrowLeftOutlined: {
-    name: 'arrow-left-outlined';
-    data: string;
-};
-export declare const ciArrowRightOutlined: {
-    name: 'arrow-right-outlined';
-    data: string;
-};
-export declare const ciArrowUpOutlined: {
-    name: 'arrow-up-outlined';
     data: string;
 };
 export declare const ciArticleFilled: {
@@ -196,6 +224,14 @@ export declare const ciCrossSquareFilled: {
 };
 export declare const ciCrossSquareOutlined: {
     name: 'cross-square-outlined';
+    data: string;
+};
+export declare const ciDangerFilled: {
+    name: 'danger-filled';
+    data: string;
+};
+export declare const ciDangerOutlined: {
+    name: 'danger-outlined';
     data: string;
 };
 export declare const ciDotsCircleOutlined: {
@@ -570,8 +606,80 @@ export declare const ciCircleOutlined: {
     name: 'circle-outlined';
     data: string;
 };
+export declare const ci16EditorArrowDown: {
+    name: '16-editor-arrow-down';
+    data: string;
+};
+export declare const ci16EditorArrowUp: {
+    name: '16-editor-arrow-up';
+    data: string;
+};
+export declare const ci16EditorBold: {
+    name: '16-editor-bold';
+    data: string;
+};
+export declare const ci16EditorDelete: {
+    name: '16-editor-delete';
+    data: string;
+};
+export declare const ci16EditorImage: {
+    name: '16-editor-image';
+    data: string;
+};
+export declare const ci16EditorItalic: {
+    name: '16-editor-italic';
+    data: string;
+};
+export declare const ci16EditorLinkBreak: {
+    name: '16-editor-link-break';
+    data: string;
+};
+export declare const ci16EditorLink: {
+    name: '16-editor-link';
+    data: string;
+};
+export declare const ci16EditorParagraph: {
+    name: '16-editor-paragraph';
+    data: string;
+};
+export declare const ci16EditorPlus: {
+    name: '16-editor-plus';
+    data: string;
+};
+export declare const ci16EditorSearch: {
+    name: '16-editor-search';
+    data: string;
+};
+export declare const ci16EditorSettings: {
+    name: '16-editor-settings';
+    data: string;
+};
+export declare const ci16ExternalLink: {
+    name: '16-external-link';
+    data: string;
+};
+export declare const ci16TargetedOutlined: {
+    name: '16-targeted-outlined';
+    data: string;
+};
 export declare const ciAppleSafari: {
     name: 'apple-safari';
+    data: string;
+};
+export declare const ciArrowDownOutlined: {
+    name: 'arrow-down-outlined';
+    data: string;
+};
+export declare const ciArrowLeftOutlined: {
+    name: 'arrow-left-outlined';
+    data: string;
+};
+export declare const ciArrowRightOutlined: {
+    name: 'arrow-right-outlined';
+    data: string;
+};
+export declare const ciArrowUpOutlined: {
+    name: 'arrow-up-outlined';
     data: string;
 };
 export declare const ciExclamationMarkCircleOutlined: {
@@ -638,12 +746,20 @@ export declare const ciHistoryOutlined: {
     name: 'history-outlined';
     data: string;
 };
+export declare const ciInfoCircleFilled: {
+    name: 'info-circle-filled';
+    data: string;
+};
 export declare const ciInfoCircleOutlined: {
     name: 'info-circle-outlined';
     data: string;
 };
 export declare const ciInstagram: {
     name: 'instagram';
+    data: string;
+};
+export declare const ciLinkBreakOutlined: {
+    name: 'link-break-outlined';
     data: string;
 };
 export declare const ciLinkedin: {
@@ -714,6 +830,14 @@ export declare const ciMozillaFirefox: {
     name: 'mozilla-firefox';
     data: string;
 };
+export declare const ciPaperplaneTiltOutlined: {
+    name: 'paperplane-tilt-outlined';
+    data: string;
+};
+export declare const ciPenOutlined: {
+    name: 'pen-outlined';
+    data: string;
+};
 export declare const ciPlanetFilled: {
     name: 'planet-filled';
     data: string;
@@ -732,6 +856,10 @@ export declare const ciStreamFilled: {
 };
 export declare const ciStreamOutlined: {
     name: 'stream-outlined';
+    data: string;
+};
+export declare const ciTargetedOutlined: {
+    name: 'targeted-outlined';
     data: string;
 };
 export declare const ciTranslateBoxFilled: {
@@ -914,7 +1042,7 @@ export declare const ciXing: {
     name: 'xing';
     data: string;
 };
-export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'copy-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'group-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | 'circle-outlined' | 'apple-safari' | 'exclamation-mark-circle-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'fingerprint-outlined' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'info-circle-outlined' | 'instagram' | 'linkedin' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'planet-filled' | 'planet-outlined' | 'puzzle-piece-outlined' | 'stream-filled' | 'stream-outlined' | 'translate-box-filled' | 'twitter' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
+export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-ol' | '16-editor-ul' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'copy-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'group-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | 'circle-outlined' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-image' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-external-link' | '16-targeted-outlined' | 'apple-safari' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'exclamation-mark-circle-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'fingerprint-outlined' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'link-break-outlined' | 'linkedin' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'planet-filled' | 'planet-outlined' | 'puzzle-piece-outlined' | 'stream-filled' | 'stream-outlined' | 'targeted-outlined' | 'translate-box-filled' | 'twitter' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
 export interface CoyoIcon {
     name: coyoIcon;
     data: string;
@@ -933,6 +1061,39 @@ export declare const completeIconSet: ({
     name: '16-chevron-up';
     data: string;
 } | {
+    name: '16-editor-h-1';
+    data: string;
+} | {
+    name: '16-editor-h-2';
+    data: string;
+} | {
+    name: '16-editor-h-3';
+    data: string;
+} | {
+    name: '16-editor-h-4';
+    data: string;
+} | {
+    name: '16-editor-h-5';
+    data: string;
+} | {
+    name: '16-editor-h-6';
+    data: string;
+} | {
+    name: '16-editor-headline';
+    data: string;
+} | {
+    name: '16-editor-indent-decrease';
+    data: string;
+} | {
+    name: '16-editor-indent-increase';
+    data: string;
+} | {
+    name: '16-editor-ol';
+    data: string;
+} | {
+    name: '16-editor-ul';
+    data: string;
+} | {
     name: '16-flash-circle-outlined';
     data: string;
 } | {
@@ -943,18 +1104,6 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: '16-translate-box-outlined';
-    data: string;
-} | {
-    name: 'arrow-down-outlined';
-    data: string;
-} | {
-    name: 'arrow-left-outlined';
-    data: string;
-} | {
-    name: 'arrow-right-outlined';
-    data: string;
-} | {
-    name: 'arrow-up-outlined';
     data: string;
 } | {
     name: 'article-filled';
@@ -1069,6 +1218,12 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'cross-square-outlined';
+    data: string;
+} | {
+    name: 'danger-filled';
+    data: string;
+} | {
+    name: 'danger-outlined';
     data: string;
 } | {
     name: 'dots-circle-outlined';
@@ -1350,7 +1505,61 @@ export declare const completeIconSet: ({
     name: 'circle-outlined';
     data: string;
 } | {
+    name: '16-editor-arrow-down';
+    data: string;
+} | {
+    name: '16-editor-arrow-up';
+    data: string;
+} | {
+    name: '16-editor-bold';
+    data: string;
+} | {
+    name: '16-editor-delete';
+    data: string;
+} | {
+    name: '16-editor-image';
+    data: string;
+} | {
+    name: '16-editor-italic';
+    data: string;
+} | {
+    name: '16-editor-link-break';
+    data: string;
+} | {
+    name: '16-editor-link';
+    data: string;
+} | {
+    name: '16-editor-paragraph';
+    data: string;
+} | {
+    name: '16-editor-plus';
+    data: string;
+} | {
+    name: '16-editor-search';
+    data: string;
+} | {
+    name: '16-editor-settings';
+    data: string;
+} | {
+    name: '16-external-link';
+    data: string;
+} | {
+    name: '16-targeted-outlined';
+    data: string;
+} | {
     name: 'apple-safari';
+    data: string;
+} | {
+    name: 'arrow-down-outlined';
+    data: string;
+} | {
+    name: 'arrow-left-outlined';
+    data: string;
+} | {
+    name: 'arrow-right-outlined';
+    data: string;
+} | {
+    name: 'arrow-up-outlined';
     data: string;
 } | {
     name: 'exclamation-mark-circle-outlined';
@@ -1401,10 +1610,16 @@ export declare const completeIconSet: ({
     name: 'history-outlined';
     data: string;
 } | {
+    name: 'info-circle-filled';
+    data: string;
+} | {
     name: 'info-circle-outlined';
     data: string;
 } | {
     name: 'instagram';
+    data: string;
+} | {
+    name: 'link-break-outlined';
     data: string;
 } | {
     name: 'linkedin';
@@ -1458,6 +1673,12 @@ export declare const completeIconSet: ({
     name: 'mozilla-firefox';
     data: string;
 } | {
+    name: 'paperplane-tilt-outlined';
+    data: string;
+} | {
+    name: 'pen-outlined';
+    data: string;
+} | {
     name: 'planet-filled';
     data: string;
 } | {
@@ -1471,6 +1692,9 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'stream-outlined';
+    data: string;
+} | {
+    name: 'targeted-outlined';
     data: string;
 } | {
     name: 'translate-box-filled';
