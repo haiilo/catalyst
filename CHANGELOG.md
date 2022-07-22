@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/haiilo/catalyst/compare/v0.12.0...v0.13.0) (2022-07-22)
+
+
+### Features
+
+* **core:** fixed console errors ([#52](https://github.com/haiilo/catalyst/issues/52)) ([5f9bb61](https://github.com/haiilo/catalyst/commit/5f9bb617586c70e46ac8b053c1cccc6e4b05924d))
+* **core:** removed base size from tokens ([#50](https://github.com/haiilo/catalyst/issues/50)) ([9fe36a6](https://github.com/haiilo/catalyst/commit/9fe36a6f695e5a35282942c9db238ea98c6e6541))
+
 ## [0.12.0](https://github.com/haiilo/catalyst/compare/v0.11.0...v0.12.0) (2022-07-21)
 
 
