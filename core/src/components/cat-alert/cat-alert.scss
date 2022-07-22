@@ -17,11 +17,16 @@
 
 .alert {
   font: inherit;
-  color: cat-token-wrap(var(--text));
   background-color: cat-token-wrap(var(--bg), $alpha: 0.1);
-  box-shadow: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
-  border-radius: cat-border-radius('m');
-  padding: 0.75rem 1rem;
+  border-radius: cat-border-radius('l');
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+::slotted(*) {
+  align-self: center;
 }
 
 ::slotted(:last-child) {
@@ -33,11 +38,9 @@
 @mixin theme($theme) {
   .alert-#{$theme} {
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
-    --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
-    @if $theme == 'secondary' {
-      --border: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
-    } @else {
-      --border: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+
+    cat-icon::part(icon) {
+      color: cat-token('color.theme.#{$theme}.bg');
     }
   }
 }
