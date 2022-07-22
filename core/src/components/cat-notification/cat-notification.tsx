@@ -89,92 +89,27 @@ class CatNotificationService {
   }
 
   error(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const position: ToastPosition = this.getPosition(options);
-    const toastOptions: Options = {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
-      stopOnFocus: true,
-      offset: {
-        x: '1.5rem',
-        y: '1.5rem'
-      }
-    };
+    const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
   }
 
   success(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const position: ToastPosition = this.getPosition(options);
-    const toastOptions: Options = {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
-      stopOnFocus: true,
-      offset: {
-        x: '1.5rem',
-        y: '1.5rem'
-      }
-    };
+    const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
   }
 
   info(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const position: ToastPosition = this.getPosition(options);
-    const toastOptions: Options = {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
-      stopOnFocus: true,
-      offset: {
-        x: '1.5rem',
-        y: '1.5rem'
-      }
-    };
+    const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
   }
 
   primary(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const position: ToastPosition = this.getPosition(options);
-    const toastOptions: Options = {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
-      stopOnFocus: true,
-      offset: {
-        x: '1.5rem',
-        y: '1.5rem'
-      }
-    };
+    const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
   }
 
   secondary(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const position: ToastPosition = this.getPosition(options);
-    const toastOptions: Options = {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
-      stopOnFocus: true,
-      offset: {
-        x: '1.5rem',
-        y: '1.5rem'
-      }
-    };
+    const toastOptions: Options = this.extractOptions(title, message, options);
     Toastify(toastOptions).showToast();
   }
 
@@ -188,6 +123,23 @@ class CatNotificationService {
       position.gravity = ToastPositions[options.position].gravity;
     }
     return position;
+  }
+
+  private extractOptions(title: string, message = ' ', options?: Partial<ToastOptions>): Options {
+    const position: ToastPosition = this.getPosition(options);
+    return {
+      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
+      duration: CatNotificationService.DURATION,
+      close: true,
+      className: 'cat-toastify',
+      gravity: position.gravity,
+      position: position.position,
+      stopOnFocus: true,
+      offset: {
+        x: '1.5rem',
+        y: '1.5rem'
+      }
+    };
   }
 }
 
