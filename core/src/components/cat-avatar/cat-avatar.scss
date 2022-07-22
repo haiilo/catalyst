@@ -1,5 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+$avatar-sizes: (
+  'xl': 3.5rem,
+  'l': 3rem,
+  'm': 2.5rem,
+  's': 2rem,
+  'xs': 1.5rem
+);
 
 :host {
   /**
@@ -44,9 +53,9 @@
 
 @mixin size($size, $fontSize) {
   .avatar-#{$size} {
-    width: var(--cat-avatar-size, cat-size($size));
-    height: var(--cat-avatar-size, cat-size($size));
-    line-height: var(--cat-avatar-size, cat-size($size));
+    width: var(--cat-avatar-size, map.get($avatar-sizes, $size));
+    height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
+    line-height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
     font-size: var(--cat-avatar-font-size, cat-body-font-size($fontSize));
   }
 }

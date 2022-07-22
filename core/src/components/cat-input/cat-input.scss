@@ -19,7 +19,7 @@
   align-items: stretch;
   gap: 0.75rem;
   padding: 0 0.75rem;
-  height: cat-size('m');
+  height: 2.5rem;
   overflow: hidden;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
@@ -105,7 +105,7 @@ input {
   }
 
   &.has-clearable {
-    padding-right: calc(cat-size('s') - 0.5rem);
+    padding-right: 1.5rem;
   }
 
   &::placeholder {
@@ -115,6 +115,6 @@ input {
 
 .clearable {
   position: absolute;
-  top: calc(50% - cat-size('s') / 2);
+  top: calc(50% - 1rem);
   right: -0.5rem;
 }

@@ -1,5 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+$badge-sizes: (
+  'xl': 1.75rem,
+  'l': 1.5rem,
+  'm': 1.25rem,
+  's': 1rem,
+  'xs': 0.75rem
+);
 
 :host {
   display: inline-flex;
@@ -77,7 +86,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 @mixin size($size, $fontSize) {
   .badge-#{$size} {
     height: cat-token('size.badge.height.#{$size}');
-    min-width: cat-size($size) * 0.5;
+    min-width: map.get($badge-sizes, $size);
     font-size: cat-token('size.badge.font.#{$size}');
     padding: 0 cat-token('size.badge.padding.horizontal.#{$size}');
   }

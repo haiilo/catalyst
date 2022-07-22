@@ -1,5 +1,14 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+$button-sizes: (
+  'xl': 3.5rem,
+  'l': 3rem,
+  'm': 2.5rem,
+  's': 2rem,
+  'xs': 1.5rem
+);
 
 :host {
   display: inline-block;
@@ -139,13 +148,15 @@
 
 @mixin size($size, $fontSize, $padding) {
   $-line-height: cat-body-line-height($fontSize);
-  $-total-height: cat-size($size);
+
+  $-total-height: map.get($button-sizes, $size);
   $-padding-v: ($-total-height - $-line-height) * 0.5;
   $-padding-h: $padding;
 
   .cat-button-#{$size} {
-    min-width: cat-size($size);
+    min-width: map.get($button-sizes, $size);
     padding: $-padding-v $-padding-h;
+
     @include cat-body($fontSize);
 
     .cat-button-prefix {
