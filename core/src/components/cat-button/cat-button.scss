@@ -150,7 +150,7 @@ $button-sizes: (
   $-line-height: cat-body-line-height($fontSize);
 
   $-total-height: map.get($button-sizes, $size);
-   $-padding-v: ($-total-height - $-line-height) * 0.5;
+  $-padding-v: ($-total-height - $-line-height) * 0.5;
   $-padding-h: $padding;
 
   .cat-button-#{$size} {
