@@ -19,9 +19,9 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Whether the icon of the alert  is deactivated.
+          * Whether the icon of the alert is deactivated.
          */
-        "iconDeactivated": boolean;
+        "noIcon": boolean;
     }
     interface CatAvatar {
         /**
@@ -881,9 +881,9 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Whether the icon of the alert  is deactivated.
+          * Whether the icon of the alert is deactivated.
          */
-        "iconDeactivated"?: boolean;
+        "noIcon"?: boolean;
     }
     interface CatAvatar {
         /**

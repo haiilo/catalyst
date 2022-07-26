@@ -12,7 +12,9 @@ describe('cat-alert', () => {
         <mock:shadow-root>
           <div class="alert alert-primary" part="alert">
             <cat-icon icon="star-circle-filled" size="l"></cat-icon>
-            <slot></slot>
+            <div class="content">
+                <slot></slot>
+            </div>
           </div>
         </mock:shadow-root>
       </cat-alert>

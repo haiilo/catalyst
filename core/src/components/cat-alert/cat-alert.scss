@@ -25,7 +25,7 @@
   gap: 0.5rem;
 }
 
-::slotted(*) {
+.content {
   align-self: center;
 }
 
@@ -39,8 +39,8 @@
   .alert-#{$theme} {
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
 
-    cat-icon::part(icon) {
-      color: cat-token('color.theme.#{$theme}.bg');
+    cat-icon {
+      color: cat-token('color.ui.font.alert.#{$theme}');
     }
   }
 }

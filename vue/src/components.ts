@@ -11,7 +11,7 @@ import type { JSX } from '@haiilo/catalyst';
 export const CatAlert = /*@__PURE__*/ defineContainer<JSX.CatAlert>('cat-alert', undefined, [
   'color',
   'icon',
-  'iconDeactivated'
+  'noIcon'
 ]);
 
 

@@ -32,7 +32,14 @@ module.exports = {
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.ui.font.body.value}' },
         tooltip: { value: '{color.base.neutral.0.value}' },
-        avatar: { value: '{color.base.neutral.0.value}' }
+        avatar: { value: '{color.base.neutral.0.value}' },
+        alert: {
+          primary: { value: '{color.base.brand.400.value}' },
+          secondary: { value: '{color.base.neutral.400.value}' },
+          success: { value: '{color.base.green.400.value}' },
+          warning: { value: '{color.base.orange.400.value}' },
+          danger: { value: '{color.base.red.400.value}' }
+        }
       }
     }
   }

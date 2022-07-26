@@ -31,9 +31,9 @@ export class CatAlert {
   @Prop() icon?: string;
 
   /**
-   * Whether the icon of the alert  is deactivated.
+   * Whether the icon of the alert is deactivated.
    */
-  @Prop() iconDeactivated = false;
+  @Prop() noIcon = false;
 
   render() {
     return (
@@ -45,10 +45,10 @@ export class CatAlert {
             [`alert-${this.color}`]: Boolean(this.color)
           }}
         >
-          {!this.iconDeactivated && (
-            <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>
-          )}
-          <slot></slot>
+          {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
+          <div class="content">
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );

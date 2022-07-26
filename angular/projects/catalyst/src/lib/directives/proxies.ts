@@ -12,13 +12,13 @@ export declare interface CatAlert extends Components.CatAlert {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['color', 'icon', 'iconDeactivated']
+  inputs: ['color', 'icon', 'noIcon']
 })
 @Component({
   selector: 'cat-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'icon', 'iconDeactivated']
+  inputs: ['color', 'icon', 'noIcon']
 })
 export class CatAlert {
   protected el: HTMLElement;
