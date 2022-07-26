@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
 import { CatSelectItem } from "./components/cat-select/cat-select";
 export namespace Components {
@@ -310,7 +311,7 @@ export namespace Components {
         /**
           * Type of form control.
          */
-        "type": 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
+        "type": InputType;
         /**
           * The value of the control.
          */
@@ -1189,7 +1190,7 @@ declare namespace LocalJSX {
         /**
           * Type of form control.
          */
-        "type"?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
+        "type"?: InputType;
         /**
           * The value of the control.
          */

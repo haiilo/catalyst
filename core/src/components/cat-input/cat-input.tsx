@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State }
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import { InputType } from './input-type';
 
 let nextUniqueId = 0;
 
@@ -128,7 +129,7 @@ export class CatInput {
   /**
    * Type of form control.
    */
-  @Prop() type: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number' = 'text';
+  @Prop() type: InputType = 'text';
 
   /**
    * The value of the control.
