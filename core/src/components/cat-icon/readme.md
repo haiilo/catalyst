@@ -30,6 +30,7 @@
 
 ### Used by
 
+ - [cat-alert](../cat-alert)
  - [cat-avatar](../cat-avatar)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
@@ -37,6 +38,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  cat-alert --> cat-icon
   cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon

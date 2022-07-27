@@ -15,6 +15,14 @@ export namespace Components {
           * The color palette of the alert.
          */
         "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        /**
+          * The name of an icon to be displayed in the alert.
+         */
+        "icon"?: string;
+        /**
+          * Whether the icon of the alert is deactivated.
+         */
+        "noIcon": boolean;
     }
     interface CatAvatar {
         /**
@@ -869,6 +877,14 @@ declare namespace LocalJSX {
           * The color palette of the alert.
          */
         "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        /**
+          * The name of an icon to be displayed in the alert.
+         */
+        "icon"?: string;
+        /**
+          * Whether the icon of the alert is deactivated.
+         */
+        "noIcon"?: boolean;
     }
     interface CatAvatar {
         /**

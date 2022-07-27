@@ -12,10 +12,28 @@ import { Component, h, Host, Prop } from '@stencil/core';
   shadow: true
 })
 export class CatAlert {
+  private readonly mapIcon: Map<string, string> = new Map([
+    ['primary', 'star-circle-filled'],
+    ['secondary', 'clock-filled'],
+    ['success', 'check-circle-filled'],
+    ['warning', 'danger-filled'],
+    ['danger', 'cross-circle-filled']
+  ]);
+
   /**
    * The color palette of the alert.
    */
   @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+
+  /**
+   * The name of an icon to be displayed in the alert.
+   */
+  @Prop() icon?: string;
+
+  /**
+   * Whether the icon of the alert is deactivated.
+   */
+  @Prop() noIcon = false;
 
   render() {
     return (
@@ -27,7 +45,10 @@ export class CatAlert {
             [`alert-${this.color}`]: Boolean(this.color)
           }}
         >
-          <slot></slot>
+          {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
+          <div class="content">
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );
