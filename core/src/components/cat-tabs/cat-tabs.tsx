@@ -13,7 +13,7 @@ import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stenci
 })
 export class CatTabs {
   private buttons: HTMLCatButtonElement[] = [];
-  private mutationObserver!: MutationObserver;
+  private mutationObserver?: MutationObserver;
 
   @Element() hostElement!: HTMLElement;
 
@@ -49,7 +49,7 @@ export class CatTabs {
       mutations => mutations.some(value => value.target.nodeName === 'CAT-TAB') && this.syncTabs()
     );
 
-    this.mutationObserver.observe(this.hostElement, {
+    this.mutationObserver?.observe(this.hostElement, {
       childList: true,
       attributes: true,
       subtree: true
@@ -57,7 +57,7 @@ export class CatTabs {
   }
 
   disconnectedCallback() {
-    this.mutationObserver.disconnect();
+    this.mutationObserver?.disconnect();
   }
 
   @Listen('keydown')
