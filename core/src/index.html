@@ -577,7 +577,7 @@
         <section id="tabs">
           <h2>Tabs</h2>
           <cat-tabs>
-            <cat-tab label="First"></cat-tab>
+            <cat-tab id="tab1" label="First"></cat-tab>
             <cat-tab label="Second"></cat-tab>
             <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
           </cat-tabs>
@@ -601,6 +601,12 @@
             <cat-tab label="Second" id="second"></cat-tab>
             <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
           </cat-tabs>
+          <script>
+            const tab = document.querySelector('#tab1');
+            setInterval(() => {
+              tab.label = 'Changed';
+            }, 5000);
+          </script>
         </section>
 
         <section id="textarea">

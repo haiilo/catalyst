@@ -17,7 +17,7 @@ export class CatTab {
   /**
    * The label of the tab.
    */
-  @Prop() label = '';
+  @Prop({ reflect: true }) label = '';
 
   /**
    * The name of an icon to be displayed in the tab.

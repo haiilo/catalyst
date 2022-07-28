@@ -12,10 +12,12 @@ import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stenci
   shadow: true
 })
 export class CatTabs {
-  private tabs: HTMLCatTabElement[] = [];
   private buttons: HTMLCatButtonElement[] = [];
+  private mutationObserver!: MutationObserver;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() tabs: HTMLCatTabElement[] = [];
 
   @State() activeTabId?: string;
 
@@ -36,10 +38,26 @@ export class CatTabs {
   }
 
   componentWillLoad(): void {
-    this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
+    this.syncTabs();
     if (this.tabs.length) {
       this.activeTabId = this.activeTab;
     }
+  }
+
+  componentDidLoad() {
+    this.mutationObserver = new MutationObserver(
+      mutations => mutations.some(value => value.target.nodeName === 'CAT-TAB') && this.syncTabs()
+    );
+
+    this.mutationObserver.observe(this.hostElement, {
+      childList: true,
+      attributes: true,
+      subtree: true
+    });
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
   }
 
   @Listen('keydown')
@@ -95,5 +113,9 @@ export class CatTabs {
     } else {
       this.buttons.push(button);
     }
+  }
+
+  private syncTabs() {
+    this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
   }
 }
