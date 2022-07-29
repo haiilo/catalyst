@@ -17,37 +17,37 @@ export class CatTab {
   /**
    * The label of the tab.
    */
-  @Prop() label = '';
+  @Prop({ reflect: true }) label = '';
 
   /**
    * The name of an icon to be displayed in the tab.
    */
-  @Prop() icon?: string;
+  @Prop({ reflect: true }) icon?: string;
 
   /**
    * Hide the actual button content and only display the tab.
    */
-  @Prop() iconOnly: boolean | Breakpoint = false;
+  @Prop({ reflect: true }) iconOnly: boolean | Breakpoint = false;
 
   /**
    * Display the icon on the right.
    */
-  @Prop() iconRight = false;
+  @Prop({ reflect: true }) iconRight = false;
 
   /**
    * A destination to link to, rendered in the href attribute of a link.
    */
-  @Prop() url?: string;
+  @Prop({ reflect: true }) url?: string;
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() urlTarget?: '_blank' | '_self';
+  @Prop({ reflect: true }) urlTarget?: '_blank' | '_self';
 
   /**
    * Specifies that the tab should be deactivated.
    */
-  @Prop() deactivated = false;
+  @Prop({ reflect: true }) deactivated = false;
 
   /**
    * Emitted when tab is clicked.
