@@ -72,9 +72,9 @@ export class CatInput {
   @Prop() labelHidden = false;
 
   /**
-   * A maximum value for numeric values.
+   * A maximum value for date, time and numeric values.
    */
-  @Prop() max?: number;
+  @Prop() max?: number | string;
 
   /**
    * A maximum length (number of characters) for textual values.
@@ -82,9 +82,9 @@ export class CatInput {
   @Prop() maxLength?: number;
 
   /**
-   * A minimum value for numeric values.
+   * A minimum value for date, time and numeric values.
    */
-  @Prop() min?: number;
+  @Prop() min?: number | string;
 
   /**
    * A minimum length (number of characters) for textual values.
@@ -217,7 +217,7 @@ export class CatInput {
               disabled={this.disabled}
               max={this.max}
               maxlength={this.maxLength}
-              min={this.max}
+              min={this.min}
               minlength={this.minLength}
               name={this.name}
               placeholder={this.placeholder}
