@@ -260,17 +260,17 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
-          * A maximum value for numeric values.
+          * A maximum value for date, time and numeric values.
          */
-        "max"?: number;
+        "max"?: number | string;
         /**
           * A maximum length (number of characters) for textual values.
          */
         "maxLength"?: number;
         /**
-          * A minimum value for numeric values.
+          * A minimum value for date, time and numeric values.
          */
-        "min"?: number;
+        "min"?: number | string;
         /**
           * A minimum length (number of characters) for textual values.
          */
@@ -1132,17 +1132,17 @@ declare namespace LocalJSX {
          */
         "labelHidden"?: boolean;
         /**
-          * A maximum value for numeric values.
+          * A maximum value for date, time and numeric values.
          */
-        "max"?: number;
+        "max"?: number | string;
         /**
           * A maximum length (number of characters) for textual values.
          */
         "maxLength"?: number;
         /**
-          * A minimum value for numeric values.
+          * A minimum value for date, time and numeric values.
          */
-        "min"?: number;
+        "min"?: number | string;
         /**
           * A minimum length (number of characters) for textual values.
          */
