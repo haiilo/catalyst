@@ -29,7 +29,7 @@ export class CatToggle {
   /**
    * Checked state of the toggle.
    */
-  @Prop() checked = false;
+  @Prop({ mutable: true }) checked = false;
 
   /**
    * Disabled state of the toggle.
@@ -59,7 +59,7 @@ export class CatToggle {
   /**
    * The value of the toggle
    */
-  @Prop({ mutable: true }) value?: string;
+  @Prop({ mutable: true }) value?: string | boolean;
 
   /**
    * Optional hint text(s) to be displayed with the toggle.
@@ -116,7 +116,7 @@ export class CatToggle {
             id={this.id}
             type="checkbox"
             name={this.name}
-            value={this.value}
+            value={this.value !== undefined ? String(this.value) : this.value}
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
@@ -146,7 +146,11 @@ export class CatToggle {
   }
 
   private onInput(event: Event) {
-    this.value = this.input.value;
+    this.checked = this.input.checked;
+
+    if (!this.value || typeof this.value === 'boolean') {
+      this.value = this.checked;
+    }
     this.catChange.emit(event);
   }
 
