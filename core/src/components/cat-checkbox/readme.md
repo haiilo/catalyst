@@ -18,7 +18,7 @@
 | `labelLeft`     | `label-left`    | Whether the label should appear to the left of the checkbox.                              | `boolean`                         | `false`     |
 | `name`          | `name`          | The name of the input                                                                     | `string \| undefined`             | `undefined` |
 | `required`      | `required`      | Required state of the checkbox                                                            | `boolean`                         | `false`     |
-| `value`         | `value`         | The value of the checkbox                                                                 | `string \| undefined`             | `undefined` |
+| `value`         | `value`         | The value of the checkbox                                                                 | `boolean \| string \| undefined`  | `undefined` |
 
 
 ## Events

@@ -29,7 +29,7 @@ export class CatCheckbox {
   /**
    * Checked state of the checkbox
    */
-  @Prop() checked = false;
+  @Prop({ mutable: true }) checked = false;
 
   /**
    * Disabled state of the checkbox
@@ -64,7 +64,7 @@ export class CatCheckbox {
   /**
    * The value of the checkbox
    */
-  @Prop({ mutable: true }) value?: string;
+  @Prop({ mutable: true }) value?: string | boolean;
 
   /**
    * Optional hint text(s) to be displayed with the checkbox.
@@ -127,7 +127,7 @@ export class CatCheckbox {
             id={this.id}
             type="checkbox"
             name={this.name}
-            value={this.value}
+            value={this.value !== undefined ? String(this.value) : this.value}
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
@@ -162,7 +162,11 @@ export class CatCheckbox {
   }
 
   private onInput(event: Event) {
-    this.value = this.input.value;
+    this.checked = this.input.checked;
+
+    if (!this.value || typeof this.value === 'boolean') {
+      this.value = this.checked;
+    }
     this.catChange.emit(event);
   }
 

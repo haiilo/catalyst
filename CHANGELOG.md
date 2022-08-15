@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.2](https://github.com/haiilo/catalyst/compare/v0.14.1...v0.14.2) (2022-08-15)
+
+
+### Bug Fixes
+
+* **core:** change default value ([#57](https://github.com/haiilo/catalyst/issues/57)) ([08a1107](https://github.com/haiilo/catalyst/commit/08a110730583ee4608f525ece0ee3ae5ebfe9c03))
+
 ### [0.14.1](https://github.com/haiilo/catalyst/compare/v0.14.0...v0.14.1) (2022-08-03)
 
 

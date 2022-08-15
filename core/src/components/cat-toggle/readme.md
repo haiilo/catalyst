@@ -17,7 +17,7 @@
 | `labelLeft`   | `label-left`   | Whether the label should appear to the left of the toggle.                                | `boolean`                         | `false`     |
 | `name`        | `name`         | The name of the input                                                                     | `string \| undefined`             | `undefined` |
 | `required`    | `required`     | Required state of the toggle.                                                             | `boolean`                         | `false`     |
-| `value`       | `value`        | The value of the toggle                                                                   | `string \| undefined`             | `undefined` |
+| `value`       | `value`        | The value of the toggle                                                                   | `boolean \| string \| undefined`  | `undefined` |
 
 
 ## Events

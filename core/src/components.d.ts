@@ -208,7 +208,7 @@ export namespace Components {
         /**
           * The value of the checkbox
          */
-        "value"?: string;
+        "value"?: string | boolean;
     }
     interface CatIcon {
         /**
@@ -650,7 +650,7 @@ export namespace Components {
         /**
           * The value of the toggle
          */
-        "value"?: string;
+        "value"?: string | boolean;
     }
     interface CatTooltip {
         /**
@@ -1110,7 +1110,7 @@ declare namespace LocalJSX {
         /**
           * The value of the checkbox
          */
-        "value"?: string;
+        "value"?: string | boolean;
     }
     interface CatIcon {
         /**
@@ -1625,7 +1625,7 @@ declare namespace LocalJSX {
         /**
           * The value of the toggle
          */
-        "value"?: string;
+        "value"?: string | boolean;
     }
     interface CatTooltip {
         /**
