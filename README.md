@@ -46,7 +46,7 @@ Use `npm publish` to publish. The command will publish the workspaces as well.
 1. Start in root folder
 1. Run `npm i`
 1. Run `npm run release:{patch|minor|major}`
-1. Update `core/package.json`  and set the token dependency to new version
+1. Update `core/package.json` and set the token dependency to new version
 1. Update `angular/projects/catalyst/package.json` and set the core dependency to new version
 1. Run `npm i -f` to install dependencies even if they are not published yet
 1. In token dir, run `npm run build && npm publish`
