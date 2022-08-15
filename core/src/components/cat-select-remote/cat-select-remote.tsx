@@ -53,16 +53,18 @@ export interface CatSelectRemoteConnector<T extends Item = any> {
 export class CatSelectRemote {
   private static readonly OFFSET = 4;
 
-  private trap?: focusTrap.FocusTrap;
-
-  private dataSub?: Subscription;
-  private data$?: Observable<Item[]>;
-  private term$: Subject<string> = new Subject();
-  private more$: Subject<void> = new Subject();
-
+  //private openValue = false;
+  private searchValue = '';
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLElement;
+
+  private data$?: Observable<Item[] | null>;
+  private term$: Subject<string> = new Subject();
+  private more$: Subject<void> = new Subject();
+
+  private dataSub?: Subscription;
+  private trap?: focusTrap.FocusTrap;
 
   @Prop() debounce = 250;
 
@@ -85,21 +87,23 @@ export class CatSelectRemote {
   @State()
   options?: { item: Item; render: RenderInfo }[];
 
-  private dirty = false;
+  //private dirty = false;
 
-  @Watch('options')
-  watchOptionsHandler(options?: { item: Item; render: RenderInfo }[]) {
-    console.log(options);
-    this.dirty = true;
-  }
+  //@Watch('options')
+  //watchOptionsHandler(options?: { item: Item; render: RenderInfo }[]) {
+  //  this.dirty = true;
+  //}
 
   @State()
   isOpen = false;
 
-  @Watch('isOpen')
-  watchIsOpenHandler(isOpen: boolean) {
-    isOpen ? this.catOpen.emit() : this.catClose.emit();
-  }
+  @State()
+  isLoading = false;
+
+  //@Watch('isOpen')
+  //watchIsOpenHandler(isOpen: boolean) {
+  //  isOpen ? this.catOpen.emit() : this.catClose.emit();
+  //}
 
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
@@ -121,7 +125,9 @@ export class CatSelectRemote {
       ),
       switchMap(term =>
         number$.pipe(
+          tap(() => (this.isLoading = true)),
           switchMap(number => this.connectorSafe.retrieve(term, number)),
+          tap(() => (this.isLoading = false)),
           takeWhile(page => !page.last, true),
           scan((items, page) => [...items, ...page.content], [] as Item[])
         )
@@ -142,28 +148,30 @@ export class CatSelectRemote {
   }
 
   componentDidUpdate(): void {
-    if (this.dirty) {
-      this.dirty = false;
-      if (this.dropdown && this.options?.length) {
-        this.trap = this.trap
-          ? this.trap.updateContainerElements(this.dropdown)
-          : focusTrap.createFocusTrap(this.dropdown, {
-              initialFocus: this.input,
-              tabbableOptions: {
-                getShadowRoot: true
-              },
-              allowOutsideClick: true,
-              clickOutsideDeactivates: event =>
-                (!this.dropdown || !event.composedPath().includes(this.dropdown)) &&
-                (!this.trigger || !event.composedPath().includes(this.trigger)),
-              onPostDeactivate: () => this.hide()
-            });
-        this.trap.activate();
-      } else {
-        this.trap?.deactivate();
-        this.trap = undefined;
-      }
+    //if (this.dirty) {
+    //this.dirty = false;
+    if (this.dropdown) {
+      console.log(this.options);
+      this.trap = this.trap
+        ? this.trap.updateContainerElements(this.dropdown)
+        : focusTrap.createFocusTrap(this.dropdown, {
+            initialFocus: this.input,
+            fallbackFocus: this.input,
+            tabbableOptions: {
+              getShadowRoot: true
+            },
+            allowOutsideClick: true,
+            clickOutsideDeactivates: event =>
+              (!this.dropdown || !event.composedPath().includes(this.dropdown)) &&
+              (!this.trigger || !event.composedPath().includes(this.trigger)),
+            onPostDeactivate: () => this.hide()
+          });
+      this.trap.activate();
+    //} else {
+    //  this.trap?.deactivate();
+    //  this.trap = undefined;
     }
+    // }
   }
 
   private show(event?: Event) {
@@ -176,10 +184,11 @@ export class CatSelectRemote {
     if (!this.dataSub) {
       this.dataSub = this.data$?.subscribe(
         items =>
-          (this.options = items.map(item => ({
-            item,
-            render: this.connectorSafe.render(item)
-          })))
+          (this.options =
+            items?.map(item => ({
+              item,
+              render: this.connectorSafe.render(item)
+            })))
       );
     }
     if (!this.options) {
@@ -244,7 +253,9 @@ export class CatSelectRemote {
           ref={el => (this.dropdown = el)}
           style={{ display: this.isOpen ? 'block' : undefined }}
         >
-          {this.options ? (
+          {this.isLoading ? (
+            <p>LOADING</p>
+          ) : this.options?.length ? (
             <cat-scrollable
               class="select-options-wrapper"
               noOverflowX
@@ -254,16 +265,20 @@ export class CatSelectRemote {
               <ul class="select-options">
                 {this.options.map(item => (
                   <li>
-                    <cat-button class="select-option" onClick={() => this.select(item)}>
-                      <span class="select-option-label">{item.render.label}</span>
-                      <span class="select-option-description">{item.render.description}</span>
+                    <cat-checkbox onCatChange={(e) => console.log(e)}>
+                      <span slot="label" class="select-option">
+                        <span class="select-option-label">{item.render.label}</span>
+                        <span class="select-option-description">{item.render.description}</span>
+                      </span>
+                    </cat-checkbox>
+                    <cat-button class="select-option" noEllipsis onClick={() => this.select(item)}>
                     </cat-button>
                   </li>
                 ))}
               </ul>
             </cat-scrollable>
           ) : (
-            <p>NONE</p>
+            <p>NO RESULTS</p>
           )}
         </div>
       </Host>
@@ -299,28 +314,31 @@ export class CatSelectRemote {
     }
   }
 
-  private select(item: { item: Item; render: RenderInfo }) {
+  private select(item: { item: Item; render: RenderInfo }, event?: Event) {
+    event?.stopPropagation();
     if (!this.selection.find(s => s.item.id === item.item.id)) {
       this.selection = [...this.selection, item];
     }
+    //TODO: reset focus to input?
   }
 
   private deselect(id: string, event?: Event) {
     event?.stopPropagation();
     this.selection = this.selection.filter(item => item.item.id !== id);
-    //TODO: reset focus to input
+    //TODO: reset focus to input?
   }
 
   private clear(event?: Event) {
     event?.stopPropagation();
     this.selection = [];
-    //TODO: reset focus to input
+    //TODO: reset focus to input?
   }
 
   private reset(connector?: CatSelectRemoteConnector) {
     this.connector = connector ?? this.connector;
     this.selection = [];
     this.options = undefined;
+    this.isOpen = false;
   }
 
   private update() {

@@ -71,6 +71,7 @@
 
 .select-options-wrapper {
   max-height: 16rem;
+  max-width: 20rem;
 }
 
 .select-options {
@@ -79,6 +80,11 @@
   padding: 0;
   padding-top: $cat-body-margin-bottom * 0.5;
   padding-bottom: $cat-body-margin-bottom * 0.5;
+}
+
+.select-option {
+  display: flex;
+  flex-direction: column;
 }
 
 .select-option-description {

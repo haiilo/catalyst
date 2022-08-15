@@ -1,5 +1,5 @@
 import { Component, h } from '@stencil/core';
-import { of } from 'rxjs';
+import { of, delay } from 'rxjs';
 
 interface User {
   id: string;
@@ -17,17 +17,20 @@ export class CatSelectRemoteTest {
 
   componentDidLoad(): void {
     this.select?.connect({
-      resolve: (ids: string[]) =>
-        of(
+      resolve: (ids: string[]) => {
+        console.info(`Resolving data... (${ids.join(', ')})`);
+        return of(
           ids.map(id => ({
             id,
             firstName: 'John',
             lastName: `Doe (${id})`,
             desc: 'resolved'
           }))
-        ),
-      retrieve: (term: string, page: number) =>
-        of({
+        ).pipe(delay(500));
+      },
+      retrieve: (term: string, page: number) => {
+        console.info(`Retrieving data... ("${term}", ${page})`);
+        return of({
           last: false,
           content: Array.from({ length: 10 }, (_, i) => ({
             id: '' + (i + page * 10),
@@ -35,7 +38,8 @@ export class CatSelectRemoteTest {
             lastName: `Doe (${i + page * 10})`,
             desc: `"${term}": page ${page}`
           }))
-        }),
+        }).pipe(delay(500));
+      },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
         description: user.desc

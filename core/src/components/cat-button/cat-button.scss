@@ -45,6 +45,7 @@ $button-sizes: (
 // ----- content
 
 .cat-button-content {
+  @include cat-break-word;
   // flex: 1 1 auto;
   // text-align: center;
 
