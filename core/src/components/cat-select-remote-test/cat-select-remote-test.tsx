@@ -30,15 +30,17 @@ export class CatSelectRemoteTest {
       },
       retrieve: (term: string, page: number) => {
         console.info(`Retrieving data... ("${term}", ${page})`);
-        return of({
-          last: false,
-          content: Array.from({ length: 10 }, (_, i) => ({
-            id: '' + (i + page * 10),
-            firstName: 'John',
-            lastName: `Doe (${i + page * 10})`,
-            desc: `"${term}": page ${page}`
-          }))
-        }).pipe(delay(500));
+        return term === 'no'
+          ? of({ last: true, content: [] })
+          : of({
+              last: false,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
@@ -48,6 +50,6 @@ export class CatSelectRemoteTest {
   }
 
   render() {
-    return <cat-select-remote ref={el => (this.select = el)} value={['0', '1', '2']}></cat-select-remote>;
+    return <cat-select-remote ref={el => (this.select = el)} value={['1']}></cat-select-remote>;
   }
 }

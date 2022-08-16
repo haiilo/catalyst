@@ -101,6 +101,7 @@ input {
 
 .label {
   flex: 1 1 auto;
+  min-width: 0;
 
   .is-hidden & {
     @include cat-visually-hidden;

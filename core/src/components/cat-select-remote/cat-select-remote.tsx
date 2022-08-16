@@ -1,13 +1,12 @@
-import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import * as focusTrap from 'focus-trap';
+import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
+import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import {
   debounce,
   distinctUntilChanged,
+  first,
   Observable,
   of,
   scan,
-  shareReplay,
   startWith,
   Subject,
   Subscription,
@@ -16,6 +15,9 @@ import {
   tap,
   timer
 } from 'rxjs';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import * as focusTrap from 'focus-trap';
+import autosizeInput from 'autosize-input';
 
 export interface Item {
   id: string;
@@ -32,39 +34,46 @@ export interface RenderInfo {
 }
 
 export interface CatSelectRemoteConnector<T extends Item = any> {
-  resolve: (id: string[]) => Observable<Item[]>;
+  resolve: (id: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
 }
 
-/**
- * TODOS:
- * - optional search
- * - validate with local data (array)
- * - disabled
- * - a11y
- * - keyboard navigation
- */
+export interface CatSelectRemoteState {
+  term: string;
+  isOpen: boolean;
+  isLoading: boolean;
+  options: { item: Item; render: RenderInfo }[];
+  selection: { item: Item; render: RenderInfo }[];
+  activeIndex: number;
+}
+
+const INIT_STATE: CatSelectRemoteState = {
+  term: '',
+  isOpen: false,
+  isLoading: false,
+  options: [],
+  selection: [],
+  activeIndex: -1
+};
+
 @Component({
   tag: 'cat-select-remote',
   styleUrl: 'cat-select-remote.scss',
   shadow: true
 })
 export class CatSelectRemote {
+  private readonly i18n = CatI18nRegistry.getInstance();
   private static readonly OFFSET = 4;
 
-  //private openValue = false;
-  private searchValue = '';
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
-  private input?: HTMLElement;
+  private input?: HTMLInputElement;
+  private trap?: focusTrap.FocusTrap;
 
-  private data$?: Observable<Item[] | null>;
+  private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
-
-  private dataSub?: Subscription;
-  private trap?: focusTrap.FocusTrap;
 
   @Prop() debounce = 250;
 
@@ -76,34 +85,51 @@ export class CatSelectRemote {
   connector?: CatSelectRemoteConnector;
 
   @Watch('connector')
-  watchConnectorHandler(connector: CatSelectRemoteConnector) {
+  onConnectorChange(connector: CatSelectRemoteConnector) {
     this.reset(connector);
     this.resolve();
   }
 
   @State()
-  selection: { item: Item; render: RenderInfo }[] = [];
+  state: CatSelectRemoteState = INIT_STATE;
 
-  @State()
-  options?: { item: Item; render: RenderInfo }[];
+  @Watch('state')
+  onStateChange(newState: CatSelectRemoteState, oldState: CatSelectRemoteState) {
+    const changed = (key: keyof CatSelectRemoteState) => newState[key] !== oldState[key];
 
-  //private dirty = false;
+    if (changed('term')) {
+      if (!newState.term && this.input) {
+        this.input.value = '';
+      }
+    }
 
-  //@Watch('options')
-  //watchOptionsHandler(options?: { item: Item; render: RenderInfo }[]) {
-  //  this.dirty = true;
-  //}
+    if (changed('isOpen')) {
+      newState.isOpen ? this.catOpen.emit() : this.catClose.emit();
+    }
 
-  @State()
-  isOpen = false;
-
-  @State()
-  isLoading = false;
-
-  //@Watch('isOpen')
-  //watchIsOpenHandler(isOpen: boolean) {
-  //  isOpen ? this.catOpen.emit() : this.catClose.emit();
-  //}
+    if (changed('options')) {
+      this.state.activeIndex = -1;
+      /*
+      if (this.dropdown) {
+        this.trap = this.trap
+          ? this.trap.updateContainerElements(this.dropdown)
+          : focusTrap.createFocusTrap(this.dropdown, {
+              //initialFocus: this.input,
+              //fallbackFocus: this.input,
+              tabbableOptions: {
+                getShadowRoot: true
+              },
+              allowOutsideClick: true,
+              clickOutsideDeactivates: event => true,
+                //(!this.dropdown || !event.composedPath().includes(this.dropdown)) &&
+                //(!this.trigger || !event.composedPath().includes(this.trigger)),
+              onPostDeactivate: () => this.hide()
+            });
+        this.trap.activate();
+      }
+      */
+    }
+  }
 
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
@@ -113,184 +139,170 @@ export class CatSelectRemote {
   async connect(connector: CatSelectRemoteConnector) {
     this.connector = connector;
     let number$: Observable<number>;
-    this.data$ = this.term$.asObservable().pipe(
-      debounce(term => (term ? timer(this.debounce) : of(0))),
-      distinctUntilChanged(),
-      tap(
-        () =>
-          (number$ = this.more$.pipe(
-            scan(n => n + 1, 0),
-            startWith(0)
-          ))
-      ),
-      switchMap(term =>
-        number$.pipe(
-          tap(() => (this.isLoading = true)),
-          switchMap(number => this.connectorSafe.retrieve(term, number)),
-          tap(() => (this.isLoading = false)),
-          takeWhile(page => !page.last, true),
-          scan((items, page) => [...items, ...page.content], [] as Item[])
+    this.subscription?.unsubscribe();
+    this.subscription = this.term$
+      .asObservable()
+      .pipe(
+        debounce(term => (term ? timer(this.debounce) : of(0))),
+        distinctUntilChanged(),
+        tap(
+          () =>
+            (number$ = this.more$.pipe(
+              scan(n => n + 1, 0),
+              startWith(0)
+            ))
+        ),
+        switchMap(term =>
+          number$.pipe(
+            tap(() => this.patchState({ isLoading: true })),
+            switchMap(number => this.connectorSafe.retrieve(term, number)),
+            tap(() => this.patchState({ isLoading: false })),
+            takeWhile(page => !page.last, true),
+            scan((items, page) => [...items, ...page.content], [] as Item[])
+          )
         )
-      ),
-      shareReplay(1)
-    );
+      )
+      .subscribe(items =>
+        this.patchState({
+          options: items?.map(item => ({
+            item,
+            render: this.connectorSafe.render(item)
+          }))
+        })
+      );
   }
 
-  // doFocus(options?: FocusOptions) {
-  //   this.input?.focus(options);
-  //   console.log(this.input, 'focus');
-  // }
-
   componentDidLoad(): void {
+    if (this.input) {
+      autosizeInput(this.input)
+    }
     if (this.trigger && this.dropdown) {
       autoUpdate(this.trigger, this.dropdown, () => this.update());
     }
   }
 
-  componentDidUpdate(): void {
-    //if (this.dirty) {
-    //this.dirty = false;
-    if (this.dropdown) {
-      console.log(this.options);
-      this.trap = this.trap
-        ? this.trap.updateContainerElements(this.dropdown)
-        : focusTrap.createFocusTrap(this.dropdown, {
-            initialFocus: this.input,
-            fallbackFocus: this.input,
-            tabbableOptions: {
-              getShadowRoot: true
-            },
-            allowOutsideClick: true,
-            clickOutsideDeactivates: event =>
-              (!this.dropdown || !event.composedPath().includes(this.dropdown)) &&
-              (!this.trigger || !event.composedPath().includes(this.trigger)),
-            onPostDeactivate: () => this.hide()
-          });
-      this.trap.activate();
-    //} else {
-    //  this.trap?.deactivate();
-    //  this.trap = undefined;
+  onKeydown(event: KeyboardEvent): void {
+    console.log(event);
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      event.stopPropagation();
+      if (this.state.isOpen) {
+        this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) });
+      } else {
+        this.show();
+      }
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) });
+    } else if (['Enter', ' '].includes(event.key)) {
+      console.log(event);
+      if (this.state.activeIndex >= 0) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.toggle(this.state.options[this.state.activeIndex]);
+      }
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.hide();
+    } else if (event.key === 'Backspace') {
+      if (!this.state.term) {
+        this.state.selection.pop();
+        this.patchState({});
+      }
     }
-    // }
-  }
-
-  private show(event?: Event) {
-    event?.stopPropagation();
-    if (this.isOpen) {
-      return;
-    }
-
-    this.isOpen = true;
-    if (!this.dataSub) {
-      this.dataSub = this.data$?.subscribe(
-        items =>
-          (this.options =
-            items?.map(item => ({
-              item,
-              render: this.connectorSafe.render(item)
-            })))
-      );
-    }
-    if (!this.options) {
-      this.search('');
-    }
-  }
-
-  private hide(event?: Event) {
-    event?.stopPropagation();
-    this.isOpen = false;
-    this.dataSub?.unsubscribe();
-    this.dataSub = undefined;
   }
 
   render() {
     return (
       <Host>
-        <div class="select-wrapper" ref={el => (this.trigger = el)} onClick={() => this.show()}>
+        <div class="select-wrapper" ref={el => (this.trigger = el)}>
           <div class="select-wrapper-inner">
-            {this.selection.map(item => (
+            {this.state.selection.map(item => (
               <span class="pill">
-                {item.render.label}
+                <span>{item.render.label}</span>
                 <cat-button
                   size="xs"
                   variant="text"
                   icon="cross-outlined"
+                  iconOnly
                   round
-                  onClick={e => this.deselect(item.item.id, e)}
+                  a11yLabel={this.i18n.t('select.deselect')}
+                  onClick={e => this.deselect(item.item.id)}
                 ></cat-button>
               </span>
             ))}
-            <span
-              class="select-input"
-              contenteditable
-              ref={el => (this.input = el)}
-              onInput={e => this.search((e.target as HTMLElement).textContent || '')}
-            ></span>
+            <input class="select-input"
+            ref={el => (this.input = el)}
+            onInput={() => this.search(this.input?.value || '')}
+            onFocus={() => this.show()}
+            onKeyDown={(e) => this.onKeydown(e)}
+            aria-activedescendant={this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined}
+            >
+            </input>
           </div>
 
-          {this.selection?.length ? (
+          {this.state.selection.length || this.state.term.length ? (
             <cat-button
               iconOnly
               icon="cross-circle-outlined"
               variant="text"
               size="s"
               round
-              onClick={e => this.clear(e)}
+              a11yLabel={this.i18n.t('select.clear')}
+              onClick={e => this.clear()}
             ></cat-button>
           ) : null}
-
           <cat-button
             iconOnly
-            icon={this.isOpen ? 'chevron-up-outlined' : 'chevron-down-outlined'}
+            icon="chevron-down-outlined"
+            class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
             variant="text"
             size="s"
             round
-            onClick={e => (this.isOpen ? this.hide(e) : this.show(e))}
+            a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
+            onClick={e => (this.state.isOpen ? this.hide(e) : this.show(e))}
           ></cat-button>
         </div>
         <div
           class="select-dropdown"
           ref={el => (this.dropdown = el)}
-          style={{ display: this.isOpen ? 'block' : undefined }}
+          style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
-          {this.isLoading ? (
-            <p>LOADING</p>
-          ) : this.options?.length ? (
-            <cat-scrollable
-              class="select-options-wrapper"
-              noOverflowX
-              noOverscroll
-              onScrolledBottom={() => this.more()}
-            >
+          <cat-scrollable
+            class="select-options-wrapper"
+            noOverflowX
+            noOverscroll
+            noScrolledInit
+            onScrolledBottom={() => this.more$.next()}
+          >
+            {this.state.options.length ? (
               <ul class="select-options">
-                {this.options.map(item => (
+                {this.state.options.map((item, i) => (
                   <li>
-                    <cat-checkbox onCatChange={(e) => console.log(e)}>
+                    <cat-checkbox tabindex="-1"
+                      labelLeft
+                      checked={this.isSelected(item.item.id)}
+                      onCatChange={() => this.toggle(item)}
+                      id={`select-option-${i}`}
+                      class={{'select-option-active': this.state.activeIndex === i}}
+                    >
                       <span slot="label" class="select-option">
                         <span class="select-option-label">{item.render.label}</span>
                         <span class="select-option-description">{item.render.description}</span>
                       </span>
                     </cat-checkbox>
-                    <cat-button class="select-option" noEllipsis onClick={() => this.select(item)}>
-                    </cat-button>
                   </li>
                 ))}
               </ul>
-            </cat-scrollable>
-          ) : (
-            <p>NO RESULTS</p>
-          )}
+            ) : (
+              <p class="select-empty">NO RESULTS</p>
+            )}
+          </cat-scrollable>
         </div>
       </Host>
     );
-  }
-
-  private search(term: string) {
-    this.term$.next(term);
-  }
-
-  private more() {
-    this.more$.next();
   }
 
   private get connectorSafe(): CatSelectRemoteConnector {
@@ -301,51 +313,71 @@ export class CatSelectRemote {
   }
 
   private resolve() {
-    if (this.value?.length) {
-      this.connector?.resolve(this.value).subscribe(
-        items =>
-          (this.selection = items.map(item => ({
-            item,
-            render: this.connectorSafe.render(item)
-          })))
-      );
+    const data$ = this.value?.length ? this.connectorSafe.resolve(this.value).pipe(first()) : of([]);
+    data$.subscribe(items =>
+      this.patchState({ selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })) })
+    );
+  }
+
+  private show(event?: Event) {
+    event?.stopPropagation();
+    if (!this.state.isOpen) {
+      this.patchState({ isOpen: true });
+      this.term$.next(this.state.term);
+    }
+  }
+
+  private hide(event?: Event) {
+    event?.stopPropagation();
+    if (this.state.isOpen) {
+      this.patchState({ isOpen: false });
+    }
+  }
+
+  private search(term: string) {
+    this.patchState({ term });
+    this.term$.next(term);
+  }
+
+  private isSelected(id: string) {
+    return this.state.selection.findIndex(s => s.item.id === id) >= 0;
+  }
+
+  private select(item: { item: Item; render: RenderInfo }) {
+    if (!this.isSelected(item.item.id)) {
+      this.patchState({ selection: [...this.state.selection, item] });
+    }
+  }
+
+  private deselect(id: string) {
+    this.patchState({ selection: this.state.selection.filter(item => item.item.id !== id) });
+  }
+
+  private toggle(item: { item: Item; render: RenderInfo }) {
+    this.isSelected(item.item.id) ? this.deselect(item.item.id) : this.select(item);
+  }
+
+  private clear() {
+    if (this.state.term) {
+      this.patchState({ selection: [], options: [], term: '' });
+      this.term$.next('');
     } else {
-      this.selection = [];
+      this.patchState({ selection: [] });
     }
-  }
-
-  private select(item: { item: Item; render: RenderInfo }, event?: Event) {
-    event?.stopPropagation();
-    if (!this.selection.find(s => s.item.id === item.item.id)) {
-      this.selection = [...this.selection, item];
-    }
-    //TODO: reset focus to input?
-  }
-
-  private deselect(id: string, event?: Event) {
-    event?.stopPropagation();
-    this.selection = this.selection.filter(item => item.item.id !== id);
-    //TODO: reset focus to input?
-  }
-
-  private clear(event?: Event) {
-    event?.stopPropagation();
-    this.selection = [];
-    //TODO: reset focus to input?
   }
 
   private reset(connector?: CatSelectRemoteConnector) {
     this.connector = connector ?? this.connector;
-    this.selection = [];
-    this.options = undefined;
-    this.isOpen = false;
+    this.subscription?.unsubscribe();
+    this.subscription = undefined;
+    this.state = INIT_STATE;
   }
 
   private update() {
     if (this.trigger && this.dropdown) {
       computePosition(this.trigger, this.dropdown, {
         placement: this.placement,
-        middleware: [offset(CatSelectRemote.OFFSET), flip()]
+        middleware: [offset(CatSelectRemote.OFFSET)] //, flip()]
       }).then(({ x, y }) => {
         if (this.dropdown) {
           Object.assign(this.dropdown.style, {
@@ -355,5 +387,9 @@ export class CatSelectRemote {
         }
       });
     }
+  }
+
+  private patchState(update: Partial<CatSelectRemoteState>) {
+    this.state = { ...this.state, ...update };
   }
 }

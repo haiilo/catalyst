@@ -29,33 +29,39 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
+  min-width: 0;
 }
 
 .select-input {
-  @include cat-break-word;
   @include cat-body('m');
+  border: none;
   outline: none;
   padding: 6px 8px;
-  min-width: 1em;
-
-  b {
-    font-weight: normal;
-  }
-  i {
-    font-style: normal;
-  }
-  img {
-    display: none;
-  }
+  flex: 1 1 auto;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 8px;
+  padding: 4px 4px 4px 8px;
   background: cat-token('color.ui.background.muted');
   border-radius: cat-border-radius('s');
+  white-space: nowrap;
+  min-width: 0;
+
+  > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.select-btn {
+  transition: transform cat-token('time.transition.s') linear;
+}
+
+.select-btn-open {
+  transform: rotate(180deg);
 }
 
 .select-dropdown {
@@ -71,23 +77,41 @@
 
 .select-options-wrapper {
   max-height: 16rem;
-  max-width: 20rem;
+  width: 20rem;
+}
+
+.select-empty {
+  margin: $cat-body-margin-bottom 0;
+  padding: 0 1.25rem;
 }
 
 .select-options {
   list-style-type: none;
   margin: 0;
-  padding: 0;
-  padding-top: $cat-body-margin-bottom * 0.5;
-  padding-bottom: $cat-body-margin-bottom * 0.5;
+  padding: $cat-body-margin-bottom * 0.5 0;
+
+  cat-checkbox {
+    margin: 0;
+    padding: 0.5rem 1rem;
+  }
 }
 
 .select-option {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+}
+
+.select-option-active {
+  background-color: red;
+}
+
+.select-option-label {
+  @include cat-ellipsis(2);
 }
 
 .select-option-description {
   @include cat-body('s');
   color: cat-token('color.ui.font.muted');
+  @include cat-ellipsis(2);
 }
