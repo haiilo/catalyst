@@ -9,6 +9,9 @@
       import { ci } from '/build/assets/icons/js/icons.object.js';
       import { CatI18nRegistry, CatIconRegistry } from '/build/index.esm.js';
 
+      /**
+       * WARNING: Keep in sync with ./index.cdn.js
+       */
       CatIconRegistry.getInstance().addIcons(ci);
       CatI18nRegistry.getInstance().register('en', {
         'input.clear': 'Clear',
