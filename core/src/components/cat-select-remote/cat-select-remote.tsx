@@ -62,13 +62,13 @@ const INIT_STATE: CatSelectRemoteState = {
   shadow: true
 })
 export class CatSelectRemote {
+  private static readonly SKELETON_COUNT = 4;
+  private static readonly DROPDOWN_OFFSET = 4;
   private readonly i18n = CatI18nRegistry.getInstance();
-  private static readonly OFFSET = 4;
 
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
-  private catScrollable?: HTMLCatScrollableElement;
 
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
@@ -190,8 +190,7 @@ export class CatSelectRemote {
   }
 
   @Listen('keydown')
-  onKeydown(event: KeyboardEvent): void {
-    console.log(event);
+  onKeyDown(event: KeyboardEvent): void {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       event.stopPropagation();
@@ -224,19 +223,14 @@ export class CatSelectRemote {
   }
 
   @Listen('blur')
-  onBlur(eve: FocusEvent): void {
-    const eventTargets = eve.composedPath() as HTMLElement[];
-    if (eventTargets.some(value1 => value1.nodeName === 'CAT-BUTTON')) {
-      this.input?.focus();
-    } else {
-      this.hide();
-    }
+  onBlur(): void {
+    this.hide();
   }
 
   render() {
     return (
       <Host>
-        <div class={{ 'select-wrapper': true, 'is-focused': this.state.isOpen }} ref={el => (this.trigger = el)}>
+        <div class="select-wrapper" ref={el => (this.trigger = el)}>
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
               <span class="pill">
@@ -249,6 +243,7 @@ export class CatSelectRemote {
                   round
                   a11yLabel={this.i18n.t('select.deselect')}
                   onClick={() => this.deselect(item.item.id)}
+                  tabIndex={-1}
                 ></cat-button>
               </span>
             ))}
@@ -256,7 +251,6 @@ export class CatSelectRemote {
               class="select-input"
               ref={el => (this.input = el)}
               onClick={() => this.onInputClick()}
-              onFocus={event => console.log(event)}
               onInput={() => this.search(this.input?.value || '')}
               role="combobox"
               aria-expanded={this.state.isOpen}
@@ -287,6 +281,8 @@ export class CatSelectRemote {
             round
             a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
             onClick={e => (this.state.isOpen ? this.hide(e) : this.show(e))}
+            onFocus={() => this.input?.focus()}
+            tabIndex={-1}
           ></cat-button>
         </div>
         <div
@@ -296,8 +292,7 @@ export class CatSelectRemote {
         >
           <cat-scrollable
             class="select-options-wrapper"
-            ref={el => (this.catScrollable = el)}
-            scrolledBuffer={50}
+            scrolledBuffer={56}
             noOverflowX
             noOverscroll
             noScrolledInit
@@ -305,38 +300,33 @@ export class CatSelectRemote {
             id="listbox-1"
             onScrolledBottom={() => this.more$.next()}
           >
-            {this.state.options.length ? (
-              <ul class="select-options">
-                {this.state.options.map((item, i) => (
-                  <li role="option" id={`select-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
-                    <cat-checkbox
-                      tabindex="-1"
-                      labelLeft
-                      checked={this.isSelected(item.item.id)}
-                      onCatChange={() => this.toggle(item)}
-                      class={{ 'select-option-active': this.state.activeIndex === i }}
-                      onMouseOver={() => this.onMouseOver(i)}
-                    >
-                      <span slot="label" class="select-option">
-                        <span class="select-option-label">{item.render.label}</span>
-                        <span class="select-option-description">{item.render.description}</span>
-                      </span>
-                    </cat-checkbox>
-                  </li>
-                ))}
-                {this.state.isLoading && (
-                  <div>
-                    <cat-skeleton></cat-skeleton>
-                  </div>
-                )}
-              </ul>
-            ) : this.state.isLoading ? (
-              <div>
-                <cat-skeleton></cat-skeleton>
-              </div>
-            ) : (
-              <p class="select-empty">NO RESULTS</p>
-            )}
+            <ul class="select-options">
+              {this.state.options.map((item, i) => (
+                <li role="option" id={`select-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
+                  <cat-checkbox
+                    tabindex="-1"
+                    labelLeft
+                    checked={this.isSelected(item.item.id)}
+                    onCatChange={() => this.toggle(item)}
+                    class={{ 'select-option-active': this.state.activeIndex === i }}
+                    onMouseOver={() => this.onMouseOver(i)}
+                  >
+                    <span slot="label" class="select-option">
+                      <span class="select-option-label">{item.render.label}</span>
+                      <span class="select-option-description">{item.render.description}</span>
+                    </span>
+                  </cat-checkbox>
+                </li>
+              ))}
+              {this.state.isLoading
+                ? Array.from(Array(CatSelectRemote.SKELETON_COUNT)).map(() => (
+                    <li class="select-option-loading">
+                      <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                      <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                    </li>
+                  ))
+                : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+            </ul>
           </cat-scrollable>
         </div>
       </Host>
@@ -402,6 +392,7 @@ export class CatSelectRemote {
     } else {
       this.patchState({ selection: [] });
     }
+    this.input?.focus(); //TODO: only focus if input had focus before?
   }
 
   private reset(connector?: CatSelectRemoteConnector) {
@@ -415,7 +406,7 @@ export class CatSelectRemote {
     if (this.trigger && this.dropdown) {
       computePosition(this.trigger, this.dropdown, {
         placement: this.placement,
-        middleware: [offset(CatSelectRemote.OFFSET)] //, flip()]
+        middleware: [offset(CatSelectRemote.DROPDOWN_OFFSET)] //, flip()]
       }).then(({ x, y }) => {
         if (this.dropdown) {
           Object.assign(this.dropdown.style, {

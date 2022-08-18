@@ -18,7 +18,6 @@
     box-shadow: 0 0 0 2px cat-token('color.ui.border.input');
   }
 
-  &.is-focused,
   &:focus-within {
     outline: 2px solid cat-token('color.ui.border.focus');
   }
@@ -59,6 +58,10 @@
 
 .select-btn {
   transition: transform cat-token('time.transition.s') linear;
+
+  &::part(button) {
+    outline: none;
+  }
 }
 
 .select-btn-open {
@@ -97,14 +100,13 @@
   }
 }
 
-.select-option {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.select-option-empty,
+.select-option-loading {
+  padding: 0.5rem 1rem;
 }
 
 .select-option-active {
-  background-color: aliceblue;
+  background-color: aliceblue; //TODO
 }
 
 .select-option-label {
@@ -112,7 +114,6 @@
 }
 
 .select-option-description {
-  @include cat-body('s');
-  color: cat-token('color.ui.font.muted');
   @include cat-ellipsis(2);
+  color: cat-token('color.ui.font.muted');
 }
