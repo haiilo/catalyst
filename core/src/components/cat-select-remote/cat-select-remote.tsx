@@ -230,7 +230,13 @@ export class CatSelectRemote {
   render() {
     return (
       <Host>
-        <div class="select-wrapper" ref={el => (this.trigger = el)}>
+        <div
+          class="select-wrapper"
+          ref={el => (this.trigger = el)}
+          role="combobox"
+          aria-expanded={this.state.isOpen}
+          aria-controls="listbox-1"
+        >
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
               <span class="pill">
@@ -252,9 +258,6 @@ export class CatSelectRemote {
               ref={el => (this.input = el)}
               onClick={() => this.onInputClick()}
               onInput={() => this.search(this.input?.value || '')}
-              role="combobox"
-              aria-expanded={this.state.isOpen}
-              aria-controls="listbox-1"
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
               }
@@ -287,47 +290,50 @@ export class CatSelectRemote {
         </div>
         <div
           class="select-dropdown"
+          role="listbox"
+          id="listbox-1"
           ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
-          <cat-scrollable
-            class="select-options-wrapper"
-            scrolledBuffer={56}
-            noOverflowX
-            noOverscroll
-            noScrolledInit
-            role="listbox"
-            id="listbox-1"
-            onScrolledBottom={() => this.more$.next()}
-          >
-            <ul class="select-options">
-              {this.state.options.map((item, i) => (
-                <li role="option" id={`select-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
-                  <cat-checkbox
-                    tabindex="-1"
-                    labelLeft
-                    checked={this.isSelected(item.item.id)}
-                    onCatChange={() => this.toggle(item)}
-                    class={{ 'select-option-active': this.state.activeIndex === i }}
-                    onMouseOver={() => this.onMouseOver(i)}
-                  >
-                    <span slot="label" class="select-option">
-                      <span class="select-option-label">{item.render.label}</span>
-                      <span class="select-option-description">{item.render.description}</span>
-                    </span>
-                  </cat-checkbox>
-                </li>
-              ))}
-              {this.state.isLoading
-                ? Array.from(Array(CatSelectRemote.SKELETON_COUNT)).map(() => (
-                    <li class="select-option-loading">
-                      <cat-skeleton variant="body" lines={1}></cat-skeleton>
-                      <cat-skeleton variant="body" lines={1}></cat-skeleton>
-                    </li>
-                  ))
-                : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
-            </ul>
-          </cat-scrollable>
+          {this.state.isOpen && (
+            <cat-scrollable
+              class="select-options-wrapper"
+              scrolledBuffer={56}
+              noOverflowX
+              noOverscroll
+              noScrolledInit
+              onScrolledBottom={() => this.more$.next()}
+            >
+              <ul class="select-options">
+                {this.state.options.map((item, i) => (
+                  <li role="option" id={`select-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
+                    <cat-checkbox
+                      class={{ 'select-option-active': this.state.activeIndex === i }}
+                      checked={this.isSelected(item.item.id)}
+                      tabIndex={-1}
+                      labelLeft
+                      onFocus={() => this.input?.focus()}
+                      onCatChange={() => this.toggle(item)}
+                      onMouseOver={() => this.onMouseOver(i)}
+                    >
+                      <span slot="label" class="select-option">
+                        <span class="select-option-label">{item.render.label}</span>
+                        <span class="select-option-description">{item.render.description}</span>
+                      </span>
+                    </cat-checkbox>
+                  </li>
+                ))}
+                {this.state.isLoading
+                  ? Array.from(Array(CatSelectRemote.SKELETON_COUNT)).map(() => (
+                      <li class="select-option-loading">
+                        <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                        <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                      </li>
+                    ))
+                  : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+              </ul>
+            </cat-scrollable>
+          )}
         </div>
       </Host>
     );
