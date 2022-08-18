@@ -40,7 +40,7 @@ export class CatSelectRemoteTest {
                 lastName: `Doe (${i + page * 10})`,
                 desc: `"${term}": page ${page}`
               }))
-            }).pipe(delay(500));
+            }).pipe(delay(5000));
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,

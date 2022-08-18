@@ -18,6 +18,7 @@
     box-shadow: 0 0 0 2px cat-token('color.ui.border.input');
   }
 
+  &.is-focused,
   &:focus-within {
     outline: 2px solid cat-token('color.ui.border.focus');
   }
@@ -103,7 +104,7 @@
 }
 
 .select-option-active {
-  background-color: red;
+  background-color: aliceblue;
 }
 
 .select-option-label {
