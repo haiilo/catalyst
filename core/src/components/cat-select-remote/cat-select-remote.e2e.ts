@@ -1,4 +1,3 @@
-/*
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('cat-select-remote', () => {
@@ -10,4 +9,3 @@ describe('cat-select-remote', () => {
     expect(element).toHaveClass('hydrated');
   });
 });
-*/
