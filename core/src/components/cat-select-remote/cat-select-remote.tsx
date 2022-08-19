@@ -32,6 +32,7 @@ export interface RenderInfo {
   description?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
   resolve: (id: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
