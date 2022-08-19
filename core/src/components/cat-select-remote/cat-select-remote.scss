@@ -14,13 +14,19 @@
   transition: box-shadow cat-token('time.transition.s') linear;
   padding: 4px;
 
-  &:hover {
+  &:not(.select-disabled):hover {
     box-shadow: 0 0 0 2px cat-token('color.ui.border.input');
   }
 
-  &:focus-within {
+  &:not(.select-disabled):focus-within {
     outline: 2px solid cat-token('color.ui.border.focus');
   }
+}
+
+.select-disabled {
+  background: cat-token('color.ui.background.inputDisabled');
+  cursor: not-allowed;
+  color: cat-token('color.ui.font.muted');
 }
 
 .select-wrapper-inner {
@@ -33,18 +39,23 @@
 }
 
 .select-input {
-  @include cat-body('m');
+  font: inherit;
+  background: none;
   border: none;
   outline: none;
   padding: 6px 8px;
   flex: 1 1 auto;
+
+  .select-disabled & {
+    cursor: inherit;
+  }
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 4px 4px 8px;
+  padding: 4px 8px;
   background: cat-token('color.ui.background.muted');
   border-radius: cat-border-radius('s');
   white-space: nowrap;
@@ -62,6 +73,10 @@
   &::part(button) {
     outline: none;
   }
+}
+
+cat-spinner {
+  padding: 6px;
 }
 
 .select-btn-open {

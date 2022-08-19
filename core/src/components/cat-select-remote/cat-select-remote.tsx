@@ -42,6 +42,7 @@ export interface CatSelectRemoteState {
   term: string;
   isOpen: boolean;
   isLoading: boolean;
+  isResolving: boolean;
   options: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
   activeIndex: number;
@@ -51,6 +52,7 @@ const INIT_STATE: CatSelectRemoteState = {
   term: '',
   isOpen: false,
   isLoading: false,
+  isResolving: false,
   options: [],
   selection: [],
   activeIndex: -1
@@ -81,6 +83,16 @@ export class CatSelectRemote {
   @Prop() placement: Placement = 'bottom-start';
 
   @Prop() value?: string[];
+
+  /**
+   * Whether the input is disabled.
+   */
+  @Prop() disabled = false;
+
+  /**
+   * The placeholder text to display within the input.
+   */
+  @Prop() placeholder?: string;
 
   @State()
   connector?: CatSelectRemoteConnector;
@@ -231,7 +243,7 @@ export class CatSelectRemote {
     return (
       <Host>
         <div
-          class="select-wrapper"
+          class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
           role="combobox"
           aria-expanded={this.state.isOpen}
@@ -241,16 +253,19 @@ export class CatSelectRemote {
             {this.state.selection.map(item => (
               <span class="pill">
                 <span>{item.render.label}</span>
-                <cat-button
-                  size="xs"
-                  variant="text"
-                  icon="cross-outlined"
-                  iconOnly
-                  round
-                  a11yLabel={this.i18n.t('select.deselect')}
-                  onClick={() => this.deselect(item.item.id)}
-                  tabIndex={-1}
-                ></cat-button>
+                {!this.disabled && (
+                  <cat-button
+                    size="xs"
+                    variant="text"
+                    icon="cross-outlined"
+                    iconOnly
+                    round
+                    a11yLabel={this.i18n.t('select.deselect')}
+                    onClick={() => this.deselect(item.item.id)}
+                    tabIndex={-1}
+                    onFocus={() => this.input?.focus()}
+                  ></cat-button>
+                )}
               </span>
             ))}
             <input
@@ -261,10 +276,14 @@ export class CatSelectRemote {
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
               }
+              placeholder={this.placeholder}
+              disabled={this.disabled || this.state.isResolving}
             ></input>
           </div>
 
-          {(this.state.selection.length || this.state.term.length) && (
+          {this.state.isResolving && <cat-spinner></cat-spinner>}
+
+          {(this.state.selection.length || this.state.term.length) && !this.disabled && !this.state.isResolving ? (
             <cat-button
               iconOnly
               icon="cross-circle-outlined"
@@ -274,19 +293,22 @@ export class CatSelectRemote {
               a11yLabel={this.i18n.t('select.clear')}
               onClick={() => this.clear()}
             ></cat-button>
+          ) : null}
+          {!this.state.isResolving && (
+            <cat-button
+              iconOnly
+              icon="chevron-down-outlined"
+              class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
+              variant="text"
+              size="s"
+              round
+              a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
+              onClick={e => (this.state.isOpen ? this.hide(e) : this.show(e))}
+              onFocus={() => this.input?.focus()}
+              tabIndex={-1}
+              disabled={this.disabled || this.state.isResolving}
+            ></cat-button>
           )}
-          <cat-button
-            iconOnly
-            icon="chevron-down-outlined"
-            class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
-            variant="text"
-            size="s"
-            round
-            a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
-            onClick={e => (this.state.isOpen ? this.hide(e) : this.show(e))}
-            onFocus={() => this.input?.focus()}
-            tabIndex={-1}
-          ></cat-button>
         </div>
         <div
           class="select-dropdown"
@@ -347,9 +369,13 @@ export class CatSelectRemote {
   }
 
   private resolve() {
+    this.patchState({ isResolving: true });
     const data$ = this.value?.length ? this.connectorSafe.resolve(this.value).pipe(first()) : of([]);
     data$.subscribe(items =>
-      this.patchState({ selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })) })
+      this.patchState({
+        isResolving: false,
+        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) }))
+      })
     );
   }
 

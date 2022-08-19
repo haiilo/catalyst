@@ -40,7 +40,7 @@ export class CatSelectRemoteTest {
                 lastName: `Doe (${i + page * 10})`,
                 desc: `"${term}": page ${page}`
               }))
-            }).pipe(delay(5000));
+            }).pipe(delay(500));
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
@@ -50,6 +50,8 @@ export class CatSelectRemoteTest {
   }
 
   render() {
-    return <cat-select-remote ref={el => (this.select = el)} value={['1']}></cat-select-remote>;
+    return (
+      <cat-select-remote ref={el => (this.select = el)} value={['1']} placeholder="Hello World"></cat-select-remote>
+    );
   }
 }

@@ -479,6 +479,14 @@ export namespace Components {
     interface CatSelectRemote {
         "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
         "debounce": number;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
         "placement": Placement;
         "value"?: string[];
     }
@@ -1434,8 +1442,16 @@ declare namespace LocalJSX {
     }
     interface CatSelectRemote {
         "debounce"?: number;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
         "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
         "placement"?: Placement;
         "value"?: string[];
     }
