@@ -233,7 +233,7 @@ export class CatSelectRemote {
               class="select-input"
               ref={el => (this.input = el)}
               onClick={() => this.onInputClick()}
-              onInput={() => this.search(this.input?.value || '')}
+              onInput={() => this.onInput()}
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
               }
@@ -348,7 +348,7 @@ export class CatSelectRemote {
       this.term$.next(this.state.term);
     }
   }
-  
+
   private hide(event?: Event) {
     event?.stopPropagation();
     if (this.state.isOpen) {
@@ -424,5 +424,10 @@ export class CatSelectRemote {
 
   private onMouseOver(index: number): void {
     this.state.activeIndex !== index && this.patchState({ activeIndex: index });
+  }
+
+  private onInput() {
+    this.search(this.input?.value || '');
+    this.show();
   }
 }
