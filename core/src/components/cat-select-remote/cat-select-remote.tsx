@@ -110,39 +110,6 @@ export class CatSelectRemote {
   @Watch('state')
   onStateChange(newState: CatSelectRemoteState, oldState: CatSelectRemoteState) {
     const changed = (key: keyof CatSelectRemoteState) => newState[key] !== oldState[key];
-
-    if (changed('term')) {
-      if (!newState.term && this.input) {
-        this.input.value = '';
-      }
-    }
-
-    if (changed('isOpen')) {
-      newState.isOpen ? this.catOpen.emit() : this.catClose.emit();
-    }
-
-    if (changed('options')) {
-      /*
-      if (this.dropdown) {
-        this.trap = this.trap
-          ? this.trap.updateContainerElements(this.dropdown)
-          : focusTrap.createFocusTrap(this.dropdown, {
-              //initialFocus: this.input,
-              //fallbackFocus: this.input,
-              tabbableOptions: {
-                getShadowRoot: true
-              },
-              allowOutsideClick: true,
-              clickOutsideDeactivates: event => true,
-                //(!this.dropdown || !event.composedPath().includes(this.dropdown)) &&
-                //(!this.trigger || !event.composedPath().includes(this.trigger)),
-              onPostDeactivate: () => this.hide()
-            });
-        this.trap.activate();
-      }
-      */
-    }
-
     if (changed('activeIndex')) {
       if (this.state.activeIndex >= 0) {
         const option = this.dropdown?.querySelector(`#select-option-${this.state.activeIndex}`);
@@ -376,13 +343,15 @@ export class CatSelectRemote {
     event?.stopPropagation();
     if (!this.state.isOpen) {
       this.patchState({ isOpen: true });
+      this.catOpen.emit();
       this.term$.next(this.state.term);
     }
   }
-
+  
   private hide(event?: Event) {
     event?.stopPropagation();
     if (this.state.isOpen) {
+      this.catClose.emit();
       this.patchState({ isOpen: false, activeIndex: -1 });
     }
   }
@@ -411,9 +380,10 @@ export class CatSelectRemote {
   }
 
   private clear() {
-    if (this.state.term) {
+    if (this.input && this.state.term) {
       this.patchState({ selection: [], options: [], term: '', activeIndex: -1 });
       this.term$.next('');
+      this.input.value = '';
     } else {
       this.patchState({ selection: [] });
     }
