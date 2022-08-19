@@ -1,5 +1,6 @@
 import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import autosizeInput from 'autosize-input';
 import {
   debounce,
   distinctUntilChanged,
@@ -16,7 +17,6 @@ import {
   timer
 } from 'rxjs';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
-import autosizeInput from 'autosize-input';
 
 export interface Item {
   id: string;
@@ -59,6 +59,8 @@ const INIT_STATE: CatSelectRemoteState = {
   activeIndex: -1
 };
 
+let nextUniqueId = 0;
+
 @Component({
   tag: 'cat-select-remote',
   styleUrl: 'cat-select-remote.scss',
@@ -68,6 +70,7 @@ export class CatSelectRemote {
   private static readonly SKELETON_COUNT = 4;
   private static readonly DROPDOWN_OFFSET = 4;
   private readonly i18n = CatI18nRegistry.getInstance();
+  private readonly id = `cat-input-${nextUniqueId++}`;
 
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
@@ -76,8 +79,6 @@ export class CatSelectRemote {
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
-
-  @Element() hostElement!: HTMLElement;
 
   @Prop() debounce = 250;
 
@@ -112,7 +113,7 @@ export class CatSelectRemote {
     const changed = (key: keyof CatSelectRemoteState) => newState[key] !== oldState[key];
     if (changed('activeIndex')) {
       if (this.state.activeIndex >= 0) {
-        const option = this.dropdown?.querySelector(`#select-option-${this.state.activeIndex}`);
+        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeIndex}`);
         option?.scrollIntoView({ block: 'nearest' });
       }
     }
@@ -207,7 +208,7 @@ export class CatSelectRemote {
           ref={el => (this.trigger = el)}
           role="combobox"
           aria-expanded={this.state.isOpen}
-          aria-controls="listbox-1" //TODO: generate unique ids
+          aria-controls={`select-listbox-${this.id}`}
         >
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
@@ -273,7 +274,7 @@ export class CatSelectRemote {
         <div
           class="select-dropdown"
           role="listbox"
-          id="listbox-1"
+          id={`select-listbox-${this.id}`}
           ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
@@ -288,7 +289,7 @@ export class CatSelectRemote {
             >
               <ul class="select-options">
                 {this.state.options.map((item, i) => (
-                  <li role="option" id={`select-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
+                  <li role="option" id={`select-${this.id}-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
                     <cat-checkbox
                       class={{ 'select-option-active': this.state.activeIndex === i }}
                       checked={this.isSelected(item.item.id)}
