@@ -2,8 +2,10 @@ import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import autosizeInput from 'autosize-input';
 import {
+  catchError,
   debounce,
   distinctUntilChanged,
+  filter,
   first,
   Observable,
   of,
@@ -136,6 +138,7 @@ export class CatSelectRemote {
         tap(
           () =>
             (number$ = this.more$.pipe(
+              filter(() => !this.state.isLoading),
               scan(n => n + 1, 0),
               startWith(0)
             ))
@@ -170,6 +173,11 @@ export class CatSelectRemote {
     }
   }
 
+  @Listen('blur')
+  onBlur(): void {
+    this.hide();
+  }
+
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     if (event.key === 'ArrowDown') {
@@ -195,11 +203,6 @@ export class CatSelectRemote {
     }
   }
 
-  @Listen('blur')
-  onBlur(): void {
-    this.hide();
-  }
-
   render() {
     return (
       <Host>
@@ -209,6 +212,7 @@ export class CatSelectRemote {
           role="combobox"
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
+          onClick={(e) => this.onWrapperClick(e)}
         >
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
@@ -220,11 +224,10 @@ export class CatSelectRemote {
                     variant="text"
                     icon="cross-outlined"
                     iconOnly
-                    round
                     a11yLabel={this.i18n.t('select.deselect')}
                     onClick={() => this.deselect(item.item.id)}
                     tabIndex={-1}
-                    onFocus={() => this.input?.focus()}
+                    //onFocus={() => this.input?.focus()}
                   ></cat-button>
                 )}
               </span>
@@ -232,7 +235,6 @@ export class CatSelectRemote {
             <input
               class="select-input"
               ref={el => (this.input = el)}
-              onClick={() => this.onInputClick()}
               onInput={() => this.search(this.input?.value || '')}
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
@@ -241,16 +243,13 @@ export class CatSelectRemote {
               disabled={this.disabled || this.state.isResolving}
             ></input>
           </div>
-
           {this.state.isResolving && <cat-spinner></cat-spinner>}
-
           {(this.state.selection.length || this.state.term.length) && !this.disabled && !this.state.isResolving ? (
             <cat-button
               iconOnly
               icon="cross-circle-outlined"
               variant="text"
               size="s"
-              round
               a11yLabel={this.i18n.t('select.clear')}
               onClick={() => this.clear()}
             ></cat-button>
@@ -264,8 +263,7 @@ export class CatSelectRemote {
               size="s"
               round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
-              onClick={e => (this.state.isOpen ? this.hide(e) : this.show(e))}
-              onFocus={() => this.input?.focus()}
+              onClick={() => this.state.isOpen ? this.hide() : this.show()}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
             ></cat-button>
@@ -289,7 +287,7 @@ export class CatSelectRemote {
             >
               <ul class="select-options">
                 {this.state.options.map((item, i) => (
-                  <li role="option" id={`select-${this.id}-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
+                  <li role="option" class="select-option" id={`select-${this.id}-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
                     <cat-checkbox
                       class={{ 'select-option-active': this.state.activeIndex === i }}
                       checked={this.isSelected(item.item.id)}
@@ -297,7 +295,6 @@ export class CatSelectRemote {
                       labelLeft
                       onFocus={() => this.input?.focus()}
                       onCatChange={() => this.toggle(item)}
-                      onMouseOver={() => this.onMouseOver(i)}
                     >
                       <span slot="label" class="select-option">
                         <span class="select-option-label">{item.render.label}</span>
@@ -332,7 +329,7 @@ export class CatSelectRemote {
   private resolve() {
     this.patchState({ isResolving: true });
     const data$ = this.value?.length ? this.connectorSafe.resolve(this.value).pipe(first()) : of([]);
-    data$.subscribe(items =>
+    data$.pipe(catchError(() => of([]))).subscribe(items =>
       this.patchState({
         isResolving: false,
         selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) }))
@@ -340,20 +337,18 @@ export class CatSelectRemote {
     );
   }
 
-  private show(event?: Event) {
-    event?.stopPropagation();
+  private show() {
     if (!this.state.isOpen) {
       this.patchState({ isOpen: true });
       this.catOpen.emit();
       this.term$.next(this.state.term);
     }
   }
-  
-  private hide(event?: Event) {
-    event?.stopPropagation();
+
+  private hide() {
     if (this.state.isOpen) {
-      this.catClose.emit();
       this.patchState({ isOpen: false, activeIndex: -1 });
+      this.catClose.emit();
     }
   }
 
@@ -373,7 +368,9 @@ export class CatSelectRemote {
   }
 
   private deselect(id: string) {
-    this.patchState({ selection: this.state.selection.filter(item => item.item.id !== id) });
+    if (this.isSelected(id)) {
+      this.patchState({ selection: this.state.selection.filter(item => item.item.id !== id) });
+    }
   }
 
   private toggle(item: { item: Item; render: RenderInfo }) {
@@ -388,7 +385,6 @@ export class CatSelectRemote {
     } else {
       this.patchState({ selection: [] });
     }
-    this.input?.focus(); //TODO: only focus if input had focus before?
   }
 
   private reset(connector?: CatSelectRemoteConnector) {
@@ -418,11 +414,10 @@ export class CatSelectRemote {
     this.state = { ...this.state, ...update };
   }
 
-  private onInputClick() {
-    this.state.isOpen ? this.hide() : this.show();
-  }
-
-  private onMouseOver(index: number): void {
-    this.state.activeIndex !== index && this.patchState({ activeIndex: index });
+  private onWrapperClick(e: MouseEvent) {
+    if (e.target === this.trigger || e.target === this.input) {
+      this.input?.focus();
+      this.show();
+    }
   }
 }

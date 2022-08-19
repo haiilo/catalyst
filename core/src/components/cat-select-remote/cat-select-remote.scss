@@ -65,6 +65,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  > cat-button {
+    margin-right: -4px;
+  }
 }
 
 .select-btn {
@@ -120,8 +124,13 @@ cat-spinner {
   padding: 0.5rem 1rem;
 }
 
+.select-option:hover {
+ background-color: cat-token('color.theme.secondary.bg', 0.05);
+}
+
 .select-option-active {
-  background-color: aliceblue; // TODO
+  outline: 2px solid cat-token('color.ui.border.focus');
+  outline-offset: -2px;
 }
 
 .select-option-label {
