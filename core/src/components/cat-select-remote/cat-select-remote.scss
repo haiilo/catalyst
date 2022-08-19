@@ -1,8 +1,29 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'src/components/cat-form-hint/cat-form-hint';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+label {
+  align-self: flex-start;
+
+  &.hidden {
+    @include cat-visually-hidden;
+  }
+}
+
+.input-optional {
+  margin-left: 0.25rem;
+  @include cat-body('xs');
+  color: cat-token('color.ui.font.muted');
 }
 
 .select-wrapper {

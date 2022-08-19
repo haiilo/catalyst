@@ -51,7 +51,13 @@ export class CatSelectRemoteTest {
 
   render() {
     return (
-      <cat-select-remote ref={el => (this.select = el)} value={['1']} placeholder="Hello World"></cat-select-remote>
+      <cat-select-remote
+        label="Label"
+        hint="This is a hint!"
+        ref={el => (this.select = el)}
+        value={['1']}
+        placeholder="Hello World"
+      ></cat-select-remote>
     );
   }
 }

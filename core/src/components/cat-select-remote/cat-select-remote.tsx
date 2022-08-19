@@ -1,5 +1,5 @@
 import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
-import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import autosizeInput from 'autosize-input';
 import {
   catchError,
@@ -19,6 +19,8 @@ import {
   timer
 } from 'rxjs';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import log from 'loglevel';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 export interface Item {
   id: string;
@@ -82,6 +84,14 @@ export class CatSelectRemote {
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
 
+  @Element() hostElement!: HTMLElement;
+
+  @State() connector?: CatSelectRemoteConnector;
+
+  @State() state: CatSelectRemoteState = INIT_STATE;
+
+  @State() hasSlottedLabel = false;
+
   @Prop() debounce = 250;
 
   @Prop() placement: Placement = 'bottom-start';
@@ -89,26 +99,45 @@ export class CatSelectRemote {
   @Prop() value?: string[];
 
   /**
-   * Whether the input is disabled.
+   * Whether the select is disabled.
    */
   @Prop() disabled = false;
 
   /**
-   * The placeholder text to display within the input.
+   * The placeholder text to display within the select.
    */
   @Prop() placeholder?: string;
 
-  @State()
-  connector?: CatSelectRemoteConnector;
+  /**
+   * Optional hint text(s) to be displayed with the input.
+   */
+  @Prop() hint?: string | string[];
+
+  /**
+   * The label for the input.
+   */
+  @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
+   * A value is required or must be check for the form to be submittable.
+   */
+  @Prop() required = false;
+
+  /**
+   * Whether the input should show a clear button.
+   */
+  @Prop() clearable = true; // TODO: false by default
 
   @Watch('connector')
   onConnectorChange(connector: CatSelectRemoteConnector) {
     this.reset(connector);
     this.resolve();
   }
-
-  @State()
-  state: CatSelectRemoteState = INIT_STATE;
 
   @Watch('state')
   onStateChange(newState: CatSelectRemoteState, oldState: CatSelectRemoteState) {
@@ -124,6 +153,52 @@ export class CatSelectRemote {
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
   @Event() catClose!: EventEmitter<FocusEvent>;
+
+  componentDidLoad(): void {
+    if (this.input) {
+      autosizeInput(this.input);
+    }
+    if (this.trigger && this.dropdown) {
+      autoUpdate(this.trigger, this.dropdown, () => this.update());
+    }
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    if (!this.label && !this.hasSlottedLabel) {
+      log.error('[A11y] Missing ARIA label on input', this);
+    }
+  }
+
+  @Listen('focusout')
+  onBlur(): void {
+    this.hide();
+  }
+
+  @Listen('keydown')
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'ArrowDown') {
+      this.state.isOpen
+        ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
+        : this.show();
+    } else if (event.key === 'ArrowUp') {
+      this.state.activeIndex >= 0
+        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
+        : this.hide();
+    } else if (['Enter', ' '].includes(event.key)) {
+      if (this.state.activeIndex >= 0) {
+        event.preventDefault();
+        this.toggle(this.state.options[this.state.activeIndex]);
+      }
+    } else if (event.key === 'Escape') {
+      this.hide();
+    } else if (event.key === 'Backspace') {
+      if (!this.state.term) {
+        this.state.selection.pop();
+        this.patchState({});
+      }
+    }
+  }
 
   @Method()
   async connect(connector: CatSelectRemoteConnector) {
@@ -164,48 +239,21 @@ export class CatSelectRemote {
       );
   }
 
-  componentDidLoad(): void {
-    if (this.input) {
-      autosizeInput(this.input);
-    }
-    if (this.trigger && this.dropdown) {
-      autoUpdate(this.trigger, this.dropdown, () => this.update());
-    }
-  }
-
-  @Listen('blur')
-  onBlur(): void {
-    this.hide();
-  }
-
-  @Listen('keydown')
-  onKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'ArrowDown') {
-      this.state.isOpen
-        ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
-        : this.show();
-    } else if (event.key === 'ArrowUp') {
-      this.state.activeIndex >= 0
-        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
-        : this.hide();
-    } else if (['Enter', ' '].includes(event.key)) {
-      if (this.state.activeIndex >= 0) {
-        event.preventDefault();
-        this.toggle(this.state.options[this.state.activeIndex]);
-      }
-    } else if (event.key === 'Escape') {
-      this.hide();
-    } else if (event.key === 'Backspace') {
-      if (!this.state.term) {
-        this.state.selection.pop();
-        this.patchState({});
-      }
-    }
-  }
-
   render() {
     return (
       <Host>
+        {(this.hasSlottedLabel || this.label) && (
+          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+            <span part="label">
+              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+              {!this.required && (
+                <span class="input-optional" aria-hidden="true">
+                  ({this.i18n.t('input.optional')})
+                </span>
+              )}
+            </span>
+          </label>
+        )}
         <div
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
@@ -234,7 +282,7 @@ export class CatSelectRemote {
             <input
               class="select-input"
               ref={el => (this.input = el)}
-              onInput={() => this.search(this.input?.value || '')}
+              onInput={() => this.onInput()}
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
               }
@@ -243,7 +291,10 @@ export class CatSelectRemote {
             ></input>
           </div>
           {this.state.isResolving && <cat-spinner></cat-spinner>}
-          {(this.state.selection.length || this.state.term.length) && !this.disabled && !this.state.isResolving ? (
+          {(this.state.selection.length || this.state.term.length) &&
+          !this.disabled &&
+          !this.state.isResolving &&
+          this.clearable ? (
             <cat-button
               iconOnly
               icon="cross-circle-outlined"
@@ -262,12 +313,12 @@ export class CatSelectRemote {
               size="s"
               round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
-              onClick={() => (this.state.isOpen ? this.hide() : this.show())}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
             ></cat-button>
           )}
         </div>
+        {this.hintSection}
         <div
           class="select-dropdown"
           role="listbox"
@@ -320,6 +371,15 @@ export class CatSelectRemote {
           )}
         </div>
       </Host>
+    );
+  }
+
+  private get hintSection() {
+    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    return (
+      (this.hint || hasSlottedHint) && (
+        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+      )
     );
   }
 
@@ -400,10 +460,15 @@ export class CatSelectRemote {
 
   private onClick(event: MouseEvent) {
     const elem = event.target as Element;
-    if (elem === this.trigger || elem === this.input || elem.nodeName === 'CAT-BUTTON') {
-      this.input?.focus();
-      this.show();
+    this.input?.focus();
+    if (elem === this.trigger || elem === this.input || elem.classList.contains('select-btn')) {
+      this.state.isOpen ? this.hide() : this.show();
     }
+  }
+
+  private onInput() {
+    this.search(this.input?.value || '');
+    this.show();
   }
 
   private update() {
