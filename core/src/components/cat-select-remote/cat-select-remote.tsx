@@ -212,22 +212,21 @@ export class CatSelectRemote {
           role="combobox"
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
-          onClick={(e) => this.onWrapperClick(e)}
+          onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
-              <span class="pill">
+              <span class="pill select-no-open">
                 <span>{item.render.label}</span>
                 {!this.disabled && (
                   <cat-button
                     size="xs"
                     variant="text"
-                    icon="cross-outlined"
+                    icon="16-cross"
                     iconOnly
                     a11yLabel={this.i18n.t('select.deselect')}
                     onClick={() => this.deselect(item.item.id)}
                     tabIndex={-1}
-                    //onFocus={() => this.input?.focus()}
                   ></cat-button>
                 )}
               </span>
@@ -263,7 +262,7 @@ export class CatSelectRemote {
               size="s"
               round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
-              onClick={() => this.state.isOpen ? this.hide() : this.show()}
+              onClick={() => (this.state.isOpen ? this.hide() : this.show())}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
             ></cat-button>
@@ -287,7 +286,12 @@ export class CatSelectRemote {
             >
               <ul class="select-options">
                 {this.state.options.map((item, i) => (
-                  <li role="option" class="select-option" id={`select-${this.id}-option-${i}`} aria-selected={this.isSelected(item.item.id)}>
+                  <li
+                    role="option"
+                    class="select-option"
+                    id={`select-${this.id}-option-${i}`}
+                    aria-selected={this.isSelected(item.item.id)}
+                  >
                     <cat-checkbox
                       class={{ 'select-option-active': this.state.activeIndex === i }}
                       checked={this.isSelected(item.item.id)}
@@ -394,6 +398,14 @@ export class CatSelectRemote {
     this.state = INIT_STATE;
   }
 
+  private onClick(event: MouseEvent) {
+    const elem = event.target as Element;
+    if (elem === this.trigger || elem === this.input || elem.nodeName === 'CAT-BUTTON') {
+      this.input?.focus();
+      this.show();
+    }
+  }
+
   private update() {
     if (this.trigger && this.dropdown) {
       computePosition(this.trigger, this.dropdown, {
@@ -412,12 +424,5 @@ export class CatSelectRemote {
 
   private patchState(update: Partial<CatSelectRemoteState>) {
     this.state = { ...this.state, ...update };
-  }
-
-  private onWrapperClick(e: MouseEvent) {
-    if (e.target === this.trigger || e.target === this.input) {
-      this.input?.focus();
-      this.show();
-    }
   }
 }

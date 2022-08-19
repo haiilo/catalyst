@@ -125,7 +125,7 @@ cat-spinner {
 }
 
 .select-option:hover {
- background-color: cat-token('color.theme.secondary.bg', 0.05);
+  background-color: cat-token('color.theme.secondary.bg', 0.05);
 }
 
 .select-option-active {
