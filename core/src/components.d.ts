@@ -9,6 +9,8 @@ import { Breakpoint } from "./utils/breakpoints";
 import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
 import { CatSelectItem } from "./components/cat-select/cat-select";
+import { CatSelectRemoteConnector, Item } from "./components/cat-select-remote/cat-select-remote";
+import { Observable } from "rxjs";
 export namespace Components {
     interface CatAlert {
         /**
@@ -474,6 +476,22 @@ export namespace Components {
          */
         "value"?: any;
     }
+    interface CatSelectRemote {
+        "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
+        "debounce": number;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        "placement": Placement;
+        "value"?: string[];
+    }
+    interface CatSelectRemoteTest {
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -701,6 +719,10 @@ export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatSelectElement;
 }
+export interface CatSelectRemoteCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatSelectRemoteElement;
+}
 export interface CatTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTabElement;
@@ -798,6 +820,18 @@ declare global {
         prototype: HTMLCatSelectElement;
         new (): HTMLCatSelectElement;
     };
+    interface HTMLCatSelectRemoteElement extends Components.CatSelectRemote, HTMLStencilElement {
+    }
+    var HTMLCatSelectRemoteElement: {
+        prototype: HTMLCatSelectRemoteElement;
+        new (): HTMLCatSelectRemoteElement;
+    };
+    interface HTMLCatSelectRemoteTestElement extends Components.CatSelectRemoteTest, HTMLStencilElement {
+    }
+    var HTMLCatSelectRemoteTestElement: {
+        prototype: HTMLCatSelectRemoteTestElement;
+        new (): HTMLCatSelectRemoteTestElement;
+    };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
@@ -861,6 +895,8 @@ declare global {
         "cat-radio-group": HTMLCatRadioGroupElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-select": HTMLCatSelectElement;
+        "cat-select-remote": HTMLCatSelectRemoteElement;
+        "cat-select-remote-test": HTMLCatSelectRemoteTestElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
@@ -1404,6 +1440,23 @@ declare namespace LocalJSX {
          */
         "value"?: any;
     }
+    interface CatSelectRemote {
+        "debounce"?: number;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        "placement"?: Placement;
+        "value"?: string[];
+    }
+    interface CatSelectRemoteTest {
+    }
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -1631,6 +1684,8 @@ declare namespace LocalJSX {
         "cat-radio-group": CatRadioGroup;
         "cat-scrollable": CatScrollable;
         "cat-select": CatSelect;
+        "cat-select-remote": CatSelectRemote;
+        "cat-select-remote-test": CatSelectRemoteTest;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
@@ -1659,6 +1714,8 @@ declare module "@stencil/core" {
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
+            "cat-select-remote": LocalJSX.CatSelectRemote & JSXBase.HTMLAttributes<HTMLCatSelectRemoteElement>;
+            "cat-select-remote-test": LocalJSX.CatSelectRemoteTest & JSXBase.HTMLAttributes<HTMLCatSelectRemoteTestElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;
