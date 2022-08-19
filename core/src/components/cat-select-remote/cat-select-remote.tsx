@@ -205,27 +205,19 @@ export class CatSelectRemote {
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      event.stopPropagation();
-      if (this.state.isOpen) {
-        this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) });
-      } else {
-        this.show();
-      }
+      this.state.isOpen
+        ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
+        : this.show();
     } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) });
+      this.state.activeIndex >= 0
+        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
+        : this.hide();
     } else if (['Enter', ' '].includes(event.key)) {
-      console.log(event);
       if (this.state.activeIndex >= 0) {
         event.preventDefault();
-        event.stopPropagation();
         this.toggle(this.state.options[this.state.activeIndex]);
       }
     } else if (event.key === 'Escape') {
-      event.preventDefault();
-      event.stopPropagation();
       this.hide();
     } else if (event.key === 'Backspace') {
       if (!this.state.term) {
@@ -248,7 +240,7 @@ export class CatSelectRemote {
           ref={el => (this.trigger = el)}
           role="combobox"
           aria-expanded={this.state.isOpen}
-          aria-controls="listbox-1"
+          aria-controls="listbox-1" //TODO: generate unique ids
         >
           <div class="select-wrapper-inner">
             {this.state.selection.map(item => (
@@ -439,7 +431,7 @@ export class CatSelectRemote {
     if (this.trigger && this.dropdown) {
       computePosition(this.trigger, this.dropdown, {
         placement: this.placement,
-        middleware: [offset(CatSelectRemote.DROPDOWN_OFFSET)] //, flip()]
+        middleware: [offset(CatSelectRemote.DROPDOWN_OFFSET)]
       }).then(({ x, y }) => {
         if (this.dropdown) {
           Object.assign(this.dropdown.style, {
