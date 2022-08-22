@@ -177,16 +177,21 @@ export class CatSelectRemote {
 
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
+    const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
     if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      event.stopPropagation();
       this.state.isOpen
         ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
         : this.show();
     } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      event.stopPropagation();
       this.state.activeIndex >= 0
         ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
         : this.hide();
     } else if (['Enter', ' '].includes(event.key)) {
-      if (this.state.activeIndex >= 0) {
+      if (isInputFocused && this.state.activeIndex >= 0) {
         event.preventDefault();
         this.toggle(this.state.options[this.state.activeIndex]);
       }
@@ -197,6 +202,17 @@ export class CatSelectRemote {
         this.state.selection.pop();
         this.patchState({});
       }
+    } else if (event.key.length === 1 && !isInputFocused) {
+      this.input?.focus();
+    }
+  }
+
+  @Listen('keyup')
+  onKeyUp(event: KeyboardEvent): void {
+    if (event.key === 'Tab') {
+      this.trigger?.setAttribute('tabindex', '-1');
+      this.show();
+      this.hostElement.shadowRoot?.activeElement === this.trigger && this.input?.focus();
     }
   }
 
@@ -258,7 +274,6 @@ export class CatSelectRemote {
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
           role="combobox"
-          tabIndex={0}
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
           onClick={e => this.onClick(e)}
@@ -461,6 +476,7 @@ export class CatSelectRemote {
 
   private onClick(event: MouseEvent) {
     const elem = event.target as Element;
+    this.trigger?.setAttribute('tabindex', '0');
     this.input?.focus();
     if (
       elem === this.trigger ||

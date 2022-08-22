@@ -10,7 +10,7 @@ describe('cat-select-remote', () => {
     expect(page.root).toEqualHtml(`
       <cat-select-remote>
         <mock:shadow-root>
-          <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" role="combobox" tabindex="0">
+          <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" role="combobox">
            <div class="select-wrapper-inner">
              <input class="select-input">
            </div>
