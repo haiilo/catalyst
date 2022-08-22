@@ -119,6 +119,11 @@ export class CatSelectRemote {
   @Prop() label = '';
 
   /**
+   * The name of the form control. Submitted with the form as part of a name/value pair.
+   */
+  @Prop() name = '';
+
+  /**
    * Visually hide the label, but still show it to assistive technologies like screen readers.
    */
   @Prop() labelHidden = false;
@@ -198,6 +203,9 @@ export class CatSelectRemote {
     } else if (event.key === 'Escape') {
       this.hide();
     } else if (event.key === 'Backspace') {
+      if (!isInputFocused) {
+        this.input?.focus();
+      }
       if (!this.state.term) {
         this.state.selection.pop();
         this.patchState({});
@@ -276,6 +284,7 @@ export class CatSelectRemote {
           role="combobox"
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
+          aria-required={this.required}
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
@@ -300,7 +309,7 @@ export class CatSelectRemote {
               ref={el => (this.input = el)}
               onInput={() => this.onInput()}
               aria-activedescendant={
-                this.state.activeIndex >= 0 ? `select-option-${this.state.activeIndex}` : undefined
+                this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
               }
               placeholder={this.placeholder}
               disabled={this.disabled || this.state.isResolving}
@@ -338,6 +347,7 @@ export class CatSelectRemote {
         <div
           class="select-dropdown"
           role="listbox"
+          aria-multiselectable={true}
           id={`select-listbox-${this.id}`}
           ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
@@ -357,7 +367,7 @@ export class CatSelectRemote {
                     role="option"
                     class="select-option"
                     id={`select-${this.id}-option-${i}`}
-                    aria-selected={this.isSelected(item.item.id)}
+                    aria-selected={this.state.activeIndex === i}
                   >
                     <cat-checkbox
                       class={{ 'select-option-active': this.state.activeIndex === i }}

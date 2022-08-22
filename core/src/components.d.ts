@@ -500,6 +500,10 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name": string;
+        /**
           * The placeholder text to display within the select.
          */
         "placeholder"?: string;
@@ -1482,6 +1486,10 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
         "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         /**
