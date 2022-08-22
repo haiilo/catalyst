@@ -170,7 +170,7 @@ export class CatSelectRemote {
     }
   }
 
-  @Listen('focusout')
+  @Listen('blur')
   onBlur(): void {
     this.hide();
   }
@@ -258,6 +258,7 @@ export class CatSelectRemote {
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
           role="combobox"
+          tabIndex={0}
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
           onClick={e => this.onClick(e)}
@@ -461,7 +462,12 @@ export class CatSelectRemote {
   private onClick(event: MouseEvent) {
     const elem = event.target as Element;
     this.input?.focus();
-    if (elem === this.trigger || elem === this.input || elem.classList.contains('select-btn')) {
+    if (
+      elem === this.trigger ||
+      elem === this.input ||
+      elem.classList.contains('select-btn') ||
+      elem.nodeName === 'SPAN'
+    ) {
       this.state.isOpen ? this.hide() : this.show();
     }
   }
