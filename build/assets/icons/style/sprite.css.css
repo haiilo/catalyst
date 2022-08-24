@@ -38,8 +38,17 @@
 	height: 16px;
 }
 
-.ci-16-editor-arrow-down {
+.ci-16-cross {
 	background-position: 39.42307692307692% 46%;
+}
+
+.ci-16-cross-size {
+	width: 16px;
+	height: 16px;
+}
+
+.ci-16-editor-arrow-down {
+	background-position: 43.26923076923077% 46%;
 }
 
 .ci-16-editor-arrow-down-size {
@@ -48,7 +57,7 @@
 }
 
 .ci-16-editor-arrow-up {
-	background-position: 43.26923076923077% 46%;
+	background-position: 40.38461538461539% 98%;
 }
 
 .ci-16-editor-arrow-up-size {
@@ -57,7 +66,7 @@
 }
 
 .ci-16-editor-bold {
-	background-position: 40.38461538461539% 98%;
+	background-position: 44.23076923076923% 98%;
 }
 
 .ci-16-editor-bold-size {
@@ -66,7 +75,7 @@
 }
 
 .ci-16-editor-delete {
-	background-position: 44.23076923076923% 98%;
+	background-position: 48.07692307692308% 98%;
 }
 
 .ci-16-editor-delete-size {
@@ -75,7 +84,7 @@
 }
 
 .ci-16-editor-h-1 {
-	background-position: 48.07692307692308% 98%;
+	background-position: 51.92307692307692% 98%;
 }
 
 .ci-16-editor-h-1-size {
@@ -84,7 +93,7 @@
 }
 
 .ci-16-editor-h-2 {
-	background-position: 51.92307692307692% 98%;
+	background-position: 55.76923076923077% 98%;
 }
 
 .ci-16-editor-h-2-size {
@@ -93,7 +102,7 @@
 }
 
 .ci-16-editor-h-3 {
-	background-position: 55.76923076923077% 98%;
+	background-position: 59.61538461538461% 98%;
 }
 
 .ci-16-editor-h-3-size {
@@ -102,7 +111,7 @@
 }
 
 .ci-16-editor-h-4 {
-	background-position: 59.61538461538461% 98%;
+	background-position: 63.46153846153846% 98%;
 }
 
 .ci-16-editor-h-4-size {
@@ -111,7 +120,7 @@
 }
 
 .ci-16-editor-h-5 {
-	background-position: 63.46153846153846% 98%;
+	background-position: 67.3076923076923% 98%;
 }
 
 .ci-16-editor-h-5-size {
@@ -120,7 +129,7 @@
 }
 
 .ci-16-editor-h-6 {
-	background-position: 67.3076923076923% 98%;
+	background-position: 71.15384615384616% 98%;
 }
 
 .ci-16-editor-h-6-size {
@@ -129,7 +138,7 @@
 }
 
 .ci-16-editor-headline {
-	background-position: 71.15384615384616% 98%;
+	background-position: 75% 98%;
 }
 
 .ci-16-editor-headline-size {
@@ -138,7 +147,7 @@
 }
 
 .ci-16-editor-image {
-	background-position: 75% 98%;
+	background-position: 78.84615384615384% 98%;
 }
 
 .ci-16-editor-image-size {
@@ -147,7 +156,7 @@
 }
 
 .ci-16-editor-indent-decrease {
-	background-position: 78.84615384615384% 98%;
+	background-position: 82.6923076923077% 98%;
 }
 
 .ci-16-editor-indent-decrease-size {
@@ -156,7 +165,7 @@
 }
 
 .ci-16-editor-indent-increase {
-	background-position: 82.6923076923077% 98%;
+	background-position: 86.53846153846153% 98%;
 }
 
 .ci-16-editor-indent-increase-size {
@@ -165,7 +174,7 @@
 }
 
 .ci-16-editor-italic {
-	background-position: 86.53846153846153% 98%;
+	background-position: 90.38461538461539% 98%;
 }
 
 .ci-16-editor-italic-size {
@@ -174,7 +183,7 @@
 }
 
 .ci-16-editor-link {
-	background-position: 90.38461538461539% 98%;
+	background-position: 94.23076923076923% 98%;
 }
 
 .ci-16-editor-link-size {
@@ -183,7 +192,7 @@
 }
 
 .ci-16-editor-link-break {
-	background-position: 94.23076923076923% 98%;
+	background-position: 100% 0;
 }
 
 .ci-16-editor-link-break-size {
@@ -192,7 +201,7 @@
 }
 
 .ci-16-editor-ol {
-	background-position: 100% 0;
+	background-position: 100% 4%;
 }
 
 .ci-16-editor-ol-size {
@@ -201,7 +210,7 @@
 }
 
 .ci-16-editor-paragraph {
-	background-position: 100% 4%;
+	background-position: 100% 8%;
 }
 
 .ci-16-editor-paragraph-size {
@@ -210,7 +219,7 @@
 }
 
 .ci-16-editor-plus {
-	background-position: 100% 8%;
+	background-position: 100% 12%;
 }
 
 .ci-16-editor-plus-size {
@@ -219,7 +228,7 @@
 }
 
 .ci-16-editor-search {
-	background-position: 100% 12%;
+	background-position: 100% 16%;
 }
 
 .ci-16-editor-search-size {
@@ -228,7 +237,7 @@
 }
 
 .ci-16-editor-settings {
-	background-position: 100% 16%;
+	background-position: 100% 20%;
 }
 
 .ci-16-editor-settings-size {
@@ -237,7 +246,7 @@
 }
 
 .ci-16-editor-ul {
-	background-position: 100% 20%;
+	background-position: 100% 24%;
 }
 
 .ci-16-editor-ul-size {
@@ -246,7 +255,7 @@
 }
 
 .ci-16-external-link {
-	background-position: 100% 24%;
+	background-position: 100% 28%;
 }
 
 .ci-16-external-link-size {
@@ -255,7 +264,7 @@
 }
 
 .ci-16-flash-circle-outlined {
-	background-position: 100% 28%;
+	background-position: 100% 32%;
 }
 
 .ci-16-flash-circle-outlined-size {
@@ -264,7 +273,7 @@
 }
 
 .ci-16-lock-outlined {
-	background-position: 100% 32%;
+	background-position: 100% 36%;
 }
 
 .ci-16-lock-outlined-size {
@@ -273,7 +282,7 @@
 }
 
 .ci-16-targeted-outlined {
-	background-position: 100% 36%;
+	background-position: 100% 40%;
 }
 
 .ci-16-targeted-outlined-size {
@@ -282,7 +291,7 @@
 }
 
 .ci-16-thumbs-up-outlined {
-	background-position: 100% 40%;
+	background-position: 100% 44%;
 }
 
 .ci-16-thumbs-up-outlined-size {
@@ -291,7 +300,7 @@
 }
 
 .ci-16-translate-box-outlined {
-	background-position: 100% 44%;
+	background-position: 100% 48%;
 }
 
 .ci-16-translate-box-outlined-size {

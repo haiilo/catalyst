@@ -607,6 +607,10 @@ export const ciCircleOutlined = {
     name: 'circle-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V8Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z"/></svg>`
 };
+export const ci16Cross = {
+    name: '16-cross',
+    data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M4.53 3.47a.75.75 0 0 0-1.06 1.06L6.94 8l-3.47 3.47a.75.75 0 1 0 1.06 1.06L8 9.06l3.47 3.47a.75.75 0 1 0 1.06-1.06L9.06 8l3.47-3.47a.75.75 0 0 0-1.06-1.06L8 6.94 4.53 3.47Z"/></svg>`
+};
 export const ci16EditorArrowDown = {
     name: '16-editor-arrow-down',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7.47 14.53a.75.75 0 0 0 1.06 0l5-5a.75.75 0 0 0-1.06-1.06l-3.72 3.72V2a.75.75 0 0 0-1.5 0v10.19L3.53 8.47a.75.75 0 0 0-1.06 1.06l5 5Z"/></svg>`
@@ -1196,6 +1200,7 @@ export const completeIconSet = [
     ciWBlogArticleRecommendedOutlined,
     ciWriteOutlined,
     ciCircleOutlined,
+    ci16Cross,
     ci16EditorArrowDown,
     ci16EditorArrowUp,
     ci16EditorBold,
