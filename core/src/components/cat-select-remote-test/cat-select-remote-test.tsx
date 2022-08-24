@@ -31,9 +31,10 @@ export class CatSelectRemoteTest {
       retrieve: (term: string, page: number) => {
         console.info(`Retrieving data... ("${term}", ${page})`);
         return term === 'no'
-          ? of({ last: true, content: [] })
+          ? of({ last: true, content: [], totalElements: 0 })
           : of({
               last: false,
+              totalElements: 10000,
               content: Array.from({ length: 10 }, (_, i) => ({
                 id: '' + (i + page * 10),
                 firstName: 'John',
@@ -51,7 +52,13 @@ export class CatSelectRemoteTest {
 
   render() {
     return (
-      <cat-select-remote ref={el => (this.select = el)} value={['1']} placeholder="Hello World"></cat-select-remote>
+      <cat-select-remote
+        label="Label"
+        hint="This is a hint!"
+        ref={el => (this.select = el)}
+        value={['1']}
+        placeholder="Hello World"
+      ></cat-select-remote>
     );
   }
 }

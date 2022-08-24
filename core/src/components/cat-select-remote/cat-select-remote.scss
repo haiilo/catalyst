@@ -1,8 +1,30 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'src/components/cat-form-hint/cat-form-hint';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+label {
+  align-self: flex-start;
+
+  &.hidden {
+    @include cat-visually-hidden;
+  }
+}
+
+.input-optional {
+  margin-left: 0.25rem;
+  @include cat-body('xs');
+  color: cat-token('color.ui.font.muted');
 }
 
 .select-wrapper {
@@ -65,6 +87,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  > cat-button {
+    margin-right: -4px;
+  }
 }
 
 .select-btn {
@@ -85,6 +111,7 @@ cat-spinner {
 
 .select-dropdown {
   position: absolute;
+  right: 0;
   background: cat-token('color.ui.background.body');
   display: none;
   // overflow: auto;
@@ -96,7 +123,7 @@ cat-spinner {
 
 .select-options-wrapper {
   max-height: 16rem;
-  width: 20rem;
+  width: 100%;
 }
 
 .select-empty {
@@ -120,8 +147,13 @@ cat-spinner {
   padding: 0.5rem 1rem;
 }
 
+.select-option:hover {
+  background-color: cat-token('color.theme.secondary.bg', 0.05);
+}
+
 .select-option-active {
-  background-color: aliceblue; // TODO
+  outline: 2px solid cat-token('color.ui.border.focus');
+  outline-offset: -2px;
 }
 
 .select-option-label {

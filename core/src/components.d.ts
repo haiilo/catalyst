@@ -477,17 +477,41 @@ export namespace Components {
         "value"?: any;
     }
     interface CatSelectRemote {
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
         "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
         "debounce": number;
         /**
-          * Whether the input is disabled.
+          * Whether the select is disabled.
          */
         "disabled": boolean;
         /**
-          * The placeholder text to display within the input.
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name": string;
+        /**
+          * The placeholder text to display within the select.
          */
         "placeholder"?: string;
         "placement": Placement;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
         "value"?: string[];
     }
     interface CatSelectRemoteTest {
@@ -1441,18 +1465,42 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface CatSelectRemote {
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
         "debounce"?: number;
         /**
-          * Whether the input is disabled.
+          * Whether the select is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
         "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         /**
-          * The placeholder text to display within the input.
+          * The placeholder text to display within the select.
          */
         "placeholder"?: string;
         "placement"?: Placement;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
         "value"?: string[];
     }
     interface CatSelectRemoteTest {
