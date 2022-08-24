@@ -29,6 +29,7 @@ export interface Item {
 export interface Page<T> {
   content: T[];
   last: boolean;
+  totalElements?: number;
 }
 
 export interface RenderInfo {
@@ -51,6 +52,7 @@ export interface CatSelectRemoteState {
   options: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
   activeIndex: number;
+  totalElements?: number;
 }
 
 const INIT_STATE: CatSelectRemoteState = {
@@ -247,7 +249,7 @@ export class CatSelectRemote {
           number$.pipe(
             tap(() => this.patchState({ isLoading: true })),
             switchMap(number => this.connectorSafe.retrieve(term, number)),
-            tap(() => this.patchState({ isLoading: false })),
+            tap(page => this.patchState({ isLoading: false, totalElements: page.totalElements })),
             takeWhile(page => !page.last, true),
             scan((items, page) => [...items, ...page.content], [] as Item[])
           )
@@ -285,6 +287,9 @@ export class CatSelectRemote {
           aria-expanded={this.state.isOpen}
           aria-controls={`select-listbox-${this.id}`}
           aria-required={this.required}
+          aria-activedescendant={
+            this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
+          }
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
@@ -346,9 +351,6 @@ export class CatSelectRemote {
         {this.hintSection}
         <div
           class="select-dropdown"
-          role="listbox"
-          aria-multiselectable={true}
-          id={`select-listbox-${this.id}`}
           ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
@@ -361,13 +363,19 @@ export class CatSelectRemote {
               noScrolledInit
               onScrolledBottom={() => this.more$.next()}
             >
-              <ul class="select-options">
+              <ul
+                class="select-options"
+                role="listbox"
+                aria-multiselectable={true}
+                aria-setsize={this.state.totalElements}
+                id={`select-listbox-${this.id}`}
+              >
                 {this.state.options.map((item, i) => (
                   <li
                     role="option"
                     class="select-option"
                     id={`select-${this.id}-option-${i}`}
-                    aria-selected={this.state.activeIndex === i}
+                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
                   >
                     <cat-checkbox
                       class={{ 'select-option-active': this.state.activeIndex === i }}

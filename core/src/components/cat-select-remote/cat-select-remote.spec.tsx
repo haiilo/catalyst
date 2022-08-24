@@ -16,7 +16,7 @@ describe('cat-select-remote', () => {
            </div>
            <cat-button a11ylabel="" class="select-btn" icon="chevron-down-outlined" icononly="" round="" size="s" tabindex="-1" variant="text"></cat-button>
          </div>
-         <div aria-multiselectable="" class="select-dropdown" id="select-listbox-cat-input-0" role="listbox"></div>
+         <div class="select-dropdown"></div>
         </mock:shadow-root>
       </cat-select-remote>
     `);
