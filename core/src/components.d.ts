@@ -499,6 +499,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        "multiple": boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -1486,6 +1487,7 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */

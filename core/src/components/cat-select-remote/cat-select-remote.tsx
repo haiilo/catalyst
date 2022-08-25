@@ -94,6 +94,8 @@ export class CatSelectRemote {
 
   @State() hasSlottedLabel = false;
 
+  @Prop() multiple = false;
+
   @Prop() debounce = 250;
 
   @Prop() placement: Placement = 'bottom-start';
@@ -155,6 +157,10 @@ export class CatSelectRemote {
         option?.scrollIntoView({ block: 'nearest' });
       }
     }
+
+    if (changed('selection') && !this.multiple) {
+      this.hide();
+    }
   }
 
   @Event() catOpen!: EventEmitter<FocusEvent>;
@@ -173,12 +179,15 @@ export class CatSelectRemote {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on input', this);
+      log.error('[A11y] Missing ARIA label on select', this);
     }
   }
 
   @Listen('blur')
   onBlur(): void {
+    if (!this.multiple && this.state.activeIndex >= 0) {
+      this.select(this.state.options[this.state.activeIndex]);
+    }
     this.hide();
   }
 
@@ -200,7 +209,11 @@ export class CatSelectRemote {
     } else if (['Enter', ' '].includes(event.key)) {
       if (isInputFocused && this.state.activeIndex >= 0) {
         event.preventDefault();
-        this.toggle(this.state.options[this.state.activeIndex]);
+        if (this.multiple) {
+          this.toggle(this.state.options[this.state.activeIndex]);
+        } else {
+          this.select(this.state.options[this.state.activeIndex]);
+        }
       }
     } else if (event.key === 'Escape') {
       this.hide();
@@ -366,7 +379,7 @@ export class CatSelectRemote {
               <ul
                 class="select-options"
                 role="listbox"
-                aria-multiselectable={true}
+                aria-multiselectable={this.multiple}
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
@@ -383,7 +396,7 @@ export class CatSelectRemote {
                       tabIndex={-1}
                       labelLeft
                       onFocus={() => this.input?.focus()}
-                      onCatChange={() => this.toggle(item)}
+                      onCatChange={() => (this.multiple ? this.toggle(item) : this.select(item))}
                     >
                       <span slot="label" class="select-option">
                         <span class="select-option-label">{item.render.label}</span>
@@ -461,7 +474,13 @@ export class CatSelectRemote {
 
   private select(item: { item: Item; render: RenderInfo }) {
     if (!this.isSelected(item.item.id)) {
-      this.patchState({ selection: [...this.state.selection, item] });
+      let newSelection;
+      if (this.multiple) {
+        newSelection = [...this.state.selection, item];
+      } else {
+        newSelection = [item];
+      }
+      this.patchState({ selection: newSelection });
     }
   }
 
