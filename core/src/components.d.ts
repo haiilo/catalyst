@@ -513,7 +513,7 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
-        "value"?: string[];
+        "value"?: string | string[];
     }
     interface CatSelectRemoteTest {
     }
@@ -1503,7 +1503,7 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
-        "value"?: string[];
+        "value"?: string | string[];
     }
     interface CatSelectRemoteTest {
     }

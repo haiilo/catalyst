@@ -136,7 +136,8 @@ cat-spinner {
   margin: 0;
   padding: $cat-body-margin-bottom * 0.5 0;
 
-  cat-checkbox {
+  cat-checkbox,
+  .select-option-single {
     margin: 0;
     padding: 0.5rem 1rem;
   }

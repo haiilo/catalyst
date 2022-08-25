@@ -50,16 +50,14 @@ export class CatSelectRemoteTest {
       })
     });
     this.singleSelect?.connect({
-      resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
-        return of(
-          ids.map(id => ({
-            id,
-            firstName: 'John',
-            lastName: `Doe (${id})`,
-            desc: 'resolved'
-          }))
-        ).pipe(delay(500));
+      resolveSingle: (id: string) => {
+        console.info(`Resolving data... (${id})`);
+        return of({
+          id,
+          firstName: 'John',
+          lastName: `Doe (${id})`,
+          desc: 'resolved'
+        }).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
         console.info(`Retrieving data... ("${term}", ${page})`);
@@ -98,7 +96,7 @@ export class CatSelectRemoteTest {
           label="Single Select"
           hint="This is a hint!"
           ref={el => (this.singleSelect = el)}
-          value={['1']}
+          value={'1'}
           placeholder="Hello World"
         ></cat-select-remote>
       </Host>

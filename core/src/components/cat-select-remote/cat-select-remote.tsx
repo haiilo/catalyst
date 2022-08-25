@@ -39,7 +39,8 @@ export interface RenderInfo {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
-  resolve: (id: string[]) => Observable<T[]>;
+  resolve?: (id: string[]) => Observable<T[]>;
+  resolveSingle?: (id: string) => Observable<T>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
 }
@@ -100,7 +101,7 @@ export class CatSelectRemote {
 
   @Prop() placement: Placement = 'bottom-start';
 
-  @Prop() value?: string[];
+  @Prop() value?: string | string[];
 
   /**
    * Whether the select is disabled.
@@ -306,26 +307,28 @@ export class CatSelectRemote {
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
-            {this.state.selection.map(item => (
-              <span class="pill select-no-open">
-                <span>{item.render.label}</span>
-                {!this.disabled && (
-                  <cat-button
-                    size="xs"
-                    variant="text"
-                    icon="16-cross"
-                    iconOnly
-                    a11yLabel={this.i18n.t('select.deselect')}
-                    onClick={() => this.deselect(item.item.id)}
-                    tabIndex={-1}
-                  ></cat-button>
-                )}
-              </span>
-            ))}
+            {this.multiple &&
+              this.state.selection.map(item => (
+                <span class="pill select-no-open">
+                  <span>{item.render.label}</span>
+                  {!this.disabled && (
+                    <cat-button
+                      size="xs"
+                      variant="text"
+                      icon="16-cross"
+                      iconOnly
+                      a11yLabel={this.i18n.t('select.deselect')}
+                      onClick={() => this.deselect(item.item.id)}
+                      tabIndex={-1}
+                    ></cat-button>
+                  )}
+                </span>
+              ))}
             <input
               class="select-input"
               ref={el => (this.input = el)}
               onInput={() => this.onInput()}
+              value={!this.multiple && this.state.selection.length ? this.state.selection[0].render.label : undefined}
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
               }
@@ -390,19 +393,29 @@ export class CatSelectRemote {
                     id={`select-${this.id}-option-${i}`}
                     aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
                   >
-                    <cat-checkbox
-                      class={{ 'select-option-active': this.state.activeIndex === i }}
-                      checked={this.isSelected(item.item.id)}
-                      tabIndex={-1}
-                      labelLeft
-                      onFocus={() => this.input?.focus()}
-                      onCatChange={() => (this.multiple ? this.toggle(item) : this.select(item))}
-                    >
-                      <span slot="label" class="select-option">
+                    {this.multiple ? (
+                      <cat-checkbox
+                        class={{ 'select-option-active': this.state.activeIndex === i }}
+                        checked={this.isSelected(item.item.id)}
+                        tabIndex={-1}
+                        labelLeft
+                        onFocus={() => this.input?.focus()}
+                        onCatChange={() => this.toggle(item)}
+                      >
+                        <span slot="label" class="select-option">
+                          <span class="select-option-label">{item.render.label}</span>
+                          <span class="select-option-description">{item.render.description}</span>
+                        </span>
+                      </cat-checkbox>
+                    ) : (
+                      <div
+                        class={{ 'select-option-single': true, 'select-option-active': this.state.activeIndex === i }}
+                        onClick={() => this.select(item)}
+                      >
                         <span class="select-option-label">{item.render.label}</span>
                         <span class="select-option-description">{item.render.description}</span>
-                      </span>
-                    </cat-checkbox>
+                      </div>
+                    )}
                   </li>
                 ))}
                 {this.state.isLoading
@@ -439,13 +452,29 @@ export class CatSelectRemote {
 
   private resolve() {
     this.patchState({ isResolving: true });
-    const data$ = this.value?.length ? this.connectorSafe.resolve(this.value).pipe(first()) : of([]);
-    data$.pipe(catchError(() => of([]))).subscribe(items =>
-      this.patchState({
-        isResolving: false,
-        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) }))
-      })
-    );
+    if (this.multiple) {
+      const data$ =
+        this.value?.length && this.connectorSafe.resolve
+          ? this.connectorSafe.resolve(this.value as string[]).pipe(first())
+          : of([]);
+      data$.pipe(catchError(() => of([]))).subscribe(items =>
+        this.patchState({
+          isResolving: false,
+          selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) }))
+        })
+      );
+    } else {
+      const data$ =
+        this.value?.length && this.connectorSafe.resolveSingle
+          ? this.connectorSafe.resolveSingle(this.value as string).pipe(first())
+          : of([]);
+      data$.pipe(catchError(() => of([]))).subscribe(item =>
+        this.patchState({
+          isResolving: false,
+          selection: [{ item, render: this.connectorSafe.render(item) }]
+        })
+      );
+    }
   }
 
   private show() {
