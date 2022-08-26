@@ -52,6 +52,7 @@ export interface CatSelectRemoteState {
   options: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
   activeIndex: number;
+  activeSelectionIndex: number;
   totalElements?: number;
 }
 
@@ -62,7 +63,8 @@ const INIT_STATE: CatSelectRemoteState = {
   isResolving: false,
   options: [],
   selection: [],
-  activeIndex: -1
+  activeIndex: -1,
+  activeSelectionIndex: -1
 };
 
 let nextUniqueId = 0;
@@ -197,6 +199,22 @@ export class CatSelectRemote {
       this.state.activeIndex >= 0
         ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
         : this.hide();
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      event.stopPropagation();
+      let index;
+      this.state.activeSelectionIndex > 0
+        ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+        : (index = this.state.selection.length - 1);
+      this.patchState({ activeSelectionIndex: index });
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      event.stopPropagation();
+      let index;
+      this.state.activeSelectionIndex < this.state.selection.length - 1
+        ? (index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1))
+        : (index = 0);
+      this.patchState({ activeSelectionIndex: index });
     } else if (['Enter', ' '].includes(event.key)) {
       if (isInputFocused && this.state.activeIndex >= 0) {
         event.preventDefault();
@@ -209,8 +227,12 @@ export class CatSelectRemote {
         this.input?.focus();
       }
       if (!this.state.term) {
-        this.state.selection.pop();
-        this.patchState({});
+        if (this.state.activeSelectionIndex >= 0) {
+          this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
+        } else {
+          this.state.selection.pop();
+          this.patchState({});
+        }
       }
     } else if (event.key.length === 1 && !isInputFocused) {
       this.input?.focus();
@@ -293,8 +315,14 @@ export class CatSelectRemote {
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
-            {this.state.selection.map(item => (
-              <span class="pill select-no-open">
+            {this.state.selection.map((item, i) => (
+              <span
+                class={{
+                  pill: true,
+                  'select-no-open': true,
+                  'select-option-active': this.state.activeSelectionIndex === i
+                }}
+              >
                 <span>{item.render.label}</span>
                 {!this.disabled && (
                   <cat-button
@@ -341,7 +369,6 @@ export class CatSelectRemote {
               class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
               variant="text"
               size="s"
-              round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
@@ -467,7 +494,10 @@ export class CatSelectRemote {
 
   private deselect(id: string) {
     if (this.isSelected(id)) {
-      this.patchState({ selection: this.state.selection.filter(item => item.item.id !== id) });
+      this.patchState({
+        selection: this.state.selection.filter(item => item.item.id !== id),
+        activeSelectionIndex: -1
+      });
     }
   }
 

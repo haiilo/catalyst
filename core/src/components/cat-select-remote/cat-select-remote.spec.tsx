@@ -14,7 +14,7 @@ describe('cat-select-remote', () => {
            <div class="select-wrapper-inner">
              <input class="select-input">
            </div>
-           <cat-button a11ylabel="" class="select-btn" icon="chevron-down-outlined" icononly="" round="" size="s" tabindex="-1" variant="text"></cat-button>
+           <cat-button a11ylabel="" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
          </div>
          <div class="select-dropdown"></div>
         </mock:shadow-root>
