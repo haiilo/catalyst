@@ -182,6 +182,7 @@ export class CatSelectRemote {
   @Listen('blur')
   onBlur(): void {
     this.hide();
+    this.patchState({ activeSelectionIndex: -1 });
   }
 
   @Listen('keydown')
@@ -191,30 +192,39 @@ export class CatSelectRemote {
       event.preventDefault();
       event.stopPropagation();
       this.state.isOpen
-        ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
+        ? this.patchState({
+            activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1),
+            activeSelectionIndex: -1
+          })
         : this.show();
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
       event.stopPropagation();
       this.state.activeIndex >= 0
-        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
+        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1), activeSelectionIndex: -1 })
         : this.hide();
     } else if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      event.stopPropagation();
-      let index;
-      this.state.activeSelectionIndex > 0
-        ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
-        : (index = this.state.selection.length - 1);
-      this.patchState({ activeSelectionIndex: index });
+      if (!isInputFocused || this.input?.selectionStart === 0) {
+        event.preventDefault();
+        event.stopPropagation();
+        let index;
+        this.state.activeSelectionIndex > 0
+          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+          : (index = this.state.selection.length - 1);
+        this.patchState({ activeSelectionIndex: index, activeIndex: -1 });
+      }
     } else if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      event.stopPropagation();
-      let index;
-      this.state.activeSelectionIndex < this.state.selection.length - 1
-        ? (index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1))
-        : (index = 0);
-      this.patchState({ activeSelectionIndex: index });
+      if (this.state.activeSelectionIndex >= 0 || !isInputFocused) {
+        event.preventDefault();
+        event.stopPropagation();
+        let index = -1;
+        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+        } else if (!isInputFocused || !this.state.term) {
+          index = 0;
+        }
+        this.patchState({ activeSelectionIndex: index, activeIndex: -1 });
+      }
     } else if (['Enter', ' '].includes(event.key)) {
       if (isInputFocused && this.state.activeIndex >= 0) {
         event.preventDefault();
@@ -478,7 +488,7 @@ export class CatSelectRemote {
   }
 
   private search(term: string) {
-    this.patchState({ term, activeIndex: -1 });
+    this.patchState({ term, activeIndex: -1, activeSelectionIndex: -1 });
     this.term$.next(term);
   }
 
