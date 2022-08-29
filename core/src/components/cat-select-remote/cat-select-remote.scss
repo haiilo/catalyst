@@ -67,6 +67,7 @@ label {
   outline: none;
   padding: 6px 8px;
   flex: 1 1 auto;
+  @include cat-ellipsis;
 
   .select-disabled & {
     cursor: inherit;
@@ -141,6 +142,10 @@ cat-spinner {
     margin: 0;
     padding: 0.5rem 1rem;
   }
+}
+
+.select-option-single {
+  cursor: pointer;
 }
 
 .select-option-empty,

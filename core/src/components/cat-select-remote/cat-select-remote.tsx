@@ -159,8 +159,10 @@ export class CatSelectRemote {
       }
     }
 
-    if (changed('selection') && !this.multiple) {
-      this.hide();
+    if (changed('selection')) {
+      if (!this.multiple && this.state.selection.length) {
+        this.hide();
+      }
     }
   }
 
@@ -222,7 +224,7 @@ export class CatSelectRemote {
       if (!isInputFocused) {
         this.input?.focus();
       }
-      if (!this.state.term) {
+      if (!this.multiple || !this.state.term) {
         this.state.selection.pop();
         this.patchState({});
       }
@@ -328,7 +330,7 @@ export class CatSelectRemote {
               class="select-input"
               ref={el => (this.input = el)}
               onInput={() => this.onInput()}
-              value={!this.multiple && this.state.selection.length ? this.state.selection[0].render.label : undefined}
+              value={!this.multiple ? this.state.term : undefined}
               aria-activedescendant={
                 this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
               }
@@ -359,6 +361,8 @@ export class CatSelectRemote {
               size="s"
               round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
+              aria-controls={`select-listbox-${this.id}`}
+              aria-expanded={this.state.isOpen}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
             ></cat-button>
@@ -391,7 +395,9 @@ export class CatSelectRemote {
                     role="option"
                     class="select-option"
                     id={`select-${this.id}-option-${i}`}
-                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
+                    aria-selected={
+                      !this.multiple ? this.state.activeIndex === i : this.isSelected(item.item.id) ? 'true' : 'false'
+                    }
                   >
                     {this.multiple ? (
                       <cat-checkbox
@@ -410,7 +416,9 @@ export class CatSelectRemote {
                     ) : (
                       <div
                         class={{ 'select-option-single': true, 'select-option-active': this.state.activeIndex === i }}
+                        onFocus={() => this.input?.focus()}
                         onClick={() => this.select(item)}
+                        tabIndex={-1}
                       >
                         <span class="select-option-label">{item.render.label}</span>
                         <span class="select-option-description">{item.render.description}</span>
@@ -471,7 +479,8 @@ export class CatSelectRemote {
       data$.pipe(catchError(() => of([]))).subscribe(item =>
         this.patchState({
           isResolving: false,
-          selection: [{ item, render: this.connectorSafe.render(item) }]
+          selection: [{ item, render: this.connectorSafe.render(item) }],
+          term: this.connectorSafe.render(item).label
         })
       );
     }
@@ -504,12 +513,16 @@ export class CatSelectRemote {
   private select(item: { item: Item; render: RenderInfo }) {
     if (!this.isSelected(item.item.id)) {
       let newSelection;
+      let term = this.state.term;
       if (this.multiple) {
         newSelection = [...this.state.selection, item];
       } else {
         newSelection = [item];
+        term = item.render.label;
       }
-      this.patchState({ selection: newSelection });
+      this.patchState({ selection: newSelection, term });
+    } else if (!this.multiple) {
+      this.hide();
     }
   }
 

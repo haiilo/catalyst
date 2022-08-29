@@ -12,9 +12,9 @@ describe('cat-select-remote', () => {
         <mock:shadow-root>
           <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" role="combobox">
            <div class="select-wrapper-inner">
-             <input class="select-input">
+             <input class="select-input" value="">
            </div>
-           <cat-button a11ylabel="" class="select-btn" icon="chevron-down-outlined" icononly="" round="" size="s" tabindex="-1" variant="text"></cat-button>
+           <cat-button a11ylabel="" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" round="" size="s" tabindex="-1" variant="text"></cat-button>
          </div>
          <div class="select-dropdown"></div>
         </mock:shadow-root>
