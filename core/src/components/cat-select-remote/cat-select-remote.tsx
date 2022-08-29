@@ -51,7 +51,7 @@ export interface CatSelectRemoteState {
   isResolving: boolean;
   options: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
-  activeIndex: number;
+  activeOptionIndex: number;
   activeSelectionIndex: number;
   totalElements?: number;
 }
@@ -63,7 +63,7 @@ const INIT_STATE: CatSelectRemoteState = {
   isResolving: false,
   options: [],
   selection: [],
-  activeIndex: -1,
+  activeOptionIndex: -1,
   activeSelectionIndex: -1
 };
 
@@ -151,9 +151,9 @@ export class CatSelectRemote {
   @Watch('state')
   onStateChange(newState: CatSelectRemoteState, oldState: CatSelectRemoteState) {
     const changed = (key: keyof CatSelectRemoteState) => newState[key] !== oldState[key];
-    if (changed('activeIndex')) {
-      if (this.state.activeIndex >= 0) {
-        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeIndex}`);
+    if (changed('activeOptionIndex')) {
+      if (this.state.activeOptionIndex >= 0) {
+        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
         option?.scrollIntoView({ block: 'nearest' });
       }
     }
@@ -188,54 +188,18 @@ export class CatSelectRemote {
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.state.isOpen
-        ? this.patchState({
-            activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1),
-            activeSelectionIndex: -1
-          })
-        : this.show();
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.state.activeIndex >= 0
-        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1), activeSelectionIndex: -1 })
-        : this.hide();
-    } else if (event.key === 'ArrowLeft') {
-      if (!isInputFocused || this.input?.selectionStart === 0) {
-        event.preventDefault();
-        event.stopPropagation();
-        let index;
-        this.state.activeSelectionIndex > 0
-          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
-          : (index = this.state.selection.length - 1);
-        this.patchState({ activeSelectionIndex: index, activeIndex: -1 });
-      }
-    } else if (event.key === 'ArrowRight') {
-      if (this.state.activeSelectionIndex >= 0 || !isInputFocused) {
-        event.preventDefault();
-        event.stopPropagation();
-        let index = -1;
-        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
-          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
-        } else if (!isInputFocused || !this.state.term) {
-          index = 0;
-        }
-        this.patchState({ activeSelectionIndex: index, activeIndex: -1 });
-      }
+
+    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key)) {
-      if (isInputFocused && this.state.activeIndex >= 0) {
+      if (isInputFocused && this.state.activeOptionIndex >= 0) {
         event.preventDefault();
-        this.toggle(this.state.options[this.state.activeIndex]);
+        this.toggle(this.state.options[this.state.activeOptionIndex]);
       }
     } else if (event.key === 'Escape') {
       this.hide();
     } else if (event.key === 'Backspace') {
-      if (!isInputFocused) {
-        this.input?.focus();
-      }
+      this.input?.focus();
       if (!this.state.term || this.input?.selectionStart === 0) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
@@ -244,7 +208,9 @@ export class CatSelectRemote {
           this.patchState({});
         }
       }
-    } else if (event.key.length === 1 && !isInputFocused) {
+    } else if (event.key === 'Tab') {
+      this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
+    } else if (event.key.length === 1) {
       this.input?.focus();
     }
   }
@@ -419,7 +385,7 @@ export class CatSelectRemote {
                     aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
                   >
                     <cat-checkbox
-                      class={{ 'select-option-active': this.state.activeIndex === i }}
+                      class={{ 'select-option-active': this.state.activeOptionIndex === i }}
                       checked={this.isSelected(item.item.id)}
                       tabIndex={-1}
                       labelLeft
@@ -486,13 +452,13 @@ export class CatSelectRemote {
 
   private hide() {
     if (this.state.isOpen) {
-      this.patchState({ isOpen: false, activeIndex: -1 });
+      this.patchState({ isOpen: false, activeOptionIndex: -1 });
       this.catClose.emit();
     }
   }
 
   private search(term: string) {
-    this.patchState({ term, activeIndex: -1, activeSelectionIndex: -1 });
+    this.patchState({ term, activeOptionIndex: -1, activeSelectionIndex: -1 });
     this.term$.next(term);
   }
 
@@ -521,7 +487,7 @@ export class CatSelectRemote {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeIndex: -1 });
+      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1 });
       this.term$.next('');
       this.input.value = '';
     } else {
@@ -581,11 +547,59 @@ export class CatSelectRemote {
 
   private get activeDescendant() {
     let activeDescendant = undefined;
-    if (this.state.activeIndex >= 0) {
-      activeDescendant = `select-${this.id}-option-${this.state.activeIndex}`;
+    if (this.state.activeOptionIndex >= 0) {
+      activeDescendant = `select-${this.id}-option-${this.state.activeOptionIndex}`;
     } else if (this.state.activeSelectionIndex >= 0) {
       activeDescendant = `select-${this.id}-selection-${this.state.activeSelectionIndex}`;
     }
     return activeDescendant;
+  }
+
+  private onArrowKeyDown(event: KeyboardEvent) {
+    let preventDefault = false;
+    this.input?.focus();
+
+    if (event.key === 'ArrowDown') {
+      preventDefault = true;
+      this.state.isOpen
+        ? this.patchState({
+            activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
+            activeSelectionIndex: -1
+          })
+        : this.show();
+    } else if (event.key === 'ArrowUp') {
+      preventDefault = true;
+      this.state.activeOptionIndex >= 0
+        ? this.patchState({
+            activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
+            activeSelectionIndex: -1
+          })
+        : this.hide();
+    } else if (event.key === 'ArrowLeft') {
+      if (this.input?.selectionStart === 0) {
+        preventDefault = true;
+        let index;
+        this.state.activeSelectionIndex > 0
+          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+          : (index = this.state.selection.length - 1);
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    } else if (event.key === 'ArrowRight') {
+      if (this.state.activeSelectionIndex >= 0) {
+        preventDefault = true;
+        let index = -1;
+        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+        } else if (!this.state.term) {
+          index = 0;
+        }
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    }
+
+    if (preventDefault) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 }
