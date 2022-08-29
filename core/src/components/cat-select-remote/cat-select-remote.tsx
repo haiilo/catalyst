@@ -236,7 +236,7 @@ export class CatSelectRemote {
       if (!isInputFocused) {
         this.input?.focus();
       }
-      if (!this.state.term) {
+      if (!this.state.term || this.input?.selectionStart === 0) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
         } else {
@@ -316,44 +316,48 @@ export class CatSelectRemote {
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
           role="combobox"
-          aria-expanded={this.state.isOpen}
-          aria-controls={`select-listbox-${this.id}`}
+          aria-expanded={this.state.isOpen || this.isPillboxActive()}
+          aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
           aria-required={this.required}
-          aria-activedescendant={
-            this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
-          }
+          aria-activedescendant={this.activeDescendant}
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
-            {this.state.selection.map((item, i) => (
-              <span
-                class={{
-                  pill: true,
-                  'select-no-open': true,
-                  'select-option-active': this.state.activeSelectionIndex === i
-                }}
-              >
-                <span>{item.render.label}</span>
-                {!this.disabled && (
-                  <cat-button
-                    size="xs"
-                    variant="text"
-                    icon="16-cross"
-                    iconOnly
-                    a11yLabel={this.i18n.t('select.deselect')}
-                    onClick={() => this.deselect(item.item.id)}
-                    tabIndex={-1}
-                  ></cat-button>
-                )}
-              </span>
-            ))}
+            {this.state.selection.length ? (
+              <div id={`select-pillbox-${this.id}`} role="listbox" aria-orientation="horizontal" class="select-pills">
+                {this.state.selection.map((item, i) => (
+                  <span
+                    class={{
+                      pill: true,
+                      'select-no-open': true,
+                      'select-option-active': this.state.activeSelectionIndex === i
+                    }}
+                    role="option"
+                    aria-selected="true"
+                    id={`select-${this.id}-selection-${i}`}
+                  >
+                    <span>{item.render.label}</span>
+                    {!this.disabled && (
+                      <cat-button
+                        size="xs"
+                        variant="text"
+                        icon="16-cross"
+                        iconOnly
+                        a11yLabel={this.i18n.t('select.deselect')}
+                        onClick={() => this.deselect(item.item.id)}
+                        tabIndex={-1}
+                      ></cat-button>
+                    )}
+                  </span>
+                ))}
+              </div>
+            ) : null}
             <input
               class="select-input"
               ref={el => (this.input = el)}
+              aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+              aria-activedescendant={this.activeDescendant}
               onInput={() => this.onInput()}
-              aria-activedescendant={
-                this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
-              }
               placeholder={this.placeholder}
               disabled={this.disabled || this.state.isResolving}
             ></input>
@@ -569,5 +573,19 @@ export class CatSelectRemote {
 
   private patchState(update: Partial<CatSelectRemoteState>) {
     this.state = { ...this.state, ...update };
+  }
+
+  private isPillboxActive() {
+    return this.state.activeSelectionIndex >= 0;
+  }
+
+  private get activeDescendant() {
+    let activeDescendant = undefined;
+    if (this.state.activeIndex >= 0) {
+      activeDescendant = `select-${this.id}-option-${this.state.activeIndex}`;
+    } else if (this.state.activeSelectionIndex >= 0) {
+      activeDescendant = `select-${this.id}-selection-${this.state.activeSelectionIndex}`;
+    }
+    return activeDescendant;
   }
 }
