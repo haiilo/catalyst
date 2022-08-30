@@ -143,7 +143,7 @@ export class CatSelectRemote {
   /**
    * Whether the input should show a clear button.
    */
-  @Prop() clearable = true; // TODO: false by default
+  @Prop() clearable = false;
 
   @Watch('connector')
   onConnectorChange(connector: CatSelectRemoteConnector) {
@@ -225,7 +225,12 @@ export class CatSelectRemote {
         }
       }
     } else if (event.key === 'Tab') {
-      this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
+      this.trigger?.setAttribute('tabindex', '-1');
+      if (this.multiple) {
+        this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
+      } else if (this.state.activeOptionIndex >= 0) {
+        this.select(this.state.options[this.state.activeOptionIndex]);
+      }
     } else if (event.key.length === 1) {
       this.input?.focus();
     }
@@ -233,10 +238,17 @@ export class CatSelectRemote {
 
   @Listen('keyup')
   onKeyUp(event: KeyboardEvent): void {
-    if (event.key === 'Tab') {
-      this.trigger?.setAttribute('tabindex', '-1');
-      this.show();
+    if (event.key === 'Tab' && !event.shiftKey) {
       this.hostElement.shadowRoot?.activeElement === this.trigger && this.input?.focus();
+      if (this.hostElement.shadowRoot?.activeElement === this.input) {
+        this.show();
+      }
+    } else if (event.key === 'Tab' && event.shiftKey) {
+      if (this.clearable) {
+        this.hostElement.shadowRoot?.activeElement?.tagName === 'CAT-BUTTON' && this.show();
+      } else {
+        this.show();
+      }
     }
   }
 
@@ -402,7 +414,11 @@ export class CatSelectRemote {
                     class="select-option"
                     id={`select-${this.id}-option-${i}`}
                     aria-selected={
-                      !this.multiple ? this.state.activeOptionIndex === i : this.isSelected(item.item.id) ? 'true' : 'false'
+                      !this.multiple
+                        ? this.state.activeOptionIndex === i
+                        : this.isSelected(item.item.id)
+                        ? 'true'
+                        : 'false'
                     }
                   >
                     {this.multiple ? (
@@ -421,7 +437,10 @@ export class CatSelectRemote {
                       </cat-checkbox>
                     ) : (
                       <div
-                        class={{ 'select-option-single': true, 'select-option-active': this.state.activeOptionIndex === i }}
+                        class={{
+                          'select-option-single': true,
+                          'select-option-active': this.state.activeOptionIndex === i
+                        }}
                         onFocus={() => this.input?.focus()}
                         onClick={() => this.select(item)}
                         tabIndex={-1}
@@ -519,14 +538,13 @@ export class CatSelectRemote {
   private select(item: { item: Item; render: RenderInfo }) {
     if (!this.isSelected(item.item.id)) {
       let newSelection;
-      let term = this.state.term;
       if (this.multiple) {
         newSelection = [...this.state.selection, item];
       } else {
         newSelection = [item];
-        term = item.render.label;
+        this.search(item.render.label);
       }
-      this.patchState({ selection: newSelection, term });
+      this.patchState({ selection: newSelection });
     } else if (!this.multiple) {
       this.hide();
     }

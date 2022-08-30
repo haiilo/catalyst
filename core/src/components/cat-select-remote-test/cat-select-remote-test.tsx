@@ -91,6 +91,7 @@ export class CatSelectRemoteTest {
           value={['1']}
           placeholder="Hello World"
           multiple
+          clearable
         >
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
         </cat-select-remote>
@@ -100,6 +101,7 @@ export class CatSelectRemoteTest {
           ref={el => (this.singleSelect = el)}
           value={'1'}
           placeholder="Hello World"
+          clearable
         ></cat-select-remote>
       </Host>
     );
