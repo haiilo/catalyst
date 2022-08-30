@@ -58,7 +58,9 @@ export class CatSelectRemoteTest {
         ref={el => (this.select = el)}
         value={['1']}
         placeholder="Hello World"
-      ></cat-select-remote>
+      >
+        <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
+      </cat-select-remote>
     );
   }
 }

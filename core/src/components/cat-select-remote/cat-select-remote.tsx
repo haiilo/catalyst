@@ -51,7 +51,8 @@ export interface CatSelectRemoteState {
   isResolving: boolean;
   options: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
-  activeIndex: number;
+  activeOptionIndex: number;
+  activeSelectionIndex: number;
   totalElements?: number;
 }
 
@@ -62,7 +63,8 @@ const INIT_STATE: CatSelectRemoteState = {
   isResolving: false,
   options: [],
   selection: [],
-  activeIndex: -1
+  activeOptionIndex: -1,
+  activeSelectionIndex: -1
 };
 
 let nextUniqueId = 0;
@@ -149,9 +151,9 @@ export class CatSelectRemote {
   @Watch('state')
   onStateChange(newState: CatSelectRemoteState, oldState: CatSelectRemoteState) {
     const changed = (key: keyof CatSelectRemoteState) => newState[key] !== oldState[key];
-    if (changed('activeIndex')) {
-      if (this.state.activeIndex >= 0) {
-        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeIndex}`);
+    if (changed('activeOptionIndex')) {
+      if (this.state.activeOptionIndex >= 0) {
+        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
         option?.scrollIntoView({ block: 'nearest' });
       }
     }
@@ -180,39 +182,35 @@ export class CatSelectRemote {
   @Listen('blur')
   onBlur(): void {
     this.hide();
+    this.patchState({ activeSelectionIndex: -1 });
   }
 
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.state.isOpen
-        ? this.patchState({ activeIndex: Math.min(this.state.activeIndex + 1, this.state.options.length - 1) })
-        : this.show();
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.state.activeIndex >= 0
-        ? this.patchState({ activeIndex: Math.max(this.state.activeIndex - 1, -1) })
-        : this.hide();
+
+    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key)) {
-      if (isInputFocused && this.state.activeIndex >= 0) {
+      if (isInputFocused && this.state.activeOptionIndex >= 0) {
         event.preventDefault();
-        this.toggle(this.state.options[this.state.activeIndex]);
+        this.toggle(this.state.options[this.state.activeOptionIndex]);
       }
     } else if (event.key === 'Escape') {
       this.hide();
     } else if (event.key === 'Backspace') {
-      if (!isInputFocused) {
-        this.input?.focus();
+      this.input?.focus();
+      if (!this.state.term || this.input?.selectionStart === 0) {
+        if (this.state.activeSelectionIndex >= 0) {
+          this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
+        } else {
+          this.state.selection.pop();
+          this.patchState({});
+        }
       }
-      if (!this.state.term) {
-        this.state.selection.pop();
-        this.patchState({});
-      }
-    } else if (event.key.length === 1 && !isInputFocused) {
+    } else if (event.key === 'Tab') {
+      this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
+    } else if (event.key.length === 1) {
       this.input?.focus();
     }
   }
@@ -284,38 +282,48 @@ export class CatSelectRemote {
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
           role="combobox"
-          aria-expanded={this.state.isOpen}
-          aria-controls={`select-listbox-${this.id}`}
+          aria-expanded={this.state.isOpen || this.isPillboxActive()}
+          aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
           aria-required={this.required}
-          aria-activedescendant={
-            this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
-          }
+          aria-activedescendant={this.activeDescendant}
           onClick={e => this.onClick(e)}
         >
           <div class="select-wrapper-inner">
-            {this.state.selection.map(item => (
-              <span class="pill select-no-open">
-                <span>{item.render.label}</span>
-                {!this.disabled && (
-                  <cat-button
-                    size="xs"
-                    variant="text"
-                    icon="16-cross"
-                    iconOnly
-                    a11yLabel={this.i18n.t('select.deselect')}
-                    onClick={() => this.deselect(item.item.id)}
-                    tabIndex={-1}
-                  ></cat-button>
-                )}
-              </span>
-            ))}
+            {this.state.selection.length ? (
+              <div id={`select-pillbox-${this.id}`} role="listbox" aria-orientation="horizontal" class="select-pills">
+                {this.state.selection.map((item, i) => (
+                  <span
+                    class={{
+                      pill: true,
+                      'select-no-open': true,
+                      'select-option-active': this.state.activeSelectionIndex === i
+                    }}
+                    role="option"
+                    aria-selected="true"
+                    id={`select-${this.id}-selection-${i}`}
+                  >
+                    <span>{item.render.label}</span>
+                    {!this.disabled && (
+                      <cat-button
+                        size="xs"
+                        variant="text"
+                        icon="16-cross"
+                        iconOnly
+                        a11yLabel={this.i18n.t('select.deselect')}
+                        onClick={() => this.deselect(item.item.id)}
+                        tabIndex={-1}
+                      ></cat-button>
+                    )}
+                  </span>
+                ))}
+              </div>
+            ) : null}
             <input
               class="select-input"
               ref={el => (this.input = el)}
+              aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+              aria-activedescendant={this.activeDescendant}
               onInput={() => this.onInput()}
-              aria-activedescendant={
-                this.state.activeIndex >= 0 ? `select-${this.id}-option-${this.state.activeIndex}` : undefined
-              }
               placeholder={this.placeholder}
               disabled={this.disabled || this.state.isResolving}
             ></input>
@@ -341,7 +349,6 @@ export class CatSelectRemote {
               class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
               variant="text"
               size="s"
-              round
               a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
               tabIndex={-1}
               disabled={this.disabled || this.state.isResolving}
@@ -378,7 +385,7 @@ export class CatSelectRemote {
                     aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
                   >
                     <cat-checkbox
-                      class={{ 'select-option-active': this.state.activeIndex === i }}
+                      class={{ 'select-option-active': this.state.activeOptionIndex === i }}
                       checked={this.isSelected(item.item.id)}
                       tabIndex={-1}
                       labelLeft
@@ -445,13 +452,13 @@ export class CatSelectRemote {
 
   private hide() {
     if (this.state.isOpen) {
-      this.patchState({ isOpen: false, activeIndex: -1 });
+      this.patchState({ isOpen: false, activeOptionIndex: -1 });
       this.catClose.emit();
     }
   }
 
   private search(term: string) {
-    this.patchState({ term, activeIndex: -1 });
+    this.patchState({ term, activeOptionIndex: -1, activeSelectionIndex: -1 });
     this.term$.next(term);
   }
 
@@ -467,7 +474,10 @@ export class CatSelectRemote {
 
   private deselect(id: string) {
     if (this.isSelected(id)) {
-      this.patchState({ selection: this.state.selection.filter(item => item.item.id !== id) });
+      this.patchState({
+        selection: this.state.selection.filter(item => item.item.id !== id),
+        activeSelectionIndex: -1
+      });
     }
   }
 
@@ -477,7 +487,7 @@ export class CatSelectRemote {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeIndex: -1 });
+      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1 });
       this.term$.next('');
       this.input.value = '';
     } else {
@@ -529,5 +539,67 @@ export class CatSelectRemote {
 
   private patchState(update: Partial<CatSelectRemoteState>) {
     this.state = { ...this.state, ...update };
+  }
+
+  private isPillboxActive() {
+    return this.state.activeSelectionIndex >= 0;
+  }
+
+  private get activeDescendant() {
+    let activeDescendant = undefined;
+    if (this.state.activeOptionIndex >= 0) {
+      activeDescendant = `select-${this.id}-option-${this.state.activeOptionIndex}`;
+    } else if (this.state.activeSelectionIndex >= 0) {
+      activeDescendant = `select-${this.id}-selection-${this.state.activeSelectionIndex}`;
+    }
+    return activeDescendant;
+  }
+
+  private onArrowKeyDown(event: KeyboardEvent) {
+    let preventDefault = false;
+    this.input?.focus();
+
+    if (event.key === 'ArrowDown') {
+      preventDefault = true;
+      this.state.isOpen
+        ? this.patchState({
+            activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
+            activeSelectionIndex: -1
+          })
+        : this.show();
+    } else if (event.key === 'ArrowUp') {
+      preventDefault = true;
+      this.state.activeOptionIndex >= 0
+        ? this.patchState({
+            activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
+            activeSelectionIndex: -1
+          })
+        : this.hide();
+    } else if (event.key === 'ArrowLeft') {
+      if (this.input?.selectionStart === 0) {
+        preventDefault = true;
+        let index;
+        this.state.activeSelectionIndex > 0
+          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+          : (index = this.state.selection.length - 1);
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    } else if (event.key === 'ArrowRight') {
+      if (this.state.activeSelectionIndex >= 0) {
+        preventDefault = true;
+        let index = -1;
+        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+        } else if (!this.state.term) {
+          index = 0;
+        }
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    }
+
+    if (preventDefault) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 }

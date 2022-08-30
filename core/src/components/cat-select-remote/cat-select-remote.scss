@@ -73,6 +73,10 @@ label {
   }
 }
 
+.select-pills {
+  display: contents;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -114,7 +118,7 @@ cat-spinner {
   right: 0;
   background: cat-token('color.ui.background.body');
   display: none;
-  // overflow: auto;
+  overflow: auto;
   // -webkit-overflow-scrolling: touch;
   @include cat-elevation(1);
   border-radius: cat-border-radius('m');
