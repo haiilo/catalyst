@@ -214,9 +214,9 @@ export class CatSelectRemote {
       }
     } else if (event.key === 'Escape') {
       this.hide();
-    } else if (event.key === 'Backspace') {
+    } else if (event.key === 'Backspace' || event.key === 'Delete') {
       this.input?.focus();
-      if (!this.multiple || !this.state.term || this.input?.selectionStart === 0) {
+      if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
         } else {
@@ -244,8 +244,10 @@ export class CatSelectRemote {
         this.show();
       }
     } else if (event.key === 'Tab' && event.shiftKey) {
-      if (this.clearable) {
-        this.hostElement.shadowRoot?.activeElement?.tagName === 'CAT-BUTTON' && this.show();
+      const clearButton = this.trigger?.querySelector(`#select-clear-btn-${this.id}`);
+
+      if (clearButton) {
+        this.hostElement.shadowRoot?.activeElement === clearButton && this.show();
       } else {
         this.show();
       }
@@ -309,6 +311,7 @@ export class CatSelectRemote {
         <div
           class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
           ref={el => (this.trigger = el)}
+          id={this.id}
           role="combobox"
           aria-expanded={this.state.isOpen || this.isPillboxActive()}
           aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
@@ -363,6 +366,7 @@ export class CatSelectRemote {
           !this.state.isResolving &&
           this.clearable ? (
             <cat-button
+              id={`select-clear-btn-${this.id}`}
               iconOnly
               icon="cross-circle-outlined"
               variant="text"
@@ -413,13 +417,7 @@ export class CatSelectRemote {
                     role="option"
                     class="select-option"
                     id={`select-${this.id}-option-${i}`}
-                    aria-selected={
-                      !this.multiple
-                        ? this.state.activeOptionIndex === i
-                        : this.isSelected(item.item.id)
-                        ? 'true'
-                        : 'false'
-                    }
+                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
                   >
                     {this.multiple ? (
                       <cat-checkbox
