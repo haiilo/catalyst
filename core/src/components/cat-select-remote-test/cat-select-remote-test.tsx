@@ -91,7 +91,9 @@ export class CatSelectRemoteTest {
           value={['1']}
           placeholder="Hello World"
           multiple
-        ></cat-select-remote>
+        >
+          <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
+        </cat-select-remote>
         <cat-select-remote
           label="Single Select"
           hint="This is a hint!"
