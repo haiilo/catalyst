@@ -1492,6 +1492,7 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        "onCatChange"?: (event: CatSelectRemoteCustomEvent<any>) => void;
         "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         /**

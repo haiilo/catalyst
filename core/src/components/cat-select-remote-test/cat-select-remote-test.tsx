@@ -50,14 +50,16 @@ export class CatSelectRemoteTest {
       })
     });
     this.singleSelect?.connect({
-      resolveSingle: (id: string) => {
-        console.info(`Resolving data... (${id})`);
-        return of({
-          id,
-          firstName: 'John',
-          lastName: `Doe (${id})`,
-          desc: 'resolved'
-        }).pipe(delay(500));
+      resolve: (ids: string[]) => {
+        console.info(`Resolving data... (${ids.join(', ')})`);
+        return of(
+          ids.map(id => ({
+            id,
+            firstName: 'John',
+            lastName: `Doe (${id})`,
+            desc: 'resolved'
+          }))
+        ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
         console.info(`Retrieving data... ("${term}", ${page})`);
@@ -83,13 +85,14 @@ export class CatSelectRemoteTest {
 
   render() {
     return (
-      <Host>
+      <Host style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
         <cat-select-remote
           label="Multiple Select"
           hint="This is a hint!"
           ref={el => (this.multipleSelect = el)}
           value={['1']}
           placeholder="Hello World"
+          onCatChange={e => console.log(e, 'multiple')}
           multiple
           clearable
         >
@@ -101,6 +104,7 @@ export class CatSelectRemoteTest {
           ref={el => (this.singleSelect = el)}
           value={'1'}
           placeholder="Hello World"
+          onCatChange={e => console.log(e, 'single')}
           clearable
         ></cat-select-remote>
       </Host>

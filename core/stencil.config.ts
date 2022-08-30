@@ -35,7 +35,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'radio'
   },
   {
-    elementSelectors: ['cat-select'],
+    elementSelectors: ['cat-select', 'cat-select-remote'],
     event: 'catChange',
     targetAttr: 'value',
     type: 'select'

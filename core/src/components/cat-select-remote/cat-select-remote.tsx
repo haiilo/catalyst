@@ -39,8 +39,7 @@ export interface RenderInfo {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
-  resolve?: (id: string[]) => Observable<T[]>;
-  resolveSingle?: (id: string) => Observable<T>;
+  resolve: (id: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
 }
@@ -103,7 +102,7 @@ export class CatSelectRemote {
 
   @Prop() placement: Placement = 'bottom-start';
 
-  @Prop() value?: string | string[];
+  @Prop({ mutable: true }) value?: string | string[];
 
   /**
    * Whether the select is disabled.
@@ -165,12 +164,21 @@ export class CatSelectRemote {
       if (!this.multiple && this.state.selection.length) {
         this.hide();
       }
+      const idsSelected = this.state.selection.map(item => item.item.id);
+      if (this.multiple) {
+        this.value = idsSelected;
+      } else {
+        this.value = idsSelected.length ? idsSelected[0] : '';
+      }
+      this.catChange.emit();
     }
   }
 
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
   @Event() catClose!: EventEmitter<FocusEvent>;
+
+  @Event() catChange!: EventEmitter;
 
   componentDidLoad(): void {
     if (this.input) {
@@ -219,9 +227,10 @@ export class CatSelectRemote {
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
-        } else {
-          this.state.selection.pop();
-          this.patchState({});
+        } else if (this.state.selection.length) {
+          const selectionClone = [...this.state.selection];
+          selectionClone.pop();
+          this.patchState({ selection: selectionClone });
         }
       }
     } else if (event.key === 'Tab') {
@@ -426,7 +435,10 @@ export class CatSelectRemote {
                         tabIndex={-1}
                         labelLeft
                         onFocus={() => this.input?.focus()}
-                        onCatChange={() => this.toggle(item)}
+                        onCatChange={e => {
+                          this.toggle(item);
+                          e.stopPropagation();
+                        }}
                       >
                         <span slot="label" class="select-option">
                           <span class="select-option-label">{item.render.label}</span>
@@ -483,30 +495,20 @@ export class CatSelectRemote {
 
   private resolve() {
     this.patchState({ isResolving: true });
+    let ids;
     if (this.multiple) {
-      const data$ =
-        this.value?.length && this.connectorSafe.resolve
-          ? this.connectorSafe.resolve(this.value as string[]).pipe(first())
-          : of([]);
-      data$.pipe(catchError(() => of([]))).subscribe(items =>
-        this.patchState({
-          isResolving: false,
-          selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) }))
-        })
-      );
+      ids = this.value as string[];
     } else {
-      const data$ =
-        this.value?.length && this.connectorSafe.resolveSingle
-          ? this.connectorSafe.resolveSingle(this.value as string).pipe(first())
-          : of([]);
-      data$.pipe(catchError(() => of([]))).subscribe(item =>
-        this.patchState({
-          isResolving: false,
-          selection: [{ item, render: this.connectorSafe.render(item) }],
-          term: this.connectorSafe.render(item).label
-        })
-      );
+      ids = [this.value as string];
     }
+    const data$ = this.value?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+    data$.pipe(catchError(() => of([]))).subscribe(items =>
+      this.patchState({
+        isResolving: false,
+        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })),
+        term: !this.multiple && items.length ? this.connectorSafe.render(items[0]).label : ''
+      })
+    );
   }
 
   private show() {
@@ -541,6 +543,7 @@ export class CatSelectRemote {
       } else {
         newSelection = [item];
         this.search(item.render.label);
+        if (this.input) this.input.style.caretColor = 'transparent';
       }
       this.patchState({ selection: newSelection });
     } else if (!this.multiple) {
@@ -593,6 +596,7 @@ export class CatSelectRemote {
   }
 
   private onInput() {
+    //this.input?.style.caretColor = 'unset'
     this.search(this.input?.value || '');
     this.show();
   }
