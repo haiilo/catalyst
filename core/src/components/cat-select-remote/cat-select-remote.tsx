@@ -96,12 +96,24 @@ export class CatSelectRemote {
 
   @State() hasSlottedLabel = false;
 
+  /**
+   * Enable multiple selection.
+   */
   @Prop() multiple = false;
 
+  /**
+   * The debounce time for the search.
+   */
   @Prop() debounce = 250;
 
+  /**
+   * The placement of the select.
+   */
   @Prop() placement: Placement = 'bottom-start';
 
+  /**
+   * The value of the select.
+   */
   @Prop({ mutable: true }) value?: string | string[];
 
   /**
@@ -115,12 +127,12 @@ export class CatSelectRemote {
   @Prop() placeholder?: string;
 
   /**
-   * Optional hint text(s) to be displayed with the input.
+   * Optional hint text(s) to be displayed with the select.
    */
   @Prop() hint?: string | string[];
 
   /**
-   * The label for the input.
+   * The label for the select.
    */
   @Prop() label = '';
 
@@ -140,7 +152,7 @@ export class CatSelectRemote {
   @Prop() required = false;
 
   /**
-   * Whether the input should show a clear button.
+   * Whether the select should show a clear button.
    */
   @Prop() clearable = false;
 
@@ -174,10 +186,19 @@ export class CatSelectRemote {
     }
   }
 
+  /**
+   * Emitted when the select dropdown is opened.
+   */
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
+  /**
+   * Emitted when the select dropdown is closed.
+   */
   @Event() catClose!: EventEmitter<FocusEvent>;
 
+  /**
+   * Emitted when the value is changed.
+   */
   @Event() catChange!: EventEmitter;
 
   componentDidLoad(): void {
@@ -264,7 +285,7 @@ export class CatSelectRemote {
   }
 
   @Method()
-  async connect(connector: CatSelectRemoteConnector) {
+  async connect(connector: CatSelectRemoteConnector): Promise<void> {
     this.connector = connector;
     let number$: Observable<number>;
     this.subscription?.unsubscribe();
@@ -516,6 +537,7 @@ export class CatSelectRemote {
       this.patchState({ isOpen: true });
       this.catOpen.emit();
       this.term$.next(this.state.term);
+      this.input?.classList.remove('select-input-transparent-caret');
     }
   }
 
@@ -543,11 +565,12 @@ export class CatSelectRemote {
       } else {
         newSelection = [item];
         this.search(item.render.label);
-        if (this.input) this.input.style.caretColor = 'transparent';
       }
       this.patchState({ selection: newSelection });
-    } else if (!this.multiple) {
+    }
+    if (!this.multiple) {
       this.hide();
+      this.input?.classList.add('select-input-transparent-caret');
     }
   }
 
@@ -596,7 +619,6 @@ export class CatSelectRemote {
   }
 
   private onInput() {
-    //this.input?.style.caretColor = 'unset'
     this.search(this.input?.value || '');
     this.show();
   }

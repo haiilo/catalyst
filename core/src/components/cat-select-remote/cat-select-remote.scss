@@ -152,6 +152,10 @@ cat-spinner {
   cursor: pointer;
 }
 
+.select-input-transparent-caret {
+  caret-color: transparent;
+}
+
 .select-option-empty,
 .select-option-loading {
   padding: 0.5rem 1rem;

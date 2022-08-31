@@ -478,27 +478,33 @@ export namespace Components {
     }
     interface CatSelectRemote {
         /**
-          * Whether the input should show a clear button.
+          * Whether the select should show a clear button.
          */
         "clearable": boolean;
         "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
+        /**
+          * The debounce time for the search.
+         */
         "debounce": number;
         /**
           * Whether the select is disabled.
          */
         "disabled": boolean;
         /**
-          * Optional hint text(s) to be displayed with the input.
+          * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
         /**
-          * The label for the input.
+          * The label for the select.
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Enable multiple selection.
+         */
         "multiple": boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -508,11 +514,17 @@ export namespace Components {
           * The placeholder text to display within the select.
          */
         "placeholder"?: string;
+        /**
+          * The placement of the select.
+         */
         "placement": Placement;
         /**
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * The value of the select.
+         */
         "value"?: string | string[];
     }
     interface CatSelectRemoteTest {
@@ -1467,43 +1479,64 @@ declare namespace LocalJSX {
     }
     interface CatSelectRemote {
         /**
-          * Whether the input should show a clear button.
+          * Whether the select should show a clear button.
          */
         "clearable"?: boolean;
+        /**
+          * The debounce time for the search.
+         */
         "debounce"?: number;
         /**
           * Whether the select is disabled.
          */
         "disabled"?: boolean;
         /**
-          * Optional hint text(s) to be displayed with the input.
+          * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
         /**
-          * The label for the input.
+          * The label for the select.
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Enable multiple selection.
+         */
         "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Emitted when the value is changed.
+         */
         "onCatChange"?: (event: CatSelectRemoteCustomEvent<any>) => void;
+        /**
+          * Emitted when the select dropdown is closed.
+         */
         "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the select dropdown is opened.
+         */
         "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the select.
          */
         "placeholder"?: string;
+        /**
+          * The placement of the select.
+         */
         "placement"?: Placement;
         /**
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * The value of the select.
+         */
         "value"?: string | string[];
     }
     interface CatSelectRemoteTest {
