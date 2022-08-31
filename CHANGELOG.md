@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/haiilo/catalyst/compare/v0.14.3...v0.15.0) (2022-08-31)
+
+
+### Features
+
+* add second draft implementation of new select component  ([#59](https://github.com/haiilo/catalyst/issues/59)) ([646d8d3](https://github.com/haiilo/catalyst/commit/646d8d3e1a405394de114836ce18afdf809391f6))
+* add support to single select ([#61](https://github.com/haiilo/catalyst/issues/61)) ([d9d2094](https://github.com/haiilo/catalyst/commit/d9d20948e48ad2e5199a4d40afe6532e7c18185a))
+* added first draft implementation of new select component ([#58](https://github.com/haiilo/catalyst/issues/58)) ([cc36fa5](https://github.com/haiilo/catalyst/commit/cc36fa50dbf8c6db56a2a96fc6366b341b1d8eee))
+
+
+### Bug Fixes
+
+* **core:** badges without content are not round ([0cad59d](https://github.com/haiilo/catalyst/commit/0cad59dc03f75398ca818b98c5049355fa29a8cb))
+* minor adjustments in new select ([#60](https://github.com/haiilo/catalyst/issues/60)) ([8dfdf75](https://github.com/haiilo/catalyst/commit/8dfdf759be2943c639b8a833a39900f8b31cc49f))
+
 ### [0.14.3](https://github.com/haiilo/catalyst/compare/v0.14.2...v0.14.3) (2022-08-16)
 
 ### [0.14.2](https://github.com/haiilo/catalyst/compare/v0.14.1...v0.14.2) (2022-08-15)
