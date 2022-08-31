@@ -189,6 +189,28 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
 ]);
 
 
+export const CatSelectRemote = /*@__PURE__*/ defineContainer<JSX.CatSelectRemote>('cat-select-remote', undefined, [
+  'multiple',
+  'debounce',
+  'placement',
+  'value',
+  'disabled',
+  'placeholder',
+  'hint',
+  'label',
+  'name',
+  'labelHidden',
+  'required',
+  'clearable',
+  'catOpen',
+  'catClose',
+  'catChange'
+]);
+
+
+export const CatSelectRemoteTest = /*@__PURE__*/ defineContainer<JSX.CatSelectRemoteTest>('cat-select-remote-test', undefined);
+
+
 export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [
   'effect',
   'variant',

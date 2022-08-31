@@ -425,6 +425,62 @@ export class CatSelect {
 }
 
 
+export declare interface CatSelectRemote extends Components.CatSelectRemote {
+  /**
+   * Emitted when the select dropdown is opened. 
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the select dropdown is closed. 
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the value is changed. 
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'value'],
+  methods: ['connect']
+})
+@Component({
+  selector: 'cat-select-remote',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'value']
+})
+export class CatSelectRemote {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange']);
+  }
+}
+
+
+export declare interface CatSelectRemoteTest extends Components.CatSelectRemoteTest {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined
+})
+@Component({
+  selector: 'cat-select-remote-test',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class CatSelectRemoteTest {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatSkeleton extends Components.CatSkeleton {}
 
 @ProxyCmp({

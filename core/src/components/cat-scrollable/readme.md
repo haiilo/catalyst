@@ -28,6 +28,19 @@
 | `scrolledTop`    | Emitted when the content is fully scrolled to the top.    | `CustomEvent<void>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [cat-select-remote](../cat-select-remote)
+
+### Graph
+```mermaid
+graph TD;
+  cat-select-remote --> cat-scrollable
+  style cat-scrollable fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany

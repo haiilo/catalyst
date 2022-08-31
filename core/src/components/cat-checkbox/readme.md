@@ -59,6 +59,19 @@ Type: `Promise<void>`
 | `"label"`    | The label content.    |
 
 
+## Dependencies
+
+### Used by
+
+ - [cat-select-remote](../cat-select-remote)
+
+### Graph
+```mermaid
+graph TD;
+  cat-select-remote --> cat-checkbox
+  style cat-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany

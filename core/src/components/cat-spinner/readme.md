@@ -16,11 +16,13 @@
 ### Used by
 
  - [cat-button](../cat-button)
+ - [cat-select-remote](../cat-select-remote)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-button --> cat-spinner
+  cat-select-remote --> cat-spinner
   style cat-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

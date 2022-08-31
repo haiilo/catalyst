@@ -24,6 +24,19 @@
 | `--speed`      | The animation speed.                  |
 
 
+## Dependencies
+
+### Used by
+
+ - [cat-select-remote](../cat-select-remote)
+
+### Graph
+```mermaid
+graph TD;
+  cat-select-remote --> cat-skeleton
+  style cat-skeleton fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany
