@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.1](https://github.com/haiilo/catalyst/compare/v0.15.0...v0.15.1) (2022-09-01)
+
+
+### Bug Fixes
+
+* **core:** export the interfaces and keys correctly from the new select ([#62](https://github.com/haiilo/catalyst/issues/62)) ([3b98613](https://github.com/haiilo/catalyst/commit/3b98613ce7f759ed614275e6f2fef97486cf1b7c))
+
 ## [0.15.0](https://github.com/haiilo/catalyst/compare/v0.14.3...v0.15.0) (2022-08-31)
 
 
