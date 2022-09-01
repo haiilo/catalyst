@@ -438,6 +438,10 @@ export declare interface CatSelectRemote extends Components.CatSelectRemote {
    * Emitted when the value is changed. 
    */
   catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the select loses the focus. 
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 
 }
 
@@ -457,7 +461,7 @@ export class CatSelectRemote {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange']);
+    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange', 'catBlur']);
   }
 }
 

@@ -201,6 +201,11 @@ export class CatSelectRemote {
    */
   @Event() catChange!: EventEmitter;
 
+  /**
+   * Emitted when the select loses the focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   componentDidLoad(): void {
     if (this.input) {
       autosizeInput(this.input);
@@ -218,12 +223,13 @@ export class CatSelectRemote {
   }
 
   @Listen('blur')
-  onBlur(): void {
+  onBlur(event: FocusEvent): void {
     if (!this.multiple && this.state.activeOptionIndex >= 0) {
       this.select(this.state.options[this.state.activeOptionIndex]);
     }
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
+    this.catBlur.emit(event);
   }
 
   @Listen('keydown')
