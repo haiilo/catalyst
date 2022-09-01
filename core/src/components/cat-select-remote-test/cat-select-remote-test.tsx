@@ -91,6 +91,7 @@ export class CatSelectRemoteTest {
           value={['1']}
           placeholder="Hello World"
           onCatChange={e => console.log('Multiple', e)}
+          onCatBlur={e => console.log('Multiple blur', e)}
           multiple
           clearable
         >
@@ -103,6 +104,7 @@ export class CatSelectRemoteTest {
           value={'1'}
           placeholder="Search for a country or capital"
           onCatChange={e => console.log('Single', e)}
+          onCatBlur={e => console.log('Single blur', e)}
           clearable
         ></cat-select-remote>
       </Host>

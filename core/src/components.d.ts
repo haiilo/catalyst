@@ -1511,6 +1511,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the select loses the focus.
+         */
+        "onCatBlur"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatSelectRemoteCustomEvent<any>) => void;
