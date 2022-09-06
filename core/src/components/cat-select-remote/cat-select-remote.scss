@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {

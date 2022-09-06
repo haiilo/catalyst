@@ -69,6 +69,15 @@ const INIT_STATE: CatSelectRemoteState = {
 
 let nextUniqueId = 0;
 
+/**
+ * Select lets user choose one option from an options' menu. Consider using
+ * select when you have 6 or more options. Select component supports any content
+ * type.
+ *
+ * @slot hint - Optional hint element to be displayed with the select.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @part label - The label content.
+ */
 @Component({
   tag: 'cat-select-remote',
   styleUrl: 'cat-select-remote.scss',
@@ -147,7 +156,7 @@ export class CatSelectRemote {
   @Prop() labelHidden = false;
 
   /**
-   * A value is required or must be check for the form to be submittable.
+   * A value is required or must be checked for the form to be submittable.
    */
   @Prop() required = false;
 

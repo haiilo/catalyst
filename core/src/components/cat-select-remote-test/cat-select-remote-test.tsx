@@ -83,7 +83,7 @@ export class CatSelectRemoteTest {
 
   render() {
     return (
-      <Host style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
+      <Host style={{ display: 'flex', flexDirection: 'column' }}>
         <cat-select-remote
           label="Multiple Select"
           hint="This is a hint!"
