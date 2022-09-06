@@ -44,7 +44,7 @@ export interface RenderInfo {
 /**
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
- * @property render - Renders the selected elements.
+ * @property render - Renders the items of the select.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
@@ -415,6 +415,13 @@ export class CatSelectRemote {
                   </span>
                 ))}
               </div>
+            ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
+              <cat-avatar
+                label={this.state.selection[0].render.label}
+                round={this.state.selection[0].render.avatar.round}
+                src={this.state.selection[0].render.avatar.src}
+                initials={''}
+              ></cat-avatar>
             ) : null}
             <input
               class="select-input"
@@ -516,6 +523,7 @@ export class CatSelectRemote {
                     ) : (
                       <div
                         class={{
+                          'select-option-inner': true,
                           'select-option-single': true,
                           'select-option-active': this.state.activeOptionIndex === i
                         }}
@@ -523,8 +531,18 @@ export class CatSelectRemote {
                         onClick={() => this.select(item)}
                         tabIndex={-1}
                       >
-                        <span class="select-option-label">{item.render.label}</span>
-                        <span class="select-option-description">{item.render.description}</span>
+                        {item.render.avatar ? (
+                          <cat-avatar
+                            label={item.render.label}
+                            round={item.render.avatar.round}
+                            src={item.render.avatar.src}
+                            initials={''}
+                          ></cat-avatar>
+                        ) : null}
+                        <span class="select-option-text">
+                          <span class="select-option-label">{item.render.label}</span>
+                          <span class="select-option-description">{item.render.description}</span>
+                        </span>
                       </div>
                     )}
                   </li>

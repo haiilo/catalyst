@@ -20,10 +20,44 @@ interface Country {
 })
 export class CatSelectRemoteTest {
   private multipleSelect?: HTMLCatSelectRemoteElement;
+  private multipleSelectAvatar?: HTMLCatSelectRemoteElement;
   private singleSelect?: HTMLCatSelectRemoteElement;
+  private singleSelectAvatar?: HTMLCatSelectRemoteElement;
 
   componentDidLoad(): void {
     this.multipleSelect?.connect({
+      resolve: (ids: string[]) => {
+        console.info(`Resolving data... (${ids.join(', ')})`);
+        return of(
+          ids.map(id => ({
+            id,
+            firstName: 'John',
+            lastName: `Doe (${id})`,
+            desc: 'resolved'
+          }))
+        ).pipe(delay(500));
+      },
+      retrieve: (term: string, page: number) => {
+        console.info(`Retrieving data... ("${term}", ${page})`);
+        return term === 'no'
+          ? of({ last: true, content: [], totalElements: 0 })
+          : of({
+              last: false,
+              totalElements: 10000,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
+      },
+      render: (user: User) => ({
+        label: `${user.firstName} ${user.lastName}`,
+        description: user.desc
+      })
+    });
+    this.multipleSelectAvatar?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
@@ -83,6 +117,34 @@ export class CatSelectRemoteTest {
         description: country.capital || 'No capital'
       })
     });
+    this.singleSelectAvatar?.connect({
+      resolve: (ids: string[]) => {
+        console.info(`Resolving data... (${ids.join(', ')})`);
+        return of(ids.map(id => countries.find(value => value.id === id))).pipe(delay(500));
+      },
+      retrieve: (term: string, page: number) => {
+        console.info(`Retrieving data... ("${term}", ${page})`);
+        const filter = countries.filter(
+          value =>
+            value.country.toLowerCase().indexOf(term.toLowerCase()) === 0 ||
+            value.capital?.toLowerCase().indexOf(term.toLowerCase()) === 0
+        );
+        const slice = filter.slice(page * 10, page * 10 + 10);
+        return of({
+          last: slice.length < 10,
+          totalElements: filter.length,
+          content: slice
+        }).pipe(delay(500));
+      },
+      render: (country: Country) => ({
+        label: country.country,
+        description: country.capital || 'No capital',
+        avatar: {
+          src: `https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`,
+          round: true
+        }
+      })
+    });
   }
 
   render() {
@@ -102,6 +164,14 @@ export class CatSelectRemoteTest {
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
         </cat-select-remote>
         <cat-select-remote
+          label="Multiple with img"
+          ref={el => (this.multipleSelectAvatar = el)}
+          value={['1']}
+          placeholder="Hello World"
+          multiple
+          clearable
+        ></cat-select-remote>
+        <cat-select-remote
           label="Single Select"
           hint="This is a hint!"
           ref={el => (this.singleSelect = el)}
@@ -109,6 +179,13 @@ export class CatSelectRemoteTest {
           placeholder="Search for a country or capital"
           onCatChange={e => console.log('Single', e)}
           onCatBlur={e => console.log('Single blur', e)}
+          clearable
+        ></cat-select-remote>
+        <cat-select-remote
+          label="Single with img"
+          ref={el => (this.singleSelectAvatar = el)}
+          value={'1'}
+          placeholder="Search for a country or capital"
           clearable
         ></cat-select-remote>
       </Host>

@@ -59,6 +59,14 @@ label {
   align-items: center;
   gap: 0.25rem;
   min-width: 0;
+
+  > cat-avatar {
+    padding-left: 4px;
+  }
+
+  cat-avatar {
+    --cat-avatar-size: 1.25rem;
+  }
 }
 
 .select-input {
@@ -97,10 +105,6 @@ label {
   > cat-button {
     margin-right: -0.25rem;
     margin-left: -0.25rem;
-  }
-
-  cat-avatar {
-    --cat-avatar-size: 1.25rem;
   }
 }
 
@@ -157,6 +161,7 @@ cat-spinner {
 .select-option-inner {
   display: flex;
   gap: 0.5rem;
+
   --cat-avatar-size: 1.25rem;
 }
 
