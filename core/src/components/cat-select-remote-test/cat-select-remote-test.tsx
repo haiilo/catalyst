@@ -87,7 +87,7 @@ export class CatSelectRemoteTest {
 
   render() {
     return (
-      <Host style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
+      <Host style={{ display: 'flex', flexDirection: 'column' }}>
         <cat-select-remote
           label="Multiple Select"
           hint="This is a hint!"
@@ -95,6 +95,7 @@ export class CatSelectRemoteTest {
           value={['1']}
           placeholder="Hello World"
           onCatChange={e => console.log('Multiple', e)}
+          onCatBlur={e => console.log('Multiple blur', e)}
           multiple
           clearable
         >
@@ -107,6 +108,7 @@ export class CatSelectRemoteTest {
           value={'1'}
           placeholder="Search for a country or capital"
           onCatChange={e => console.log('Single', e)}
+          onCatBlur={e => console.log('Single blur', e)}
           clearable
         ></cat-select-remote>
       </Host>

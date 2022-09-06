@@ -204,7 +204,8 @@ export const CatSelectRemote = /*@__PURE__*/ defineContainer<JSX.CatSelectRemote
   'clearable',
   'catOpen',
   'catClose',
-  'catChange'
+  'catChange',
+  'catBlur'
 ]);
 
 

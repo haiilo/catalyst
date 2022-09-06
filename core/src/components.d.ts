@@ -481,6 +481,10 @@ export namespace Components {
           * Whether the select should show a clear button.
          */
         "clearable": boolean;
+        /**
+          * Connect the functions of the select
+          * @param connector - The {@link CatSelectRemoteConnector} of the select.
+         */
         "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
         /**
           * The debounce time for the search.
@@ -519,7 +523,7 @@ export namespace Components {
          */
         "placement": Placement;
         /**
-          * A value is required or must be check for the form to be submittable.
+          * A value is required or must be checked for the form to be submittable.
          */
         "required": boolean;
         /**
@@ -1511,6 +1515,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the select loses the focus.
+         */
+        "onCatBlur"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatSelectRemoteCustomEvent<any>) => void;
@@ -1531,7 +1539,7 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
         /**
-          * A value is required or must be check for the form to be submittable.
+          * A value is required or must be checked for the form to be submittable.
          */
         "required"?: boolean;
         /**

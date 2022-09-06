@@ -41,6 +41,11 @@ export interface RenderInfo {
   };
 }
 
+/**
+ * @property resolve - Resolves the value of the select.
+ * @property retrieve - Retrieves the options of the select.
+ * @property render - Renders the selected elements.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
   resolve: (ids: string[]) => Observable<T[]>;
@@ -73,6 +78,15 @@ const INIT_STATE: CatSelectRemoteState = {
 
 let nextUniqueId = 0;
 
+/**
+ * Select lets user choose one option from an options' menu. Consider using
+ * select when you have 6 or more options. Select component supports any content
+ * type.
+ *
+ * @slot hint - Optional hint element to be displayed with the select.
+ * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @part label - The label content.
+ */
 @Component({
   tag: 'cat-select-remote',
   styleUrl: 'cat-select-remote.scss',
@@ -151,7 +165,7 @@ export class CatSelectRemote {
   @Prop() labelHidden = false;
 
   /**
-   * A value is required or must be check for the form to be submittable.
+   * A value is required or must be checked for the form to be submittable.
    */
   @Prop() required = false;
 
@@ -205,6 +219,11 @@ export class CatSelectRemote {
    */
   @Event() catChange!: EventEmitter;
 
+  /**
+   * Emitted when the select loses the focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   componentDidLoad(): void {
     if (this.input) {
       autosizeInput(this.input);
@@ -222,12 +241,13 @@ export class CatSelectRemote {
   }
 
   @Listen('blur')
-  onBlur(): void {
+  onBlur(event: FocusEvent): void {
     if (!this.multiple && this.state.activeOptionIndex >= 0) {
       this.select(this.state.options[this.state.activeOptionIndex]);
     }
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
+    this.catBlur.emit(event);
   }
 
   @Listen('keydown')
@@ -288,6 +308,11 @@ export class CatSelectRemote {
     }
   }
 
+  /**
+   * Connect the functions of the select
+   *
+   * @param connector - The {@link CatSelectRemoteConnector} of the select.
+   */
   @Method()
   async connect(connector: CatSelectRemoteConnector): Promise<void> {
     this.connector = connector;
