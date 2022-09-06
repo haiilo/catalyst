@@ -19,7 +19,7 @@
 | `name`        | `name`         | The name of the form control. Submitted with the form as part of a name/value pair.       | `string`                                                                                                                                                             | `''`             |
 | `placeholder` | `placeholder`  | The placeholder text to display within the select.                                        | `string \| undefined`                                                                                                                                                | `undefined`      |
 | `placement`   | `placement`    | The placement of the select.                                                              | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
-| `required`    | `required`     | A value is required or must be check for the form to be submittable.                      | `boolean`                                                                                                                                                            | `false`          |
+| `required`    | `required`     | A value is required or must be checked for the form to be submittable.                    | `boolean`                                                                                                                                                            | `false`          |
 | `value`       | `value`        | The value of the select.                                                                  | `string \| string[] \| undefined`                                                                                                                                    | `undefined`      |
 
 
@@ -37,7 +37,7 @@
 
 ### `connect(connector: CatSelectRemoteConnector) => Promise<void>`
 
-
+Connect the functions of the select
 
 #### Returns
 

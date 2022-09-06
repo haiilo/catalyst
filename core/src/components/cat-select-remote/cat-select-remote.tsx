@@ -37,6 +37,11 @@ export interface RenderInfo {
   description?: string;
 }
 
+/**
+ * @property resolve - Resolves the value of the select.
+ * @property retrieve - Retrieves the options of the select.
+ * @property render - Renders the selected elements.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
   resolve: (id: string[]) => Observable<T[]>;
@@ -299,6 +304,11 @@ export class CatSelectRemote {
     }
   }
 
+  /**
+   * Connect the functions of the select
+   *
+   * @param connector - The {@link CatSelectRemoteConnector} of the select.
+   */
   @Method()
   async connect(connector: CatSelectRemoteConnector): Promise<void> {
     this.connector = connector;
