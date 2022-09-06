@@ -52,7 +52,11 @@ export class CatSelectRemoteTest {
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
-        description: user.desc
+        description: user.desc,
+        avatar: {
+          src: `https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`,
+          round: true
+        }
       })
     });
     this.singleSelect?.connect({

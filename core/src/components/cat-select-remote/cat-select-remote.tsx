@@ -35,11 +35,15 @@ export interface Page<T> {
 export interface RenderInfo {
   label: string;
   description?: string;
+  avatar?: {
+    src?: string;
+    round?: boolean;
+  };
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectRemoteConnector<T extends Item = any> {
-  resolve: (id: string[]) => Observable<T[]>;
+  resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
 }
@@ -363,6 +367,14 @@ export class CatSelectRemote {
                     aria-selected="true"
                     id={`select-${this.id}-selection-${i}`}
                   >
+                    {item.render.avatar ? (
+                      <cat-avatar
+                        label={item.render.label}
+                        round={item.render.avatar.round}
+                        src={item.render.avatar.src}
+                        initials={''}
+                      ></cat-avatar>
+                    ) : null}
                     <span>{item.render.label}</span>
                     {!this.disabled && (
                       <cat-button
@@ -461,9 +473,19 @@ export class CatSelectRemote {
                           e.stopPropagation();
                         }}
                       >
-                        <span slot="label" class="select-option">
-                          <span class="select-option-label">{item.render.label}</span>
-                          <span class="select-option-description">{item.render.description}</span>
+                        <span slot="label" class="select-option-inner">
+                          {item.render.avatar ? (
+                            <cat-avatar
+                              label={item.render.label}
+                              round={item.render.avatar.round}
+                              src={item.render.avatar.src}
+                              initials={''}
+                            ></cat-avatar>
+                          ) : null}
+                          <span class="select-option-text">
+                            <span class="select-option-label">{item.render.label}</span>
+                            <span class="select-option-description">{item.render.description}</span>
+                          </span>
                         </span>
                       </cat-checkbox>
                     ) : (
