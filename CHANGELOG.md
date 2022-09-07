@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.3](https://github.com/haiilo/catalyst/compare/v0.15.2...v0.15.3) (2022-09-07)
+
+
+### Features
+
+* **core:** add avatar support to new select ([#64](https://github.com/haiilo/catalyst/issues/64)) ([7362d49](https://github.com/haiilo/catalyst/commit/7362d493f1bb71af69ec06dc76c16426af02bebd))
+
 ### [0.15.2](https://github.com/haiilo/catalyst/compare/v0.15.1...v0.15.2) (2022-09-06)
 
 
