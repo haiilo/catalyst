@@ -69,6 +69,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [cat-avatar](../cat-avatar)
 - [cat-button](../cat-button)
 - [cat-spinner](../cat-spinner)
 - [cat-scrollable](../cat-scrollable)
@@ -78,11 +79,13 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  cat-select-remote --> cat-avatar
   cat-select-remote --> cat-button
   cat-select-remote --> cat-spinner
   cat-select-remote --> cat-scrollable
   cat-select-remote --> cat-checkbox
   cat-select-remote --> cat-skeleton
+  cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-select-remote-test --> cat-select-remote

@@ -31,6 +31,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [cat-select-remote](../cat-select-remote)
+
 ### Depends on
 
 - [cat-icon](../cat-icon)
@@ -39,6 +43,7 @@
 ```mermaid
 graph TD;
   cat-avatar --> cat-icon
+  cat-select-remote --> cat-avatar
   style cat-avatar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
