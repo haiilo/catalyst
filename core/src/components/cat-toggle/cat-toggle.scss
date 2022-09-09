@@ -73,6 +73,21 @@ input {
 
     :checked + & {
       transform: translateX(calc(-2px + 0.5rem));
+      background: cat-token('color.theme.primary.fill');
+    }
+  }
+}
+
+:host(.cat-error) {
+  .toggle {
+    background-color: cat-token('color.theme.danger.bg', 0.2);
+  }
+
+  :checked + .toggle {
+    background-color: cat-token('color.theme.danger.bg');
+
+    &::after {
+      background: cat-token('color.theme.danger.fill');
     }
   }
 }

@@ -46,6 +46,16 @@ label {
   }
 }
 
+:host(.cat-error) {
+  .select-wrapper {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
+
+    &:not(.input-disabled):hover {
+      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg');
+    }
+  }
+}
+
 .select-disabled {
   background: cat-token('color.ui.background.inputDisabled');
   cursor: not-allowed;

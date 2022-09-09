@@ -66,6 +66,16 @@ input {
   }
 }
 
+:host(.cat-error) {
+  input {
+    border-color: cat-token('color.theme.danger.bg');
+  }
+
+  .circle {
+    background-color: cat-token('color.theme.danger.bg');
+  }
+}
+
 .label {
   flex: 1 1 auto;
 

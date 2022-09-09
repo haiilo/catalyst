@@ -12,3 +12,9 @@
     margin: 0 !important;
   }
 }
+
+:host-context(.cat-error) {
+  .hint-section {
+    color: cat-token('color.theme.danger.text');
+  }
+}

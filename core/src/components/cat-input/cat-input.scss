@@ -47,6 +47,16 @@
   }
 }
 
+:host(.cat-error) {
+  .input-wrapper {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
+
+    &:not(.input-disabled):hover {
+      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg');
+    }
+  }
+}
+
 label {
   align-self: flex-start;
 
