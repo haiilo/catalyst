@@ -22,7 +22,6 @@ const CatComponents = [
   Components.CatRadioGroup,
   Components.CatScrollable,
   Components.CatSelect,
-  Components.CatSelectRemote,
   Components.CatSkeleton,
   Components.CatSpinner,
   Components.CatTab,
