@@ -1,30 +1,85 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch, Listen } from '@stencil/core';
-import Choices, { Choice, ClassNames, Item, Options } from 'choices.js';
+import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import autosizeInput from 'autosize-input';
+import {
+  catchError,
+  debounce,
+  distinctUntilChanged,
+  filter,
+  first,
+  Observable,
+  of,
+  scan,
+  startWith,
+  Subject,
+  Subscription,
+  switchMap,
+  takeWhile,
+  tap,
+  timer
+} from 'rxjs';
+import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+
+export interface Item {
+  id: string;
+}
+
+export interface Page<T> {
+  content: T[];
+  last: boolean;
+  totalElements?: number;
+}
+
+export interface RenderInfo {
+  label: string;
+  description?: string;
+  avatar?: {
+    src?: string;
+    round?: boolean;
+  };
+}
+
+/**
+ * @property resolve - Resolves the value of the select.
+ * @property retrieve - Retrieves the options of the select.
+ * @property render - Renders the items of the select.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface CatSelectConnector<T extends Item = any> {
+  resolve: (ids: string[]) => Observable<T[]>;
+  retrieve: (term: string, page: number) => Observable<Page<T>>;
+  render: (item: T) => RenderInfo;
+}
+
+export interface CatSelectState {
+  term: string;
+  isOpen: boolean;
+  isLoading: boolean;
+  isResolving: boolean;
+  options: { item: Item; render: RenderInfo }[];
+  selection: { item: Item; render: RenderInfo }[];
+  activeOptionIndex: number;
+  activeSelectionIndex: number;
+  totalElements?: number;
+}
+
+const INIT_STATE: CatSelectState = {
+  term: '',
+  isOpen: false,
+  isLoading: false,
+  isResolving: false,
+  options: [],
+  selection: [],
+  activeOptionIndex: -1,
+  activeSelectionIndex: -1
+};
 
 let nextUniqueId = 0;
 
-const getOptionTemplate = (data: Item): string => {
-  if (data.customProperties?.imageUrl) {
-    return `
-    <div class="d-flex align-items-center">
-      <img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />
-      ${data.label}
-    </div>
-    `;
-  }
-  return `<cat-checkbox label="${data.label}" checked="${data.selected}"></cat-checkbox>`;
-};
-
 /**
- * A single option in the select.
- */
-export type CatSelectItem = Pick<Choice, 'label' | 'value' | 'customProperties'>;
-
-/**
- * Select lets user choose one option from an options menu. Consider using
+ * Select lets user choose one option from an options' menu. Consider using
  * select when you have 6 or more options. Select component supports any content
  * type.
  *
@@ -38,50 +93,26 @@ export type CatSelectItem = Pick<Choice, 'label' | 'value' | 'customProperties'>
   shadow: true
 })
 export class CatSelect {
+  private static readonly SKELETON_COUNT = 4;
+  private static readonly DROPDOWN_OFFSET = 4;
   private readonly i18n = CatI18nRegistry.getInstance();
-  private readonly id = `cat-select-${nextUniqueId++}`;
-  private resetItemsOnNextValueChange = true;
+  private readonly id = `cat-input-${nextUniqueId++}`;
 
-  private choice?: Choices;
-  private choicesElement?: HTMLElement;
-  private choiceInner?: Element;
-  private choiceDropdown?: Element;
-  private selectElement?: HTMLSelectElement;
-  private removeElement?: HTMLCatButtonElement;
+  private dropdown?: HTMLElement;
+  private trigger?: HTMLElement;
+  private input?: HTMLInputElement;
+
+  private subscription?: Subscription;
+  private term$: Subject<string> = new Subject();
+  private more$: Subject<void> = new Subject();
 
   @Element() hostElement!: HTMLElement;
 
+  @State() connector?: CatSelectConnector;
+
+  @State() state: CatSelectState = INIT_STATE;
+
   @State() hasSlottedLabel = false;
-
-  /**
-   * The label for the select.
-   */
-  @Prop() label = '';
-
-  /**
-   * Visually hide the label, but still show it to assistive technologies like screen readers.
-   */
-  @Prop() labelHidden = false;
-
-  /**
-   * A value is required or must be check for the form to be submittable.
-   */
-  @Prop() required = false;
-
-  /**
-   * The available options for the input.
-   */
-  @Prop() items: CatSelectItem[] = [];
-
-  /**
-   * The value of the select.
-   */
-  @Prop({ mutable: true }) value?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-
-  /**
-   * Disable the select.
-   */
-  @Prop() disabled = false;
 
   /**
    * Enable multiple selection.
@@ -89,21 +120,29 @@ export class CatSelect {
   @Prop() multiple = false;
 
   /**
-   * The placeholder for the select.
+   * The debounce time for the search.
    */
-  @Prop() placeholder = '';
+  @Prop() debounce = 250;
 
   /**
-   * Whether the dropdown should appear above `(top)` or below `(bottom)` the
-   * input. By default, if there is not enough space within the window the
-   * dropdown will appear above the input, otherwise below it.
+   * The placement of the select.
    */
-  @Prop() position: 'auto' | 'top' | 'bottom' = 'auto';
+  @Prop() placement: Placement = 'bottom-start';
 
   /**
-   * Enable search for the select.
+   * The value of the select.
    */
-  @Prop() search = false;
+  @Prop({ mutable: true }) value?: string | string[];
+
+  /**
+   * Whether the select is disabled.
+   */
+  @Prop() disabled = false;
+
+  /**
+   * The placeholder text to display within the select.
+   */
+  @Prop() placeholder?: string;
 
   /**
    * Optional hint text(s) to be displayed with the select.
@@ -111,59 +150,87 @@ export class CatSelect {
   @Prop() hint?: string | string[];
 
   /**
+   * The label for the select.
+   */
+  @Prop() label = '';
+
+  /**
+   * The name of the form control. Submitted with the form as part of a name/value pair.
+   */
+  @Prop() name = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
+   * A value is required or must be checked for the form to be submittable.
+   */
+  @Prop() required = false;
+
+  /**
+   * Whether the select should show a clear button.
+   */
+  @Prop() clearable = false;
+
+  @Watch('connector')
+  onConnectorChange(connector: CatSelectConnector) {
+    this.reset(connector);
+    this.resolve();
+  }
+
+  @Watch('state')
+  onStateChange(newState: CatSelectState, oldState: CatSelectState) {
+    const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
+    if (changed('activeOptionIndex')) {
+      if (this.state.activeOptionIndex >= 0) {
+        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
+        option?.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    if (changed('selection')) {
+      if (!this.multiple && this.state.selection.length) {
+        this.hide();
+      }
+      const idsSelected = this.state.selection.map(item => item.item.id);
+      if (this.multiple) {
+        this.value = idsSelected;
+      } else {
+        this.value = idsSelected.length ? idsSelected[0] : '';
+      }
+      this.catChange.emit();
+    }
+  }
+
+  /**
+   * Emitted when the select dropdown is opened.
+   */
+  @Event() catOpen!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the select dropdown is closed.
+   */
+  @Event() catClose!: EventEmitter<FocusEvent>;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter;
 
   /**
-   * Emitted when the search is triggered.
-   */
-  @Event() catSearch!: EventEmitter;
-
-  /**
-   * Emitted when scrolled to the bottom.
-   */
-  @Event() catScrolledBottom!: EventEmitter;
-
-  /**
-   * Emitted when the select loses focus.
+   * Emitted when the select loses the focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
-  @Watch('items')
-  setChoicesHandler(items: CatSelectItem[]) {
-    const isSelected = (item: CatSelectItem) => this.value?.includes(item.value);
-    const choices = items.map(item => ({ ...item, selected: isSelected(item) }));
-    this.choice?.setChoices(choices, 'value', 'label', true);
-
-    const vItems = this.choice?.getValue() || [];
-    const vItemsArray = (Array.isArray(vItems) ? vItems : [vItems]) as Item[];
-    const value = this.value || [];
-    const vItemValues = [...value];
-
-    // remove duplicate items
-    this.choice?.unhighlightAll();
-    vItemsArray.forEach(vItem => {
-      const index = vItemValues.indexOf(vItem.value);
-      if (index > -1) {
-        vItemValues.splice(index, 1);
-      } else {
-        vItem.choiceId = -1; // disconnect item from choice
-        this.choice?.highlightItem(vItem, false);
-      }
-    });
-    this.choice?.removeHighlightedItems(false);
-  }
-
-  @Watch('value')
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setValueHandler(value?: any) {
-    if (this.resetItemsOnNextValueChange) {
-      this.choice?.removeActiveItems(-1);
+  componentDidLoad(): void {
+    if (this.input) {
+      autosizeInput(this.input);
     }
-    this.resetItemsOnNextValueChange = true;
-    this.choice?.setChoiceByValue(value);
-    this.multiple && this.updateRemoveItemButtonVisibility();
+    if (this.trigger && this.dropdown) {
+      autoUpdate(this.trigger, this.dropdown, () => this.update());
+    }
   }
 
   componentWillRender(): void {
@@ -173,48 +240,116 @@ export class CatSelect {
     }
   }
 
-  componentDidLoad(): void {
-    this.init();
-    const attachedInternals: ElementInternals | undefined = this.hostElement.attachInternals?.();
-    if (attachedInternals) {
-      const root = attachedInternals.shadowRoot;
-      this.choicesElement = root?.querySelector('.choices') || undefined;
-      this.choiceInner = root?.querySelector('.choices__inner') || undefined;
-      this.choiceDropdown = root?.querySelector('.choices__list--dropdown')?.firstElementChild || undefined;
-    }
-    this.choicesElement?.addEventListener('click', this.resetFocus.bind(this));
-    this.choiceInner?.addEventListener('click', this.showDropdownHandler.bind(this));
-    this.selectElement?.addEventListener('hideDropdown', this.showMultipleFocus.bind(this));
-    this.selectElement?.addEventListener('showDropdown', this.showMultipleFocus.bind(this));
-    this.selectElement?.addEventListener('removeItem', this.resetFocus.bind(this));
-    this.selectElement?.addEventListener('change', this.onChange.bind(this));
-    this.selectElement?.addEventListener('search', this.onSearch.bind(this));
-    this.choiceDropdown?.addEventListener('scroll', this.onScrolledBottom.bind(this));
-    if (this.multiple) {
-      this.selectElement?.addEventListener('choice', this.onChoice.bind(this));
-      this.createRemoveItemButton();
-    }
-  }
-
-  disconnectedCallback(): void {
-    this.choice?.destroy();
-    this.choice = undefined;
-    this.choicesElement?.removeEventListener('click', this.resetFocus.bind(this));
-    this.choiceInner?.removeEventListener('click', this.showDropdownHandler.bind(this));
-    this.selectElement?.removeEventListener('hideDropdown', this.showMultipleFocus.bind(this));
-    this.selectElement?.removeEventListener('showDropdown', this.showMultipleFocus.bind(this));
-    this.selectElement?.removeEventListener('removeItem', this.resetFocus.bind(this));
-    this.selectElement?.removeEventListener('change', this.onChange.bind(this));
-    this.selectElement?.removeEventListener('search', this.onSearch.bind(this));
-    this.choiceDropdown?.removeEventListener('scroll', this.onScrolledBottom.bind(this));
-    if (this.multiple) {
-      this.removeElement?.removeEventListener('choice', this.onChoice.bind(this));
-    }
-  }
-
-  @Listen('blur', { capture: true })
+  @Listen('blur')
   onBlur(event: FocusEvent): void {
+    if (!this.multiple && this.state.activeOptionIndex >= 0) {
+      this.select(this.state.options[this.state.activeOptionIndex]);
+    }
+    this.hide();
+    this.patchState({ activeSelectionIndex: -1 });
     this.catBlur.emit(event);
+  }
+
+  @Listen('keydown')
+  onKeyDown(event: KeyboardEvent): void {
+    const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
+
+    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      this.onArrowKeyDown(event);
+    } else if (['Enter', ' '].includes(event.key)) {
+      if (isInputFocused && this.state.activeOptionIndex >= 0) {
+        event.preventDefault();
+        if (this.multiple) {
+          this.toggle(this.state.options[this.state.activeOptionIndex]);
+        } else {
+          this.select(this.state.options[this.state.activeOptionIndex]);
+        }
+      }
+    } else if (event.key === 'Escape') {
+      this.hide();
+    } else if (event.key === 'Backspace' || event.key === 'Delete') {
+      this.input?.focus();
+      if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
+        if (this.state.activeSelectionIndex >= 0) {
+          this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
+        } else if (this.state.selection.length) {
+          const selectionClone = [...this.state.selection];
+          selectionClone.pop();
+          this.patchState({ selection: selectionClone });
+        }
+      }
+    } else if (event.key === 'Tab') {
+      this.trigger?.setAttribute('tabindex', '-1');
+      if (this.multiple) {
+        this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
+      } else if (this.state.activeOptionIndex >= 0) {
+        this.select(this.state.options[this.state.activeOptionIndex]);
+      }
+    } else if (event.key.length === 1) {
+      this.input?.focus();
+    }
+  }
+
+  @Listen('keyup')
+  onKeyUp(event: KeyboardEvent): void {
+    if (event.key === 'Tab' && !event.shiftKey) {
+      this.hostElement.shadowRoot?.activeElement === this.trigger && this.input?.focus();
+      if (this.hostElement.shadowRoot?.activeElement === this.input) {
+        this.show();
+      }
+    } else if (event.key === 'Tab' && event.shiftKey) {
+      const clearButton = this.trigger?.querySelector(`#select-clear-btn-${this.id}`);
+
+      if (clearButton) {
+        this.hostElement.shadowRoot?.activeElement === clearButton && this.show();
+      } else {
+        this.show();
+      }
+    }
+  }
+
+  /**
+   * Connect the functions of the select
+   *
+   * @param connector - The {@link CatSelectConnector} of the select.
+   */
+  @Method()
+  async connect(connector: CatSelectConnector): Promise<void> {
+    this.connector = connector;
+    let number$: Observable<number>;
+    this.subscription?.unsubscribe();
+    this.subscription = this.term$
+      .asObservable()
+      .pipe(
+        debounce(term => (term ? timer(this.debounce) : of(0))),
+        distinctUntilChanged(),
+        tap(
+          () =>
+            (number$ = this.more$.pipe(
+              filter(() => !this.state.isLoading),
+              scan(n => n + 1, 0),
+              startWith(0)
+            ))
+        ),
+        tap(() => this.patchState({ options: [] })),
+        switchMap(term =>
+          number$.pipe(
+            tap(() => this.patchState({ isLoading: true })),
+            switchMap(number => this.connectorSafe.retrieve(term, number)),
+            tap(page => this.patchState({ isLoading: false, totalElements: page.totalElements })),
+            takeWhile(page => !page.last, true),
+            scan((items, page) => [...items, ...page.content], [] as Item[])
+          )
+        )
+      )
+      .subscribe(items =>
+        this.patchState({
+          options: items?.map(item => ({
+            item,
+            render: this.connectorSafe.render(item)
+          }))
+        })
+      );
   }
 
   render() {
@@ -232,124 +367,200 @@ export class CatSelect {
             </span>
           </label>
         )}
-        <select
+        <div
+          class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
+          ref={el => (this.trigger = el)}
           id={this.id}
-          ref={el => (this.selectElement = el)}
-          multiple={this.multiple}
-          disabled={this.disabled}
-        ></select>
+          role="combobox"
+          aria-expanded={this.state.isOpen || this.isPillboxActive()}
+          aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+          aria-required={this.required}
+          aria-activedescendant={this.activeDescendant}
+          onClick={e => this.onClick(e)}
+        >
+          <div class="select-wrapper-inner">
+            {this.multiple && this.state.selection.length ? (
+              <div id={`select-pillbox-${this.id}`} role="listbox" aria-orientation="horizontal" class="select-pills">
+                {this.state.selection.map((item, i) => (
+                  <span
+                    class={{
+                      pill: true,
+                      'select-no-open': true,
+                      'select-option-active': this.state.activeSelectionIndex === i
+                    }}
+                    role="option"
+                    aria-selected="true"
+                    id={`select-${this.id}-selection-${i}`}
+                  >
+                    {item.render.avatar ? (
+                      <cat-avatar
+                        label={item.render.label}
+                        round={item.render.avatar.round}
+                        src={item.render.avatar.src}
+                        initials={''}
+                      ></cat-avatar>
+                    ) : null}
+                    <span>{item.render.label}</span>
+                    {!this.disabled && (
+                      <cat-button
+                        size="xs"
+                        variant="text"
+                        icon="16-cross"
+                        iconOnly
+                        a11yLabel={this.i18n.t('select.deselect')}
+                        onClick={() => this.deselect(item.item.id)}
+                        tabIndex={-1}
+                      ></cat-button>
+                    )}
+                  </span>
+                ))}
+              </div>
+            ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
+              <cat-avatar
+                label={this.state.selection[0].render.label}
+                round={this.state.selection[0].render.avatar.round}
+                src={this.state.selection[0].render.avatar.src}
+                initials={''}
+              ></cat-avatar>
+            ) : null}
+            <input
+              class="select-input"
+              ref={el => (this.input = el)}
+              aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+              aria-activedescendant={this.activeDescendant}
+              onInput={() => this.onInput()}
+              value={!this.multiple ? this.state.term : undefined}
+              placeholder={this.placeholder}
+              disabled={this.disabled || this.state.isResolving}
+            ></input>
+          </div>
+          {this.state.isResolving && <cat-spinner></cat-spinner>}
+          {(this.state.selection.length || this.state.term.length) &&
+          !this.disabled &&
+          !this.state.isResolving &&
+          this.clearable ? (
+            <cat-button
+              id={`select-clear-btn-${this.id}`}
+              iconOnly
+              icon="cross-circle-outlined"
+              variant="text"
+              size="s"
+              a11yLabel={this.i18n.t('select.clear')}
+              onClick={() => this.clear()}
+            ></cat-button>
+          ) : null}
+          {!this.state.isResolving && (
+            <cat-button
+              iconOnly
+              icon="chevron-down-outlined"
+              class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
+              variant="text"
+              size="s"
+              a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
+              aria-controls={`select-listbox-${this.id}`}
+              aria-expanded={this.state.isOpen}
+              tabIndex={-1}
+              disabled={this.disabled || this.state.isResolving}
+            ></cat-button>
+          )}
+        </div>
         {this.hintSection}
+        <div
+          class="select-dropdown"
+          ref={el => (this.dropdown = el)}
+          style={{ display: this.state.isOpen ? 'block' : undefined }}
+        >
+          {this.state.isOpen && (
+            <cat-scrollable
+              class="select-options-wrapper"
+              scrolledBuffer={56}
+              noOverflowX
+              noOverscroll
+              noScrolledInit
+              onScrolledBottom={() => this.more$.next()}
+            >
+              <ul
+                class="select-options"
+                role="listbox"
+                aria-multiselectable={this.multiple}
+                aria-setsize={this.state.totalElements}
+                id={`select-listbox-${this.id}`}
+              >
+                {this.state.options.map((item, i) => (
+                  <li
+                    role="option"
+                    class="select-option"
+                    id={`select-${this.id}-option-${i}`}
+                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
+                  >
+                    {this.multiple ? (
+                      <cat-checkbox
+                        class={{ 'select-option-active': this.state.activeOptionIndex === i }}
+                        checked={this.isSelected(item.item.id)}
+                        tabIndex={-1}
+                        labelLeft
+                        onFocus={() => this.input?.focus()}
+                        onCatChange={e => {
+                          this.toggle(item);
+                          e.stopPropagation();
+                        }}
+                      >
+                        <span slot="label" class="select-option-inner">
+                          {item.render.avatar ? (
+                            <cat-avatar
+                              label={item.render.label}
+                              round={item.render.avatar.round}
+                              src={item.render.avatar.src}
+                              initials={''}
+                            ></cat-avatar>
+                          ) : null}
+                          <span class="select-option-text">
+                            <span class="select-option-label">{item.render.label}</span>
+                            <span class="select-option-description">{item.render.description}</span>
+                          </span>
+                        </span>
+                      </cat-checkbox>
+                    ) : (
+                      <div
+                        class={{
+                          'select-option-inner': true,
+                          'select-option-single': true,
+                          'select-option-active': this.state.activeOptionIndex === i
+                        }}
+                        onFocus={() => this.input?.focus()}
+                        onClick={() => this.select(item)}
+                        tabIndex={-1}
+                      >
+                        {item.render.avatar ? (
+                          <cat-avatar
+                            label={item.render.label}
+                            round={item.render.avatar.round}
+                            src={item.render.avatar.src}
+                            initials={''}
+                          ></cat-avatar>
+                        ) : null}
+                        <span class="select-option-text">
+                          <span class="select-option-label">{item.render.label}</span>
+                          <span class="select-option-description">{item.render.description}</span>
+                        </span>
+                      </div>
+                    )}
+                  </li>
+                ))}
+                {this.state.isLoading
+                  ? Array.from(Array(CatSelect.SKELETON_COUNT)).map(() => (
+                      <li class="select-option-loading">
+                        <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                        <cat-skeleton variant="body" lines={1}></cat-skeleton>
+                      </li>
+                    ))
+                  : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+              </ul>
+            </cat-scrollable>
+          )}
+        </div>
       </Host>
     );
-  }
-
-  private init() {
-    const component = this; // eslint-disable-line @typescript-eslint/no-this-alias
-    const removeItemText = (value: string) => this.i18n.t('select.removeItem', { value });
-    const config = {
-      allowHTML: true,
-      removeItemButton: true,
-      duplicateItemsAllowed: false,
-      delimiter: '',
-      paste: false,
-      searchEnabled: this.search,
-      searchChoices: false,
-      position: this.position,
-      resetScrollPosition: false,
-      placeholder: !!this.placeholder,
-      placeholderValue: this.placeholder || '',
-      searchPlaceholderValue: this.i18n.t('select.searchPlaceholder'),
-      renderSelectedChoices: 'always' as 'auto' | 'always',
-      loadingText: this.i18n.t('select.loading'),
-      noResultsText: this.i18n.t('select.noResults'),
-      noChoicesText: this.i18n.t('select.noChoices'),
-      itemSelectText: this.i18n.t('select.selectItem'),
-      addItemText: (value: string) => this.i18n.t('select.addItem', { value }),
-      maxItemText: (maxItemCount: number) => this.i18n.t('select.maxItem', { maxItemCount }),
-      uniqueItemText: this.i18n.t('select.uniqueItem'),
-      customAddItemText: this.i18n.t('select.customAddItem'),
-      callbackOnInit: function () {
-        const choice = this as unknown as Choices;
-        choice.setChoices(component.items, 'value', 'label', true);
-        choice.setChoiceByValue(component.value);
-      }
-    };
-
-    const configSingle = {
-      callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
-        return {
-          item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
-            const template = data.customProperties?.imageUrl
-              ? `<img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem" />`
-              : '';
-            return strToEl(
-              `
-              <div class="${classNames.item} ${
-                data.highlighted ? classNames.highlightedState : classNames.itemSelectable
-              } ${data.placeholder ? classNames.placeholder : ''}" data-item data-id="${data.id}" data-value="${
-                data.value
-              }" ${data.active ? 'aria-selected="true"' : ''} ${data.disabled ? 'aria-disabled="true"' : ''}>
-                  <span>${template}</span> ${data.label}
-                  <button type="button"
-                    class="${classNames.button}"
-                    aria-label="${removeItemText(data.label)}"
-                    data-button>${removeItemText(data.label)}</button>
-              </div>
-              `
-            );
-          }
-        };
-      }
-    };
-
-    const configMultiple = {
-      callbackOnCreateTemplates: (strToEl: (str: string) => HTMLElement) => {
-        const itemSelectText = config.itemSelectText;
-        return {
-          item: ({ classNames }: { classNames: ClassNames }, data: Item) => {
-            const template = data.customProperties?.imageUrl
-              ? `<img class="choices-option-icon" src="${data.customProperties.imageUrl}" style="margin-right: 0.5rem;" />`
-              : '';
-            return strToEl(
-              `<div class="
-                ${classNames.item}
-                ${data.highlighted ? classNames.highlightedState : classNames.itemSelectable}
-                ${data.placeholder ? classNames.placeholder : ''}"
-                data-item data-id="${data.id}" data-value="${data.value}"
-                ${data.active ? 'aria-selected="true"' : ''}
-                ${data.disabled ? 'aria-disabled="true"' : ''}>
-                  ${template}
-                  ${data.label}
-                  <button type="button"
-                    class="${classNames.button}"
-                    aria-label="${removeItemText(data.label)}"
-                    data-button>${removeItemText(data.label)}</button>
-              </div>`
-            );
-          },
-          choice: function ({ classNames }: { classNames: ClassNames }, data: Item) {
-            const template = getOptionTemplate(data);
-            const className = `${String(classNames.item)} ${String(classNames.itemChoice)}
-                  ${String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable)}
-                  ${data.selected ? 'choices__item--selected' : ''}`;
-            return strToEl(
-              `<div class="${className}"
-                data-select-text="${itemSelectText}"
-                data-choice data-id="${String(data.id)}" data-value="${String(data.value)}"
-                ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
-                ${data.groupId && data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
-                  ${template}
-              </div>`
-            );
-          }
-        };
-      }
-    };
-
-    const settings: Partial<Options> = this.multiple
-      ? { ...config, ...configMultiple }
-      : { ...config, ...configSingle };
-    this.choice = new Choices(this.selectElement, settings);
   }
 
   private get hintSection() {
@@ -361,79 +572,201 @@ export class CatSelect {
     );
   }
 
-  private onChange() {
-    this.resetItemsOnNextValueChange = false;
-    this.value = this.choice?.getValue(true);
-    this.catChange.emit(this.value);
-  }
-
-  private showMultipleFocus() {
-    if (this.multiple && this.isFocused() && !this.choicesElement?.classList.contains('is-focused')) {
-      this.choicesElement?.classList.add('is-focused');
+  private get connectorSafe(): CatSelectConnector {
+    if (this.connector) {
+      return this.connector;
     }
+    throw new Error('CatSelectConnector not set');
   }
 
-  private resetFocus() {
-    if (!this.isFocused()) {
-      if (!this.choicesElement?.hasAttribute('tabindex')) {
-        this.choicesElement?.setAttribute('tabindex', '0');
-      }
-      this.choicesElement?.focus();
-    }
-  }
-
-  private isFocused() {
-    return document.activeElement === this.hostElement;
-  }
-
-  private onChoice(event: Event) {
-    const customEvent = event as CustomEvent<{ choice: Choice }>;
-    const choice = customEvent.detail.choice;
-    if (choice.selected) {
-      this.choice?.removeActiveItemsByValue(choice.value);
-      this.onChange();
-    }
-  }
-
-  private onSearch(event: Event) {
-    const customEvent = event as CustomEvent<{ value: string }>;
-    this.catSearch.emit(customEvent.detail.value);
-  }
-
-  private onScrolledBottom() {
-    const scrolledBottom =
-      this.choiceDropdown?.scrollHeight ===
-      (this.choiceDropdown?.scrollTop || 0) + (this.choiceDropdown?.clientHeight || 0);
-    if (scrolledBottom) {
-      this.catScrolledBottom.emit();
-    }
-  }
-
-  private showDropdownHandler() {
-    !this.disabled && this.choice?.showDropdown();
-  }
-
-  private createRemoveItemButton() {
-    this.removeElement = document.createElement('cat-button') as HTMLCatButtonElement;
-    this.removeElement.icon = 'cross-circle-outlined';
-    this.removeElement.iconOnly = true;
-    this.removeElement.a11yLabel = this.i18n.t('select.removeItem');
-    this.updateRemoveItemButtonVisibility();
-    this.removeElement.addEventListener('click', this.onRemoveItemButtonClick.bind(this));
-    this.choiceInner?.appendChild(this.removeElement);
-  }
-
-  private updateRemoveItemButtonVisibility() {
-    if (this.value?.length) {
-      this.removeElement?.removeAttribute('hidden');
+  private resolve() {
+    this.patchState({ isResolving: true });
+    let ids;
+    if (this.multiple) {
+      ids = this.value as string[];
     } else {
-      this.removeElement?.setAttribute('hidden', 'true');
+      ids = [this.value as string];
+    }
+    const data$ = this.value?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+    data$.pipe(catchError(() => of([]))).subscribe(items =>
+      this.patchState({
+        isResolving: false,
+        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })),
+        term: !this.multiple && items.length ? this.connectorSafe.render(items[0]).label : ''
+      })
+    );
+  }
+
+  private show() {
+    if (!this.state.isOpen) {
+      this.patchState({ isOpen: true });
+      this.catOpen.emit();
+      this.term$.next(this.state.term);
+      this.input?.classList.remove('select-input-transparent-caret');
     }
   }
 
-  private onRemoveItemButtonClick(event: Event) {
-    event.stopPropagation();
-    this.choice?.removeActiveItems(-1);
-    this.onChange();
+  private hide() {
+    if (this.state.isOpen) {
+      this.patchState({ isOpen: false, activeOptionIndex: -1 });
+      this.catClose.emit();
+    }
+  }
+
+  private search(term: string) {
+    this.patchState({ term, activeOptionIndex: -1, activeSelectionIndex: -1 });
+    this.term$.next(term);
+  }
+
+  private isSelected(id: string) {
+    return this.state.selection.findIndex(s => s.item.id === id) >= 0;
+  }
+
+  private select(item: { item: Item; render: RenderInfo }) {
+    if (!this.isSelected(item.item.id)) {
+      let newSelection;
+      if (this.multiple) {
+        newSelection = [...this.state.selection, item];
+      } else {
+        newSelection = [item];
+        this.search(item.render.label);
+      }
+      this.patchState({ selection: newSelection });
+    }
+    if (!this.multiple) {
+      this.hide();
+      this.input?.classList.add('select-input-transparent-caret');
+    }
+  }
+
+  private deselect(id: string) {
+    if (this.isSelected(id)) {
+      this.patchState({
+        selection: this.state.selection.filter(item => item.item.id !== id),
+        activeSelectionIndex: -1
+      });
+    }
+  }
+
+  private toggle(item: { item: Item; render: RenderInfo }) {
+    this.isSelected(item.item.id) ? this.deselect(item.item.id) : this.select(item);
+  }
+
+  private clear() {
+    if (this.input && this.state.term) {
+      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1 });
+      this.term$.next('');
+      this.input.value = '';
+    } else {
+      this.patchState({ selection: [] });
+    }
+  }
+
+  private reset(connector?: CatSelectConnector) {
+    this.connector = connector ?? this.connector;
+    this.subscription?.unsubscribe();
+    this.subscription = undefined;
+    this.state = INIT_STATE;
+  }
+
+  private onClick(event: MouseEvent) {
+    const elem = event.target as Element;
+    this.trigger?.setAttribute('tabindex', '0');
+    this.input?.focus();
+    if (
+      elem === this.trigger ||
+      elem === this.input ||
+      elem.classList.contains('select-btn') ||
+      elem.nodeName === 'SPAN'
+    ) {
+      this.state.isOpen ? this.hide() : this.show();
+    }
+  }
+
+  private onInput() {
+    this.search(this.input?.value || '');
+    this.show();
+  }
+
+  private update() {
+    if (this.trigger && this.dropdown) {
+      computePosition(this.trigger, this.dropdown, {
+        placement: this.placement,
+        middleware: [offset(CatSelect.DROPDOWN_OFFSET)]
+      }).then(({ x, y }) => {
+        if (this.dropdown) {
+          Object.assign(this.dropdown.style, {
+            left: `${x}px`,
+            top: `${y}px`
+          });
+        }
+      });
+    }
+  }
+
+  private patchState(update: Partial<CatSelectState>) {
+    this.state = { ...this.state, ...update };
+  }
+
+  private isPillboxActive() {
+    return this.state.activeSelectionIndex >= 0;
+  }
+
+  private get activeDescendant() {
+    let activeDescendant = undefined;
+    if (this.state.activeOptionIndex >= 0) {
+      activeDescendant = `select-${this.id}-option-${this.state.activeOptionIndex}`;
+    } else if (this.state.activeSelectionIndex >= 0) {
+      activeDescendant = `select-${this.id}-selection-${this.state.activeSelectionIndex}`;
+    }
+    return activeDescendant;
+  }
+
+  private onArrowKeyDown(event: KeyboardEvent) {
+    let preventDefault = false;
+    this.input?.focus();
+
+    if (event.key === 'ArrowDown') {
+      preventDefault = true;
+      this.state.isOpen
+        ? this.patchState({
+            activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
+            activeSelectionIndex: -1
+          })
+        : this.show();
+    } else if (event.key === 'ArrowUp') {
+      preventDefault = true;
+      this.state.activeOptionIndex >= 0
+        ? this.patchState({
+            activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
+            activeSelectionIndex: -1
+          })
+        : this.hide();
+    } else if (event.key === 'ArrowLeft') {
+      if (this.input?.selectionStart === 0) {
+        preventDefault = true;
+        let index;
+        this.state.activeSelectionIndex > 0
+          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+          : (index = this.state.selection.length - 1);
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    } else if (event.key === 'ArrowRight') {
+      if (this.state.activeSelectionIndex >= 0) {
+        preventDefault = true;
+        let index = -1;
+        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+        } else if (!this.state.term) {
+          index = 0;
+        }
+        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+      }
+    }
+
+    if (preventDefault) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 }

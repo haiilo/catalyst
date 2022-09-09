@@ -106,7 +106,6 @@
           <li><a href="#radio">Radio</a></li>
           <li><a href="#scrollable">Scrollable</a></li>
           <li><a href="#select">Select</a></li>
-          <li><a href="#selectremote">Select (remote)</a></li>
           <li><a href="#skeleton">Skeleton</a></li>
           <li><a href="#spinner">Spinner</a></li>
           <li><a href="#tabs">Tabs</a></li>
@@ -570,36 +569,7 @@
 
         <section id="select">
           <h2>Select</h2>
-          <cat-select class="select-single" label="Label"></cat-select>
-          <cat-select class="select-multiple" label="Label" multiple></cat-select>
-
-          <script>
-            const select1 = document.querySelector('cat-select.select-single');
-            const select2 = document.querySelector('cat-select.select-multiple');
-            const items = [
-              {
-                value: '1',
-                label: 'select option 1 select option 1 extra large'
-              },
-              {
-                value: '2',
-                label: 'select option 2'
-              },
-              {
-                value: '3',
-                label: 'select option 31231'
-              }
-            ];
-            select1.items = items;
-            select1.value = '2';
-            select2.items = items;
-            select2.value = ['2', '3'];
-          </script>
-        </section>
-
-        <section id="selectremote">
-          <h2>Select (remote)</h2>
-          <cat-select-remote-demo></cat-select-remote-demo>
+          <cat-select-demo></cat-select-demo>
         </section>
 
         <section id="skeleton">

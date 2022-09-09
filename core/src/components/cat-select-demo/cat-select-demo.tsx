@@ -15,14 +15,14 @@ interface Country {
 }
 
 @Component({
-  tag: 'cat-select-remote-demo',
+  tag: 'cat-select-demo',
   shadow: true
 })
-export class CatSelectRemoteTest {
-  private multipleSelect?: HTMLCatSelectRemoteElement;
-  private multipleSelectAvatar?: HTMLCatSelectRemoteElement;
-  private singleSelect?: HTMLCatSelectRemoteElement;
-  private singleSelectAvatar?: HTMLCatSelectRemoteElement;
+export class CatSelectTest {
+  private multipleSelect?: HTMLCatSelectElement;
+  private multipleSelectAvatar?: HTMLCatSelectElement;
+  private singleSelect?: HTMLCatSelectElement;
+  private singleSelectAvatar?: HTMLCatSelectElement;
 
   componentDidLoad(): void {
     this.multipleSelect?.connect({
@@ -150,7 +150,7 @@ export class CatSelectRemoteTest {
   render() {
     return (
       <Host style={{ display: 'flex', flexDirection: 'column' }}>
-        <cat-select-remote
+        <cat-select
           label="Multiple Select"
           hint="This is a hint!"
           ref={el => (this.multipleSelect = el)}
@@ -162,16 +162,16 @@ export class CatSelectRemoteTest {
           clearable
         >
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
-        </cat-select-remote>
-        <cat-select-remote
+        </cat-select>
+        <cat-select
           label="Multiple with img"
           ref={el => (this.multipleSelectAvatar = el)}
           value={['1']}
           placeholder="Hello World"
           multiple
           clearable
-        ></cat-select-remote>
-        <cat-select-remote
+        ></cat-select>
+        <cat-select
           label="Single Select"
           hint="This is a hint!"
           ref={el => (this.singleSelect = el)}
@@ -180,14 +180,14 @@ export class CatSelectRemoteTest {
           onCatChange={e => console.log('Single', e)}
           onCatBlur={e => console.log('Single blur', e)}
           clearable
-        ></cat-select-remote>
-        <cat-select-remote
+        ></cat-select>
+        <cat-select
           label="Single with img"
           ref={el => (this.singleSelectAvatar = el)}
           value={'1'}
           placeholder="Search for a country or capital"
           clearable
-        ></cat-select-remote>
+        ></cat-select>
       </Host>
     );
   }

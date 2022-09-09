@@ -171,25 +171,6 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
 
 
 export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-select', undefined, [
-  'label',
-  'labelHidden',
-  'required',
-  'items',
-  'value',
-  'disabled',
-  'multiple',
-  'placeholder',
-  'position',
-  'search',
-  'hint',
-  'catChange',
-  'catSearch',
-  'catScrolledBottom',
-  'catBlur'
-]);
-
-
-export const CatSelectRemote = /*@__PURE__*/ defineContainer<JSX.CatSelectRemote>('cat-select-remote', undefined, [
   'multiple',
   'debounce',
   'placement',
@@ -209,7 +190,7 @@ export const CatSelectRemote = /*@__PURE__*/ defineContainer<JSX.CatSelectRemote
 ]);
 
 
-export const CatSelectRemoteDemo = /*@__PURE__*/ defineContainer<JSX.CatSelectRemoteDemo>('cat-select-remote-demo', undefined);
+export const CatSelectDemo = /*@__PURE__*/ defineContainer<JSX.CatSelectDemo>('cat-select-demo', undefined);
 
 
 export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [

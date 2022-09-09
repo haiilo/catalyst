@@ -32,12 +32,12 @@
 
 ### Used by
 
- - [cat-select-remote](../cat-select-remote)
+ - [cat-select](../cat-select)
 
 ### Graph
 ```mermaid
 graph TD;
-  cat-select-remote --> cat-scrollable
+  cat-select --> cat-scrollable
   style cat-scrollable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
