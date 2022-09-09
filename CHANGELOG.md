@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/haiilo/catalyst/compare/v1.0.0...v1.0.1) (2022-09-09)
+
+
+### Bug Fixes
+
+* **angular:** remove invalid import ([b46504c](https://github.com/haiilo/catalyst/commit/b46504c42e41b664b413438e05c9fb6145517f1b))
+* remove unused choices dependency and leftover translations ([1b9db8f](https://github.com/haiilo/catalyst/commit/1b9db8fb93c62739c8b59df61d19aca24ce09973))
+
 ## [1.0.0](https://github.com/haiilo/catalyst/compare/v0.15.3...v1.0.0) (2022-09-09)
 
 ### [0.15.3](https://github.com/haiilo/catalyst/compare/v0.15.2...v0.15.3) (2022-09-07)
