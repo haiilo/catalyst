@@ -8,8 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
-import { CatSelectItem } from "./components/cat-select/cat-select";
-import { CatSelectRemoteConnector, Item } from "./components/cat-select-remote/cat-select-remote";
+import { CatSelectConnector, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
     interface CatAlert {
@@ -432,60 +431,14 @@ export namespace Components {
     }
     interface CatSelect {
         /**
-          * Disable the select.
-         */
-        "disabled": boolean;
-        /**
-          * Optional hint text(s) to be displayed with the select.
-         */
-        "hint"?: string | string[];
-        /**
-          * The available options for the input.
-         */
-        "items": CatSelectItem[];
-        /**
-          * The label for the select.
-         */
-        "label": string;
-        /**
-          * Visually hide the label, but still show it to assistive technologies like screen readers.
-         */
-        "labelHidden": boolean;
-        /**
-          * Enable multiple selection.
-         */
-        "multiple": boolean;
-        /**
-          * The placeholder for the select.
-         */
-        "placeholder": string;
-        /**
-          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
-         */
-        "position": 'auto' | 'top' | 'bottom';
-        /**
-          * A value is required or must be check for the form to be submittable.
-         */
-        "required": boolean;
-        /**
-          * Enable search for the select.
-         */
-        "search": boolean;
-        /**
-          * The value of the select.
-         */
-        "value"?: any;
-    }
-    interface CatSelectRemote {
-        /**
           * Whether the select should show a clear button.
          */
         "clearable": boolean;
         /**
           * Connect the functions of the select
-          * @param connector - The {@link CatSelectRemoteConnector} of the select.
+          * @param connector - The {@link CatSelectConnector} of the select.
          */
-        "connect": (connector: CatSelectRemoteConnector) => Promise<void>;
+        "connect": (connector: CatSelectConnector) => Promise<void>;
         /**
           * The debounce time for the search.
          */
@@ -531,7 +484,7 @@ export namespace Components {
          */
         "value"?: string | string[];
     }
-    interface CatSelectRemoteTest {
+    interface CatSelectDemo {
     }
     interface CatSkeleton {
         /**
@@ -760,10 +713,6 @@ export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatSelectElement;
 }
-export interface CatSelectRemoteCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLCatSelectRemoteElement;
-}
 export interface CatTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTabElement;
@@ -861,17 +810,11 @@ declare global {
         prototype: HTMLCatSelectElement;
         new (): HTMLCatSelectElement;
     };
-    interface HTMLCatSelectRemoteElement extends Components.CatSelectRemote, HTMLStencilElement {
+    interface HTMLCatSelectDemoElement extends Components.CatSelectDemo, HTMLStencilElement {
     }
-    var HTMLCatSelectRemoteElement: {
-        prototype: HTMLCatSelectRemoteElement;
-        new (): HTMLCatSelectRemoteElement;
-    };
-    interface HTMLCatSelectRemoteTestElement extends Components.CatSelectRemoteTest, HTMLStencilElement {
-    }
-    var HTMLCatSelectRemoteTestElement: {
-        prototype: HTMLCatSelectRemoteTestElement;
-        new (): HTMLCatSelectRemoteTestElement;
+    var HTMLCatSelectDemoElement: {
+        prototype: HTMLCatSelectDemoElement;
+        new (): HTMLCatSelectDemoElement;
     };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
@@ -936,8 +879,7 @@ declare global {
         "cat-radio-group": HTMLCatRadioGroupElement;
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-select": HTMLCatSelectElement;
-        "cat-select-remote": HTMLCatSelectRemoteElement;
-        "cat-select-remote-test": HTMLCatSelectRemoteTestElement;
+        "cat-select-demo": HTMLCatSelectDemoElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
@@ -1421,68 +1363,6 @@ declare namespace LocalJSX {
     }
     interface CatSelect {
         /**
-          * Disable the select.
-         */
-        "disabled"?: boolean;
-        /**
-          * Optional hint text(s) to be displayed with the select.
-         */
-        "hint"?: string | string[];
-        /**
-          * The available options for the input.
-         */
-        "items"?: CatSelectItem[];
-        /**
-          * The label for the select.
-         */
-        "label"?: string;
-        /**
-          * Visually hide the label, but still show it to assistive technologies like screen readers.
-         */
-        "labelHidden"?: boolean;
-        /**
-          * Enable multiple selection.
-         */
-        "multiple"?: boolean;
-        /**
-          * Emitted when the select loses focus.
-         */
-        "onCatBlur"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when the value is changed.
-         */
-        "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
-        /**
-          * Emitted when scrolled to the bottom.
-         */
-        "onCatScrolledBottom"?: (event: CatSelectCustomEvent<any>) => void;
-        /**
-          * Emitted when the search is triggered.
-         */
-        "onCatSearch"?: (event: CatSelectCustomEvent<any>) => void;
-        /**
-          * The placeholder for the select.
-         */
-        "placeholder"?: string;
-        /**
-          * Whether the dropdown should appear above `(top)` or below `(bottom)` the input. By default, if there is not enough space within the window the dropdown will appear above the input, otherwise below it.
-         */
-        "position"?: 'auto' | 'top' | 'bottom';
-        /**
-          * A value is required or must be check for the form to be submittable.
-         */
-        "required"?: boolean;
-        /**
-          * Enable search for the select.
-         */
-        "search"?: boolean;
-        /**
-          * The value of the select.
-         */
-        "value"?: any;
-    }
-    interface CatSelectRemote {
-        /**
           * Whether the select should show a clear button.
          */
         "clearable"?: boolean;
@@ -1517,19 +1397,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses the focus.
          */
-        "onCatBlur"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        "onCatBlur"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatSelectRemoteCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
         /**
           * Emitted when the select dropdown is closed.
          */
-        "onCatClose"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        "onCatClose"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the select dropdown is opened.
          */
-        "onCatOpen"?: (event: CatSelectRemoteCustomEvent<FocusEvent>) => void;
+        "onCatOpen"?: (event: CatSelectCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the select.
          */
@@ -1547,7 +1427,7 @@ declare namespace LocalJSX {
          */
         "value"?: string | string[];
     }
-    interface CatSelectRemoteTest {
+    interface CatSelectDemo {
     }
     interface CatSkeleton {
         /**
@@ -1776,8 +1656,7 @@ declare namespace LocalJSX {
         "cat-radio-group": CatRadioGroup;
         "cat-scrollable": CatScrollable;
         "cat-select": CatSelect;
-        "cat-select-remote": CatSelectRemote;
-        "cat-select-remote-test": CatSelectRemoteTest;
+        "cat-select-demo": CatSelectDemo;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
@@ -1806,8 +1685,7 @@ declare module "@stencil/core" {
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
-            "cat-select-remote": LocalJSX.CatSelectRemote & JSXBase.HTMLAttributes<HTMLCatSelectRemoteElement>;
-            "cat-select-remote-test": LocalJSX.CatSelectRemoteTest & JSXBase.HTMLAttributes<HTMLCatSelectRemoteTestElement>;
+            "cat-select-demo": LocalJSX.CatSelectDemo & JSXBase.HTMLAttributes<HTMLCatSelectDemoElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;

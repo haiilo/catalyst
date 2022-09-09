@@ -387,46 +387,6 @@ export class CatScrollable {
 
 export declare interface CatSelect extends Components.CatSelect {
   /**
-   * Emitted when the value is changed. 
-   */
-  catChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the search is triggered. 
-   */
-  catSearch: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when scrolled to the bottom. 
-   */
-  catScrolledBottom: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the select loses focus. 
-   */
-  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
-
-}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined,
-  inputs: ['disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'placeholder', 'position', 'required', 'search', 'value']
-})
-@Component({
-  selector: 'cat-select',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'hint', 'items', 'label', 'labelHidden', 'multiple', 'placeholder', 'position', 'required', 'search', 'value']
-})
-export class CatSelect {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catSearch', 'catScrolledBottom', 'catBlur']);
-  }
-}
-
-
-export declare interface CatSelectRemote extends Components.CatSelectRemote {
-  /**
    * Emitted when the select dropdown is opened. 
    */
   catOpen: EventEmitter<CustomEvent<FocusEvent>>;
@@ -451,12 +411,12 @@ export declare interface CatSelectRemote extends Components.CatSelectRemote {
   methods: ['connect']
 })
 @Component({
-  selector: 'cat-select-remote',
+  selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['clearable', 'debounce', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'value']
 })
-export class CatSelectRemote {
+export class CatSelect {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -466,17 +426,17 @@ export class CatSelectRemote {
 }
 
 
-export declare interface CatSelectRemoteTest extends Components.CatSelectRemoteTest {}
+export declare interface CatSelectDemo extends Components.CatSelectDemo {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined
 })
 @Component({
-  selector: 'cat-select-remote-test',
+  selector: 'cat-select-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>'
 })
-export class CatSelectRemoteTest {
+export class CatSelectDemo {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

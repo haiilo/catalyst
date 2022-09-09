@@ -9,6 +9,12 @@
   .input-hint,
   ::slotted([slot='hint']) {
     @include cat-body('s');
-    margin: 0;
+    margin: 0 !important;
+  }
+}
+
+:host-context(.cat-error) {
+  .hint-section {
+    color: cat-token('color.theme.danger.text');
   }
 }

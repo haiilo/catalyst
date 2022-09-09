@@ -1,9 +1,34 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+
+// -----
+
+$-background-colors: (
+  'primary': cat-token('color.theme.primary.bg', 0.1),
+  'secondary': cat-token('color.theme.secondary.bg', 0.1),
+  'success': cat-token('color.theme.success.bg', 0.1),
+  'warning': cat-token('color.theme.warning.bg', 0.1),
+  'danger': cat-token('color.theme.danger.bg', 0.1)
+);
+$-icon-colors: (
+  'primary': cat-token('color.base.brand.400'),
+  'secondary': cat-token('color.base.neutral.400'),
+  'success': cat-token('color.base.green.400'),
+  'warning': cat-token('color.base.orange.400'),
+  'danger': cat-token('color.base.red.400')
+);
+
+// -----
 
 :host {
   display: block;
+  border-radius: cat-border-radius('l');
   margin-bottom: $cat-body-margin-bottom;
+}
+
+:host([hidden]) {
+  display: none;
 }
 
 :host(:focus-visible) {
@@ -11,18 +36,12 @@
   outline-offset: 1px;
 }
 
-:host([hidden]) {
-  display: none;
-}
-
 .alert {
   font: inherit;
-  background-color: cat-token-wrap(var(--bg), $alpha: 0.1);
-  border-radius: cat-border-radius('l');
-  padding: 1.25rem;
   display: flex;
-  flex-direction: row;
   gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: cat-border-radius('l');
 }
 
 .content {
@@ -37,10 +56,10 @@
 
 @mixin theme($theme) {
   .alert-#{$theme} {
-    --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+    background-color: map.get($-background-colors, $theme);
 
     cat-icon {
-      color: cat-token('color.ui.font.alert.#{$theme}');
+      color: map.get($-icon-colors, $theme);
     }
   }
 }

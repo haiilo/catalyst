@@ -47,7 +47,7 @@ input {
   width: $toggle-width;
   height: $toggle-height;
   border-radius: 10rem;
-  background-color: cat-token('color.ui.border.input');
+  background-color: cat-token('color.ui.border.dark');
   transition: background-color cat-token('time.transition.s') ease;
   pointer-events: none;
 
@@ -73,6 +73,21 @@ input {
 
     :checked + & {
       transform: translateX(calc(-2px + 0.5rem));
+      background: cat-token('color.theme.primary.fill');
+    }
+  }
+}
+
+:host(.cat-error) {
+  .toggle {
+    background-color: cat-token('color.theme.danger.bg', 0.2);
+  }
+
+  :checked + .toggle {
+    background-color: cat-token('color.theme.danger.bg');
+
+    &::after {
+      background: cat-token('color.theme.danger.fill');
     }
   }
 }

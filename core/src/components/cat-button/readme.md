@@ -66,7 +66,6 @@ Type: `Promise<void>`
  - [cat-input](../cat-input)
  - [cat-modal](../cat-modal)
  - [cat-select](../cat-select)
- - [cat-select-remote](../cat-select-remote)
  - [cat-tabs](../cat-tabs)
  - [cat-toast-demo](../cat-toast-demo)
 
@@ -83,7 +82,6 @@ graph TD;
   cat-input --> cat-button
   cat-modal --> cat-button
   cat-select --> cat-button
-  cat-select-remote --> cat-button
   cat-tabs --> cat-button
   cat-toast-demo --> cat-button
   style cat-button fill:#f9f,stroke:#333,stroke-width:4px

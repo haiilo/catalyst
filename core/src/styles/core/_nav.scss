@@ -13,7 +13,7 @@ nav {
     padding: $cat-nav-padding-horizontal * 0.5 $cat-nav-padding-horizontal;
 
     > :last-child {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
   }
 

@@ -33,7 +33,7 @@
 
 ### Used by
 
- - [cat-select-remote](../cat-select-remote)
+ - [cat-select](../cat-select)
 
 ### Depends on
 
@@ -43,7 +43,7 @@
 ```mermaid
 graph TD;
   cat-avatar --> cat-icon
-  cat-select-remote --> cat-avatar
+  cat-select --> cat-avatar
   style cat-avatar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

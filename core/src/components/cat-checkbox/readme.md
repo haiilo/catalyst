@@ -63,12 +63,12 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [cat-select-remote](../cat-select-remote)
+ - [cat-select](../cat-select)
 
 ### Graph
 ```mermaid
 graph TD;
-  cat-select-remote --> cat-checkbox
+  cat-select --> cat-checkbox
   style cat-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
