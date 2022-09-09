@@ -23,23 +23,13 @@
 
     CatIconRegistry.getInstance().addIcons(ci);
     CatI18nRegistry.getInstance().register('en', {
-        'input.clear': 'Clear',
-        'input.optional': 'Optional',
-        'select.addItem': 'Add item',
-        'select.customAddItem': 'Custom add item',
-        'select.loading': 'Loading',
-        'select.noResults': 'No results',
-        'select.noChoices': 'No choices',
-        'select.removeItem': 'Remove item',
-        'select.searchPlaceholder': 'Search',
-        'select.selectItem': 'Select item',
-        'select.uniqueItem': 'Unique item',
-        'select.open': 'Open',
-        'select.close': 'Close',
-        'select.clear': 'Clear',
-        'select.deselect': 'Deselect',
-        'select.empty': 'No items'
-      });
+      'input.clear': 'Clear',
+      'input.optional': 'Optional',
+      'select.close': 'Close',
+      'select.deselect': 'Deselect',
+      'select.empty': 'No items',
+      'select.open': 'Open'
+    });
   `;
 
   doc.head.appendChild(scriptMap);

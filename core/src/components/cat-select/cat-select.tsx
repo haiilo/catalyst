@@ -445,7 +445,7 @@ export class CatSelect {
               icon="cross-circle-outlined"
               variant="text"
               size="s"
-              a11yLabel={this.i18n.t('select.clear')}
+              a11yLabel={this.i18n.t('input.clear')}
               onClick={() => this.clear()}
             ></cat-button>
           ) : null}

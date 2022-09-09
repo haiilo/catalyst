@@ -47,7 +47,6 @@
     "@stencil/core": "2.17.0",
     "autosize": "5.0.1",
     "autosize-input": "^1.0.2",
-    "choices.js": "10.1.0",
     "focus-trap": "7.0.0",
     "loglevel": "1.8.0",
     "sanitize.css": "13.0.0",
