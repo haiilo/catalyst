@@ -466,17 +466,17 @@ export class CatSelectRemote {
 }
 
 
-export declare interface CatSelectRemoteTest extends Components.CatSelectRemoteTest {}
+export declare interface CatSelectRemoteDemo extends Components.CatSelectRemoteDemo {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined
 })
 @Component({
-  selector: 'cat-select-remote-test',
+  selector: 'cat-select-remote-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>'
 })
-export class CatSelectRemoteTest {
+export class CatSelectRemoteDemo {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

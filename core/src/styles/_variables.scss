@@ -1,22 +1,13 @@
 @use 'variables.tokens' as *;
 @forward 'variables.tokens';
 
-// DEPRECATED - DO NOT ADD CODE HERE
-
 // --------
-// -- Composits
+// -- Spacings
 // --------
 
 $cat-head-margin-bottom: cat-token('size.spacing.s');
 $cat-body-margin-bottom: cat-token('size.spacing.m');
 $cat-nav-padding-horizontal: 1.25rem;
-
-// --------
-// -- z-indexes
-// --------
-
-$cat-menu-z-index: 100;
-$cat-tooltip-z-index: 200;
 
 // --------
 // -- Typography
@@ -33,11 +24,11 @@ $cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
 /* stylelint-enable value-keyword-case */
 
 // --------
-// -- Scrollable
+// -- z-indexes
 // --------
 
-$cat-scrollable-shadow: 0 0 4px 1px rgba(16, 29, 48, 20%);
-$cat-scrollable-shadow-transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$cat-menu-z-index: 100;
+$cat-tooltip-z-index: 200;
 
 // --------
 // -- Elevations

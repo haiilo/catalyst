@@ -48,7 +48,7 @@ input {
   height: 1.25rem;
   appearance: none;
   background-color: cat-token('color.ui.background.input');
-  border: 1px solid cat-token('color.ui.border.input');
+  border: 1px solid cat-token('color.ui.border.dark');
   border-radius: 10rem;
   cursor: inherit;
 
@@ -82,11 +82,11 @@ input {
     background-color: cat-token('color.ui.background.inputDisabled');
 
     &:checked {
-      border-color: cat-token('color.ui.border.input');
+      border-color: cat-token('color.ui.border.dark');
     }
   }
 
   .circle {
-    background-color: cat-token('color.ui.border.input');
+    background-color: cat-token('color.ui.border.dark');
   }
 }

@@ -47,7 +47,7 @@ input {
   width: $toggle-width;
   height: $toggle-height;
   border-radius: 10rem;
-  background-color: cat-token('color.ui.border.input');
+  background-color: cat-token('color.ui.border.dark');
   transition: background-color cat-token('time.transition.s') ease;
   pointer-events: none;
 

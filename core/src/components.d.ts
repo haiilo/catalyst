@@ -531,7 +531,7 @@ export namespace Components {
          */
         "value"?: string | string[];
     }
-    interface CatSelectRemoteTest {
+    interface CatSelectRemoteDemo {
     }
     interface CatSkeleton {
         /**
@@ -867,11 +867,11 @@ declare global {
         prototype: HTMLCatSelectRemoteElement;
         new (): HTMLCatSelectRemoteElement;
     };
-    interface HTMLCatSelectRemoteTestElement extends Components.CatSelectRemoteTest, HTMLStencilElement {
+    interface HTMLCatSelectRemoteDemoElement extends Components.CatSelectRemoteDemo, HTMLStencilElement {
     }
-    var HTMLCatSelectRemoteTestElement: {
-        prototype: HTMLCatSelectRemoteTestElement;
-        new (): HTMLCatSelectRemoteTestElement;
+    var HTMLCatSelectRemoteDemoElement: {
+        prototype: HTMLCatSelectRemoteDemoElement;
+        new (): HTMLCatSelectRemoteDemoElement;
     };
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
@@ -937,7 +937,7 @@ declare global {
         "cat-scrollable": HTMLCatScrollableElement;
         "cat-select": HTMLCatSelectElement;
         "cat-select-remote": HTMLCatSelectRemoteElement;
-        "cat-select-remote-test": HTMLCatSelectRemoteTestElement;
+        "cat-select-remote-demo": HTMLCatSelectRemoteDemoElement;
         "cat-skeleton": HTMLCatSkeletonElement;
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
@@ -1547,7 +1547,7 @@ declare namespace LocalJSX {
          */
         "value"?: string | string[];
     }
-    interface CatSelectRemoteTest {
+    interface CatSelectRemoteDemo {
     }
     interface CatSkeleton {
         /**
@@ -1777,7 +1777,7 @@ declare namespace LocalJSX {
         "cat-scrollable": CatScrollable;
         "cat-select": CatSelect;
         "cat-select-remote": CatSelectRemote;
-        "cat-select-remote-test": CatSelectRemoteTest;
+        "cat-select-remote-demo": CatSelectRemoteDemo;
         "cat-skeleton": CatSkeleton;
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
@@ -1807,7 +1807,7 @@ declare module "@stencil/core" {
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-select-remote": LocalJSX.CatSelectRemote & JSXBase.HTMLAttributes<HTMLCatSelectRemoteElement>;
-            "cat-select-remote-test": LocalJSX.CatSelectRemoteTest & JSXBase.HTMLAttributes<HTMLCatSelectRemoteTestElement>;
+            "cat-select-remote-demo": LocalJSX.CatSelectRemoteDemo & JSXBase.HTMLAttributes<HTMLCatSelectRemoteDemoElement>;
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;

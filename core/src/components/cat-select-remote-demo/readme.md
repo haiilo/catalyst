@@ -14,7 +14,7 @@
 ### Graph
 ```mermaid
 graph TD;
-  cat-select-remote-test --> cat-select-remote
+  cat-select-remote-demo --> cat-select-remote
   cat-select-remote --> cat-avatar
   cat-select-remote --> cat-button
   cat-select-remote --> cat-spinner
@@ -24,7 +24,7 @@ graph TD;
   cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-button --> cat-spinner
-  style cat-select-remote-test fill:#f9f,stroke:#333,stroke-width:4px
+  style cat-select-remote-demo fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

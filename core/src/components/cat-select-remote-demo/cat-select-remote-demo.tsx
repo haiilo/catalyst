@@ -15,7 +15,7 @@ interface Country {
 }
 
 @Component({
-  tag: 'cat-select-remote-test',
+  tag: 'cat-select-remote-demo',
   shadow: true
 })
 export class CatSelectRemoteTest {

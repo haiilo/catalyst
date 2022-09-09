@@ -4,7 +4,7 @@
 :host {
   display: flex;
   flex-direction: row;
-  box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.tabs');
+  box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.dark');
 }
 
 :host([hidden]) {
@@ -29,6 +29,6 @@
   padding: 0.5rem;
 
   &.tab-active {
-    box-shadow: inset 0 -3px 0 0 cat-token('color.ui.border.activeTab');
+    box-shadow: inset 0 -3px 0 0 cat-token('color.theme.primary.bg');
   }
 }

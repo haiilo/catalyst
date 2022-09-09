@@ -65,7 +65,7 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [cat-select-remote-test](../cat-select-remote-test)
+ - [cat-select-remote-demo](../cat-select-remote-demo)
 
 ### Depends on
 
@@ -88,7 +88,7 @@ graph TD;
   cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-button --> cat-spinner
-  cat-select-remote-test --> cat-select-remote
+  cat-select-remote-demo --> cat-select-remote
   style cat-select-remote fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

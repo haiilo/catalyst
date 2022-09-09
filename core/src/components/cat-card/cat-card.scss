@@ -20,7 +20,7 @@ $-padding: 1.25rem;
 }
 
 ::slotted(:last-child) {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 // --- pull out helper classes

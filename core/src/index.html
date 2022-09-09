@@ -35,6 +35,57 @@
     <script nomodule src="/build/catalyst.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-scrollspy@2.2.0/dist/vanillajs-scrollspy.min.js"></script>
     <link rel="stylesheet" href="/build/catalyst.css" />
+    <style>
+      .wrapper {
+        width: 48rem;
+        margin: 8rem auto;
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 8rem;
+      }
+
+      .content {
+        flex: 3 0 0;
+        min-width: 0;
+      }
+
+      #nav {
+        align-self: flex-start;
+        position: sticky;
+        top: 8rem;
+        flex: 1 0 0;
+        min-width: 0;
+      }
+
+      #nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      #nav .active {
+        font-weight: bold;
+      }
+
+      section {
+        flex: 0 1 auto;
+        padding: 2rem 0;
+      }
+
+      section:not(:last-of-type) {
+        border-bottom: 1px solid rgba(0, 0, 0, 10%);
+      }
+
+      section > h2:not(:first-child),
+      section > h3:not(:first-child) {
+        margin-top: 2rem;
+      }
+
+      section > h2:not(:last-child),
+      section > h3:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -548,7 +599,7 @@
 
         <section id="selectremote">
           <h2>Select (remote)</h2>
-          <cat-select-remote-test></cat-select-remote-test>
+          <cat-select-remote-demo></cat-select-remote-demo>
         </section>
 
         <section id="skeleton">

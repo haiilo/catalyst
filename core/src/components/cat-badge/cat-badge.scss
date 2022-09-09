@@ -2,8 +2,27 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
+// -----
+
+$-sizes: (
+  'xl': 3rem,
+  'l': 2.5rem,
+  'm': 2rem,
+  's': 1.5rem,
+  'xs': 1rem
+);
+$-paddings: (
+  'xl': 0 1rem,
+  'l': 0 1rem,
+  'm': 0 0.75rem,
+  's': 0 0.5rem,
+  'xs': 0 0.25rem
+);
+
+// -----
+
 :host {
-  display: inline-flex;
+  display: inline-block;
   max-width: 100%;
   vertical-align: baseline;
 }
@@ -14,16 +33,14 @@
 
 .badge {
   font: inherit;
-  flex: 1 1 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: cat-border-radius('s');
   text-decoration: none;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
   line-height: 1;
-  white-space: nowrap;
 
   slot {
     display: inline-block;
@@ -77,18 +94,18 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 
 @mixin size($size, $fontSize) {
   .badge-#{$size} {
-    height: cat-token('size.badge.height.#{$size}');
-    min-width: cat-token('size.badge.height.#{$size}');
-    font-size: cat-token('size.badge.font.#{$size}');
-    padding: 0 cat-token('size.badge.padding.horizontal.#{$size}');
+    height: map.get($-sizes, $size);
+    min-width: map.get($-sizes, $size);
+    font-size: cat-body-font-size($fontSize);
+    padding: map.get($-paddings, $size);
   }
 }
 
 @include size('xs', 'xs');
-@include size('s', 's');
-@include size('m', 'm');
-@include size('l', 'l');
-@include size('xl', 'xl');
+@include size('s', 'xs');
+@include size('m', 's');
+@include size('l', 'm');
+@include size('xl', 'l');
 
 // ----- pulse
 

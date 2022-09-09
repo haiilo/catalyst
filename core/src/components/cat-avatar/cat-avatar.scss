@@ -2,13 +2,19 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-$avatar-sizes: (
+// -----
+
+$-background-color: cat-token('color.base.neutral.400');
+$-color: cat-token('color.base.neutral.0');
+$-sizes: (
   'xl': 3.5rem,
   'l': 3rem,
   'm': 2.5rem,
   's': 2rem,
   'xs': 1.5rem
 );
+
+// -----
 
 :host {
   /**
@@ -32,8 +38,8 @@ $avatar-sizes: (
   justify-content: center;
   border-radius: cat-border-radius('m');
   text-decoration: inherit;
-  color: var(--cat-avatar-fill, cat-token('color.ui.font.avatar'));
-  background-color: var(--cat-avatar-bg, cat-token('color.ui.background.avatar'));
+  color: var(--cat-avatar-fill, $-color);
+  background-color: var(--cat-avatar-bg, $-background-color);
   background-size: cover;
   background-position: center;
   white-space: nowrap;
@@ -53,9 +59,9 @@ $avatar-sizes: (
 
 @mixin size($size, $fontSize) {
   .avatar-#{$size} {
-    width: var(--cat-avatar-size, map.get($avatar-sizes, $size));
-    height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
-    line-height: var(--cat-avatar-size, map.get($avatar-sizes, $size));
+    width: var(--cat-avatar-size, map.get($-sizes, $size));
+    height: var(--cat-avatar-size, map.get($-sizes, $size));
+    line-height: var(--cat-avatar-size, map.get($-sizes, $size));
     font-size: var(--cat-avatar-font-size, cat-body-font-size($fontSize));
   }
 }

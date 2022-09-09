@@ -33,12 +33,12 @@ label {
   align-items: flex-start;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
-  box-shadow: 0 0 0 1px cat-token('color.ui.border.input');
+  box-shadow: 0 0 0 1px cat-token('color.ui.border.dark');
   transition: box-shadow cat-token('time.transition.s') linear;
   padding: 0.25rem;
 
   &:not(.select-disabled):hover {
-    box-shadow: 0 0 0 2px cat-token('color.ui.border.input');
+    box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
   }
 
   &:not(.select-disabled):focus-within {

@@ -209,7 +209,7 @@ export const CatSelectRemote = /*@__PURE__*/ defineContainer<JSX.CatSelectRemote
 ]);
 
 
-export const CatSelectRemoteTest = /*@__PURE__*/ defineContainer<JSX.CatSelectRemoteTest>('cat-select-remote-test', undefined);
+export const CatSelectRemoteDemo = /*@__PURE__*/ defineContainer<JSX.CatSelectRemoteDemo>('cat-select-remote-demo', undefined);
 
 
 export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-skeleton', undefined, [
