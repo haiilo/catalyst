@@ -60,6 +60,7 @@ label {
   background: cat-token('color.ui.background.inputDisabled');
   cursor: not-allowed;
   color: cat-token('color.ui.font.muted');
+  pointer-events: none;
 }
 
 .select-wrapper-inner {
