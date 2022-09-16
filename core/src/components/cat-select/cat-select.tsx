@@ -670,6 +670,9 @@ export class CatSelect {
   }
 
   private onClick(event: MouseEvent) {
+    if (this.disabled) {
+      return;
+    }
     const elem = event.target as Element;
     this.trigger?.setAttribute('tabindex', '0');
     this.input?.focus();
