@@ -49,6 +49,7 @@ input {
   border-radius: 10rem;
   background-color: cat-token('color.ui.border.dark');
   transition: background-color cat-token('time.transition.s') ease;
+  pointer-events: none;
 
   :checked + & {
     background-color: cat-token('color.theme.primary.bg');
