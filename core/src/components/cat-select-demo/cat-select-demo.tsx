@@ -13,7 +13,7 @@ interface Country {
   country: string;
   capital?: string;
 }
-
+let tagId = 0;
 @Component({
   tag: 'cat-select-demo',
   shadow: true
@@ -25,7 +25,7 @@ export class CatSelectTest {
   private singleSelectAvatar?: HTMLCatSelectElement;
 
   componentDidLoad(): void {
-    this.multipleSelect?.connect({
+    this.singleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
@@ -93,7 +93,7 @@ export class CatSelectTest {
         }
       })
     });
-    this.singleSelect?.connect({
+    this.multipleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
         return of(ids.map(id => countries.find(value => value.id === id))).pipe(delay(500));
@@ -115,7 +115,13 @@ export class CatSelectTest {
       render: (country: Country) => ({
         label: country.country,
         description: country.capital || 'No capital'
-      })
+      }),
+      createTag: (term: string): Country => {
+        return {
+          id: `tag-id-${tagId++}`,
+          country: term
+        };
+      }
     });
     this.singleSelectAvatar?.connect({
       resolve: (ids: string[]) => {
@@ -159,6 +165,7 @@ export class CatSelectTest {
           onCatChange={e => console.log('Multiple', e)}
           onCatBlur={e => console.log('Multiple blur', e)}
           multiple
+          tags
           clearable
         >
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>

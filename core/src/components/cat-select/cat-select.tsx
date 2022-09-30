@@ -51,6 +51,7 @@ export interface CatSelectConnector<T extends Item = any> {
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
+  createTag?: (term: string) => T;
 }
 
 export interface CatSelectState {
@@ -174,6 +175,8 @@ export class CatSelect {
    */
   @Prop() clearable = false;
 
+  @Prop() tags = false;
+
   @Watch('connector')
   onConnectorChange(connector: CatSelectConnector) {
     this.reset(connector);
@@ -256,13 +259,17 @@ export class CatSelect {
 
     if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       this.onArrowKeyDown(event);
-    } else if (['Enter', ' '].includes(event.key)) {
-      if (isInputFocused && this.state.activeOptionIndex >= 0) {
+    } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
+      if (this.state.activeOptionIndex >= 0) {
         event.preventDefault();
         if (this.multiple) {
           this.toggle(this.state.options[this.state.activeOptionIndex]);
         } else {
           this.select(this.state.options[this.state.activeOptionIndex]);
+        }
+      } else if (event.key === 'Enter' && this.tags && this.state.activeOptionIndex < 0) {
+        if (this.state.term.trim().length && !this.isAlreadyCreated(this.state.term)) {
+          this.createTag(this.state.term);
         }
       }
     } else if (event.key === 'Escape') {
@@ -486,6 +493,14 @@ export class CatSelect {
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
+                {this.tags && this.state.term.trim().length && !this.isAlreadyCreated(this.state.term) ? (
+                  <li class="select-option-tag">
+                    <span class="select-option-text">
+                      <span class="select-option-label">{this.state.term}</span>
+                    </span>
+                  </li>
+                ) : null}
+
                 {this.state.options.map((item, i) => (
                   <li
                     role="option"
@@ -771,5 +786,20 @@ export class CatSelect {
       event.preventDefault();
       event.stopPropagation();
     }
+  }
+
+  private isAlreadyCreated(term: string) {
+    return (
+      this.state.options.findIndex(value1 => value1.render.label.toLowerCase() === term.toLowerCase()) >= 0 ||
+      this.state.selection.findIndex(value1 => value1.render.label.toLowerCase() === term.toLowerCase()) >= 0
+    );
+  }
+
+  private createTag(term: string) {
+    if (this.multiple)
+      if (this.connectorSafe.createTag) {
+        const selection = this.connectorSafe.createTag(term);
+        this.select({ item: selection, render: this.connectorSafe.render(selection) });
+      }
   }
 }

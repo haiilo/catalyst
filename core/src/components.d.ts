@@ -479,6 +479,7 @@ export namespace Components {
           * A value is required or must be checked for the form to be submittable.
          */
         "required": boolean;
+        "tags": boolean;
         /**
           * The value of the select.
          */
@@ -1422,6 +1423,7 @@ declare namespace LocalJSX {
           * A value is required or must be checked for the form to be submittable.
          */
         "required"?: boolean;
+        "tags"?: boolean;
         /**
           * The value of the select.
          */
