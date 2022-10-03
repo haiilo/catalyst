@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
-import { CatSelectConnector, Item } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
     interface CatAlert {
@@ -479,11 +479,18 @@ export namespace Components {
           * A value is required or must be checked for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Optional hint text to be displayed on the new item to be added.
+         */
+        "tagHint"?: string;
+        /**
+          * Whether the select should add new items.
+         */
         "tags": boolean;
         /**
           * The value of the select.
          */
-        "value"?: string | string[];
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }
@@ -1423,11 +1430,18 @@ declare namespace LocalJSX {
           * A value is required or must be checked for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * Optional hint text to be displayed on the new item to be added.
+         */
+        "tagHint"?: string;
+        /**
+          * Whether the select should add new items.
+         */
         "tags"?: boolean;
         /**
           * The value of the select.
          */
-        "value"?: string | string[];
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }

@@ -51,7 +51,6 @@ export interface CatSelectConnector<T extends Item = any> {
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
-  createTag?: (term: string) => T;
 }
 
 export interface CatSelectState {
@@ -64,6 +63,11 @@ export interface CatSelectState {
   activeOptionIndex: number;
   activeSelectionIndex: number;
   totalElements?: number;
+}
+
+export interface CatSelectValue {
+  ids?: string | string[];
+  tags?: string | string[];
 }
 
 const INIT_STATE: CatSelectState = {
@@ -133,7 +137,7 @@ export class CatSelect {
   /**
    * The value of the select.
    */
-  @Prop({ mutable: true }) value?: string | string[];
+  @Prop({ mutable: true }) value?: CatSelectValue;
 
   /**
    * Whether the select is disabled.
@@ -175,7 +179,15 @@ export class CatSelect {
    */
   @Prop() clearable = false;
 
+  /**
+   * Whether the select should add new items.
+   */
   @Prop() tags = false;
+
+  /**
+   * Optional hint text to be displayed on the new item to be added.
+   */
+  @Prop() tagHint?: string;
 
   @Watch('connector')
   onConnectorChange(connector: CatSelectConnector) {
@@ -197,11 +209,16 @@ export class CatSelect {
       if (!this.multiple && this.state.selection.length) {
         this.hide();
       }
-      const idsSelected = this.state.selection.map(item => item.item.id);
+      const ids = this.state.selection
+        .filter(item => !item.item.id.startsWith(`select-${this.id}-tag`))
+        .map(item => item.item.id);
+      const tags = this.state.selection
+        .filter(item => item.item.id.startsWith(`select-${this.id}-tag`))
+        .map(item => item.render.label);
       if (this.multiple) {
-        this.value = idsSelected;
+        this.value = { ids, tags };
       } else {
-        this.value = idsSelected.length ? idsSelected[0] : '';
+        this.value = ids.length ? {ids: ids[0]} : tags.length ? {tags: tags[0]} : {};
       }
       this.catChange.emit();
     }
@@ -493,14 +510,13 @@ export class CatSelect {
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
-                {this.tags && this.state.term.trim().length && !this.isAlreadyCreated(this.state.term) ? (
+                {this.tags && this.state.term.trim().length ? (
                   <li class="select-option-tag">
                     <span class="select-option-text">
-                      <span class="select-option-label">{this.state.term}</span>
+                      <span class="select-option-label">{this.state.term + this.tagTextHelp}</span>
                     </span>
                   </li>
                 ) : null}
-
                 {this.state.options.map((item, i) => (
                   <li
                     role="option"
@@ -569,7 +585,8 @@ export class CatSelect {
                         <cat-skeleton variant="body" lines={1}></cat-skeleton>
                       </li>
                     ))
-                  : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+                  : (!this.state.options.length &&
+                    !this.tags) && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
               </ul>
             </cat-scrollable>
           )}
@@ -596,20 +613,35 @@ export class CatSelect {
 
   private resolve() {
     this.patchState({ isResolving: true });
-    let ids;
+    let ids: string[] = [];
+    let tags: string[];
     if (this.multiple) {
-      ids = this.value as string[];
-    } else {
-      ids = [this.value as string];
+      ids = this.value?.ids as string[];
+    } else if (this.value?.ids) {
+      ids = [this.value?.ids as string];
     }
-    const data$ = this.value?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
-    data$.pipe(catchError(() => of([]))).subscribe(items =>
+    if (this.tags) {
+      if (this.multiple) {
+        tags = this.value?.tags as string[];
+      } else if (this.value?.tags) {
+        tags = [this.value?.tags as string];
+      }
+    }
+    const data$ = ids?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+    data$.pipe(catchError(() => of([]))).subscribe(items => {
+      const selection = items.length ? items?.map(item => ({ item, render: this.connectorSafe.render(item) })) : [];
+      if (this.tags) {
+        tags?.forEach((tag, index) => {
+          const item = { id: `select-${this.id}-tag-${index}`, name: tag };
+          selection.push({ item, render: { label: item.name } });
+        });
+      }
       this.patchState({
         isResolving: false,
-        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })),
-        term: !this.multiple && items.length ? this.connectorSafe.render(items[0]).label : ''
-      })
-    );
+        selection,
+        term: !this.multiple && selection.length ? selection[0].render.label : ''
+      });
+    });
   }
 
   private show() {
@@ -702,7 +734,7 @@ export class CatSelect {
   }
 
   private onInput() {
-    this.search(this.input?.value || '');
+    this.search(this.input?.value.trim() || '');
     this.show();
   }
 
@@ -788,6 +820,10 @@ export class CatSelect {
     }
   }
 
+  private get tagTextHelp() {
+    return this.tagHint && !this.isAlreadyCreated(this.state.term) ? ' (' + this.tagHint + ')' : '';
+  }
+
   private isAlreadyCreated(term: string) {
     return (
       this.state.options.findIndex(value1 => value1.render.label.toLowerCase() === term.toLowerCase()) >= 0 ||
@@ -796,10 +832,8 @@ export class CatSelect {
   }
 
   private createTag(term: string) {
-    if (this.multiple)
-      if (this.connectorSafe.createTag) {
-        const selection = this.connectorSafe.createTag(term);
-        this.select({ item: selection, render: this.connectorSafe.render(selection) });
-      }
+    const tags = this.value?.tags;
+    const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
+    this.select({ item: tag, render: { label: tag.name } });
   }
 }
