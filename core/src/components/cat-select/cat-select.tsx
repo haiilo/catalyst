@@ -510,7 +510,12 @@ export class CatSelect {
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
-                {this.tags && this.state.term.trim().length ? (
+                {this.tags &&
+                !this.state.isLoading &&
+                this.state.term.trim().length &&
+                !this.state.options.find(
+                  option => option.render.label.toLowerCase() === this.state.term.toLowerCase()
+                ) ? (
                   <li class="select-option-tag">
                     <span class="select-option-text">
                       <span class="select-option-label">{this.state.term + this.tagTextHelp}</span>
@@ -826,8 +831,8 @@ export class CatSelect {
 
   private isAlreadyCreated(term: string) {
     return (
-      this.state.options.findIndex(value1 => value1.render.label.toLowerCase() === term.toLowerCase()) >= 0 ||
-      this.state.selection.findIndex(value1 => value1.render.label.toLowerCase() === term.toLowerCase()) >= 0
+      this.state.options.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0 ||
+      this.state.selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0
     );
   }
 
