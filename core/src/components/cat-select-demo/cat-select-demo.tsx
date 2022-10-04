@@ -43,15 +43,15 @@ export class CatSelectTest {
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
-            last: false,
-            totalElements: 10000,
-            content: Array.from({ length: 10 }, (_, i) => ({
-              id: '' + (i + page * 10),
-              firstName: 'John',
-              lastName: `Doe (${i + page * 10})`,
-              desc: `"${term}": page ${page}`
-            }))
-          }).pipe(delay(500));
+              last: false,
+              totalElements: 10000,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
@@ -112,15 +112,15 @@ export class CatSelectTest {
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
-            last: false,
-            totalElements: 10000,
-            content: Array.from({ length: 10 }, (_, i) => ({
-              id: '' + (i + page * 10),
-              firstName: 'John',
-              lastName: `Doe (${i + page * 10})`,
-              desc: `"${term}": page ${page}`
-            }))
-          }).pipe(delay(500));
+              last: false,
+              totalElements: 10000,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
       },
       render: (user: User) => ({
         label: `${user.firstName} ${user.lastName}`,
@@ -164,8 +164,7 @@ export class CatSelectTest {
           multiple
           tags
           clearable
-        >
-        </cat-select>
+        ></cat-select>
         <cat-select
           label="Single Select"
           hint="This is a hint!"
@@ -224,7 +223,7 @@ export class CatSelectTest {
           round: true
         }
       })
-    }
+    };
   }
 }
 

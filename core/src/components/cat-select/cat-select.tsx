@@ -218,7 +218,7 @@ export class CatSelect {
       if (this.multiple) {
         this.value = { ids, tags };
       } else {
-        this.value = ids.length ? {ids: ids[0]} : tags.length ? {tags: tags[0]} : {};
+        this.value = ids.length ? { ids: ids[0] } : tags.length ? { tags: tags[0] } : {};
       }
       this.catChange.emit();
     }
@@ -585,8 +585,8 @@ export class CatSelect {
                         <cat-skeleton variant="body" lines={1}></cat-skeleton>
                       </li>
                     ))
-                  : (!this.state.options.length &&
-                    !this.tags) && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+                  : !this.state.options.length &&
+                    !this.tags && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
               </ul>
             </cat-scrollable>
           )}
