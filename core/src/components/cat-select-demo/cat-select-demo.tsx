@@ -138,7 +138,7 @@ export class CatSelectTest {
           label="Multiple Select"
           hint="This is a hint!"
           ref={el => (this.multipleSelect = el)}
-          value={{ ids: ['1'] }}
+          value={['1']}
           placeholder="Hello World"
           onCatBlur={e => console.log('Multiple blur', e)}
           multiple
@@ -149,7 +149,7 @@ export class CatSelectTest {
         <cat-select
           label="Multiple with img"
           ref={el => (this.multipleSelectAvatar = el)}
-          value={{ ids: ['1'] }}
+          value={['1']}
           placeholder="Hello World"
           multiple
           clearable
@@ -158,7 +158,7 @@ export class CatSelectTest {
           label="Multiple with tagging support"
           hint="This is a hint!"
           ref={el => (this.multipleSelectTagging = el)}
-          value={{ tags: ['Test'] }}
+          value={{ ids: ['1'], tags: ['Test'] }}
           placeholder="Select country"
           onCatChange={() => console.log(this.multipleSelectTagging?.value)}
           multiple
@@ -169,16 +169,15 @@ export class CatSelectTest {
           label="Single Select"
           hint="This is a hint!"
           ref={el => (this.singleSelect = el)}
-          value={{ ids: '1' }}
+          value={'1'}
           placeholder="Search for a country or capital"
-          onCatChange={e => console.log('Single', e)}
           onCatBlur={e => console.log('Single blur', e)}
           clearable
         ></cat-select>
         <cat-select
           label="Single with img"
           ref={el => (this.singleSelectAvatar = el)}
-          value={{ ids: '1' }}
+          value={'1'}
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>

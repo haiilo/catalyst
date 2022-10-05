@@ -137,7 +137,7 @@ export class CatSelect {
   /**
    * The value of the select.
    */
-  @Prop({ mutable: true }) value?: CatSelectValue;
+  @Prop({ mutable: true }) value?: string | string[] | CatSelectValue;
 
   /**
    * Whether the select is disabled.
@@ -209,16 +209,23 @@ export class CatSelect {
       if (!this.multiple && this.state.selection.length) {
         this.hide();
       }
-      const ids = this.state.selection
-        .filter(item => !item.item.id.startsWith(`select-${this.id}-tag`))
-        .map(item => item.item.id);
-      const tags = this.state.selection
-        .filter(item => item.item.id.startsWith(`select-${this.id}-tag`))
-        .map(item => item.render.label);
-      if (this.multiple) {
-        this.value = { ids, tags };
+      const idsSelected = this.state.selection.map(item => item.item.id);
+      if (!this.tags) {
+        if (this.multiple) {
+          this.value = idsSelected;
+        } else {
+          this.value = idsSelected.length ? idsSelected[0] : '';
+        }
       } else {
-        this.value = ids.length ? { ids: ids[0] } : tags.length ? { tags: tags[0] } : {};
+        const ids = idsSelected.filter(id => !id.startsWith(`select-${this.id}-tag`));
+        const tags = this.state.selection
+          .filter(item => item.item.id.startsWith(`select-${this.id}-tag`))
+          .map(item => item.render.label);
+        if (this.multiple) {
+          this.value = { ids, tags };
+        } else {
+          this.value = ids.length ? { ids: ids[0] } : tags.length ? { tags: tags[0] } : {};
+        }
       }
       this.catChange.emit();
     }
@@ -657,16 +664,21 @@ export class CatSelect {
     this.patchState({ isResolving: true });
     let ids: string[] = [];
     let tags: string[];
-    if (this.multiple) {
-      ids = this.value?.ids as string[];
-    } else if (this.value?.ids) {
-      ids = [this.value?.ids as string];
-    }
-    if (this.tags) {
+    if (!this.tags) {
       if (this.multiple) {
-        tags = this.value?.tags as string[];
-      } else if (this.value?.tags) {
-        tags = [this.value?.tags as string];
+        ids = this.value as string[];
+      } else if (this.value) {
+        ids = [this.value as string];
+      }
+    } else if (this.value) {
+      const value = this.value as CatSelectValue;
+      if (this.multiple) {
+        ids = value.ids as string[];
+        tags = value.tags as string[];
+      } else if (value.ids) {
+        ids = [value.ids as string];
+      } else if (value.tags) {
+        tags = [value.tags as string];
       }
     }
     const data$ = ids?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
@@ -872,7 +884,8 @@ export class CatSelect {
 
   private createTag(term: string) {
     if (term.trim().length && !this.isAlreadyCreated(term)) {
-      const tags = this.value?.tags;
+      const value = this.value as CatSelectValue;
+      const tags = value?.tags;
       const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
       this.select({ item: tag, render: { label: tag.name } });
     }

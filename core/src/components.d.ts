@@ -490,7 +490,7 @@ export namespace Components {
         /**
           * The value of the select.
          */
-        "value"?: CatSelectValue;
+        "value"?: string | string[] | CatSelectValue;
     }
     interface CatSelectDemo {
     }
@@ -1441,7 +1441,7 @@ declare namespace LocalJSX {
         /**
           * The value of the select.
          */
-        "value"?: CatSelectValue;
+        "value"?: string | string[] | CatSelectValue;
     }
     interface CatSelectDemo {
     }
