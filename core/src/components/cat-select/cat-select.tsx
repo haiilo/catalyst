@@ -263,7 +263,11 @@ export class CatSelect {
   @Listen('blur')
   onBlur(event: FocusEvent): void {
     if (!this.multiple && this.state.activeOptionIndex >= 0) {
-      this.select(this.state.options[this.state.activeOptionIndex]);
+      if (this.tags && this.state.options[this.state.activeOptionIndex].item.id === `select-${this.id}-option-tag`) {
+        this.createTag(this.state.term);
+      } else {
+        this.select(this.state.options[this.state.activeOptionIndex]);
+      }
     }
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
@@ -277,16 +281,19 @@ export class CatSelect {
     if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
-      if (this.state.activeOptionIndex >= 0) {
+      if (
+        (this.tags &&
+          this.state.activeOptionIndex === 0 &&
+          this.state.options[0].item.id === `select-${this.id}-option-tag`) ||
+        (event.key === 'Enter' && this.state.activeOptionIndex < 0)
+      ) {
+        this.createTag(this.state.term);
+      } else if (this.state.activeOptionIndex >= 0) {
         event.preventDefault();
         if (this.multiple) {
           this.toggle(this.state.options[this.state.activeOptionIndex]);
         } else {
           this.select(this.state.options[this.state.activeOptionIndex]);
-        }
-      } else if (event.key === 'Enter' && this.tags && this.state.activeOptionIndex < 0) {
-        if (this.state.term.trim().length && !this.isAlreadyCreated(this.state.term)) {
-          this.createTag(this.state.term);
         }
       }
     } else if (event.key === 'Escape') {
@@ -307,7 +314,11 @@ export class CatSelect {
       if (this.multiple) {
         this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
       } else if (this.state.activeOptionIndex >= 0) {
-        this.select(this.state.options[this.state.activeOptionIndex]);
+        if (this.tags && this.state.options[this.state.activeOptionIndex].item.id === `select-${this.id}-option-tag`) {
+          this.createTag(this.state.term);
+        } else {
+          this.select(this.state.options[this.state.activeOptionIndex]);
+        }
       }
     } else if (event.key.length === 1) {
       this.input?.focus();
@@ -366,14 +377,22 @@ export class CatSelect {
           )
         )
       )
-      .subscribe(items =>
+      .subscribe(items => {
+        const options = items?.map(item => ({
+          item,
+          render: this.connectorSafe.render(item)
+        }));
+        if (
+          this.tags &&
+          this.state.term.trim().length &&
+          !options.find(value1 => value1.render.label.toLowerCase() === this.state.term.toLowerCase())
+        ) {
+          options.unshift({ item: { id: `select-${this.id}-option-tag` }, render: { label: this.state.term } });
+        }
         this.patchState({
-          options: items?.map(item => ({
-            item,
-            render: this.connectorSafe.render(item)
-          }))
-        })
-      );
+          options
+        });
+      });
   }
 
   render() {
@@ -510,79 +529,7 @@ export class CatSelect {
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
-                {this.tags &&
-                !this.state.isLoading &&
-                this.state.term.trim().length &&
-                !this.state.options.find(
-                  option => option.render.label.toLowerCase() === this.state.term.toLowerCase()
-                ) ? (
-                  <li class="select-option-tag">
-                    <span class="select-option-text">
-                      <span class="select-option-label">{this.state.term + this.tagTextHelp}</span>
-                    </span>
-                  </li>
-                ) : null}
-                {this.state.options.map((item, i) => (
-                  <li
-                    role="option"
-                    class="select-option"
-                    id={`select-${this.id}-option-${i}`}
-                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
-                  >
-                    {this.multiple ? (
-                      <cat-checkbox
-                        class={{ 'select-option-active': this.state.activeOptionIndex === i }}
-                        checked={this.isSelected(item.item.id)}
-                        tabIndex={-1}
-                        labelLeft
-                        onFocus={() => this.input?.focus()}
-                        onCatChange={e => {
-                          this.toggle(item);
-                          e.stopPropagation();
-                        }}
-                      >
-                        <span slot="label" class="select-option-inner">
-                          {item.render.avatar ? (
-                            <cat-avatar
-                              label={item.render.label}
-                              round={item.render.avatar.round}
-                              src={item.render.avatar.src}
-                              initials={''}
-                            ></cat-avatar>
-                          ) : null}
-                          <span class="select-option-text">
-                            <span class="select-option-label">{item.render.label}</span>
-                            <span class="select-option-description">{item.render.description}</span>
-                          </span>
-                        </span>
-                      </cat-checkbox>
-                    ) : (
-                      <div
-                        class={{
-                          'select-option-inner': true,
-                          'select-option-single': true,
-                          'select-option-active': this.state.activeOptionIndex === i
-                        }}
-                        onFocus={() => this.input?.focus()}
-                        onClick={() => this.select(item)}
-                        tabIndex={-1}
-                      >
-                        {item.render.avatar ? (
-                          <cat-avatar
-                            label={item.render.label}
-                            round={item.render.avatar.round}
-                            src={item.render.avatar.src}
-                            initials={''}
-                          ></cat-avatar>
-                        ) : null}
-                        <span class="select-option-text">
-                          <span class="select-option-label">{item.render.label}</span>
-                          <span class="select-option-description">{item.render.description}</span>
-                        </span>
-                      </div>
-                    )}
-                  </li>
-                ))}
+                {this.optionsList}
                 {this.state.isLoading
                   ? Array.from(Array(CatSelect.SKELETON_COUNT)).map(() => (
                       <li class="select-option-loading">
@@ -598,6 +545,96 @@ export class CatSelect {
         </div>
       </Host>
     );
+  }
+
+  private get optionsList() {
+    return this.state.options.map((item, i) => {
+      if (this.tags && item.item.id === `select-${this.id}-option-tag`) {
+        return (
+          <li
+            role="option"
+            id={`select-${this.id}-option-${i}`}
+            class="select-option"
+            aria-selected={this.isAlreadyCreated(item.render.label) ? 'true' : 'false'}
+          >
+            <div
+              class={{
+                'select-option-tag': true,
+                'select-option-active': this.state.activeOptionIndex === i
+              }}
+              onFocus={() => this.input?.focus()}
+              onClick={() => this.createTag(item.render.label)}
+              tabIndex={-1}
+            >
+              <span class="select-option-text">
+                <span class="select-option-label">{item.render.label + this.tagTextHelp}</span>
+              </span>
+            </div>
+          </li>
+        );
+      }
+      return (
+        <li
+          role="option"
+          class="select-option"
+          id={`select-${this.id}-option-${i}`}
+          aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
+        >
+          {this.multiple ? (
+            <cat-checkbox
+              class={{ 'select-option-active': this.state.activeOptionIndex === i }}
+              checked={this.isSelected(item.item.id)}
+              tabIndex={-1}
+              labelLeft
+              onFocus={() => this.input?.focus()}
+              onCatChange={e => {
+                this.toggle(item);
+                e.stopPropagation();
+              }}
+            >
+              <span slot="label" class="select-option-inner">
+                {item.render.avatar ? (
+                  <cat-avatar
+                    label={item.render.label}
+                    round={item.render.avatar.round}
+                    src={item.render.avatar.src}
+                    initials={''}
+                  ></cat-avatar>
+                ) : null}
+                <span class="select-option-text">
+                  <span class="select-option-label">{item.render.label}</span>
+                  <span class="select-option-description">{item.render.description}</span>
+                </span>
+              </span>
+            </cat-checkbox>
+          ) : (
+            <div
+              class={{
+                'select-option-inner': true,
+                'select-option-single': true,
+                'select-option-active': this.state.activeOptionIndex === i
+              }}
+              onFocus={() => this.input?.focus()}
+              onClick={() => this.select(item)}
+              tabIndex={-1}
+            >
+              {item.render.avatar ? (
+                <cat-avatar
+                  label={item.render.label}
+                  round={item.render.avatar.round}
+                  src={item.render.avatar.src}
+                  initials={''}
+                ></cat-avatar>
+              ) : null}
+              <span class="select-option-text">
+                <span class="select-option-label">{item.render.label}</span>
+                <span class="select-option-description">{item.render.description}</span>
+              </span>
+            </div>
+          )}
+        </li>
+      );
+    });
   }
 
   private get hintSection() {
@@ -830,15 +867,14 @@ export class CatSelect {
   }
 
   private isAlreadyCreated(term: string) {
-    return (
-      this.state.options.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0 ||
-      this.state.selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0
-    );
+    return this.state.selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0;
   }
 
   private createTag(term: string) {
-    const tags = this.value?.tags;
-    const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
-    this.select({ item: tag, render: { label: tag.name } });
+    if (term.trim().length && !this.isAlreadyCreated(term)) {
+      const tags = this.value?.tags;
+      const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
+      this.select({ item: tag, render: { label: tag.name } });
+    }
   }
 }
