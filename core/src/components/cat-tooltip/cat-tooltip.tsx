@@ -38,9 +38,19 @@ export class CatTooltip {
   @Prop() placement: Placement = 'top';
 
   /**
+   * Use round tooltip edges.
+   */
+  @Prop() round = false;
+
+  /**
+   * The size of the tooltip.
+   */
+  @Prop() size: 's' | 'm' | 'l' = 'm';
+
+  /**
    * The delay time for showing tooltip in ms.
    */
-  @Prop() showDelay = 500;
+  @Prop() showDelay = 250;
 
   /**
    * The delay time for hiding tooltip in ms.
@@ -98,7 +108,15 @@ export class CatTooltip {
           <slot />
         </div>
         {this.content && !this.disabled && (
-          <div ref={el => (this.tooltip = el)} id={this.id} class="tooltip">
+          <div
+            ref={el => (this.tooltip = el)}
+            id={this.id}
+            class={{
+              tooltip: true,
+              'tooltip-round': this.round,
+              [`tooltip-${this.size}`]: Boolean(this.size)
+            }}
+          >
             {this.content}
           </div>
         )}
