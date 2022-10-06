@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/haiilo/catalyst/compare/v1.0.2...v1.1.0) (2022-10-06)
+
+
+### Features
+
+* **core:** add round option to tooltips ([338f08d](https://github.com/haiilo/catalyst/commit/338f08dc3c6b8a290350683c768c713efca11f94))
+* **core:** add size option (s,m,l) to tooltips ([6f5d8a7](https://github.com/haiilo/catalyst/commit/6f5d8a79fb21f36c8eb577d2a26137d81e64dbf7))
+* **core:** add tagging support to select ([6a6cf11](https://github.com/haiilo/catalyst/commit/6a6cf1144f966afc139c3cf9c1ad895c6d1f0e63))
+* **core:** make alerts compatible with utility classes ([14ef6fa](https://github.com/haiilo/catalyst/commit/14ef6faf45fbb6cf12d109473ee258f55e3f73e1))
+
+
+### Bug Fixes
+
+* **core:** decrease default show delay for tooltips from 500ms to 250ms ([046ad48](https://github.com/haiilo/catalyst/commit/046ad480524b2d7f30115d344680de70104ceac2))
+* **core:** decrease size of checkbox checkmark and dash ([719789b](https://github.com/haiilo/catalyst/commit/719789b3ab7ca48388c63677397f4fb021f589e5))
+
 ### [1.0.2](https://github.com/haiilo/catalyst/compare/v1.0.1...v1.0.2) (2022-09-19)
 
 ### [1.0.1](https://github.com/haiilo/catalyst/compare/v1.0.0...v1.0.1) (2022-09-09)
