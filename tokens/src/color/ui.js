@@ -10,7 +10,10 @@ module.exports = {
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
         tooltip: { value: '{color.base.neutral.900.value}' },
-        backdrop: { value: '{color.base.neutral.900.value}' }
+        backdrop: { value: '{color.base.neutral.900.value}' },
+        select: {
+          pill: { value:'#f2f4f7' }
+        }
       },
       border: {
         light: { value: '{color.base.neutral.100.value}' },
