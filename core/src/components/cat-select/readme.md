@@ -22,7 +22,7 @@
 | `required`    | `required`     | A value is required or must be checked for the form to be submittable.                    | `boolean`                                                                                                                                                            | `false`          |
 | `tagHint`     | `tag-hint`     | Optional hint text to be displayed on the new item to be added.                           | `string \| undefined`                                                                                                                                                | `undefined`      |
 | `tags`        | `tags`         | Whether the select should add new items.                                                  | `boolean`                                                                                                                                                            | `false`          |
-| `value`       | --             | The value of the select.                                                                  | `CatSelectValue \| undefined`                                                                                                                                        | `undefined`      |
+| `value`       | `value`        | The value of the select.                                                                  | `CatSelectMultipleTaggingValue \| CatSelectTaggingValue \| string \| string[] \| undefined`                                                                          | `undefined`      |
 
 
 ## Events
@@ -75,8 +75,8 @@ Type: `Promise<void>`
 - [cat-button](../cat-button)
 - [cat-spinner](../cat-spinner)
 - [cat-scrollable](../cat-scrollable)
-- [cat-checkbox](../cat-checkbox)
 - [cat-skeleton](../cat-skeleton)
+- [cat-checkbox](../cat-checkbox)
 
 ### Graph
 ```mermaid
@@ -85,8 +85,8 @@ graph TD;
   cat-select --> cat-button
   cat-select --> cat-spinner
   cat-select --> cat-scrollable
-  cat-select --> cat-checkbox
   cat-select --> cat-skeleton
+  cat-select --> cat-checkbox
   cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-button --> cat-spinner

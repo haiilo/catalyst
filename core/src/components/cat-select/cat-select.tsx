@@ -65,9 +65,14 @@ export interface CatSelectState {
   totalElements?: number;
 }
 
-export interface CatSelectValue {
-  ids?: string | string[];
-  tags?: string | string[];
+export interface CatSelectMultipleTaggingValue {
+  ids?: string[];
+  tags?: string[];
+}
+
+export interface CatSelectTaggingValue {
+  id?: string;
+  tag?: string;
 }
 
 const INIT_STATE: CatSelectState = {
@@ -137,7 +142,7 @@ export class CatSelect {
   /**
    * The value of the select.
    */
-  @Prop({ mutable: true }) value?: string | string[] | CatSelectValue;
+  @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
 
   /**
    * Whether the select is disabled.
@@ -224,7 +229,7 @@ export class CatSelect {
         if (this.multiple) {
           this.value = { ids, tags };
         } else {
-          this.value = ids.length ? { ids: ids[0] } : tags.length ? { tags: tags[0] } : {};
+          this.value = ids.length ? { id: ids[0] } : tags.length ? { tag: tags[0] } : {};
         }
       }
       this.catChange.emit();
@@ -289,10 +294,9 @@ export class CatSelect {
       this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
       if (
-        (this.tags &&
-          this.state.activeOptionIndex === 0 &&
-          this.state.options[0].item.id === `select-${this.id}-option-tag`) ||
-        (event.key === 'Enter' && this.state.activeOptionIndex < 0)
+        this.tags &&
+        ((this.state.activeOptionIndex === 0 && this.state.options[0].item.id === `select-${this.id}-option-tag`) ||
+          (event.key === 'Enter' && this.state.activeOptionIndex < 0))
       ) {
         this.createTag(this.state.term);
       } else if (this.state.activeOptionIndex >= 0) {
@@ -662,26 +666,15 @@ export class CatSelect {
 
   private resolve() {
     this.patchState({ isResolving: true });
-    let ids: string[] = [];
+
+    const ids = this.initIds();
     let tags: string[];
-    if (!this.tags) {
-      if (this.multiple) {
-        ids = this.value as string[];
-      } else if (this.value) {
-        ids = [this.value as string];
-      }
-    } else if (this.value) {
-      const value = this.value as CatSelectValue;
-      if (this.multiple) {
-        ids = value.ids as string[];
-        tags = value.tags as string[];
-      } else if (value.ids) {
-        ids = [value.ids as string];
-      } else if (value.tags) {
-        tags = [value.tags as string];
-      }
+
+    if (this.tags) {
+      tags = this.initTags();
     }
-    const data$ = ids?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+
+    const data$ = ids.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
     data$.pipe(catchError(() => of([]))).subscribe(items => {
       const selection = items.length ? items?.map(item => ({ item, render: this.connectorSafe.render(item) })) : [];
       if (this.tags) {
@@ -830,42 +823,46 @@ export class CatSelect {
     let preventDefault = false;
     this.input?.focus();
 
-    if (event.key === 'ArrowDown') {
-      preventDefault = true;
-      this.state.isOpen
-        ? this.patchState({
-            activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
-            activeSelectionIndex: -1
-          })
-        : this.show();
-    } else if (event.key === 'ArrowUp') {
-      preventDefault = true;
-      this.state.activeOptionIndex >= 0
-        ? this.patchState({
-            activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
-            activeSelectionIndex: -1
-          })
-        : this.hide();
-    } else if (event.key === 'ArrowLeft') {
-      if (this.input?.selectionStart === 0) {
+    switch (event.key) {
+      case 'ArrowDown':
         preventDefault = true;
-        let index;
-        this.state.activeSelectionIndex > 0
-          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
-          : (index = this.state.selection.length - 1);
-        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
-      }
-    } else if (event.key === 'ArrowRight') {
-      if (this.state.activeSelectionIndex >= 0) {
+        this.state.isOpen
+          ? this.patchState({
+              activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
+              activeSelectionIndex: -1
+            })
+          : this.show();
+        break;
+      case 'ArrowUp':
         preventDefault = true;
-        let index = -1;
-        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
-          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
-        } else if (!this.state.term) {
-          index = 0;
+        this.state.activeOptionIndex >= 0
+          ? this.patchState({
+              activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
+              activeSelectionIndex: -1
+            })
+          : this.hide();
+        break;
+      case 'ArrowLeft':
+        if (this.input?.selectionStart === 0) {
+          preventDefault = true;
+          let index;
+          this.state.activeSelectionIndex > 0
+            ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+            : (index = this.state.selection.length - 1);
+          this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
         }
-        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
-      }
+        break;
+      case 'ArrowRight':
+        if (this.state.activeSelectionIndex >= 0) {
+          preventDefault = true;
+          let index = -1;
+          if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+            index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+          } else if (!this.state.term) {
+            index = 0;
+          }
+          this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+        }
     }
 
     if (preventDefault) {
@@ -884,10 +881,46 @@ export class CatSelect {
 
   private createTag(term: string) {
     if (term.trim().length && !this.isAlreadyCreated(term)) {
-      const value = this.value as CatSelectValue;
+      const value = this.value as CatSelectMultipleTaggingValue;
       const tags = value?.tags;
       const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
       this.select({ item: tag, render: { label: tag.name } });
     }
+  }
+
+  private initIds() {
+    let ids: string[] = [];
+    if (this.value) {
+      if (!this.tags) {
+        if (this.multiple) {
+          ids = this.value as string[];
+        } else {
+          ids = [this.value as string];
+        }
+      } else {
+        if (this.multiple) {
+          const value = this.value as CatSelectMultipleTaggingValue;
+          ids = value.ids ? value.ids : [];
+        } else {
+          const value = this.value as CatSelectTaggingValue;
+          ids = value.id ? [value.id] : [];
+        }
+      }
+    }
+    return ids;
+  }
+
+  private initTags() {
+    let tags: string[] = [];
+    if (this.value) {
+      if (this.multiple) {
+        const value = this.value as CatSelectMultipleTaggingValue;
+        tags = value.tags ? value.tags : [];
+      } else {
+        const value = this.value as CatSelectTaggingValue;
+        tags = value.tag ? [value.tag] : [];
+      }
+    }
+    return tags;
   }
 }

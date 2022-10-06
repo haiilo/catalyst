@@ -169,7 +169,6 @@ export class CatSelectTest {
           label="Single Select"
           hint="This is a hint!"
           ref={el => (this.singleSelect = el)}
-          value={'1'}
           placeholder="Search for a country or capital"
           onCatBlur={e => console.log('Single blur', e)}
           clearable
@@ -184,7 +183,7 @@ export class CatSelectTest {
         <cat-select
           label="Single with tagging support"
           ref={el => (this.singleSelectTagging = el)}
-          value={{ ids: '1' }}
+          value={{ id: '1' }}
           placeholder="Search for a country or capital"
           onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
           tagHint="new country"
@@ -194,6 +193,7 @@ export class CatSelectTest {
       </Host>
     );
   }
+
   private get countryConnector() {
     return {
       resolve: (ids: string[]) => {

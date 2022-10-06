@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
-import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
     interface CatAlert {
@@ -490,7 +490,7 @@ export namespace Components {
         /**
           * The value of the select.
          */
-        "value"?: string | string[] | CatSelectValue;
+        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
     interface CatSelectDemo {
     }
@@ -1441,7 +1441,7 @@ declare namespace LocalJSX {
         /**
           * The value of the select.
          */
-        "value"?: string | string[] | CatSelectValue;
+        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
     interface CatSelectDemo {
     }
