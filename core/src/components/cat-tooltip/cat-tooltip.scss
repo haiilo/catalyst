@@ -1,7 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-$-max-width: 16rem;
+$-max-width: 20rem;
 $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
 
 :host {
@@ -15,7 +15,6 @@ $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
 .tooltip {
   position: absolute;
   @include cat-body('s', 500);
-  padding: 0.75rem;
   background-color: cat-token('color.ui.background.tooltip');
   border-radius: cat-border-radius('m');
   color: cat-token('color.ui.font.tooltip');
@@ -36,6 +35,32 @@ $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
 
 .tooltip-round {
   border-radius: 10rem;
+}
+
+// ----- size
+
+.tooltip-s {
+  padding: 0.375rem 0.5rem;
+
+  &.tooltip-round {
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+.tooltip-m {
+  padding: 0.75rem;
+
+  &.tooltip-round {
+    padding: 0.75rem 1rem;
+  }
+}
+
+.tooltip-l {
+  padding: 1rem;
+
+  &.tooltip-round {
+    padding: 1rem 1.5rem;
+  }
 }
 
 // ----- trigger

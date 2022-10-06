@@ -683,6 +683,10 @@ export namespace Components {
           * The delay time for showing tooltip in ms.
          */
         "showDelay": number;
+        /**
+          * The size of the tooltip.
+         */
+        "size": 's' | 'm' | 'l';
     }
 }
 export interface CatButtonCustomEvent<T> extends CustomEvent<T> {
@@ -1648,6 +1652,10 @@ declare namespace LocalJSX {
           * The delay time for showing tooltip in ms.
          */
         "showDelay"?: number;
+        /**
+          * The size of the tooltip.
+         */
+        "size"?: 's' | 'm' | 'l';
     }
     interface IntrinsicElements {
         "cat-alert": CatAlert;

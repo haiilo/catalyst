@@ -43,6 +43,11 @@ export class CatTooltip {
   @Prop() round = false;
 
   /**
+   * The size of the tooltip.
+   */
+  @Prop() size: 's' | 'm' | 'l' = 'm';
+
+  /**
    * The delay time for showing tooltip in ms.
    */
   @Prop() showDelay = 250;
@@ -108,7 +113,8 @@ export class CatTooltip {
             id={this.id}
             class={{
               tooltip: true,
-              'tooltip-round': this.round
+              'tooltip-round': this.round,
+              [`tooltip-${this.size}`]: Boolean(this.size)
             }}
           >
             {this.content}

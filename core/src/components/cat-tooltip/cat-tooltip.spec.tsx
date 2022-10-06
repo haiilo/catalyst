@@ -17,7 +17,7 @@ describe('cat-tooltip', () => {
           <div aria-describedby="cat-tooltip-0" class="tooltip-trigger" tabindex="0">
             <slot></slot>
           </div>
-          <div class="tooltip" id="cat-tooltip-0">This is a tooltip</div>
+          <div class="tooltip tooltip-m" id="cat-tooltip-0">This is a tooltip</div>
         </mock:shadow-root>
         <p>Hover me</p>
       </cat-tooltip>
