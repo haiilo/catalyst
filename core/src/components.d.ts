@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
-import { CatSelectConnector, Item } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
     interface CatAlert {
@@ -480,9 +480,17 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * The value of the select.
+          * Optional hint text to be displayed on the new item to be added.
          */
-        "value"?: string | string[];
+        "tagHint"?: string;
+        /**
+          * Whether the select should add new items.
+         */
+        "tags": boolean;
+        /**
+          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+         */
+        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
     interface CatSelectDemo {
     }
@@ -1431,9 +1439,17 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The value of the select.
+          * Optional hint text to be displayed on the new item to be added.
          */
-        "value"?: string | string[];
+        "tagHint"?: string;
+        /**
+          * Whether the select should add new items.
+         */
+        "tags"?: boolean;
+        /**
+          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+         */
+        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
     interface CatSelectDemo {
     }

@@ -13,7 +13,6 @@ interface Country {
   country: string;
   capital?: string;
 }
-
 @Component({
   tag: 'cat-select-demo',
   shadow: true
@@ -21,8 +20,10 @@ interface Country {
 export class CatSelectTest {
   private multipleSelect?: HTMLCatSelectElement;
   private multipleSelectAvatar?: HTMLCatSelectElement;
+  private multipleSelectTagging?: HTMLCatSelectElement;
   private singleSelect?: HTMLCatSelectElement;
   private singleSelectAvatar?: HTMLCatSelectElement;
+  private singleSelectTagging?: HTMLCatSelectElement;
 
   componentDidLoad(): void {
     this.multipleSelect?.connect({
@@ -93,31 +94,108 @@ export class CatSelectTest {
         }
       })
     });
+    this.multipleSelectTagging?.connect(this.countryConnector);
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
-        return of(ids.map(id => countries.find(value => value.id === id))).pipe(delay(500));
+        return of(
+          ids.map(id => ({
+            id,
+            firstName: 'John',
+            lastName: `Doe (${id})`,
+            desc: 'resolved'
+          }))
+        ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
         console.info(`Retrieving data... ("${term}", ${page})`);
-        const filter = countries.filter(
-          value =>
-            value.country.toLowerCase().indexOf(term.toLowerCase()) === 0 ||
-            value.capital?.toLowerCase().indexOf(term.toLowerCase()) === 0
-        );
-        const slice = filter.slice(page * 10, page * 10 + 10);
-        return of({
-          last: slice.length < 10,
-          totalElements: filter.length,
-          content: slice
-        }).pipe(delay(500));
+        return term === 'no'
+          ? of({ last: true, content: [], totalElements: 0 })
+          : of({
+              last: false,
+              totalElements: 10000,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
       },
-      render: (country: Country) => ({
-        label: country.country,
-        description: country.capital || 'No capital'
+      render: (user: User) => ({
+        label: `${user.firstName} ${user.lastName}`,
+        description: user.desc
       })
     });
-    this.singleSelectAvatar?.connect({
+    this.singleSelectAvatar?.connect(this.countryConnector);
+    this.singleSelectTagging?.connect(this.countryConnector);
+  }
+
+  render() {
+    return (
+      <Host style={{ display: 'flex', flexDirection: 'column' }}>
+        <cat-select
+          label="Multiple Select"
+          hint="This is a hint!"
+          ref={el => (this.multipleSelect = el)}
+          value={['1']}
+          placeholder="Hello World"
+          onCatBlur={e => console.log('Multiple blur', e)}
+          multiple
+          clearable
+        >
+          <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
+        </cat-select>
+        <cat-select
+          label="Multiple with img"
+          ref={el => (this.multipleSelectAvatar = el)}
+          value={['1']}
+          placeholder="Hello World"
+          multiple
+          clearable
+        ></cat-select>
+        <cat-select
+          label="Multiple with tagging support"
+          hint="This is a hint!"
+          ref={el => (this.multipleSelectTagging = el)}
+          value={{ ids: ['1'], tags: ['Test'] }}
+          placeholder="Select country"
+          onCatChange={() => console.log(this.multipleSelectTagging?.value)}
+          multiple
+          tags
+          clearable
+        ></cat-select>
+        <cat-select
+          label="Single Select"
+          hint="This is a hint!"
+          ref={el => (this.singleSelect = el)}
+          placeholder="Search for a country or capital"
+          onCatBlur={e => console.log('Single blur', e)}
+          clearable
+        ></cat-select>
+        <cat-select
+          label="Single with img"
+          ref={el => (this.singleSelectAvatar = el)}
+          value={'1'}
+          placeholder="Search for a country or capital"
+          clearable
+        ></cat-select>
+        <cat-select
+          label="Single with tagging support"
+          ref={el => (this.singleSelectTagging = el)}
+          value={{ id: '1', tag: '' }}
+          placeholder="Search for a country or capital"
+          onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
+          tagHint="new country"
+          tags
+          clearable
+        ></cat-select>
+      </Host>
+    );
+  }
+
+  private get countryConnector() {
+    return {
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
         return of(ids.map(id => countries.find(value => value.id === id))).pipe(delay(500));
@@ -144,52 +222,7 @@ export class CatSelectTest {
           round: true
         }
       })
-    });
-  }
-
-  render() {
-    return (
-      <Host style={{ display: 'flex', flexDirection: 'column' }}>
-        <cat-select
-          label="Multiple Select"
-          hint="This is a hint!"
-          ref={el => (this.multipleSelect = el)}
-          value={['1']}
-          placeholder="Hello World"
-          onCatChange={e => console.log('Multiple', e)}
-          onCatBlur={e => console.log('Multiple blur', e)}
-          multiple
-          clearable
-        >
-          <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
-        </cat-select>
-        <cat-select
-          label="Multiple with img"
-          ref={el => (this.multipleSelectAvatar = el)}
-          value={['1']}
-          placeholder="Hello World"
-          multiple
-          clearable
-        ></cat-select>
-        <cat-select
-          label="Single Select"
-          hint="This is a hint!"
-          ref={el => (this.singleSelect = el)}
-          value={'1'}
-          placeholder="Search for a country or capital"
-          onCatChange={e => console.log('Single', e)}
-          onCatBlur={e => console.log('Single blur', e)}
-          clearable
-        ></cat-select>
-        <cat-select
-          label="Single with img"
-          ref={el => (this.singleSelectAvatar = el)}
-          value={'1'}
-          placeholder="Search for a country or capital"
-          clearable
-        ></cat-select>
-      </Host>
-    );
+    };
   }
 }
 

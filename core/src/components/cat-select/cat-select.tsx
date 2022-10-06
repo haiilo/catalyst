@@ -65,6 +65,16 @@ export interface CatSelectState {
   totalElements?: number;
 }
 
+export interface CatSelectMultipleTaggingValue {
+  ids: string[];
+  tags: string[];
+}
+
+export interface CatSelectTaggingValue {
+  id: string;
+  tag: string;
+}
+
 const INIT_STATE: CatSelectState = {
   term: '',
   isOpen: false,
@@ -131,8 +141,14 @@ export class CatSelect {
 
   /**
    * The value of the select.
+   *
+   * The value of the select depends on whether it is allowed to choose a single item or several items.
+   * When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.
+   *
+   * In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,
+   * in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
    */
-  @Prop({ mutable: true }) value?: string | string[];
+  @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
 
   /**
    * Whether the select is disabled.
@@ -174,6 +190,16 @@ export class CatSelect {
    */
   @Prop() clearable = false;
 
+  /**
+   * Whether the select should add new items.
+   */
+  @Prop() tags = false;
+
+  /**
+   * Optional hint text to be displayed on the new item to be added.
+   */
+  @Prop() tagHint?: string;
+
   @Watch('connector')
   onConnectorChange(connector: CatSelectConnector) {
     this.reset(connector);
@@ -195,10 +221,22 @@ export class CatSelect {
         this.hide();
       }
       const idsSelected = this.state.selection.map(item => item.item.id);
-      if (this.multiple) {
-        this.value = idsSelected;
+      if (!this.tags) {
+        if (this.multiple) {
+          this.value = idsSelected;
+        } else {
+          this.value = idsSelected.length ? idsSelected[0] : '';
+        }
       } else {
-        this.value = idsSelected.length ? idsSelected[0] : '';
+        const ids = idsSelected.filter(id => !id.startsWith(`select-${this.id}-tag`));
+        const tags = this.state.selection
+          .filter(item => item.item.id.startsWith(`select-${this.id}-tag`))
+          .map(item => item.render.label);
+        if (this.multiple) {
+          this.value = { ids, tags };
+        } else {
+          this.value = { id: ids.length ? ids[0] : '', tag: tags.length ? tags[0] : '' };
+        }
       }
       this.catChange.emit();
     }
@@ -243,7 +281,11 @@ export class CatSelect {
   @Listen('blur')
   onBlur(event: FocusEvent): void {
     if (!this.multiple && this.state.activeOptionIndex >= 0) {
-      this.select(this.state.options[this.state.activeOptionIndex]);
+      if (this.tags && this.state.options[this.state.activeOptionIndex].item.id === `select-${this.id}-option-tag`) {
+        this.createTag(this.state.term);
+      } else {
+        this.select(this.state.options[this.state.activeOptionIndex]);
+      }
     }
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
@@ -256,14 +298,27 @@ export class CatSelect {
 
     if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       this.onArrowKeyDown(event);
-    } else if (['Enter', ' '].includes(event.key)) {
-      if (isInputFocused && this.state.activeOptionIndex >= 0) {
+    } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
+      if (
+        this.tags &&
+        this.state.activeOptionIndex === 0 &&
+        this.state.options[0].item.id === `select-${this.id}-option-tag`
+      ) {
+        event.preventDefault();
+        if (this.multiple) {
+          this.toggleTag(this.state.options[0]);
+        } else {
+          this.createTag(this.state.options[0].render.label);
+        }
+      } else if (this.state.activeOptionIndex >= 0) {
         event.preventDefault();
         if (this.multiple) {
           this.toggle(this.state.options[this.state.activeOptionIndex]);
         } else {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
+      } else if (this.tags && event.key === 'Enter' && this.state.activeOptionIndex < 0) {
+        this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
       this.hide();
@@ -272,10 +327,6 @@ export class CatSelect {
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
-        } else if (this.state.selection.length) {
-          const selectionClone = [...this.state.selection];
-          selectionClone.pop();
-          this.patchState({ selection: selectionClone });
         }
       }
     } else if (event.key === 'Tab') {
@@ -283,7 +334,11 @@ export class CatSelect {
       if (this.multiple) {
         this.patchState({ activeSelectionIndex: -1, activeOptionIndex: -1 });
       } else if (this.state.activeOptionIndex >= 0) {
-        this.select(this.state.options[this.state.activeOptionIndex]);
+        if (this.tags && this.state.options[this.state.activeOptionIndex].item.id === `select-${this.id}-option-tag`) {
+          this.createTag(this.state.term);
+        } else {
+          this.select(this.state.options[this.state.activeOptionIndex]);
+        }
       }
     } else if (event.key.length === 1) {
       this.input?.focus();
@@ -342,14 +397,30 @@ export class CatSelect {
           )
         )
       )
-      .subscribe(items =>
+      .subscribe(items => {
+        const options = items?.map(item => ({
+          item,
+          render: this.connectorSafe.render(item)
+        }));
+        if (
+          this.tags &&
+          this.state.term.trim().length &&
+          !options.find(value1 => value1.render.label.toLowerCase() === this.state.term.toLowerCase())
+        ) {
+          let label;
+          if (this.isAlreadyCreated(this.state.term)) {
+            label = this.state.selection.find(item => item.render.label.toLowerCase() === this.state.term.toLowerCase())
+              ?.render.label;
+          }
+          options.unshift({
+            item: { id: `select-${this.id}-option-tag` },
+            render: { label: label ? label : this.state.term }
+          });
+        }
         this.patchState({
-          options: items?.map(item => ({
-            item,
-            render: this.connectorSafe.render(item)
-          }))
-        })
-      );
+          options
+        });
+      });
   }
 
   render() {
@@ -486,67 +557,7 @@ export class CatSelect {
                 aria-setsize={this.state.totalElements}
                 id={`select-listbox-${this.id}`}
               >
-                {this.state.options.map((item, i) => (
-                  <li
-                    role="option"
-                    class="select-option"
-                    id={`select-${this.id}-option-${i}`}
-                    aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
-                  >
-                    {this.multiple ? (
-                      <cat-checkbox
-                        class={{ 'select-option-active': this.state.activeOptionIndex === i }}
-                        checked={this.isSelected(item.item.id)}
-                        tabIndex={-1}
-                        labelLeft
-                        onFocus={() => this.input?.focus()}
-                        onCatChange={e => {
-                          this.toggle(item);
-                          e.stopPropagation();
-                        }}
-                      >
-                        <span slot="label" class="select-option-inner">
-                          {item.render.avatar ? (
-                            <cat-avatar
-                              label={item.render.label}
-                              round={item.render.avatar.round}
-                              src={item.render.avatar.src}
-                              initials={''}
-                            ></cat-avatar>
-                          ) : null}
-                          <span class="select-option-text">
-                            <span class="select-option-label">{item.render.label}</span>
-                            <span class="select-option-description">{item.render.description}</span>
-                          </span>
-                        </span>
-                      </cat-checkbox>
-                    ) : (
-                      <div
-                        class={{
-                          'select-option-inner': true,
-                          'select-option-single': true,
-                          'select-option-active': this.state.activeOptionIndex === i
-                        }}
-                        onFocus={() => this.input?.focus()}
-                        onClick={() => this.select(item)}
-                        tabIndex={-1}
-                      >
-                        {item.render.avatar ? (
-                          <cat-avatar
-                            label={item.render.label}
-                            round={item.render.avatar.round}
-                            src={item.render.avatar.src}
-                            initials={''}
-                          ></cat-avatar>
-                        ) : null}
-                        <span class="select-option-text">
-                          <span class="select-option-label">{item.render.label}</span>
-                          <span class="select-option-description">{item.render.description}</span>
-                        </span>
-                      </div>
-                    )}
-                  </li>
-                ))}
+                {this.optionsList}
                 {this.state.isLoading
                   ? Array.from(Array(CatSelect.SKELETON_COUNT)).map(() => (
                       <li class="select-option-loading">
@@ -554,13 +565,91 @@ export class CatSelect {
                         <cat-skeleton variant="body" lines={1}></cat-skeleton>
                       </li>
                     ))
-                  : !this.state.options.length && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+                  : !this.state.options.length &&
+                    !this.tags && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
               </ul>
             </cat-scrollable>
           )}
         </div>
       </Host>
     );
+  }
+
+  private get optionsList() {
+    return this.state.options.map((item, i) => {
+      const isTagOption = this.tags && item.item.id === `select-${this.id}-option-tag`;
+
+      const getAriaSelected = () => {
+        if (isTagOption) {
+          return this.isAlreadyCreated(item.render.label) ? 'true' : 'false';
+        }
+        return this.isSelected(item.item.id) ? 'true' : 'false';
+      };
+
+      const getLabel = () => {
+        if (isTagOption) {
+          return item.render.label + this.tagTextHelp;
+        }
+        return item.render.label;
+      };
+
+      return (
+        <li role="option" class="select-option" id={`select-${this.id}-option-${i}`} aria-selected={getAriaSelected()}>
+          {this.multiple ? (
+            <cat-checkbox
+              class={{ 'select-option-active': this.state.activeOptionIndex === i }}
+              checked={!isTagOption ? this.isSelected(item.item.id) : this.isAlreadyCreated(item.render.label)}
+              tabIndex={-1}
+              labelLeft
+              onFocus={() => this.input?.focus()}
+              onCatChange={e => {
+                !isTagOption ? this.toggle(item) : this.toggleTag(item);
+                e.stopPropagation();
+              }}
+            >
+              <span slot="label" class="select-option-inner">
+                {item.render.avatar ? (
+                  <cat-avatar
+                    label={item.render.label}
+                    round={item.render.avatar.round}
+                    src={item.render.avatar.src}
+                    initials={''}
+                  ></cat-avatar>
+                ) : null}
+                <span class="select-option-text">
+                  <span class="select-option-label">{getLabel()}</span>
+                  <span class="select-option-description">{item.render.description}</span>
+                </span>
+              </span>
+            </cat-checkbox>
+          ) : (
+            <div
+              class={{
+                'select-option-inner': true,
+                'select-option-single': true,
+                'select-option-active': this.state.activeOptionIndex === i
+              }}
+              onFocus={() => this.input?.focus()}
+              onClick={() => (isTagOption ? this.createTag(item.render.label) : this.select(item))}
+              tabIndex={-1}
+            >
+              {item.render.avatar ? (
+                <cat-avatar
+                  label={item.render.label}
+                  round={item.render.avatar.round}
+                  src={item.render.avatar.src}
+                  initials={''}
+                ></cat-avatar>
+              ) : null}
+              <span class="select-option-text">
+                <span class="select-option-label">{getLabel()}</span>
+                <span class="select-option-description">{item.render.description}</span>
+              </span>
+            </div>
+          )}
+        </li>
+      );
+    });
   }
 
   private get hintSection() {
@@ -581,20 +670,29 @@ export class CatSelect {
 
   private resolve() {
     this.patchState({ isResolving: true });
-    let ids;
-    if (this.multiple) {
-      ids = this.value as string[];
-    } else {
-      ids = [this.value as string];
+
+    const ids = this.initIds();
+    let tags: string[];
+
+    if (this.tags) {
+      tags = this.initTags();
     }
-    const data$ = this.value?.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
-    data$.pipe(catchError(() => of([]))).subscribe(items =>
+
+    const data$ = ids.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+    data$.pipe(catchError(() => of([]))).subscribe(items => {
+      const selection = items.length ? items?.map(item => ({ item, render: this.connectorSafe.render(item) })) : [];
+      if (this.tags) {
+        tags?.forEach((tag, index) => {
+          const item = { id: `select-${this.id}-tag-${index}`, name: tag };
+          selection.push({ item, render: { label: item.name } });
+        });
+      }
       this.patchState({
         isResolving: false,
-        selection: items?.map(item => ({ item, render: this.connectorSafe.render(item) })),
-        term: !this.multiple && items.length ? this.connectorSafe.render(items[0]).label : ''
-      })
-    );
+        selection,
+        term: !this.multiple && selection.length ? selection[0].render.label : ''
+      });
+    });
   }
 
   private show() {
@@ -632,11 +730,14 @@ export class CatSelect {
         this.search(item.render.label);
       }
       this.patchState({ selection: newSelection });
+
+      if (this.multiple && this.state.term.trim() && this.input) {
+        this.patchState({ term: '', activeOptionIndex: -1 });
+        this.term$.next('');
+        this.input.value = '';
+      }
     }
-    if (!this.multiple) {
-      this.hide();
-      this.input?.classList.add('select-input-transparent-caret');
-    }
+    this.setTransparentCaret();
   }
 
   private deselect(id: string) {
@@ -687,7 +788,12 @@ export class CatSelect {
   }
 
   private onInput() {
-    this.search(this.input?.value || '');
+    this.search(this.input?.value.trim() || '');
+    if (!this.multiple && this.state.selection.length) {
+      const selectionClone = [...this.state.selection];
+      selectionClone.pop();
+      this.patchState({ selection: selectionClone });
+    }
     this.show();
   }
 
@@ -729,47 +835,123 @@ export class CatSelect {
     let preventDefault = false;
     this.input?.focus();
 
-    if (event.key === 'ArrowDown') {
-      preventDefault = true;
-      this.state.isOpen
-        ? this.patchState({
-            activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
-            activeSelectionIndex: -1
-          })
-        : this.show();
-    } else if (event.key === 'ArrowUp') {
-      preventDefault = true;
-      this.state.activeOptionIndex >= 0
-        ? this.patchState({
-            activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
-            activeSelectionIndex: -1
-          })
-        : this.hide();
-    } else if (event.key === 'ArrowLeft') {
-      if (this.input?.selectionStart === 0) {
+    switch (event.key) {
+      case 'ArrowDown':
         preventDefault = true;
-        let index;
-        this.state.activeSelectionIndex > 0
-          ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
-          : (index = this.state.selection.length - 1);
-        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
-      }
-    } else if (event.key === 'ArrowRight') {
-      if (this.state.activeSelectionIndex >= 0) {
+        this.state.isOpen
+          ? this.patchState({
+              activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
+              activeSelectionIndex: -1
+            })
+          : this.show();
+        break;
+      case 'ArrowUp':
         preventDefault = true;
-        let index = -1;
-        if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
-          index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
-        } else if (!this.state.term) {
-          index = 0;
+        this.state.activeOptionIndex >= 0
+          ? this.patchState({
+              activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
+              activeSelectionIndex: -1
+            })
+          : this.hide();
+        break;
+      case 'ArrowLeft':
+        if (this.input?.selectionStart === 0) {
+          preventDefault = true;
+          let index;
+          this.state.activeSelectionIndex > 0
+            ? (index = Math.max(this.state.activeSelectionIndex - 1, -1))
+            : (index = this.state.selection.length - 1);
+          this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
         }
-        this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
-      }
+        break;
+      case 'ArrowRight':
+        if (this.state.activeSelectionIndex >= 0) {
+          preventDefault = true;
+          let index = -1;
+          if (this.state.activeSelectionIndex < this.state.selection.length - 1) {
+            index = Math.min(this.state.activeSelectionIndex + 1, this.state.selection.length - 1);
+          } else if (!this.state.term) {
+            index = 0;
+          }
+          this.patchState({ activeSelectionIndex: index, activeOptionIndex: -1 });
+        }
     }
 
     if (preventDefault) {
       event.preventDefault();
       event.stopPropagation();
+    }
+  }
+
+  private get tagTextHelp() {
+    return this.tagHint && !this.isAlreadyCreated(this.state.term) ? ' (' + this.tagHint + ')' : '';
+  }
+
+  private isAlreadyCreated(term: string) {
+    return this.state.selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0;
+  }
+
+  private createTag(term: string) {
+    if (term.trim().length && !this.isAlreadyCreated(term)) {
+      const value = this.value as CatSelectMultipleTaggingValue;
+      const tags = value?.tags;
+      const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
+      this.select({ item: tag, render: { label: tag.name } });
+    }
+    this.setTransparentCaret();
+  }
+
+  private initIds() {
+    let ids: string[] = [];
+    if (this.value) {
+      if (!this.tags) {
+        if (this.multiple) {
+          ids = this.value as string[];
+        } else {
+          ids = [this.value as string];
+        }
+      } else {
+        if (this.multiple) {
+          const value = this.value as CatSelectMultipleTaggingValue;
+          ids = value.ids ? value.ids : [];
+        } else {
+          const value = this.value as CatSelectTaggingValue;
+          ids = value.id ? [value.id] : [];
+        }
+      }
+    }
+    return ids;
+  }
+
+  private initTags() {
+    let tags: string[] = [];
+    if (this.value) {
+      if (this.multiple) {
+        const value = this.value as CatSelectMultipleTaggingValue;
+        tags = value.tags ? value.tags : [];
+      } else {
+        const value = this.value as CatSelectTaggingValue;
+        tags = value.tag ? [value.tag] : [];
+      }
+    }
+    return tags;
+  }
+
+  private toggleTag(item: { item: Item; render: RenderInfo }) {
+    this.isAlreadyCreated(item.render.label) ? this.removeTag(item.render.label) : this.createTag(item.render.label);
+  }
+
+  private removeTag(label: string) {
+    if (this.isAlreadyCreated(label)) {
+      const item = this.state.selection.find(item => item.render.label.toLowerCase() === label.toLowerCase());
+      item && this.deselect(item.item.id);
+    }
+  }
+
+  private setTransparentCaret() {
+    if (!this.multiple) {
+      this.hide();
+      this.input?.classList.add('select-input-transparent-caret');
     }
   }
 }
