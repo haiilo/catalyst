@@ -66,13 +66,13 @@ export interface CatSelectState {
 }
 
 export interface CatSelectMultipleTaggingValue {
-  ids?: string[];
-  tags?: string[];
+  ids: string[];
+  tags: string[];
 }
 
 export interface CatSelectTaggingValue {
-  id?: string;
-  tag?: string;
+  id: string;
+  tag: string;
 }
 
 const INIT_STATE: CatSelectState = {
@@ -141,6 +141,12 @@ export class CatSelect {
 
   /**
    * The value of the select.
+   *
+   * The value of the select depends on whether it is allowed to choose a single item or several items.
+   * When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.
+   *
+   * In case the user can add new items to the select (tags activated), the value in the single select is an object ({@link CatSelectTaggingValue}) with the id of the item or the name of the created item,
+   * in the case of multiple select, it is an object ({@link CatSelectMultipleTaggingValue}) with the array of the ids of the items selected and the list of the names of the items created
    */
   @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
 
@@ -229,7 +235,7 @@ export class CatSelect {
         if (this.multiple) {
           this.value = { ids, tags };
         } else {
-          this.value = ids.length ? { id: ids[0] } : tags.length ? { tag: tags[0] } : {};
+          this.value = { id: ids.length ? ids[0] : '', tag: tags.length ? tags[0] : '' };
         }
       }
       this.catChange.emit();
@@ -295,10 +301,15 @@ export class CatSelect {
     } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
       if (
         this.tags &&
-        ((this.state.activeOptionIndex === 0 && this.state.options[0].item.id === `select-${this.id}-option-tag`) ||
-          (event.key === 'Enter' && this.state.activeOptionIndex < 0))
+        this.state.activeOptionIndex === 0 &&
+        this.state.options[0].item.id === `select-${this.id}-option-tag`
       ) {
-        this.createTag(this.state.term);
+        event.preventDefault();
+        if (this.multiple) {
+          this.toggleTag(this.state.options[0]);
+        } else {
+          this.createTag(this.state.options[0].render.label);
+        }
       } else if (this.state.activeOptionIndex >= 0) {
         event.preventDefault();
         if (this.multiple) {
@@ -306,6 +317,8 @@ export class CatSelect {
         } else {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
+      } else if (this.tags && event.key === 'Enter' && this.state.activeOptionIndex < 0) {
+        this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
       this.hide();
@@ -314,10 +327,6 @@ export class CatSelect {
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
-        } else if (this.state.selection.length) {
-          const selectionClone = [...this.state.selection];
-          selectionClone.pop();
-          this.patchState({ selection: selectionClone });
         }
       }
     } else if (event.key === 'Tab') {
@@ -398,7 +407,15 @@ export class CatSelect {
           this.state.term.trim().length &&
           !options.find(value1 => value1.render.label.toLowerCase() === this.state.term.toLowerCase())
         ) {
-          options.unshift({ item: { id: `select-${this.id}-option-tag` }, render: { label: this.state.term } });
+          let label;
+          if (this.isAlreadyCreated(this.state.term)) {
+            label = this.state.selection.find(item => item.render.label.toLowerCase() === this.state.term.toLowerCase())
+              ?.render.label;
+          }
+          options.unshift({
+            item: { id: `select-${this.id}-option-tag` },
+            render: { label: label ? label : this.state.term }
+          });
         }
         this.patchState({
           options
@@ -560,46 +577,33 @@ export class CatSelect {
 
   private get optionsList() {
     return this.state.options.map((item, i) => {
-      if (this.tags && item.item.id === `select-${this.id}-option-tag`) {
-        return (
-          <li
-            role="option"
-            id={`select-${this.id}-option-${i}`}
-            class="select-option"
-            aria-selected={this.isAlreadyCreated(item.render.label) ? 'true' : 'false'}
-          >
-            <div
-              class={{
-                'select-option-tag': true,
-                'select-option-active': this.state.activeOptionIndex === i
-              }}
-              onFocus={() => this.input?.focus()}
-              onClick={() => this.createTag(item.render.label)}
-              tabIndex={-1}
-            >
-              <span class="select-option-text">
-                <span class="select-option-label">{item.render.label + this.tagTextHelp}</span>
-              </span>
-            </div>
-          </li>
-        );
-      }
+      const isTagOption = this.tags && item.item.id === `select-${this.id}-option-tag`;
+
+      const getAriaSelected = () => {
+        if (isTagOption) {
+          return this.isAlreadyCreated(item.render.label) ? 'true' : 'false';
+        }
+        return this.isSelected(item.item.id) ? 'true' : 'false';
+      };
+
+      const getLabel = () => {
+        if (isTagOption) {
+          return item.render.label + this.tagTextHelp;
+        }
+        return item.render.label;
+      };
+
       return (
-        <li
-          role="option"
-          class="select-option"
-          id={`select-${this.id}-option-${i}`}
-          aria-selected={this.isSelected(item.item.id) ? 'true' : 'false'}
-        >
+        <li role="option" class="select-option" id={`select-${this.id}-option-${i}`} aria-selected={getAriaSelected()}>
           {this.multiple ? (
             <cat-checkbox
               class={{ 'select-option-active': this.state.activeOptionIndex === i }}
-              checked={this.isSelected(item.item.id)}
+              checked={!isTagOption ? this.isSelected(item.item.id) : this.isAlreadyCreated(item.render.label)}
               tabIndex={-1}
               labelLeft
               onFocus={() => this.input?.focus()}
               onCatChange={e => {
-                this.toggle(item);
+                !isTagOption ? this.toggle(item) : this.toggleTag(item);
                 e.stopPropagation();
               }}
             >
@@ -613,7 +617,7 @@ export class CatSelect {
                   ></cat-avatar>
                 ) : null}
                 <span class="select-option-text">
-                  <span class="select-option-label">{item.render.label}</span>
+                  <span class="select-option-label">{getLabel()}</span>
                   <span class="select-option-description">{item.render.description}</span>
                 </span>
               </span>
@@ -626,7 +630,7 @@ export class CatSelect {
                 'select-option-active': this.state.activeOptionIndex === i
               }}
               onFocus={() => this.input?.focus()}
-              onClick={() => this.select(item)}
+              onClick={() => (isTagOption ? this.createTag(item.render.label) : this.select(item))}
               tabIndex={-1}
             >
               {item.render.avatar ? (
@@ -638,7 +642,7 @@ export class CatSelect {
                 ></cat-avatar>
               ) : null}
               <span class="select-option-text">
-                <span class="select-option-label">{item.render.label}</span>
+                <span class="select-option-label">{getLabel()}</span>
                 <span class="select-option-description">{item.render.description}</span>
               </span>
             </div>
@@ -727,10 +731,7 @@ export class CatSelect {
       }
       this.patchState({ selection: newSelection });
     }
-    if (!this.multiple) {
-      this.hide();
-      this.input?.classList.add('select-input-transparent-caret');
-    }
+    this.setTransparentCaret();
   }
 
   private deselect(id: string) {
@@ -782,6 +783,11 @@ export class CatSelect {
 
   private onInput() {
     this.search(this.input?.value.trim() || '');
+    if (!this.multiple && this.state.selection.length) {
+      const selectionClone = [...this.state.selection];
+      selectionClone.pop();
+      this.patchState({ selection: selectionClone });
+    }
     this.show();
   }
 
@@ -886,6 +892,7 @@ export class CatSelect {
       const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
       this.select({ item: tag, render: { label: tag.name } });
     }
+    this.setTransparentCaret();
   }
 
   private initIds() {
@@ -922,5 +929,23 @@ export class CatSelect {
       }
     }
     return tags;
+  }
+
+  private toggleTag(item: { item: Item; render: RenderInfo }) {
+    this.isAlreadyCreated(item.render.label) ? this.removeTag(item.render.label) : this.createTag(item.render.label);
+  }
+
+  private removeTag(label: string) {
+    if (this.isAlreadyCreated(label)) {
+      const item = this.state.selection.find(item => item.render.label.toLowerCase() === label.toLowerCase());
+      item && this.deselect(item.item.id);
+    }
+  }
+
+  private setTransparentCaret() {
+    if (!this.multiple) {
+      this.hide();
+      this.input?.classList.add('select-input-transparent-caret');
+    }
   }
 }

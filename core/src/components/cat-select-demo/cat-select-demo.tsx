@@ -183,7 +183,7 @@ export class CatSelectTest {
         <cat-select
           label="Single with tagging support"
           ref={el => (this.singleSelectTagging = el)}
-          value={{ id: '1' }}
+          value={{ id: '1', tag: '' }}
           placeholder="Search for a country or capital"
           onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
           tagHint="new country"
