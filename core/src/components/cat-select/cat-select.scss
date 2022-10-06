@@ -176,7 +176,6 @@ cat-spinner {
   --cat-avatar-size: 1.25rem;
 }
 
-.select-option-tag,
 .select-option-single {
   cursor: pointer;
 }
@@ -186,8 +185,7 @@ cat-spinner {
 }
 
 .select-option-empty,
-.select-option-loading,
-.select-option-tag {
+.select-option-loading {
   padding: 0.5rem 1rem;
 }
 
