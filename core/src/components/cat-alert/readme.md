@@ -14,13 +14,6 @@
 | `noIcon` | `no-icon` | Whether the icon of the alert is deactivated.     | `boolean`                                                        | `false`     |
 
 
-## Shadow Parts
-
-| Part      | Description        |
-| --------- | ------------------ |
-| `"alert"` | The alert element. |
-
-
 ## Dependencies
 
 ### Depends on

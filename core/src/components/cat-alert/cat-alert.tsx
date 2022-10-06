@@ -1,10 +1,8 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Host, Prop, Element } from '@stencil/core';
 
 /**
  * Informs user about important changes or conditions in the interface. Use this
  * component if you need to capture user’s attention in a prominent way.
- *
- * @part alert - The alert element.
  */
 @Component({
   tag: 'cat-alert',
@@ -19,6 +17,15 @@ export class CatAlert {
     ['warning', 'danger-filled'],
     ['danger', 'cross-circle-filled']
   ]);
+  private readonly mapRole: Map<string, string> = new Map([
+    ['primary', 'status'],
+    ['secondary', 'status'],
+    ['success', 'status'],
+    ['warning', 'alert'],
+    ['danger', 'alert']
+  ]);
+
+  @Element() hostElement!: HTMLElement;
 
   /**
    * The color palette of the alert.
@@ -37,30 +44,20 @@ export class CatAlert {
 
   render() {
     return (
-      <Host tabindex="0" role={this.role}>
-        <div
-          part="alert"
-          class={{
-            alert: true,
-            [`alert-${this.color}`]: Boolean(this.color)
-          }}
-        >
-          {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
-          <div class="content">
-            <slot></slot>
-          </div>
+      <Host tabindex={this.tabIndex} role={this.role}>
+        {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
+        <div class="content">
+          <slot></slot>
         </div>
       </Host>
     );
   }
 
+  private get tabIndex() {
+    return this.hostElement.getAttribute('tabindex') || '0';
+  }
+
   private get role() {
-    switch (this.color) {
-      case 'danger':
-      case 'warning':
-        return 'alert';
-      default:
-        return 'status';
-    }
+    return this.hostElement.getAttribute('role') || this.mapRole.get(this.color) || null;
   }
 }
