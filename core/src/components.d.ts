@@ -676,6 +676,10 @@ export namespace Components {
          */
         "placement": Placement;
         /**
+          * Use round tooltip edges.
+         */
+        "round": boolean;
+        /**
           * The delay time for showing tooltip in ms.
          */
         "showDelay": number;
@@ -1636,6 +1640,10 @@ declare namespace LocalJSX {
           * The placement of the tooltip.
          */
         "placement"?: Placement;
+        /**
+          * Use round tooltip edges.
+         */
+        "round"?: boolean;
         /**
           * The delay time for showing tooltip in ms.
          */
