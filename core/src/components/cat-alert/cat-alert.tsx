@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { setAttributeDefault, setPropertyDefault } from '../../utils/setDefault';
 
 /**
  * Informs user about important changes or conditions in the interface. Use this
@@ -42,22 +43,20 @@ export class CatAlert {
    */
   @Prop() noIcon = false;
 
+  connectedCallback() {
+    setAttributeDefault(this, 'tabindex', 0);
+    setAttributeDefault(this, 'role', this.mapRole.get(this.color));
+    setPropertyDefault(this, 'color');
+  }
+
   render() {
     return (
-      <Host tabindex={this.tabIndex} role={this.role}>
+      <Host>
         {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
         <div class="content">
           <slot></slot>
         </div>
       </Host>
     );
-  }
-
-  private get tabIndex() {
-    return this.hostElement.getAttribute('tabindex') || '0';
-  }
-
-  private get role() {
-    return this.hostElement.getAttribute('role') || this.mapRole.get(this.color) || null;
   }
 }

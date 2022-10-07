@@ -23,9 +23,7 @@ $-sizes: (
    * @prop --cat-avatar-size: The size of the avatar.
    * @prop --cat-avatar-font-size: The font size of the avatar.
    */
-  display: inline-block;
-  vertical-align: middle;
-  @include cat-select(none);
+  display: contents;
 }
 
 :host([hidden]) {
@@ -33,7 +31,7 @@ $-sizes: (
 }
 
 .avatar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: cat-border-radius('m');
@@ -44,6 +42,8 @@ $-sizes: (
   background-position: center;
   white-space: nowrap;
   overflow: hidden;
+  vertical-align: middle;
+  @include cat-select(none);
 
   &:focus-visible {
     outline: 2px solid cat-token('color.ui.border.focus');

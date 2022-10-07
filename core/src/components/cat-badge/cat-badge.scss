@@ -21,25 +21,18 @@ $-paddings: (
 
 // -----
 
-:host {
-  display: inline-block;
-  max-width: 100%;
-  vertical-align: baseline;
-}
-
 :host([hidden]) {
   display: none;
 }
 
-.badge {
-  font: inherit;
+:host {
   display: inline-flex;
+  max-width: 100%;
+  vertical-align: baseline;
   align-items: center;
   justify-content: center;
   border-radius: cat-border-radius('s');
   text-decoration: none;
-  box-sizing: border-box;
-  width: 100%;
   line-height: 1;
 
   slot {
@@ -50,13 +43,13 @@ $-paddings: (
 
 // ----- round
 
-.badge-round {
+:host([round]) {
   border-radius: 10rem;
 }
 
 // ----- theme
 
-.badge-filled {
+:host([variant='filled']) {
   background-color: cat-token-wrap(var(--bg));
   color: cat-token-wrap(var(--fill));
   font-weight: 600;
@@ -65,14 +58,14 @@ $-paddings: (
 
 $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 
-.badge-outlined {
+:host([variant='outlined']) {
   background-color: cat-token('color.ui.background.body');
   box-shadow: $-outline;
   color: cat-token-wrap(var(--text));
 }
 
 @mixin theme($theme) {
-  .badge-#{$theme} {
+  :host([color='#{$theme}']) {
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
@@ -93,7 +86,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
 // ----- size
 
 @mixin size($size, $fontSize) {
-  .badge-#{$size} {
+  :host([size='#{$size}']) {
     height: map.get($-sizes, $size);
     min-width: map.get($-sizes, $size);
     font-size: cat-body-font-size($fontSize);
@@ -113,14 +106,12 @@ $-pulse-0: 0 0 0 0 cat-token-wrap(var(--bg));
 $-pulse-70: transparent 0 0 0 0.5rem;
 $-pulse-100: transparent 0 0 0 0;
 
-.badge-pulse {
-  &.badge-filled {
-    animation: 1.5s ease 0s infinite normal none running pulse;
-  }
+:host([pulse][variant='filled']) {
+  animation: 1.5s ease 0s infinite normal none running pulse;
+}
 
-  &.badge-outlined {
-    animation: 1.5s ease 0s infinite normal none running pulse-outlined;
-  }
+:host([pulse][variant='outlined']) {
+  animation: 1.5s ease 0s infinite normal none running pulse-outlined;
 }
 
 @keyframes pulse {

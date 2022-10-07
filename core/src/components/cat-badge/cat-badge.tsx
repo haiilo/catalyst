@@ -1,10 +1,9 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
+import { setPropertyDefault } from '../../utils/setDefault';
 
 /**
  * Badges are used to inform users of the status of an object or of an action
  * that’s been taken.
- *
- * @part badge - The badge element.
  */
 @Component({
   tag: 'cat-badge',
@@ -12,6 +11,8 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true
 })
 export class CatBadge {
+  @Element() hostElement!: HTMLElement;
+
   /**
    * The rendering style of the badge.
    */
@@ -37,21 +38,13 @@ export class CatBadge {
    */
   @Prop() pulse = false;
 
+  connectedCallback() {
+    setPropertyDefault(this, 'variant');
+    setPropertyDefault(this, 'color');
+    setPropertyDefault(this, 'size');
+  }
+
   render() {
-    return (
-      <span
-        part="badge"
-        class={{
-          badge: true,
-          'badge-round': this.round,
-          'badge-pulse': this.pulse,
-          [`badge-${this.variant}`]: Boolean(this.variant),
-          [`badge-${this.color}`]: Boolean(this.color),
-          [`badge-${this.size}`]: Boolean(this.size)
-        }}
-      >
-        <slot></slot>
-      </span>
-    );
+    return <slot></slot>;
   }
 }

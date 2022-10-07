@@ -8,11 +8,9 @@ describe('cat-badge', () => {
       html: `<cat-badge></cat-badge>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-badge>
+      <cat-badge color="primary" size="m" variant="filled">
         <mock:shadow-root>
-          <span class="badge badge-filled badge-m badge-primary" part="badge">
-            <slot></slot>
-          </span>
+          <slot></slot>
         </mock:shadow-root>
       </cat-badge>
     `);
