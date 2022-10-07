@@ -111,6 +111,7 @@ label {
   > span {
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1 1 0%;
   }
 
   > cat-button {
@@ -172,8 +173,11 @@ cat-spinner {
 .select-option-inner {
   display: flex;
   gap: 0.5rem;
-
   --cat-avatar-size: 1.25rem;
+}
+
+.select-option-text {
+  flex: 1 1 0%;
 }
 
 .select-option-single {
