@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 /**
  * Cards are surfaces that display content and actions on a single topic. They
@@ -11,10 +11,6 @@ import { Component, Host, h } from '@stencil/core';
 })
 export class CatCard {
   render() {
-    return (
-      <Host>
-        <slot></slot>
-      </Host>
-    );
+    return <slot></slot>;
   }
 }
