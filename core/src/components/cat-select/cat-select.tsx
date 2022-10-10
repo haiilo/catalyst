@@ -327,6 +327,10 @@ export class CatSelect {
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
+        } else if (this.state.selection.length) {
+          const selectionClone = [...this.state.selection];
+          selectionClone.pop();
+          this.patchState({ selection: selectionClone });
         }
       }
     } else if (event.key === 'Tab') {

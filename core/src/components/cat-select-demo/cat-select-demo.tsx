@@ -158,7 +158,7 @@ export class CatSelectTest {
           label="Multiple with tagging support"
           hint="This is a hint!"
           ref={el => (this.multipleSelectTagging = el)}
-          value={{ ids: ['1'], tags: ['Test'] }}
+          value={{ ids: [], tags: ['Test', 'Albania'] }}
           placeholder="Select country"
           onCatChange={() => console.log(this.multipleSelectTagging?.value)}
           multiple
