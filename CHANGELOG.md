@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/haiilo/catalyst/compare/v1.1.0...v1.1.1) (2022-10-11)
+
+
+### Features
+
+* **core:** add custom id to select items ([#68](https://github.com/haiilo/catalyst/issues/68)) ([88f0176](https://github.com/haiilo/catalyst/commit/88f01763117023e8eaf86b21a4aafb2a0264ec7b))
+
+
+### Bug Fixes
+
+* **core:** fix shrinking avatar in select components ([ad784b4](https://github.com/haiilo/catalyst/commit/ad784b4040d97574ae50d0b5cf505111092f65bc))
+* **core:** rework alert, avatar, badge ([9351f2a](https://github.com/haiilo/catalyst/commit/9351f2a0a68fb8c841637ecb3f1534f208f4fbfc))
+* **core:** rework cards ([1852155](https://github.com/haiilo/catalyst/commit/18521554855b82968380803a8369eba5ac5a3de6))
+
 ## [1.1.0](https://github.com/haiilo/catalyst/compare/v1.0.2...v1.1.0) (2022-10-06)
 
 
