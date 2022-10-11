@@ -94,7 +94,7 @@ export class CatSelectTest {
         }
       })
     });
-    this.multipleSelectTagging?.connect(this.countryConnector);
+    this.multipleSelectTagging?.connect({ ...this.countryConnector, changeId: (item: Country) => item.country });
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
@@ -127,7 +127,7 @@ export class CatSelectTest {
         description: user.desc
       })
     });
-    this.singleSelectAvatar?.connect(this.countryConnector);
+    this.singleSelectAvatar?.connect({ ...this.countryConnector, changeId: (item: Country) => item.country });
     this.singleSelectTagging?.connect(this.countryConnector);
   }
 
@@ -140,6 +140,7 @@ export class CatSelectTest {
           ref={el => (this.multipleSelect = el)}
           value={['1']}
           placeholder="Hello World"
+          onCatChange={() => console.log(this.multipleSelect?.value)}
           onCatBlur={e => console.log('Multiple blur', e)}
           multiple
           clearable
@@ -158,7 +159,7 @@ export class CatSelectTest {
           label="Multiple with tagging support"
           hint="This is a hint!"
           ref={el => (this.multipleSelectTagging = el)}
-          value={{ ids: [], tags: ['Test', 'Albania'] }}
+          value={{ ids: ['1'], tags: ['Test', 'Albania'] }}
           placeholder="Select country"
           onCatChange={() => console.log(this.multipleSelectTagging?.value)}
           multiple
@@ -177,6 +178,7 @@ export class CatSelectTest {
           label="Single with img"
           ref={el => (this.singleSelectAvatar = el)}
           value={'1'}
+          onCatChange={() => console.log(this.singleSelectAvatar?.value)}
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>
