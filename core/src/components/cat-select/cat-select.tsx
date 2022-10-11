@@ -42,12 +42,14 @@ export interface RenderInfo {
 }
 
 /**
+ * @property customId - Change the id of item for the given one.
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
  * @property render - Renders the items of the select.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectConnector<T extends Item = any> {
+  customId?: (item: T) => string;
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
@@ -327,6 +329,10 @@ export class CatSelect {
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
         if (this.state.activeSelectionIndex >= 0) {
           this.deselect(this.state.selection[this.state.activeSelectionIndex].item.id);
+        } else if (this.state.selection.length) {
+          const selectionClone = [...this.state.selection];
+          selectionClone.pop();
+          this.patchState({ selection: selectionClone });
         }
       }
     } else if (event.key === 'Tab') {
@@ -399,7 +405,7 @@ export class CatSelect {
       )
       .subscribe(items => {
         const options = items?.map(item => ({
-          item,
+          item: { ...item, id: this.connectorSafe.customId ? this.connectorSafe.customId(item) : item.id },
           render: this.connectorSafe.render(item)
         }));
         if (
