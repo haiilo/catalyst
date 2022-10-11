@@ -94,7 +94,7 @@ export class CatSelectTest {
         }
       })
     });
-    this.multipleSelectTagging?.connect({ ...this.countryConnector, changeId: (item: Country) => item.country });
+    this.multipleSelectTagging?.connect({ ...this.countryConnector, customId: (item: Country) => item.country });
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
@@ -127,7 +127,7 @@ export class CatSelectTest {
         description: user.desc
       })
     });
-    this.singleSelectAvatar?.connect({ ...this.countryConnector, changeId: (item: Country) => item.country });
+    this.singleSelectAvatar?.connect({ ...this.countryConnector, customId: (item: Country) => item.country });
     this.singleSelectTagging?.connect(this.countryConnector);
   }
 

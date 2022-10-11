@@ -42,14 +42,14 @@ export interface RenderInfo {
 }
 
 /**
- * @property changeId - Change the id of item for the given one.
+ * @property customId - Change the id of item for the given one.
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
  * @property render - Renders the items of the select.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectConnector<T extends Item = any> {
-  changeId?: (item: T) => string;
+  customId?: (item: T) => string;
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
@@ -405,7 +405,7 @@ export class CatSelect {
       )
       .subscribe(items => {
         const options = items?.map(item => ({
-          item: { ...item, id: this.connectorSafe.changeId ? this.connectorSafe.changeId(item) : item.id },
+          item: { ...item, id: this.connectorSafe.customId ? this.connectorSafe.customId(item) : item.id },
           render: this.connectorSafe.render(item)
         }));
         if (
