@@ -4,15 +4,8 @@
 
 // -----
 
-$-background-colors: (
-  'primary': cat-token('color.theme.primary.bg', 0.1),
-  'secondary': cat-token('color.theme.secondary.bg', 0.1),
-  'success': cat-token('color.theme.success.bg', 0.1),
-  'warning': cat-token('color.theme.warning.bg', 0.1),
-  'danger': cat-token('color.theme.danger.bg', 0.1)
-);
 $-icon-colors: (
-  'primary': cat-token('color.base.brand.400'),
+  'primary': cat-token('color.theme.primary.text'),
   'secondary': cat-token('color.base.neutral.400'),
   'success': cat-token('color.base.green.400'),
   'warning': cat-token('color.base.orange.400'),
@@ -50,7 +43,7 @@ $-icon-colors: (
 
 @mixin theme($theme) {
   :host([color='#{$theme}']) {
-    background-color: map.get($-background-colors, $theme);
+    background-color: cat-token('color.theme.#{$theme}.bg', 0.1);
 
     cat-icon {
       color: map.get($-icon-colors, $theme);
