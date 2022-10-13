@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/haiilo/catalyst/compare/v1.1.1...v1.2.0) (2022-10-13)
+
+
+### Features
+
+* **core:** adjust badge border radius and colors ([190379a](https://github.com/haiilo/catalyst/commit/190379a04fc8e0d6ffe9bd1c3f112ba93418ad4b))
+* **core:** adjust brand color palette ([40caacf](https://github.com/haiilo/catalyst/commit/40caacf13cea148afb3920177d98d1a003d3c023))
+* **core:** adjust button active state ([b98ad8a](https://github.com/haiilo/catalyst/commit/b98ad8aefd9c7975d5568354cca35d31dfbc69b1))
+* **core:** adjust colors of alerts ([ba2f1c8](https://github.com/haiilo/catalyst/commit/ba2f1c81bbd053b0d8c4d5aa64b9f90425e4a8fe))
+* **core:** adjust tab padding ([06e7c46](https://github.com/haiilo/catalyst/commit/06e7c46aaecb995e407318895fb97bd6f2840e42))
+
+
+### Bug Fixes
+
+* **core:** fix line height of badges ([3fe8354](https://github.com/haiilo/catalyst/commit/3fe8354a05013b2a64314df2f32471af89d95754))
+* **core:** update button docs ([f9b0f0d](https://github.com/haiilo/catalyst/commit/f9b0f0d7f2a1b0dcf1854fd54aa6076b993f6652))
+
 ### [1.1.1](https://github.com/haiilo/catalyst/compare/v1.1.0...v1.1.1) (2022-10-11)
 
 
