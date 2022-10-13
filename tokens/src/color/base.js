@@ -13,9 +13,9 @@ module.exports = {
         100: { value: '#c9e5e8' },
         200: { value: '#2db3c3' },
         300: { value: '#29a3b1' },
-        400: { value: '#207f8a' },
-        500: { value: '#1c707a' },
-        600: { value: '#19656e' },
+        400: { value: '#008194' },
+        500: { value: '#017384' },
+        600: { value: '#025371' },
         700: { value: '#175b63' }
       },
       green: {
