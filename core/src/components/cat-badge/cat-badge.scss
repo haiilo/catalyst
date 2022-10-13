@@ -31,7 +31,7 @@ $-paddings: (
   vertical-align: baseline;
   align-items: center;
   justify-content: center;
-  border-radius: cat-border-radius('s');
+  border-radius: cat-border-radius('m');
   text-decoration: none;
   line-height: 1.5;
 
@@ -50,8 +50,8 @@ $-paddings: (
 // ----- theme
 
 :host([variant='filled']) {
-  background-color: cat-token-wrap(var(--bg));
-  color: cat-token-wrap(var(--fill));
+  background-color: cat-token-wrap(var(--bg), 0.1);
+  color: cat-token-wrap(var(--text));
   font-weight: 600;
   @include cat-font-smooth;
 }
