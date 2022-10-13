@@ -36,7 +36,7 @@ export class CatButton {
   @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
 
   /**
-   * Show an active status indicator on the left side of the button.
+   * Set the button into an active state.
    */
   @Prop() active = false;
 

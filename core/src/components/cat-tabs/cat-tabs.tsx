@@ -87,6 +87,7 @@ export class CatTabs {
                 tab: true,
                 'tab-active': Boolean(this.activeTabId && tab.id === this.activeTabId)
               }}
+              active={Boolean(this.activeTabId && tab.id === this.activeTabId)}
               color={this.activeTabId && tab.id === this.activeTabId ? 'primary' : 'secondary'}
               variant="text"
               icon={tab.icon}

@@ -92,8 +92,11 @@ $button-sizes: (
   box-shadow: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
   color: cat-token-wrap(var(--text));
 
-  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.05);
+  &:hover,
+  &.cat-button-active {
+    &:not(.cat-button-disabled):not(.cat-button-loading) {
+      background-color: cat-token-wrap(var(--base), $alpha: 0.05);
+    }
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
@@ -106,9 +109,12 @@ $button-sizes: (
   color: cat-token-wrap(var(--text));
   text-decoration: $cat-link-text-decoration;
 
-  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: $cat-button-text-decoration-hover;
-    background-color: rgba(var(--base), 0.05);
+  &:hover,
+  &.cat-button-active {
+    &:not(.cat-button-disabled):not(.cat-button-loading) {
+      text-decoration: $cat-button-text-decoration-hover;
+      background-color: rgba(var(--base), 0.05);
+    }
   }
 }
 
@@ -129,6 +135,7 @@ $button-sizes: (
       --text: #{cat-token('color.theme.#{$theme}.textHover', $wrap: false)};
     }
 
+    &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading),
     &:active:not(.cat-button-disabled):not(.cat-button-loading) {
       --bg: #{cat-token('color.theme.#{$theme}.bgActive', $wrap: false)};
       --fill: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
@@ -155,8 +162,7 @@ $button-sizes: (
   .cat-button-#{$size} {
     min-width: map.get($button-sizes, $size);
     padding: $-padding-v $-padding-h;
-
-    @include cat-body($fontSize);
+    @include cat-body($fontSize, null);
 
     .cat-button-prefix {
       margin-right: 0.25rem;
@@ -252,19 +258,6 @@ $button-sizes: (
 @include size('m', 'm', 0.75rem);
 @include size('l', 'm', 1rem);
 @include size('xl', 'l', 1.25rem);
-
-// -- active state
-
-.cat-button-active::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0.25rem;
-  height: 100%;
-  background: cat-token-wrap(var(--base));
-}
 
 // ----- context
 

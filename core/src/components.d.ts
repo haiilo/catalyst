@@ -87,7 +87,7 @@ export namespace Components {
          */
         "a11yLabel"?: string;
         /**
-          * Show an active status indicator on the left side of the button.
+          * Set the button into an active state.
          */
         "active": boolean;
         /**
@@ -983,7 +983,7 @@ declare namespace LocalJSX {
          */
         "a11yLabel"?: string;
         /**
-          * Show an active status indicator on the left side of the button.
+          * Set the button into an active state.
          */
         "active"?: boolean;
         /**
