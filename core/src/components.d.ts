@@ -320,6 +320,10 @@ export namespace Components {
     }
     interface CatMenu {
         /**
+          * Closes the menu.
+         */
+        "close": () => Promise<void>;
+        /**
           * The placement of the menu.
          */
         "placement": Placement;

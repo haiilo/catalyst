@@ -236,7 +236,8 @@ export declare interface CatMenu extends Components.CatMenu {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['placement']
+  inputs: ['placement'],
+  methods: ['close']
 })
 @Component({
   selector: 'cat-menu',

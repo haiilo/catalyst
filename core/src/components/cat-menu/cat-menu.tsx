@@ -1,5 +1,5 @@
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
-import { Component, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import { FocusableElement, tabbable } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
@@ -39,9 +39,17 @@ export class CatMenu {
   clickHandler(event: CustomEvent<MouseEvent>) {
     // hide menu on button click
     if (this.content && event.composedPath().includes(this.content)) {
-      this.trap?.deactivate();
-      this.hide();
+      this.close();
     }
+  }
+
+  /**
+   * Closes the menu.
+   */
+  @Method()
+  async close(): Promise<void> {
+    this.trap?.deactivate();
+    this.hide();
   }
 
   componentDidLoad(): void {

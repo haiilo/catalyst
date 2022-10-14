@@ -20,6 +20,19 @@
 | `catOpen`  | Emitted when the menu is opened. | `CustomEvent<FocusEvent>` |
 
 
+## Methods
+
+### `close() => Promise<void>`
+
+Closes the menu.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany

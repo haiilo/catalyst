@@ -14,16 +14,19 @@ $-max-height: calc(100vh - 48px);
   display: none;
 }
 
-.content {
+::slotted(nav) {
   padding-top: $cat-body-margin-bottom * 0.5;
   padding-bottom: $cat-body-margin-bottom * 0.5;
+  min-width: $-min-width;
+  max-width: $-max-width;
+}
+
+.content {
   position: absolute;
   background: cat-token('color.ui.background.body');
   display: none;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  min-width: $-min-width;
-  max-width: $-max-width;
   min-height: $-min-height;
   max-height: $-max-height;
   @include cat-elevation(1);
