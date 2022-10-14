@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/haiilo/catalyst/compare/v1.2.0...v1.2.1) (2022-10-14)
+
+
+### Features
+
+* add close method to menu ([3d0feb4](https://github.com/haiilo/catalyst/commit/3d0feb4374527fb31e700ce662a26a647439e6ee))
+
 ## [1.2.0](https://github.com/haiilo/catalyst/compare/v1.1.1...v1.2.0) (2022-10-13)
 
 
