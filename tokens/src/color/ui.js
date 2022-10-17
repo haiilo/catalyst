@@ -9,16 +9,16 @@ module.exports = {
         inputDisabled: { value: '{color.base.neutral.100.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
-        tooltip: { value: '{color.base.neutral.900.value}' },
-        backdrop: { value: '{color.base.neutral.900.value}' },
+        tooltip: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "bg-tooltip" } },
+        backdrop: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "bg-backdrop" } },
         select: {
           pill: { value:'#f2f4f7' }
         }
       },
       border: {
-        light: { value: '{color.base.neutral.100.value}' },
-        default: { value: '{color.base.neutral.200.value}' },
-        dark: { value: '{color.base.neutral.300.value}' },
+        light: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "border-color-focus" } },
+        default: { value: '{color.base.neutral.200.value}', attributes: { cssProp: "border-color-focus" } },
+        dark: { value: '{color.base.neutral.300.value}', attributes: { cssProp: "border-color-focus" } },
         focus: { value: '#0071ff', attributes: { cssProp: "border-color-focus" } }
       },
       font: {
@@ -26,8 +26,8 @@ module.exports = {
         body: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-body" } },
         mono: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-mono" } },
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
-        quote: { value: '{color.ui.font.body.value}' },
-        tooltip: { value: '{color.base.neutral.0.value}' }
+        quote: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-quote" } },
+        tooltip: { value: '{color.base.neutral.0.value}', attributes: { cssProp: "font-color-tooltip" } }
       }
     }
   }

@@ -1,6 +1,7 @@
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
+import log from 'loglevel';
 import { FocusableElement, tabbable } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 
@@ -53,6 +54,15 @@ export class CatMenu {
   }
 
   componentDidLoad(): void {
+    let trigger: FocusableElement | undefined =
+      this.triggerSlot?.querySelector<HTMLElement>('[data-trigger]') ?? undefined;
+    if (!trigger) {
+      trigger = firstTabbable(this.triggerSlot);
+    }
+    if (!trigger) {
+      log.error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
+      return;
+    }
     this.trigger = firstTabbable(this.triggerSlot);
     this.trigger?.setAttribute('aria-haspopup', 'true');
     this.trigger?.setAttribute('aria-expanded', 'false');

@@ -1,6 +1,7 @@
 module.exports = {
   opacity: {
-    disabled: { value: 0.65 },
-    backdrop: { value: 0.6 }
+    disabled: { value: 0.65, attributes: { cssProp: "opacity-disabled" } },
+    backdrop: { value: 0.6, attributes: { cssProp: "opacity-backdrop" } },
+    tooltip: { value: 1, attributes: { cssProp: "opacity-tooltip" } }
   }
 }

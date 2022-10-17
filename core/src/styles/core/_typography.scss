@@ -163,31 +163,61 @@ dd {
 
 // ----- blockquotes & figures
 
-blockquote {
-  font-style: italic;
-  @include cat-body('l');
+:where(blockquote, figure) {
+  margin: 0 0 $cat-body-margin-bottom;
   color: cat-token('color.ui.font.quote');
+}
+
+blockquote {
+  padding: 0.5rem 0 0.5rem calc(2rem - 4px);
+  border-left: 4px solid cat-token('color.ui.border.default');
+  @include cat-body('l', null);
 
   > :last-child {
     margin-bottom: 0 !important;
   }
 }
 
-figure {
-  figcaption {
-    margin-top: -$cat-body-margin-bottom * 0.5;
-    margin-bottom: 0;
-    @include cat-body('s');
-    color: cat-token('color.ui.font.muted');
+figcaption {
+  @include cat-body('s');
 
-    &::before {
-      content: '\2014\00A0'; // em dash, nbsp
-    }
+  &::before {
+    content: '\2014\00A0'; // em dash, nbsp
+  }
+
+  a {
+    color: inherit;
   }
 }
 
-:where(blockquote, figure) {
-  margin: 0 0 $cat-body-margin-bottom;
+figure {
+  padding: 0.5rem 0 0.5rem calc(2rem - 4px);
+  border-left: 4px solid cat-token('color.ui.border.default');
+
+  blockquote {
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+  }
+
+  figcaption {
+    margin-top: $cat-body-margin-bottom;
+  }
+}
+
+blockquote.cat-text-center,
+figure.cat-text-center {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-left: none;
+}
+
+blockquote.cat-text-right,
+figure.cat-text-right {
+  padding-left: 0;
+  padding-right: calc(2rem - 4px);
+  border-left: none;
+  border-right: 4px solid cat-token('color.ui.border.default');
 }
 
 // ----- code

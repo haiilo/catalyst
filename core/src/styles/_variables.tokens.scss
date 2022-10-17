@@ -77,8 +77,12 @@
   @if not $value {
     @error 'Unknown token "#{-cat-join($key, '.')}".';
   }
-  @if $wrap and string.index($key, 'color.') == 1 {
-    @return cat-token-wrap($value, $alpha);
+  @if string.index($key, 'color.') == 1 {
+    @if $wrap {
+      @return cat-token-wrap($value, $alpha);
+    } @else if $alpha < 1 {
+      @return $value, $alpha;
+    }
   }
   @return $value;
 }
