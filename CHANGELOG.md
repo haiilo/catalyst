@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/haiilo/catalyst/compare/v1.2.1...v1.2.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* **core:** fix tokens / fix tabbable trigger ([f6cb510](https://github.com/haiilo/catalyst/commit/f6cb510562610600b0b565834eabfb40ad4dc46a))
+
 ### [1.2.1](https://github.com/haiilo/catalyst/compare/v1.2.0...v1.2.1) (2022-10-14)
 
 
