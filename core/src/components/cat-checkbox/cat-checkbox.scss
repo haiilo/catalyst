@@ -97,6 +97,12 @@ input {
     outline: 2px solid cat-token('color.ui.border.focus');
     outline-offset: 1px;
   }
+
+  .is-disabled & {
+    background-color: cat-token('color.ui.background.inputDisabled');
+    border-color: cat-token('color.ui.border.dark');
+    stroke: cat-token('color.ui.font.muted');
+  }
 }
 
 :host(.cat-error) {

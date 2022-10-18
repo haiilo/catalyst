@@ -16,9 +16,9 @@ module.exports = {
         }
       },
       border: {
-        light: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "border-color-focus" } },
-        default: { value: '{color.base.neutral.200.value}', attributes: { cssProp: "border-color-focus" } },
-        dark: { value: '{color.base.neutral.300.value}', attributes: { cssProp: "border-color-focus" } },
+        light: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "border-color-light" } },
+        default: { value: '{color.base.neutral.200.value}', attributes: { cssProp: "border-color" } },
+        dark: { value: '{color.base.neutral.300.value}', attributes: { cssProp: "border-color-dark" } },
         focus: { value: '#0071ff', attributes: { cssProp: "border-color-focus" } }
       },
       font: {

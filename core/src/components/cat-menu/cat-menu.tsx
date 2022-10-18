@@ -15,7 +15,7 @@ let nextUniqueId = 0;
 export class CatMenu {
   private static readonly OFFSET = 4;
   private readonly id = nextUniqueId++;
-  private triggerSlot?: Element;
+  private triggerSlot?: HTMLSlotElement;
   private trigger?: FocusableElement;
   private content?: HTMLElement;
   private trap?: focusTrap.FocusTrap;
@@ -54,16 +54,7 @@ export class CatMenu {
   }
 
   componentDidLoad(): void {
-    let trigger: FocusableElement | undefined =
-      this.triggerSlot?.querySelector<HTMLElement>('[data-trigger]') ?? undefined;
-    if (!trigger) {
-      trigger = firstTabbable(this.triggerSlot);
-    }
-    if (!trigger) {
-      log.error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
-      return;
-    }
-    this.trigger = firstTabbable(this.triggerSlot);
+    this.trigger = this.findTrigger();
     this.trigger?.setAttribute('aria-haspopup', 'true');
     this.trigger?.setAttribute('aria-expanded', 'false');
     this.trigger?.setAttribute('aria-controls', this.contentId);
@@ -96,7 +87,7 @@ export class CatMenu {
   render() {
     return (
       <Host>
-        <slot name="trigger" ref={el => (this.triggerSlot = el)}></slot>
+        <slot name="trigger" ref={el => (this.triggerSlot = el as HTMLSlotElement)}></slot>
         <div class="content" ref={el => (this.content = el)}>
           <slot name="content"></slot>
         </div>
@@ -149,5 +140,24 @@ export class CatMenu {
         }
       });
     }
+  }
+
+  private findTrigger(): FocusableElement | undefined {
+    let trigger: FocusableElement | undefined;
+    const elems = this.triggerSlot?.assignedElements() || [];
+    while (!trigger && elems.length) {
+      const elem = elems.shift();
+      trigger = elem?.hasAttribute('data-trigger')
+        ? (elem as HTMLElement)
+        : elem?.querySelector('[data-trigger]') ?? undefined;
+    }
+    if (!trigger) {
+      trigger = firstTabbable(this.triggerSlot);
+    }
+    if (!trigger) {
+      log.error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
+    }
+    console.log(trigger);
+    return trigger;
   }
 }

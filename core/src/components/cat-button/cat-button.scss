@@ -102,11 +102,12 @@ $button-sizes: (
     --text: #{cat-token('color.ui.font.muted', $wrap: false)};
   }
 
-  &:hover,
-  &.cat-button-active {
-    &:not(.cat-button-disabled):not(.cat-button-loading) {
-      background-color: cat-token-wrap(var(--base), $alpha: 0.05);
-    }
+  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
+    background-color: cat-token-wrap(var(--base), $alpha: 0.05);
+  }
+
+  &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
+    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
@@ -123,12 +124,14 @@ $button-sizes: (
     --text: #{cat-token('color.ui.font.muted', $wrap: false)};
   }
 
-  &:hover,
-  &.cat-button-active {
-    &:not(.cat-button-disabled):not(.cat-button-loading) {
-      text-decoration: $cat-button-text-decoration-hover;
-      background-color: rgba(var(--base), 0.05);
-    }
+  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
+    text-decoration: $cat-button-text-decoration-hover;
+    background-color: rgba(var(--base), 0.05);
+  }
+
+  &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
+    text-decoration: $cat-button-text-decoration-hover;
+    background-color: rgba(var(--base), 0.1);
   }
 }
 

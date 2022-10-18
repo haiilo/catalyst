@@ -76,6 +76,10 @@ input {
       background: cat-token('color.theme.primary.fill');
     }
   }
+
+  .is-disabled & {
+    background-color: cat-token('color.ui.border.dark');
+  }
 }
 
 :host(.cat-error) {
