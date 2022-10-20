@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  line-height: 1.25rem;
   position: relative;
   margin-bottom: $cat-body-margin-bottom;
 }
@@ -82,7 +83,6 @@ label {
 
 .select-input {
   font: inherit;
-  line-height: 1.25rem;
   background: none;
   border: none;
   outline: none;
