@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/haiilo/catalyst/compare/v1.2.3...v1.2.4) (2022-10-21)
+
+
+### Bug Fixes
+
+* **core:** add line height to cat-select ([#70](https://github.com/haiilo/catalyst/issues/70)) ([d36e646](https://github.com/haiilo/catalyst/commit/d36e646a1b4440b3ed8da512b64a5f21aa3a4562))
+* **core:** fix cat-select ellipsis in angular projects ([#69](https://github.com/haiilo/catalyst/issues/69)) ([a27d820](https://github.com/haiilo/catalyst/commit/a27d8204442d5ec967905af8236cea884b0d05a3))
+* **tokens:** adjust brand.600 color ([8a64f26](https://github.com/haiilo/catalyst/commit/8a64f261fdadcbaca4338f087f37b77263319757))
+
 ### [1.2.3](https://github.com/haiilo/catalyst/compare/v1.2.2...v1.2.3) (2022-10-18)
 
 
