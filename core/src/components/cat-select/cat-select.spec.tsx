@@ -5,11 +5,19 @@ describe('cat-select', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatSelect],
-      html: `<cat-select></cat-select>`
+      html: `<cat-select label="Label"></cat-select>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-select>
+      <cat-select label="Label">
         <mock:shadow-root>
+          <label htmlfor="cat-input-0">
+            <span part="label">
+              Label
+              <span aria-hidden="true" class="input-optional">
+                ()
+              </span>
+            </span>
+          </label>
           <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
            <div class="select-wrapper-inner">
              <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">

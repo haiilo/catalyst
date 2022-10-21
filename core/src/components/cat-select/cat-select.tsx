@@ -404,17 +404,15 @@ export class CatSelect {
         )
       )
       .subscribe(items => {
-        const options = items?.map(item => ({
-          item: { ...item, id: this.connectorSafe.customId ? this.connectorSafe.customId(item) : item.id },
-          render: this.connectorSafe.render(item)
-        }));
+        const options = this.toSelectItems(items);
+
         if (
           this.tags &&
           this.state.term.trim().length &&
           !options.find(value1 => value1.render.label.toLowerCase() === this.state.term.toLowerCase())
         ) {
           let label;
-          if (this.isAlreadyCreated(this.state.term)) {
+          if (this.isTagSelected(this.state.term)) {
             label = this.state.selection.find(item => item.render.label.toLowerCase() === this.state.term.toLowerCase())
               ?.render.label;
           }
@@ -585,12 +583,7 @@ export class CatSelect {
     return this.state.options.map((item, i) => {
       const isTagOption = this.tags && item.item.id === `select-${this.id}-option-tag`;
 
-      const getAriaSelected = () => {
-        if (isTagOption) {
-          return this.isAlreadyCreated(item.render.label) ? 'true' : 'false';
-        }
-        return this.isSelected(item.item.id) ? 'true' : 'false';
-      };
+      const isOptionSelected = this.isSelected(item.item.id) || (this.tags && this.isTagSelected(item.render.label));
 
       const getLabel = () => {
         if (isTagOption) {
@@ -600,11 +593,16 @@ export class CatSelect {
       };
 
       return (
-        <li role="option" class="select-option" id={`select-${this.id}-option-${i}`} aria-selected={getAriaSelected()}>
+        <li
+          role="option"
+          class="select-option"
+          id={`select-${this.id}-option-${i}`}
+          aria-selected={isOptionSelected ? 'true' : 'false'}
+        >
           {this.multiple ? (
             <cat-checkbox
               class={{ 'select-option-active': this.state.activeOptionIndex === i }}
-              checked={!isTagOption ? this.isSelected(item.item.id) : this.isAlreadyCreated(item.render.label)}
+              checked={isOptionSelected}
               tabIndex={-1}
               labelLeft
               onFocus={() => this.input?.focus()}
@@ -686,11 +684,13 @@ export class CatSelect {
 
     const data$ = ids.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
     data$.pipe(catchError(() => of([]))).subscribe(items => {
-      const selection = items.length ? items?.map(item => ({ item, render: this.connectorSafe.render(item) })) : [];
+      const selection = items.length ? this.toSelectItems(items) : [];
       if (this.tags) {
         tags?.forEach((tag, index) => {
-          const item = { id: `select-${this.id}-tag-${index}`, name: tag };
-          selection.push({ item, render: { label: item.name } });
+          if (!this.isTagSelected(tag, selection)) {
+            const item = { id: `select-${this.id}-tag-${index}`, name: tag };
+            selection.push({ item, render: { label: item.name } });
+          }
         });
       }
       this.patchState({
@@ -699,6 +699,13 @@ export class CatSelect {
         term: !this.multiple && selection.length ? selection[0].render.label : ''
       });
     });
+  }
+
+  private toSelectItems(items: Item[]) {
+    return items?.map(item => ({
+      item: { ...item, id: this.connectorSafe.customId ? this.connectorSafe.customId(item) : item.id },
+      render: this.connectorSafe.render(item)
+    }));
   }
 
   private show() {
@@ -756,7 +763,11 @@ export class CatSelect {
   }
 
   private toggle(item: { item: Item; render: RenderInfo }) {
-    this.isSelected(item.item.id) ? this.deselect(item.item.id) : this.select(item);
+    this.isSelected(item.item.id)
+      ? this.deselect(item.item.id)
+      : this.tags && this.isTagSelected(item.render.label)
+      ? this.removeTag(item.render.label)
+      : this.select(item);
   }
 
   private clear() {
@@ -890,21 +901,32 @@ export class CatSelect {
   }
 
   private get tagTextHelp() {
-    return this.tagHint && !this.isAlreadyCreated(this.state.term) ? ' (' + this.tagHint + ')' : '';
+    return this.tagHint && !this.isTagSelected(this.state.term) ? ' (' + this.tagHint + ')' : '';
   }
 
-  private isAlreadyCreated(term: string) {
-    return this.state.selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0;
+  private isTagSelected(term: string, selection: { item: Item; render: RenderInfo }[] = this.state.selection) {
+    return selection.findIndex(item => item.render.label.toLowerCase() === term.toLowerCase()) >= 0;
   }
 
   private createTag(term: string) {
-    if (term.trim().length && !this.isAlreadyCreated(term)) {
+    if (term.trim().length && !this.isTagSelected(term)) {
       const value = this.value as CatSelectMultipleTaggingValue;
       const tags = value?.tags;
       const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
       this.select({ item: tag, render: { label: tag.name } });
     }
     this.setTransparentCaret();
+  }
+
+  private removeTag(label: string) {
+    if (this.isTagSelected(label)) {
+      const item = this.state.selection.find(item => item.render.label.toLowerCase() === label.toLowerCase());
+      item && this.deselect(item.item.id);
+    }
+  }
+
+  private toggleTag(item: { item: Item; render: RenderInfo }) {
+    this.isTagSelected(item.render.label) ? this.removeTag(item.render.label) : this.createTag(item.render.label);
   }
 
   private initIds() {
@@ -941,17 +963,6 @@ export class CatSelect {
       }
     }
     return tags;
-  }
-
-  private toggleTag(item: { item: Item; render: RenderInfo }) {
-    this.isAlreadyCreated(item.render.label) ? this.removeTag(item.render.label) : this.createTag(item.render.label);
-  }
-
-  private removeTag(label: string) {
-    if (this.isAlreadyCreated(label)) {
-      const item = this.state.selection.find(item => item.render.label.toLowerCase() === label.toLowerCase());
-      item && this.deselect(item.item.id);
-    }
   }
 
   private setTransparentCaret() {

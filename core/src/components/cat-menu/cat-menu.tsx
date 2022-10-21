@@ -157,7 +157,6 @@ export class CatMenu {
     if (!trigger) {
       log.error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
     }
-    console.log(trigger);
     return trigger;
   }
 }
