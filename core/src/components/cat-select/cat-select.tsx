@@ -320,6 +320,7 @@ export class CatSelect {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
       } else if (this.tags && event.key === 'Enter' && this.state.activeOptionIndex < 0) {
+        console.log('entres');
         this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
@@ -686,12 +687,12 @@ export class CatSelect {
     data$.pipe(catchError(() => of([]))).subscribe(items => {
       const selection = items.length ? this.toSelectItems(items) : [];
       if (this.tags) {
-        tags?.forEach((tag, index) => {
-          if (!this.isTagSelected(tag, selection)) {
+        tags
+          ?.filter(tag => !this.isTagSelected(tag, selection))
+          .forEach((tag, index) => {
             const item = { id: `select-${this.id}-tag-${index}`, name: tag };
             selection.push({ item, render: { label: item.name } });
-          }
-        });
+          });
       }
       this.patchState({
         isResolving: false,
