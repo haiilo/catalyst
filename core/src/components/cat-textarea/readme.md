@@ -34,7 +34,7 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions) => Promise<void>`
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
 
 Sets focus on the textarea. Use this method instead of `textarea.focus()`.
 

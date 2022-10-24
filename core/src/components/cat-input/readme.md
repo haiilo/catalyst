@@ -53,7 +53,7 @@ Type: `Promise<void>`
 
 
 
-### `setFocus(options?: FocusOptions) => Promise<void>`
+### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
 
 Sets focus on the input. Use this method instead of `input.focus()`.
 
