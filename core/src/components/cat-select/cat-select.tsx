@@ -320,7 +320,6 @@ export class CatSelect {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
       } else if (this.tags && event.key === 'Enter' && this.state.activeOptionIndex < 0) {
-        console.log('entres');
         this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
