@@ -67,9 +67,7 @@ export class CatRadioGroup {
   @Watch('disabled')
   onDisabledChanged(disabled: boolean) {
     this.catRadioGroup.forEach(catRadio => {
-      if (disabled) {
-        catRadio.disabled = disabled;
-      }
+      catRadio.disabled = disabled;
     });
   }
 
