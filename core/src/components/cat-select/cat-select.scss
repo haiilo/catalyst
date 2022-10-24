@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  line-height: 1.25rem;
   position: relative;
   margin-bottom: $cat-body-margin-bottom;
 }
@@ -206,6 +207,7 @@ cat-spinner {
 
 .select-option-label {
   @include cat-ellipsis(2);
+  @include cat-break-word;
 }
 
 .select-option-description {

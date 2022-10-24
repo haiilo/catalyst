@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "1.0.3",
-    "@haiilo/catalyst-tokens": "1.2.3",
+    "@haiilo/catalyst-tokens": "1.2.4",
     "@stencil/core": "2.18.1",
     "autosize": "5.0.1",
     "autosize-input": "1.0.2",
@@ -78,6 +78,6 @@
     "stylelint": "^14.14.0",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^5.0.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.8.4"
   }
 }
