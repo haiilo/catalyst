@@ -29,7 +29,7 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `setFocus(options?: FocusOptions) => Promise<void>`
 
 Sets focus on the radio. Use this method instead of `radio.focus()`.
 

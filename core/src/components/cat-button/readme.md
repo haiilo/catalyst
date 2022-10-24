@@ -38,7 +38,7 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `setFocus(options?: FocusOptions) => Promise<void>`
 
 Sets focus on the button. Use this method instead of `button.focus()`.
 

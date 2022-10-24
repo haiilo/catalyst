@@ -134,7 +134,7 @@ export namespace Components {
           * Sets focus on the button. Use this method instead of `button.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The size of the button.
          */
@@ -203,7 +203,7 @@ export namespace Components {
           * Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The value of the checkbox
          */
@@ -300,7 +300,7 @@ export namespace Components {
           * Sets focus on the input. Use this method instead of `input.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -375,7 +375,7 @@ export namespace Components {
           * Sets focus on the radio. Use this method instead of `radio.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The value of the radio component.
          */
@@ -615,7 +615,7 @@ export namespace Components {
           * Sets focus on the textarea. Use this method instead of `textarea.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The initial value of the control.
          */
@@ -660,7 +660,7 @@ export namespace Components {
           * Sets focus on the toggle. Use this method instead of `toggle.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The value of the toggle
          */
