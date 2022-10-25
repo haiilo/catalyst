@@ -118,6 +118,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
 
 export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', undefined, [
   'placement',
+  'noAutoClose',
   'catOpen',
   'catClose'
 ]);
