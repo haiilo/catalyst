@@ -32,6 +32,11 @@ export class CatMenu {
   @Prop() noAutoClose = false;
 
   /**
+   * Disable the overflow when menu is open.
+   */
+  @Prop() disableOverflow = false;
+
+  /**
    * Emitted when the menu is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
@@ -89,7 +94,7 @@ export class CatMenu {
     return (
       <Host>
         <slot name="trigger" ref={el => (this.triggerSlot = el as HTMLSlotElement)}></slot>
-        <div class="content" ref={el => (this.content = el)}>
+        <div class={{ content: true, overflow: !this.disableOverflow }} ref={el => (this.content = el)}>
           <slot name="content"></slot>
         </div>
       </Host>

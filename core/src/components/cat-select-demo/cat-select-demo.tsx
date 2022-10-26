@@ -182,16 +182,24 @@ export class CatSelectTest {
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>
-        <cat-select
-          label="Single with tagging support"
-          ref={el => (this.singleSelectTagging = el)}
-          value={{ id: '', tag: 'Albania' }}
-          placeholder="Search for a country or capital"
-          onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
-          tagHint="new country"
-          tags
-          clearable
-        ></cat-select>
+        <cat-menu disableOverflow noAutoClose>
+          <cat-button slot="trigger" style={{ width: '50%' }}>
+            Open select
+          </cat-button>
+          <div slot="content" style={{ width: '400px' }}>
+            <cat-select
+              label="Single with tagging support"
+              ref={el => (this.singleSelectTagging = el)}
+              value={{ id: '', tag: 'Albania' }}
+              placeholder="Search for a country or capital"
+              onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
+              tagHint="new country"
+              tags
+              clearable
+              style={{ width: '90%' }}
+            ></cat-select>
+          </div>
+        </cat-menu>
       </Host>
     );
   }
