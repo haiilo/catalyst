@@ -328,6 +328,10 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * Allow overflow when menu is open.
+         */
+        "overflow": boolean;
+        /**
           * The placement of the menu.
          */
         "placement": Placement;
@@ -1252,6 +1256,10 @@ declare namespace LocalJSX {
           * Emitted when the menu is opened.
          */
         "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
+        /**
+          * Allow overflow when menu is open.
+         */
+        "overflow"?: boolean;
         /**
           * The placement of the menu.
          */

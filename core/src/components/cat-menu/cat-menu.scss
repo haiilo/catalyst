@@ -25,11 +25,14 @@ $-max-height: calc(100vh - 48px);
   position: absolute;
   background: cat-token('color.ui.background.body');
   display: none;
-  overflow: auto;
   -webkit-overflow-scrolling: touch;
   min-height: $-min-height;
   max-height: $-max-height;
   @include cat-elevation(1);
   border-radius: cat-border-radius('m');
   z-index: $cat-menu-z-index;
+
+  &.overflow-auto {
+    overflow: auto;
+  }
 }

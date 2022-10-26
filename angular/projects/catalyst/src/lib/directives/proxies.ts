@@ -236,14 +236,14 @@ export declare interface CatMenu extends Components.CatMenu {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['noAutoClose', 'placement'],
+  inputs: ['noAutoClose', 'overflow', 'placement'],
   methods: ['close']
 })
 @Component({
   selector: 'cat-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['noAutoClose', 'placement']
+  inputs: ['noAutoClose', 'overflow', 'placement']
 })
 export class CatMenu {
   protected el: HTMLElement;

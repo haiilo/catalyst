@@ -10,11 +10,15 @@
 ### Depends on
 
 - [cat-select](../cat-select)
+- [cat-menu](../cat-menu)
+- [cat-button](../cat-button)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-select-demo --> cat-select
+  cat-select-demo --> cat-menu
+  cat-select-demo --> cat-button
   cat-select --> cat-avatar
   cat-select --> cat-button
   cat-select --> cat-spinner
