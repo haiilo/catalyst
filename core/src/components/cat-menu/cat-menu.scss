@@ -32,7 +32,7 @@ $-max-height: calc(100vh - 48px);
   border-radius: cat-border-radius('m');
   z-index: $cat-menu-z-index;
 
-  &.overflow {
+  &.overflow-auto {
     overflow: auto;
   }
 }

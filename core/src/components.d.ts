@@ -324,13 +324,13 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * Disable the overflow when menu is open.
-         */
-        "disableOverflow": boolean;
-        /**
           * Do not close the menu on outside clicks.
          */
         "noAutoClose": boolean;
+        /**
+          * Allow overflow when menu is open.
+         */
+        "overflow": boolean;
         /**
           * The placement of the menu.
          */
@@ -1245,10 +1245,6 @@ declare namespace LocalJSX {
     }
     interface CatMenu {
         /**
-          * Disable the overflow when menu is open.
-         */
-        "disableOverflow"?: boolean;
-        /**
           * Do not close the menu on outside clicks.
          */
         "noAutoClose"?: boolean;
@@ -1260,6 +1256,10 @@ declare namespace LocalJSX {
           * Emitted when the menu is opened.
          */
         "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
+        /**
+          * Allow overflow when menu is open.
+         */
+        "overflow"?: boolean;
         /**
           * The placement of the menu.
          */

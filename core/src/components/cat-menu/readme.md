@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                              | Type                                                                                                                                                                 | Default          |
-| ----------------- | ------------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `disableOverflow` | `disable-overflow` | Disable the overflow when menu is open.  | `boolean`                                                                                                                                                            | `false`          |
-| `noAutoClose`     | `no-auto-close`    | Do not close the menu on outside clicks. | `boolean`                                                                                                                                                            | `false`          |
-| `placement`       | `placement`        | The placement of the menu.               | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
+| Property      | Attribute       | Description                              | Type                                                                                                                                                                 | Default          |
+| ------------- | --------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `noAutoClose` | `no-auto-close` | Do not close the menu on outside clicks. | `boolean`                                                                                                                                                            | `false`          |
+| `overflow`    | `overflow`      | Allow overflow when menu is open.        | `boolean`                                                                                                                                                            | `false`          |
+| `placement`   | `placement`     | The placement of the menu.               | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
 
 
 ## Events

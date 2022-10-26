@@ -182,7 +182,7 @@ export class CatSelectTest {
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>
-        <cat-menu disableOverflow noAutoClose>
+        <cat-menu overflow noAutoClose>
           <cat-button slot="trigger" style={{ width: '50%' }}>
             Open select
           </cat-button>
