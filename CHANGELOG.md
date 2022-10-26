@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/haiilo/catalyst/compare/v1.2.5...v1.3.0) (2022-10-26)
+
+
+### Features
+
+* **core:** update color palette, add emoji font mapping, cleanup ([073af69](https://github.com/haiilo/catalyst/commit/073af69aed5b8c590a78b3ba65597d6aad74f133))
+
+
+### Bug Fixes
+
+* **core:** add noAutoClose for menus ([8d2cafb](https://github.com/haiilo/catalyst/commit/8d2cafb20a9ec97bb7182a1c424e0a8d594a26a4))
+* **core:** fix menu component inside card component ([#73](https://github.com/haiilo/catalyst/issues/73)) ([69fe866](https://github.com/haiilo/catalyst/commit/69fe8665295ee79250390f811d71d1a0257470f7))
+* **core:** fix preselected tags behaviour ([#71](https://github.com/haiilo/catalyst/issues/71)) ([813f495](https://github.com/haiilo/catalyst/commit/813f49580c93c8ac41bbc41b6fdd68748ab9fb5e))
+* **core:** lint error ([a18275e](https://github.com/haiilo/catalyst/commit/a18275e2581a06de3cd4b354c952b00b209f5a0b))
+
 ### [1.2.5](https://github.com/haiilo/catalyst/compare/v1.2.4...v1.2.5) (2022-10-24)
 
 
