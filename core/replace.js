@@ -3,7 +3,7 @@ const replace = require('replace-in-file');
 const results = replace.sync({
   files: 'dist/catalyst/scss/**/*.scss',
   from: /@(import|use|forward) '~/g,
-  to: '@$1 \'',
+  to: "@$1 '"
 });
 
 const output = results

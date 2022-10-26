@@ -94,7 +94,7 @@ export class CatSelectTest {
         }
       })
     });
-    this.multipleSelectTagging?.connect({ ...this.countryConnector, customId: (item: Country) => item.country });
+    this.multipleSelectTagging?.connect(this.countryConnector);
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
         console.info(`Resolving data... (${ids.join(', ')})`);
@@ -159,7 +159,7 @@ export class CatSelectTest {
           label="Multiple with tagging support"
           hint="This is a hint!"
           ref={el => (this.multipleSelectTagging = el)}
-          value={{ ids: ['1'], tags: ['Test', 'Albania'] }}
+          value={{ ids: ['1'], tags: ['Test', 'Albania', 'Algeria'] }}
           placeholder="Select country"
           onCatChange={() => console.log(this.multipleSelectTagging?.value)}
           multiple
@@ -185,7 +185,7 @@ export class CatSelectTest {
         <cat-select
           label="Single with tagging support"
           ref={el => (this.singleSelectTagging = el)}
-          value={{ id: '1', tag: '' }}
+          value={{ id: '', tag: 'Albania' }}
           placeholder="Search for a country or capital"
           onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
           tagHint="new country"
