@@ -1,13 +1,16 @@
 module.exports = {
   color: {
     base: {
+      white: { value: '#ffffff' },
+      black: { value: '#000000' },
       neutral: {
-        0: { value: '#ffffff' },
-        100: { value: '#f8f8fb' },
+        100: { value: '#f2f4f7' },
         200: { value: '#ebecf0' },
         300: { value: '#d7dbe0' },
         400: { value: '#697687' },
-        900: { value: '#000000' }
+        500: { value: '#515c6c' },
+        600: { value: '#394251' },
+        700: { value: '#1b1f26' }
       },
       brand: {
         100: { value: '#c9e5e8' },

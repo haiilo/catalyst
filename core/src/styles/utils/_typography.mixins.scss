@@ -1,9 +1,16 @@
 @use '../variables' as *;
 
+/* stylelint-disable value-keyword-case */
+$font-fallback-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans',
+  'Liberation Sans', Arial, sans-serif !default;
+$font-fallback-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+/* stylelint-enable value-keyword-case */
+
 // ---- Head
 
 @function cat-head-font-family() {
-  @return cat-token('font.family.head'), $font-fallback-sans-serif;
+  @return cat-token('font.family.head'), $font-fallback-sans-serif, cat-token('font.family.emoji'), $font-fallback-emoji;
 }
 
 @function cat-head-font-size($size) {
@@ -25,7 +32,7 @@
 // ---- Body
 
 @function cat-body-font-family() {
-  @return cat-token('font.family.body'), $font-fallback-sans-serif;
+  @return cat-token('font.family.body'), $font-fallback-sans-serif, cat-token('font.family.emoji'), $font-fallback-emoji;
 }
 
 @function cat-body-font-size($size) {
