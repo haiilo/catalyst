@@ -489,6 +489,27 @@
               </ul>
             </nav>
           </cat-menu>
+
+          <cat-card>
+            Menu inside a card
+            <cat-menu>
+              <cat-button slot="trigger">Click me</cat-button>
+              <nav slot="content">
+                <ul>
+                  <li><cat-button>Item A</cat-button></li>
+                  <li><cat-button>Item B</cat-button></li>
+                </ul>
+              </nav>
+            </cat-menu>
+          </cat-card>
+
+          <cat-menu no-auto-close>
+            <cat-button slot="trigger">Button (keep open)</cat-button>
+            <div slot="content" class="cat-flex cat-flex-col cat-p-m">
+              <p>Here is some content.</p>
+              <cat-button>Action</cat-button>
+            </div>
+          </cat-menu>
         </section>
 
         <!-- <section id="modal">
@@ -677,7 +698,6 @@
 
         <section id="tooltip">
           <h2>Tooltip</h2>
-          <cat-button>Button</cat-button>
           <cat-tooltip content="This is a tooltip">
             <cat-button>Button</cat-button>
           </cat-tooltip>

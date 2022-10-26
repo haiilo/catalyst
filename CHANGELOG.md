@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/haiilo/catalyst/compare/v1.2.4...v1.2.5) (2022-10-24)
+
+
+### Bug Fixes
+
+* **core:** fix build error ([83cc701](https://github.com/haiilo/catalyst/commit/83cc701d3cf60bf296432e630c9c4294957a26e4))
+* **core:** replace tilde imports ([744816a](https://github.com/haiilo/catalyst/commit/744816a67db962e33a6be8541bc36acac8367a83))
+
 ### [1.2.4](https://github.com/haiilo/catalyst/compare/v1.2.3...v1.2.4) (2022-10-21)
 
 

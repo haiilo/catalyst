@@ -324,6 +324,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * Do not close the menu on outside clicks.
+         */
+        "noAutoClose": boolean;
+        /**
           * The placement of the menu.
          */
         "placement": Placement;
@@ -1236,6 +1240,10 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface CatMenu {
+        /**
+          * Do not close the menu on outside clicks.
+         */
+        "noAutoClose"?: boolean;
         /**
           * Emitted when the menu is closed.
          */

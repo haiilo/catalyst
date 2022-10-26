@@ -278,6 +278,12 @@ $button-sizes: (
 
 // ----- context
 
+:host-context(cat-tabs) {
+  .cat-button {
+    background-color: transparent !important;
+  }
+}
+
 :host-context(nav) {
   width: 100%;
 

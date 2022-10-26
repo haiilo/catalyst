@@ -1,7 +1,7 @@
-import { Config } from '@stencil/core';
-import { sass } from '@stencil/sass';
 import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
+import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
 
@@ -35,7 +35,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'radio'
   },
   {
-    elementSelectors: ['cat-select', 'cat-select-remote'],
+    elementSelectors: ['cat-select'],
     event: 'catChange',
     targetAttr: 'value',
     type: 'select'
@@ -46,7 +46,7 @@ export const config: Config = {
   namespace: 'catalyst',
   plugins: [
     sass({
-      includePaths: ['src/styles']
+      includePaths: ['src/styles', 'node_modules', '../node_modules']
     })
   ],
   sourceMap: true,
