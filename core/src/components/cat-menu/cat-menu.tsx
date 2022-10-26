@@ -64,18 +64,6 @@ export class CatMenu {
   }
 
   componentDidLoad(): void {
-    this.trigger = this.findTrigger();
-    this.trigger?.setAttribute('aria-haspopup', 'true');
-    this.trigger?.setAttribute('aria-expanded', 'false');
-    this.trigger?.setAttribute('aria-controls', this.contentId);
-    this.content?.setAttribute('id', this.contentId);
-    if (this.trigger && this.content) {
-      this.trigger?.addEventListener('click', () => {
-        this.trap?.active ? this.close() : this.show();
-      });
-      autoUpdate(this.trigger, this.content, () => this.update());
-    }
-
     this.initTrigger();
     this.keyListener = event => {
       if (this.content && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
@@ -119,7 +107,9 @@ export class CatMenu {
     this.trigger?.setAttribute('aria-controls', this.contentId);
     this.content?.setAttribute('id', this.contentId);
     if (this.trigger && this.content) {
-      this.trigger?.addEventListener('click', () => this.show());
+      this.trigger?.addEventListener('click', () => {
+        this.trap?.active ? this.close() : this.show();
+      });
       autoUpdate(this.trigger, this.content, () => this.update());
     }
   }
