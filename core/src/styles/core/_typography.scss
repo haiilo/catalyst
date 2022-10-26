@@ -1,21 +1,6 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.cat-h1,
-.cat-h2,
-.cat-h3,
-.cat-h4,
-.cat-h5,
-.cat-h6 {
-  font-weight: cat-token('font.weight.head');
-}
-
 :where(h1, h2, h3, h4, h5, h6, .cat-h1, .cat-h2, .cat-h3, .cat-h4, .cat-h5, .cat-h6) {
   margin-top: 0;
   margin-bottom: $cat-head-margin-bottom;
@@ -62,12 +47,12 @@ hr,
 
 a {
   color: cat-token('color.theme.primary.text');
-  text-decoration: $cat-link-text-decoration;
+  text-decoration: cat-token('font.decoration.link');
   transition: color cat-token('time.transition.s') linear;
 
   &:hover {
     color: cat-token('color.theme.primary.textHover');
-    text-decoration: $cat-link-text-decoration-hover;
+    text-decoration: cat-token('font.decoration.linkHover');
   }
 
   &:active {

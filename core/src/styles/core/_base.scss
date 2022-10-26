@@ -3,9 +3,13 @@
 
 // ---- Typography
 
+html,
+body {
+  background-color: cat-token('color.ui.background.canvas');
+}
+
 body {
   @include cat-body('m');
   font-family: cat-body-font-family();
   color: cat-token('color.ui.font.body');
-  background-color: cat-token('color.ui.background.canvas');
 }

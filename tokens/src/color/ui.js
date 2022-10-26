@@ -3,14 +3,14 @@ module.exports = {
     ui: {
       background: {
         canvas: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "bg" } },
-        body: { value: '{color.base.neutral.0.value}' },
+        body: { value: '{color.base.white.value}' },
         muted: { value: '{color.base.neutral.200.value}' },
-        input: { value: '{color.base.neutral.0.value}' },
+        input: { value: '{color.base.white.value}' },
         inputDisabled: { value: '{color.base.neutral.100.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
-        tooltip: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "bg-tooltip" } },
-        backdrop: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "bg-backdrop" } },
+        tooltip: { value: '{color.base.black.value}', attributes: { cssProp: "bg-tooltip" } },
+        backdrop: { value: '{color.base.black.value}', attributes: { cssProp: "bg-backdrop" } },
         select: {
           pill: { value:'#f2f4f7' }
         }
@@ -22,12 +22,12 @@ module.exports = {
         focus: { value: '#0071ff', attributes: { cssProp: "border-color-focus" } }
       },
       font: {
-        head: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-head" } },
-        body: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-body" } },
-        mono: { value: '{color.base.neutral.900.value}', attributes: { cssProp: "font-color-mono" } },
+        head: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-head" } },
+        body: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-body" } },
+        mono: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-mono" } },
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-quote" } },
-        tooltip: { value: '{color.base.neutral.0.value}', attributes: { cssProp: "font-color-tooltip" } }
+        tooltip: { value: '{color.base.white.value}', attributes: { cssProp: "font-color-tooltip" } }
       }
     }
   }

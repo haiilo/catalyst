@@ -51,26 +51,18 @@ export class CatRadioGroup {
 
   @Watch('name')
   onNameChanged(newName?: string) {
-    this.catRadioGroup.forEach(catRadio => {
-      catRadio.name = newName;
-    });
+    this.catRadioGroup.forEach(catRadio => (catRadio.name = newName));
   }
 
   @Watch('value')
   onValueChanged(newValue?: string) {
-    this.catRadioGroup.forEach(catRadio => {
-      catRadio.checked = catRadio.value === newValue;
-    });
+    this.catRadioGroup.forEach(catRadio => (catRadio.checked = catRadio.value === newValue));
     this.updateTabIndex();
   }
 
   @Watch('disabled')
   onDisabledChanged(disabled: boolean) {
-    this.catRadioGroup.forEach(catRadio => {
-      if (disabled) {
-        catRadio.disabled = disabled;
-      }
-    });
+    this.catRadioGroup.forEach(catRadio => (catRadio.disabled = disabled));
   }
 
   @Watch('labelLeft')

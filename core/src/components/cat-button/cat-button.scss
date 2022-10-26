@@ -118,19 +118,19 @@ $button-sizes: (
 .cat-button-text {
   background-color: transparent;
   color: cat-token-wrap(var(--text));
-  text-decoration: $cat-link-text-decoration;
+  text-decoration: cat-token('font.decoration.linkButton');
 
   &.cat-button-disabled {
     --text: #{cat-token('color.ui.font.muted', $wrap: false)};
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: $cat-button-text-decoration-hover;
+    text-decoration: cat-token('font.decoration.linkButtonHover');
     background-color: rgba(var(--base), 0.05);
   }
 
   &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: $cat-button-text-decoration-hover;
+    text-decoration: cat-token('font.decoration.linkButtonHover');
     background-color: rgba(var(--base), 0.1);
   }
 }

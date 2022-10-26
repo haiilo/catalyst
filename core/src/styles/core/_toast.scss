@@ -1,14 +1,14 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-$-background-color: cat-token('color.base.neutral.0');
-$-text-color: cat-token('color.base.neutral.900');
+$-background-color: cat-token('color.base.white');
+$-text-color: cat-token('color.base.black');
 $-title-border: cat-token('color.base.neutral.300');
 $-shadow: cat-token('color.ui.border.dark');
 $-error-color: cat-token('color.theme.danger.text');
 $-info-color: cat-token('color.base.orange.700');
 $-success-color: cat-token('color.theme.success.text');
-$-secondary-color: cat-token('color.base.neutral.900');
+$-secondary-color: cat-token('color.base.black');
 $-primary-color: cat-token('color.base.brand.400');
 
 .cat-toastify {
