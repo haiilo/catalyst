@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/haiilo/catalyst/compare/v1.3.0...v1.3.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* **core:** add disableOverflow for menus ([#72](https://github.com/haiilo/catalyst/issues/72)) ([25be4d7](https://github.com/haiilo/catalyst/commit/25be4d7733e9d6632ce5b80001f7c3e798b2d0d9))
+* **core:** allow overflow for menus ([#74](https://github.com/haiilo/catalyst/issues/74)) ([92f8d0a](https://github.com/haiilo/catalyst/commit/92f8d0a7196edb8fcdb384966b7c0bb6ee8cdfae))
+
 ## [1.3.0](https://github.com/haiilo/catalyst/compare/v1.2.5...v1.3.0) (2022-10-26)
 
 
