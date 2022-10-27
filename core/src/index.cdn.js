@@ -22,7 +22,7 @@
     import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 
     CatIconRegistry.getInstance().addIcons(ci);
-    CatI18nRegistry.getInstance().register('en', {
+    CatI18nRegistry.getInstance().set({
       'input.clear': 'Clear',
       'input.optional': 'Optional',
       'select.close': 'Close',
