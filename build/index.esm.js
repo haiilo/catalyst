@@ -1,2 +1,2 @@
-export{C as CatI18nRegistry,a as CatIconRegistry,N as NotificationsService}from"./p-10b0d7a2.js";
+export{C as CatI18nRegistry,a as CatIconRegistry,N as NotificationsService}from"./p-54a9cb0d.js";
 //# sourceMappingURL=index.esm.js.map
