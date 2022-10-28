@@ -52,7 +52,7 @@ Use `npm publish` to publish. The command will publish the workspaces as well.
 1. In token dir, run `npm run build && npm publish`
 1. In core dir, run `npm run build && npm publish`
 1. In angular dir run `npm run build` and then in `angular/dist/catalyst` run `npm publish`
-1. Commit changed files with a `chore(release): udpate dependencies` commit and push incl. tags
+1. Commit changed files with a `chore(release): update dependencies` commit and push incl. tags
 
 ## Code Contributors
 
