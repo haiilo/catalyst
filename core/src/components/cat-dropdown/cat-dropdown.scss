@@ -36,16 +36,16 @@ $-max-height: calc(100vh - 48px);
     opacity cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15);
 
   &[data-placement^='top'] {
-    transform: translateY(2.5rem);
+    transform: translateY(1rem);
   }
   &[data-placement^='left'] {
-    transform: translateX(2.5rem);
+    transform: translateX(1rem);
   }
   &[data-placement^='right'] {
-    transform: translateX(-2.5rem);
+    transform: translateX(-1rem);
   }
   &[data-placement^='bottom'] {
-    transform: translateY(-2.5rem);
+    transform: translateY(-1rem);
   }
 
   &.show {
