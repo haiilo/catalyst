@@ -1,6 +1,13 @@
 import { Component, h, Prop } from '@stencil/core';
 import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
+/**
+ * A navigation component to switch between different pages of paged chunks of
+ * data such as a table. Pagination is built with list HTML elements and a
+ * wrapping `<nav>` element to identify it as a navigation section to screen
+ * readers and other assistive technologies. Furthermore, the current page is
+ * correctly highlighted using `aria-current`.
+ */
 @Component({
   tag: 'cat-pagination',
   styleUrl: 'cat-pagination.scss',
@@ -61,7 +68,7 @@ export class CatPagination {
 
   render() {
     return (
-      <nav role="navigation" aria-label="TODO">
+      <nav role="navigation">
         <ol
           class={{
             [`cat-pagination-${this.size}`]: Boolean(this.size)
@@ -73,7 +80,7 @@ export class CatPagination {
               size={this.size}
               round={this.round}
               disabled={this.isFirst}
-              aria-label={this.i18n.t('pagination.prev')}
+              a11yLabel={this.i18n.t('pagination.prev')}
               icon={this.iconPrev}
               iconOnly
               onClick={() => (this.page = this.page - 1)}
@@ -86,7 +93,7 @@ export class CatPagination {
               size={this.size}
               round={this.round}
               disabled={this.isLast}
-              aria-label={this.i18n.t('pagination.next')}
+              a11yLabel={this.i18n.t('pagination.next')}
               icon={this.iconNext}
               iconOnly
               onClick={() => (this.page = this.page + 1)}
@@ -157,8 +164,8 @@ export class CatPagination {
           round={this.round}
           color={this.page === page ? 'primary' : undefined}
           active={this.page === page}
-          aria-label={this.i18n.t('pagination.page', { page: page + 1 })}
-          aria-current={this.page === page || null}
+          a11yLabel={this.i18n.t('pagination.page', { page: page + 1 })}
+          a11yCurrent={this.page === page || undefined}
           onClick={() => (this.page = page)}
         >
           {page + 1}

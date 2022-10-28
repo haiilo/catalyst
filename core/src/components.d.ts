@@ -83,6 +83,10 @@ export namespace Components {
     }
     interface CatButton {
         /**
+          * Sets the `aria-current` attribute on the button.
+         */
+        "a11yCurrent"?: boolean;
+        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
@@ -1039,6 +1043,10 @@ declare namespace LocalJSX {
         "variant"?: 'filled' | 'outlined';
     }
     interface CatButton {
+        /**
+          * Sets the `aria-current` attribute on the button.
+         */
+        "a11yCurrent"?: boolean;
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */

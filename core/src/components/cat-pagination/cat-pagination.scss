@@ -53,10 +53,12 @@ li {
       line-height: map.get($button-sizes, $size);
       font-size: cat-body-font-size($fontSize);
     }
+
     li.dots {
       width: map.get($button-sizes, $size);
     }
   }
+
   :host([variant='outlined']) {
     .cat-pagination-#{$size} {
       gap: map.get($button-sizes, $size) * 0.25;
