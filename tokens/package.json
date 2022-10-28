@@ -11,6 +11,8 @@
     "dist",
     "assets"
   ],
+  "main": "./dist/js/variables.js",
+  "types": "./dist/js/variables.d.ts",
   "publishConfig": {
     "access": "public"
   },

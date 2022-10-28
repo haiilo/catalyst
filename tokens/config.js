@@ -35,16 +35,16 @@ module.exports = {
   source: ['src/**/*.js'],
   platforms: {
     js: {
-      transforms: ['attribute/cti', 'name/cti/pascal', 'size/rem', 'color/hex'],
+      transforms: ['attribute/cti', 'name/cti/camel', 'size/rem', 'color/hex'],
       buildPath: 'dist/js/',
       files: [{
-        destination: '_variables.js',
+        destination: 'variables.js',
         format: "javascript/es6",
         options: {
           fileHeader: 'cat/header'
         }
       }, {
-        destination: '_variables.d.ts',
+        destination: 'variables.d.ts',
         format: 'typescript/es6-declarations',
         options: {
           fileHeader: 'cat/header'
@@ -56,7 +56,7 @@ module.exports = {
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
-        destination: '_variables.css',
+        destination: 'variables.css',
         format: 'css/variables',
         options: {
           fileHeader: 'cat/header',
