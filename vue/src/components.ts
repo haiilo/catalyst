@@ -81,6 +81,15 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
 ]);
 
 
+export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-dropdown', undefined, [
+  'placement',
+  'noAutoClose',
+  'overflow',
+  'catOpen',
+  'catClose'
+]);
+
+
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
   'icon',
   'size',
@@ -113,15 +122,6 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'catChange',
   'catFocus',
   'catBlur'
-]);
-
-
-export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', undefined, [
-  'placement',
-  'noAutoClose',
-  'overflow',
-  'catOpen',
-  'catClose'
 ]);
 
 

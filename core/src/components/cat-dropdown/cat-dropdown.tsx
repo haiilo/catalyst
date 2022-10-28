@@ -9,11 +9,11 @@ import firstTabbable from '../../utils/first-tabbable';
 let nextUniqueId = 0;
 
 @Component({
-  tag: 'cat-menu',
-  styleUrl: 'cat-menu.scss',
+  tag: 'cat-dropdown',
+  styleUrl: 'cat-dropdown.scss',
   shadow: true
 })
-export class CatMenu {
+export class CatDropdown {
   private static readonly OFFSET = 4;
   private readonly id = nextUniqueId++;
   private triggerSlot?: HTMLSlotElement;
@@ -23,27 +23,27 @@ export class CatMenu {
   private keyListener?: (event: KeyboardEvent) => void;
 
   /**
-   * The placement of the menu.
+   * The placement of the dropdown.
    */
   @Prop() placement: Placement = 'bottom-start';
 
   /**
-   * Do not close the menu on outside clicks.
+   * Do not close the dropdown on outside clicks.
    */
   @Prop() noAutoClose = false;
 
   /**
-   * Allow overflow when menu is open.
+   * Allow overflow when dropdown is open.
    */
   @Prop() overflow = false;
 
   /**
-   * Emitted when the menu is opened.
+   * Emitted when the dropdown is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
 
   /**
-   * Emitted when the menu is closed.
+   * Emitted when the dropdown is closed.
    */
   @Event() catClose!: EventEmitter<FocusEvent>;
 
@@ -54,14 +54,14 @@ export class CatMenu {
       this.show();
     }
 
-    // hide menu on button click
+    // hide dropdown on button click
     if (!this.noAutoClose && this.content && event.composedPath().includes(this.content)) {
       this.close();
     }
   }
 
   /**
-   * Closes the menu.
+   * Closes the dropdown.
    */
   @Method()
   async close(): Promise<void> {
@@ -103,7 +103,7 @@ export class CatMenu {
   }
 
   private get contentId() {
-    return `cat-menu-${this.id}`;
+    return `cat-dropdown-${this.id}`;
   }
 
   private initTrigger() {
@@ -161,7 +161,7 @@ export class CatMenu {
     if (this.trigger && this.content) {
       computePosition(this.trigger, this.content, {
         placement: this.placement,
-        middleware: [offset(CatMenu.OFFSET), flip()]
+        middleware: [offset(CatDropdown.OFFSET), flip()]
       }).then(({ x, y, placement }) => {
         if (this.content) {
           this.content.dataset.placement = placement;

@@ -453,7 +453,7 @@
 
         <section id="menu">
           <h2>Menu</h2>
-          <cat-menu>
+          <cat-dropdown>
             <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
             <nav slot="content">
               <ul>
@@ -488,11 +488,11 @@
                 </li>
               </ul>
             </nav>
-          </cat-menu>
+          </cat-dropdown>
 
           <cat-card>
             Menu inside a card
-            <cat-menu>
+            <cat-dropdown>
               <cat-button slot="trigger">Click me</cat-button>
               <nav slot="content">
                 <ul>
@@ -500,16 +500,16 @@
                   <li><cat-button>Item B</cat-button></li>
                 </ul>
               </nav>
-            </cat-menu>
+            </cat-dropdown>
           </cat-card>
 
-          <cat-menu no-auto-close>
+          <cat-dropdown no-auto-close>
             <cat-button slot="trigger">Button (keep open)</cat-button>
             <div slot="content" class="cat-flex cat-flex-col cat-p-m">
               <p>Here is some content.</p>
               <cat-button>Action</cat-button>
             </div>
-          </cat-menu>
+          </cat-dropdown>
         </section>
 
         <!-- <section id="modal">

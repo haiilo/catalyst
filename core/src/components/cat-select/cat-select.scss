@@ -146,7 +146,7 @@ cat-spinner {
   // -webkit-overflow-scrolling: touch;
   @include cat-elevation(1);
   border-radius: cat-border-radius('m');
-  z-index: $cat-menu-z-index;
+  z-index: $cat-dropdown-z-index;
 }
 
 .select-options-wrapper {

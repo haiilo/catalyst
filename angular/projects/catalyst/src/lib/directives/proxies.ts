@@ -164,6 +164,39 @@ export class CatCheckbox {
 }
 
 
+export declare interface CatDropdown extends Components.CatDropdown {
+  /**
+   * Emitted when the dropdown is opened. 
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the dropdown is closed. 
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+
+}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['noAutoClose', 'overflow', 'placement'],
+  methods: ['close']
+})
+@Component({
+  selector: 'cat-dropdown',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['noAutoClose', 'overflow', 'placement']
+})
+export class CatDropdown {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catOpen', 'catClose']);
+  }
+}
+
+
 export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
@@ -218,39 +251,6 @@ export class CatInput {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
-  }
-}
-
-
-export declare interface CatMenu extends Components.CatMenu {
-  /**
-   * Emitted when the menu is opened. 
-   */
-  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
-  /**
-   * Emitted when the menu is closed. 
-   */
-  catClose: EventEmitter<CustomEvent<FocusEvent>>;
-
-}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined,
-  inputs: ['noAutoClose', 'overflow', 'placement'],
-  methods: ['close']
-})
-@Component({
-  selector: 'cat-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['noAutoClose', 'overflow', 'placement']
-})
-export class CatMenu {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose']);
   }
 }
 

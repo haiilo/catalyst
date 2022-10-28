@@ -182,7 +182,7 @@ export class CatSelectTest {
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>
-        <cat-menu overflow noAutoClose>
+        <cat-dropdown overflow noAutoClose>
           <cat-button slot="trigger" style={{ width: '50%' }}>
             Open select
           </cat-button>
@@ -199,7 +199,7 @@ export class CatSelectTest {
               style={{ width: '90%' }}
             ></cat-select>
           </div>
-        </cat-menu>
+        </cat-dropdown>
       </Host>
     );
   }

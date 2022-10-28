@@ -6,8 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
-import { InputType } from "./components/cat-input/input-type";
 import { Placement } from "@floating-ui/dom";
+import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
@@ -209,6 +209,24 @@ export namespace Components {
          */
         "value"?: string | boolean;
     }
+    interface CatDropdown {
+        /**
+          * Closes the dropdown.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Do not close the dropdown on outside clicks.
+         */
+        "noAutoClose": boolean;
+        /**
+          * Allow overflow when dropdown is open.
+         */
+        "overflow": boolean;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement": Placement;
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -317,24 +335,6 @@ export namespace Components {
           * The value of the control.
          */
         "value"?: string | number;
-    }
-    interface CatMenu {
-        /**
-          * Closes the menu.
-         */
-        "close": () => Promise<void>;
-        /**
-          * Do not close the menu on outside clicks.
-         */
-        "noAutoClose": boolean;
-        /**
-          * Allow overflow when menu is open.
-         */
-        "overflow": boolean;
-        /**
-          * The placement of the menu.
-         */
-        "placement": Placement;
     }
     interface CatModal {
         /**
@@ -717,13 +717,13 @@ export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatCheckboxElement;
 }
+export interface CatDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDropdownElement;
+}
 export interface CatInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatInputElement;
-}
-export interface CatMenuCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLCatMenuElement;
 }
 export interface CatRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -790,6 +790,12 @@ declare global {
         prototype: HTMLCatCheckboxElement;
         new (): HTMLCatCheckboxElement;
     };
+    interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
+    }
+    var HTMLCatDropdownElement: {
+        prototype: HTMLCatDropdownElement;
+        new (): HTMLCatDropdownElement;
+    };
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
@@ -801,12 +807,6 @@ declare global {
     var HTMLCatInputElement: {
         prototype: HTMLCatInputElement;
         new (): HTMLCatInputElement;
-    };
-    interface HTMLCatMenuElement extends Components.CatMenu, HTMLStencilElement {
-    }
-    var HTMLCatMenuElement: {
-        prototype: HTMLCatMenuElement;
-        new (): HTMLCatMenuElement;
     };
     interface HTMLCatModalElement extends Components.CatModal, HTMLStencilElement {
     }
@@ -899,9 +899,9 @@ declare global {
         "cat-button": HTMLCatButtonElement;
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
+        "cat-dropdown": HTMLCatDropdownElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
-        "cat-menu": HTMLCatMenuElement;
         "cat-modal": HTMLCatModalElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-radio-group": HTMLCatRadioGroupElement;
@@ -1131,6 +1131,28 @@ declare namespace LocalJSX {
          */
         "value"?: string | boolean;
     }
+    interface CatDropdown {
+        /**
+          * Do not close the dropdown on outside clicks.
+         */
+        "noAutoClose"?: boolean;
+        /**
+          * Emitted when the dropdown is closed.
+         */
+        "onCatClose"?: (event: CatDropdownCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the dropdown is opened.
+         */
+        "onCatOpen"?: (event: CatDropdownCustomEvent<FocusEvent>) => void;
+        /**
+          * Allow overflow when dropdown is open.
+         */
+        "overflow"?: boolean;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement"?: Placement;
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -1242,28 +1264,6 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string | number;
-    }
-    interface CatMenu {
-        /**
-          * Do not close the menu on outside clicks.
-         */
-        "noAutoClose"?: boolean;
-        /**
-          * Emitted when the menu is closed.
-         */
-        "onCatClose"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when the menu is opened.
-         */
-        "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
-        /**
-          * Allow overflow when menu is open.
-         */
-        "overflow"?: boolean;
-        /**
-          * The placement of the menu.
-         */
-        "placement"?: Placement;
     }
     interface CatModal {
         /**
@@ -1700,9 +1700,9 @@ declare namespace LocalJSX {
         "cat-button": CatButton;
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
+        "cat-dropdown": CatDropdown;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
-        "cat-menu": CatMenu;
         "cat-modal": CatModal;
         "cat-radio": CatRadio;
         "cat-radio-group": CatRadioGroup;
@@ -1729,9 +1729,9 @@ declare module "@stencil/core" {
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
+            "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
-            "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
