@@ -126,6 +126,11 @@ export class CatButton {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  /**
+   * Sets the `aria-current` attribute on the button.
+   */
+  @Prop({ attribute: 'a11y-current' }) a11yCurrent?: boolean;
+
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
     // teardown
@@ -198,6 +203,7 @@ export class CatButton {
           target={this.urlTarget}
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
+          aria-current={this.a11yCurrent}
           id={this.buttonId}
           part="button"
           class={{
@@ -228,6 +234,7 @@ export class CatButton {
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
+          aria-current={this.a11yCurrent}
           id={this.buttonId}
           part="button"
           class={{

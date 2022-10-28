@@ -55,6 +55,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'iconRight',
   'buttonId',
   'a11yLabel',
+  'a11yCurrent',
   'catClick',
   'catFocus',
   'catBlur'
@@ -127,6 +128,20 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
 
 export const CatModal = /*@__PURE__*/ defineContainer<JSX.CatModal>('cat-modal', undefined, [
   'size'
+]);
+
+
+export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('cat-pagination', undefined, [
+  'page',
+  'pageCount',
+  'activePadding',
+  'sidePadding',
+  'size',
+  'variant',
+  'round',
+  'compact',
+  'iconPrev',
+  'iconNext'
 ]);
 
 
