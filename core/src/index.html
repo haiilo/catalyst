@@ -88,9 +88,9 @@
           <li><a href="#card">Card</a></li>
           <li><a href="#checkbox">Checkbox</a></li>
           <li><a href="#divider">Divider</a></li>
+          <li><a href="#dropdown">Dropdown</a></li>
           <li><a href="#icon">Icon</a></li>
           <li><a href="#input">Input</a></li>
-          <li><a href="#menu">Menu</a></li>
           <!-- <li><a href="#modal">Modal</a></li> -->
           <li><a href="#notification">Notification</a></li>
           <li><a href="#radio">Radio</a></li>
@@ -401,6 +401,67 @@
           <h2>Divider</h2>
         </section>
 
+        <section id="dropdown">
+          <h2>Dropdown</h2>
+          <cat-dropdown>
+            <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
+            <nav slot="content">
+              <ul>
+                <li class="cat-head">Headline</li>
+                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                <li>
+                  <cat-button color="primary">Nav item 1</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 2</cat-button>
+                </li>
+                <li>
+                  <cat-button color="warning">Nav item 3</cat-button>
+                </li>
+                <li>
+                  <cat-button disabled>Nav item 4</cat-button>
+                </li>
+                <li>
+                  <cat-button>Nav item 5 (long)</cat-button>
+                </li>
+                <li class="cat-hr"></li>
+                <li>
+                  <cat-button color="danger" onclick="console.log(6)"
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-button>
+                </li>
+              </ul>
+              <hr />
+              <ul>
+                <li>
+                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
+                </li>
+              </ul>
+            </nav>
+          </cat-dropdown>
+
+          <cat-card>
+            Dropdown inside a card
+            <cat-dropdown>
+              <cat-button slot="trigger">Click me</cat-button>
+              <nav slot="content">
+                <ul>
+                  <li><cat-button>Item A</cat-button></li>
+                  <li><cat-button>Item B</cat-button></li>
+                </ul>
+              </nav>
+            </cat-dropdown>
+          </cat-card>
+
+          <cat-dropdown no-auto-close>
+            <cat-button slot="trigger">Button (keep open)</cat-button>
+            <div slot="content" class="cat-flex cat-flex-col cat-p-m">
+              <p>Here is some content.</p>
+              <cat-button>Action</cat-button>
+            </div>
+          </cat-dropdown>
+        </section>
+
         <section id="icon">
           <h2>Icon</h2>
           <cat-icon icon="sparkle-filled"></cat-icon>
@@ -449,67 +510,6 @@
           <cat-input label="Time" type="time" min="14:01" max="02:00"></cat-input>
           <cat-input label="Url" type="url"></cat-input>
           <cat-input label="Week" type="week" min="2019-W30"></cat-input>
-        </section>
-
-        <section id="menu">
-          <h2>Menu</h2>
-          <cat-dropdown>
-            <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
-            <nav slot="content">
-              <ul>
-                <li class="cat-head">Headline</li>
-                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                <li>
-                  <cat-button color="primary">Nav item 1</cat-button>
-                </li>
-                <li>
-                  <cat-button>Nav item 2</cat-button>
-                </li>
-                <li>
-                  <cat-button color="warning">Nav item 3</cat-button>
-                </li>
-                <li>
-                  <cat-button disabled>Nav item 4</cat-button>
-                </li>
-                <li>
-                  <cat-button>Nav item 5 (long)</cat-button>
-                </li>
-                <li class="cat-hr"></li>
-                <li>
-                  <cat-button color="danger" onclick="console.log(6)"
-                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
-                  </cat-button>
-                </li>
-              </ul>
-              <hr />
-              <ul>
-                <li>
-                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
-                </li>
-              </ul>
-            </nav>
-          </cat-dropdown>
-
-          <cat-card>
-            Menu inside a card
-            <cat-dropdown>
-              <cat-button slot="trigger">Click me</cat-button>
-              <nav slot="content">
-                <ul>
-                  <li><cat-button>Item A</cat-button></li>
-                  <li><cat-button>Item B</cat-button></li>
-                </ul>
-              </nav>
-            </cat-dropdown>
-          </cat-card>
-
-          <cat-dropdown no-auto-close>
-            <cat-button slot="trigger">Button (keep open)</cat-button>
-            <div slot="content" class="cat-flex cat-flex-col cat-p-m">
-              <p>Here is some content.</p>
-              <cat-button>Action</cat-button>
-            </div>
-          </cat-dropdown>
         </section>
 
         <!-- <section id="modal">
