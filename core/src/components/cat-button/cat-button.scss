@@ -196,7 +196,7 @@ $button-sizes: (
       padding-right: 0;
     }
 
-    :host-context(nav) & {
+    :host-context(nav):not(.cat-plain) & {
       padding-left: $cat-nav-padding-horizontal;
       padding-right: $cat-nav-padding-horizontal;
       gap: 0.5rem;
@@ -278,7 +278,7 @@ $button-sizes: (
   }
 }
 
-:host-context(nav) {
+:host-context(nav):not(.cat-plain) {
   width: 100%;
 
   .cat-button {

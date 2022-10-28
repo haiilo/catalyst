@@ -130,6 +130,9 @@ export const CatModal = /*@__PURE__*/ defineContainer<JSX.CatModal>('cat-modal',
 ]);
 
 
+export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('cat-pagination', undefined);
+
+
 export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio', undefined, [
   'checked',
   'disabled',

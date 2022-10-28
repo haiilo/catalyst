@@ -16,6 +16,9 @@
       CatI18nRegistry.getInstance().set({
         'input.clear': 'Clear',
         'input.optional': 'Optional',
+        'pagination.prev': 'Previous',
+        'pagination.page': 'Go to page {{page}}',
+        'pagination.next': 'Next',
         'select.close': 'Close',
         'select.deselect': 'Deselect',
         'select.empty': 'No items',
@@ -93,6 +96,7 @@
           <li><a href="#input">Input</a></li>
           <!-- <li><a href="#modal">Modal</a></li> -->
           <li><a href="#notification">Notification</a></li>
+          <li><a href="#pagination">Pagination</a></li>
           <li><a href="#radio">Radio</a></li>
           <li><a href="#scrollable">Scrollable</a></li>
           <li><a href="#select">Select</a></li>
@@ -546,6 +550,23 @@
         <section id="notification">
           <h2>Notification</h2>
           <cat-toast-demo></cat-toast-demo>
+        </section>
+
+        <section id="pagination">
+          <h2>Pagination</h2>
+          <cat-pagination page-count="10" compact></cat-pagination>
+          <br />
+          <br />
+          <cat-pagination page-count="10" size="s"></cat-pagination>
+          <br />
+          <br />
+          <cat-pagination page-count="10"></cat-pagination>
+          <br />
+          <br />
+          <cat-pagination page-count="10" variant="outlined"></cat-pagination>
+          <br />
+          <br />
+          <cat-pagination page-count="10" variant="outlined" round></cat-pagination>
         </section>
 
         <section id="radio">
