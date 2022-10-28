@@ -284,9 +284,7 @@ export class CatButton {
 
   private get content() {
     return [
-      this.hasPrefixIcon ? (
-        <cat-icon icon={this.icon} size={this.iconSize} part="prefix"></cat-icon>
-      ) : null,
+      this.hasPrefixIcon ? <cat-icon icon={this.icon} size={this.iconSize} part="prefix"></cat-icon> : null,
       this.isIconButton ? (
         <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
       ) : (
@@ -294,9 +292,7 @@ export class CatButton {
           <slot></slot>
         </span>
       ),
-      this.hasSuffixIcon ? (
-        <cat-icon icon={this.icon} size={this.iconSize} part="suffix"></cat-icon>
-      ) : null,
+      this.hasSuffixIcon ? <cat-icon icon={this.icon} size={this.iconSize} part="suffix"></cat-icon> : null,
       this.loading ? <cat-spinner size={this.spinnerSize}></cat-spinner> : null
     ];
   }

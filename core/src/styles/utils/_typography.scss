@@ -1,5 +1,9 @@
 @use 'typography.mixins' as *;
 
+.cat-line-height-1 {
+  line-height: 1 !important;
+}
+
 .cat-text-left {
   text-align: left !important;
 }
