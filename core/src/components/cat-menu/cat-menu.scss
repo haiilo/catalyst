@@ -31,6 +31,30 @@ $-max-height: calc(100vh - 48px);
   @include cat-elevation(1);
   border-radius: cat-border-radius('m');
   z-index: $cat-menu-z-index;
+  opacity: 0;
+  transition: transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
+    opacity cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  &[data-placement^='top'] {
+    transform: translateY(2.5rem);
+  }
+  &[data-placement^='left'] {
+    transform: translateX(2.5rem);
+  }
+  &[data-placement^='right'] {
+    transform: translateX(-2.5rem);
+  }
+  &[data-placement^='bottom'] {
+    transform: translateY(-2.5rem);
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translateY(0);
+    transition: transform cat-token('time.transition.l') cubic-bezier(0.05, 0.7, 0.1, 1),
+      opacity cat-token('time.transition.l') cubic-bezier(0.05, 0.7, 0.1, 1);
+  }
 
   &.overflow-auto {
     overflow: auto;

@@ -1,4 +1,5 @@
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
 import log from 'loglevel';
@@ -122,6 +123,8 @@ export class CatMenu {
   private show() {
     if (this.content) {
       this.content.style.display = 'block';
+      // give CSS transition time to apply
+      setTimeout(() => this.content?.classList.add('show'));
       this.trigger?.setAttribute('aria-expanded', 'true');
       this.catOpen.emit();
       this.trap = this.trap
@@ -143,7 +146,12 @@ export class CatMenu {
 
   private hide() {
     if (this.content) {
-      this.content.style.display = '';
+      this.content.classList.remove('show');
+      // give CSS transition time to apply
+      setTimeout(() => {
+        this.content?.classList.remove('show');
+        this.content ? (this.content.style.display = '') : undefined;
+      }, timeTransitionS);
       this.trigger?.setAttribute('aria-expanded', 'false');
       this.catClose.emit();
     }
@@ -154,8 +162,9 @@ export class CatMenu {
       computePosition(this.trigger, this.content, {
         placement: this.placement,
         middleware: [offset(CatMenu.OFFSET), flip()]
-      }).then(({ x, y }) => {
+      }).then(({ x, y, placement }) => {
         if (this.content) {
+          this.content.dataset.placement = placement;
           Object.assign(this.content.style, {
             left: `${x}px`,
             top: `${y}px`
