@@ -176,7 +176,7 @@ export class CatDropdown {
 
   private findTrigger(): FocusableElement | undefined {
     let trigger: FocusableElement | undefined;
-    const elems = this.triggerSlot?.assignedElements() || [];
+    const elems = this.triggerSlot?.assignedElements?.() || [];
     while (!trigger && elems.length) {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
