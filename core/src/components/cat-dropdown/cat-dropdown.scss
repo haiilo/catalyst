@@ -38,12 +38,15 @@ $-max-height: calc(100vh - 48px);
   &[data-placement^='top'] {
     transform: translateY(1rem);
   }
+
   &[data-placement^='left'] {
     transform: translateX(1rem);
   }
+
   &[data-placement^='right'] {
     transform: translateX(-1rem);
   }
+
   &[data-placement^='bottom'] {
     transform: translateY(-1rem);
   }
