@@ -1,0 +1,73 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'sass:map';
+
+$button-sizes: (
+  'xl': 3.5rem,
+  'l': 3rem,
+  'm': 2.5rem,
+  's': 2rem,
+  'xs': 1.5rem
+);
+
+:host {
+  display: inline-block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-flex;
+  justify-content: center;
+
+  &.dots {
+    @include cat-select(none);
+  }
+}
+
+// ----- variant
+
+:host([variant='outlined']) {
+  ol {
+    gap: 0.75rem;
+  }
+}
+
+// ----- size
+
+@mixin size($size, $fontSize) {
+  .cat-pagination-#{$size} {
+    li.dots,
+    li.text {
+      height: map.get($button-sizes, $size);
+      line-height: map.get($button-sizes, $size);
+      font-size: cat-body-font-size($fontSize);
+    }
+
+    li.dots {
+      width: map.get($button-sizes, $size);
+    }
+  }
+
+  :host([variant='outlined']) {
+    .cat-pagination-#{$size} {
+      gap: map.get($button-sizes, $size) * 0.25;
+    }
+  }
+}
+
+@include size('xs', 's');
+@include size('s', 'm');
+@include size('m', 'm');
+@include size('l', 'm');
+@include size('xl', 'l');

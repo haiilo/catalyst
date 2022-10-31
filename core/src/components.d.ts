@@ -83,6 +83,10 @@ export namespace Components {
     }
     interface CatButton {
         /**
+          * Sets the `aria-current` attribute on the button.
+         */
+        "a11yCurrent"?: boolean;
+        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
@@ -345,6 +349,48 @@ export namespace Components {
           * The size of the modal.
          */
         "size": 's' | 'm' | 'l';
+    }
+    interface CatPagination {
+        /**
+          * The number of pages to be shown around the current page.
+         */
+        "activePadding": number;
+        /**
+          * Use compact pagination mode.
+         */
+        "compact": boolean;
+        /**
+          * The icon of the "next" button.
+         */
+        "iconNext": string;
+        /**
+          * The icon of the "previous" button.
+         */
+        "iconPrev": string;
+        /**
+          * The current page.
+         */
+        "page": number;
+        /**
+          * The total number of pages.
+         */
+        "pageCount": number;
+        /**
+          * Use round button edges.
+         */
+        "round": boolean;
+        /**
+          * The number of pages to be shown at the edges.
+         */
+        "sidePadding": number;
+        /**
+          * The size of the buttons.
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * The rendering style of the buttons.
+         */
+        "variant": 'filled' | 'outlined' | 'text';
     }
     interface CatRadio {
         /**
@@ -814,6 +860,12 @@ declare global {
         prototype: HTMLCatModalElement;
         new (): HTMLCatModalElement;
     };
+    interface HTMLCatPaginationElement extends Components.CatPagination, HTMLStencilElement {
+    }
+    var HTMLCatPaginationElement: {
+        prototype: HTMLCatPaginationElement;
+        new (): HTMLCatPaginationElement;
+    };
     interface HTMLCatRadioElement extends Components.CatRadio, HTMLStencilElement {
     }
     var HTMLCatRadioElement: {
@@ -903,6 +955,7 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-modal": HTMLCatModalElement;
+        "cat-pagination": HTMLCatPaginationElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-radio-group": HTMLCatRadioGroupElement;
         "cat-scrollable": HTMLCatScrollableElement;
@@ -990,6 +1043,10 @@ declare namespace LocalJSX {
         "variant"?: 'filled' | 'outlined';
     }
     interface CatButton {
+        /**
+          * Sets the `aria-current` attribute on the button.
+         */
+        "a11yCurrent"?: boolean;
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
@@ -1270,6 +1327,48 @@ declare namespace LocalJSX {
           * The size of the modal.
          */
         "size"?: 's' | 'm' | 'l';
+    }
+    interface CatPagination {
+        /**
+          * The number of pages to be shown around the current page.
+         */
+        "activePadding"?: number;
+        /**
+          * Use compact pagination mode.
+         */
+        "compact"?: boolean;
+        /**
+          * The icon of the "next" button.
+         */
+        "iconNext"?: string;
+        /**
+          * The icon of the "previous" button.
+         */
+        "iconPrev"?: string;
+        /**
+          * The current page.
+         */
+        "page"?: number;
+        /**
+          * The total number of pages.
+         */
+        "pageCount"?: number;
+        /**
+          * Use round button edges.
+         */
+        "round"?: boolean;
+        /**
+          * The number of pages to be shown at the edges.
+         */
+        "sidePadding"?: number;
+        /**
+          * The size of the buttons.
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * The rendering style of the buttons.
+         */
+        "variant"?: 'filled' | 'outlined' | 'text';
     }
     interface CatRadio {
         /**
@@ -1704,6 +1803,7 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-modal": CatModal;
+        "cat-pagination": CatPagination;
         "cat-radio": CatRadio;
         "cat-radio-group": CatRadioGroup;
         "cat-scrollable": CatScrollable;
@@ -1733,6 +1833,7 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
+            "cat-pagination": LocalJSX.CatPagination & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;

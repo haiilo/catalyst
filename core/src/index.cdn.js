@@ -25,6 +25,9 @@
     CatI18nRegistry.getInstance().set({
       'input.clear': 'Clear',
       'input.optional': 'Optional',
+      'pagination.prev': 'Previous',
+      'pagination.page': 'Go to page {{page}}',
+      'pagination.next': 'Next',
       'select.close': 'Close',
       'select.deselect': 'Deselect',
       'select.empty': 'No items',
