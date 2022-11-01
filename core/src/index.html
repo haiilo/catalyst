@@ -562,6 +562,12 @@
                 autoClose: false,
                 action: 'Show saved items'
               });
+              catNotificationService.show('This is light', {
+                mode: 'light',
+                autoClose: false,
+                icon: 'globe-outlined',
+                action: 'Seite neu laden'
+              });
               catNotificationService.show('Article was saved', {
                 action: 'Undo'
               });
@@ -721,7 +727,7 @@
 
         <section id="textarea">
           <h2>Textarea</h2>
-          <cat-textarea></cat-textarea>
+          <cat-textarea label="Label"></cat-textarea>
         </section>
 
         <section id="toggle">

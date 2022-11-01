@@ -9,6 +9,7 @@ interface ToastRef {
 }
 
 export interface ToastOptions {
+  mode: 'dark' | 'light';
   icon: string;
   position: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
   autoClose: boolean;
@@ -95,7 +96,7 @@ export class CatNotificationService {
       node,
       duration,
       close: false,
-      className: 'cat-toastify',
+      className: options?.mode === 'light' ? 'cat-toastify' : 'cat-toastify cat-toastify-dark',
       stopOnFocus: true,
       onClick: () => options?.onClick?.(ref),
       callback: () => options?.onDismiss?.(ref),

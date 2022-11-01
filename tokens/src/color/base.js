@@ -12,6 +12,9 @@ module.exports = {
         600: { value: '#394251' },
         700: { value: '#1b1f26' }
       },
+      neutralDark: {
+        400: { value: '#697687' }
+      },
       brand: {
         100: { value: '#c9e5e8' },
         200: { value: '#2db3c3' },
@@ -20,6 +23,11 @@ module.exports = {
         500: { value: '#017384' },
         600: { value: '#026371' },
         700: { value: '#175b63' }
+      },
+      brandDark: {
+        400: { value: '#93b4f2' },
+        500: { value: '#93b4f2' },
+        600: { value: '#93b4f2' },
       },
       green: {
         100: { value: '#d4ede4' },
