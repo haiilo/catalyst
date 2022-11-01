@@ -1,5 +1,6 @@
-import { newSpecPage } from '@stencil/core/testing';
+jest.mock('../cat-icon/cat-icon-registry.ts');
 import { CatAlert } from './cat-alert';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('cat-alert', () => {
   it('renders', async () => {

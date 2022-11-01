@@ -1,3 +1,4 @@
+jest.mock('../cat-icon/cat-icon-registry.ts');
 import { newSpecPage } from '@stencil/core/testing';
 import { CatDropdown } from './cat-dropdown';
 

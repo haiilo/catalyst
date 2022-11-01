@@ -1,3 +1,4 @@
+jest.mock('../cat-i18n/cat-i18n-registry');
 import { newSpecPage } from '@stencil/core/testing';
 import { CatModal } from './cat-modal';
 
