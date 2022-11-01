@@ -7,15 +7,16 @@
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script type="module">
       import { ci } from '/build/assets/icons/js/icons.object.js';
-      import { CatI18nRegistry, CatIconRegistry } from '/build/index.esm.js';
+      import { catI18nRegistry, catIconRegistry } from '/build/index.esm.js';
 
       /**
        * WARNING: Keep in sync with ./index.cdn.js
        */
-      CatIconRegistry.getInstance().addIcons(ci);
-      CatI18nRegistry.getInstance().set({
+      catIconRegistry.addIcons(ci);
+      catI18nRegistry.set({
         'input.clear': 'Clear',
         'input.optional': 'Optional',
+        'notification.dismiss': 'Dismiss',
         'pagination.prev': 'Previous',
         'pagination.page': 'Go to page {{page}}',
         'pagination.next': 'Next',
@@ -553,7 +554,23 @@
 
         <section id="notification">
           <h2>Notification</h2>
-          <cat-toast-demo></cat-toast-demo>
+          <cat-button id="notification-trigger">Show Notifications</cat-button>
+          <script type="module">
+            import { catNotificationService } from '/build/index.esm.js';
+            document.getElementById('notification-trigger').onclick = function () {
+              catNotificationService.show('Item saved', {
+                autoClose: false,
+                action: 'Show saved items'
+              });
+              catNotificationService.show('Article was saved', {
+                action: 'Undo'
+              });
+              catNotificationService.show('Es scheint als hättest du keine Internetverbindung mehr', {
+                icon: 'globe-outlined',
+                action: 'Seite neu laden'
+              });
+            };
+          </script>
         </section>
 
         <section id="pagination">

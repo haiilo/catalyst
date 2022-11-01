@@ -1,11 +1,11 @@
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
-import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
+import { catI18nRegistry, CatI18nRegistry, catIconRegistry, CatIconRegistry, CatNotificationService, catNotificationService } from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
-import * as Components from './directives/proxies';
-import { TextValueAccessor } from "./directives/text-value-accessor";
-import { SelectValueAccessor } from "./directives/select-value-accessor";
-import { RadioValueAccessor } from "./directives/radio-value-accessor";
 import { BooleanValueAccessor } from "./directives/boolean-value-accessor";
+import * as Components from './directives/proxies';
+import { RadioValueAccessor } from "./directives/radio-value-accessor";
+import { SelectValueAccessor } from "./directives/select-value-accessor";
+import { TextValueAccessor } from "./directives/text-value-accessor";
 
 const CatComponents = [
   Components.CatAlert,
@@ -40,12 +40,17 @@ const CatDirectives = [
 
 export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
   providedIn: 'root',
-  factory: () => CatI18nRegistry.getInstance(),
+  factory: () => catI18nRegistry,
 });
 
 export const CAT_ICON_REGISTRY_TOKEN = new InjectionToken<CatIconRegistry>('CAT_ICON_REGISTRY', {
   providedIn: 'root',
-  factory: () => CatIconRegistry.getInstance(),
+  factory: () => catIconRegistry,
+});
+
+export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotificationService>('CAT_NOTIFICATION_SERVICE', {
+  providedIn: 'root',
+  factory: () => catNotificationService,
 });
 
 @NgModule({

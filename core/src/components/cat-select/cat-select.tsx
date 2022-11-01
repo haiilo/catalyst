@@ -1,6 +1,7 @@
 import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import autosizeInput from 'autosize-input';
+import log from 'loglevel';
 import {
   catchError,
   debounce,
@@ -18,9 +19,8 @@ import {
   tap,
   timer
 } from 'rxjs';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
-import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export interface Item {
   id: string;
@@ -107,7 +107,6 @@ let nextUniqueId = 0;
 export class CatSelect {
   private static readonly SKELETON_COUNT = 4;
   private static readonly DROPDOWN_OFFSET = 4;
-  private readonly i18n = CatI18nRegistry.getInstance();
   private readonly id = `cat-input-${nextUniqueId++}`;
 
   private dropdown?: HTMLElement;
@@ -436,7 +435,7 @@ export class CatSelect {
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
                 <span class="input-optional" aria-hidden="true">
-                  ({this.i18n.t('input.optional')})
+                  ({i18n.t('input.optional')})
                 </span>
               )}
             </span>
@@ -482,7 +481,7 @@ export class CatSelect {
                         variant="text"
                         icon="16-cross"
                         iconOnly
-                        a11yLabel={this.i18n.t('select.deselect')}
+                        a11yLabel={i18n.t('select.deselect')}
                         onClick={() => this.deselect(item.item.id)}
                         tabIndex={-1}
                       ></cat-button>
@@ -520,7 +519,7 @@ export class CatSelect {
               icon="cross-circle-outlined"
               variant="text"
               size="s"
-              a11yLabel={this.i18n.t('input.clear')}
+              a11yLabel={i18n.t('input.clear')}
               onClick={() => this.clear()}
             ></cat-button>
           ) : null}
@@ -531,7 +530,7 @@ export class CatSelect {
               class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
               variant="text"
               size="s"
-              a11yLabel={this.state.isOpen ? this.i18n.t('select.close') : this.i18n.t('select.open')}
+              a11yLabel={this.state.isOpen ? i18n.t('select.close') : i18n.t('select.open')}
               aria-controls={`select-listbox-${this.id}`}
               aria-expanded={this.state.isOpen}
               tabIndex={-1}
@@ -570,7 +569,7 @@ export class CatSelect {
                       </li>
                     ))
                   : !this.state.options.length &&
-                    !this.tags && <li class="select-option-empty">{this.i18n.t('select.empty')}</li>}
+                    !this.tags && <li class="select-option-empty">{i18n.t('select.empty')}</li>}
               </ul>
             </cat-scrollable>
           )}

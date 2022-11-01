@@ -19,12 +19,13 @@
   scriptInit.setAttribute('type', 'module');
   scriptInit.text = `
     import { ci } from '@haiilo/catalyst-icons';
-    import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
+    import { catI18nRegistry, catIconRegistry } from '@haiilo/catalyst';
 
-    CatIconRegistry.getInstance().addIcons(ci);
-    CatI18nRegistry.getInstance().set({
+    catIconRegistry.addIcons(ci);
+    catI18nRegistry.set({
       'input.clear': 'Clear',
       'input.optional': 'Optional',
+      'notification.dismiss': 'Dismiss',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',
       'pagination.next': 'Next',

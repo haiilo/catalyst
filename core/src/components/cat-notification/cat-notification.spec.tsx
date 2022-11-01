@@ -1,7 +1,7 @@
-import { NotificationsService } from './cat-notification';
+import { catNotificationService } from './cat-notification';
 
-describe('notification', () => {
-  it('renders', async () => {
-    expect(NotificationsService).toBeTruthy();
+describe('CatNotificationService', () => {
+  it('exists', async () => {
+    expect(catNotificationService).toBeTruthy();
   });
 });

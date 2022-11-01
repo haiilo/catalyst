@@ -595,25 +595,6 @@ export class CatTextarea {
 }
 
 
-export declare interface CatToastDemo extends Components.CatToastDemo {}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined
-})
-@Component({
-  selector: 'cat-toast-demo',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class CatToastDemo {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface CatToggle extends Components.CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed. 

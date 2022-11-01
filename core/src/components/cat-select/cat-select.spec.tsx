@@ -14,7 +14,7 @@ describe('cat-select', () => {
             <span part="label">
               Label
               <span aria-hidden="true" class="input-optional">
-                ()
+                (input.optional)
               </span>
             </span>
           </label>
@@ -22,7 +22,7 @@ describe('cat-select', () => {
            <div class="select-wrapper-inner">
              <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
            </div>
-           <cat-button a11ylabel="" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
+           <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
          </div>
          <div class="select-dropdown"></div>
         </mock:shadow-root>
