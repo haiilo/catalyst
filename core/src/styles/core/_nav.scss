@@ -8,8 +8,8 @@ nav {
     margin-bottom: $cat-nav-padding-horizontal * 0.5;
   }
 
-  .cat-head,
-  .cat-text {
+  .cat-nav-head,
+  .cat-nav-text {
     padding: $cat-nav-padding-horizontal * 0.5 $cat-nav-padding-horizontal;
 
     > :last-child {
@@ -17,7 +17,7 @@ nav {
     }
   }
 
-  .cat-head {
+  .cat-nav-head {
     @include cat-head(5);
   }
 }

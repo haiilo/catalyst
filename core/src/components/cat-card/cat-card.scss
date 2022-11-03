@@ -15,12 +15,13 @@ $-padding: 1.25rem;
   display: none;
 }
 
-::slotted(nav) {
-  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
-}
-
 ::slotted(:last-child) {
   margin-bottom: 0 !important;
+}
+
+::slotted(nav),
+::slotted(nav:last-child) {
+  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
 }
 
 // --- pull out helper classes

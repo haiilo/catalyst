@@ -7,15 +7,16 @@
     <script type="module" src="/build/catalyst.esm.js"></script>
     <script type="module">
       import { ci } from '/build/assets/icons/js/icons.object.js';
-      import { CatI18nRegistry, CatIconRegistry } from '/build/index.esm.js';
+      import { catI18nRegistry, catIconRegistry } from '/build/index.esm.js';
 
       /**
        * WARNING: Keep in sync with ./index.cdn.js
        */
-      CatIconRegistry.getInstance().addIcons(ci);
-      CatI18nRegistry.getInstance().set({
+      catIconRegistry.addIcons(ci);
+      catI18nRegistry.set({
         'input.clear': 'Clear',
         'input.optional': 'Optional',
+        'notification.dismiss': 'Dismiss',
         'pagination.prev': 'Previous',
         'pagination.page': 'Go to page {{page}}',
         'pagination.next': 'Next',
@@ -347,26 +348,26 @@
           <cat-card>
             <nav>
               <ul>
-                <li class="cat-head">Headline</li>
-                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                <li class="cat-nav-head">Headline</li>
+                <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
                 <li>
-                  <cat-button color="primary" active>Nav item 1</cat-button>
+                  <cat-button class="cat-nav-item" color="primary">Nav item 1</cat-button>
                 </li>
                 <li>
-                  <cat-button active>Nav item 2</cat-button>
+                  <cat-button class="cat-nav-item" active>Nav item 2</cat-button>
                 </li>
                 <li>
-                  <cat-button color="warning" active>Nav item 3</cat-button>
+                  <cat-button class="cat-nav-item" color="warning">Nav item 3</cat-button>
                 </li>
                 <li>
-                  <cat-button disabled>Nav item 4</cat-button>
+                  <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
                 </li>
                 <li>
-                  <cat-button>Nav item 5 (long)</cat-button>
+                  <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
                 </li>
                 <li class="cat-hr"></li>
                 <li>
-                  <cat-button color="danger" onclick="console.log(6)" active
+                  <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)" active
                     >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
                   </cat-button>
                 </li>
@@ -374,7 +375,9 @@
               <hr />
               <ul>
                 <li>
-                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
+                  <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
+                    >Nav item 3</cat-button
+                  >
                 </li>
               </ul>
             </nav>
@@ -411,26 +414,26 @@
             <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
             <nav slot="content">
               <ul>
-                <li class="cat-head">Headline</li>
-                <li class="cat-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                <li class="cat-nav-head">Headline</li>
+                <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
                 <li>
-                  <cat-button icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                  <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
                 </li>
                 <li>
-                  <cat-button icon="sparkle-filled">Nav item 2</cat-button>
+                  <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
                 </li>
                 <li>
-                  <cat-button icon="sparkle-filled" color="warning">Nav item 3</cat-button>
+                  <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
                 </li>
                 <li>
-                  <cat-button disabled>Nav item 4</cat-button>
+                  <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
                 </li>
                 <li>
-                  <cat-button>Nav item 5 (long)</cat-button>
+                  <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
                 </li>
                 <li class="cat-hr"></li>
                 <li>
-                  <cat-button color="danger" onclick="console.log(6)"
+                  <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)"
                     >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
                   </cat-button>
                 </li>
@@ -438,7 +441,9 @@
               <hr />
               <ul>
                 <li>
-                  <cat-button variant="outlined" color="secondary" onclick="console.log(3)">Nav item 3</cat-button>
+                  <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
+                    >Nav item 3</cat-button
+                  >
                 </li>
               </ul>
             </nav>
@@ -450,8 +455,8 @@
               <cat-button slot="trigger">Click me</cat-button>
               <nav slot="content">
                 <ul>
-                  <li><cat-button>Item A</cat-button></li>
-                  <li><cat-button>Item B</cat-button></li>
+                  <li><cat-button class="cat-nav-item">Item A</cat-button></li>
+                  <li><cat-button class="cat-nav-item">Item B</cat-button></li>
                 </ul>
               </nav>
             </cat-dropdown>
@@ -549,7 +554,29 @@
 
         <section id="notification">
           <h2>Notification</h2>
-          <cat-toast-demo></cat-toast-demo>
+          <cat-button id="notification-trigger">Show Notifications</cat-button>
+          <script type="module">
+            import { catNotificationService } from '/build/index.esm.js';
+            document.getElementById('notification-trigger').onclick = function () {
+              catNotificationService.show('Item saved', {
+                autoClose: false,
+                action: 'Show saved items'
+              });
+              catNotificationService.show('This is light', {
+                mode: 'light',
+                autoClose: false,
+                icon: 'globe-outlined',
+                action: 'Seite neu laden'
+              });
+              catNotificationService.show('Article was saved', {
+                action: 'Undo'
+              });
+              catNotificationService.show('Es scheint als hättest du keine Internetverbindung mehr', {
+                icon: 'globe-outlined',
+                action: 'Seite neu laden'
+              });
+            };
+          </script>
         </section>
 
         <section id="pagination">
@@ -700,7 +727,7 @@
 
         <section id="textarea">
           <h2>Textarea</h2>
-          <cat-textarea></cat-textarea>
+          <cat-textarea label="Label"></cat-textarea>
         </section>
 
         <section id="toggle">

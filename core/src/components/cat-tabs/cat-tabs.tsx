@@ -84,8 +84,8 @@ export class CatTabs {
               role="tab"
               part="tab"
               class={{
-                tab: true,
-                'tab-active': Boolean(this.activeTabId && tab.id === this.activeTabId)
+                'cat-tab': true,
+                'cat-tab-active': Boolean(this.activeTabId && tab.id === this.activeTabId)
               }}
               active={Boolean(this.activeTabId && tab.id === this.activeTabId)}
               color={this.activeTabId && tab.id === this.activeTabId ? 'primary' : 'secondary'}

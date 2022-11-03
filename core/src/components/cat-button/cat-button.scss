@@ -195,12 +195,6 @@ $button-sizes: (
       padding-left: 0;
       padding-right: 0;
     }
-
-    :host-context(nav):not(.cat-plain) & {
-      padding-left: $cat-nav-padding-horizontal;
-      padding-right: $cat-nav-padding-horizontal;
-      gap: 0.5rem;
-    }
   }
 
   :host(.cat-button-pull[size='#{$size}']) {
@@ -270,27 +264,13 @@ $button-sizes: (
 @include size('l', 'm', 1rem);
 @include size('xl', 'l', 1.25rem);
 
-// ----- context
+// ----- tabs
 
-:host-context(cat-tabs) {
-  .cat-button {
-    background-color: transparent !important;
-  }
+:host(.cat-tab-active:not(:hover)) {
+  --cat-primary-text: transparent;
 }
 
-:host-context(nav):not(.cat-plain) {
-  width: 100%;
-
-  .cat-button {
-    box-shadow: none;
-    border-radius: 0;
-    justify-content: left;
-
-    &:focus-visible {
-      outline-offset: -2px;
-    }
-  }
-}
+// ----- alignment
 
 :host(.cat-text-left) .cat-button {
   justify-content: left;
@@ -298,4 +278,23 @@ $button-sizes: (
 
 :host(.cat-text-right) .cat-button {
   justify-content: right;
+}
+
+// ----- navigation
+
+:host(.cat-nav-item) {
+  width: 100%;
+
+  .cat-button {
+    box-shadow: none;
+    border-radius: 0;
+    justify-content: left;
+    padding-left: $cat-nav-padding-horizontal;
+    padding-right: $cat-nav-padding-horizontal;
+    gap: 0.5rem;
+
+    &:focus-visible {
+      outline-offset: -2px;
+    }
+  }
 }

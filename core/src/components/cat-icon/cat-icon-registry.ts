@@ -64,3 +64,5 @@ export class CatIconRegistry {
     });
   }
 }
+
+export const catIconRegistry = CatIconRegistry.getInstance();

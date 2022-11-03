@@ -32,7 +32,7 @@ export class CatI18nRegistry {
     const message = this.i18n.get(key);
     if (message === undefined) {
       log.error(`[CatI18nRegistry] Unknown message key: ${key}`);
-      return '';
+      return key;
     }
     return message.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => `${params?.[key] ?? ''}`);
   }
@@ -45,3 +45,5 @@ export class CatI18nRegistry {
     });
   }
 }
+
+export const catI18nRegistry = CatI18nRegistry.getInstance();

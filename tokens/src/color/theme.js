@@ -12,6 +12,17 @@ module.exports = {
         textHover: { value: '{color.base.brand.500}', attributes: { cssProp: "primary-text-hover" } },
         textActive: { value: '{color.base.brand.600}', attributes: { cssProp: "primary-text-active" } }
       },
+      primaryDark: {
+        bg: { value: '{color.base.brandDark.400}' },
+        bgHover: { value: '{color.base.brandDark.500}' },
+        bgActive: { value: '{color.base.brandDark.600}' },
+        fill: { value: '{color.base.black}' },
+        fillHover: { value: '{color.base.black}' },
+        fillActive: { value: '{color.base.black}' },
+        text: { value: '{color.base.brandDark.400}' },
+        textHover: { value: '{color.base.brandDark.500}' },
+        textActive: { value: '{color.base.brandDark.600}' }
+      },
       secondary: {
         bg: { value: '{color.base.neutral.400}', attributes: { cssProp: "secondary-bg" } },
         bgHover: { value: '{color.base.neutral.400}', attributes: { cssProp: "secondary-bg-hover" } },
@@ -22,6 +33,17 @@ module.exports = {
         text: { value: '{color.base.black}', attributes: { cssProp: "secondary-text" } },
         textHover: { value: '{color.base.black}', attributes: { cssProp: "secondary-text-hover" } },
         textActive: { value: '{color.base.black}', attributes: { cssProp: "secondary-text-active" } }
+      },
+      secondaryDark: {
+        bg: { value: '{color.base.neutralDark.400}' },
+        bgHover: { value: '{color.base.neutralDark.400}' },
+        bgActive: { value: '{color.base.neutralDark.400}' },
+        fill: { value: '{color.base.black}' },
+        fillHover: { value: '{color.base.black}' },
+        fillActive: { value: '{color.base.black}' },
+        text: { value: '{color.base.white}' },
+        textHover: { value: '{color.base.white}' },
+        textActive: { value: '{color.base.white}' }
       },
       success: {
         bg: { value: '{color.base.green.400}', attributes: { cssProp: "success-bg-" } },

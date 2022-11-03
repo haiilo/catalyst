@@ -2,7 +2,6 @@ import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import log from 'loglevel';
 import { FocusableElement, tabbable } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 
@@ -16,11 +15,12 @@ let nextUniqueId = 0;
 export class CatDropdown {
   private static readonly OFFSET = 4;
   private readonly id = nextUniqueId++;
-  private triggerSlot?: HTMLSlotElement;
+  private triggerSlot!: HTMLSlotElement;
   private trigger?: FocusableElement;
-  private content?: HTMLElement;
+  private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private keyListener?: (event: KeyboardEvent) => void;
+  private isOpen: boolean | null = false;
 
   /**
    * The placement of the dropdown.
@@ -49,15 +49,58 @@ export class CatDropdown {
 
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
+    // we need to delay the initialization of the trigger until first,
+    // interaction because the element might still be hidden (and thus not
+    // tabbable) if contained in another Stencil web component
     if (!this.trigger) {
       this.initTrigger();
-      this.show();
+      this.toggle();
     }
 
     // hide dropdown on button click
-    if (!this.noAutoClose && this.content && event.composedPath().includes(this.content)) {
+    if (!this.noAutoClose && event.composedPath().includes(this.content)) {
       this.close();
     }
+  }
+
+  /**
+   * Toggles the dropdown.
+   */
+  async toggle(): Promise<void> {
+    this.isOpen ? this.close() : this.open();
+  }
+
+  /**
+   * Opens the dropdown.
+   */
+  async open(): Promise<void> {
+    if (this.isOpen === null) {
+      return; // busy
+    }
+
+    this.isOpen = null;
+    this.content.style.display = 'block';
+    // give CSS transition time to apply
+    setTimeout(() => {
+      this.isOpen = true;
+      this.content.classList.add('show');
+      this.trigger?.setAttribute('aria-expanded', 'true');
+      this.catOpen.emit();
+      this.trap = this.trap
+        ? this.trap.updateContainerElements(this.content)
+        : focusTrap.createFocusTrap(this.content, {
+            tabbableOptions: {
+              getShadowRoot: true
+            },
+            allowOutsideClick: true,
+            clickOutsideDeactivates: event =>
+              !this.noAutoClose &&
+              !event.composedPath().includes(this.content) &&
+              (!this.trigger || !event.composedPath().includes(this.trigger)),
+            onPostDeactivate: () => this.close()
+          });
+      this.trap.activate();
+    });
   }
 
   /**
@@ -65,14 +108,26 @@ export class CatDropdown {
    */
   @Method()
   async close(): Promise<void> {
-    this.trap?.deactivate();
-    this.hide();
+    if (this.isOpen === null) {
+      return; // busy
+    }
+
+    this.isOpen = null;
+    this.content.classList.remove('show');
+    // give CSS transition time to apply
+    setTimeout(() => {
+      this.isOpen = false;
+      this.content.classList.remove('show');
+      this.content.style.display = '';
+      this.trigger?.setAttribute('aria-expanded', 'false');
+      this.trap?.deactivate();
+      this.catClose.emit();
+    }, timeTransitionS);
   }
 
   componentDidLoad(): void {
-    this.initTrigger();
     this.keyListener = event => {
-      if (this.content && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
+      if (this.isOpen && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
         const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });
         const activeElement = firstTabbable(document.activeElement);
         const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
@@ -95,7 +150,11 @@ export class CatDropdown {
     return (
       <Host>
         <slot name="trigger" ref={el => (this.triggerSlot = el as HTMLSlotElement)}></slot>
-        <div class={{ content: true, 'overflow-auto': !this.overflow }} ref={el => (this.content = el)}>
+        <div
+          id={this.contentId}
+          class={{ content: true, 'overflow-auto': !this.overflow }}
+          ref={el => (this.content = el as HTMLElement)}
+        >
           <slot name="content"></slot>
         </div>
       </Host>
@@ -108,73 +167,14 @@ export class CatDropdown {
 
   private initTrigger() {
     this.trigger = this.findTrigger();
-    this.trigger?.setAttribute('aria-haspopup', 'true');
-    this.trigger?.setAttribute('aria-expanded', 'false');
-    this.trigger?.setAttribute('aria-controls', this.contentId);
-    this.content?.setAttribute('id', this.contentId);
-    if (this.trigger && this.content) {
-      this.trigger?.addEventListener('click', () => {
-        this.trap?.active ? this.close() : this.show();
-      });
-      autoUpdate(this.trigger, this.content, () => this.update());
-    }
+    this.trigger.setAttribute('aria-haspopup', 'true');
+    this.trigger.setAttribute('aria-expanded', 'false');
+    this.trigger.setAttribute('aria-controls', this.contentId);
+    this.trigger.addEventListener('click', () => this.toggle());
+    autoUpdate(this.trigger, this.content, () => this.update());
   }
 
-  private show() {
-    if (this.content) {
-      this.content.style.display = 'block';
-      // give CSS transition time to apply
-      setTimeout(() => this.content?.classList.add('show'));
-      this.trigger?.setAttribute('aria-expanded', 'true');
-      this.catOpen.emit();
-      this.trap = this.trap
-        ? this.trap.updateContainerElements(this.content)
-        : focusTrap.createFocusTrap(this.content, {
-            tabbableOptions: {
-              getShadowRoot: true
-            },
-            allowOutsideClick: true,
-            clickOutsideDeactivates: event =>
-              !this.noAutoClose &&
-              (!this.content || !event.composedPath().includes(this.content)) &&
-              (!this.trigger || !event.composedPath().includes(this.trigger)),
-            onPostDeactivate: () => this.close()
-          });
-      this.trap.activate();
-    }
-  }
-
-  private hide() {
-    if (this.content) {
-      this.content.classList.remove('show');
-      // give CSS transition time to apply
-      setTimeout(() => {
-        this.content?.classList.remove('show');
-        this.content ? (this.content.style.display = '') : undefined;
-      }, timeTransitionS);
-      this.trigger?.setAttribute('aria-expanded', 'false');
-      this.catClose.emit();
-    }
-  }
-
-  private update() {
-    if (this.trigger && this.content) {
-      computePosition(this.trigger, this.content, {
-        placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), flip()]
-      }).then(({ x, y, placement }) => {
-        if (this.content) {
-          this.content.dataset.placement = placement;
-          Object.assign(this.content.style, {
-            left: `${x}px`,
-            top: `${y}px`
-          });
-        }
-      });
-    }
-  }
-
-  private findTrigger(): FocusableElement | undefined {
+  private findTrigger() {
     let trigger: FocusableElement | undefined;
     const elems = this.triggerSlot?.assignedElements?.() || [];
     while (!trigger && elems.length) {
@@ -187,8 +187,23 @@ export class CatDropdown {
       trigger = firstTabbable(this.triggerSlot);
     }
     if (!trigger) {
-      log.error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
+      throw new Error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
     }
     return trigger;
+  }
+
+  private update() {
+    if (this.trigger) {
+      computePosition(this.trigger, this.content, {
+        placement: this.placement,
+        middleware: [offset(CatDropdown.OFFSET), flip()]
+      }).then(({ x, y, placement }) => {
+        this.content.dataset.placement = placement;
+        Object.assign(this.content.style, {
+          left: `${x}px`,
+          top: `${y}px`
+        });
+      });
+    }
   }
 }

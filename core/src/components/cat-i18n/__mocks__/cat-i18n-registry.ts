@@ -15,3 +15,5 @@ export class CatI18nRegistry {
     return key;
   }
 }
+
+export const catI18nRegistry = CatI18nRegistry.getInstance();

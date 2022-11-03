@@ -1,146 +1,111 @@
 import Toastify, { Options } from 'toastify-js';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
-export enum TypeIcons {
-  'success' = 'check-circle-filled',
-  'error' = 'cross-circle-filled',
-  'info' = 'danger-filled',
-  'primary' = 'star-circle-filled',
-  'secondary' = 'info-circle-filled'
-}
-
-export const ToastPositions: { [key: string]: { gravity: 'top' | 'bottom'; position: 'left' | 'center' | 'right' } } = {
-  'top-left': {
-    gravity: 'top',
-    position: 'left'
-  },
-  'top-center': {
-    gravity: 'top',
-    position: 'center'
-  },
-  'top-right': {
-    gravity: 'top',
-    position: 'right'
-  },
-  'bottom-left': {
-    gravity: 'bottom',
-    position: 'left'
-  },
-  'bottom-center': {
-    gravity: 'bottom',
-    position: 'center'
-  },
-  'bottom-right': {
-    gravity: 'bottom',
-    position: 'right'
-  }
-};
-
-export interface ToastPosition {
-  gravity: 'top' | 'bottom';
-  position: 'left' | 'center' | 'right';
+interface ToastRef {
+  toast?: {
+    showToast: () => void;
+    hideToast: () => void;
+  };
 }
 
 export interface ToastOptions {
-  /**
-   * HTML content of the toast
-   */
-  content: Node;
-  /**
-   * Show close button
-   */
-  close: boolean;
-  /**
-   * Toast position
-   */
+  mode: 'dark' | 'light';
+  icon: string;
   position: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-  /**
-   *  Type of toast
-   */
-  type: 'success' | 'info' | 'error' | 'primary' | 'secondary';
-  /**
-   *  Invoked when the toast is clicked
-   */
-  onClick: () => void;
-  /**
-   * Toggle the default behavior of escaping HTML markup
-   */
+  autoClose: boolean;
+  duration: number;
+  action: string;
   escapeMarkup: boolean;
+  onAction: (toast: ToastRef) => void;
+  onClick: (toast: ToastRef) => void;
+  onDismiss: (toast: ToastRef) => void;
 }
 
-class CatNotificationService {
-  private static DURATION = 80000;
+export class CatNotificationService {
+  private static instance: CatNotificationService;
+  private static duration = 3000;
 
-  error(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const toastOptions: Options = this.extractOptions(title, message, options);
-    Toastify(toastOptions).showToast();
+  private constructor() {
+    // hide constructor
   }
 
-  success(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const toastOptions: Options = this.extractOptions(title, message, options);
-    Toastify(toastOptions).showToast();
-  }
-
-  info(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const toastOptions: Options = this.extractOptions(title, message, options);
-    Toastify(toastOptions).showToast();
-  }
-
-  primary(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const toastOptions: Options = this.extractOptions(title, message, options);
-    Toastify(toastOptions).showToast();
-  }
-
-  secondary(title: string, message = ' ', options?: Partial<ToastOptions>): void {
-    const toastOptions: Options = this.extractOptions(title, message, options);
-    Toastify(toastOptions).showToast();
-  }
-
-  private toastHTMLTemplate(title: string, message = ' ', options?: Partial<ToastOptions>): HTMLElement {
-    const template = document.createElement('template');
-    const typeIcon = options?.type ? TypeIcons[options.type] : TypeIcons.secondary;
-    title = title.trim();
-    message = message.trim();
-    const hasMessage = message && message !== '';
-    const hasMessageClass = hasMessage ? 'has-message' : '';
-    template.innerHTML = `<div class="cat-toastify-wrapper">
-        <div class="cat-toastify-icon-wrapper ${options?.type ?? 'secondary'}">
-             <cat-icon icon="${typeIcon}"></cat-icon>
-        </div>
-        <div class="cat-toastify-title-wrapper ${hasMessageClass}">
-            <div class="cat-toastify-title">${title}</div></div>
-        ${hasMessage ? `<div class="cat-toastify-message">${message}</div>` : ''}
-      </div>`;
-    return template.content.firstChild as HTMLElement;
-  }
-
-  private getPosition(options?: Partial<ToastOptions>): ToastPosition {
-    const position: ToastPosition = {
-      gravity: 'bottom',
-      position: 'left'
-    };
-    if (options?.position && ToastPositions[options.position]) {
-      position.position = ToastPositions[options.position].position;
-      position.gravity = ToastPositions[options.position].gravity;
+  static getInstance(): CatNotificationService {
+    if (!CatNotificationService.instance) {
+      CatNotificationService.instance = new CatNotificationService();
     }
-    return position;
+    return CatNotificationService.instance;
   }
 
-  private extractOptions(title: string, message = ' ', options?: Partial<ToastOptions>): Options {
-    const position: ToastPosition = this.getPosition(options);
+  show(content: string | Node, options?: Partial<ToastOptions>): () => void {
+    const ref: ToastRef = {};
+    const toastContent = this.getNode(content, ref, options);
+    const toastOptions = this.getOptions(toastContent, ref, options);
+    const toast = Toastify(toastOptions);
+    ref.toast = toast;
+    toast.showToast();
+    return () => toast.hideToast();
+  }
+
+  private getNode(content: string | Node, ref: ToastRef, options?: Partial<ToastOptions>): HTMLElement {
+    const template = document.createElement('template');
+    template.innerHTML = `<div class="cat-toastify-wrapper">
+      ${options?.icon ? `<cat-icon class="cat-toastify-icon" icon="${options.icon}" size="l"></cat-icon>` : ''}
+      <div class="cat-toastify-content">
+        <div class="cat-toastify-inner">${content}</div>
+        ${
+          options?.action
+            ? `<cat-button class="cat-toastify-action cat-button-pull" size="s" variant="text" color="primary">${options.action}</cat-button>`
+            : ''
+        }
+      </div>
+      ${
+        options?.autoClose === false
+          ? `<cat-button class="cat-toastify-close cat-button-pull" size="s" icon="cross-outlined" variant="text" icon-only="true" class="close" a11y-label="${i18n.t(
+              'notification.dismiss'
+            )}"></cat-button>`
+          : ''
+      }
+    </div>`;
+
+    const node = template.content.firstElementChild as HTMLElement;
+    node.querySelector('.cat-toastify-close')?.addEventListener('click', () => ref.toast?.hideToast());
+    node.querySelector('.cat-toastify-action')?.addEventListener('click', () => options?.onAction?.(ref));
+    const inner = node.querySelector<HTMLDivElement>('.cat-toastify-inner');
+    if (inner) {
+      if (typeof content !== 'string') {
+        inner.replaceChildren(content);
+      } else if (options?.escapeMarkup === false) {
+        inner.innerHTML = content;
+      } else {
+        inner.innerText = content;
+      }
+    }
+
+    return node;
+  }
+
+  private getOptions(node: Node, ref: ToastRef, options?: Partial<ToastOptions>): Options {
+    const [gravity, position] = (options?.position?.split('-') ?? ['bottom', 'left']) as [
+      Options['gravity'],
+      Options['position']
+    ];
+    const duration = options?.duration ?? (options?.autoClose === false ? -1 : CatNotificationService.duration);
     return {
-      node: options?.content ? options.content : this.toastHTMLTemplate(title, message, options),
-      duration: CatNotificationService.DURATION,
-      close: true,
-      className: 'cat-toastify',
-      gravity: position.gravity,
-      position: position.position,
+      gravity,
+      position,
+      node,
+      duration,
+      close: false,
+      className: options?.mode === 'light' ? 'cat-toastify' : 'cat-toastify cat-toastify-dark',
       stopOnFocus: true,
+      onClick: () => options?.onClick?.(ref),
+      callback: () => options?.onDismiss?.(ref),
       offset: {
-        x: '1.5rem',
-        y: '1.5rem'
+        x: '1rem',
+        y: '1rem'
       }
     };
   }
 }
 
-export const NotificationsService = new CatNotificationService();
+export const catNotificationService = CatNotificationService.getInstance();

@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
  * A navigation component to switch between different pages of paged chunks of
@@ -14,8 +14,6 @@ import { CatI18nRegistry } from '../cat-i18n/cat-i18n-registry';
   shadow: true
 })
 export class CatPagination {
-  private readonly i18n = CatI18nRegistry.getInstance();
-
   /**
    * The current page.
    */
@@ -80,7 +78,7 @@ export class CatPagination {
               size={this.size}
               round={this.round}
               disabled={this.isFirst}
-              a11yLabel={this.i18n.t('pagination.prev')}
+              a11yLabel={i18n.t('pagination.prev')}
               icon={this.iconPrev}
               iconOnly
               onClick={() => (this.page = this.page - 1)}
@@ -93,7 +91,7 @@ export class CatPagination {
               size={this.size}
               round={this.round}
               disabled={this.isLast}
-              a11yLabel={this.i18n.t('pagination.next')}
+              a11yLabel={i18n.t('pagination.next')}
               icon={this.iconNext}
               iconOnly
               onClick={() => (this.page = this.page + 1)}
@@ -164,7 +162,7 @@ export class CatPagination {
           round={this.round}
           color={this.page === page ? 'primary' : undefined}
           active={this.page === page}
-          a11yLabel={this.i18n.t('pagination.page', { page: page + 1 })}
+          a11yLabel={i18n.t('pagination.page', { page: page + 1 })}
           a11yCurrent={this.page === page || undefined}
           onClick={() => (this.page = page)}
         >
