@@ -13,7 +13,7 @@
 | `compact`       | `compact`        | Use compact pagination mode.                             | `boolean`                           | `false`                    |
 | `iconNext`      | `icon-next`      | The icon of the "next" button.                           | `string`                            | `'chevron-right-outlined'` |
 | `iconPrev`      | `icon-prev`      | The icon of the "previous" button.                       | `string`                            | `'chevron-left-outlined'`  |
-| `page`          | `page`           | The current page.                                        | `number`                            | `1`                        |
+| `page`          | `page`           | The current page.                                        | `number`                            | `0`                        |
 | `pageCount`     | `page-count`     | The total number of pages.                               | `number`                            | `1`                        |
 | `round`         | `round`          | Use round button edges.                                  | `boolean`                           | `false`                    |
 | `sidePadding`   | `side-padding`   | The number of pages to be shown at the edges.            | `number`                            | `1`                        |
