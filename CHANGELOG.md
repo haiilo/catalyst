@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/haiilo/catalyst/compare/v1.3.1...v2.0.0) (2022-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** rework notifications
+* **core:** buttons in nav elements now require a cat-nav-item class
+* **core:** rename cat-menu to cat-dropdown
+* **core:** simplify message handling with I18n service
+
+### Features
+
+* **core:** add menu animations ([b249eb2](https://github.com/haiilo/catalyst/commit/b249eb2faeb1577db2431aefafaeb290c72b71a0))
+* **core:** add modes to notifications ([de1ca91](https://github.com/haiilo/catalyst/commit/de1ca91994868020e9daf5df399e0c28ed879a37))
+* **core:** add utility class to reset line height: cat-line-height-1 ([50a881b](https://github.com/haiilo/catalyst/commit/50a881bb6b28c8216e28a59e29fd2ee5fe6c61a9))
+* **core:** pagination ([#76](https://github.com/haiilo/catalyst/issues/76)) ([d79a5d5](https://github.com/haiilo/catalyst/commit/d79a5d5eaa4260af0c9b0e6b4a5c6ba42cfcecbe))
+* **core:** rename cat-menu to cat-dropdown ([06766bf](https://github.com/haiilo/catalyst/commit/06766bf4fea5ded7c4dd58bd01acf46dcf5b8fc1))
+* **core:** rework notifications ([f82d305](https://github.com/haiilo/catalyst/commit/f82d305740eebdfa8d30b87c1224b2a27433d8ff))
+* **core:** simplify message handling with I18n service ([f69812f](https://github.com/haiilo/catalyst/commit/f69812f03b06d4d39b3eebc08c6e8e24fa58cd46))
+* **core:** update style lint ([56c64cf](https://github.com/haiilo/catalyst/commit/56c64cf5b2754080d97fc00a91b9344b5f586d2a))
+
+
+### Bug Fixes
+
+* **core:** add spacing to buttons with icons in navs ([48b0445](https://github.com/haiilo/catalyst/commit/48b0445652ce592ec5b5475051634c8f0dbe68f0))
+* **core:** buttons in nav elements now require a cat-nav-item class ([e84d48b](https://github.com/haiilo/catalyst/commit/e84d48b9b2ea0f8309e15b621fb18d0fc5b2be7f))
+* **core:** fix errors in dropdown trigger handling ([b00d858](https://github.com/haiilo/catalyst/commit/b00d85819892f0f06e8d52d845e41a47c72bf6fa))
+* **core:** fixed tests ([#75](https://github.com/haiilo/catalyst/issues/75)) ([f3b67e9](https://github.com/haiilo/catalyst/commit/f3b67e9b5473f1e4e36b7f63418a35143612dfa6))
+* **core:** remove console errors in tests ([#77](https://github.com/haiilo/catalyst/issues/77)) ([e4b27ce](https://github.com/haiilo/catalyst/commit/e4b27cee1086d34e588d825b064d5e57facbbd6c))
+* **core:** remove host-context from form-hints ([455351e](https://github.com/haiilo/catalyst/commit/455351e18317487f1ab40e1973839eff49969ca3))
+* **core:** remove style lint error ([7006267](https://github.com/haiilo/catalyst/commit/700626759a009c4ba184401a2ed421779b4a10cf))
+* **core:** update docs for dropdowns ([61b32ca](https://github.com/haiilo/catalyst/commit/61b32ca306c4a126d90ee3bed8472afa1d1c53ce))
+* **core:** update menu offset ([51bd512](https://github.com/haiilo/catalyst/commit/51bd512f89502e25f17f9a53aa4097557152ef79))
+* **tokens:** correctly expose JS variables ([7a97665](https://github.com/haiilo/catalyst/commit/7a976658f926c351177a7795ed8a24f8d3a55785))
+
 ### [1.3.1](https://github.com/haiilo/catalyst/compare/v1.3.0...v1.3.1) (2022-10-26)
 
 
