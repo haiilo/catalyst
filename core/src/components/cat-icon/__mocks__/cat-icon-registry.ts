@@ -23,3 +23,5 @@ export class CatIconRegistry {
     return this;
   }
 }
+
+export const catIconRegistry = CatIconRegistry.getInstance();

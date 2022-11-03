@@ -100,7 +100,7 @@ export class CatCheckbox {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on checkbox', this);
+      log.warn('[A11y] Missing ARIA label on checkbox', this);
     }
   }
 

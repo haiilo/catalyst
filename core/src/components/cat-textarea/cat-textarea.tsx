@@ -105,7 +105,7 @@ export class CatTextarea {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on textarea', this);
+      log.warn('[A11y] Missing ARIA label on textarea', this);
     }
   }
 

@@ -89,7 +89,7 @@ export class CatToggle {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on toggle', this);
+      log.warn('[A11y] Missing ARIA label on toggle', this);
     }
   }
 
