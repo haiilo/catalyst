@@ -88,7 +88,7 @@ export class CatRadio {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on radio', this);
+      log.warn('[A11y] Missing ARIA label on radio', this);
     }
   }
 

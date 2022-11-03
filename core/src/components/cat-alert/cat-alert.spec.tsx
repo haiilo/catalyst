@@ -1,6 +1,6 @@
 jest.mock('../cat-icon/cat-icon-registry.ts');
-import { CatAlert } from './cat-alert';
 import { newSpecPage } from '@stencil/core/testing';
+import { CatAlert } from './cat-alert';
 
 describe('cat-alert', () => {
   it('renders', async () => {

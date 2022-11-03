@@ -276,7 +276,7 @@ export class CatSelect {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
-      log.error('[A11y] Missing ARIA label on select', this);
+      log.warn('[A11y] Missing ARIA label on select', this);
     }
   }
 
