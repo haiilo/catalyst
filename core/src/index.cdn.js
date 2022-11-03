@@ -4,8 +4,8 @@
   scriptMap.text = `
     {
       "imports": {
-        "@haiilo/catalyst": "https://cdn.jsdelivr.net/npm/@haiilo/catalyst/dist/catalyst/index.esm.js",
-        "@haiilo/catalyst-icons": "https://cdn.jsdelivr.net/npm/@haiilo/catalyst-icons/dist/js/icons.object.js"
+        "@haiilo/catalyst": "https://cdn.jsdelivr.net/npm/@haiilo/catalyst@latest/dist/catalyst/index.esm.js",
+        "@haiilo/catalyst-icons": "https://cdn.jsdelivr.net/npm/@haiilo/catalyst-icons@latest/dist/js/icons.object.js"
       }
     }
   `;
@@ -13,7 +13,7 @@
   var scriptComp = doc.createElement('script');
   scriptComp.setAttribute('type', 'module');
   scriptComp.setAttribute('data-stencil-namespace', 'catalyst');
-  scriptComp.src = 'https://cdn.jsdelivr.net/npm/@haiilo/catalyst/dist/catalyst/catalyst.esm.js';
+  scriptComp.src = 'https://cdn.jsdelivr.net/npm/@haiilo/catalyst@latest/dist/catalyst/catalyst.esm.js';
 
   var scriptInit = doc.createElement('script');
   scriptInit.setAttribute('type', 'module');
