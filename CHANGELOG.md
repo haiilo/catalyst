@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/haiilo/catalyst/compare/v2.0.0...v2.0.1) (2022-11-03)
+
+
+### Bug Fixes
+
+* **core:** load latest CDN version ([32eb72e](https://github.com/haiilo/catalyst/commit/32eb72e9bb213f30511c53108997264f12e5301f))
+
 ## [2.0.0](https://github.com/haiilo/catalyst/compare/v1.3.1...v2.0.0) (2022-11-03)
 
 
