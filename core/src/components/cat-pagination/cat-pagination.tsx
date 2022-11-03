@@ -17,7 +17,7 @@ export class CatPagination {
   /**
    * The current page.
    */
-  @Prop({ mutable: true }) page = 1;
+  @Prop({ mutable: true }) page = 0;
 
   /**
    * The total number of pages.

@@ -14,13 +14,13 @@ describe('cat-pagination', () => {
           <nav role="navigation">
             <ol class="cat-pagination-m">
               <li>
-                <cat-button a11ylabel="pagination.prev" icon="chevron-left-outlined" icononly="" size="m" variant="text"></cat-button>
+                <cat-button a11ylabel="pagination.prev" disabled="" icon="chevron-left-outlined" icononly="" size="m" variant="text"></cat-button>
               </li>
               <li>
-                <cat-button a11ylabel="pagination.page" size="m" variant="text">1</cat-button>
+                <cat-button a11ycurrent="" a11ylabel="pagination.page" active="" color="primary" size="m" variant="text">1</cat-button>
               </li>
               <li>
-                 <cat-button a11ylabel="pagination.next" icon="chevron-right-outlined" icononly="" size="m" variant="text"></cat-button>
+                 <cat-button a11ylabel="pagination.next" disabled="" icon="chevron-right-outlined" icononly="" size="m" variant="text"></cat-button>
               </li>
             </ol>
           </nav>
