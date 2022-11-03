@@ -13,7 +13,6 @@
   cursor: unset;
 
   &.cat-toastify-dark {
-    background: cat-token('color.ui.background.bodyDark');
     --cat-font-color-head: #{cat-token('color.ui.font.headDark', $wrap: false)};
     --cat-font-color-body: #{cat-token('color.ui.font.bodyDark', $wrap: false)};
     --cat-primary-text: #{cat-token('color.theme.primaryDark.text', $wrap: false)};
@@ -22,6 +21,7 @@
     --cat-secondary-text: #{cat-token('color.theme.secondaryDark.text', $wrap: false)};
     --cat-secondary-text-hover: #{cat-token('color.theme.secondaryDark.textHover', $wrap: false)};
     --cat-secondary-text-active: #{cat-token('color.theme.secondaryDark.textActive', $wrap: false)};
+    background: cat-token('color.ui.background.bodyDark');
   }
 }
 
