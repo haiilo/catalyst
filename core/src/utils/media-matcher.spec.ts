@@ -1,5 +1,4 @@
 jest.mock('./platform', () => ({ Platform: jest.fn() }));
-
 import { MediaMatcher } from './media-matcher';
 import { Platform } from './platform';
 

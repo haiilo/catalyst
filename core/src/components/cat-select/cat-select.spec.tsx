@@ -1,5 +1,4 @@
 jest.mock('../cat-i18n/cat-i18n-registry');
-jest.mock('../cat-icon/cat-icon-registry.ts');
 import { newSpecPage } from '@stencil/core/testing';
 import { CatSelect } from './cat-select';
 
