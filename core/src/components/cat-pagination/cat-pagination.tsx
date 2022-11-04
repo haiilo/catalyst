@@ -163,7 +163,7 @@ export class CatPagination {
           color={this.page === page ? 'primary' : undefined}
           active={this.page === page}
           a11yLabel={i18n.t('pagination.page', { page: page + 1 })}
-          a11yCurrent={this.page === page || undefined}
+          a11yCurrent={this.page === page ? 'step' : undefined}
           onClick={() => (this.page = page)}
         >
           {page + 1}

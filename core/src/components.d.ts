@@ -85,7 +85,7 @@ export namespace Components {
         /**
           * Sets the `aria-current` attribute on the button.
          */
-        "a11yCurrent"?: boolean;
+        "a11yCurrent"?: string;
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
@@ -1037,7 +1037,7 @@ declare namespace LocalJSX {
         /**
           * Sets the `aria-current` attribute on the button.
          */
-        "a11yCurrent"?: boolean;
+        "a11yCurrent"?: string;
         /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */

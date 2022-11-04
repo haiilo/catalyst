@@ -129,7 +129,7 @@ export class CatButton {
   /**
    * Sets the `aria-current` attribute on the button.
    */
-  @Prop({ attribute: 'a11y-current' }) a11yCurrent?: boolean;
+  @Prop({ attribute: 'a11y-current' }) a11yCurrent?: string;
 
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
