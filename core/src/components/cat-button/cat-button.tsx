@@ -208,6 +208,7 @@ export class CatButton {
           part="button"
           class={{
             'cat-button': true,
+            'cat-button-active': this.active,
             'cat-button-icon': this.isIconButton,
             'cat-button-round': this.round,
             'cat-button-loading': this.loading,
