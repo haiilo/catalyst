@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/haiilo/catalyst/compare/v2.0.1...v2.0.2) (2022-11-04)
+
+
+### Features
+
+* **core:** support string inputs for current attribute in buttons ([c5adac0](https://github.com/haiilo/catalyst/commit/c5adac088334b6141cb6efc65c9b671d569e20f0))
+
+
+### Bug Fixes
+
+* **core:** add docs and adjust pagination details ([ba94d32](https://github.com/haiilo/catalyst/commit/ba94d3216c27c9cdb435d07c41ed0ac6dd860383))
+* **core:** build ([704c330](https://github.com/haiilo/catalyst/commit/704c330c9843618ed4cf3d895945318bff299e48))
+
 ### [2.0.1](https://github.com/haiilo/catalyst/compare/v2.0.0...v2.0.1) (2022-11-03)
 
 
