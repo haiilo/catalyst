@@ -72,7 +72,7 @@
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
     "prettier": "^2.7.1",
-    "puppeteer": "^13.5.2",
+    "puppeteer": "^19.2.2",
     "replace-in-file": "^6.3.5",
     "rxjs": "^7.5.5",
     "stylelint": "^14.14.0",
