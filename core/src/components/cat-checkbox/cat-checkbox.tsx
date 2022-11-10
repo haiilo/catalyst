@@ -105,14 +105,32 @@ export class CatCheckbox {
   }
 
   /**
-   * Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
+   * Programmatically move focus to the checkbox. Use this method instead of
+   * `input.focus()`.
    *
    * @param options An optional object providing options to control aspects of
    * the focusing process.
    */
   @Method()
-  async setFocus(options?: FocusOptions): Promise<void> {
+  async doFocus(options?: FocusOptions): Promise<void> {
     this.input.focus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the checkbox. Use this method instead of
+   * `input.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.input.blur();
+  }
+
+  /**
+   * Programmatically simulate a click on the checkbox.
+   */
+  @Method()
+  async doClick(): Promise<void> {
+    this.input.click();
   }
 
   render() {

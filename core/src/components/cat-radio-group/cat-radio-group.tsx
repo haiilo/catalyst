@@ -90,7 +90,7 @@ export class CatRadioGroup {
       const activeIdx = this.catRadioGroup.findIndex(catRadio => catRadio === activeElement);
       const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
       const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
-      targetElements[targetIdx].setFocus();
+      targetElements[targetIdx].doFocus();
       targetElements[targetIdx].shadowRoot?.querySelector('input')?.click();
       this.updateTabIndex();
       event.preventDefault();

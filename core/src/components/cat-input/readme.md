@@ -53,9 +53,31 @@ Type: `Promise<void>`
 
 
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doBlur() => Promise<void>`
 
-Sets focus on the input. Use this method instead of `input.focus()`.
+Programmatically remove focus from the input. Use this method instead of
+`input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doClick() => Promise<void>`
+
+Programmatically simulate a click on the input.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Programmatically move focus to the input. Use this method instead of
+`input.focus()`.
 
 #### Returns
 

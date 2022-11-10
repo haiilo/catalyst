@@ -90,7 +90,7 @@ export declare interface CatButton extends Components.CatButton {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
-  methods: ['setFocus']
+  methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-button',
@@ -146,7 +146,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
-  methods: ['setFocus']
+  methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-checkbox',
@@ -237,7 +237,7 @@ export declare interface CatInput extends Components.CatInput {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
-  methods: ['setFocus', 'clear']
+  methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
   selector: 'cat-input',
@@ -317,7 +317,7 @@ export declare interface CatRadio extends Components.CatRadio {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
-  methods: ['setFocus']
+  methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-radio',
@@ -577,7 +577,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value'],
-  methods: ['setFocus']
+  methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-textarea',
@@ -614,7 +614,7 @@ export declare interface CatToggle extends Components.CatToggle {
 @ProxyCmp({
   defineCustomElementFn: undefined,
   inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
-  methods: ['setFocus']
+  methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-toggle',

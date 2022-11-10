@@ -184,14 +184,32 @@ export class CatButton {
   }
 
   /**
-   * Sets focus on the button. Use this method instead of `button.focus()`.
+   * Programmatically move focus to the button. Use this method instead of
+   * `button.focus()`.
    *
    * @param options An optional object providing options to control aspects of
    * the focusing process.
    */
   @Method()
-  async setFocus(options?: FocusOptions): Promise<void> {
+  async doFocus(options?: FocusOptions): Promise<void> {
     this.button.focus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the button. Use this method instead of
+   * `button.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.button.blur();
+  }
+
+  /**
+   * Programmatically simulate a click on the button.
+   */
+  @Method()
+  async doClick(): Promise<void> {
+    this.button.click();
   }
 
   render() {

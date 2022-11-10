@@ -114,14 +114,32 @@ export class CatTextarea {
   }
 
   /**
-   * Sets focus on the textarea. Use this method instead of `textarea.focus()`.
+   * Programmatically move focus to the textarea. Use this method instead of
+   * `textarea.focus()`.
    *
    * @param options An optional object providing options to control aspects of
    * the focusing process.
    */
   @Method()
-  async setFocus(options?: FocusOptions): Promise<void> {
+  async doFocus(options?: FocusOptions): Promise<void> {
     this.textarea.focus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the textarea. Use this method instead of
+   * `textarea.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.textarea.blur();
+  }
+
+  /**
+   * Programmatically simulate a click on the textarea.
+   */
+  @Method()
+  async doClick(): Promise<void> {
+    this.textarea.click();
   }
 
   render() {

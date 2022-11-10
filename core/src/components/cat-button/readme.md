@@ -39,9 +39,31 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doBlur() => Promise<void>`
 
-Sets focus on the button. Use this method instead of `button.focus()`.
+Programmatically remove focus from the button. Use this method instead of
+`button.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doClick() => Promise<void>`
+
+Programmatically simulate a click on the button.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Programmatically move focus to the button. Use this method instead of
+`button.focus()`.
 
 #### Returns
 

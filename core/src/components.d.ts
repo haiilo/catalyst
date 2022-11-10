@@ -107,6 +107,19 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Programmatically remove focus from the button. Use this method instead of `button.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the button.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the button. Use this method instead of `button.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -134,11 +147,6 @@ export namespace Components {
           * Use round button edges.
          */
         "round": boolean;
-        /**
-          * Sets focus on the button. Use this method instead of `button.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The size of the button.
          */
@@ -176,6 +184,19 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Programmatically remove focus from the checkbox. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the checkbox.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the checkbox. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * Optional hint text(s) to be displayed with the checkbox.
          */
         "hint"?: string | string[];
@@ -203,11 +224,6 @@ export namespace Components {
           * Required state of the checkbox
          */
         "required": boolean;
-        /**
-          * Sets focus on the checkbox. Use this method instead of `checkbox.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the checkbox
          */
@@ -262,6 +278,19 @@ export namespace Components {
           * Whether the input is disabled.
          */
         "disabled": boolean;
+        /**
+          * Programmatically remove focus from the input. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the input.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -318,11 +347,6 @@ export namespace Components {
           * Use round input edges.
          */
         "round": boolean;
-        /**
-          * Sets focus on the input. Use this method instead of `input.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -402,6 +426,19 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Programmatically remove focus from the radio button. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the radio button.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the radio button. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * Optional hint text(s) to be displayed with the radio.
          */
         "hint"?: string | string[];
@@ -425,11 +462,6 @@ export namespace Components {
           * Whether the radio is required.
          */
         "required": boolean;
-        /**
-          * Sets focus on the radio. Use this method instead of `radio.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the radio component.
          */
@@ -626,6 +658,19 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Programmatically remove focus from the textarea. Use this method instead of `textarea.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the textarea.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the textarea. Use this method instead of `textarea.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -666,11 +711,6 @@ export namespace Components {
          */
         "rows": number;
         /**
-          * Sets focus on the textarea. Use this method instead of `textarea.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
-        /**
           * The initial value of the control.
          */
         "value"?: string | number;
@@ -684,6 +724,19 @@ export namespace Components {
           * Disabled state of the toggle.
          */
         "disabled": boolean;
+        /**
+          * Programmatically remove focus from the toggle. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically simulate a click on the toggle.
+         */
+        "doClick": () => Promise<void>;
+        /**
+          * Programmatically move focus to the toggle. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * Optional hint text(s) to be displayed with the toggle.
          */
@@ -708,11 +761,6 @@ export namespace Components {
           * Required state of the toggle.
          */
         "required": boolean;
-        /**
-          * Sets focus on the toggle. Use this method instead of `toggle.focus()`.
-          * @param options An optional object providing options to control aspects of the focusing process.
-         */
-        "setFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
           * The value of the toggle
          */

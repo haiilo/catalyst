@@ -68,7 +68,7 @@ export class CatTabs {
       const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
       const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
       const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
-      targetElements[targetIdx].setFocus();
+      targetElements[targetIdx].doFocus();
       event.preventDefault();
     }
   }

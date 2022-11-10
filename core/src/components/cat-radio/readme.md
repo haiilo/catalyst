@@ -29,9 +29,31 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doBlur() => Promise<void>`
 
-Sets focus on the radio. Use this method instead of `radio.focus()`.
+Programmatically remove focus from the radio button. Use this method
+instead of `input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doClick() => Promise<void>`
+
+Programmatically simulate a click on the radio button.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Programmatically move focus to the radio button. Use this method instead of
+`input.focus()`.
 
 #### Returns
 

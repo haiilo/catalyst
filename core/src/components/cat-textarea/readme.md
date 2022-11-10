@@ -34,9 +34,31 @@
 
 ## Methods
 
-### `setFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doBlur() => Promise<void>`
 
-Sets focus on the textarea. Use this method instead of `textarea.focus()`.
+Programmatically remove focus from the textarea. Use this method instead of
+`textarea.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doClick() => Promise<void>`
+
+Programmatically simulate a click on the textarea.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+
+Programmatically move focus to the textarea. Use this method instead of
+`textarea.focus()`.
 
 #### Returns
 
