@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/haiilo/catalyst/compare/v2.0.3...v2.1.0) (2022-11-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** add and rename methods to focus / blur / click
+
+### Features
+
+* **core:** add and rename methods to focus / blur / click ([fb83a3d](https://github.com/haiilo/catalyst/commit/fb83a3d4ba4a285f9b7d6daff1d500c5d6c3b708))
+
 ### [2.0.3](https://github.com/haiilo/catalyst/compare/v2.0.2...v2.0.3) (2022-11-05)
 
 
