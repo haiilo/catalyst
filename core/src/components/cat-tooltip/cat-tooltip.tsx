@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, h, Host, Listen, Prop, Watch } from '@stencil/core';
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
 import isTouchScreen from '../../utils/is-touch-screen';
 import firstTabbable from '../../utils/first-tabbable';
@@ -20,7 +20,7 @@ export class CatTooltip {
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
-
+  private asyncContent = false;
   /**
    * The content of the tooltip.
    */
@@ -62,6 +62,12 @@ export class CatTooltip {
    */
   @Prop() longTouchDuration = 1000;
 
+  @Watch('content')
+  onContentChanged(newContent?: string, oldContent?: string) {
+    if (newContent && !oldContent) {
+      this.asyncContent = true;
+    }
+  }
   @Listen('keydown')
   handleKeyDown({ key }: KeyboardEvent) {
     key === 'Escape' && this.hideListener();
@@ -72,6 +78,7 @@ export class CatTooltip {
     if (!this.isTabbable) {
       this.trigger?.setAttribute('tabindex', '0');
     }
+
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
@@ -85,6 +92,13 @@ export class CatTooltip {
       this.trigger?.addEventListener('focusout', this.hideListener.bind(this));
       this.trigger?.addEventListener('mouseenter', this.showListener.bind(this));
       this.trigger?.addEventListener('mouseleave', this.hideListener.bind(this));
+    }
+  }
+
+  componentDidRender(): void {
+    if (this.trigger && this.tooltip && this.asyncContent) {
+      autoUpdate(this.trigger, this.tooltip, () => this.update());
+      this.asyncContent = false;
     }
   }
 
