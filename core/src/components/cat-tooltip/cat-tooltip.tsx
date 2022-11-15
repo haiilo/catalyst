@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, Prop, Watch } from '@stencil/core';
+import { Component, h, Host, Listen, Prop } from '@stencil/core';
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
 import isTouchScreen from '../../utils/is-touch-screen';
 import firstTabbable from '../../utils/first-tabbable';
@@ -20,7 +20,8 @@ export class CatTooltip {
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
-  private asyncContent = false;
+  private hidden = false;
+
   /**
    * The content of the tooltip.
    */
@@ -62,12 +63,6 @@ export class CatTooltip {
    */
   @Prop() longTouchDuration = 1000;
 
-  @Watch('content')
-  onContentChanged(newContent?: string, oldContent?: string) {
-    if (newContent && !oldContent) {
-      this.asyncContent = true;
-    }
-  }
   @Listen('keydown')
   handleKeyDown({ key }: KeyboardEvent) {
     key === 'Escape' && this.hideListener();
@@ -95,11 +90,8 @@ export class CatTooltip {
     }
   }
 
-  componentDidRender(): void {
-    if (this.trigger && this.tooltip && this.asyncContent) {
-      autoUpdate(this.trigger, this.tooltip, () => this.update());
-      this.asyncContent = false;
-    }
+  componentWillRender(): void {
+    this.hidden = !this.content || this.disabled;
   }
 
   disconnectedCallback(): void {
@@ -121,19 +113,19 @@ export class CatTooltip {
         <div ref={el => (this.triggerElement = el)} aria-describedby={this.id} class="tooltip-trigger">
           <slot />
         </div>
-        {this.content && !this.disabled && (
-          <div
-            ref={el => (this.tooltip = el)}
-            id={this.id}
-            class={{
-              tooltip: true,
-              'tooltip-round': this.round,
-              [`tooltip-${this.size}`]: Boolean(this.size)
-            }}
-          >
-            {this.content}
-          </div>
-        )}
+        <div
+          ref={el => (this.tooltip = el)}
+          id={this.id}
+          aria-hidden={this.hidden}
+          class={{
+            tooltip: true,
+            'tooltip-hidden': this.hidden,
+            'tooltip-round': this.round,
+            [`tooltip-${this.size}`]: Boolean(this.size)
+          }}
+        >
+          {this.content}
+        </div>
       </Host>
     );
   }
@@ -161,7 +153,7 @@ export class CatTooltip {
   private showListener() {
     window.clearTimeout(this.hideTimeout);
     this.showTimeout = window.setTimeout(() => {
-      this.tooltip?.classList.add('tooltip-show');
+      this.showTooltip();
     }, this.showDelay);
   }
 
@@ -175,7 +167,7 @@ export class CatTooltip {
   private touchStartListener(event: Event) {
     event.stopPropagation();
     this.touchTimeout = window.setTimeout(() => {
-      this.tooltip?.classList.add('tooltip-show');
+      this.showTooltip();
     }, this.longTouchDuration);
   }
 
@@ -187,5 +179,9 @@ export class CatTooltip {
 
   private windowTouchStartListener() {
     this.tooltip?.classList.remove('tooltip-show');
+  }
+
+  private showTooltip() {
+    !this.hidden && this.tooltip?.classList.add('tooltip-show');
   }
 }
