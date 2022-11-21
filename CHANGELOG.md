@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/haiilo/catalyst/compare/v2.1.1...v2.1.2) (2022-11-21)
+
+
+### Bug Fixes
+
+* **core:** fine tune headline styles for catalyst ([425c015](https://github.com/haiilo/catalyst/commit/425c015bc6421bd6319997aedf27a2f844562d24))
+
 ### [2.1.1](https://github.com/haiilo/catalyst/compare/v2.1.0...v2.1.1) (2022-11-16)
 
 
