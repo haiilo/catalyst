@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/haiilo/catalyst/compare/v2.1.2...v2.1.3) (2022-11-21)
+
+
+### Bug Fixes
+
+* **core:** remove sanitize assets file ([dd42e5e](https://github.com/haiilo/catalyst/commit/dd42e5eb7191b3df5b4e9666cfff64e915f9046d))
+
 ### [2.1.2](https://github.com/haiilo/catalyst/compare/v2.1.1...v2.1.2) (2022-11-21)
 
 
