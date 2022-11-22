@@ -12,11 +12,7 @@ export function setPropertyDefault<T extends { hostElement: HTMLElement }>(host:
   setAttributeDefault(host, String(prop), host[prop]);
 }
 
-export function setAttribute<T extends { hostElement: HTMLElement }>(
-  host: T,
-  attr: string,
-  value: unknown
-): void {
+export function setAttribute<T extends { hostElement: HTMLElement }>(host: T, attr: string, value: unknown): void {
   host.hostElement.setAttribute(attr, String(value));
 }
 
