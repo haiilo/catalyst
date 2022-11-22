@@ -44,13 +44,13 @@ export class CatBadge {
     setPropertyDefault(this, 'size');
   }
 
-  render() {
-    return <slot></slot>;
-  }
-
   componentWillRender(): void {
     setProperty(this, 'color');
     setProperty(this, 'size');
     setProperty(this, 'variant');
+  }
+
+  render() {
+    return <slot></slot>;
   }
 }
