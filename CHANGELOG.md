@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/haiilo/catalyst/compare/v2.1.3...v2.2.0) (2022-11-22)
+
+
+### Bug Fixes
+
+* **core:** badge fix ([5afff33](https://github.com/haiilo/catalyst/commit/5afff33b5431df236eed91420aa112e96e542f33))
+* **core:** fixed bug ([da6ca6b](https://github.com/haiilo/catalyst/commit/da6ca6b7f9dd408a8039992893084c9b5e547cfb))
+* **core:** fixed lint ([e6b0fcc](https://github.com/haiilo/catalyst/commit/e6b0fcc1c6feed9d647436a01d728aba03eb3273))
+* **core:** pr changes ([211a2cf](https://github.com/haiilo/catalyst/commit/211a2cf791bea33f3d53c9fe250459450a39dbeb))
+
 ### [2.1.3](https://github.com/haiilo/catalyst/compare/v2.1.2...v2.1.3) (2022-11-21)
 
 
