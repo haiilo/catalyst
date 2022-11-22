@@ -1,5 +1,5 @@
-import { Component, Element, h, Prop } from '@stencil/core';
-import { setPropertyDefault } from '../../utils/setDefault';
+import { Component, Element, Prop, h } from '@stencil/core';
+import { setProperty, setPropertyDefault } from '../../utils/setDefault';
 
 /**
  * Badges are used to inform users of the status of an object or of an action
@@ -42,6 +42,12 @@ export class CatBadge {
     setPropertyDefault(this, 'variant');
     setPropertyDefault(this, 'color');
     setPropertyDefault(this, 'size');
+  }
+
+  componentWillRender(): void {
+    setProperty(this, 'color');
+    setProperty(this, 'size');
+    setProperty(this, 'variant');
   }
 
   render() {
