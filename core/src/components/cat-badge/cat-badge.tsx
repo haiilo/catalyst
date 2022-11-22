@@ -1,4 +1,4 @@
-import { Component, Element, Prop, h } from '@stencil/core';
+import { Component, Element, Prop, Watch, h } from '@stencil/core';
 import { setProperty, setPropertyDefault } from '../../utils/setDefault';
 
 /**
@@ -44,13 +44,22 @@ export class CatBadge {
     setPropertyDefault(this, 'size');
   }
 
-  componentWillRender(): void {
-    setProperty(this, 'color');
-    setProperty(this, 'size');
-    setProperty(this, 'variant');
-  }
-
   render() {
     return <slot></slot>;
+  }
+
+  @Watch('color')
+  onColorChanged() {
+    setProperty(this, 'color');
+  }
+
+  @Watch('size')
+  onSizeChanged() {
+    setProperty(this, 'size');
+  }
+
+  @Watch('variant')
+  onVariantChanged() {
+    setProperty(this, 'variant');
   }
 }
