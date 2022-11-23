@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/haiilo/catalyst/compare/v2.1.3...v2.4.0) (2022-11-23)
+
+
+### Features
+
+* **core:** adjust quote typo styles ([73469a5](https://github.com/haiilo/catalyst/commit/73469a596e2468a5646739a78168bf16e4e20db3))
+* **core:** reflect properties ([#98](https://github.com/haiilo/catalyst/issues/98)) ([8410a49](https://github.com/haiilo/catalyst/commit/8410a499aeaeaf5c16c707705e347eec3c97836d))
+* **core:** support ext. labels ([#99](https://github.com/haiilo/catalyst/issues/99)) ([5e4e00f](https://github.com/haiilo/catalyst/commit/5e4e00f57bada3a7e9b35f006573e2627183f8c7))
+
+
+### Bug Fixes
+
+* **core:** badge fix ([5afff33](https://github.com/haiilo/catalyst/commit/5afff33b5431df236eed91420aa112e96e542f33))
+* **core:** fixed bug ([da6ca6b](https://github.com/haiilo/catalyst/commit/da6ca6b7f9dd408a8039992893084c9b5e547cfb))
+* **core:** fixed lint ([e6b0fcc](https://github.com/haiilo/catalyst/commit/e6b0fcc1c6feed9d647436a01d728aba03eb3273))
+* **core:** pr changes ([211a2cf](https://github.com/haiilo/catalyst/commit/211a2cf791bea33f3d53c9fe250459450a39dbeb))
+
 ## [2.3.0](https://github.com/haiilo/catalyst/compare/v2.1.3...v2.3.0) (2022-11-22)
 
 
