@@ -369,7 +369,7 @@ export namespace Components {
         "value"?: string | number;
     }
     interface CatLabel {
-        "fort"?: string;
+        "for"?: string;
         "required": boolean;
     }
     interface CatModal {
@@ -1381,7 +1381,7 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface CatLabel {
-        "fort"?: string;
+        "for"?: string;
         "required"?: boolean;
     }
     interface CatModal {

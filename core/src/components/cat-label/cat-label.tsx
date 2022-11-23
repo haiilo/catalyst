@@ -10,7 +10,7 @@ export class CatLabel {
   /**
    *
    */
-  @Prop() fort?: string;
+  @Prop() for?: string;
 
   /**
    *
@@ -20,7 +20,7 @@ export class CatLabel {
   render() {
     return (
       <Host>
-        <label htmlFor={this.fort}>
+        <label htmlFor={this.for}>
           <slot></slot>
           {!this.required && (
             <span class="input-optional" aria-hidden="true">
