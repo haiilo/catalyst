@@ -10,7 +10,12 @@ describe('cat-label', () => {
     expect(page.root).toEqualHtml(`
       <cat-label>
         <mock:shadow-root>
-          <slot></slot>
+          <label>
+            <slot></slot>
+            <span aria-hidden="true" class="input-optional">
+              (input.optional)
+            </span>
+          </label>
         </mock:shadow-root>
       </cat-label>
     `);
