@@ -68,6 +68,7 @@ export const CatCard = /*@__PURE__*/ defineContainer<JSX.CatCard>('cat-card', un
 export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-checkbox', undefined, [
   'checked',
   'disabled',
+  'identifier',
   'indeterminate',
   'label',
   'labelHidden',
@@ -105,6 +106,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'hint',
   'icon',
   'iconRight',
+  'identifier',
   'label',
   'labelHidden',
   'max',
@@ -123,6 +125,12 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'catChange',
   'catFocus',
   'catBlur'
+]);
+
+
+export const CatLabel = /*@__PURE__*/ defineContainer<JSX.CatLabel>('cat-label', undefined, [
+  'for',
+  'required'
 ]);
 
 
@@ -148,6 +156,7 @@ export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('c
 export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio', undefined, [
   'checked',
   'disabled',
+  'identifier',
   'label',
   'labelHidden',
   'name',
@@ -195,6 +204,7 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'disabled',
   'placeholder',
   'hint',
+  'identifier',
   'label',
   'name',
   'labelHidden',
@@ -247,6 +257,7 @@ export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', un
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'disabled',
   'hint',
+  'identifier',
   'label',
   'labelHidden',
   'maxLength',
@@ -266,6 +277,7 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',
+  'identifier',
   'label',
   'labelHidden',
   'name',

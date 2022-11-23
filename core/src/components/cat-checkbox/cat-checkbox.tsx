@@ -19,7 +19,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatCheckbox {
-  private readonly id = `cat-checkbox-${nextUniqueId++}`;
+  private readonly _id = `cat-checkbox-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -35,6 +39,11 @@ export class CatCheckbox {
    * Disabled state of the checkbox
    */
   @Prop() disabled = false;
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
 
   /**
    * Indeterminate state of the checkbox

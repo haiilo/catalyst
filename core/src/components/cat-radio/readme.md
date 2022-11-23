@@ -10,6 +10,7 @@
 | `checked`     | `checked`      | Whether this radio is checked.                                                            | `boolean`                         | `false`     |
 | `disabled`    | `disabled`     | Whether this radio is disabled.                                                           | `boolean`                         | `false`     |
 | `hint`        | `hint`         | Optional hint text(s) to be displayed with the radio.                                     | `string \| string[] \| undefined` | `undefined` |
+| `identifier`  | `identifier`   | A unique identifier for the input.                                                        | `string \| undefined`             | `undefined` |
 | `label`       | `label`        | The label of the radio that is visible.                                                   | `string`                          | `''`        |
 | `labelHidden` | `label-hidden` | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                         | `false`     |
 | `labelLeft`   | `label-left`   | Whether the label should appear to the left of the radio component.                       | `boolean`                         | `false`     |

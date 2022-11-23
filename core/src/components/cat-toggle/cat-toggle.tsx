@@ -19,7 +19,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatToggle {
-  private readonly id = `cat-toggle-${nextUniqueId++}`;
+  private readonly _id = `cat-toggle-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -35,6 +39,11 @@ export class CatToggle {
    * Disabled state of the toggle.
    */
   @Prop() disabled = false;
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
 
   /**
    * The label of the toggle that is visible.

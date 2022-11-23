@@ -107,7 +107,10 @@ let nextUniqueId = 0;
 export class CatSelect {
   private static readonly SKELETON_COUNT = 4;
   private static readonly DROPDOWN_OFFSET = 4;
-  private readonly id = `cat-input-${nextUniqueId++}`;
+  private readonly _id = `cat-input-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
 
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
@@ -167,6 +170,11 @@ export class CatSelect {
   @Prop() hint?: string | string[];
 
   /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
+
+  /**
    * The label for the select.
    */
   @Prop() label = '';
@@ -174,7 +182,7 @@ export class CatSelect {
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
    */
-  @Prop() name = '';
+  @Prop() name?: string;
 
   /**
    * Visually hide the label, but still show it to assistive technologies like screen readers.

@@ -145,14 +145,14 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatCheckbox {
   protected el: HTMLElement;
@@ -236,14 +236,14 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
   selector: 'cat-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
 })
 export class CatInput {
   protected el: HTMLElement;
@@ -251,6 +251,27 @@ export class CatInput {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+
+export declare interface CatLabel extends Components.CatLabel {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['for', 'required']
+})
+@Component({
+  selector: 'cat-label',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['for', 'required']
+})
+export class CatLabel {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -316,14 +337,14 @@ export declare interface CatRadio extends Components.CatRadio {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatRadio {
   protected el: HTMLElement;
@@ -429,14 +450,14 @@ export declare interface CatSelect extends Components.CatSelect {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'tagHint', 'tags', 'value'],
+  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'tagHint', 'tags', 'value'],
   methods: ['connect']
 })
 @Component({
   selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'tagHint', 'tags', 'value']
+  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'placeholder', 'placement', 'required', 'tagHint', 'tags', 'value']
 })
 export class CatSelect {
   protected el: HTMLElement;
@@ -576,14 +597,14 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value'],
+  inputs: ['disabled', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'hint', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value']
+  inputs: ['disabled', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value']
 })
 export class CatTextarea {
   protected el: HTMLElement;
@@ -613,14 +634,14 @@ export declare interface CatToggle extends Components.CatToggle {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checked', 'disabled', 'hint', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'required', 'value']
 })
 export class CatToggle {
   protected el: HTMLElement;

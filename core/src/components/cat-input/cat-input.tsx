@@ -23,7 +23,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatInput {
-  private readonly id = `cat-input-${nextUniqueId++}`;
+  private readonly _id = `cat-input-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -61,6 +65,11 @@ export class CatInput {
   @Prop() iconRight = false;
 
   /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
+
+  /**
    * The label for the input.
    */
   @Prop() label = '';
@@ -93,7 +102,7 @@ export class CatInput {
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
    */
-  @Prop() name = '';
+  @Prop() name?: string;
 
   /**
    * The placeholder text to display within the input.
