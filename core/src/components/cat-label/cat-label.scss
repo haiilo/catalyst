@@ -1,0 +1,12 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: block;
+}
+
+.input-optional {
+  margin-left: 0.25rem;
+  @include cat-body('xs');
+  color: cat-token('color.ui.font.muted');
+}

@@ -304,6 +304,10 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * The label for the input.
          */
         "label": string;
@@ -330,7 +334,7 @@ export namespace Components {
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
-        "name": string;
+        "name"?: string;
         /**
           * The placeholder text to display within the input.
          */
@@ -363,6 +367,10 @@ export namespace Components {
           * The value of the control.
          */
         "value"?: string | number;
+    }
+    interface CatLabel {
+        "fort"?: string;
+        "required": boolean;
     }
     interface CatModal {
         /**
@@ -900,6 +908,12 @@ declare global {
         prototype: HTMLCatInputElement;
         new (): HTMLCatInputElement;
     };
+    interface HTMLCatLabelElement extends Components.CatLabel, HTMLStencilElement {
+    }
+    var HTMLCatLabelElement: {
+        prototype: HTMLCatLabelElement;
+        new (): HTMLCatLabelElement;
+    };
     interface HTMLCatModalElement extends Components.CatModal, HTMLStencilElement {
     }
     var HTMLCatModalElement: {
@@ -994,6 +1008,7 @@ declare global {
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
+        "cat-label": HTMLCatLabelElement;
         "cat-modal": HTMLCatModalElement;
         "cat-pagination": HTMLCatPaginationElement;
         "cat-radio": HTMLCatRadioElement;
@@ -1289,6 +1304,10 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * The label for the input.
          */
         "label"?: string;
@@ -1360,6 +1379,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string | number;
+    }
+    interface CatLabel {
+        "fort"?: string;
+        "required"?: boolean;
     }
     interface CatModal {
         /**
@@ -1839,6 +1862,7 @@ declare namespace LocalJSX {
         "cat-dropdown": CatDropdown;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
+        "cat-label": CatLabel;
         "cat-modal": CatModal;
         "cat-pagination": CatPagination;
         "cat-radio": CatRadio;
@@ -1868,6 +1892,7 @@ declare module "@stencil/core" {
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
+            "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;
             "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-pagination": LocalJSX.CatPagination & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;

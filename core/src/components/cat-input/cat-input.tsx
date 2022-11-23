@@ -61,6 +61,11 @@ export class CatInput {
   @Prop() iconRight = false;
 
   /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
+
+  /**
    * The label for the input.
    */
   @Prop() label = '';
@@ -93,7 +98,7 @@ export class CatInput {
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
    */
-  @Prop() name = '';
+  @Prop() name?: string;
 
   /**
    * The placeholder text to display within the input.
@@ -198,7 +203,7 @@ export class CatInput {
     return (
       <Host>
         {(this.hasSlottedLabel || this.label) && (
-          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+          <label htmlFor={this.identifier || this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
@@ -226,7 +231,7 @@ export class CatInput {
           <div class="input-inner-wrapper">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
-              id={this.id}
+              id={this.identifier || this.id}
               class={{
                 'has-clearable': this.clearable && !this.disabled
               }}
