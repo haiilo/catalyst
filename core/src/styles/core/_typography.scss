@@ -160,8 +160,9 @@ dd {
 }
 
 blockquote {
-  padding: 0.5rem 0 0.5rem calc(2rem - 4px);
-  border-left: 4px solid cat-token('color.ui.border.default');
+  padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
+  border-left: 2px solid cat-token('color.ui.border.quote');
+  font-style: italic;
   @include cat-body('l', null);
 
   > :last-child {
@@ -182,8 +183,8 @@ figcaption {
 }
 
 figure {
-  padding: 0.5rem 0 0.5rem calc(2rem - 4px);
-  border-left: 4px solid cat-token('color.ui.border.default');
+  padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
+  border-left: 2px solid cat-token('color.ui.border.quote');
 
   blockquote {
     margin-bottom: 0;
