@@ -201,6 +201,10 @@ export namespace Components {
          */
         "hint"?: string | string[];
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate": boolean;
@@ -369,7 +373,13 @@ export namespace Components {
         "value"?: string | number;
     }
     interface CatLabel {
+        /**
+          * The unique identifier for a referenced input.
+         */
         "for"?: string;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
         "required": boolean;
     }
     interface CatModal {
@@ -450,6 +460,10 @@ export namespace Components {
           * Optional hint text(s) to be displayed with the radio.
          */
         "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
         /**
           * The label of the radio that is visible.
          */
@@ -550,6 +564,10 @@ export namespace Components {
          */
         "hint"?: string | string[];
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * The label for the select.
          */
         "label": string;
@@ -564,7 +582,7 @@ export namespace Components {
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
-        "name": string;
+        "name"?: string;
         /**
           * The placeholder text to display within the select.
          */
@@ -683,6 +701,10 @@ export namespace Components {
          */
         "hint"?: string | string[];
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * The label for the textarea.
          */
         "label": string;
@@ -701,7 +723,7 @@ export namespace Components {
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
-        "name": string;
+        "name"?: string;
         /**
           * The placeholder text to display within the input.
          */
@@ -749,6 +771,10 @@ export namespace Components {
           * Optional hint text(s) to be displayed with the toggle.
          */
         "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
         /**
           * The label of the toggle that is visible.
          */
@@ -1202,6 +1228,10 @@ declare namespace LocalJSX {
          */
         "hint"?: string | string[];
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * Indeterminate state of the checkbox
          */
         "indeterminate"?: boolean;
@@ -1381,7 +1411,13 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface CatLabel {
+        /**
+          * The unique identifier for a referenced input.
+         */
         "for"?: string;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
         "required"?: boolean;
     }
     interface CatModal {
@@ -1445,6 +1481,10 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the radio.
          */
         "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
         /**
           * The label of the radio that is visible.
          */
@@ -1575,6 +1615,10 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
         /**
           * The label for the select.
          */
@@ -1716,6 +1760,10 @@ declare namespace LocalJSX {
          */
         "hint"?: string | string[];
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
           * The label for the textarea.
          */
         "label"?: string;
@@ -1781,6 +1829,10 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the toggle.
          */
         "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
         /**
           * The label of the toggle that is visible.
          */

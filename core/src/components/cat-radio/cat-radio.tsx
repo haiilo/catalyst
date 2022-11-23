@@ -18,7 +18,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatRadio {
-  private readonly id = `cat-radio-${++nextUniqueId}`;
+  private readonly _id = `cat-radio-${++nextUniqueId}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -34,6 +38,11 @@ export class CatRadio {
    * Whether this radio is disabled.
    */
   @Prop() disabled = false;
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
 
   /**
    * The label of the radio that is visible.
@@ -133,7 +142,7 @@ export class CatRadio {
           <span class="radio">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
-              id={this.id}
+              id={this.identifier || this.id}
               type="radio"
               name={this.name}
               value={this.value}

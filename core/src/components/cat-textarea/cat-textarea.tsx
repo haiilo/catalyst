@@ -20,7 +20,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatTextarea {
-  private readonly id = `cat-textarea-${nextUniqueId++}`;
+  private readonly _id = `cat-textarea-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private textarea!: HTMLTextAreaElement;
 
   @Element() hostElement!: HTMLElement;
@@ -36,6 +40,11 @@ export class CatTextarea {
    * Optional hint text(s) to be displayed with the textarea.
    */
   @Prop() hint?: string | string[];
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
 
   /**
    * The label for the textarea.
@@ -60,7 +69,7 @@ export class CatTextarea {
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
    */
-  @Prop() name = '';
+  @Prop() name?: string;
 
   /**
    * The placeholder text to display within the input.

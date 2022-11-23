@@ -23,7 +23,11 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatInput {
-  private readonly id = `cat-input-${nextUniqueId++}`;
+  private readonly _id = `cat-input-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -203,7 +207,7 @@ export class CatInput {
     return (
       <Host>
         {(this.hasSlottedLabel || this.label) && (
-          <label htmlFor={this.identifier || this.id} class={{ hidden: this.labelHidden }}>
+          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && (
@@ -231,7 +235,7 @@ export class CatInput {
           <div class="input-inner-wrapper">
             <input
               ref={el => (this.input = el as HTMLInputElement)}
-              id={this.identifier || this.id}
+              id={this.id}
               class={{
                 'has-clearable': this.clearable && !this.disabled
               }}
