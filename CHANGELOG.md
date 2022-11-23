@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.2](https://github.com/haiilo/catalyst/compare/v2.4.1...v2.4.2) (2022-11-23)
+
 ### [2.4.1](https://github.com/haiilo/catalyst/compare/v2.4.0...v2.4.1) (2022-11-23)
 
 ## [2.4.0](https://github.com/haiilo/catalyst/compare/v2.1.3...v2.4.0) (2022-11-23)
