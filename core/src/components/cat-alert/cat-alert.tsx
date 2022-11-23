@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
-import { setAttributeDefault, setPropertyDefault } from '../../utils/setDefault';
+import { setAttributeDefault } from '../../utils/setDefault';
 
 /**
  * Informs user about important changes or conditions in the interface. Use this
@@ -31,7 +31,7 @@ export class CatAlert {
   /**
    * The color palette of the alert.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
 
   /**
    * The name of an icon to be displayed in the alert.
@@ -46,7 +46,6 @@ export class CatAlert {
   connectedCallback() {
     setAttributeDefault(this, 'tabindex', 0);
     setAttributeDefault(this, 'role', this.mapRole.get(this.color));
-    setPropertyDefault(this, 'color');
   }
 
   render() {

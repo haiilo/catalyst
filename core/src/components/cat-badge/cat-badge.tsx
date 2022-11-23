@@ -1,5 +1,4 @@
-import { Component, Element, Prop, Watch, h } from '@stencil/core';
-import { setProperty, setPropertyDefault } from '../../utils/setDefault';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 /**
  * Badges are used to inform users of the status of an object or of an action
@@ -16,50 +15,29 @@ export class CatBadge {
   /**
    * The rendering style of the badge.
    */
-  @Prop() variant: 'filled' | 'outlined' = 'filled';
+  @Prop({ reflect: true }) variant: 'filled' | 'outlined' = 'filled';
 
   /**
    * The color palette of the badge.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
 
   /**
    * The size of the badge.
    */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * Use round badge edges.
    */
-  @Prop() round = false;
+  @Prop({ reflect: true }) round = false;
 
   /**
    * Draw attention to the badge with a subtle animation.
    */
-  @Prop() pulse = false;
-
-  connectedCallback() {
-    setPropertyDefault(this, 'variant');
-    setPropertyDefault(this, 'color');
-    setPropertyDefault(this, 'size');
-  }
+  @Prop({ reflect: true }) pulse = false;
 
   render() {
     return <slot></slot>;
-  }
-
-  @Watch('color')
-  onColorChanged() {
-    setProperty(this, 'color');
-  }
-
-  @Watch('size')
-  onSizeChanged() {
-    setProperty(this, 'size');
-  }
-
-  @Watch('variant')
-  onVariantChanged() {
-    setProperty(this, 'variant');
   }
 }
