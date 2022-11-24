@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.3](https://github.com/haiilo/catalyst/compare/v2.4.2...v2.4.3) (2022-11-24)
+
+
+### Bug Fixes
+
+* **core:** disable horizontal resize for textareas ([bc3d95c](https://github.com/haiilo/catalyst/commit/bc3d95c5b5c382e051ecd32a98acc151590f786d))
+* **core:** fix wrong label alignment ([3106d9e](https://github.com/haiilo/catalyst/commit/3106d9e2cf13e4b0c157608464707c0edd7bc524))
+
 ### [2.4.2](https://github.com/haiilo/catalyst/compare/v2.4.1...v2.4.2) (2022-11-23)
 
 ### [2.4.1](https://github.com/haiilo/catalyst/compare/v2.4.0...v2.4.1) (2022-11-23)
