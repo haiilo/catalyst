@@ -156,60 +156,35 @@ dd {
 
 :where(blockquote, figure) {
   margin: 0 0 $cat-body-margin-bottom;
-  color: cat-token('color.ui.font.quote');
 }
 
 blockquote {
   padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
   border-left: 2px solid cat-token('color.ui.border.quote');
-  font-style: italic;
+  color: cat-token('color.ui.font.quote');
   @include cat-body('l', null);
+  font-style: italic;
 
   > :last-child {
     margin-bottom: 0 !important;
+  }
+
+  &.cat-text-center {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-left: none;
+  }
+
+  &.cat-text-right {
+    padding-left: 0;
+    padding-right: calc(2rem - 4px);
+    border-left: none;
+    border-right: 2px solid cat-token('color.ui.border.quote');
   }
 }
 
 figcaption {
   @include cat-body('s');
-
-  &::before {
-    content: '\2014\00A0'; // em dash, nbsp
-  }
-
-  a {
-    color: inherit;
-  }
-}
-
-figure {
-  padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
-  border-left: 2px solid cat-token('color.ui.border.quote');
-
-  blockquote {
-    margin-bottom: 0;
-    padding: 0;
-    border: none;
-  }
-
-  figcaption {
-    margin-top: $cat-body-margin-bottom;
-  }
-}
-
-blockquote.cat-text-center,
-figure.cat-text-center {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  border-left: none;
-}
-
-blockquote.cat-text-right,
-figure.cat-text-right {
-  padding-left: 0;
-  padding-right: calc(2rem - 4px);
-  border-left: none;
-  border-right: 4px solid cat-token('color.ui.border.default');
 }
 
 // ----- code
