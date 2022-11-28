@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.4](https://github.com/haiilo/catalyst/compare/v2.4.3...v2.4.4) (2022-11-28)
+
+
+### Bug Fixes
+
+* **core:** cleanup block quote styles ([a9b0d60](https://github.com/haiilo/catalyst/commit/a9b0d609ee4417665d5f2b7e5c8ed0dd2e85b0cb))
+* **core:** streamline muted backgrounds ([1eb9ee7](https://github.com/haiilo/catalyst/commit/1eb9ee73f8f78da4eda122636330156fde56b330))
+
 ### [2.4.3](https://github.com/haiilo/catalyst/compare/v2.4.2...v2.4.3) (2022-11-24)
 
 
