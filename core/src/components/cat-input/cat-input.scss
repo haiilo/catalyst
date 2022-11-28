@@ -31,7 +31,7 @@
   }
 
   &.input-disabled {
-    background: cat-token('color.ui.background.inputDisabled');
+    background: cat-token('color.ui.background.muted');
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
   }

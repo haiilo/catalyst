@@ -89,7 +89,7 @@ input {
   color: cat-token('color.ui.font.muted');
 
   input {
-    background-color: cat-token('color.ui.background.inputDisabled');
+    background-color: cat-token('color.ui.background.muted');
 
     &:checked {
       border-color: cat-token('color.ui.border.dark');

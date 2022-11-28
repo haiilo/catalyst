@@ -5,16 +5,12 @@ module.exports = {
         canvas: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "bg" } },
         body: { value: '{color.base.white.value}' },
         bodyDark: { value: '{color.base.neutral.700.value}' },
-        muted: { value: '{color.base.neutral.200.value}' },
+        muted: { value: '{color.base.neutral.100.value}' },
         input: { value: '{color.base.white.value}' },
-        inputDisabled: { value: '{color.base.neutral.100.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
         tooltip: { value: '{color.base.black.value}', attributes: { cssProp: "bg-tooltip" } },
-        backdrop: { value: '{color.base.black.value}', attributes: { cssProp: "bg-backdrop" } },
-        select: {
-          pill: { value: '{color.base.neutral.100.value}' }
-        }
+        backdrop: { value: '{color.base.black.value}', attributes: { cssProp: "bg-backdrop" } }
       },
       border: {
         light: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "border-color-light" } },

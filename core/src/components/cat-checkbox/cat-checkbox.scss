@@ -99,7 +99,7 @@ input {
   }
 
   .is-disabled & {
-    background-color: cat-token('color.ui.background.inputDisabled');
+    background-color: cat-token('color.ui.background.muted');
     border-color: cat-token('color.ui.border.dark');
     stroke: cat-token('color.ui.font.muted');
   }

@@ -58,7 +58,7 @@ label {
 }
 
 .select-disabled {
-  background: cat-token('color.ui.background.inputDisabled');
+  background: cat-token('color.ui.background.muted');
   cursor: not-allowed;
   color: cat-token('color.ui.font.muted');
   pointer-events: none;
@@ -104,7 +104,7 @@ label {
   align-items: center;
   gap: 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: cat-token('color.ui.background.select.pill');
+  background: cat-token('color.ui.background.muted');
   border-radius: cat-border-radius('s');
   white-space: nowrap;
   min-width: 0;
