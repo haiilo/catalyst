@@ -77,6 +77,13 @@ module.exports = {
           themeable: true
         }
       }]
-    }
+    },
+    json: {
+      buildPath: 'dist/json/',
+      files: [{
+        destination: 'variables.json',
+        format: 'json/nested'
+      }]
+    },
   }
 };
