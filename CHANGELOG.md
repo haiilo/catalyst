@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.5](https://github.com/haiilo/catalyst/compare/v2.4.4...v2.4.5) (2022-11-30)
+
+
+### Features
+
+* **core:** add additional JSON build output ([c1167cd](https://github.com/haiilo/catalyst/commit/c1167cd415ae65d3bb0e55e434ef5f42f5298915))
+* **core:** add new partial index file to be included in shadow DOM elements ([73031cd](https://github.com/haiilo/catalyst/commit/73031cd22d4b2c73d7ac7e3e38e1f740575400d9))
+
 ### [2.4.4](https://github.com/haiilo/catalyst/compare/v2.4.3...v2.4.4) (2022-11-28)
 
 
