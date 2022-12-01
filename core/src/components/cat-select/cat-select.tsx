@@ -217,21 +217,16 @@ export class CatSelect {
     this.resolve();
   }
   @Watch('value')
-  onValueChange(value: any) {
-    console.log('user', this.isUserChanged);
+  onValueChange() {
     if (!this.isUserChanged) {
-      if (value) {
-        this.resolve();
-      } else if (this.state.selection.length) {
-        this.clear();
-      }
+      this.resolve();
     }
     this.isUserChanged = false;
   }
 
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
-    const changed = (key: keyof CatSelectState) => !isEqual(newState[key], oldState[key]);
+    const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
     if (changed('activeOptionIndex')) {
       if (this.state.activeOptionIndex >= 0) {
         const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
@@ -262,11 +257,12 @@ export class CatSelect {
           newValue = { id: ids.length ? ids[0] : '', tag: tags.length ? tags[0] : '' };
         }
       }
+
       if (!isEqual(this.value, newValue)) {
         this.isUserChanged = true;
         this.value = newValue;
-        this.catChange.emit();
       }
+      this.catChange.emit();
     }
   }
 
@@ -797,7 +793,6 @@ export class CatSelect {
   }
 
   private clear() {
-    console.log(232);
     if (this.input && this.state.term) {
       this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1 });
       this.term$.next('');
