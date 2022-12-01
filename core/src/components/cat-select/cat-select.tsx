@@ -216,6 +216,7 @@ export class CatSelect {
     this.reset(connector);
     this.resolve();
   }
+
   @Watch('value')
   onValueChange() {
     if (!this.isUserChanged) {
