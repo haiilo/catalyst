@@ -129,9 +129,7 @@ export class CatSelectTest {
     });
     this.singleSelectAvatar?.connect(this.countryConnector);
     this.singleSelectTagging?.connect(this.countryConnector);
-    setTimeout(() => {
-      this.multipleSelect!.value = [];
-    }, 5000);
+    setTimeout(() => this.multipleSelect && (this.multipleSelect.value = []), 5000);
   }
 
   render() {
