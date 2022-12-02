@@ -21,7 +21,6 @@ import {
 } from 'rxjs';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import isEqual from 'lodash/isEqual';
 
 export interface Item {
   id: string;
@@ -256,7 +255,7 @@ export class CatSelect {
         }
       }
 
-      if (!isEqual(this.value, newValue)) {
+      if (!oldState.isResolving) {
         this.isUserChanged = true;
         this.value = newValue;
       }
