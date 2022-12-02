@@ -119,7 +119,7 @@ export class CatSelect {
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
-  private isUserChanged = false;
+  private valueChangedBySelection = false;
 
   @Element() hostElement!: HTMLElement;
 
@@ -218,7 +218,7 @@ export class CatSelect {
 
   @Watch('value')
   onValueChange() {
-    !this.isUserChanged ? this.resolve() : (this.isUserChanged = false);
+    !this.valueChangedBySelection ? this.resolve() : (this.valueChangedBySelection = false);
   }
 
   @Watch('state')
@@ -256,7 +256,7 @@ export class CatSelect {
       }
 
       if (!oldState.isResolving) {
-        this.isUserChanged = true;
+        this.valueChangedBySelection = true;
         this.value = newValue;
       }
       this.catChange.emit();
