@@ -119,6 +119,7 @@ export class CatSelect {
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
+  private valueChangedBySelection = false;
 
   @Element() hostElement!: HTMLElement;
 
@@ -215,6 +216,11 @@ export class CatSelect {
     this.resolve();
   }
 
+  @Watch('value')
+  onValueChange() {
+    !this.valueChangedBySelection ? this.resolve() : (this.valueChangedBySelection = false);
+  }
+
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
@@ -226,15 +232,16 @@ export class CatSelect {
     }
 
     if (changed('selection')) {
+      let newValue;
       if (!this.multiple && this.state.selection.length) {
         this.hide();
       }
       const idsSelected = this.state.selection.map(item => item.item.id);
       if (!this.tags) {
         if (this.multiple) {
-          this.value = idsSelected;
+          newValue = idsSelected;
         } else {
-          this.value = idsSelected.length ? idsSelected[0] : '';
+          newValue = idsSelected.length ? idsSelected[0] : '';
         }
       } else {
         const ids = idsSelected.filter(id => !id.startsWith(`select-${this.id}-tag`));
@@ -242,10 +249,15 @@ export class CatSelect {
           .filter(item => item.item.id.startsWith(`select-${this.id}-tag`))
           .map(item => item.render.label);
         if (this.multiple) {
-          this.value = { ids, tags };
+          newValue = { ids, tags };
         } else {
-          this.value = { id: ids.length ? ids[0] : '', tag: tags.length ? tags[0] : '' };
+          newValue = { id: ids.length ? ids[0] : '', tag: tags.length ? tags[0] : '' };
         }
+      }
+
+      if (!oldState.isResolving) {
+        this.valueChangedBySelection = true;
+        this.value = newValue;
       }
       this.catChange.emit();
     }

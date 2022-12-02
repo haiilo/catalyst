@@ -127,8 +127,9 @@ export class CatSelectTest {
         description: user.desc
       })
     });
-    this.singleSelectAvatar?.connect({ ...this.countryConnector, customId: (item: Country) => item.country });
+    this.singleSelectAvatar?.connect(this.countryConnector);
     this.singleSelectTagging?.connect(this.countryConnector);
+    setTimeout(() => this.multipleSelect && (this.multipleSelect.value = []), 5000);
   }
 
   render() {
