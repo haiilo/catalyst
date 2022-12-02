@@ -219,10 +219,7 @@ export class CatSelect {
 
   @Watch('value')
   onValueChange() {
-    if (!this.isUserChanged) {
-      this.resolve();
-    }
-    this.isUserChanged = false;
+    !this.isUserChanged ? this.resolve() : (this.isUserChanged = false);
   }
 
   @Watch('state')
