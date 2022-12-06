@@ -69,7 +69,7 @@ input {
     border-radius: 10rem;
     transform: translateX(calc(2px - 0.5rem));
     transition: transform cat-token('time.transition.s') linear;
-    @include cat-elevation(1);
+    @include cat-elevation(2);
 
     :checked + & {
       transform: translateX(calc(-2px + 0.5rem));

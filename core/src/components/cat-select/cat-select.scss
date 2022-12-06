@@ -144,7 +144,7 @@ cat-spinner {
   display: none;
   overflow: auto;
   // -webkit-overflow-scrolling: touch;
-  @include cat-elevation(1);
+  @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   z-index: $cat-dropdown-z-index;
 }

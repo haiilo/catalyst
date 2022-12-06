@@ -28,7 +28,7 @@ $-max-height: calc(100vh - 48px);
   -webkit-overflow-scrolling: touch;
   min-height: $-min-height;
   max-height: $-max-height;
-  @include cat-elevation(1);
+  @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   z-index: $cat-dropdown-z-index;
   opacity: 0;
