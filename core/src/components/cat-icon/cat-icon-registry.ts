@@ -3,10 +3,31 @@ import log from 'loglevel';
 export class CatIconRegistry {
   private static instance: CatIconRegistry;
 
+  private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly icons: Map<string, string> = new Map();
 
   private constructor() {
     // hide constructor
+
+    // In rare cases, the registry can be initialized twice. This can happen in
+    // a micro frontend architecture where the registry is initialized in the
+    // host application and in the micro frontend. To prevent the registry in
+    // one application from overwriting the registry in the other, we listen for
+    // events that are dispatched when icons are added or removed in other
+    // applications and add or remove icons if the event was not dispatched by
+    // this registry.
+    window.addEventListener('cat-icons-added', event => {
+      const { detail } = (event as CustomEvent) || {};
+      if (detail && detail.id !== this.id) {
+        this.addIcons(detail.icons, detail.setName, true);
+      }
+    });
+    window.addEventListener('cat-icons-removed', event => {
+      const { detail } = (event as CustomEvent) || {};
+      if (detail && detail.id !== this.id) {
+        this.removeIcons(detail.names, detail.setName, true);
+      }
+    });
   }
 
   static getInstance(): CatIconRegistry {
@@ -24,31 +45,20 @@ export class CatIconRegistry {
     return icon;
   }
 
-  addIcon(name: string, data: string, setName?: string): CatIconRegistry {
-    this.icons.set(this.buildName(name, setName), data);
-    log.info(`[CatIconRegistry] Added icon${setName ? ` to set ${setName}` : ''}: ${name}`);
-    window.dispatchEvent(this.buildEvent('cat-icon-added', { name, setName }));
+  addIcons(icons: { [name: string]: string }, setName?: string, silent = false): CatIconRegistry {
+    const iconEntries = Object.entries(icons);
+    const iconSize = iconEntries.length;
+    iconEntries.forEach(([name, data]) => this.icons.set(this.buildName(name, setName), data));
+    log.info(`[CatIconRegistry] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`);
+    !silent && window.dispatchEvent(this.buildEvent('cat-icons-added', { id: this.id, icons, setName }));
     return this;
   }
 
-  addIcons(icons: { [name: string]: string }, setName?: string): CatIconRegistry {
-    Object.entries(icons).forEach(([name, data]) => this.icons.set(this.buildName(name, setName), data));
-    log.info(`[CatIconRegistry] Added icons${setName ? ` to set ${setName}` : ''}: ${Object.keys(icons).concat(', ')}`);
-    window.dispatchEvent(this.buildEvent('cat-icons-added', { names: Object.keys(icons), setName }));
-    return this;
-  }
-
-  removeIcon(name: string, setName?: string): CatIconRegistry {
-    this.icons.delete(this.buildName(name, setName));
-    log.info(`[CatIconRegistry] Removed icon${setName ? ` from set ${setName}` : ''}: ${name}`);
-    window.dispatchEvent(this.buildEvent('cat-icon-removed', { name, setName }));
-    return this;
-  }
-
-  removeIcons(names: string[], setName?: string): CatIconRegistry {
+  removeIcons(names: string[], setName?: string, silent = false): CatIconRegistry {
+    const iconSize = names.length;
     names.forEach(name => this.icons.delete(this.buildName(name, setName)));
-    log.info(`[CatIconRegistry] Removed icons${setName ? ` from set ${setName}` : ''}: ${names.concat(', ')}`);
-    window.dispatchEvent(this.buildEvent('cat-icons-removed', { names, setName }));
+    log.info(`[CatIconRegistry] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` from set ${setName}` : ''}`);
+    !silent && window.dispatchEvent(this.buildEvent('cat-icons-removed', { id: this.id, names, setName }));
     return this;
   }
 

@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { CatIconRegistry } from './cat-icon-registry';
+import { catIconRegistry as icons } from './cat-icon-registry';
 
 /**
  * Icons are used to provide additional meaning or in places where text label
@@ -13,8 +13,6 @@ import { CatIconRegistry } from './cat-icon-registry';
   shadow: true
 })
 export class CatIcon {
-  private readonly iconRegistry = CatIconRegistry.getInstance();
-
   /**
    * The name of the icon.
    */
@@ -34,7 +32,7 @@ export class CatIcon {
   render() {
     return (
       <span
-        innerHTML={this.iconRegistry.getIcon(this.icon)}
+        innerHTML={icons.getIcon(this.icon)}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"
