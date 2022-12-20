@@ -197,6 +197,27 @@ export class CatDropdown {
 }
 
 
+export declare interface CatFormGroup extends Components.CatFormGroup {}
+
+@ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['requiredMarker']
+})
+@Component({
+  selector: 'cat-form-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['requiredMarker']
+})
+export class CatFormGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
@@ -236,14 +257,14 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
   selector: 'cat-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
 })
 export class CatInput {
   protected el: HTMLElement;

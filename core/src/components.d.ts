@@ -251,6 +251,12 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatFormGroup {
+        /**
+          * requiredMarker
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -351,6 +357,7 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Use round input edges.
          */
@@ -922,6 +929,12 @@ declare global {
         prototype: HTMLCatDropdownElement;
         new (): HTMLCatDropdownElement;
     };
+    interface HTMLCatFormGroupElement extends Components.CatFormGroup, HTMLStencilElement {
+    }
+    var HTMLCatFormGroupElement: {
+        prototype: HTMLCatFormGroupElement;
+        new (): HTMLCatFormGroupElement;
+    };
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
@@ -1032,6 +1045,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-dropdown": HTMLCatDropdownElement;
+        "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-label": HTMLCatLabelElement;
@@ -1294,6 +1308,12 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatFormGroup {
+        /**
+          * requiredMarker
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -1389,6 +1409,7 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Use round input edges.
          */
@@ -1912,6 +1933,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-dropdown": CatDropdown;
+        "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-label": CatLabel;
@@ -1942,6 +1964,7 @@ declare module "@stencil/core" {
             "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
+            "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;

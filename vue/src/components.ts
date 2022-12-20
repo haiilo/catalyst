@@ -92,6 +92,11 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
 ]);
 
 
+export const CatFormGroup = /*@__PURE__*/ defineContainer<JSX.CatFormGroup>('cat-form-group', undefined, [
+  'requiredMarker'
+]);
+
+
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
   'icon',
   'size',
@@ -100,6 +105,7 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
 
 
 export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input', undefined, [
+  'requiredMarker',
   'autoComplete',
   'clearable',
   'disabled',
