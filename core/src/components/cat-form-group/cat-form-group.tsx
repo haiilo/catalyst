@@ -54,8 +54,9 @@ export class CatFormGroup {
   }
 
   private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {
-    const optionalFields = elements.filter(value => !value.required).length;
-    const requiredFields = elements.length - optionalFields;
+    const formFields = elements.filter(value => value.tagName !== 'CAT-LABEL');
+    const optionalFields = formFields.filter(value => !value.required).length;
+    const requiredFields = formFields.length - optionalFields;
     return requiredFields >= optionalFields ? 'optional' : 'required';
   }
 }

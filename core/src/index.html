@@ -499,7 +499,13 @@
 
           <h3>Auto (more required)</h3>
           <cat-form-group>
-            <cat-input label="Field 1"></cat-input>
+            <cat-label for="ext-label12" class="cat-flex-1">Field 1</cat-label>
+            <cat-input
+              class="cat-m-0 cat-flex-1"
+              label="Field 1"
+              label-hidden="true"
+              identifier="ext-label12"
+            ></cat-input>
             <cat-input label="Field 2" required></cat-input>
             <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
@@ -507,7 +513,14 @@
           <cat-form-group>
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2"></cat-input>
-            <cat-textarea label="Field 3" required></cat-textarea>
+            <cat-label for="ext-label13" class="cat-flex-1" required>Field 3</cat-label>
+            <cat-input
+              class="cat-m-0 cat-flex-1"
+              label="Field 1"
+              label-hidden="true"
+              identifier="ext-label13"
+              required
+            ></cat-input>
           </cat-form-group>
           <h3>None marker</h3>
           <cat-form-group required-marker="none">
