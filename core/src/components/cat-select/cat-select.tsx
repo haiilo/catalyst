@@ -478,7 +478,7 @@ export class CatSelect {
           role="combobox"
           aria-expanded={this.state.isOpen || this.isPillboxActive()}
           aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
-          aria-required={this.required}
+          aria-required={this.required ? 'true' : 'false'}
           aria-activedescendant={this.activeDescendant}
           onClick={e => this.onClick(e)}
         >
