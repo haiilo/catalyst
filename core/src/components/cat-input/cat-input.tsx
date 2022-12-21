@@ -34,6 +34,9 @@ export class CatInput {
 
   @State() hasSlottedLabel = false;
 
+  /**
+   * Whether the label need a marker to shown if the input is required or optional.
+   */
   @Prop() requiredMarker?: 'none' | 'required' | 'optional';
 
   /**
@@ -219,7 +222,7 @@ export class CatInput {
               )}
               {this.required && (!this.requiredMarker || this.requiredMarker === 'required') && (
                 <span class="input-optional" aria-hidden="true">
-                  (required)
+                  ({i18n.t('input.required')})
                 </span>
               )}
             </span>

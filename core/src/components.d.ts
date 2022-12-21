@@ -253,7 +253,7 @@ export namespace Components {
     }
     interface CatFormGroup {
         /**
-          * requiredMarker
+          * Whether the labels need a marker to shown if the forms fields are required or optional.  By default, it is set to auto, it will display the mark depending on the number of required and optional fields:    - If there are more required, the optional will be marked.    - If there are less required, it will mark the required
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
     }
@@ -357,6 +357,9 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
         "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Use round input edges.
@@ -388,6 +391,10 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
     }
     interface CatModal {
         /**
@@ -603,6 +610,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
+        /**
           * Optional hint text to be displayed on the new item to be added.
          */
         "tagHint"?: string;
@@ -743,6 +754,10 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the textarea is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Specifies the initial number of lines in the textarea.
          */
@@ -1310,7 +1325,7 @@ declare namespace LocalJSX {
     }
     interface CatFormGroup {
         /**
-          * requiredMarker
+          * Whether the labels need a marker to shown if the forms fields are required or optional.  By default, it is set to auto, it will display the mark depending on the number of required and optional fields:    - If there are more required, the optional will be marked.    - If there are less required, it will mark the required
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
     }
@@ -1409,6 +1424,9 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
         "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Use round input edges.
@@ -1440,6 +1458,10 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
     }
     interface CatModal {
         /**
@@ -1685,6 +1707,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
+        /**
           * Optional hint text to be displayed on the new item to be added.
          */
         "tagHint"?: string;
@@ -1828,6 +1854,10 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the textarea is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional';
         /**
           * Specifies the initial number of lines in the textarea.
          */

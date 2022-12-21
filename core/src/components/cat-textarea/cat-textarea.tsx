@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State }
 import autosize from 'autosize';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -30,6 +31,11 @@ export class CatTextarea {
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
+  /**
+   * Whether the label need a marker to shown if the textarea is required or optional.
+   */
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional';
 
   /**
    * Whether the textarea is disabled.
@@ -158,9 +164,14 @@ export class CatTextarea {
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && (
+              {!this.required && (!this.requiredMarker || this.requiredMarker === 'optional') && (
                 <span class="input-optional" aria-hidden="true">
-                  (Optional)
+                  ({i18n.t('input.optional')})
+                </span>
+              )}
+              {this.required && (!this.requiredMarker || this.requiredMarker === 'required') && (
+                <span class="input-optional" aria-hidden="true">
+                  ({i18n.t('input.required')})
                 </span>
               )}
             </span>

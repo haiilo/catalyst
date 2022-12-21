@@ -1,16 +1,26 @@
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 
+type HTMLCatFormFieldElement =
+  | HTMLCatInputElement
+  | HTMLCatTextareaElement
+  | HTMLCatSelectElement
+  | HTMLCatLabelElement;
 @Component({
   tag: 'cat-form-group',
   styleUrl: 'cat-form-group.css',
   shadow: true
 })
 export class CatFormGroup {
-  private slotElement!: HTMLSlotElement;
-  private formElements?: HTMLCatInputElement[];
+  private formElements?: HTMLCatFormFieldElement[];
+
+  @Element() hostElement!: HTMLElement;
 
   /**
-   * requiredMarker
+   * Whether the labels need a marker to shown if the forms fields are required or optional.
+   *
+   * By default, it is set to auto, it will display the mark depending on the number of required and optional fields:
+   *    - If there are more required, the optional will be marked.
+   *    - If there are less required, it will mark the required
    */
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'auto' = 'auto';
 
@@ -18,7 +28,7 @@ export class CatFormGroup {
   onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
     let updateMarker;
     if (this.formElements) {
-      updateMarker = newRequiredMarker === 'auto' ? this.calculated(this.formElements) : newRequiredMarker;
+      updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
       for (const element of this.formElements) {
         if (!element.requiredMarker) {
           element.requiredMarker = updateMarker;
@@ -28,29 +38,23 @@ export class CatFormGroup {
   }
 
   componentDidLoad(): void {
-    this.formElements = this.slotElement.assignedElements() as HTMLCatInputElement[];
+    this.formElements = Array.from(
+      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label')
+    ) as HTMLCatFormFieldElement[];
     this.onRequiredMarker(this.requiredMarker);
   }
 
   render() {
     return (
       <Host>
-        <slot
-          ref={el => {
-            this.slotElement = el as HTMLSlotElement;
-          }}
-        ></slot>
+        <slot></slot>
       </Host>
     );
   }
 
-  private calculated(elements: HTMLCatInputElement[]): 'optional' | 'required' {
+  private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {
     const optionalFields = elements.filter(value => !value.required).length;
     const requiredFields = elements.length - optionalFields;
-    if (requiredFields >= optionalFields) {
-      return 'optional';
-    } else {
-      return 'required';
-    }
+    return requiredFields >= optionalFields ? 'optional' : 'required';
   }
 }

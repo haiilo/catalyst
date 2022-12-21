@@ -130,6 +130,11 @@ export class CatSelect {
   @State() hasSlottedLabel = false;
 
   /**
+   * Whether the label need a marker to shown if the select is required or optional.
+   */
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional';
+
+  /**
    * Enable multiple selection.
    */
   @Prop() multiple = false;
@@ -453,9 +458,14 @@ export class CatSelect {
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && (
+              {!this.required && (!this.requiredMarker || this.requiredMarker === 'optional') && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
+                </span>
+              )}
+              {this.required && (!this.requiredMarker || this.requiredMarker === 'required') && (
+                <span class="input-optional" aria-hidden="true">
+                  ({i18n.t('input.required')})
                 </span>
               )}
             </span>

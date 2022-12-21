@@ -16,6 +16,7 @@
       catI18nRegistry.set({
         'input.clear': 'Clear',
         'input.optional': 'Optional',
+        'input.required': 'Required',
         'notification.dismiss': 'Dismiss',
         'pagination.prev': 'Previous',
         'pagination.page': 'Go to page {{page}}',
@@ -94,6 +95,7 @@
           <li><a href="#checkbox">Checkbox</a></li>
           <li><a href="#divider">Divider</a></li>
           <li><a href="#dropdown">Dropdown</a></li>
+          <li><a href="#form-group">Form Group</a></li>
           <li><a href="#icon">Icon</a></li>
           <li><a href="#label">Label</a></li>
           <li><a href="#input">Input</a></li>
@@ -488,6 +490,44 @@
           </cat-dropdown>
         </section>
 
+        <section id="form-group">
+          <h2>Form Group</h2>
+          <cat-form-group>
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+          </cat-form-group>
+
+          <h3>Auto (more required)</h3>
+          <cat-form-group>
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
+          </cat-form-group>
+          <h3>Auto (more optional)</h3>
+          <cat-form-group>
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
+          </cat-form-group>
+          <h3>None marker</h3>
+          <cat-form-group required-marker="none">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
+          </cat-form-group>
+          <h3>Only mark optional</h3>
+          <cat-form-group required-marker="optional">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-select label="Field 3" required></cat-select>
+          </cat-form-group>
+          <h3>Only mark required</h3>
+          <cat-form-group required-marker="required">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+            <cat-select label="Field 3" required></cat-select>
+          </cat-form-group>
+        </section>
         <section id="icon">
           <h2>Icon</h2>
           <cat-icon icon="sparkle-filled"></cat-icon>
@@ -567,10 +607,6 @@
           <cat-input label="Time" type="time" min="14:01" max="02:00"></cat-input>
           <cat-input label="Url" type="url"></cat-input>
           <cat-input label="Week" type="week" min="2019-W30"></cat-input>
-          <cat-form-group>
-            <cat-input class="cat-m-0 cat-flex-1" label="External label"></cat-input>
-            <cat-input class="cat-m-0 cat-flex-1" label="External label" required></cat-input>
-          </cat-form-group>
         </section>
 
         <!-- <section id="modal">
