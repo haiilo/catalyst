@@ -253,7 +253,7 @@ export namespace Components {
     }
     interface CatFormGroup {
         /**
-          * Whether the labels need a marker to shown if the forms fields are required or optional.  By default, it is set to auto, it will display the mark depending on the number of required and optional fields:    - If there are more required, the optional will be marked.    - If there are less required, it will mark the required
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br />  By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />  If there are more required, the optional will be marked. If there are less required, it will mark the required.
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
     }
@@ -622,7 +622,7 @@ export namespace Components {
          */
         "tags": boolean;
         /**
-          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
@@ -1325,7 +1325,7 @@ declare namespace LocalJSX {
     }
     interface CatFormGroup {
         /**
-          * Whether the labels need a marker to shown if the forms fields are required or optional.  By default, it is set to auto, it will display the mark depending on the number of required and optional fields:    - If there are more required, the optional will be marked.    - If there are less required, it will mark the required
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br />  By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />  If there are more required, the optional will be marked. If there are less required, it will mark the required.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
     }
@@ -1719,7 +1719,7 @@ declare namespace LocalJSX {
          */
         "tags"?: boolean;
         /**
-          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
