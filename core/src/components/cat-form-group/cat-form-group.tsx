@@ -7,7 +7,7 @@ type HTMLCatFormFieldElement =
   | HTMLCatLabelElement;
 @Component({
   tag: 'cat-form-group',
-  styleUrl: 'cat-form-group.css',
+  styleUrl: 'cat-form-group.scss',
   shadow: true
 })
 export class CatFormGroup {
