@@ -51,7 +51,7 @@ export class CatLabel {
               ({i18n.t('input.optional')})
             </span>
           )}
-          {this.required &&  this.requiredMarker === 'required' && (
+          {this.required && this.requiredMarker === 'required' && (
             <span class="input-optional" aria-hidden="true">
               ({i18n.t('input.required')})
             </span>

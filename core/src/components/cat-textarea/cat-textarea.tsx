@@ -164,12 +164,12 @@ export class CatTextarea {
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && (!this.requiredMarker || this.requiredMarker === 'optional') && (
+              {!this.required && this.requiredMarker === 'optional' && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
                 </span>
               )}
-              {this.required && (!this.requiredMarker || this.requiredMarker === 'required') && (
+              {this.required && this.requiredMarker === 'required' && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.required')})
                 </span>

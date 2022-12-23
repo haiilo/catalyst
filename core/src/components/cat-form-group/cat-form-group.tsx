@@ -5,13 +5,14 @@ type HTMLCatFormFieldElement =
   | HTMLCatTextareaElement
   | HTMLCatSelectElement
   | HTMLCatLabelElement;
+
 @Component({
   tag: 'cat-form-group',
   styleUrl: 'cat-form-group.scss',
   shadow: true
 })
 export class CatFormGroup {
-  private formElements?: HTMLCatFormFieldElement[];
+  private formElements: HTMLCatFormFieldElement[] = [];
 
   @Element() hostElement!: HTMLElement;
 
@@ -27,15 +28,8 @@ export class CatFormGroup {
 
   @Watch('requiredMarker')
   onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
-    let updateMarker;
-    if (this.formElements) {
-      updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
-      for (const element of this.formElements) {
-        if (!element.requiredMarker) {
-          element.requiredMarker = updateMarker;
-        }
-      }
-    }
+    const updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
+    this.formElements.forEach(element => !element.requiredMarker && (element.requiredMarker = updateMarker));
   }
 
   componentDidLoad(): void {
