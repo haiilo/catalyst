@@ -35,7 +35,7 @@ export class CatTextarea {
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
    */
-  @Prop() requiredMarker?: 'none' | 'required' | 'optional';
+  @Prop() requiredMarker: 'none' | 'required' | 'optional' = 'optional';
 
   /**
    * Whether the textarea is disabled.

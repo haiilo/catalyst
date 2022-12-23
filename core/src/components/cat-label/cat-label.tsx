@@ -22,7 +22,7 @@ export class CatLabel {
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
-  @Prop() requiredMarker?: 'none' | 'required' | 'optional';
+  @Prop() requiredMarker: 'none' | 'required' | 'optional' = 'optional';
 
   /**
    * The unique identifier for a referenced input.
@@ -46,12 +46,12 @@ export class CatLabel {
       <Host>
         <label htmlFor={this.for} onClick={this.onClick.bind(this)}>
           <slot></slot>
-          {!this.required && (!this.requiredMarker || this.requiredMarker === 'optional') && (
+          {!this.required && this.requiredMarker === 'optional' && (
             <span class="input-optional" aria-hidden="true">
               ({i18n.t('input.optional')})
             </span>
           )}
-          {this.required && (!this.requiredMarker || this.requiredMarker === 'required') && (
+          {this.required &&  this.requiredMarker === 'required' && (
             <span class="input-optional" aria-hidden="true">
               ({i18n.t('input.required')})
             </span>
