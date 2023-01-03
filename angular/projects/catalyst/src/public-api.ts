@@ -5,4 +5,5 @@ export * from './lib/directives/radio-value-accessor';
 export * from './lib/directives/select-value-accessor';
 export * from './lib/directives/text-value-accessor';
 export * from './lib/directives/value-accessor';
+export { DialogService } from './lib/dialog/dialog.service';
 export { catI18nRegistry, catIconRegistry, catNotificationService } from '@haiilo/catalyst';
