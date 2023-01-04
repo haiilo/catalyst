@@ -1,20 +1,46 @@
+import { Dialog, DialogConfig } from '@angular/cdk/dialog';
+import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
-import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
-import {A11yModule} from '@angular/cdk/a11y';
+import { Observable } from 'rxjs';
 
+/**
+ * Configuration options for modal dialogs.
+ */
+export type CatDialogConfig<D = unknown> = Pick<DialogConfig<D>, 'data' | 'disableClose' | 'height' | 'role' | 'width'>;
 
+/**
+ * A service for managing modal dialogs.
+ */
 @Injectable({
   providedIn: 'root'
 })
-export class DialogService {
-  constructor(public dialog: Dialog) {}
+export class CatDialogService {
+  constructor(private readonly dialog: Dialog) {}
 
-  openDialog() {
-    this.dialog.open(CdkDialogDataExampleDialog, {
-      minWidth: '300px',
-      data: {
-        animal: 'panda',
-      },
-    });
+  /**
+   * Opens a modal dialog containing the given component.
+   *
+   * @param component The component to render as dialog content.
+   * @param config The dialog configuration.
+   * @returns The return value of the dialog.
+   */
+  open<R = unknown, D = unknown>(
+    component: ComponentType<unknown>,
+    config?: CatDialogConfig<D>
+  ): Observable<R | undefined> {
+    return this.dialog.open<R, D>(component, {
+      backdropClass: 'cat-backdrop',
+      panelClass: 'cat-dialog',
+      maxHeight: 'calc(100vh - 64px)',
+      maxWidth: 'calc(100vw - 64px)',
+      ...config
+    }).closed;
+  }
+
+  /**
+   * Closes all open dialogs.
+   */
+  closeAll(): void {
+    this.dialog.closeAll();
   }
 }

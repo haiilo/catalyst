@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/catalyst",
       "sourceRoot": "projects/catalyst/src",
-      "prefix": "lib",
+      "prefix": "cat",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -137,6 +137,5 @@
         }
       }
     }
-  },
-  "defaultProject": "catalyst"
+  }
 }

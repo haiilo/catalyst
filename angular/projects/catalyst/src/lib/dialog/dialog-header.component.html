@@ -1,0 +1,14 @@
+<div class="cat-dialog-header-content">
+  <h3 class="cat-h5 cat-m-0" *ngIf="title">{{ title }}</h3>
+  <h4 class="cat-h6 cat-m-0" *ngIf="subtitle">{{ subtitle }}</h4>
+  <ng-content></ng-content>
+</div>
+<cat-button
+  *ngIf="closable"
+  class="cat-button-pull"
+  variant="text"
+  [round]="true"
+  [iconSrc]="closeSvg"
+  [iconOnly]="true"
+  (click)="close.emit()"
+></cat-button>

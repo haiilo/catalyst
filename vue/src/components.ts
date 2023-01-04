@@ -51,6 +51,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'url',
   'urlTarget',
   'icon',
+  'iconSrc',
   'iconOnly',
   'iconRight',
   'buttonId',
@@ -94,6 +95,7 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
 
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
   'icon',
+  'iconSrc',
   'size',
   'a11yLabel'
 ]);

@@ -16,7 +16,12 @@ export class CatIcon {
   /**
    * The name of the icon.
    */
-  @Prop() icon = '';
+  @Prop() icon?: string;
+
+  /**
+   * The SVG source of the icon. This takes precenedence over the `icon` name.
+   */
+  @Prop() iconSrc?: string;
 
   /**
    * The size of the icon.
@@ -32,7 +37,7 @@ export class CatIcon {
   render() {
     return (
       <span
-        innerHTML={icons.getIcon(this.icon)}
+        innerHTML={this.iconSrc || (this.icon ? icons.getIcon(this.icon) : '')}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"
