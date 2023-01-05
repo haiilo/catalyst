@@ -29,23 +29,23 @@ export class CatFormGroup {
   onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
     const updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
     this.formElements.forEach(
-      element => !element.requiredMarker.endsWith('!') && (element.requiredMarker = updateMarker)
+      element => !element.requiredMarker?.endsWith('!') && (element.requiredMarker = updateMarker)
     );
-  }
-
-  componentDidLoad(): void {
-    this.formElements = Array.from(
-      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label')
-    ) as HTMLCatFormFieldElement[];
-    this.onRequiredMarker(this.requiredMarker);
   }
 
   render() {
     return (
       <Host>
-        <slot></slot>
+        <slot onSlotchange={this.onSlotChange.bind(this)}></slot>
       </Host>
     );
+  }
+
+  private onSlotChange(): void {
+    this.formElements = Array.from(
+      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label')
+    ) as HTMLCatFormFieldElement[];
+    this.onRequiredMarker(this.requiredMarker);
   }
 
   private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {

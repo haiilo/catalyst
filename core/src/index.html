@@ -509,6 +509,7 @@
             <cat-input label="Field 2" required></cat-input>
             <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
+
           <h3>Auto (more optional)</h3>
           <cat-form-group>
             <cat-input label="Field 1" required-marker="optional!"></cat-input>
@@ -522,25 +523,44 @@
               required
             ></cat-input>
           </cat-form-group>
+
           <h3>None marker</h3>
           <cat-form-group required-marker="none">
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2"></cat-input>
             <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
+
           <h3>Only mark optional</h3>
           <cat-form-group required-marker="optional">
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2"></cat-input>
             <cat-select label="Field 3" required></cat-select>
           </cat-form-group>
+
           <h3>Only mark required</h3>
           <cat-form-group required-marker="required">
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2" required></cat-input>
             <cat-select label="Field 3" required></cat-select>
           </cat-form-group>
+
+          <h3>Dynamic field added</h3>
+          <cat-form-group id="form-group-1">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+          </cat-form-group>
+
+          <script>
+            const elementById = document.getElementById('form-group-1');
+            setTimeout(() => {
+              const htmlElement = document.createElement('cat-input');
+              htmlElement.setAttribute('label', 'Field 3');
+              elementById.appendChild(htmlElement);
+            }, 5000);
+          </script>
         </section>
+
         <section id="icon">
           <h2>Icon</h2>
           <cat-icon icon="sparkle-filled"></cat-icon>
