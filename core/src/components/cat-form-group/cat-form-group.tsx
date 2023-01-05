@@ -17,19 +17,20 @@ export class CatFormGroup {
   @Element() hostElement!: HTMLElement;
 
   /**
-   * Whether the labels need a marker to shown if the forms fields are required or optional.<br />
-   *
+   * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br />
    * By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />
-   *
-   * If there are more required, the optional will be marked.
-   * If there are less required, it will mark the required.
+   * - If there are more required, the optional will be marked.<br />
+   * - If there are less required, it will mark the required.<br /><br />
+   * If a form field had "!", the requiredMarked of the field would not change.
    */
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'auto' = 'auto';
 
   @Watch('requiredMarker')
   onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
     const updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
-    this.formElements.forEach(element => !element.requiredMarker && (element.requiredMarker = updateMarker));
+    this.formElements.forEach(
+      element => !element.requiredMarker.endsWith('!') && (element.requiredMarker = updateMarker)
+    );
   }
 
   componentDidLoad(): void {

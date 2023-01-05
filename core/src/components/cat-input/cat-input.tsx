@@ -37,7 +37,7 @@ export class CatInput {
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' = 'optional';
+  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Hint for form autofill feature.
@@ -215,12 +215,12 @@ export class CatInput {
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && this.requiredMarker === 'optional' && (
+              {!this.required && this.requiredMarker.startsWith('optional') && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
                 </span>
               )}
-              {this.required && this.requiredMarker === 'required' && (
+              {this.required && this.requiredMarker.startsWith('required') && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.required')})
                 </span>

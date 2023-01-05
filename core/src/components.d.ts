@@ -253,7 +253,7 @@ export namespace Components {
     }
     interface CatFormGroup {
         /**
-          * Whether the labels need a marker to shown if the forms fields are required or optional.<br />  By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />  If there are more required, the optional will be marked. If there are less required, it will mark the required.
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
     }
@@ -360,7 +360,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional';
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Use round input edges.
          */
@@ -394,7 +394,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional';
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatModal {
         /**
@@ -612,7 +612,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the select is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional';
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Optional hint text to be displayed on the new item to be added.
          */
@@ -757,7 +757,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the textarea is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional';
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
          */
@@ -1325,7 +1325,7 @@ declare namespace LocalJSX {
     }
     interface CatFormGroup {
         /**
-          * Whether the labels need a marker to shown if the forms fields are required or optional.<br />  By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />  If there are more required, the optional will be marked. If there are less required, it will mark the required.
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
     }
@@ -1427,7 +1427,7 @@ declare namespace LocalJSX {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker"?: 'none' | 'required' | 'optional';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Use round input edges.
          */
@@ -1461,7 +1461,7 @@ declare namespace LocalJSX {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker"?: 'none' | 'required' | 'optional';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatModal {
         /**
@@ -1709,7 +1709,7 @@ declare namespace LocalJSX {
         /**
           * Whether the label need a marker to shown if the select is required or optional.
          */
-        "requiredMarker"?: 'none' | 'required' | 'optional';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Optional hint text to be displayed on the new item to be added.
          */
@@ -1857,7 +1857,7 @@ declare namespace LocalJSX {
         /**
           * Whether the label need a marker to shown if the textarea is required or optional.
          */
-        "requiredMarker"?: 'none' | 'required' | 'optional';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
          */
