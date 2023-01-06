@@ -1,16 +1,18 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-// Dialog makes assumptions about the DOM structure of the dialog content.
-// The following selectors are used to style the dialog content based on its
-// position in the DOM hierarchy.
-//
-// .cat-backdrop
-//   |- .cat-dialog
-//        |- .cat-dialog-header
-//             |- .cat-dialog-header-content
-//        |- .cat-dialog-content
-//        |- .cat-dialog-actions
+/**
+ * Dialog makes assumptions about the DOM structure of the dialog content.
+ * The following selectors are used to style the dialog content based on its
+ * position in the DOM hierarchy.
+ *
+ * .cat-backdrop
+ *   |- .cat-dialog
+ *        |- .cat-dialog-header
+ *             |- .cat-dialog-header-content
+ *        |- .cat-dialog-content
+ *        |- .cat-dialog-actions
+**/
 
 $-dialog-padding: 1.5rem;
 
