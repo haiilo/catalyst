@@ -107,6 +107,6 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupFiles: ['./setupTests.ts']
+    setupFiles: ['./setupTests.js']
   }
 };
