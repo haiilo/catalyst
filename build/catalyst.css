@@ -1013,34 +1013,34 @@ code {
   color: rgb(var(--cat-primary-text-active, 2, 99, 113)) !important;
 }
 
-.cat-bg-primaryDark {
+.cat-bg-primaryInverted {
   background-color: #93b4f2 !important;
   color: black !important;
 }
 
-.cat-bg-primaryDark-hover {
+.cat-bg-primaryInverted-hover {
   transition: background-color 0.13s, color 0.13s;
 }
-.cat-bg-primaryDark-hover:hover {
+.cat-bg-primaryInverted-hover:hover {
   background-color: #93b4f2 !important;
   color: black !important;
 }
 
-.cat-text-primaryDark,
-.cat-link-primaryDark {
+.cat-text-primaryInverted,
+.cat-link-primaryInverted {
   color: #93b4f2 !important;
 }
 
-.cat-link-primaryDark,
-.cat-text-primaryDark-hover {
+.cat-link-primaryInverted,
+.cat-text-primaryInverted-hover {
   transition: color 0.13s;
 }
-.cat-link-primaryDark:hover,
-.cat-text-primaryDark-hover:hover {
+.cat-link-primaryInverted:hover,
+.cat-text-primaryInverted-hover:hover {
   color: #93b4f2 !important;
 }
-.cat-link-primaryDark:active,
-.cat-text-primaryDark-hover:active {
+.cat-link-primaryInverted:active,
+.cat-text-primaryInverted-hover:active {
   color: #93b4f2 !important;
 }
 
@@ -1075,34 +1075,34 @@ code {
   color: rgb(var(--cat-secondary-text-active, 0, 0, 0)) !important;
 }
 
-.cat-bg-secondaryDark {
+.cat-bg-secondaryInverted {
   background-color: #697687 !important;
   color: black !important;
 }
 
-.cat-bg-secondaryDark-hover {
+.cat-bg-secondaryInverted-hover {
   transition: background-color 0.13s, color 0.13s;
 }
-.cat-bg-secondaryDark-hover:hover {
+.cat-bg-secondaryInverted-hover:hover {
   background-color: #697687 !important;
   color: black !important;
 }
 
-.cat-text-secondaryDark,
-.cat-link-secondaryDark {
+.cat-text-secondaryInverted,
+.cat-link-secondaryInverted {
   color: white !important;
 }
 
-.cat-link-secondaryDark,
-.cat-text-secondaryDark-hover {
+.cat-link-secondaryInverted,
+.cat-text-secondaryInverted-hover {
   transition: color 0.13s;
 }
-.cat-link-secondaryDark:hover,
-.cat-text-secondaryDark-hover:hover {
+.cat-link-secondaryInverted:hover,
+.cat-text-secondaryInverted-hover:hover {
   color: white !important;
 }
-.cat-link-secondaryDark:active,
-.cat-text-secondaryDark-hover:active {
+.cat-link-secondaryInverted:active,
+.cat-text-secondaryInverted-hover:active {
   color: white !important;
 }
 
