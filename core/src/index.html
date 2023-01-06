@@ -16,6 +16,7 @@
       catI18nRegistry.set({
         'input.clear': 'Clear',
         'input.optional': 'Optional',
+        'input.required': 'Required',
         'notification.dismiss': 'Dismiss',
         'pagination.prev': 'Previous',
         'pagination.page': 'Go to page {{page}}',
@@ -94,6 +95,7 @@
           <li><a href="#checkbox">Checkbox</a></li>
           <li><a href="#divider">Divider</a></li>
           <li><a href="#dropdown">Dropdown</a></li>
+          <li><a href="#form-group">Form Group</a></li>
           <li><a href="#icon">Icon</a></li>
           <li><a href="#label">Label</a></li>
           <li><a href="#input">Input</a></li>
@@ -486,6 +488,77 @@
               <cat-button>Action</cat-button>
             </div>
           </cat-dropdown>
+        </section>
+
+        <section id="form-group">
+          <h2>Form Group</h2>
+          <cat-form-group>
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+          </cat-form-group>
+
+          <h3>Auto (more required)</h3>
+          <cat-form-group>
+            <cat-label for="ext-label12" class="cat-flex-1">Field 1</cat-label>
+            <cat-input
+              class="cat-m-0 cat-flex-1"
+              label="Field 1"
+              label-hidden="true"
+              identifier="ext-label12"
+            ></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
+          </cat-form-group>
+
+          <h3>Auto (more optional)</h3>
+          <cat-form-group>
+            <cat-input label="Field 1" required-marker="optional!"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-label for="ext-label13" class="cat-flex-1" required>Field 3</cat-label>
+            <cat-input
+              class="cat-m-0 cat-flex-1"
+              label="Field 3"
+              label-hidden="true"
+              identifier="ext-label13"
+              required
+            ></cat-input>
+          </cat-form-group>
+
+          <h3>None marker</h3>
+          <cat-form-group required-marker="none">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
+          </cat-form-group>
+
+          <h3>Only mark optional</h3>
+          <cat-form-group required-marker="optional">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2"></cat-input>
+            <cat-select label="Field 3" required></cat-select>
+          </cat-form-group>
+
+          <h3>Only mark required</h3>
+          <cat-form-group required-marker="required">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+            <cat-select label="Field 3" required></cat-select>
+          </cat-form-group>
+
+          <h3>Dynamic field added</h3>
+          <cat-form-group id="form-group-1">
+            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 2" required></cat-input>
+          </cat-form-group>
+
+          <script>
+            const elementById = document.getElementById('form-group-1');
+            setTimeout(() => {
+              const htmlElement = document.createElement('cat-input');
+              htmlElement.setAttribute('label', 'Field 3');
+              elementById.appendChild(htmlElement);
+            }, 5000);
+          </script>
         </section>
 
         <section id="icon">

@@ -25,6 +25,7 @@
     catI18nRegistry.set({
       'input.clear': 'Clear',
       'input.optional': 'Optional',
+      'input.required': 'Required',
       'notification.dismiss': 'Dismiss',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',

@@ -130,6 +130,11 @@ export class CatSelect {
   @State() hasSlottedLabel = false;
 
   /**
+   * Whether the label need a marker to shown if the select is required or optional.
+   */
+  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+
+  /**
    * Enable multiple selection.
    */
   @Prop() multiple = false;
@@ -145,11 +150,11 @@ export class CatSelect {
   @Prop() placement: Placement = 'bottom-start';
 
   /**
-   * The value of the select.
-   *
-   * The value of the select depends on whether it is allowed to choose a single item or several items.
-   * When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.
-   *
+   * The value of the select. <br />
+   * <br />
+   * The value of the select depends on whether it is allowed to choose a single item or several items. <br />
+   * When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br />
+   * <br />
    * In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,
    * in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
    */
@@ -458,9 +463,14 @@ export class CatSelect {
           <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && (
+              {!this.required && this.requiredMarker.startsWith('optional') && (
                 <span class="input-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
+                </span>
+              )}
+              {this.required && this.requiredMarker.startsWith('required') && (
+                <span class="input-optional" aria-hidden="true">
+                  ({i18n.t('input.required')})
                 </span>
               )}
             </span>
@@ -473,7 +483,7 @@ export class CatSelect {
           role="combobox"
           aria-expanded={this.state.isOpen || this.isPillboxActive()}
           aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
-          aria-required={this.required}
+          aria-required={this.required ? 'true' : false}
           aria-activedescendant={this.activeDescendant}
           onClick={e => this.onClick(e)}
         >

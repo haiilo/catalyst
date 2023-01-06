@@ -92,6 +92,11 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
 ]);
 
 
+export const CatFormGroup = /*@__PURE__*/ defineContainer<JSX.CatFormGroup>('cat-form-group', undefined, [
+  'requiredMarker'
+]);
+
+
 export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', undefined, [
   'icon',
   'size',
@@ -100,6 +105,7 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
 
 
 export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input', undefined, [
+  'requiredMarker',
   'autoComplete',
   'clearable',
   'disabled',
@@ -129,6 +135,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
 
 
 export const CatLabel = /*@__PURE__*/ defineContainer<JSX.CatLabel>('cat-label', undefined, [
+  'requiredMarker',
   'for',
   'required'
 ]);
@@ -197,6 +204,7 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
 
 
 export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-select', undefined, [
+  'requiredMarker',
   'multiple',
   'debounce',
   'placement',
@@ -256,6 +264,7 @@ export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', un
 
 
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
+  'requiredMarker',
   'disabled',
   'hint',
   'identifier',

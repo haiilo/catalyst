@@ -251,6 +251,12 @@ export namespace Components {
          */
         "placement": Placement;
     }
+    interface CatFormGroup {
+        /**
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -352,6 +358,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * Use round input edges.
          */
         "round": boolean;
@@ -381,6 +391,10 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatModal {
         /**
@@ -600,6 +614,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * Optional hint text to be displayed on the new item to be added.
          */
         "tagHint"?: string;
@@ -608,7 +626,7 @@ export namespace Components {
          */
         "tags": boolean;
         /**
-          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
@@ -740,6 +758,10 @@ export namespace Components {
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the textarea is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
          */
@@ -926,6 +948,12 @@ declare global {
         prototype: HTMLCatDropdownElement;
         new (): HTMLCatDropdownElement;
     };
+    interface HTMLCatFormGroupElement extends Components.CatFormGroup, HTMLStencilElement {
+    }
+    var HTMLCatFormGroupElement: {
+        prototype: HTMLCatFormGroupElement;
+        new (): HTMLCatFormGroupElement;
+    };
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
@@ -1036,6 +1064,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-dropdown": HTMLCatDropdownElement;
+        "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-label": HTMLCatLabelElement;
@@ -1298,6 +1327,12 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    interface CatFormGroup {
+        /**
+          * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
+    }
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -1394,6 +1429,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * Use round input edges.
          */
         "round"?: boolean;
@@ -1423,6 +1462,10 @@ declare namespace LocalJSX {
           * A value is required or must be check for the form to be submittable.
          */
         "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatModal {
         /**
@@ -1672,6 +1715,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * Optional hint text to be displayed on the new item to be added.
          */
         "tagHint"?: string;
@@ -1680,7 +1727,7 @@ declare namespace LocalJSX {
          */
         "tags"?: boolean;
         /**
-          * The value of the select.  The value of the select depends on whether it is allowed to choose a single item or several items. When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items.  In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
     }
@@ -1816,6 +1863,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Whether the label need a marker to shown if the textarea is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * Specifies the initial number of lines in the textarea.
          */
         "rows"?: number;
@@ -1920,6 +1971,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-dropdown": CatDropdown;
+        "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-label": CatLabel;
@@ -1950,6 +2002,7 @@ declare module "@stencil/core" {
             "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
+            "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;
