@@ -105,5 +105,8 @@ export const config: Config = {
       componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../vue/src/components.ts'
     })
-  ]
+  ],
+  testing: {
+    setupFiles: ['./setupTests.ts']
+  }
 };
