@@ -1,0 +1,41 @@
+@use '@angular/cdk' as cdk;
+@use '@haiilo/catalyst/dist/catalyst/scss/variables' as *;
+@use '@haiilo/catalyst/dist/catalyst/scss/mixins' as *;
+
+@include cdk.overlay();
+
+.cdk-overlay-pane {
+  transition: transform cat-token('time.transition.m') ease, opacity cat-token('time.transition.m') ease;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.cdk-overlay-backdrop-showing + .cdk-global-overlay-wrapper {
+  .cdk-overlay-pane {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cat-backdrop {
+  &.cdk-overlay-backdrop {
+    transition-duration: cat-token('time.transition.l');
+  }
+}
+
+.cdk-dialog-container > *:only-child {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+}
+
+.cat-dialog-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+}

@@ -10,7 +10,7 @@ module.exports = {
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
         tooltip: { value: '{color.base.black.value}', attributes: { cssProp: "bg-tooltip" } },
-        backdrop: { value: '{color.base.black.value}', attributes: { cssProp: "bg-backdrop" } }
+        backdrop: { value: '{color.base.neutral.700}', attributes: { cssProp: "bg-backdrop" } }
       },
       border: {
         light: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "border-color-light" } },

@@ -89,14 +89,14 @@ export declare interface CatButton extends Components.CatButton {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant']
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -222,13 +222,13 @@ export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['a11yLabel', 'icon', 'size']
+  inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
 })
 @Component({
   selector: 'cat-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['a11yLabel', 'icon', 'size']
+  inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
 })
 export class CatIcon {
   protected el: HTMLElement;

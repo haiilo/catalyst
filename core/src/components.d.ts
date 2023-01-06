@@ -132,6 +132,10 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
+          * The SVG source of an icon to be displayed in the button. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
         "loading": boolean;
@@ -265,7 +269,11 @@ export namespace Components {
         /**
           * The name of the icon.
          */
-        "icon": string;
+        "icon"?: string;
+        /**
+          * The SVG source of the icon. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
         /**
           * The size of the icon.
          */
@@ -1193,6 +1201,10 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
+          * The SVG source of an icon to be displayed in the button. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
         "loading"?: boolean;
@@ -1342,6 +1354,10 @@ declare namespace LocalJSX {
           * The name of the icon.
          */
         "icon"?: string;
+        /**
+          * The SVG source of the icon. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
         /**
           * The size of the icon.
          */

@@ -1,3 +1,4 @@
+import { DialogModule } from '@angular/cdk/dialog';
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { catI18nRegistry, CatI18nRegistry, catIconRegistry, CatIconRegistry, CatNotificationService, catNotificationService } from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
@@ -7,6 +8,10 @@ import * as Components from './directives/proxies';
 import { RadioValueAccessor } from "./directives/radio-value-accessor";
 import { SelectValueAccessor } from "./directives/select-value-accessor";
 import { TextValueAccessor } from "./directives/text-value-accessor";
+import { CatDialogComponent } from './dialog/dialog.component';
+import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
+import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
+import { CommonModule } from '@angular/common';
 
 const CatComponents = [
   Components.CatAlert,
@@ -62,9 +67,9 @@ export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotification
 });
 
 @NgModule({
-  imports: [],
-  declarations: [...CatComponents, ...CatDirectives],
-  exports: [...CatComponents, ...CatDirectives],
+  imports: [CommonModule, DialogModule],
+  declarations: [...CatComponents, ...CatDirectives, CatDialogComponent, CatDialogActionsComponent, CatDialogHeaderComponent],
+  exports: [...CatComponents, ...CatDirectives, CatDialogComponent, CatDialogActionsComponent, CatDialogHeaderComponent],
   providers: []
 })
 export class CatalystModule {
