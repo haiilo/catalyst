@@ -404,16 +404,6 @@ export namespace Components {
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
-    interface CatModal {
-        /**
-          * Shows the modal.
-         */
-        "show": () => Promise<void>;
-        /**
-          * The size of the modal.
-         */
-        "size": 's' | 'm' | 'l';
-    }
     interface CatPagination {
         /**
           * The number of pages to be shown around the current page.
@@ -980,12 +970,6 @@ declare global {
         prototype: HTMLCatLabelElement;
         new (): HTMLCatLabelElement;
     };
-    interface HTMLCatModalElement extends Components.CatModal, HTMLStencilElement {
-    }
-    var HTMLCatModalElement: {
-        prototype: HTMLCatModalElement;
-        new (): HTMLCatModalElement;
-    };
     interface HTMLCatPaginationElement extends Components.CatPagination, HTMLStencilElement {
     }
     var HTMLCatPaginationElement: {
@@ -1076,7 +1060,6 @@ declare global {
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
         "cat-label": HTMLCatLabelElement;
-        "cat-modal": HTMLCatModalElement;
         "cat-pagination": HTMLCatPaginationElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-radio-group": HTMLCatRadioGroupElement;
@@ -1482,12 +1465,6 @@ declare namespace LocalJSX {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
-    }
-    interface CatModal {
-        /**
-          * The size of the modal.
-         */
-        "size"?: 's' | 'm' | 'l';
     }
     interface CatPagination {
         /**
@@ -1991,7 +1968,6 @@ declare namespace LocalJSX {
         "cat-icon": CatIcon;
         "cat-input": CatInput;
         "cat-label": CatLabel;
-        "cat-modal": CatModal;
         "cat-pagination": CatPagination;
         "cat-radio": CatRadio;
         "cat-radio-group": CatRadioGroup;
@@ -2022,7 +1998,6 @@ declare module "@stencil/core" {
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;
-            "cat-modal": LocalJSX.CatModal & JSXBase.HTMLAttributes<HTMLCatModalElement>;
             "cat-pagination": LocalJSX.CatPagination & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;

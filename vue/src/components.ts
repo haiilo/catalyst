@@ -143,11 +143,6 @@ export const CatLabel = /*@__PURE__*/ defineContainer<JSX.CatLabel>('cat-label',
 ]);
 
 
-export const CatModal = /*@__PURE__*/ defineContainer<JSX.CatModal>('cat-modal', undefined, [
-  'size'
-]);
-
-
 export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('cat-pagination', undefined, [
   'page',
   'pageCount',

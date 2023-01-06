@@ -88,7 +88,6 @@ Type: `Promise<void>`
 ### Used by
 
  - [cat-input](../cat-input)
- - [cat-modal](../cat-modal)
  - [cat-pagination](../cat-pagination)
  - [cat-select](../cat-select)
  - [cat-select-demo](../cat-select-demo)
@@ -105,7 +104,6 @@ graph TD;
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-input --> cat-button
-  cat-modal --> cat-button
   cat-pagination --> cat-button
   cat-select --> cat-button
   cat-select-demo --> cat-button

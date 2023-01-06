@@ -297,28 +297,6 @@ export class CatLabel {
 }
 
 
-export declare interface CatModal extends Components.CatModal {}
-
-@ProxyCmp({
-  defineCustomElementFn: undefined,
-  inputs: ['size'],
-  methods: ['show']
-})
-@Component({
-  selector: 'cat-modal',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['size']
-})
-export class CatModal {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface CatPagination extends Components.CatPagination {}
 
 @ProxyCmp({
