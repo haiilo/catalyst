@@ -12,16 +12,16 @@ module.exports = {
         textHover: { value: '{color.base.brand.500}', attributes: { cssProp: "primary-text-hover" } },
         textActive: { value: '{color.base.brand.600}', attributes: { cssProp: "primary-text-active" } }
       },
-      primaryDark: {
-        bg: { value: '{color.base.brandDark.400}' },
-        bgHover: { value: '{color.base.brandDark.500}' },
-        bgActive: { value: '{color.base.brandDark.600}' },
+      primaryInverted: {
+        bg: { value: '{color.base.brandInverted.400}' },
+        bgHover: { value: '{color.base.brandInverted.500}' },
+        bgActive: { value: '{color.base.brandInverted.600}' },
         fill: { value: '{color.base.black}' },
         fillHover: { value: '{color.base.black}' },
         fillActive: { value: '{color.base.black}' },
-        text: { value: '{color.base.brandDark.400}' },
-        textHover: { value: '{color.base.brandDark.500}' },
-        textActive: { value: '{color.base.brandDark.600}' }
+        text: { value: '{color.base.brandInverted.400}' },
+        textHover: { value: '{color.base.brandInverted.500}' },
+        textActive: { value: '{color.base.brandInverted.600}' }
       },
       secondary: {
         bg: { value: '{color.base.neutral.400}', attributes: { cssProp: "secondary-bg" } },
@@ -34,10 +34,10 @@ module.exports = {
         textHover: { value: '{color.base.black}', attributes: { cssProp: "secondary-text-hover" } },
         textActive: { value: '{color.base.black}', attributes: { cssProp: "secondary-text-active" } }
       },
-      secondaryDark: {
-        bg: { value: '{color.base.neutralDark.400}' },
-        bgHover: { value: '{color.base.neutralDark.400}' },
-        bgActive: { value: '{color.base.neutralDark.400}' },
+      secondaryInverted: {
+        bg: { value: '{color.base.neutralInverted.400}' },
+        bgHover: { value: '{color.base.neutralInverted.400}' },
+        bgActive: { value: '{color.base.neutralInverted.400}' },
         fill: { value: '{color.base.black}' },
         fillHover: { value: '{color.base.black}' },
         fillActive: { value: '{color.base.black}' },

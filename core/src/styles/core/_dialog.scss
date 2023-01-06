@@ -21,7 +21,7 @@ $-dialog-padding: 1.5rem;
 }
 
 .cat-dialog {
-  background-color: cat-token('color.ui.background.body');
+  background-color: cat-token('color.ui.background.surface');
   border-radius: cat-border-radius('l');
   @include cat-elevation(7);
   container: dialog / inline-size;

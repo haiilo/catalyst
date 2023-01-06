@@ -7,7 +7,7 @@ $-padding: 1.25rem;
   display: block;
   margin-bottom: $cat-body-margin-bottom;
   border-radius: cat-border-radius('l');
-  background-color: cat-token('color.ui.background.body');
+  background-color: cat-token('color.ui.background.surface');
   padding: $-padding;
 }
 

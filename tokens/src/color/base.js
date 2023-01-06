@@ -12,7 +12,7 @@ module.exports = {
         600: { value: '#394251' },
         700: { value: '#1b1f26' }
       },
-      neutralDark: {
+      neutralInverted: {
         400: { value: '#697687' }
       },
       brand: {
@@ -24,7 +24,7 @@ module.exports = {
         600: { value: '#026371' },
         700: { value: '#175b63' }
       },
-      brandDark: {
+      brandInverted: {
         400: { value: '#93b4f2' },
         500: { value: '#93b4f2' },
         600: { value: '#93b4f2' },

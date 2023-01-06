@@ -3,8 +3,8 @@ module.exports = {
     ui: {
       background: {
         canvas: { value: '{color.base.neutral.100.value}', attributes: { cssProp: "bg" } },
-        body: { value: '{color.base.white.value}' },
-        bodyDark: { value: '{color.base.neutral.700.value}' },
+        surface: { value: '{color.base.white.value}' },
+        surfaceInverted: { value: '{color.base.neutral.700.value}' },
         muted: { value: '{color.base.neutral.100.value}' },
         input: { value: '{color.base.white.value}' },
         skeleton: { value: '{color.base.neutral.200.value}' },
@@ -21,11 +21,11 @@ module.exports = {
       },
       font: {
         head: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-head" } },
-        headDark: { value: '{color.base.white.value}' },
+        headInverted: { value: '{color.base.white.value}' },
         body: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-body" } },
-        bodyDark: { value: '{color.base.white.value}' },
+        bodyInverted: { value: '{color.base.white.value}' },
         mono: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-mono" } },
-        monoDark: { value: '{color.base.white.value}' },
+        monoInverted: { value: '{color.base.white.value}' },
         muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-quote" } },
         tooltip: { value: '{color.base.white.value}', attributes: { cssProp: "font-color-tooltip" } }

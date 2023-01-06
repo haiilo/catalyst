@@ -93,7 +93,7 @@ $button-sizes: (
 }
 
 .cat-button-outlined {
-  background-color: cat-token('color.ui.background.body');
+  background-color: cat-token('color.ui.background.surface');
   box-shadow: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
   color: cat-token-wrap(var(--text));
 

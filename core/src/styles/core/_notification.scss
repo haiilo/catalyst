@@ -4,7 +4,7 @@
 .cat-toastify {
   display: flex;
   border-radius: cat-border-radius('l');
-  background: cat-token('color.ui.background.body');
+  background: cat-token('color.ui.background.surface');
   padding: 1.25rem;
   box-shadow: none;
   color: cat-token('color.ui.font.body');
@@ -13,15 +13,15 @@
   cursor: unset;
 
   &.cat-toastify-dark {
-    --cat-font-color-head: #{cat-token('color.ui.font.headDark', $wrap: false)};
-    --cat-font-color-body: #{cat-token('color.ui.font.bodyDark', $wrap: false)};
-    --cat-primary-text: #{cat-token('color.theme.primaryDark.text', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.primaryDark.textHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.primaryDark.textActive', $wrap: false)};
-    --cat-secondary-text: #{cat-token('color.theme.secondaryDark.text', $wrap: false)};
-    --cat-secondary-text-hover: #{cat-token('color.theme.secondaryDark.textHover', $wrap: false)};
-    --cat-secondary-text-active: #{cat-token('color.theme.secondaryDark.textActive', $wrap: false)};
-    background: cat-token('color.ui.background.bodyDark');
+    --cat-font-color-head: #{cat-token('color.ui.font.headInverted', $wrap: false)};
+    --cat-font-color-body: #{cat-token('color.ui.font.bodyInverted', $wrap: false)};
+    --cat-primary-text: #{cat-token('color.theme.primaryInverted.text', $wrap: false)};
+    --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.textHover', $wrap: false)};
+    --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.textActive', $wrap: false)};
+    --cat-secondary-text: #{cat-token('color.theme.secondaryInverted.text', $wrap: false)};
+    --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
+    --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
+    background: cat-token('color.ui.background.surfaceInverted');
   }
 }
 
