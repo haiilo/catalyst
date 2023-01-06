@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
+import { auditTime, distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
 /**
  * An element to display scrollable content.
@@ -11,10 +11,13 @@ import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
   shadow: true
 })
 export class CatScrollable {
+  private static readonly THROTTLE = 50;
   scrollElement?: HTMLElement;
   scrollWrapperElement?: HTMLElement;
   private readonly init = new Subject<void>();
   private readonly destroyed = new Subject<void>();
+  private readonly resizedEntries = new Subject<ResizeObserverEntry[]>();
+  private readonly resizedObserver = new ResizeObserver(entries => this.resizedEntries.next(entries));
   private scrolled!: Observable<Event>;
 
   /** Flags to disable/enable scroll shadowX. */
@@ -70,13 +73,18 @@ export class CatScrollable {
   componentDidRender() {
     if (this.scrollElement) {
       this.scrolled = fromEvent(this.scrollElement, 'scroll').pipe(takeUntil(this.destroyed));
+      this.resizedObserver.observe(this.scrollElement);
     }
-    this.attachEmitter('left', this.scrolledLeft, this.scrolledBuffer);
-    this.attachEmitter('right', this.scrolledRight, this.scrolledBuffer);
-    this.attachEmitter('bottom', this.scrolledBottom, this.scrolledBuffer);
-    this.attachEmitter('top', this.scrolledTop, this.scrolledBuffer);
-    merge(this.init, this.scrolled)
+    if (this.scrollWrapperElement) {
+      this.resizedObserver.observe(this.scrollWrapperElement);
+    }
+    this.attachEmitter('left', this.scrolledLeft);
+    this.attachEmitter('right', this.scrolledRight);
+    this.attachEmitter('bottom', this.scrolledBottom);
+    this.attachEmitter('top', this.scrolledTop);
+    merge(this.init, this.scrolled, this.resizedEntries)
       .pipe(
+        auditTime(CatScrollable.THROTTLE),
         map(() => ({
           top: this.getScrollOffset('top') > 0,
           left: this.getScrollOffset('left') > 0,
@@ -104,6 +112,7 @@ export class CatScrollable {
     this.init.complete();
     this.destroyed.next();
     this.destroyed.complete();
+    this.resizedObserver.disconnect();
   }
 
   render() {
@@ -128,13 +137,16 @@ export class CatScrollable {
     ];
   }
 
-  private attachEmitter(from: 'top' | 'left' | 'right' | 'bottom', emitter: EventEmitter<void>, buffer: number) {
-    merge(this.init, this.scrolled)
-      .pipe(map(() => this.getScrollOffset(from)))
-      .pipe(map(offset => offset <= buffer))
-      .pipe(distinctUntilChanged())
-      .pipe(filter(isLower => isLower))
-      .pipe(takeUntil(this.destroyed))
+  private attachEmitter(from: 'top' | 'left' | 'right' | 'bottom', emitter: EventEmitter<void>) {
+    merge(this.init, this.scrolled, this.resizedEntries)
+      .pipe(
+        auditTime(CatScrollable.THROTTLE),
+        map(() => this.getScrollOffset(from)),
+        map(offset => offset <= this.scrolledBuffer),
+        distinctUntilChanged(),
+        filter(isLower => isLower),
+        takeUntil(this.destroyed)
+      )
       .subscribe(() => emitter.emit());
   }
 
