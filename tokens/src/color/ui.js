@@ -7,6 +7,7 @@ module.exports = {
         surfaceInverted: { value: '{color.base.neutral.700.value}' },
         muted: { value: '{color.base.neutral.100.value}' },
         input: { value: '{color.base.white.value}' },
+        inputAutofill: { value: '#e8f0fe' },
         skeleton: { value: '{color.base.neutral.200.value}' },
         skeletonHighlight: { value: '{color.base.neutral.300.value}' },
         tooltip: { value: '{color.base.black.value}', attributes: { cssProp: "bg-tooltip" } },

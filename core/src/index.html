@@ -553,11 +553,11 @@
           </cat-form-group>
 
           <script>
-            const elementById = document.getElementById('form-group-1');
+            const formElem = document.getElementById('form-group-1');
             setTimeout(() => {
               const htmlElement = document.createElement('cat-input');
               htmlElement.setAttribute('label', 'Field 3');
-              elementById.appendChild(htmlElement);
+              formElem.appendChild(htmlElement);
             }, 5000);
           </script>
         </section>
@@ -882,10 +882,9 @@
             <p>Hover Me (async)</p>
           </cat-tooltip>
           <script>
-            let elementById = document.getElementById('async-tooltip');
-
+            const tooltipElem = document.getElementById('async-tooltip');
             setInterval(() => {
-              elementById.content = 'This is an async tooltip';
+              tooltipElem.content = 'This is an async tooltip';
             }, 1000);
           </script>
         </section>

@@ -58,4 +58,14 @@ textarea {
   &::placeholder {
     color: cat-token('color.ui.font.muted');
   }
+
+  /* stylelint-disable property-no-vendor-prefix */
+  &:-webkit-autofill {
+    &,
+    &:hover,
+    &:focus {
+      -webkit-box-shadow: 0 0 0 9999px cat-token('color.ui.background.inputAutofill') inset;
+    }
+  }
+  /* stylelint-enable property-no-vendor-prefix */
 }
