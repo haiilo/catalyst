@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/haiilo/catalyst/compare/v3.0.0...v3.0.1) (2023-01-06)
+
+
+### Features
+
+* **core:** remove cat-modal ([b907e68](https://github.com/haiilo/catalyst/commit/b907e68b2fb551f0ef9e62b73f000631e789cff4))
+* **tokens:** rename background.body to background.surface and all Dark tokens to Inverted ([01943d1](https://github.com/haiilo/catalyst/commit/01943d12428969cfa7799e0f23735a419724857c))
+
+
+### Bug Fixes
+
+* **core:** correctly set autofill styles ([dbc283e](https://github.com/haiilo/catalyst/commit/dbc283eed408d9c47fc783e03afc757f18d16f78))
+* **core:** update scroll shadows after element resize ([#112](https://github.com/haiilo/catalyst/issues/112)) ([4076485](https://github.com/haiilo/catalyst/commit/4076485d27cb0862f11b96a9b98ef9e659e2a26b))
+
 ## [3.0.0](https://github.com/haiilo/catalyst/compare/v2.5.0...v3.0.0) (2023-01-06)
 
 ## [2.5.0](https://github.com/haiilo/catalyst/compare/v2.4.9...v2.5.0) (2023-01-06)
