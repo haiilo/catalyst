@@ -16,6 +16,7 @@ const CatComponents = [
   Components.CatCard,
   Components.CatCheckbox,
   Components.CatDropdown,
+  Components.CatFormGroup,
   Components.CatIcon,
   Components.CatInput,
   Components.CatLabel,

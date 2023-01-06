@@ -31,34 +31,34 @@ $cat-elevation: (
   0: none,
   1: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 1px 2px rgba(27, 31, 38, 0.05)
+    0 1px 2px rgba(27, 31, 38, 5%)
   ),
   2: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 1px 2px rgba(27, 31, 38, 0.06),
-    0 1px 3px rgba(27, 31, 38, 0.1)
+    0 1px 2px rgba(27, 31, 38, 6%),
+    0 1px 3px rgba(27, 31, 38, 10%)
   ),
   3: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 2px 4px -2px rgba(27, 31, 38, 0.06),
-    0 4px 8px -2px rgba(27, 31, 38, 0.1)
+    0 2px 4px -2px rgba(27, 31, 38, 6%),
+    0 4px 8px -2px rgba(27, 31, 38, 10%)
   ),
   4: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 4px 6px -2px rgba(27, 31, 38, 0.03),
-    0 12px 16px -4px rgba(27, 31, 38, 0.08)
+    0 4px 6px -2px rgba(27, 31, 38, 3%),
+    0 12px 16px -4px rgba(27, 31, 38, 8%)
   ),
   5: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 8px 8px -4px rgba(27, 31, 38, 0.03),
-    0 20px 24px -4px rgba(27, 31, 38, 0.08)
+    0 8px 8px -4px rgba(27, 31, 38, 3%),
+    0 20px 24px -4px rgba(27, 31, 38, 8%)
   ),
   6: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 24px 48px -12px rgba(27, 31, 38, 0.18)
+    0 24px 48px -12px rgba(27, 31, 38, 18%)
   ),
   7: (
     0 0 0 1px cat-token('color.ui.border.default'),
-    0 32px 64px -12px rgba(27, 31, 38, 0.14)
+    0 32px 64px -12px rgba(27, 31, 38, 14%)
   )
 );
