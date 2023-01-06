@@ -1,24 +1,64 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+// Dialog makes assumptions about the DOM structure of the dialog content.
+// The following selectors are used to style the dialog content based on its
+// position in the DOM hierarchy.
+//
+// .cat-backdrop
+//   |- .cat-dialog
+//        |- .cat-dialog-header
+//             |- .cat-dialog-header-content
+//        |- .cat-dialog-content
+//        |- .cat-dialog-actions
+
+$-dialog-padding: 1.5rem;
+
 .cat-backdrop {
   background-color: cat-token('color.ui.background.backdrop', cat-token('opacity.backdrop'));
-  
-  &.cdk-overlay-backdrop {
-    transition-duration: cat-token('time.transition.l');
-  }
 }
 
 .cat-dialog {
   background-color: cat-token('color.ui.background.body');
   border-radius: cat-border-radius('l');
   @include cat-elevation(7);
+  container: dialog / inline-size;
+}
 
-  .cdk-dialog-container > *:only-child {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: inherit;
-    max-height: inherit;
+.cat-dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: $-dialog-padding;
+}
+
+.cat-dialog-header-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.cat-dialog-content {
+  overflow: auto;
+  padding: 0 $-dialog-padding;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cat-dialog-actions {
+  display: flex;
+  padding: $-dialog-padding;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  @container dialog (max-width: 360px) {
+    cat-button {
+      width: 100%;
+    }
   }
 }

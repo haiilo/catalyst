@@ -31,6 +31,9 @@ export class CatDialogService {
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
       panelClass: 'cat-dialog',
+      width: '600px',
+      minWidth: 'clamp(240px, 100vw - 16px, 320px)',
+      minHeight: 'clamp(160px, 100vh - 16px, 240px)',
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
       ...config

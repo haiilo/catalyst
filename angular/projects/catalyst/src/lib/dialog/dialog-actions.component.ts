@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 /**
  * The bottom actions of a dialog.
@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   template: '<ng-content></ng-content>',
   styleUrls: ['./dialog-actions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'cat-dialog-actions',
     '[class.cat-dialog-actions-center]': 'align === "center"',

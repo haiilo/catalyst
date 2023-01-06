@@ -1,14 +1,15 @@
-<div class="cat-dialog-header-content">
-  <h3 class="cat-h5 cat-m-0" *ngIf="title">{{ title }}</h3>
-  <h4 class="cat-h6 cat-m-0" *ngIf="subtitle">{{ subtitle }}</h4>
-  <ng-content></ng-content>
+<div class="cat-dialog-header-content" *ngIf="headline || subline">
+  <h3 class="cat-h5 cat-m-0" *ngIf="headline">{{ headline }}</h3>
+  <h4 class="cat-h6 cat-m-0" *ngIf="subline">{{ subline }}</h4>
 </div>
+<ng-content></ng-content>
 <cat-button
   *ngIf="closable"
-  class="cat-button-pull"
+  class="cat-dialog-close cat-button-pull"
   variant="text"
-  [round]="true"
+  size="s"
   [iconSrc]="closeSvg"
   [iconOnly]="true"
+  [a11yLabel]="closeTxt"
   (click)="close.emit()"
 ></cat-button>

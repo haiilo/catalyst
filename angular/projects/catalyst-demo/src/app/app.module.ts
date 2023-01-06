@@ -7,6 +7,6 @@ import { DialogComponent } from './dialog/dialog.component';
 @NgModule({
   imports: [BrowserModule, CatalystModule.forRoot()],
   declarations: [AppComponent, DialogComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
