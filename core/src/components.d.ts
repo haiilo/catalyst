@@ -598,6 +598,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * The text to display in the dropdown if no results are found.
+         */
+        "noItems"?: string;
+        /**
           * The placeholder text to display within the select.
          */
         "placeholder"?: string;
@@ -1678,6 +1682,10 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * The text to display in the dropdown if no results are found.
+         */
+        "noItems"?: string;
         /**
           * Emitted when the select loses the focus.
          */

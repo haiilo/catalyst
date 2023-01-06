@@ -144,6 +144,7 @@ export class CatSelectTest {
           onCatChange={() => console.log(this.multipleSelect?.value)}
           onCatBlur={e => console.log('Multiple blur', e)}
           multiple
+          noItems="No results"
           clearable
         >
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>

@@ -220,6 +220,7 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'clearable',
   'tags',
   'tagHint',
+  'noItems',
   'catOpen',
   'catClose',
   'catChange',

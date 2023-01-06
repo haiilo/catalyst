@@ -215,6 +215,11 @@ export class CatSelect {
    */
   @Prop() tagHint?: string;
 
+  /**
+   * The text to display in the dropdown if no results are found.
+   */
+  @Prop() noItems?: string;
+
   @Watch('connector')
   onConnectorChange(connector: CatSelectConnector) {
     this.reset(connector);
@@ -599,7 +604,9 @@ export class CatSelect {
                       </li>
                     ))
                   : !this.state.options.length &&
-                    !this.tags && <li class="select-option-empty">{i18n.t('select.empty')}</li>}
+                    !this.tags && (
+                      <li class="select-option-empty">{this.noItems ? this.noItems : i18n.t('select.empty')}</li>
+                    )}
               </ul>
             </cat-scrollable>
           )}
