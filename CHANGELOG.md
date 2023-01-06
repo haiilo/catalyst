@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/haiilo/catalyst/compare/v2.4.9...v2.5.0) (2023-01-06)
+
+
+### Bug Fixes
+
+* **core:** sync singletons ([321acae](https://github.com/haiilo/catalyst/commit/321acaecf45c2c444df45b22757b8a5adf1591ee))
+
 ### [2.4.9](https://github.com/haiilo/catalyst/compare/v2.4.8...v2.4.9) (2022-12-18)
 
 ### [2.4.8](https://github.com/haiilo/catalyst/compare/v2.4.7...v2.4.8) (2022-12-16)
