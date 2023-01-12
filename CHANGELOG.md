@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/haiilo/catalyst/compare/v3.0.1...v3.0.2) (2023-01-12)
+
+
+### Features
+
+* **core:** add initials in the avatar of the select options ([#119](https://github.com/haiilo/catalyst/issues/119)) ([a4f9e98](https://github.com/haiilo/catalyst/commit/a4f9e9826601c5f23cf0c02da4192c5748b26b87))
+
 ### [3.0.1](https://github.com/haiilo/catalyst/compare/v3.0.0...v3.0.1) (2023-01-06)
 
 
