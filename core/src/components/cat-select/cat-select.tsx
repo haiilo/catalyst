@@ -38,6 +38,7 @@ export interface RenderInfo {
   avatar?: {
     src?: string;
     round?: boolean;
+    initials?: string;
   };
 }
 
@@ -506,7 +507,7 @@ export class CatSelect {
                         label={item.render.label}
                         round={item.render.avatar.round}
                         src={item.render.avatar.src}
-                        initials={''}
+                        initials={item.render.avatar.initials ?? ''}
                       ></cat-avatar>
                     ) : null}
                     <span>{item.render.label}</span>
@@ -653,7 +654,7 @@ export class CatSelect {
                     label={item.render.label}
                     round={item.render.avatar.round}
                     src={item.render.avatar.src}
-                    initials={''}
+                    initials={item.render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
                 <span class="select-option-text">
@@ -678,7 +679,7 @@ export class CatSelect {
                   label={item.render.label}
                   round={item.render.avatar.round}
                   src={item.render.avatar.src}
-                  initials={''}
+                  initials={item.render.avatar.initials ?? ''}
                 ></cat-avatar>
               ) : null}
               <span class="select-option-text">
