@@ -12,6 +12,7 @@ import { CatDialogComponent } from './dialog/dialog.component';
 import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
 import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
 import { CommonModule } from '@angular/common';
+import { TextValueAccessorDecorator } from './directives/text-value-accessor-decorator';
 
 const CatComponents = [
   Components.CatAlert,
@@ -42,7 +43,8 @@ const CatDirectives = [
   TextValueAccessor,
   SelectValueAccessor,
   RadioValueAccessor,
-  BooleanValueAccessor
+  BooleanValueAccessor,
+  TextValueAccessorDecorator
 ]
 
 export const CAT_LOG_TOKEN = new InjectionToken<RootLogger>('CAT_LOG', {

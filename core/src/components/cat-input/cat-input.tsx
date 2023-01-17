@@ -23,7 +23,7 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatInput {
-  private readonly _id = `cat-input-${nextUniqueId++}`;
+  private readonly _id = `cat-input-${ nextUniqueId++ }`;
   private get id() {
     return this.identifier || this._id;
   }
@@ -150,6 +150,26 @@ export class CatInput {
   @Prop({ mutable: true }) value?: string | number;
 
   /**
+   * Flag that indicates if the input is invalid.
+   */
+  @Prop({ mutable: true }) invalid = false;
+
+  /**
+   * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+   */
+  @Prop({ mutable: true }) errors?:{ [key: string]: unknown };
+
+  /**
+   * Disable validation for the input. No error messages or error colors will be shown.
+   */
+  @Prop() disableValidation = false;
+
+  /**
+   * Attributes that will be added to the input element.
+   */
+  @Prop() inputAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -211,89 +231,104 @@ export class CatInput {
   render() {
     return (
       <Host>
-        {(this.hasSlottedLabel || this.label) && (
-          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+        { (this.hasSlottedLabel || this.label) && (
+          <label htmlFor={ this.id } class={ { hidden: this.labelHidden } }>
             <span part="label">
-              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && this.requiredMarker.startsWith('optional') && (
+              { (this.hasSlottedLabel && <slot name="label"></slot>) || this.label }
+              { !this.required && this.requiredMarker.startsWith('optional') && (
                 <span class="input-optional" aria-hidden="true">
-                  ({i18n.t('input.optional')})
+                  ({ i18n.t('input.optional') })
                 </span>
-              )}
-              {this.required && this.requiredMarker.startsWith('required') && (
+              ) }
+              { this.required && this.requiredMarker.startsWith('required') && (
                 <span class="input-optional" aria-hidden="true">
-                  ({i18n.t('input.required')})
+                  ({ i18n.t('input.required') })
                 </span>
-              )}
+              ) }
             </span>
           </label>
-        )}
+        ) }
         <div
-          class={{
+          class={ {
             'input-wrapper': true,
             'input-round': this.round,
-            'input-disabled': this.disabled
-          }}
-          onClick={() => this.input.focus()}
+            'input-disabled': this.disabled,
+            'input-invalid': this.invalid && !this.disableValidation,
+          } }
+          onClick={ () => this.input.focus() }
         >
-          {this.textPrefix && (
+          { this.textPrefix && (
             <span class="text-prefix" part="prefix">
-              {this.textPrefix}
+              { this.textPrefix }
+              { this.invalid }
             </span>
-          )}
-          {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
+          ) }
+          { this.icon && !this.iconRight && <cat-icon icon={ this.icon } class="icon-prefix" size="l"></cat-icon> }
           <div class="input-inner-wrapper">
             <input
-              ref={el => (this.input = el as HTMLInputElement)}
-              id={this.id}
-              class={{
+              { ...this.inputAttributes }
+              ref={ el => (this.input = el as HTMLInputElement) }
+              id={ this.id }
+              class={ {
                 'has-clearable': this.clearable && !this.disabled
-              }}
-              autocomplete={this.autoComplete}
-              disabled={this.disabled}
-              max={this.max}
-              maxlength={this.maxLength}
-              min={this.min}
-              minlength={this.minLength}
-              name={this.name}
-              placeholder={this.placeholder}
-              readonly={this.readonly}
-              required={this.required}
-              type={this.type}
-              value={this.value}
-              onInput={this.onInput.bind(this)}
-              onFocus={this.onFocus.bind(this)}
-              onBlur={this.onBlur.bind(this)}
+              } }
+              autocomplete={ this.autoComplete }
+              disabled={ this.disabled }
+              max={ this.max }
+              maxlength={ this.maxLength }
+              min={ this.min }
+              minlength={ this.minLength }
+              name={ this.name }
+              placeholder={ this.placeholder }
+              readonly={ this.readonly }
+              required={ this.required }
+              type={ this.type }
+              value={ this.value }
+              onInput={ this.onInput.bind(this) }
+              onFocus={ this.onFocus.bind(this) }
+              onBlur={ this.onBlur.bind(this) }
+              aria-invalid={ this.invalid ? 'true' : 'false' }
+              aria-describedby={ this.id + '-hint'}
             ></input>
-            {this.clearable && !this.disabled && this.value && (
+            { this.clearable && !this.disabled && this.value && (
               <cat-button
                 class="clearable"
                 icon="cross-circle-outlined"
                 icon-only="true"
                 size="s"
                 variant="text"
-                a11y-label={i18n.t('input.clear')}
-                onClick={this.clear.bind(this)}
+                a11y-label={ i18n.t('input.clear') }
+                onClick={ this.clear.bind(this) }
               ></cat-button>
-            )}
+            ) }
           </div>
-          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>}
-          {this.textSuffix && (
+          { (!this.invalid || this.disableValidation) && this.icon && this.iconRight && <cat-icon icon={ this.icon } class="icon-suffix" size="l"></cat-icon> }
+          { this.invalid && !this.disableValidation && <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
+          { this.textSuffix && (
             <span class="text-suffix" part="suffix">
-              {this.textSuffix}
+              { this.textSuffix }
             </span>
-          )}
+          ) }
         </div>
-        {this.hintSection}
+        <div id={this.id + '-hint'}>
+          { this.hintSection }
+        </div>
       </Host>
     );
   }
 
   private get hintSection() {
+    if (this.errors && !this.disableValidation) {
+      return Object.keys(this.errors).map(error =>
+        (
+          <CatFormHint hint={ i18n.t(`error.${error}`) } class="cat-text-danger" />
+        )
+      );
+    }
     const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        <CatFormHint hint={ this.hint } slottedHint={ hasSlottedHint && <slot name="hint"></slot> }/>
       )
     );
   }

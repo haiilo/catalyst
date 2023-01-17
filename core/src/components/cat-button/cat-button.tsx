@@ -137,6 +137,11 @@ export class CatButton {
    */
   @Prop({ attribute: 'a11y-current' }) a11yCurrent?: string;
 
+  /**
+   * Attributes that will be added to the button element.
+   */
+  @Prop() buttonAttributes?: { [key: string]: string };
+
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
     // teardown
@@ -252,6 +257,7 @@ export class CatButton {
     } else {
       return (
         <button
+          {...this.buttonAttributes}
           ref={el => (this.button = el as HTMLButtonElement)}
           type={this.submit ? 'submit' : 'button'}
           name={this.name}

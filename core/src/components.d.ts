@@ -95,6 +95,10 @@ export namespace Components {
          */
         "active": boolean;
         /**
+          * Attributes that will be added to the button element.
+         */
+        "buttonAttributes"?: { [key: string]: string };
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -293,6 +297,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Disable validation for the input. No error messages or error colors will be shown.
+         */
+        "disableValidation": boolean;
+        /**
           * Whether the input is disabled.
          */
         "disabled": boolean;
@@ -310,6 +318,10 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
+          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+         */
+        "errors"?: { [key: string]: unknown };
+        /**
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
@@ -325,6 +337,14 @@ export namespace Components {
           * A unique identifier for the input.
          */
         "identifier"?: string;
+        /**
+          * Attributes that will be added to the input element.
+         */
+        "inputAttributes"?: { [key: string]: string };
+        /**
+          * Flag that indicates if the input is invalid.
+         */
+        "invalid": boolean;
         /**
           * The label for the input.
          */
@@ -1160,6 +1180,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * Attributes that will be added to the button element.
+         */
+        "buttonAttributes"?: { [key: string]: string };
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -1356,9 +1380,17 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Disable validation for the input. No error messages or error colors will be shown.
+         */
+        "disableValidation"?: boolean;
+        /**
           * Whether the input is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+         */
+        "errors"?: { [key: string]: unknown };
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -1375,6 +1407,14 @@ declare namespace LocalJSX {
           * A unique identifier for the input.
          */
         "identifier"?: string;
+        /**
+          * Attributes that will be added to the input element.
+         */
+        "inputAttributes"?: { [key: string]: string };
+        /**
+          * Flag that indicates if the input is invalid.
+         */
+        "invalid"?: boolean;
         /**
           * The label for the input.
          */

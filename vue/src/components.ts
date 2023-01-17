@@ -57,6 +57,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'buttonId',
   'a11yLabel',
   'a11yCurrent',
+  'buttonAttributes',
   'catClick',
   'catFocus',
   'catBlur'
@@ -130,6 +131,10 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'round',
   'type',
   'value',
+  'invalid',
+  'errors',
+  'disableValidation',
+  'inputAttributes',
   'catChange',
   'catFocus',
   'catBlur'

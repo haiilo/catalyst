@@ -9,6 +9,7 @@ import { h, FunctionalComponent } from '@stencil/core';
 interface CatFormHintProps {
   hint?: string | string[];
   slottedHint?: HTMLSlotElement;
+  class?: string;
 }
 
 /**
@@ -23,7 +24,7 @@ export const CatFormHint: FunctionalComponent<CatFormHintProps> = props => {
     <div class="hint-section">
       {[
         hint &&
-          (Array.isArray(hint) ? hint.map(item => <p class="input-hint">{item}</p>) : <p class="input-hint">{hint}</p>),
+          (Array.isArray(hint) ? hint.map(item => <p class={(props.class ?? '') + ' input-hint'}>{item}</p>) : <p class={(props.class ?? '') + ' input-hint'}>{hint}</p>),
         slottedHint
       ]}
     </div>

@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
+@use 'utils/color';
 
 :host {
   display: flex;
@@ -39,11 +40,21 @@
   &:not(.input-disabled) {
     &:hover {
       box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
+      &.input-invalid {
+        box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
+      }
     }
 
     &:focus-within {
       outline: 2px solid cat-token('color.ui.border.focus');
+      &.input-invalid {
+        outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
+      }
     }
+  }
+
+  &.input-invalid {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 
   /* stylelint-disable property-no-vendor-prefix */
@@ -57,15 +68,15 @@
   /* stylelint-enable property-no-vendor-prefix */
 }
 
-:host(.cat-error) {
-  .input-wrapper {
-    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
-
-    &:not(.input-disabled):hover {
-      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg');
-    }
-  }
-}
+//:host(.cat-error) {
+//  .input-wrapper {
+//    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
+//
+//    &:not(.input-disabled):hover {
+//      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg');
+//    }
+//  }
+//}
 
 label {
   align-self: flex-start;
