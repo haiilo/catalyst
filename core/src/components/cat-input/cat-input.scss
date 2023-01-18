@@ -40,6 +40,7 @@
   &:not(.input-disabled) {
     &:hover {
       box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
+
       &.input-invalid {
         box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
       }
@@ -47,6 +48,7 @@
 
     &:focus-within {
       outline: 2px solid cat-token('color.ui.border.focus');
+
       &.input-invalid {
         outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
       }
