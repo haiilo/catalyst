@@ -667,6 +667,14 @@ export const ci16ExternalLink = {
     name: '16-external-link',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M4 2.75c-.69 0-1.25.56-1.25 1.25v8c0 .69.56 1.25 1.25 1.25h8c.69 0 1.25-.56 1.25-1.25v-1a.75.75 0 0 1 1.5 0v1A2.75 2.75 0 0 1 12 14.75H4A2.75 2.75 0 0 1 1.25 12V4A2.75 2.75 0 0 1 4 1.25h1a.75.75 0 0 1 0 1.5H4Z"/><path d="M8.25 2A.75.75 0 0 1 9 1.25h4c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0V3.81L8.53 8.53a.75.75 0 0 1-1.06-1.06l4.72-4.72H9A.75.75 0 0 1 8.25 2Z"/></svg>`
 };
+export const ci16Flag = {
+    name: '16-flag',
+    data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 3.293V8.57c.514-.184 1.057-.218 1.597-.16.962.106 1.98.513 2.876.872l.056.022c.965.386 1.8.714 2.537.794.587.064 1.046-.034 1.434-.394V4.253c-.603.188-1.223.203-1.825.123-.936-.124-1.894-.488-2.74-.81l-.138-.052c-.93-.353-1.713-.634-2.402-.68-.544-.036-.994.076-1.395.46Zm0 7.003c.388-.36.847-.458 1.434-.394.737.08 1.572.408 2.537.794l.056.022c.896.36 1.914.766 2.876.871 1.041.114 2.098-.119 2.923-1.109a.75.75 0 0 0 .174-.48V3a.75.75 0 0 0-1.23-.576c-.544.453-1.157.564-1.898.465-.758-.1-1.568-.408-2.472-.75l-.072-.028c-.883-.335-1.88-.71-2.833-.773C4.23 1.27 3.23 1.554 2.424 2.52A.75.75 0 0 0 2.25 3v11a.75.75 0 0 0 1.5 0v-3.704Z"/></svg>`
+};
+export const ci16InfoCircleOutlined = {
+    name: '16-info-circle-outlined',
+    data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7.25 12V7h1.5v5h-1.5ZM8 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M.25 8a7.75 7.75 0 1 1 15.5 0A7.75 7.75 0 0 1 .25 8ZM8 1.75a6.25 6.25 0 1 0 0 12.5 6.25 6.25 0 0 0 0-12.5Z"/></svg>`
+};
 export const ci16LinkLarge = {
     name: '16-link-large',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 1.25A1.75 1.75 0 0 0 1.25 3v10c0 .966.784 1.75 1.75 1.75h10A1.75 1.75 0 0 0 14.75 13V3A1.75 1.75 0 0 0 13 1.25H3ZM2.75 3A.25.25 0 0 1 3 2.75h10a.25.25 0 0 1 .25.25v5.25H2.75V3Zm0 6.75V13c0 .138.112.25.25.25h10a.25.25 0 0 0 .25-.25V9.75H2.75Z"/></svg>`
@@ -679,6 +687,14 @@ export const ci16LinkSmall = {
     name: '16-link-small',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.25 6A.75.75 0 0 1 2 5.25h12a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-.75.75H2a.75.75 0 0 1-.75-.75V6Zm1.5.75v2.5h10.5v-2.5H2.75Z"/></svg>`
 };
+export const ci16PenOutlined = {
+    name: '16-pen-outlined',
+    data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m8.174 3.79.002-.002h.001l2.278-2.279a1.74 1.74 0 0 1 2.46 0l1.576 1.577a1.74 1.74 0 0 1 0 2.46l-8.243 8.242a.744.744 0 0 1-.346.196l-3.976.994a.746.746 0 0 1-.904-.904l.994-3.976c.033-.131.1-.25.196-.346L8.174 3.79Zm3.335-1.226a.248.248 0 0 1 .351 0l1.576 1.576a.249.249 0 0 1 0 .351l-1.752 1.752-1.927-1.928 1.752-1.751Zm-.879 4.733-5.29 5.29-2.57.643.642-2.57 5.29-5.29 1.928 1.927Z"/></svg>`
+};
+export const ci16PinOutlined = {
+    name: '16-pin-outlined',
+    data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 1.25a.75.75 0 0 0-.678 1.071L4.85 5.544v1.912L3.322 10.68A.75.75 0 0 0 4 11.75h3.25V15a.75.75 0 0 0 1.5 0v-3.25H12a.75.75 0 0 0 .678-1.071L11.15 7.456V5.544l1.528-3.223A.75.75 0 0 0 12 1.25H4Zm6.814 9L9.722 7.946a.75.75 0 0 1-.072-.321v-2.25a.75.75 0 0 1 .072-.321l1.092-2.304H5.186l1.092 2.304c.047.1.072.21.072.321v2.25a.75.75 0 0 1-.072.321L5.186 10.25h5.628Z"/></svg>`
+};
 export const ci16TargetedOutlined = {
     name: '16-targeted-outlined',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 2.75a5.25 5.25 0 0 0-1.75 10.201.75.75 0 1 1-.5 1.415A6.752 6.752 0 0 1 8 1.25c2.94 0 5.44 1.88 6.366 4.5a.75.75 0 1 1-1.415.5A5.253 5.253 0 0 0 8 2.75Z"/><path d="M8 5.75a2.25 2.25 0 0 0-1.5 3.927.75.75 0 0 1-1 1.118A3.75 3.75 0 1 1 10.795 5.5a.75.75 0 0 1-1.118 1A2.243 2.243 0 0 0 8 5.75Z"/><path d="M8.25 9A.75.75 0 0 1 9 8.25h3a.75.75 0 0 1 0 1.5h-1.19l2.72 2.72a.75.75 0 1 1-1.06 1.06l-2.72-2.72V12a.75.75 0 0 1-1.5 0V9Z"/></svg>`
@@ -686,6 +702,18 @@ export const ci16TargetedOutlined = {
 export const ci16WarningCircleOutlined = {
     name: '16-warning-circle-outlined',
     data: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7.25 9V4h1.5v5h-1.5ZM8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M.25 8a7.75 7.75 0 1 1 15.5 0A7.75 7.75 0 0 1 .25 8ZM8 1.75a6.25 6.25 0 1 0 0 12.5 6.25 6.25 0 0 0 0-12.5Z"/></svg>`
+};
+export const ciA11YOutlined = {
+    name: 'a-11-y-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM7.272 9.818a.75.75 0 0 1 .91-.546l3.818.955 3.818-.955a.75.75 0 0 1 .364 1.456l-2.92.73a9.16 9.16 0 0 0 1.526 4.622l.336.504a.75.75 0 1 1-1.248.832l-.336-.504A10.652 10.652 0 0 1 12.53 15h-1.06a10.565 10.565 0 0 1-1.01 1.912l-.336.504a.75.75 0 1 1-1.248-.832l.336-.504a9.159 9.159 0 0 0 1.527-4.622l-2.92-.73a.75.75 0 0 1-.547-.91Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z"/></svg>`
+};
+export const ciAlertBoxOutlined = {
+    name: 'alert-box-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 3.25A1.75 1.75 0 0 0 3.25 5v14c0 .966.784 1.75 1.75 1.75h14A1.75 1.75 0 0 0 20.75 19V5A1.75 1.75 0 0 0 19 3.25H5ZM4.75 5A.25.25 0 0 1 5 4.75h14a.25.25 0 0 1 .25.25v14a.25.25 0 0 1-.25.25H5a.25.25 0 0 1-.25-.25V5ZM12 7.25a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75ZM13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>`
+};
+export const ciAlertCircleOutlined = {
+    name: 'alert-circle-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V8Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z"/></svg>`
 };
 export const ciAppleSafari = {
     name: 'apple-safari',
@@ -699,6 +727,10 @@ export const ciArrowLeftOutlined = {
     name: 'arrow-left-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.53 6.47a.75.75 0 0 1 0 1.06l-3.72 3.72H18a.75.75 0 0 1 0 1.5H7.81l3.72 3.72a.75.75 0 1 1-1.06 1.06l-5-5a.75.75 0 0 1 0-1.06l5-5a.75.75 0 0 1 1.06 0Z"/></svg>`
 };
+export const ciArrowPointingBoxOutlined = {
+    name: 'arrow-pointing-box-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 4.75c-.69 0-1.25.56-1.25 1.25v5a.75.75 0 0 1-1.5 0V6A2.75 2.75 0 0 1 6 3.25h12A2.75 2.75 0 0 1 20.75 6v12A2.75 2.75 0 0 1 18 20.75h-5a.75.75 0 0 1 0-1.5h5c.69 0 1.25-.56 1.25-1.25V6c0-.69-.56-1.25-1.25-1.25H6Z"/><path d="M8.25 10A.75.75 0 0 1 9 9.25h4c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-3.19l-6.72 6.72a.75.75 0 0 1-1.06-1.06l6.72-6.72H9a.75.75 0 0 1-.75-.75Z"/></svg>`
+};
 export const ciArrowRedoOutlined = {
     name: 'arrow-redo-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.53 3.47a.75.75 0 1 0-1.06 1.06l2.72 2.72H10a5.75 5.75 0 1 0 0 11.5h2a.75.75 0 0 0 0-1.5h-2a4.25 4.25 0 0 1 0-8.5h7.19l-2.72 2.72a.75.75 0 1 0 1.06 1.06l4-4a.75.75 0 0 0 0-1.06l-4-4Z"/></svg>`
@@ -711,6 +743,30 @@ export const ciArrowUpOutlined = {
     name: 'arrow-up-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.47 5.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 1 1-1.06 1.06l-3.72-3.72V18a.75.75 0 0 1-1.5 0V7.81l-3.72 3.72a.75.75 0 0 1-1.06-1.06l5-5Z"/></svg>`
 };
+export const ciBlank = {
+    name: 'blank',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"/>`
+};
+export const ciBlockAlignCenterOutlined = {
+    name: 'block-align-center-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.25 5A.75.75 0 0 1 4 4.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 5Zm0 14a.75.75 0 0 1 .75-.75h16a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h6a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H9Zm.75 6v-4.5h4.5v4.5h-4.5Z"/></svg>`
+};
+export const ciBlockAlignFwOutlined = {
+    name: 'block-align-fw-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.25 5A.75.75 0 0 1 4 4.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 5Zm0 14a.75.75 0 0 1 .75-.75h16a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h18a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H3Zm.75 6v-4.5h16.5v4.5H3.75Z"/></svg>`
+};
+export const ciBlockAlignLeftOutlined = {
+    name: 'block-align-left-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.25 5A.75.75 0 0 1 4 4.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 5Zm0 14a.75.75 0 0 1 .75-.75h16a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M5 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h6a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H5Zm.75 6v-4.5h4.5v4.5h-4.5Z"/></svg>`
+};
+export const ciBlockAlignRightOutlined = {
+    name: 'block-align-right-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.25 5A.75.75 0 0 1 4 4.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 5Zm0 14a.75.75 0 0 1 .75-.75h16a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h6a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-6Zm.75 6v-4.5h4.5v4.5h-4.5Z"/></svg>`
+};
+export const ciBlockCaptionOutlined = {
+    name: 'block-caption-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.25A1.75 1.75 0 0 0 3.25 6v8c0 .966.784 1.75 1.75 1.75h14A1.75 1.75 0 0 0 20.75 14V6A1.75 1.75 0 0 0 19 4.25H5ZM4.75 6A.25.25 0 0 1 5 5.75h14a.25.25 0 0 1 .25.25v8a.25.25 0 0 1-.25.25H5a.25.25 0 0 1-.25-.25V6ZM4 18.25a.75.75 0 0 0 0 1.5h12a.75.75 0 0 0 0-1.5H4Z"/></svg>`
+};
 export const ciBoldOutlined = {
     name: 'bold-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 5A.75.75 0 0 1 8 4.25h4.5a4.25 4.25 0 0 1 2.836 7.416A4.25 4.25 0 0 1 13.5 19.75H8a.75.75 0 0 1-.75-.75V5Zm1.5.75v5.5h3.75a2.75 2.75 0 1 0 0-5.5H8.75Zm0 7v5.5h4.75a2.75 2.75 0 1 0 0-5.5H8.75Z"/></svg>`
@@ -719,13 +775,25 @@ export const ciBrushBracketsOutlined = {
     name: 'brush-brackets-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3.18a3.75 3.75 0 0 0-3.75 3.75v3a.75.75 0 0 0 1.5 0v-3A2.25 2.25 0 0 1 7 4.68h2.771a.75.75 0 0 0 0-1.5H7ZM20.75 14.4a.75.75 0 0 0-1.5 0v2.53A2.25 2.25 0 0 1 17 19.18h-3a.75.75 0 0 0 0 1.5h3a3.75 3.75 0 0 0 3.75-3.75V14.4Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="m15.653 12.675-2.824 1.999a3.653 3.653 0 0 1-1.064 2.799.754.754 0 0 1-.053.048c-1.873 1.542-3.825 1.82-5.3 1.706a7.846 7.846 0 0 1-1.78-.349 6.522 6.522 0 0 1-.659-.251c-.37-.17-.581-.577-.427-.974.712-1.823 1.487-4.066 2.91-5.49a3.652 3.652 0 0 1 2.8-1.063l1.999-2.824 5.822-4.406a2.13 2.13 0 0 1 2.983 2.983l-4.407 5.822Zm-3.103.358-.808-.808-.019-.019-.019-.018-.808-.809 1.449-2.047 5.637-4.266a.63.63 0 0 1 .882.881l-4.267 5.638-2.047 1.448Zm-5.033.191c.842-.842 2.24-.847 3.13.028l.03.03c.867.882.87 2.26.052 3.105-1.503 1.224-3.034 1.434-4.2 1.344a6.366 6.366 0 0 1-1.298-.238c.163-.387.383-.896.634-1.435.266-.572.563-1.17.86-1.69.305-.533.58-.93.792-1.144Z"/></svg>`
 };
+export const ciCalendarPenOutlined = {
+    name: 'calendar-pen-outlined',
+    data: `<svg viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg"><path d="M17 2.32a.75.75 0 0 1 .75.75v.25H18a2.75 2.75 0 0 1 2.75 2.75h-1.5c0-.69-.56-1.25-1.25-1.25H7a2.25 2.25 0 0 0-2.25 2.25v1.25H12a.75.75 0 0 1 0 1.5H4.75v8.25c0 .691.56 1.25 1.25 1.25v1.5a2.75 2.75 0 0 1-2.75-2.75v-11a3.751 3.751 0 0 1 3-3.674V3.07a.75.75 0 0 1 1.5 0v.25h8.5v-.25a.75.75 0 0 1 .75-.75Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16.993 8.247a1.75 1.75 0 0 1 2.475 0l1.355 1.355a1.75 1.75 0 0 1 0 2.475l-7.6 7.6a.75.75 0 0 1-.349.198l-3.692.923a.75.75 0 0 1-.91-.91l.923-3.692a.75.75 0 0 1 .198-.348l7.6-7.6Zm1.415 1.061a.25.25 0 0 0-.354 0l-1.378 1.378 1.709 1.709 1.377-1.378a.25.25 0 0 0 0-.354l-1.355-1.355Zm-1.084 4.147-1.709-1.708-5.015 5.015-.57 2.278 2.279-.57 5.015-5.015Z"/></svg>`
+};
+export const ciCommentOutlined = {
+    name: 'comment-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm5-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-9 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 3.25A1.75 1.75 0 0 0 2.25 5v11.999c0 .966.784 1.75 1.75 1.75h4.44c.07 0 .139.03.186.084l2.066 2.324a1.75 1.75 0 0 0 2.616 0l2.066-2.324a.25.25 0 0 1 .187-.084H20a1.75 1.75 0 0 0 1.75-1.75V5A1.75 1.75 0 0 0 20 3.25H4ZM3.75 5A.25.25 0 0 1 4 4.75h16a.25.25 0 0 1 .25.25v11.999a.25.25 0 0 1-.25.25h-4.44c-.499 0-.975.214-1.307.587l-2.066 2.325a.25.25 0 0 1-.374 0l-2.066-2.325a1.75 1.75 0 0 0-1.308-.587H4a.25.25 0 0 1-.25-.25V5Z"/></svg>`
+};
 export const ciCompassOutlined = {
     name: 'compass-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.374 16.683a.5.5 0 0 1-.93.07l-1.618-3.412a.5.5 0 0 0-.237-.238l-3.413-1.617a.5.5 0 0 1 .07-.93l7.865-2.36a.5.5 0 0 1 .622.623l-2.36 7.864Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.18a9.75 9.75 0 0 0-9.75 9.75c0 5.384 4.365 9.75 9.75 9.75s9.75-4.366 9.75-9.75A9.75 9.75 0 0 0 12 2.18Zm-8.25 9.75a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0Z"/></svg>`
 };
-export const ciExclamationMarkCircleOutlined = {
-    name: 'exclamation-mark-circle-outlined',
-    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V8Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z"/></svg>`
+export const ciEyeClosedOutlined = {
+    name: 'eye-closed-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.608 7.948a.75.75 0 1 0-1.234.853 12.396 12.396 0 0 0 2.255 2.438l-2.574 2.574a.75.75 0 0 0 1.061 1.06l2.738-2.737c1.283.824 2.777 1.433 4.396 1.58V17a.75.75 0 0 0 1.5 0v-3.284c1.618-.148 3.11-.76 4.392-1.584l2.742 2.742a.75.75 0 0 0 1.06-1.06l-2.579-2.58a12.5 12.5 0 0 0 2.251-2.432.75.75 0 0 0-1.232-.855C17.965 9.99 15.144 12.25 12 12.25c-3.153 0-5.978-2.255-7.392-4.302Z"/></svg>`
+};
+export const ciEyeOpenOutlined = {
+    name: 'eye-open-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5ZM9.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4.25c-2.735 0-5.158 1.37-6.872 2.948-.862.794-1.567 1.66-2.062 2.475-.479.79-.816 1.62-.816 2.327 0 .707.337 1.538.816 2.327.495.815 1.2 1.68 2.062 2.475C6.842 18.38 9.265 19.75 12 19.75c2.737 0 5.16-1.379 6.873-2.96.861-.795 1.566-1.662 2.06-2.475.479-.786.817-1.614.817-2.315 0-.7-.338-1.529-.817-2.315-.494-.813-1.199-1.68-2.06-2.475C17.16 5.629 14.737 4.25 12 4.25ZM3.75 12c0-.293.167-.837.598-1.548.416-.685 1.03-1.444 1.796-2.15C7.688 6.88 9.764 5.75 12 5.75c2.234 0 4.31 1.136 5.855 2.562.767.708 1.38 1.468 1.797 2.153.433.71.598 1.25.598 1.535 0 .285-.165.824-.598 1.535-.416.685-1.03 1.445-1.797 2.153-1.544 1.426-3.621 2.562-5.855 2.562-2.235 0-4.312-1.13-5.856-2.552-.767-.706-1.38-1.465-1.796-2.15-.431-.71-.598-1.255-.598-1.548Z"/></svg>`
 };
 export const ciFacebook = {
     name: 'facebook',
@@ -746,6 +814,10 @@ export const ciFilterOutlined = {
 export const ciFingerprintOutlined = {
     name: 'fingerprint-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.41 5.172a.75.75 0 1 1-.504-1.413 8.884 8.884 0 0 1 9.243 2.09 8.875 8.875 0 0 1 2.601 6.278c0 1.88-.21 3.753-.629 5.585a.75.75 0 1 1-1.462-.334 23.56 23.56 0 0 0 .591-5.25 7.375 7.375 0 0 0-7.382-7.378 7.292 7.292 0 0 0-2.458.422Z"/><path d="M13.006 7.448a4.818 4.818 0 0 0-5.953 4.68 11.316 11.316 0 0 1-1.43 5.535.75.75 0 0 0 1.31.73 12.816 12.816 0 0 0 1.62-6.267 3.312 3.312 0 0 1 2.132-3.097 3.318 3.318 0 0 1 3.657.889.75.75 0 1 0 1.118-1 4.816 4.816 0 0 0-2.454-1.47Zm3.678 4.678a.75.75 0 0 0-1.5.002 19.432 19.432 0 0 1-1.468 7.434.75.75 0 1 0 1.387.572 20.93 20.93 0 0 0 1.581-8.008ZM5.126 9.116a7.326 7.326 0 0 1 1.82-2.481c.723-.643-.274-1.764-.997-1.121a8.886 8.886 0 0 0-2.962 6.615 7.33 7.33 0 0 1-.669 3.071.75.75 0 1 0 1.364.626 8.832 8.832 0 0 0 .805-3.7 7.342 7.342 0 0 1 .64-3.01Zm5.592 9.107a.75.75 0 0 1 .353 1c-.181.38-.374.766-.578 1.137a.75.75 0 1 1-1.315-.72c.186-.34.366-.699.54-1.064a.75.75 0 0 1 1-.353Z"/><path d="M12.618 12.126a.75.75 0 1 0-1.5.002 15.29 15.29 0 0 1-.492 3.874.75.75 0 0 0 1.452.377c.36-1.389.543-2.818.54-4.253Z"/></svg>`
+};
+export const ciFlagOutlined = {
+    name: 'flag-outlined',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.55 4.4a.75.75 0 0 1 1.2.6v8.78a.75.75 0 0 1-.164.467c-.946 1.187-2.164 1.476-3.39 1.336-1.159-.132-2.39-.653-3.485-1.111-1.154-.483-2.174-.902-3.077-1.005-.756-.087-1.365.053-1.884.593V19a.75.75 0 0 1-1.5 0V5a.75.75 0 0 1 .3-.6c2.33-1.748 4.693-.86 6.611-.14 2.116.794 3.734 1.381 5.389.14Zm-10.8 7.848c.649-.29 1.35-.352 2.054-.272 1.138.13 2.345.635 3.426 1.087 1.179.493 2.217.925 3.136 1.03.756.086 1.365-.054 1.884-.594V6.281c-1.97.784-3.903.025-5.513-.579C9.8 4.976 8.276 4.447 6.75 5.395v6.853Z"/></svg>`
 };
 export const ciGoogleCalendar = {
     name: 'google-calendar',
@@ -926,6 +998,26 @@ export const ciSlidersOutlined = {
 export const ciSocialMediaOutlined = {
     name: 'social-media-outlined',
     data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.25 6a3.75 3.75 0 1 1 1.042 2.594l-2.781 2.085a3.757 3.757 0 0 1-.001 2.641l2.782 2.086a3.75 3.75 0 1 1-.803 1.273l-2.78-2.085a3.75 3.75 0 1 1 0-5.187l2.78-2.086A3.741 3.741 0 0 1 12.25 6ZM16 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 12a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM4.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"/></svg>`
+};
+export const ciStatusAvailable = {
+    name: 'status-available',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle opacity=".15" cx="12" cy="12" r="8" fill="#008458"/><circle cx="12" cy="12" r="4" fill="#008458"/></svg>`
+};
+export const ciStatusAway = {
+    name: 'status-away',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5ZM5.25 12a6.75 6.75 0 1 1 13.5 0 6.75 6.75 0 0 1-13.5 0Z" fill="#697687"/></svg>`
+};
+export const ciStatusDnd = {
+    name: 'status-dnd',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 11.25a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5h-4Z" fill="#D9340D"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.25a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM6.75 12a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" fill="#D9340D"/></svg>`
+};
+export const ciStatusInvisible = {
+    name: 'status-invisible',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.684 5.378a6.78 6.78 0 0 1 2.633 0l-.292 1.472a5.278 5.278 0 0 0-2.05 0l-.291-1.472Zm5.067 1.01a6.783 6.783 0 0 1 1.862 1.861l-1.247.835a5.283 5.283 0 0 0-1.45-1.45l.835-1.247Zm-9.364 1.86A6.783 6.783 0 0 1 8.25 6.387l.835 1.247a5.283 5.283 0 0 0-1.45 1.45l-1.247-.835ZM5.25 12c0-.45.044-.89.128-1.316l1.472.29a5.278 5.278 0 0 0 0 2.051l-1.472.291A6.78 6.78 0 0 1 5.25 12Zm13.372-1.316a6.776 6.776 0 0 1 0 2.633l-1.472-.292a5.286 5.286 0 0 0 0-2.05l1.472-.291ZM8.249 17.613a6.783 6.783 0 0 1-1.862-1.862l1.247-.835a5.283 5.283 0 0 0 1.45 1.45l-.835 1.247Zm9.364-1.862a6.783 6.783 0 0 1-1.862 1.862l-.835-1.247a5.284 5.284 0 0 0 1.45-1.45l1.247.835ZM12 18.75c-.45 0-.89-.044-1.316-.128l.29-1.472a5.286 5.286 0 0 0 2.051 0l.291 1.472A6.776 6.776 0 0 1 12 18.75Z" fill="#697687"/></svg>`
+};
+export const ciStatusOoo = {
+    name: 'status-ooo',
+    data: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.75 9a.75.75 0 0 0-1.5 0v3c0 .414.336.75.75.75h2a.75.75 0 0 0 0-1.5h-1.25V9Z" fill="#9F6100"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.25a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM6.75 12a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" fill="#9F6100"/></svg>`
 };
 export const ciStreamFilled = {
     name: 'stream-filled',
@@ -1303,26 +1395,44 @@ export const completeIconSet = [
     ci16EditorSearch,
     ci16EditorSettings,
     ci16ExternalLink,
+    ci16Flag,
+    ci16InfoCircleOutlined,
     ci16LinkLarge,
     ci16LinkMedium,
     ci16LinkSmall,
+    ci16PenOutlined,
+    ci16PinOutlined,
     ci16TargetedOutlined,
     ci16WarningCircleOutlined,
+    ciA11YOutlined,
+    ciAlertBoxOutlined,
+    ciAlertCircleOutlined,
     ciAppleSafari,
     ciArrowDownOutlined,
     ciArrowLeftOutlined,
+    ciArrowPointingBoxOutlined,
     ciArrowRedoOutlined,
     ciArrowRightOutlined,
     ciArrowUpOutlined,
+    ciBlank,
+    ciBlockAlignCenterOutlined,
+    ciBlockAlignFwOutlined,
+    ciBlockAlignLeftOutlined,
+    ciBlockAlignRightOutlined,
+    ciBlockCaptionOutlined,
     ciBoldOutlined,
     ciBrushBracketsOutlined,
+    ciCalendarPenOutlined,
+    ciCommentOutlined,
     ciCompassOutlined,
-    ciExclamationMarkCircleOutlined,
+    ciEyeClosedOutlined,
+    ciEyeOpenOutlined,
     ciFacebook,
     ciFeedFilled,
     ciFeedOutlined,
     ciFilterOutlined,
     ciFingerprintOutlined,
+    ciFlagOutlined,
     ciGoogleCalendar,
     ciGoogleChrome,
     ciGoogleDrive,
@@ -1368,6 +1478,11 @@ export const completeIconSet = [
     ciRedoOutlined,
     ciSlidersOutlined,
     ciSocialMediaOutlined,
+    ciStatusAvailable,
+    ciStatusAway,
+    ciStatusDnd,
+    ciStatusInvisible,
+    ciStatusOoo,
     ciStreamFilled,
     ciStreamOutlined,
     ciStrikethroughOutlined,
