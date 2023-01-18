@@ -7,7 +7,7 @@ import { NgControl } from '@angular/forms';
 })
 export class TextValueAccessorDecorator implements AfterViewInit {
 
-  constructor(private el: ElementRef, @Self() @Optional() private controlDirective?: NgControl) {
+  constructor(private readonly el: ElementRef, @Self() @Optional() private readonly controlDirective?: NgControl) {
 
   }
 

@@ -95,10 +95,6 @@ export namespace Components {
          */
         "active": boolean;
         /**
-          * Attributes that will be added to the button element.
-         */
-        "buttonAttributes"?: { [key: string]: string };
-        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -147,6 +143,10 @@ export namespace Components {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Disables ellipse overflowing button content.
          */
@@ -338,10 +338,6 @@ export namespace Components {
          */
         "identifier"?: string;
         /**
-          * Attributes that will be added to the input element.
-         */
-        "inputAttributes"?: { [key: string]: string };
-        /**
           * Flag that indicates if the input is invalid.
          */
         "invalid": boolean;
@@ -373,6 +369,10 @@ export namespace Components {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * The placeholder text to display within the input.
          */
@@ -1180,10 +1180,6 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
-          * Attributes that will be added to the button element.
-         */
-        "buttonAttributes"?: { [key: string]: string };
-        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -1219,6 +1215,10 @@ declare namespace LocalJSX {
           * The name of the button, which gets paired with the button's value when submitted as part of a form. Corresponds with the native HTML name attribute.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Disables ellipse overflowing button content.
          */
@@ -1408,10 +1408,6 @@ declare namespace LocalJSX {
          */
         "identifier"?: string;
         /**
-          * Attributes that will be added to the input element.
-         */
-        "inputAttributes"?: { [key: string]: string };
-        /**
           * Flag that indicates if the input is invalid.
          */
         "invalid"?: boolean;
@@ -1443,6 +1439,10 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when the input loses focus.
          */
