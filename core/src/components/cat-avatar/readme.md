@@ -19,6 +19,16 @@
 | `urlTarget` | `url-target` | Specifies where to open the linked document.                        | `"_blank" \| "_self" \| undefined`  | `undefined` |
 
 
+## CSS Custom Properties
+
+| Name                     | Description                         |
+| ------------------------ | ----------------------------------- |
+| `--cat-avatar-bg`        | The background color of the avatar. |
+| `--cat-avatar-fill`      | The text color of the avatar.       |
+| `--cat-avatar-font-size` | The font size of the avatar.        |
+| `--cat-avatar-size`      | The size of the avatar.             |
+
+
 ## Dependencies
 
 ### Used by
