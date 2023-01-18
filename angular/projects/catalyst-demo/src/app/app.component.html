@@ -1,3 +1,7 @@
 <h1>Catalyst Demo</h1>
 <h2>Dialog</h2>
 <button (click)="openDialog()">Open</button>
+<h2>Form Components</h2>
+<form [formGroup]="form">
+  <cat-input formControlName="test" textPrefix="write 'aaa' to make it valid" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-input>
+</form>

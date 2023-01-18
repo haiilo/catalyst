@@ -144,6 +144,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Disables ellipse overflowing button content.
          */
         "noEllipsis": boolean;
@@ -293,6 +297,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Disable validation for the input. No error messages or error colors will be shown.
+         */
+        "disableValidation": boolean;
+        /**
           * Whether the input is disabled.
          */
         "disabled": boolean;
@@ -310,6 +318,10 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
+          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+         */
+        "errors"?: { [key: string]: unknown };
+        /**
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
@@ -325,6 +337,10 @@ export namespace Components {
           * A unique identifier for the input.
          */
         "identifier"?: string;
+        /**
+          * Flag that indicates if the input is invalid.
+         */
+        "invalid": boolean;
         /**
           * The label for the input.
          */
@@ -353,6 +369,10 @@ export namespace Components {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * The placeholder text to display within the input.
          */
@@ -1196,6 +1216,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Disables ellipse overflowing button content.
          */
         "noEllipsis"?: boolean;
@@ -1356,9 +1380,17 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Disable validation for the input. No error messages or error colors will be shown.
+         */
+        "disableValidation"?: boolean;
+        /**
           * Whether the input is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+         */
+        "errors"?: { [key: string]: unknown };
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -1375,6 +1407,10 @@ declare namespace LocalJSX {
           * A unique identifier for the input.
          */
         "identifier"?: string;
+        /**
+          * Flag that indicates if the input is invalid.
+         */
+        "invalid"?: boolean;
         /**
           * The label for the input.
          */
@@ -1403,6 +1439,10 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when the input loses focus.
          */

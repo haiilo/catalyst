@@ -10,3 +10,5 @@ export { CatDialogHeaderComponent } from './lib/dialog/dialog-header.component';
 export { CatDialogActionsComponent } from './lib/dialog/dialog-actions.component';
 export { CatDialogService, CatDialogConfig } from './lib/dialog/dialog.service';
 export { catI18nRegistry, catIconRegistry, catNotificationService } from '@haiilo/catalyst';
+export { TextValueAccessorDecorator } from './lib/directives/text-value-accessor-decorator';
+

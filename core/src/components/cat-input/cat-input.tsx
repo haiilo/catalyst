@@ -150,6 +150,26 @@ export class CatInput {
   @Prop({ mutable: true }) value?: string | number;
 
   /**
+   * Flag that indicates if the input is invalid.
+   */
+  @Prop({ mutable: true }) invalid = false;
+
+  /**
+   * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+   */
+  @Prop({ mutable: true }) errors?: { [key: string]: unknown };
+
+  /**
+   * Disable validation for the input. No error messages or error colors will be shown.
+   */
+  @Prop() disableValidation = false;
+
+  /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -232,18 +252,21 @@ export class CatInput {
           class={{
             'input-wrapper': true,
             'input-round': this.round,
-            'input-disabled': this.disabled
+            'input-disabled': this.disabled,
+            'input-invalid': this.invalid && !this.disableValidation
           }}
           onClick={() => this.input.focus()}
         >
           {this.textPrefix && (
             <span class="text-prefix" part="prefix">
               {this.textPrefix}
+              {this.invalid}
             </span>
           )}
           {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
           <div class="input-inner-wrapper">
             <input
+              {...this.nativeAttributes}
               ref={el => (this.input = el as HTMLInputElement)}
               id={this.id}
               class={{
@@ -264,6 +287,8 @@ export class CatInput {
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
+              aria-invalid={this.invalid ? 'true' : 'false'}
+              aria-describedby={this.id + '-hint'}
             ></input>
             {this.clearable && !this.disabled && this.value && (
               <cat-button
@@ -277,19 +302,29 @@ export class CatInput {
               ></cat-button>
             )}
           </div>
-          {this.icon && this.iconRight && <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>}
+          {(!this.invalid || this.disableValidation) && this.icon && this.iconRight && (
+            <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
+          )}
+          {this.invalid && !this.disableValidation && (
+            <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+          )}
           {this.textSuffix && (
             <span class="text-suffix" part="suffix">
               {this.textSuffix}
             </span>
           )}
         </div>
-        {this.hintSection}
+        <div id={this.id + '-hint'}>{this.hintSection}</div>
       </Host>
     );
   }
 
   private get hintSection() {
+    if (this.errors && !this.disableValidation) {
+      return Object.keys(this.errors).map(error => (
+        <CatFormHint hint={i18n.t(`error.${error}`)} class="cat-text-danger" />
+      ));
+    }
     const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
