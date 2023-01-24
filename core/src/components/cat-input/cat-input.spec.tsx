@@ -18,7 +18,6 @@ describe('cat-input', () => {
               <input aria-describedby="cat-input-0-hint" aria-invalid="false" id="cat-input-0" type="text">
             </div>
           </div>
-          <div id="cat-input-0-hint"></div>
         </mock:shadow-root>
       </cat-input>
     `);
