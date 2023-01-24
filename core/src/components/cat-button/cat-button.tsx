@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
@@ -15,13 +15,16 @@ import { MediaMatcher } from '../../utils/media-matcher';
 @Component({
   tag: 'cat-button',
   styleUrl: 'cat-button.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatButton {
+  private tabIndex: string | null = null;
   private button!: HTMLButtonElement | HTMLAnchorElement;
   private mediaMatcher?: MediaMatcher;
   private mediaQueryList?: MediaQueryList;
   private mediaQueryListener?: (event: MediaQueryListEvent) => void;
+
+  @Element() hostElement!: HTMLElement;
 
   @State() _iconOnly = true;
 
@@ -177,6 +180,7 @@ export class CatButton {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
     this.onIconOnlyChanged(this.iconOnly);
   }
 
@@ -226,66 +230,70 @@ export class CatButton {
   render() {
     if (this.url) {
       return (
-        <a
-          ref={el => (this.button = el as HTMLAnchorElement)}
-          href={this.disabled ? undefined : this.url}
-          target={this.urlTarget}
-          aria-disabled={this.disabled ? 'true' : null}
-          aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
-          id={this.buttonId}
-          part="button"
-          class={{
-            'cat-button': true,
-            'cat-button-active': this.active,
-            'cat-button-icon': this.isIconButton,
-            'cat-button-round': this.round,
-            'cat-button-loading': this.loading,
-            'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
-            [`cat-button-${this.variant}`]: Boolean(this.variant),
-            [`cat-button-${this.color}`]: Boolean(this.color),
-            [`cat-button-${this.size}`]: Boolean(this.size)
-          }}
-          onClick={this.onClick.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        >
-          {this.content}
-        </a>
+        <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
+          <a
+            ref={el => (this.button = el as HTMLAnchorElement)}
+            href={this.disabled ? undefined : this.url}
+            target={this.urlTarget}
+            aria-disabled={this.disabled ? 'true' : null}
+            aria-label={this.a11yLabel}
+            aria-current={this.a11yCurrent}
+            id={this.buttonId}
+            part="button"
+            class={{
+              'cat-button': true,
+              'cat-button-active': this.active,
+              'cat-button-icon': this.isIconButton,
+              'cat-button-round': this.round,
+              'cat-button-loading': this.loading,
+              'cat-button-disabled': this.disabled,
+              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
+              [`cat-button-${this.variant}`]: Boolean(this.variant),
+              [`cat-button-${this.color}`]: Boolean(this.color),
+              [`cat-button-${this.size}`]: Boolean(this.size)
+            }}
+            onClick={this.onClick.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          >
+            {this.content}
+          </a>
+        </Host>
       );
     } else {
       return (
-        <button
-          {...this.nativeAttributes}
-          ref={el => (this.button = el as HTMLButtonElement)}
-          type={this.submit ? 'submit' : 'button'}
-          name={this.name}
-          value={this.value}
-          disabled={this.disabled}
-          aria-disabled={this.disabled ? 'true' : null}
-          aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
-          id={this.buttonId}
-          part="button"
-          class={{
-            'cat-button': true,
-            'cat-button-active': this.active,
-            'cat-button-icon': this.isIconButton,
-            'cat-button-round': this.round ?? this.isIconButton,
-            'cat-button-loading': this.loading,
-            'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
-            [`cat-button-${this.variant}`]: Boolean(this.variant),
-            [`cat-button-${this.color}`]: Boolean(this.color),
-            [`cat-button-${this.size}`]: Boolean(this.size)
-          }}
-          onClick={this.onClick.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        >
-          {this.content}
-        </button>
+        <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
+          <button
+            {...this.nativeAttributes}
+            ref={el => (this.button = el as HTMLButtonElement)}
+            type={this.submit ? 'submit' : 'button'}
+            name={this.name}
+            value={this.value}
+            disabled={this.disabled}
+            aria-disabled={this.disabled ? 'true' : null}
+            aria-label={this.a11yLabel}
+            aria-current={this.a11yCurrent}
+            id={this.buttonId}
+            part="button"
+            class={{
+              'cat-button': true,
+              'cat-button-active': this.active,
+              'cat-button-icon': this.isIconButton,
+              'cat-button-round': this.round ?? this.isIconButton,
+              'cat-button-loading': this.loading,
+              'cat-button-disabled': this.disabled,
+              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
+              [`cat-button-${this.variant}`]: Boolean(this.variant),
+              [`cat-button-${this.color}`]: Boolean(this.color),
+              [`cat-button-${this.size}`]: Boolean(this.size)
+            }}
+            onClick={this.onClick.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          >
+            {this.content}
+          </button>
+        </Host>
       );
     }
   }

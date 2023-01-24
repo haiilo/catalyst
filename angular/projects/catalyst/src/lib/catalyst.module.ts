@@ -1,17 +1,24 @@
 import { DialogModule } from '@angular/cdk/dialog';
+import { CommonModule } from '@angular/common';
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
-import { catI18nRegistry, CatI18nRegistry, catIconRegistry, CatIconRegistry, CatNotificationService, catNotificationService } from '@haiilo/catalyst';
+import {
+  catI18nRegistry,
+  CatI18nRegistry,
+  catIconRegistry,
+  CatIconRegistry,
+  CatNotificationService,
+  catNotificationService
+} from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
 import log, { RootLogger } from 'loglevel';
-import { BooleanValueAccessor } from "./directives/boolean-value-accessor";
-import * as Components from './directives/proxies';
-import { RadioValueAccessor } from "./directives/radio-value-accessor";
-import { SelectValueAccessor } from "./directives/select-value-accessor";
-import { TextValueAccessor } from "./directives/text-value-accessor";
-import { CatDialogComponent } from './dialog/dialog.component';
 import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
 import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
-import { CommonModule } from '@angular/common';
+import { CatDialogComponent } from './dialog/dialog.component';
+import { BooleanValueAccessor } from './directives/boolean-value-accessor';
+import * as Components from './directives/proxies';
+import { RadioValueAccessor } from './directives/radio-value-accessor';
+import { SelectValueAccessor } from './directives/select-value-accessor';
+import { TextValueAccessor } from './directives/text-value-accessor';
 import { TextValueAccessorDecorator } from './directives/text-value-accessor-decorator';
 
 const CatComponents = [
@@ -45,36 +52,47 @@ const CatDirectives = [
   RadioValueAccessor,
   BooleanValueAccessor,
   TextValueAccessorDecorator
-]
+];
 
 export const CAT_LOG_TOKEN = new InjectionToken<RootLogger>('CAT_LOG', {
   providedIn: 'root',
-  factory: () => log,
+  factory: () => log
 });
 
 export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
   providedIn: 'root',
-  factory: () => catI18nRegistry,
+  factory: () => catI18nRegistry
 });
 
 export const CAT_ICON_REGISTRY_TOKEN = new InjectionToken<CatIconRegistry>('CAT_ICON_REGISTRY', {
   providedIn: 'root',
-  factory: () => catIconRegistry,
+  factory: () => catIconRegistry
 });
 
 export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotificationService>('CAT_NOTIFICATION_SERVICE', {
   providedIn: 'root',
-  factory: () => catNotificationService,
+  factory: () => catNotificationService
 });
 
 @NgModule({
   imports: [CommonModule, DialogModule],
-  declarations: [...CatComponents, ...CatDirectives, CatDialogComponent, CatDialogActionsComponent, CatDialogHeaderComponent],
-  exports: [...CatComponents, ...CatDirectives, CatDialogComponent, CatDialogActionsComponent, CatDialogHeaderComponent],
+  declarations: [
+    ...CatComponents,
+    ...CatDirectives,
+    CatDialogComponent,
+    CatDialogActionsComponent,
+    CatDialogHeaderComponent
+  ],
+  exports: [
+    ...CatComponents,
+    ...CatDirectives,
+    CatDialogComponent,
+    CatDialogActionsComponent,
+    CatDialogHeaderComponent
+  ],
   providers: []
 })
 export class CatalystModule {
-
   static forRoot(): ModuleWithProviders<CatalystModule> {
     defineCustomElements();
     return {
