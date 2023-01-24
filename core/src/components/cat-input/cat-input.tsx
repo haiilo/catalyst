@@ -1,8 +1,11 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ErrorMap = { [key: string]: any };
 
 let nextUniqueId = 0;
 
@@ -29,10 +32,13 @@ export class CatInput {
   }
 
   private input!: HTMLInputElement;
+  private errorMapSrc?: ErrorMap;
 
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
+  @State() errorMap?: ErrorMap;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -150,19 +156,21 @@ export class CatInput {
   @Prop({ mutable: true }) value?: string | number;
 
   /**
-   * Flag that indicates if the input is invalid.
+   * The validation errors for this input. Will render a hint under the input
+   * with the translated error message(s) `error.${key}`. If an object is
+   * passed, the keys will be used as error keys and the values translation
+   * parameters.
+   * If the value is `true`, the input will be marked as invalid without any
+   * hints under the input.
    */
-  @Prop({ mutable: true }) invalid = false;
+  @Prop() errors?: boolean | string[] | ErrorMap;
 
   /**
-   * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+   * Fine-grained control over when the errors are shown. Can be `false` to
+   * never show errors, `true` to show errors on blur, or a number to show
+   * errors on change with the given delay in milliseconds.
    */
-  @Prop({ mutable: true }) errors?: { [key: string]: unknown };
-
-  /**
-   * Disable validation for the input. No error messages or error colors will be shown.
-   */
-  @Prop() disableValidation = false;
+  @Prop() errorUpdate: boolean | number = 0;
 
   /**
    * Attributes that will be added to the native HTML input element.
@@ -228,6 +236,19 @@ export class CatInput {
     this.value = '';
   }
 
+  @Watch('errors')
+  watchPropHandler(value?: boolean | string[] | ErrorMap) {
+    if (this.errorUpdate === false) {
+      this.errorMap = undefined;
+    } else {
+      this.errorMapSrc = Array.isArray(value)
+        ? value.map(error => ({ [error]: undefined }))
+        : value === true
+        ? {}
+        : value || undefined;
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -253,7 +274,7 @@ export class CatInput {
             'input-wrapper': true,
             'input-round': this.round,
             'input-disabled': this.disabled,
-            'input-invalid': this.invalid && !this.disableValidation
+            'input-invalid': this.invalid
           }}
           onClick={() => this.input.focus()}
         >
@@ -302,10 +323,10 @@ export class CatInput {
               ></cat-button>
             )}
           </div>
-          {(!this.invalid || this.disableValidation) && this.icon && this.iconRight && (
+          {!this.invalid && this.icon && this.iconRight && (
             <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
           )}
-          {this.invalid && !this.disableValidation && (
+          {this.invalid && (
             <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
           )}
           {this.textSuffix && (
@@ -314,28 +335,45 @@ export class CatInput {
             </span>
           )}
         </div>
-        <div id={this.id + '-hint'}>{this.hintSection}</div>
+        {this.hintSection}
       </Host>
     );
   }
 
+  private get invalid() {
+    return !!this.errorMap;
+  }
+
   private get hintSection() {
-    if (this.errors && !this.disableValidation) {
-      return Object.keys(this.errors).map(error => (
-        <CatFormHint hint={i18n.t(`error.${error}`)} class="cat-text-danger" />
-      ));
+    const errors = Object.entries(this.errorMap || {});
+    if (errors.length) {
+      return (
+        <div id={this.id + '-hint'}>
+          {errors.map(([key, params]) => (
+            <CatFormHint hint={i18n.t(`error.${key}`, params)} class="cat-text-danger" />
+          ))}
+        </div>
+      );
     }
+
     const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     return (
       (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        <div id={this.id + '-hint'}>
+          <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
+        </div>
       )
     );
   }
 
+  private errorUpdateTimeoutId?: number;
   private onInput(event: Event) {
     this.value = this.input.value;
     this.catChange.emit(event);
+    if (typeof this.errorUpdate === 'number') {
+      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+      this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+    }
   }
 
   private onFocus(event: FocusEvent) {
@@ -344,5 +382,8 @@ export class CatInput {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
+    if (this.errorUpdate === true) {
+      this.errorMap = this.errorMapSrc;
+    }
   }
 }

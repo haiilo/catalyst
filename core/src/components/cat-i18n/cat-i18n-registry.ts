@@ -50,7 +50,7 @@ export class CatI18nRegistry {
     !silent && window.dispatchEvent(this.buildEvent('cat-i18n-clear'));
   }
 
-  t(key: string, params?: { [key: string]: string | number }): string {
+  t(key: string, params?: { [key: string]: unknown }): string {
     const message = this.i18n.get(key);
     if (message === undefined) {
       log.error(`[CatI18nRegistry] Unknown message key: ${key}`);

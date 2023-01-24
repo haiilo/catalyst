@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
+import { ErrorMap } from "./components/cat-input/cat-input";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
@@ -297,10 +298,6 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Disable validation for the input. No error messages or error colors will be shown.
-         */
-        "disableValidation": boolean;
-        /**
           * Whether the input is disabled.
          */
         "disabled": boolean;
@@ -318,9 +315,13 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
-          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
          */
-        "errors"?: { [key: string]: unknown };
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -337,10 +338,6 @@ export namespace Components {
           * A unique identifier for the input.
          */
         "identifier"?: string;
-        /**
-          * Flag that indicates if the input is invalid.
-         */
-        "invalid": boolean;
         /**
           * The label for the input.
          */
@@ -1380,17 +1377,17 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Disable validation for the input. No error messages or error colors will be shown.
-         */
-        "disableValidation"?: boolean;
-        /**
           * Whether the input is disabled.
          */
         "disabled"?: boolean;
         /**
-          * Validation errors. Will render a hint under the input with the translated error message `error.${key}`.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
          */
-        "errors"?: { [key: string]: unknown };
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -1407,10 +1404,6 @@ declare namespace LocalJSX {
           * A unique identifier for the input.
          */
         "identifier"?: string;
-        /**
-          * Flag that indicates if the input is invalid.
-         */
-        "invalid"?: boolean;
         /**
           * The label for the input.
          */

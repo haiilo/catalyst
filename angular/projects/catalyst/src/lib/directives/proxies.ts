@@ -257,14 +257,14 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['autoComplete', 'clearable', 'disableValidation', 'disabled', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'invalid', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
   selector: 'cat-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autoComplete', 'clearable', 'disableValidation', 'disabled', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'invalid', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
 })
 export class CatInput {
   protected el: HTMLElement;
