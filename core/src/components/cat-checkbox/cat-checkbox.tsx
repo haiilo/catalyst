@@ -86,6 +86,11 @@ export class CatCheckbox {
   @Prop() labelLeft = false;
 
   /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the checked status of the checkbox is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -150,6 +155,7 @@ export class CatCheckbox {
           class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}
         >
           <input
+            {...this.nativeAttributes}
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
             type="checkbox"

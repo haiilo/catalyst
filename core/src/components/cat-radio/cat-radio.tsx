@@ -80,6 +80,11 @@ export class CatRadio {
   @Prop() labelLeft = false;
 
   /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the radio is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -141,6 +146,7 @@ export class CatRadio {
         >
           <span class="radio">
             <input
+              {...this.nativeAttributes}
               ref={el => (this.input = el as HTMLInputElement)}
               id={this.identifier || this.id}
               type="radio"

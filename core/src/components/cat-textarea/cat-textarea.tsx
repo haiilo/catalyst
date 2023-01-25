@@ -123,7 +123,7 @@ export class CatTextarea {
   @Prop() errorUpdate: boolean | number = 0;
 
   /**
-   * Attributes that will be added to the native HTML input element.
+   * Attributes that will be added to the native HTML textarea element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
 

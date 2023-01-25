@@ -234,6 +234,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Required state of the checkbox
          */
         "required": boolean;
@@ -510,6 +514,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Whether the radio is required.
          */
         "required": boolean;
@@ -782,7 +790,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Attributes that will be added to the native HTML input element.
+          * Attributes that will be added to the native HTML textarea element.
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
@@ -856,6 +864,10 @@ export namespace Components {
           * The name of the input
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Required state of the toggle.
          */
@@ -1325,6 +1337,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Emitted when the checkbox loses focus.
          */
         "onCatBlur"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
@@ -1598,6 +1614,10 @@ declare namespace LocalJSX {
           * The name of the radio component.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when the radio loses focus.
          */
@@ -1909,7 +1929,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Attributes that will be added to the native HTML input element.
+          * Attributes that will be added to the native HTML textarea element.
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
@@ -1982,6 +2002,10 @@ declare namespace LocalJSX {
           * The name of the input
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when the toggle loses focus.
          */
