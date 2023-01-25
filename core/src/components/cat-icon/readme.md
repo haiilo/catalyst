@@ -35,6 +35,8 @@
  - [cat-avatar](../cat-avatar)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
+ - [cat-select](../cat-select)
+ - [cat-textarea](../cat-textarea)
 
 ### Graph
 ```mermaid
@@ -43,6 +45,8 @@ graph TD;
   cat-avatar --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon
+  cat-select --> cat-icon
+  cat-textarea --> cat-icon
   style cat-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

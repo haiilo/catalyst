@@ -14,6 +14,7 @@ export class AppComponent {
 
   form = new FormGroup({
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
+    option: new FormControl([], [Validators.required])
   });
 
   constructor(private dialog: CatDialogService,
@@ -23,7 +24,10 @@ export class AppComponent {
       'error.required': 'This field is required',
       'error.minlength': 'This field is too short',
       'error.pattern': 'This field is invalid',
-      'input.optional': 'optional'
+      'input.optional': 'optional',
+      'select.empty': 'No items',
+      'select.close': 'Close',
+      'select.open': 'Open'
     });
     iconRegistry.addIcons(ci)
   }

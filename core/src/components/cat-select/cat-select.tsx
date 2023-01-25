@@ -19,7 +19,7 @@ import {
   tap,
   timer
 } from 'rxjs';
-import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export interface Item {
@@ -43,7 +43,7 @@ export interface RenderInfo {
 }
 
 /**
- * @property customId - Change the id of item for the given one.
+ * @property customId - Change the ID of item for the given one.
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
  * @property render - Renders the items of the select.
@@ -116,6 +116,7 @@ export class CatSelect {
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
+  private errorMapSrc?: ErrorMap;
 
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
@@ -129,6 +130,8 @@ export class CatSelect {
   @State() state: CatSelectState = INIT_STATE;
 
   @State() hasSlottedLabel = false;
+
+  @State() errorMap?: ErrorMap;
 
   /**
    * Whether the label need a marker to shown if the select is required or optional.
@@ -221,6 +224,28 @@ export class CatSelect {
    */
   @Prop() noItems?: string;
 
+  /**
+   * The validation errors for this input. Will render a hint under the input
+   * with the translated error message(s) `error.${key}`. If an object is
+   * passed, the keys will be used as error keys and the values translation
+   * parameters.
+   * If the value is `true`, the input will be marked as invalid without any
+   * hints under the input.
+   */
+  @Prop() errors?: boolean | string[] | ErrorMap;
+
+  /**
+   * Fine-grained control over when the errors are shown. Can be `false` to
+   * never show errors, `true` to show errors on blur, or a number to show
+   * errors on change with the given delay in milliseconds.
+   */
+  @Prop() errorUpdate: boolean | number = 0;
+
+  /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
   @Watch('connector')
   onConnectorChange(connector: CatSelectConnector) {
     this.reset(connector);
@@ -232,6 +257,20 @@ export class CatSelect {
     !this.valueChangedBySelection ? this.resolve() : (this.valueChangedBySelection = false);
   }
 
+  @Watch('errors')
+  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
+    if (this.errorUpdate === false) {
+      this.errorMap = undefined;
+    } else {
+      this.errorMapSrc = Array.isArray(value)
+        ? value.map(error => ({ [error]: undefined }))
+        : value === true
+        ? {}
+        : value || undefined;
+    }
+  }
+
+  private errorUpdateTimeoutId?: number;
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
@@ -271,6 +310,10 @@ export class CatSelect {
         this.value = newValue;
       }
       this.catChange.emit();
+      if (typeof this.errorUpdate === 'number') {
+        typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+      }
     }
   }
 
@@ -304,6 +347,7 @@ export class CatSelect {
   }
 
   componentWillRender(): void {
+    this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on select', this);
@@ -322,6 +366,9 @@ export class CatSelect {
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
     this.catBlur.emit(event);
+    if (this.errorUpdate !== false) {
+      this.errorMap = this.errorMapSrc;
+    }
   }
 
   @Listen('keydown')
@@ -478,7 +525,7 @@ export class CatSelect {
           </label>
         )}
         <div
-          class={{ 'select-wrapper': true, 'select-disabled': this.disabled }}
+          class={{ 'select-wrapper': true, 'select-disabled': this.disabled, 'select-invalid': this.invalid }}
           ref={el => (this.trigger = el)}
           id={this.id}
           role="combobox"
@@ -534,10 +581,13 @@ export class CatSelect {
               ></cat-avatar>
             ) : null}
             <input
+              {...this.nativeAttributes}
               class="select-input"
               ref={el => (this.input = el)}
               aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
               aria-activedescendant={this.activeDescendant}
+              aria-invalid={this.invalid ? 'true' : undefined}
+              aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
               onInput={() => this.onInput()}
               value={!this.multiple ? this.state.term : undefined}
               placeholder={this.placeholder}
@@ -545,6 +595,9 @@ export class CatSelect {
             ></input>
           </div>
           {this.state.isResolving && <cat-spinner></cat-spinner>}
+          {this.invalid && (
+            <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+          )}
           {(this.state.selection.length || this.state.term.length) &&
           !this.disabled &&
           !this.state.isResolving &&
@@ -574,7 +627,7 @@ export class CatSelect {
             ></cat-button>
           )}
         </div>
-        {this.hintSection}
+        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
         <div
           class="select-dropdown"
           ref={el => (this.dropdown = el)}
@@ -614,6 +667,10 @@ export class CatSelect {
         </div>
       </Host>
     );
+  }
+
+  private get invalid() {
+    return !!this.errorMap;
   }
 
   private get optionsList() {
@@ -691,15 +748,6 @@ export class CatSelect {
         </li>
       );
     });
-  }
-
-  private get hintSection() {
-    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    return (
-      (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-      )
-    );
   }
 
   private get connectorSafe(): CatSelectConnector {

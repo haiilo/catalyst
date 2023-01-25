@@ -449,14 +449,14 @@ export declare interface CatSelect extends Components.CatSelect {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
+  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
   methods: ['connect']
 })
 @Component({
   selector: 'cat-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clearable', 'debounce', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value']
+  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value']
 })
 export class CatSelect {
   protected el: HTMLElement;
@@ -596,14 +596,14 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['disabled', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
+  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value']
+  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value']
 })
 export class CatTextarea {
   protected el: HTMLElement;

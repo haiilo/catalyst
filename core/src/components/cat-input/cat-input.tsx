@@ -1,11 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
-import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ErrorMap = { [key: string]: any };
 
 let nextUniqueId = 0;
 
@@ -193,6 +190,7 @@ export class CatInput {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
+    this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on input', this);
@@ -237,7 +235,7 @@ export class CatInput {
   }
 
   @Watch('errors')
-  watchPropHandler(value?: boolean | string[] | ErrorMap) {
+  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
     if (this.errorUpdate === false) {
       this.errorMap = undefined;
     } else {
@@ -257,12 +255,12 @@ export class CatInput {
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && this.requiredMarker.startsWith('optional') && (
-                <span class="input-optional" aria-hidden="true">
+                <span class="label-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
                 </span>
               )}
               {this.required && this.requiredMarker.startsWith('required') && (
-                <span class="input-optional" aria-hidden="true">
+                <span class="label-optional" aria-hidden="true">
                   ({i18n.t('input.required')})
                 </span>
               )}
@@ -281,7 +279,6 @@ export class CatInput {
           {this.textPrefix && (
             <span class="text-prefix" part="prefix">
               {this.textPrefix}
-              {this.invalid}
             </span>
           )}
           {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
@@ -308,8 +305,8 @@ export class CatInput {
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
-              aria-invalid={this.invalid ? 'true' : 'false'}
-              aria-describedby={this.id + '-hint'}
+              aria-invalid={this.invalid ? 'true' : undefined}
+              aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
             ></input>
             {this.clearable && !this.disabled && this.value && (
               <cat-button
@@ -335,35 +332,13 @@ export class CatInput {
             </span>
           )}
         </div>
-        {this.hintSection}
+        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
       </Host>
     );
   }
 
   private get invalid() {
     return !!this.errorMap;
-  }
-
-  private get hintSection() {
-    const errors = Object.entries(this.errorMap || {});
-    if (errors.length) {
-      return (
-        <div id={this.id + '-hint'}>
-          {errors.map(([key, params]) => (
-            <CatFormHint hint={i18n.t(`error.${key}`, params)} class="cat-text-danger" />
-          ))}
-        </div>
-      );
-    }
-
-    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    return (
-      (this.hint || hasSlottedHint) && (
-        <div id={this.id + '-hint'}>
-          <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-        </div>
-      )
-    );
   }
 
   private errorUpdateTimeoutId?: number;
@@ -382,7 +357,7 @@ export class CatInput {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
-    if (this.errorUpdate === true) {
+    if (this.errorUpdate !== false) {
       this.errorMap = this.errorMapSrc;
     }
   }

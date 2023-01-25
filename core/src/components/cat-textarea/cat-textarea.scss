@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
+@use 'utils/color';
 
 :host {
   display: flex;
@@ -22,10 +23,28 @@ label {
   }
 }
 
-.input-optional {
+.label-optional {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');
+}
+
+.textarea-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-suffix {
+  position: absolute;
+  top: calc(0.625rem - 2px);
+  right: 0.75rem;
+  background: cat-token('color.ui.background.input', 0.75);
+  border-radius: 100rem;
+
+  .textarea-disabled & {
+    background: cat-token('color.ui.background.muted', 0.75);
+  }
 }
 
 textarea {
@@ -47,12 +66,24 @@ textarea {
     resize: none;
   }
 
+  .textarea-invalid & {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
+  }
+
   &:hover:not(:disabled) {
     box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
   }
 
+  .textarea-invalid &:hover:not(:disabled) {
+    box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
+  }
+
   &:focus {
     outline: 2px solid cat-token('color.ui.border.focus');
+  }
+
+  .textarea-invalid &:focus {
+    outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
   }
 
   &::placeholder {

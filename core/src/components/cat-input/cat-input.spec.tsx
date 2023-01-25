@@ -11,11 +11,11 @@ describe('cat-input', () => {
       <cat-input label="Label">
         <mock:shadow-root>
           <label htmlfor="cat-input-0">
-            <span part="label">Label <span aria-hidden="true" class="input-optional">(input.optional)</span></span>
+            <span part="label">Label <span aria-hidden="true" class="label-optional">(input.optional)</span></span>
           </label>
           <div class="input-wrapper">
             <div class="input-inner-wrapper">
-              <input aria-describedby="cat-input-0-hint" aria-invalid="false" id="cat-input-0" type="text">
+              <input id="cat-input-0" type="text">
             </div>
           </div>
         </mock:shadow-root>

@@ -37,21 +37,19 @@
     color: cat-token('color.ui.font.muted');
   }
 
-  &:not(.input-disabled) {
-    &:hover {
-      box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
+  &:not(.input-disabled):hover {
+    box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
 
-      &.input-invalid {
-        box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
-      }
+    &.input-invalid {
+      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
     }
+  }
 
-    &:focus-within {
-      outline: 2px solid cat-token('color.ui.border.focus');
+  &:not(.input-disabled):focus-within {
+    outline: 2px solid cat-token('color.ui.border.focus');
 
-      &.input-invalid {
-        outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
-      }
+    &.input-invalid {
+      outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
     }
   }
 
@@ -78,7 +76,7 @@ label {
   }
 }
 
-.input-optional {
+.label-optional {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');

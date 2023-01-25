@@ -1,7 +1,7 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import autosize from 'autosize';
 import log from 'loglevel';
-import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
@@ -27,10 +27,13 @@ export class CatTextarea {
   }
 
   private textarea!: HTMLTextAreaElement;
+  private errorMapSrc?: ErrorMap;
 
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
+  @State() errorMap?: ErrorMap;
 
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
@@ -103,6 +106,28 @@ export class CatTextarea {
   @Prop({ mutable: true }) value?: string | number;
 
   /**
+   * The validation errors for this input. Will render a hint under the input
+   * with the translated error message(s) `error.${key}`. If an object is
+   * passed, the keys will be used as error keys and the values translation
+   * parameters.
+   * If the value is `true`, the input will be marked as invalid without any
+   * hints under the input.
+   */
+  @Prop() errors?: boolean | string[] | ErrorMap;
+
+  /**
+   * Fine-grained control over when the errors are shown. Can be `false` to
+   * never show errors, `true` to show errors on blur, or a number to show
+   * errors on change with the given delay in milliseconds.
+   */
+  @Prop() errorUpdate: boolean | number = 0;
+
+  /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter;
@@ -118,6 +143,7 @@ export class CatTextarea {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
+    this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on textarea', this);
@@ -157,6 +183,19 @@ export class CatTextarea {
     this.textarea.click();
   }
 
+  @Watch('errors')
+  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
+    if (this.errorUpdate === false) {
+      this.errorMap = undefined;
+    } else {
+      this.errorMapSrc = Array.isArray(value)
+        ? value.map(error => ({ [error]: undefined }))
+        : value === true
+        ? {}
+        : value || undefined;
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -165,51 +204,70 @@ export class CatTextarea {
             <span part="label">
               {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
               {!this.required && this.requiredMarker.startsWith('optional') && (
-                <span class="input-optional" aria-hidden="true">
+                <span class="label-optional" aria-hidden="true">
                   ({i18n.t('input.optional')})
                 </span>
               )}
               {this.required && this.requiredMarker.startsWith('required') && (
-                <span class="input-optional" aria-hidden="true">
+                <span class="label-optional" aria-hidden="true">
                   ({i18n.t('input.required')})
                 </span>
               )}
             </span>
           </label>
         )}
-        <textarea
-          ref={el => (this.textarea = el as HTMLTextAreaElement)}
-          id={this.id}
-          disabled={this.disabled}
-          maxlength={this.maxLength}
-          minlength={this.minLength}
-          name={this.name}
-          placeholder={this.placeholder}
-          readonly={this.readonly}
-          required={this.required}
-          rows={this.rows}
-          value={this.value}
-          onInput={this.onInput.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        ></textarea>
-        {this.hintSection}
+        <div
+          class={{
+            'textarea-wrapper': true,
+            'textarea-disabled': this.disabled,
+            'textarea-invalid': this.invalid
+          }}
+        >
+          <textarea
+            {...this.nativeAttributes}
+            ref={el => (this.textarea = el as HTMLTextAreaElement)}
+            id={this.id}
+            disabled={this.disabled}
+            maxlength={this.maxLength}
+            minlength={this.minLength}
+            name={this.name}
+            placeholder={this.placeholder}
+            readonly={this.readonly}
+            required={this.required}
+            rows={this.rows}
+            value={this.value}
+            onInput={this.onInput.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+            aria-invalid={this.invalid ? 'true' : undefined}
+            aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+          ></textarea>
+          {this.invalid && (
+            <cat-icon
+              icon="alert-circle-outlined"
+              class="icon-suffix cat-text-danger"
+              size="l"
+              onClick={() => this.textarea.focus()}
+            ></cat-icon>
+          )}
+        </div>
+        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
       </Host>
     );
   }
 
-  private get hintSection() {
-    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    return (
-      (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-      )
-    );
+  private get invalid() {
+    return !!this.errorMap;
   }
 
+  private errorUpdateTimeoutId?: number;
   private onInput(event: Event) {
     this.value = this.textarea.value;
     this.catChange.emit(event);
+    if (typeof this.errorUpdate === 'number') {
+      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+      this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+    }
   }
 
   private onFocus(event: FocusEvent) {
@@ -218,5 +276,8 @@ export class CatTextarea {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
+    if (this.errorUpdate !== false) {
+      this.errorMap = this.errorMapSrc;
+    }
   }
 }

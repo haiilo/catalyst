@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
-import { ErrorMap } from "./components/cat-input/cat-input";
+import { ErrorMap } from "./components/cat-form-hint/cat-form-hint-utils";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export namespace Components {
@@ -589,6 +589,14 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
@@ -612,6 +620,10 @@ export namespace Components {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * The text to display in the dropdown if no results are found.
          */
@@ -734,6 +746,14 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
         /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -761,6 +781,10 @@ export namespace Components {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * The placeholder text to display within the input.
          */
@@ -1685,6 +1709,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
@@ -1708,6 +1740,10 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * The text to display in the dropdown if no results are found.
          */
@@ -1837,6 +1873,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -1864,6 +1908,10 @@ declare namespace LocalJSX {
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when the textarea loses focus.
          */

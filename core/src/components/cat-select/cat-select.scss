@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
+@use 'utils/color';
 
 :host {
   display: flex;
@@ -40,11 +41,33 @@ label {
 
   &:not(.select-disabled):hover {
     box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
+
+    &.select-invalid {
+      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
+    }
   }
 
   &:not(.select-disabled):focus-within {
     outline: 2px solid cat-token('color.ui.border.focus');
+
+    &.select-invalid {
+      outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
+    }
   }
+
+  &.select-invalid {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
+  }
+
+  /* stylelint-disable property-no-vendor-prefix */
+  &:has(input:-webkit-autofill) {
+    &,
+    &:hover,
+    &:focus {
+      background-color: cat-token('color.ui.background.inputAutofill');
+    }
+  }
+  /* stylelint-enable property-no-vendor-prefix */
 }
 
 :host(.cat-error) {
@@ -131,6 +154,10 @@ label {
 
 cat-spinner {
   padding: 0.375rem;
+}
+
+.icon-suffix {
+  padding: 0.25rem;
 }
 
 .select-btn-open {

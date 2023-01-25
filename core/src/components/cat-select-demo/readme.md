@@ -22,6 +22,7 @@ graph TD;
   cat-select --> cat-avatar
   cat-select --> cat-button
   cat-select --> cat-spinner
+  cat-select --> cat-icon
   cat-select --> cat-scrollable
   cat-select --> cat-skeleton
   cat-select --> cat-checkbox
