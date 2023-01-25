@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/haiilo/catalyst/compare/v4.0.0...v4.1.0) (2023-01-25)
+
+
+### Features
+
+* **core:** add fine-grained control for input validation ([#127](https://github.com/haiilo/catalyst/issues/127)) ([6241a26](https://github.com/haiilo/catalyst/commit/6241a26cb9bb10370aaa64a9e391ae4b2bdfe6e8))
+* **core:** add fine-grained error control to textarea and select ([464f62a](https://github.com/haiilo/catalyst/commit/464f62a064824cf56eb179f3947960a2dbb4df54))
+* **core:** add nativeAttributes to all form elements ([809d333](https://github.com/haiilo/catalyst/commit/809d3337f6a613c7a7a9aa29267df96da7417b95))
+
 ## [4.0.0](https://github.com/haiilo/catalyst/compare/v3.0.2...v4.0.0) (2023-01-18)
 
 
