@@ -47,6 +47,7 @@ hr,
   height: 1px;
   background-color: cat-token('color.ui.border.default');
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 // ----- links
