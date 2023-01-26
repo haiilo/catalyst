@@ -43,6 +43,7 @@ $-sizes: (
   white-space: nowrap;
   overflow: hidden;
   vertical-align: middle;
+  font-weight: 600;
   @include cat-select(none);
 
   &:focus-visible {
