@@ -792,6 +792,7 @@ hr,
   height: 1px;
   background-color: rgb(var(--cat-border-color, 235, 236, 240));
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 a {
