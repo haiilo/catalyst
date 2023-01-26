@@ -25,6 +25,8 @@ export class CatFormGroup {
    */
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'auto' = 'auto';
 
+  @Prop() labelSize?: string;
+
   @Watch('requiredMarker')
   onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
     const updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
@@ -35,7 +37,7 @@ export class CatFormGroup {
 
   render() {
     return (
-      <Host>
+      <Host style={{ '--label-size': this.labelSize }}>
         <slot onSlotchange={this.onSlotChange.bind(this)}></slot>
       </Host>
     );

@@ -5,14 +5,26 @@
 
 :host {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   @include cat-body('m');
   margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {
   display: none;
+}
+
+.input-field,
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+.input-field.input-horizontal {
+  flex-direction: row;
+  // align-items: center;
+  gap: 1rem;
 }
 
 .input-wrapper {
@@ -70,16 +82,35 @@
 
 label {
   align-self: flex-start;
+  overflow: hidden;
+  @include cat-break-word;
 
   &.hidden {
     @include cat-visually-hidden;
   }
 }
 
+.label-container {
+  flex-basis: var(--label-size, 33.33%);
+}
+
 .label-optional {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');
+}
+
+.input-horizontal {
+  label {
+    min-height: 40px; //TODO
+    display: inline-flex;
+    align-items: center;
+  }
+  .label-optional {
+    display: block;
+    margin-top: 0.25rem;
+    margin-left: 0;
+  }
 }
 
 .text-prefix,

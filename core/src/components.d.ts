@@ -265,6 +265,7 @@ export namespace Components {
         "placement": Placement;
     }
     interface CatFormGroup {
+        "labelSize"?: string;
         /**
           * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
          */
@@ -330,6 +331,7 @@ export namespace Components {
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
+        "horizontal": boolean;
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -1384,6 +1386,7 @@ declare namespace LocalJSX {
         "placement"?: Placement;
     }
     interface CatFormGroup {
+        "labelSize"?: string;
         /**
           * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
          */
@@ -1432,6 +1435,7 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
+        "horizontal"?: boolean;
         /**
           * The name of an icon to be displayed in the input.
          */
