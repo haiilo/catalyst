@@ -20,9 +20,11 @@ interface Country {
 export class CatSelectTest {
   private multipleSelect?: HTMLCatSelectElement;
   private multipleSelectAvatar?: HTMLCatSelectElement;
+  private multipleSelectAvatarInitials?: HTMLCatSelectElement;
   private multipleSelectTagging?: HTMLCatSelectElement;
   private singleSelect?: HTMLCatSelectElement;
   private singleSelectAvatar?: HTMLCatSelectElement;
+  private singleSelectAvatarInitials?: HTMLCatSelectElement;
   private singleSelectTagging?: HTMLCatSelectElement;
 
   componentDidLoad(): void {
@@ -94,6 +96,42 @@ export class CatSelectTest {
         }
       })
     });
+    this.multipleSelectAvatarInitials?.connect({
+      resolve: (ids: string[]) => {
+        console.info(`Resolving data... (${ids.join(', ')})`);
+        return of(
+          ids.map(id => ({
+            id,
+            firstName: 'John',
+            lastName: `Doe (${id})`,
+            desc: 'resolved'
+          }))
+        ).pipe(delay(500));
+      },
+      retrieve: (term: string, page: number) => {
+        console.info(`Retrieving data... ("${term}", ${page})`);
+        return term === 'no'
+          ? of({ last: true, content: [], totalElements: 0 })
+          : of({
+              last: false,
+              totalElements: 10000,
+              content: Array.from({ length: 10 }, (_, i) => ({
+                id: '' + (i + page * 10),
+                firstName: 'John',
+                lastName: `Doe (${i + page * 10})`,
+                desc: `"${term}": page ${page}`
+              }))
+            }).pipe(delay(500));
+      },
+      render: (user: User) => ({
+        label: `${user.firstName} ${user.lastName}`,
+        description: user.desc,
+        avatar: {
+          round: true,
+          initials: `JD`
+        }
+      })
+    });
     this.multipleSelectTagging?.connect(this.countryConnector);
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
@@ -128,6 +166,19 @@ export class CatSelectTest {
       })
     });
     this.singleSelectAvatar?.connect(this.countryConnector);
+    this.singleSelectAvatarInitials?.connect({
+      ...this.countryConnector,
+      render: (country: Country) => ({
+        label: country.country,
+        description: country.capital || 'No capital',
+        avatar: {
+          round: true,
+          initials: `${country.country.charAt(0)?.toUpperCase() ?? 'J'}${
+            country.capital?.charAt(0)?.toUpperCase() ?? 'D'
+          }`
+        }
+      })
+    });
     this.singleSelectTagging?.connect(this.countryConnector);
     setTimeout(() => this.multipleSelect && (this.multipleSelect.value = []), 5000);
   }
@@ -158,6 +209,14 @@ export class CatSelectTest {
           clearable
         ></cat-select>
         <cat-select
+          label="Multiple with initials"
+          ref={el => (this.multipleSelectAvatarInitials = el)}
+          value={['1']}
+          placeholder="Hello World"
+          multiple
+          clearable
+        ></cat-select>
+        <cat-select
           label="Multiple with tagging support"
           hint="This is a hint!"
           ref={el => (this.multipleSelectTagging = el)}
@@ -182,6 +241,12 @@ export class CatSelectTest {
           value={'1'}
           onCatChange={() => console.log(this.singleSelectAvatar?.value)}
           placeholder="Search for a country or capital"
+          clearable
+        ></cat-select>
+        <cat-select
+          label="Single with initials"
+          ref={el => (this.singleSelectAvatarInitials = el)}
+          placeholder="Hello World"
           clearable
         ></cat-select>
         <cat-dropdown overflow noAutoClose>
