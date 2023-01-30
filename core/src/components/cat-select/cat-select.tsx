@@ -555,7 +555,6 @@ export class CatSelect {
                         round={item.render.avatar.round}
                         src={item.render.avatar.src}
                         initials={item.render.avatar.initials ?? ''}
-                        size={item.render.avatar.initials ? 'xs' : 'm'}
                       ></cat-avatar>
                     ) : null}
                     <span>{item.render.label}</span>
@@ -579,7 +578,6 @@ export class CatSelect {
                 round={this.state.selection[0].render.avatar.round}
                 src={this.state.selection[0].render.avatar.src}
                 initials={this.state.selection[0].render.avatar.initials ?? ''}
-                size={this.state.selection[0].render.avatar.initials ? 'xs' : 'm'}
               ></cat-avatar>
             ) : null}
             <input
@@ -714,7 +712,6 @@ export class CatSelect {
                     round={item.render.avatar.round}
                     src={item.render.avatar.src}
                     initials={item.render.avatar.initials ?? ''}
-                    size={item.render.avatar.initials ? 'xs' : 'm'}
                   ></cat-avatar>
                 ) : null}
                 <span class="select-option-text">
@@ -740,7 +737,6 @@ export class CatSelect {
                   round={item.render.avatar.round}
                   src={item.render.avatar.src}
                   initials={item.render.avatar.initials ?? ''}
-                  size={item.render.avatar.initials ? 'xs' : 'm'}
                 ></cat-avatar>
               ) : null}
               <span class="select-option-text">

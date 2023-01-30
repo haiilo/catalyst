@@ -101,6 +101,7 @@ label {
 
   cat-avatar {
     --cat-avatar-size: 1.25rem;
+    --cat-avatar-font-size: 0.5rem;
   }
 }
 
@@ -202,7 +203,10 @@ cat-spinner {
   display: flex;
   gap: 0.5rem;
 
-  --cat-avatar-size: 1.25rem;
+  cat-avatar {
+    --cat-avatar-size: 1.25rem;
+    --cat-avatar-font-size: 0.5rem;
+  }
 }
 
 .select-option-text {
