@@ -10,12 +10,18 @@ describe('cat-input', () => {
     expect(page.root).toEqualHtml(`
       <cat-input label="Label">
         <mock:shadow-root>
-          <label htmlfor="cat-input-0">
-            <span part="label">Label <span aria-hidden="true" class="label-optional">(input.optional)</span></span>
-          </label>
-          <div class="input-wrapper">
-            <div class="input-inner-wrapper">
-              <input id="cat-input-0" type="text">
+          <div class="input-field">
+            <div class="label-container">
+              <label htmlfor="cat-input-0">
+                <span class="label-wrapper" part="label">Label <span aria-hidden="true" class="label-optional">(input.optional)</span></span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div class="input-wrapper">
+                <div class="input-inner-wrapper">
+                  <input id="cat-input-0" type="text">
+                </div>
+              </div>
             </div>
           </div>
         </mock:shadow-root>

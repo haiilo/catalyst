@@ -257,9 +257,14 @@ export class CatInput {
           'input-horizontal': this.horizontal
         }}
       >
-        <div class="label-container">
+        <div
+          class={{
+            hidden: this.labelHidden,
+            'label-container': true
+          }}
+        >
           {(this.hasSlottedLabel || this.label) && (
-            <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+            <label htmlFor={this.id}>
               <span class="label-wrapper" part="label">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                 {!this.required && this.requiredMarker.startsWith('optional') && (
