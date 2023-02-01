@@ -15,8 +15,27 @@
   display: none;
 }
 
+.textarea-field,
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+.textarea-field.textarea-horizontal {
+  flex-direction: row;
+  gap: 1rem;
+}
+
 label {
   align-self: flex-start;
+  overflow: hidden;
+  @include cat-break-word;
+}
+
+.label-container {
+  flex-basis: var(--label-size, 33.33%);
 
   &.hidden {
     @include cat-visually-hidden;
@@ -27,6 +46,20 @@ label {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');
+}
+
+.textarea-horizontal {
+  label {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .label-optional {
+    display: block;
+    margin-top: 0.25rem;
+    margin-left: 0;
+  }
 }
 
 .textarea-wrapper {

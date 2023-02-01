@@ -41,6 +41,11 @@ export class CatTextarea {
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
+   * Whether the label is on top or left.
+   */
+  @Prop() horizontal = false;
+
+  /**
    * Whether the textarea is disabled.
    */
   @Prop() disabled = false;
@@ -199,59 +204,75 @@ export class CatTextarea {
   render() {
     return (
       <Host>
-        {(this.hasSlottedLabel || this.label) && (
-          <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-            <span part="label">
-              {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-              {!this.required && this.requiredMarker.startsWith('optional') && (
-                <span class="label-optional" aria-hidden="true">
-                  ({i18n.t('input.optional')})
-                </span>
-              )}
-              {this.required && this.requiredMarker.startsWith('required') && (
-                <span class="label-optional" aria-hidden="true">
-                  ({i18n.t('input.required')})
-                </span>
-              )}
-            </span>
-          </label>
-        )}
         <div
           class={{
-            'textarea-wrapper': true,
-            'textarea-disabled': this.disabled,
-            'textarea-invalid': this.invalid
+            'textarea-field': true,
+            'textarea-horizontal': this.horizontal
           }}
         >
-          <textarea
-            {...this.nativeAttributes}
-            ref={el => (this.textarea = el as HTMLTextAreaElement)}
-            id={this.id}
-            disabled={this.disabled}
-            maxlength={this.maxLength}
-            minlength={this.minLength}
-            name={this.name}
-            placeholder={this.placeholder}
-            readonly={this.readonly}
-            required={this.required}
-            rows={this.rows}
-            value={this.value}
-            onInput={this.onInput.bind(this)}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-            aria-invalid={this.invalid ? 'true' : undefined}
-            aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
-          ></textarea>
-          {this.invalid && (
-            <cat-icon
-              icon="alert-circle-outlined"
-              class="icon-suffix cat-text-danger"
-              size="l"
-              onClick={() => this.textarea.focus()}
-            ></cat-icon>
-          )}
+          <div
+            class={{
+              hidden: this.labelHidden,
+              'label-container': true
+            }}
+          >
+            {(this.hasSlottedLabel || this.label) && (
+              <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+                <span part="label">
+                  {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+                  {!this.required && this.requiredMarker.startsWith('optional') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.optional')})
+                    </span>
+                  )}
+                  {this.required && this.requiredMarker.startsWith('required') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.required')})
+                    </span>
+                  )}
+                </span>
+              </label>
+            )}
+          </div>
+          <div class="textarea-container">
+            <div
+              class={{
+                'textarea-wrapper': true,
+                'textarea-disabled': this.disabled,
+                'textarea-invalid': this.invalid
+              }}
+            >
+              <textarea
+                {...this.nativeAttributes}
+                ref={el => (this.textarea = el as HTMLTextAreaElement)}
+                id={this.id}
+                disabled={this.disabled}
+                maxlength={this.maxLength}
+                minlength={this.minLength}
+                name={this.name}
+                placeholder={this.placeholder}
+                readonly={this.readonly}
+                required={this.required}
+                rows={this.rows}
+                value={this.value}
+                onInput={this.onInput.bind(this)}
+                onFocus={this.onFocus.bind(this)}
+                onBlur={this.onBlur.bind(this)}
+                aria-invalid={this.invalid ? 'true' : undefined}
+                aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+              ></textarea>
+              {this.invalid && (
+                <cat-icon
+                  icon="alert-circle-outlined"
+                  class="icon-suffix cat-text-danger"
+                  size="l"
+                  onClick={() => this.textarea.focus()}
+                ></cat-icon>
+              )}
+            </div>
+            {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
+          </div>
         </div>
-        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
       </Host>
     );
   }

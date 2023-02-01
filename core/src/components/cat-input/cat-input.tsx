@@ -42,6 +42,9 @@ export class CatInput {
    */
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
+  /**
+   * Whether the label is on top or left.
+   */
   @Prop() horizontal = false;
 
   /**
