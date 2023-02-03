@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/haiilo/catalyst/compare/v4.1.1...v4.1.2) (2023-02-03)
+
+
+### Bug Fixes
+
+* **core:** check connector status before resolving select values ([#138](https://github.com/haiilo/catalyst/issues/138)) ([36dfea3](https://github.com/haiilo/catalyst/commit/36dfea395de7e5b5d38268e63673fd43dadb389b))
+
 ### [4.1.1](https://github.com/haiilo/catalyst/compare/v4.1.0...v4.1.1) (2023-01-31)
 
 
