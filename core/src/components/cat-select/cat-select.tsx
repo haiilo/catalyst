@@ -473,7 +473,7 @@ export class CatSelect {
         switchMap(term =>
           number$.pipe(
             tap(() => this.patchState({ isLoading: true })),
-            switchMap(number => this.connectorSafe.retrieve(term, number)),
+            switchMap(number => connector.retrieve(term, number)),
             tap(page => this.patchState({ isLoading: false, totalElements: page.totalElements })),
             takeWhile(page => !page.last, true),
             scan((items, page) => [...items, ...page.content], [] as Item[])
@@ -481,7 +481,7 @@ export class CatSelect {
         )
       )
       .subscribe(items => {
-        const options = this.toSelectItems(items);
+        const options = this.toSelectItems(connector, items);
 
         if (
           this.tags &&
@@ -750,14 +750,11 @@ export class CatSelect {
     });
   }
 
-  private get connectorSafe(): CatSelectConnector {
-    if (this.connector) {
-      return this.connector;
-    }
-    throw new Error('CatSelectConnector not set');
-  }
-
   private resolve() {
+    const connector = this.connector;
+    if (!connector) {
+      return;
+    }
     this.patchState({ isResolving: true });
 
     const ids = this.initIds();
@@ -767,12 +764,12 @@ export class CatSelect {
       tags = this.initTags();
     }
 
-    const data$ = ids.length ? this.connectorSafe.resolve(ids).pipe(first()) : of([]);
+    const data$ = ids.length ? connector.resolve(ids).pipe(first()) : of([]);
     data$.pipe(catchError(() => of([]))).subscribe(items => {
-      const selection = items.length ? this.toSelectItems(items) : [];
+      const selection = this.toSelectItems(connector, items);
       if (this.tags) {
         tags
-          ?.filter(tag => !this.isTagSelected(tag, selection))
+          .filter(tag => !this.isTagSelected(tag, selection))
           .forEach((tag, index) => {
             const item = { id: `select-${this.id}-tag-${index}`, name: tag };
             selection.push({ item, render: { label: item.name } });
@@ -786,10 +783,10 @@ export class CatSelect {
     });
   }
 
-  private toSelectItems(items: Item[]) {
-    return items?.map(item => ({
-      item: { ...item, id: this.connectorSafe.customId ? this.connectorSafe.customId(item) : item.id },
-      render: this.connectorSafe.render(item)
+  private toSelectItems(connector: CatSelectConnector, items: Item[]) {
+    return items.map(item => ({
+      item: { ...item, id: connector.customId ? connector.customId(item) : item.id },
+      render: connector.render(item)
     }));
   }
 
