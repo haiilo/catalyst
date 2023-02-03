@@ -577,7 +577,7 @@ export class CatSelect {
                 label={this.state.selection[0].render.label}
                 round={this.state.selection[0].render.avatar.round}
                 src={this.state.selection[0].render.avatar.src}
-                initials={''}
+                initials={this.state.selection[0].render.avatar.initials ?? ''}
               ></cat-avatar>
             ) : null}
             <input

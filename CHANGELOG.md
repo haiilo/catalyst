@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/haiilo/catalyst/compare/v4.1.0...v4.1.1) (2023-01-31)
+
+
+### Features
+
+* **core:** fix avatar initials in select component ([#131](https://github.com/haiilo/catalyst/issues/131)) ([a47f2a4](https://github.com/haiilo/catalyst/commit/a47f2a4f60e2587ea6cd61f3e3eb4bd3d63b9283))
+
+
+### Bug Fixes
+
+* **core:** add flex-shrink to horizontal lines ([fb32555](https://github.com/haiilo/catalyst/commit/fb32555d3486f6d9b5f80ddb18f2a4914ec60cc6))
+
 ## [4.1.0](https://github.com/haiilo/catalyst/compare/v4.0.0...v4.1.0) (2023-01-25)
 
 
