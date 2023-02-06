@@ -1,5 +1,5 @@
 import { Component, h, Host, Listen, Prop } from '@stencil/core';
-import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, Placement, shift } from '@floating-ui/dom';
 import isTouchScreen from '../../utils/is-touch-screen';
 import firstTabbable from '../../utils/first-tabbable';
 import { FocusableElement } from 'tabbable';
@@ -13,6 +13,7 @@ let nextUniqueId = 0;
 })
 export class CatTooltip {
   private static readonly OFFSET = 4;
+  private static readonly SHIFT_PADDING = 4;
   private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
   private triggerElement?: HTMLElement;
@@ -134,11 +135,11 @@ export class CatTooltip {
     return firstTabbable(this.trigger);
   }
 
-  private update() {
+  private async update() {
     if (this.trigger && this.tooltip) {
-      computePosition(this.trigger, this.tooltip, {
+      await computePosition(this.trigger, this.tooltip, {
         placement: this.placement,
-        middleware: [offset(CatTooltip.OFFSET), flip()]
+        middleware: [offset(CatTooltip.OFFSET), flip(), shift({ padding: CatTooltip.SHIFT_PADDING })]
       }).then(({ x, y }) => {
         if (this.tooltip) {
           Object.assign(this.tooltip.style, {
