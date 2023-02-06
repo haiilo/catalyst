@@ -25,6 +25,9 @@ export class CatFormGroup {
    */
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'auto' = 'auto';
 
+  /**
+   * The space allocated to the input label
+   */
   @Prop() labelSize?: string;
 
   @Watch('requiredMarker')
