@@ -3,6 +3,7 @@
 
 $-max-width: 20rem;
 $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
+$-shift-padding: 0.25rem; // padding given to the shift() middleware
 
 :host {
   display: contents;
@@ -14,6 +15,10 @@ $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
 
 .tooltip {
   position: absolute;
+  width: max-content;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
   @include cat-body('s', 500);
   background-color: cat-token('color.ui.background.tooltip');
   border-radius: cat-border-radius('m');
@@ -23,7 +28,7 @@ $-box-shadow: rgb(0 0 0 / 8%) 0 1px 8px 0;
   opacity: 0;
   box-shadow: $-box-shadow;
   z-index: $cat-tooltip-z-index;
-  max-width: $-max-width;
+  max-width: min(calc(100vw - 2 * $-shift-padding), $-max-width);
 
   &-hidden {
     @include cat-visually-hidden;
