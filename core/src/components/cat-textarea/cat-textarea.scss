@@ -3,6 +3,8 @@
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
 
+$-textarea-min-height: 2.5rem;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -50,7 +52,7 @@ label {
 
 .textarea-horizontal {
   label {
-    min-height: 2.5rem;
+    min-height: $-textarea-min-height;
     display: inline-flex;
     align-items: center;
   }
@@ -83,7 +85,7 @@ label {
 textarea {
   margin: 0;
   padding: 0.625rem 0.75rem;
-  min-height: 2.5rem;
+  min-height: $-textarea-min-height;
   font: inherit;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
