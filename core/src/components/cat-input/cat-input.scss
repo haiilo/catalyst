@@ -3,10 +3,10 @@
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
 
+$-input-height: 2.5rem;
+
 :host {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   @include cat-body('m');
   margin-bottom: $cat-body-margin-bottom;
 }
@@ -15,12 +15,25 @@
   display: none;
 }
 
+.input-field,
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+.input-field.input-horizontal {
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .input-wrapper {
   display: flex;
   align-items: stretch;
   gap: 0.75rem;
   padding: 0 0.75rem;
-  height: 2.5rem;
+  height: $-input-height;
   overflow: hidden;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
@@ -70,6 +83,12 @@
 
 label {
   align-self: flex-start;
+  overflow: hidden;
+  @include cat-break-word;
+}
+
+.label-container {
+  flex-basis: var(--label-size, 33.33%);
 
   &.hidden {
     @include cat-visually-hidden;
@@ -80,6 +99,20 @@ label {
   margin-left: 0.25rem;
   @include cat-body('xs');
   color: cat-token('color.ui.font.muted');
+}
+
+.input-horizontal {
+  label {
+    min-height: $-input-height;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .label-optional {
+    display: block;
+    margin-top: 0.25rem;
+    margin-left: 0;
+  }
 }
 
 .text-prefix,
