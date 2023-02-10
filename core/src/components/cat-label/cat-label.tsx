@@ -20,6 +20,7 @@ export class CatLabel {
   ];
 
   private input!: HTMLInputElement;
+  private inputEventListener = (event: Event) => this.onInputChange(event);
   @State() private value!: string | number | undefined;
   @State() private maxLength!: number;
 
@@ -44,17 +45,11 @@ export class CatLabel {
   @Prop() required = false;
 
   componentDidLoad() {
-    const intervalId = setInterval(() => {
-      if (this.for && !this.input) {
-        this.input = (document.getElementById(this.for) || this.findShadowTarget(this.for)) as HTMLInputElement;
-      } else {
-        clearInterval(intervalId);
-        this.maxLength = this.input.maxLength;
-        this.input.addEventListener('input', (event) => {
-          this.value = (event.target as HTMLInputElement).value;
-        });
-      }
-    })
+    this.setShadowTarget();
+  }
+
+  onInputChange(event: Event) {
+    this.value = (event.target as HTMLInputElement).value;
   }
 
   onClick() {
@@ -68,8 +63,8 @@ export class CatLabel {
     return (
       <Host>
         <label htmlFor={this.for} onClick={this.onClick.bind(this)}>
-          <span class={{'label-wrapper': true, 'label-horizontal': this.horizontal}} part="label">
-            <slot></slot>    
+          <span class={{ 'label-wrapper': true, 'label-horizontal': this.horizontal }} part="label">
+            <slot></slot>
             <div class="label-metadata">
               {!this.required && this.requiredMarker.startsWith('optional') && (
                 <span class="label-optional" aria-hidden="true">
@@ -81,10 +76,12 @@ export class CatLabel {
                   ({i18n.t('input.required')})
                 </span>
               )}
-              {(this.maxLength && this.maxLength > 0) && (
-                <div class="character-count">{this.value?.toString().length??0}/{this.maxLength}</div>
+              {this.maxLength && this.maxLength > 0 && (
+                <div class="character-count">
+                  {this.value?.toString().length ?? 0}/{this.maxLength}
+                </div>
               )}
-            </div>          
+            </div>
           </span>
         </label>
       </Host>
@@ -102,5 +99,25 @@ export class CatLabel {
       }
     }
     return null;
+  }
+
+  private setShadowTarget(maxRetries = 3) {
+    let elapsedRetries = 0;
+    const intervalId = setInterval(() => {
+      if (this.for && !this.input && ++elapsedRetries <= maxRetries) {
+        this.input = (document.getElementById(this.for) || this.findShadowTarget(this.for)) as HTMLInputElement;
+        if (this.input) {
+          this.maxLength = this.input.maxLength;
+          this.input.addEventListener('input', this.inputEventListener);
+          clearInterval(intervalId);
+        }
+      } else {
+        clearInterval(intervalId);
+      }
+    });
+  }
+
+  disconnectedCallback() {
+    this.input.removeEventListener('input', this.inputEventListener);
   }
 }
