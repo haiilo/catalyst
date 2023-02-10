@@ -13,7 +13,11 @@ describe('cat-input', () => {
           <div class="input-field">
             <div class="label-container">
               <label htmlfor="cat-input-0">
-                <span class="label-wrapper" part="label">Label <span aria-hidden="true" class="label-optional">(input.optional)</span></span>
+                <span class="label-wrapper" part="label">Label 
+                  <div class="label-metadata">
+                    <span aria-hidden="true" class="label-optional">(input.optional)</span>
+                  </div>
+                </span>
               </label>
             </div>
             <div class="input-container">

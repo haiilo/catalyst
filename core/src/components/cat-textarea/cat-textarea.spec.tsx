@@ -13,7 +13,11 @@ describe('cat-textarea', () => {
           <div class="textarea-field">
             <div class="label-container">
               <label htmlfor="cat-textarea-0">
-                <span part="label">Label<span aria-hidden="true" class="label-optional">(input.optional)</span></span>
+                <span class="label-wrapper" part="label">Label
+                  <div class="label-metadata">
+                    <span aria-hidden="true" class="label-optional">(input.optional)</span>
+                  </div>
+                </span>
               </label>
             </div>
             <div class="textarea-container">

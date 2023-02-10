@@ -266,26 +266,27 @@ export class CatInput {
             'label-container': true
           }}
         >
-          
           {(this.hasSlottedLabel || this.label) && (
             <label htmlFor={this.id}>
               <span class="label-wrapper" part="label">
-                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}      
+                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                 <div class="label-metadata">
-                {!this.required && this.requiredMarker.startsWith('optional') && (
-                  <span class="label-optional" aria-hidden="true">
-                    ({i18n.t('input.optional')})
-                  </span>
-                )}
-                {this.required && this.requiredMarker.startsWith('required') && (
-                  <span class="label-optional" aria-hidden="true">
-                    ({i18n.t('input.required')})
-                  </span>
-                )}
-                {this.maxLength && (
-                  <div class="character-count">{this.value?.toString().length??0}/{this.maxLength}</div>
-                )}
-              </div>          
+                  {!this.required && this.requiredMarker.startsWith('optional') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.optional')})
+                    </span>
+                  )}
+                  {this.required && this.requiredMarker.startsWith('required') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.required')})
+                    </span>
+                  )}
+                  {this.maxLength && (
+                    <div class="character-count">
+                      {this.value?.toString().length ?? 0}/{this.maxLength}
+                    </div>
+                  )}
+                </div>
               </span>
             </label>
           )}
