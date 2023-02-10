@@ -263,26 +263,26 @@ export class CatInput {
         <div
           class={{
             hidden: this.labelHidden,
-            'label-container': true
+            'cat-label-container': true
           }}
         >
           {(this.hasSlottedLabel || this.label) && (
             <label htmlFor={this.id}>
-              <span class="label-wrapper" part="label">
+              <span class="cat-label-wrapper" part="label">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-                <div class="label-metadata">
+                <div class="cat-label-metadata">
                   {!this.required && this.requiredMarker.startsWith('optional') && (
-                    <span class="label-optional" aria-hidden="true">
+                    <span class="cat-label-optional" aria-hidden="true">
                       ({i18n.t('input.optional')})
                     </span>
                   )}
                   {this.required && this.requiredMarker.startsWith('required') && (
-                    <span class="label-optional" aria-hidden="true">
+                    <span class="cat-label-optional" aria-hidden="true">
                       ({i18n.t('input.required')})
                     </span>
                   )}
                   {this.maxLength && (
-                    <div class="character-count">
+                    <div class="cat-label-character-count" aria-hidden="true">
                       {this.value?.toString().length ?? 0}/{this.maxLength}
                     </div>
                   )}
