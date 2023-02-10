@@ -201,13 +201,13 @@ export declare interface CatFormGroup extends Components.CatFormGroup {}
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['requiredMarker']
+  inputs: ['labelSize', 'requiredMarker']
 })
 @Component({
   selector: 'cat-form-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['requiredMarker']
+  inputs: ['labelSize', 'requiredMarker']
 })
 export class CatFormGroup {
   protected el: HTMLElement;
@@ -257,14 +257,14 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
   selector: 'cat-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value']
 })
 export class CatInput {
   protected el: HTMLElement;
@@ -596,14 +596,14 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 @ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
+  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
   selector: 'cat-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value']
+  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value']
 })
 export class CatTextarea {
   protected el: HTMLElement;

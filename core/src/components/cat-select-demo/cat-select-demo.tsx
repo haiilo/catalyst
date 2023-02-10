@@ -13,6 +13,7 @@ interface Country {
   country: string;
   capital?: string;
 }
+
 @Component({
   tag: 'cat-select-demo',
   shadow: true
