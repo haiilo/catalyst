@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Host, Prop, State } from '@stencil/core';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
@@ -19,6 +19,15 @@ export class CatLabel {
     'CAT-SELECT'
   ];
 
+  private input!: HTMLInputElement;
+  @State() private value!: string | number | undefined;
+  @State() private maxLength!: number;
+
+  /**
+   * Whether the label is on top or left.
+   */
+  @Prop() horizontal = false;
+
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
@@ -34,6 +43,20 @@ export class CatLabel {
    */
   @Prop() required = false;
 
+  componentDidLoad() {
+    const intervalId = setInterval(() => {
+      if (this.for && !this.input) {
+        this.input = (document.getElementById(this.for) || this.findShadowTarget(this.for)) as HTMLInputElement;
+      } else {
+        clearInterval(intervalId);
+        this.maxLength = this.input.maxLength;
+        this.input.addEventListener('input', (event) => {
+          this.value = (event.target as HTMLInputElement).value;
+        });
+      }
+    })
+  }
+
   onClick() {
     if (this.for) {
       // focus target that is possibly hidden inside a shadow root
@@ -45,17 +68,24 @@ export class CatLabel {
     return (
       <Host>
         <label htmlFor={this.for} onClick={this.onClick.bind(this)}>
-          <slot></slot>
-          {!this.required && this.requiredMarker.startsWith('optional') && (
-            <span class="input-optional" aria-hidden="true">
-              ({i18n.t('input.optional')})
-            </span>
-          )}
-          {this.required && this.requiredMarker.startsWith('required') && (
-            <span class="input-optional" aria-hidden="true">
-              ({i18n.t('input.required')})
-            </span>
-          )}
+          <span class={{'label-wrapper': true, 'label-horizontal': this.horizontal}} part="label">
+            <slot></slot>    
+            <div class="label-metadata">
+              {!this.required && this.requiredMarker.startsWith('optional') && (
+                <span class="label-optional" aria-hidden="true">
+                  ({i18n.t('input.optional')})
+                </span>
+              )}
+              {this.required && this.requiredMarker.startsWith('required') && (
+                <span class="label-optional" aria-hidden="true">
+                  ({i18n.t('input.required')})
+                </span>
+              )}
+              {(this.maxLength && this.maxLength > 0) && (
+                <div class="character-count">{this.value?.toString().length??0}/{this.maxLength}</div>
+              )}
+            </div>          
+          </span>
         </label>
       </Host>
     );
