@@ -425,10 +425,6 @@ export namespace Components {
          */
         "for"?: string;
         /**
-          * Whether the label is on top or left.
-         */
-        "horizontal": boolean;
-        /**
           * A value is required or must be check for the form to be submittable.
          */
         "required": boolean;
@@ -1554,10 +1550,6 @@ declare namespace LocalJSX {
           * The unique identifier for a referenced input.
          */
         "for"?: string;
-        /**
-          * Whether the label is on top or left.
-         */
-        "horizontal"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
          */

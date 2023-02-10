@@ -11,14 +11,10 @@ describe('cat-label', () => {
       <cat-label>
         <mock:shadow-root>
           <label>
-            <span class="label-wrapper" part="label">
-              <slot></slot>
-              <div class="label-metadata">
-                <span aria-hidden="true" class="label-optional">
-                  (input.optional)
-                </span>
-              </div>
-            </span>                        
+            <slot></slot>
+            <span aria-hidden="true" class="input-optional">
+              (input.optional)
+            </span>
           </label>
         </mock:shadow-root>
       </cat-label>
