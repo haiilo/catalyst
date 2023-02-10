@@ -25,6 +25,9 @@
   "files": [
     "dist/"
   ],
+  "dependencies": {
+    "@haiilo/catalyst": "4.1.2"
+  },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
