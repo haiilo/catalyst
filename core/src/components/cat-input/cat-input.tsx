@@ -371,7 +371,7 @@ export class CatInput {
   }
 
   private errorUpdateTimeoutId?: number;
-  private onInput(event: Event) {
+  private onInput(event: InputEvent) {
     this.value = this.input.value;
     this.catChange.emit(event);
     if (typeof this.errorUpdate === 'number') {

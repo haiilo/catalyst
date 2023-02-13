@@ -1,0 +1,13 @@
+diff --git a/node_modules/@stencil/react-output-target/react-component-lib/createOverlayComponent.tsx b/node_modules/@stencil/react-output-target/react-component-lib/createOverlayComponent.tsx
+index 288c38d..4902e9a 100644
+--- a/node_modules/@stencil/react-output-target/react-component-lib/createOverlayComponent.tsx
++++ b/node_modules/@stencil/react-output-target/react-component-lib/createOverlayComponent.tsx
+@@ -132,7 +132,7 @@ export const createOverlayComponent = <OverlayComponent extends object, OverlayT
+        * overlay is dismissing otherwise component
+        * will be hidden before animation is done.
+        */
+-      return ReactDOM.createPortal(this.props.isOpen || isDismissing ? this.props.children : null, this.el);
++      return <>{ReactDOM.createPortal(this.props.isOpen || isDismissing ? this.props.children : null, this.el)}</>;
+     }
+   }
+ 

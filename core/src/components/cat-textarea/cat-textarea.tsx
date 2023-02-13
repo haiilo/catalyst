@@ -292,7 +292,7 @@ export class CatTextarea {
   }
 
   private errorUpdateTimeoutId?: number;
-  private onInput(event: Event) {
+  private onInput(event: InputEvent) {
     this.value = this.textarea.value;
     this.catChange.emit(event);
     if (typeof this.errorUpdate === 'number') {

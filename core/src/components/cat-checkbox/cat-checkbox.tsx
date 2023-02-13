@@ -189,7 +189,7 @@ export class CatCheckbox {
     );
   }
 
-  private onInput(event: Event) {
+  private onInput(event: InputEvent) {
     this.checked = this.input.checked;
 
     if (!this.value || typeof this.value === 'boolean') {

@@ -175,7 +175,7 @@ export class CatRadio {
     );
   }
 
-  private onChange(event: Event) {
+  private onChange(event: InputEvent) {
     this.checked = true;
     this.catChange.emit(event);
   }
