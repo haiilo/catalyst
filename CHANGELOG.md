@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/haiilo/catalyst/compare/v4.1.2...v5.0.0) (2023-02-13)
+
+
+### Features
+
+* **angular:** add connector input for angular select wrapper component ([a963d4f](https://github.com/haiilo/catalyst/commit/a963d4f1a03f5d7f637d1c55846d46a38d1ca2eb))
+* **core:** form-alignment ([#132](https://github.com/haiilo/catalyst/issues/132)) ([b64ee7f](https://github.com/haiilo/catalyst/commit/b64ee7fbf4c93ded310d0b043026d83e416cf152))
+* **core:** tooltip slots ([#149](https://github.com/haiilo/catalyst/issues/149)) ([4dc2666](https://github.com/haiilo/catalyst/commit/4dc26661b1f2845eb84ce00bd17e585f84751333))
+* **core:** update stencilJs to v3.0.0 ([e31a981](https://github.com/haiilo/catalyst/commit/e31a98115373ee928db0f129986262b29f6e14e4))
+* **react:** add core as dependency ([c0066d2](https://github.com/haiilo/catalyst/commit/c0066d20ad845cebf79e442853c6acf618667ead))
+* **react:** update to react v18 and fix build target output ([d931af6](https://github.com/haiilo/catalyst/commit/d931af69381df2886fa4bb62ea49b3830ac07c3f))
+
+
+### Bug Fixes
+
+* **core:** select does not open ([060ed26](https://github.com/haiilo/catalyst/commit/060ed2601abe4bdd8641465759e6e7719333be2a))
+* **core:** tooltip alignment ([#142](https://github.com/haiilo/catalyst/issues/142)) ([ee99e10](https://github.com/haiilo/catalyst/commit/ee99e106fff100d91d0ecb750ff8a8c2fd8d4be2))
+* **tokens:** update lato font stack ([#141](https://github.com/haiilo/catalyst/issues/141)) ([921fe1f](https://github.com/haiilo/catalyst/commit/921fe1f47ef8b62e40c3a8f55a60c3ad124912e0))
+
 ### [4.1.2](https://github.com/haiilo/catalyst/compare/v4.1.1...v4.1.2) (2023-02-03)
 
 
