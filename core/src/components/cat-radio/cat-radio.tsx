@@ -29,6 +29,8 @@ export class CatRadio {
 
   @State() hasSlottedLabel = false;
 
+  @State() hasSlottedHint = false;
+
   /**
    * Whether this radio is checked.
    */
@@ -101,6 +103,7 @@ export class CatRadio {
 
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on radio', this);
     }
@@ -165,17 +168,10 @@ export class CatRadio {
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
         </label>
-        {this.hintSection}
+        {(this.hint || this.hasSlottedHint) && (
+          <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+        )}
       </Host>
-    );
-  }
-
-  private get hintSection() {
-    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    return (
-      (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-      )
     );
   }
 

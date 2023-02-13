@@ -19,7 +19,8 @@ import {
   tap,
   timer
 } from 'rxjs';
-import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
+import { coerceBoolean, coerceNumber } from '../../utils/coerce';
+import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export interface Item {
@@ -117,6 +118,7 @@ export class CatSelect {
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
+  private cleanupAutoUpdate?: () => void;
 
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
@@ -130,6 +132,8 @@ export class CatSelect {
   @State() state: CatSelectState = INIT_STATE;
 
   @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
 
   @State() errorMap?: ErrorMap;
 
@@ -259,11 +263,11 @@ export class CatSelect {
 
   @Watch('errors')
   watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (this.errorUpdate === false) {
+    if (coerceBoolean(this.errorUpdate) === false) {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
-        ? value.map(error => ({ [error]: undefined }))
+        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
         ? {}
         : value || undefined;
@@ -310,9 +314,10 @@ export class CatSelect {
         this.value = newValue;
       }
       this.catChange.emit();
-      if (typeof this.errorUpdate === 'number') {
+      const errorUpdate = coerceNumber(this.errorUpdate, null);
+      if (errorUpdate !== null) {
         typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), errorUpdate);
       }
     }
   }
@@ -341,14 +346,12 @@ export class CatSelect {
     if (this.input) {
       autosizeInput(this.input);
     }
-    if (this.trigger && this.dropdown) {
-      autoUpdate(this.trigger, this.dropdown, () => this.update());
-    }
   }
 
   componentWillRender(): void {
     this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on select', this);
     }
@@ -366,7 +369,7 @@ export class CatSelect {
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
     this.catBlur.emit(event);
-    if (this.errorUpdate !== false) {
+    if (`${this.errorUpdate}` !== 'false') {
       this.errorMap = this.errorMapSrc;
     }
   }
@@ -627,7 +630,14 @@ export class CatSelect {
             ></cat-button>
           )}
         </div>
-        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
+        {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
+          <CatFormHint
+            id={this.id}
+            hint={this.hint}
+            slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
+            errorMap={this.errorMap}
+          />
+        )}
         <div
           class="select-dropdown"
           ref={el => (this.dropdown = el)}
@@ -796,6 +806,9 @@ export class CatSelect {
       this.catOpen.emit();
       this.term$.next(this.state.term);
       this.input?.classList.remove('select-input-transparent-caret');
+      if (this.trigger && this.dropdown) {
+        this.cleanupAutoUpdate = autoUpdate(this.trigger, this.dropdown, () => this.update());
+      }
     }
   }
 
@@ -803,6 +816,7 @@ export class CatSelect {
     if (this.state.isOpen) {
       this.patchState({ isOpen: false, activeOptionIndex: -1 });
       this.catClose.emit();
+      this.cleanupAutoUpdate?.();
     }
   }
 

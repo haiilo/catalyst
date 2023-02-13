@@ -31,7 +31,6 @@ export class CatSelectTest {
   componentDidLoad(): void {
     this.multipleSelect?.connect({
       resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
           ids.map(id => ({
             id,
@@ -42,7 +41,6 @@ export class CatSelectTest {
         ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
-        console.info(`Retrieving data... ("${term}", ${page})`);
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
@@ -63,7 +61,6 @@ export class CatSelectTest {
     });
     this.multipleSelectAvatar?.connect({
       resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
           ids.map(id => ({
             id,
@@ -74,7 +71,6 @@ export class CatSelectTest {
         ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
-        console.info(`Retrieving data... ("${term}", ${page})`);
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
@@ -99,7 +95,6 @@ export class CatSelectTest {
     });
     this.multipleSelectAvatarInitials?.connect({
       resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
           ids.map(id => ({
             id,
@@ -110,7 +105,6 @@ export class CatSelectTest {
         ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
-        console.info(`Retrieving data... ("${term}", ${page})`);
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
@@ -136,7 +130,6 @@ export class CatSelectTest {
     this.multipleSelectTagging?.connect(this.countryConnector);
     this.singleSelect?.connect({
       resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
         return of(
           ids.map(id => ({
             id,
@@ -147,7 +140,6 @@ export class CatSelectTest {
         ).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
-        console.info(`Retrieving data... ("${term}", ${page})`);
         return term === 'no'
           ? of({ last: true, content: [], totalElements: 0 })
           : of({
@@ -193,7 +185,7 @@ export class CatSelectTest {
           ref={el => (this.multipleSelect = el)}
           value={['1']}
           placeholder="Hello World"
-          onCatChange={() => console.log(this.multipleSelect?.value)}
+          onCatChange={() => console.log('Multiple change', this.multipleSelect?.value)}
           onCatBlur={e => console.log('Multiple blur', e)}
           multiple
           noItems="No results"
@@ -223,7 +215,7 @@ export class CatSelectTest {
           ref={el => (this.multipleSelectTagging = el)}
           value={{ ids: ['1'], tags: ['Test', 'Albania', 'Algeria'] }}
           placeholder="Select country"
-          onCatChange={() => console.log(this.multipleSelectTagging?.value)}
+          onCatChange={() => console.log('Multiple tagging change', this.multipleSelectTagging?.value)}
           multiple
           tags
           clearable
@@ -240,7 +232,6 @@ export class CatSelectTest {
           label="Single with img"
           ref={el => (this.singleSelectAvatar = el)}
           value={'1'}
-          onCatChange={() => console.log(this.singleSelectAvatar?.value)}
           placeholder="Search for a country or capital"
           clearable
         ></cat-select>
@@ -260,7 +251,7 @@ export class CatSelectTest {
               ref={el => (this.singleSelectTagging = el)}
               value={{ id: '', tag: 'Albania' }}
               placeholder="Search for a country or capital"
-              onCatChange={() => console.log('Single', this.singleSelectTagging?.value)}
+              onCatChange={() => console.log('Single change', this.singleSelectTagging?.value)}
               tagHint="new country"
               tags
               clearable
@@ -275,11 +266,9 @@ export class CatSelectTest {
   private get countryConnector() {
     return {
       resolve: (ids: string[]) => {
-        console.info(`Resolving data... (${ids.join(', ')})`);
         return of(ids.map(id => countries.find(value => value.id === id))).pipe(delay(500));
       },
       retrieve: (term: string, page: number) => {
-        console.info(`Retrieving data... ("${term}", ${page})`);
         const filter = countries.filter(
           value =>
             value.country.toLowerCase().indexOf(term.toLowerCase()) === 0 ||
