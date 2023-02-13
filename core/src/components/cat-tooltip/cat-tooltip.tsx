@@ -1,8 +1,8 @@
-import { Component, h, Host, Listen, Prop } from '@stencil/core';
 import { autoUpdate, computePosition, flip, offset, Placement, shift } from '@floating-ui/dom';
-import isTouchScreen from '../../utils/is-touch-screen';
-import firstTabbable from '../../utils/first-tabbable';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import { FocusableElement } from 'tabbable';
+import firstTabbable from '../../utils/first-tabbable';
+import isTouchScreen from '../../utils/is-touch-screen';
 
 let nextUniqueId = 0;
 
@@ -22,6 +22,10 @@ export class CatTooltip {
   private hideTimeout?: number;
   private touchTimeout?: number;
   private hidden = false;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedContent = false;
 
   /**
    * The content of the tooltip.
@@ -92,7 +96,8 @@ export class CatTooltip {
   }
 
   componentWillRender(): void {
-    this.hidden = !this.content || this.disabled;
+    this.hasSlottedContent = !!this.hostElement.querySelector('[slot="content"]');
+    this.hidden = this.disabled || (!this.content && !this.hasSlottedContent);
   }
 
   disconnectedCallback(): void {
@@ -125,7 +130,7 @@ export class CatTooltip {
             [`tooltip-${this.size}`]: Boolean(this.size)
           }}
         >
-          {this.content}
+          {this.hasSlottedContent ? <slot name="content" /> : this.content}
         </div>
       </Host>
     );
