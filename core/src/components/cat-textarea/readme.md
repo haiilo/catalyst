@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Textarea specifies a control that allows user to write text over multiple
+rows. Used when the expected user input is long. For shorter input, use the
+input component.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                          | Default      |
@@ -61,7 +67,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the textarea. Use this method instead of
 `textarea.focus()`.

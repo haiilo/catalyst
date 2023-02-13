@@ -23,7 +23,7 @@
     "reset": "rm -rf ./dist ./node_modules"
   },
   "devDependencies": {
-    "style-dictionary": "^3.1.1",
-    "tinycolor2": "^1.4.2"
+    "style-dictionary": "^3.7.2",
+    "tinycolor2": "^1.6.0"
   }
 }

@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Badges are used to inform users of the status of an object or of an action
+that’s been taken.
+
 ## Properties
 
 | Property  | Attribute | Description                                          | Type                                                             | Default     |

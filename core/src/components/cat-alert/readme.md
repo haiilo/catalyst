@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Informs user about important changes or conditions in the interface. Use this
+component if you need to capture user’s attention in a prominent way.
+
 ## Properties
 
 | Property | Attribute | Description                                       | Type                                                             | Default     |

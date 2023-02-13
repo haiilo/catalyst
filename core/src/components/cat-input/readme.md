@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Inputs are used to allow users to provide text input when the expected input
+is short. As well as plain text, Input supports various types of text,
+including passwords and numbers.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                                                                                                                                                        | Default      |
@@ -80,7 +86,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the input. Use this method instead of
 `input.focus()`.

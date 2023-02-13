@@ -3,6 +3,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Icons are used to provide additional meaning or in places where text label
+doesn't fit.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                                               | Type                                            | Default     |

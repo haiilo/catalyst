@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tabs are used to display multiple panels to be contained within a single
+window, using tabs as a navigational element.
+
 ## Properties
 
 | Property    | Attribute    | Description                | Type                                         | Default  |

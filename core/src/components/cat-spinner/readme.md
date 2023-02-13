@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Spinners are used to indicate users that their action is being processed.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                                                  | Type                                            | Default     |

@@ -3,6 +3,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Buttons are used for interface actions. Primary style should be used only
+once per view for main call-to-action.
+
 ## Properties
 
 | Property           | Attribute      | Description                                                                                                                                                                                                        | Type                                                             | Default       |
@@ -62,7 +67,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the button. Use this method instead of
 `button.focus()`.

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Skeletons are used to show where content will eventually be drawn.
+
 ## Properties
 
 | Property  | Attribute | Description                                                                                                                                            | Type                                                      | Default       |

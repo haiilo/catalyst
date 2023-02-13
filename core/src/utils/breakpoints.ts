@@ -1,6 +1,6 @@
 const _breakpoints = ['xs', 's', 'm', 'l', 'xl'] as const;
 
-export type Breakpoint = typeof _breakpoints[number];
+export type Breakpoint = (typeof _breakpoints)[number];
 
 export const Breakpoints: { [breakpoint in Breakpoint]: string } = {
   xs: '(max-width: 539.98px)',

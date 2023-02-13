@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Avatars are used to represent a person or object.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                         | Type                                | Default     |
