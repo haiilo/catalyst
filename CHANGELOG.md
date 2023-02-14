@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/haiilo/catalyst/compare/v5.0.0...v5.0.1) (2023-02-14)
+
+
+### Features
+
+* **react:** add github build action ([e5c5539](https://github.com/haiilo/catalyst/commit/e5c5539a0e85f6848d60fa511266bed656d02ae3))
+* **react:** add github build action status to Readme ([e31c534](https://github.com/haiilo/catalyst/commit/e31c5346962aa8a629207790cb5192e5e87be8bc))
+
+
+### Bug Fixes
+
+* **core:** correct display of select dropdowns ([750d7da](https://github.com/haiilo/catalyst/commit/750d7dab07e80de4279bd3d7b9ad066996ecf45f))
+* **core:** correct display of select dropdowns ([90ecce3](https://github.com/haiilo/catalyst/commit/90ecce3d63f74398dc2669a0d793bdaa5a9dfb03))
+
 ## [5.0.0](https://github.com/haiilo/catalyst/compare/v4.1.2...v5.0.0) (2023-02-13)
 
 
