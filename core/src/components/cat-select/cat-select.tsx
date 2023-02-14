@@ -118,7 +118,6 @@ export class CatSelect {
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
-  private cleanupAutoUpdate?: () => void;
 
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
@@ -345,6 +344,9 @@ export class CatSelect {
   componentDidLoad(): void {
     if (this.input) {
       autosizeInput(this.input);
+    }
+    if (this.trigger && this.dropdown) {
+      autoUpdate(this.trigger, this.dropdown, () => this.update());
     }
   }
 
@@ -806,9 +808,6 @@ export class CatSelect {
       this.catOpen.emit();
       this.term$.next(this.state.term);
       this.input?.classList.remove('select-input-transparent-caret');
-      if (this.trigger && this.dropdown) {
-        this.cleanupAutoUpdate = autoUpdate(this.trigger, this.dropdown, () => this.update());
-      }
     }
   }
 
@@ -816,7 +815,6 @@ export class CatSelect {
     if (this.state.isOpen) {
       this.patchState({ isOpen: false, activeOptionIndex: -1 });
       this.catClose.emit();
-      this.cleanupAutoUpdate?.();
     }
   }
 

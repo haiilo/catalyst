@@ -190,6 +190,7 @@ export class CatSelectTest {
           multiple
           noItems="No results"
           clearable
+          errorUpdate={false}
         >
           <span slot="hint">Searching for "no" -{'>'} no options are returned!</span>
         </cat-select>
@@ -200,6 +201,7 @@ export class CatSelectTest {
           placeholder="Hello World"
           multiple
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-select
           label="Multiple with initials"
@@ -208,6 +210,7 @@ export class CatSelectTest {
           placeholder="Hello World"
           multiple
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-select
           label="Multiple with tagging support"
@@ -219,6 +222,7 @@ export class CatSelectTest {
           multiple
           tags
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-select
           label="Single Select"
@@ -227,6 +231,7 @@ export class CatSelectTest {
           placeholder="Search for a country or capital"
           onCatBlur={e => console.log('Single blur', e)}
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-select
           label="Single with img"
@@ -234,12 +239,14 @@ export class CatSelectTest {
           value={'1'}
           placeholder="Search for a country or capital"
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-select
           label="Single with initials"
           ref={el => (this.singleSelectAvatarInitials = el)}
           placeholder="Hello World"
           clearable
+          errorUpdate={false}
         ></cat-select>
         <cat-dropdown overflow noAutoClose>
           <cat-button slot="trigger" style={{ width: '50%' }}>
@@ -255,6 +262,7 @@ export class CatSelectTest {
               tagHint="new country"
               tags
               clearable
+              errorUpdate={false}
               style={{ width: '90%' }}
             ></cat-select>
           </div>
