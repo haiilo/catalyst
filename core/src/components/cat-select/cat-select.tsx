@@ -277,7 +277,7 @@ export class CatSelect {
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
-    if (changed('isOpen')) {
+    if (changed('isOpen') && this.state.isOpen) {
       this.update();
     }
     if (changed('activeOptionIndex') && this.state.activeOptionIndex >= 0) {
