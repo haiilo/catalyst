@@ -277,11 +277,13 @@ export class CatSelect {
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
-    if (changed('activeOptionIndex')) {
-      if (this.state.activeOptionIndex >= 0) {
-        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
-        option?.scrollIntoView({ block: 'nearest' });
-      }
+    if (changed('isOpen')) {
+      this.update();
+    }
+    if (changed('activeOptionIndex') && this.state.activeOptionIndex >= 0) {
+      this.dropdown
+        ?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`)
+        ?.scrollIntoView({ block: 'nearest' });
     }
 
     if (changed('selection')) {
