@@ -63,6 +63,7 @@ export interface CatSelectState {
   isLoading: boolean;
   isResolving: boolean;
   options: { item: Item; render: RenderInfo }[];
+  tempSelection: { item: Item; render: RenderInfo }[];
   selection: { item: Item; render: RenderInfo }[];
   activeOptionIndex: number;
   activeSelectionIndex: number;
@@ -86,6 +87,7 @@ const INIT_STATE: CatSelectState = {
   isResolving: false,
   options: [],
   selection: [],
+  tempSelection: [],
   activeOptionIndex: -1,
   activeSelectionIndex: -1
 };
@@ -371,7 +373,18 @@ export class CatSelect {
       }
     }
     this.hide();
-    this.patchState({ activeSelectionIndex: -1 });
+    if (!this.multiple && this.state.tempSelection?.length) {
+      this.patchState({
+        activeSelectionIndex: -1,
+        selection: this.state.tempSelection,
+        tempSelection: [],
+        options: [],
+        term: this.state.tempSelection[0].render.label
+      });
+    } else {
+      this.patchState({ activeSelectionIndex: -1 });
+    }
+
     this.catBlur.emit(event);
     if (`${this.errorUpdate}` !== 'false') {
       this.errorMap = this.errorMapSrc;
@@ -416,7 +429,10 @@ export class CatSelect {
         } else if (this.state.selection.length) {
           const selectionClone = [...this.state.selection];
           selectionClone.pop();
-          this.patchState({ selection: selectionClone });
+          this.patchState({
+            selection: selectionClone,
+            tempSelection: this.state.term ? [...this.state.selection] : []
+          });
         }
       }
     } else if (event.key === 'Tab') {
@@ -808,7 +824,7 @@ export class CatSelect {
     if (!this.state.isOpen) {
       this.patchState({ isOpen: true });
       this.catOpen.emit();
-      this.term$.next(this.state.term);
+      this.term$.next('');
       this.input?.classList.remove('select-input-transparent-caret');
     }
   }
@@ -868,11 +884,11 @@ export class CatSelect {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1 });
+      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');
       this.input.value = '';
     } else {
-      this.patchState({ selection: [] });
+      this.patchState({ selection: [], tempSelection: [] });
     }
   }
 
@@ -902,10 +918,16 @@ export class CatSelect {
 
   private onInput() {
     this.search(this.input?.value.trim() || '');
-    if (!this.multiple && this.state.selection.length) {
-      const selectionClone = [...this.state.selection];
-      selectionClone.pop();
-      this.patchState({ selection: selectionClone });
+    if (!this.multiple) {
+      if (this.state.selection.length) {
+        const selectionClone = [...this.state.selection];
+        selectionClone.pop();
+        this.patchState({ selection: selectionClone, tempSelection: [...this.state.selection] });
+      }
+
+      if (!this.input?.value.trim()) {
+        this.patchState({ tempSelection: [] });
+      }
     }
     this.show();
   }
