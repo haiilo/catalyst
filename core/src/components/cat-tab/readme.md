@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A single tab inside a tabs component.
+
 ## Properties
 
 | Property      | Attribute     | Description                                                         | Type                                           | Default     |

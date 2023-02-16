@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Toggles are graphical interface switches that give user control over a
+feature or option that can be turned on or off.
+
 ## Properties
 
 | Property           | Attribute      | Description                                                                               | Type                                      | Default     |
@@ -54,7 +59,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the toggle. Use this method instead of
 `input.focus()`.

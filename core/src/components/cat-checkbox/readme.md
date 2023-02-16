@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Checkboxes are used to let a user choose one or more options from a limited
+number of options.
+
 ## Properties
 
 | Property           | Attribute       | Description                                                                               | Type                                      | Default     |
@@ -55,7 +60,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the checkbox. Use this method instead of
 `input.focus()`.

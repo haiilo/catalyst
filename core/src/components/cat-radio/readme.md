@@ -3,6 +3,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Radio Buttons are graphical interface elements that allow user to choose
+only one of a predefined set of mutually exclusive options.
+
 ## Properties
 
 | Property           | Attribute      | Description                                                                               | Type                                      | Default     |
@@ -52,7 +57,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the radio button. Use this method instead of
 `input.focus()`.

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
-import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
+import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
 
@@ -34,6 +34,8 @@ export class CatInput {
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
 
   @State() errorMap?: ErrorMap;
 
@@ -197,6 +199,7 @@ export class CatInput {
   componentWillRender(): void {
     this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on input', this);
     }
@@ -245,7 +248,7 @@ export class CatInput {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
-        ? value.map(error => ({ [error]: undefined }))
+        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
         ? {}
         : value || undefined;
@@ -357,7 +360,14 @@ export class CatInput {
               </span>
             )}
           </div>
-          {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
+          {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
+            <CatFormHint
+              id={this.id}
+              hint={this.hint}
+              slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
+              errorMap={this.errorMap}
+            />
+          )}
         </div>
       </div>
     );
@@ -368,7 +378,7 @@ export class CatInput {
   }
 
   private errorUpdateTimeoutId?: number;
-  private onInput(event: Event) {
+  private onInput(event: InputEvent) {
     this.value = this.input.value;
     this.catChange.emit(event);
     if (typeof this.errorUpdate === 'number') {

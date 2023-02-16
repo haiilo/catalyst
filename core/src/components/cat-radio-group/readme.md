@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A group of radio buttons.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                        | Type                  | Default     |

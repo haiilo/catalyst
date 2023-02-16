@@ -30,6 +30,8 @@ export class CatToggle {
 
   @State() hasSlottedLabel = false;
 
+  @State() hasSlottedHint = false;
+
   /**
    * Checked state of the toggle.
    */
@@ -102,6 +104,7 @@ export class CatToggle {
 
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on toggle', this);
     }
@@ -164,21 +167,14 @@ export class CatToggle {
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
         </label>
-        {this.hintSection}
+        {(this.hint || this.hasSlottedHint) && (
+          <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+        )}
       </Host>
     );
   }
 
-  private get hintSection() {
-    const hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    return (
-      (this.hint || hasSlottedHint) && (
-        <CatFormHint hint={this.hint} slottedHint={hasSlottedHint && <slot name="hint"></slot>} />
-      )
-    );
-  }
-
-  private onInput(event: Event) {
+  private onInput(event: InputEvent) {
     this.checked = this.input.checked;
 
     if (!this.value || typeof this.value === 'boolean') {

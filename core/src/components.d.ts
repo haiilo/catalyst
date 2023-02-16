@@ -8,13 +8,13 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
-import { ErrorMap } from "./components/cat-form-hint/cat-form-hint-utils";
+import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
 export { Placement } from "@floating-ui/dom";
 export { InputType } from "./components/cat-input/input-type";
-export { ErrorMap } from "./components/cat-form-hint/cat-form-hint-utils";
+export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export namespace Components {

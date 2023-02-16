@@ -18,6 +18,7 @@ import { BooleanValueAccessor } from './directives/boolean-value-accessor';
 import * as Components from './directives/proxies';
 import { RadioValueAccessor } from './directives/radio-value-accessor';
 import { SelectValueAccessor } from './directives/select-value-accessor';
+import { SelectValueAccessorDecorator } from './directives/select-value-accessor-decorator';
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
 
@@ -47,10 +48,11 @@ const CatComponents = [
 ];
 
 const CatDirectives = [
-  TextValueAccessor,
-  SelectValueAccessor,
-  RadioValueAccessor,
   BooleanValueAccessor,
+  RadioValueAccessor,
+  SelectValueAccessor,
+  SelectValueAccessorDecorator,
+  TextValueAccessor,
   ValueAccessorDecorator
 ];
 

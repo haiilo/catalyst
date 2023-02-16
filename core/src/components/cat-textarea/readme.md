@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Textarea specifies a control that allows user to write text over multiple
+rows. Used when the expected user input is long. For shorter input, use the
+input component.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                          | Default      |
@@ -13,6 +19,7 @@
 | `errorUpdate`      | `error-update`    | Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.                                                                                                                             | `boolean \| number`                                                           | `0`          |
 | `errors`           | `errors`          | The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input. | `boolean \| string[] \| undefined \| { [key: string]: any; }`                 | `undefined`  |
 | `hint`             | `hint`            | Optional hint text(s) to be displayed with the textarea.                                                                                                                                                                                                                                                                        | `string \| string[] \| undefined`                                             | `undefined`  |
+| `horizontal`       | `horizontal`      | Whether the label is on top or left.                                                                                                                                                                                                                                                                                            | `boolean`                                                                     | `false`      |
 | `identifier`       | `identifier`      | A unique identifier for the input.                                                                                                                                                                                                                                                                                              | `string \| undefined`                                                         | `undefined`  |
 | `label`            | `label`           | The label for the textarea.                                                                                                                                                                                                                                                                                                     | `string`                                                                      | `''`         |
 | `labelHidden`      | `label-hidden`    | Visually hide the label, but still show it to assistive technologies like screen readers.                                                                                                                                                                                                                                       | `boolean`                                                                     | `false`      |
@@ -60,7 +67,7 @@ Type: `Promise<void>`
 
 
 
-### `doFocus(options?: FocusOptions | undefined) => Promise<void>`
+### `doFocus(options?: FocusOptions) => Promise<void>`
 
 Programmatically move focus to the textarea. Use this method instead of
 `textarea.focus()`.

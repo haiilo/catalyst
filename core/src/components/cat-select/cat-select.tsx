@@ -19,7 +19,8 @@ import {
   tap,
   timer
 } from 'rxjs';
-import { buildHintSection, ErrorMap } from '../cat-form-hint/cat-form-hint-utils';
+import { coerceBoolean, coerceNumber } from '../../utils/coerce';
+import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export interface Item {
@@ -130,6 +131,8 @@ export class CatSelect {
   @State() state: CatSelectState = INIT_STATE;
 
   @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
 
   @State() errorMap?: ErrorMap;
 
@@ -259,11 +262,11 @@ export class CatSelect {
 
   @Watch('errors')
   watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (this.errorUpdate === false) {
+    if (coerceBoolean(this.errorUpdate) === false) {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
-        ? value.map(error => ({ [error]: undefined }))
+        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
         ? {}
         : value || undefined;
@@ -274,11 +277,13 @@ export class CatSelect {
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
-    if (changed('activeOptionIndex')) {
-      if (this.state.activeOptionIndex >= 0) {
-        const option = this.dropdown?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`);
-        option?.scrollIntoView({ block: 'nearest' });
-      }
+    if (changed('isOpen')) {
+      this.update();
+    }
+    if (changed('activeOptionIndex') && this.state.activeOptionIndex >= 0) {
+      this.dropdown
+        ?.querySelector(`#select-${this.id}-option-${this.state.activeOptionIndex}`)
+        ?.scrollIntoView({ block: 'nearest' });
     }
 
     if (changed('selection')) {
@@ -310,9 +315,10 @@ export class CatSelect {
         this.value = newValue;
       }
       this.catChange.emit();
-      if (typeof this.errorUpdate === 'number') {
+      const errorUpdate = coerceNumber(this.errorUpdate, null);
+      if (errorUpdate !== null) {
         typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), errorUpdate);
       }
     }
   }
@@ -349,6 +355,7 @@ export class CatSelect {
   componentWillRender(): void {
     this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
       log.warn('[A11y] Missing ARIA label on select', this);
     }
@@ -366,7 +373,7 @@ export class CatSelect {
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
     this.catBlur.emit(event);
-    if (this.errorUpdate !== false) {
+    if (`${this.errorUpdate}` !== 'false') {
       this.errorMap = this.errorMapSrc;
     }
   }
@@ -588,7 +595,7 @@ export class CatSelect {
               aria-activedescendant={this.activeDescendant}
               aria-invalid={this.invalid ? 'true' : undefined}
               aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
-              onInput={() => this.onInput()}
+              onInput={this.onInput.bind(this)}
               value={!this.multiple ? this.state.term : undefined}
               placeholder={this.placeholder}
               disabled={this.disabled || this.state.isResolving}
@@ -627,7 +634,14 @@ export class CatSelect {
             ></cat-button>
           )}
         </div>
-        {buildHintSection(this.hostElement, this.id, this.hint, this.errorMap)}
+        {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
+          <CatFormHint
+            id={this.id}
+            hint={this.hint}
+            slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
+            errorMap={this.errorMap}
+          />
+        )}
         <div
           class="select-dropdown"
           ref={el => (this.dropdown = el)}

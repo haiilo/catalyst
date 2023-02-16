@@ -6,10 +6,10 @@ describe('CatFormHint', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [],
-      template: () => <CatFormHint></CatFormHint>
+      template: () => <CatFormHint id="host-id"></CatFormHint>
     });
     expect(page.root).toEqualHtml(`
-     <div class="hint-section"></div>
+     <div class="hint-section" id="host-id-hint"></div>
     `);
   });
 });

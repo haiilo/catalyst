@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A navigation component to switch between different pages of paged chunks of
+data such as a table. Pagination is built with list HTML elements and a
+wrapping `<nav>` element to identify it as a navigation section to screen
+readers and other assistive technologies. Furthermore, the current page is
+correctly highlighted using `aria-current`.
+
 ## Properties
 
 | Property        | Attribute        | Description                                              | Type                                | Default                    |

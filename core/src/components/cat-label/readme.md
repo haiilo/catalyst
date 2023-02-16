@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Labels are used to provide a short description of an input or form element.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                    | Type                                                                          | Default      |

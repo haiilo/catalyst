@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-react",
-  "version": "4.1.2",
+  "version": "5.0.1",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
@@ -25,21 +25,24 @@
   "files": [
     "dist/"
   ],
+  "dependencies": {
+    "@haiilo/catalyst": "5.0.1"
+  },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",
     "@types/node": "^15.12.2",
-    "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.10",
     "jest": "^23.0.0",
     "jest-dom": "^3.0.2",
     "np": "^3.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^3.3.4000"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "~4.6.3"
   },
   "jest": {
     "preset": "ts-jest",
