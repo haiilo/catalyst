@@ -11,7 +11,17 @@ import { InputType } from "./components/cat-input/input-type";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint-utils";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
+export { Breakpoint } from "./utils/breakpoints";
+export { Placement } from "@floating-ui/dom";
+export { InputType } from "./components/cat-input/input-type";
+export { ErrorMap } from "./components/cat-form-hint/cat-form-hint-utils";
+export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+export { Observable } from "rxjs";
 export namespace Components {
+    /**
+     * Informs user about important changes or conditions in the interface. Use this
+     * component if you need to capture user’s attention in a prominent way.
+     */
     interface CatAlert {
         /**
           * The color palette of the alert.
@@ -26,6 +36,9 @@ export namespace Components {
          */
         "noIcon": boolean;
     }
+    /**
+     * Avatars are used to represent a person or object.
+     */
     interface CatAvatar {
         /**
           * An icon to be used instead of the initials.
@@ -60,6 +73,10 @@ export namespace Components {
          */
         "urlTarget"?: '_blank' | '_self';
     }
+    /**
+     * Badges are used to inform users of the status of an object or of an action
+     * that’s been taken.
+     */
     interface CatBadge {
         /**
           * The color palette of the badge.
@@ -82,6 +99,10 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined';
     }
+    /**
+     * Buttons are used for interface actions. Primary style should be used only
+     * once per view for main call-to-action.
+     */
     interface CatButton {
         /**
           * Sets the `aria-current` attribute on the button.
@@ -119,7 +140,7 @@ export namespace Components {
           * Programmatically move focus to the button. Use this method instead of `button.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The name of an icon to be displayed in the button.
          */
@@ -181,8 +202,16 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Cards are surfaces that display content and actions on a single topic. They
+     * should be easy to scan for relevant and actionable information.
+     */
     interface CatCard {
     }
+    /**
+     * Checkboxes are used to let a user choose one or more options from a limited
+     * number of options.
+     */
     interface CatCheckbox {
         /**
           * Checked state of the checkbox
@@ -204,7 +233,7 @@ export namespace Components {
           * Programmatically move focus to the checkbox. Use this method instead of `input.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Optional hint text(s) to be displayed with the checkbox.
          */
@@ -274,6 +303,10 @@ export namespace Components {
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
     }
+    /**
+     * Icons are used to provide additional meaning or in places where text label
+     * doesn't fit.
+     */
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -292,6 +325,11 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
     interface CatInput {
         /**
           * Hint for form autofill feature.
@@ -321,7 +359,7 @@ export namespace Components {
           * Programmatically move focus to the input. Use this method instead of `input.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
          */
@@ -419,6 +457,9 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    /**
+     * Labels are used to provide a short description of an input or form element.
+     */
     interface CatLabel {
         /**
           * The unique identifier for a referenced input.
@@ -433,6 +474,13 @@ export namespace Components {
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
+    /**
+     * A navigation component to switch between different pages of paged chunks of
+     * data such as a table. Pagination is built with list HTML elements and a
+     * wrapping `<nav>` element to identify it as a navigation section to screen
+     * readers and other assistive technologies. Furthermore, the current page is
+     * correctly highlighted using `aria-current`.
+     */
     interface CatPagination {
         /**
           * The number of pages to be shown around the current page.
@@ -475,6 +523,10 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Radio Buttons are graphical interface elements that allow user to choose
+     * only one of a predefined set of mutually exclusive options.
+     */
     interface CatRadio {
         /**
           * Whether this radio is checked.
@@ -496,7 +548,7 @@ export namespace Components {
           * Programmatically move focus to the radio button. Use this method instead of `input.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Optional hint text(s) to be displayed with the radio.
          */
@@ -534,6 +586,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * A group of radio buttons.
+     */
     interface CatRadioGroup {
         /**
           * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
@@ -556,6 +611,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * An element to display scrollable content.
+     */
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
@@ -586,6 +644,11 @@ export namespace Components {
          */
         "scrolledBuffer": number;
     }
+    /**
+     * Select lets user choose one option from an options' menu. Consider using
+     * select when you have 6 or more options. Select component supports any content
+     * type.
+     */
     interface CatSelect {
         /**
           * Whether the select should show a clear button.
@@ -675,6 +738,9 @@ export namespace Components {
     }
     interface CatSelectDemo {
     }
+    /**
+     * Skeletons are used to show where content will eventually be drawn.
+     */
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -693,6 +759,9 @@ export namespace Components {
          */
         "variant": 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
+    /**
+     * Spinners are used to indicate users that their action is being processed.
+     */
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -703,6 +772,9 @@ export namespace Components {
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    /**
+     * A single tab inside a tabs component.
+     */
     interface CatTab {
         /**
           * Specifies that the tab should be deactivated.
@@ -733,6 +805,10 @@ export namespace Components {
          */
         "urlTarget"?: '_blank' | '_self';
     }
+    /**
+     * Tabs are used to display multiple panels to be contained within a single
+     * window, using tabs as a navigational element.
+     */
     interface CatTabs {
         /**
           * The ID of the active tab.
@@ -743,6 +819,11 @@ export namespace Components {
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * Textarea specifies a control that allows user to write text over multiple
+     * rows. Used when the expected user input is long. For shorter input, use the
+     * input component.
+     */
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -760,7 +841,7 @@ export namespace Components {
           * Programmatically move focus to the textarea. Use this method instead of `textarea.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
          */
@@ -830,6 +911,10 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    /**
+     * Toggles are graphical interface switches that give user control over a
+     * feature or option that can be turned on or off.
+     */
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -851,7 +936,7 @@ export namespace Components {
           * Programmatically move focus to the toggle. Use this method instead of `input.focus()`.
           * @param options An optional object providing options to control aspects of the focusing process.
          */
-        "doFocus": (options?: FocusOptions | undefined) => Promise<void>;
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Optional hint text(s) to be displayed with the toggle.
          */
@@ -969,36 +1054,59 @@ export interface CatToggleCustomEvent<T> extends CustomEvent<T> {
     target: HTMLCatToggleElement;
 }
 declare global {
+    /**
+     * Informs user about important changes or conditions in the interface. Use this
+     * component if you need to capture user’s attention in a prominent way.
+     */
     interface HTMLCatAlertElement extends Components.CatAlert, HTMLStencilElement {
     }
     var HTMLCatAlertElement: {
         prototype: HTMLCatAlertElement;
         new (): HTMLCatAlertElement;
     };
+    /**
+     * Avatars are used to represent a person or object.
+     */
     interface HTMLCatAvatarElement extends Components.CatAvatar, HTMLStencilElement {
     }
     var HTMLCatAvatarElement: {
         prototype: HTMLCatAvatarElement;
         new (): HTMLCatAvatarElement;
     };
+    /**
+     * Badges are used to inform users of the status of an object or of an action
+     * that’s been taken.
+     */
     interface HTMLCatBadgeElement extends Components.CatBadge, HTMLStencilElement {
     }
     var HTMLCatBadgeElement: {
         prototype: HTMLCatBadgeElement;
         new (): HTMLCatBadgeElement;
     };
+    /**
+     * Buttons are used for interface actions. Primary style should be used only
+     * once per view for main call-to-action.
+     */
     interface HTMLCatButtonElement extends Components.CatButton, HTMLStencilElement {
     }
     var HTMLCatButtonElement: {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    /**
+     * Cards are surfaces that display content and actions on a single topic. They
+     * should be easy to scan for relevant and actionable information.
+     */
     interface HTMLCatCardElement extends Components.CatCard, HTMLStencilElement {
     }
     var HTMLCatCardElement: {
         prototype: HTMLCatCardElement;
         new (): HTMLCatCardElement;
     };
+    /**
+     * Checkboxes are used to let a user choose one or more options from a limited
+     * number of options.
+     */
     interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
     }
     var HTMLCatCheckboxElement: {
@@ -1017,48 +1125,82 @@ declare global {
         prototype: HTMLCatFormGroupElement;
         new (): HTMLCatFormGroupElement;
     };
+    /**
+     * Icons are used to provide additional meaning or in places where text label
+     * doesn't fit.
+     */
     interface HTMLCatIconElement extends Components.CatIcon, HTMLStencilElement {
     }
     var HTMLCatIconElement: {
         prototype: HTMLCatIconElement;
         new (): HTMLCatIconElement;
     };
+    /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
     interface HTMLCatInputElement extends Components.CatInput, HTMLStencilElement {
     }
     var HTMLCatInputElement: {
         prototype: HTMLCatInputElement;
         new (): HTMLCatInputElement;
     };
+    /**
+     * Labels are used to provide a short description of an input or form element.
+     */
     interface HTMLCatLabelElement extends Components.CatLabel, HTMLStencilElement {
     }
     var HTMLCatLabelElement: {
         prototype: HTMLCatLabelElement;
         new (): HTMLCatLabelElement;
     };
+    /**
+     * A navigation component to switch between different pages of paged chunks of
+     * data such as a table. Pagination is built with list HTML elements and a
+     * wrapping `<nav>` element to identify it as a navigation section to screen
+     * readers and other assistive technologies. Furthermore, the current page is
+     * correctly highlighted using `aria-current`.
+     */
     interface HTMLCatPaginationElement extends Components.CatPagination, HTMLStencilElement {
     }
     var HTMLCatPaginationElement: {
         prototype: HTMLCatPaginationElement;
         new (): HTMLCatPaginationElement;
     };
+    /**
+     * Radio Buttons are graphical interface elements that allow user to choose
+     * only one of a predefined set of mutually exclusive options.
+     */
     interface HTMLCatRadioElement extends Components.CatRadio, HTMLStencilElement {
     }
     var HTMLCatRadioElement: {
         prototype: HTMLCatRadioElement;
         new (): HTMLCatRadioElement;
     };
+    /**
+     * A group of radio buttons.
+     */
     interface HTMLCatRadioGroupElement extends Components.CatRadioGroup, HTMLStencilElement {
     }
     var HTMLCatRadioGroupElement: {
         prototype: HTMLCatRadioGroupElement;
         new (): HTMLCatRadioGroupElement;
     };
+    /**
+     * An element to display scrollable content.
+     */
     interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
     }
     var HTMLCatScrollableElement: {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
+    /**
+     * Select lets user choose one option from an options' menu. Consider using
+     * select when you have 6 or more options. Select component supports any content
+     * type.
+     */
     interface HTMLCatSelectElement extends Components.CatSelect, HTMLStencilElement {
     }
     var HTMLCatSelectElement: {
@@ -1071,36 +1213,58 @@ declare global {
         prototype: HTMLCatSelectDemoElement;
         new (): HTMLCatSelectDemoElement;
     };
+    /**
+     * Skeletons are used to show where content will eventually be drawn.
+     */
     interface HTMLCatSkeletonElement extends Components.CatSkeleton, HTMLStencilElement {
     }
     var HTMLCatSkeletonElement: {
         prototype: HTMLCatSkeletonElement;
         new (): HTMLCatSkeletonElement;
     };
+    /**
+     * Spinners are used to indicate users that their action is being processed.
+     */
     interface HTMLCatSpinnerElement extends Components.CatSpinner, HTMLStencilElement {
     }
     var HTMLCatSpinnerElement: {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    /**
+     * A single tab inside a tabs component.
+     */
     interface HTMLCatTabElement extends Components.CatTab, HTMLStencilElement {
     }
     var HTMLCatTabElement: {
         prototype: HTMLCatTabElement;
         new (): HTMLCatTabElement;
     };
+    /**
+     * Tabs are used to display multiple panels to be contained within a single
+     * window, using tabs as a navigational element.
+     */
     interface HTMLCatTabsElement extends Components.CatTabs, HTMLStencilElement {
     }
     var HTMLCatTabsElement: {
         prototype: HTMLCatTabsElement;
         new (): HTMLCatTabsElement;
     };
+    /**
+     * Textarea specifies a control that allows user to write text over multiple
+     * rows. Used when the expected user input is long. For shorter input, use the
+     * input component.
+     */
     interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
     }
     var HTMLCatTextareaElement: {
         prototype: HTMLCatTextareaElement;
         new (): HTMLCatTextareaElement;
     };
+    /**
+     * Toggles are graphical interface switches that give user control over a
+     * feature or option that can be turned on or off.
+     */
     interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
     }
     var HTMLCatToggleElement: {
@@ -1141,6 +1305,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * Informs user about important changes or conditions in the interface. Use this
+     * component if you need to capture user’s attention in a prominent way.
+     */
     interface CatAlert {
         /**
           * The color palette of the alert.
@@ -1155,6 +1323,9 @@ declare namespace LocalJSX {
          */
         "noIcon"?: boolean;
     }
+    /**
+     * Avatars are used to represent a person or object.
+     */
     interface CatAvatar {
         /**
           * An icon to be used instead of the initials.
@@ -1189,6 +1360,10 @@ declare namespace LocalJSX {
          */
         "urlTarget"?: '_blank' | '_self';
     }
+    /**
+     * Badges are used to inform users of the status of an object or of an action
+     * that’s been taken.
+     */
     interface CatBadge {
         /**
           * The color palette of the badge.
@@ -1211,6 +1386,10 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined';
     }
+    /**
+     * Buttons are used for interface actions. Primary style should be used only
+     * once per view for main call-to-action.
+     */
     interface CatButton {
         /**
           * Sets the `aria-current` attribute on the button.
@@ -1309,8 +1488,16 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Cards are surfaces that display content and actions on a single topic. They
+     * should be easy to scan for relevant and actionable information.
+     */
     interface CatCard {
     }
+    /**
+     * Checkboxes are used to let a user choose one or more options from a limited
+     * number of options.
+     */
     interface CatCheckbox {
         /**
           * Checked state of the checkbox
@@ -1405,6 +1592,10 @@ declare namespace LocalJSX {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
     }
+    /**
+     * Icons are used to provide additional meaning or in places where text label
+     * doesn't fit.
+     */
     interface CatIcon {
         /**
           * Adds accessible label for the icon that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -1423,6 +1614,11 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
     interface CatInput {
         /**
           * Hint for form autofill feature.
@@ -1545,6 +1741,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * Labels are used to provide a short description of an input or form element.
+     */
     interface CatLabel {
         /**
           * The unique identifier for a referenced input.
@@ -1559,6 +1758,13 @@ declare namespace LocalJSX {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
+    /**
+     * A navigation component to switch between different pages of paged chunks of
+     * data such as a table. Pagination is built with list HTML elements and a
+     * wrapping `<nav>` element to identify it as a navigation section to screen
+     * readers and other assistive technologies. Furthermore, the current page is
+     * correctly highlighted using `aria-current`.
+     */
     interface CatPagination {
         /**
           * The number of pages to be shown around the current page.
@@ -1601,6 +1807,10 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Radio Buttons are graphical interface elements that allow user to choose
+     * only one of a predefined set of mutually exclusive options.
+     */
     interface CatRadio {
         /**
           * Whether this radio is checked.
@@ -1659,6 +1869,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A group of radio buttons.
+     */
     interface CatRadioGroup {
         /**
           * Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.
@@ -1689,6 +1902,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * An element to display scrollable content.
+     */
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
@@ -1735,6 +1951,11 @@ declare namespace LocalJSX {
          */
         "scrolledBuffer"?: number;
     }
+    /**
+     * Select lets user choose one option from an options' menu. Consider using
+     * select when you have 6 or more options. Select component supports any content
+     * type.
+     */
     interface CatSelect {
         /**
           * Whether the select should show a clear button.
@@ -1835,6 +2056,9 @@ declare namespace LocalJSX {
     }
     interface CatSelectDemo {
     }
+    /**
+     * Skeletons are used to show where content will eventually be drawn.
+     */
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
@@ -1853,6 +2077,9 @@ declare namespace LocalJSX {
          */
         "variant"?: 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
+    /**
+     * Spinners are used to indicate users that their action is being processed.
+     */
     interface CatSpinner {
         /**
           * Adds accessible label for the spinner that is only shown for screen readers. The `aria-hidden` attribute will be set if no label is present.
@@ -1863,6 +2090,9 @@ declare namespace LocalJSX {
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
+    /**
+     * A single tab inside a tabs component.
+     */
     interface CatTab {
         /**
           * Specifies that the tab should be deactivated.
@@ -1897,6 +2127,10 @@ declare namespace LocalJSX {
          */
         "urlTarget"?: '_blank' | '_self';
     }
+    /**
+     * Tabs are used to display multiple panels to be contained within a single
+     * window, using tabs as a navigational element.
+     */
     interface CatTabs {
         /**
           * The ID of the active tab.
@@ -1907,6 +2141,11 @@ declare namespace LocalJSX {
          */
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * Textarea specifies a control that allows user to write text over multiple
+     * rows. Used when the expected user input is long. For shorter input, use the
+     * input component.
+     */
     interface CatTextarea {
         /**
           * Whether the textarea is disabled.
@@ -1993,6 +2232,10 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * Toggles are graphical interface switches that give user control over a
+     * feature or option that can be turned on or off.
+     */
     interface CatToggle {
         /**
           * Checked state of the toggle.
@@ -2116,28 +2359,107 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * Informs user about important changes or conditions in the interface. Use this
+             * component if you need to capture user’s attention in a prominent way.
+             */
             "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
+            /**
+             * Avatars are used to represent a person or object.
+             */
             "cat-avatar": LocalJSX.CatAvatar & JSXBase.HTMLAttributes<HTMLCatAvatarElement>;
+            /**
+             * Badges are used to inform users of the status of an object or of an action
+             * that’s been taken.
+             */
             "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
+            /**
+             * Buttons are used for interface actions. Primary style should be used only
+             * once per view for main call-to-action.
+             */
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            /**
+             * Cards are surfaces that display content and actions on a single topic. They
+             * should be easy to scan for relevant and actionable information.
+             */
             "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
+            /**
+             * Checkboxes are used to let a user choose one or more options from a limited
+             * number of options.
+             */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
+            /**
+             * Icons are used to provide additional meaning or in places where text label
+             * doesn't fit.
+             */
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            /**
+             * Inputs are used to allow users to provide text input when the expected input
+             * is short. As well as plain text, Input supports various types of text,
+             * including passwords and numbers.
+             */
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
+            /**
+             * Labels are used to provide a short description of an input or form element.
+             */
             "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;
+            /**
+             * A navigation component to switch between different pages of paged chunks of
+             * data such as a table. Pagination is built with list HTML elements and a
+             * wrapping `<nav>` element to identify it as a navigation section to screen
+             * readers and other assistive technologies. Furthermore, the current page is
+             * correctly highlighted using `aria-current`.
+             */
             "cat-pagination": LocalJSX.CatPagination & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
+            /**
+             * Radio Buttons are graphical interface elements that allow user to choose
+             * only one of a predefined set of mutually exclusive options.
+             */
             "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
+            /**
+             * A group of radio buttons.
+             */
             "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
+            /**
+             * An element to display scrollable content.
+             */
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
+            /**
+             * Select lets user choose one option from an options' menu. Consider using
+             * select when you have 6 or more options. Select component supports any content
+             * type.
+             */
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-select-demo": LocalJSX.CatSelectDemo & JSXBase.HTMLAttributes<HTMLCatSelectDemoElement>;
+            /**
+             * Skeletons are used to show where content will eventually be drawn.
+             */
             "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
+            /**
+             * Spinners are used to indicate users that their action is being processed.
+             */
             "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            /**
+             * A single tab inside a tabs component.
+             */
             "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;
+            /**
+             * Tabs are used to display multiple panels to be contained within a single
+             * window, using tabs as a navigational element.
+             */
             "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            /**
+             * Textarea specifies a control that allows user to write text over multiple
+             * rows. Used when the expected user input is long. For shorter input, use the
+             * input component.
+             */
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            /**
+             * Toggles are graphical interface switches that give user control over a
+             * feature or option that can be turned on or off.
+             */
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }

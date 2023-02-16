@@ -2,9 +2,7 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
-@use 'core/form';
-
-$-textarea-min-height: 2.5rem;
+@use '_snippets/form-label';
 
 :host {
   display: flex;
@@ -52,7 +50,7 @@ $-textarea-min-height: 2.5rem;
 textarea {
   margin: 0;
   padding: 0.625rem 0.75rem;
-  min-height: $-textarea-min-height;
+  min-height: form-label.$cat-input-height;
   font: inherit;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');

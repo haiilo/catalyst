@@ -2,9 +2,7 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
-@use 'core/form';
-
-$-input-height: 2.5rem;
+@use '_snippets/form-label';
 
 :host {
   display: flex;
@@ -34,7 +32,7 @@ $-input-height: 2.5rem;
   align-items: stretch;
   gap: 0.75rem;
   padding: 0 0.75rem;
-  height: $-input-height;
+  height: form-label.$cat-input-height;
   overflow: hidden;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');

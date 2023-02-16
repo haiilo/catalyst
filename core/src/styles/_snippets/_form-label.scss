@@ -1,12 +1,6 @@
-@use '../variables' as *;
-@use '../mixins' as *;
+@use 'mixins' as *;
 
-// ---- Form
 $cat-input-height: 2.5rem;
-
-.cat-error {
-  --cat-hint-color: #{cat-token('color.theme.danger.text', $wrap: false)};
-}
 
 .cat-label {
   overflow: hidden;
