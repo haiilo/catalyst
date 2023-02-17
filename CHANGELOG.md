@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/haiilo/catalyst/compare/v5.1.0...v5.1.1) (2023-02-17)
+
+
+### Bug Fixes
+
+* **core:** remove outdated SCSS import ([47e08df](https://github.com/haiilo/catalyst/commit/47e08df17c956bab058d34bf6a4eac732d83cdbf))
+
 ## [5.1.0](https://github.com/haiilo/catalyst/compare/v5.0.1...v5.1.0) (2023-02-17)
 
 ### [5.0.1](https://github.com/haiilo/catalyst/compare/v5.0.0...v5.0.1) (2023-02-14)
