@@ -7,6 +7,9 @@
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
+    "build": "npm run build -w tokens && npm run build -w core && npm run build catalyst -w angular && npm run build -w react",
+    "replace": "node replace.js",
+    "publish": "npm publish -w tokens && npm publish -w core && cd angular/dist/catalyst && npm publish && cd ../../.. && npm publish -w react",
     "clean": "npm run clean -ws --if-present",
     "reset": "npm run reset -ws --if-present && rm -rf ./node_modules"
   },
@@ -42,6 +45,7 @@
     "@commitlint/config-conventional": "^17.4.3",
     "husky": "^8.0.3",
     "patch-package": "^6.5.1",
+    "replace-in-file": "^6.3.5",
     "standard-version": "^9.3.2"
   }
 }
