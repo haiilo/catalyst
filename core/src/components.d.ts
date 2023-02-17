@@ -459,6 +459,7 @@ export namespace Components {
     }
     /**
      * Labels are used to provide a short description of an input or form element.
+     * @deprecated Use label attribute of form elements instead.
      */
     interface CatLabel {
         /**
@@ -1148,6 +1149,7 @@ declare global {
     };
     /**
      * Labels are used to provide a short description of an input or form element.
+     * @deprecated Use label attribute of form elements instead.
      */
     interface HTMLCatLabelElement extends Components.CatLabel, HTMLStencilElement {
     }
@@ -1743,6 +1745,7 @@ declare namespace LocalJSX {
     }
     /**
      * Labels are used to provide a short description of an input or form element.
+     * @deprecated Use label attribute of form elements instead.
      */
     interface CatLabel {
         /**
@@ -2403,6 +2406,7 @@ declare module "@stencil/core" {
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             /**
              * Labels are used to provide a short description of an input or form element.
+             * @deprecated Use label attribute of form elements instead.
              */
             "cat-label": LocalJSX.CatLabel & JSXBase.HTMLAttributes<HTMLCatLabelElement>;
             /**

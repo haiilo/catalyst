@@ -11,11 +11,11 @@ describe('cat-textarea', () => {
       <cat-textarea label="Label">
         <mock:shadow-root>
           <div class="textarea-field">
-            <div class="cat-label-container">
+            <div class="label-container">
               <label htmlfor="cat-textarea-0">
-                <span class="cat-label-wrapper" part="label">Label
-                  <div class="cat-label-metadata">
-                    <span aria-hidden="true" class="cat-label-optional">(input.optional)</span>
+                <span class="label-wrapper" part="label">Label
+                  <div class="label-metadata">
+                    <span aria-hidden="true" class="label-optional">(input.optional)</span>
                   </div>
                 </span>
               </label>
