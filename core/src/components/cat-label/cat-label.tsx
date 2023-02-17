@@ -3,6 +3,8 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
  * Labels are used to provide a short description of an input or form element.
+ *
+ * @deprecated Use label attribute of form elements instead.
  */
 @Component({
   tag: 'cat-label',

@@ -2,8 +2,7 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
-
-$-textarea-min-height: 2.5rem;
+@use '_snippets/form-label';
 
 :host {
   display: flex;
@@ -30,40 +29,6 @@ $-textarea-min-height: 2.5rem;
   gap: 1rem;
 }
 
-label {
-  align-self: flex-start;
-  overflow: hidden;
-  @include cat-break-word;
-}
-
-.label-container {
-  flex-basis: var(--label-size, 33.33%);
-
-  &.hidden {
-    @include cat-visually-hidden;
-  }
-}
-
-.label-optional {
-  margin-left: 0.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
-}
-
-.textarea-horizontal {
-  label {
-    min-height: $-textarea-min-height;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .label-optional {
-    display: block;
-    margin-top: 0.25rem;
-    margin-left: 0;
-  }
-}
-
 .textarea-wrapper {
   position: relative;
   display: flex;
@@ -85,7 +50,7 @@ label {
 textarea {
   margin: 0;
   padding: 0.625rem 0.75rem;
-  min-height: $-textarea-min-height;
+  min-height: form-label.$cat-input-height;
   font: inherit;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');

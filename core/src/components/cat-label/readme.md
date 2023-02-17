@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use label attribute of form elements instead.
+
 ## Overview
 
 Labels are used to provide a short description of an input or form element.

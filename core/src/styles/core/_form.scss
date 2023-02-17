@@ -1,8 +1,0 @@
-@use '../variables' as *;
-@use '../mixins' as *;
-
-// ---- Form
-
-.cat-error {
-  --cat-hint-color: #{cat-token('color.theme.danger.text', $wrap: false)};
-}

@@ -221,18 +221,25 @@ export class CatTextarea {
           >
             {(this.hasSlottedLabel || this.label) && (
               <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-                <span part="label">
+                <span class="label-wrapper" part="label">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-                  {!this.required && this.requiredMarker.startsWith('optional') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.optional')})
-                    </span>
-                  )}
-                  {this.required && this.requiredMarker.startsWith('required') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.required')})
-                    </span>
-                  )}
+                  <div class="label-metadata">
+                    {!this.required && this.requiredMarker.startsWith('optional') && (
+                      <span class="label-optional" aria-hidden="true">
+                        ({i18n.t('input.optional')})
+                      </span>
+                    )}
+                    {this.required && this.requiredMarker.startsWith('required') && (
+                      <span class="label-optional" aria-hidden="true">
+                        ({i18n.t('input.required')})
+                      </span>
+                    )}
+                    {this.maxLength && (
+                      <div class="label-character-count" aria-hidden="true">
+                        {this.value?.toString().length ?? 0}/{this.maxLength}
+                      </div>
+                    )}
+                  </div>
                 </span>
               </label>
             )}

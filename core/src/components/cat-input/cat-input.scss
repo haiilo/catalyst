@@ -2,8 +2,7 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
-
-$-input-height: 2.5rem;
+@use '_snippets/form-label';
 
 :host {
   display: flex;
@@ -33,7 +32,7 @@ $-input-height: 2.5rem;
   align-items: stretch;
   gap: 0.75rem;
   padding: 0 0.75rem;
-  height: $-input-height;
+  height: form-label.$cat-input-height;
   overflow: hidden;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
@@ -79,40 +78,6 @@ $-input-height: 2.5rem;
     }
   }
   /* stylelint-enable property-no-vendor-prefix */
-}
-
-label {
-  align-self: flex-start;
-  overflow: hidden;
-  @include cat-break-word;
-}
-
-.label-container {
-  flex-basis: var(--label-size, 33.33%);
-
-  &.hidden {
-    @include cat-visually-hidden;
-  }
-}
-
-.label-optional {
-  margin-left: 0.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
-}
-
-.input-horizontal {
-  label {
-    min-height: $-input-height;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .label-optional {
-    display: block;
-    margin-top: 0.25rem;
-    margin-left: 0;
-  }
 }
 
 .text-prefix,

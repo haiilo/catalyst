@@ -497,16 +497,16 @@
         <section id="form-group">
           <h2>Form Group</h2>
           <cat-form-group>
-            <cat-input label="Field 1"></cat-input>
+            <cat-input label="Field 1" max-length="30"></cat-input>
             <cat-input label="Field 2" required></cat-input>
           </cat-form-group>
 
           <h3>Alignment (horizontal)</h3>
           <cat-form-group label-size="40%">
-            <cat-input hint="This is a hint" horizontal>
+            <cat-input hint="This is a hint" horizontal required max-length="98">
               <span slot="label">This is the <b>label</b></span>
             </cat-input>
-            <cat-input hint="NO LABEL" horizontal></cat-input>
+            <cat-input hint="NO LABEL" horizontal required></cat-input>
             <cat-input label="Field 1" horizontal hint="This is a hint"></cat-input>
             <cat-input
               label="This is a very long label with some more text"
@@ -514,7 +514,7 @@
               required
               hint="This is a hint"
             ></cat-input>
-            <cat-textarea label="Label" horizontal required hint="This is a hint"></cat-textarea>
+            <cat-textarea max-length="50" label="Label" horizontal hint="This is a hint"></cat-textarea>
           </cat-form-group>
 
           <h3>Auto (more required)</h3>
@@ -605,16 +605,17 @@
         <section id="label">
           <h2>Label</h2>
           <div class="cat-flex cat-items-start cat-mb-m">
-            <cat-label for="ext-label1" class="cat-flex-1">External label</cat-label>
+            <cat-label for="ext-label1" class="cat-flex-1" horizontal>External label</cat-label>
             <cat-input
               class="cat-m-0 cat-flex-1"
               label="External label"
               label-hidden="true"
               identifier="ext-label1"
+              max-length="100"
             ></cat-input>
           </div>
           <div class="cat-flex cat-items-start cat-mb-m">
-            <cat-label for="ext-label2" class="cat-flex-1">External label</cat-label>
+            <cat-label for="ext-label2" class="cat-flex-1" horizontal>External label</cat-label>
             <cat-textarea
               class="cat-m-0 cat-flex-1"
               label="External label"
@@ -638,7 +639,7 @@
           <cat-input label="Label" hint="This a hint!">
             <span slot="hint">This is another!</span>
           </cat-input>
-          <cat-input label="Label">
+          <cat-input label="Label" max-length="100">
             <label slot="label">Priority Label</label>
           </cat-input>
           <h3>Types</h3>
@@ -820,7 +821,7 @@
 
         <section id="textarea">
           <h2>Textarea</h2>
-          <cat-textarea label="Label"></cat-textarea>
+          <cat-textarea label="Label" max-length="100"></cat-textarea>
         </section>
 
         <section id="toggle">
