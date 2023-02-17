@@ -559,15 +559,6 @@ body {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
-.cat-error {
-  --cat-hint-color: var(--cat-danger-text, 217, 52, 13);
-}
-
-/**
- * Auto-generated file. Do not edit directly.
- */
-/* stylelint-disable value-keyword-case */
-/* stylelint-enable value-keyword-case */
 nav hr,
 nav .cat-hr {
   margin-top: 0.625rem;
