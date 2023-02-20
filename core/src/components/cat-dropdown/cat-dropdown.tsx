@@ -195,6 +195,7 @@ export class CatDropdown {
   private update() {
     if (this.trigger) {
       computePosition(this.trigger, this.content, {
+        strategy: 'fixed',
         placement: this.placement,
         middleware: [offset(CatDropdown.OFFSET), flip()]
       }).then(({ x, y, placement }) => {

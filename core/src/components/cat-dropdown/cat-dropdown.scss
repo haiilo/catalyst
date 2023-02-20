@@ -22,7 +22,7 @@ $-max-height: calc(100vh - 48px);
 }
 
 .content {
-  position: absolute;
+  position: fixed;
   background: cat-token('color.ui.background.surface');
   display: none;
   -webkit-overflow-scrolling: touch;
