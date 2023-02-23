@@ -492,6 +492,32 @@
               <cat-button>Action</cat-button>
             </div>
           </cat-dropdown>
+
+          <cat-dropdown overflow no-auto-close>
+            <cat-button slot="trigger" color="primary" variant="filled">Nested dropdown</cat-button>
+            <nav slot="content">
+              <ul>
+                <li class="cat-nav-head">Headline</li>
+                <li>
+                  <cat-dropdown placement="right-start">
+                    <cat-button slot="trigger" class="cat-nav-item" icon="sparkle-filled" color="primary"
+                      >Click one more time</cat-button
+                    >
+                    <nav slot="content">
+                      <ul>
+                        <li class="cat-nav-head">Headline</li>
+                        <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                      </ul>
+                    </nav>
+                  </cat-dropdown>
+                </li>
+                <li>
+                  <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
+                </li>
+              </ul>
+            </nav>
+          </cat-dropdown>
         </section>
 
         <section id="form-group">
