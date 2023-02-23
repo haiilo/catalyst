@@ -16,7 +16,7 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
 .tooltip {
   --cat-font-color-head: cat-token('color.ui.font.tooltip', $wrap: false);
   --cat-font-color-body: cat-token('color.ui.font.tooltip', $wrap: false);
-  position: absolute;
+  position: fixed;
   width: max-content;
   top: 0;
   left: 0;
