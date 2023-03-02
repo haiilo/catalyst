@@ -27,7 +27,7 @@ module.exports = {
         bodyInverted: { value: '{color.base.white.value}' },
         mono: { value: '{color.base.black.value}', attributes: { cssProp: "font-color-mono" } },
         monoInverted: { value: '{color.base.white.value}' },
-        muted: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-muted" } },
+        muted: { value: '{color.base.neutral.500.value}', attributes: { cssProp: "font-color-muted" } },
         quote: { value: '{color.base.neutral.400.value}', attributes: { cssProp: "font-color-quote" } },
         tooltip: { value: '{color.base.white.value}', attributes: { cssProp: "font-color-tooltip" } }
       }
