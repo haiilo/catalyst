@@ -99,7 +99,7 @@ label {
     display: inline-block;
     padding-left: 0.5rem;
 
-    &+.select-input {
+    & + .select-input {
       padding-left: 0.25rem;
     }
   }
