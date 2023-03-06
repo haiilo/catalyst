@@ -295,6 +295,10 @@ export namespace Components {
     }
     interface CatFormGroup {
         /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
+        /**
           * The space allocated to the input label
          */
         "labelSize"?: string;
@@ -466,6 +470,10 @@ export namespace Components {
           * The unique identifier for a referenced input.
          */
         "for"?: string;
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
          */
@@ -680,6 +688,10 @@ export namespace Components {
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
         /**
           * A unique identifier for the input.
          */
@@ -1586,6 +1598,10 @@ declare namespace LocalJSX {
     }
     interface CatFormGroup {
         /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
+        /**
           * The space allocated to the input label
          */
         "labelSize"?: string;
@@ -1752,6 +1768,10 @@ declare namespace LocalJSX {
           * The unique identifier for a referenced input.
          */
         "for"?: string;
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
          */
@@ -1984,6 +2004,10 @@ declare namespace LocalJSX {
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
         /**
           * A unique identifier for the input.
          */
