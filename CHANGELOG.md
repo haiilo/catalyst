@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/haiilo/catalyst/compare/v5.1.1...v5.2.0) (2023-03-06)
+
+
+### Features
+
+* **core:** add border utility classes ([0eb0fe8](https://github.com/haiilo/catalyst/commit/0eb0fe8d6c667ab2119e38693d7a2dc6b6be46d6))
+* **core:** add border utility classes ([6e5aa9b](https://github.com/haiilo/catalyst/commit/6e5aa9b526bb1443a4757baf5c26d8cff187b2f4))
+* **core:** remove solid border from elevation ([#166](https://github.com/haiilo/catalyst/issues/166)) ([a37f0bb](https://github.com/haiilo/catalyst/commit/a37f0bb3059ce4f410a971c7d6af2cfbb1b4bf06))
+* **tokens:** remap tokens: font.muted → neutral.500 ([ffe6eeb](https://github.com/haiilo/catalyst/commit/ffe6eeb612ee7e0921a55bd70545a2cb1288d9a2))
+
+
+### Bug Fixes
+
+* **core:** align label character count always to the right ([#158](https://github.com/haiilo/catalyst/issues/158)) ([4438e69](https://github.com/haiilo/catalyst/commit/4438e69c07de1b30d8ff220eaef7442caff95ace))
+* **core:** change position strategy from 'absolute' to 'fixed' to be able to have nested dropdowns ([#157](https://github.com/haiilo/catalyst/issues/157)) ([e776f24](https://github.com/haiilo/catalyst/commit/e776f2424e4a4e15e2eeb945960255e6a2ade5e2))
+* **core:** change tooltip strategy to fixed ([#162](https://github.com/haiilo/catalyst/issues/162)) ([2108a04](https://github.com/haiilo/catalyst/commit/2108a04a99d97c851b8314f77147194204af048a))
+* **core:** fix spacing on single selects using avatars ([#165](https://github.com/haiilo/catalyst/issues/165)) ([b22ce20](https://github.com/haiilo/catalyst/commit/b22ce20e28718859c8b37db8a95b7a858397d66f))
+
 ### [5.1.1](https://github.com/haiilo/catalyst/compare/v5.1.0...v5.1.1) (2023-02-17)
 
 
