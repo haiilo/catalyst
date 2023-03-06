@@ -26,6 +26,11 @@ export class CatFormGroup {
   @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'auto' = 'auto';
 
   /**
+   * Whether the label is on top or left.
+   */
+  @Prop() horizontal = false;
+
+  /**
    * The space allocated to the input label
    */
   @Prop() labelSize?: string;
@@ -36,6 +41,13 @@ export class CatFormGroup {
     this.formElements.forEach(
       element => !element.requiredMarker?.endsWith('!') && (element.requiredMarker = updateMarker)
     );
+  }
+
+  @Watch('horizontal')
+  onHorizontal(newHorizontal: boolean) {
+    this.formElements.forEach(element => {
+      element.horizontal = newHorizontal;
+    });
   }
 
   render() {
@@ -51,6 +63,7 @@ export class CatFormGroup {
       this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label')
     ) as HTMLCatFormFieldElement[];
     this.onRequiredMarker(this.requiredMarker);
+    this.onHorizontal(this.horizontal);
   }
 
   private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {
