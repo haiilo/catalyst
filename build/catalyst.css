@@ -974,6 +974,41 @@ code {
 /**
  * Auto-generated file. Do not edit directly.
  */
+.cat-radius-l {
+  border-radius: var(--cat-border-radius-l, 0.5rem);
+}
+
+.cat-radius-m {
+  border-radius: var(--cat-border-radius-m, 0.25rem);
+}
+
+.cat-radius-s {
+  border-radius: var(--cat-border-radius-s, 0.125rem);
+}
+
+.cat-radius-0 {
+  border-radius: 0;
+}
+
+.cat-radius-full {
+  border-radius: 100rem;
+}
+
+.cat-border-light {
+  border-color: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+}
+
+.cat-border {
+  border-color: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+
+.cat-border-dark {
+  border-color: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
+/**
+ * Auto-generated file. Do not edit directly.
+ */
 .cat-bg-primary {
   background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
   color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
@@ -1737,29 +1772,6 @@ code {
 .cat-grid-auto {
   grid-template-columns: repeat(auto-fill,minmax(min(var(--grid-min),100%),1fr));
   --grid-min: 100%;
-}
-
-/**
- * Auto-generated file. Do not edit directly.
- */
-.cat-radius-l {
-  border-radius: var(--cat-border-radius-l, 0.5rem);
-}
-
-.cat-radius-m {
-  border-radius: var(--cat-border-radius-m, 0.25rem);
-}
-
-.cat-radius-s {
-  border-radius: var(--cat-border-radius-s, 0.125rem);
-}
-
-.cat-radius-0 {
-  border-radius: 0;
-}
-
-.cat-radius-full {
-  border-radius: 100rem;
 }
 
 /**
