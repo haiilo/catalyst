@@ -995,15 +995,19 @@ code {
 }
 
 .cat-border-light {
-  border-color: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+  border: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 
 .cat-border {
-  border-color: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+  border: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 
 .cat-border-dark {
-  border-color: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+  border: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
+.cat-border-none {
+  border: none !important;
 }
 
 /**
