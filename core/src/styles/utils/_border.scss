@@ -1,0 +1,32 @@
+@use '../variables' as *;
+@use 'border.mixins' as *;
+
+// ---- Border radius
+
+@each $size, $_def in cat-token('size.border.radius') {
+  .cat-radius-#{$size} {
+    border-radius: cat-border-radius($size);
+  }
+}
+
+.cat-radius-0 {
+  border-radius: cat-border-radius('0');
+}
+
+.cat-radius-full {
+  border-radius: cat-border-radius('full');
+}
+
+// ---- Border style
+
+.cat-border-light {
+  border-color: 1px solid cat-token('color.ui.border.light');
+}
+
+.cat-border {
+  border-color: 1px solid cat-token('color.ui.border.default');
+}
+
+.cat-border-dark {
+  border-color: 1px solid cat-token('color.ui.border.dark');
+}
