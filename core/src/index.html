@@ -275,8 +275,8 @@
           <cat-button icon="sparkle-filled" icon-only="xl" a11y-label="ARIA">xl</cat-button>
 
           <h3>Links</h3>
-          <cat-button url="http://www.google.de">Google</cat-button>
-          <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
+          <cat-button href="http://www.google.de">Google</cat-button>
+          <cat-button href="http://www.google.de" target="_blank">Google (ext.)</cat-button>
 
           <h3>Active</h3>
           <cat-button icon="sparkle-filled" active="true" variant="filled" color="primary">Primary</cat-button>
@@ -833,14 +833,14 @@
           <br />
           <br />
           <cat-tabs tabs-align="justify" active-tab="second">
-            <cat-tab label="First" deactivate></cat-tab>
+            <cat-tab label="First" disabled></cat-tab>
             <cat-tab label="Second" id="second"></cat-tab>
             <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
           </cat-tabs>
           <script>
             const tab = document.querySelector('#tab1');
             setInterval(() => {
-              tab.deactivated = true;
+              tab.disabled = true;
             }, 5000);
           </script>
         </section>
