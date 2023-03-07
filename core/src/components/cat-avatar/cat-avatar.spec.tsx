@@ -8,7 +8,7 @@ describe('cat-avatar', () => {
       html: `<cat-avatar label="My Avatar"></cat-avatar>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-avatar label="My Avatar">
+      <cat-avatar label="My Avatar" size="m">
         <mock:shadow-root>
           <span aria-label="My Avatar" class="avatar avatar-m">MA</span>
         </mock:shadow-root>

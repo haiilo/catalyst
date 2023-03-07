@@ -12,7 +12,7 @@ describe('cat-tooltip', () => {
         `
     });
     expect(page.root).toEqualHtml(`
-      <cat-tooltip content="This is a tooltip">
+      <cat-tooltip content="This is a tooltip" placement="top" size="m">
         <mock:shadow-root>
           <div aria-describedby="cat-tooltip-0" class="tooltip-trigger" tabindex="0">
             <slot></slot>

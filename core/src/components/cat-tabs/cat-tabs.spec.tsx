@@ -14,7 +14,7 @@ describe('cat-tabs', () => {
       html: `<cat-tabs></cat-tabs>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-tabs>
+      <cat-tabs active-tab="" tabs-align="left">
         <mock:shadow-root>
         </mock:shadow-root>
       </cat-tabs>

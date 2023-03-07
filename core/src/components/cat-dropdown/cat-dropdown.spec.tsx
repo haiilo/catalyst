@@ -11,7 +11,7 @@ describe('cat-dropdown', () => {
       </cat-dropdown>`
     });
     expect(page.root).toEqualHtml(`
-     <cat-dropdown>
+     <cat-dropdown placement="bottom-start">
         <mock:shadow-root>
          <slot name="trigger"></slot>
          <div class="content overflow-auto" id="cat-dropdown-0">

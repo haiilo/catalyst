@@ -57,7 +57,7 @@ export class CatAlert {
   render() {
     return (
       <Host>
-        {this.hasIcon && (
+        {!this.noIcon && (
           <cat-icon
             size="l"
             icon={this.icon ? this.icon : this.mapIcon.get(this.color)}
@@ -69,9 +69,5 @@ export class CatAlert {
         </div>
       </Host>
     );
-  }
-
-  private get hasIcon() {
-    return (Boolean(this.icon) || Boolean(this.iconSrc)) && !this.noIcon;
   }
 }
