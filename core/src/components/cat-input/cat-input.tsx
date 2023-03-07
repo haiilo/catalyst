@@ -30,6 +30,7 @@ export class CatInput {
 
   private input!: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
+  private errorUpdateTimeoutId?: number;
 
   @Element() hostElement!: HTMLElement;
 
@@ -251,7 +252,12 @@ export class CatInput {
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
         ? {}
-        : value || undefined;
+        : { ...value } || undefined;
+      if (typeof this.errorUpdate === 'number') {
+        this.showErrorAfterTimeout(this.errorUpdate);
+      } else {
+        this.errorMap = this.errorMapSrc;
+      }
     }
   }
 
@@ -377,13 +383,11 @@ export class CatInput {
     return !!this.errorMap;
   }
 
-  private errorUpdateTimeoutId?: number;
   private onInput(event: InputEvent) {
     this.value = this.input.value;
     this.catChange.emit(event);
     if (typeof this.errorUpdate === 'number') {
-      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-      this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
+      this.showErrorAfterTimeout(this.errorUpdate);
     }
   }
 
@@ -396,5 +400,10 @@ export class CatInput {
     if (this.errorUpdate !== false) {
       this.errorMap = this.errorMapSrc;
     }
+  }
+
+  private showErrorAfterTimeout(timeout: number) {
+    typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+    this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), timeout);
   }
 }

@@ -1,9 +1,9 @@
-import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
 import { of } from 'rxjs';
-import { CatDialogService, CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN } from '../../../catalyst/src';
+import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 
 interface Country {
@@ -23,11 +23,13 @@ const countries: Country[] = [
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   form = new FormGroup({
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
+    relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required])
   });
 
@@ -52,6 +54,21 @@ export class AppComponent {
       'select.open': 'Open'
     });
     iconRegistry.addIcons(ci);
+  }
+
+  ngOnInit(): void {
+    this.form.controls.test.valueChanges.subscribe(() => {
+      if (this.form.controls.relatedInput.dirty) {
+        this.form.controls.relatedInput.updateValueAndValidity();
+      }
+    });
+    }
+
+  equalTo(controlName: string) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const controlToCompare = control.parent?.get(controlName);
+      return control.dirty && controlToCompare && controlToCompare.value !== control.value ? { equalTo: true } : null;
+    };
   }
 
   openDialog() {
