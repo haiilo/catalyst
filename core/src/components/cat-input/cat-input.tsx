@@ -252,12 +252,8 @@ export class CatInput {
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
         ? {}
-        : { ...value } || undefined;
-      if (typeof this.errorUpdate === 'number') {
-        this.showErrorAfterTimeout(this.errorUpdate);
-      } else {
-        this.errorMap = this.errorMapSrc;
-      }
+        : value || undefined;
+      this.showErrorsAfterTimeout();
     }
   }
 
@@ -386,9 +382,7 @@ export class CatInput {
   private onInput(event: InputEvent) {
     this.value = this.input.value;
     this.catChange.emit(event);
-    if (typeof this.errorUpdate === 'number') {
-      this.showErrorAfterTimeout(this.errorUpdate);
-    }
+    this.showErrorsAfterTimeout();
   }
 
   private onFocus(event: FocusEvent) {
@@ -398,12 +392,18 @@ export class CatInput {
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
     if (this.errorUpdate !== false) {
-      this.errorMap = this.errorMapSrc;
+      this.showErrors();
     }
   }
 
-  private showErrorAfterTimeout(timeout: number) {
-    typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-    this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), timeout);
+  private showErrors() {
+    this.errorMap = this.errorMapSrc;
+  }
+
+  private showErrorsAfterTimeout() {
+    if (typeof this.errorUpdate === 'number') {
+      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), this.errorUpdate);
+    }
   }
 }
