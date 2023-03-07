@@ -35,7 +35,7 @@ export class CatToggle {
   /**
    * Checked state of the toggle.
    */
-  @Prop({ mutable: true }) checked = false;
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * Disabled state of the toggle.

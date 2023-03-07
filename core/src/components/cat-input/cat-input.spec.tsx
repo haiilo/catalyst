@@ -8,7 +8,7 @@ describe('cat-input', () => {
       html: `<cat-input label="Label"></cat-input>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-input label="Label">
+      <cat-input label="Label" type="text">
         <mock:shadow-root>
           <div class="input-field">
             <div class="label-container">

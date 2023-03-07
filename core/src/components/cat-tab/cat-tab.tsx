@@ -43,12 +43,12 @@ export class CatTab {
   /**
    * A destination to link to, rendered in the href attribute of a link.
    */
-  @Prop({ reflect: true }) url?: string;
+  @Prop({ reflect: true }) href?: string;
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop({ reflect: true }) urlTarget?: '_blank' | '_self';
+  @Prop({ reflect: true }) target?: '_blank' | '_self' | '_parent' | '_top' | string;
 
   /**
    * Specifies that the tab should be disabled.

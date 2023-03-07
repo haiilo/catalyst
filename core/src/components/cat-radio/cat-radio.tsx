@@ -34,7 +34,7 @@ export class CatRadio {
   /**
    * Whether this radio is checked.
    */
-  @Prop({ mutable: true }) checked = false;
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * Whether this radio is disabled.

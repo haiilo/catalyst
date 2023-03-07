@@ -14,20 +14,20 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
   shadow: { delegatesFocus: true }
 })
 export class CatPagination {
-  protected readonly prevSvg =
+  private static readonly PREV_SVG =
     '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.53 6.47a.75.75 0 0 1 0 1.06L10.06 12l4.47 4.47a.75.75 0 1 1-1.06 1.06l-5-5a.75.75 0 0 1 0-1.06l5-5a.75.75 0 0 1 1.06 0Z"/></svg>';
-  protected readonly nextSvg =
+  private static readonly NEXT_SVG =
     '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.47 6.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06L13.94 12 9.47 7.53a.75.75 0 0 1 0-1.06Z"/></svg>';
 
   /**
    * The current page.
    */
-  @Prop({ mutable: true, reflect: true }) page = 0;
+  @Prop({ mutable: true }) page = 0;
 
   /**
    * The total number of pages.
    */
-  @Prop({ reflect: true }) pageCount = 1;
+  @Prop() pageCount = 1;
 
   /**
    * The number of pages to be shown around the current page.
@@ -97,7 +97,7 @@ export class CatPagination {
               disabled={this.isFirst}
               a11yLabel={i18n.t('pagination.prev')}
               icon={this.iconPrev}
-              iconSrc={this.getIconSrc(this.iconPrev, this.iconPrevSrc, this.prevSvg)}
+              iconSrc={this.getIconSrc(this.iconPrev, this.iconPrevSrc, CatPagination.PREV_SVG)}
               iconOnly
               onClick={() => (this.page = this.page - 1)}
             ></cat-button>
@@ -111,7 +111,7 @@ export class CatPagination {
               disabled={this.isLast}
               a11yLabel={i18n.t('pagination.next')}
               icon={this.iconNext}
-              iconSrc={this.getIconSrc(this.iconNext, this.iconNextSrc, this.nextSvg)}
+              iconSrc={this.getIconSrc(this.iconNext, this.iconNextSrc, CatPagination.NEXT_SVG)}
               iconOnly
               onClick={() => (this.page = this.page + 1)}
             ></cat-button>

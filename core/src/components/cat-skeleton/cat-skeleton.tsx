@@ -12,7 +12,7 @@ export class CatSkeleton {
   /**
    * The animation style of the skeleton.
    */
-  @Prop({ reflect: true }) effect: 'plain' | 'sheen' | 'pulse' = 'sheen';
+  @Prop() effect: 'plain' | 'sheen' | 'pulse' = 'sheen';
 
   /**
    * The rendering style of the skeleton.

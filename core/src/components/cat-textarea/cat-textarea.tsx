@@ -22,6 +22,9 @@ let nextUniqueId = 0;
   shadow: { delegatesFocus: true }
 })
 export class CatTextarea {
+  private static readonly ALERT_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V8Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z"/></svg>';
+
   private readonly _id = `cat-textarea-${nextUniqueId++}`;
   private get id() {
     return this.identifier || this._id;
@@ -275,7 +278,7 @@ export class CatTextarea {
               ></textarea>
               {this.invalid && (
                 <cat-icon
-                  icon="alert-circle-outlined"
+                  iconSrc={CatTextarea.ALERT_SVG}
                   class="icon-suffix cat-text-danger"
                   size="l"
                   onClick={() => this.textarea.focus()}

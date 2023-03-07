@@ -9,7 +9,7 @@ describe('cat-select', () => {
       html: `<cat-select label="Label"></cat-select>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-select label="Label">
+      <cat-select label="Label" placement="bottom-start">
         <mock:shadow-root>
           <label htmlfor="cat-input-0">
             <span part="label">

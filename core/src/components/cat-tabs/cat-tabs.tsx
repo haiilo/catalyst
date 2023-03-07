@@ -94,9 +94,9 @@ export class CatTabs {
               iconSrc={tab.iconSrc}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
-              href={tab.url}
+              href={tab.href}
+              target={tab.target}
               disabled={tab.disabled}
-              target={tab.urlTarget}
               nativeAttributes={tab.nativeAttributes}
               onCatClick={() => (this.activeTabId = tab.id)}
             >

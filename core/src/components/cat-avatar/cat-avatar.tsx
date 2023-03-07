@@ -44,6 +44,12 @@ export class CatAvatar {
   @Prop() icon?: string;
 
   /**
+   * The SVG source of an icon to be displayed instead of the initials. This
+   * takes precenedence over the `icon` name.
+   */
+  @Prop() iconSrc?: string;
+
+  /**
    * A destination to link to, rendered in the href attribute of a link.
    */
   @Prop() href?: string;
@@ -105,7 +111,13 @@ export class CatAvatar {
 
   private get content() {
     return !this.backgroundImage
-      ? [this.icon ? <cat-icon icon={this.icon} size={this.size}></cat-icon> : this.getInitials()]
+      ? [
+          this.icon || this.iconSrc ? (
+            <cat-icon icon={this.icon} iconSrc={this.iconSrc} size={this.size}></cat-icon>
+          ) : (
+            this.getInitials()
+          )
+        ]
       : [];
   }
 

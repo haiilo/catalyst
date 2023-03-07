@@ -53,6 +53,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * The SVG source of an icon to be displayed instead of the initials. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * Custom initials for the avatar.
          */
         "initials"?: string;
@@ -798,6 +802,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
+        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -822,13 +830,9 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
     }
     /**
      * Tabs are used to display multiple panels to be contained within a single
@@ -1365,6 +1369,10 @@ declare namespace LocalJSX {
           * An icon to be used instead of the initials.
          */
         "icon"?: string;
+        /**
+          * The SVG source of an icon to be displayed instead of the initials. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
         /**
           * Custom initials for the avatar.
          */
@@ -2142,6 +2150,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
+        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -2170,13 +2182,9 @@ declare namespace LocalJSX {
          */
         "onTabClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
     }
     /**
      * Tabs are used to display multiple panels to be contained within a single

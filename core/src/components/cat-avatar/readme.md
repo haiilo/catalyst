@@ -11,17 +11,18 @@ Avatars are used to represent a person or object.
 
 ## Properties
 
-| Property           | Attribute  | Description                                                              | Type                                      | Default     |
-| ------------------ | ---------- | ------------------------------------------------------------------------ | ----------------------------------------- | ----------- |
-| `href`             | `href`     | A destination to link to, rendered in the href attribute of a link.      | `string \| undefined`                     | `undefined` |
-| `icon`             | `icon`     | An icon to be used instead of the initials.                              | `string \| undefined`                     | `undefined` |
-| `initials`         | `initials` | Custom initials for the avatar.                                          | `string \| undefined`                     | `undefined` |
-| `label`            | `label`    | The label of the avatar.                                                 | `string \| undefined`                     | `undefined` |
-| `nativeAttributes` | --         | Attributes that will be added to the native HTML anchor or span element. | `undefined \| { [key: string]: string; }` | `undefined` |
-| `round`            | `round`    | Use round avatar edges.                                                  | `boolean`                                 | `false`     |
-| `size`             | `size`     | The size of the avatar.                                                  | `"l" \| "m" \| "s" \| "xl" \| "xs"`       | `'m'`       |
-| `src`              | `src`      | An optional avatar image.                                                | `string \| undefined`                     | `undefined` |
-| `target`           | `target`   | Specifies where to open the linked document.                             | `string \| undefined`                     | `undefined` |
+| Property           | Attribute  | Description                                                                                                      | Type                                      | Default     |
+| ------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
+| `href`             | `href`     | A destination to link to, rendered in the href attribute of a link.                                              | `string \| undefined`                     | `undefined` |
+| `icon`             | `icon`     | An icon to be used instead of the initials.                                                                      | `string \| undefined`                     | `undefined` |
+| `iconSrc`          | `icon-src` | The SVG source of an icon to be displayed instead of the initials. This takes precenedence over the `icon` name. | `string \| undefined`                     | `undefined` |
+| `initials`         | `initials` | Custom initials for the avatar.                                                                                  | `string \| undefined`                     | `undefined` |
+| `label`            | `label`    | The label of the avatar.                                                                                         | `string \| undefined`                     | `undefined` |
+| `nativeAttributes` | --         | Attributes that will be added to the native HTML anchor or span element.                                         | `undefined \| { [key: string]: string; }` | `undefined` |
+| `round`            | `round`    | Use round avatar edges.                                                                                          | `boolean`                                 | `false`     |
+| `size`             | `size`     | The size of the avatar.                                                                                          | `"l" \| "m" \| "s" \| "xl" \| "xs"`       | `'m'`       |
+| `src`              | `src`      | An optional avatar image.                                                                                        | `string \| undefined`                     | `undefined` |
+| `target`           | `target`   | Specifies where to open the linked document.                                                                     | `string \| undefined`                     | `undefined` |
 
 
 ## CSS Custom Properties

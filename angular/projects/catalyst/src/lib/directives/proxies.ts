@@ -30,14 +30,14 @@ export declare interface CatAlert extends Components.CatAlert {}
 
 
 @ProxyCmp({
-  inputs: ['href', 'icon', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target']
+  inputs: ['href', 'icon', 'iconSrc', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target']
 })
 @Component({
   selector: 'cat-avatar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['href', 'icon', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target'],
+  inputs: ['href', 'icon', 'iconSrc', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target'],
 })
 export class CatAvatar {
   protected el: HTMLElement;
@@ -542,14 +542,14 @@ export declare interface CatSpinner extends Components.CatSpinner {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'url', 'urlTarget']
+  inputs: ['disabled', 'href', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'target']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'url', 'urlTarget'],
+  inputs: ['disabled', 'href', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'target'],
 })
 export class CatTab {
   protected el: HTMLElement;

@@ -8,7 +8,7 @@ describe('cat-skeleton', () => {
       html: `<cat-skeleton></cat-skeleton>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-skeleton effect="sheen" size="m" variant="rectangle">
+      <cat-skeleton size="m" variant="rectangle">
         <mock:shadow-root>
           <div class="skeleton skeleton-m skeleton-rectangle skeleton-sheen"></div>
         </mock:shadow-root>

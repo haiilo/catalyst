@@ -9,7 +9,7 @@ describe('cat-pagination', () => {
       html: `<cat-pagination></cat-pagination>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-pagination page="0" page-count="1" size="m" variant="text">
+      <cat-pagination size="m" variant="text">
         <mock:shadow-root>
           <nav role="navigation">
             <ol class="cat-pagination-m">

@@ -23,6 +23,7 @@ export const CatAvatar = /*@__PURE__*/ defineContainer<JSX.CatAvatar>('cat-avata
   'initials',
   'src',
   'icon',
+  'iconSrc',
   'href',
   'target',
   'nativeAttributes'
@@ -263,8 +264,8 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'iconSrc',
   'iconOnly',
   'iconRight',
-  'url',
-  'urlTarget',
+  'href',
+  'target',
   'disabled',
   'nativeAttributes',
   'tabClick'
