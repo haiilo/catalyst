@@ -7,7 +7,7 @@ import { Component, Element, h, Prop } from '@stencil/core';
 @Component({
   tag: 'cat-badge',
   styleUrl: 'cat-badge.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatBadge {
   @Element() hostElement!: HTMLElement;
@@ -30,12 +30,12 @@ export class CatBadge {
   /**
    * Use round badge edges.
    */
-  @Prop({ reflect: true }) round = false;
+  @Prop() round = false;
 
   /**
    * Draw attention to the badge with a subtle animation.
    */
-  @Prop({ reflect: true }) pulse = false;
+  @Prop() pulse = false;
 
   render() {
     return <slot></slot>;

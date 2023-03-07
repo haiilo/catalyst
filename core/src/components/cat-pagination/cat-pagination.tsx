@@ -11,18 +11,23 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 @Component({
   tag: 'cat-pagination',
   styleUrl: 'cat-pagination.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatPagination {
+  protected readonly prevSvg =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.53 6.47a.75.75 0 0 1 0 1.06L10.06 12l4.47 4.47a.75.75 0 1 1-1.06 1.06l-5-5a.75.75 0 0 1 0-1.06l5-5a.75.75 0 0 1 1.06 0Z"/></svg>';
+  protected readonly nextSvg =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.47 6.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06L13.94 12 9.47 7.53a.75.75 0 0 1 0-1.06Z"/></svg>';
+
   /**
    * The current page.
    */
-  @Prop({ mutable: true }) page = 0;
+  @Prop({ mutable: true, reflect: true }) page = 0;
 
   /**
    * The total number of pages.
    */
-  @Prop() pageCount = 1;
+  @Prop({ reflect: true }) pageCount = 1;
 
   /**
    * The number of pages to be shown around the current page.
@@ -37,12 +42,12 @@ export class CatPagination {
   /**
    * The size of the buttons.
    */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * The rendering style of the buttons.
    */
-  @Prop() variant: 'filled' | 'outlined' | 'text' = 'text';
+  @Prop({ reflect: true }) variant: 'filled' | 'outlined' | 'text' = 'text';
 
   /**
    * Use round button edges.
@@ -57,12 +62,24 @@ export class CatPagination {
   /**
    * The icon of the "previous" button.
    */
-  @Prop() iconPrev = 'chevron-left-outlined';
+  @Prop() iconPrev?: string;
+
+  /**
+   * The SVG source of the "previous" button. This takes precenedence over the
+   * `iconPrev` name.
+   */
+  @Prop() iconPrevSrc?: string;
 
   /**
    * The icon of the "next" button.
    */
-  @Prop() iconNext = 'chevron-right-outlined';
+  @Prop() iconNext?: string;
+
+  /**
+   * The SVG source of the "previous" button. This takes precenedence over the
+   * `iconPrev` name.
+   */
+  @Prop() iconNextSrc?: string;
 
   render() {
     return (
@@ -80,6 +97,7 @@ export class CatPagination {
               disabled={this.isFirst}
               a11yLabel={i18n.t('pagination.prev')}
               icon={this.iconPrev}
+              iconSrc={this.getIconSrc(this.iconPrev, this.iconPrevSrc, this.prevSvg)}
               iconOnly
               onClick={() => (this.page = this.page - 1)}
             ></cat-button>
@@ -93,6 +111,7 @@ export class CatPagination {
               disabled={this.isLast}
               a11yLabel={i18n.t('pagination.next')}
               icon={this.iconNext}
+              iconSrc={this.getIconSrc(this.iconNext, this.iconNextSrc, this.nextSvg)}
               iconOnly
               onClick={() => (this.page = this.page + 1)}
             ></cat-button>
@@ -170,5 +189,14 @@ export class CatPagination {
         </cat-button>
       </li>
     ]);
+  }
+
+  private getIconSrc(icon: string | undefined, iconSrc: string | undefined, iconDefault: string) {
+    if (icon) {
+      return undefined;
+    } else if (iconSrc) {
+      return iconSrc;
+    }
+    return iconDefault;
   }
 }

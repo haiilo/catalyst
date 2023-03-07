@@ -8,7 +8,7 @@ import loadImg from '../../utils/load-img';
 @Component({
   tag: 'cat-avatar',
   styleUrl: 'cat-avatar.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatAvatar {
   @State() backgroundImage?: string;
@@ -16,7 +16,7 @@ export class CatAvatar {
   /**
    * The size of the avatar.
    */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * Use round avatar edges.
@@ -26,7 +26,7 @@ export class CatAvatar {
   /**
    * The label of the avatar.
    */
-  @Prop() label = '';
+  @Prop() label?: string;
 
   /**
    * Custom initials for the avatar.
@@ -46,12 +46,17 @@ export class CatAvatar {
   /**
    * A destination to link to, rendered in the href attribute of a link.
    */
-  @Prop() url?: string;
+  @Prop() href?: string;
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() urlTarget?: '_blank' | '_self';
+  @Prop() target?: '_blank' | '_self' | '_parent' | '_top' | string;
+
+  /**
+   * Attributes that will be added to the native HTML anchor or span element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
 
   @Watch('src')
   onSrcChanged(value?: string): void {
@@ -76,15 +81,22 @@ export class CatAvatar {
   }
 
   render() {
-    if (this.url) {
+    if (this.href) {
       return (
-        <a href={this.url} target={this.urlTarget} style={this.cssStyle} class={this.cssClass} aria-label={this.label}>
+        <a
+          {...this.nativeAttributes}
+          href={this.href}
+          target={this.target}
+          style={this.cssStyle}
+          class={this.cssClass}
+          aria-label={this.label}
+        >
           {this.content}
         </a>
       );
     } else {
       return (
-        <span style={this.cssStyle} class={this.cssClass} aria-label={this.label}>
+        <span {...this.nativeAttributes} style={this.cssStyle} class={this.cssClass} aria-label={this.label}>
           {this.content}
         </span>
       );

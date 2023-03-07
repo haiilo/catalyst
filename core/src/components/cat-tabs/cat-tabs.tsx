@@ -9,7 +9,7 @@ import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stenci
 @Component({
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatTabs {
   private buttons: HTMLCatButtonElement[] = [];
@@ -24,12 +24,12 @@ export class CatTabs {
   /**
    * The ID of the active tab.
    */
-  @Prop() activeTab = '';
+  @Prop({ reflect: true }) activeTab = '';
 
   /**
    * The alignment of the tabs.
    */
-  @Prop() tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
+  @Prop({ reflect: true }) tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
 
   @Watch('activeTabId')
   onActiveTabChanged(newActiveTab: string): void {
@@ -80,7 +80,7 @@ export class CatTabs {
           return (
             <cat-button
               ref={el => el && this.updateButtonsRef(el)}
-              buttonId={tab.id}
+              identifier={tab.id}
               role="tab"
               part="tab"
               class={{
@@ -91,11 +91,13 @@ export class CatTabs {
               color={this.activeTabId && tab.id === this.activeTabId ? 'primary' : 'secondary'}
               variant="text"
               icon={tab.icon}
+              iconSrc={tab.iconSrc}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
-              url={tab.url}
-              disabled={tab.deactivated}
-              urlTarget={tab.urlTarget}
+              href={tab.url}
+              disabled={tab.disabled}
+              target={tab.urlTarget}
+              nativeAttributes={tab.nativeAttributes}
               onCatClick={() => (this.activeTabId = tab.id)}
             >
               {tab.label}

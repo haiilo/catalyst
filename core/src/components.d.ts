@@ -32,6 +32,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * The SVG source of an icon to be displayed in the alert. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * Whether the icon of the alert is deactivated.
          */
         "noIcon": boolean;
@@ -40,6 +44,10 @@ export namespace Components {
      * Avatars are used to represent a person or object.
      */
     interface CatAvatar {
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
         /**
           * An icon to be used instead of the initials.
          */
@@ -51,7 +59,11 @@ export namespace Components {
         /**
           * The label of the avatar.
          */
-        "label": string;
+        "label"?: string;
+        /**
+          * Attributes that will be added to the native HTML anchor or span element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Use round avatar edges.
          */
@@ -65,13 +77,9 @@ export namespace Components {
          */
         "src"?: string;
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
     }
     /**
      * Badges are used to inform users of the status of an object or of an action
@@ -117,10 +125,6 @@ export namespace Components {
          */
         "active": boolean;
         /**
-          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
-         */
-        "buttonId"?: string;
-        /**
           * The color palette of the button.
          */
         "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
@@ -142,6 +146,10 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
+        /**
           * The name of an icon to be displayed in the button.
          */
         "icon"?: string;
@@ -157,6 +165,10 @@ export namespace Components {
           * The SVG source of an icon to be displayed in the button. This takes precenedence over the `icon` name.
          */
         "iconSrc"?: string;
+        /**
+          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
+         */
+        "identifier"?: string;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -186,13 +198,9 @@ export namespace Components {
          */
         "submit": boolean;
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
         /**
           * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
          */
@@ -239,7 +247,7 @@ export namespace Components {
          */
         "hint"?: string | string[];
         /**
-          * A unique identifier for the input.
+          * A unique identifier for the native input.
          */
         "identifier"?: string;
         /**
@@ -494,11 +502,19 @@ export namespace Components {
         /**
           * The icon of the "next" button.
          */
-        "iconNext": string;
+        "iconNext"?: string;
+        /**
+          * The SVG source of the "previous" button. This takes precenedence over the `iconPrev` name.
+         */
+        "iconNextSrc"?: string;
         /**
           * The icon of the "previous" button.
          */
-        "iconPrev": string;
+        "iconPrev"?: string;
+        /**
+          * The SVG source of the "previous" button. This takes precenedence over the `iconPrev` name.
+         */
+        "iconPrevSrc"?: string;
         /**
           * The current page.
          */
@@ -778,9 +794,9 @@ export namespace Components {
      */
     interface CatTab {
         /**
-          * Specifies that the tab should be deactivated.
+          * Specifies that the tab should be disabled.
          */
-        "deactivated": boolean;
+        "disabled": boolean;
         /**
           * The name of an icon to be displayed in the tab.
          */
@@ -794,9 +810,17 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
+          * The SVG source of an icon to be displayed in the tab. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * The label of the tab.
          */
         "label": string;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -1321,6 +1345,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * The SVG source of an icon to be displayed in the alert. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * Whether the icon of the alert is deactivated.
          */
         "noIcon"?: boolean;
@@ -1329,6 +1357,10 @@ declare namespace LocalJSX {
      * Avatars are used to represent a person or object.
      */
     interface CatAvatar {
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
         /**
           * An icon to be used instead of the initials.
          */
@@ -1342,6 +1374,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Attributes that will be added to the native HTML anchor or span element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Use round avatar edges.
          */
         "round"?: boolean;
@@ -1354,13 +1390,9 @@ declare namespace LocalJSX {
          */
         "src"?: string;
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
     }
     /**
      * Badges are used to inform users of the status of an object or of an action
@@ -1406,10 +1438,6 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
-          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
-         */
-        "buttonId"?: string;
-        /**
           * The color palette of the button.
          */
         "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
@@ -1417,6 +1445,10 @@ declare namespace LocalJSX {
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
         "disabled"?: boolean;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "href"?: string;
         /**
           * The name of an icon to be displayed in the button.
          */
@@ -1433,6 +1465,10 @@ declare namespace LocalJSX {
           * The SVG source of an icon to be displayed in the button. This takes precenedence over the `icon` name.
          */
         "iconSrc"?: string;
+        /**
+          * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
+         */
+        "identifier"?: string;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
          */
@@ -1474,13 +1510,9 @@ declare namespace LocalJSX {
          */
         "submit"?: boolean;
         /**
-          * A destination to link to, rendered in the href attribute of a link.
-         */
-        "url"?: string;
-        /**
           * Specifies where to open the linked document.
          */
-        "urlTarget"?: '_blank' | '_self';
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | string;
         /**
           * The value of the button, which gets paired with the button's name when submitted as part of a form. Corresponds with the native HTML value attribute.
          */
@@ -1514,7 +1546,7 @@ declare namespace LocalJSX {
          */
         "hint"?: string | string[];
         /**
-          * A unique identifier for the input.
+          * A unique identifier for the native input.
          */
         "identifier"?: string;
         /**
@@ -1782,9 +1814,17 @@ declare namespace LocalJSX {
          */
         "iconNext"?: string;
         /**
+          * The SVG source of the "previous" button. This takes precenedence over the `iconPrev` name.
+         */
+        "iconNextSrc"?: string;
+        /**
           * The icon of the "previous" button.
          */
         "iconPrev"?: string;
+        /**
+          * The SVG source of the "previous" button. This takes precenedence over the `iconPrev` name.
+         */
+        "iconPrevSrc"?: string;
         /**
           * The current page.
          */
@@ -2098,9 +2138,9 @@ declare namespace LocalJSX {
      */
     interface CatTab {
         /**
-          * Specifies that the tab should be deactivated.
+          * Specifies that the tab should be disabled.
          */
-        "deactivated"?: boolean;
+        "disabled"?: boolean;
         /**
           * The name of an icon to be displayed in the tab.
          */
@@ -2114,9 +2154,17 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
+          * The SVG source of an icon to be displayed in the tab. This takes precenedence over the `icon` name.
+         */
+        "iconSrc"?: string;
+        /**
           * The label of the tab.
          */
         "label"?: string;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when tab is clicked.
          */

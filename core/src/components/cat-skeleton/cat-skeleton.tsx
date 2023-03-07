@@ -12,18 +12,18 @@ export class CatSkeleton {
   /**
    * The animation style of the skeleton.
    */
-  @Prop() effect: 'plain' | 'sheen' | 'pulse' = 'sheen';
+  @Prop({ reflect: true }) effect: 'plain' | 'sheen' | 'pulse' = 'sheen';
 
   /**
    * The rendering style of the skeleton.
    */
-  @Prop() variant: 'rectangle' | 'square' | 'circle' | 'head' | 'body' = 'rectangle';
+  @Prop({ reflect: true }) variant: 'rectangle' | 'square' | 'circle' | 'head' | 'body' = 'rectangle';
 
   /**
    * The size of the skeleton. If the variant is set to "head", the size values
    * "xs" to "xl" translate to the head levels `h1` to `h5`.
    */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * The number of text lines to be rendered for "head" and "body" variants.

@@ -11,6 +11,7 @@ import type { JSX } from '@haiilo/catalyst';
 export const CatAlert = /*@__PURE__*/ defineContainer<JSX.CatAlert>('cat-alert', undefined, [
   'color',
   'icon',
+  'iconSrc',
   'noIcon'
 ]);
 
@@ -22,8 +23,9 @@ export const CatAvatar = /*@__PURE__*/ defineContainer<JSX.CatAvatar>('cat-avata
   'initials',
   'src',
   'icon',
-  'url',
-  'urlTarget'
+  'href',
+  'target',
+  'nativeAttributes'
 ]);
 
 
@@ -39,8 +41,8 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
 export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-button', undefined, [
   'variant',
   'color',
-  'active',
   'size',
+  'active',
   'name',
   'value',
   'disabled',
@@ -48,13 +50,13 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'submit',
   'noEllipsis',
   'round',
-  'url',
-  'urlTarget',
+  'href',
+  'target',
   'icon',
   'iconSrc',
   'iconOnly',
   'iconRight',
-  'buttonId',
+  'identifier',
   'a11yLabel',
   'a11yCurrent',
   'nativeAttributes',
@@ -74,11 +76,11 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'indeterminate',
   'label',
   'labelHidden',
+  'labelLeft',
   'name',
   'required',
   'value',
   'hint',
-  'labelLeft',
   'nativeAttributes',
   'catChange',
   'catFocus',
@@ -160,7 +162,9 @@ export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('c
   'round',
   'compact',
   'iconPrev',
-  'iconNext'
+  'iconPrevSrc',
+  'iconNext',
+  'iconNextSrc'
 ]);
 
 
@@ -256,11 +260,13 @@ export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spi
 export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undefined, [
   'label',
   'icon',
+  'iconSrc',
   'iconOnly',
   'iconRight',
   'url',
   'urlTarget',
-  'deactivated',
+  'disabled',
+  'nativeAttributes',
   'tabClick'
 ]);
 

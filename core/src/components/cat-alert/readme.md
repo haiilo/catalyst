@@ -12,11 +12,12 @@ component if you need to capture user’s attention in a prominent way.
 
 ## Properties
 
-| Property | Attribute | Description                                       | Type                                                             | Default     |
-| -------- | --------- | ------------------------------------------------- | ---------------------------------------------------------------- | ----------- |
-| `color`  | `color`   | The color palette of the alert.                   | `"danger" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
-| `icon`   | `icon`    | The name of an icon to be displayed in the alert. | `string \| undefined`                                            | `undefined` |
-| `noIcon` | `no-icon` | Whether the icon of the alert is deactivated.     | `boolean`                                                        | `false`     |
+| Property  | Attribute  | Description                                                                                           | Type                                                             | Default     |
+| --------- | ---------- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------- |
+| `color`   | `color`    | The color palette of the alert.                                                                       | `"danger" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
+| `icon`    | `icon`     | The name of an icon to be displayed in the alert.                                                     | `string \| undefined`                                            | `undefined` |
+| `iconSrc` | `icon-src` | The SVG source of an icon to be displayed in the alert. This takes precenedence over the `icon` name. | `string \| undefined`                                            | `undefined` |
+| `noIcon`  | `no-icon`  | Whether the icon of the alert is deactivated.                                                         | `boolean`                                                        | `false`     |
 
 
 ## Dependencies

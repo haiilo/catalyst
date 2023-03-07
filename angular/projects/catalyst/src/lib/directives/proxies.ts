@@ -8,14 +8,14 @@ import { Components } from '@haiilo/catalyst';
 
 
 @ProxyCmp({
-  inputs: ['color', 'icon', 'noIcon']
+  inputs: ['color', 'icon', 'iconSrc', 'noIcon']
 })
 @Component({
   selector: 'cat-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'icon', 'noIcon'],
+  inputs: ['color', 'icon', 'iconSrc', 'noIcon'],
 })
 export class CatAlert {
   protected el: HTMLElement;
@@ -30,14 +30,14 @@ export declare interface CatAlert extends Components.CatAlert {}
 
 
 @ProxyCmp({
-  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
+  inputs: ['href', 'icon', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target']
 })
 @Component({
   selector: 'cat-avatar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget'],
+  inputs: ['href', 'icon', 'initials', 'label', 'nativeAttributes', 'round', 'size', 'src', 'target'],
 })
 export class CatAvatar {
   protected el: HTMLElement;
@@ -74,7 +74,7 @@ export declare interface CatBadge extends Components.CatBadge {}
 
 
 @ProxyCmp({
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'color', 'disabled', 'href', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'identifier', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'target', 'value', 'variant'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
@@ -82,7 +82,7 @@ export declare interface CatBadge extends Components.CatBadge {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'color', 'disabled', 'href', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'identifier', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'target', 'value', 'variant'],
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -305,14 +305,14 @@ export declare interface CatLabel extends Components.CatLabel {}
 
 
 @ProxyCmp({
-  inputs: ['activePadding', 'compact', 'iconNext', 'iconPrev', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant']
+  inputs: ['activePadding', 'compact', 'iconNext', 'iconNextSrc', 'iconPrev', 'iconPrevSrc', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant']
 })
 @Component({
   selector: 'cat-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['activePadding', 'compact', 'iconNext', 'iconPrev', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant'],
+  inputs: ['activePadding', 'compact', 'iconNext', 'iconNextSrc', 'iconPrev', 'iconPrevSrc', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant'],
 })
 export class CatPagination {
   protected el: HTMLElement;
@@ -542,14 +542,14 @@ export declare interface CatSpinner extends Components.CatSpinner {}
 
 
 @ProxyCmp({
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'url', 'urlTarget']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget'],
+  inputs: ['disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'label', 'nativeAttributes', 'url', 'urlTarget'],
 })
 export class CatTab {
   protected el: HTMLElement;

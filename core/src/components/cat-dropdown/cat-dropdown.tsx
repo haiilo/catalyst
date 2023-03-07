@@ -25,7 +25,7 @@ export class CatDropdown {
   /**
    * The placement of the dropdown.
    */
-  @Prop() placement: Placement = 'bottom-start';
+  @Prop({ reflect: true }) placement: Placement = 'bottom-start';
 
   /**
    * Do not close the dropdown on outside clicks.

@@ -7,7 +7,7 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'cat-card',
   styleUrl: 'cat-card.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatCard {
   render() {

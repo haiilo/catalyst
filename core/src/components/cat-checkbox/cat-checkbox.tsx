@@ -16,7 +16,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-checkbox',
   styleUrls: ['cat-checkbox.scss'],
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatCheckbox {
   private readonly _id = `cat-checkbox-${nextUniqueId++}`;
@@ -34,7 +34,7 @@ export class CatCheckbox {
   /**
    * Checked state of the checkbox
    */
-  @Prop({ mutable: true }) checked = false;
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * Disabled state of the checkbox
@@ -42,14 +42,14 @@ export class CatCheckbox {
   @Prop() disabled = false;
 
   /**
-   * A unique identifier for the input.
+   * A unique identifier for the native input.
    */
   @Prop() identifier?: string;
 
   /**
    * Indeterminate state of the checkbox
    */
-  @Prop() indeterminate = false;
+  @Prop({ reflect: true }) indeterminate = false;
 
   /**
    * Label of the checkbox which is presented in the UI
@@ -60,6 +60,11 @@ export class CatCheckbox {
    * Visually hide the label, but still show it to assistive technologies like screen readers.
    */
   @Prop() labelHidden = false;
+
+  /**
+   * Whether the label should appear to the left of the checkbox.
+   */
+  @Prop() labelLeft = false;
 
   /**
    * The name of the input
@@ -80,11 +85,6 @@ export class CatCheckbox {
    * Optional hint text(s) to be displayed with the checkbox.
    */
   @Prop() hint?: string | string[];
-
-  /**
-   * Whether the label should appear to the left of the checkbox.
-   */
-  @Prop() labelLeft = false;
 
   /**
    * Attributes that will be added to the native HTML input element.

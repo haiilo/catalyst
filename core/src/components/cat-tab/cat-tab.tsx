@@ -9,7 +9,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-tab',
   styleUrl: 'cat-tab.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatTab {
   @Element() hostElement!: HTMLElement;
@@ -23,6 +23,12 @@ export class CatTab {
    * The name of an icon to be displayed in the tab.
    */
   @Prop({ reflect: true }) icon?: string;
+
+  /**
+   * The SVG source of an icon to be displayed in the tab. This takes
+   * precenedence over the `icon` name.
+   */
+  @Prop({ reflect: true }) iconSrc?: string;
 
   /**
    * Hide the actual button content and only display the tab.
@@ -45,9 +51,14 @@ export class CatTab {
   @Prop({ reflect: true }) urlTarget?: '_blank' | '_self';
 
   /**
-   * Specifies that the tab should be deactivated.
+   * Specifies that the tab should be disabled.
    */
-  @Prop({ reflect: true }) deactivated = false;
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * Attributes that will be added to the native HTML button element
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
    * Emitted when tab is clicked.

@@ -12,7 +12,7 @@ export class CatSpinner {
   /**
    * The size of the spinner.
    */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline' = 'm';
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline' = 'm';
 
   /**
    * Adds accessible label for the spinner that is only shown for screen

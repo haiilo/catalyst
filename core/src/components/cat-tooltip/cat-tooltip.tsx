@@ -41,7 +41,7 @@ export class CatTooltip {
   /**
    * The placement of the tooltip.
    */
-  @Prop() placement: Placement = 'top';
+  @Prop({ reflect: true }) placement: Placement = 'top';
 
   /**
    * Use round tooltip edges.
@@ -51,7 +51,7 @@ export class CatTooltip {
   /**
    * The size of the tooltip.
    */
-  @Prop() size: 's' | 'm' | 'l' = 'm';
+  @Prop({ reflect: true }) size: 's' | 'm' | 'l' = 'm';
 
   /**
    * The delay time for showing tooltip in ms.

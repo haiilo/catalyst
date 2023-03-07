@@ -39,6 +39,12 @@ export class CatAlert {
   @Prop() icon?: string;
 
   /**
+   * The SVG source of an icon to be displayed in the alert. This takes
+   * precenedence over the `icon` name.
+   */
+  @Prop() iconSrc?: string;
+
+  /**
    * Whether the icon of the alert is deactivated.
    */
   @Prop() noIcon = false;
@@ -51,11 +57,21 @@ export class CatAlert {
   render() {
     return (
       <Host>
-        {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
+        {this.hasIcon && (
+          <cat-icon
+            size="l"
+            icon={this.icon ? this.icon : this.mapIcon.get(this.color)}
+            iconSrc={this.iconSrc}
+          ></cat-icon>
+        )}
         <div class="content">
           <slot></slot>
         </div>
       </Host>
     );
+  }
+
+  private get hasIcon() {
+    return (Boolean(this.icon) || Boolean(this.iconSrc)) && !this.noIcon;
   }
 }

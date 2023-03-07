@@ -15,7 +15,7 @@ import { MediaMatcher } from '../../utils/media-matcher';
 @Component({
   tag: 'cat-button',
   styleUrl: 'cat-button.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
@@ -28,22 +28,22 @@ export class CatButton {
   /**
    * The rendering style of the button.
    */
-  @Prop() variant: 'filled' | 'outlined' | 'text' = 'outlined';
+  @Prop({ reflect: true }) variant: 'filled' | 'outlined' | 'text' = 'outlined';
 
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
+  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
+
+  /**
+   * The size of the button.
+   */
+  @Prop({ reflect: true }) size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * Set the button into an active state.
    */
   @Prop() active = false;
-
-  /**
-   * The size of the button.
-   */
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * The name of the button, which gets paired with the button's value when
@@ -90,12 +90,12 @@ export class CatButton {
   /**
    * A destination to link to, rendered in the href attribute of a link.
    */
-  @Prop() url?: string;
+  @Prop() href?: string;
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() urlTarget?: '_blank' | '_self';
+  @Prop() target?: '_blank' | '_self' | '_parent' | '_top' | string;
 
   /**
    * The name of an icon to be displayed in the button.
@@ -123,7 +123,7 @@ export class CatButton {
    * particular component this ID is added inside the web component. If you need
    * an ID on the HTML element, use the regular `id` attribute instead.
    */
-  @Prop() buttonId?: string;
+  @Prop() identifier?: string;
 
   /**
    * Adds accessible label for the button that is only shown for screen
@@ -224,16 +224,17 @@ export class CatButton {
   }
 
   render() {
-    if (this.url) {
+    if (this.href) {
       return (
         <a
           ref={el => (this.button = el as HTMLAnchorElement)}
-          href={this.disabled ? undefined : this.url}
-          target={this.urlTarget}
+          href={this.disabled ? undefined : this.href}
+          target={this.disabled ? undefined : this.target}
+          role={this.disabled ? 'link' : undefined}
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
           aria-current={this.a11yCurrent}
-          id={this.buttonId}
+          id={this.identifier}
           part="button"
           class={{
             'cat-button': true,
@@ -266,7 +267,7 @@ export class CatButton {
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
           aria-current={this.a11yCurrent}
-          id={this.buttonId}
+          id={this.identifier}
           part="button"
           class={{
             'cat-button': true,

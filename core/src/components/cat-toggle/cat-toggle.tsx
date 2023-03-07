@@ -16,7 +16,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-toggle',
   styleUrls: ['cat-toggle.scss'],
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatToggle {
   private readonly _id = `cat-toggle-${nextUniqueId++}`;
