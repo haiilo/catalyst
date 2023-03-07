@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
+import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
@@ -30,7 +31,6 @@ export class CatInput {
 
   private input!: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
-  private errorUpdateTimeoutId?: number;
 
   @Element() hostElement!: HTMLElement;
 
@@ -245,7 +245,7 @@ export class CatInput {
 
   @Watch('errors')
   watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (this.errorUpdate === false) {
+    if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
@@ -391,7 +391,7 @@ export class CatInput {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
-    if (this.errorUpdate !== false) {
+    if (coerceBoolean(this.errorUpdate)) {
       this.showErrors();
     }
   }
@@ -400,10 +400,12 @@ export class CatInput {
     this.errorMap = this.errorMapSrc;
   }
 
+  private errorUpdateTimeoutId?: number;
   private showErrorsAfterTimeout() {
-    if (typeof this.errorUpdate === 'number') {
+    const errorUpdate = coerceNumber(this.errorUpdate, null);
+    if (errorUpdate !== null) {
       typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), this.errorUpdate);
+      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
     }
   }
 }

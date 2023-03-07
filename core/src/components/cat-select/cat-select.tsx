@@ -262,7 +262,7 @@ export class CatSelect {
 
   @Watch('errors')
   watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (coerceBoolean(this.errorUpdate) === false) {
+    if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
@@ -270,10 +270,10 @@ export class CatSelect {
         : value === true
         ? {}
         : value || undefined;
+      this.showErrorsAfterTimeout();
     }
   }
 
-  private errorUpdateTimeoutId?: number;
   @Watch('state')
   onStateChange(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
@@ -315,11 +315,7 @@ export class CatSelect {
         this.value = newValue;
       }
       this.catChange.emit();
-      const errorUpdate = coerceNumber(this.errorUpdate, null);
-      if (errorUpdate !== null) {
-        typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-        this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), errorUpdate);
-      }
+      this.showErrorsAfterTimeout();
     }
   }
 
@@ -373,8 +369,8 @@ export class CatSelect {
     this.hide();
     this.patchState({ activeSelectionIndex: -1 });
     this.catBlur.emit(event);
-    if (`${this.errorUpdate}` !== 'false') {
-      this.errorMap = this.errorMapSrc;
+    if (coerceBoolean(this.errorUpdate)) {
+      this.showErrors();
     }
   }
 
@@ -1065,6 +1061,19 @@ export class CatSelect {
     if (!this.multiple) {
       this.hide();
       this.input?.classList.add('select-input-transparent-caret');
+    }
+  }
+
+  private showErrors() {
+    this.errorMap = this.errorMapSrc;
+  }
+
+  private errorUpdateTimeoutId?: number;
+  private showErrorsAfterTimeout() {
+    const errorUpdate = coerceNumber(this.errorUpdate, null);
+    if (errorUpdate !== null) {
+      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
     }
   }
 }

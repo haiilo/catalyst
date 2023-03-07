@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import autosize from 'autosize';
 import log from 'loglevel';
+import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
@@ -193,7 +194,7 @@ export class CatTextarea {
 
   @Watch('errors')
   watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (this.errorUpdate === false) {
+    if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
       this.errorMapSrc = Array.isArray(value)
@@ -201,6 +202,7 @@ export class CatTextarea {
         : value === true
         ? {}
         : value || undefined;
+      this.showErrorsAfterTimeout();
     }
   }
 
@@ -298,14 +300,10 @@ export class CatTextarea {
     return !!this.errorMap;
   }
 
-  private errorUpdateTimeoutId?: number;
   private onInput(event: InputEvent) {
     this.value = this.textarea.value;
     this.catChange.emit(event);
-    if (typeof this.errorUpdate === 'number') {
-      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-      this.errorUpdateTimeoutId = window.setTimeout(() => (this.errorMap = this.errorMapSrc), this.errorUpdate);
-    }
+    this.showErrorsAfterTimeout();
   }
 
   private onFocus(event: FocusEvent) {
@@ -314,8 +312,21 @@ export class CatTextarea {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
-    if (this.errorUpdate !== false) {
-      this.errorMap = this.errorMapSrc;
+    if (coerceBoolean(this.errorUpdate)) {
+      this.showErrors();
+    }
+  }
+
+  private showErrors() {
+    this.errorMap = this.errorMapSrc;
+  }
+
+  private errorUpdateTimeoutId?: number;
+  private showErrorsAfterTimeout() {
+    const errorUpdate = coerceNumber(this.errorUpdate, null);
+    if (errorUpdate !== null) {
+      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
+      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
     }
   }
 }
