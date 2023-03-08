@@ -15,7 +15,7 @@
     "rxjs": ">=6.6.0"
   },
   "dependencies": {
-    "@haiilo/catalyst": "5.2.2",
+    "@haiilo/catalyst": "5.2.3",
     "tslib": "^2.3.0"
   }
 }
