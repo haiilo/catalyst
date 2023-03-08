@@ -253,8 +253,7 @@ export class CatInput {
         : value === true
         ? {}
         : value || undefined;
-      this.showErrorsIfTimeout();
-      this.showErrorsIfNoFocus();
+      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
 
@@ -407,7 +406,9 @@ export class CatInput {
     if (errorUpdate !== null) {
       typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
       this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
+      return true;
     }
+    return false;
   }
 
   private showErrorsIfNoFocus() {
