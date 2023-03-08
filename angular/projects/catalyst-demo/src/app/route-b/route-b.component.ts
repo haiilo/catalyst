@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-route-b',
-  templateUrl: './dialog.component.html'
+  templateUrl: './route-b.component.html'
 })
-export class DialogComponent {}
+export class RouteBComponent {}

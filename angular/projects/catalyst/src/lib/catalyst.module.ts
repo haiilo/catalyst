@@ -21,6 +21,7 @@ import { SelectValueAccessor } from './directives/select-value-accessor';
 import { SelectValueAccessorDecorator } from './directives/select-value-accessor-decorator';
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
+import { CatButtonRouterLinkDirective } from './router/foo';
 
 const CatComponents = [
   Components.CatAlert,
@@ -81,6 +82,7 @@ export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotification
   declarations: [
     ...CatComponents,
     ...CatDirectives,
+    CatButtonRouterLinkDirective,
     CatDialogComponent,
     CatDialogActionsComponent,
     CatDialogHeaderComponent
@@ -88,6 +90,7 @@ export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotification
   exports: [
     ...CatComponents,
     ...CatDirectives,
+    CatButtonRouterLinkDirective,
     CatDialogComponent,
     CatDialogActionsComponent,
     CatDialogHeaderComponent

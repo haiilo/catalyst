@@ -18,7 +18,7 @@ import { MediaMatcher } from '../../utils/media-matcher';
   shadow: { delegatesFocus: true }
 })
 export class CatButton {
-  private button!: HTMLButtonElement | HTMLAnchorElement;
+  button!: HTMLButtonElement | HTMLAnchorElement;
   private mediaMatcher?: MediaMatcher;
   private mediaQueryList?: MediaQueryList;
   private mediaQueryListener?: (event: MediaQueryListEvent) => void;
@@ -141,6 +141,11 @@ export class CatButton {
    * Attributes that will be added to the native HTML button element
    */
   @Prop() nativeAttributes?: { [key: string]: string };
+
+  @Watch('href')
+  onHrefChanged(value: string|undefined): void {
+    console.log('onHrefChanged', value);
+  }
 
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {

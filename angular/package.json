@@ -19,6 +19,7 @@
     "@angular/forms": "^14.2.12",
     "@angular/platform-browser": "^14.2.12",
     "@angular/platform-browser-dynamic": "^14.2.12",
+    "@angular/router": "^14.2.12",
     "@haiilo/catalyst-icons": "0.3.23",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
