@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.2](https://github.com/haiilo/catalyst/compare/v5.2.1...v5.2.2) (2023-03-08)
+
+
+### Bug Fixes
+
+* **core:** fix broken async form validation ([#172](https://github.com/haiilo/catalyst/issues/172)) ([de2e28a](https://github.com/haiilo/catalyst/commit/de2e28a581e4a69f77c347fbbc8e679e4544a7d2))
+
 ### [5.2.1](https://github.com/haiilo/catalyst/compare/v5.2.0...v5.2.1) (2023-03-07)
 
 
