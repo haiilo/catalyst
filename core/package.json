@@ -48,7 +48,7 @@
     "@floating-ui/dom": "1.2.1",
     "@haiilo/catalyst-tokens": "5.2.3",
     "@stencil/core": "3.0.0",
-    "autosize": "6.0.0",
+    "autosize": "6.0.1",
     "autosize-input": "1.0.2",
     "focus-trap": "7.2.0",
     "loglevel": "1.8.1",
