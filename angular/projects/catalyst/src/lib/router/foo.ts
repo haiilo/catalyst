@@ -1,12 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-button[routerLink]'
 })
 export class CatButtonRouterLinkDirective implements OnInit, AfterViewInit {
-  constructor(private readonly el: ElementRef, private readonly routerLink: RouterLinkWithHref) {
+  constructor(private readonly el: ElementRef, private readonly routerLink: RouterLink) {
     console.log(routerLink);
     // (routerLink as any)['el'].nativeElement = ;
   }
