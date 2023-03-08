@@ -9,7 +9,6 @@ export class ValueAccessorDecorator implements AfterViewInit {
   constructor(private readonly el: ElementRef, @Self() @Optional() private readonly controlDirective?: NgControl) {}
 
   ngAfterViewInit(): void {
-    this.updateErrors();
     this.controlDirective?.statusChanges?.subscribe(() => this.updateErrors());
   }
 
