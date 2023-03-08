@@ -21,7 +21,7 @@ import { SelectValueAccessor } from './directives/select-value-accessor';
 import { SelectValueAccessorDecorator } from './directives/select-value-accessor-decorator';
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
-import { CatButtonRouterLinkDirective } from './router/foo';
+import { CatButtonRouterLinkDirective } from './router/router-link.directive';
 
 const CatComponents = [
   Components.CatAlert,

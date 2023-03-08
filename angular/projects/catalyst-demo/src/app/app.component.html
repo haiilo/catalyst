@@ -1,5 +1,9 @@
 <h1>Catalyst Demo</h1>
-<!-- <h2>Dialog</h2>
+<h2>Routing</h2>
+<cat-button routerLink="/a" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive" a11yCurrent="page">Route A</cat-button>
+<cat-button routerLink="/b" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">Route B</cat-button>
+<router-outlet></router-outlet>
+<h2>Dialog</h2>
 <button (click)="openDialog()">Open</button>
 <h2>Form Components</h2>
 <form [formGroup]="form">
@@ -7,9 +11,5 @@
   <cat-input label="relatedInput" formControlName="relatedInput" [errorUpdate]="true"></cat-input>
   <cat-textarea label="Textarea" formControlName="test" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-textarea>
   <cat-select label="Select" formControlName="option" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint" [connector]="countryConnector"></cat-select>
-</form> -->
+</form>
 
-<h2>Routing</h2>
-<cat-button href="s" routerLink="/a" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">Route A</cat-button>
-<!-- <cat-button routerLink="/b" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">Route B</cat-button> -->
-<router-outlet></router-outlet>

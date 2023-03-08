@@ -1501,6 +1501,7 @@ declare namespace LocalJSX {
           * Emitted when the button is clicked.
          */
         "onCatClick"?: (event: CatButtonCustomEvent<MouseEvent>) => void;
+        "onCatFirstRender"?: (event: CatButtonCustomEvent<'button' | 'a'>) => void;
         /**
           * Emitted when the button received focus.
          */

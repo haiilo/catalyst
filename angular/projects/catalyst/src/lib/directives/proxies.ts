@@ -89,7 +89,7 @@ export class CatButton {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catClick', 'catFocus', 'catBlur']);
+    proxyOutputs(this, this.el, ['catClick', 'catFocus', 'catBlur', 'catFirstRender']);
   }
 }
 
@@ -107,6 +107,8 @@ export declare interface CatButton extends Components.CatButton {
    * Emitted when the button loses focus.
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+
+  catFirstRender: EventEmitter<CustomEvent<'button' | 'a'>>;
 }
 
 

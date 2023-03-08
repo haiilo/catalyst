@@ -37,11 +37,12 @@ once per view for main call-to-action.
 
 ## Events
 
-| Event      | Description                             | Type                      |
-| ---------- | --------------------------------------- | ------------------------- |
-| `catBlur`  | Emitted when the button loses focus.    | `CustomEvent<FocusEvent>` |
-| `catClick` | Emitted when the button is clicked.     | `CustomEvent<MouseEvent>` |
-| `catFocus` | Emitted when the button received focus. | `CustomEvent<FocusEvent>` |
+| Event            | Description                             | Type                           |
+| ---------------- | --------------------------------------- | ------------------------------ |
+| `catBlur`        | Emitted when the button loses focus.    | `CustomEvent<FocusEvent>`      |
+| `catClick`       | Emitted when the button is clicked.     | `CustomEvent<MouseEvent>`      |
+| `catFirstRender` |                                         | `CustomEvent<"a" \| "button">` |
+| `catFocus`       | Emitted when the button received focus. | `CustomEvent<FocusEvent>`      |
 
 
 ## Methods

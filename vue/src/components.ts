@@ -63,7 +63,8 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'nativeAttributes',
   'catClick',
   'catFocus',
-  'catBlur'
+  'catBlur',
+  'catFirstRender'
 ]);
 
 

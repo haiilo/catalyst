@@ -142,11 +142,6 @@ export class CatButton {
    */
   @Prop() nativeAttributes?: { [key: string]: string };
 
-  @Watch('href')
-  onHrefChanged(value: string|undefined): void {
-    console.log('onHrefChanged', value);
-  }
-
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
     // teardown
@@ -180,6 +175,22 @@ export class CatButton {
    * Emitted when the button loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
+
+  @Event() catFirstRender!: EventEmitter<'button' | 'a'>;
+
+  private firstButtonRender = false;
+  private firstAnchorRender = false;
+  componentDidRender(): void {
+    const isButton = !this.href;
+    if (isButton && !this.firstButtonRender) {
+      this.catFirstRender.emit('button');
+      this.firstButtonRender = true;
+    }
+    if (!isButton && !this.firstAnchorRender) {
+      this.catFirstRender.emit('a');
+      this.firstAnchorRender = true;
+    }
+  }
 
   componentWillLoad(): void {
     this.onIconOnlyChanged(this.iconOnly);
@@ -238,7 +249,7 @@ export class CatButton {
           role={this.disabled ? 'link' : undefined}
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
+          aria-current={this.active ? this.a11yCurrent : null}
           id={this.identifier}
           part="button"
           class={{
@@ -271,7 +282,7 @@ export class CatButton {
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : null}
           aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
+          aria-current={this.active ? this.a11yCurrent : null}
           id={this.identifier}
           part="button"
           class={{
