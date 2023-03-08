@@ -11,19 +11,27 @@ describe('cat-select', () => {
     expect(page.root).toEqualHtml(`
       <cat-select label="Label" placement="bottom-start">
         <mock:shadow-root>
-          <label htmlfor="cat-input-0">
-            <span part="label">
-              Label
-              <span aria-hidden="true" class="input-optional">
-                (input.optional)
-              </span>
-            </span>
-          </label>
-          <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
-           <div class="select-wrapper-inner">
-             <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
-           </div>
-           <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
+          <div class="select-field">
+            <div class="label-container">
+              <label htmlfor="cat-input-0">
+                <span class="label-wrapper" part="label">Label
+                  <div class="label-metadata">
+                    <span aria-hidden="true" class="label-optional">
+                      (input.optional)
+                    </span>
+                  </div>
+                </span>
+              </label>
+            </div>
+          
+            <div class="select-container">
+              <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
+                <div class="select-wrapper-inner">
+                  <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
+                </div>
+                <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
+              </div>
+            </div>
          </div>
          <div class="select-dropdown"></div>
         </mock:shadow-root>

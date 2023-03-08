@@ -58,9 +58,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.controls.test.valueChanges.subscribe(() => {
-      if (this.form.controls.relatedInput.dirty) {
-        this.form.controls.relatedInput.updateValueAndValidity();
-      }
+      this.form.controls.relatedInput.updateValueAndValidity();
     });
     }
 
