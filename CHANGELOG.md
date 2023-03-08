@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.3](https://github.com/haiilo/catalyst/compare/v5.2.2...v5.2.3) (2023-03-08)
+
+
+### Bug Fixes
+
+* **angular:** input validation ([1efd767](https://github.com/haiilo/catalyst/commit/1efd767c6315626389d5530ce4fc9bc52c2ff58a))
+
 ### [5.2.2](https://github.com/haiilo/catalyst/compare/v5.2.1...v5.2.2) (2023-03-08)
 
 
