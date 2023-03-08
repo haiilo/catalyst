@@ -270,7 +270,8 @@ export class CatSelect {
         : value === true
         ? {}
         : value || undefined;
-      this.showErrorsAfterTimeout();
+      this.showErrorsIfTimeout();
+      this.showErrorsIfNoFocus();
     }
   }
 
@@ -315,7 +316,7 @@ export class CatSelect {
         this.value = newValue;
       }
       this.catChange.emit();
-      this.showErrorsAfterTimeout();
+      this.showErrorsIfTimeout();
     }
   }
 
@@ -1069,11 +1070,18 @@ export class CatSelect {
   }
 
   private errorUpdateTimeoutId?: number;
-  private showErrorsAfterTimeout() {
+  private showErrorsIfTimeout() {
     const errorUpdate = coerceNumber(this.errorUpdate, null);
     if (errorUpdate !== null) {
       typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
       this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
+    }
+  }
+
+  private showErrorsIfNoFocus() {
+    const hasFocus = document.activeElement === this.hostElement || document.activeElement === this.input;
+    if (!hasFocus) {
+      this.showErrors();
     }
   }
 }

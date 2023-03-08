@@ -253,7 +253,8 @@ export class CatInput {
         : value === true
         ? {}
         : value || undefined;
-      this.showErrorsAfterTimeout();
+      this.showErrorsIfTimeout();
+      this.showErrorsIfNoFocus();
     }
   }
 
@@ -382,7 +383,7 @@ export class CatInput {
   private onInput(event: InputEvent) {
     this.value = this.input.value;
     this.catChange.emit(event);
-    this.showErrorsAfterTimeout();
+    this.showErrorsIfTimeout();
   }
 
   private onFocus(event: FocusEvent) {
@@ -401,11 +402,18 @@ export class CatInput {
   }
 
   private errorUpdateTimeoutId?: number;
-  private showErrorsAfterTimeout() {
+  private showErrorsIfTimeout() {
     const errorUpdate = coerceNumber(this.errorUpdate, null);
     if (errorUpdate !== null) {
       typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
       this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
+    }
+  }
+
+  private showErrorsIfNoFocus() {
+    const hasFocus = document.activeElement === this.hostElement || document.activeElement === this.input;
+    if (!hasFocus) {
+      this.showErrors();
     }
   }
 }
