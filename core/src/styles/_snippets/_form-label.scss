@@ -47,7 +47,8 @@ $cat-input-height: 2.5rem;
 }
 
 .input-horizontal,
-.textarea-horizontal {
+.textarea-horizontal,
+.select-horizontal {
   .label-wrapper {
     flex-direction: column;
   }

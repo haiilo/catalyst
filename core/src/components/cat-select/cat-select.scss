@@ -2,6 +2,7 @@
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
+@use '_snippets/form-label';
 
 :host {
   display: flex;
@@ -22,6 +23,19 @@ label {
   &.hidden {
     @include cat-visually-hidden;
   }
+}
+
+.select-field,
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+.select-field.select-horizontal {
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .input-optional {

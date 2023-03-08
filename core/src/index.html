@@ -528,19 +528,15 @@
           </cat-form-group>
 
           <h3>Alignment (horizontal)</h3>
-          <cat-form-group label-size="40%">
-            <cat-input hint="This is a hint" horizontal required max-length="98">
+          <cat-form-group label-size="40%" horizontal>
+            <cat-input hint="This is a hint" required max-length="98">
               <span slot="label">This is the <b>label</b></span>
             </cat-input>
-            <cat-input hint="NO LABEL" horizontal required></cat-input>
-            <cat-input label="Field 1" horizontal hint="This is a hint"></cat-input>
-            <cat-input
-              label="This is a very long label with some more text"
-              horizontal
-              required
-              hint="This is a hint"
-            ></cat-input>
-            <cat-textarea max-length="50" label="Label" horizontal hint="This is a hint"></cat-textarea>
+            <cat-input hint="NO LABEL" required></cat-input>
+            <cat-input label="Field 1" hint="This is a hint"></cat-input>
+            <cat-input label="This is a very long label with some more text" required hint="This is a hint"></cat-input>
+            <cat-textarea max-length="50" label="Label" hint="This is a hint"></cat-textarea>
+            <cat-select label="Field 3"></cat-select>
           </cat-form-group>
 
           <h3>Auto (more required)</h3>
