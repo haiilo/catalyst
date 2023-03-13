@@ -74,7 +74,7 @@ export declare interface CatBadge extends Components.CatBadge {}
 
 
 @ProxyCmp({
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
@@ -82,7 +82,7 @@ export declare interface CatBadge extends Components.CatBadge {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'iconSrc', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -108,6 +108,28 @@ export declare interface CatButton extends Components.CatButton {
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
+
+
+@ProxyCmp({
+  inputs: ['a11yLabel']
+})
+@Component({
+  selector: 'cat-button-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel'],
+})
+export class CatButtonGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatButtonGroup extends Components.CatButtonGroup {}
 
 
 @ProxyCmp({

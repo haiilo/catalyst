@@ -92,6 +92,7 @@
           <li><a href="#avatar">Avatar</a></li>
           <li><a href="#badge">Badge</a></li>
           <li><a href="#button">Button</a></li>
+          <li><a href="#group-button">Group Button</a></li>
           <li><a href="#card">Card</a></li>
           <li><a href="#checkbox">Checkbox</a></li>
           <li><a href="#divider">Divider</a></li>
@@ -350,6 +351,31 @@
             <cat-button icon="sparkle-filled" class="cat-block">Block</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-left">Block (left)</cat-button>
             <cat-button icon="sparkle-filled" class="cat-block cat-text-right">Block (right)</cat-button>
+          </div>
+        </section>
+
+        <section id="group-button">
+          <h2>Group button</h2>
+
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <cat-button-group a11y-label="Group button outlined">
+              <cat-button>Left</cat-button>
+              <cat-button>Middle</cat-button>
+              <cat-button>Middle1</cat-button>
+              <cat-button>Right</cat-button>
+            </cat-button-group>
+
+            <cat-button-group a11y-label="Group button filled">
+              <cat-button variant="filled">Left</cat-button>
+              <cat-button variant="filled">Middle</cat-button>
+              <cat-button variant="filled">Right</cat-button>
+            </cat-button-group>
+
+            <cat-button-group a11y-label="Group button text">
+              <cat-button variant="text">Left</cat-button>
+              <cat-button variant="text">Middle</cat-button>
+              <cat-button variant="text">Right</cat-button>
+            </cat-button-group>
           </div>
         </section>
 

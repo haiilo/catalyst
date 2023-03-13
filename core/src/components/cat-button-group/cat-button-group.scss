@@ -1,0 +1,20 @@
+:host {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+::slotted(cat-button[variant='outlined']),
+::slotted(cat-button:not([variant])) {
+  margin-right: -0.25px;
+  margin-left: -0.25px;
+}
+
+::slotted(cat-button[variant='outlined']:first-child),
+::slotted(cat-button:not([variant]):first-child) {
+  margin-left: 0;
+}
+
+::slotted(cat-button[variant='outlined']:last-child) ::slotted(cat-button:not([variant]):last-child) {
+  margin-right: 0;
+}
