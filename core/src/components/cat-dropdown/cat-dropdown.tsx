@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, Placement, size } from '@floating-ui/dom';
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
@@ -197,7 +197,19 @@ export class CatDropdown {
       computePosition(this.trigger, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), flip()]
+        middleware: [
+          offset(CatDropdown.OFFSET),
+          flip(),
+          size({
+            padding: CatDropdown.OFFSET,
+            apply({ availableWidth, availableHeight, elements }) {
+              Object.assign(elements.floating.style, {
+                maxWidth: `${availableWidth}px`,
+                maxHeight: `${availableHeight}px`
+              });
+            }
+          })
+        ]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {
