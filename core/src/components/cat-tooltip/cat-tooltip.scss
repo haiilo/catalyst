@@ -73,13 +73,3 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
     padding: 1rem 1.5rem;
   }
 }
-
-// ----- trigger
-
-.tooltip-trigger {
-  display: inline-block;
-
-  &:focus {
-    outline: none;
-  }
-}

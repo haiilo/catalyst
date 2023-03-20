@@ -1,7 +1,5 @@
 import { autoUpdate, computePosition, flip, offset, Placement, shift } from '@floating-ui/dom';
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
-import { FocusableElement } from 'tabbable';
-import firstTabbable from '../../utils/first-tabbable';
 import isTouchScreen from '../../utils/is-touch-screen';
 
 let nextUniqueId = 0;
@@ -16,8 +14,7 @@ export class CatTooltip {
   private static readonly SHIFT_PADDING = 4;
   private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
-  private triggerElement?: HTMLElement;
-  private trigger?: FocusableElement;
+  private trigger?: Element;
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
@@ -74,13 +71,14 @@ export class CatTooltip {
   }
 
   componentDidLoad(): void {
-    this.trigger = firstTabbable(this.triggerElement) || this.triggerElement;
-    if (!this.isTabbable) {
-      this.trigger?.setAttribute('tabindex', '0');
-    }
+    const slot = this.hostElement.shadowRoot?.querySelector('slot');
+    this.trigger = slot?.assignedElements?.()?.[0];
 
     if (this.trigger && this.tooltip) {
       autoUpdate(this.trigger, this.tooltip, () => this.update());
+    }
+    if (this.trigger && !this.trigger.hasAttribute('aria-describedby')) {
+      this.trigger.setAttribute('aria-describedby', this.id);
     }
 
     if (isTouchScreen) {
@@ -116,9 +114,7 @@ export class CatTooltip {
   render() {
     return (
       <Host>
-        <div ref={el => (this.triggerElement = el)} aria-describedby={this.id} class="tooltip-trigger">
-          <slot />
-        </div>
+        <slot />
         <div
           ref={el => (this.tooltip = el)}
           id={this.id}
@@ -134,10 +130,6 @@ export class CatTooltip {
         </div>
       </Host>
     );
-  }
-
-  private get isTabbable() {
-    return firstTabbable(this.trigger);
   }
 
   private async update() {
