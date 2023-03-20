@@ -19,6 +19,7 @@ export class CatTooltip {
   private hideTimeout?: number;
   private touchTimeout?: number;
   private hidden = false;
+  private cleanupFloatingUi?: () => void;
 
   @Element() hostElement!: HTMLElement;
 
@@ -73,10 +74,6 @@ export class CatTooltip {
   componentDidLoad(): void {
     const slot = this.hostElement.shadowRoot?.querySelector('slot');
     this.trigger = slot?.assignedElements?.()?.[0];
-
-    if (this.trigger && this.tooltip) {
-      autoUpdate(this.trigger, this.tooltip, () => this.update());
-    }
     if (this.trigger && !this.trigger.hasAttribute('aria-describedby')) {
       this.trigger.setAttribute('aria-describedby', this.id);
     }
@@ -160,6 +157,7 @@ export class CatTooltip {
     window.clearTimeout(this.showTimeout);
     this.hideTimeout = window.setTimeout(() => {
       this.tooltip?.classList.remove('tooltip-show');
+      this.hideTooltip();
     }, this.hideDelay);
   }
 
@@ -173,6 +171,7 @@ export class CatTooltip {
   private touchEndListener() {
     if (this.touchTimeout) {
       window.clearTimeout(this.touchTimeout);
+      this.hideTooltip();
     }
   }
 
@@ -181,6 +180,15 @@ export class CatTooltip {
   }
 
   private showTooltip() {
+    if (this.trigger && this.tooltip) {
+      this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
+    }
     !this.hidden && this.tooltip?.classList.add('tooltip-show');
+  }
+
+  private hideTooltip() {
+    if (this.cleanupFloatingUi) {
+      this.cleanupFloatingUi();
+    }
   }
 }
