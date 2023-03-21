@@ -58,9 +58,15 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'a11yLabel',
   'a11yCurrent',
   'nativeAttributes',
+  'buttonGroupPosition',
   'catClick',
   'catFocus',
   'catBlur'
+]);
+
+
+export const CatButtonGroup = /*@__PURE__*/ defineContainer<JSX.CatButtonGroup>('cat-button-group', undefined, [
+  'a11yLabel'
 ]);
 
 

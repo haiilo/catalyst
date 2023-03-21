@@ -117,6 +117,10 @@ export namespace Components {
          */
         "active": boolean;
         /**
+          * The index of a button that is used inside a cat-button-group component
+         */
+        "buttonGroupPosition"?: 'first' | 'last' | 'middle';
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -201,6 +205,12 @@ export namespace Components {
           * The rendering style of the button.
          */
         "variant": 'filled' | 'outlined' | 'text';
+    }
+    interface CatButtonGroup {
+        /**
+          * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
     }
     /**
      * Cards are surfaces that display content and actions on a single topic. They
@@ -1106,6 +1116,12 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    interface HTMLCatButtonGroupElement extends Components.CatButtonGroup, HTMLStencilElement {
+    }
+    var HTMLCatButtonGroupElement: {
+        prototype: HTMLCatButtonGroupElement;
+        new (): HTMLCatButtonGroupElement;
+    };
     /**
      * Cards are surfaces that display content and actions on a single topic. They
      * should be easy to scan for relevant and actionable information.
@@ -1296,6 +1312,7 @@ declare global {
         "cat-avatar": HTMLCatAvatarElement;
         "cat-badge": HTMLCatBadgeElement;
         "cat-button": HTMLCatButtonElement;
+        "cat-button-group": HTMLCatButtonGroupElement;
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-dropdown": HTMLCatDropdownElement;
@@ -1418,6 +1435,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * The index of a button that is used inside a cat-button-group component
+         */
+        "buttonGroupPosition"?: 'first' | 'last' | 'middle';
+        /**
           * Adds a unique identifier for the button. Please note that with this particular component this ID is added inside the web component. If you need an ID on the HTML element, use the regular `id` attribute instead.
          */
         "buttonId"?: string;
@@ -1501,6 +1522,12 @@ declare namespace LocalJSX {
           * The rendering style of the button.
          */
         "variant"?: 'filled' | 'outlined' | 'text';
+    }
+    interface CatButtonGroup {
+        /**
+          * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
+         */
+        "a11yLabel"?: string;
     }
     /**
      * Cards are surfaces that display content and actions on a single topic. They
@@ -2360,6 +2387,7 @@ declare namespace LocalJSX {
         "cat-avatar": CatAvatar;
         "cat-badge": CatBadge;
         "cat-button": CatButton;
+        "cat-button-group": CatButtonGroup;
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-dropdown": CatDropdown;
@@ -2405,6 +2433,7 @@ declare module "@stencil/core" {
              * once per view for main call-to-action.
              */
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-button-group": LocalJSX.CatButtonGroup & JSXBase.HTMLAttributes<HTMLCatButtonGroupElement>;
             /**
              * Cards are surfaces that display content and actions on a single topic. They
              * should be easy to scan for relevant and actionable information.

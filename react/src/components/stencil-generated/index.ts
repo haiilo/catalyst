@@ -11,6 +11,7 @@ export const CatAlert = /*@__PURE__*/createReactComponent<JSX.CatAlert, HTMLCatA
 export const CatAvatar = /*@__PURE__*/createReactComponent<JSX.CatAvatar, HTMLCatAvatarElement>('cat-avatar');
 export const CatBadge = /*@__PURE__*/createReactComponent<JSX.CatBadge, HTMLCatBadgeElement>('cat-badge');
 export const CatButton = /*@__PURE__*/createReactComponent<JSX.CatButton, HTMLCatButtonElement>('cat-button');
+export const CatButtonGroup = /*@__PURE__*/createReactComponent<JSX.CatButtonGroup, HTMLCatButtonGroupElement>('cat-button-group');
 export const CatCard = /*@__PURE__*/createReactComponent<JSX.CatCard, HTMLCatCardElement>('cat-card');
 export const CatCheckbox = /*@__PURE__*/createReactComponent<JSX.CatCheckbox, HTMLCatCheckboxElement>('cat-checkbox');
 export const CatDropdown = /*@__PURE__*/createReactComponent<JSX.CatDropdown, HTMLCatDropdownElement>('cat-dropdown');

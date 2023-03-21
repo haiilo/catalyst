@@ -142,6 +142,11 @@ export class CatButton {
    */
   @Prop() nativeAttributes?: { [key: string]: string };
 
+  /**
+   * The index of a button that is used inside a cat-button-group component
+   */
+  @Prop() buttonGroupPosition?: 'first' | 'last' | 'middle';
+
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
     // teardown
@@ -278,7 +283,9 @@ export class CatButton {
             'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
             [`cat-button-${this.variant}`]: Boolean(this.variant),
             [`cat-button-${this.color}`]: Boolean(this.color),
-            [`cat-button-${this.size}`]: Boolean(this.size)
+            [`cat-button-${this.size}`]: Boolean(this.size),
+            [`cat-group-button-${this.buttonGroupPosition}`]: Boolean(this.buttonGroupPosition),
+            'cat-group-button': Boolean(this.buttonGroupPosition)
           }}
           onClick={this.onClick.bind(this)}
           onFocus={this.onFocus.bind(this)}

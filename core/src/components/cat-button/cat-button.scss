@@ -78,6 +78,32 @@ $button-sizes: (
   }
 }
 
+// ----- group button
+
+.cat-group-button {
+  &-first {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &-middle {
+    border-radius: 0;
+  }
+
+  &-last {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:hover {
+    z-index: 1;
+  }
+
+  &:focus-visible {
+    z-index: 2;
+  }
+}
+
 // ----- theme
 
 .cat-button-filled {
