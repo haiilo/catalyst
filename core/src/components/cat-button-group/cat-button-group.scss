@@ -9,11 +9,6 @@
   margin-right: -1px;
 }
 
-::slotted(cat-button[variant='outlined']:first-child),
-::slotted(cat-button:not([variant]):first-child) {
-  margin-left: 0;
-}
-
 ::slotted(cat-button[variant='outlined']:last-child),
 ::slotted(cat-button:not([variant]):last-child) {
   margin-right: 0;

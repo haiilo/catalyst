@@ -95,12 +95,12 @@ $button-sizes: (
     border-bottom-left-radius: 0;
   }
 
-  &:focus-visible {
-    z-index: 2;
-  }
-
   &:hover {
     z-index: 1;
+  }
+
+  &:focus-visible {
+    z-index: 2;
   }
 }
 
