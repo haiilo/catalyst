@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
-import log from 'loglevel';
 
 @Component({
   tag: 'cat-button-group',
@@ -17,22 +16,16 @@ export class CatButtonGroup {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
-  componentWillRender(): void {
-    if (!this.a11yLabel) {
-      log.warn('[A11y] Missing ARIA label on button group', this);
-    }
-  }
-
   render() {
     return (
       <Host role="group" aria-label={this.a11yLabel}>
-        <slot></slot>
+        <slot onSlotchange={this.onSlotChange.bind(this)}></slot>
       </Host>
     );
   }
 
-  componentDidLoad() {
-    this.formElements = Array.from(this.hostElement.querySelectorAll('cat-button')) as HTMLCatButtonElement[];
+  private onSlotChange(): void {
+    this.formElements = Array.from(this.hostElement.querySelectorAll('cat-button'));
 
     this.formElements.forEach((element, index) => {
       element.buttonGroupPosition = index === 0 ? 'first' : index === this.formElements.length - 1 ? 'last' : 'middle';

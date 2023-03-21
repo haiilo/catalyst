@@ -93,10 +93,13 @@ $button-sizes: (
   &-last {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    border-right: none;
   }
 
   &:focus-visible {
+    z-index: 2;
+  }
+
+  &:hover {
     z-index: 1;
   }
 }

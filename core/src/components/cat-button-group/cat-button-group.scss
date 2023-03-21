@@ -6,8 +6,7 @@
 
 ::slotted(cat-button[variant='outlined']),
 ::slotted(cat-button:not([variant])) {
-  margin-right: -0.25px;
-  margin-left: -0.25px;
+  margin-right: -1px;
 }
 
 ::slotted(cat-button[variant='outlined']:first-child),
@@ -15,6 +14,7 @@
   margin-left: 0;
 }
 
-::slotted(cat-button[variant='outlined']:last-child) ::slotted(cat-button:not([variant]):last-child) {
+::slotted(cat-button[variant='outlined']:last-child),
+::slotted(cat-button:not([variant]):last-child) {
   margin-right: 0;
 }
