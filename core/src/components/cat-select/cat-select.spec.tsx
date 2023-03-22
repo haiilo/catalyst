@@ -25,11 +25,13 @@ describe('cat-select', () => {
             </div>
           
             <div class="select-container">
-              <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
-                <div class="select-wrapper-inner">
-                  <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
+              <div class="select-wrapper-outer">
+                <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
+                  <div class="select-wrapper-inner">
+                    <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
+                  </div>
+                  <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
                 </div>
-                <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="chevron-down-outlined" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
               </div>
             </div>
          </div>

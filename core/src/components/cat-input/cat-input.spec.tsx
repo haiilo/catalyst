@@ -21,9 +21,11 @@ describe('cat-input', () => {
               </label>
             </div>
             <div class="input-container">
-              <div class="input-wrapper">
-                <div class="input-inner-wrapper">
-                  <input id="cat-input-0" type="text">
+              <div class="input-outer-wrapper">
+                <div class="input-wrapper">
+                  <div class="input-inner-wrapper">
+                    <input id="cat-input-0" type="text">
+                  </div>
                 </div>
               </div>
             </div>

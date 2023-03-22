@@ -549,113 +549,115 @@ export class CatSelect {
           </div>
 
           <div class="select-container">
-            <div
-              class={{ 'select-wrapper': true, 'select-disabled': this.disabled, 'select-invalid': this.invalid }}
-              ref={el => (this.trigger = el)}
-              id={this.id}
-              role="combobox"
-              aria-expanded={this.state.isOpen || this.isPillboxActive()}
-              aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
-              aria-required={this.required ? 'true' : false}
-              aria-activedescendant={this.activeDescendant}
-              onClick={e => this.onClick(e)}
-            >
-              <div class="select-wrapper-inner">
-                {this.multiple && this.state.selection.length ? (
-                  <div
-                    id={`select-pillbox-${this.id}`}
-                    role="listbox"
-                    aria-orientation="horizontal"
-                    class="select-pills"
-                  >
-                    {this.state.selection.map((item, i) => (
-                      <span
-                        class={{
-                          pill: true,
-                          'select-no-open': true,
-                          'select-option-active': this.state.activeSelectionIndex === i
-                        }}
-                        role="option"
-                        aria-selected="true"
-                        id={`select-${this.id}-selection-${i}`}
-                      >
-                        {item.render.avatar ? (
-                          <cat-avatar
-                            label={item.render.label}
-                            round={item.render.avatar.round}
-                            src={item.render.avatar.src}
-                            initials={item.render.avatar.initials ?? ''}
-                          ></cat-avatar>
-                        ) : null}
-                        <span>{item.render.label}</span>
-                        {!this.disabled && (
-                          <cat-button
-                            size="xs"
-                            variant="text"
-                            icon="16-cross"
-                            iconOnly
-                            a11yLabel={i18n.t('select.deselect')}
-                            onClick={() => this.deselect(item.item.id)}
-                            tabIndex={-1}
-                          ></cat-button>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
-                  <cat-avatar
-                    label={this.state.selection[0].render.label}
-                    round={this.state.selection[0].render.avatar.round}
-                    src={this.state.selection[0].render.avatar.src}
-                    initials={this.state.selection[0].render.avatar.initials ?? ''}
-                  ></cat-avatar>
+            <div class="select-wrapper-outer">
+              <div
+                class={{ 'select-wrapper': true, 'select-disabled': this.disabled, 'select-invalid': this.invalid }}
+                ref={el => (this.trigger = el)}
+                id={this.id}
+                role="combobox"
+                aria-expanded={this.state.isOpen || this.isPillboxActive()}
+                aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+                aria-required={this.required ? 'true' : false}
+                aria-activedescendant={this.activeDescendant}
+                onClick={e => this.onClick(e)}
+              >
+                <div class="select-wrapper-inner">
+                  {this.multiple && this.state.selection.length ? (
+                    <div
+                      id={`select-pillbox-${this.id}`}
+                      role="listbox"
+                      aria-orientation="horizontal"
+                      class="select-pills"
+                    >
+                      {this.state.selection.map((item, i) => (
+                        <span
+                          class={{
+                            pill: true,
+                            'select-no-open': true,
+                            'select-option-active': this.state.activeSelectionIndex === i
+                          }}
+                          role="option"
+                          aria-selected="true"
+                          id={`select-${this.id}-selection-${i}`}
+                        >
+                          {item.render.avatar ? (
+                            <cat-avatar
+                              label={item.render.label}
+                              round={item.render.avatar.round}
+                              src={item.render.avatar.src}
+                              initials={item.render.avatar.initials ?? ''}
+                            ></cat-avatar>
+                          ) : null}
+                          <span>{item.render.label}</span>
+                          {!this.disabled && (
+                            <cat-button
+                              size="xs"
+                              variant="text"
+                              icon="16-cross"
+                              iconOnly
+                              a11yLabel={i18n.t('select.deselect')}
+                              onClick={() => this.deselect(item.item.id)}
+                              tabIndex={-1}
+                            ></cat-button>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+                  ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
+                    <cat-avatar
+                      label={this.state.selection[0].render.label}
+                      round={this.state.selection[0].render.avatar.round}
+                      src={this.state.selection[0].render.avatar.src}
+                      initials={this.state.selection[0].render.avatar.initials ?? ''}
+                    ></cat-avatar>
+                  ) : null}
+                  <input
+                    {...this.nativeAttributes}
+                    class="select-input"
+                    ref={el => (this.input = el)}
+                    aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+                    aria-activedescendant={this.activeDescendant}
+                    aria-invalid={this.invalid ? 'true' : undefined}
+                    aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+                    onInput={this.onInput.bind(this)}
+                    value={!this.multiple ? this.state.term : undefined}
+                    placeholder={this.placeholder}
+                    disabled={this.disabled || this.state.isResolving}
+                  ></input>
+                </div>
+                {this.state.isResolving && <cat-spinner></cat-spinner>}
+                {this.invalid && (
+                  <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+                )}
+                {(this.state.selection.length || this.state.term.length) &&
+                !this.disabled &&
+                !this.state.isResolving &&
+                this.clearable ? (
+                  <cat-button
+                    id={`select-clear-btn-${this.id}`}
+                    iconOnly
+                    icon="cross-circle-outlined"
+                    variant="text"
+                    size="s"
+                    a11yLabel={i18n.t('input.clear')}
+                    onClick={() => this.clear()}
+                  ></cat-button>
                 ) : null}
-                <input
-                  {...this.nativeAttributes}
-                  class="select-input"
-                  ref={el => (this.input = el)}
-                  aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
-                  aria-activedescendant={this.activeDescendant}
-                  aria-invalid={this.invalid ? 'true' : undefined}
-                  aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
-                  onInput={this.onInput.bind(this)}
-                  value={!this.multiple ? this.state.term : undefined}
-                  placeholder={this.placeholder}
-                  disabled={this.disabled || this.state.isResolving}
-                ></input>
+                {!this.state.isResolving && (
+                  <cat-button
+                    iconOnly
+                    icon="chevron-down-outlined"
+                    class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
+                    variant="text"
+                    size="s"
+                    a11yLabel={this.state.isOpen ? i18n.t('select.close') : i18n.t('select.open')}
+                    aria-controls={`select-listbox-${this.id}`}
+                    aria-expanded={this.state.isOpen}
+                    tabIndex={-1}
+                    disabled={this.disabled || this.state.isResolving}
+                  ></cat-button>
+                )}
               </div>
-              {this.state.isResolving && <cat-spinner></cat-spinner>}
-              {this.invalid && (
-                <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
-              )}
-              {(this.state.selection.length || this.state.term.length) &&
-              !this.disabled &&
-              !this.state.isResolving &&
-              this.clearable ? (
-                <cat-button
-                  id={`select-clear-btn-${this.id}`}
-                  iconOnly
-                  icon="cross-circle-outlined"
-                  variant="text"
-                  size="s"
-                  a11yLabel={i18n.t('input.clear')}
-                  onClick={() => this.clear()}
-                ></cat-button>
-              ) : null}
-              {!this.state.isResolving && (
-                <cat-button
-                  iconOnly
-                  icon="chevron-down-outlined"
-                  class={{ 'select-btn': true, 'select-btn-open': this.state.isOpen }}
-                  variant="text"
-                  size="s"
-                  a11yLabel={this.state.isOpen ? i18n.t('select.close') : i18n.t('select.open')}
-                  aria-controls={`select-listbox-${this.id}`}
-                  aria-expanded={this.state.isOpen}
-                  tabIndex={-1}
-                  disabled={this.disabled || this.state.isResolving}
-                ></cat-button>
-              )}
             </div>
             {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
               <CatFormHint

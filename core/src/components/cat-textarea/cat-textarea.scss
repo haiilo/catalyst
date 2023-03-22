@@ -33,6 +33,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  border-radius: cat-border-radius('m');
+  box-shadow: 0 0 0 0 cat-token('color.ui.border.dark');
+  transition: box-shadow cat-token('time.transition.s') linear;
+
+  &:has(textarea:hover:not(:disabled)) {
+    box-shadow: 0 0 0 1px cat-token('color.ui.border.dark');
+  }
+
+  &.textarea-invalid:has(textarea:hover:not(:disabled)) {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
+  }
 }
 
 .icon-suffix {
@@ -55,7 +66,7 @@ textarea {
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
   border: none;
-  box-shadow: 0 0 0 1px cat-token('color.ui.border.dark');
+  box-shadow: inset 0 0 0 1px cat-token('color.ui.border.dark');
   transition: box-shadow cat-token('time.transition.s') linear;
   resize: vertical;
 
@@ -67,23 +78,21 @@ textarea {
   }
 
   .textarea-invalid & {
-    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
-  }
-
-  &:hover:not(:disabled) {
-    box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
+    box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 
   .textarea-invalid &:hover:not(:disabled) {
-    box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
+    box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 
   &:focus {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 1px solid cat-token('color.ui.border.focus');
+    box-shadow: inset 0 0 0 1px cat-token('color.ui.border.focus');
   }
 
   .textarea-invalid &:focus {
-    outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
+    outline: 1px solid cat-token('color.theme.danger.bg', 0.2);
+    box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 
   &::placeholder {

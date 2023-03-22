@@ -49,28 +49,28 @@ label {
   align-items: flex-start;
   background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
-  box-shadow: 0 0 0 1px cat-token('color.ui.border.dark');
+  box-shadow: inset 0 0 0 1px cat-token('color.ui.border.dark');
   transition: box-shadow cat-token('time.transition.s') linear;
   padding: 0.25rem;
 
   &:not(.select-disabled):hover {
-    box-shadow: 0 0 0 2px cat-token('color.ui.border.dark');
-
     &.select-invalid {
-      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg', 0.2);
+      box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
     }
   }
 
   &:not(.select-disabled):focus-within {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 1px solid cat-token('color.ui.border.focus');
+    box-shadow: inset 0 0 0 1px cat-token('color.ui.border.focus');
 
     &.select-invalid {
-      outline: 2px solid cat-token('color.theme.danger.bg', 0.2);
+      outline: 1px solid cat-token('color.theme.danger.bg', 0.2);
+      box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
     }
   }
 
   &.select-invalid {
-    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
+    box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 
   /* stylelint-disable property-no-vendor-prefix */
@@ -86,11 +86,37 @@ label {
 
 :host(.cat-error) {
   .select-wrapper {
-    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
+    box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg');
 
-    &:not(.input-disabled):hover {
-      box-shadow: 0 0 0 2px cat-token('color.theme.danger.bg');
+    &:not(.select-disabled):focus-within {
+      outline: 1px solid cat-token('color.theme.danger.bg');
     }
+  }
+
+  .select-wrapper-outer {
+    &:hover:has(.select-wrapper:not(.select-disabled):hover) {
+      box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg');
+    }
+  }
+}
+
+.select-wrapper-outer {
+  display: inline-block;
+  border-radius: cat-border-radius('m');
+  box-shadow: 0 0 0 0 cat-token('color.ui.border.dark');
+  transition: box-shadow cat-token('time.transition.s') linear;
+
+  &:hover,
+  &:focus-within {
+    z-index: 1;
+  }
+
+  &:hover:has(.select-wrapper:not(.select-disabled):hover) {
+    box-shadow: 0 0 0 1px cat-token('color.ui.border.dark');
+  }
+
+  &:hover:has(.select-wrapper.select-invalid:not(.select-disabled):hover) {
+    box-shadow: 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }
 }
 
