@@ -224,14 +224,14 @@ export declare interface CatDropdown extends Components.CatDropdown {
 
 
 @ProxyCmp({
-  inputs: ['labelSize', 'requiredMarker']
+  inputs: ['horizontal', 'labelSize', 'requiredMarker']
 })
 @Component({
   selector: 'cat-form-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['labelSize', 'requiredMarker'],
+  inputs: ['horizontal', 'labelSize', 'requiredMarker'],
 })
 export class CatFormGroup {
   protected el: HTMLElement;
@@ -305,14 +305,14 @@ export declare interface CatInput extends Components.CatInput {
 
 
 @ProxyCmp({
-  inputs: ['for', 'required', 'requiredMarker']
+  inputs: ['for', 'horizontal', 'required', 'requiredMarker']
 })
 @Component({
   selector: 'cat-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['for', 'required', 'requiredMarker'],
+  inputs: ['for', 'horizontal', 'required', 'requiredMarker'],
 })
 export class CatLabel {
   protected el: HTMLElement;
@@ -458,7 +458,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
 
 
 @ProxyCmp({
-  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
+  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
   methods: ['connect']
 })
 @Component({
@@ -466,7 +466,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
+  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
 })
 export class CatSelect {
   protected el: HTMLElement;
