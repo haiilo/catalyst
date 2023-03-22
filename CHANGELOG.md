@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/haiilo/catalyst/compare/v5.2.3...v5.3.0) (2023-03-22)
+
+
+### Features
+
+* **core:** add button-group component ([#178](https://github.com/haiilo/catalyst/issues/178)) ([c375f28](https://github.com/haiilo/catalyst/commit/c375f28aab3374aa2edb8dc8745cfc5e9b98593a))
+* **core:** horizontal alignment for form groups and selects ([#168](https://github.com/haiilo/catalyst/issues/168)) ([230601d](https://github.com/haiilo/catalyst/commit/230601dd51230cd1a328f192d7dd0a4bd46f1b7e))
+* **core:** increase opacity on background-color for outline and text buttons ([#180](https://github.com/haiilo/catalyst/issues/180)) ([76f2ca3](https://github.com/haiilo/catalyst/commit/76f2ca3906b9f3b83d0673e95832ed5b52de194b))
+
+
+### Bug Fixes
+
+* **core:** make dropdowns responsive to the viewports dimensions ([#182](https://github.com/haiilo/catalyst/issues/182)) ([6d677d7](https://github.com/haiilo/catalyst/commit/6d677d7ec25bb1cc4393a6796a10ead29bc052d5))
+* **core:** reduce min height of dialogs ([5ab48d5](https://github.com/haiilo/catalyst/commit/5ab48d56a8b2a92c3465997ce124b129afe43be1))
+* **core:** rework tooltip trigger selection ([#189](https://github.com/haiilo/catalyst/issues/189)) ([b4834e1](https://github.com/haiilo/catalyst/commit/b4834e12b942bdf4258f3bcf6b3888109d5a7cbd))
+* **core:** tooltip positioning is wrong when trigger is changing location ([#185](https://github.com/haiilo/catalyst/issues/185)) ([1258386](https://github.com/haiilo/catalyst/commit/1258386109a652bb2d3b9bc4ebd7c19f961e440c))
+
 ### [5.2.3](https://github.com/haiilo/catalyst/compare/v5.2.2...v5.2.3) (2023-03-08)
 
 
