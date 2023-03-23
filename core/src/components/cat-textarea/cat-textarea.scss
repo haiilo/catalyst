@@ -86,11 +86,13 @@ textarea {
   }
 
   &:focus {
+    transition: box-shadow 0s;
     outline: 1px solid cat-token('color.ui.border.focus');
     box-shadow: inset 0 0 0 1px cat-token('color.ui.border.focus');
   }
 
   .textarea-invalid &:focus {
+    transition: box-shadow 0s;
     outline: 1px solid cat-token('color.theme.danger.bg', 0.2);
     box-shadow: inset 0 0 0 1px cat-token('color.theme.danger.bg', 0.2);
   }

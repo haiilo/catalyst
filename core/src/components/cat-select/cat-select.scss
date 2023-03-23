@@ -60,6 +60,7 @@ label {
   }
 
   &:not(.select-disabled):focus-within {
+    transition: box-shadow 0s;
     outline: 1px solid cat-token('color.ui.border.focus');
     box-shadow: inset 0 0 0 1px cat-token('color.ui.border.focus');
 
