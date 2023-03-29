@@ -50,10 +50,12 @@
     "@stencil/core": "3.0.0",
     "autosize": "6.0.0",
     "autosize-input": "1.0.2",
+    "dayjs": "^1.11.7",
     "focus-trap": "7.2.0",
     "loglevel": "1.8.1",
     "sanitize.css": "13.0.0",
-    "toastify-js": "1.12.0"
+    "toastify-js": "1.12.0",
+    "vanillajs-datepicker": "^1.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",

@@ -101,6 +101,7 @@
           <li><a href="#icon">Icon</a></li>
           <li><a href="#label">Label</a></li>
           <li><a href="#input">Input</a></li>
+          <li><a href="#datepicker">Datepicker</a></li>
           <li><a href="#notification">Notification</a></li>
           <li><a href="#pagination">Pagination</a></li>
           <li><a href="#radio">Radio</a></li>
@@ -563,6 +564,7 @@
             <cat-input label="This is a very long label with some more text" required hint="This is a hint"></cat-input>
             <cat-textarea max-length="50" label="Label" hint="This is a hint"></cat-textarea>
             <cat-select label="Field 3"></cat-select>
+            <cat-datepicker type="date" clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
           </cat-form-group>
 
           <h3>Auto (more required)</h3>
@@ -709,6 +711,14 @@
           <cat-input label="Time" type="time" min="14:01" max="02:00"></cat-input>
           <cat-input label="Url" type="url"></cat-input>
           <cat-input label="Week" type="week" min="2019-W30"></cat-input>
+        </section>
+
+        <section id="datepicker">
+          <h2>Datepicker</h2>
+          <cat-datepicker type="date" clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
+          <cat-datepicker type="week" clearable="true" a11y-label="ARIA" label="Week picker"></cat-datepicker>
+          <cat-datepicker type="month" clearable="true" a11y-label="ARIA" label="Month picker"></cat-datepicker>
+          <cat-datepicker type="year" clearable="true" a11y-label="ARIA" label="Year picker"></cat-datepicker>
         </section>
 
         <section id="notification">

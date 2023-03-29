@@ -4,6 +4,7 @@ type HTMLCatFormFieldElement =
   | HTMLCatInputElement
   | HTMLCatTextareaElement
   | HTMLCatSelectElement
+  | HTMLCatDatepickerElement
   | HTMLCatLabelElement;
 
 @Component({
@@ -60,7 +61,7 @@ export class CatFormGroup {
 
   private onSlotChange(): void {
     this.formElements = Array.from(
-      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label')
+      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label, cat-datepicker')
     ) as HTMLCatFormFieldElement[];
     this.onRequiredMarker(this.requiredMarker);
     this.onHorizontal(this.horizontal);

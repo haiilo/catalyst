@@ -39,6 +39,7 @@ doesn't fit.
  - [cat-alert](../cat-alert)
  - [cat-avatar](../cat-avatar)
  - [cat-button](../cat-button)
+ - [cat-datepicker](../cat-datepicker)
  - [cat-input](../cat-input)
  - [cat-select](../cat-select)
  - [cat-textarea](../cat-textarea)
@@ -49,6 +50,7 @@ graph TD;
   cat-alert --> cat-icon
   cat-avatar --> cat-icon
   cat-button --> cat-icon
+  cat-datepicker --> cat-icon
   cat-input --> cat-icon
   cat-select --> cat-icon
   cat-textarea --> cat-icon
