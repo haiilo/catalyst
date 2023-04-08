@@ -117,6 +117,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [cat-datepicker](../cat-datepicker)
+
 ### Depends on
 
 - [cat-icon](../cat-icon)
@@ -129,6 +133,7 @@ graph TD;
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-datepicker --> cat-input
   style cat-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,11 +1,10 @@
-import { Component, Element, EventEmitter, Event, h, Prop, State, Method, Watch } from '@stencil/core';
+import { Component, Element, EventEmitter, Event, h, Prop, State, Method, Host } from '@stencil/core';
 import log from 'loglevel';
 import { Datepicker } from 'vanillajs-datepicker';
-import { coerceBoolean, coerceNumber } from '../../utils/coerce';
-import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
-import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { DatepickerType } from './datepicker-type';
 import { getDatepickerOptions } from './vanillajs-datepicker.config';
+import dayjs from './dayjs.config';
 
 let nextUniqueId = 0;
 
@@ -25,23 +24,20 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatDatepicker {
-  private readonly _id = `cat-input-${nextUniqueId++}`;
+  private readonly _id = `cat-datepicker-${nextUniqueId++}`;
   private get id() {
-    return this.identifier || this._id;
+    return this._id;
   }
 
   private input!: HTMLInputElement;
+  private catInput!: HTMLCatInputElement;
   private datepicker!: any;
-  private errorMapSrc?: ErrorMap;
 
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
 
   @State() hasSlottedHint = false;
-
-  @State() errorMap?: ErrorMap;
-
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
@@ -118,19 +114,24 @@ export class CatDatepicker {
   @Prop() required = false;
 
   /**
-   * Use round input edges.
-   */
-  @Prop() round = false;
-
-  /**
    * The date format after picker selection.
    */
-  @Prop() format?: string = 'dd.mm.yyyy';
+  @Prop() format?: string = 'DD.MM.YYYY';
 
   /**
-   * Type of form control.
+   * Whether the picker should show the week numbers.
+   */
+  @Prop() weekNumbers = true;
+
+  /**
+   * Type of datepicker ('date', 'week', 'month', 'year').
    */
   @Prop() type: DatepickerType = 'date';
+
+ /**
+   * Dates that should be disabled inside the picker
+   */
+  @Prop() datesDisabled!: Array<Date> | Array<string>;
 
   /**
    * The value of the control.
@@ -175,12 +176,8 @@ export class CatDatepicker {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    if (!this.label && !this.hasSlottedLabel) {
-      log.warn('[A11y] Missing ARIA label on input', this);
-    }
   }
 
   /**
@@ -220,132 +217,95 @@ export class CatDatepicker {
     this.value = '';
   }
 
-  @Watch('errors')
-  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
-    if (!coerceBoolean(this.errorUpdate)) {
-      this.errorMap = undefined;
-    } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-        ? {}
-        : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
-    }
-  }
-
   render() {
     return (
-      <div
-        class={{
-          'input-field': true,
-          'input-horizontal': this.horizontal
-        }}
-      >
-        <div
-          class={{
-            hidden: this.labelHidden,
-            'label-container': true
-          }}
+      <Host id={this.id}>
+        <cat-input
+          label={this.label}
+          requiredMarker={this.requiredMarker}
+          horizontal={this.horizontal}
+          autoComplete={this.autoComplete}
+          clearable={this.clearable}
+          disabled={this.disabled}
+          hint={this.hint}
+          identifier={this.identifier}
+          labelHidden={this.labelHidden}
+          name={this.name}
+          placeholder={this.placeholder}
+          readonly={this.readonly}
+          required={this.required}
+          errors={this.errors}
+          errorUpdate={this.errorUpdate}
+          nativeAttributes={this.nativeAttributes}
+          onCatChange={this.onCatChange.bind(this)}
+          onCatFocus={this.onCatFocus.bind(this)}
+          onCatBlur={this.onCatBlur.bind(this)}
+          value={this.value}
         >
-          {(this.hasSlottedLabel || this.label) && (
-            <label htmlFor={this.id}>
-              <span class="label-wrapper" part="label">
-                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-                <div class="label-metadata">
-                  {!this.required && this.requiredMarker.startsWith('optional') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.optional')})
-                    </span>
-                  )}
-                  {this.required && this.requiredMarker.startsWith('required') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.required')})
-                    </span>
-                  )}
-                </div>
-              </span>
-            </label>
+          {this.hasSlottedLabel && (
+            <span slot="label">
+              <slot name="label"></slot>
+            </span>
           )}
-        </div>
-        <div class="input-container">
-          <div
-            class={{
-              'input-wrapper': true,
-              'input-round': this.round,
-              'input-disabled': this.disabled,
-              'input-invalid': this.invalid
-            }}
-            onClick={() => this.input.focus()}
-          >
-            <div class="input-inner-wrapper">
-              <input
-                {...this.nativeAttributes}
-                ref={el => (this.input = el as HTMLInputElement)}
-                id={this.id}
-                class={{
-                  'has-clearable': this.clearable && !this.disabled
-                }}
-                autocomplete={this.autoComplete}
-                disabled={this.disabled}
-                max={this.max}
-                min={this.min}
-                name={this.name}
-                placeholder={this.placeholder}
-                readonly={this.readonly}
-                required={this.required}
-                type="text"
-                value={this.value}
-                onInput={this.onInput.bind(this)}
-                onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}
-                aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
-              ></input>
-              {this.clearable && !this.disabled && this.value && (
-                <cat-button
-                  class="clearable"
-                  icon="cross-circle-outlined"
-                  icon-only="true"
-                  size="s"
-                  variant="text"
-                  a11y-label={i18n.t('input.clear')}
-                  onClick={this.clear.bind(this)}
-                ></cat-button>
-              )}
-            </div>
-            {!this.invalid && <cat-icon icon="w-events-upcoming-outlined" class="icon-suffix" size="l"></cat-icon>}
-            {this.invalid && (
-              <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
-            )}
-          </div>
-          {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
-            <CatFormHint
-              id={this.id}
-              hint={this.hint}
-              slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
-              errorMap={this.errorMap}
-            />
+          {this.hasSlottedHint && (
+            <span slot="hint">
+              <slot name="hint"></slot>
+            </span>
           )}
-        </div>
-      </div>
+        </cat-input>
+      </Host>
     );
   }
 
   componentDidLoad() {
     if (this.hostElement) {
-      const inputField = this.hostElement?.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
-      const config = getDatepickerOptions(this.type, this.value);
-      config.container = inputField;
-      config.maxDate = this.max;
-      config.minDate = this.min;
+      this.catInput = this.hostElement?.shadowRoot?.querySelector('cat-input') as HTMLCatInputElement;
+      const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
+      const inputElement = inputWrapper.querySelector('input');
+      const catDatepickerStyle = this.hostElement.shadowRoot?.querySelector('style') as HTMLStyleElement;
+      const catInputStyle = this.catInput.shadowRoot?.querySelector('style') as HTMLStyleElement;
 
-      this.datepicker = new Datepicker(this.input, config);
+      catInputStyle?.append(catDatepickerStyle);
+
+      if (inputElement) {
+        this.input = inputElement;
+      } else {
+        log.error('[CatInput] Missing input element', this);
+        return;
+      }
+
+      const config = {
+        ...getDatepickerOptions(this.type, this.value),
+        container: inputWrapper,
+        maxDate: this.max,
+        minDate: this.min,
+        datesDisabled: this.datesDisabled,
+        weekNumbers: this.weekNumbers === true ? 4 : 0, // TO-DO weeknumbers logic
+        format: {
+          toValue: (date: string, format: any, locale: any) => {
+              return date;
+          },
+          toDisplay: (date: any, format: any, locale: any) => {
+            this.value = dayjs(date).format(this.format);
+            switch (this.type) {
+              case 'week':
+                return `${dayjs(date).isoWeek()}/${dayjs(date).year()}`;
+              case 'month':
+                return `${dayjs(date).month() + 1}/${dayjs(date).year()}`;
+              case 'year':
+                return dayjs(date).year();            
+              default:
+                return dayjs(date).format(this.format);
+            }              
+          },
+        },
+      };
+
+      this.datepicker = new Datepicker(inputElement, config);
       if (this.type === 'week') {
         const pickerElement = this.datepicker.pickerElement as HTMLElement;
         pickerElement.classList.add('weekly');
       }
-
       this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
     }
   }
@@ -354,54 +314,20 @@ export class CatDatepicker {
     this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
   }
 
-  private get invalid() {
-    return !!this.errorMap;
+  private handleDateChange(event: CustomEvent) {    
+    this.catChange.emit(event);
   }
 
-  private handleDateChange(event: CustomEvent) {
-    if (this.value !== this.input.value) {
-      this.value = this.input.value;
-      this.catChange.emit(event);
-      this.showErrorsIfTimeout();
-    }
-  }
-
-  private onInput(event: InputEvent) {
+  private onCatChange(event: unknown) {
     this.value = this.input.value;
     this.catChange.emit(event);
-    this.showErrorsIfTimeout();
   }
 
-  private onFocus(event: FocusEvent) {
-    this.catFocus.emit(event);
+  private onCatFocus(event: unknown) {
+    this.catFocus.emit(event as FocusEvent);
   }
 
-  private onBlur(event: FocusEvent) {
-    this.catBlur.emit(event);
-    if (coerceBoolean(this.errorUpdate)) {
-      this.showErrors();
-    }
-  }
-
-  private showErrors() {
-    this.errorMap = this.errorMapSrc;
-  }
-
-  private errorUpdateTimeoutId?: number;
-  private showErrorsIfTimeout() {
-    const errorUpdate = coerceNumber(this.errorUpdate, null);
-    if (errorUpdate !== null) {
-      typeof this.errorUpdateTimeoutId === 'number' && window.clearTimeout(this.errorUpdateTimeoutId);
-      this.errorUpdateTimeoutId = window.setTimeout(() => this.showErrors(), errorUpdate);
-      return true;
-    }
-    return false;
-  }
-
-  private showErrorsIfNoFocus() {
-    const hasFocus = document.activeElement === this.hostElement || document.activeElement === this.input;
-    if (!hasFocus) {
-      this.showErrors();
-    }
+  private onCatBlur(event: unknown) {
+    this.catBlur.emit(event as FocusEvent);
   }
 }

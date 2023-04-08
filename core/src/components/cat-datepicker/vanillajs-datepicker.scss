@@ -1,0 +1,113 @@
+$dp-border-color: #ebecf0;
+$dp-week-color: #515c6c;
+$dp-cell-hover-background-color: rgba(0, 129, 148, 10%);
+$dp-cell-focus-background-color: rgba(0, 129, 148, 10%);
+$dp-cell-selected-background-color: #008194;
+$dp-cell-today-color: #008194;
+$dp-border-color: #ebecf0;
+
+@import 'vanillajs-datepicker/sass/datepicker';
+
+$dp-footer-background-color: $white;
+$dp-cell-selected-color: $white;
+$dp-cell-selected-font-weight: $dp-font-weight-bold;
+
+.datepicker-main {
+  padding: 16px;
+}
+
+.datepicker-footer {
+  box-shadow: none;
+  background-color: $white;
+  padding: 0 16px 16px;
+}
+
+.datepicker-view {
+  &:has(.week-numbers) {
+    width: $dp-cell-size-base * 8;
+  }
+}
+
+.datepicker-controls {
+  .button {
+    padding: 7px auto;
+    height: auto;
+
+    .datepicker-footer & {
+      flex: auto;
+      margin: 0;
+      border-radius: 4px;
+      font-size: $dp-font-size-small;
+
+      &:hover {
+        background-color: $dp-header-hover-background-color;
+      }
+
+      &:active {
+        border-color: $grey-light;
+        background-color: $dp-header-hover-background-color;
+      }
+    }
+  }
+}
+
+.datepicker {
+  .dow {
+    color: #515c6c;
+    height: $dp-cell-size-base;
+    font-size: 12px;
+  }
+
+  .week {
+    font-weight: $dp-font-weight-bold;
+    font-size: 12px;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+}
+
+.datepicker-cell {
+  &.today {
+    &:not(.selected) {
+      background: none;
+      box-shadow: inset 0 0 0 1.5px #008194; // edited
+      border-radius: 4px;
+    }
+
+    &.focused:not(.selected) {
+      background: none;
+    }
+  }
+}
+
+.datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid :nth-child(7n + 1) {
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 700%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    background-color: rgba(0, 129, 148, 0.1);
+  }
+
+  &.selected,
+  &.focused {
+    background: none;
+    color: black;
+    font-weight: 400;
+
+    &::before {
+      opacity: 1;
+      background-color: rgba(0, 129, 148, 0.2); // edited
+    }
+  }
+}

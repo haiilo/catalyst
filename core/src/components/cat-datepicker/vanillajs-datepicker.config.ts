@@ -1,7 +1,5 @@
 import { DatepickerType, DatepickerTypeEnum } from './datepicker-type';
-import dayjs from './dayjs.config';
-
-const today = () => dayjs().utc().startOf('day').toDate();
+import dayjs, { today } from './dayjs.config';
 
 const getDefaultDate = (type: DatepickerType, selectedDate?: string): Date => {
   const date = selectedDate ? dayjs(selectedDate).toDate() : today();
@@ -9,7 +7,7 @@ const getDefaultDate = (type: DatepickerType, selectedDate?: string): Date => {
 };
 
 export const getDatepickerOptions = (type: DatepickerType, selectedDate?: string) => {
-  const config: any = {
+  const config: object = {
     enableOnReadonly: false,
     pickLevel: DatepickerTypeEnum[type],
     todayButton: true,

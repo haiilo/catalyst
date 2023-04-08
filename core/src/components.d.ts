@@ -306,6 +306,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Dates that should be disabled inside the picker
+         */
+        "datesDisabled": Array<Date> | Array<string>;
+        /**
           * Whether the input is disabled.
          */
         "disabled": boolean;
@@ -387,17 +391,17 @@ export namespace Components {
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * Use round input edges.
-         */
-        "round": boolean;
-        /**
-          * Type of form control.
+          * Type of datepicker ('date', 'week', 'month', 'year').
          */
         "type": DatepickerType;
         /**
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * Whether the picker should show the week numbers.
+         */
+        "weekNumbers": boolean;
     }
     interface CatDropdown {
         /**
@@ -1746,6 +1750,10 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Dates that should be disabled inside the picker
+         */
+        "datesDisabled": Array<Date> | Array<string>;
+        /**
           * Whether the input is disabled.
          */
         "disabled"?: boolean;
@@ -1826,17 +1834,17 @@ declare namespace LocalJSX {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * Use round input edges.
-         */
-        "round"?: boolean;
-        /**
-          * Type of form control.
+          * Type of datepicker ('date', 'week', 'month', 'year').
          */
         "type"?: DatepickerType;
         /**
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * Whether the picker should show the week numbers.
+         */
+        "weekNumbers"?: boolean;
     }
     interface CatDropdown {
         /**

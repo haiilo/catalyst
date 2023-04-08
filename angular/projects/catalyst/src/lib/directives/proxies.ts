@@ -191,7 +191,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'type', 'value', 'weekNumbers'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
@@ -199,7 +199,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'type', 'value'],
+  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'type', 'value', 'weekNumbers'],
 })
 export class CatDatepicker {
   protected el: HTMLElement;
