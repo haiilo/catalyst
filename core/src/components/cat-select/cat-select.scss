@@ -193,6 +193,7 @@ cat-spinner {
   // -webkit-overflow-scrolling: touch;
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
+  border: 1px solid cat-token('color.ui.border.default');
   z-index: $cat-dropdown-z-index;
 }
 
