@@ -578,6 +578,7 @@ nav .cat-nav-head {
   line-height: 1.25rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 /**
@@ -653,6 +654,7 @@ nav .cat-nav-head {
   line-height: 2rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 :where(h2),
@@ -662,6 +664,7 @@ nav .cat-nav-head {
   line-height: 1.75rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 :where(h3),
@@ -671,6 +674,7 @@ nav .cat-nav-head {
   line-height: 1.5rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 :where(h4),
@@ -680,6 +684,7 @@ nav .cat-nav-head {
   line-height: 1.5rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 :where(h5),
@@ -689,6 +694,7 @@ nav .cat-nav-head {
   line-height: 1.25rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 :where(h6),
@@ -698,6 +704,7 @@ nav .cat-nav-head {
   line-height: 1rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 500);
+  font-feature-settings: "pnum";
 }
 
 .cat-text-xl {
