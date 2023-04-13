@@ -27,6 +27,7 @@ $font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation M
   line-height: cat-head-line-height($size);
   color: cat-token('color.ui.font.head');
   font-weight: $weight;
+  font-feature-settings: 'pnum';
 }
 
 // ---- Body
