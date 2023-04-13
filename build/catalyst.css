@@ -1009,6 +1009,46 @@ code {
   border: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 
+.cat-border-top {
+  border-top: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+.cat-border-top-light {
+  border-top: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+}
+.cat-border-top-dark {
+  border-top: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
+.cat-border-right {
+  border-right: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+.cat-border-right-light {
+  border-right: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+}
+.cat-border-right-dark {
+  border-right: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
+.cat-border-bottom {
+  border-bottom: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+.cat-border-bottom-light {
+  border-bottom: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+}
+.cat-border-bottom-dark {
+  border-bottom: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
+.cat-border-left {
+  border-left: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+.cat-border-left-light {
+  border-left: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
+}
+.cat-border-left-dark {
+  border-left: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
+}
+
 .cat-border-dark {
   border: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
