@@ -27,6 +27,20 @@
   border: 1px solid cat-token('color.ui.border.default');
 }
 
+@each $side in top, right, bottom, left {
+  .cat-border-#{$side} {
+    border-#{$side}: 1px solid cat-token('color.ui.border.default');
+
+    &-light {
+      border-#{$side}: 1px solid cat-token('color.ui.border.light');
+    }
+
+    &-dark {
+      border-#{$side}: 1px solid cat-token('color.ui.border.dark');
+    }
+  }
+}
+
 .cat-border-dark {
   border: 1px solid cat-token('color.ui.border.dark');
 }
