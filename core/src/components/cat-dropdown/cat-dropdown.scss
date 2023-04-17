@@ -30,6 +30,7 @@ $-max-height: calc(100vh - 48px);
   max-height: $-max-height;
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
+  border: 1px solid cat-token('color.ui.border.default');
   z-index: $cat-dropdown-z-index;
   opacity: 0;
   transition: transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
