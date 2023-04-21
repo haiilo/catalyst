@@ -4,7 +4,7 @@ import { Datepicker } from 'vanillajs-datepicker';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { DatepickerType } from './datepicker-type';
 import { getDatepickerOptions } from './vanillajs-datepicker.config';
-import dayjs from './dayjs.config';
+import dayjs, { today } from './dayjs.config';
 
 let nextUniqueId = 0;
 
@@ -282,10 +282,10 @@ export class CatDatepicker {
         datesDisabled: this.datesDisabled,
         weekNumbers: this.weekNumbers === true ? 4 : 0, // TO-DO weeknumbers logic
         format: {
-          toValue: (date: string, format: any, locale: any) => {
+          toValue: (date: string) => {
               return date;
           },
-          toDisplay: (date: any, format: any, locale: any) => {
+          toDisplay: (date: Date) => {
             this.value = dayjs(date).format(this.format);
             switch (this.type) {
               case 'week':
@@ -299,23 +299,99 @@ export class CatDatepicker {
             }              
           },
         },
+        beforeShowDay: (date: Date) => {
+          if (this.type === 'week' && this.shouldBeHighlightedAsToday(date)) {
+            return 'today';
+          }
+        },
+        beforeShowMonth: (date: Date) => {
+          if (this.type === 'month' && this.shouldBeHighlightedAsToday(date)) return 'today';
+        },
+        beforeShowYear: (date: Date) => {
+          if (this.type === 'year' && this.shouldBeHighlightedAsToday(date)) return 'today';
+        }
       };
 
       this.datepicker = new Datepicker(inputElement, config);
       if (this.type === 'week') {
         const pickerElement = this.datepicker.pickerElement as HTMLElement;
         pickerElement.classList.add('weekly');
-      }
+      } 
       this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
+      this.input.addEventListener('show', this.handleShowPicker.bind(this) as EventListener);
+      this.input.addEventListener('changeMonth', this.handleChangeMonth.bind(this) as EventListener);
+      this.input.addEventListener('changeView', this.handleChangeView.bind(this) as EventListener);
     }
   }
 
   disconnectedCallback() {
     this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
+    this.input.removeEventListener('show', this.handleShowPicker.bind(this) as EventListener);
+    this.input.removeEventListener('changeMonth', this.handleChangeMonth.bind(this) as EventListener);
+    this.input.removeEventListener('changeView', this.handleChangeView.bind(this) as EventListener);
   }
 
-  private handleDateChange(event: CustomEvent) {    
+  private handleDateChange(event: CustomEvent) { 
+    if (this.type === 'week') {
+      this.selectAllWeekDays(event.detail.date);
+    }
     this.catChange.emit(event);
+  }
+
+  private handleShowPicker(event: CustomEvent) { 
+    if (this.type === 'week') {
+      this.selectAllWeekDays(event.detail.date);
+    }
+  }
+
+  private handleChangeMonth(event: CustomEvent) { 
+    if (this.type === 'week') {
+      this.selectAllWeekDays(event.detail.date);
+    }
+  }
+
+  private handleChangeView(event: CustomEvent) { 
+    if (this.type === 'week') {
+      this.selectAllWeekDays(event.detail.date);
+    }
+  }
+
+  private selectAllWeekDays(date: Date) {    
+    if (this.value) {
+      const firstDayOfWeek = dayjs(date).startOf('isoWeek');
+  
+      if (!firstDayOfWeek.isSame(dayjs(date).startOf('day'))) {
+        this.datepicker.setDate(firstDayOfWeek.toDate())
+      } else {
+        let weekdaysCount = 7;
+        const pickerElement = this.datepicker.pickerElement as HTMLElement;
+        let selected = pickerElement.querySelector('.datepicker-cell:not(.month):not(.year).selected')
+        while (weekdaysCount > 1) {
+          if (selected) {
+            selected = selected.nextElementSibling;
+            selected?.classList.add('selected')
+            weekdaysCount--;
+          } else {
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  private shouldBeHighlightedAsToday(date: Date) {
+    switch (this.type) {
+      case 'date':
+        return today().getFullYear() === date.getFullYear() && today().getMonth() === date.getMonth() && today().getDate() === date.getDate();
+      case 'week':
+        return today().getFullYear() === date.getFullYear() && dayjs(today()).isoWeek() === dayjs(date).isoWeek()
+      case 'month':
+        return today().getFullYear() === date.getFullYear() && today().getMonth() === date.getMonth();  
+      case 'year':
+        return today().getFullYear() === date.getFullYear();
+      default:
+        return false;
+    }
   }
 
   private onCatChange(event: unknown) {

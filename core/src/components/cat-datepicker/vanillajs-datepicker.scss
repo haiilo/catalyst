@@ -2,6 +2,7 @@ $dp-border-color: #ebecf0;
 $dp-week-color: #515c6c;
 $dp-cell-hover-background-color: rgba(0, 129, 148, 10%);
 $dp-cell-focus-background-color: rgba(0, 129, 148, 10%);
+$dp-cell-today-focus-background-color: rgba(0, 129, 148, 10%);
 $dp-cell-selected-background-color: #008194;
 $dp-cell-today-color: #008194;
 $dp-border-color: #ebecf0;
@@ -25,6 +26,11 @@ $dp-cell-selected-font-weight: $dp-font-weight-bold;
 .datepicker-view {
   &:has(.week-numbers) {
     width: $dp-cell-size-base * 8;
+  }
+
+  &.months,
+  &.years {
+    width: $dp-month-year-height * 4;
   }
 }
 
@@ -68,38 +74,61 @@ $dp-cell-selected-font-weight: $dp-font-weight-bold;
 
 .datepicker-cell {
   &.today {
-    &:not(.selected) {
+    &:not(.selected):not(:hover):not(.focused) {
       background: none;
-      box-shadow: inset 0 0 0 1.5px #008194; // edited
+    }
+
+    &:not(.selected) {
+      box-shadow: inset 0 0 0 1.5px #008194; 
       border-radius: 4px;
     }
 
-    &.focused:not(.selected) {
-      background: none;
+    &:hover:not(.selected) {
+      background-color: $dp-cell-hover-background-color;
     }
-  }
+  }  
 }
 
 .datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid :nth-child(7n + 1) {
-  position: relative;
-
   &::before {
     content: '';
     width: 700%;
     height: 100%;
     background-color: black;
+    border-radius: 4px;  
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
+    opacity: 0;  
+    z-index: 1;  
+  }
+
+  &.today:not(.selected):before {
+    box-shadow: inset 0 0 0 1.5px #008194; 
+    border-radius: 4px;    
+    opacity: 1;
+  }
+
+  &:not(:hover):before {
+    background: none;
   }
 
   &:hover::before {
     opacity: 1;
-    background-color: rgba(0, 129, 148, 0.1);
+    background-color: $dp-cell-hover-background-color;
   }
 
   &.selected,
+  &.selected.focused {
+    color: white;
+    font-weight: 700;
+    &::before {
+      opacity: 1;
+      background-color: $dp-cell-selected-background-color;
+      z-index: -1;
+    }
+  }
+
   &.focused {
     background: none;
     color: black;
@@ -107,7 +136,30 @@ $dp-cell-selected-font-weight: $dp-font-weight-bold;
 
     &::before {
       opacity: 1;
-      background-color: rgba(0, 129, 148, 0.2); // edited
+      background-color: $dp-cell-focus-background-color;      
     }
+  }
+}
+
+.datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid .datepicker-cell {
+  position: relative;
+
+  &.selected {
+    z-index: 2;
+  }
+
+  &.today {
+    &:not(.selected) {
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+
+  &:not(.disabled):hover {
+    background-color: inherit;
+  }
+
+  &.focused {
+    background: none;
   }
 }
