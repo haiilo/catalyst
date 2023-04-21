@@ -1329,27 +1329,21 @@ code {
   .cat-none\:xs {
     display: none !important;
   }
-
   .cat-inline\:xs {
     display: inline !important;
   }
-
   .cat-inline-block\:xs {
     display: inline-block !important;
   }
-
   .cat-block\:xs {
     display: block !important;
   }
-
   .cat-grid\:xs {
     display: grid !important;
   }
-
   .cat-flex\:xs {
     display: flex !important;
   }
-
   .cat-inline-flex\:xs {
     display: inline-flex !important;
   }
@@ -1358,27 +1352,21 @@ code {
   .cat-none\:s {
     display: none !important;
   }
-
   .cat-inline\:s {
     display: inline !important;
   }
-
   .cat-inline-block\:s {
     display: inline-block !important;
   }
-
   .cat-block\:s {
     display: block !important;
   }
-
   .cat-grid\:s {
     display: grid !important;
   }
-
   .cat-flex\:s {
     display: flex !important;
   }
-
   .cat-inline-flex\:s {
     display: inline-flex !important;
   }
@@ -1387,27 +1375,21 @@ code {
   .cat-none\:m {
     display: none !important;
   }
-
   .cat-inline\:m {
     display: inline !important;
   }
-
   .cat-inline-block\:m {
     display: inline-block !important;
   }
-
   .cat-block\:m {
     display: block !important;
   }
-
   .cat-grid\:m {
     display: grid !important;
   }
-
   .cat-flex\:m {
     display: flex !important;
   }
-
   .cat-inline-flex\:m {
     display: inline-flex !important;
   }
@@ -1416,27 +1398,21 @@ code {
   .cat-none\:l {
     display: none !important;
   }
-
   .cat-inline\:l {
     display: inline !important;
   }
-
   .cat-inline-block\:l {
     display: inline-block !important;
   }
-
   .cat-block\:l {
     display: block !important;
   }
-
   .cat-grid\:l {
     display: grid !important;
   }
-
   .cat-flex\:l {
     display: flex !important;
   }
-
   .cat-inline-flex\:l {
     display: inline-flex !important;
   }
@@ -1445,27 +1421,21 @@ code {
   .cat-none\:xl {
     display: none !important;
   }
-
   .cat-inline\:xl {
     display: inline !important;
   }
-
   .cat-inline-block\:xl {
     display: inline-block !important;
   }
-
   .cat-block\:xl {
     display: block !important;
   }
-
   .cat-grid\:xl {
     display: grid !important;
   }
-
   .cat-flex\:xl {
     display: flex !important;
   }
-
   .cat-inline-flex\:xl {
     display: inline-flex !important;
   }
