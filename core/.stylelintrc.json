@@ -3,7 +3,6 @@
   "rules": {
     "color-function-notation": null,
     "declaration-empty-line-before": null,
-    "string-quotes": "single",
     "selector-not-notation": "simple",
     "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor", "optimizeLegibility"] }],
     "scss/dollar-variable-empty-line-before": null,
