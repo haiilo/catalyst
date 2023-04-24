@@ -2,6 +2,7 @@
   "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "rules": {
     "color-function-notation": null,
+    "custom-property-empty-line-before": null,
     "declaration-empty-line-before": null,
     "selector-not-notation": "simple",
     "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor", "optimizeLegibility"] }],
