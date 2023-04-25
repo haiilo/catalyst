@@ -42,7 +42,7 @@ export class CatRadioGroup {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the radio group loses focus.

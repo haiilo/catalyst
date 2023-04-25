@@ -6,8 +6,6 @@ import { DatepickerType } from './datepicker-type';
 import { getDatepickerOptions } from './vanillajs-datepicker.config';
 import dayjs from './dayjs.config';
 
-let nextUniqueId = 0;
-
 /**
  * Inputs are used to allow users to provide text input when the expected input
  * is short. As well as plain text, Input supports various types of text,
@@ -24,11 +22,6 @@ let nextUniqueId = 0;
   shadow: true
 })
 export class CatDatepicker {
-  private readonly _id = `cat-datepicker-${nextUniqueId++}`;
-  private get id() {
-    return this._id;
-  }
-
   private input!: HTMLInputElement;
   private catInput!: HTMLCatInputElement;
   private datepicker!: any;
@@ -69,6 +62,16 @@ export class CatDatepicker {
   @Prop() hint?: string | string[];
 
   /**
+   * The name of an icon to be displayed in the input.
+   */
+  @Prop() icon?: string;
+
+  /**
+   * Display the icon on the left.
+   */
+  @Prop() iconLeft = false;
+
+  /**
    * A unique identifier for the input.
    */
   @Prop() identifier?: string;
@@ -104,6 +107,16 @@ export class CatDatepicker {
   @Prop() placeholder?: string;
 
   /**
+   * A textual prefix to be displayed in the input.
+   */
+  @Prop() textPrefix?: string;
+
+  /**
+   * A textual suffix to be displayed in the input.
+   */
+  @Prop() textSuffix?: string;
+
+  /**
    * The value is not editable.
    */
   @Prop() readonly = false;
@@ -128,7 +141,7 @@ export class CatDatepicker {
    */
   @Prop() type: DatepickerType = 'date';
 
- /**
+  /**
    * Dates that should be disabled inside the picker
    */
   @Prop() datesDisabled!: Array<Date> | Array<string>;
@@ -163,7 +176,7 @@ export class CatDatepicker {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the input received focus.
@@ -219,28 +232,32 @@ export class CatDatepicker {
 
   render() {
     return (
-      <Host id={this.id}>
+      <Host>
         <cat-input
-          label={this.label}
           requiredMarker={this.requiredMarker}
           horizontal={this.horizontal}
           autoComplete={this.autoComplete}
           clearable={this.clearable}
           disabled={this.disabled}
           hint={this.hint}
+          icon={this.icon}
+          iconRight={!this.iconLeft}
           identifier={this.identifier}
+          label={this.label}
           labelHidden={this.labelHidden}
           name={this.name}
           placeholder={this.placeholder}
+          textPrefix={this.textPrefix}
+          textSuffix={this.textSuffix}
           readonly={this.readonly}
           required={this.required}
+          value={this.value}
           errors={this.errors}
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
           onCatChange={this.onCatChange.bind(this)}
           onCatFocus={this.onCatFocus.bind(this)}
           onCatBlur={this.onCatBlur.bind(this)}
-          value={this.value}
         >
           {this.hasSlottedLabel && (
             <span slot="label">
@@ -280,10 +297,12 @@ export class CatDatepicker {
         maxDate: this.max,
         minDate: this.min,
         datesDisabled: this.datesDisabled,
+        prevArrow: '←',
+        nextArrow: '→',
         weekNumbers: this.weekNumbers === true ? 4 : 0, // TO-DO weeknumbers logic
         format: {
           toValue: (date: string, format: any, locale: any) => {
-              return date;
+            return date;
           },
           toDisplay: (date: any, format: any, locale: any) => {
             this.value = dayjs(date).format(this.format);
@@ -293,12 +312,12 @@ export class CatDatepicker {
               case 'month':
                 return `${dayjs(date).month() + 1}/${dayjs(date).year()}`;
               case 'year':
-                return dayjs(date).year();            
+                return dayjs(date).year();
               default:
                 return dayjs(date).format(this.format);
-            }              
-          },
-        },
+            }
+          }
+        }
       };
 
       this.datepicker = new Datepicker(inputElement, config);
@@ -314,13 +333,13 @@ export class CatDatepicker {
     this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
   }
 
-  private handleDateChange(event: CustomEvent) {    
-    this.catChange.emit(event);
+  private handleDateChange(event: CustomEvent) {
+    // this.catChange.emit(event);
   }
 
   private onCatChange(event: unknown) {
     this.value = this.input.value;
-    this.catChange.emit(event);
+    // this.catChange.emit(event);
   }
 
   private onCatFocus(event: unknown) {

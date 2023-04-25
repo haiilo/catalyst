@@ -138,7 +138,7 @@ export class CatTextarea {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the textarea received focus.

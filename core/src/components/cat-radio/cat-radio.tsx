@@ -89,7 +89,7 @@ export class CatRadio {
   /**
    * Emitted when the radio is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the radio received focus.

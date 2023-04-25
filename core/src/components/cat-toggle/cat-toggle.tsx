@@ -90,7 +90,7 @@ export class CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the toggle received focus.

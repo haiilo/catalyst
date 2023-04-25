@@ -347,6 +347,14 @@ export namespace Components {
          */
         "horizontal": boolean;
         /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the left.
+         */
+        "iconLeft": boolean;
+        /**
           * A unique identifier for the input.
          */
         "identifier"?: string;
@@ -390,6 +398,14 @@ export namespace Components {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
         /**
           * Type of datepicker ('date', 'week', 'month', 'year').
          */
@@ -1721,7 +1737,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked status of the checkbox is changed.
          */
-        "onCatChange"?: (event: CatCheckboxCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatCheckboxCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the checkbox received focus.
          */
@@ -1778,6 +1794,14 @@ declare namespace LocalJSX {
          */
         "horizontal"?: boolean;
         /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the left.
+         */
+        "iconLeft"?: boolean;
+        /**
           * A unique identifier for the input.
          */
         "identifier"?: string;
@@ -1812,7 +1836,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatDatepickerCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatDatepickerCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the input received focus.
          */
@@ -1833,6 +1857,14 @@ declare namespace LocalJSX {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
         /**
           * Type of datepicker ('date', 'week', 'month', 'year').
          */
@@ -1989,7 +2021,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatInputCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatInputCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the input received focus.
          */
@@ -2150,7 +2182,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the radio is changed.
          */
-        "onCatChange"?: (event: CatRadioCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatRadioCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the radio received focus.
          */
@@ -2191,7 +2223,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatRadioGroupCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatRadioGroupCustomEvent<InputEvent>) => void;
         /**
           * The value of the radio group.
          */
@@ -2315,7 +2347,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatSelectCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatSelectCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the select dropdown is closed.
          */
@@ -2501,7 +2533,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatTextareaCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatTextareaCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the textarea received focus.
          */
@@ -2579,7 +2611,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked status of the toggle is changed.
          */
-        "onCatChange"?: (event: CatToggleCustomEvent<any>) => void;
+        "onCatChange"?: (event: CatToggleCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the toggle received focus.
          */
