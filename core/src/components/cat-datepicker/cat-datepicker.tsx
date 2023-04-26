@@ -1,10 +1,9 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
 import log from 'loglevel';
-import { Datepicker } from 'vanillajs-datepicker';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { DatepickerType } from './datepicker-type';
 import dayjs, { today } from './dayjs.config';
-import { getDatepickerOptions } from './vanillajs-datepicker.config';
+import Datepicker, { getDatepickerOptions } from './vanillajs-datepicker.config';
 
 /**
  * Inputs are used to allow users to provide text input when the expected input
