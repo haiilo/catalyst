@@ -38,7 +38,7 @@ $dp-header-active-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-hover-background-color: transparent;
 $dp-cell-today-focus-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-highlighted-hover-background-color: #{cat-token('color.ui.background.muted')};
-$dp-cell-prevnext-selected-color: yellow;
+$dp-cell-prevnext-selected-color: #{cat-token('color.theme.primary.fill')};
 // $dp-range-start-end-focus-background-color: color.scale($dp-range-start-end-background-color, $lightness: -2.5%) !default;
 // $dp-range-hover-background-color: color.scale($dp-range-background-color, $lightness: -2.5%) !default;
 // $dp-range-focus-background-color: color.scale($dp-range-background-color, $lightness: -5%) !default;
@@ -55,8 +55,8 @@ $dp-input-in-edit-box-shadow: none;
 //== style overrides ==//
 
 .datepicker-dropdown {
-  margin-top: .75rem;
-  margin-left: -.75rem;
+  // margin-top: 0.75rem;
+  // margin-left: -0.75rem;
 }
 
 .datepicker-picker {
@@ -64,7 +64,7 @@ $dp-input-in-edit-box-shadow: none;
 }
 
 .datepicker-main {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .datepicker-view:has(.week-numbers) {
@@ -93,8 +93,8 @@ $dp-input-in-edit-box-shadow: none;
 //== controls ==//
 
 .datepicker-controls {
-  gap: .5rem;
-  
+  gap: 0.5rem;
+
   .datepicker-header & {
     padding: 1rem 1rem 0;
 
@@ -111,7 +111,7 @@ $dp-input-in-edit-box-shadow: none;
 
   .datepicker-footer & {
     padding: 0 1rem 1rem;
-  
+
     .button {
       margin: 0;
       height: 2.5rem;

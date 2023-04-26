@@ -5,4 +5,4 @@ export enum DatepickerTypeEnum {
   week = 3
 }
 
-export type DatepickerType = 'date' | keyof typeof DatepickerTypeEnum;
+export type DatepickerType = keyof typeof DatepickerTypeEnum;

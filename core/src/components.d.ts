@@ -337,7 +337,7 @@ export namespace Components {
         /**
           * The date format after picker selection.
          */
-        "format"?: string;
+        "format": string;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
