@@ -125,34 +125,36 @@ $dp-input-in-edit-box-shadow: none;
   }
 }
 
-// .datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid :nth-child(7n + 1) {
-//   position: relative;
+.datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid :nth-child(7n + 1) {
+  position: relative;
+  background-color: transparent;
 
-//   &::before {
-//     content: '';
-//     width: 700%;
-//     height: 100%;
-//     background-color: black;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     opacity: 0;
-//   }
+  &::before {
+    content: '';
+    width: 700%;
+    height: 100%;
+    // background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: cat-token('size.border.radius.s');
+    background-color: cat-token('color.ui.background.muted');
+  }
 
-//   &:hover::before {
-//     opacity: 1;
-//     background-color: rgba(0, 129, 148, 0.1);
-//   }
+  &:hover::before {
+    opacity: 1;
+  }
 
-//   &.selected,
-//   &.focused {
-//     background: none;
-//     color: black;
-//     font-weight: 400;
+  // &.selected,
+  // &.focused {
+  //   background: none;
+  //   color: black;
+  //   font-weight: 400;
 
-//     &::before {
-//       opacity: 1;
-//       background-color: rgba(0, 129, 148, 0.2); // edited
-//     }
-//   }
-// }
+  //   &::before {
+  //     opacity: 1;
+  //     background-color: rgba(0, 129, 148, 0.2); // edited
+  //   }
+  // }
+}

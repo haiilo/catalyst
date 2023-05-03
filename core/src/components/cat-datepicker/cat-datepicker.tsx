@@ -255,8 +255,8 @@ export class CatDatepicker {
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
           onCatChange={this.onCatChange.bind(this)}
-          onCatFocus={this.onCatFocus.bind(this)}
-          onCatBlur={this.onCatBlur.bind(this)}
+          onCatFocus={event => this.onCatFocus(event.detail)}
+          onCatBlur={event => this.onCatBlur(event.detail)}
         >
           {this.hasSlottedLabel && (
             <span slot="label">
@@ -300,16 +300,10 @@ export class CatDatepicker {
         nextArrow: '→',
         weekNumbers: this.weekNumbers ? 1 : 0,
         format: {
-          toValue: (dateStr: string | Date | number): Date => {
-            console.log('toValue', dateStr);
-            return this.type === 'week' ? this.fromISOWeek(dateStr) : Datepicker.parseDate(dateStr, this.dateFormat);
-          },
-          toDisplay: (date: Date): string => {
-            console.log('toDisplay', date, this.toISOWeek(date).toString());
-            return this.type === 'week'
-              ? this.toISOWeek(date).toString()
-              : Datepicker.formatDate(date, this.dateFormat);
-          }
+          toValue: (dateStr: string | Date | number): Date =>
+            this.type === 'week' ? this.fromISOWeek(dateStr) : Datepicker.parseDate(dateStr, this.dateFormat),
+          toDisplay: (date: Date): string =>
+            this.type === 'week' ? this.toISOWeek(date).toString() : Datepicker.formatDate(date, this.dateFormat)
         },
         beforeShowDay: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
         beforeShowMonth: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
@@ -320,46 +314,32 @@ export class CatDatepicker {
         this.datepicker.pickerElement.classList.add('weekly');
       }
 
-      this.input.addEventListener('show', this.handleShowPicker.bind(this) as EventListener);
+      this.input.addEventListener('show', this.selectAllWeekDays.bind(this));
       this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-      this.input.addEventListener('changeMonth', this.handleChangeMonth.bind(this) as EventListener);
-      this.input.addEventListener('changeView', this.handleChangeView.bind(this) as EventListener);
+      this.input.addEventListener('changeMonth', this.selectAllWeekDays.bind(this));
+      this.input.addEventListener('changeView', this.selectAllWeekDays.bind(this));
     }
   }
 
   disconnectedCallback() {
-    this.input.removeEventListener('show', this.handleShowPicker.bind(this) as EventListener);
+    this.input.removeEventListener('show', this.selectAllWeekDays.bind(this));
     this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-    this.input.removeEventListener('changeMonth', this.handleChangeMonth.bind(this) as EventListener);
-    this.input.removeEventListener('changeView', this.handleChangeView.bind(this) as EventListener);
+    this.input.removeEventListener('changeMonth', this.selectAllWeekDays.bind(this));
+    this.input.removeEventListener('changeView', this.selectAllWeekDays.bind(this));
   }
 
   private handleDateChange(event: CustomEvent) {
-    if (this.type === 'week') {
-      this.selectAllWeekDays(event.detail.date);
-    }
+    this.selectAllWeekDays(event.detail.date);
     // this.catChange.emit(event);
   }
 
-  private handleShowPicker(event: CustomEvent) {
-    if (this.type === 'week') {
-      this.selectAllWeekDays(event.detail.date);
-    }
-  }
+  private selectAllWeekDays(event: Event) {
+    const date: Date = (event as CustomEvent).detail.date;
 
-  private handleChangeMonth(event: CustomEvent) {
-    if (this.type === 'week') {
-      this.selectAllWeekDays(event.detail.date);
+    if (this.type !== 'week') {
+      return;
     }
-  }
 
-  private handleChangeView(event: CustomEvent) {
-    if (this.type === 'week') {
-      this.selectAllWeekDays(event.detail.date);
-    }
-  }
-
-  private selectAllWeekDays(date: Date) {
     if (this.value) {
       const firstDayOfWeek = dayjs(date).startOf('isoWeek');
 
@@ -382,13 +362,24 @@ export class CatDatepicker {
     }
   }
 
+  private onCatChange(event: unknown) {
+    this.value = this.input.value;
+    // this.catChange.emit(event);
+  }
+
+  private onCatFocus(event: FocusEvent) {
+    this.catFocus.emit(event);
+  }
+
+  private onCatBlur(event: FocusEvent) {
+    this.catBlur.emit(event);
+  }
+
   private shouldHighlightAsToday(date: Date) {
     const now = new Date();
-    const isSameYear = now.getUTCFullYear() === date.getUTCFullYear();
-    const isSameMonth = now.getUTCMonth() === date.getUTCMonth();
-    const isSameDay = now.getUTCDate() === date.getUTCDate();
-    // console.log('shouldHighlightAsToday', now, date);
-    // console.log(now.getUTCFullYear(), date.getUTCFullYear());
+    const isSameYear = now.getFullYear() === date.getFullYear();
+    const isSameMonth = now.getMonth() === date.getMonth();
+    const isSameDay = now.getDate() === date.getDate();
     switch (this.type) {
       case 'date':
         return isSameYear && isSameMonth && isSameDay;
@@ -401,19 +392,6 @@ export class CatDatepicker {
       default:
         return false;
     }
-  }
-
-  private onCatChange(event: unknown) {
-    this.value = this.input.value;
-    // this.catChange.emit(event);
-  }
-
-  private onCatFocus(event: unknown) {
-    this.catFocus.emit(event as FocusEvent);
-  }
-
-  private onCatBlur(event: unknown) {
-    this.catBlur.emit(event as FocusEvent);
   }
 
   // ----- Date handling
@@ -437,12 +415,11 @@ export class CatDatepicker {
   }
 
   private fromISOWeekNumber(weekNumber: number, year = new Date().getFullYear()): Date {
-    const firstDayOfYear = new Date(Date.UTC(year, 0, 1));
-    const firstDayOfWeek = firstDayOfYear.getUTCDay() || 7;
-    const daysFromFirstDay = (weekNumber - 1) * 7 - firstDayOfWeek + 1;
-    const firstDayOfISOWeekDate = new Date(firstDayOfYear);
-    firstDayOfISOWeekDate.setUTCDate(firstDayOfYear.getUTCDate() + daysFromFirstDay);
-    return firstDayOfISOWeekDate;
+    const refDate = new Date(Date.UTC(year, 0, 4)); // January 4th
+    const diffDays = (weekNumber - 1) * 7 - (refDate.getUTCDay() || 7) + 1;
+    const date = new Date(refDate);
+    date.setUTCDate(date.getUTCDate() + diffDays);
+    return date;
   }
 
   private toISOWeek(date: Date): number {
