@@ -30,5 +30,6 @@ export const CatSpinner = /*@__PURE__*/createReactComponent<JSX.CatSpinner, HTML
 export const CatTab = /*@__PURE__*/createReactComponent<JSX.CatTab, HTMLCatTabElement>('cat-tab');
 export const CatTabs = /*@__PURE__*/createReactComponent<JSX.CatTabs, HTMLCatTabsElement>('cat-tabs');
 export const CatTextarea = /*@__PURE__*/createReactComponent<JSX.CatTextarea, HTMLCatTextareaElement>('cat-textarea');
+export const CatTimepicker = /*@__PURE__*/createReactComponent<JSX.CatTimepicker, HTMLCatTimepickerElement>('cat-timepicker');
 export const CatToggle = /*@__PURE__*/createReactComponent<JSX.CatToggle, HTMLCatToggleElement>('cat-toggle');
 export const CatTooltip = /*@__PURE__*/createReactComponent<JSX.CatTooltip, HTMLCatTooltipElement>('cat-tooltip');
