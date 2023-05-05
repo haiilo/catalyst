@@ -37,14 +37,14 @@ module.exports = {
         xl: { value: 1.5 },
         l: { value: 1.5 },
         m: { value: 1.25 },
-        s: { value: 1.5 },
+        s: { value: 1.125 },
         xs: { value: 1 }
       },
       mono: {
         xl: { value: 1.5 },
         l: { value: 1.25 },
         m: { value: 1.125 },
-        s: { value: 1.5 },
+        s: { value: 1 },
         xs: { value: 0.875 }
       }
     }
