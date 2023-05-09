@@ -169,7 +169,10 @@ export class CatRadio {
           </span>
         </label>
         {(this.hint || this.hasSlottedHint) && (
-          <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+          <div class={{ 'hint-wrapper': true, 'label-left': this.labelLeft }}>
+            <div class="circle-placeholder"></div>
+            <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+          </div>
         )}
       </Host>
     );
