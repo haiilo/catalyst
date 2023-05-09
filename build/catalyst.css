@@ -727,7 +727,7 @@ nav .cat-nav-head {
 
 .cat-text-s {
   font-size: 0.875rem;
-  line-height: 1rem;
+  line-height: 1.125rem;
   font-weight: var(--cat-font-weight-body, 400);
 }
 
@@ -917,7 +917,7 @@ blockquote.cat-text-right {
 
 figcaption {
   font-size: 0.875rem;
-  line-height: 1rem;
+  line-height: 1.125rem;
   font-weight: var(--cat-font-weight-body, 400);
 }
 
