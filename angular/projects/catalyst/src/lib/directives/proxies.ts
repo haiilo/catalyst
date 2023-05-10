@@ -651,6 +651,46 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 
 @ProxyCmp({
+  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'hourShort', 'identifier', 'label', 'labelHidden', 'max', 'min', 'minutesStep', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'value']
+})
+@Component({
+  selector: 'cat-timepicker',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'hourShort', 'identifier', 'label', 'labelHidden', 'max', 'min', 'minutesStep', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'value'],
+})
+export class CatTimepicker {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange', 'catBlur']);
+  }
+}
+
+
+export declare interface CatTimepicker extends Components.CatTimepicker {
+  /**
+   * Emitted when the select dropdown is opened.
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the select dropdown is closed.
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+  /**
+   * Emitted when the select loses the focus.
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+}
+
+
+@ProxyCmp({
   inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
