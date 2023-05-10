@@ -28,7 +28,7 @@ interface Time extends Item {
   styleUrl: 'cat-timepicker.scss',
   shadow: true
 })
-export class CatInput {
+export class CatTimepicker {
   private timeSelect?: HTMLCatSelectElement;
 
   @Element() hostElement!: HTMLElement;
