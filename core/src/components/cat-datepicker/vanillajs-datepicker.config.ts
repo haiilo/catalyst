@@ -1,14 +1,14 @@
 import { Datepicker } from 'vanillajs-datepicker';
 import { DatepickerType, DatepickerTypeEnum } from './datepicker-type';
-// import dayjs, { today } from './dayjs.config';
+import dayjs, { today } from './dayjs.config';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 const browserLanguage = window?.navigator?.language ?? 'en';
 
-// const getDefaultDate = (type: DatepickerType, selectedDate?: string): Date => {
-//   const date = selectedDate ? dayjs(selectedDate).toDate() : today();
-//   return type === 'week' ? dayjs(date).startOf('isoWeek').toDate() : date;
-// };
+const getDefaultDate = (type: DatepickerType, selectedDate?: string): Date => {
+  const date = selectedDate ? dayjs(selectedDate).toDate() : today();
+  return type === 'week' ? dayjs(date).startOf('isoWeek').toDate() : date;
+};
 
 export function getDatepickerOptions(type: DatepickerType, selectedDate?: string) {
   const config: object = {
@@ -19,10 +19,10 @@ export function getDatepickerOptions(type: DatepickerType, selectedDate?: string
     todayHighlight: true,
     weekStart: 1, // TO-DO get value from browser Intl.Locale().weekInfo api which is not supported by Firefox or other browsers
     language: 'browser',
-    // defaultViewDate: getDefaultDate(type, selectedDate)
+    defaultViewDate: getDefaultDate(type, selectedDate)
   };
   return config;
-};
+}
 
 function daysForLocale(weekday: 'long' | 'short' | 'narrow' = 'long') {
   const date = new Date();
@@ -44,6 +44,6 @@ Datepicker.locales.browser = {
   months: monthsForLocale('long'),
   monthsShort: monthsForLocale('short'),
   today: i18n.t('input.today')
-}
+};
 
 export default Datepicker;

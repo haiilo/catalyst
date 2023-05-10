@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-//== datepicker variables ==//
+// == datepicker variables == //
 
 $dp-background-color: #{cat-token('color.ui.background.surface')};
 $dp-border-color: #{cat-token('color.ui.border.default')};
@@ -29,13 +29,14 @@ $dp-cell-highlighted-background-color: #{cat-token('color.ui.background.muted')}
 $dp-week-color: #{cat-token('color.ui.font.muted')};
 $dp-footer-background-color: transparent;
 
-//== calculated variables ==//
+// == calculated variables == //
 
 $dp-dow-height: 2rem;
 $dp-view-width: 17.5rem;
 $dp-header-hover-background-color: #{cat-token('color.ui.background.muted')};
 $dp-header-active-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-hover-background-color: transparent;
+$dp-cell-focus-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-today-focus-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-highlighted-hover-background-color: #{cat-token('color.ui.background.muted')};
 $dp-cell-prevnext-selected-color: #{cat-token('color.theme.primary.fill')};
@@ -48,16 +49,11 @@ $dp-title-box-shadow: none;
 $dp-footer-box-shadow: none;
 $dp-input-in-edit-box-shadow: none;
 
-//== styles ==//
+// == styles == //
 
 @import 'vanillajs-datepicker/sass/datepicker';
 
-//== style overrides ==//
-
-.datepicker-dropdown {
-  // margin-top: 0.75rem;
-  // margin-left: -0.75rem;
-}
+// == style overrides == //
 
 .datepicker-picker {
   border: 1px solid cat-token('color.ui.border.default');
@@ -71,7 +67,7 @@ $dp-input-in-edit-box-shadow: none;
   width: 19.375rem;
 }
 
-//== headlines ==//
+// == headlines == //
 
 .datepicker .dow,
 .datepicker .week {
@@ -79,7 +75,7 @@ $dp-input-in-edit-box-shadow: none;
   color: cat-token('color.ui.font.muted');
 }
 
-//== highlighs ==//
+// == highlighs == //
 
 .datepicker-cell.today:not(.selected) {
   box-shadow: inset 0 0 0 2px cat-token('color.theme.primary.bg');
@@ -90,7 +86,7 @@ $dp-input-in-edit-box-shadow: none;
   background-color: cat-token('color.ui.background.muted');
 }
 
-//== controls ==//
+// == controls == //
 
 .datepicker-controls {
   gap: 0.5rem;
@@ -126,35 +122,74 @@ $dp-input-in-edit-box-shadow: none;
 }
 
 .datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid :nth-child(7n + 1) {
-  position: relative;
-  background-color: transparent;
-
   &::before {
     content: '';
     width: 700%;
     height: 100%;
-    // background-color: black;
+    border-radius: cat-token('size.border.radius.m');
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
-    border-radius: cat-token('size.border.radius.s');
-    background-color: cat-token('color.ui.background.muted');
+    z-index: 1;
+  }
+
+  &.today:not(.selected)::before {
+    box-shadow: inset 0 0 0 1.5px #008194;
+    border-radius: cat-token('size.border.radius.m');
+    opacity: 1;
+  }
+
+  &:not(:hover)::before {
+    background: none;
   }
 
   &:hover::before {
     opacity: 1;
+    background-color: $dp-cell-hover-background-color;
   }
 
-  // &.selected,
-  // &.focused {
-  //   background: none;
-  //   color: black;
-  //   font-weight: 400;
+  &.selected,
+  &.selected.focused {
+    color: white;
 
-  //   &::before {
-  //     opacity: 1;
-  //     background-color: rgba(0, 129, 148, 0.2); // edited
-  //   }
-  // }
+    &::before {
+      opacity: 1;
+      background-color: $dp-cell-selected-background-color;
+      z-index: -1;
+    }
+  }
+
+  &.focused {
+    background: none;
+
+    &::before {
+      opacity: 1;
+      background-color: $dp-cell-focus-background-color;
+      z-index: -1;
+    }
+  }
+}
+
+.datepicker.weekly .datepicker-view:not(.months):not(.years) .datepicker-grid .datepicker-cell {
+  position: relative;
+
+  &.selected,
+  &.focused {
+    z-index: 2;
+  }
+
+  &.today {
+    &:not(.selected) {
+      box-shadow: none;
+    }
+  }
+
+  &:not(.disabled):hover {
+    background-color: inherit;
+  }
+
+  &.focused {
+    background: none;
+  }
 }

@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h }
 import log from 'loglevel';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { DatepickerType } from './datepicker-type';
-import dayjs, { today } from './dayjs.config';
+import dayjs from './dayjs.config';
 import Datepicker, { getDatepickerOptions } from './vanillajs-datepicker.config';
 
 /**
@@ -254,7 +254,7 @@ export class CatDatepicker {
           errors={this.errors}
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
-          onCatChange={this.onCatChange.bind(this)}
+          onCatChange={event => this.onCatChange(event)}
           onCatFocus={event => this.onCatFocus(event.detail)}
           onCatBlur={event => this.onCatBlur(event.detail)}
         >
@@ -314,57 +314,82 @@ export class CatDatepicker {
         this.datepicker.pickerElement.classList.add('weekly');
       }
 
-      this.input.addEventListener('show', this.selectAllWeekDays.bind(this));
+      this.input.addEventListener('show', this.handleWeekDays.bind(this));
       this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-      this.input.addEventListener('changeMonth', this.selectAllWeekDays.bind(this));
-      this.input.addEventListener('changeView', this.selectAllWeekDays.bind(this));
+      this.input.addEventListener('changeMonth', this.handleWeekDays.bind(this));
+      this.input.addEventListener('changeView', this.handleWeekDays.bind(this));
+      this.input.addEventListener('keydown', this.focusAllWeekDays.bind(this));
     }
   }
 
   disconnectedCallback() {
-    this.input.removeEventListener('show', this.selectAllWeekDays.bind(this));
+    this.input.removeEventListener('show', this.handleWeekDays.bind(this));
     this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-    this.input.removeEventListener('changeMonth', this.selectAllWeekDays.bind(this));
-    this.input.removeEventListener('changeView', this.selectAllWeekDays.bind(this));
+    this.input.removeEventListener('changeMonth', this.handleWeekDays.bind(this));
+    this.input.removeEventListener('changeView', this.handleWeekDays.bind(this));
+    this.input.removeEventListener('keydown', this.focusAllWeekDays.bind(this));
   }
 
   private handleDateChange(event: CustomEvent) {
     this.selectAllWeekDays(event.detail.date);
-    // this.catChange.emit(event);
+    this.value = this.input.value;
+    this.catChange.emit();
   }
 
-  private selectAllWeekDays(event: Event) {
-    const date: Date = (event as CustomEvent).detail.date;
+  private handleWeekDays(event: Event | Date) {
+    this.selectAllWeekDays(event);
+    this.focusAllWeekDays();
+  }
 
+  private selectAllWeekDays(event: Event | Date) {
+    const date = event instanceof Date ? event : (event as CustomEvent).detail?.date;
     if (this.type !== 'week') {
       return;
     }
-
-    if (this.value) {
+    if (this.input?.value) {
       const firstDayOfWeek = dayjs(date).startOf('isoWeek');
 
       if (!firstDayOfWeek.isSame(dayjs(date).startOf('day'))) {
         this.datepicker.setDate(firstDayOfWeek.toDate());
       } else {
-        let weekdaysCount = 7;
-        const pickerElement = this.datepicker.pickerElement as HTMLElement;
-        let selected = pickerElement.querySelector('.datepicker-cell:not(.month):not(.year).selected');
-        while (weekdaysCount > 1) {
-          if (selected) {
-            selected = selected.nextElementSibling;
-            selected?.classList.add('selected');
-            weekdaysCount--;
-          } else {
-            break;
-          }
-        }
+        this.addClassToAllWeekDays('selected');
+      }
+    }
+  }
+
+  private focusAllWeekDays() {
+    const date = dayjs(this.datepicker.picker.viewDate);
+    if (this.type !== 'week' || !date) {
+      return;
+    }
+
+    const firstDayOfWeek = dayjs(date).startOf('isoWeek');
+
+    if (!firstDayOfWeek.isSame(dayjs(date).startOf('day'))) {
+      this.datepicker.setFocusedDate(firstDayOfWeek.toDate());
+    }
+
+    this.addClassToAllWeekDays('focused');
+  }
+
+  private addClassToAllWeekDays(className: string) {
+    let weekdaysCount = 7;
+    const pickerElement = this.datepicker.pickerElement as HTMLElement;
+    let selected = pickerElement.querySelector(`.datepicker-cell:not(.month):not(.year).${className}`);
+    while (weekdaysCount > 1) {
+      if (selected) {
+        selected = selected.nextElementSibling;
+        selected?.classList.add(className);
+        weekdaysCount--;
+      } else {
+        break;
       }
     }
   }
 
   private onCatChange(event: unknown) {
     this.value = this.input.value;
-    // this.catChange.emit(event);
+    this.catChange.emit(event as InputEvent);
   }
 
   private onCatFocus(event: FocusEvent) {
