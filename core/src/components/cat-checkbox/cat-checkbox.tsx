@@ -183,7 +183,10 @@ export class CatCheckbox {
           </span>
         </label>
         {(this.hint || this.hasSlottedHint) && (
-          <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+          <div class={{ 'hint-wrapper': true, 'label-left': this.labelLeft }}>
+            <div class="box-placeholder"></div>
+            <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
+          </div>
         )}
       </Host>
     );

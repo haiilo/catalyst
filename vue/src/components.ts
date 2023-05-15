@@ -335,6 +335,36 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
 ]);
 
 
+export const CatTimepicker = /*@__PURE__*/ defineContainer<JSX.CatTimepicker>('cat-timepicker', undefined, [
+  'requiredMarker',
+  'horizontal',
+  'multiple',
+  'placement',
+  'value',
+  'disabled',
+  'placeholder',
+  'hint',
+  'identifier',
+  'label',
+  'name',
+  'labelHidden',
+  'required',
+  'clearable',
+  'max',
+  'min',
+  'noItems',
+  'errors',
+  'errorUpdate',
+  'nativeAttributes',
+  'minutesStep',
+  'hourShort',
+  'catOpen',
+  'catClose',
+  'catChange',
+  'catBlur'
+]);
+
+
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',

@@ -1,6 +1,10 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
+@use '_snippets/checkbox-hint';
+
+$radio-width: 1.25rem;
+$radio-height: 1.25rem;
 
 :host {
   display: flex;
@@ -30,6 +34,10 @@ label {
   align-self: flex-start;
 }
 
+.circle-placeholder {
+  width: calc($radio-width + 1px);
+}
+
 .circle {
   position: absolute;
   width: 0.75rem;
@@ -44,8 +52,8 @@ label {
 
 input {
   margin: 0;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: $radio-width;
+  height: $radio-height;
   appearance: none;
   background-color: cat-token('color.ui.background.input');
   border: 1px solid cat-token('color.ui.border.dark');

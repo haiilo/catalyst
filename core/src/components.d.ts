@@ -12,6 +12,7 @@ import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
+import { CatSelectMultipleTaggingValue as CatSelectMultipleTaggingValue1, CatSelectTaggingValue as CatSelectTaggingValue1 } from "./components/cat-select/cat-select";
 export { Breakpoint } from "./utils/breakpoints";
 export { DatepickerType } from "./components/cat-datepicker/datepicker-type";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
@@ -19,6 +20,7 @@ export { Placement } from "@floating-ui/dom";
 export { InputType } from "./components/cat-input/input-type";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
+export { CatSelectMultipleTaggingValue as CatSelectMultipleTaggingValue1, CatSelectTaggingValue as CatSelectTaggingValue1 } from "./components/cat-select/cat-select";
 export namespace Components {
     /**
      * Informs user about important changes or conditions in the interface. Use this
@@ -1069,6 +1071,101 @@ export namespace Components {
         "value"?: string | number;
     }
     /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
+    interface CatTimepicker {
+        /**
+          * Whether the select should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "hourShort": boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum value for date, time and numeric values.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for date, time and numeric values.
+         */
+        "min"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "minutesStep": number;
+        /**
+          * Enable multiple selection.
+         */
+        "multiple": boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The text to display in the dropdown if no results are found.
+         */
+        "noItems"?: string;
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the select.
+         */
+        "placement": Placement;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+         */
+        "value"?: string | string[] | CatSelectTaggingValue1 | CatSelectMultipleTaggingValue1;
+    }
+    /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
      */
@@ -1209,6 +1306,10 @@ export interface CatTabCustomEvent<T> extends CustomEvent<T> {
 export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTextareaElement;
+}
+export interface CatTimepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTimepickerElement;
 }
 export interface CatToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1441,6 +1542,17 @@ declare global {
         new (): HTMLCatTextareaElement;
     };
     /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
+    interface HTMLCatTimepickerElement extends Components.CatTimepicker, HTMLStencilElement {
+    }
+    var HTMLCatTimepickerElement: {
+        prototype: HTMLCatTimepickerElement;
+        new (): HTMLCatTimepickerElement;
+    };
+    /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
      */
@@ -1481,6 +1593,7 @@ declare global {
         "cat-tab": HTMLCatTabElement;
         "cat-tabs": HTMLCatTabsElement;
         "cat-textarea": HTMLCatTextareaElement;
+        "cat-timepicker": HTMLCatTimepickerElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
@@ -2564,6 +2677,117 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     /**
+     * Inputs are used to allow users to provide text input when the expected input
+     * is short. As well as plain text, Input supports various types of text,
+     * including passwords and numbers.
+     */
+    interface CatTimepicker {
+        /**
+          * Whether the select should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "hourShort"?: boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum value for date, time and numeric values.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for date, time and numeric values.
+         */
+        "min"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "minutesStep"?: number;
+        /**
+          * Enable multiple selection.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The text to display in the dropdown if no results are found.
+         */
+        "noItems"?: string;
+        /**
+          * Emitted when the select loses the focus.
+         */
+        "onCatBlur"?: (event: CatTimepickerCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatTimepickerCustomEvent<any>) => void;
+        /**
+          * Emitted when the select dropdown is closed.
+         */
+        "onCatClose"?: (event: CatTimepickerCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the select dropdown is opened.
+         */
+        "onCatOpen"?: (event: CatTimepickerCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the select.
+         */
+        "placement"?: Placement;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+         */
+        "value"?: string | string[] | CatSelectTaggingValue1 | CatSelectMultipleTaggingValue1;
+    }
+    /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
      */
@@ -2684,6 +2908,7 @@ declare namespace LocalJSX {
         "cat-tab": CatTab;
         "cat-tabs": CatTabs;
         "cat-textarea": CatTextarea;
+        "cat-timepicker": CatTimepicker;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
@@ -2797,6 +3022,12 @@ declare module "@stencil/core" {
              * input component.
              */
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            /**
+             * Inputs are used to allow users to provide text input when the expected input
+             * is short. As well as plain text, Input supports various types of text,
+             * including passwords and numbers.
+             */
+            "cat-timepicker": LocalJSX.CatTimepicker & JSXBase.HTMLAttributes<HTMLCatTimepickerElement>;
             /**
              * Toggles are graphical interface switches that give user control over a
              * feature or option that can be turned on or off.

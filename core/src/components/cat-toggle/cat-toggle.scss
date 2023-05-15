@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
+@use '_snippets/checkbox-hint';
 
 $toggle-width: 2rem;
 $toggle-height: 1.25rem;
@@ -36,6 +37,10 @@ input {
   height: $toggle-height;
   opacity: 0;
   cursor: inherit;
+}
+
+.toggle-placeholder {
+  width: calc($toggle-width + 1px);
 }
 
 .toggle {
