@@ -94,7 +94,7 @@ export class CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the checkbox received focus.

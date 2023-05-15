@@ -5,7 +5,6 @@ import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { of } from 'rxjs';
 import { CatSelectMultipleTaggingValue, CatSelectState, CatSelectTaggingValue, Item } from '../cat-select/cat-select';
 import { Placement } from '@floating-ui/dom';
-import { CatSelectCustomEvent } from '../../components';
 // import IMask from 'imask';
 
 interface Time extends Item {
@@ -224,7 +223,7 @@ export class CatTimepicker {
           errors={this.errors}
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
-          onCatChange={this.onCatChange.bind(this)}
+          onCatChange={event => this.onCatChange(event)}
           onCatOpen={this.onCatOpen.bind(this)}
           onCatClose={this.onCatClose.bind(this)}
           onCatBlur={this.onCatBlur.bind(this)}
@@ -342,8 +341,8 @@ export class CatTimepicker {
     return `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes}`;
   }
 
-  private onCatChange(event: CatSelectCustomEvent<Time>) {
-    event.stopPropagation();
+  private onCatChange(event: unknown) {
+    (event as CustomEvent).stopPropagation();
     this.value = this.timeSelect?.value;
     this.catChange.emit(event);
   }

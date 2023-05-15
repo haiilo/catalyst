@@ -33,7 +33,7 @@ number of options.
 | Event       | Description                                                 | Type                      |
 | ----------- | ----------------------------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the checkbox loses focus.                      | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the checked status of the checkbox is changed. | `CustomEvent<any>`        |
+| `catChange` | Emitted when the checked status of the checkbox is changed. | `CustomEvent<InputEvent>` |
 | `catFocus`  | Emitted when the checkbox received focus.                   | `CustomEvent<FocusEvent>` |
 
 

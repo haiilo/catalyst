@@ -185,7 +185,7 @@ export class CatInput {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the input received focus.

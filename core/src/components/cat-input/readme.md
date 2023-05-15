@@ -49,7 +49,7 @@ including passwords and numbers.
 | Event       | Description                            | Type                      |
 | ----------- | -------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.     | `CustomEvent<any>`        |
+| `catChange` | Emitted when the value is changed.     | `CustomEvent<InputEvent>` |
 | `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
 
 
@@ -117,6 +117,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [cat-datepicker](../cat-datepicker)
+
 ### Depends on
 
 - [cat-icon](../cat-icon)
@@ -129,6 +133,7 @@ graph TD;
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-datepicker --> cat-input
   style cat-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

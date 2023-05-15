@@ -339,7 +339,7 @@ export class CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the select loses the focus.

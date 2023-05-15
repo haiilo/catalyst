@@ -40,7 +40,7 @@ input component.
 | Event       | Description                               | Type                      |
 | ----------- | ----------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the textarea loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.        | `CustomEvent<any>`        |
+| `catChange` | Emitted when the value is changed.        | `CustomEvent<InputEvent>` |
 | `catFocus`  | Emitted when the textarea received focus. | `CustomEvent<FocusEvent>` |
 
 
