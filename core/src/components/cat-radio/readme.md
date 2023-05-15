@@ -30,7 +30,7 @@ only one of a predefined set of mutually exclusive options.
 | Event       | Description                            | Type                      |
 | ----------- | -------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the radio loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the radio is changed.     | `CustomEvent<any>`        |
+| `catChange` | Emitted when the radio is changed.     | `CustomEvent<InputEvent>` |
 | `catFocus`  | Emitted when the radio received focus. | `CustomEvent<FocusEvent>` |
 
 

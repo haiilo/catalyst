@@ -178,7 +178,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the checkbox received focus.
    */
@@ -191,7 +191,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'type', 'value', 'weekNumbers'],
+  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
   methods: ['doFocus', 'doBlur', 'doClick', 'clear']
 })
 @Component({
@@ -199,7 +199,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'type', 'value', 'weekNumbers'],
+  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
 })
 export class CatDatepicker {
   protected el: HTMLElement;
@@ -215,7 +215,7 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the input received focus.
    */
@@ -329,7 +329,7 @@ export declare interface CatInput extends Components.CatInput {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the input received focus.
    */
@@ -410,7 +410,7 @@ export declare interface CatRadio extends Components.CatRadio {
   /**
    * Emitted when the radio is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the radio received focus.
    */
@@ -446,7 +446,7 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the radio group loses focus.
    */
@@ -527,7 +527,7 @@ export declare interface CatSelect extends Components.CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the select loses the focus.
    */
@@ -675,7 +675,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the textarea received focus.
    */
@@ -752,7 +752,7 @@ export declare interface CatToggle extends Components.CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  catChange: EventEmitter<CustomEvent<any>>;
+  catChange: EventEmitter<CustomEvent<InputEvent>>;
   /**
    * Emitted when the toggle received focus.
    */

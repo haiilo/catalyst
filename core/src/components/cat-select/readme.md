@@ -43,7 +43,7 @@ type.
 | Event       | Description                                 | Type                      |
 | ----------- | ------------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the select loses the focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.          | `CustomEvent<any>`        |
+| `catChange` | Emitted when the value is changed.          | `CustomEvent<InputEvent>` |
 | `catClose`  | Emitted when the select dropdown is closed. | `CustomEvent<FocusEvent>` |
 | `catOpen`   | Emitted when the select dropdown is opened. | `CustomEvent<FocusEvent>` |
 

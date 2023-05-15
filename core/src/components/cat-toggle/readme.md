@@ -32,7 +32,7 @@ feature or option that can be turned on or off.
 | Event       | Description                                               | Type                      |
 | ----------- | --------------------------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the toggle loses focus.                      | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the checked status of the toggle is changed. | `CustomEvent<any>`        |
+| `catChange` | Emitted when the checked status of the toggle is changed. | `CustomEvent<InputEvent>` |
 | `catFocus`  | Emitted when the toggle received focus.                   | `CustomEvent<FocusEvent>` |
 
 

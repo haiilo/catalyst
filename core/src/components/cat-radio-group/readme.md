@@ -25,7 +25,7 @@ A group of radio buttons.
 | Event       | Description                               | Type                      |
 | ----------- | ----------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the radio group loses focus. | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.        | `CustomEvent<any>`        |
+| `catChange` | Emitted when the value is changed.        | `CustomEvent<InputEvent>` |
 
 
 ----------------------------------------------
