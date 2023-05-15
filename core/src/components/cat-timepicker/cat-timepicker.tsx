@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { CatSelectMultipleTaggingValue, CatSelectState, CatSelectTaggingValue, Item } from '../cat-select/cat-select';
 import { Placement } from '@floating-ui/dom';
 import { CatSelectCustomEvent } from '../../components';
-import IMask from 'imask';
+// import IMask from 'imask';
 
 interface Time extends Item {
   hour: number;
@@ -31,7 +31,7 @@ interface Time extends Item {
 })
 export class CatTimepicker {
   private timeSelect?: HTMLCatSelectElement;
-  private timeMask?: IMask.InputMask<IMask.AnyMaskedOptions>
+  // private timeMask?: IMask.InputMask<IMask.AnyMaskedOptions>;
 
   @Element() hostElement!: HTMLElement;
 
@@ -193,7 +193,7 @@ export class CatTimepicker {
 
   componentDidLoad(): void {
     this.timeSelect?.connect(this.timeConnector);
-    
+
     // IMask spike
     // const input = this.hostElement.shadowRoot?.querySelector('cat-select')?.shadowRoot?.querySelector('input');
     // if (input) {
@@ -257,8 +257,8 @@ export class CatTimepicker {
         const filteredTimeArray = this.timeArray.filter(t => {
           if (!term) return true;
           const formatedTime = this.hourShort ? this.formatAMPM(t.hour, t.minutes) : this.formatTime(t.hour, t.minutes);
-          return formatedTime.toUpperCase().includes(term.toUpperCase())
-        })
+          return formatedTime.toUpperCase().includes(term.toUpperCase());
+        });
         return of({
           last: true,
           totalElements: filteredTimeArray.length,
@@ -375,13 +375,13 @@ export class CatTimepicker {
   //         from: 0,
   //         to: 23
   //       },
-    
+
   //       MM: {
   //         mask: IMask.MaskedRange,
   //         from: 0,
   //         to: 59
   //       },
-    
+
   //       PM: {
   //         mask: IMask.MaskedEnum,
   //         enum: ['AM', 'PM', 'am', 'pm']
