@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { CatSelectMultipleTaggingValue, CatSelectState, CatSelectTaggingValue, Item } from '../cat-select/cat-select';
 import { Placement } from '@floating-ui/dom';
 import { CatSelectCustomEvent } from '../../components';
+import IMask from 'imask';
 
 interface Time extends Item {
   hour: number;
@@ -30,6 +31,7 @@ interface Time extends Item {
 })
 export class CatTimepicker {
   private timeSelect?: HTMLCatSelectElement;
+  private timeMask?: IMask.InputMask<IMask.AnyMaskedOptions>
 
   @Element() hostElement!: HTMLElement;
 
@@ -191,6 +193,12 @@ export class CatTimepicker {
 
   componentDidLoad(): void {
     this.timeSelect?.connect(this.timeConnector);
+    
+    // IMask spike
+    // const input = this.hostElement.shadowRoot?.querySelector('cat-select')?.shadowRoot?.querySelector('input');
+    // if (input) {
+    //   this.timeMask = this.getTimeMask(input);
+    // }
   }
 
   render() {
@@ -245,11 +253,16 @@ export class CatTimepicker {
           )
         );
       },
-      retrieve: () => {
+      retrieve: (term: string) => {
+        const filteredTimeArray = this.timeArray.filter(t => {
+          if (!term) return true;
+          const formatedTime = this.hourShort ? this.formatAMPM(t.hour, t.minutes) : this.formatTime(t.hour, t.minutes);
+          return formatedTime.toUpperCase().includes(term.toUpperCase())
+        })
         return of({
           last: true,
-          totalElements: this.timeArray.length,
-          content: this.timeArray
+          totalElements: filteredTimeArray.length,
+          content: filteredTimeArray
         });
       },
       render: ({ hour, minutes }: Time) => ({
@@ -317,16 +330,16 @@ export class CatTimepicker {
 
   private formatAMPM(hour: number, minutes: number) {
     if (hour === 0) {
-      return `12:${minutes < 9 ? `0${minutes}` : minutes}am`;
+      return `12:${minutes < 10 ? `0${minutes}` : minutes} AM`;
     } else if (hour < 12) {
-      return `${hour}:${minutes < 9 ? `0${minutes}` : minutes}am`;
+      return `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} AM`;
     } else {
-      return `${hour % 12}:${minutes < 9 ? `0${minutes}` : minutes}pm`;
+      return `${hour % 12 < 10 ? `0${hour % 12}` : hour % 12}:${minutes < 10 ? `0${minutes}` : minutes} PM`;
     }
   }
 
   private formatTime(hour: number, minutes: number) {
-    return `${hour}:${minutes < 9 ? `0${minutes}` : minutes}`;
+    return `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes}`;
   }
 
   private onCatChange(event: CatSelectCustomEvent<Time>) {
@@ -349,4 +362,31 @@ export class CatTimepicker {
     (event as CustomEvent).stopPropagation();
     this.catBlur.emit(event as FocusEvent);
   }
+
+  // IMask spike
+
+  // private getTimeMask(element: HTMLInputElement): IMask.InputMask<IMask.AnyMaskedOptions> {
+  //   return IMask(element, {
+  //     mask: 'HH:MM[ PM]',
+  //     lazy: true,
+  //     blocks: {
+  //       HH: {
+  //         mask: IMask.MaskedRange,
+  //         from: 0,
+  //         to: 23
+  //       },
+    
+  //       MM: {
+  //         mask: IMask.MaskedRange,
+  //         from: 0,
+  //         to: 59
+  //       },
+    
+  //       PM: {
+  //         mask: IMask.MaskedEnum,
+  //         enum: ['AM', 'PM', 'am', 'pm']
+  //       }
+  //     }
+  //   });
+  // }
 }
