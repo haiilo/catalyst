@@ -15,6 +15,11 @@ function getAssetsIconsPath() {
   return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
 }
 
+function getAssetsVanillasjsDatepickerPath() {
+  const assetsVanillajsDatepickerPath = './node_modules/vanillajs-datepicker/sass/datepicker.scss';
+  return existsSync(assetsVanillajsDatepickerPath) ? '.' + assetsVanillajsDatepickerPath : '../.' + assetsVanillajsDatepickerPath;
+}
+
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['cat-input', 'cat-textarea'],
@@ -89,6 +94,10 @@ export const config: Config = {
         {
           src: getAssetsIconsPath(),
           dest: 'build/assets/icons'
+        },
+        {
+          src: getAssetsVanillasjsDatepickerPath(),
+          dest: 'build/assets/vanillajs-datepicker/sass/datepicker.scss'
         }
       ]
     },
