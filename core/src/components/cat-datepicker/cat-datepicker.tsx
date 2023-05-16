@@ -280,7 +280,7 @@ export class CatDatepicker {
       const inputElement = inputWrapper.querySelector('input');
       const catDatepickerStyle = this.hostElement.shadowRoot?.querySelector('style') as HTMLStyleElement;
       const catInputStyle = this.catInput.shadowRoot?.querySelector('style') as HTMLStyleElement;
-
+      console.log(catDatepickerStyle)
       catInputStyle?.append(catDatepickerStyle);
 
       if (inputElement) {
