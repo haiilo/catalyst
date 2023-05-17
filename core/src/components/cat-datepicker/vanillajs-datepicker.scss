@@ -50,7 +50,8 @@ $dp-footer-box-shadow: none;
 $dp-input-in-edit-box-shadow: none;
 
 // == styles == //
-@import '_snippets/vanillajs-datepicker';
+
+@import '~vanillajs-datepicker/sass/datepicker';
 
 // == style overrides == //
 
