@@ -273,14 +273,14 @@ export class CatDatepicker {
     );
   }
 
-  componentDidLoad() {
+  componentDidRender() {
     if (this.hostElement) {
       this.catInput = this.hostElement?.shadowRoot?.querySelector('cat-input') as HTMLCatInputElement;
       const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
       const inputElement = inputWrapper.querySelector('input');
       const catDatepickerStyle = this.hostElement.shadowRoot?.querySelector('style') as HTMLStyleElement;
       const catInputStyle = this.catInput.shadowRoot?.querySelector('style') as HTMLStyleElement;
-      console.log(catDatepickerStyle)
+      console.log(catDatepickerStyle);
       catInputStyle?.append(catDatepickerStyle);
 
       if (inputElement) {
@@ -321,6 +321,55 @@ export class CatDatepicker {
       this.input.addEventListener('keydown', this.focusAllWeekDays.bind(this));
     }
   }
+
+  // componentDidLoad() {
+  //   if (this.hostElement) {
+  //     this.catInput = this.hostElement?.shadowRoot?.querySelector('cat-input') as HTMLCatInputElement;
+  //     const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
+  //     const inputElement = inputWrapper.querySelector('input');
+  //     const catDatepickerStyle = this.hostElement.shadowRoot?.querySelector('style') as HTMLStyleElement;
+  //     const catInputStyle = this.catInput.shadowRoot?.querySelector('style') as HTMLStyleElement;
+  //     console.log(catDatepickerStyle)
+  //     catInputStyle?.append(catDatepickerStyle);
+
+  //     if (inputElement) {
+  //       this.input = inputElement;
+  //     } else {
+  //       log.error('[CatInput] Missing input element', this);
+  //       return;
+  //     }
+
+  //     this.datepicker = new Datepicker(inputElement, {
+  //       ...getDatepickerOptions(this.type, this.value),
+  //       container: inputWrapper,
+  //       maxDate: this.max,
+  //       minDate: this.min,
+  //       datesDisabled: this.datesDisabled,
+  //       prevArrow: '←',
+  //       nextArrow: '→',
+  //       weekNumbers: this.weekNumbers ? 1 : 0,
+  //       format: {
+  //         toValue: (dateStr: string | Date | number): Date =>
+  //           this.type === 'week' ? this.fromISOWeek(dateStr) : Datepicker.parseDate(dateStr, this.dateFormat),
+  //         toDisplay: (date: Date): string =>
+  //           this.type === 'week' ? this.toISOWeek(date).toString() : Datepicker.formatDate(date, this.dateFormat)
+  //       },
+  //       beforeShowDay: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
+  //       beforeShowMonth: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
+  //       beforeShowYear: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null)
+  //     });
+
+  //     if (this.type === 'week') {
+  //       this.datepicker.pickerElement.classList.add('weekly');
+  //     }
+
+  //     this.input.addEventListener('show', this.handleWeekDays.bind(this));
+  //     this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
+  //     this.input.addEventListener('changeMonth', this.handleWeekDays.bind(this));
+  //     this.input.addEventListener('changeView', this.handleWeekDays.bind(this));
+  //     this.input.addEventListener('keydown', this.focusAllWeekDays.bind(this));
+  //   }
+  // }
 
   disconnectedCallback() {
     this.input.removeEventListener('show', this.handleWeekDays.bind(this));
