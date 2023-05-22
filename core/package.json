@@ -82,6 +82,6 @@
     "stylelint": "^15.6.0",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^8.0.0",
-    "typescript": "~4.6.3"
+    "typescript": "~5.0.4"
   }
 }
