@@ -67,6 +67,11 @@ $dp-input-in-edit-box-shadow: none;
   width: 19.375rem;
 }
 
+.datepicker-view.months,
+.datepicker-view.years {
+  width: 20rem;
+}
+
 // == headlines == //
 
 .datepicker .dow,

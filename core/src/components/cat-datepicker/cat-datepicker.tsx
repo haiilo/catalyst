@@ -233,6 +233,7 @@ export class CatDatepicker {
     return (
       <Host>
         <cat-input
+          ref={el => (this.catInput = el as HTMLCatInputElement)}
           requiredMarker={this.requiredMarker}
           horizontal={this.horizontal}
           autoComplete={this.autoComplete}
@@ -275,13 +276,8 @@ export class CatDatepicker {
 
   componentDidLoad() {
     if (this.hostElement) {
-      this.catInput = this.hostElement?.shadowRoot?.querySelector('cat-input') as HTMLCatInputElement;
       const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
       const inputElement = inputWrapper.querySelector('input');
-      const catDatepickerStyle = this.hostElement.shadowRoot?.querySelector('style') as HTMLStyleElement;
-      const catInputStyle = this.catInput.shadowRoot?.querySelector('style') as HTMLStyleElement;
-
-      catInputStyle?.append(catDatepickerStyle);
 
       if (inputElement) {
         this.input = inputElement;
