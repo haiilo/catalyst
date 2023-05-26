@@ -1,14 +1,15 @@
+import cross16 from '@haiilo/catalyst-icons/tmp/assets/16-cross.svg';
+import alertCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/alert-circle-outlined.svg';
 import checkCircleFilled from '@haiilo/catalyst-icons/tmp/assets/check-circle-filled.svg';
+import chevronDownOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-down-outlined.svg';
+import chevronLeftOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-left-outlined.svg';
+import chevronRightOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-right-outlined.svg';
 import clockFilled from '@haiilo/catalyst-icons/tmp/assets/clock-filled.svg';
 import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-filled.svg';
 import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
+import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
 import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
 import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
-import alertCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/alert-circle-outlined.svg';
-import chevronLeftOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-left-outlined.svg';
-import chevronRightOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-right-outlined.svg';
-import chevronDownOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-down-outlined.svg';
-import cross16 from '@haiilo/catalyst-icons/tmp/assets/16-cross.svg';
 import log from 'loglevel';
 
 export class CatIconRegistry {
@@ -23,11 +24,12 @@ export class CatIconRegistry {
     // register default icons that are used in the framework by other components
     this.addIcons(
       {
+        'alert-danger': crossCircleFilled,
         'alert-primary': starCircleFilled,
         'alert-secondary': clockFilled,
         'alert-success': checkCircleFilled,
         'alert-warning': dangerFilled,
-        'alert-danger': crossCircleFilled,
+        'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,
         'notification-close': crossCircleOutlined,
