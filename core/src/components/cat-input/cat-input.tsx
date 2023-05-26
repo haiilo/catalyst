@@ -341,7 +341,7 @@ export class CatInput {
               {this.clearable && !this.disabled && this.value && (
                 <cat-button
                   class="clearable"
-                  icon="cross-circle-outlined"
+                  icon="$cat:input-close"
                   icon-only="true"
                   size="s"
                   variant="text"
@@ -353,9 +353,7 @@ export class CatInput {
             {!this.invalid && this.icon && this.iconRight && (
               <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
             )}
-            {this.invalid && (
-              <cat-icon icon="alert-circle-outlined" class="icon-suffix cat-text-danger" size="l"></cat-icon>
-            )}
+            {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
             {this.textSuffix && (
               <span class="text-suffix" part="suffix">
                 {this.textSuffix}

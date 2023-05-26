@@ -70,7 +70,7 @@ export class CatNotificationService {
       </div>
       ${
         options?.autoClose === false
-          ? `<cat-button class="cat-toastify-close cat-button-pull" size="s" icon="cross-outlined" variant="text" icon-only="true" class="close" a11y-label="${i18n.t(
+          ? `<cat-button class="cat-toastify-close cat-button-pull" size="s" icon="$cat:notification-close" variant="text" icon-only="true" class="close" a11y-label="${i18n.t(
               'notification.dismiss'
             )}"></cat-button>`
           : ''

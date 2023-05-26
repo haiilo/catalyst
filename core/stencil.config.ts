@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
+import { inlineSvg } from 'stencil-inline-svg';
 
 function getAssetsTokensPath() {
   const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/assets';
@@ -45,6 +46,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   namespace: 'catalyst',
   plugins: [
+    inlineSvg(),
     sass({
       includePaths: ['src/styles', 'node_modules', '../node_modules']
     })
@@ -107,6 +109,10 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupFiles: ['./setupTests.js']
+    setupFiles: ['./setupTests.js'],
+    transform: {
+      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'
+    },
+    transformIgnorePatterns: ['\\/node_modules\\/(?!(@haiilo\\/catalyst-icons\\/tmp))']
   }
 };

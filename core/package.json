@@ -79,6 +79,7 @@
     "puppeteer": "^13.5.2",
     "replace-in-file": "^6.3.5",
     "rxjs": "^7.5.5",
+    "stencil-inline-svg": "^1.1.0",
     "stylelint": "^15.6.0",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^8.0.0",
