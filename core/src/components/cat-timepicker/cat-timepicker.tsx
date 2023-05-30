@@ -140,11 +140,6 @@ export class CatTimepicker {
   @Prop() step = 30;
 
   /**
-   * Attributes that will be added to the native HTML input element.
-   */
-  // @Prop() hourShort = true;
-
-  /**
    * Emitted when the select dropdown is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
