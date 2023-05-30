@@ -275,7 +275,7 @@ export class CatTextarea {
               ></textarea>
               {this.invalid && (
                 <cat-icon
-                  icon="alert-circle-outlined"
+                  icon="$cat:input-error"
                   class="icon-suffix cat-text-danger"
                   size="l"
                   onClick={() => this.textarea.focus()}

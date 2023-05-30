@@ -7,3 +7,4 @@ www
 replace.js
 setupTests.js
 stencil.config.ts
+stencil.transformer.js

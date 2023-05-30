@@ -57,12 +57,12 @@ export class CatPagination {
   /**
    * The icon of the "previous" button.
    */
-  @Prop() iconPrev = 'chevron-left-outlined';
+  @Prop() iconPrev = '$cat:pagination-left';
 
   /**
    * The icon of the "next" button.
    */
-  @Prop() iconNext = 'chevron-right-outlined';
+  @Prop() iconNext = '$cat:pagination-right';
 
   render() {
     return (

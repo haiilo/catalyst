@@ -103,12 +103,6 @@ export class CatButton {
   @Prop() icon?: string;
 
   /**
-   * The SVG source of an icon to be displayed in the button. This takes
-   * precenedence over the `icon` name.
-   */
-  @Prop() iconSrc?: string;
-
-  /**
    * Hide the actual button content and only display the icon.
    */
   @Prop() iconOnly: boolean | Breakpoint = false;
@@ -316,32 +310,28 @@ export class CatButton {
   }
 
   private get isIconButton() {
-    return (Boolean(this.icon) || Boolean(this.iconSrc)) && this._iconOnly;
+    return Boolean(this.icon) && this._iconOnly;
   }
 
   private get hasPrefixIcon() {
-    return (Boolean(this.icon) || Boolean(this.iconSrc)) && !this._iconOnly && !this.iconRight;
+    return Boolean(this.icon) && !this._iconOnly && !this.iconRight;
   }
 
   private get hasSuffixIcon() {
-    return (Boolean(this.icon) || Boolean(this.iconSrc)) && !this._iconOnly && this.iconRight;
+    return Boolean(this.icon) && !this._iconOnly && this.iconRight;
   }
 
   private get content() {
     return [
-      this.hasPrefixIcon ? (
-        <cat-icon icon={this.icon} iconSrc={this.iconSrc} size={this.iconSize} part="prefix"></cat-icon>
-      ) : null,
+      this.hasPrefixIcon ? <cat-icon icon={this.icon} size={this.iconSize} part="prefix"></cat-icon> : null,
       this.isIconButton ? (
-        <cat-icon icon={this.icon} iconSrc={this.iconSrc} size={this.iconSize}></cat-icon>
+        <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
       ) : (
         <span class="cat-button-content" part="content">
           <slot></slot>
         </span>
       ),
-      this.hasSuffixIcon ? (
-        <cat-icon icon={this.icon} iconSrc={this.iconSrc} size={this.iconSize} part="suffix"></cat-icon>
-      ) : null,
+      this.hasSuffixIcon ? <cat-icon icon={this.icon} size={this.iconSize} part="suffix"></cat-icon> : null,
       this.loading ? <cat-spinner size={this.spinnerSize}></cat-spinner> : null
     ];
   }

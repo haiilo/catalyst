@@ -12,11 +12,11 @@ import { setAttributeDefault } from '../../utils/setDefault';
 })
 export class CatAlert {
   private readonly mapIcon: Map<string, string> = new Map([
-    ['primary', 'star-circle-filled'],
-    ['secondary', 'clock-filled'],
-    ['success', 'check-circle-filled'],
-    ['warning', 'danger-filled'],
-    ['danger', 'cross-circle-filled']
+    ['primary', '$cat:alert-primary'],
+    ['secondary', '$cat:alert-secondary'],
+    ['success', '$cat:alert-success'],
+    ['warning', '$cat:alert-warning'],
+    ['danger', '$cat:alert-danger']
   ]);
   private readonly mapRole: Map<string, string> = new Map([
     ['primary', 'status'],
