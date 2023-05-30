@@ -249,7 +249,7 @@ export class CatTimepicker {
       let hh = parseInt(hours, 10);
       const period = hh >= 12 ? 'PM' : 'AM';
       hh = hh % 12 || 12;
-      return `${hh.toString().padStart(2, '0')}:${minutes} ${period}`;
+      return `${hh}:${minutes} ${period}`;
     }
     return time.id;
   }
