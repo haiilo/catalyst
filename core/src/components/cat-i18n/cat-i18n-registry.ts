@@ -4,7 +4,8 @@ export class CatI18nRegistry {
   private static instance: CatI18nRegistry;
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
-  private readonly i18n: Map<string, string> = new Map();
+  private readonly dict: Map<string, string> = new Map();
+  private _locale?: string;
 
   private constructor() {
     // hide constructor
@@ -18,8 +19,8 @@ export class CatI18nRegistry {
     // by this registry.
     window.addEventListener('cat-i18n-set', event => {
       const { detail } = (event as CustomEvent) || {};
-      if (detail && detail.id !== this.id) {
-        this.set(detail.i18n, true);
+      if (detail && detail.id !== this.id && detail.locale === this._locale) {
+        this.set(detail.locale, detail.dict, true);
       }
     });
     window.addEventListener('cat-i18n-clear', event => {
@@ -37,21 +38,34 @@ export class CatI18nRegistry {
     return CatI18nRegistry.instance;
   }
 
-  set(i18n: { [key: string]: string }, silent = false): void {
-    const i18nEntries = Object.entries(i18n);
-    i18nEntries.forEach(([key, message]) => this.i18n.set(key, message));
-    log.info(`[CatI18nRegistry] Registered ${i18nEntries.length !== 1 ? 'messages' : 'message'}`);
-    !silent && window.dispatchEvent(this.buildEvent('cat-i18n-set', { i18n, id: this.id }));
+  get locale(): string {
+    return this._locale ?? navigator.language ?? 'en-US';
+  }
+
+  get hour12(): boolean {
+    const dateStr = new Intl.DateTimeFormat(this.locale, { hour: '2-digit', minute: '2-digit' })
+      .format(new Date())
+      .toLowerCase();
+    return dateStr.includes('am') || dateStr.includes('pm');
+  }
+
+  set(locale: string, dict: { [key: string]: string }, silent = false): void {
+    this._locale = locale;
+    const i18nEntries = Object.entries(dict);
+    i18nEntries.forEach(([key, message]) => this.dict.set(key, message));
+    log.info(`[CatI18nRegistry] Registered ${i18nEntries.length !== 1 ? 'messages' : 'message'} for locale ${locale}`);
+    !silent && window.dispatchEvent(this.buildEvent('cat-i18n-set', { locale, dict, id: this.id }));
   }
 
   clear(silent = false): void {
-    this.i18n.clear();
+    this._locale = undefined;
+    this.dict.clear();
     log.info(`[CatI18nRegistry] Cleared messages`);
     !silent && window.dispatchEvent(this.buildEvent('cat-i18n-clear'));
   }
 
   t(key: string, params?: { [key: string]: unknown }): string {
-    const message = this.i18n.get(key);
+    const message = this.dict.get(key);
     if (message === undefined) {
       log.error(`[CatI18nRegistry] Unknown message key: ${key}`);
       return key;

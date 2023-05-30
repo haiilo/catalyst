@@ -22,7 +22,7 @@
     import { catI18nRegistry, catIconRegistry } from '@haiilo/catalyst';
 
     catIconRegistry.addIcons(ci);
-    catI18nRegistry.set({
+    catI18nRegistry.set('en-US', {
       'dialog.close': 'Close',
       'input.clear': 'Clear',
       'input.optional': 'Optional',

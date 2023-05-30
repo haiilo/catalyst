@@ -1,16 +1,11 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
-// import log from 'loglevel';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
-// import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import { of } from 'rxjs';
-import { CatSelectMultipleTaggingValue, CatSelectState, CatSelectTaggingValue, Item } from '../cat-select/cat-select';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { Placement } from '@floating-ui/dom';
-// import IMask from 'imask';
+import { of } from 'rxjs';
+import { CatSelectConnector, CatSelectState, Item } from '../cat-select/cat-select';
 
-interface Time extends Item {
-  hour: number;
-  minutes: number;
-}
+type Time = Item;
 
 /**
  * Inputs are used to allow users to provide text input when the expected input
@@ -53,25 +48,14 @@ export class CatTimepicker {
   @Prop() horizontal = false;
 
   /**
-   * Enable multiple selection.
-   */
-  @Prop() multiple = false;
-
-  /**
    * The placement of the select.
    */
   @Prop() placement: Placement = 'bottom-start';
 
   /**
-   * The value of the select. <br />
-   * <br />
-   * The value of the select depends on whether it is allowed to choose a single item or several items. <br />
-   * When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br />
-   * <br />
-   * In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,
-   * in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+   * The value of the timepicker given as "HH:mm".
    */
-  @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * Whether the input is disabled.
@@ -114,24 +98,9 @@ export class CatTimepicker {
   @Prop() required = false;
 
   /**
-   * Whether the select should show a clear button.
+   * Whether the timepicker should show a clear button.
    */
   @Prop() clearable = false;
-
-  /**
-   * A maximum value for date, time and numeric values.
-   */
-  @Prop() max?: string;
-
-  /**
-   * A minimum value for date, time and numeric values.
-   */
-  @Prop() min?: string;
-
-  /**
-   * The text to display in the dropdown if no results are found.
-   */
-  @Prop() noItems?: string;
 
   /**
    * The validation errors for this input. Will render a hint under the input
@@ -156,14 +125,24 @@ export class CatTimepicker {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
-   * Attributes that will be added to the native HTML input element.
+   * A maximum value given as "HH:mm".
    */
-  @Prop() minutesStep = 30;
+  @Prop() max?: string;
+
+  /**
+   * A minimum value given as "HH:mm".
+   */
+  @Prop() min?: string;
+
+  /**
+   * The step size in minutes.
+   */
+  @Prop() step = 30;
 
   /**
    * Attributes that will be added to the native HTML input element.
    */
-  @Prop() hourShort = this.isBrowserHour12();
+  // @Prop() hourShort = true;
 
   /**
    * Emitted when the select dropdown is opened.
@@ -181,7 +160,7 @@ export class CatTimepicker {
   @Event() catChange!: EventEmitter;
 
   /**
-   * Emitted when the select loses the focus.
+   * Emitted when the timepicker loses the focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
@@ -213,11 +192,9 @@ export class CatTimepicker {
           label={this.label}
           labelHidden={this.labelHidden}
           name={this.name}
-          multiple={this.multiple}
           placeholder={this.placeholder}
           placement={this.placement}
           required={this.required}
-          noItems={this.noItems}
           ref={el => (this.timeSelect = el)}
           value={this.value}
           errors={this.errors}
@@ -243,107 +220,43 @@ export class CatTimepicker {
     );
   }
 
-  private get timeConnector() {
+  private get timeConnector(): CatSelectConnector<Time> {
     return {
-      resolve: (times: string[]) => {
-        return of(
-          times.map(t =>
-            this.timeArray.find(time => time.hour === this.getHour(t) && time.minutes === this.getMinutes(t))
-          )
-        );
+      resolve: ids => of(ids.map(id => ({ id }))),
+      retrieve: () => {
+        const content: Time[] = [];
+        const min = this.min ? this.timeToMins({ id: this.min }) : 0;
+        const max = this.max ? this.timeToMins({ id: this.max }) : 24 * 60 - 1;
+        for (let i = min; i <= max; i += this.step) {
+          const hh = Math.floor(i / 60);
+          const mm = i % 60;
+          content.push({ id: `${hh.toString().padStart(2, '0')}:${mm.toString().padStart(2, '0')}` });
+        }
+        return of({ content, last: true, totalElements: content.length });
       },
-      retrieve: (term: string) => {
-        const filteredTimeArray = this.timeArray.filter(t => {
-          if (!term) return true;
-          const formatedTime = this.hourShort ? this.formatAMPM(t.hour, t.minutes) : this.formatTime(t.hour, t.minutes);
-          return formatedTime.toUpperCase().includes(term.toUpperCase());
-        });
-        return of({
-          last: true,
-          totalElements: filteredTimeArray.length,
-          content: filteredTimeArray
-        });
-      },
-      render: ({ hour, minutes }: Time) => ({
-        label: this.hourShort ? this.formatAMPM(hour, minutes) : this.formatTime(hour, minutes)
-      })
+      render: time => ({ label: this.timeToStr(time) })
     };
   }
 
-  private get timeArray() {
-    const times: Time[] = [];
-    for (let hour = 0; hour < 24; hour++) {
-      for (let minutes = 0; minutes < 60; minutes += this.minutesStep) {
-        if (this.isHigherThanMinValue(hour, minutes) && this.isLowerThanMaxValue(hour, minutes)) {
-          times.push({
-            id: this.hourShort ? this.formatAMPM(hour, minutes) : this.formatTime(hour, minutes),
-            hour,
-            minutes
-          });
-        }
-      }
+  private timeToMins(time: Time): number {
+    const [hours, minutes] = time.id.split(':');
+    return parseInt(hours, 10) * 60 + parseInt(minutes, 10);
+  }
+
+  private timeToStr(time: Time): string {
+    if (i18n.hour12) {
+      const [hours, minutes] = time.id.split(':');
+      let hh = parseInt(hours, 10);
+      const period = hh >= 12 ? 'PM' : 'AM';
+      hh = hh % 12 || 12;
+      return `${hh.toString().padStart(2, '0')}:${minutes} ${period}`;
     }
-    return times;
-  }
-
-  private isBrowserHour12() {
-    const browserLanguage = window?.navigator?.language ?? 'en';
-    const hour = new Intl.DateTimeFormat(browserLanguage, { hour: 'numeric' }).format(new Date().setHours(16));
-    return hour.toLowerCase().includes('pm' || 'am');
-  }
-
-  private getHour(time: string) {
-    let hour = Number(time.split(':')[0]);
-    if (time.toLowerCase().includes('pm') && hour < 12) hour = hour + 12;
-    if (time.toLowerCase().includes('am') && hour == 12) hour = hour - 12;
-
-    return hour;
-  }
-
-  private getMinutes(time: string) {
-    const minutes = time.match(/:(\d+)/);
-    return Number(minutes ? minutes[1] : 0);
-  }
-
-  private isHigherThanMinValue(hour: number, minutes: number) {
-    if (this.min) {
-      const minHour = this.getHour(this.min);
-      const minMinutes = this.getMinutes(this.min);
-
-      return hour > minHour || (hour === minHour && minutes >= minMinutes);
-    }
-
-    return true;
-  }
-
-  private isLowerThanMaxValue(hour: number, minutes: number) {
-    if (this.max) {
-      const maxHour = this.getHour(this.max);
-      const maxMinutes = this.getMinutes(this.max);
-
-      return hour < maxHour || (hour === maxHour && minutes <= maxMinutes);
-    }
-
-    return true;
-  }
-
-  private formatAMPM(hour: number, minutes: number) {
-    if (hour === 0) {
-      return `12:${minutes < 10 ? `0${minutes}` : minutes} AM`;
-    } else if (hour < 12) {
-      return `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} AM`;
-    } else {
-      return `${hour % 12 < 10 ? `0${hour % 12}` : hour % 12}:${minutes < 10 ? `0${minutes}` : minutes} PM`;
-    }
-  }
-
-  private formatTime(hour: number, minutes: number) {
-    return `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes}`;
+    return time.id;
   }
 
   private onCatChange(event: unknown) {
     (event as CustomEvent).stopPropagation();
-    this.value = this.timeSelect?.value;
+    this.value = this.timeSelect?.value as string; //TODO
     this.catChange.emit(event);
   }
 

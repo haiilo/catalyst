@@ -12,7 +12,6 @@ import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
-import { CatSelectMultipleTaggingValue as CatSelectMultipleTaggingValue1, CatSelectTaggingValue as CatSelectTaggingValue1 } from "./components/cat-select/cat-select";
 export { Breakpoint } from "./utils/breakpoints";
 export { DatepickerType } from "./components/cat-datepicker/datepicker-type";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
@@ -20,7 +19,6 @@ export { Placement } from "@floating-ui/dom";
 export { InputType } from "./components/cat-input/input-type";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
-export { CatSelectMultipleTaggingValue as CatSelectMultipleTaggingValue1, CatSelectTaggingValue as CatSelectTaggingValue1 } from "./components/cat-select/cat-select";
 export namespace Components {
     /**
      * Informs user about important changes or conditions in the interface. Use this
@@ -1073,7 +1071,7 @@ export namespace Components {
      */
     interface CatTimepicker {
         /**
-          * Whether the select should show a clear button.
+          * Whether the timepicker should show a clear button.
          */
         "clearable": boolean;
         /**
@@ -1097,10 +1095,6 @@ export namespace Components {
          */
         "horizontal": boolean;
         /**
-          * Attributes that will be added to the native HTML input element.
-         */
-        "hourShort": boolean;
-        /**
           * A unique identifier for the input.
          */
         "identifier"?: string;
@@ -1113,21 +1107,13 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
-          * A maximum value for date, time and numeric values.
+          * A maximum value given as "HH:mm".
          */
         "max"?: string;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value given as "HH:mm".
          */
         "min"?: string;
-        /**
-          * Attributes that will be added to the native HTML input element.
-         */
-        "minutesStep": number;
-        /**
-          * Enable multiple selection.
-         */
-        "multiple": boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -1136,10 +1122,6 @@ export namespace Components {
           * Attributes that will be added to the native HTML input element.
          */
         "nativeAttributes"?: { [key: string]: string };
-        /**
-          * The text to display in the dropdown if no results are found.
-         */
-        "noItems"?: string;
         /**
           * The placeholder text to display within the select.
          */
@@ -1157,9 +1139,13 @@ export namespace Components {
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The step size in minutes.
          */
-        "value"?: string | string[] | CatSelectTaggingValue1 | CatSelectMultipleTaggingValue1;
+        "step": number;
+        /**
+          * The value of the timepicker given as "HH:mm".
+         */
+        "value"?: string;
     }
     /**
      * Toggles are graphical interface switches that give user control over a
@@ -2675,7 +2661,7 @@ declare namespace LocalJSX {
      */
     interface CatTimepicker {
         /**
-          * Whether the select should show a clear button.
+          * Whether the timepicker should show a clear button.
          */
         "clearable"?: boolean;
         /**
@@ -2699,10 +2685,6 @@ declare namespace LocalJSX {
          */
         "horizontal"?: boolean;
         /**
-          * Attributes that will be added to the native HTML input element.
-         */
-        "hourShort"?: boolean;
-        /**
           * A unique identifier for the input.
          */
         "identifier"?: string;
@@ -2715,21 +2697,13 @@ declare namespace LocalJSX {
          */
         "labelHidden"?: boolean;
         /**
-          * A maximum value for date, time and numeric values.
+          * A maximum value given as "HH:mm".
          */
         "max"?: string;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value given as "HH:mm".
          */
         "min"?: string;
-        /**
-          * Attributes that will be added to the native HTML input element.
-         */
-        "minutesStep"?: number;
-        /**
-          * Enable multiple selection.
-         */
-        "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -2739,11 +2713,7 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
-          * The text to display in the dropdown if no results are found.
-         */
-        "noItems"?: string;
-        /**
-          * Emitted when the select loses the focus.
+          * Emitted when the timepicker loses the focus.
          */
         "onCatBlur"?: (event: CatTimepickerCustomEvent<FocusEvent>) => void;
         /**
@@ -2775,9 +2745,13 @@ declare namespace LocalJSX {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
+          * The step size in minutes.
          */
-        "value"?: string | string[] | CatSelectTaggingValue1 | CatSelectMultipleTaggingValue1;
+        "step"?: number;
+        /**
+          * The value of the timepicker given as "HH:mm".
+         */
+        "value"?: string;
     }
     /**
      * Toggles are graphical interface switches that give user control over a

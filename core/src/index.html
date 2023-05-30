@@ -13,7 +13,7 @@
        * WARNING: Keep in sync with ./index.cdn.js
        */
       catIconRegistry.addIcons(ci);
-      catI18nRegistry.set({
+      catI18nRegistry.set('en-US', {
         'dialog.close': 'Close',
         'input.clear': 'Clear',
         'input.optional': 'Optional',
@@ -882,7 +882,14 @@
 
         <section id="timepicker">
           <h2>Timepicker</h2>
-          <cat-timepicker hour-short label="Short format"></cat-timepicker>
+          <cat-timepicker
+            hour-short
+            label="Short format"
+            value="17:00"
+            step="15"
+            min="08:00"
+            max="16:45"
+          ></cat-timepicker>
           <cat-timepicker label="Long format"></cat-timepicker>
         </section>
 
