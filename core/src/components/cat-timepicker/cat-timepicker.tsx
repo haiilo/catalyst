@@ -1,8 +1,9 @@
+import { Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import IMask from 'imask';
+import { of } from 'rxjs';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import { Placement } from '@floating-ui/dom';
-import { of } from 'rxjs';
 import { CatSelectConnector, CatSelectState, Item } from '../cat-select/cat-select';
 
 type Time = Item;
@@ -25,7 +26,6 @@ type Time = Item;
 })
 export class CatTimepicker {
   private timeSelect?: HTMLCatSelectElement;
-  // private timeMask?: IMask.InputMask<IMask.AnyMaskedOptions>;
 
   @Element() hostElement!: HTMLElement;
 
@@ -166,12 +166,11 @@ export class CatTimepicker {
 
   componentDidLoad(): void {
     this.timeSelect?.connect(this.timeConnector);
-
-    // IMask spike
-    // const input = this.hostElement.shadowRoot?.querySelector('cat-select')?.shadowRoot?.querySelector('input');
-    // if (input) {
-    //   this.timeMask = this.getTimeMask(input);
-    // }
+    const select = this.hostElement.shadowRoot?.querySelector('cat-select');
+    const input = select?.shadowRoot?.querySelector('input');
+    if (input) {
+      this.attachMask(input);
+    }
   }
 
   render() {
@@ -191,6 +190,7 @@ export class CatTimepicker {
           placement={this.placement}
           required={this.required}
           ref={el => (this.timeSelect = el)}
+          tags={true}
           value={this.value}
           errors={this.errors}
           errorUpdate={this.errorUpdate}
@@ -244,7 +244,7 @@ export class CatTimepicker {
       let hh = parseInt(hours, 10);
       const period = hh >= 12 ? 'PM' : 'AM';
       hh = hh % 12 || 12;
-      return `${hh}:${minutes} ${period}`;
+      return `${hh.toString().padStart(2, '0')}:${minutes} ${period}`;
     }
     return time.id;
   }
@@ -270,30 +270,16 @@ export class CatTimepicker {
     this.catBlur.emit(event as FocusEvent);
   }
 
-  // IMask spike
-
-  // private getTimeMask(element: HTMLInputElement): IMask.InputMask<IMask.AnyMaskedOptions> {
-  //   return IMask(element, {
-  //     mask: 'HH:MM[ PM]',
-  //     lazy: true,
-  //     blocks: {
-  //       HH: {
-  //         mask: IMask.MaskedRange,
-  //         from: 0,
-  //         to: 23
-  //       },
-
-  //       MM: {
-  //         mask: IMask.MaskedRange,
-  //         from: 0,
-  //         to: 59
-  //       },
-
-  //       PM: {
-  //         mask: IMask.MaskedEnum,
-  //         enum: ['AM', 'PM', 'am', 'pm']
-  //       }
-  //     }
-  //   });
-  // }
+  private attachMask(element: HTMLInputElement): IMask.InputMask<IMask.AnyMaskedOptions> {
+    return IMask(element, {
+      mask: i18n.hour12 ? 'H12{:}`MM{ }`PM' : 'H24{:}`MM',
+      overwrite: true,
+      blocks: {
+        H24: { mask: IMask.MaskedRange, from: 0, to: 23, autofix: 'pad', maxLength: 2 },
+        H12: { mask: IMask.MaskedRange, from: 1, to: 12, autofix: 'pad', maxLength: 2 },
+        MM: { mask: IMask.MaskedRange, from: 0, to: 59, autofix: true, maxLength: 2 },
+        PM: { mask: IMask.MaskedEnum, enum: ['AM', 'PM', 'am', 'pm'] }
+      }
+    });
+  }
 }
