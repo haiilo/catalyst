@@ -1,1 +1,1 @@
-export class Datepicker { }
+export class Datepicker {}
