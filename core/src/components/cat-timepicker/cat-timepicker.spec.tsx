@@ -1,3 +1,5 @@
+jest.mock('../cat-i18n/cat-i18n-registry');
+
 import { newSpecPage } from '@stencil/core/testing';
 import { CatTimepicker } from '../cat-timepicker/cat-timepicker';
 import { CatSelect } from '../cat-select/cat-select';

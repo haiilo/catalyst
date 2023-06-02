@@ -277,7 +277,7 @@ export class CatDatepicker {
   componentDidLoad() {
     if (this.hostElement) {
       const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
-      const inputElement = inputWrapper.querySelector('input');
+      const inputElement = inputWrapper?.querySelector('input');
 
       if (inputElement) {
         this.input = inputElement;

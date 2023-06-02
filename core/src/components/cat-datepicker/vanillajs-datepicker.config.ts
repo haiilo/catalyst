@@ -37,13 +37,15 @@ function monthsForLocale(month: 'long' | 'short' = 'long') {
   return [...Array(12).keys()].map(month => format(date.setUTCMonth(month)));
 }
 
-Datepicker.locales.browser = {
-  days: daysForLocale('long'),
-  daysShort: daysForLocale('short'),
-  daysMin: daysForLocale('narrow'),
-  months: monthsForLocale('long'),
-  monthsShort: monthsForLocale('short'),
-  today: i18n.t('input.today')
-};
+if (Datepicker?.locales?.browser) {
+  Datepicker.locales.browser = {
+    days: daysForLocale('long'),
+    daysShort: daysForLocale('short'),
+    daysMin: daysForLocale('narrow'),
+    months: monthsForLocale('long'),
+    monthsShort: monthsForLocale('short'),
+    today: i18n.t('input.today')
+  };
+}
 
 export default Datepicker;
