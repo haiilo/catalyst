@@ -86,7 +86,7 @@ export class CatPagination {
               a11yLabel={i18n.t('pagination.prev')}
               icon={this.iconPrev}
               iconOnly
-              onClick={() => (this.prevPage())}
+              onClick={() => this.prevPage()}
             ></cat-button>
           </li>
           {this.content}
@@ -99,7 +99,7 @@ export class CatPagination {
               a11yLabel={i18n.t('pagination.next')}
               icon={this.iconNext}
               iconOnly
-              onClick={() => (this.nextPage())}
+              onClick={() => this.nextPage()}
             ></cat-button>
           </li>
         </ol>
@@ -186,7 +186,7 @@ export class CatPagination {
           active={this.page === page}
           a11yLabel={i18n.t('pagination.page', { page: page + 1 })}
           a11yCurrent={this.page === page ? 'step' : undefined}
-          onClick={() => (this.setPage(page))}
+          onClick={() => this.setPage(page)}
         >
           {page + 1}
         </cat-button>
