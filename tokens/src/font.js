@@ -7,7 +7,7 @@ module.exports = {
       emoji: { value: "''", attributes: { cssProp: "font-family-emoji" } }
     },
     weight: {
-      head: { value: 500, attributes: { cssProp: "font-weight-head" } },
+      head: { value: 600, attributes: { cssProp: "font-weight-head" } },
       body: { value: 400, attributes: { cssProp: "font-weight-body" } },
       mono: { value: 400, attributes: { cssProp: "font-weight-mono" } }
     },
