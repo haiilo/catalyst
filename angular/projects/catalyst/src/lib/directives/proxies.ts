@@ -378,11 +378,17 @@ export class CatPagination {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
 
-export declare interface CatPagination extends Components.CatPagination {}
+export declare interface CatPagination extends Components.CatPagination {
+  /**
+   * Emitted when the page of the pagination has changed.
+   */
+  catChange: EventEmitter<CustomEvent<any>>;
+}
 
 
 @ProxyCmp({
