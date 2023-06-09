@@ -577,7 +577,7 @@ nav .cat-nav-head {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -653,7 +653,7 @@ nav .cat-nav-head {
   font-size: 1.75rem;
   line-height: 2rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -663,7 +663,7 @@ nav .cat-nav-head {
   font-size: 1.5rem;
   line-height: 1.75rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -673,7 +673,7 @@ nav .cat-nav-head {
   font-size: 1.25rem;
   line-height: 1.5rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -683,7 +683,7 @@ nav .cat-nav-head {
   font-size: 1.125rem;
   line-height: 1.5rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -693,7 +693,7 @@ nav .cat-nav-head {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
@@ -703,7 +703,7 @@ nav .cat-nav-head {
   font-size: 0.875rem;
   line-height: 1rem;
   color: rgb(var(--cat-font-color-head, 0, 0, 0));
-  font-weight: var(--cat-font-weight-head, 500);
+  font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
