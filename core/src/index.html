@@ -765,7 +765,15 @@
           <cat-pagination page-count="10" variant="outlined"></cat-pagination>
           <br />
           <br />
-          <cat-pagination page-count="10" variant="outlined" round></cat-pagination>
+          <span>Change event demo (See console)</span>
+          <cat-pagination id="change-demo" page-count="10" variant="outlined" round></cat-pagination>
+          <script>
+            var paginationDemo = document.getElementById('change-demo');
+
+            paginationDemo.addEventListener('catChange', function (event) {
+              console.log('Page changed!', event.detail);
+            });
+          </script>
         </section>
 
         <section id="radio">
