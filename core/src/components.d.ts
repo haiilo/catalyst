@@ -1279,6 +1279,10 @@ export interface CatInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatInputElement;
 }
+export interface CatPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatPaginationElement;
+}
 export interface CatRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatRadioElement;
@@ -2214,6 +2218,10 @@ declare namespace LocalJSX {
           * The icon of the "previous" button.
          */
         "iconPrev"?: string;
+        /**
+          * Emitted when the page of the pagination has changed.
+         */
+        "onCatChange"?: (event: CatPaginationCustomEvent<any>) => void;
         /**
           * The current page.
          */

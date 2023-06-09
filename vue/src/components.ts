@@ -201,7 +201,8 @@ export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('c
   'round',
   'compact',
   'iconPrev',
-  'iconNext'
+  'iconNext',
+  'catChange'
 ]);
 
 

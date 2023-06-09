@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
@@ -64,6 +64,11 @@ export class CatPagination {
    */
   @Prop() iconNext = '$cat:pagination-right';
 
+  /**
+   * Emitted when the page of the pagination has changed.
+   */
+  @Event() catChange!: EventEmitter;
+
   render() {
     return (
       <nav role="navigation">
@@ -81,7 +86,7 @@ export class CatPagination {
               a11yLabel={i18n.t('pagination.prev')}
               icon={this.iconPrev}
               iconOnly
-              onClick={() => (this.page = this.page - 1)}
+              onClick={() => this.setPage(this.page - 1)}
             ></cat-button>
           </li>
           {this.content}
@@ -94,7 +99,7 @@ export class CatPagination {
               a11yLabel={i18n.t('pagination.next')}
               icon={this.iconNext}
               iconOnly
-              onClick={() => (this.page = this.page + 1)}
+              onClick={() => this.setPage(this.page + 1)}
             ></cat-button>
           </li>
         </ol>
@@ -108,6 +113,11 @@ export class CatPagination {
 
   get isLast() {
     return this.page === this.pageCount - 1;
+  }
+
+  private setPage(value: number) {
+    this.page = value;
+    this.catChange.emit(this.page);
   }
 
   get pages() {
@@ -164,7 +174,7 @@ export class CatPagination {
           active={this.page === page}
           a11yLabel={i18n.t('pagination.page', { page: page + 1 })}
           a11yCurrent={this.page === page ? 'step' : undefined}
-          onClick={() => (this.page = page)}
+          onClick={() => this.setPage(page)}
         >
           {page + 1}
         </cat-button>
