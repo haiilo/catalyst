@@ -1,6 +1,8 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+/* stylelint-disable selector-class-pattern */
+
 .flatpickr-calendar {
   @include cat-body(s);
   @include cat-elevation(4);
@@ -16,8 +18,8 @@
       opacity cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15);
   }
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     display: none;
   }
 
@@ -26,6 +28,7 @@
     width: auto !important;
     margin-top: 0.75rem;
     margin-left: -0.75rem;
+
     &.animate {
       opacity: 1;
       transform: translateY(0);
@@ -38,9 +41,11 @@
 .flatpickr-months {
   gap: 0.25rem;
 }
+
 .flatpickr-months .flatpickr-month {
   height: auto;
 }
+
 .flatpickr-current-month {
   @include cat-head(4);
   height: 100%;
@@ -49,6 +54,7 @@
   position: static;
   width: auto;
   gap: 0.25rem;
+
   .flatpickr-monthDropdown-months {
     padding: 0 0.25rem;
     flex: 1;
@@ -61,15 +67,18 @@
       background-color: cat-token('color.theme.primary.bg', 0.05);
     }
   }
+
   input.cur-year {
     padding: 0;
     font-weight: inherit;
     line-height: 2.25rem;
   }
+
   .numInputWrapper {
     width: 7ch;
   }
 }
+
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
   position: static;
@@ -94,11 +103,13 @@
   .flatpickr-weekday {
     height: 2rem;
   }
+
   .flatpickr-weeks {
     box-shadow: none;
     width: 2rem;
     padding: 0 0.5rem 0 0;
   }
+
   span.flatpickr-day,
   span.flatpickr-day:hover {
     @include cat-body(xs, $weight: 700);
@@ -117,6 +128,7 @@
   min-width: 15.75rem;
   max-width: 15.75rem;
 }
+
 .flatpickr-day {
   color: cat-token('color.ui.font.body');
   height: 2.25rem;
@@ -129,6 +141,7 @@
     background-color: cat-token('color.ui.background.muted');
     font-weight: 700;
   }
+
   &.today {
     color: cat-token('color.theme.primary.text');
     box-shadow: inset 0 0 0 2px cat-token('color.theme.primary.text');
@@ -139,6 +152,7 @@
       color: cat-token('color.theme.primary.text');
     }
   }
+
   &.inRange {
     box-shadow: none;
   }
@@ -191,25 +205,30 @@
 .numInputWrapper {
   padding: 0 1rem 0 0.5rem;
   border-radius: cat-border-radius('m');
+
   &:hover,
   &:focus-within {
     background-color: cat-token('color.theme.primary.bg', 0.05);
   }
+
   span {
     border: none;
     background: transparent;
     width: 1rem;
     padding: 0;
     color: cat-token('color.ui.font.muted');
-    &.arrowUp:after {
+
+    &.arrowUp::after {
       content: '\2191';
       align-items: flex-end;
     }
-    &.arrowDown:after {
+
+    &.arrowDown::after {
       content: '\2193';
       align-items: flex-start;
     }
-    &:after {
+
+    &::after {
       @include cat-body(xs, $weight: 700);
       position: static;
       border: 0 !important;
@@ -218,6 +237,7 @@
       height: 100%;
       justify-content: center;
     }
+
     &:hover {
       color: cat-token('color.ui.font.body');
       background: transparent;
@@ -228,6 +248,7 @@
 .flatpickr-time .numInputWrapper {
   height: 2.25rem;
 }
+
 .flatpickr-calendar.hasTime .flatpickr-time {
   height: 2.25rem;
   line-height: 2.25rem;
@@ -242,15 +263,18 @@
   @include cat-head(4, 400);
   line-height: 2.25rem;
 }
+
 .flatpickr-time .flatpickr-am-pm {
   width: 25%;
   padding: 0 0.5rem;
+
   &:hover,
   &:focus {
     border-radius: cat-border-radius('m');
     background-color: cat-token('color.theme.primary.bg', 0.05);
   }
 }
+
 .flatpickr-time {
   input {
     background: transparent !important;
