@@ -45,6 +45,7 @@ export class CatI18nRegistry {
   setLocale(locale: string): void {
     try {
       this._locale = Intl.getCanonicalLocales(locale)[0];
+      log.info(`[CatI18nRegistry] Set locale: ${this._locale}`);
     } catch (err) {
       log.error(`[CatI18nRegistry] Invalid locale: ${locale}`);
     }
