@@ -659,7 +659,10 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onCatClick={(event) => {event.stopImmediatePropagation(); this.clear()}}
+                  onCatClick={event => {
+                    event.stopImmediatePropagation();
+                    this.clear();
+                  }}
                 ></cat-button>
               ) : null}
               {!this.state.isResolving && (
