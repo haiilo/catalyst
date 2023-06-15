@@ -125,6 +125,38 @@ export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('c
 ]);
 
 
+export const CatDatepickerFlat = /*@__PURE__*/ defineContainer<JSX.CatDatepickerFlat>('cat-datepicker-flat', undefined, [
+  'requiredMarker',
+  'horizontal',
+  'autoComplete',
+  'clearable',
+  'disabled',
+  'hint',
+  'icon',
+  'iconRight',
+  'identifier',
+  'label',
+  'labelHidden',
+  'max',
+  'min',
+  'mode',
+  'name',
+  'placeholder',
+  'textPrefix',
+  'textSuffix',
+  'readonly',
+  'required',
+  'step',
+  'value',
+  'errors',
+  'errorUpdate',
+  'nativeAttributes',
+  'catChange',
+  'catFocus',
+  'catBlur'
+]);
+
+
 export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-dropdown', undefined, [
   'placement',
   'noAutoClose',

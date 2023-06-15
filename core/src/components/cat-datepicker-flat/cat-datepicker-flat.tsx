@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
+import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getFormat } from './cat-datepicker.config';
@@ -82,9 +83,9 @@ export class CatDatepickerFlat {
   @Prop() min?: string;
 
   /**
-   * The mode of the datepicker, to select a date, time or both.
+   * The mode of the datepicker, to select a date, time, both or a week number.
    */
-  @Prop() mode: 'date' | 'time' | 'datetime' = 'date';
+  @Prop() mode: 'date' | 'time' | 'datetime' | 'week' = 'date';
 
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -168,8 +169,10 @@ export class CatDatepickerFlat {
     if (input) {
       const locale = getLocale(i18n.getLocale());
       const format = getFormat(i18n.getLocale(), this.mode);
+      const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
       flatpickr(input, {
         locale,
+        plugins,
         altInput: true,
         prevArrow: '←',
         nextArrow: '→',
@@ -182,9 +185,13 @@ export class CatDatepickerFlat {
         noCalendar: this.mode === 'time',
         weekNumbers: true,
         minuteIncrement: this.step,
-        onChange: (_date, dateStr) => {
-          this.value = dateStr;
-          this.catChange.emit(dateStr);
+        onChange: (dates, dateStr, flatpickr) => {
+          if (this.mode === 'week') {
+            this.value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
+          } else {
+            this.value = dateStr;
+          }
+          this.catChange.emit(this.value);
         }
       });
     }
