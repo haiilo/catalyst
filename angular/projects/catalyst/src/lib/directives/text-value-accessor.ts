@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-input, cat-textarea',
+  selector: 'cat-input, cat-textarea, cat-datepicker-flat',
   host: {
     '(catChange)': 'handleChangeEvent($event.target.value)'
   },

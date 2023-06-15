@@ -153,10 +153,6 @@
     }
   }
 
-  &.inRange {
-    box-shadow: none;
-  }
-
   &.selected,
   &.startRange,
   &.endRange {
@@ -167,8 +163,8 @@
     &.nextMonthDay,
     &.prevMonthDay {
       font-weight: 700;
-      background-color: cat-token('color.theme.primary.bg');
-      color: cat-token('color.theme.primary.fill');
+      background-color: cat-token('color.theme.primary.bg') !important;
+      color: cat-token('color.theme.primary.fill') !important;
     }
   }
 
@@ -284,6 +280,24 @@
     &.flatpickr-hour {
       font-weight: inherit;
     }
+  }
+}
+
+.flatpickr-day.inRange:not(.today),
+.flatpickr-day.week.selected {
+  box-shadow: none;
+}
+
+.flatpickr-day.inRange,
+.flatpickr-day.week.selected {
+  &:nth-child(7n + 1) {
+    border-top-left-radius: cat-border-radius('m');
+    border-bottom-left-radius: cat-border-radius('m');
+  }
+
+  &:nth-child(7n + 7) {
+    border-top-right-radius: cat-border-radius('m');
+    border-bottom-right-radius: cat-border-radius('m');
   }
 }
 

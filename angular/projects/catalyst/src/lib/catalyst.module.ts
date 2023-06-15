@@ -2,11 +2,11 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import {
-  catI18nRegistry,
   CatI18nRegistry,
-  catIconRegistry,
   CatIconRegistry,
   CatNotificationService,
+  catI18nRegistry,
+  catIconRegistry,
   catNotificationService
 } from '@haiilo/catalyst';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
@@ -30,6 +30,7 @@ const CatComponents = [
   Components.CatButtonGroup,
   Components.CatCard,
   Components.CatCheckbox,
+  Components.CatDatepickerFlat,
   Components.CatDropdown,
   Components.CatFormGroup,
   Components.CatIcon,
