@@ -15,7 +15,6 @@ export const CatButtonGroup = /*@__PURE__*/createReactComponent<JSX.CatButtonGro
 export const CatCard = /*@__PURE__*/createReactComponent<JSX.CatCard, HTMLCatCardElement>('cat-card');
 export const CatCheckbox = /*@__PURE__*/createReactComponent<JSX.CatCheckbox, HTMLCatCheckboxElement>('cat-checkbox');
 export const CatDatepicker = /*@__PURE__*/createReactComponent<JSX.CatDatepicker, HTMLCatDatepickerElement>('cat-datepicker');
-export const CatDatepickerFlat = /*@__PURE__*/createReactComponent<JSX.CatDatepickerFlat, HTMLCatDatepickerFlatElement>('cat-datepicker-flat');
 export const CatDropdown = /*@__PURE__*/createReactComponent<JSX.CatDropdown, HTMLCatDropdownElement>('cat-dropdown');
 export const CatFormGroup = /*@__PURE__*/createReactComponent<JSX.CatFormGroup, HTMLCatFormGroupElement>('cat-form-group');
 export const CatIcon = /*@__PURE__*/createReactComponent<JSX.CatIcon, HTMLCatIconElement>('cat-icon');

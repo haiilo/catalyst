@@ -191,15 +191,14 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
-  methods: ['doFocus', 'doBlur', 'doClick', 'clear']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value']
 })
 @Component({
   selector: 'cat-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
 })
 export class CatDatepicker {
   protected el: HTMLElement;
@@ -212,42 +211,6 @@ export class CatDatepicker {
 
 
 export declare interface CatDatepicker extends Components.CatDatepicker {
-  /**
-   * Emitted when the value is changed.
-   */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
-  /**
-   * Emitted when the input received focus.
-   */
-  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
-  /**
-   * Emitted when the input loses focus.
-   */
-  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
-}
-
-
-@ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value']
-})
-@Component({
-  selector: 'cat-datepicker-flat',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
-})
-export class CatDatepickerFlat {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
-  }
-}
-
-
-export declare interface CatDatepickerFlat extends Components.CatDatepickerFlat {
   /**
    * Emitted when the value is changed.
    */

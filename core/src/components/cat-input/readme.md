@@ -120,7 +120,6 @@ Type: `Promise<void>`
 ### Used by
 
  - [cat-datepicker](../cat-datepicker)
- - [cat-datepicker-flat](../cat-datepicker-flat)
 
 ### Depends on
 
@@ -135,7 +134,6 @@ graph TD;
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-datepicker --> cat-input
-  cat-datepicker-flat --> cat-input
   style cat-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

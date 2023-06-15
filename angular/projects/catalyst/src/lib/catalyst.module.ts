@@ -30,7 +30,7 @@ const CatComponents = [
   Components.CatButtonGroup,
   Components.CatCard,
   Components.CatCheckbox,
-  Components.CatDatepickerFlat,
+  Components.CatDatepicker,
   Components.CatDropdown,
   Components.CatFormGroup,
   Components.CatIcon,

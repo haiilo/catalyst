@@ -3,7 +3,6 @@
 @use 'src/components/cat-form-hint/cat-form-hint';
 @use 'utils/color';
 @use '_snippets/form-label';
-@use '../cat-datepicker/vanillajs-datepicker.scss';
 
 :host {
   display: flex;

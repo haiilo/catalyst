@@ -10,6 +10,7 @@ export function getHour12(language: string): boolean {
 
 function getFirstDayOfWeek(language: string): number {
   const locale = new Intl.Locale(language);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const weekInfo = (locale as any).getWeekInfo?.() ?? (locale as any).weekInfo;
   return weekInfo?.firstDay ?? 1;
 }
@@ -40,11 +41,15 @@ export function getLocale(language: string): CustomLocale {
     scrollTitle: i18n.t('datepicker.scroll'),
     time_24hr: !getHour12(language),
     weekdays: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       shorthand: daysForLocale(language, 'short') as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       longhand: daysForLocale(language, 'long') as any
     },
     months: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       shorthand: monthsForLocale(language, 'short') as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       longhand: monthsForLocale(language, 'long') as any
     }
   };

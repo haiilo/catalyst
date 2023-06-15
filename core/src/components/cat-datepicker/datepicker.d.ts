@@ -1,1 +1,0 @@
-declare module 'vanillajs-datepicker';
