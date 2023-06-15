@@ -1515,6 +1515,18 @@ span.flatpickr-weekday {
   font-weight: inherit;
 }
 
+.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
+  box-shadow: none;
+}
+
+.flatpickr-day.selected.startRange.endRange,
+.flatpickr-day.startRange.startRange.endRange,
+.flatpickr-day.endRange.startRange.endRange {
+  border-radius: var(--cat-border-radius-m, 0.25rem);
+}
+
 /**
  * Auto-generated file. Do not edit directly.
  */
