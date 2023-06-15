@@ -626,6 +626,10 @@ export declare const ci16Cross: {
     name: '16-cross';
     data: string;
 };
+export declare const ci16EarthOutlined: {
+    name: '16-earth-outlined';
+    data: string;
+};
 export declare const ci16EditorArrowDown: {
     name: '16-editor-arrow-down';
     data: string;
@@ -726,6 +730,10 @@ export declare const ciAiOutlined: {
     name: 'ai-outlined';
     data: string;
 };
+export declare const ciAlbaniaCircle: {
+    name: 'albania-circle';
+    data: string;
+};
 export declare const ciAlertBoxOutlined: {
     name: 'alert-box-outlined';
     data: string;
@@ -736,6 +744,18 @@ export declare const ciAlertCircleOutlined: {
 };
 export declare const ciAppleSafari: {
     name: 'apple-safari';
+    data: string;
+};
+export declare const ciArchiveFilled: {
+    name: 'archive-filled';
+    data: string;
+};
+export declare const ciArchiveOutlined: {
+    name: 'archive-outlined';
+    data: string;
+};
+export declare const ciArmeniaCircle: {
+    name: 'armenia-circle';
     data: string;
 };
 export declare const ciArrowDownOutlined: {
@@ -814,6 +834,10 @@ export declare const ciCheckDoubleOutlined: {
     name: 'check-double-outlined';
     data: string;
 };
+export declare const ciChinaCircle: {
+    name: 'china-circle';
+    data: string;
+};
 export declare const ciCircleFilledS: {
     name: 'circle-filled-s';
     data: string;
@@ -840,6 +864,22 @@ export declare const ciCompassOutlined: {
 };
 export declare const ciCopyOutlined: {
     name: 'copy-outlined';
+    data: string;
+};
+export declare const ciCroatiaCircle: {
+    name: 'croatia-circle';
+    data: string;
+};
+export declare const ciCzechRepublicCircle: {
+    name: 'czech-republic-circle';
+    data: string;
+};
+export declare const ciDenmarkCircle: {
+    name: 'denmark-circle';
+    data: string;
+};
+export declare const ciEstoniaCircle: {
+    name: 'estonia-circle';
     data: string;
 };
 export declare const ciEyeClosedOutlined: {
@@ -870,8 +910,20 @@ export declare const ciFingerprintOutlined: {
     name: 'fingerprint-outlined';
     data: string;
 };
+export declare const ciFinlandCircle: {
+    name: 'finland-circle';
+    data: string;
+};
 export declare const ciFlagOutlined: {
     name: 'flag-outlined';
+    data: string;
+};
+export declare const ciFranceCircle: {
+    name: 'france-circle';
+    data: string;
+};
+export declare const ciGermanyCircle: {
+    name: 'germany-circle';
     data: string;
 };
 export declare const ciGoogleCalendar: {
@@ -892,6 +944,10 @@ export declare const ciGoogleMail: {
 };
 export declare const ciGoogle: {
     name: 'google';
+    data: string;
+};
+export declare const ciGreeceCircle: {
+    name: 'greece-circle';
     data: string;
 };
 export declare const ciGroupOutlined: {
@@ -922,6 +978,14 @@ export declare const ciHistoryOutlined: {
     name: 'history-outlined';
     data: string;
 };
+export declare const ciHungaryCircle: {
+    name: 'hungary-circle';
+    data: string;
+};
+export declare const ciIcelandCircle: {
+    name: 'iceland-circle';
+    data: string;
+};
 export declare const ciInfoCircleFilled: {
     name: 'info-circle-filled';
     data: string;
@@ -936,6 +1000,18 @@ export declare const ciInstagram: {
 };
 export declare const ciItalicOutlined: {
     name: 'italic-outlined';
+    data: string;
+};
+export declare const ciItalyCircle: {
+    name: 'italy-circle';
+    data: string;
+};
+export declare const ciJapanCircle: {
+    name: 'japan-circle';
+    data: string;
+};
+export declare const ciLatviaCircle: {
+    name: 'latvia-circle';
     data: string;
 };
 export declare const ciLinkBreakOutlined: {
@@ -1022,6 +1098,22 @@ export declare const ciMozillaFirefox: {
     name: 'mozilla-firefox';
     data: string;
 };
+export declare const ciNetherlandsCircle: {
+    name: 'netherlands-circle';
+    data: string;
+};
+export declare const ciNorthMacedoniaCircle: {
+    name: 'north-macedonia-circle';
+    data: string;
+};
+export declare const ciNorwayCircle: {
+    name: 'norway-circle';
+    data: string;
+};
+export declare const ciOpenai: {
+    name: 'openai';
+    data: string;
+};
 export declare const ciPaperplaneTiltOutlined: {
     name: 'paperplane-tilt-outlined';
     data: string;
@@ -1042,6 +1134,18 @@ export declare const ciPlanetOutlined: {
     name: 'planet-outlined';
     data: string;
 };
+export declare const ciPolandCircle: {
+    name: 'poland-circle';
+    data: string;
+};
+export declare const ciPortugalCircle: {
+    name: 'portugal-circle';
+    data: string;
+};
+export declare const ciPushNotification: {
+    name: 'push-notification';
+    data: string;
+};
 export declare const ciPuzzlePieceOutlined: {
     name: 'puzzle-piece-outlined';
     data: string;
@@ -1054,12 +1158,40 @@ export declare const ciRedoOutlined: {
     name: 'redo-outlined';
     data: string;
 };
+export declare const ciRomaniaCircle: {
+    name: 'romania-circle';
+    data: string;
+};
+export declare const ciRussiaCircle: {
+    name: 'russia-circle';
+    data: string;
+};
+export declare const ciSerbiaCircle: {
+    name: 'serbia-circle';
+    data: string;
+};
 export declare const ciSlidersOutlined: {
     name: 'sliders-outlined';
     data: string;
 };
+export declare const ciSlovakiaCircle: {
+    name: 'slovakia-circle';
+    data: string;
+};
+export declare const ciSloveniaCircle: {
+    name: 'slovenia-circle';
+    data: string;
+};
 export declare const ciSocialMediaOutlined: {
     name: 'social-media-outlined';
+    data: string;
+};
+export declare const ciSouthKoreaCircle: {
+    name: 'south-korea-circle';
+    data: string;
+};
+export declare const ciSpainCircle: {
+    name: 'spain-circle';
     data: string;
 };
 export declare const ciStatusAvailable: {
@@ -1094,6 +1226,10 @@ export declare const ciStrikethroughOutlined: {
     name: 'strikethrough-outlined';
     data: string;
 };
+export declare const ciSwedenCircle: {
+    name: 'sweden-circle';
+    data: string;
+};
 export declare const ciTagOutlined: {
     name: 'tag-outlined';
     data: string;
@@ -1114,8 +1250,16 @@ export declare const ciTextSummaryOutlined: {
     name: 'text-summary-outlined';
     data: string;
 };
+export declare const ciThailandCircle: {
+    name: 'thailand-circle';
+    data: string;
+};
 export declare const ciTranslateBoxFilled: {
     name: 'translate-box-filled';
+    data: string;
+};
+export declare const ciTurkeyCircle: {
+    name: 'turkey-circle';
     data: string;
 };
 export declare const ciTwitter: {
@@ -1128,6 +1272,10 @@ export declare const ciUnderlinedOutlined: {
 };
 export declare const ciUndoOutlined: {
     name: 'undo-outlined';
+    data: string;
+};
+export declare const ciUnitedKingdomCircle: {
+    name: 'united-kingdom-circle';
     data: string;
 };
 export declare const ciVideoOutlined: {
@@ -1306,7 +1454,7 @@ export declare const ciXing: {
     name: 'xing';
     data: string;
 };
-export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-ol' | '16-editor-ul' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | '16-bell-strikethrough' | '16-bell' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-clock-outlined' | '16-cross' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-image' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-external-link' | '16-flag' | '16-info-circle-outlined' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-pen-outlined' | '16-pin-outlined' | '16-targeted-outlined' | '16-warning-circle-outlined' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'alert-box-outlined' | 'alert-circle-outlined' | 'apple-safari' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'brush-brackets-outlined' | 'calendar-check-outlined' | 'calendar-cross-outlined' | 'calendar-outlined' | 'calendar-pen-outlined' | 'check-double-outlined' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'comment-outlined' | 'compass-outlined' | 'copy-outlined' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'filter-outlined' | 'fingerprint-outlined' | 'flag-outlined' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'group-outlined' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'link-break-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'loop-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'planet-filled' | 'planet-outlined' | 'puzzle-piece-outlined' | 'quote-outlined' | 'redo-outlined' | 'sliders-outlined' | 'social-media-outlined' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'tag-outlined' | 'targeted-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'translate-box-filled' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'video-outlined' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
+export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-ol' | '16-editor-ul' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | '16-bell-strikethrough' | '16-bell' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-clock-outlined' | '16-cross' | '16-earth-outlined' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-image' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-external-link' | '16-flag' | '16-info-circle-outlined' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-pen-outlined' | '16-pin-outlined' | '16-targeted-outlined' | '16-warning-circle-outlined' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'albania-circle' | 'alert-box-outlined' | 'alert-circle-outlined' | 'apple-safari' | 'archive-filled' | 'archive-outlined' | 'armenia-circle' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'brush-brackets-outlined' | 'calendar-check-outlined' | 'calendar-cross-outlined' | 'calendar-outlined' | 'calendar-pen-outlined' | 'check-double-outlined' | 'china-circle' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'comment-outlined' | 'compass-outlined' | 'copy-outlined' | 'croatia-circle' | 'czech-republic-circle' | 'denmark-circle' | 'estonia-circle' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'filter-outlined' | 'fingerprint-outlined' | 'finland-circle' | 'flag-outlined' | 'france-circle' | 'germany-circle' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'greece-circle' | 'group-outlined' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'hungary-circle' | 'iceland-circle' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'italy-circle' | 'japan-circle' | 'latvia-circle' | 'link-break-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'loop-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'netherlands-circle' | 'north-macedonia-circle' | 'norway-circle' | 'openai' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'planet-filled' | 'planet-outlined' | 'poland-circle' | 'portugal-circle' | 'push-notification' | 'puzzle-piece-outlined' | 'quote-outlined' | 'redo-outlined' | 'romania-circle' | 'russia-circle' | 'serbia-circle' | 'sliders-outlined' | 'slovakia-circle' | 'slovenia-circle' | 'social-media-outlined' | 'south-korea-circle' | 'spain-circle' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'sweden-circle' | 'tag-outlined' | 'targeted-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'thailand-circle' | 'translate-box-filled' | 'turkey-circle' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'united-kingdom-circle' | 'video-outlined' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
 export interface CoyoIcon {
     name: coyoIcon;
     data: string;
@@ -1784,6 +1932,9 @@ export declare const completeIconSet: ({
     name: '16-cross';
     data: string;
 } | {
+    name: '16-earth-outlined';
+    data: string;
+} | {
     name: '16-editor-arrow-down';
     data: string;
 } | {
@@ -1859,6 +2010,9 @@ export declare const completeIconSet: ({
     name: 'ai-outlined';
     data: string;
 } | {
+    name: 'albania-circle';
+    data: string;
+} | {
     name: 'alert-box-outlined';
     data: string;
 } | {
@@ -1866,6 +2020,15 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'apple-safari';
+    data: string;
+} | {
+    name: 'archive-filled';
+    data: string;
+} | {
+    name: 'archive-outlined';
+    data: string;
+} | {
+    name: 'armenia-circle';
     data: string;
 } | {
     name: 'arrow-down-outlined';
@@ -1925,6 +2088,9 @@ export declare const completeIconSet: ({
     name: 'check-double-outlined';
     data: string;
 } | {
+    name: 'china-circle';
+    data: string;
+} | {
     name: 'circle-filled-s';
     data: string;
 } | {
@@ -1944,6 +2110,18 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'copy-outlined';
+    data: string;
+} | {
+    name: 'croatia-circle';
+    data: string;
+} | {
+    name: 'czech-republic-circle';
+    data: string;
+} | {
+    name: 'denmark-circle';
+    data: string;
+} | {
+    name: 'estonia-circle';
     data: string;
 } | {
     name: 'eye-closed-outlined';
@@ -1967,7 +2145,16 @@ export declare const completeIconSet: ({
     name: 'fingerprint-outlined';
     data: string;
 } | {
+    name: 'finland-circle';
+    data: string;
+} | {
     name: 'flag-outlined';
+    data: string;
+} | {
+    name: 'france-circle';
+    data: string;
+} | {
+    name: 'germany-circle';
     data: string;
 } | {
     name: 'google-calendar';
@@ -1983,6 +2170,9 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'google';
+    data: string;
+} | {
+    name: 'greece-circle';
     data: string;
 } | {
     name: 'group-outlined';
@@ -2006,6 +2196,12 @@ export declare const completeIconSet: ({
     name: 'history-outlined';
     data: string;
 } | {
+    name: 'hungary-circle';
+    data: string;
+} | {
+    name: 'iceland-circle';
+    data: string;
+} | {
     name: 'info-circle-filled';
     data: string;
 } | {
@@ -2016,6 +2212,15 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'italic-outlined';
+    data: string;
+} | {
+    name: 'italy-circle';
+    data: string;
+} | {
+    name: 'japan-circle';
+    data: string;
+} | {
+    name: 'latvia-circle';
     data: string;
 } | {
     name: 'link-break-outlined';
@@ -2081,6 +2286,18 @@ export declare const completeIconSet: ({
     name: 'mozilla-firefox';
     data: string;
 } | {
+    name: 'netherlands-circle';
+    data: string;
+} | {
+    name: 'north-macedonia-circle';
+    data: string;
+} | {
+    name: 'norway-circle';
+    data: string;
+} | {
+    name: 'openai';
+    data: string;
+} | {
     name: 'paperplane-tilt-outlined';
     data: string;
 } | {
@@ -2096,6 +2313,15 @@ export declare const completeIconSet: ({
     name: 'planet-outlined';
     data: string;
 } | {
+    name: 'poland-circle';
+    data: string;
+} | {
+    name: 'portugal-circle';
+    data: string;
+} | {
+    name: 'push-notification';
+    data: string;
+} | {
     name: 'puzzle-piece-outlined';
     data: string;
 } | {
@@ -2105,10 +2331,31 @@ export declare const completeIconSet: ({
     name: 'redo-outlined';
     data: string;
 } | {
+    name: 'romania-circle';
+    data: string;
+} | {
+    name: 'russia-circle';
+    data: string;
+} | {
+    name: 'serbia-circle';
+    data: string;
+} | {
     name: 'sliders-outlined';
     data: string;
 } | {
+    name: 'slovakia-circle';
+    data: string;
+} | {
+    name: 'slovenia-circle';
+    data: string;
+} | {
     name: 'social-media-outlined';
+    data: string;
+} | {
+    name: 'south-korea-circle';
+    data: string;
+} | {
+    name: 'spain-circle';
     data: string;
 } | {
     name: 'status-available';
@@ -2135,6 +2382,9 @@ export declare const completeIconSet: ({
     name: 'strikethrough-outlined';
     data: string;
 } | {
+    name: 'sweden-circle';
+    data: string;
+} | {
     name: 'tag-outlined';
     data: string;
 } | {
@@ -2150,7 +2400,13 @@ export declare const completeIconSet: ({
     name: 'text-summary-outlined';
     data: string;
 } | {
+    name: 'thailand-circle';
+    data: string;
+} | {
     name: 'translate-box-filled';
+    data: string;
+} | {
+    name: 'turkey-circle';
     data: string;
 } | {
     name: 'twitter';
@@ -2160,6 +2416,9 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'undo-outlined';
+    data: string;
+} | {
+    name: 'united-kingdom-circle';
     data: string;
 } | {
     name: 'video-outlined';
