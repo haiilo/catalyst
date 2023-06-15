@@ -83,9 +83,9 @@ export class CatDatepickerFlat {
   @Prop() min?: string;
 
   /**
-   * The mode of the datepicker, to select a date, time, both or a week number.
+   * The mode of the datepicker, to select a date, time, both, a date range or a week number.
    */
-  @Prop() mode: 'date' | 'time' | 'datetime' | 'week' = 'date';
+  @Prop() mode: 'date' | 'time' | 'datetime' | 'daterange' | 'week' = 'date';
 
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -179,6 +179,7 @@ export class CatDatepickerFlat {
         dateFormat: 'Z',
         altFormat: format,
         ariaDateFormat: format,
+        mode: this.mode === 'daterange' ? 'range' : 'single',
         minDate: this.min,
         maxDate: this.max,
         enableTime: this.mode === 'time' || this.mode === 'datetime',

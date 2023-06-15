@@ -1,4 +1,4 @@
-export function getFormat(language: string, mode: 'date' | 'time' | 'datetime' | 'week'): string {
+export function getFormat(language: string, mode: 'date' | 'time' | 'datetime' | 'daterange' | 'week'): string {
   const date = new Date(2000, 1, 3, 4, 5, 6);
   const formatDate: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
   const formatTime: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' };
@@ -9,7 +9,8 @@ export function getFormat(language: string, mode: 'date' | 'time' | 'datetime' |
         {
           date: formatDate,
           time: formatTime,
-          datetime: { ...formatDate, ...formatTime }
+          datetime: { ...formatDate, ...formatTime },
+          daterange: formatDate
         }[mode]
       )
         .format(date)

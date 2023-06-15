@@ -475,9 +475,9 @@ export namespace Components {
          */
         "min"?: string;
         /**
-          * The mode of the datepicker, to select a date, time, both or a week number.
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode": 'date' | 'time' | 'datetime' | 'week';
+        "mode": 'date' | 'time' | 'datetime' | 'daterange' | 'week';
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -2158,9 +2158,9 @@ declare namespace LocalJSX {
          */
         "min"?: string;
         /**
-          * The mode of the datepicker, to select a date, time, both or a week number.
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode"?: 'date' | 'time' | 'datetime' | 'week';
+        "mode"?: 'date' | 'time' | 'datetime' | 'daterange' | 'week';
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
