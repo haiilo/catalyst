@@ -84,7 +84,7 @@ export class CatDatepickerFlat {
   /**
    * The mode of the datepicker, to select a date, time or both.
    */
-  @Prop() mode: 'date' | 'time' | 'datetime' = 'date';
+  @Prop() mode: 'date' | 'time' | 'datetime' | 'daterange' = 'date';
 
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -176,6 +176,7 @@ export class CatDatepickerFlat {
         dateFormat: 'Z',
         altFormat: format,
         ariaDateFormat: format,
+        mode: this.mode === 'daterange' ? 'range' : 'single',
         minDate: this.min,
         maxDate: this.max,
         enableTime: this.mode === 'time' || this.mode === 'datetime',
