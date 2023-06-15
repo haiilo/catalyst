@@ -12,3 +12,6 @@ export * from './lib/directives/select-value-accessor-decorator';
 export * from './lib/directives/text-value-accessor';
 export * from './lib/directives/value-accessor';
 export * from './lib/directives/value-accessor-decorator';
+
+export * from './lib/formly-types/formly-types.module';
+export * from './lib/formly-types/formly-field-checkbox/formly-field-checkbox.component';
