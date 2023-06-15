@@ -5,6 +5,7 @@ export class CatI18nRegistry {
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly i18n: Map<string, string> = new Map();
+  private _locale?: string;
 
   private constructor() {
     // hide constructor
@@ -35,6 +36,19 @@ export class CatI18nRegistry {
       CatI18nRegistry.instance = new CatI18nRegistry();
     }
     return CatI18nRegistry.instance;
+  }
+
+  getLocale(): string {
+    return this._locale ?? window?.navigator?.language ?? 'en';
+  }
+
+  setLocale(locale: string): void {
+    try {
+      this._locale = Intl.getCanonicalLocales(locale)[0];
+      log.info(`[CatI18nRegistry] Set locale: ${this._locale}`);
+    } catch (err) {
+      log.error(`[CatI18nRegistry] Invalid locale: ${locale}`);
+    }
   }
 
   set(i18n: { [key: string]: string }, silent = false): void {

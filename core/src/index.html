@@ -14,6 +14,12 @@
        */
       catIconRegistry.addIcons(ci);
       catI18nRegistry.set({
+        'datepicker.year': 'Year',
+        'datepicker.month': 'Month',
+        'datepicker.hour': 'Hour',
+        'datepicker.minute': 'Minute',
+        'datepicker.scroll': 'Scroll to increment',
+        'datepicker.toggle': 'Click to toggle',
         'dialog.close': 'Close',
         'input.clear': 'Clear',
         'input.optional': 'Optional',
@@ -119,7 +125,6 @@
       </nav>
       <div class="content">
         <h1>Catalyst</h1>
-
         <section id="typo">
           <h2>Typography</h2>
           <cat-card>
@@ -717,11 +722,9 @@
 
         <section id="datepicker">
           <h2>Datepicker</h2>
-          <cat-datepicker type="date" clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
-          <cat-datepicker type="week" clearable="true" a11y-label="ARIA" label="Week picker"></cat-datepicker>
-          <cat-datepicker type="month" clearable="true" a11y-label="ARIA" label="Month picker"></cat-datepicker>
-          <cat-datepicker type="year" clearable="true" a11y-label="ARIA" label="Year picker"></cat-datepicker>
-          <cat-datepicker label="Year picker" text-prefix="prefix" text-suffix="suffix"></cat-datepicker>
+          <cat-datepicker-flat mode="date" label="Date"></cat-datepicker-flat>
+          <cat-datepicker-flat mode="datetime" label="Datetime"></cat-datepicker-flat>
+          <cat-datepicker-flat mode="time" label="Time"></cat-datepicker-flat>
         </section>
 
         <section id="notification">

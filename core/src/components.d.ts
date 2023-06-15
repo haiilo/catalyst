@@ -417,6 +417,108 @@ export namespace Components {
          */
         "weekNumbers": boolean;
     }
+    interface CatDatepickerFlat {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time or both.
+         */
+        "mode": 'date' | 'time' | 'datetime';
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * The step size to use when changing the time.
+         */
+        "step": number;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "value"?: string;
+    }
     interface CatDropdown {
         /**
           * Closes the dropdown.
@@ -1271,6 +1373,10 @@ export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
 }
+export interface CatDatepickerFlatCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDatepickerFlatElement;
+}
 export interface CatDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDropdownElement;
@@ -1391,6 +1497,12 @@ declare global {
     var HTMLCatDatepickerElement: {
         prototype: HTMLCatDatepickerElement;
         new (): HTMLCatDatepickerElement;
+    };
+    interface HTMLCatDatepickerFlatElement extends Components.CatDatepickerFlat, HTMLStencilElement {
+    }
+    var HTMLCatDatepickerFlatElement: {
+        prototype: HTMLCatDatepickerFlatElement;
+        new (): HTMLCatDatepickerFlatElement;
     };
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
     }
@@ -1577,6 +1689,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-datepicker": HTMLCatDatepickerElement;
+        "cat-datepicker-flat": HTMLCatDatepickerFlatElement;
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
@@ -1986,6 +2099,120 @@ declare namespace LocalJSX {
           * Whether the picker should show the week numbers.
          */
         "weekNumbers"?: boolean;
+    }
+    interface CatDatepickerFlat {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time or both.
+         */
+        "mode"?: 'date' | 'time' | 'datetime';
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatDatepickerFlatCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDatepickerFlatCustomEvent<string>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatDatepickerFlatCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * The step size to use when changing the time.
+         */
+        "step"?: number;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "value"?: string;
     }
     interface CatDropdown {
         /**
@@ -2892,6 +3119,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-datepicker": CatDatepicker;
+        "cat-datepicker-flat": CatDatepickerFlat;
         "cat-dropdown": CatDropdown;
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
@@ -2953,6 +3181,7 @@ declare module "@stencil/core" {
              * including passwords and numbers.
              */
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
+            "cat-datepicker-flat": LocalJSX.CatDatepickerFlat & JSXBase.HTMLAttributes<HTMLCatDatepickerFlatElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**
