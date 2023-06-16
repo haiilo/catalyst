@@ -31,9 +31,9 @@ correctly highlighted using `aria-current`.
 
 ## Events
 
-| Event       | Description                                          | Type               |
-| ----------- | ---------------------------------------------------- | ------------------ |
-| `catChange` | Emitted when the page of the pagination has changed. | `CustomEvent<any>` |
+| Event       | Description                                          | Type                  |
+| ----------- | ---------------------------------------------------- | --------------------- |
+| `catChange` | Emitted when the page of the pagination has changed. | `CustomEvent<number>` |
 
 
 ## Dependencies

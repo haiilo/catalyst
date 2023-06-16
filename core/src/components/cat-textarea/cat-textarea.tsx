@@ -111,7 +111,7 @@ export class CatTextarea {
   /**
    * The initial value of the control.
    */
-  @Prop({ mutable: true }) value?: string | number;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * The validation errors for this input. Will render a hint under the input
@@ -138,7 +138,7 @@ export class CatTextarea {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<string>;
 
   /**
    * Emitted when the textarea received focus.
@@ -185,11 +185,12 @@ export class CatTextarea {
   }
 
   /**
-   * Programmatically simulate a click on the textarea.
+   * Clear the textarea.
    */
   @Method()
-  async doClick(): Promise<void> {
-    this.textarea.click();
+  async clear(): Promise<void> {
+    this.value = '';
+    this.catChange.emit(this.value);
   }
 
   @Watch('errors')
@@ -238,7 +239,7 @@ export class CatTextarea {
                     )}
                     {this.maxLength && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.value?.toString().length ?? 0}/{this.maxLength}
+                        {this.value?.length ?? 0}/{this.maxLength}
                       </div>
                     )}
                   </div>
@@ -300,9 +301,9 @@ export class CatTextarea {
     return !!this.errorMap;
   }
 
-  private onInput(event: InputEvent) {
+  private onInput() {
     this.value = this.textarea.value;
-    this.catChange.emit(event);
+    this.catChange.emit(this.value);
     this.showErrorsIfTimeout();
   }
 

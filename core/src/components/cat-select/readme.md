@@ -81,7 +81,6 @@ Type: `Promise<void>`
 ### Used by
 
  - [cat-select-demo](../cat-select-demo)
- - [cat-timepicker](../cat-timepicker)
 
 ### Depends on
 
@@ -107,7 +106,6 @@ graph TD;
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-select-demo --> cat-select
-  cat-timepicker --> cat-select
   style cat-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

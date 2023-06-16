@@ -32,7 +32,7 @@ input component.
 | `required`         | `required`        | A value is required or must be check for the form to be submittable.                                                                                                                                                                                                                                                            | `boolean`                                                                     | `false`      |
 | `requiredMarker`   | `required-marker` | Whether the label need a marker to shown if the textarea is required or optional.                                                                                                                                                                                                                                               | `"none!" \| "none" \| "optional!" \| "optional" \| "required!" \| "required"` | `'optional'` |
 | `rows`             | `rows`            | Specifies the initial number of lines in the textarea.                                                                                                                                                                                                                                                                          | `number`                                                                      | `3`          |
-| `value`            | `value`           | The initial value of the control.                                                                                                                                                                                                                                                                                               | `number \| string \| undefined`                                               | `undefined`  |
+| `value`            | `value`           | The initial value of the control.                                                                                                                                                                                                                                                                                               | `string \| undefined`                                                         | `undefined`  |
 
 
 ## Events
@@ -40,16 +40,15 @@ input component.
 | Event       | Description                               | Type                      |
 | ----------- | ----------------------------------------- | ------------------------- |
 | `catBlur`   | Emitted when the textarea loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.        | `CustomEvent<InputEvent>` |
+| `catChange` | Emitted when the value is changed.        | `CustomEvent<string>`     |
 | `catFocus`  | Emitted when the textarea received focus. | `CustomEvent<FocusEvent>` |
 
 
 ## Methods
 
-### `doBlur() => Promise<void>`
+### `clear() => Promise<void>`
 
-Programmatically remove focus from the textarea. Use this method instead of
-`textarea.blur()`.
+Clear the textarea.
 
 #### Returns
 
@@ -57,9 +56,10 @@ Type: `Promise<void>`
 
 
 
-### `doClick() => Promise<void>`
+### `doBlur() => Promise<void>`
 
-Programmatically simulate a click on the textarea.
+Programmatically remove focus from the textarea. Use this method instead of
+`textarea.blur()`.
 
 #### Returns
 

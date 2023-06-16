@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Event, Method, EventEmitter, Prop, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -12,6 +12,7 @@ import { getLocale } from './cat-datepicker.locale';
   shadow: true
 })
 export class CatDatepickerFlat {
+  private pickr?: flatpickr.Instance;
   private _input?: HTMLCatInputElement;
   private get input(): HTMLInputElement | undefined {
     return this._input?.shadowRoot?.querySelector('input') ?? undefined;
@@ -123,7 +124,7 @@ export class CatDatepickerFlat {
   @Prop() step = 5;
 
   /**
-   * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+   * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
    */
   @Prop({ mutable: true }) value?: string;
 
@@ -171,7 +172,7 @@ export class CatDatepickerFlat {
       const format = getFormat(i18n.getLocale(), this.mode);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
-      flatpickr(input, {
+      this.pickr = flatpickr(input, {
         locale,
         plugins,
         altInput: true,
@@ -194,9 +195,31 @@ export class CatDatepickerFlat {
             this.value = dateStr;
           }
           this.catChange.emit(this.value);
+          console.log(this.value);
         }
       });
     }
+  }
+
+  /**
+   * Programmatically move focus to the datepicker. Use this method instead of
+   * `input.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    this._input?.doFocus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the datepicker. Use this method instead of
+   * `input.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this._input?.doBlur();
   }
 
   render() {
@@ -224,8 +247,23 @@ export class CatDatepickerFlat {
         errors={this.errors}
         errorUpdate={this.errorUpdate}
         nativeAttributes={this.nativeAttributes}
-        onCatFocus={e => this.catFocus.emit(e.detail)}
-        onCatBlur={e => this.catBlur.emit(e.detail)}
+        onCatChange={e => {
+          e.stopPropagation();
+          this.pickr?.setDate(e.detail);
+          if (this.value !== e.detail || undefined) {
+            this.value = e.detail || undefined;
+            this.catChange.emit(this.value);
+            console.log(this.value);
+          }
+        }}
+        onCatFocus={e => {
+          e.stopPropagation();
+          this.catFocus.emit(e.detail);
+        }}
+        onCatBlur={e => {
+          e.stopPropagation();
+          this.catBlur.emit(e.detail);
+        }}
       ></cat-input>
     );
   }
