@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/haiilo/catalyst/compare/v5.4.0...v6.0.0) (2023-06-16)
+
+
+### Features
+
+* **core:** add range picker ([#272](https://github.com/haiilo/catalyst/issues/272)) ([9595f8e](https://github.com/haiilo/catalyst/commit/9595f8e149fce9e7366d29645914d68bc7aec225))
+* **core:** implement date- and timepicker ([#270](https://github.com/haiilo/catalyst/issues/270)) ([3ba6f75](https://github.com/haiilo/catalyst/commit/3ba6f75dfbfa0edb5cb198a0d5a330cc322a06c8))
+* **core:** implement weekpicker ([#273](https://github.com/haiilo/catalyst/issues/273)) ([00d6f25](https://github.com/haiilo/catalyst/commit/00d6f2573ad674e41aa26c7ee841be626a3669b4))
+* **core:** remove old datepicker ([fdabade](https://github.com/haiilo/catalyst/commit/fdabade3918aac4b52ff67c0b2e43d08d09f01b3))
+
+
+### Bug Fixes
+
+* **core:** cleanup form handling ([47c4483](https://github.com/haiilo/catalyst/commit/47c4483f88f162119ebd432ee7c876b1ef61ca9a))
+* **core:** stop event propagation on cat-select open/close arrow and … ([#269](https://github.com/haiilo/catalyst/issues/269)) ([9db5612](https://github.com/haiilo/catalyst/commit/9db56120d6a3cf333de3a8a287b35053a6e902fb))
+
 ## [5.4.0](https://github.com/haiilo/catalyst/compare/v5.3.0...v5.4.0) (2023-06-09)
 
 
