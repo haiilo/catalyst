@@ -58,7 +58,7 @@ export class CatToggle {
   @Prop() labelHidden = false;
 
   /**
-   * The name of the input
+   * The name of the input.
    */
   @Prop() name?: string;
 
@@ -68,9 +68,14 @@ export class CatToggle {
   @Prop() required = false;
 
   /**
-   * The value of the toggle
+   * The value of the toggle.
    */
-  @Prop({ mutable: true }) value?: string | boolean;
+  @Prop() value?: string;
+
+  /**
+   * The resolved value of the toggle, based on the checked state and value.
+   */
+  @Prop({ mutable: true }) resolvedValue: string | boolean | null = null;
 
   /**
    * Optional hint text(s) to be displayed with the toggle.
@@ -90,7 +95,7 @@ export class CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<boolean | string | null>;
 
   /**
    * Emitted when the toggle received focus.
@@ -101,6 +106,10 @@ export class CatToggle {
    * Emitted when the toggle loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
+
+  componentWillLoad() {
+    this.updateResolved();
+  }
 
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
@@ -131,14 +140,6 @@ export class CatToggle {
     this.input.blur();
   }
 
-  /**
-   * Programmatically simulate a click on the toggle.
-   */
-  @Method()
-  async doClick(): Promise<void> {
-    this.input.click();
-  }
-
   render() {
     return (
       <Host>
@@ -152,7 +153,7 @@ export class CatToggle {
             id={this.id}
             type="checkbox"
             name={this.name}
-            value={this.value !== undefined ? String(this.value) : this.value}
+            value={this.value}
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
@@ -177,13 +178,10 @@ export class CatToggle {
     );
   }
 
-  private onInput(event: InputEvent) {
+  private onInput() {
     this.checked = this.input.checked;
-
-    if (!this.value || typeof this.value === 'boolean') {
-      this.value = this.checked;
-    }
-    this.catChange.emit(event);
+    this.updateResolved();
+    this.catChange.emit(this.resolvedValue);
   }
 
   private onFocus(event: FocusEvent) {
@@ -192,5 +190,9 @@ export class CatToggle {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
+  }
+
+  private updateResolved() {
+    this.resolvedValue = this.value == null ? this.checked : this.checked ? this.value : null;
   }
 }

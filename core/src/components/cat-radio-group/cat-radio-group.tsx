@@ -42,7 +42,12 @@ export class CatRadioGroup {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<boolean | string>;
+
+  /**
+   * Emitted when the radio group received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
 
   /**
    * Emitted when the radio group loses focus.
@@ -99,9 +104,16 @@ export class CatRadioGroup {
 
   @Listen('input')
   onInput(event: MouseEvent): void {
-    const catRadioElement = this.catRadioGroup.find(value => value === event.target);
-    this.value = catRadioElement?.value;
-    this.catChange.emit();
+    const radio = this.catRadioGroup.find(radio => radio === event.target);
+    this.value = radio?.checked ? radio?.value : undefined;
+    this.catChange.emit(this.value);
+  }
+
+  @Listen('focus', { capture: true })
+  onFocus(event: FocusEvent): void {
+    if (!event.relatedTarget) {
+      this.catBlur.emit(event);
+    }
   }
 
   @Listen('blur', { capture: true })

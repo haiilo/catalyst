@@ -35,7 +35,6 @@ const CatComponents = [
   Components.CatFormGroup,
   Components.CatIcon,
   Components.CatInput,
-  Components.CatLabel,
   Components.CatPagination,
   Components.CatRadio,
   Components.CatRadioGroup,

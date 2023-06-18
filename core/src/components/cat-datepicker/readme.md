@@ -1,4 +1,4 @@
-# cat-datepicker-flat
+# cat-datepicker
 
 
 
@@ -33,7 +33,7 @@
 | `step`             | `step`            | The step size to use when changing the time.                                                                                                                                                                                                                                                                                    | `number`                                                                      | `5`          |
 | `textPrefix`       | `text-prefix`     | A textual prefix to be displayed in the input.                                                                                                                                                                                                                                                                                  | `string \| undefined`                                                         | `undefined`  |
 | `textSuffix`       | `text-suffix`     | A textual suffix to be displayed in the input.                                                                                                                                                                                                                                                                                  | `string \| undefined`                                                         | `undefined`  |
-| `value`            | `value`           | The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.                                                                                                                                                                                                                                                                    | `string \| undefined`                                                         | `undefined`  |
+| `value`            | `value`           | The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.                                                                                                                                                                                                                                         | `string \| undefined`                                                         | `undefined`  |
 
 
 ## Events
@@ -43,6 +43,31 @@
 | `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
 | `catChange` | Emitted when the value is changed.     | `CustomEvent<string>`     |
 | `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+### `doBlur() => Promise<void>`
+
+Programmatically remove focus from the datepicker. Use this method instead of
+`input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions) => Promise<void>`
+
+Programmatically move focus to the datepicker. Use this method instead of
+`input.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

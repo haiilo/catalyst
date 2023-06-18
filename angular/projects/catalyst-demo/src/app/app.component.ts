@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
     relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required]),
+    date: new FormControl(null, [Validators.required]),
     catCheckbox: new FormControl(null, [Validators.required])
   });
   fields: FormlyFieldConfig[] = [

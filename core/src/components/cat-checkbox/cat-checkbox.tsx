@@ -62,19 +62,24 @@ export class CatCheckbox {
   @Prop() labelHidden = false;
 
   /**
-   * The name of the input
+   * The name of the input.
    */
   @Prop() name?: string;
 
   /**
-   * Required state of the checkbox
+   * Required state of the checkbox.
    */
   @Prop() required = false;
 
   /**
-   * The value of the checkbox
+   * The value of the checkbox.
    */
-  @Prop({ mutable: true }) value?: string | boolean;
+  @Prop() value?: string;
+
+  /**
+   * The resolved value of the checkbox, based on the checked state and value.
+   */
+  @Prop({ mutable: true }) resolvedValue: string | boolean | null = null;
 
   /**
    * Optional hint text(s) to be displayed with the checkbox.
@@ -94,7 +99,7 @@ export class CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<boolean | string | null>;
 
   /**
    * Emitted when the checkbox received focus.
@@ -105,6 +110,10 @@ export class CatCheckbox {
    * Emitted when the checkbox loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
+
+  componentWillLoad() {
+    this.updateResolved();
+  }
 
   componentDidLoad() {
     if (this.input && this.indeterminate) {
@@ -141,14 +150,6 @@ export class CatCheckbox {
     this.input.blur();
   }
 
-  /**
-   * Programmatically simulate a click on the checkbox.
-   */
-  @Method()
-  async doClick(): Promise<void> {
-    this.input.click();
-  }
-
   render() {
     return (
       <Host>
@@ -162,7 +163,7 @@ export class CatCheckbox {
             id={this.id}
             type="checkbox"
             name={this.name}
-            value={this.value !== undefined ? String(this.value) : this.value}
+            value={this.value}
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
@@ -192,13 +193,10 @@ export class CatCheckbox {
     );
   }
 
-  private onInput(event: InputEvent) {
+  private onInput() {
     this.checked = this.input.checked;
-
-    if (!this.value || typeof this.value === 'boolean') {
-      this.value = this.checked;
-    }
-    this.catChange.emit(event);
+    this.updateResolved();
+    this.catChange.emit(this.resolvedValue);
   }
 
   private onFocus(event: FocusEvent) {
@@ -207,5 +205,9 @@ export class CatCheckbox {
 
   private onBlur(event: FocusEvent) {
     this.catBlur.emit(event);
+  }
+
+  private updateResolved() {
+    this.resolvedValue = this.value == null ? this.checked : this.checked ? this.value : null;
   }
 }

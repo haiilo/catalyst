@@ -22,16 +22,16 @@ only one of a predefined set of mutually exclusive options.
 | `name`             | `name`         | The name of the radio component.                                                          | `string \| undefined`                     | `undefined` |
 | `nativeAttributes` | --             | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
 | `required`         | `required`     | Whether the radio is required.                                                            | `boolean`                                 | `false`     |
-| `value`            | `value`        | The value of the radio component.                                                         | `string \| undefined`                     | `undefined` |
+| `value`            | `value`        | The value of the radio component.                                                         | `string`                                  | `''`        |
 
 
 ## Events
 
-| Event       | Description                            | Type                      |
-| ----------- | -------------------------------------- | ------------------------- |
-| `catBlur`   | Emitted when the radio loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the radio is changed.     | `CustomEvent<InputEvent>` |
-| `catFocus`  | Emitted when the radio received focus. | `CustomEvent<FocusEvent>` |
+| Event       | Description                            | Type                             |
+| ----------- | -------------------------------------- | -------------------------------- |
+| `catBlur`   | Emitted when the radio loses focus.    | `CustomEvent<FocusEvent>`        |
+| `catChange` | Emitted when the radio is changed.     | `CustomEvent<boolean \| string>` |
+| `catFocus`  | Emitted when the radio received focus. | `CustomEvent<FocusEvent>`        |
 
 
 ## Methods
@@ -40,16 +40,6 @@ only one of a predefined set of mutually exclusive options.
 
 Programmatically remove focus from the radio button. Use this method
 instead of `input.blur()`.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `doClick() => Promise<void>`
-
-Programmatically simulate a click on the radio button.
 
 #### Returns
 

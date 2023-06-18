@@ -4,8 +4,7 @@ type HTMLCatFormFieldElement =
   | HTMLCatInputElement
   | HTMLCatTextareaElement
   | HTMLCatSelectElement
-  | HTMLCatDatepickerElement
-  | HTMLCatLabelElement;
+  | HTMLCatDatepickerElement;
 
 @Component({
   tag: 'cat-form-group',
@@ -61,16 +60,15 @@ export class CatFormGroup {
 
   private onSlotChange(): void {
     this.formElements = Array.from(
-      this.hostElement.querySelectorAll('cat-textarea, cat-input, cat-select, cat-label, cat-datepicker')
+      this.hostElement.querySelectorAll('cat-input, cat-textarea, cat-select, cat-datepicker')
     ) as HTMLCatFormFieldElement[];
     this.onRequiredMarker(this.requiredMarker);
     this.onHorizontal(this.horizontal);
   }
 
   private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {
-    const formFields = elements.filter(value => value.tagName !== 'CAT-LABEL');
-    const optionalFields = formFields.filter(value => !value.required).length;
-    const requiredFields = formFields.length - optionalFields;
+    const optionalFields = elements.filter(value => !value.required).length;
+    const requiredFields = elements.length - optionalFields;
     return requiredFields >= optionalFields ? 'optional' : 'required';
   }
 }

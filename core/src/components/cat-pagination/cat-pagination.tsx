@@ -67,7 +67,7 @@ export class CatPagination {
   /**
    * Emitted when the page of the pagination has changed.
    */
-  @Event() catChange!: EventEmitter;
+  @Event() catChange!: EventEmitter<number>;
 
   render() {
     return (

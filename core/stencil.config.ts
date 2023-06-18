@@ -26,7 +26,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['cat-checkbox', 'cat-toggle'],
     event: 'catChange',
-    targetAttr: 'value',
+    targetAttr: 'resolvedValue',
     type: 'boolean'
   },
   {

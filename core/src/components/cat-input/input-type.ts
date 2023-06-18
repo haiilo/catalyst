@@ -1,19 +1,11 @@
 export type InputType =
-  | 'button'
   | 'color'
-  | 'date'
-  | 'datetime-local'
   | 'email'
   | 'file'
-  | 'month'
   | 'number'
   | 'password'
   | 'range'
-  | 'reset'
   | 'search'
-  | 'submit'
   | 'tel'
   | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
+  | 'url';
