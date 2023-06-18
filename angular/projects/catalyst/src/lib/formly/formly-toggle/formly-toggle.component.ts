@@ -2,21 +2,21 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-checkbox',
+  selector: 'formly-toggle',
   template: `
-    <cat-checkbox
+    <cat-toggle
       [formControl]="formControl"
       [formlyAttributes]="field"
       [checked]="props.checked"
       [identifier]="props.identifier"
-      [indeterminate]="props.indeterminate"
       [label]="props.label"
+      [labelHidden]="props.labelHidden"
       [name]="props.name"
       [hint]="props.hint"
-      [labelLeft]="props.labelLeft"
+      [resolvedValue]="props.resolvedValue"
       [nativeAttributes]="props.nativeAttributes"
       >
-    </cat-checkbox>
+    </cat-toggle>
   `,
 })
-export class CatCheckboxFieldType extends FieldType<FieldTypeConfig> {}
+export class CatToggleFieldType extends FieldType<FieldTypeConfig> {}

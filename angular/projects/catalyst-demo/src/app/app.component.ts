@@ -3,10 +3,10 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
 import { of } from 'rxjs';
-import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
+import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType } from 'catalyst';
+import { CatCheckboxFieldType, CatToggleFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -34,7 +34,9 @@ export class AppComponent implements OnInit {
     relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required]),
     date: new FormControl(null, [Validators.required]),
-    catCheckbox: new FormControl(null, [Validators.required])
+    catCheckbox: new FormControl(false),
+    catToggle: new FormControl(true),
+    catRadio: new FormControl(true)
   });
   fields: FormlyFieldConfig[] = [
     {
@@ -42,6 +44,20 @@ export class AppComponent implements OnInit {
       type: CatCheckboxFieldType,
       props: {
         label: 'Custom Cat Checkbox'
+      },
+    },
+    {
+      key: 'catToggle',
+      type: CatToggleFieldType,
+      props: {
+        label: 'Custom Cat Toggle'
+      },
+    },
+    {
+      key: 'catRadio',
+      type: CatRadioFieldType,
+      props: {
+        label: 'Custom Cat Radio'
       },
     },
   ];
