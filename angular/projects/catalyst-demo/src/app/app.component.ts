@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType, CatToggleFieldType } from 'catalyst';
+import { CatCheckboxFieldType, CatInputFieldType, CatToggleFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
     date: new FormControl(null, [Validators.required]),
     catCheckbox: new FormControl(false),
     catToggle: new FormControl(true),
-    catRadio: new FormControl(true)
+    catRadio: new FormControl(true),
+    catInput: new FormControl('')
   });
   fields: FormlyFieldConfig[] = [
     {
@@ -58,6 +59,15 @@ export class AppComponent implements OnInit {
       type: CatRadioFieldType,
       props: {
         label: 'Custom Cat Radio'
+      },
+    },
+    {
+      key: 'catInput',
+      type: CatInputFieldType,
+      defaultValue: 'type here',
+      props: {
+        label: 'Custom Cat Input',
+        clearable: true
       },
     },
   ];

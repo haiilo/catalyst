@@ -5,12 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CatalystModule } from '../catalyst.module';
 import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
 import { CatRadioFieldType } from './formly-radio/formly-radio.component';
+import { CatInputFieldType } from './formly-input/formly-input.component';
 
 @NgModule({
   declarations: [
     CatCheckboxFieldType,
     CatToggleFieldType,
-    CatRadioFieldType
+    CatRadioFieldType,
+    CatInputFieldType
   ],
   imports: [
     CatalystModule,
@@ -29,13 +31,18 @@ import { CatRadioFieldType } from './formly-radio/formly-radio.component';
           name: 'cat-radio-formly',
           component: CatRadioFieldType,
         },
+        {
+          name: 'cat-input-formly',
+          component: CatInputFieldType,
+        },
       ],
     }),
   ],
   exports: [
     CatCheckboxFieldType,
     CatToggleFieldType,
-    CatRadioFieldType
+    CatRadioFieldType,
+    CatInputFieldType
   ],
 })
 export class CatalystFormlyModule {}

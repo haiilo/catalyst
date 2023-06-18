@@ -17,3 +17,4 @@ export * from './lib/formly/formly.module';
 export * from './lib/formly/formly-checkbox/formly-checkbox.component';
 export * from './lib/formly/formly-toggle/formly-toggle.component';
 export * from './lib/formly/formly-radio/formly-radio.component';
+export * from './lib/formly/formly-input/formly-input.component';
