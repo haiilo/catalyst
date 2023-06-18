@@ -7,4 +7,6 @@
   <cat-input label="relatedInput" formControlName="relatedInput" [errorUpdate]="4000"></cat-input>
   <cat-textarea label="Textarea" formControlName="test" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-textarea>
   <cat-select label="Select" formControlName="option" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint" [connector]="countryConnector"></cat-select>
+  <formly-form [form]="form" [fields]="fields"></formly-form>
+  test {{form.value | json}}
 </form>

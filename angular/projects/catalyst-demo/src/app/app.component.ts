@@ -5,6 +5,8 @@ import { ci } from '@haiilo/catalyst-icons';
 import { of } from 'rxjs';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { CatCheckboxFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -30,8 +32,18 @@ export class AppComponent implements OnInit {
   form = new FormGroup({
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
     relatedInput: new FormControl(null, [this.equalTo('test')]),
-    option: new FormControl(null, [Validators.required])
+    option: new FormControl(null, [Validators.required]),
+    catCheckbox: new FormControl(null, [Validators.required])
   });
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'catCheckbox',
+      type: CatCheckboxFieldType,
+      props: {
+        label: 'Custom Cat Checkbox'
+      },
+    },
+  ];
 
   countryConnector: any = {
     resolve: (ids: string[]) => of(ids.map(id => countries.find(value => value.id === id)!)),

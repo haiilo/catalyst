@@ -12,7 +12,8 @@
   "peerDependencies": {
     "@angular/core": ">=14.0.0",
     "@angular/cdk": ">=14.0.0",
-    "rxjs": ">=6.6.0"
+    "rxjs": ">=6.6.0",
+    "@ngx-formly/core": ">=6.1.8"
   },
   "dependencies": {
     "@haiilo/catalyst": "5.4.0",

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormlyModule } from '@ngx-formly/core';
-import { CatCheckboxFieldType } from './formly-field-checkbox/formly-field-checkbox.component';
+import { CatCheckboxFieldType } from './formly-checkbox/formly-checkbox.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CatalystModule } from '../catalyst.module';
 
 @NgModule({
   declarations: [CatCheckboxFieldType],
   imports: [
+    CatalystModule,
     ReactiveFormsModule,
     FormlyModule.forChild({
       types: [
@@ -18,4 +20,4 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [CatCheckboxFieldType],
 })
-export class CatalystFormlyTypesModule {}
+export class CatalystFormlyModule {}
