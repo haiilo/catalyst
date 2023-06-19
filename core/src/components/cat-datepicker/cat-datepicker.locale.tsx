@@ -31,7 +31,7 @@ function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
 export function getLocale(language: string): CustomLocale {
   return {
     firstDayOfWeek: getFirstDayOfWeek(language),
-    rangeSeparator: ' – ',
+    rangeSeparator: ' - ',
     weekAbbreviation: '',
     yearAriaLabel: i18n.t('datepicker.year'),
     monthAriaLabel: i18n.t('datepicker.month'),

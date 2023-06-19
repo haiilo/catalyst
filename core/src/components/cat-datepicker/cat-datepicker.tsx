@@ -178,7 +178,7 @@ export class CatDatepickerFlat {
         altInput: true,
         prevArrow: '←',
         nextArrow: '→',
-        dateFormat: 'Z',
+        dateFormat: this.dateFormat,
         altFormat: format,
         ariaDateFormat: format,
         mode: this.mode === 'daterange' ? 'range' : 'single',
@@ -195,7 +195,6 @@ export class CatDatepickerFlat {
             this.value = dateStr;
           }
           this.catChange.emit(this.value);
-          console.log(this.value);
         }
       });
     }
@@ -250,10 +249,9 @@ export class CatDatepickerFlat {
         onCatChange={e => {
           e.stopPropagation();
           this.pickr?.setDate(e.detail);
-          if (this.value !== e.detail || undefined) {
+          if (this.value !== (e.detail || undefined)) {
             this.value = e.detail || undefined;
             this.catChange.emit(this.value);
-            console.log(this.value);
           }
         }}
         onCatFocus={e => {
@@ -266,5 +264,15 @@ export class CatDatepickerFlat {
         }}
       ></cat-input>
     );
+  }
+
+  private get dateFormat(): string {
+    if (this.mode === 'week') {
+      return 'W';
+    } else if (this.mode === 'time') {
+      return 'H:i';
+    } else {
+      return 'Z';
+    }
   }
 }
