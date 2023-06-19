@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.2](https://github.com/haiilo/catalyst/compare/v6.0.1...v6.0.2) (2023-06-19)
+
+
+### Bug Fixes
+
+* **release:** update ci workflow ([ad1cafd](https://github.com/haiilo/catalyst/commit/ad1cafd41e1f5c9065e1f3731fd308141326c661))
+
 ### [6.0.1](https://github.com/haiilo/catalyst/compare/v6.0.0...v6.0.1) (2023-06-19)
 
 
