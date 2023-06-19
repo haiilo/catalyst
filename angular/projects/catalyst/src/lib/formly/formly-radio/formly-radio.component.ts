@@ -1,6 +1,20 @@
 import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
+export type CatRadioType = {
+  checked: boolean;
+  disabled: boolean;
+  identifier?: string;
+  label: string
+  labelHidden: boolean;
+  name?: string;
+  required: string;
+  value: string, 
+  hint?: string | string[];
+  labelLeft: boolean;
+  nativeAttributes?: { [key: string]: string }  
+};
+
 @Component({
   selector: 'formly-radio',
   template: `

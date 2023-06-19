@@ -7,18 +7,22 @@ import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
 import { CatRadioFieldType } from './formly-radio/formly-radio.component';
 import { CatInputFieldType } from './formly-input/formly-input.component';
 import { CatTextareaFieldType } from './formly-textarea/formly-textarea.component';
+import { CatRadioGroupFieldType } from './formly-radio-group/formly-radio-group.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     CatCheckboxFieldType,
     CatToggleFieldType,
     CatRadioFieldType,
+    CatRadioGroupFieldType,
     CatInputFieldType,
     CatTextareaFieldType
   ],
   imports: [
     CatalystModule,
     ReactiveFormsModule,
+    CommonModule,
     FormlyModule.forChild({
       types: [
         {
@@ -32,6 +36,10 @@ import { CatTextareaFieldType } from './formly-textarea/formly-textarea.componen
         {
           name: 'cat-radio-formly',
           component: CatRadioFieldType,
+        },
+        {
+          name: 'cat-radio-group-formly',
+          component: CatRadioGroupFieldType,
         },
         {
           name: 'cat-input-formly',
@@ -48,6 +56,7 @@ import { CatTextareaFieldType } from './formly-textarea/formly-textarea.componen
     CatCheckboxFieldType,
     CatToggleFieldType,
     CatRadioFieldType,
+    CatRadioGroupFieldType,
     CatInputFieldType,
     CatTextareaFieldType
   ],

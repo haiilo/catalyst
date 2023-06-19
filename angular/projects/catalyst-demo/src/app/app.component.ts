@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType, CatInputFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
+import { CatCheckboxFieldType, CatInputFieldType, CatRadioGroupFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -33,12 +33,7 @@ export class AppComponent implements OnInit {
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
     relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required]),
-    date: new FormControl(null, [Validators.required]),
-    catCheckbox: new FormControl(false),
-    catToggle: new FormControl(true),
-    catRadio: new FormControl(true),
-    catInput: new FormControl(''),
-    catTextarea: new FormControl('')
+    date: new FormControl(null, [Validators.required])
   });
   fields: FormlyFieldConfig[] = [
     {
@@ -80,6 +75,30 @@ export class AppComponent implements OnInit {
         rows: 1
       },
     },
+    {
+      key: 'catRadioGroup',
+      type: CatRadioGroupFieldType,
+      defaultValue: 'two',
+      props: {
+        a11yLabel: 'Radio Group 1',
+        labelLeft: false,
+        options: [
+          {
+            label: 'Option 1 - Group 1',
+            value: 'one'
+          },
+          {
+            label: 'Option 2 - Group 1',
+            value: 'two'
+          },
+          {
+            label: 'Option 3 - Group 1',
+            value: 'three',
+            checked: true,
+          },
+        ]
+      }
+    },
   ];
 
   countryConnector: any = {
@@ -98,9 +117,16 @@ export class AppComponent implements OnInit {
       'error.minlength': 'This field is too short',
       'error.pattern': 'This field is invalid',
       'input.optional': 'optional',
+      'input.clear': 'Clear',
       'select.empty': 'No items',
       'select.close': 'Close',
-      'select.open': 'Open'
+      'select.open': 'Open',
+      'datepicker.year': 'Year',
+      'datepicker.month': 'Month',
+      'datepicker.hour': 'Hour',
+      'datepicker.minute': 'Minute',
+      'datepicker.scroll': 'Scroll to increment',
+      'datepicker.toggle': 'Click to toggle',
     });
     iconRegistry.addIcons(ci);
   }
