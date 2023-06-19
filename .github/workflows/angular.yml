@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'angular/**'
+    tags-ignore:
+      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
