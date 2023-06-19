@@ -16,4 +16,3 @@ if (output.length) {
 } else {
   console.info('\x1b[32m%s\x1b[0m', 'No SCSS imports replaced.');
 }
-  
