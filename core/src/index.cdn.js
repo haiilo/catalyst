@@ -33,7 +33,6 @@
       'input.clear': 'Clear',
       'input.optional': 'Optional',
       'input.required': 'Required',
-      'input.today': 'Today',
       'notification.dismiss': 'Dismiss',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',
