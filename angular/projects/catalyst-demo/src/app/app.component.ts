@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType, CatInputFieldType, CatRadioGroupFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
+import { CatCheckboxFieldType, CatDatepickerFieldType, CatInputFieldType, CatRadioGroupFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -98,6 +98,16 @@ export class AppComponent implements OnInit {
           },
         ]
       }
+    },
+    {
+      key: 'catDatepicker',
+      type: CatDatepickerFieldType,
+      defaultValue: '12.12.2022',
+      props: {
+        label: 'Select a date',
+        clearable: true,
+        mode: 'time'
+      },
     },
   ];
 

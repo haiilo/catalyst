@@ -9,6 +9,7 @@ import { CatInputFieldType } from './formly-input/formly-input.component';
 import { CatTextareaFieldType } from './formly-textarea/formly-textarea.component';
 import { CatRadioGroupFieldType } from './formly-radio-group/formly-radio-group.component';
 import { CommonModule } from '@angular/common';
+import { CatDatepickerFieldType } from './formly-datepicker/formly-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     CatRadioFieldType,
     CatRadioGroupFieldType,
     CatInputFieldType,
-    CatTextareaFieldType
+    CatTextareaFieldType,
+    CatDatepickerFieldType
   ],
   imports: [
     CatalystModule,
@@ -49,6 +51,10 @@ import { CommonModule } from '@angular/common';
           name: 'cat-textarea-formly',
           component: CatTextareaFieldType,
         },
+        {
+          name: 'cat-datepicker-formly',
+          component: CatDatepickerFieldType,
+        }
       ],
     }),
   ],
@@ -58,7 +64,8 @@ import { CommonModule } from '@angular/common';
     CatRadioFieldType,
     CatRadioGroupFieldType,
     CatInputFieldType,
-    CatTextareaFieldType
+    CatTextareaFieldType,
+    CatDatepickerFieldType
   ],
 })
 export class CatalystFormlyModule {}
