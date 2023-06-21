@@ -3475,6 +3475,22 @@ code {
 }
 @font-face {
   font-family: Lato;
+  src: url("assets/fonts/Lato-Semibold.woff2") format("woff2"), url("assets/fonts/Lato-Semibold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  font-display: fallback;
+}
+@font-face {
+  font-family: Lato;
+  src: url("assets/fonts/Lato-SemiboldItalic.woff2") format("woff2"), url("assets/fonts/Lato-SemiboldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  font-display: fallback;
+}
+@font-face {
+  font-family: Lato;
   src: url("assets/fonts/Lato-Bold.woff2") format("woff2"), url("assets/fonts/Lato-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
