@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType, CatDatepickerFieldType, CatInputFieldType, CatRadioGroupFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
+import { CatCheckboxFieldType, CatDatepickerFieldType, CatInputFieldType, CatRadioGroupFieldType, CatSelectFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
 
 interface Country {
   id: string;
@@ -31,10 +31,17 @@ const countries: Country[] = [
 export class AppComponent implements OnInit {
   form = new FormGroup({
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
-    relatedInput: new FormControl(null, [this.equalTo('test')]),
+    relatedInput: new FormControl(null, [Validators.required]),
     option: new FormControl(null, [Validators.required]),
     date: new FormControl(null, [Validators.required])
   });
+
+  countryConnector: any = {
+    resolve: (ids: string[]) => of(ids.map(id => countries.find(value => value.id === id)!)),
+    retrieve: () => of({ content: countries, last: true }),
+    render: (country: Country) => ({ label: country.country })
+  };
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'catCheckbox',
@@ -63,8 +70,9 @@ export class AppComponent implements OnInit {
       defaultValue: 'type here',
       props: {
         label: 'Custom Cat Input',
-        clearable: true
-      },
+        clearable: true,
+        required: true
+      }
     },
     {
       key: 'catTextarea',
@@ -106,16 +114,20 @@ export class AppComponent implements OnInit {
       props: {
         label: 'Select a date',
         clearable: true,
-        mode: 'time'
+        mode: 'datetime',
+        required: true
       },
     },
-  ];
-
-  countryConnector: any = {
-    resolve: (ids: string[]) => of(ids.map(id => countries.find(value => value.id === id)!)),
-    retrieve: () => of({ content: countries, last: true }),
-    render: (country: Country) => ({ label: country.country })
-  };
+    {
+      key: 'catSelect',
+      type: CatSelectFieldType,      
+      props: {
+        label: 'Select a country',
+        connector: this.countryConnector,
+        required: true
+      }
+    },
+  ];  
 
   constructor(
     private dialog: CatDialogService,
