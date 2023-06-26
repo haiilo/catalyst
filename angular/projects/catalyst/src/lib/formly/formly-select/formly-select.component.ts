@@ -37,6 +37,4 @@ export class CatSelectFieldType extends FieldType<FieldTypeConfig> implements Af
   ngAfterViewInit(): void {
     this.selectRef.connect(this.props.connector)
   }
-
-
 }
