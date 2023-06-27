@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -36,6 +36,27 @@ export class CatCheckbox {
    */
   @Prop({ mutable: true }) checked = false;
 
+  @Watch('checked')
+  onCheckedChange(checkedState: boolean) {
+    if (checkedState && this.indeterminate) {
+      this.indeterminate = false;
+    }
+    this.input.checked = checkedState;
+  }
+
+  /**
+   * Indeterminate state of the checkbox
+   */
+  @Prop({ mutable: true })  indeterminate = false;
+
+  @Watch('indeterminate')
+  onIndeterminateChange(indeterminateState: boolean) {
+    if (indeterminateState && this.checked) {
+      this.checked = false;
+    }
+    this.input.indeterminate = indeterminateState;
+  }
+
   /**
    * Disabled state of the checkbox
    */
@@ -45,11 +66,6 @@ export class CatCheckbox {
    * A unique identifier for the input.
    */
   @Prop() identifier?: string;
-
-  /**
-   * Indeterminate state of the checkbox
-   */
-  @Prop() indeterminate = false;
 
   /**
    * Label of the checkbox which is presented in the UI
@@ -116,9 +132,8 @@ export class CatCheckbox {
   }
 
   componentDidLoad() {
-    if (this.input && this.indeterminate) {
-      this.input.indeterminate = true;
-    }
+    this.onCheckedChange(this.checked);
+    this.onIndeterminateChange(this.indeterminate);
   }
 
   componentWillRender(): void {
@@ -167,7 +182,8 @@ export class CatCheckbox {
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
-            onInput={this.onInput.bind(this)}
+            onClick={this.onClick.bind(this)}
+            indeterminate={this.indeterminate}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
           />
@@ -193,8 +209,14 @@ export class CatCheckbox {
     );
   }
 
-  private onInput() {
-    this.checked = this.input.checked;
+  private onClick(event: MouseEvent) {
+    event.preventDefault();
+    if (this.checked || this.indeterminate) {
+      this.checked = false;
+      this.indeterminate = false;
+    } else {
+      this.checked = true;
+    }
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);
   }
