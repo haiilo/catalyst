@@ -1,34 +1,22 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
-import log from 'loglevel';
+import { Component, Event, Method, EventEmitter, Prop, h } from '@stencil/core';
+import flatpickr from 'flatpickr';
+import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
-import { DatepickerType } from './datepicker-type';
-import dayjs from './dayjs.config';
-import Datepicker, { getDatepickerOptions } from './vanillajs-datepicker.config';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import { getFormat } from './cat-datepicker.config';
+import { getLocale } from './cat-datepicker.locale';
 
-/**
- * Inputs are used to allow users to provide text input when the expected input
- * is short. As well as plain text, Input supports various types of text,
- * including passwords and numbers.
- *
- * @slot hint - Optional hint element to be displayed with the input.
- * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part label - The label content.
- */
 @Component({
   tag: 'cat-datepicker',
   styleUrl: 'cat-datepicker.scss',
   shadow: true
 })
-export class CatDatepicker {
-  private input!: HTMLInputElement;
-  private catInput!: HTMLCatInputElement;
-  private datepicker!: any;
-
-  @Element() hostElement!: HTMLElement;
-
-  @State() hasSlottedLabel = false;
-
-  @State() hasSlottedHint = false;
+export class CatDatepickerFlat {
+  private pickr?: flatpickr.Instance;
+  private _input?: HTMLCatInputElement;
+  private get input(): HTMLInputElement | undefined {
+    return this._input?.shadowRoot?.querySelector('input') ?? undefined;
+  }
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -66,9 +54,9 @@ export class CatDatepicker {
   @Prop() icon?: string;
 
   /**
-   * Display the icon on the left.
+   * Display the icon on the right.
    */
-  @Prop() iconLeft = false;
+  @Prop() iconRight = false;
 
   /**
    * A unique identifier for the input.
@@ -86,14 +74,19 @@ export class CatDatepicker {
   @Prop() labelHidden = false;
 
   /**
-   * A maximum value for date, time and numeric values.
+   * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
    */
-  @Prop() max?: number | string;
+  @Prop() max?: string;
 
   /**
-   * A minimum value for date, time and numeric values.
+   * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
    */
-  @Prop() min?: number | string;
+  @Prop() min?: string;
+
+  /**
+   * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+   */
+  @Prop() mode: 'date' | 'time' | 'datetime' | 'daterange' | 'week' = 'date';
 
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -126,27 +119,12 @@ export class CatDatepicker {
   @Prop() required = false;
 
   /**
-   * The date format after picker selection.
+   * The step size to use when changing the time.
    */
-  @Prop() format = 'mm/dd/yyyy';
+  @Prop() step = 5;
 
   /**
-   * Whether the picker should show the week numbers.
-   */
-  @Prop() weekNumbers = true;
-
-  /**
-   * Type of datepicker ('date', 'week', 'month', 'year').
-   */
-  @Prop() type: DatepickerType = 'date';
-
-  /**
-   * Dates that should be disabled inside the picker
-   */
-  @Prop() datesDisabled!: Array<Date> | Array<string>;
-
-  /**
-   * The value of the control.
+   * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
    */
   @Prop({ mutable: true }) value?: string;
 
@@ -175,7 +153,7 @@ export class CatDatepicker {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<string>;
 
   /**
    * Emitted when the input received focus.
@@ -187,8 +165,43 @@ export class CatDatepicker {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentDidLoad() {
+    const input = this.input;
+    if (input) {
+      const locale = getLocale(i18n.getLocale());
+      const format = getFormat(i18n.getLocale(), this.mode);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
+      this.pickr = flatpickr(input, {
+        locale,
+        plugins,
+        altInput: true,
+        prevArrow: '←',
+        nextArrow: '→',
+        dateFormat: this.dateFormat,
+        altFormat: format,
+        ariaDateFormat: format,
+        mode: this.mode === 'daterange' ? 'range' : 'single',
+        minDate: this.min,
+        maxDate: this.max,
+        enableTime: this.mode === 'time' || this.mode === 'datetime',
+        noCalendar: this.mode === 'time',
+        weekNumbers: true,
+        minuteIncrement: this.step,
+        onChange: (dates, dateStr, flatpickr) => {
+          if (this.mode === 'week') {
+            this.value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
+          } else {
+            this.value = dateStr;
+          }
+          this.catChange.emit(this.value);
+        }
+      });
+    }
+  }
+
   /**
-   * Programmatically move focus to the input. Use this method instead of
+   * Programmatically move focus to the datepicker. Use this method instead of
    * `input.focus()`.
    *
    * @param options An optional object providing options to control aspects of
@@ -196,257 +209,70 @@ export class CatDatepicker {
    */
   @Method()
   async doFocus(options?: FocusOptions): Promise<void> {
-    this.input.focus(options);
+    this._input?.doFocus(options);
   }
 
   /**
-   * Programmatically remove focus from the input. Use this method instead of
+   * Programmatically remove focus from the datepicker. Use this method instead of
    * `input.blur()`.
    */
   @Method()
   async doBlur(): Promise<void> {
-    this.input.blur();
-  }
-
-  /**
-   * Programmatically simulate a click on the input.
-   */
-  @Method()
-  async doClick(): Promise<void> {
-    this.input.click();
-  }
-
-  /**
-   * Clear the input.
-   */
-  @Method()
-  async clear(): Promise<void> {
-    this.value = '';
-  }
-
-  componentWillRender(): void {
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this._input?.doBlur();
   }
 
   render() {
     return (
-      <Host>
-        <cat-input
-          ref={el => (this.catInput = el as HTMLCatInputElement)}
-          requiredMarker={this.requiredMarker}
-          horizontal={this.horizontal}
-          autoComplete={this.autoComplete}
-          clearable={this.clearable}
-          disabled={this.disabled}
-          hint={this.hint}
-          icon={this.icon}
-          iconRight={!this.iconLeft}
-          identifier={this.identifier}
-          label={this.label}
-          labelHidden={this.labelHidden}
-          name={this.name}
-          placeholder={this.placeholder}
-          textPrefix={this.textPrefix}
-          textSuffix={this.textSuffix}
-          readonly={this.readonly}
-          required={this.required}
-          value={this.value}
-          errors={this.errors}
-          errorUpdate={this.errorUpdate}
-          nativeAttributes={this.nativeAttributes}
-          onCatChange={event => this.onCatChange(event)}
-          onCatFocus={event => this.onCatFocus(event.detail)}
-          onCatBlur={event => this.onCatBlur(event.detail)}
-        >
-          {this.hasSlottedLabel && (
-            <span slot="label">
-              <slot name="label"></slot>
-            </span>
-          )}
-          {this.hasSlottedHint && (
-            <span slot="hint">
-              <slot name="hint"></slot>
-            </span>
-          )}
-        </cat-input>
-      </Host>
+      <cat-input
+        ref={el => (this._input = el)}
+        requiredMarker={this.requiredMarker}
+        horizontal={this.horizontal}
+        autoComplete={this.autoComplete}
+        clearable={this.clearable}
+        disabled={this.disabled}
+        hint={this.hint}
+        icon={this.icon}
+        iconRight={this.iconRight}
+        identifier={this.identifier}
+        label={this.label}
+        labelHidden={this.labelHidden}
+        name={this.name}
+        placeholder={this.placeholder}
+        textPrefix={this.textPrefix}
+        textSuffix={this.textSuffix}
+        readonly={this.readonly}
+        required={this.required}
+        value={this.value}
+        errors={this.errors}
+        errorUpdate={this.errorUpdate}
+        nativeAttributes={this.nativeAttributes}
+        onCatChange={e => {
+          e.stopPropagation();
+          this.pickr?.setDate(e.detail);
+          if (this.value !== (e.detail || undefined)) {
+            this.value = e.detail || undefined;
+            this.catChange.emit(this.value);
+          }
+        }}
+        onCatFocus={e => {
+          e.stopPropagation();
+          this.catFocus.emit(e.detail);
+        }}
+        onCatBlur={e => {
+          e.stopPropagation();
+          this.catBlur.emit(e.detail);
+        }}
+      ></cat-input>
     );
   }
 
-  componentDidLoad() {
-    if (this.hostElement) {
-      const inputWrapper = this.catInput.shadowRoot?.querySelector('.input-wrapper') as HTMLElement;
-      const inputElement = inputWrapper?.querySelector('input');
-
-      if (inputElement) {
-        this.input = inputElement;
-      } else {
-        log.error('[CatInput] Missing input element', this);
-        return;
-      }
-
-      this.datepicker = new Datepicker(inputElement, {
-        ...getDatepickerOptions(this.type, this.value),
-        container: inputWrapper,
-        maxDate: this.max,
-        minDate: this.min,
-        datesDisabled: this.datesDisabled,
-        prevArrow: '←',
-        nextArrow: '→',
-        weekNumbers: this.weekNumbers ? 1 : 0,
-        format: {
-          toValue: (dateStr: string | Date | number): Date =>
-            this.type === 'week' ? this.fromISOWeek(dateStr) : Datepicker.parseDate(dateStr, this.dateFormat),
-          toDisplay: (date: Date): string =>
-            this.type === 'week' ? this.toISOWeek(date).toString() : Datepicker.formatDate(date, this.dateFormat)
-        },
-        beforeShowDay: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
-        beforeShowMonth: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null),
-        beforeShowYear: (date: Date) => (this.shouldHighlightAsToday(date) ? 'today' : null)
-      });
-
-      if (this.type === 'week') {
-        this.datepicker.pickerElement.classList.add('weekly');
-      }
-
-      this.input.addEventListener('show', this.handleWeekDays.bind(this));
-      this.input.addEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-      this.input.addEventListener('changeMonth', this.handleWeekDays.bind(this));
-      this.input.addEventListener('changeView', this.handleWeekDays.bind(this));
-      this.input.addEventListener('keydown', this.focusAllWeekDays.bind(this));
-    }
-  }
-
-  disconnectedCallback() {
-    this.input.removeEventListener('show', this.handleWeekDays.bind(this));
-    this.input.removeEventListener('changeDate', this.handleDateChange.bind(this) as EventListener);
-    this.input.removeEventListener('changeMonth', this.handleWeekDays.bind(this));
-    this.input.removeEventListener('changeView', this.handleWeekDays.bind(this));
-    this.input.removeEventListener('keydown', this.focusAllWeekDays.bind(this));
-  }
-
-  private handleDateChange(event: CustomEvent) {
-    this.selectAllWeekDays(event.detail.date);
-    this.value = this.input.value;
-    this.catChange.emit();
-  }
-
-  private handleWeekDays(event: Event | Date) {
-    this.selectAllWeekDays(event);
-    this.focusAllWeekDays();
-  }
-
-  private selectAllWeekDays(event: Event | Date) {
-    const date = event instanceof Date ? event : (event as CustomEvent).detail?.date;
-    if (this.type !== 'week') {
-      return;
-    }
-    if (this.input?.value) {
-      const firstDayOfWeek = dayjs(date).startOf('isoWeek');
-
-      if (!firstDayOfWeek.isSame(dayjs(date).startOf('day'))) {
-        this.datepicker.setDate(firstDayOfWeek.toDate());
-      } else {
-        this.addClassToAllWeekDays('selected');
-      }
-    }
-  }
-
-  private focusAllWeekDays() {
-    const date = dayjs(this.datepicker.picker.viewDate);
-    if (this.type !== 'week' || !date) {
-      return;
-    }
-
-    const firstDayOfWeek = dayjs(date).startOf('isoWeek');
-
-    if (!firstDayOfWeek.isSame(dayjs(date).startOf('day'))) {
-      this.datepicker.setFocusedDate(firstDayOfWeek.toDate());
-    }
-
-    this.addClassToAllWeekDays('focused');
-  }
-
-  private addClassToAllWeekDays(className: string) {
-    let weekdaysCount = 7;
-    const pickerElement = this.datepicker.pickerElement as HTMLElement;
-    let selected = pickerElement.querySelector(`.datepicker-cell:not(.month):not(.year).${className}`);
-    while (weekdaysCount > 1) {
-      if (selected) {
-        selected = selected.nextElementSibling;
-        selected?.classList.add(className);
-        weekdaysCount--;
-      } else {
-        break;
-      }
-    }
-  }
-
-  private onCatChange(event: unknown) {
-    this.value = this.input.value;
-    this.catChange.emit(event as InputEvent);
-  }
-
-  private onCatFocus(event: FocusEvent) {
-    this.catFocus.emit(event);
-  }
-
-  private onCatBlur(event: FocusEvent) {
-    this.catBlur.emit(event);
-  }
-
-  private shouldHighlightAsToday(date: Date) {
-    const now = new Date();
-    const isSameYear = now.getFullYear() === date.getFullYear();
-    const isSameMonth = now.getMonth() === date.getMonth();
-    const isSameDay = now.getDate() === date.getDate();
-    switch (this.type) {
-      case 'date':
-        return isSameYear && isSameMonth && isSameDay;
-      case 'week':
-        return isSameYear && this.toISOWeek(now) === this.toISOWeek(date);
-      case 'month':
-        return isSameYear && isSameMonth;
-      case 'year':
-        return isSameYear;
-      default:
-        return false;
-    }
-  }
-
-  // ----- Date handling
-
   private get dateFormat(): string {
-    const date = new Date(Date.UTC(3333, 10, 22));
-    const dateStr = new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: this.type !== 'year' ? 'numeric' : undefined,
-      day: this.type === 'date' || this.type === 'week' ? 'numeric' : undefined
-    }).format(date);
-    return dateStr.replace('22', 'dd').replace('11', 'mm').replace('3333', 'yyyy');
-  }
-
-  private fromISOWeek(week: string | Date | number): Date {
-    if (typeof week === 'string' || typeof week === 'number') {
-      const weekNumber = parseInt(week.toString(), 10);
-      return isNaN(weekNumber) ? new Date() : this.fromISOWeekNumber(weekNumber);
+    if (this.mode === 'week') {
+      return 'W';
+    } else if (this.mode === 'time') {
+      return 'H:i';
+    } else {
+      return 'Z';
     }
-    return week;
-  }
-
-  private fromISOWeekNumber(weekNumber: number, year = new Date().getFullYear()): Date {
-    const refDate = new Date(Date.UTC(year, 0, 4)); // January 4th
-    const diffDays = (weekNumber - 1) * 7 - (refDate.getUTCDay() || 7) + 1;
-    const date = new Date(refDate);
-    date.setUTCDate(date.getUTCDate() + diffDays);
-    return date;
-  }
-
-  private toISOWeek(date: Date): number {
-    const currentDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-    currentDate.setUTCDate(currentDate.getUTCDate() + 4 - (currentDate.getUTCDay() || 7));
-    const firstDayOfYear = new Date(Date.UTC(currentDate.getUTCFullYear(), 0, 1));
-    return Math.ceil(((currentDate.getTime() - firstDayOfYear.getTime()) / 86400000 + 1) / 7);
   }
 }

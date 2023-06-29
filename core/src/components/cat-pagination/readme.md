@@ -29,6 +29,13 @@ correctly highlighted using `aria-current`.
 | `variant`       | `variant`        | The rendering style of the buttons.                      | `"filled" \| "outlined" \| "text"`  | `'text'`                  |
 
 
+## Events
+
+| Event       | Description                                          | Type                  |
+| ----------- | ---------------------------------------------------- | --------------------- |
+| `catChange` | Emitted when the page of the pagination has changed. | `CustomEvent<number>` |
+
+
 ## Dependencies
 
 ### Depends on

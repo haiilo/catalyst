@@ -23,11 +23,16 @@
 
     catIconRegistry.addIcons(ci);
     catI18nRegistry.set({
+      'datepicker.year': 'Year',
+      'datepicker.month': 'Month',
+      'datepicker.hour': 'Hour',
+      'datepicker.minute': 'Minute',
+      'datepicker.scroll': 'Scroll to increment',
+      'datepicker.toggle': 'Click to toggle',
       'dialog.close': 'Close',
       'input.clear': 'Clear',
       'input.optional': 'Optional',
       'input.required': 'Required',
-      'input.today': 'Today',
       'notification.dismiss': 'Dismiss',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',

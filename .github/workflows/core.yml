@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'core/**'
+    tags-ignore:
+      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -18,7 +18,7 @@ function getAssetsIconsPath() {
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['cat-input', 'cat-textarea'],
+    elementSelectors: ['cat-input', 'cat-textarea, cat-datepicker'],
     event: 'catChange',
     targetAttr: 'value',
     type: 'text'
@@ -26,7 +26,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['cat-checkbox', 'cat-toggle'],
     event: 'catChange',
-    targetAttr: 'value',
+    targetAttr: 'resolvedValue',
     type: 'boolean'
   },
   {

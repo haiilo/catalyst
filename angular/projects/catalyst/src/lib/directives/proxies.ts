@@ -154,15 +154,15 @@ export declare interface CatCard extends Components.CatCard {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
-  methods: ['doFocus', 'doBlur', 'doClick']
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  methods: ['doFocus', 'doBlur']
 })
 @Component({
   selector: 'cat-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
 })
 export class CatCheckbox {
   protected el: HTMLElement;
@@ -178,7 +178,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<boolean | string | null>>;
   /**
    * Emitted when the checkbox received focus.
    */
@@ -191,15 +191,15 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
-  methods: ['doFocus', 'doBlur', 'doClick', 'clear']
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
+  methods: ['doFocus', 'doBlur']
 })
 @Component({
   selector: 'cat-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'datesDisabled', 'disabled', 'errorUpdate', 'errors', 'format', 'hint', 'horizontal', 'icon', 'iconLeft', 'identifier', 'label', 'labelHidden', 'max', 'min', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'textPrefix', 'textSuffix', 'type', 'value', 'weekNumbers'],
+  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
 })
 export class CatDatepicker {
   protected el: HTMLElement;
@@ -215,7 +215,7 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input received focus.
    */
@@ -306,7 +306,7 @@ export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
   inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
-  methods: ['doFocus', 'doBlur', 'doClick', 'clear']
+  methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
   selector: 'cat-input',
@@ -329,7 +329,7 @@ export declare interface CatInput extends Components.CatInput {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the input received focus.
    */
@@ -339,28 +339,6 @@ export declare interface CatInput extends Components.CatInput {
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
-
-
-@ProxyCmp({
-  inputs: ['for', 'horizontal', 'required', 'requiredMarker']
-})
-@Component({
-  selector: 'cat-label',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['for', 'horizontal', 'required', 'requiredMarker'],
-})
-export class CatLabel {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface CatLabel extends Components.CatLabel {}
 
 
 @ProxyCmp({
@@ -378,16 +356,22 @@ export class CatPagination {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
 
-export declare interface CatPagination extends Components.CatPagination {}
+export declare interface CatPagination extends Components.CatPagination {
+  /**
+   * Emitted when the page of the pagination has changed.
+   */
+  catChange: EventEmitter<CustomEvent<number>>;
+}
 
 
 @ProxyCmp({
   inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
-  methods: ['doFocus', 'doBlur', 'doClick']
+  methods: ['doFocus', 'doBlur']
 })
 @Component({
   selector: 'cat-radio',
@@ -410,7 +394,7 @@ export declare interface CatRadio extends Components.CatRadio {
   /**
    * Emitted when the radio is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<boolean | string>>;
   /**
    * Emitted when the radio received focus.
    */
@@ -437,7 +421,7 @@ export class CatRadioGroup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catBlur']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -446,7 +430,11 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<boolean | string>>;
+  /**
+   * Emitted when the radio group received focus.
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
   /**
    * Emitted when the radio group loses focus.
    */
@@ -652,7 +640,7 @@ export declare interface CatTabs extends Components.CatTabs {}
 
 @ProxyCmp({
   inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
-  methods: ['doFocus', 'doBlur', 'doClick']
+  methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
   selector: 'cat-textarea',
@@ -675,7 +663,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when the textarea received focus.
    */
@@ -688,55 +676,15 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 
 @ProxyCmp({
-  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'hourShort', 'identifier', 'label', 'labelHidden', 'max', 'min', 'minutesStep', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'value']
-})
-@Component({
-  selector: 'cat-timepicker',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'hourShort', 'identifier', 'label', 'labelHidden', 'max', 'min', 'minutesStep', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'value'],
-})
-export class CatTimepicker {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange', 'catBlur']);
-  }
-}
-
-
-export declare interface CatTimepicker extends Components.CatTimepicker {
-  /**
-   * Emitted when the select dropdown is opened.
-   */
-  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
-  /**
-   * Emitted when the select dropdown is closed.
-   */
-  catClose: EventEmitter<CustomEvent<FocusEvent>>;
-  /**
-   * Emitted when the value is changed.
-   */
-  catChange: EventEmitter<CustomEvent<any>>;
-  /**
-   * Emitted when the select loses the focus.
-   */
-  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
-}
-
-
-@ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
-  methods: ['doFocus', 'doBlur', 'doClick']
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  methods: ['doFocus', 'doBlur']
 })
 @Component({
   selector: 'cat-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
 })
 export class CatToggle {
   protected el: HTMLElement;
@@ -752,7 +700,7 @@ export declare interface CatToggle extends Components.CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<boolean | string | null>>;
   /**
    * Emitted when the toggle received focus.
    */

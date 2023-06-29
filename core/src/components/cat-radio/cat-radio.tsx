@@ -69,7 +69,7 @@ export class CatRadio {
   /**
    * The value of the radio component.
    */
-  @Prop() value?: string;
+  @Prop() value = '';
 
   /**
    * Optional hint text(s) to be displayed with the radio.
@@ -89,7 +89,7 @@ export class CatRadio {
   /**
    * Emitted when the radio is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<boolean | string>;
 
   /**
    * Emitted when the radio received focus.
@@ -130,14 +130,6 @@ export class CatRadio {
     this.input.blur();
   }
 
-  /**
-   * Programmatically simulate a click on the radio button.
-   */
-  @Method()
-  async doClick(): Promise<void> {
-    this.input.click();
-  }
-
   render() {
     return (
       <Host>
@@ -158,7 +150,7 @@ export class CatRadio {
               checked={this.checked}
               required={this.required}
               disabled={this.disabled}
-              onInput={this.onChange.bind(this)}
+              onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
             />
@@ -178,9 +170,9 @@ export class CatRadio {
     );
   }
 
-  private onChange(event: InputEvent) {
+  private onInput() {
     this.checked = true;
-    this.catChange.emit(event);
+    this.catChange.emit(this.value);
   }
 
   private onFocus(event: FocusEvent) {

@@ -51,7 +51,8 @@ a new release
 1. Run `npm run replace -- {new version}`
 1. Run `npm i -f && npm run build`
 1. Run `npm run publish`
-1. Commit changed files with a `chore(release): update dependencies` commit and push incl. tags
+1. Run `git add -A && git commit -m "chore(release): update dependencies"`
+1. Run `git push --follow-tags origin main`
 
 ## Code Contributors
 

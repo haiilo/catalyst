@@ -6,5 +6,6 @@
   <cat-input label="Input" formControlName="test" textPrefix="write 'aaa' to make it valid" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-input>
   <cat-input label="relatedInput" formControlName="relatedInput" [errorUpdate]="4000"></cat-input>
   <cat-textarea label="Textarea" formControlName="test" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-textarea>
-  <cat-select label="Select" formControlName="option" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint" [connector]="countryConnector"></cat-select>
+  <cat-select label="Select" formControlName="option" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint" [connector]="countryConnector" [clearable]="true"></cat-select>
+  <cat-datepicker label="Datepicker" formControlName="date" [nativeAttributes]="{'data-test': 'test-attribute'}" hint="this is a hint"></cat-datepicker>
 </form>

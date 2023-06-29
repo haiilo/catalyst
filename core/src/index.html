@@ -14,11 +14,16 @@
        */
       catIconRegistry.addIcons(ci);
       catI18nRegistry.set({
+        'datepicker.year': 'Year',
+        'datepicker.month': 'Month',
+        'datepicker.hour': 'Hour',
+        'datepicker.minute': 'Minute',
+        'datepicker.scroll': 'Scroll to increment',
+        'datepicker.toggle': 'Click to toggle',
         'dialog.close': 'Close',
         'input.clear': 'Clear',
         'input.optional': 'Optional',
         'input.required': 'Required',
-        'input.today': 'Today',
         'notification.dismiss': 'Dismiss',
         'pagination.prev': 'Previous',
         'pagination.page': 'Go to page {{page}}',
@@ -100,7 +105,6 @@
           <li><a href="#dropdown">Dropdown</a></li>
           <li><a href="#form-group">Form Group</a></li>
           <li><a href="#icon">Icon</a></li>
-          <li><a href="#label">Label</a></li>
           <li><a href="#input">Input</a></li>
           <li><a href="#datepicker">Datepicker</a></li>
           <li><a href="#notification">Notification</a></li>
@@ -111,7 +115,6 @@
           <li><a href="#skeleton">Skeleton</a></li>
           <li><a href="#spinner">Spinner</a></li>
           <li><a href="#tabs">Tabs</a></li>
-          <li><a href="#timepicker">Timepicker</a></li>
           <li><a href="#textarea">Textarea</a></li>
           <li><a href="#toggle">Toggle</a></li>
           <li><a href="#tooltip">Tooltip</a></li>
@@ -119,7 +122,6 @@
       </nav>
       <div class="content">
         <h1>Catalyst</h1>
-
         <section id="typo">
           <h2>Typography</h2>
           <cat-card>
@@ -562,38 +564,26 @@
               <span slot="label">This is the <b>label</b></span>
             </cat-input>
             <cat-input hint="NO LABEL" required></cat-input>
+            <cat-input label="Label" label-hidden="true" hint="NO LABEL" required></cat-input>
             <cat-input label="Field 1" hint="This is a hint"></cat-input>
             <cat-input label="This is a very long label with some more text" required hint="This is a hint"></cat-input>
             <cat-textarea max-length="50" label="Label" hint="This is a hint"></cat-textarea>
             <cat-select label="Field 3"></cat-select>
-            <cat-datepicker type="date" clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
+            <cat-datepicker clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
           </cat-form-group>
 
           <h3>Auto (more required)</h3>
           <cat-form-group>
-            <cat-label for="ext-label12" class="cat-flex-1">Field 1</cat-label>
-            <cat-input
-              class="cat-m-0 cat-flex-1"
-              label="Field 1"
-              label-hidden="true"
-              identifier="ext-label12"
-            ></cat-input>
+            <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2" required></cat-input>
             <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
 
           <h3>Auto (more optional)</h3>
           <cat-form-group>
-            <cat-input label="Field 1" required-marker="optional!"></cat-input>
+            <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2"></cat-input>
-            <cat-label for="ext-label13" class="cat-flex-1" required>Field 3</cat-label>
-            <cat-input
-              class="cat-m-0 cat-flex-1"
-              label="Field 3"
-              label-hidden="true"
-              identifier="ext-label13"
-              required
-            ></cat-input>
+            <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
 
           <h3>None marker</h3>
@@ -607,14 +597,14 @@
           <cat-form-group required-marker="optional">
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2"></cat-input>
-            <cat-select label="Field 3" required></cat-select>
+            <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
 
           <h3>Only mark required</h3>
           <cat-form-group required-marker="required">
             <cat-input label="Field 1"></cat-input>
             <cat-input label="Field 2" required></cat-input>
-            <cat-select label="Field 3" required></cat-select>
+            <cat-textarea label="Field 3" required></cat-textarea>
           </cat-form-group>
 
           <h3>Dynamic field added</h3>
@@ -654,38 +644,6 @@
           <cat-icon icon="sp-grid-3-cols" style="--cat-icon-ratio: 2.5"></cat-icon>
         </section>
 
-        <section id="label">
-          <h2>Label</h2>
-          <div class="cat-flex cat-items-start cat-mb-m">
-            <cat-label for="ext-label1" class="cat-flex-1" horizontal>External label</cat-label>
-            <cat-input
-              class="cat-m-0 cat-flex-1"
-              label="External label"
-              label-hidden="true"
-              identifier="ext-label1"
-              max-length="100"
-            ></cat-input>
-          </div>
-          <div class="cat-flex cat-items-start cat-mb-m">
-            <cat-label for="ext-label2" class="cat-flex-1" horizontal>External label</cat-label>
-            <cat-textarea
-              class="cat-m-0 cat-flex-1"
-              label="External label"
-              label-hidden="true"
-              identifier="ext-label2"
-            ></cat-textarea>
-          </div>
-          <div class="cat-flex cat-items-start cat-mb-m">
-            <cat-label for="ext-label3" class="cat-flex-1">External label</cat-label>
-            <cat-select
-              class="cat-m-0 cat-flex-1"
-              label="External label"
-              label-hidden="true"
-              identifier="ext-label3"
-            ></cat-select>
-          </div>
-        </section>
-
         <section id="input">
           <h2>Input</h2>
           <cat-input label="Label" hint="This a hint!">
@@ -695,33 +653,25 @@
             <label slot="label">Priority Label</label>
           </cat-input>
           <h3>Types</h3>
-          <cat-input label="Button" type="button"></cat-input>
           <cat-input label="Color" type="color"></cat-input>
-          <cat-input label="Date" type="date" min="2019-10-01" max="2025-09-12"></cat-input>
-          <cat-input label="Datetime-local" type="datetime-local" min="2019-10-10T02:00"></cat-input>
           <cat-input label="Email" type="email"></cat-input>
           <cat-input label="File" type="file"></cat-input>
-          <cat-input label="Month" type="month" min="2019-10"></cat-input>
           <cat-input label="Number" type="number"></cat-input>
           <cat-input label="Password" type="password"></cat-input>
           <cat-input label="Range" type="range"></cat-input>
-          <cat-input label="Reset" type="reset"></cat-input>
           <cat-input label="Search" type="search"></cat-input>
-          <cat-input label="Submit" type="submit"></cat-input>
           <cat-input label="Tel" type="tel"></cat-input>
           <cat-input label="Text" type="text"></cat-input>
-          <cat-input label="Time" type="time" min="14:01" max="02:00"></cat-input>
           <cat-input label="Url" type="url"></cat-input>
-          <cat-input label="Week" type="week" min="2019-W30"></cat-input>
         </section>
 
         <section id="datepicker">
           <h2>Datepicker</h2>
-          <cat-datepicker type="date" clearable="true" a11y-label="ARIA" label="Date picker"></cat-datepicker>
-          <cat-datepicker type="week" clearable="true" a11y-label="ARIA" label="Week picker"></cat-datepicker>
-          <cat-datepicker type="month" clearable="true" a11y-label="ARIA" label="Month picker"></cat-datepicker>
-          <cat-datepicker type="year" clearable="true" a11y-label="ARIA" label="Year picker"></cat-datepicker>
-          <cat-datepicker label="Year picker" text-prefix="prefix" text-suffix="suffix"></cat-datepicker>
+          <cat-datepicker mode="date" label="Date"></cat-datepicker>
+          <cat-datepicker mode="datetime" label="Datetime"></cat-datepicker>
+          <cat-datepicker mode="time" label="Time"></cat-datepicker>
+          <cat-datepicker mode="week" label="Week"></cat-datepicker>
+          <cat-datepicker mode="daterange" label="Daterange"></cat-datepicker>
         </section>
 
         <section id="notification">
@@ -765,7 +715,15 @@
           <cat-pagination page-count="10" variant="outlined"></cat-pagination>
           <br />
           <br />
-          <cat-pagination page-count="10" variant="outlined" round></cat-pagination>
+          <span>Change event demo (See console)</span>
+          <cat-pagination id="change-demo" page-count="10" variant="outlined" round></cat-pagination>
+          <script>
+            var paginationDemo = document.getElementById('change-demo');
+
+            paginationDemo.addEventListener('catChange', function (event) {
+              console.log('Page changed!', event.detail);
+            });
+          </script>
         </section>
 
         <section id="radio">
@@ -878,12 +836,6 @@
               tab.deactivated = true;
             }, 5000);
           </script>
-        </section>
-
-        <section id="timepicker">
-          <h2>Timepicker</h2>
-          <cat-timepicker hour-short label="Short format"></cat-timepicker>
-          <cat-timepicker label="Long format"></cat-timepicker>
         </section>
 
         <section id="textarea">

@@ -1,77 +1,15 @@
 name: 'Release'
 on:
-  workflow_dispatch:
-    inputs:
-      release:
-        description: 'Release level'
-        required: true
-        default: patch
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
+  push:
+    tags:
+      - "v*.*.*"
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install
-        run: |
-          npm ci
-      - name: Create release
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          npm run release:${{ github.event.inputs.release }}
-      - name: Install and Build Tokens
-        run: |
-          npm run build -w tokens
-      - name: Publish @haiilo/catalyst-tokens to npm
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./tokens/package.json
-      - name: Install and Build Core Package
-        run: |
-          npm i @haiilo/catalyst-tokens --save -w core --force
-          npm run build:ci -w core
-      - name: Publish @haiilo/catalyst to npm
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./core/package.json
-      - name: Install and Build
-        run: |
-          npm i @haiilo/catalyst --save -w angular/projects/catalyst --force
-          npm run build -w angular
-      - name: Publish @haiilo/catalyst-angular to npm
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./angular/dist/catalyst/package.json
-      - name: Publish @haiilo/catalyst-react to npm
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./react/package.json
-      - name: Commit files
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git push --follow-tags
-      - name: 'Get release tag'
-        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
-        id: previoustag
-      - name: Publish to GitHub
+      - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.previoustag.outputs.tag }}
           body_path: CHANGELOG.md

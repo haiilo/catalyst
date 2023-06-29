@@ -40,6 +40,7 @@ export interface RenderInfo {
     src?: string;
     round?: boolean;
     initials?: string;
+    icon?: string;
   };
 }
 
@@ -602,6 +603,7 @@ export class CatSelect {
                             label={item.render.label}
                             round={item.render.avatar.round}
                             src={item.render.avatar.src}
+                            icon={item.render.avatar.icon}
                             initials={item.render.avatar.initials ?? ''}
                           ></cat-avatar>
                         ) : null}
@@ -615,6 +617,7 @@ export class CatSelect {
                             a11yLabel={i18n.t('select.deselect')}
                             onClick={() => this.deselect(item.item.id)}
                             tabIndex={-1}
+                            onCatClick={event => event.stopPropagation()}
                           ></cat-button>
                         )}
                       </span>
@@ -625,6 +628,7 @@ export class CatSelect {
                     label={this.state.selection[0].render.label}
                     round={this.state.selection[0].render.avatar.round}
                     src={this.state.selection[0].render.avatar.src}
+                    icon={this.state.selection[0].render.avatar.icon}
                     initials={this.state.selection[0].render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
@@ -657,7 +661,10 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onClick={() => this.clear()}
+                  onCatClick={event => {
+                    event.stopPropagation();
+                    this.clear();
+                  }}
                 ></cat-button>
               ) : null}
               {!this.state.isResolving && (
@@ -672,6 +679,7 @@ export class CatSelect {
                   aria-expanded={this.state.isOpen}
                   tabIndex={-1}
                   disabled={this.disabled || this.state.isResolving}
+                  onCatClick={event => event.stopPropagation()}
                 ></cat-button>
               )}
             </div>
@@ -769,6 +777,7 @@ export class CatSelect {
                     label={item.render.label}
                     round={item.render.avatar.round}
                     src={item.render.avatar.src}
+                    icon={item.render.avatar.icon}
                     initials={item.render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
@@ -794,6 +803,7 @@ export class CatSelect {
                   label={item.render.label}
                   round={item.render.avatar.round}
                   src={item.render.avatar.src}
+                  icon={item.render.avatar.icon}
                   initials={item.render.avatar.initials ?? ''}
                 ></cat-avatar>
               ) : null}

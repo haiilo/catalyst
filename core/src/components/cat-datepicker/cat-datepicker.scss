@@ -1,1 +1,16 @@
-@use './vanillajs-datepicker';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: flex;
+  margin-bottom: $cat-body-margin-bottom;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+cat-input {
+  flex: 1 1 auto;
+  margin: 0;
+}

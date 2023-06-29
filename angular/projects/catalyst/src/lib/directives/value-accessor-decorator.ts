@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-input, cat-textarea, cat-select'
+  selector: 'cat-input, cat-textarea, cat-datepicker, cat-select'
 })
 export class ValueAccessorDecorator implements AfterViewInit {
   constructor(private readonly el: ElementRef, @Self() @Optional() private readonly controlDirective?: NgControl) {}

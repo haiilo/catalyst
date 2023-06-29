@@ -11,4 +11,8 @@ const output = results
   .map(result => `  - ${result.file}`)
   .join('\n');
 
-console.info('\x1b[32m%s\x1b[0m', `Replaced SCSS '~' imports in\n${output}`);
+if (output.length) {
+  console.info('\x1b[32m%s\x1b[0m', `Replaced SCSS '~' imports in\n${output}`);
+} else {
+  console.info('\x1b[32m%s\x1b[0m', 'No SCSS imports replaced.');
+}

@@ -158,7 +158,7 @@ export class CatInput {
   /**
    * The value of the control.
    */
-  @Prop({ mutable: true }) value?: string | number;
+  @Prop({ mutable: true }) value?: string;
 
   /**
    * The validation errors for this input. Will render a hint under the input
@@ -185,7 +185,7 @@ export class CatInput {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<string>;
 
   /**
    * Emitted when the input received focus.
@@ -228,19 +228,12 @@ export class CatInput {
   }
 
   /**
-   * Programmatically simulate a click on the input.
-   */
-  @Method()
-  async doClick(): Promise<void> {
-    this.input.click();
-  }
-
-  /**
    * Clear the input.
    */
   @Method()
   async clear(): Promise<void> {
     this.value = '';
+    this.catChange.emit(this.value);
   }
 
   @Watch('errors')
@@ -377,9 +370,9 @@ export class CatInput {
     return !!this.errorMap;
   }
 
-  private onInput(event: InputEvent) {
+  private onInput() {
     this.value = this.input.value;
-    this.catChange.emit(event);
+    this.catChange.emit(this.value);
     this.showErrorsIfTimeout();
   }
 

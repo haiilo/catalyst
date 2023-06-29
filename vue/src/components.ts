@@ -82,6 +82,7 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'name',
   'required',
   'value',
+  'resolvedValue',
   'hint',
   'labelLeft',
   'nativeAttributes',
@@ -99,22 +100,20 @@ export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('c
   'disabled',
   'hint',
   'icon',
-  'iconLeft',
+  'iconRight',
   'identifier',
   'label',
   'labelHidden',
   'max',
   'min',
+  'mode',
   'name',
   'placeholder',
   'textPrefix',
   'textSuffix',
   'readonly',
   'required',
-  'format',
-  'weekNumbers',
-  'type',
-  'datesDisabled',
+  'step',
   'value',
   'errors',
   'errorUpdate',
@@ -183,14 +182,6 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
 ]);
 
 
-export const CatLabel = /*@__PURE__*/ defineContainer<JSX.CatLabel>('cat-label', undefined, [
-  'requiredMarker',
-  'horizontal',
-  'for',
-  'required'
-]);
-
-
 export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('cat-pagination', undefined, [
   'page',
   'pageCount',
@@ -201,7 +192,8 @@ export const CatPagination = /*@__PURE__*/ defineContainer<JSX.CatPagination>('c
   'round',
   'compact',
   'iconPrev',
-  'iconNext'
+  'iconNext',
+  'catChange'
 ]);
 
 
@@ -230,6 +222,7 @@ export const CatRadioGroup = /*@__PURE__*/ defineContainer<JSX.CatRadioGroup>('c
   'a11yLabel',
   'labelLeft',
   'catChange',
+  'catFocus',
   'catBlur'
 ]);
 
@@ -338,36 +331,6 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
 ]);
 
 
-export const CatTimepicker = /*@__PURE__*/ defineContainer<JSX.CatTimepicker>('cat-timepicker', undefined, [
-  'requiredMarker',
-  'horizontal',
-  'multiple',
-  'placement',
-  'value',
-  'disabled',
-  'placeholder',
-  'hint',
-  'identifier',
-  'label',
-  'name',
-  'labelHidden',
-  'required',
-  'clearable',
-  'max',
-  'min',
-  'noItems',
-  'errors',
-  'errorUpdate',
-  'nativeAttributes',
-  'minutesStep',
-  'hourShort',
-  'catOpen',
-  'catClose',
-  'catChange',
-  'catBlur'
-]);
-
-
 export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggle', undefined, [
   'checked',
   'disabled',
@@ -377,6 +340,7 @@ export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggl
   'name',
   'required',
   'value',
+  'resolvedValue',
   'hint',
   'labelLeft',
   'nativeAttributes',

@@ -2,6 +2,73 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.2](https://github.com/haiilo/catalyst/compare/v6.0.1...v6.0.2) (2023-06-19)
+
+
+### Bug Fixes
+
+* **release:** update ci workflow ([ad1cafd](https://github.com/haiilo/catalyst/commit/ad1cafd41e1f5c9065e1f3731fd308141326c661))
+
+### [6.0.1](https://github.com/haiilo/catalyst/compare/v6.0.0...v6.0.1) (2023-06-19)
+
+
+### Bug Fixes
+
+* **core:** remove console logs and fix formats in datepicker ([ba7c99b](https://github.com/haiilo/catalyst/commit/ba7c99b6da3db7194267ea832f2fe5093e1ce85d))
+* **core:** rename datepicker in docs ([551b59e](https://github.com/haiilo/catalyst/commit/551b59ee2357f19c789a7ac221fa2180713b5ccf))
+
+## [6.0.0](https://github.com/haiilo/catalyst/compare/v5.4.0...v6.0.0) (2023-06-16)
+
+
+### Features
+
+* **core:** add range picker ([#272](https://github.com/haiilo/catalyst/issues/272)) ([9595f8e](https://github.com/haiilo/catalyst/commit/9595f8e149fce9e7366d29645914d68bc7aec225))
+* **core:** implement date- and timepicker ([#270](https://github.com/haiilo/catalyst/issues/270)) ([3ba6f75](https://github.com/haiilo/catalyst/commit/3ba6f75dfbfa0edb5cb198a0d5a330cc322a06c8))
+* **core:** implement weekpicker ([#273](https://github.com/haiilo/catalyst/issues/273)) ([00d6f25](https://github.com/haiilo/catalyst/commit/00d6f2573ad674e41aa26c7ee841be626a3669b4))
+* **core:** remove old datepicker ([fdabade](https://github.com/haiilo/catalyst/commit/fdabade3918aac4b52ff67c0b2e43d08d09f01b3))
+
+
+### Bug Fixes
+
+* **core:** cleanup form handling ([47c4483](https://github.com/haiilo/catalyst/commit/47c4483f88f162119ebd432ee7c876b1ef61ca9a))
+* **core:** stop event propagation on cat-select open/close arrow and … ([#269](https://github.com/haiilo/catalyst/issues/269)) ([9db5612](https://github.com/haiilo/catalyst/commit/9db56120d6a3cf333de3a8a287b35053a6e902fb))
+
+## [5.4.0](https://github.com/haiilo/catalyst/compare/v5.3.0...v5.4.0) (2023-06-09)
+
+
+### Features
+
+* add default icons for catalyst components ([#227](https://github.com/haiilo/catalyst/issues/227)) ([9e3ddb7](https://github.com/haiilo/catalyst/commit/9e3ddb79490a7d2958616fc46d8939176110006a))
+* **core:** add output event to get page ([#243](https://github.com/haiilo/catalyst/issues/243)) ([a68cca0](https://github.com/haiilo/catalyst/commit/a68cca00a5a6b904bf8baab26209ef618e45fe80))
+* **core:** add utility classes for cat-border-top, bottom, left, right ([#205](https://github.com/haiilo/catalyst/issues/205)) ([6852a01](https://github.com/haiilo/catalyst/commit/6852a016ecb5c88734c03ba2a64a6743ab2eb04d))
+* **core:** change font-weight for all headlines to 600 ([#233](https://github.com/haiilo/catalyst/issues/233)) ([3ccadc2](https://github.com/haiilo/catalyst/commit/3ccadc237339a2d71331078b9e087f7f9f5111c2))
+* **core:** change lowercase pm/am to uppercase AM/PM + Imask spike ([#221](https://github.com/haiilo/catalyst/issues/221)) ([f7452ad](https://github.com/haiilo/catalyst/commit/f7452ad83633b1b2eecd3921248d9e36c1f02e18))
+* **core:** new cat-timepicker component ([#217](https://github.com/haiilo/catalyst/issues/217)) ([390128d](https://github.com/haiilo/catalyst/commit/390128dd582f31a3797b640a1e2c0445161115b0))
+* **core:** restyle checkbox, toggle and radio button hint message ([#215](https://github.com/haiilo/catalyst/issues/215)) ([669b60a](https://github.com/haiilo/catalyst/commit/669b60a5a1fb0d66c0099a0c958fcff269dbc9d2))
+* **core:** set pnum font feature setting on headings ([#202](https://github.com/haiilo/catalyst/issues/202)) ([0c2b238](https://github.com/haiilo/catalyst/commit/0c2b238f7848cf26ac94a5d646ce6fae6c3dc8dd))
+* **core:** support for icons in cat-select component ([#239](https://github.com/haiilo/catalyst/issues/239)) ([b41ea0c](https://github.com/haiilo/catalyst/commit/b41ea0c05f0eaf1a27c8de4bc96fdddee4ed66a6))
+* **core:** update libs to latest version ([#192](https://github.com/haiilo/catalyst/issues/192)) ([6deb56c](https://github.com/haiilo/catalyst/commit/6deb56cb6d37d196ea6a5fb664563586b6ecdf74))
+* **tokens:** updating the line height for text size s in general to 1.5 ([#214](https://github.com/haiilo/catalyst/issues/214)) ([e0300a4](https://github.com/haiilo/catalyst/commit/e0300a46606eca31b74d3eff8a511399fa01a3ab))
+
+
+### Bug Fixes
+
+* **core:** add border to dropdowns ([#195](https://github.com/haiilo/catalyst/issues/195)) ([4b81a3a](https://github.com/haiilo/catalyst/commit/4b81a3ad6d91bffb2013389ccb159767ac8be19d))
+* **core:** add tilde (~) to vanilajs-datepicker sass file import ([0a06332](https://github.com/haiilo/catalyst/commit/0a0633240f21239b49b197950a9692e6c79fea5e))
+* **core:** add vanillajs-datepicker scss file to build assets ([e25bfe0](https://github.com/haiilo/catalyst/commit/e25bfe0a70baa8d297af87e8a9fb28e95fbc7439))
+* **core:** align input shadows to be the same as for buttons ([#213](https://github.com/haiilo/catalyst/issues/213)) ([5011d4a](https://github.com/haiilo/catalyst/commit/5011d4a6f76292d6ac5ed784a84ef0cb4d84ada8))
+* **core:** change [@import](https://github.com/import) to [@use](https://github.com/use) on cat-datepicker scss file ([8abd872](https://github.com/haiilo/catalyst/commit/8abd87224ed3ef8b84bae0e67a0ce1b64c7a0f0e))
+* **core:** change componentDidLoad to componentDidRender in cat-datepicker ([6198247](https://github.com/haiilo/catalyst/commit/6198247f814f42f4da2839f5198e056ce2c98302))
+* **core:** close dropdown when losing focus ([#181](https://github.com/haiilo/catalyst/issues/181)) ([2342251](https://github.com/haiilo/catalyst/commit/23422512955a7c53577a219203c084b1f6f548ed))
+* **core:** create a copy of vanilajs-datepicker style file ([fabd28b](https://github.com/haiilo/catalyst/commit/fabd28baa362c1a99b501951f62366fac0829696))
+* **core:** debugging ([9b63d8f](https://github.com/haiilo/catalyst/commit/9b63d8fb791e4463d67c08a1fc08cf692b15c340))
+* **core:** fix the min-height of the cat-textarea ([#201](https://github.com/haiilo/catalyst/issues/201)) ([d84df74](https://github.com/haiilo/catalyst/commit/d84df747f50450119da8d827955e6c2abad5730d))
+* **core:** import vanillajs-datepicker style into cat-input component ([1ee4f8e](https://github.com/haiilo/catalyst/commit/1ee4f8ecaddd66e89b1d89e045b6244cc86fc9ab))
+* **core:** move style content inside the main datepicker scss file ([382fe6c](https://github.com/haiilo/catalyst/commit/382fe6cdaaab00bfa95e2642c857cbdc529d8a43))
+* **core:** remove debug output from SCSS ([a37d943](https://github.com/haiilo/catalyst/commit/a37d943654676a5d6c91199cac75ff9b7a988fda))
+* **core:** remove error logs in tests ([#232](https://github.com/haiilo/catalyst/issues/232)) ([b8289a0](https://github.com/haiilo/catalyst/commit/b8289a0b50f6b437ad9eb7e12292c27cfcb807a3))
+* **core:** show all options when an item is selected ([#153](https://github.com/haiilo/catalyst/issues/153)) ([f821ce3](https://github.com/haiilo/catalyst/commit/f821ce31d75d4d064deb33037b42de97e6b19292))
+
 ## [5.3.0](https://github.com/haiilo/catalyst/compare/v5.2.3...v5.3.0) (2023-03-22)
 
 
