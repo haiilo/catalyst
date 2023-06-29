@@ -447,55 +447,6 @@
           <cat-checkbox label="Checked" checked></cat-checkbox>
           <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
           <cat-checkbox label="Indeterminate" indeterminate="true"></cat-checkbox>
-
-          <cat-checkbox id="myCheckbox" label="Indeterminate" indeterminate="true"></cat-checkbox>
-          <button id="myButton">TRUE</button>
-          <button id="myButtonFalse">FALSE</button>
-          <button id="myButtonCH">TRUE</button>
-          <button id="myButtonFalseCH">FALSE</button>
-
-          <script>
-            var myCheckbox = document.getElementById('myCheckbox');
-            var myButton = document.getElementById('myButton');
-            var myButtonFalse = document.getElementById('myButtonFalse');
-
-            var myButtonCH = document.getElementById('myButtonCH');
-            var myButtonFalseCH = document.getElementById('myButtonFalseCH');
-
-            myButton.onclick = function() {
-              // If your custom element has a boolean attribute 'indeterminate'
-              myCheckbox.setAttribute('indeterminate', true);
-
-              // If your custom element uses a property 'indeterminate'
-              // myCheckbox.indeterminate = !myCheckbox.indeterminate;
-            }
-
-            myButtonFalse.onclick = function() {
-              // If your custom element has a boolean attribute 'indeterminate'
-              myCheckbox.setAttribute('indeterminate',false);
-
-              // If your custom element uses a property 'indeterminate'
-              // myCheckbox.indeterminate = !myCheckbox.indeterminate;
-            }
-
-            myButtonCH.onclick = function() {
-              // If your custom element has a boolean attribute 'indeterminate'
-              myCheckbox.setAttribute('checked', true);
-
-              // If your custom element uses a property 'indeterminate'
-              // myCheckbox.indeterminate = !myCheckbox.indeterminate;
-            }
-
-            myButtonFalseCH.onclick = function() {
-              // If your custom element has a boolean attribute 'indeterminate'
-              myCheckbox.setAttribute('checked',false);
-
-              // If your custom element uses a property 'indeterminate'
-              // myCheckbox.indeterminate = !myCheckbox.indeterminate;
-            }
-
-          </script>
-
           <h3>Alignment</h3>
           <cat-checkbox label="Label" label-left></cat-checkbox>
 
