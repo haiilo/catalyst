@@ -1,4 +1,3 @@
-export { catI18nRegistry, catIconRegistry, catNotificationService } from '@haiilo/catalyst';
 export * from './lib/catalyst.module';
 export { CatDialogActionsComponent } from './lib/dialog/dialog-actions.component';
 export { CatDialogHeaderComponent } from './lib/dialog/dialog-header.component';

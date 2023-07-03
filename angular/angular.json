@@ -34,6 +34,37 @@
         }
       }
     },
+    "catalyst-formly": {
+      "projectType": "library",
+      "root": "projects/catalyst-formly",
+      "sourceRoot": "projects/catalyst-formly/src",
+      "prefix": "cat",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/catalyst-formly/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/catalyst-formly/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/catalyst-formly/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/catalyst-formly/src/test.ts",
+            "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
+            "karmaConfig": "projects/catalyst-formly/karma.conf.js"
+          }
+        }
+      }
+    },
     "catalyst-demo": {
       "projectType": "application",
       "schematics": {
@@ -57,13 +88,8 @@
             "polyfills": "projects/catalyst-demo/src/polyfills.ts",
             "tsConfig": "projects/catalyst-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/catalyst-demo/src/favicon.ico",
-              "projects/catalyst-demo/src/assets"
-            ],
-            "styles": [
-              "projects/catalyst-demo/src/styles.scss"
-            ],
+            "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
+            "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -125,13 +151,8 @@
             "tsConfig": "projects/catalyst-demo/tsconfig.spec.json",
             "karmaConfig": "projects/catalyst-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/catalyst-demo/src/favicon.ico",
-              "projects/catalyst-demo/src/assets"
-            ],
-            "styles": [
-              "projects/catalyst-demo/src/styles.scss"
-            ],
+            "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
+            "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": []
           }
         }

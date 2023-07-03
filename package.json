@@ -7,15 +7,16 @@
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "build": "npm run build -w tokens && npm run build -w core && npm run build catalyst -w angular && npm run build -w react",
+    "build": "npm run build -w tokens && npm run build -w core && npm run build catalyst -w angular && npm run build catalyst-formly -w angular && npm run build -w react",
     "replace": "node replace.js",
-    "publish": "npm publish -w tokens && npm publish -w core && cd angular/dist/catalyst && npm publish && cd ../../.. && npm publish -w react",
+    "publish": "npm publish -w tokens && npm publish -w core && cd angular/dist/catalyst && npm publish && cd ../catalyst-formly && npm publish && cd ../../.. && npm publish -w react",
     "clean": "npm run clean -ws --if-present",
     "reset": "npm run reset -ws --if-present && rm -rf ./node_modules"
   },
   "workspaces": [
     "angular",
     "angular/projects/catalyst",
+    "angular/projects/catalyst-formly",
     "core",
     "react",
     "tokens",
@@ -24,6 +25,7 @@
   "standard-version": {
     "packageFiles": [
       "./angular/projects/catalyst/package.json",
+      "./angular/projects/catalyst-formly/package.json",
       "./core/package.json",
       "./react/package.json",
       "./tokens/package.json"
@@ -31,6 +33,7 @@
     "bumpFiles": [
       "./package-lock.json",
       "./angular/projects/catalyst/package.json",
+      "./angular/projects/catalyst-formly/package.json",
       "./core/package.json",
       "./react/package.json",
       "./tokens/package.json"
