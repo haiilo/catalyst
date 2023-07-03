@@ -48,7 +48,7 @@
     "@commitlint/config-conventional": "^17.6.1",
     "husky": "^8.0.3",
     "patch-package": "^6.5.1",
-    "replace-in-file": "^6.3.5",
+    "replace-in-file": "^7.0.1",
     "standard-version": "^9.3.2"
   }
 }

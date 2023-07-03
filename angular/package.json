@@ -9,8 +9,8 @@
     "test": "ng test",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "clean": "rm -rf ./dist",
-    "reset": "rm -rf ./dist ./node_modules"
+    "clean": "rm -rf ./.angular ./dist",
+    "reset": "rm -rf ./.angular ./dist ./node_modules"
   },
   "dependencies": {
     "@angular/animations": "^14.2.7",
