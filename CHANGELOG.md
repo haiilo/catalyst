@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.3](https://github.com/haiilo/catalyst/compare/v6.0.2...v6.0.3) (2023-07-03)
+
+
+### Bug Fixes
+
+* **core:** add missing font weight 600 to lato ([ce15940](https://github.com/haiilo/catalyst/commit/ce159409822b08b8d59700338035b30025971c1c))
+* **core:** regenerate package-lock.json file ([91d5884](https://github.com/haiilo/catalyst/commit/91d5884d49581565bfa1ec66a75c16dccee745aa))
+* **core:** remove duplicate cat-muted definition ([e1f7aaf](https://github.com/haiilo/catalyst/commit/e1f7aafa5fedb86f9ebdd194d1b20d5d743f3587))
+* **core:** remove outdated i18n messages ([0459e56](https://github.com/haiilo/catalyst/commit/0459e565caed8da77b7d4258d45d5da941c20eca))
+
 ### [6.0.2](https://github.com/haiilo/catalyst/compare/v6.0.1...v6.0.2) (2023-06-19)
 
 
