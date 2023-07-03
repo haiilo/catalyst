@@ -74,9 +74,9 @@ export const CatCard = /*@__PURE__*/ defineContainer<JSX.CatCard>('cat-card', un
 
 export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-checkbox', undefined, [
   'checked',
+  'indeterminate',
   'disabled',
   'identifier',
-  'indeterminate',
   'label',
   'labelHidden',
   'name',
