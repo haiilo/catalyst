@@ -1,78 +1,78 @@
-import { NgModule } from '@angular/core';
-import { FormlyModule } from '@ngx-formly/core';
-import { CatCheckboxFieldType } from './formly-checkbox/formly-checkbox.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CatalystModule } from '../catalyst.module';
-import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
-import { CatRadioFieldType } from './formly-radio/formly-radio.component';
-import { CatInputFieldType } from './formly-input/formly-input.component';
-import { CatTextareaFieldType } from './formly-textarea/formly-textarea.component';
-import { CatRadioGroupFieldType } from './formly-radio-group/formly-radio-group.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
+import { CatalystModule } from 'catalyst';
+import { CatCheckboxFieldType } from './formly-checkbox/formly-checkbox.component';
 import { CatDatepickerFieldType } from './formly-datepicker/formly-datepicker.component';
+import { CatInputFieldType } from './formly-input/formly-input.component';
+import { CatRadioGroupFieldType } from './formly-radio-group/formly-radio-group.component';
+import { CatRadioFieldType } from './formly-radio/formly-radio.component';
 import { CatSelectFieldType } from './formly-select/formly-select.component';
+import { CatTextareaFieldType } from './formly-textarea/formly-textarea.component';
+import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
 
 @NgModule({
   declarations: [
     CatCheckboxFieldType,
-    CatToggleFieldType,
+    CatDatepickerFieldType,
+    CatInputFieldType,
     CatRadioFieldType,
     CatRadioGroupFieldType,
-    CatInputFieldType,
+    CatSelectFieldType,
     CatTextareaFieldType,
-    CatDatepickerFieldType,
-    CatSelectFieldType
+    CatToggleFieldType
   ],
   imports: [
-    CatalystModule,
-    ReactiveFormsModule,
     CommonModule,
+    ReactiveFormsModule,
+    CatalystModule,
     FormlyModule.forChild({
       types: [
         {
           name: 'cat-checkbox-formly',
-          component: CatCheckboxFieldType,
+          component: CatCheckboxFieldType
         },
         {
           name: 'cat-toggle-formly',
-          component: CatToggleFieldType,
+          component: CatToggleFieldType
         },
         {
           name: 'cat-radio-formly',
-          component: CatRadioFieldType,
+          component: CatRadioFieldType
         },
         {
           name: 'cat-radio-group-formly',
-          component: CatRadioGroupFieldType,
+          component: CatRadioGroupFieldType
         },
         {
           name: 'cat-input-formly',
-          component: CatInputFieldType,
+          component: CatInputFieldType
         },
         {
           name: 'cat-textarea-formly',
-          component: CatTextareaFieldType,
+          component: CatTextareaFieldType
         },
         {
           name: 'cat-datepicker-formly',
-          component: CatDatepickerFieldType,
+          component: CatDatepickerFieldType
         },
         {
           name: 'cat-select-formly',
-          component: CatSelectFieldType,
+          component: CatSelectFieldType
         }
-      ],
-    }),
+      ]
+    })
   ],
   exports: [
     CatCheckboxFieldType,
-    CatToggleFieldType,
+    CatDatepickerFieldType,
+    CatInputFieldType,
     CatRadioFieldType,
     CatRadioGroupFieldType,
-    CatInputFieldType,
+    CatSelectFieldType,
     CatTextareaFieldType,
-    CatDatepickerFieldType,
-    CatSelectFieldType
-  ],
+    CatToggleFieldType
+  ]
 })
 export class CatalystFormlyModule {}

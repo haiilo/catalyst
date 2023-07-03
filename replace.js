@@ -2,6 +2,7 @@ require('replace-in-file')({
   files: [
     'core/package.json',
     'angular/projects/catalyst/package.json',
+    'angular/projects/catalyst-formly/package.json',
     'react/package.json'
   ],
   from: /"@haiilo\/(catalyst(?:-tokens)?)": "[^\"]*"/g,

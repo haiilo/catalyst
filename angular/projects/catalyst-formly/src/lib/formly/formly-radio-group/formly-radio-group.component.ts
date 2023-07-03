@@ -3,11 +3,11 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 import { CatRadioType } from '../formly-radio/formly-radio.component';
 
 export type CatRadioGroupType = {
-  name: string,
-  a11yLabel: string,
-  labelLeft: boolean,
-  options: CatRadioType[];    
-}
+  name: string;
+  a11yLabel: string;
+  labelLeft: boolean;
+  options: CatRadioType[];
+};
 
 @Component({
   selector: 'formly-radio-group',
@@ -18,7 +18,7 @@ export type CatRadioGroupType = {
       [name]="props.name"
       [a11yLabel]="props.a11yLabel"
       [labelLeft]="props.labelLeft"
-      >
+    >
       <cat-radio
         *ngFor="let option of props.options"
         [checked]="option.checked"
@@ -32,9 +32,9 @@ export type CatRadioGroupType = {
         [hint]="option.hint"
         [labelLeft]="option.labelLeft"
         [nativeAttributes]="option.nativeAttributes"
-        >
+      >
       </cat-radio>
     </cat-radio-group>
-  `,
+  `
 })
 export class CatRadioGroupFieldType extends FieldType<FieldTypeConfig<CatRadioGroupType>> {}

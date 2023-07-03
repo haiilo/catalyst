@@ -1,12 +1,20 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
-import { of } from 'rxjs';
-import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService, CatRadioFieldType } from '../../../catalyst/src';
-import { DialogComponent } from './dialog/dialog.component';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CatCheckboxFieldType, CatDatepickerFieldType, CatInputFieldType, CatRadioGroupFieldType, CatSelectFieldType, CatTextareaFieldType, CatToggleFieldType } from 'catalyst';
+import { of } from 'rxjs';
+import {
+  CatCheckboxFieldType,
+  CatDatepickerFieldType,
+  CatInputFieldType,
+  CatRadioFieldType,
+  CatRadioGroupFieldType,
+  CatSelectFieldType,
+  CatTextareaFieldType,
+  CatToggleFieldType
+} from '../../../catalyst-formly/src';
+import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
+import { DialogComponent } from './dialog/dialog.component';
 
 interface Country {
   id: string;
@@ -48,21 +56,21 @@ export class AppComponent implements OnInit {
       type: CatCheckboxFieldType,
       props: {
         label: 'Custom Cat Checkbox'
-      },
+      }
     },
     {
       key: 'catToggle',
       type: CatToggleFieldType,
       props: {
         label: 'Custom Cat Toggle'
-      },
+      }
     },
     {
       key: 'catRadio',
       type: CatRadioFieldType,
       props: {
         label: 'Custom Cat Radio'
-      },
+      }
     },
     {
       key: 'catInput',
@@ -81,7 +89,7 @@ export class AppComponent implements OnInit {
       props: {
         label: 'Custom Cat Input',
         rows: 1
-      },
+      }
     },
     {
       key: 'catRadioGroup',
@@ -102,8 +110,8 @@ export class AppComponent implements OnInit {
           {
             label: 'Option 3 - Group 1',
             value: 'three',
-            checked: true,
-          },
+            checked: true
+          }
         ]
       }
     },
@@ -116,23 +124,23 @@ export class AppComponent implements OnInit {
         clearable: true,
         mode: 'datetime',
         required: true
-      },
+      }
     },
     {
       key: 'catSelect',
-      type: CatSelectFieldType,      
+      type: CatSelectFieldType,
       props: {
         label: 'Select a country',
         connector: this.countryConnector,
         required: true
       }
-    },
-  ];  
+    }
+  ];
 
   constructor(
     private dialog: CatDialogService,
-    @Inject(CAT_ICON_REGISTRY_TOKEN) private readonly iconRegistry: CatIconRegistry,
-    @Inject(CAT_I18N_REGISTRY_TOKEN) private readonly i18nRegistry: CatI18nRegistry
+    @Inject(CAT_ICON_REGISTRY_TOKEN) readonly iconRegistry: CatIconRegistry,
+    @Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18nRegistry: CatI18nRegistry
   ) {
     i18nRegistry.set({
       'error.required': 'This field is required',
@@ -148,7 +156,7 @@ export class AppComponent implements OnInit {
       'datepicker.hour': 'Hour',
       'datepicker.minute': 'Minute',
       'datepicker.scroll': 'Scroll to increment',
-      'datepicker.toggle': 'Click to toggle',
+      'datepicker.toggle': 'Click to toggle'
     });
     iconRegistry.addIcons(ci);
   }
@@ -157,7 +165,7 @@ export class AppComponent implements OnInit {
     this.form.controls.test.valueChanges.subscribe(() => {
       this.form.controls.relatedInput.updateValueAndValidity();
     });
-    }
+  }
 
   equalTo(controlName: string) {
     return (control: AbstractControl): ValidationErrors | null => {
