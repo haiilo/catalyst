@@ -10,13 +10,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": ">=14.0.0",
-    "@angular/cdk": ">=14.0.0",
-    "@haiilo/catalyst-angular": "6.0.2",
-    "rxjs": ">=6.6.0"
+    "@angular/core": "^14.2.7 || ^15.2.9 || ^16.1.3",
+    "@haiilo/catalyst-angular": "6.0.3"
   },
   "dependencies": {
-    "@haiilo/catalyst": "6.0.3",
     "tslib": "^2.3.0"
   }
 }
