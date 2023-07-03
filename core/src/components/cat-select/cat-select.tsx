@@ -94,6 +94,7 @@ const INIT_STATE: CatSelectState = {
 };
 
 let nextUniqueId = 0;
+let nextTagUniqueId = 0;
 
 /**
  * Select lets user choose one option from an options' menu. Consider using
@@ -375,7 +376,8 @@ export class CatSelect {
       }
     }
     this.hide();
-    if (!this.multiple && this.state.tempSelection?.length) {
+    // Conditionally remove selection if the option was not manually selected through click or enter key press
+    if (!this.multiple && (!this.tags || !this.state.selection?.length) && this.state.tempSelection?.length) {
       this.patchState({
         activeSelectionIndex: -1,
         selection: this.state.tempSelection,
@@ -1066,7 +1068,7 @@ export class CatSelect {
     if (term.trim().length && !this.isTagSelected(term)) {
       const value = this.value as CatSelectMultipleTaggingValue;
       const tags = value?.tags;
-      const tag = { id: `select-${this.id}-tag-${tags ? tags.length : 0}`, name: term };
+      const tag = { id: `select-${this.id}-tag-${tags?.length ? tags?.length + nextTagUniqueId++ : 0}`, name: term };
       this.select({ item: tag, render: { label: tag.name } });
     }
     this.setTransparentCaret();
