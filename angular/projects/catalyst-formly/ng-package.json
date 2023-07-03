@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/catalyst",
+  "dest": "../../dist/catalyst-formly",
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "allowedNonPeerDependencies": ["@haiilo/catalyst"]
+  "allowedNonPeerDependencies": ["@haiilo/catalyst", "@haiilo/catalyst-angular"]
 }
