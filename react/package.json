@@ -26,7 +26,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@haiilo/catalyst": "6.1.0"
+    "@haiilo/catalyst": "6.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
