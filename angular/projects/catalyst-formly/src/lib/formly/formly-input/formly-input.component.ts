@@ -31,8 +31,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [errorUpdate]="props.errorUpdate"
       [hint]="props.hint"
       [nativeAttributes]="props.nativeAttributes"
-      >
+    >
     </cat-input>
-  `,
+  `
 })
 export class CatInputFieldType extends FieldType<FieldTypeConfig> {}

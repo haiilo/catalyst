@@ -8,13 +8,7 @@ import { AppComponent } from './app.component';
 import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(),
-    CatalystModule.forRoot(),
-    CatalystFormlyModule
-  ],
+  imports: [BrowserModule, ReactiveFormsModule, FormlyModule.forRoot(), CatalystModule.forRoot(), CatalystFormlyModule],
   declarations: [AppComponent, DialogComponent],
   bootstrap: [AppComponent]
 })

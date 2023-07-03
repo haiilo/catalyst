@@ -22,8 +22,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [errorUpdate]="props.errorUpdate"
       [hint]="props.hint"
       [nativeAttributes]="props.nativeAttributes"
-      >
+    >
     </cat-textarea>
-  `,
+  `
 })
 export class CatTextareaFieldType extends FieldType<FieldTypeConfig> {}

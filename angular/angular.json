@@ -88,13 +88,8 @@
             "polyfills": "projects/catalyst-demo/src/polyfills.ts",
             "tsConfig": "projects/catalyst-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/catalyst-demo/src/favicon.ico",
-              "projects/catalyst-demo/src/assets"
-            ],
-            "styles": [
-              "projects/catalyst-demo/src/styles.scss"
-            ],
+            "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
+            "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -156,13 +151,8 @@
             "tsConfig": "projects/catalyst-demo/tsconfig.spec.json",
             "karmaConfig": "projects/catalyst-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/catalyst-demo/src/favicon.ico",
-              "projects/catalyst-demo/src/assets"
-            ],
-            "styles": [
-              "projects/catalyst-demo/src/styles.scss"
-            ],
+            "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
+            "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": []
           }
         }

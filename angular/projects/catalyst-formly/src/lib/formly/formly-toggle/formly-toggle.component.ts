@@ -15,8 +15,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [hint]="props.hint"
       [resolvedValue]="props.resolvedValue"
       [nativeAttributes]="props.nativeAttributes"
-      >
+    >
     </cat-toggle>
-  `,
+  `
 })
 export class CatToggleFieldType extends FieldType<FieldTypeConfig> {}

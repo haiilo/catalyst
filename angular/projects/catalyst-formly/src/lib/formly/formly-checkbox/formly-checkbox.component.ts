@@ -15,8 +15,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [hint]="props.hint"
       [labelLeft]="props.labelLeft"
       [nativeAttributes]="props.nativeAttributes"
-      >
+    >
     </cat-checkbox>
-  `,
+  `
 })
 export class CatCheckboxFieldType extends FieldType<FieldTypeConfig> {}

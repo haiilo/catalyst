@@ -6,7 +6,6 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@haiilo/catalyst';
 
-
 @ProxyCmp({
   inputs: ['color', 'icon', 'noIcon']
 })
@@ -15,7 +14,7 @@ import { Components } from '@haiilo/catalyst';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'icon', 'noIcon'],
+  inputs: ['color', 'icon', 'noIcon']
 })
 export class CatAlert {
   protected el: HTMLElement;
@@ -25,9 +24,7 @@ export class CatAlert {
   }
 }
 
-
 export declare interface CatAlert extends Components.CatAlert {}
-
 
 @ProxyCmp({
   inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
@@ -37,7 +34,7 @@ export declare interface CatAlert extends Components.CatAlert {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget'],
+  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
 })
 export class CatAvatar {
   protected el: HTMLElement;
@@ -47,9 +44,7 @@ export class CatAvatar {
   }
 }
 
-
 export declare interface CatAvatar extends Components.CatAvatar {}
-
 
 @ProxyCmp({
   inputs: ['color', 'pulse', 'round', 'size', 'variant']
@@ -59,7 +54,7 @@ export declare interface CatAvatar extends Components.CatAvatar {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'pulse', 'round', 'size', 'variant'],
+  inputs: ['color', 'pulse', 'round', 'size', 'variant']
 })
 export class CatBadge {
   protected el: HTMLElement;
@@ -69,12 +64,32 @@ export class CatBadge {
   }
 }
 
-
 export declare interface CatBadge extends Components.CatBadge {}
 
-
 @ProxyCmp({
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: [
+    'a11yCurrent',
+    'a11yLabel',
+    'active',
+    'buttonGroupPosition',
+    'buttonId',
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'loading',
+    'name',
+    'nativeAttributes',
+    'noEllipsis',
+    'round',
+    'size',
+    'submit',
+    'url',
+    'urlTarget',
+    'value',
+    'variant'
+  ],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
@@ -82,7 +97,29 @@ export declare interface CatBadge extends Components.CatBadge {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: [
+    'a11yCurrent',
+    'a11yLabel',
+    'active',
+    'buttonGroupPosition',
+    'buttonId',
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'loading',
+    'name',
+    'nativeAttributes',
+    'noEllipsis',
+    'round',
+    'size',
+    'submit',
+    'url',
+    'urlTarget',
+    'value',
+    'variant'
+  ]
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -92,7 +129,6 @@ export class CatButton {
     proxyOutputs(this, this.el, ['catClick', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatButton extends Components.CatButton {
   /**
@@ -109,7 +145,6 @@ export declare interface CatButton extends Components.CatButton {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['a11yLabel']
 })
@@ -118,7 +153,7 @@ export declare interface CatButton extends Components.CatButton {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel'],
+  inputs: ['a11yLabel']
 })
 export class CatButtonGroup {
   protected el: HTMLElement;
@@ -128,18 +163,15 @@ export class CatButtonGroup {
   }
 }
 
-
 export declare interface CatButtonGroup extends Components.CatButtonGroup {}
 
-
-@ProxyCmp({
-})
+@ProxyCmp({})
 @Component({
   selector: 'cat-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: []
 })
 export class CatCard {
   protected el: HTMLElement;
@@ -149,12 +181,24 @@ export class CatCard {
   }
 }
 
-
 export declare interface CatCard extends Components.CatCard {}
 
-
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'indeterminate',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'resolvedValue',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur']
 })
 @Component({
@@ -162,7 +206,21 @@ export declare interface CatCard extends Components.CatCard {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'indeterminate', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'indeterminate',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'resolvedValue',
+    'value'
+  ]
 })
 export class CatCheckbox {
   protected el: HTMLElement;
@@ -172,7 +230,6 @@ export class CatCheckbox {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
@@ -189,9 +246,34 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'mode',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur']
 })
 @Component({
@@ -199,7 +281,33 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'min', 'mode', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'step', 'textPrefix', 'textSuffix', 'value'],
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'mode',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ]
 })
 export class CatDatepicker {
   protected el: HTMLElement;
@@ -209,7 +317,6 @@ export class CatDatepicker {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatDatepicker extends Components.CatDatepicker {
   /**
@@ -226,7 +333,6 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['noAutoClose', 'overflow', 'placement'],
   methods: ['close']
@@ -236,7 +342,7 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noAutoClose', 'overflow', 'placement'],
+  inputs: ['noAutoClose', 'overflow', 'placement']
 })
 export class CatDropdown {
   protected el: HTMLElement;
@@ -246,7 +352,6 @@ export class CatDropdown {
     proxyOutputs(this, this.el, ['catOpen', 'catClose']);
   }
 }
-
 
 export declare interface CatDropdown extends Components.CatDropdown {
   /**
@@ -259,7 +364,6 @@ export declare interface CatDropdown extends Components.CatDropdown {
   catClose: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['horizontal', 'labelSize', 'requiredMarker']
 })
@@ -268,7 +372,7 @@ export declare interface CatDropdown extends Components.CatDropdown {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['horizontal', 'labelSize', 'requiredMarker'],
+  inputs: ['horizontal', 'labelSize', 'requiredMarker']
 })
 export class CatFormGroup {
   protected el: HTMLElement;
@@ -278,9 +382,7 @@ export class CatFormGroup {
   }
 }
 
-
 export declare interface CatFormGroup extends Components.CatFormGroup {}
-
 
 @ProxyCmp({
   inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
@@ -290,7 +392,7 @@ export declare interface CatFormGroup extends Components.CatFormGroup {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel', 'icon', 'iconSrc', 'size'],
+  inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
 })
 export class CatIcon {
   protected el: HTMLElement;
@@ -300,12 +402,38 @@ export class CatIcon {
   }
 }
 
-
 export declare interface CatIcon extends Components.CatIcon {}
 
-
 @ProxyCmp({
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'maxLength',
+    'min',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'round',
+    'textPrefix',
+    'textSuffix',
+    'type',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
@@ -313,7 +441,35 @@ export declare interface CatIcon extends Components.CatIcon {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoComplete', 'clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'icon', 'iconRight', 'identifier', 'label', 'labelHidden', 'max', 'maxLength', 'min', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'round', 'textPrefix', 'textSuffix', 'type', 'value'],
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'maxLength',
+    'min',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'round',
+    'textPrefix',
+    'textSuffix',
+    'type',
+    'value'
+  ]
 })
 export class CatInput {
   protected el: HTMLElement;
@@ -323,7 +479,6 @@ export class CatInput {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatInput extends Components.CatInput {
   /**
@@ -340,16 +495,37 @@ export declare interface CatInput extends Components.CatInput {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
-  inputs: ['activePadding', 'compact', 'iconNext', 'iconPrev', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant']
+  inputs: [
+    'activePadding',
+    'compact',
+    'iconNext',
+    'iconPrev',
+    'page',
+    'pageCount',
+    'round',
+    'sidePadding',
+    'size',
+    'variant'
+  ]
 })
 @Component({
   selector: 'cat-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['activePadding', 'compact', 'iconNext', 'iconPrev', 'page', 'pageCount', 'round', 'sidePadding', 'size', 'variant'],
+  inputs: [
+    'activePadding',
+    'compact',
+    'iconNext',
+    'iconPrev',
+    'page',
+    'pageCount',
+    'round',
+    'sidePadding',
+    'size',
+    'variant'
+  ]
 })
 export class CatPagination {
   protected el: HTMLElement;
@@ -360,7 +536,6 @@ export class CatPagination {
   }
 }
 
-
 export declare interface CatPagination extends Components.CatPagination {
   /**
    * Emitted when the page of the pagination has changed.
@@ -368,9 +543,20 @@ export declare interface CatPagination extends Components.CatPagination {
   catChange: EventEmitter<CustomEvent<number>>;
 }
 
-
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur']
 })
 @Component({
@@ -378,7 +564,19 @@ export declare interface CatPagination extends Components.CatPagination {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'value'
+  ]
 })
 export class CatRadio {
   protected el: HTMLElement;
@@ -388,7 +586,6 @@ export class CatRadio {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatRadio extends Components.CatRadio {
   /**
@@ -405,7 +602,6 @@ export declare interface CatRadio extends Components.CatRadio {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
@@ -414,7 +610,7 @@ export declare interface CatRadio extends Components.CatRadio {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value'],
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
 export class CatRadioGroup {
   protected el: HTMLElement;
@@ -424,7 +620,6 @@ export class CatRadioGroup {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatRadioGroup extends Components.CatRadioGroup {
   /**
@@ -441,7 +636,6 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
@@ -450,7 +644,7 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer'],
+  inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
 export class CatScrollable {
   protected el: HTMLElement;
@@ -460,7 +654,6 @@ export class CatScrollable {
     proxyOutputs(this, this.el, ['scrolledTop', 'scrolledLeft', 'scrolledRight', 'scrolledBottom']);
   }
 }
-
 
 export declare interface CatScrollable extends Components.CatScrollable {
   /**
@@ -481,9 +674,30 @@ export declare interface CatScrollable extends Components.CatScrollable {
   scrolledBottom: EventEmitter<CustomEvent<void>>;
 }
 
-
 @ProxyCmp({
-  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
+  inputs: [
+    'clearable',
+    'debounce',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'multiple',
+    'name',
+    'nativeAttributes',
+    'noItems',
+    'placeholder',
+    'placement',
+    'required',
+    'requiredMarker',
+    'tagHint',
+    'tags',
+    'value'
+  ],
   methods: ['connect']
 })
 @Component({
@@ -491,7 +705,29 @@ export declare interface CatScrollable extends Components.CatScrollable {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clearable', 'debounce', 'disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'multiple', 'name', 'nativeAttributes', 'noItems', 'placeholder', 'placement', 'required', 'requiredMarker', 'tagHint', 'tags', 'value'],
+  inputs: [
+    'clearable',
+    'debounce',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'multiple',
+    'name',
+    'nativeAttributes',
+    'noItems',
+    'placeholder',
+    'placement',
+    'required',
+    'requiredMarker',
+    'tagHint',
+    'tags',
+    'value'
+  ]
 })
 export class CatSelect {
   protected el: HTMLElement;
@@ -501,7 +737,6 @@ export class CatSelect {
     proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange', 'catBlur']);
   }
 }
-
 
 export declare interface CatSelect extends Components.CatSelect {
   /**
@@ -522,15 +757,13 @@ export declare interface CatSelect extends Components.CatSelect {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
-@ProxyCmp({
-})
+@ProxyCmp({})
 @Component({
   selector: 'cat-select-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: []
 })
 export class CatSelectDemo {
   protected el: HTMLElement;
@@ -540,9 +773,7 @@ export class CatSelectDemo {
   }
 }
 
-
 export declare interface CatSelectDemo extends Components.CatSelectDemo {}
-
 
 @ProxyCmp({
   inputs: ['effect', 'lines', 'size', 'variant']
@@ -552,7 +783,7 @@ export declare interface CatSelectDemo extends Components.CatSelectDemo {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['effect', 'lines', 'size', 'variant'],
+  inputs: ['effect', 'lines', 'size', 'variant']
 })
 export class CatSkeleton {
   protected el: HTMLElement;
@@ -562,9 +793,7 @@ export class CatSkeleton {
   }
 }
 
-
 export declare interface CatSkeleton extends Components.CatSkeleton {}
-
 
 @ProxyCmp({
   inputs: ['a11yLabel', 'size']
@@ -574,7 +803,7 @@ export declare interface CatSkeleton extends Components.CatSkeleton {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel', 'size'],
+  inputs: ['a11yLabel', 'size']
 })
 export class CatSpinner {
   protected el: HTMLElement;
@@ -584,9 +813,7 @@ export class CatSpinner {
   }
 }
 
-
 export declare interface CatSpinner extends Components.CatSpinner {}
-
 
 @ProxyCmp({
   inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
@@ -596,7 +823,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget'],
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
 })
 export class CatTab {
   protected el: HTMLElement;
@@ -607,14 +834,12 @@ export class CatTab {
   }
 }
 
-
 export declare interface CatTab extends Components.CatTab {
   /**
    * Emitted when tab is clicked.
    */
   tabClick: EventEmitter<CustomEvent<MouseEvent>>;
 }
-
 
 @ProxyCmp({
   inputs: ['activeTab', 'tabsAlign']
@@ -624,7 +849,7 @@ export declare interface CatTab extends Components.CatTab {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['activeTab', 'tabsAlign'],
+  inputs: ['activeTab', 'tabsAlign']
 })
 export class CatTabs {
   protected el: HTMLElement;
@@ -634,12 +859,29 @@ export class CatTabs {
   }
 }
 
-
 export declare interface CatTabs extends Components.CatTabs {}
 
-
 @ProxyCmp({
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
+  inputs: [
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'maxLength',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'rows',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
@@ -647,7 +889,26 @@ export declare interface CatTabs extends Components.CatTabs {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'horizontal', 'identifier', 'label', 'labelHidden', 'maxLength', 'minLength', 'name', 'nativeAttributes', 'placeholder', 'readonly', 'required', 'requiredMarker', 'rows', 'value'],
+  inputs: [
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'maxLength',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'rows',
+    'value'
+  ]
 })
 export class CatTextarea {
   protected el: HTMLElement;
@@ -657,7 +918,6 @@ export class CatTextarea {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatTextarea extends Components.CatTextarea {
   /**
@@ -674,9 +934,21 @@ export declare interface CatTextarea extends Components.CatTextarea {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'resolvedValue',
+    'value'
+  ],
   methods: ['doFocus', 'doBlur']
 })
 @Component({
@@ -684,7 +956,20 @@ export declare interface CatTextarea extends Components.CatTextarea {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'hint', 'identifier', 'label', 'labelHidden', 'labelLeft', 'name', 'nativeAttributes', 'required', 'resolvedValue', 'value'],
+  inputs: [
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'resolvedValue',
+    'value'
+  ]
 })
 export class CatToggle {
   protected el: HTMLElement;
@@ -694,7 +979,6 @@ export class CatToggle {
     proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
-
 
 export declare interface CatToggle extends Components.CatToggle {
   /**
@@ -711,7 +995,6 @@ export declare interface CatToggle extends Components.CatToggle {
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
 }
 
-
 @ProxyCmp({
   inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size']
 })
@@ -720,7 +1003,7 @@ export declare interface CatToggle extends Components.CatToggle {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size'],
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size']
 })
 export class CatTooltip {
   protected el: HTMLElement;
@@ -730,7 +1013,4 @@ export class CatTooltip {
   }
 }
 
-
 export declare interface CatTooltip extends Components.CatTooltip {}
-
-

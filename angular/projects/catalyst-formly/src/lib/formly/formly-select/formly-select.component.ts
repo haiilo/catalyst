@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
-// import { CatSelect } from '../../directives/proxies';
 
 @Component({
   selector: 'formly-select',
@@ -24,17 +23,11 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [tagHint]="props.tagHint"
       [noItems]="props.noItems"
       [errors]="props.errors"
-      [errorUpdate]="props.errorUpdate"      
+      [errorUpdate]="props.errorUpdate"
       [nativeAttributes]="props.nativeAttributes"
-      #selectRef
-      >
+      [connector]="props.connector"
+    >
     </cat-select>
-  `,
+  `
 })
-export class CatSelectFieldType extends FieldType<FieldTypeConfig> implements AfterViewInit {
-  // @ViewChild('selectRef') selectRef!: CatSelect;
-  
-  ngAfterViewInit(): void {
-    // this.selectRef.connect(this.props.connector)
-  }
-}
+export class CatSelectFieldType extends FieldType<FieldTypeConfig> {}

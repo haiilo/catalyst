@@ -5,14 +5,14 @@ export type CatRadioType = {
   checked: boolean;
   disabled: boolean;
   identifier?: string;
-  label: string
+  label: string;
   labelHidden: boolean;
   name?: string;
   required: string;
-  value: string, 
+  value: string;
   hint?: string | string[];
   labelLeft: boolean;
-  nativeAttributes?: { [key: string]: string }  
+  nativeAttributes?: { [key: string]: string };
 };
 
 @Component({
@@ -28,8 +28,8 @@ export type CatRadioType = {
       [hint]="props.hint"
       [labelLeft]="props.labelLeft"
       [nativeAttributes]="props.nativeAttributes"
-      >
+    >
     </cat-radio>
-  `,
+  `
 })
 export class CatRadioFieldType extends FieldType<FieldTypeConfig> {}
