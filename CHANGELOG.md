@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.1](https://github.com/haiilo/catalyst/compare/v6.1.0...v6.1.1) (2023-07-03)
+
+
+### Features
+
+* update stencil to version 4.0.1 ([#282](https://github.com/haiilo/catalyst/issues/282)) ([62b59a7](https://github.com/haiilo/catalyst/commit/62b59a7577ae574b277d05b75a2e1eae440ec34b))
+
+
+### Bug Fixes
+
+* **core:** fix cat-select tagging support for selecting newly created… ([#240](https://github.com/haiilo/catalyst/issues/240)) ([d2e45b4](https://github.com/haiilo/catalyst/commit/d2e45b42ebb5941f64fdc2852b7b04dedd16313d))
+* **core:** toggle indeterminate state ([#281](https://github.com/haiilo/catalyst/issues/281)) ([6cc1ac3](https://github.com/haiilo/catalyst/commit/6cc1ac3bd537a61002aa5ee192e1629f2447db66))
+
 ## [6.1.0](https://github.com/haiilo/catalyst/compare/v6.0.3...v6.1.0) (2023-07-03)
 
 
