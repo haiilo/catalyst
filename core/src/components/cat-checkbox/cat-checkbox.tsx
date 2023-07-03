@@ -37,24 +37,18 @@ export class CatCheckbox {
   @Prop({ mutable: true }) checked = false;
 
   @Watch('checked')
-  onCheckedChange(checkedState: boolean) {
-    if (checkedState && this.indeterminate) {
-      this.indeterminate = false;
-    }
-    this.input.checked = checkedState;
+  onCheckedChange(checked: boolean) {
+    this.indeterminate &&= !checked;
   }
 
   /**
    * Indeterminate state of the checkbox
    */
-  @Prop({ mutable: true })  indeterminate = false;
+  @Prop({ mutable: true }) indeterminate = false;
 
   @Watch('indeterminate')
-  onIndeterminateChange(indeterminateState: boolean) {
-    if (indeterminateState && this.checked) {
-      this.checked = false;
-    }
-    this.input.indeterminate = indeterminateState;
+  onIndeterminateChange(indeterminate: boolean) {
+    this.checked &&= !indeterminate;
   }
 
   /**
@@ -182,8 +176,8 @@ export class CatCheckbox {
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
-            onClick={this.onClick.bind(this)}
             indeterminate={this.indeterminate}
+            onInput={this.onInput.bind(this)}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
           />
@@ -209,14 +203,9 @@ export class CatCheckbox {
     );
   }
 
-  private onClick(event: MouseEvent) {
-    event.preventDefault();
-    if (this.checked || this.indeterminate) {
-      this.checked = false;
-      this.indeterminate = false;
-    } else {
-      this.checked = true;
-    }
+  private onInput() {
+    this.checked = this.input.checked;
+    this.indeterminate = this.input.indeterminate;
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);
   }

@@ -446,7 +446,26 @@
           <cat-checkbox label="Disabled" disabled></cat-checkbox>
           <cat-checkbox label="Checked" checked></cat-checkbox>
           <cat-checkbox label="Checked disabled" checked disabled></cat-checkbox>
-          <cat-checkbox label="Indeterminate" indeterminate="true"></cat-checkbox>
+          <cat-checkbox label="Indeterminate" indeterminate="true" id="indeterminate"></cat-checkbox>
+          <cat-button id="indeterminate-true">Set inteterminate true</cat-button>
+          <cat-button id="indeterminate-false">Set inteterminate false</cat-button>
+          <cat-button id="value-true">Set value true</cat-button>
+          <cat-button id="value-false">Set value false</cat-button>
+          <script>
+            document.querySelector('#indeterminate-true').addEventListener('click', () => {
+              document.querySelector('#indeterminate').indeterminate = true;
+            });
+            document.querySelector('#indeterminate-false').addEventListener('click', () => {
+              document.querySelector('#indeterminate').indeterminate = false;
+            });
+            document.querySelector('#value-true').addEventListener('click', () => {
+              document.querySelector('#indeterminate').checked = true;
+            });
+            document.querySelector('#value-false').addEventListener('click', () => {
+              document.querySelector('#indeterminate').checked = false;
+            });
+          </script>
+
           <h3>Alignment</h3>
           <cat-checkbox label="Label" label-left></cat-checkbox>
 
