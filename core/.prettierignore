@@ -4,4 +4,3 @@ node_modules
 www
 *.d.ts
 *.md
-package-lock.json

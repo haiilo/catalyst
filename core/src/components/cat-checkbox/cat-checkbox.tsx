@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -36,6 +36,21 @@ export class CatCheckbox {
    */
   @Prop({ mutable: true }) checked = false;
 
+  @Watch('checked')
+  onCheckedChange(checked: boolean) {
+    this.indeterminate &&= !checked;
+  }
+
+  /**
+   * Indeterminate state of the checkbox
+   */
+  @Prop({ mutable: true }) indeterminate = false;
+
+  @Watch('indeterminate')
+  onIndeterminateChange(indeterminate: boolean) {
+    this.checked &&= !indeterminate;
+  }
+
   /**
    * Disabled state of the checkbox
    */
@@ -45,11 +60,6 @@ export class CatCheckbox {
    * A unique identifier for the input.
    */
   @Prop() identifier?: string;
-
-  /**
-   * Indeterminate state of the checkbox
-   */
-  @Prop() indeterminate = false;
 
   /**
    * Label of the checkbox which is presented in the UI
@@ -116,9 +126,8 @@ export class CatCheckbox {
   }
 
   componentDidLoad() {
-    if (this.input && this.indeterminate) {
-      this.input.indeterminate = true;
-    }
+    this.onCheckedChange(this.checked);
+    this.onIndeterminateChange(this.indeterminate);
   }
 
   componentWillRender(): void {
@@ -167,6 +176,7 @@ export class CatCheckbox {
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
+            indeterminate={this.indeterminate}
             onInput={this.onInput.bind(this)}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
@@ -195,6 +205,7 @@ export class CatCheckbox {
 
   private onInput() {
     this.checked = this.input.checked;
+    this.indeterminate = this.input.indeterminate;
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);
   }
