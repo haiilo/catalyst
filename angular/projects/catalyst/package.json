@@ -10,12 +10,14 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": "^14.2.7 || ^15.2.9 || ^16.1.3",
-    "@angular/cdk": "^14.2.7 || ^15.2.9 || ^16.1.3",
+    "@angular/core": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@angular/cdk": "^14.0.0 || ^15.0.0 || ^16.0.0",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
-    "@haiilo/catalyst": "6.1.2",
+    "@haiilo/catalyst": "workspace:*",
+    "@haiilo/catalyst-tokens": "workspace:*",
+    "loglevel": "1.8.1",
     "tslib": "^2.3.0"
   }
 }

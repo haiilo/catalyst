@@ -1,0 +1,6 @@
+packages:
+  - "angular/**"
+  - "core/**"
+  - "react/**"
+  - "tokens/**"
+  - "vue/**"

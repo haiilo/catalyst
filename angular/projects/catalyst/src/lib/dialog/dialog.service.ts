@@ -37,7 +37,7 @@ export class CatDialogService {
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
       ...config
-    }).closed as any;
+    }).closed;
   }
 
   /**
