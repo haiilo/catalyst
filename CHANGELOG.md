@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.2](https://github.com/haiilo/catalyst/compare/v6.1.1...v6.1.2) (2023-07-05)
+
+
+### Bug Fixes
+
+* **core:** fix test setup ([846d3fc](https://github.com/haiilo/catalyst/commit/846d3fc5086980002b9cc464e2a392f220cd8976))
+* **core:** update checkbox behaviour for indeterminate state ([1850788](https://github.com/haiilo/catalyst/commit/1850788df921a49df77f9db5ea754bf104ac3db7))
+
 ### [6.1.1](https://github.com/haiilo/catalyst/compare/v6.1.0...v6.1.1) (2023-07-03)
 
 
