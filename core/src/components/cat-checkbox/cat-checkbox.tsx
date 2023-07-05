@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import log from 'loglevel';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
@@ -36,20 +36,10 @@ export class CatCheckbox {
    */
   @Prop({ mutable: true }) checked = false;
 
-  @Watch('checked')
-  onCheckedChange(checked: boolean) {
-    this.indeterminate &&= !checked;
-  }
-
   /**
    * Indeterminate state of the checkbox
    */
   @Prop({ mutable: true }) indeterminate = false;
-
-  @Watch('indeterminate')
-  onIndeterminateChange(indeterminate: boolean) {
-    this.checked &&= !indeterminate;
-  }
 
   /**
    * Disabled state of the checkbox
@@ -123,11 +113,6 @@ export class CatCheckbox {
 
   componentWillLoad() {
     this.updateResolved();
-  }
-
-  componentDidLoad() {
-    this.onCheckedChange(this.checked);
-    this.onIndeterminateChange(this.indeterminate);
   }
 
   componentWillRender(): void {
