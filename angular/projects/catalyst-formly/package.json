@@ -11,7 +11,7 @@
   },
   "peerDependencies": {
     "@angular/core": "^14.2.7 || ^15.2.9 || ^16.1.3",
-    "@haiilo/catalyst-angular": "6.1.1"
+    "@haiilo/catalyst-angular": "6.1.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
