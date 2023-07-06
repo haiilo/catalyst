@@ -1,6 +1,8 @@
 packages:
-  - "angular/**"
-  - "core/**"
-  - "react/**"
-  - "tokens/**"
-  - "vue/**"
+  - "angular"
+  - "angular/projects/catalyst"
+  - "angular/projects/catalyst-formly"
+  - "core"
+  - "react"
+  - "tokens"
+  - "vue"
