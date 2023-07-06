@@ -47,9 +47,9 @@ Sadly, the release process is not automated yet. Here are the steps to take for
 a new release
 
 1. Start in root folder
-1. Run `npm run release:{patch|minor|major}`
-1. Run `npm run build`
-1. Run `npm run publish`
+1. Run `pnpm run release:{patch|minor|major}`
+1. Run `pnpm run build`
+1. Run `pnpm run publish`
 1. Run `git add -A && git commit -m "chore(release): update dependencies"`
 1. Run `git push --follow-tags origin main`
 
