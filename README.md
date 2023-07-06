@@ -48,8 +48,6 @@ a new release
 
 1. Start in root folder
 1. Run `npm run release:{patch|minor|major}`
-<!-- 1. Run `npm run replace -- {new version}` -->
-<!-- 1. Run `npm i -f && npm run build` -->
 1. Run `npm run build`
 1. Run `npm run publish`
 1. Run `git add -A && git commit -m "chore(release): update dependencies"`

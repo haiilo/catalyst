@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm run clean",
     "build": "style-dictionary build --config config.js",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
