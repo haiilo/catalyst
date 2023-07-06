@@ -2,6 +2,7 @@ packages:
   - "angular"
   - "angular/projects/catalyst"
   - "angular/projects/catalyst-formly"
+  - "angular/dist/*"
   - "core"
   - "react"
   - "tokens"
