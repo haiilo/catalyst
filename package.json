@@ -1,5 +1,5 @@
 {
-  "name": "catalyst",
+  "name": "@haiilo/catalyst-workspace",
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
