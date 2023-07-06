@@ -11,75 +11,95 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install and Build
         run: |
-          npm ci
-          npm run build -w tokens
-          npm run build:ci -w core
+          pnpm install
+          pnpm run build:tokens
+          pnpm run build:core
   prettier:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install and Check
         run: |
-          npm ci
-          npm run prettier:check -w core
+          pnpm install
+          pnpm --filter @haiilo/catalyst run prettier:check
   eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install and Lint
         run: |
-          npm ci
-          npm run lint -w core
+          pnpm install
+          pnpm --filter @haiilo/catalyst run lint
   stylelint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install and Lint
         run: |
-          npm ci
-          npm run lint:style -w core
+          pnpm install
+          pnpm --filter @haiilo/catalyst run lint:style
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install and Test
         run: |
-          npm ci
-          npm run build -w tokens
-          npm run test -w core
+          pnpm install
+          pnpm run build:tokens
+          pnpm --filter @haiilo/catalyst run test

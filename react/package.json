@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-react",
-  "version": "6.1.2",
+  "version": "6.2.0",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
@@ -12,8 +12,8 @@
     "url": "https://github.com/ionic-team/ionic.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "compile": "npm run tsc",
+    "prebuild": "pnpm run clean",
+    "build": "pnpm run tsc",
     "tsc": "tsc -p .",
     "rollup": "rollup -c",
     "clean": "rm -rf ./dist",
@@ -26,7 +26,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@haiilo/catalyst": "6.1.2"
+    "@haiilo/catalyst": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0",

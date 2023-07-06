@@ -1,5 +1,5 @@
 {
-  "name": "catalyst",
+  "name": "@haiilo/catalyst-workspace",
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
@@ -7,11 +7,20 @@
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "build": "npm run build -w tokens && npm run build -w core && npm run build catalyst -w angular && npm run build catalyst-formly -w angular && npm run build -w react",
-    "replace": "node replace.js",
-    "publish": "npm publish -w tokens && npm publish -w core && cd angular/dist/catalyst && npm publish && cd ../catalyst-formly && npm publish && cd ../../.. && npm publish -w react",
-    "clean": "npm run clean -ws --if-present",
-    "reset": "npm run reset -ws --if-present && rm -rf ./node_modules"
+    "build:tokens": "pnpm --filter @haiilo/catalyst-tokens run build",
+    "build:core": "pnpm --filter @haiilo/catalyst run build",
+    "build:angular": "pnpm --filter @haiilo/catalyst-angular-workspace run build catalyst",
+    "build:angular-formly": "pnpm --filter @haiilo/catalyst-angular-workspace run build catalyst-formly",
+    "build:react": "pnpm --filter @haiilo/catalyst-react run build",
+    "build": "pnpm run build:tokens && pnpm run build:core && pnpm run build:angular && pnpm run build:angular-formly && pnpm run build:react",
+    "publish:tokens": "pnpm --filter @haiilo/catalyst-tokens publish",
+    "publish:core": "pnpm --filter @haiilo/catalyst publish",
+    "publish:angular": "cd angular/dist/catalyst && pnpm publish",
+    "publish:angular-formly": "cd angular/dist/catalyst-formly && pnpm publish",
+    "publish:react": "pnpm --filter @haiilo/catalyst-react publish",
+    "publish": "pnpm run publish:tokens && pnpm run publish:core && pnpm run publish:angular && pnpm run publish:angular-formly && pnpm run publish:react",
+    "clean": "pnpm run -r clean",
+    "reset": "pnpm run -r reset && rm -rf ./node_modules"
   },
   "workspaces": [
     "angular",
@@ -40,7 +49,7 @@
     ]
   },
   "engines": {
-    "npm": ">=9.0.0",
+    "pnpm": ">=8.0.0",
     "node": ">=18.0.0"
   },
   "devDependencies": {

@@ -16,41 +16,28 @@ Please take a look at the official design documentation at
 https://design.haiilo.com and follow the [Getting Started](https://design.haiilo.com/7a807c8eb/p/12e811-getting-started)
 guide to learn how to setup your project locally.
 
-## Working with workspaces
-
-### Install dependencies
-
-Using `npm install` in the root project will install projects' dependencies and automate link procedures, avoiding using `npm link`.
-
-To install all dependencies of a workspace in isolation, at the specific project level, use `npm install --workspaces=false` or `npm install -ws false`.
-
-To add a new dependency, at the specific project, use `npm install <dependecy>`. In the root project level, use `npm install <dependency> -w <workspace>`.
-
-### Running commands
-
-Using the workspace option in the root project, it is possible to run a command on a specific workspace. `npm run <script> -w <workspace>`.
-
-It is also possible to run all with the option workspaces: `npm run <script> -ws`.
-Use `--if-present` to ignore missing scripts, e.g: 
-```
-npm run test -ws --if-present
-``` 
+When installing dependencies with `npm` or `Yarn` Classic, all packages are
+hoisted to the root of the modules directory. As a result, source code has
+access to dependencies that are not added as dependencies to the project. In the
+past, this has resulted in a number of indeterministic errors, that are very
+hard to debug. As a consequence, this monorepo uses `pnpm` as a package manager.
+Please follow the [installation guide](https://pnpm.io/installation) to get
+started.
 
 ### Publish
 
 Use `npm publish` to publish. The command will publish the workspaces as well.
 
+## Release
 
-## Release (workaround)
-
-Sadly, the release process is not automated yet. Here are the steps to take for
+Sadly, the release process is not automated (yet). Here are the steps to take for
 a new release
 
 1. Start in root folder
-1. Run `npm run release:{patch|minor|major}`
-1. Run `npm run replace -- {new version}`
-1. Run `npm i -f && npm run build`
-1. Run `npm run publish`
+1. Run `pnpm run release:{patch|minor|major}`
+1. Run `pnpm run build`
+1. Run `pnpm install`
+1. Run `pnpm run publish`
 1. Run `git add -A && git commit -m "chore(release): update dependencies"`
 1. Run `git push --follow-tags origin main`
 

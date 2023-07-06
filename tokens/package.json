@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-tokens",
-  "version": "6.1.2",
+  "version": "6.2.0",
   "description": "Design tokens for Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm run clean",
     "build": "style-dictionary build --config config.js",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"

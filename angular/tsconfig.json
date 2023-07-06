@@ -3,9 +3,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "catalyst": ["dist/catalyst", "dist/catalyst/*"]
-    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -19,7 +16,12 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "*": ["*", "projects/catalyst/node_modules/*", "projects/catalyst-formly/node_modules/*"],
+      "@haiilo/catalyst-angular": ["dist/catalyst", "dist/catalyst/*"],
+      "@haiilo/catalyst-angular-formly": ["dist/catalyst-formly", "dist/catalyst-formly/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

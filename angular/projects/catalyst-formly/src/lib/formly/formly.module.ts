@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { CatalystModule } from 'catalyst';
+import { CatalystModule } from '@haiilo/catalyst-angular';
 import { CatCheckboxFieldType } from './formly-checkbox/formly-checkbox.component';
 import { CatDatepickerFieldType } from './formly-datepicker/formly-datepicker.component';
 import { CatInputFieldType } from './formly-input/formly-input.component';
