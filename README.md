@@ -30,6 +30,7 @@ When working with `pnpm`, we recommend to set the following aliases in your
 
 ```
 alias pn='pnpm'
+alias pnr='pnpm run'
 alias pni='pnpm install'
 alias pns='pnpm run start'
 alias pnb='pnpm run build'
