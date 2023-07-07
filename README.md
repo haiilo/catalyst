@@ -25,10 +25,6 @@ hard to debug. As a consequence, this monorepo uses `pnpm` as a package manager.
 Please follow the [installation guide](https://pnpm.io/installation) to get
 started.
 
-### Publish
-
-Use `npm publish` to publish. The command will publish the workspaces as well.
-
 ## Release
 
 Sadly, the release process is not automated (yet). Here are the steps to take for
