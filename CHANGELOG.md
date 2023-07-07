@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.2.1](https://github.com/haiilo/catalyst/compare/v6.1.2...v6.2.1) (2023-07-07)
+
+
+### Features
+
+* move to pnpm ([#287](https://github.com/haiilo/catalyst/issues/287)) ([a8cea1b](https://github.com/haiilo/catalyst/commit/a8cea1ba9aa193f85a750121d9960d5082839e36))
+
+
+### Bug Fixes
+
+* **core:** adjust test pattern to fix tests ([c3e55e4](https://github.com/haiilo/catalyst/commit/c3e55e40fc75c12e8105af4bad98045bb18bac40))
+* **core:** rework tooltip show / hide logic to prevent sticky tooltips ([7dedddf](https://github.com/haiilo/catalyst/commit/7dedddf0929408dde5cbfa0de0a01d5bf2994b63))
+
 ## [6.2.0](https://github.com/haiilo/catalyst/compare/v6.1.4...v6.2.0) (2023-07-06)
 
 ### [6.1.4](https://github.com/haiilo/catalyst/compare/v6.1.3...v6.1.4) (2023-07-06)
