@@ -21,6 +21,20 @@ export class CatTooltip {
   private hidden = false;
   private cleanupFloatingUi?: () => void;
 
+  private readonly boundShowListener: () => void;
+  private readonly boundHideListener: () => void;
+  private readonly boundWindowTouchStartListener: () => void;
+  private readonly boundTouchStartListener: (event: Event) => void;
+  private readonly boundTouchEndListener: () => void;
+
+  constructor() {
+    this.boundShowListener = this.showListener.bind(this);
+    this.boundHideListener = this.hideListener.bind(this);
+    this.boundWindowTouchStartListener = this.windowTouchStartListener.bind(this);
+    this.boundTouchStartListener = this.touchStartListener.bind(this);
+    this.boundTouchEndListener = this.touchEndListener.bind(this);
+  }
+
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedContent = false;
@@ -68,7 +82,7 @@ export class CatTooltip {
 
   @Listen('keydown')
   handleKeyDown({ key }: KeyboardEvent) {
-    key === 'Escape' && this.hideListener();
+    key === 'Escape' && this.hideTooltip();
   }
 
   componentDidLoad(): void {
@@ -79,14 +93,14 @@ export class CatTooltip {
     }
 
     if (isTouchScreen) {
-      window.addEventListener('touchstart', this.windowTouchStartListener.bind(this));
-      this.trigger?.addEventListener('touchstart', this.touchStartListener.bind(this));
-      this.trigger?.addEventListener('touchend', this.touchEndListener.bind(this));
+      window.addEventListener('touchstart', this.boundWindowTouchStartListener);
+      this.trigger?.addEventListener('touchstart', this.boundTouchStartListener);
+      this.trigger?.addEventListener('touchend', this.boundTouchEndListener);
     } else {
-      this.trigger?.addEventListener('focusin', this.showListener.bind(this));
-      this.trigger?.addEventListener('focusout', this.hideListener.bind(this));
-      this.trigger?.addEventListener('mouseenter', this.showListener.bind(this));
-      this.trigger?.addEventListener('mouseleave', this.hideListener.bind(this));
+      this.trigger?.addEventListener('focusin', this.boundShowListener);
+      this.trigger?.addEventListener('focusout', this.boundHideListener);
+      this.trigger?.addEventListener('mouseenter', this.boundShowListener);
+      this.trigger?.addEventListener('mouseleave', this.boundHideListener);
     }
   }
 
@@ -97,14 +111,14 @@ export class CatTooltip {
 
   disconnectedCallback(): void {
     if (isTouchScreen) {
-      window.removeEventListener('touchstart', this.windowTouchStartListener.bind(this));
-      this.trigger?.removeEventListener('touchstart', this.touchStartListener.bind(this));
-      this.trigger?.removeEventListener('touchend', this.touchEndListener.bind(this));
+      window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
+      this.trigger?.removeEventListener('touchstart', this.boundTouchStartListener);
+      this.trigger?.removeEventListener('touchend', this.boundTouchEndListener);
     } else {
-      this.trigger?.removeEventListener('mouseenter', this.showListener.bind(this));
-      this.trigger?.removeEventListener('mouseleave', this.hideListener.bind(this));
-      this.trigger?.removeEventListener('focusin', this.showListener.bind(this));
-      this.trigger?.removeEventListener('focusout', this.hideListener.bind(this));
+      this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
+      this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
+      this.trigger?.removeEventListener('focusin', this.boundShowListener);
+      this.trigger?.removeEventListener('focusout', this.boundHideListener);
     }
   }
 
@@ -148,47 +162,58 @@ export class CatTooltip {
 
   private showListener() {
     window.clearTimeout(this.hideTimeout);
-    this.showTimeout = window.setTimeout(() => {
-      this.showTooltip();
-    }, this.showDelay);
+    this.hideTimeout = undefined;
+    if (!this.showTimeout) {
+      this.showTimeout = window.setTimeout(() => {
+        this.showTimeout = undefined;
+        this.showTooltip();
+      }, this.showDelay);
+    }
   }
 
   private hideListener() {
     window.clearTimeout(this.showTimeout);
-    this.hideTimeout = window.setTimeout(() => {
-      this.tooltip?.classList.remove('tooltip-show');
-      this.hideTooltip();
-    }, this.hideDelay);
+    this.showTimeout = undefined;
+    if (!this.hideTimeout) {
+      this.hideTimeout = window.setTimeout(() => {
+        this.hideTimeout = undefined;
+        this.hideTooltip();
+      }, this.hideDelay);
+    }
   }
 
   private touchStartListener(event: Event) {
     event.stopPropagation();
-    this.touchTimeout = window.setTimeout(() => {
-      this.showTooltip();
-    }, this.longTouchDuration);
-  }
-
-  private touchEndListener() {
-    if (this.touchTimeout) {
-      window.clearTimeout(this.touchTimeout);
-      this.hideTooltip();
+    if (!this.touchTimeout) {
+      this.touchTimeout = window.setTimeout(() => {
+        this.touchTimeout = undefined;
+        this.showTooltip();
+      }, this.longTouchDuration);
     }
   }
 
+  private touchEndListener() {
+    window.clearTimeout(this.touchTimeout);
+    this.touchTimeout = undefined;
+    this.hideTooltip();
+  }
+
   private windowTouchStartListener() {
-    this.tooltip?.classList.remove('tooltip-show');
+    this.hideTooltip();
   }
 
   private showTooltip() {
     if (this.trigger && this.tooltip) {
       this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
-    !this.hidden && this.tooltip?.classList.add('tooltip-show');
+    if (!this.hidden) {
+      this.tooltip?.classList.add('tooltip-show');
+    }
   }
 
   private hideTooltip() {
-    if (this.cleanupFloatingUi) {
-      this.cleanupFloatingUi();
-    }
+    this.tooltip?.classList.remove('tooltip-show');
+    this.cleanupFloatingUi?.();
+    this.cleanupFloatingUi = undefined;
   }
 }

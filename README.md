@@ -25,6 +25,17 @@ hard to debug. As a consequence, this monorepo uses `pnpm` as a package manager.
 Please follow the [installation guide](https://pnpm.io/installation) to get
 started.
 
+When working with `pnpm`, we recommend to set the following aliases in your 
+`.bashrc`, `.zshrc`, or `config.fish`:
+
+```
+alias pn='pnpm'
+alias pni='pnpm install'
+alias pns='pnpm run start'
+alias pnb='pnpm run build'
+alias pnt='pnpm run test'
+```
+
 ## Release
 
 Sadly, the release process is not automated (yet). Here are the steps to take for
