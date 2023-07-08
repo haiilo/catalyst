@@ -7,27 +7,30 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "clean": "rm -rf ./dist",
-    "reset": "rm -rf ./dist ./node_modules"
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "clean": "rm -rf ./.angular ./dist",
+    "reset": "rm -rf ./.angular ./dist ./node_modules"
   },
   "dependencies": {
-    "@angular/animations": "^14.2.12",
+    "@angular/animations": "^14.2.7",
     "@angular/cdk": "^14.2.7",
-    "@angular/common": "^14.2.12",
-    "@angular/compiler": "^14.2.12",
-    "@angular/core": "^14.2.12",
-    "@angular/forms": "^14.2.12",
-    "@angular/platform-browser": "^14.2.12",
-    "@angular/platform-browser-dynamic": "^14.2.12",
+    "@angular/common": "^14.2.7",
+    "@angular/compiler": "^14.2.7",
+    "@angular/core": "^14.2.7",
+    "@angular/forms": "^14.2.7",
+    "@angular/platform-browser": "^14.2.7",
+    "@angular/platform-browser-dynamic": "^14.2.7",
     "@haiilo/catalyst-icons": "0.3.23",
+    "@ngx-formly/core": "^6.1.8",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.10",
-    "@angular/cli": "^14.2.10",
-    "@angular/compiler-cli": "^14.2.12",
+    "@angular-devkit/build-angular": "^14.2.7",
+    "@angular/cli": "^14.2.7",
+    "@angular/compiler-cli": "^14.2.7",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
@@ -37,6 +40,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^14.2.2",
+    "prettier": "^2.8.8",
     "typescript": "~4.6.3"
   }
 }

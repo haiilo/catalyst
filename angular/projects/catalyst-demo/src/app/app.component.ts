@@ -2,7 +2,18 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { of } from 'rxjs';
+import {
+  CatCheckboxFieldType,
+  CatDatepickerFieldType,
+  CatInputFieldType,
+  CatRadioFieldType,
+  CatRadioGroupFieldType,
+  CatSelectFieldType,
+  CatTextareaFieldType,
+  CatToggleFieldType
+} from '../../../catalyst-formly/src';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -40,19 +51,113 @@ export class AppComponent implements OnInit {
     render: (country: Country) => ({ label: country.country })
   };
 
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'catCheckbox',
+      type: CatCheckboxFieldType,
+      props: {
+        label: 'Custom Cat Checkbox'
+      }
+    },
+    {
+      key: 'catToggle',
+      type: CatToggleFieldType,
+      props: {
+        label: 'Custom Cat Toggle'
+      }
+    },
+    {
+      key: 'catRadio',
+      type: CatRadioFieldType,
+      props: {
+        label: 'Custom Cat Radio'
+      }
+    },
+    {
+      key: 'catInput',
+      type: CatInputFieldType,
+      defaultValue: 'type here',
+      props: {
+        label: 'Custom Cat Input',
+        clearable: true,
+        required: true
+      }
+    },
+    {
+      key: 'catTextarea',
+      type: CatTextareaFieldType,
+      defaultValue: 'type inside textarea',
+      props: {
+        label: 'Custom Cat Input',
+        rows: 1
+      }
+    },
+    {
+      key: 'catRadioGroup',
+      type: CatRadioGroupFieldType,
+      defaultValue: 'two',
+      props: {
+        a11yLabel: 'Radio Group 1',
+        labelLeft: false,
+        options: [
+          {
+            label: 'Option 1 - Group 1',
+            value: 'one'
+          },
+          {
+            label: 'Option 2 - Group 1',
+            value: 'two'
+          },
+          {
+            label: 'Option 3 - Group 1',
+            value: 'three',
+            checked: true
+          }
+        ]
+      }
+    },
+    {
+      key: 'catDatepicker',
+      type: CatDatepickerFieldType,
+      defaultValue: '12.12.2022',
+      props: {
+        label: 'Select a date',
+        clearable: true,
+        mode: 'datetime',
+        required: true
+      }
+    },
+    {
+      key: 'catSelect',
+      type: CatSelectFieldType,
+      props: {
+        label: 'Select a country',
+        connector: this.countryConnector,
+        required: true
+      }
+    }
+  ];
+
   constructor(
     private dialog: CatDialogService,
-    @Inject(CAT_ICON_REGISTRY_TOKEN) private readonly iconRegistry: CatIconRegistry,
-    @Inject(CAT_I18N_REGISTRY_TOKEN) private readonly i18nRegistry: CatI18nRegistry
+    @Inject(CAT_ICON_REGISTRY_TOKEN) readonly iconRegistry: CatIconRegistry,
+    @Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18nRegistry: CatI18nRegistry
   ) {
     i18nRegistry.set({
       'error.required': 'This field is required',
       'error.minlength': 'This field is too short',
       'error.pattern': 'This field is invalid',
       'input.optional': 'optional',
+      'input.clear': 'Clear',
       'select.empty': 'No items',
       'select.close': 'Close',
-      'select.open': 'Open'
+      'select.open': 'Open',
+      'datepicker.year': 'Year',
+      'datepicker.month': 'Month',
+      'datepicker.hour': 'Hour',
+      'datepicker.minute': 'Minute',
+      'datepicker.scroll': 'Scroll to increment',
+      'datepicker.toggle': 'Click to toggle'
     });
     iconRegistry.addIcons(ci);
   }
@@ -61,7 +166,7 @@ export class AppComponent implements OnInit {
     this.form.controls.test.valueChanges.subscribe(() => {
       this.form.controls.relatedInput.updateValueAndValidity();
     });
-    }
+  }
 
   equalTo(controlName: string) {
     return (control: AbstractControl): ValidationErrors | null => {

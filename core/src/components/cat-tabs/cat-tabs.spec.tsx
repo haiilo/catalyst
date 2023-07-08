@@ -1,12 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { CatTabs } from './cat-tabs';
 
-global.MutationObserver = jest.fn(() => {
-  return {
-    observe: jest.fn()
-  };
-});
-
 describe('cat-tabs', () => {
   it('renders', async () => {
     const page = await newSpecPage({

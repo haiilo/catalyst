@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-angular",
-  "version": "6.0.2",
+  "version": "6.2.1",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
   "scripts": {
@@ -10,12 +10,14 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": ">=14.0.0",
-    "@angular/cdk": ">=14.0.0",
-    "rxjs": ">=6.6.0"
+    "@angular/core": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@angular/cdk": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
-    "@haiilo/catalyst": "6.0.2",
+    "@haiilo/catalyst": "workspace:*",
+    "@haiilo/catalyst-tokens": "workspace:*",
+    "loglevel": "1.8.1",
     "tslib": "^2.3.0"
   }
 }

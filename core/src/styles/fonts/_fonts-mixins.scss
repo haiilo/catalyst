@@ -1,7 +1,7 @@
 @use 'fonts.mixins.lato' as *;
 
 @mixin cat-fonts($path) {
-  @include cat-font-lato($path, 300, 400, 500, 700) {
+  @include cat-font-lato($path, 300, 400, 500, 600, 700) {
     font-display: fallback;
   }
 }

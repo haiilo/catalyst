@@ -2,6 +2,63 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.2.1](https://github.com/haiilo/catalyst/compare/v6.1.2...v6.2.1) (2023-07-07)
+
+
+### Features
+
+* move to pnpm ([#287](https://github.com/haiilo/catalyst/issues/287)) ([a8cea1b](https://github.com/haiilo/catalyst/commit/a8cea1ba9aa193f85a750121d9960d5082839e36))
+
+
+### Bug Fixes
+
+* **core:** adjust test pattern to fix tests ([c3e55e4](https://github.com/haiilo/catalyst/commit/c3e55e40fc75c12e8105af4bad98045bb18bac40))
+* **core:** rework tooltip show / hide logic to prevent sticky tooltips ([7dedddf](https://github.com/haiilo/catalyst/commit/7dedddf0929408dde5cbfa0de0a01d5bf2994b63))
+
+## [6.2.0](https://github.com/haiilo/catalyst/compare/v6.1.4...v6.2.0) (2023-07-06)
+
+### [6.1.4](https://github.com/haiilo/catalyst/compare/v6.1.3...v6.1.4) (2023-07-06)
+
+### [6.1.3](https://github.com/haiilo/catalyst/compare/v6.1.2...v6.1.3) (2023-07-06)
+
+### [6.1.2](https://github.com/haiilo/catalyst/compare/v6.1.1...v6.1.2) (2023-07-05)
+
+
+### Bug Fixes
+
+* **core:** fix test setup ([846d3fc](https://github.com/haiilo/catalyst/commit/846d3fc5086980002b9cc464e2a392f220cd8976))
+* **core:** update checkbox behaviour for indeterminate state ([1850788](https://github.com/haiilo/catalyst/commit/1850788df921a49df77f9db5ea754bf104ac3db7))
+
+### [6.1.1](https://github.com/haiilo/catalyst/compare/v6.1.0...v6.1.1) (2023-07-03)
+
+
+### Features
+
+* update stencil to version 4.0.1 ([#282](https://github.com/haiilo/catalyst/issues/282)) ([62b59a7](https://github.com/haiilo/catalyst/commit/62b59a7577ae574b277d05b75a2e1eae440ec34b))
+
+
+### Bug Fixes
+
+* **core:** fix cat-select tagging support for selecting newly created… ([#240](https://github.com/haiilo/catalyst/issues/240)) ([d2e45b4](https://github.com/haiilo/catalyst/commit/d2e45b42ebb5941f64fdc2852b7b04dedd16313d))
+* **core:** toggle indeterminate state ([#281](https://github.com/haiilo/catalyst/issues/281)) ([6cc1ac3](https://github.com/haiilo/catalyst/commit/6cc1ac3bd537a61002aa5ee192e1629f2447db66))
+
+## [6.1.0](https://github.com/haiilo/catalyst/compare/v6.0.3...v6.1.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* **core:** update peer dependencies ([b8a0831](https://github.com/haiilo/catalyst/commit/b8a0831cf8376b3cd02e61e0f0fa0f0d9e3ebb88))
+
+### [6.0.3](https://github.com/haiilo/catalyst/compare/v6.0.2...v6.0.3) (2023-07-03)
+
+
+### Bug Fixes
+
+* **core:** add missing font weight 600 to lato ([ce15940](https://github.com/haiilo/catalyst/commit/ce159409822b08b8d59700338035b30025971c1c))
+* **core:** regenerate package-lock.json file ([91d5884](https://github.com/haiilo/catalyst/commit/91d5884d49581565bfa1ec66a75c16dccee745aa))
+* **core:** remove duplicate cat-muted definition ([e1f7aaf](https://github.com/haiilo/catalyst/commit/e1f7aafa5fedb86f9ebdd194d1b20d5d743f3587))
+* **core:** remove outdated i18n messages ([0459e56](https://github.com/haiilo/catalyst/commit/0459e565caed8da77b7d4258d45d5da941c20eca))
+
 ### [6.0.2](https://github.com/haiilo/catalyst/compare/v6.0.1...v6.0.2) (2023-06-19)
 
 

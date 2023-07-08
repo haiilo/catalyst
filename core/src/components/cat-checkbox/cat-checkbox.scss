@@ -93,6 +93,10 @@ input {
     border-color: cat-token('color.theme.primary.bg');
     stroke: cat-token('color.theme.primary.fill');
 
+    .check {
+      stroke-dashoffset: 16px;
+    }
+
     .dash {
       stroke-dashoffset: 0;
     }

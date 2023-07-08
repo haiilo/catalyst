@@ -1,0 +1,19 @@
+{
+  "name": "@haiilo/catalyst-angular-formly",
+  "version": "6.2.1",
+  "description": "Angular Formly bindings for Catalyst Design System",
+  "license": "MIT",
+  "scripts": {
+    "reset": "rm -rf ./node_modules"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/core": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@haiilo/catalyst-angular": "workspace:*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

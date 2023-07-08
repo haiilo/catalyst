@@ -37,6 +37,11 @@ export class CatCheckbox {
   @Prop({ mutable: true }) checked = false;
 
   /**
+   * Indeterminate state of the checkbox
+   */
+  @Prop({ mutable: true }) indeterminate = false;
+
+  /**
    * Disabled state of the checkbox
    */
   @Prop() disabled = false;
@@ -45,11 +50,6 @@ export class CatCheckbox {
    * A unique identifier for the input.
    */
   @Prop() identifier?: string;
-
-  /**
-   * Indeterminate state of the checkbox
-   */
-  @Prop() indeterminate = false;
 
   /**
    * Label of the checkbox which is presented in the UI
@@ -115,12 +115,6 @@ export class CatCheckbox {
     this.updateResolved();
   }
 
-  componentDidLoad() {
-    if (this.input && this.indeterminate) {
-      this.input.indeterminate = true;
-    }
-  }
-
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
@@ -167,6 +161,7 @@ export class CatCheckbox {
             checked={this.checked}
             required={this.required}
             disabled={this.disabled}
+            indeterminate={this.indeterminate}
             onInput={this.onInput.bind(this)}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
@@ -195,6 +190,7 @@ export class CatCheckbox {
 
   private onInput() {
     this.checked = this.input.checked;
+    this.indeterminate = this.input.indeterminate;
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);
   }
