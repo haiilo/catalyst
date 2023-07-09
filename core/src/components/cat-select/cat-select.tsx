@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, offset, Placement } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import autosizeInput from 'autosize-input';
 import log from 'loglevel';
@@ -118,7 +118,7 @@ export class CatSelect {
     return this.identifier || this._id;
   }
 
-  private dropdown?: HTMLElement;
+  private dropdown!: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
@@ -696,7 +696,7 @@ export class CatSelect {
 
         <div
           class="select-dropdown"
-          ref={el => (this.dropdown = el)}
+          ref={el => (this.dropdown = el as HTMLElement)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
           {this.state.isOpen && (
@@ -973,11 +973,14 @@ export class CatSelect {
   private update() {
     if (this.trigger && this.dropdown) {
       computePosition(this.trigger, this.dropdown, {
+        strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatSelect.DROPDOWN_OFFSET)]
-      }).then(({ x, y }) => {
+        middleware: [offset(CatSelect.DROPDOWN_OFFSET), flip()]
+      }).then(({ x, y, placement }) => {
+        this.dropdown.dataset.placement = placement;
         if (this.dropdown) {
           Object.assign(this.dropdown.style, {
+            width: `${this.trigger?.clientWidth}px`,
             left: `${x}px`,
             top: `${y}px`
           });

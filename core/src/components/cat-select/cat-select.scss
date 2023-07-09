@@ -179,7 +179,7 @@ cat-spinner {
 }
 
 .select-dropdown {
-  position: absolute;
+  position: fixed;
   right: 0;
   background: cat-token('color.ui.background.surface');
   display: none;
@@ -189,6 +189,11 @@ cat-spinner {
   border-radius: cat-border-radius('m');
   border: 1px solid cat-token('color.ui.border.default');
   z-index: $cat-dropdown-z-index;
+
+  /* Avoid layout interference */
+  width: max-content;
+  top: 0;
+  left: 0;
 }
 
 .select-options-wrapper {
