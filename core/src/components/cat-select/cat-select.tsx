@@ -118,7 +118,7 @@ export class CatSelect {
     return this.identifier || this._id;
   }
 
-  private dropdown!: HTMLElement;
+  private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
   private errorMapSrc?: ErrorMap;
@@ -696,7 +696,7 @@ export class CatSelect {
 
         <div
           class="select-dropdown"
-          ref={el => (this.dropdown = el as HTMLElement)}
+          ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
           {this.state.isOpen && (
@@ -977,8 +977,8 @@ export class CatSelect {
         placement: this.placement,
         middleware: [offset(CatSelect.DROPDOWN_OFFSET), flip()]
       }).then(({ x, y, placement }) => {
-        this.dropdown.dataset.placement = placement;
         if (this.dropdown) {
+          this.dropdown.dataset.placement = placement;
           Object.assign(this.dropdown.style, {
             width: `${this.trigger?.clientWidth}px`,
             left: `${x}px`,
