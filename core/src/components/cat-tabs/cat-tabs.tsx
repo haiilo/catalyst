@@ -97,6 +97,7 @@ export class CatTabs {
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
               onCatClick={() => (this.activeTabId = tab.id)}
+              data-text={tab.label}
             >
               {tab.label}
             </cat-button>

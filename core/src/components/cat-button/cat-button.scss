@@ -292,8 +292,10 @@ $button-sizes: (
 
 // ----- tabs
 
-:host(.cat-tab-active:not(:hover)) {
+:host(.cat-tab)::part(button) {
+  padding: 0;
   --cat-primary-text: transparent;
+  --cat-secondary-bg: transparent;
 }
 
 // ----- alignment
