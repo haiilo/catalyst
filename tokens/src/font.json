@@ -1,0 +1,65 @@
+{
+  "font": {
+    "family": {
+      "head": {
+        "$type": "fontFamily",
+        "$value": "{asset.font.lato.name.value}",
+        "cssProp": "font-family-head"
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": "{asset.font.lato.name.value}",
+        "cssProp": "font-family-body"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "''",
+        "cssProp": "font-family-mono"
+      },
+      "emoji": {
+        "$type": "fontFamily",
+        "$value": "''",
+        "cssProp": "font-family-emoji"
+      }
+    },
+    "weight": {
+      "head": {
+        "$type": "fontWeight",
+        "$value": 600,
+        "cssProp": "font-weight-head"
+      },
+      "body": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "cssProp": "font-weight-body"
+      },
+      "mono": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "cssProp": "font-weight-mono"
+      }
+    },
+    "decoration": {
+      "link": {
+        "$type": "fontDecoration",
+        "$value": "none",
+        "cssProp": "link-decoration"
+      },
+      "linkHover": {
+        "$type": "fontDecoration",
+        "$value": "underline",
+        "cssProp": "link-decoration-hover"
+      },
+      "linkButton": {
+        "$type": "fontDecoration",
+        "$value": "none",
+        "cssProp": "link-button-decoration"
+      },
+      "linkButtonHover": {
+        "$type": "fontDecoration",
+        "$value": "none",
+        "cssProp": "link-button-decoration-hover"
+      }
+    }
+  }
+}

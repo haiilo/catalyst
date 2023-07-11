@@ -1,0 +1,296 @@
+{
+  "color": {
+    "theme": {
+      "primary": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.brand.400.value}",
+          "cssProp": "primary-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.brand.500.value}",
+          "cssProp": "primary-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.brand.600.value}",
+          "cssProp": "primary-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "primary-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "primary-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "primary-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.brand.400.value}",
+          "cssProp": "primary-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.brand.500.value}",
+          "cssProp": "primary-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.brand.600.value}",
+          "cssProp": "primary-text-active"
+        }
+      },
+      "primaryInverted": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.400.value}"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.500.value}"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.600.value}"
+        },
+        "fill": { "$type": "color", "$value": "{color.base.black.value}" },
+        "fillHover": { "$type": "color", "$value": "{color.base.black.value}" },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.black.value}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.400.value}"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.500.value}"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.brandInverted.600.value}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.neutral.400.value}",
+          "cssProp": "secondary-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.neutral.400.value}",
+          "cssProp": "secondary-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.neutral.400.value}",
+          "cssProp": "secondary-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "secondary-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "secondary-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "secondary-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "secondary-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "secondary-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "secondary-text-active"
+        }
+      },
+      "secondaryInverted": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.neutralInverted.400.value}"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.neutralInverted.400.value}"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.neutralInverted.400.value}"
+        },
+        "fill": { "$type": "color", "$value": "{color.base.black.value}" },
+        "fillHover": { "$type": "color", "$value": "{color.base.black.value}" },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.black.value}"
+        },
+        "text": { "$type": "color", "$value": "{color.base.white.value}" },
+        "textHover": { "$type": "color", "$value": "{color.base.white.value}" },
+        "textActive": { "$type": "color", "$value": "{color.base.white.value}" }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.green.400.value}",
+          "cssProp": "success-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.green.500.value}",
+          "cssProp": "success-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.green.600.value}",
+          "cssProp": "success-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.green.400.value}",
+          "cssProp": "success-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.green.500.value}",
+          "cssProp": "success-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.green.600.value}",
+          "cssProp": "success-text-active"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.orange.300.value}",
+          "cssProp": "warning-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.orange.200.value}",
+          "cssProp": "warning-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.orange.100.value}",
+          "cssProp": "warning-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "warning-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "warning-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.black.value}",
+          "cssProp": "warning-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.orange.700.value}",
+          "cssProp": "warning-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.orange.700.value}",
+          "cssProp": "warning-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.orange.700.value}",
+          "cssProp": "warning-text-active"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.red.400.value}",
+          "cssProp": "danger-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.red.500.value}",
+          "cssProp": "danger-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.red.600.value}",
+          "cssProp": "danger-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "danger-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "danger-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "danger-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.red.400.value}",
+          "cssProp": "danger-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.red.500.value}",
+          "cssProp": "danger-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.red.600.value}",
+          "cssProp": "danger-text-active"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-const StyleDictionary = require('style-dictionary');
+const StyleDictionary = require('style-dictionary-utils');
 const tinycolor = require("tinycolor2");
 
 StyleDictionary.registerFileHeader({
@@ -8,15 +8,8 @@ StyleDictionary.registerFileHeader({
 
 StyleDictionary.registerTransform({
   type: 'value',
-  name: 'cat/size',
-  matcher: token => token.attributes.category === 'size',
-  transformer: token => `${token.value}${token.attributes.unit || 'rem'}`
-});
-
-StyleDictionary.registerTransform({
-  type: 'value',
   name: 'cat/rgbParts',
-  matcher: token => token.attributes.category === 'color',
+  matcher: token => token.$type === 'color',
   transformer: token => {
     var rgb = tinycolor(token.value).toRgb();
     return `${rgb.r}, ${rgb.g}, ${rgb.b}`;
@@ -27,15 +20,23 @@ StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/cssProp',
   transitive: true,
-  matcher: token => !!token.attributes.cssProp,
-  transformer: token => `var(--cat-${token.attributes.cssProp}, ${token.value})`
+  matcher: token => !!token.cssProp,
+  transformer: token => `var(--cat-${token.cssProp}, ${token.value})`
+});
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/jsNumber',
+  transitive: true,
+  matcher: token => token.$type === 'dimension' || token.$type === 'duration',
+  transformer: token => parseFloat(token.value)
 });
 
 module.exports = {
-  source: ['src/**/*.js'],
+  source: ['src/**/*.json'],
   platforms: {
     js: {
-      transforms: ['attribute/cti', 'name/cti/camel', 'size/rem', 'color/hex'],
+      transforms: ['attribute/cti', 'name/cti/camel', 'color/hex', 'cat/jsNumber'],
       buildPath: 'dist/js/',
       files: [{
         destination: 'variables.js',
@@ -52,7 +53,7 @@ module.exports = {
       }]
     },
     css: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css', 'cat/rgbParts'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -65,7 +66,7 @@ module.exports = {
       }]
     },
     scss: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'time/seconds', 'content/icon', 'color/css', 'cat/size', 'cat/rgbParts', 'cat/cssProp'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css', 'cat/rgbParts', 'cat/cssProp'],
       prefix: 'cat',
       buildPath: 'dist/scss/',
       files: [{

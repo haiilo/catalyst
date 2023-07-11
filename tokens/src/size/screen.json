@@ -1,0 +1,11 @@
+{
+  "size": {
+    "screen": {
+      "xs": { "$type": "dimension", "$value": "540px" },
+      "s": { "$type": "dimension", "$value": "768px" },
+      "m": { "$type": "dimension", "$value": "992px" },
+      "l": { "$type": "dimension", "$value": "1200px" },
+      "xl": { "$type": "dimension", "$value": "1400px" }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 {
   "time": {
-    "$description": "Basic durations for animations and transitions.",
     "transition": {
       "l": { "$type": "duration", "$value": "500ms" },
       "m": { "$type": "duration", "$value": "250ms" },

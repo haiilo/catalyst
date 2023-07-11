@@ -1,0 +1,23 @@
+{
+  "size": {
+    "border": {
+      "radius": {
+        "l": {
+          "$type": "dimension",
+          "$value": "0.5rem",
+          "cssProp": "border-radius-l"
+        },
+        "m": {
+          "$type": "dimension",
+          "$value": "0.25rem",
+          "cssProp": "border-radius-m"
+        },
+        "s": {
+          "$type": "dimension",
+          "$value": "0.125rem",
+          "cssProp": "border-radius-s"
+        }
+      }
+    }
+  }
+}
