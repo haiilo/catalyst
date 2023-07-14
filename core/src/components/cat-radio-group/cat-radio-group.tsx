@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from '@stencil/core';
+import { CatRadio } from '../cat-radio/cat-radio';
 
 /**
  * A group of radio buttons.
@@ -105,8 +106,10 @@ export class CatRadioGroup {
   @Listen('input')
   onInput(event: MouseEvent): void {
     const radio = this.catRadioGroup.find(radio => radio === event.target);
-    this.value = radio?.checked ? radio?.value : undefined;
-    this.catChange.emit(this.value);
+    if(radio?.localName === 'cat-radio') {
+      this.value = radio?.checked ? radio?.value : undefined;
+      this.catChange.emit(this.value);
+    }
   }
 
   @Listen('focus', { capture: true })
