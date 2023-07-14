@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from '@stencil/core';
-import { CatRadio } from '../cat-radio/cat-radio';
 
 /**
  * A group of radio buttons.
