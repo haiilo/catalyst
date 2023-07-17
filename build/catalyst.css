@@ -1285,7 +1285,7 @@ span.flatpickr-weekday {
 .flatpickr-calendar.animate {
   transform: translateY(-1rem);
   opacity: 0;
-  transition: transform 0.13s cubic-bezier(0.3, 0, 0.8, 0.15), opacity 0.13s cubic-bezier(0.3, 0, 0.8, 0.15);
+  transition: transform 125ms cubic-bezier(0.3, 0, 0.8, 0.15), opacity 125ms cubic-bezier(0.3, 0, 0.8, 0.15);
 }
 .flatpickr-calendar::before, .flatpickr-calendar::after {
   display: none;
@@ -1299,7 +1299,7 @@ span.flatpickr-weekday {
 .flatpickr-calendar.open.animate {
   opacity: 1;
   transform: translateY(0);
-  transition: transform 0.5s cubic-bezier(0.05, 0.7, 0.1, 1), opacity 0.5s cubic-bezier(0.05, 0.7, 0.1, 1);
+  transition: transform 500ms cubic-bezier(0.05, 0.7, 0.1, 1), opacity 500ms cubic-bezier(0.05, 0.7, 0.1, 1);
 }
 
 .flatpickr-months {
@@ -1867,7 +1867,7 @@ hr,
 a {
   color: rgb(var(--cat-primary-text, 0, 129, 148));
   text-decoration: var(--cat-link-decoration, none);
-  transition: color 0.13s linear;
+  transition: color 125ms linear;
 }
 a:hover {
   color: rgb(var(--cat-primary-text-hover, 1, 115, 132));
@@ -2133,7 +2133,7 @@ code {
 }
 
 .cat-bg-primary-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-primary-hover:hover {
   background-color: rgb(var(--cat-primary-bg-hover, 1, 115, 132)) !important;
@@ -2147,7 +2147,7 @@ code {
 
 .cat-link-primary,
 .cat-text-primary-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-primary:hover,
 .cat-text-primary-hover:hover {
@@ -2164,7 +2164,7 @@ code {
 }
 
 .cat-bg-primaryInverted-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-primaryInverted-hover:hover {
   background-color: #93b4f2 !important;
@@ -2178,7 +2178,7 @@ code {
 
 .cat-link-primaryInverted,
 .cat-text-primaryInverted-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-primaryInverted:hover,
 .cat-text-primaryInverted-hover:hover {
@@ -2195,7 +2195,7 @@ code {
 }
 
 .cat-bg-secondary-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-secondary-hover:hover {
   background-color: rgb(var(--cat-secondary-bg-hover, 105, 118, 135)) !important;
@@ -2209,7 +2209,7 @@ code {
 
 .cat-link-secondary,
 .cat-text-secondary-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-secondary:hover,
 .cat-text-secondary-hover:hover {
@@ -2226,7 +2226,7 @@ code {
 }
 
 .cat-bg-secondaryInverted-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-secondaryInverted-hover:hover {
   background-color: #697687 !important;
@@ -2240,7 +2240,7 @@ code {
 
 .cat-link-secondaryInverted,
 .cat-text-secondaryInverted-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-secondaryInverted:hover,
 .cat-text-secondaryInverted-hover:hover {
@@ -2252,12 +2252,12 @@ code {
 }
 
 .cat-bg-success {
-  background-color: rgb(var(--cat-success-bg-, 0, 132, 88)) !important;
+  background-color: rgb(var(--cat-success-bg, 0, 132, 88)) !important;
   color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
 }
 
 .cat-bg-success-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-success-hover:hover {
   background-color: rgb(var(--cat-success-bg-hover, 0, 117, 78)) !important;
@@ -2271,7 +2271,7 @@ code {
 
 .cat-link-success,
 .cat-text-success-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-success:hover,
 .cat-text-success-hover:hover {
@@ -2288,7 +2288,7 @@ code {
 }
 
 .cat-bg-warning-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-warning-hover:hover {
   background-color: rgb(var(--cat-warning-bg-hover, 255, 214, 148)) !important;
@@ -2302,7 +2302,7 @@ code {
 
 .cat-link-warning,
 .cat-text-warning-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-warning:hover,
 .cat-text-warning-hover:hover {
@@ -2319,7 +2319,7 @@ code {
 }
 
 .cat-bg-danger-hover {
-  transition: background-color 0.13s, color 0.13s;
+  transition: background-color 125ms, color 125ms;
 }
 .cat-bg-danger-hover:hover {
   background-color: rgb(var(--cat-danger-bg-hover, 194, 46, 11)) !important;
@@ -2333,7 +2333,7 @@ code {
 
 .cat-link-danger,
 .cat-text-danger-hover {
-  transition: color 0.13s;
+  transition: color 125ms;
 }
 .cat-link-danger:hover,
 .cat-text-danger-hover:hover {
