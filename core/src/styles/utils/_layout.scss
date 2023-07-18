@@ -11,10 +11,10 @@
 
 @include -layout-property('flex-row', 'flex-direction', 'row') {
   display: flex;
-};
+}
 @include -layout-property('flex-col', 'flex-direction', 'column') {
   display: flex;
-};
+}
 
 // -- Flex
 

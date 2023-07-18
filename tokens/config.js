@@ -103,8 +103,21 @@ module.exports = {
       files: [{
         destination: 'variables.json',
         format: 'json/nested'
-      }, {
-        destination: 'tokens.spec.json',
+      }]
+    },
+    zeroheight: {
+      transforms: ['name/cti/kebab'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'zeroheight.json',
+        format: 'json/designTokens'
+      }]
+    },
+    figma: {
+      transforms: ['name/cti/kebab', 'dimension/pixelUnitless'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'figma.json',
         format: 'json/designTokens'
       }]
     },
