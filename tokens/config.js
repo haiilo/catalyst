@@ -6,6 +6,24 @@ StyleDictionary.registerFileHeader({
   fileHeader: () => ['Auto-generated file. Do not edit directly.']
 });
 
+StyleDictionary.registerFormat({
+  name: 'json/designTokens',
+  formatter: function ({ dictionary }) {
+    const set = (obj, path, token) => {
+      const [key, ...restPath] = path;
+      obj[key] = restPath.length ? set(obj[key] || {}, restPath, token) : {
+        $type: token.$type,
+        $value: token.value
+      };
+      return obj;
+    }
+    const tokens = dictionary.allTokens.reduce((acc, token) =>
+      set(acc, token.path, token)
+    , {});
+    return JSON.stringify(tokens, null, 2);
+  }
+})
+
 StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/rgbParts',
@@ -80,10 +98,14 @@ module.exports = {
       }]
     },
     json: {
+      transforms: ['name/cti/kebab'],
       buildPath: 'dist/json/',
       files: [{
         destination: 'variables.json',
         format: 'json/nested'
+      }, {
+        destination: 'tokens.spec.json',
+        format: 'json/designTokens'
       }]
     },
   }
