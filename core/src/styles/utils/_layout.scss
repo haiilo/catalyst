@@ -2,15 +2,19 @@
 
 @mixin -layout-property($name, $property, $value) {
   .cat-#{$name} {
-    #{$property}: #{$value};
     @content;
+    #{$property}: #{$value};
   }
 }
 
 // -- Direction
 
-@include -layout-property('flex-row', 'flex-direction', 'row');
-@include -layout-property('flex-col', 'flex-direction', 'column');
+@include -layout-property('flex-row', 'flex-direction', 'row') {
+  display: flex;
+};
+@include -layout-property('flex-col', 'flex-direction', 'column') {
+  display: flex;
+};
 
 // -- Flex
 
