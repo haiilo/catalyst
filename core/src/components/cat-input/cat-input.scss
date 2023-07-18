@@ -112,8 +112,7 @@ input {
   border: none;
   outline: none;
   background: none;
-
-  @include cat-ellipsis(1);
+  @include cat-ellipsis;
 
   .input-disabled & {
     cursor: not-allowed;
