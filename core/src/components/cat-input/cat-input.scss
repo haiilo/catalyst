@@ -113,6 +113,8 @@ input {
   outline: none;
   background: none;
 
+  @include cat-ellipsis(1);
+
   .input-disabled & {
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
