@@ -1,6 +1,6 @@
 <ng-content select="cat-dialog-header"></ng-content>
 <cat-scrollable>
-  <div class="cat-dialog-content">
+  <div class="cat-dialog-content" [cdkTrapFocus]="false">
     <ng-content></ng-content>
   </div>
 </cat-scrollable>
