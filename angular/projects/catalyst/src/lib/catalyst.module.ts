@@ -21,6 +21,7 @@ import { SelectValueAccessor } from './directives/select-value-accessor';
 import { SelectValueAccessorDecorator } from './directives/select-value-accessor-decorator';
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
+import { A11yModule } from '@angular/cdk/a11y';
 
 const CatComponents = [
   Components.CatAlert,
@@ -79,7 +80,7 @@ export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotification
 });
 
 @NgModule({
-  imports: [CommonModule, DialogModule],
+  imports: [CommonModule, DialogModule, A11yModule],
   declarations: [
     ...CatComponents,
     ...CatDirectives,

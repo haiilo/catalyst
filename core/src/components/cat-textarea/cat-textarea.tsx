@@ -19,7 +19,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-textarea',
   styleUrl: 'cat-textarea.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatTextarea {
   private readonly _id = `cat-textarea-${nextUniqueId++}`;
@@ -27,6 +27,7 @@ export class CatTextarea {
     return this.identifier || this._id;
   }
 
+  private tabIndex: string | null = null;
   private textarea!: HTMLTextAreaElement;
   private errorMapSrc?: ErrorMap;
 
@@ -159,6 +160,10 @@ export class CatTextarea {
     }
   }
 
+  componentWillLoad() {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   componentDidLoad(): void {
     autosize(this.textarea);
   }
@@ -209,7 +214,7 @@ export class CatTextarea {
 
   render() {
     return (
-      <Host>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
         <div
           class={{
             'textarea-field': true,

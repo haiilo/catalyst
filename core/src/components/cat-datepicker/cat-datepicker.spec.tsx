@@ -10,7 +10,7 @@ describe('cat-datepicker', () => {
       html: `<cat-datepicker label="Label"></cat-datepicker>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-datepicker label="Label">
+      <cat-datepicker label="Label" tabindex="0">
         <mock:shadow-root>
           <cat-input errorupdate="0" label="Label" requiredmarker="optional"></cat-input>
         </mock:shadow-root>

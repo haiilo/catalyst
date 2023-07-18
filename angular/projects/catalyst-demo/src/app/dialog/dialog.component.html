@@ -1,14 +1,58 @@
 <cat-dialog>
-  <cat-dialog-header headline="Headline"></cat-dialog-header>
+  <cat-dialog-header headline="Headline"></cat-dialog-header>  
   <p>
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
     elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
   </p>
+
+  <cat-textarea label="Remarks"></cat-textarea>
+
+  <cat-toggle label="Toggle me"></cat-toggle>
+
+  <cat-checkbox label="Check me"></cat-checkbox>
+
+  <cat-datepicker label="Test"></cat-datepicker>
+  
+  <cat-radio-group label="Check me">
+    <cat-radio value="1" label="First"></cat-radio>
+    <cat-radio value="2" label="Second"></cat-radio>
+    <cat-radio value="3" label="Third"></cat-radio>
+  </cat-radio-group>
+  <cat-input label="This is an input" placeholder="Start typing something..." tabindex="0"></cat-input>
+  
+  <cat-dropdown>
+    <cat-button slot="trigger">Button (keep open)</cat-button>
+    <div slot="content" class="cat-flex cat-flex-col cat-p-m">
+      <p>Here is some content.</p>
+      <cat-button>Action</cat-button>
+    </div>
+  </cat-dropdown>
+  
+  <cat-select
+    label="Select"
+    hint="this is a hint"
+    [connector]="countryConnector"
+    [clearable]="true"
+  ></cat-select>
+
   <cat-dialog-actions>
     <cat-button variant="filled" color="primary">Primary</cat-button>
     <cat-button>Secondary</cat-button>
     <cat-button variant="text" class="cat-mr-auto">Tertiary</cat-button>
   </cat-dialog-actions>
+
+  <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+    <cat-pagination page-count="10"></cat-pagination>
+  
+    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+      <cat-avatar url="www.google.com" urlTarget="_blank" initials="AB"></cat-avatar>
+      <cat-button-group>
+        <cat-button>First</cat-button>
+        <cat-button>Second</cat-button>
+        <cat-button>Third</cat-button>
+      </cat-button-group>
+    </div>
+  </div>
 </cat-dialog>

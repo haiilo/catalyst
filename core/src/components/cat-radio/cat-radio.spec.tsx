@@ -8,7 +8,7 @@ describe('cat-radio', () => {
       html: `<cat-radio label="Label" value="value"></cat-radio>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-radio label="Label" value="value">
+      <cat-radio label="Label" value="value" tabindex="0">
         <mock:shadow-root>
           <label aria-checked="false" htmlfor="cat-radio-1" role="radio">
             <span class="radio">

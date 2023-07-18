@@ -10,7 +10,7 @@ describe('cat-textarea', () => {
       html: `<cat-textarea label="Label"></cat-textarea>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-textarea label="Label">
+      <cat-textarea label="Label" tabindex="0">
         <mock:shadow-root>
           <div class="textarea-field">
             <div class="label-container">

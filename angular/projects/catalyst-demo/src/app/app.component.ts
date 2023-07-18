@@ -152,12 +152,16 @@ export class AppComponent implements OnInit {
       'select.empty': 'No items',
       'select.close': 'Close',
       'select.open': 'Open',
+      'dialog.close': 'Close',
       'datepicker.year': 'Year',
       'datepicker.month': 'Month',
       'datepicker.hour': 'Hour',
       'datepicker.minute': 'Minute',
       'datepicker.scroll': 'Scroll to increment',
-      'datepicker.toggle': 'Click to toggle'
+      'datepicker.toggle': 'Click to toggle',
+      'pagination.prev': 'Previous',
+      'pagination.page': 'Go to page {{page}}',
+      'pagination.next': 'Next',
     });
     iconRegistry.addIcons(ci);
   }
