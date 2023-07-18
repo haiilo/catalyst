@@ -5,6 +5,7 @@ import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getFormat } from './cat-datepicker.config';
 import { getLocale } from './cat-datepicker.locale';
+import { Watch } from '../../../dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'cat-datepicker',
@@ -165,6 +166,21 @@ export class CatDatepickerFlat {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  /**
+   * Watch for changes and updates the instance.
+   * @param newValue The new value.
+   */
+  @Watch('value')
+  valueWatcher(newValue: string) {
+    if (newValue) {
+      this.pickr?.setDate(newValue, false);
+      this.catChange.emit(newValue);
+    } else {
+      this.pickr?.clear();
+      this.catChange.emit();
+    }
+  }
+
   componentDidLoad() {
     const input = this.input;
     if (input) {
@@ -194,7 +210,6 @@ export class CatDatepickerFlat {
           } else {
             this.value = dateStr;
           }
-          this.catChange.emit(this.value);
         }
       });
     }
@@ -249,9 +264,8 @@ export class CatDatepickerFlat {
         onCatChange={e => {
           e.stopPropagation();
           this.pickr?.setDate(e.detail);
-          if (this.value !== (e.detail || undefined)) {
+          if (this.value !== (e.detail || undefined || '')) {
             this.value = e.detail || undefined;
-            this.catChange.emit(this.value);
           }
         }}
         onCatFocus={e => {
