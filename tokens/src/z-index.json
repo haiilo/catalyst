@@ -1,0 +1,7 @@
+{
+  "z-index": {
+    "base": { "$type": "number", "$value": 0, "cssProp": "z-index" },
+    "dropdown": { "$type": "number", "$value": 100 },
+    "tooltip": { "$type": "number", "$value": 200 }
+  }
+}

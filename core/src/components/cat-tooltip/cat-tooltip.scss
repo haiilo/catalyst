@@ -29,7 +29,7 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
   visibility: hidden;
   opacity: 0;
   box-shadow: $-box-shadow;
-  z-index: $cat-tooltip-z-index;
+  z-index: cat-z-index('tooltip');
   max-width: min(calc(100vw - 2 * $-shift-padding), $-max-width);
 
   &-hidden {
