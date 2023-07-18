@@ -115,11 +115,11 @@ importers:
   angular/dist/catalyst:
     dependencies:
       '@angular/cdk':
-        specifier: ^15.0.0 || ^16.0.0
-        version: 15.0.0(@angular/common@16.1.5)(@angular/core@15.0.0)(rxjs@6.6.0)
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@6.6.0)
       '@angular/core':
-        specifier: ^15.0.0 || ^16.0.0
-        version: 15.0.0(rxjs@6.6.0)(zone.js@0.11.8)
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
       '@haiilo/catalyst':
         specifier: workspace:*
         version: link:../../../core

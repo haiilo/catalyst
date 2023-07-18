@@ -47,7 +47,6 @@ a new release
 1. Run `pnpm run build`
 1. Run `pnpm install`
 1. Run `pnpm run publish`
-1. Run `git add -A && git commit -m "chore(release): update dependencies"`
 1. Run `git push --follow-tags origin main`
 
 ## Code Contributors
