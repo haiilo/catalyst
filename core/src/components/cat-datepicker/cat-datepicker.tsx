@@ -1,4 +1,4 @@
-import { Component, Event, Method, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Event, Method, EventEmitter, Prop, h, Element, Host } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -9,14 +9,17 @@ import { getLocale } from './cat-datepicker.locale';
 @Component({
   tag: 'cat-datepicker',
   styleUrl: 'cat-datepicker.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatDatepickerFlat {
+  private tabIndex: string | null = null;
   private pickr?: flatpickr.Instance;
   private _input?: HTMLCatInputElement;
   private get input(): HTMLInputElement | undefined {
     return this._input?.shadowRoot?.querySelector('input') ?? undefined;
   }
+
+  @Element() hostElement!: HTMLElement;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -200,6 +203,10 @@ export class CatDatepickerFlat {
     }
   }
 
+  componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   /**
    * Programmatically move focus to the datepicker. Use this method instead of
    * `input.focus()`.
@@ -223,46 +230,48 @@ export class CatDatepickerFlat {
 
   render() {
     return (
-      <cat-input
-        ref={el => (this._input = el)}
-        requiredMarker={this.requiredMarker}
-        horizontal={this.horizontal}
-        autoComplete={this.autoComplete}
-        clearable={this.clearable}
-        disabled={this.disabled}
-        hint={this.hint}
-        icon={this.icon}
-        iconRight={this.iconRight}
-        identifier={this.identifier}
-        label={this.label}
-        labelHidden={this.labelHidden}
-        name={this.name}
-        placeholder={this.placeholder}
-        textPrefix={this.textPrefix}
-        textSuffix={this.textSuffix}
-        readonly={this.readonly}
-        required={this.required}
-        value={this.value}
-        errors={this.errors}
-        errorUpdate={this.errorUpdate}
-        nativeAttributes={this.nativeAttributes}
-        onCatChange={e => {
-          e.stopPropagation();
-          this.pickr?.setDate(e.detail);
-          if (this.value !== (e.detail || undefined)) {
-            this.value = e.detail || undefined;
-            this.catChange.emit(this.value);
-          }
-        }}
-        onCatFocus={e => {
-          e.stopPropagation();
-          this.catFocus.emit(e.detail);
-        }}
-        onCatBlur={e => {
-          e.stopPropagation();
-          this.catBlur.emit(e.detail);
-        }}
-      ></cat-input>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
+        <cat-input
+          ref={el => (this._input = el)}
+          requiredMarker={this.requiredMarker}
+          horizontal={this.horizontal}
+          autoComplete={this.autoComplete}
+          clearable={this.clearable}
+          disabled={this.disabled}
+          hint={this.hint}
+          icon={this.icon}
+          iconRight={this.iconRight}
+          identifier={this.identifier}
+          label={this.label}
+          labelHidden={this.labelHidden}
+          name={this.name}
+          placeholder={this.placeholder}
+          textPrefix={this.textPrefix}
+          textSuffix={this.textSuffix}
+          readonly={this.readonly}
+          required={this.required}
+          value={this.value}
+          errors={this.errors}
+          errorUpdate={this.errorUpdate}
+          nativeAttributes={this.nativeAttributes}
+          onCatChange={e => {
+            e.stopPropagation();
+            this.pickr?.setDate(e.detail);
+            if (this.value !== (e.detail || undefined)) {
+              this.value = e.detail || undefined;
+              this.catChange.emit(this.value);
+            }
+          }}
+          onCatFocus={e => {
+            e.stopPropagation();
+            this.catFocus.emit(e.detail);
+          }}
+          onCatBlur={e => {
+            e.stopPropagation();
+            this.catBlur.emit(e.detail);
+          }}
+        ></cat-input>
+      </Host>
     );
   }
 

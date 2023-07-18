@@ -16,7 +16,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-toggle',
   styleUrls: ['cat-toggle.scss'],
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatToggle {
   private readonly _id = `cat-toggle-${nextUniqueId++}`;
@@ -24,6 +24,7 @@ export class CatToggle {
     return this.identifier || this._id;
   }
 
+  private tabIndex: string | null = null;
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -109,6 +110,7 @@ export class CatToggle {
 
   componentWillLoad() {
     this.updateResolved();
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
   }
 
   componentWillRender(): void {
@@ -142,7 +144,7 @@ export class CatToggle {
 
   render() {
     return (
-      <Host>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
         <label
           htmlFor={this.id}
           class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}

@@ -15,7 +15,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatRadio {
   private readonly _id = `cat-radio-${++nextUniqueId}`;
@@ -23,6 +23,7 @@ export class CatRadio {
     return this.identifier || this._id;
   }
 
+  private tabIndex: string | null = null;
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -101,6 +102,10 @@ export class CatRadio {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
@@ -132,7 +137,7 @@ export class CatRadio {
 
   render() {
     return (
-      <Host>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
         <label
           htmlFor={this.id}
           class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}

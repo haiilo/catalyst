@@ -8,7 +8,7 @@ describe('cat-radio-group', () => {
       html: `<cat-radio-group></cat-radio-group>`
     });
     expect(page.root).toEqualHtml(`
-      <cat-radio-group>
+      <cat-radio-group tabindex="0">
         <mock:shadow-root>
           <div role="radiogroup">
             <slot></slot>

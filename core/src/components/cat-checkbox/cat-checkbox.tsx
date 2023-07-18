@@ -16,7 +16,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-checkbox',
   styleUrls: ['cat-checkbox.scss'],
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatCheckbox {
   private readonly _id = `cat-checkbox-${nextUniqueId++}`;
@@ -24,6 +24,7 @@ export class CatCheckbox {
     return this.identifier || this._id;
   }
 
+  private tabIndex: string | null = null;
   private input!: HTMLInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -113,6 +114,7 @@ export class CatCheckbox {
 
   componentWillLoad() {
     this.updateResolved();
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
   }
 
   componentWillRender(): void {
@@ -146,7 +148,7 @@ export class CatCheckbox {
 
   render() {
     return (
-      <Host>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
         <label
           htmlFor={this.id}
           class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}

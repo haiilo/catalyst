@@ -108,9 +108,10 @@ let nextTagUniqueId = 0;
 @Component({
   tag: 'cat-select',
   styleUrl: 'cat-select.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatSelect {
+  private tabIndex: string | null = null;
   private static readonly SKELETON_COUNT = 4;
   private static readonly DROPDOWN_OFFSET = 4;
   private readonly _id = `cat-input-${nextUniqueId++}`;
@@ -357,6 +358,10 @@ export class CatSelect {
     }
   }
 
+  componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   componentWillRender(): void {
     this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
@@ -533,7 +538,7 @@ export class CatSelect {
 
   render() {
     return (
-      <Host>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
         <div
           class={{
             'select-field': true,

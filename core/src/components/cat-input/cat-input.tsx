@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import log from 'loglevel';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -21,10 +21,11 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-input',
   styleUrl: 'cat-input.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatInput {
   private readonly _id = `cat-input-${nextUniqueId++}`;
+  private tabIndex: string | null = null;
   private get id() {
     return this.identifier || this._id;
   }
@@ -197,6 +198,10 @@ export class CatInput {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   componentWillRender(): void {
     this.watchErrorsHandler(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
@@ -252,112 +257,116 @@ export class CatInput {
 
   render() {
     return (
-      <div
-        class={{
-          'input-field': true,
-          'input-horizontal': this.horizontal
-        }}
-      >
-        <div class="label-container">
-          {(this.hasSlottedLabel || this.label) && (
-            <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
-              <span class="label-wrapper" part="label">
-                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
-                <div class="label-metadata">
-                  {!this.required && this.requiredMarker.startsWith('optional') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.optional')})
-                    </span>
-                  )}
-                  {this.required && this.requiredMarker.startsWith('required') && (
-                    <span class="label-optional" aria-hidden="true">
-                      ({i18n.t('input.required')})
-                    </span>
-                  )}
-                  {this.maxLength && (
-                    <div class="label-character-count" aria-hidden="true">
-                      {this.value?.toString().length ?? 0}/{this.maxLength}
-                    </div>
-                  )}
-                </div>
-              </span>
-            </label>
-          )}
-        </div>
-        <div class="input-container">
-          <div
-            class={{
-              'input-wrapper': true,
-              'input-round': this.round,
-              'input-disabled': this.disabled,
-              'input-invalid': this.invalid
-            }}
-            onClick={() => this.input.focus()}
-          >
-            {this.textPrefix && (
-              <span class="text-prefix" part="prefix">
-                {this.textPrefix}
-              </span>
-            )}
-            {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
-            <div class="input-inner-wrapper">
-              <input
-                {...this.nativeAttributes}
-                ref={el => (this.input = el as HTMLInputElement)}
-                id={this.id}
-                class={{
-                  'has-clearable': this.clearable && !this.disabled
-                }}
-                autocomplete={this.autoComplete}
-                disabled={this.disabled}
-                max={this.max}
-                maxlength={this.maxLength}
-                min={this.min}
-                minlength={this.minLength}
-                name={this.name}
-                placeholder={this.placeholder}
-                readonly={this.readonly}
-                required={this.required}
-                type={this.type}
-                value={this.value}
-                onInput={this.onInput.bind(this)}
-                onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}
-                aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
-              ></input>
-              {this.clearable && !this.disabled && this.value && (
-                <cat-button
-                  class="clearable"
-                  icon="$cat:input-close"
-                  icon-only="true"
-                  size="s"
-                  variant="text"
-                  a11y-label={i18n.t('input.clear')}
-                  onClick={this.clear.bind(this)}
-                ></cat-button>
-              )}
-            </div>
-            {!this.invalid && this.icon && this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
-            )}
-            {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
-            {this.textSuffix && (
-              <span class="text-suffix" part="suffix">
-                {this.textSuffix}
-              </span>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
+        <div
+          class={{
+            'input-field': true,
+            'input-horizontal': this.horizontal
+          }}
+        >
+          <div class="label-container">
+            {(this.hasSlottedLabel || this.label) && (
+              <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+                <span class="label-wrapper" part="label">
+                  {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+                  <div class="label-metadata">
+                    {!this.required && this.requiredMarker.startsWith('optional') && (
+                      <span class="label-optional" aria-hidden="true">
+                        ({i18n.t('input.optional')})
+                      </span>
+                    )}
+                    {this.required && this.requiredMarker.startsWith('required') && (
+                      <span class="label-optional" aria-hidden="true">
+                        ({i18n.t('input.required')})
+                      </span>
+                    )}
+                    {this.maxLength && (
+                      <div class="label-character-count" aria-hidden="true">
+                        {this.value?.toString().length ?? 0}/{this.maxLength}
+                      </div>
+                    )}
+                  </div>
+                </span>
+              </label>
             )}
           </div>
-          {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
-            <CatFormHint
-              id={this.id}
-              hint={this.hint}
-              slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
-              errorMap={this.errorMap}
-            />
-          )}
+          <div class="input-container">
+            <div
+              class={{
+                'input-wrapper': true,
+                'input-round': this.round,
+                'input-disabled': this.disabled,
+                'input-invalid': this.invalid
+              }}
+              onClick={() => this.input.focus()}
+            >
+              {this.textPrefix && (
+                <span class="text-prefix" part="prefix">
+                  {this.textPrefix}
+                </span>
+              )}
+              {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
+              <div class="input-inner-wrapper">
+                <input
+                  {...this.nativeAttributes}
+                  ref={el => (this.input = el as HTMLInputElement)}
+                  id={this.id}
+                  class={{
+                    'has-clearable': this.clearable && !this.disabled
+                  }}
+                  autocomplete={this.autoComplete}
+                  disabled={this.disabled}
+                  max={this.max}
+                  maxlength={this.maxLength}
+                  min={this.min}
+                  minlength={this.minLength}
+                  name={this.name}
+                  placeholder={this.placeholder}
+                  readonly={this.readonly}
+                  required={this.required}
+                  type={this.type}
+                  value={this.value}
+                  onInput={this.onInput.bind(this)}
+                  onFocus={this.onFocus.bind(this)}
+                  onBlur={this.onBlur.bind(this)}
+                  aria-invalid={this.invalid ? 'true' : undefined}
+                  aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+                ></input>
+                {this.clearable && !this.disabled && this.value && (
+                  <cat-button
+                    class="clearable"
+                    icon="$cat:input-close"
+                    icon-only="true"
+                    size="s"
+                    variant="text"
+                    a11y-label={i18n.t('input.clear')}
+                    onClick={this.clear.bind(this)}
+                  ></cat-button>
+                )}
+              </div>
+              {!this.invalid && this.icon && this.iconRight && (
+                <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
+              )}
+              {this.invalid && (
+                <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+              )}
+              {this.textSuffix && (
+                <span class="text-suffix" part="suffix">
+                  {this.textSuffix}
+                </span>
+              )}
+            </div>
+            {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
+              <CatFormHint
+                id={this.id}
+                hint={this.hint}
+                slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}
+                errorMap={this.errorMap}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      </Host>
     );
   }
 

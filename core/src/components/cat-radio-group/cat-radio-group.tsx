@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
 
 /**
  * A group of radio buttons.
@@ -6,10 +6,11 @@ import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from 
 @Component({
   tag: 'cat-radio-group',
   styleUrl: 'cat-radio-group.scss',
-  shadow: true
+  shadow: { delegatesFocus: true }
 })
 export class CatRadioGroup {
   private catRadioGroup: HTMLCatRadioElement[] = [];
+  private tabIndex: string | null = null;
 
   @Element() hostElement!: HTMLElement;
 
@@ -79,6 +80,10 @@ export class CatRadioGroup {
     });
   }
 
+  componentWillLoad(): void {
+    this.tabIndex = this.hostElement.getAttribute('tabindex');
+  }
+
   componentDidLoad(): void {
     this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
     this.onNameChanged(this.name);
@@ -125,9 +130,11 @@ export class CatRadioGroup {
 
   render() {
     return (
-      <div role="radiogroup" aria-label={this.a11yLabel}>
-        <slot></slot>
-      </div>
+      <Host tabIndex={this.disabled ? '-1' : this.tabIndex || '0'}>
+        <div role="radiogroup" aria-label={this.a11yLabel}>
+          <slot></slot>
+        </div>
+      </Host>
     );
   }
 
