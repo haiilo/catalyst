@@ -4,13 +4,12 @@
 nav {
   hr,
   .cat-hr {
-    margin-top: $cat-nav-padding-horizontal * 0.5;
-    margin-bottom: $cat-nav-padding-horizontal * 0.5;
+    margin: 0.25rem -0.25rem;
   }
 
   .cat-nav-head,
   .cat-nav-text {
-    padding: $cat-nav-padding-horizontal * 0.5 $cat-nav-padding-horizontal;
+    padding: $cat-nav-padding-horizontal * 0.75 $cat-nav-padding-horizontal;
 
     > :last-child {
       margin-bottom: 0 !important;
