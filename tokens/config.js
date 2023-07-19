@@ -132,7 +132,8 @@ module.exports = {
       buildPath: 'dist/export/',
       files: [{
         destination: 'figma.json',
-        format: 'json/designTokens'
+        format: 'json/designTokens',
+        filter: (token) => token.$type !== 'asset'
       }]
     },
     theme: {
