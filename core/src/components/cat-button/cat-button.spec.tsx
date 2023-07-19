@@ -10,7 +10,9 @@ describe('cat-button', () => {
     expect(page.root?.shadowRoot).toEqualHtml(`
           <button class="cat-button cat-button-ellipsed cat-button-outlined cat-button-m cat-button-secondary" part="button" type="button">
             <span class="cat-button-content" part="content">
-              <slot></slot>
+              <span class="cat-button-content-inner">
+                <slot></slot>
+              </span>
             </span>
           </button>
     `);

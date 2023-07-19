@@ -50,6 +50,11 @@ export class CatTab {
   @Prop({ reflect: true }) deactivated = false;
 
   /**
+   * Attributes that will be added to the native HTML button element
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when tab is clicked.
    */
   @Event() tabClick!: EventEmitter<MouseEvent>;
