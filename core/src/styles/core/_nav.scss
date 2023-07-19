@@ -4,7 +4,7 @@
 nav {
   hr,
   .cat-hr {
-    margin: cat-token('size.spacing.xs') calc(-1 * $cat-nav-padding-horizontal);
+    margin: 0.25rem -0.25rem;
   }
 
   .cat-nav-head,

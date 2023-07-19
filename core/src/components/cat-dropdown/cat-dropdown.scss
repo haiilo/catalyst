@@ -15,7 +15,7 @@ $-max-height: calc(100vh - 48px);
 }
 
 ::slotted(nav) {
-  padding: cat-token('size.spacing.xs');
+  padding: 0.25rem;
   min-width: $-min-width;
   max-width: $-max-width;
 }
