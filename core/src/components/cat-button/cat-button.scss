@@ -313,10 +313,7 @@ $button-sizes: (
 
   .cat-button {
     box-shadow: none;
-    border-radius: 0;
     justify-content: left;
-    padding-left: $cat-nav-padding-horizontal;
-    padding-right: $cat-nav-padding-horizontal;
     gap: 0.5rem;
 
     &:focus-visible {
