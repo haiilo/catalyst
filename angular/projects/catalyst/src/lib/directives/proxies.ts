@@ -74,7 +74,7 @@ export declare interface CatBadge extends Components.CatBadge {}
 
 
 @ProxyCmp({
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'nativeContentAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
@@ -82,7 +82,7 @@ export declare interface CatBadge extends Components.CatBadge {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
+  inputs: ['a11yCurrent', 'a11yLabel', 'active', 'buttonGroupPosition', 'buttonId', 'color', 'disabled', 'icon', 'iconOnly', 'iconRight', 'loading', 'name', 'nativeAttributes', 'nativeContentAttributes', 'noEllipsis', 'round', 'size', 'submit', 'url', 'urlTarget', 'value', 'variant'],
 })
 export class CatButton {
   protected el: HTMLElement;
@@ -589,14 +589,14 @@ export declare interface CatSpinner extends Components.CatSpinner {}
 
 
 @ProxyCmp({
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget']
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'url', 'urlTarget'],
+  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget'],
 })
 export class CatTab {
   protected el: HTMLElement;
