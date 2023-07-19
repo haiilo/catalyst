@@ -22,7 +22,21 @@ StyleDictionary.registerFormat({
     , {});
     return JSON.stringify(tokens, null, 2);
   }
-})
+});
+
+StyleDictionary.registerFormat({
+  name: 'json/cssProp',
+  formatter: function ({ dictionary }) {
+    const tokens = dictionary.allTokens.reduce((acc, token) => {
+      acc[token.cssProp] = {
+        $type: token.$type,
+        $value: token.value
+      };
+      return acc;
+    }, {});
+    return JSON.stringify(tokens, null, 2);
+  }
+});
 
 StyleDictionary.registerTransform({
   type: 'value',
@@ -121,5 +135,14 @@ module.exports = {
         format: 'json/designTokens'
       }]
     },
+    theme: {
+      transforms: ['name/cti/kebab'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'theme.json',
+        format: 'json/cssProp',
+        filter: (token) => token.hasOwnProperty('cssProp')
+      }]
+    }
   }
 };
