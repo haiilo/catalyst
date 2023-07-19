@@ -293,7 +293,7 @@ $button-sizes: (
 // ----- tabs
 
 :host(.cat-tab)::part(button) {
-  padding: 0;
+  padding: 1.125rem 0.75rem;
   --cat-primary-text: transparent;
   --cat-secondary-bg: transparent;
 }
