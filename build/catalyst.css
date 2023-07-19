@@ -1632,12 +1632,11 @@ body {
 /* stylelint-enable value-keyword-case */
 nav hr,
 nav .cat-hr {
-  margin-top: 0.625rem;
-  margin-bottom: 0.625rem;
+  margin: 0.25rem -0.25rem;
 }
 nav .cat-nav-head,
 nav .cat-nav-text {
-  padding: 0.625rem 1.25rem;
+  padding: 0.5625rem 0.75rem;
 }
 nav .cat-nav-head > :last-child,
 nav .cat-nav-text > :last-child {
