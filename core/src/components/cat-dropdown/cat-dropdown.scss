@@ -29,7 +29,7 @@ $-max-height: calc(100vh - 48px);
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   border: 1px solid cat-token('color.ui.border.default');
-  z-index: $cat-dropdown-z-index;
+  z-index: cat-z-index('dropdown');
   //The 3 lines below set the initial styling (when not visible)
   display: none;
   opacity: 0;
