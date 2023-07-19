@@ -28,12 +28,12 @@ StyleDictionary.registerFormat({
   name: 'json/cssProp',
   formatter: function ({ dictionary }) {
     const tokens = dictionary.allTokens.reduce((acc, token) => {
-      acc[token.cssProp] = {
+      acc.props[token.cssProp] = {
         $type: token.$type,
         $value: token.value
       };
       return acc;
-    }, {});
+    }, { props: {}});
     return JSON.stringify(tokens, null, 2);
   }
 });
