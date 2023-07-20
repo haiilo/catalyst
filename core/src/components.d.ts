@@ -400,6 +400,8 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface CatDatepickerInline {
+    }
     interface CatDropdown {
         /**
           * Closes the dropdown.
@@ -1249,6 +1251,12 @@ declare global {
         prototype: HTMLCatDatepickerElement;
         new (): HTMLCatDatepickerElement;
     };
+    interface HTMLCatDatepickerInlineElement extends Components.CatDatepickerInline, HTMLStencilElement {
+    }
+    var HTMLCatDatepickerInlineElement: {
+        prototype: HTMLCatDatepickerInlineElement;
+        new (): HTMLCatDatepickerInlineElement;
+    };
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
     }
     var HTMLCatDropdownElement: {
@@ -1413,6 +1421,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-datepicker": HTMLCatDatepickerElement;
+        "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
@@ -1819,6 +1828,8 @@ declare namespace LocalJSX {
           * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
          */
         "value"?: string;
+    }
+    interface CatDatepickerInline {
     }
     interface CatDropdown {
         /**
@@ -2604,6 +2615,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-datepicker": CatDatepicker;
+        "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
@@ -2662,6 +2674,7 @@ declare module "@stencil/core" {
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
+            "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**
