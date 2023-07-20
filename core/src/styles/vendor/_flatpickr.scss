@@ -266,6 +266,7 @@
 
 .flatpickr-calendar.hasTime.noCalendar {
   padding: 0;
+
   .flatpickr-time {
     border: none;
   }
@@ -291,6 +292,7 @@
 
 .flatpickr-time {
   max-height: unset;
+
   input {
     background: transparent !important;
     font-size: cat-token('size.font.body.m');
