@@ -28,7 +28,7 @@
     width: auto !important;
     margin-top: 0.75rem;
     margin-left: -0.75rem;
-    display:flex;
+    display: flex;
     flex-direction: column;
     gap: 1rem;
 
@@ -100,7 +100,7 @@
 
 .flatpickr-weekdays {
   height: 2rem;
-  .flatpickr-weekday{
+  .flatpickr-weekday {
     color: cat-token('color.ui.font.muted');
     @include cat-body(xs, $weight: 700);
   }
@@ -256,18 +256,18 @@
   min-width: 12rem;
   height: auto;
 
-  .numInputWrapper{
+  .numInputWrapper {
     height: 2rem;
-    padding:0;
+    padding: 0;
     margin: 0.25rem;
     display: flex;
   }
 }
 
-.flatpickr-calendar.hasTime.noCalendar{
-  padding:0;
-  .flatpickr-time{
-    border:none;
+.flatpickr-calendar.hasTime.noCalendar {
+  padding: 0;
+  .flatpickr-time {
+    border: none;
   }
 }
 
@@ -290,7 +290,7 @@
 }
 
 .flatpickr-time {
-  max-height:unset;
+  max-height: unset;
   input {
     background: transparent !important;
     font-size: cat-token('size.font.body.m');
