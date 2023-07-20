@@ -377,14 +377,24 @@ export class CatSelect {
     }
     this.hide();
     // Conditionally remove selection if the option was not manually selected through click or enter key press
-    if (!this.multiple && (!this.tags || !this.state.selection?.length) && this.state.tempSelection?.length) {
-      this.patchState({
-        activeSelectionIndex: -1,
-        selection: this.state.tempSelection,
-        tempSelection: [],
-        options: [],
-        term: this.state.tempSelection[0].render.label
-      });
+    if (!this.multiple && (!this.tags || !this.state.selection?.length)) {
+      if (this.state.tempSelection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: this.state.tempSelection,
+          tempSelection: [],
+          options: [],
+          term: this.state.tempSelection[0].render.label
+        });
+      } else if (!this.state.selection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: [],
+          tempSelection: [],
+          options: [],
+          term: ''
+        });
+      }
     } else {
       this.patchState({ activeSelectionIndex: -1 });
     }
@@ -917,7 +927,7 @@ export class CatSelect {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1, tempSelection: [] });
+      this.patchState({ selection: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');
       this.input.value = '';
     } else {
