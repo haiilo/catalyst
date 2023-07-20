@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-tokens",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "Design tokens for Catalyst Design System",
   "license": "MIT",
   "repository": {
@@ -23,7 +23,8 @@
     "reset": "rm -rf ./dist ./node_modules"
   },
   "devDependencies": {
-    "style-dictionary": "^3.7.2",
+    "style-dictionary": "^3.8.0",
+    "style-dictionary-utils": "^1.5.0",
     "tinycolor2": "^1.6.0"
   }
 }

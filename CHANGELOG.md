@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.2.2](https://github.com/haiilo/catalyst/compare/v6.2.1...v6.2.2) (2023-07-17)
+
+
+### Features
+
+* **tokens:** change tokens to comply with the design token community group (DTCG) specification ([09240e9](https://github.com/haiilo/catalyst/commit/09240e9281252bc3358f031ceb970e564a76a5e7))
+
+
+### Bug Fixes
+
+* **core:** enable cat-select dropdown flip if there is available space ([#288](https://github.com/haiilo/catalyst/issues/288)) ([5b626ba](https://github.com/haiilo/catalyst/commit/5b626ba38dd60b5793a15288a09a3cc1ad6fcf89))
+* **core:** fix hidden input label ([#286](https://github.com/haiilo/catalyst/issues/286)) ([66339c9](https://github.com/haiilo/catalyst/commit/66339c925dabc7e2899c236a6680fe6d9c8e8152))
+* **core:** radio group listening to non radio events ([#300](https://github.com/haiilo/catalyst/issues/300)) ([0280dba](https://github.com/haiilo/catalyst/commit/0280dba078e81e7b17e5df4f7d735f563f1aa697))
+
 ### [6.2.1](https://github.com/haiilo/catalyst/compare/v6.1.2...v6.2.1) (2023-07-07)
 
 

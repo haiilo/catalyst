@@ -188,7 +188,7 @@ cat-spinner {
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   border: 1px solid cat-token('color.ui.border.default');
-  z-index: $cat-dropdown-z-index;
+  z-index: cat-z-index('dropdown');
 
   /* Avoid layout interference */
   width: max-content;

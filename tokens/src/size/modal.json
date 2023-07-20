@@ -1,0 +1,9 @@
+{
+  "size": {
+    "modal": {
+      "s": { "$type": "dimension", "$value": "400px"},
+      "m": { "$type": "dimension", "$value": "600px"},
+      "l": { "$type": "dimension", "$value": "800px"}
+    }
+  }
+}

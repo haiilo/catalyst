@@ -1,0 +1,19 @@
+{
+  "opacity": {
+    "disabled": {
+      "$type": "opacity",
+      "$value": 0.65,
+      "cssProp": "opacity-disabled"
+    },
+    "backdrop": {
+      "$type": "opacity",
+      "$value": 0.4,
+      "cssProp": "opacity-backdrop"
+    },
+    "tooltip": {
+      "$type": "opacity",
+      "$value": 1,
+      "cssProp": "opacity-tooltip"
+    }
+  }
+}
