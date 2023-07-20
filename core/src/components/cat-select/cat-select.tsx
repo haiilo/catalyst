@@ -259,18 +259,18 @@ export class CatSelect {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   @Watch('connector')
-  onConnectorChange(connector: CatSelectConnector) {
+  onConnectorChanged(connector: CatSelectConnector) {
     this.reset(connector);
     this.resolve();
   }
 
   @Watch('value')
-  onValueChange() {
+  onValueChanged() {
     !this.valueChangedBySelection ? this.resolve() : (this.valueChangedBySelection = false);
   }
 
   @Watch('errors')
-  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
@@ -284,7 +284,7 @@ export class CatSelect {
   }
 
   @Watch('state')
-  onStateChange(newState: CatSelectState, oldState: CatSelectState) {
+  onStateChanged(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
     if (changed('isOpen')) {
       this.update();
@@ -358,7 +358,7 @@ export class CatSelect {
   }
 
   componentWillRender(): void {
-    this.watchErrorsHandler(this.errors);
+    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {

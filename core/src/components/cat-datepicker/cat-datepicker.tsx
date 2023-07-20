@@ -1,11 +1,10 @@
-import { Component, Event, Method, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getFormat } from './cat-datepicker.config';
 import { getLocale } from './cat-datepicker.locale';
-import { Watch } from '../../../dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'cat-datepicker',
@@ -166,52 +165,25 @@ export class CatDatepickerFlat {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
-  /**
-   * Watch for changes and updates the instance.
-   * @param newValue The new value.
-   */
   @Watch('value')
-  valueWatcher(newValue: string) {
-    if (newValue) {
-      this.pickr?.setDate(newValue, false);
-      this.catChange.emit(newValue);
+  onValueChanged(value: string) {
+    if (value) {
+      this.pickr?.setDate(value, false);
+      this.catChange.emit(value);
     } else {
-      this.pickr?.clear();
-      this.catChange.emit();
+      this.pickr?.clear(false);
+      this.catChange.emit(undefined);
     }
   }
 
+  @Watch('disabled')
+  onDisabledChaned(value: boolean) {
+    this.pickr?.set('clickOpens', !value);
+  }
+
   componentDidLoad() {
-    const input = this.input;
-    if (input) {
-      const locale = getLocale(i18n.getLocale());
-      const format = getFormat(i18n.getLocale(), this.mode);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
-      this.pickr = flatpickr(input, {
-        locale,
-        plugins,
-        altInput: true,
-        prevArrow: '←',
-        nextArrow: '→',
-        dateFormat: this.dateFormat,
-        altFormat: format,
-        ariaDateFormat: format,
-        mode: this.mode === 'daterange' ? 'range' : 'single',
-        minDate: this.min,
-        maxDate: this.max,
-        enableTime: this.mode === 'time' || this.mode === 'datetime',
-        noCalendar: this.mode === 'time',
-        weekNumbers: true,
-        minuteIncrement: this.step,
-        onChange: (dates, dateStr, flatpickr) => {
-          if (this.mode === 'week') {
-            this.value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
-          } else {
-            this.value = dateStr;
-          }
-        }
-      });
+    if (this.input) {
+      this.pickr = this.initDatepicker(this.input);
     }
   }
 
@@ -263,10 +235,7 @@ export class CatDatepickerFlat {
         nativeAttributes={this.nativeAttributes}
         onCatChange={e => {
           e.stopPropagation();
-          this.pickr?.setDate(e.detail);
-          if (this.value !== (e.detail || undefined || '')) {
-            this.value = e.detail || undefined;
-          }
+          this.value = e.detail || undefined;
         }}
         onCatFocus={e => {
           e.stopPropagation();
@@ -278,6 +247,38 @@ export class CatDatepickerFlat {
         }}
       ></cat-input>
     );
+  }
+
+  private initDatepicker(input: HTMLInputElement): flatpickr.Instance {
+    const locale = getLocale(i18n.getLocale());
+    const format = getFormat(i18n.getLocale(), this.mode);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
+    return flatpickr(input, {
+      locale,
+      plugins,
+      altInput: true,
+      prevArrow: '←',
+      nextArrow: '→',
+      dateFormat: this.dateFormat,
+      altFormat: format,
+      ariaDateFormat: format,
+      mode: this.mode === 'daterange' ? 'range' : 'single',
+      minDate: this.min,
+      maxDate: this.max,
+      enableTime: this.mode === 'time' || this.mode === 'datetime',
+      noCalendar: this.mode === 'time',
+      weekNumbers: true,
+      minuteIncrement: this.step,
+      clickOpens: !this.disabled,
+      onChange: (dates, dateStr, flatpickr) => {
+        if (this.mode === 'week') {
+          this.value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
+        } else {
+          this.value = dateStr || undefined;
+        }
+      }
+    });
   }
 
   private get dateFormat(): string {

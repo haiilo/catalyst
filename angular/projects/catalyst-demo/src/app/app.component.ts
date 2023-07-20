@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
     {
       key: 'catDatepicker',
       type: CatDatepickerFieldType,
-      defaultValue: '12.12.2022',
+      defaultValue: '2022-12-12T00:00:00Z',
       props: {
         label: 'Select a date',
         clearable: true,
