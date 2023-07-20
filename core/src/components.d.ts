@@ -170,6 +170,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Attributes that will be added to the native HTML button content element
+         */
+        "nativeContentAttributes"?: { [key: string]: string };
+        /**
           * Disables ellipse overflowing button content.
          */
         "noEllipsis": boolean;
@@ -897,6 +901,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -1555,6 +1563,10 @@ declare namespace LocalJSX {
           * Attributes that will be added to the native HTML button element
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Attributes that will be added to the native HTML button content element
+         */
+        "nativeContentAttributes"?: { [key: string]: string };
         /**
           * Disables ellipse overflowing button content.
          */
@@ -2349,6 +2361,10 @@ declare namespace LocalJSX {
           * The label of the tab.
          */
         "label"?: string;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
         /**
           * Emitted when tab is clicked.
          */

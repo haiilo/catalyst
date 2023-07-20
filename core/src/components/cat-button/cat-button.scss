@@ -45,6 +45,12 @@ $button-sizes: (
 // ----- content
 
 .cat-button-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cat-button-content-inner {
   @include cat-break-word;
 
   .cat-button-ellipsed & {
@@ -292,8 +298,26 @@ $button-sizes: (
 
 // ----- tabs
 
-:host(.cat-tab-active:not(:hover)) {
-  --cat-primary-text: transparent;
+:host(.cat-tab) {
+  &::part(button) {
+    padding: 1.125rem 0.75rem;
+    --cat-primary-text: transparent;
+    --cat-secondary-bg: transparent;
+  }
+
+  &::part(content) {
+    &::before {
+      content: attr(data-text);
+      content: attr(data-text) / '';
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+      font-weight: 700;
+    }
+  }
 }
 
 // ----- alignment

@@ -179,7 +179,7 @@ importers:
         version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
       '@haiilo/catalyst-angular':
         specifier: workspace:*
-        version: link:../catalyst
+        version: link:../../dist/catalyst
       tslib:
         specifier: ^2.3.0
         version: 2.3.0

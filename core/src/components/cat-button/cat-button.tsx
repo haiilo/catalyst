@@ -137,6 +137,11 @@ export class CatButton {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * Attributes that will be added to the native HTML button content element
+   */
+  @Prop() nativeContentAttributes?: { [key: string]: string };
+
+  /**
    * The index of a button that is used inside a cat-button-group component
    */
   @Prop() buttonGroupPosition?: 'first' | 'last' | 'middle';
@@ -226,6 +231,7 @@ export class CatButton {
     if (this.url) {
       return (
         <a
+          {...this.nativeAttributes}
           ref={el => (this.button = el as HTMLAnchorElement)}
           href={this.disabled ? undefined : this.url}
           target={this.urlTarget}
@@ -327,8 +333,10 @@ export class CatButton {
       this.isIconButton ? (
         <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>
       ) : (
-        <span class="cat-button-content" part="content">
-          <slot></slot>
+        <span class="cat-button-content" part="content" {...this.nativeContentAttributes}>
+          <span class="cat-button-content-inner">
+            <slot></slot>
+          </span>
         </span>
       ),
       this.hasSuffixIcon ? <cat-icon icon={this.icon} size={this.iconSize} part="suffix"></cat-icon> : null,

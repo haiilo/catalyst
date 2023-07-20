@@ -57,6 +57,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'a11yLabel',
   'a11yCurrent',
   'nativeAttributes',
+  'nativeContentAttributes',
   'buttonGroupPosition',
   'catClick',
   'catFocus',
@@ -296,6 +297,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'url',
   'urlTarget',
   'deactivated',
+  'nativeAttributes',
   'tabClick'
 ]);
 
