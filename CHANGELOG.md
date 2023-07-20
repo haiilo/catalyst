@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.2.3](https://github.com/haiilo/catalyst/compare/v6.2.2...v6.2.3) (2023-07-20)
+
+
+### Features
+
+* **core:** adjust tabs padding and hover & active states ([#293](https://github.com/haiilo/catalyst/issues/293)) ([f1fc9f2](https://github.com/haiilo/catalyst/commit/f1fc9f22c220ce4262f4022d1f83b44d740f1bb0))
+* **core:** improved visuals and animations for dropdowns ([#305](https://github.com/haiilo/catalyst/issues/305)) ([f237a1b](https://github.com/haiilo/catalyst/commit/f237a1b2e04474870690a89d3d36c3a500c85b66))
+* **core:** inputs now use ellipsis when text is truncated ([#306](https://github.com/haiilo/catalyst/issues/306)) ([e459781](https://github.com/haiilo/catalyst/commit/e4597819bf4a071defbb2dd3f338edb0b427b53c))
+* **core:** set display flex for cat-flex-row and cat-flex-col helper classes ([75a88f1](https://github.com/haiilo/catalyst/commit/75a88f15b32c9b2f27ed4c1edd0e7511383f86b3))
+
+
+### Bug Fixes
+
+* **core:** base z-index can now be set via CSS properties. fixes [#303](https://github.com/haiilo/catalyst/issues/303), [#308](https://github.com/haiilo/catalyst/issues/308) ([#311](https://github.com/haiilo/catalyst/issues/311)) ([84147ad](https://github.com/haiilo/catalyst/commit/84147ad2a170dba6f6fd87a367a9ff2ef26810a5))
+* **core:** update datepicker while handling via form ([#309](https://github.com/haiilo/catalyst/issues/309)) ([9059f4f](https://github.com/haiilo/catalyst/commit/9059f4f799d38f1eff34d339b574eccdfde84577))
+
 ### [6.2.2](https://github.com/haiilo/catalyst/compare/v6.2.1...v6.2.2) (2023-07-17)
 
 
