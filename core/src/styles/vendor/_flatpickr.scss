@@ -28,6 +28,9 @@
     width: auto !important;
     margin-top: 0.75rem;
     margin-left: -0.75rem;
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
 
     &.animate {
       opacity: 1;
@@ -97,6 +100,10 @@
 
 .flatpickr-weekdays {
   height: 2rem;
+  .flatpickr-weekday{
+    color: cat-token('color.ui.font.muted');
+    @include cat-body(xs, $weight: 700);
+  }
 }
 
 .flatpickr-weekwrapper {
@@ -107,14 +114,17 @@
   .flatpickr-weeks {
     box-shadow: none;
     width: 2rem;
-    padding: 0 0.5rem 0 0;
+    padding: 0;
+    margin-right: 0.5rem;
+    background: cat-token('color.ui.background.muted');
+    border-radius: cat-token('size.border.radius.m');
   }
 
   span.flatpickr-day,
   span.flatpickr-day:hover {
     @include cat-body(xs, $weight: 700);
     color: cat-token('color.ui.font.muted');
-    text-align: right;
+    text-align: center;
     line-height: 2.25rem;
   }
 }
@@ -241,16 +251,25 @@
   }
 }
 
-.flatpickr-time .numInputWrapper {
-  height: 2.25rem;
+.flatpickr-calendar.hasTime .flatpickr-time {
+  border: 1px solid cat-token('color.ui.border.default');
+  border-radius: cat-token('size.border.radius.m');
+  min-width: 12rem;
+  height: auto;
+
+  .numInputWrapper{
+    height: 2rem;
+    padding:0;
+    margin: 0.25rem;
+    display: flex;
+  }
 }
 
-.flatpickr-calendar.hasTime .flatpickr-time {
-  height: 2.25rem;
-  line-height: 2.25rem;
-  max-height: 2.25rem;
-  border-top: none;
-  min-width: 12rem;
+.flatpickr-calendar.hasTime.noCalendar{
+  padding:0;
+  .flatpickr-time{
+    border:none;
+  }
 }
 
 .flatpickr-time .flatpickr-time-separator,
@@ -272,10 +291,12 @@
 }
 
 .flatpickr-time {
+  max-height:unset;
   input {
     background: transparent !important;
-    @include cat-head(4, 400);
+    font-size: cat-token('size.font.body.m');
     line-height: 2.25rem;
+    font-family: inherit;
 
     &.flatpickr-hour {
       font-weight: inherit;
