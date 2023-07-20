@@ -298,5 +298,9 @@
   "border-radius-s": {
     "$type": "dimension",
     "$value": "0.125rem"
+  },
+  "z-index": {
+    "$type": "number",
+    "$value": 0
   }
 }

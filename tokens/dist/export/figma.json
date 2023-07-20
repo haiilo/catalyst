@@ -882,5 +882,19 @@
         "$value": "250ms"
       }
     }
+  },
+  "z-index": {
+    "base": {
+      "$type": "number",
+      "$value": 0
+    },
+    "dropdown": {
+      "$type": "number",
+      "$value": 100
+    },
+    "tooltip": {
+      "$type": "number",
+      "$value": 200
+    }
   }
 }

@@ -33,13 +33,12 @@ $-max-height: calc(100vh - 48px);
   //The 3 lines below set the initial styling (when not visible)
   display: none;
   opacity: 0;
-  transform: scale(.9);
+  transform: scale(0.9);
   transition: transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
     opacity cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15);
 
-  
   //Sets the origin point so the scaling transition matches the placement
-    &[data-placement^='top'] {
+  &[data-placement^='top'] {
     transform-origin: bottom;
   }
 
@@ -89,7 +88,7 @@ $-max-height: calc(100vh - 48px);
 
   &.show {
     opacity: 1;
-    transform: scale(1); 
+    transform: scale(1);
     transition: transform cat-token('time.transition.m') cubic-bezier(0.05, 0.7, 0.1, 1),
       opacity cat-token('time.transition.m') cubic-bezier(0.05, 0.7, 0.1, 1);
   }

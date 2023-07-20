@@ -24,7 +24,7 @@
   }
 
   &.open {
-    z-index: $cat-dropdown-z-index;
+    z-index: cat-z-index('dropdown');
     width: auto !important;
     margin-top: 0.75rem;
     margin-left: -0.75rem;
