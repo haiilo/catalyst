@@ -1291,7 +1291,7 @@ span.flatpickr-weekday {
   display: none;
 }
 .flatpickr-calendar.open {
-  z-index: 100;
+  z-index: calc(var(--cat-z-index, 0) + 100);
   width: auto !important;
   margin-top: 0.75rem;
   margin-left: -0.75rem;
