@@ -1050,7 +1050,7 @@
   "z-index": {
     "base": {
       "$type": "number",
-      "$value": 0
+      "$value": 1000
     },
     "dropdown": {
       "$type": "number",
