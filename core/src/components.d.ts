@@ -206,6 +206,10 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface CatButtonGroup {
         /**
           * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
@@ -1209,6 +1213,10 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface HTMLCatButtonGroupElement extends Components.CatButtonGroup, HTMLStencilElement {
     }
     var HTMLCatButtonGroupElement: {
@@ -1612,6 +1620,10 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface CatButtonGroup {
         /**
           * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
@@ -2634,6 +2646,10 @@ declare module "@stencil/core" {
              * once per view for main call-to-action.
              */
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            /**
+             * Button groups are designed to bring together button controls that are of a
+             * similar nature. For example text formatting controls.
+             */
             "cat-button-group": LocalJSX.CatButtonGroup & JSXBase.HTMLAttributes<HTMLCatButtonGroupElement>;
             /**
              * Cards are surfaces that display content and actions on a single topic. They
