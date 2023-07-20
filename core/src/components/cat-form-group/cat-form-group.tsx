@@ -36,7 +36,7 @@ export class CatFormGroup {
   @Prop() labelSize?: string;
 
   @Watch('requiredMarker')
-  onRequiredMarker(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
+  onRequiredMarkerChanged(newRequiredMarker: 'none' | 'required' | 'optional' | 'auto') {
     const updateMarker = newRequiredMarker === 'auto' ? this.calculate(this.formElements) : newRequiredMarker;
     this.formElements.forEach(
       element => !element.requiredMarker?.endsWith('!') && (element.requiredMarker = updateMarker)
@@ -44,7 +44,7 @@ export class CatFormGroup {
   }
 
   @Watch('horizontal')
-  onHorizontal(newHorizontal: boolean) {
+  onHorizontalChanged(newHorizontal: boolean) {
     this.formElements.forEach(element => {
       element.horizontal = newHorizontal;
     });
@@ -62,8 +62,8 @@ export class CatFormGroup {
     this.formElements = Array.from(
       this.hostElement.querySelectorAll('cat-input, cat-textarea, cat-select, cat-datepicker')
     ) as HTMLCatFormFieldElement[];
-    this.onRequiredMarker(this.requiredMarker);
-    this.onHorizontal(this.horizontal);
+    this.onRequiredMarkerChanged(this.requiredMarker);
+    this.onHorizontalChanged(this.horizontal);
   }
 
   private calculate(elements: HTMLCatFormFieldElement[]): 'optional' | 'required' {

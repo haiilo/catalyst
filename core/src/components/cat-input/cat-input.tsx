@@ -198,7 +198,7 @@ export class CatInput {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillRender(): void {
-    this.watchErrorsHandler(this.errors);
+    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
@@ -237,7 +237,7 @@ export class CatInput {
   }
 
   @Watch('errors')
-  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
