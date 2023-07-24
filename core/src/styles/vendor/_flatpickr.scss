@@ -11,7 +11,7 @@
   background: cat-token('color.ui.background.surface');
   padding: 1rem;
 
-  &.animate {
+  &:not(.inline).animate {
     transform: translateY(-1rem);
     opacity: 0;
     transition: transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
@@ -23,14 +23,23 @@
     display: none;
   }
 
+  &.inline,
   &.open {
-    z-index: cat-z-index('dropdown');
-    width: auto !important;
-    margin-top: 0.75rem;
-    margin-left: -0.75rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: auto !important;
+  }
+  
+  &.inline {
+    border: unset;
+    padding: 0;
+  }
+
+  &.open {
+    z-index: cat-z-index('dropdown');
+    margin-top: 0.75rem;
+    margin-left: -0.75rem;
 
     &.animate {
       opacity: 1;

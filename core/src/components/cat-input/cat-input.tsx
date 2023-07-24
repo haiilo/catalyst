@@ -306,7 +306,7 @@ export class CatInput {
                 ref={el => (this.input = el as HTMLInputElement)}
                 id={this.id}
                 class={{
-                  'has-clearable': this.clearable && !this.disabled
+                  'has-clearable': this.clearable && !this.disabled && !this.readonly
                 }}
                 autocomplete={this.autoComplete}
                 disabled={this.disabled}
@@ -326,7 +326,7 @@ export class CatInput {
                 aria-invalid={this.invalid ? 'true' : undefined}
                 aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
               ></input>
-              {this.clearable && !this.disabled && this.value && (
+              {this.clearable && !this.disabled && !this.readonly && this.value && (
                 <cat-button
                   class="clearable"
                   icon="$cat:input-close"

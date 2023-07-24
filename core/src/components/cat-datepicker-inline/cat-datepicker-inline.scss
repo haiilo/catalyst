@@ -2,6 +2,7 @@
 @use 'mixins' as *;
 
 @import '~flatpickr/dist/flatpickr.css';
+@import '../styles/vendor/flatpickr';
 
 :host {
   display: inline-flex;
