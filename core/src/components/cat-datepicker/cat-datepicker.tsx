@@ -267,7 +267,7 @@ export class CatDatepickerFlat {
         step: this.step,
         disabled: this.disabled,
         readonly: this.readonly,
-        applyChange: (value?: string) => (this.value = value)
+        applyChange: value => (this.value = value)
       })
     );
   }

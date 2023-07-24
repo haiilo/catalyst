@@ -7,10 +7,36 @@
 :host {
   display: inline-flex;
   margin-bottom: $cat-body-margin-bottom;
+
+  > div {
+    display: flex;
+  }
 }
 
 :host([hidden]) {
   display: none;
+}
+
+.datepicker-disabled,
+.datepicker-readonly {
+  .flatpickr-days,
+  .flatpickr-time {
+    pointer-events: none;
+  }
+}
+
+.datepicker-disabled {
+  .flatpickr-days {
+    opacity: 0.75;
+  }
+  .flatpickr-time {
+    input,
+    .flatpickr-time-separator,
+    .flatpickr-am-pm {
+      color: cat-token('color.ui.font.muted');
+      opacity: 0.75;
+    }
+  }
 }
 
 input {

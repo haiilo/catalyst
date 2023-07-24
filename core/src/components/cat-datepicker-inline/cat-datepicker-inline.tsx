@@ -1,9 +1,9 @@
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
-import { CatDatepickerMode } from '../cat-datepicker/cat-datepicker.mode';
 import { getConfig } from '../cat-datepicker/cat-datepicker.config';
-import { getLocale } from '../cat-datepicker/cat-datepicker.locale';
 import { getFormat } from '../cat-datepicker/cat-datepicker.format';
+import { getLocale } from '../cat-datepicker/cat-datepicker.locale';
+import { CatDatepickerMode } from '../cat-datepicker/cat-datepicker.mode';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 @Component({
@@ -85,7 +85,21 @@ export class CatDatepickerInline {
   render() {
     return (
       <Host>
-        <input ref={el => (this.input = el)} value={this.value}></input>
+        <div
+          tabIndex={this.disabled || this.readonly ? -1 : undefined}
+          class={{
+            'datepicker-wrapper': true,
+            'datepicker-disabled': this.disabled,
+            'datepicker-readonly': this.readonly
+          }}
+        >
+          <input
+            ref={el => (this.input = el)}
+            value={this.value}
+            disabled={this.disabled}
+            readonly={this.readonly}
+          ></input>
+        </div>
       </Host>
     );
   }
@@ -103,7 +117,7 @@ export class CatDatepickerInline {
           step: this.step,
           disabled,
           readonly: this.readonly,
-          applyChange: (value?: string) => (this.value = value)
+          applyChange: value => (this.value = value)
         },
         {
           ...(disabled ? { enable: [] } : {}),

@@ -289,6 +289,7 @@ export class CatInput {
             class={{
               'input-wrapper': true,
               'input-round': this.round,
+              'input-readonly': this.readonly,
               'input-disabled': this.disabled,
               'input-invalid': this.invalid
             }}

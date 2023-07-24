@@ -5,12 +5,14 @@ describe('cat-datepicker-inline', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatDatepickerInline],
-      html: `<cat-datepicker-inline></cat-datepicker-inline>`,
+      html: `<cat-datepicker-inline></cat-datepicker-inline>`
     });
     expect(page.root).toEqualHtml(`
       <cat-datepicker-inline>
         <mock:shadow-root>
-          <slot></slot>
+          <div class="datepicker-wrapper">
+            <input></input>
+          </div>
         </mock:shadow-root>
       </cat-datepicker-inline>
     `);

@@ -2,17 +2,20 @@ import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { CatDatepickerMode } from './cat-datepicker.mode';
 
-export function getConfig(options: {
-  locale: flatpickr.CustomLocale;
-  format: string;
-  mode: CatDatepickerMode;
-  min: string | undefined;
-  max: string | undefined;
-  step: number;
-  disabled: boolean;
-  readonly: boolean;
-  applyChange: (value?: string) => void;
-}, more: flatpickr.Options.Options = {}): flatpickr.Options.Options {
+export function getConfig(
+  options: {
+    locale: flatpickr.CustomLocale;
+    format: string;
+    mode: CatDatepickerMode;
+    min: string | undefined;
+    max: string | undefined;
+    step: number;
+    disabled: boolean;
+    readonly: boolean;
+    applyChange: (value?: string) => void;
+  },
+  more: flatpickr.Options.Options = {}
+): flatpickr.Options.Options {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const plugins = options.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
 

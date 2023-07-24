@@ -745,13 +745,14 @@
         <section id="datepicker">
           <h2>Datepicker</h2>
           <cat-datepicker mode="date" label="Date"></cat-datepicker>
-          <cat-datepicker mode="datetime" label="Datetime"></cat-datepicker>
+          <cat-datepicker mode="datetime" label="Datetime" disabled></cat-datepicker>
           <cat-datepicker mode="time" label="Time"></cat-datepicker>
           <cat-datepicker mode="week" label="Week"></cat-datepicker>
           <cat-datepicker mode="daterange" label="Daterange"></cat-datepicker>
           <h3>Inline Datepicker</h3>
-          <cat-card class="cat-inline-flex">
-            <cat-datepicker-inline value="2022-06-21T00:00:00Z" mode="datetime"></cat-datepicker-inline>
+          <cat-card class="cat-inline-flex cat-flex-col">
+            <h4>Datetime</h4>
+            <cat-datepicker-inline value="2022-06-21T00:00:00Z"></cat-datepicker-inline>
           </cat-card>
         </section>
 

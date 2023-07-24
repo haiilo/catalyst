@@ -29,6 +29,10 @@
   gap: 1rem;
 }
 
+.textarea-readonly {
+  pointer-events: none;
+}
+
 .textarea-wrapper {
   position: relative;
   display: flex;

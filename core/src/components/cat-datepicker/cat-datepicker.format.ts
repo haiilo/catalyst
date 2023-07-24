@@ -1,4 +1,4 @@
-import { CatDatepickerMode } from "./cat-datepicker.mode";
+import { CatDatepickerMode } from './cat-datepicker.mode';
 
 export function getFormat(language: string, mode: CatDatepickerMode): string {
   const date = new Date(2000, 1, 3, 4, 5, 6);
