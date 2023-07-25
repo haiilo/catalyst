@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.0](https://github.com/haiilo/catalyst/compare/v6.2.3...v6.3.0) (2023-07-25)
+
+
+### Features
+
+* **core:** implement inline datepicker ([#318](https://github.com/haiilo/catalyst/issues/318)) ([fd86c7b](https://github.com/haiilo/catalyst/commit/fd86c7bd99af8348e520123d7d327d69b3ca5bb2))
+* **core:** provide a local string array connector ([#313](https://github.com/haiilo/catalyst/issues/313)) ([c102c06](https://github.com/haiilo/catalyst/commit/c102c06e51b57508efe389c83a62267022f09810))
+
+
+### Bug Fixes
+
+* **core:** add missing proxies for datepicker-inline ([997f2f5](https://github.com/haiilo/catalyst/commit/997f2f5f85b080d3e24c687f6f563db7c6d70587))
+* **core:** increase base z-index to 1000 ([2440bcb](https://github.com/haiilo/catalyst/commit/2440bcbe202c85afbca0cba6659ae168aaa422c5))
+
 ### [6.2.3](https://github.com/haiilo/catalyst/compare/v6.2.2...v6.2.3) (2023-07-20)
 
 
