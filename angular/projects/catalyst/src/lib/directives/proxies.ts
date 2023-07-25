@@ -228,24 +228,31 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'max', 'min', 'mode', 'readonly', 'step', 'value']
 })
 @Component({
   selector: 'cat-datepicker-inline',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['disabled', 'max', 'min', 'mode', 'readonly', 'step', 'value'],
 })
 export class CatDatepickerInline {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
 
-export declare interface CatDatepickerInline extends Components.CatDatepickerInline {}
+export declare interface CatDatepickerInline extends Components.CatDatepickerInline {
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({
