@@ -228,6 +228,27 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
 
 
 @ProxyCmp({
+})
+@Component({
+  selector: 'cat-datepicker-inline',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class CatDatepickerInline {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface CatDatepickerInline extends Components.CatDatepickerInline {}
+
+
+@ProxyCmp({
   inputs: ['noAutoClose', 'overflow', 'placement'],
   methods: ['close']
 })

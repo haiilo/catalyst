@@ -1,4 +1,4 @@
-import { CustomLocale } from 'flatpickr/dist/types/locale';
+import flatpickr from 'flatpickr';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export function getHour12(language: string): boolean {
@@ -28,7 +28,7 @@ function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
   return [...Array(12).keys()].map(month => format(date.setUTCMonth(month)));
 }
 
-export function getLocale(language: string): CustomLocale {
+export function getLocale(language: string): flatpickr.CustomLocale {
   return {
     firstDayOfWeek: getFirstDayOfWeek(language),
     rangeSeparator: ' - ',

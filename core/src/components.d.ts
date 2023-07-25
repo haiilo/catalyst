@@ -6,12 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
+export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
 export { InputType } from "./components/cat-input/input-type";
@@ -358,7 +360,7 @@ export namespace Components {
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode": 'date' | 'time' | 'datetime' | 'daterange' | 'week';
+        "mode": CatDatepickerMode;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -395,6 +397,36 @@ export namespace Components {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
+         */
+        "value"?: string;
+    }
+    interface CatDatepickerInline {
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+         */
+        "mode": CatDatepickerMode;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * The step size to use when changing the time.
+         */
+        "step": number;
         /**
           * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
          */
@@ -1133,6 +1165,10 @@ export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
 }
+export interface CatDatepickerInlineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDatepickerInlineElement;
+}
 export interface CatDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDropdownElement;
@@ -1248,6 +1284,12 @@ declare global {
     var HTMLCatDatepickerElement: {
         prototype: HTMLCatDatepickerElement;
         new (): HTMLCatDatepickerElement;
+    };
+    interface HTMLCatDatepickerInlineElement extends Components.CatDatepickerInline, HTMLStencilElement {
+    }
+    var HTMLCatDatepickerInlineElement: {
+        prototype: HTMLCatDatepickerInlineElement;
+        new (): HTMLCatDatepickerInlineElement;
     };
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
     }
@@ -1413,6 +1455,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-datepicker": HTMLCatDatepickerElement;
+        "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
@@ -1766,7 +1809,7 @@ declare namespace LocalJSX {
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode"?: 'date' | 'time' | 'datetime' | 'daterange' | 'week';
+        "mode"?: CatDatepickerMode;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -1815,6 +1858,40 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
+         */
+        "value"?: string;
+    }
+    interface CatDatepickerInline {
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+         */
+        "mode"?: CatDatepickerMode;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDatepickerInlineCustomEvent<string>) => void;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * The step size to use when changing the time.
+         */
+        "step"?: number;
         /**
           * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
          */
@@ -2604,6 +2681,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-datepicker": CatDatepicker;
+        "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
@@ -2662,6 +2740,7 @@ declare module "@stencil/core" {
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
+            "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**

@@ -246,6 +246,7 @@ export class CatTextarea {
             <div
               class={{
                 'textarea-wrapper': true,
+                'textarea-readonly': this.readonly,
                 'textarea-disabled': this.disabled,
                 'textarea-invalid': this.invalid
               }}

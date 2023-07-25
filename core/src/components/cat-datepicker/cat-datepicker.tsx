@@ -1,10 +1,11 @@
 import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
-import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import { getFormat } from './cat-datepicker.config';
+import { getConfig } from './cat-datepicker.config';
+import { getFormat } from './cat-datepicker.format';
 import { getLocale } from './cat-datepicker.locale';
+import { CatDatepickerMode } from './cat-datepicker.mode';
 
 @Component({
   tag: 'cat-datepicker',
@@ -86,7 +87,7 @@ export class CatDatepickerFlat {
   /**
    * The mode of the datepicker, to select a date, time, both, a date range or a week number.
    */
-  @Prop() mode: 'date' | 'time' | 'datetime' | 'daterange' | 'week' = 'date';
+  @Prop() mode: CatDatepickerMode = 'date';
 
   /**
    * The name of the form control. Submitted with the form as part of a name/value pair.
@@ -177,8 +178,13 @@ export class CatDatepickerFlat {
   }
 
   @Watch('disabled')
-  onDisabledChaned(value: boolean) {
-    this.pickr?.set('clickOpens', !value);
+  onDisabledChanged(value: boolean) {
+    this.pickr?.set('clickOpens', !value && !this.readonly);
+  }
+
+  @Watch('readonly')
+  onReadonlyChanged(value: boolean) {
+    this.pickr?.set('clickOpens', !value && !this.disabled);
   }
 
   componentDidLoad() {
@@ -250,44 +256,19 @@ export class CatDatepickerFlat {
   }
 
   private initDatepicker(input: HTMLInputElement): flatpickr.Instance {
-    const locale = getLocale(i18n.getLocale());
-    const format = getFormat(i18n.getLocale(), this.mode);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const plugins = this.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
-    return flatpickr(input, {
-      locale,
-      plugins,
-      altInput: true,
-      prevArrow: '←',
-      nextArrow: '→',
-      dateFormat: this.dateFormat,
-      altFormat: format,
-      ariaDateFormat: format,
-      mode: this.mode === 'daterange' ? 'range' : 'single',
-      minDate: this.min,
-      maxDate: this.max,
-      enableTime: this.mode === 'time' || this.mode === 'datetime',
-      noCalendar: this.mode === 'time',
-      weekNumbers: true,
-      minuteIncrement: this.step,
-      clickOpens: !this.disabled,
-      onChange: (dates, dateStr, flatpickr) => {
-        if (this.mode === 'week') {
-          this.value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
-        } else {
-          this.value = dateStr || undefined;
-        }
-      }
-    });
-  }
-
-  private get dateFormat(): string {
-    if (this.mode === 'week') {
-      return 'W';
-    } else if (this.mode === 'time') {
-      return 'H:i';
-    } else {
-      return 'Z';
-    }
+    return flatpickr(
+      input,
+      getConfig({
+        locale: getLocale(i18n.getLocale()),
+        format: getFormat(i18n.getLocale(), this.mode),
+        mode: this.mode,
+        min: this.min,
+        max: this.max,
+        step: this.step,
+        disabled: this.disabled,
+        readonly: this.readonly,
+        applyChange: value => (this.value = value)
+      })
+    );
   }
 }

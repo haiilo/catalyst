@@ -44,6 +44,10 @@
     border-radius: 10rem;
   }
 
+  &.input-readonly {
+    pointer-events: none;
+  }
+
   &.input-disabled {
     background: cat-token('color.ui.background.muted');
     cursor: not-allowed;
