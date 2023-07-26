@@ -206,7 +206,7 @@ export namespace Components {
         /**
           * The rendering style of the button.
          */
-        "variant": 'filled' | 'outlined' | 'text';
+        "variant": 'filled' | 'outlined' | 'text' | 'link';
     }
     /**
      * Button groups are designed to bring together button controls that are of a
@@ -1661,7 +1661,7 @@ declare namespace LocalJSX {
         /**
           * The rendering style of the button.
          */
-        "variant"?: 'filled' | 'outlined' | 'text';
+        "variant"?: 'filled' | 'outlined' | 'text' | 'link';
     }
     /**
      * Button groups are designed to bring together button controls that are of a
