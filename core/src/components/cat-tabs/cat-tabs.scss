@@ -13,34 +13,15 @@
 
 :host([tabs-align='center']) {
   justify-content: center;
-  .cat-tab:first-of-type {
-    margin-left: 0;
-  }
 }
 
 :host([tabs-align='right']) {
   justify-content: end;
-  .cat-tab {
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: -0.75rem;
-    }
-  }
 }
 
 :host([tabs-align='justify']) {
   cat-button {
     flex: 1 0 auto;
-  }
-  .cat-tab {
-    &:first-of-type {
-      margin-left: -0.75rem;
-    }
-    &:last-of-type {
-      margin-right: -0.75rem;
-    }
   }
 }
 
@@ -54,6 +35,9 @@
 
   &:first-of-type {
     margin-left: -0.75rem;
+  }
+  &:last-of-type {
+    margin-right: -0.75rem;
   }
 
   &::after {
