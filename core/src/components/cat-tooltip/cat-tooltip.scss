@@ -25,7 +25,9 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
   background-color: cat-token('color.ui.background.tooltip');
   border-radius: cat-border-radius('m');
   color: cat-token('color.ui.font.tooltip');
-  transition: opacity cat-token('time.transition.m') linear, visibility cat-token('time.transition.m') linear;
+  transition:
+    opacity cat-token('time.transition.m') linear,
+    visibility cat-token('time.transition.m') linear;
   visibility: hidden;
   opacity: 0;
   box-shadow: $-box-shadow;

@@ -7,7 +7,9 @@
   }
 
   .cat-bg-#{$name}-hover {
-    transition: background-color cat-token('time.transition.s'), color cat-token('time.transition.s');
+    transition:
+      background-color cat-token('time.transition.s'),
+      color cat-token('time.transition.s');
 
     &:hover {
       background-color: cat-token('color.theme.#{$name}.bgHover') !important;

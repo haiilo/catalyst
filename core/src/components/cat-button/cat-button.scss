@@ -33,8 +33,11 @@ $button-sizes: (
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: color cat-token('time.transition.s') linear, border-color cat-token('time.transition.s') linear,
-    background-color cat-token('time.transition.s') linear, box-shadow cat-token('time.transition.s') linear;
+  transition:
+    color cat-token('time.transition.s') linear,
+    border-color cat-token('time.transition.s') linear,
+    background-color cat-token('time.transition.s') linear,
+    box-shadow cat-token('time.transition.s') linear;
 
   &:focus-visible {
     outline: 2px solid cat-token('color.ui.border.focus');
@@ -312,7 +315,6 @@ $button-sizes: (
       height: 0;
       visibility: hidden;
       overflow: hidden;
-      -webkit-user-select: none;
       user-select: none;
       pointer-events: none;
       font-weight: 700;
