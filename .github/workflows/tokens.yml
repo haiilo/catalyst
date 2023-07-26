@@ -1,6 +1,8 @@
 name: 'Tokens'
 on:
   push:
+    branches:
+      - '*'
     paths:
       - 'tokens/**'
     tags-ignore:

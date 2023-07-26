@@ -1,5 +1,5 @@
 {
   "test": {
-    "base": { "$type": "number", "$value": 1000, "cssProp": "z-index" }
+    "bases": { "$type": "number", "$value": 1000, "cssProp": "z-index" }
   }
 }
