@@ -67,19 +67,18 @@ export class CatDatepickerInline {
   }
 
   @Watch('disabled')
-  onDisabledChanged(value: boolean) {
+  @Watch('readonly')
+  onDisabledChanged() {
     // Dynamically unsetting 'enabled' value to undefined is not working due to
-    // a bug in the library. We thus need to fully recreate the date picker.
+    // a bug in the library. We thus need to fully recreate the date picker
+    // after the value has been updated.
     this.pickr?.destroy();
-    if (this.input) {
-      this.pickr = this.initDatepicker(this.input, value);
-    }
+    this.pickr = undefined;
+    setTimeout(() => (this.pickr = this.initDatepicker(this.input)));
   }
 
   componentDidLoad() {
-    if (this.input) {
-      this.pickr = this.initDatepicker(this.input, this.disabled);
-    }
+    this.pickr = this.initDatepicker(this.input);
   }
 
   render() {
@@ -104,7 +103,11 @@ export class CatDatepickerInline {
     );
   }
 
-  private initDatepicker(input: HTMLInputElement, disabled: boolean): flatpickr.Instance {
+  private initDatepicker(input?: HTMLInputElement): flatpickr.Instance | undefined {
+    if (!input) {
+      return;
+    }
+
     return flatpickr(
       input,
       getConfig(
@@ -115,12 +118,12 @@ export class CatDatepickerInline {
           min: this.min,
           max: this.max,
           step: this.step,
-          disabled,
+          disabled: this.disabled,
           readonly: this.readonly,
           applyChange: value => (this.value = value)
         },
         {
-          ...(disabled ? { enable: [] } : {}),
+          ...(this.disabled ? { enable: [] } : {}),
           inline: true
         }
       )
