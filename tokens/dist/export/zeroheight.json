@@ -1003,6 +1003,12 @@
       }
     }
   },
+  "test": {
+    "bases": {
+      "$type": "number",
+      "$value": 1000
+    }
+  },
   "time": {
     "transition": {
       "l": {
