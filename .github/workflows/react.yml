@@ -1,10 +1,10 @@
 name: 'React'
 on:
   push:
+    branches:
+      - '*'
     paths:
       - 'react/**'
-    tags-ignore:
-      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
