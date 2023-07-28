@@ -16,6 +16,12 @@
   display: none;
 }
 
+.label-container{
+  &.hidden{
+    display:none;
+  }
+}
+
 .textarea-field,
 .textarea-container {
   display: flex;
