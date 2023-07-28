@@ -164,11 +164,11 @@
       "ss3v": {
         "name": {
           "$type": "asset",
-          "$value": "SS3V"
+          "$value": "Source Sans 3"
         },
         "woff2ss3v": {
           "$type": "asset",
-          "$value": "SS3V.woff2"
+          "$value": "SourceSans3VF-Upright.woff2"
         }
       }
     }
@@ -731,11 +731,11 @@
     "family": {
       "head": {
         "$type": "fontFamily",
-        "$value": "SS3V"
+        "$value": "Source Sans 3"
       },
       "body": {
         "$type": "fontFamily",
-        "$value": "SS3V"
+        "$value": "Source Sans 3"
       },
       "mono": {
         "$type": "fontFamily",
