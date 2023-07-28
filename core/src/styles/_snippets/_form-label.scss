@@ -8,16 +8,20 @@ $cat-input-height: 2.5rem;
   @include cat-break-word;
 }
 
+.input-field:not(.input-horizontal),
+.textarea-field:not(.textarea-horizontal),
+.select-field:not(.select-horizontal) {
+  .label-container.hidden {
+    @include cat-visually-hidden;
+  }
+}
+
 .label-container {
   flex-basis: var(--label-size, 33.33%);
 
   .label-wrapper {
     display: flex;
     gap: 0.25rem;
-  }
-
-  .hidden {
-    @include cat-visually-hidden;
   }
 }
 
@@ -49,6 +53,10 @@ $cat-input-height: 2.5rem;
 .input-horizontal,
 .textarea-horizontal,
 .select-horizontal {
+  .label-container.hidden label {
+    @include cat-visually-hidden;
+  }
+
   .label-wrapper {
     flex-direction: column;
   }
