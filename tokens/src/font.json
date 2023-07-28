@@ -3,12 +3,12 @@
     "family": {
       "head": {
         "$type": "fontFamily",
-        "$value": "{asset.font.lato.name.value}",
+        "$value": "{asset.font.ss3v.name.value}",
         "cssProp": "font-family-head"
       },
       "body": {
         "$type": "fontFamily",
-        "$value": "{asset.font.lato.name.value}",
+        "$value": "{asset.font.ss3v.name.value}",
         "cssProp": "font-family-body"
       },
       "mono": {

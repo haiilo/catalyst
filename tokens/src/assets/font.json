@@ -94,6 +94,13 @@
           "$type": "asset",
           "$value": "AzeretMono-Regular.woff2"
         }
+      },
+      "ss3v": {
+        "name": { "$type": "asset", "$value": "SS3V" },
+        "woff2ss3v": {
+        "$type": "asset",
+        "$value": "SS3V.woff2"
+        }
       }
     }
   }
