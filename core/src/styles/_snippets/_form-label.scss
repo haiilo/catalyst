@@ -11,13 +11,13 @@ $cat-input-height: 2.5rem;
 .label-container {
   flex-basis: var(--label-size, 33.33%);
 
+  &.hidden {
+    @include cat-visually-hidden;
+  }
+
   .label-wrapper {
     display: flex;
     gap: 0.25rem;
-  }
-
-  .hidden {
-    @include cat-visually-hidden;
   }
 }
 

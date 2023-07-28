@@ -216,7 +216,12 @@ export class CatTextarea {
             'textarea-horizontal': this.horizontal
           }}
         >
-          <div class="label-container">
+          <div
+            class={{
+              hidden: this.labelHidden,
+              'label-container': true
+            }}
+          >
             {(this.hasSlottedLabel || this.label) && (
               <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
                 <span class="label-wrapper" part="label">
