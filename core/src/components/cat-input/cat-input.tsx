@@ -258,7 +258,7 @@ export class CatInput {
           'input-horizontal': this.horizontal
         }}
       >
-        <div class="label-container">
+        <div class={`label-container ${this.labelHidden && !this.horizontal ? 'hidden' : ''}`}>
           {(this.hasSlottedLabel || this.label) && (
             <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
               <span class="label-wrapper" part="label">

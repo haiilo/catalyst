@@ -14,6 +14,12 @@
   display: none;
 }
 
+.label-container{
+  &.hidden{
+    display:none;
+  }
+}
+
 .input-field,
 .input-container {
   display: flex;
