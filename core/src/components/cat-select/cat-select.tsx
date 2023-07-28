@@ -897,7 +897,7 @@ export class CatSelect {
         newSelection = [item];
         this.search(item.render.label);
       }
-      this.patchState({ selection: newSelection });
+      this.patchState({ selection: newSelection, tempSelection: [] });
 
       if (this.multiple && this.state.term.trim() && this.input) {
         this.patchState({ term: '', activeOptionIndex: -1 });
