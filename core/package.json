@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
-    "@haiilo/catalyst-icons": "^0.3.29",
+    "@haiilo/catalyst-icons": "^1.0.5",
     "@stencil/angular-output-target": "^0.7.1",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.4",
