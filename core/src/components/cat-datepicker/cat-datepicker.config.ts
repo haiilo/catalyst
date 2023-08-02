@@ -12,6 +12,7 @@ export function getConfig(
     step: number;
     disabled: boolean;
     readonly: boolean;
+    nativePickerAttributes: { [key: string]: string };
     applyChange: (value?: string) => void;
   },
   more: flatpickr.Options.Options = {}
@@ -37,6 +38,12 @@ export function getConfig(
     weekNumbers: true,
     minuteIncrement: options.step,
     clickOpens: !options.disabled && !options.readonly,
+    onReady: (_dates, _dateStr, flatpickr) => {
+      for (const key in options.nativePickerAttributes) {
+        const value = options.nativePickerAttributes[key];
+        flatpickr.calendarContainer.setAttribute(key, value);
+      }
+    },
     onChange: (dates, dateStr, flatpickr) => {
       let value = dateStr || undefined;
       if (options.mode === 'week') {

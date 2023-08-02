@@ -57,10 +57,13 @@ export class CatDropdown {
       this.toggle();
     }
 
-    const button = event.target as HTMLButtonElement;
-
-    // hide dropdown on button click
-    if (!this.noAutoClose && event.composedPath().includes(this.content) && button.slot !== 'trigger') {
+    // hide dropdown on button clicks inside the dropdown content
+    if (
+      !this.noAutoClose &&
+      event.composedPath().includes(this.content) &&
+      event.target instanceof Element &&
+      event.target.slot !== 'trigger'
+    ) {
       this.close();
     }
   }
@@ -99,6 +102,9 @@ export class CatDropdown {
               const shouldClose =
                 !this.noAutoClose &&
                 !event.composedPath().includes(this.content) &&
+                !event
+                  .composedPath()
+                  .find(el => el instanceof HTMLElement && el.hasAttribute('data-dropdown-no-close')) &&
                 (!this.trigger || !event.composedPath().includes(this.trigger));
               if (shouldClose) {
                 this.close();
@@ -116,7 +122,7 @@ export class CatDropdown {
    */
   @Method()
   async close(): Promise<void> {
-    if (this.isOpen === null || !this.isOpen) {
+    if (this.isOpen === null) {
       return; // busy
     }
 
