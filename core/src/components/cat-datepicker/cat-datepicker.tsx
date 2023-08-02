@@ -152,6 +152,11 @@ export class CatDatepickerFlat {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * Attributes that will be added to the rendered HTML datepicker element.
+   */
+  @Prop() nativePickerAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
@@ -259,6 +264,10 @@ export class CatDatepickerFlat {
       return;
     }
 
+    // avoid dropdown closing if datepicker is part of a dropdown
+    const withinDropdown = !!this.findClosest('cat-dropdown', input);
+    const nativePickerAttributes: { [key: string]: string } = withinDropdown ? { 'data-dropdown-no-close': '' } : {};
+
     return flatpickr(
       input,
       getConfig({
@@ -270,8 +279,22 @@ export class CatDatepickerFlat {
         step: this.step,
         disabled: this.disabled,
         readonly: this.readonly,
+        nativePickerAttributes: { ...nativePickerAttributes, ...this.nativePickerAttributes },
         applyChange: value => (this.value = value)
       })
     );
+  }
+
+  private findClosest(selector: string, element: Element | ShadowRoot): Element | null {
+    if (element instanceof Element && element.matches(selector)) {
+      return element;
+    }
+
+    // Search in parent element or Shadow DOM host
+    const nextElement =
+      element instanceof ShadowRoot
+        ? element.host
+        : element.parentElement || (element.getRootNode() as ShadowRoot).host;
+    return nextElement ? this.findClosest(selector, nextElement) : null;
   }
 }

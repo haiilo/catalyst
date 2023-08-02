@@ -51,6 +51,11 @@ export class CatDatepickerInline {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Attributes that will be added to the rendered HTML datepicker element.
+   */
+  @Prop() nativePickerAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
@@ -120,6 +125,7 @@ export class CatDatepickerInline {
           step: this.step,
           disabled: this.disabled,
           readonly: this.readonly,
+          nativePickerAttributes: this.nativePickerAttributes ?? {},
           applyChange: value => (this.value = value)
         },
         {

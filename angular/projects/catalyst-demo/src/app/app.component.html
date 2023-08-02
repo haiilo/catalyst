@@ -33,21 +33,3 @@
   ></cat-datepicker>
   <formly-form [form]="form" [fields]="fields"></formly-form>
 </form>
-
-EXAMPLE: with auto close
-<cat-dropdown noAutoClose="true">
-  <cat-button class="filter-button" slot="trigger" variant="text" icon="filter-outlined" color="secondary"
-              icon-only="true"></cat-button>
-  <nav slot="content">
-      <cat-datepicker icon="calendar-outlined" mode="date" [clearable]="true"></cat-datepicker>
-  </nav>
-</cat-dropdown>
-
-EXAMPLE: Without auto close
-<cat-dropdown>
-  <cat-button class="filter-button" slot="trigger" variant="text" icon="filter-outlined" color="secondary"
-              icon-only="true"></cat-button>
-  <nav slot="content">
-    <cat-datepicker icon="calendar-outlined" mode="date" [clearable]="true"></cat-datepicker>
-  </nav>
-</cat-dropdown>
