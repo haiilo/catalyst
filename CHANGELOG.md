@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.2](https://github.com/haiilo/catalyst/compare/v6.3.1...v6.3.2) (2023-08-02)
+
+
+### Features
+
+* minor follow up improvements for tabs ([831ad9f](https://github.com/haiilo/catalyst/commit/831ad9fac5463be7496b976b3bfed67ec737befe))
+
+
+### Bug Fixes
+
+* **angular:** update angular dependencies ([b31ac53](https://github.com/haiilo/catalyst/commit/b31ac53622ac725cd51c4ad023c7bb45200ec486))
+* **core:** cat-datepicker inside cat-dropdown leads to misbehavior ([#340](https://github.com/haiilo/catalyst/issues/340)) ([0bfb610](https://github.com/haiilo/catalyst/commit/0bfb610d7c88a62ca078303a8e5bcd988c10962f))
+* **core:** cat-select doesn't update properly when using search and clicking outside after selection ([#315](https://github.com/haiilo/catalyst/issues/315)) ([2df8a9d](https://github.com/haiilo/catalyst/commit/2df8a9dc7e45489b6b16e77418a733c3c64233cf))
+* **core:** keep option list available after pressing the clear button ([#314](https://github.com/haiilo/catalyst/issues/314)) ([439e49d](https://github.com/haiilo/catalyst/commit/439e49dd5d54c6d502b38dcd3ddefece99d7e0bb))
+* **core:** update core dependencies ([171a025](https://github.com/haiilo/catalyst/commit/171a0259938899da249c28f2d0c9cd823bec4884))
+* fix broken ci tasks ([25e24d4](https://github.com/haiilo/catalyst/commit/25e24d472f4df158fcec3fccf0dc19c60a68e2d8))
+
 ### [6.3.1](https://github.com/haiilo/catalyst/compare/v6.3.0...v6.3.1) (2023-07-26)
 
 
