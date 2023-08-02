@@ -55,7 +55,9 @@ label {
   --border-color: #{cat-token('color.ui.border.dark', $wrap: false)};
 
   &:not(.select-disabled):hover {
-    box-shadow: inset 0 0 0 1px rgb(var(--border-color)), 0 0 0 1px rgb(var(--border-color));
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--border-color)),
+      0 0 0 1px rgb(var(--border-color));
   }
 
   &:focus-within {
@@ -188,7 +190,7 @@ cat-spinner {
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   border: 1px solid cat-token('color.ui.border.default');
-  z-index: $cat-dropdown-z-index;
+  z-index: cat-z-index('dropdown');
 
   /* Avoid layout interference */
   width: max-content;

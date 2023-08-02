@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.1](https://github.com/haiilo/catalyst/compare/v6.3.0...v6.3.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* **core:** datepicker not updating properly when setting to / from disabled ([c425d66](https://github.com/haiilo/catalyst/commit/c425d6661d589ced10e8f221f7da98a61db74a96))
+
+## [6.3.0](https://github.com/haiilo/catalyst/compare/v6.2.3...v6.3.0) (2023-07-25)
+
+
+### Features
+
+* **core:** implement inline datepicker ([#318](https://github.com/haiilo/catalyst/issues/318)) ([fd86c7b](https://github.com/haiilo/catalyst/commit/fd86c7bd99af8348e520123d7d327d69b3ca5bb2))
+* **core:** provide a local string array connector ([#313](https://github.com/haiilo/catalyst/issues/313)) ([c102c06](https://github.com/haiilo/catalyst/commit/c102c06e51b57508efe389c83a62267022f09810))
+
+
+### Bug Fixes
+
+* **core:** add missing proxies for datepicker-inline ([997f2f5](https://github.com/haiilo/catalyst/commit/997f2f5f85b080d3e24c687f6f563db7c6d70587))
+* **core:** increase base z-index to 1000 ([2440bcb](https://github.com/haiilo/catalyst/commit/2440bcbe202c85afbca0cba6659ae168aaa422c5))
+
+### [6.2.3](https://github.com/haiilo/catalyst/compare/v6.2.2...v6.2.3) (2023-07-20)
+
+
+### Features
+
+* **core:** adjust tabs padding and hover & active states ([#293](https://github.com/haiilo/catalyst/issues/293)) ([f1fc9f2](https://github.com/haiilo/catalyst/commit/f1fc9f22c220ce4262f4022d1f83b44d740f1bb0))
+* **core:** improved visuals and animations for dropdowns ([#305](https://github.com/haiilo/catalyst/issues/305)) ([f237a1b](https://github.com/haiilo/catalyst/commit/f237a1b2e04474870690a89d3d36c3a500c85b66))
+* **core:** inputs now use ellipsis when text is truncated ([#306](https://github.com/haiilo/catalyst/issues/306)) ([e459781](https://github.com/haiilo/catalyst/commit/e4597819bf4a071defbb2dd3f338edb0b427b53c))
+* **core:** set display flex for cat-flex-row and cat-flex-col helper classes ([75a88f1](https://github.com/haiilo/catalyst/commit/75a88f15b32c9b2f27ed4c1edd0e7511383f86b3))
+
+
+### Bug Fixes
+
+* **core:** base z-index can now be set via CSS properties. fixes [#303](https://github.com/haiilo/catalyst/issues/303), [#308](https://github.com/haiilo/catalyst/issues/308) ([#311](https://github.com/haiilo/catalyst/issues/311)) ([84147ad](https://github.com/haiilo/catalyst/commit/84147ad2a170dba6f6fd87a367a9ff2ef26810a5))
+* **core:** update datepicker while handling via form ([#309](https://github.com/haiilo/catalyst/issues/309)) ([9059f4f](https://github.com/haiilo/catalyst/commit/9059f4f799d38f1eff34d339b574eccdfde84577))
+
+### [6.2.2](https://github.com/haiilo/catalyst/compare/v6.2.1...v6.2.2) (2023-07-17)
+
+
+### Features
+
+* **tokens:** change tokens to comply with the design token community group (DTCG) specification ([09240e9](https://github.com/haiilo/catalyst/commit/09240e9281252bc3358f031ceb970e564a76a5e7))
+
+
+### Bug Fixes
+
+* **core:** enable cat-select dropdown flip if there is available space ([#288](https://github.com/haiilo/catalyst/issues/288)) ([5b626ba](https://github.com/haiilo/catalyst/commit/5b626ba38dd60b5793a15288a09a3cc1ad6fcf89))
+* **core:** fix hidden input label ([#286](https://github.com/haiilo/catalyst/issues/286)) ([66339c9](https://github.com/haiilo/catalyst/commit/66339c925dabc7e2899c236a6680fe6d9c8e8152))
+* **core:** radio group listening to non radio events ([#300](https://github.com/haiilo/catalyst/issues/300)) ([0280dba](https://github.com/haiilo/catalyst/commit/0280dba078e81e7b17e5df4f7d735f563f1aa697))
+
 ### [6.2.1](https://github.com/haiilo/catalyst/compare/v6.1.2...v6.2.1) (2023-07-07)
 
 

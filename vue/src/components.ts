@@ -57,6 +57,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'a11yLabel',
   'a11yCurrent',
   'nativeAttributes',
+  'nativeContentAttributes',
   'buttonGroupPosition',
   'catClick',
   'catFocus',
@@ -121,6 +122,18 @@ export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('c
   'catChange',
   'catFocus',
   'catBlur'
+]);
+
+
+export const CatDatepickerInline = /*@__PURE__*/ defineContainer<JSX.CatDatepickerInline>('cat-datepicker-inline', undefined, [
+  'disabled',
+  'max',
+  'min',
+  'mode',
+  'readonly',
+  'step',
+  'value',
+  'catChange'
 ]);
 
 
@@ -296,6 +309,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'url',
   'urlTarget',
   'deactivated',
+  'nativeAttributes',
   'tabClick'
 ]);
 

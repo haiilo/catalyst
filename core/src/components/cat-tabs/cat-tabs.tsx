@@ -32,7 +32,7 @@ export class CatTabs {
   @Prop() tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
 
   @Watch('activeTabId')
-  onActiveTabChanged(newActiveTab: string): void {
+  onActiveTabIdChanged(newActiveTab: string): void {
     const activeTab = this.tabs.find(value => value.id === newActiveTab);
     activeTab?.click();
   }
@@ -97,6 +97,8 @@ export class CatTabs {
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
               onCatClick={() => (this.activeTabId = tab.id)}
+              nativeAttributes={{ ...tab.nativeAttributes }}
+              nativeContentAttributes={{ 'data-text': tab.label }}
             >
               {tab.label}
             </cat-button>

@@ -259,18 +259,18 @@ export class CatSelect {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   @Watch('connector')
-  onConnectorChange(connector: CatSelectConnector) {
+  onConnectorChanged(connector: CatSelectConnector) {
     this.reset(connector);
     this.resolve();
   }
 
   @Watch('value')
-  onValueChange() {
+  onValueChanged() {
     !this.valueChangedBySelection ? this.resolve() : (this.valueChangedBySelection = false);
   }
 
   @Watch('errors')
-  watchErrorsHandler(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
@@ -284,7 +284,7 @@ export class CatSelect {
   }
 
   @Watch('state')
-  onStateChange(newState: CatSelectState, oldState: CatSelectState) {
+  onStateChanged(newState: CatSelectState, oldState: CatSelectState) {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
     if (changed('isOpen')) {
       this.update();
@@ -358,7 +358,7 @@ export class CatSelect {
   }
 
   componentWillRender(): void {
-    this.watchErrorsHandler(this.errors);
+    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     if (!this.label && !this.hasSlottedLabel) {
@@ -377,14 +377,24 @@ export class CatSelect {
     }
     this.hide();
     // Conditionally remove selection if the option was not manually selected through click or enter key press
-    if (!this.multiple && (!this.tags || !this.state.selection?.length) && this.state.tempSelection?.length) {
-      this.patchState({
-        activeSelectionIndex: -1,
-        selection: this.state.tempSelection,
-        tempSelection: [],
-        options: [],
-        term: this.state.tempSelection[0].render.label
-      });
+    if (!this.multiple && (!this.tags || !this.state.selection?.length)) {
+      if (this.state.tempSelection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: this.state.tempSelection,
+          tempSelection: [],
+          options: [],
+          term: this.state.tempSelection[0].render.label
+        });
+      } else if (!this.state.selection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: [],
+          tempSelection: [],
+          options: [],
+          term: ''
+        });
+      }
     } else {
       this.patchState({ activeSelectionIndex: -1 });
     }
@@ -887,7 +897,7 @@ export class CatSelect {
         newSelection = [item];
         this.search(item.render.label);
       }
-      this.patchState({ selection: newSelection });
+      this.patchState({ selection: newSelection, tempSelection: [] });
 
       if (this.multiple && this.state.term.trim() && this.input) {
         this.patchState({ term: '', activeOptionIndex: -1 });
@@ -917,7 +927,7 @@ export class CatSelect {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1, tempSelection: [] });
+      this.patchState({ selection: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');
       this.input.value = '';
     } else {

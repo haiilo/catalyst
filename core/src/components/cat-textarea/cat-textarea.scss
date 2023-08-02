@@ -29,6 +29,10 @@
   gap: 1rem;
 }
 
+.textarea-readonly {
+  pointer-events: none;
+}
+
 .textarea-wrapper {
   position: relative;
   display: flex;
@@ -69,7 +73,9 @@ textarea {
   }
 
   &:not(:disabled):hover {
-    box-shadow: inset 0 0 0 1px rgb(var(--border-color)), 0 0 0 1px rgb(var(--border-color));
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--border-color)),
+      0 0 0 1px rgb(var(--border-color));
   }
 
   &:focus {

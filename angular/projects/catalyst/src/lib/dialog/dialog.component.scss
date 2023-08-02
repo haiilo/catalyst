@@ -5,7 +5,9 @@
 @include cdk.overlay();
 
 .cdk-overlay-pane {
-  transition: transform cat-token('time.transition.m') ease, opacity cat-token('time.transition.m') ease;
+  transition:
+    transform cat-token('time.transition.m') ease,
+    opacity cat-token('time.transition.m') ease;
   transform: translateY(24px);
   opacity: 0;
 }

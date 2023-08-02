@@ -1,10 +1,10 @@
 name: 'Core'
 on:
   push:
+    branches:
+      - '*'
     paths:
       - 'core/**'
-    tags-ignore:
-      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest

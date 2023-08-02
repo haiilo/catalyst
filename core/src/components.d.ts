@@ -6,12 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
 import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
+export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
 export { InputType } from "./components/cat-input/input-type";
@@ -170,6 +172,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Attributes that will be added to the native HTML button content element
+         */
+        "nativeContentAttributes"?: { [key: string]: string };
+        /**
           * Disables ellipse overflowing button content.
          */
         "noEllipsis": boolean;
@@ -202,6 +208,10 @@ export namespace Components {
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface CatButtonGroup {
         /**
           * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
@@ -350,7 +360,7 @@ export namespace Components {
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode": 'date' | 'time' | 'datetime' | 'daterange' | 'week';
+        "mode": CatDatepickerMode;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -387,6 +397,36 @@ export namespace Components {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
+         */
+        "value"?: string;
+    }
+    interface CatDatepickerInline {
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+         */
+        "mode": CatDatepickerMode;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * The step size to use when changing the time.
+         */
+        "step": number;
         /**
           * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
          */
@@ -897,6 +937,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -1121,6 +1165,10 @@ export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
 }
+export interface CatDatepickerInlineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDatepickerInlineElement;
+}
 export interface CatDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDropdownElement;
@@ -1201,6 +1249,10 @@ declare global {
         prototype: HTMLCatButtonElement;
         new (): HTMLCatButtonElement;
     };
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface HTMLCatButtonGroupElement extends Components.CatButtonGroup, HTMLStencilElement {
     }
     var HTMLCatButtonGroupElement: {
@@ -1232,6 +1284,12 @@ declare global {
     var HTMLCatDatepickerElement: {
         prototype: HTMLCatDatepickerElement;
         new (): HTMLCatDatepickerElement;
+    };
+    interface HTMLCatDatepickerInlineElement extends Components.CatDatepickerInline, HTMLStencilElement {
+    }
+    var HTMLCatDatepickerInlineElement: {
+        prototype: HTMLCatDatepickerInlineElement;
+        new (): HTMLCatDatepickerInlineElement;
     };
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
     }
@@ -1397,6 +1455,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-datepicker": HTMLCatDatepickerElement;
+        "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
@@ -1556,6 +1615,10 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Attributes that will be added to the native HTML button content element
+         */
+        "nativeContentAttributes"?: { [key: string]: string };
+        /**
           * Disables ellipse overflowing button content.
          */
         "noEllipsis"?: boolean;
@@ -1600,6 +1663,10 @@ declare namespace LocalJSX {
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
+    /**
+     * Button groups are designed to bring together button controls that are of a
+     * similar nature. For example text formatting controls.
+     */
     interface CatButtonGroup {
         /**
           * Adds an accessible label for the button group that it is only shown in assistive technologies, like screen readers.
@@ -1742,7 +1809,7 @@ declare namespace LocalJSX {
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
-        "mode"?: 'date' | 'time' | 'datetime' | 'daterange' | 'week';
+        "mode"?: CatDatepickerMode;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -1791,6 +1858,40 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
+         */
+        "value"?: string;
+    }
+    interface CatDatepickerInline {
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "max"?: string;
+        /**
+          * A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.
+         */
+        "min"?: string;
+        /**
+          * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+         */
+        "mode"?: CatDatepickerMode;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDatepickerInlineCustomEvent<string>) => void;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * The step size to use when changing the time.
+         */
+        "step"?: number;
         /**
           * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
          */
@@ -2350,6 +2451,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
           * Emitted when tab is clicked.
          */
         "onTabClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
@@ -2576,6 +2681,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-datepicker": CatDatepicker;
+        "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
@@ -2618,6 +2724,10 @@ declare module "@stencil/core" {
              * once per view for main call-to-action.
              */
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            /**
+             * Button groups are designed to bring together button controls that are of a
+             * similar nature. For example text formatting controls.
+             */
             "cat-button-group": LocalJSX.CatButtonGroup & JSXBase.HTMLAttributes<HTMLCatButtonGroupElement>;
             /**
              * Cards are surfaces that display content and actions on a single topic. They
@@ -2630,6 +2740,7 @@ declare module "@stencil/core" {
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
+            "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**

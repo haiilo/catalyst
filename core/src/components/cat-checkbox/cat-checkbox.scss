@@ -60,7 +60,9 @@ input {
   background-color: cat-token('color.ui.background.input');
   border: 1px solid cat-token('color.ui.border.dark');
   border-radius: cat-border-radius(s);
-  transition: background-color cat-token('time.transition.s') ease, border-color cat-token('time.transition.s') ease;
+  transition:
+    background-color cat-token('time.transition.s') ease,
+    border-color cat-token('time.transition.s') ease;
   pointer-events: none;
 
   svg {

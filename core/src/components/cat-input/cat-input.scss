@@ -44,6 +44,10 @@
     border-radius: 10rem;
   }
 
+  &.input-readonly {
+    pointer-events: none;
+  }
+
   &.input-disabled {
     background: cat-token('color.ui.background.muted');
     cursor: not-allowed;
@@ -51,7 +55,9 @@
   }
 
   &:not(.input-disabled):hover {
-    box-shadow: inset 0 0 0 1px rgb(var(--border-color)), 0 0 0 1px rgb(var(--border-color));
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--border-color)),
+      0 0 0 1px rgb(var(--border-color));
   }
 
   &:focus-within {
@@ -112,6 +118,7 @@ input {
   border: none;
   outline: none;
   background: none;
+  @include cat-ellipsis;
 
   .input-disabled & {
     cursor: not-allowed;

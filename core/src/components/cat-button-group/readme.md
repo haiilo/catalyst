@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Button groups are designed to bring together button controls that are of a
+similar nature. For example text formatting controls.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                         | Type                  | Default     |

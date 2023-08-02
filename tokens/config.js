@@ -6,6 +6,38 @@ StyleDictionary.registerFileHeader({
   fileHeader: () => ['Auto-generated file. Do not edit directly.']
 });
 
+StyleDictionary.registerFormat({
+  name: 'json/designTokens',
+  formatter: function ({ dictionary }) {
+    const set = (obj, path, token) => {
+      const [key, ...restPath] = path;
+      obj[key] = restPath.length ? set(obj[key] || {}, restPath, token) : {
+        $type: token.$type,
+        $value: token.value
+      };
+      return obj;
+    }
+    const tokens = dictionary.allTokens.reduce((acc, token) =>
+      set(acc, token.path, token)
+    , {});
+    return JSON.stringify(tokens, null, 2);
+  }
+});
+
+StyleDictionary.registerFormat({
+  name: 'json/cssProp',
+  formatter: function ({ dictionary }) {
+    const tokens = dictionary.allTokens.reduce((acc, token) => {
+      acc[token.cssProp] = {
+        $type: token.$type,
+        $value: token.value
+      };
+      return acc;
+    }, {});
+    return JSON.stringify(tokens, null, 2);
+  }
+});
+
 StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/rgbParts',
@@ -80,11 +112,38 @@ module.exports = {
       }]
     },
     json: {
+      transforms: ['name/cti/kebab'],
       buildPath: 'dist/json/',
       files: [{
         destination: 'variables.json',
         format: 'json/nested'
       }]
     },
+    zeroheight: {
+      transforms: ['name/cti/kebab'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'zeroheight.json',
+        format: 'json/designTokens'
+      }]
+    },
+    figma: {
+      transforms: ['name/cti/kebab', 'dimension/pixelUnitless'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'figma.json',
+        format: 'json/designTokens',
+        filter: (token) => token.$type !== 'asset'
+      }]
+    },
+    theme: {
+      transforms: ['name/cti/kebab'],
+      buildPath: 'dist/export/',
+      files: [{
+        destination: 'theme.json',
+        format: 'json/cssProp',
+        filter: (token) => token.hasOwnProperty('cssProp')
+      }]
+    }
   }
 };

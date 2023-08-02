@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -482,44 +482,103 @@
 
         <section id="dropdown">
           <h2>Dropdown</h2>
-          <cat-dropdown>
-            <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
-            <nav slot="content">
-              <ul>
-                <li class="cat-nav-head">Headline</li>
-                <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                <li>
-                  <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
-                </li>
-                <li>
-                  <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
-                </li>
-                <li>
-                  <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
-                </li>
-                <li>
-                  <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
-                </li>
-                <li>
-                  <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
-                </li>
-                <li class="cat-hr"></li>
-                <li>
-                  <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)"
-                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
-                  </cat-button>
-                </li>
-              </ul>
-              <hr />
-              <ul>
-                <li>
-                  <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
-                    >Nav item 3</cat-button
-                  >
-                </li>
-              </ul>
-            </nav>
-          </cat-dropdown>
+
+          <div class="cat-flex cat-item-center cat-gap-s cat-mb-m">
+            <!-- Generic dropdown -->
+            <cat-dropdown>
+              <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
+              <nav slot="content">
+                <ul>
+                  <li class="cat-nav-head">Headline</li>
+                  <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                  <li>
+                    <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                  </li>
+                  <li>
+                    <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
+                  </li>
+                  <li>
+                    <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
+                  </li>
+                  <li>
+                    <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
+                  </li>
+                  <li>
+                    <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
+                  </li>
+                  <li class="cat-hr"></li>
+                  <li>
+                    <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)"
+                      >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                    </cat-button>
+                  </li>
+                </ul>
+                <hr />
+                <ul>
+                  <li>
+                    <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
+                      >Nav item 3</cat-button
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </cat-dropdown>
+
+            <!-- Example: User menu -->
+            <cat-dropdown overflow>
+              <cat-button slot="trigger" variant="filled" color="primary" size="m">Example User Menu</cat-button>
+              <nav slot="content" style="min-width: 240px">
+                <ul>
+                  <li>
+                    <cat-button class="cat-nav-item">
+                      <div class="cat-flex cat-items-center cat-gap-s">
+                        <cat-avatar initials="MM" size="m" src="https://tinyurl.com/bdcu9va5" round></cat-avatar>
+                        <div class="cat-flex cat-flex-col cat-items-start">
+                          <span>Max Mustermann</span>
+                          <span class="cat-text-s cat-muted">Open profile</span>
+                        </div>
+                      </div>
+                    </cat-button>
+                  </li>
+                  <li>
+                    <cat-dropdown placement="right-start">
+                      <cat-button slot="trigger" class="cat-nav-item" icon="status-available">Available</cat-button>
+                      <nav slot="content">
+                        <ul>
+                          <li class="cat-nav-head">Headline</li>
+                          <li class="cat-nav-text cat-muted">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                          </li>
+                          <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                        </ul>
+                      </nav>
+                    </cat-dropdown>
+                  </li>
+                  <li><cat-button class="cat-nav-item" icon="bookmark-outlined">Saved</cat-button></li>
+                  <li><cat-button class="cat-nav-item" icon="w-document-outlined">Files</cat-button></li>
+                  <hr />
+                  <li class="cat-nav-head">Platform</li>
+                  <li><cat-button class="cat-nav-item" icon="settings-outlined">Administration</cat-button></li>
+                  <li><cat-button class="cat-nav-item" icon="bar-chart-outlined">Analytics</cat-button></li>
+                  <li>
+                    <cat-button class="cat-nav-item" icon="w-hero-teaser-outlined">Manage hero teaser</cat-button>
+                  </li>
+                  <li><cat-button class="cat-nav-item" icon="w-alert-outlined">Reported content</cat-button></li>
+                  <hr />
+                  <li class="cat-nav-head">Settings</li>
+                  <li><cat-button class="cat-nav-item" icon="sliders-outlined">Account</cat-button></li>
+                  <li><cat-button class="cat-nav-item" icon="bell-outlined">Notifications</cat-button></li>
+                  <hr />
+                  <li class="cat-nav-head">Support</li>
+                  <li><cat-button class="cat-nav-item" icon="restart-outlined">Restart tour</cat-button></li>
+                  <li><cat-button class="cat-nav-item" icon="question-mark-circle-outlined">Help</cat-button></li>
+                  <li><cat-button class="cat-nav-item" icon="info-circle-outlined">About</cat-button></li>
+                  <hr />
+                  <li><cat-button class="cat-nav-item" icon="sign-out-outlined">Log out</cat-button></li>
+                </ul>
+              </nav>
+            </cat-dropdown>
+          </div>
 
           <cat-card>
             Dropdown inside a card
@@ -686,10 +745,15 @@
         <section id="datepicker">
           <h2>Datepicker</h2>
           <cat-datepicker mode="date" label="Date"></cat-datepicker>
-          <cat-datepicker mode="datetime" label="Datetime"></cat-datepicker>
+          <cat-datepicker mode="datetime" label="Datetime" disabled></cat-datepicker>
           <cat-datepicker mode="time" label="Time"></cat-datepicker>
           <cat-datepicker mode="week" label="Week"></cat-datepicker>
           <cat-datepicker mode="daterange" label="Daterange"></cat-datepicker>
+          <h3>Inline Datepicker</h3>
+          <cat-card class="cat-inline-flex cat-flex-col">
+            <h4>Datetime</h4>
+            <cat-datepicker-inline value="2022-06-21T00:00:00Z"></cat-datepicker-inline>
+          </cat-card>
         </section>
 
         <section id="notification">

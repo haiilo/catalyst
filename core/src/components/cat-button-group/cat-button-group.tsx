@@ -1,5 +1,9 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 
+/**
+ * Button groups are designed to bring together button controls that are of a
+ * similar nature. For example text formatting controls.
+ */
 @Component({
   tag: 'cat-button-group',
   styleUrl: 'cat-button-group.scss',

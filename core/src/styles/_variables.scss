@@ -7,20 +7,13 @@
 
 $cat-head-margin-bottom: 0.5rem;
 $cat-body-margin-bottom: 1rem;
-$cat-nav-padding-horizontal: 1.25rem;
+$cat-nav-padding-horizontal: 0.75rem;
 
 // --------
 // -- Typography
 // --------
 
 $cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
-
-// --------
-// -- z-indexes
-// --------
-
-$cat-dropdown-z-index: 100 !default;
-$cat-tooltip-z-index: 200 !default;
 
 // --------
 // -- Elevations

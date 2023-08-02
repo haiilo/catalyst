@@ -1,10 +1,10 @@
 name: 'Tokens'
 on:
   push:
+    branches:
+      - '*'
     paths:
       - 'tokens/**'
-    tags-ignore:
-      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest

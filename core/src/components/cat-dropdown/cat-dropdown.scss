@@ -15,8 +15,7 @@ $-max-height: calc(100vh - 48px);
 }
 
 ::slotted(nav) {
-  padding-top: $cat-body-margin-bottom * 0.5;
-  padding-bottom: $cat-body-margin-bottom * 0.5;
+  padding: 0.25rem;
   min-width: $-min-width;
   max-width: $-max-width;
 }
@@ -24,40 +23,76 @@ $-max-height: calc(100vh - 48px);
 .content {
   position: fixed;
   background: cat-token('color.ui.background.surface');
-  display: none;
   -webkit-overflow-scrolling: touch;
   min-height: $-min-height;
   max-height: $-max-height;
   @include cat-elevation(4);
   border-radius: cat-border-radius('m');
   border: 1px solid cat-token('color.ui.border.default');
-  z-index: $cat-dropdown-z-index;
+  z-index: cat-z-index('dropdown');
+  // The 3 lines below set the initial styling (when not visible)
+  display: none;
   opacity: 0;
-  transition: transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
+  transform: scale(0.9);
+  transition:
+    transform cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15),
     opacity cat-token('time.transition.s') cubic-bezier(0.3, 0, 0.8, 0.15);
 
+  // Sets the origin point so the scaling transition matches the placement
   &[data-placement^='top'] {
-    transform: translateY(1rem);
+    transform-origin: bottom;
+  }
+
+  &[data-placement^='top-start'] {
+    transform-origin: bottom left;
+  }
+
+  &[data-placement^='top-end'] {
+    transform-origin: bottom right;
   }
 
   &[data-placement^='left'] {
-    transform: translateX(1rem);
+    transform-origin: right;
+  }
+
+  &[data-placement^='left-start'] {
+    transform-origin: right top;
+  }
+
+  &[data-placement^='left-end'] {
+    transform-origin: right bottom;
   }
 
   &[data-placement^='right'] {
-    transform: translateX(-1rem);
+    transform-origin: left;
+  }
+
+  &[data-placement^='right-start'] {
+    transform-origin: left top;
+  }
+
+  &[data-placement^='right-end'] {
+    transform-origin: left bottom;
   }
 
   &[data-placement^='bottom'] {
-    transform: translateY(-1rem);
+    transform-origin: top;
+  }
+
+  &[data-placement^='bottom-start'] {
+    transform-origin: top left;
+  }
+
+  &[data-placement^='bottom-end'] {
+    transform-origin: top right;
   }
 
   &.show {
     opacity: 1;
-    transform: translateX(0);
-    transform: translateY(0);
-    transition: transform cat-token('time.transition.l') cubic-bezier(0.05, 0.7, 0.1, 1),
-      opacity cat-token('time.transition.l') cubic-bezier(0.05, 0.7, 0.1, 1);
+    transform: scale(1);
+    transition:
+      transform cat-token('time.transition.m') cubic-bezier(0.05, 0.7, 0.1, 1),
+      opacity cat-token('time.transition.m') cubic-bezier(0.05, 0.7, 0.1, 1);
   }
 
   &.overflow-auto {

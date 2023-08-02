@@ -1,0 +1,5 @@
+{
+  "test": {
+    "bases": { "$type": "number", "$value": 1000, "cssProp": "z-index" }
+  }
+}

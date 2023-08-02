@@ -1,10 +1,10 @@
 name: 'Angular'
 on:
   push:
+    branches:
+      - '*'
     paths:
       - 'angular/**'
-    tags-ignore:
-      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest

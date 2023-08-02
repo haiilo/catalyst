@@ -6,7 +6,10 @@ import { NgControl } from '@angular/forms';
   selector: 'cat-input, cat-textarea, cat-datepicker, cat-select'
 })
 export class ValueAccessorDecorator implements AfterViewInit {
-  constructor(private readonly el: ElementRef, @Self() @Optional() private readonly controlDirective?: NgControl) {}
+  constructor(
+    private readonly el: ElementRef,
+    @Self() @Optional() private readonly controlDirective?: NgControl
+  ) {}
 
   ngAfterViewInit(): void {
     this.controlDirective?.statusChanges?.subscribe(() => this.updateErrors());
