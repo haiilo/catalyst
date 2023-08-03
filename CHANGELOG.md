@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.3](https://github.com/haiilo/catalyst/compare/v6.3.2...v6.3.3) (2023-08-03)
+
+
+### Bug Fixes
+
+* **core:** broken attribute to hide labels for inputs ([#332](https://github.com/haiilo/catalyst/issues/332)) ([32efbb6](https://github.com/haiilo/catalyst/commit/32efbb639d6bc5332a2b7b4d68c64a9ba739b304))
+* **core:** clear buttons close dropdown, datepicker randomly opens again ([#343](https://github.com/haiilo/catalyst/issues/343)) ([57c99c4](https://github.com/haiilo/catalyst/commit/57c99c47bc70dfdafc6cbb652b9b10894e80e0eb))
+
 ### [6.3.2](https://github.com/haiilo/catalyst/compare/v6.3.1...v6.3.2) (2023-08-02)
 
 
