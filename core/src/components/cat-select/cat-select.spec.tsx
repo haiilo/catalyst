@@ -30,7 +30,7 @@ describe('cat-select', () => {
                 <div class="select-wrapper-inner">
                   <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
                 </div>
-                <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" icon="$cat:select-open" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
+                <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" data-dropdown-no-close icon="$cat:select-open" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
               </div>
             </div>
          </div>

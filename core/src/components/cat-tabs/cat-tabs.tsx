@@ -99,6 +99,7 @@ export class CatTabs {
               onCatClick={() => (this.activeTabId = tab.id)}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
+              data-dropdown-no-close
             >
               {tab.label}
             </cat-button>

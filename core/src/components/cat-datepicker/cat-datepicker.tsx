@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
+import { findClosest } from '../../utils/find-closest';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getConfig } from './cat-datepicker.config';
@@ -265,7 +266,7 @@ export class CatDatepickerFlat {
     }
 
     // avoid dropdown closing if datepicker is part of a dropdown
-    const withinDropdown = !!this.findClosest('cat-dropdown', input);
+    const withinDropdown = !!findClosest('cat-dropdown', input);
     const nativePickerAttributes: { [key: string]: string } = withinDropdown ? { 'data-dropdown-no-close': '' } : {};
 
     return flatpickr(
@@ -283,18 +284,5 @@ export class CatDatepickerFlat {
         applyChange: value => (this.value = value)
       })
     );
-  }
-
-  private findClosest(selector: string, element: Element | ShadowRoot): Element | null {
-    if (element instanceof Element && element.matches(selector)) {
-      return element;
-    }
-
-    // Search in parent element or Shadow DOM host
-    const nextElement =
-      element instanceof ShadowRoot
-        ? element.host
-        : element.parentElement || (element.getRootNode() as ShadowRoot).host;
-    return nextElement ? this.findClosest(selector, nextElement) : null;
   }
 }
