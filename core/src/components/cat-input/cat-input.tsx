@@ -336,6 +336,7 @@ export class CatInput {
                   variant="text"
                   a11y-label={i18n.t('input.clear')}
                   onClick={this.clear.bind(this)}
+                  data-dropdown-no-close
                 ></cat-button>
               )}
             </div>
