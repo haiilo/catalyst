@@ -370,6 +370,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Attributes that will be added to the rendered HTML datepicker element.
+         */
+        "nativePickerAttributes"?: { [key: string]: string };
+        /**
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
@@ -419,6 +423,10 @@ export namespace Components {
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
         "mode": CatDatepickerMode;
+        /**
+          * Attributes that will be added to the rendered HTML datepicker element.
+         */
+        "nativePickerAttributes"?: { [key: string]: string };
         /**
           * The value is not editable.
          */
@@ -1819,6 +1827,10 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Attributes that will be added to the rendered HTML datepicker element.
+         */
+        "nativePickerAttributes"?: { [key: string]: string };
+        /**
           * Emitted when the input loses focus.
          */
         "onCatBlur"?: (event: CatDatepickerCustomEvent<FocusEvent>) => void;
@@ -1880,6 +1892,10 @@ declare namespace LocalJSX {
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
          */
         "mode"?: CatDatepickerMode;
+        /**
+          * Attributes that will be added to the rendered HTML datepicker element.
+         */
+        "nativePickerAttributes"?: { [key: string]: string };
         /**
           * Emitted when the value is changed.
          */

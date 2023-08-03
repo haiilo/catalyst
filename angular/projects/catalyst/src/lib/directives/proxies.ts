@@ -295,6 +295,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'mode',
     'name',
     'nativeAttributes',
+    'nativePickerAttributes',
     'placeholder',
     'readonly',
     'required',
@@ -329,6 +330,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'mode',
     'name',
     'nativeAttributes',
+    'nativePickerAttributes',
     'placeholder',
     'readonly',
     'required',
@@ -368,14 +370,14 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
 }
 
 @ProxyCmp({
-  inputs: ['disabled', 'max', 'min', 'mode', 'readonly', 'step', 'value']
+  inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value']
 })
 @Component({
   selector: 'cat-datepicker-inline',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'max', 'min', 'mode', 'readonly', 'step', 'value']
+  inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value']
 })
 export class CatDatepickerInline {
   protected el: HTMLElement;

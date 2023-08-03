@@ -377,14 +377,24 @@ export class CatSelect {
     }
     this.hide();
     // Conditionally remove selection if the option was not manually selected through click or enter key press
-    if (!this.multiple && (!this.tags || !this.state.selection?.length) && this.state.tempSelection?.length) {
-      this.patchState({
-        activeSelectionIndex: -1,
-        selection: this.state.tempSelection,
-        tempSelection: [],
-        options: [],
-        term: this.state.tempSelection[0].render.label
-      });
+    if (!this.multiple && (!this.tags || !this.state.selection?.length)) {
+      if (this.state.tempSelection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: this.state.tempSelection,
+          tempSelection: [],
+          options: [],
+          term: this.state.tempSelection[0].render.label
+        });
+      } else if (!this.state.selection?.length) {
+        this.patchState({
+          activeSelectionIndex: -1,
+          selection: [],
+          tempSelection: [],
+          options: [],
+          term: ''
+        });
+      }
     } else {
       this.patchState({ activeSelectionIndex: -1 });
     }
@@ -612,7 +622,7 @@ export class CatSelect {
                             a11yLabel={i18n.t('select.deselect')}
                             onClick={() => this.deselect(item.item.id)}
                             tabIndex={-1}
-                            onCatClick={event => event.stopPropagation()}
+                            data-dropdown-no-close
                           ></cat-button>
                         )}
                       </span>
@@ -656,10 +666,8 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onCatClick={event => {
-                    event.stopPropagation();
-                    this.clear();
-                  }}
+                  onCatClick={() => this.clear()}
+                  data-dropdown-no-close
                 ></cat-button>
               ) : null}
               {!this.state.isResolving && (
@@ -674,7 +682,7 @@ export class CatSelect {
                   aria-expanded={this.state.isOpen}
                   tabIndex={-1}
                   disabled={this.disabled || this.state.isResolving}
-                  onCatClick={event => event.stopPropagation()}
+                  data-dropdown-no-close
                 ></cat-button>
               )}
             </div>
@@ -887,7 +895,7 @@ export class CatSelect {
         newSelection = [item];
         this.search(item.render.label);
       }
-      this.patchState({ selection: newSelection });
+      this.patchState({ selection: newSelection, tempSelection: [] });
 
       if (this.multiple && this.state.term.trim() && this.input) {
         this.patchState({ term: '', activeOptionIndex: -1 });
@@ -917,7 +925,7 @@ export class CatSelect {
 
   private clear() {
     if (this.input && this.state.term) {
-      this.patchState({ selection: [], options: [], term: '', activeOptionIndex: -1, tempSelection: [] });
+      this.patchState({ selection: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');
       this.input.value = '';
     } else {

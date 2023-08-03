@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
+import { findClosest } from '../../utils/find-closest';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getConfig } from './cat-datepicker.config';
@@ -152,6 +153,11 @@ export class CatDatepickerFlat {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * Attributes that will be added to the rendered HTML datepicker element.
+   */
+  @Prop() nativePickerAttributes?: { [key: string]: string };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
@@ -259,6 +265,10 @@ export class CatDatepickerFlat {
       return;
     }
 
+    // avoid dropdown closing if datepicker is part of a dropdown
+    const withinDropdown = !!findClosest('cat-dropdown', input);
+    const nativePickerAttributes: { [key: string]: string } = withinDropdown ? { 'data-dropdown-no-close': '' } : {};
+
     return flatpickr(
       input,
       getConfig({
@@ -270,6 +280,7 @@ export class CatDatepickerFlat {
         step: this.step,
         disabled: this.disabled,
         readonly: this.readonly,
+        nativePickerAttributes: { ...nativePickerAttributes, ...this.nativePickerAttributes },
         applyChange: value => (this.value = value)
       })
     );
