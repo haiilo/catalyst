@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
-    "postinstall": "patch-package",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
@@ -53,11 +52,10 @@
     "node": ">=18.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "husky": "^8.0.3",
-    "patch-package": "^6.5.1",
     "replace-in-file": "^7.0.1",
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.5.0"
   }
 }
