@@ -202,10 +202,6 @@ export declare const ciContentOutlined: {
     name: 'content-outlined';
     data: string;
 };
-export declare const ciCopyOutlined: {
-    name: 'copy-outlined';
-    data: string;
-};
 export declare const ciCrossCircleFilled: {
     name: 'cross-circle-filled';
     data: string;
@@ -598,6 +594,14 @@ export declare const ciWriteOutlined: {
     name: 'write-outlined';
     data: string;
 };
+export declare const ci16BellStrikethrough: {
+    name: '16-bell-strikethrough';
+    data: string;
+};
+export declare const ci16Bell: {
+    name: '16-bell';
+    data: string;
+};
 export declare const ci16CheckCircleFilled: {
     name: '16-check-circle-filled';
     data: string;
@@ -620,6 +624,10 @@ export declare const ci16ClockOutlined: {
 };
 export declare const ci16Cross: {
     name: '16-cross';
+    data: string;
+};
+export declare const ci16EarthOutlined: {
+    name: '16-earth-outlined';
     data: string;
 };
 export declare const ci16EditorArrowDown: {
@@ -734,6 +742,14 @@ export declare const ciAppleSafari: {
     name: 'apple-safari';
     data: string;
 };
+export declare const ciArchiveFilled: {
+    name: 'archive-filled';
+    data: string;
+};
+export declare const ciArchiveOutlined: {
+    name: 'archive-outlined';
+    data: string;
+};
 export declare const ciArrowDownOutlined: {
     name: 'arrow-down-outlined';
     data: string;
@@ -790,6 +806,18 @@ export declare const ciBrushBracketsOutlined: {
     name: 'brush-brackets-outlined';
     data: string;
 };
+export declare const ciCalendarCheckOutlined: {
+    name: 'calendar-check-outlined';
+    data: string;
+};
+export declare const ciCalendarCrossOutlined: {
+    name: 'calendar-cross-outlined';
+    data: string;
+};
+export declare const ciCalendarOutlined: {
+    name: 'calendar-outlined';
+    data: string;
+};
 export declare const ciCalendarPenOutlined: {
     name: 'calendar-pen-outlined';
     data: string;
@@ -822,6 +850,10 @@ export declare const ciCompassOutlined: {
     name: 'compass-outlined';
     data: string;
 };
+export declare const ciCopyOutlined: {
+    name: 'copy-outlined';
+    data: string;
+};
 export declare const ciEyeClosedOutlined: {
     name: 'eye-closed-outlined';
     data: string;
@@ -850,8 +882,280 @@ export declare const ciFingerprintOutlined: {
     name: 'fingerprint-outlined';
     data: string;
 };
+export declare const ciFlagAl: {
+    name: 'flag-al';
+    data: string;
+};
+export declare const ciFlagAm: {
+    name: 'flag-am';
+    data: string;
+};
+export declare const ciFlagBg: {
+    name: 'flag-bg';
+    data: string;
+};
+export declare const ciFlagCircleAl: {
+    name: 'flag-circle-al';
+    data: string;
+};
+export declare const ciFlagCircleAm: {
+    name: 'flag-circle-am';
+    data: string;
+};
+export declare const ciFlagCircleBg: {
+    name: 'flag-circle-bg';
+    data: string;
+};
+export declare const ciFlagCircleCn: {
+    name: 'flag-circle-cn';
+    data: string;
+};
+export declare const ciFlagCircleCz: {
+    name: 'flag-circle-cz';
+    data: string;
+};
+export declare const ciFlagCircleDe: {
+    name: 'flag-circle-de';
+    data: string;
+};
+export declare const ciFlagCircleDk: {
+    name: 'flag-circle-dk';
+    data: string;
+};
+export declare const ciFlagCircleEe: {
+    name: 'flag-circle-ee';
+    data: string;
+};
+export declare const ciFlagCircleEn: {
+    name: 'flag-circle-en';
+    data: string;
+};
+export declare const ciFlagCircleEs: {
+    name: 'flag-circle-es';
+    data: string;
+};
+export declare const ciFlagCircleFi: {
+    name: 'flag-circle-fi';
+    data: string;
+};
+export declare const ciFlagCircleFr: {
+    name: 'flag-circle-fr';
+    data: string;
+};
+export declare const ciFlagCircleGb: {
+    name: 'flag-circle-gb';
+    data: string;
+};
+export declare const ciFlagCircleGr: {
+    name: 'flag-circle-gr';
+    data: string;
+};
+export declare const ciFlagCircleHr: {
+    name: 'flag-circle-hr';
+    data: string;
+};
+export declare const ciFlagCircleHu: {
+    name: 'flag-circle-hu';
+    data: string;
+};
+export declare const ciFlagCircleIs: {
+    name: 'flag-circle-is';
+    data: string;
+};
+export declare const ciFlagCircleIt: {
+    name: 'flag-circle-it';
+    data: string;
+};
+export declare const ciFlagCircleJp: {
+    name: 'flag-circle-jp';
+    data: string;
+};
+export declare const ciFlagCircleKr: {
+    name: 'flag-circle-kr';
+    data: string;
+};
+export declare const ciFlagCircleLv: {
+    name: 'flag-circle-lv';
+    data: string;
+};
+export declare const ciFlagCircleMk: {
+    name: 'flag-circle-mk';
+    data: string;
+};
+export declare const ciFlagCircleNl: {
+    name: 'flag-circle-nl';
+    data: string;
+};
+export declare const ciFlagCircleNo: {
+    name: 'flag-circle-no';
+    data: string;
+};
+export declare const ciFlagCirclePl: {
+    name: 'flag-circle-pl';
+    data: string;
+};
+export declare const ciFlagCirclePt: {
+    name: 'flag-circle-pt';
+    data: string;
+};
+export declare const ciFlagCircleRo: {
+    name: 'flag-circle-ro';
+    data: string;
+};
+export declare const ciFlagCircleRs: {
+    name: 'flag-circle-rs';
+    data: string;
+};
+export declare const ciFlagCircleRu: {
+    name: 'flag-circle-ru';
+    data: string;
+};
+export declare const ciFlagCircleSe: {
+    name: 'flag-circle-se';
+    data: string;
+};
+export declare const ciFlagCircleSi: {
+    name: 'flag-circle-si';
+    data: string;
+};
+export declare const ciFlagCircleSk: {
+    name: 'flag-circle-sk';
+    data: string;
+};
+export declare const ciFlagCircleTh: {
+    name: 'flag-circle-th';
+    data: string;
+};
+export declare const ciFlagCircleTr: {
+    name: 'flag-circle-tr';
+    data: string;
+};
+export declare const ciFlagCn: {
+    name: 'flag-cn';
+    data: string;
+};
+export declare const ciFlagCz: {
+    name: 'flag-cz';
+    data: string;
+};
+export declare const ciFlagDe: {
+    name: 'flag-de';
+    data: string;
+};
+export declare const ciFlagDk: {
+    name: 'flag-dk';
+    data: string;
+};
+export declare const ciFlagEe: {
+    name: 'flag-ee';
+    data: string;
+};
+export declare const ciFlagEn: {
+    name: 'flag-en';
+    data: string;
+};
+export declare const ciFlagEs: {
+    name: 'flag-es';
+    data: string;
+};
+export declare const ciFlagFi: {
+    name: 'flag-fi';
+    data: string;
+};
+export declare const ciFlagFr: {
+    name: 'flag-fr';
+    data: string;
+};
+export declare const ciFlagGb: {
+    name: 'flag-gb';
+    data: string;
+};
+export declare const ciFlagGr: {
+    name: 'flag-gr';
+    data: string;
+};
+export declare const ciFlagHr: {
+    name: 'flag-hr';
+    data: string;
+};
+export declare const ciFlagHu: {
+    name: 'flag-hu';
+    data: string;
+};
+export declare const ciFlagIs: {
+    name: 'flag-is';
+    data: string;
+};
+export declare const ciFlagIt: {
+    name: 'flag-it';
+    data: string;
+};
+export declare const ciFlagJp: {
+    name: 'flag-jp';
+    data: string;
+};
+export declare const ciFlagKr: {
+    name: 'flag-kr';
+    data: string;
+};
+export declare const ciFlagLv: {
+    name: 'flag-lv';
+    data: string;
+};
+export declare const ciFlagMk: {
+    name: 'flag-mk';
+    data: string;
+};
+export declare const ciFlagNl: {
+    name: 'flag-nl';
+    data: string;
+};
+export declare const ciFlagNo: {
+    name: 'flag-no';
+    data: string;
+};
 export declare const ciFlagOutlined: {
     name: 'flag-outlined';
+    data: string;
+};
+export declare const ciFlagPl: {
+    name: 'flag-pl';
+    data: string;
+};
+export declare const ciFlagPt: {
+    name: 'flag-pt';
+    data: string;
+};
+export declare const ciFlagRo: {
+    name: 'flag-ro';
+    data: string;
+};
+export declare const ciFlagRs: {
+    name: 'flag-rs';
+    data: string;
+};
+export declare const ciFlagRu: {
+    name: 'flag-ru';
+    data: string;
+};
+export declare const ciFlagSe: {
+    name: 'flag-se';
+    data: string;
+};
+export declare const ciFlagSi: {
+    name: 'flag-si';
+    data: string;
+};
+export declare const ciFlagSk: {
+    name: 'flag-sk';
+    data: string;
+};
+export declare const ciFlagTh: {
+    name: 'flag-th';
+    data: string;
+};
+export declare const ciFlagTr: {
+    name: 'flag-tr';
     data: string;
 };
 export declare const ciGoogleCalendar: {
@@ -934,6 +1238,10 @@ export declare const ciListUnorderedOutlined: {
     name: 'list-unordered-outlined';
     data: string;
 };
+export declare const ciLoopOutlined: {
+    name: 'loop-outlined';
+    data: string;
+};
 export declare const ciMailOpenOutlined: {
     name: 'mail-open-outlined';
     data: string;
@@ -998,6 +1306,10 @@ export declare const ciMozillaFirefox: {
     name: 'mozilla-firefox';
     data: string;
 };
+export declare const ciOpenai: {
+    name: 'openai';
+    data: string;
+};
 export declare const ciPaperplaneTiltOutlined: {
     name: 'paperplane-tilt-outlined';
     data: string;
@@ -1018,6 +1330,10 @@ export declare const ciPlanetOutlined: {
     name: 'planet-outlined';
     data: string;
 };
+export declare const ciPushNotification: {
+    name: 'push-notification';
+    data: string;
+};
 export declare const ciPuzzlePieceOutlined: {
     name: 'puzzle-piece-outlined';
     data: string;
@@ -1030,12 +1346,100 @@ export declare const ciRedoOutlined: {
     name: 'redo-outlined';
     data: string;
 };
+export declare const ciReplaceOutlined: {
+    name: 'replace-outlined';
+    data: string;
+};
+export declare const ciRteBlockquote: {
+    name: 'rte-blockquote';
+    data: string;
+};
+export declare const ciRteBold: {
+    name: 'rte-bold';
+    data: string;
+};
+export declare const ciRteEmoji: {
+    name: 'rte-emoji';
+    data: string;
+};
+export declare const ciRteImage: {
+    name: 'rte-image';
+    data: string;
+};
+export declare const ciRteItalic: {
+    name: 'rte-italic';
+    data: string;
+};
+export declare const ciRteLayout: {
+    name: 'rte-layout';
+    data: string;
+};
+export declare const ciRteLgAi: {
+    name: 'rte-lg-ai';
+    data: string;
+};
+export declare const ciRteLgBlockquote: {
+    name: 'rte-lg-blockquote';
+    data: string;
+};
+export declare const ciRteLgH1: {
+    name: 'rte-lg-h-1';
+    data: string;
+};
+export declare const ciRteLgH2: {
+    name: 'rte-lg-h-2';
+    data: string;
+};
+export declare const ciRteLgImage: {
+    name: 'rte-lg-image';
+    data: string;
+};
+export declare const ciRteLgLayout: {
+    name: 'rte-lg-layout';
+    data: string;
+};
+export declare const ciRteLgText: {
+    name: 'rte-lg-text';
+    data: string;
+};
+export declare const ciRteLink: {
+    name: 'rte-link';
+    data: string;
+};
+export declare const ciRteOl: {
+    name: 'rte-ol';
+    data: string;
+};
+export declare const ciRteRedo: {
+    name: 'rte-redo';
+    data: string;
+};
+export declare const ciRteUl: {
+    name: 'rte-ul';
+    data: string;
+};
+export declare const ciRteUndo: {
+    name: 'rte-undo';
+    data: string;
+};
+export declare const ciRteVariable: {
+    name: 'rte-variable';
+    data: string;
+};
+export declare const ciRteVideo: {
+    name: 'rte-video';
+    data: string;
+};
 export declare const ciSlidersOutlined: {
     name: 'sliders-outlined';
     data: string;
 };
 export declare const ciSocialMediaOutlined: {
     name: 'social-media-outlined';
+    data: string;
+};
+export declare const ciSortingOutlined: {
+    name: 'sorting-outlined';
     data: string;
 };
 export declare const ciStatusAvailable: {
@@ -1104,6 +1508,10 @@ export declare const ciUnderlinedOutlined: {
 };
 export declare const ciUndoOutlined: {
     name: 'undo-outlined';
+    data: string;
+};
+export declare const ciVideoOutlined: {
+    name: 'video-outlined';
     data: string;
 };
 export declare const ciWAlertOutlined: {
@@ -1278,7 +1686,7 @@ export declare const ciXing: {
     name: 'xing';
     data: string;
 };
-export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-ol' | '16-editor-ul' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'copy-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-clock-outlined' | '16-cross' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-image' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-external-link' | '16-flag' | '16-info-circle-outlined' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-pen-outlined' | '16-pin-outlined' | '16-targeted-outlined' | '16-warning-circle-outlined' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'alert-box-outlined' | 'alert-circle-outlined' | 'apple-safari' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'brush-brackets-outlined' | 'calendar-pen-outlined' | 'check-double-outlined' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'comment-outlined' | 'compass-outlined' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'filter-outlined' | 'fingerprint-outlined' | 'flag-outlined' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'group-outlined' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'link-break-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'planet-filled' | 'planet-outlined' | 'puzzle-piece-outlined' | 'quote-outlined' | 'redo-outlined' | 'sliders-outlined' | 'social-media-outlined' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'tag-outlined' | 'targeted-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'translate-box-filled' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
+export declare type coyoIcon = '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-ol' | '16-editor-ul' | '16-flash-circle-outlined' | '16-lock-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | 'article-filled' | 'article-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'clock-filled' | 'clock-outlined' | 'communities-filled' | 'communities-outlined' | 'content-filled' | 'content-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'download-outlined' | 'earth-outlined' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'gift-outlined' | 'globe-outlined' | 'gradient-outlined' | 'hashtag-outlined' | 'home-filled' | 'home-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'microsoft-teams' | 'microsoft-yammer' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'question-mark-circle-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'restart-outlined' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'smile' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'sticker-filled' | 'sticker-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'upload-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'w-blog-article-recommended-outlined' | 'write-outlined' | '16-bell-strikethrough' | '16-bell' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-clock-outlined' | '16-cross' | '16-earth-outlined' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-image' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-external-link' | '16-flag' | '16-info-circle-outlined' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-pen-outlined' | '16-pin-outlined' | '16-targeted-outlined' | '16-warning-circle-outlined' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'alert-box-outlined' | 'alert-circle-outlined' | 'apple-safari' | 'archive-filled' | 'archive-outlined' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'brush-brackets-outlined' | 'calendar-check-outlined' | 'calendar-cross-outlined' | 'calendar-outlined' | 'calendar-pen-outlined' | 'check-double-outlined' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'comment-outlined' | 'compass-outlined' | 'copy-outlined' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'filter-outlined' | 'fingerprint-outlined' | 'flag-al' | 'flag-am' | 'flag-bg' | 'flag-circle-al' | 'flag-circle-am' | 'flag-circle-bg' | 'flag-circle-cn' | 'flag-circle-cz' | 'flag-circle-de' | 'flag-circle-dk' | 'flag-circle-ee' | 'flag-circle-en' | 'flag-circle-es' | 'flag-circle-fi' | 'flag-circle-fr' | 'flag-circle-gb' | 'flag-circle-gr' | 'flag-circle-hr' | 'flag-circle-hu' | 'flag-circle-is' | 'flag-circle-it' | 'flag-circle-jp' | 'flag-circle-kr' | 'flag-circle-lv' | 'flag-circle-mk' | 'flag-circle-nl' | 'flag-circle-no' | 'flag-circle-pl' | 'flag-circle-pt' | 'flag-circle-ro' | 'flag-circle-rs' | 'flag-circle-ru' | 'flag-circle-se' | 'flag-circle-si' | 'flag-circle-sk' | 'flag-circle-th' | 'flag-circle-tr' | 'flag-cn' | 'flag-cz' | 'flag-de' | 'flag-dk' | 'flag-ee' | 'flag-en' | 'flag-es' | 'flag-fi' | 'flag-fr' | 'flag-gb' | 'flag-gr' | 'flag-hr' | 'flag-hu' | 'flag-is' | 'flag-it' | 'flag-jp' | 'flag-kr' | 'flag-lv' | 'flag-mk' | 'flag-nl' | 'flag-no' | 'flag-outlined' | 'flag-pl' | 'flag-pt' | 'flag-ro' | 'flag-rs' | 'flag-ru' | 'flag-se' | 'flag-si' | 'flag-sk' | 'flag-th' | 'flag-tr' | 'google-calendar' | 'google-chrome' | 'google-drive' | 'google-mail' | 'google' | 'group-outlined' | 'haiilo-home' | 'haiilo-insights' | 'haiilo-outlined' | 'haiilo-share' | 'haiilo-stories' | 'history-outlined' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'link-break-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'loop-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-word' | 'microsoft' | 'more-horizontal-filled' | 'mozilla-firefox' | 'openai' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'planet-filled' | 'planet-outlined' | 'push-notification' | 'puzzle-piece-outlined' | 'quote-outlined' | 'redo-outlined' | 'replace-outlined' | 'rte-blockquote' | 'rte-bold' | 'rte-emoji' | 'rte-image' | 'rte-italic' | 'rte-layout' | 'rte-lg-ai' | 'rte-lg-blockquote' | 'rte-lg-h-1' | 'rte-lg-h-2' | 'rte-lg-image' | 'rte-lg-layout' | 'rte-lg-text' | 'rte-link' | 'rte-ol' | 'rte-redo' | 'rte-ul' | 'rte-undo' | 'rte-variable' | 'rte-video' | 'sliders-outlined' | 'social-media-outlined' | 'sorting-outlined' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'tag-outlined' | 'targeted-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'translate-box-filled' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'video-outlined' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'xing';
 export interface CoyoIcon {
     name: coyoIcon;
     data: string;
@@ -1436,9 +1844,6 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'content-outlined';
-    data: string;
-} | {
-    name: 'copy-outlined';
     data: string;
 } | {
     name: 'cross-circle-filled';
@@ -1735,6 +2140,12 @@ export declare const completeIconSet: ({
     name: 'write-outlined';
     data: string;
 } | {
+    name: '16-bell-strikethrough';
+    data: string;
+} | {
+    name: '16-bell';
+    data: string;
+} | {
     name: '16-check-circle-filled';
     data: string;
 } | {
@@ -1751,6 +2162,9 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: '16-cross';
+    data: string;
+} | {
+    name: '16-earth-outlined';
     data: string;
 } | {
     name: '16-editor-arrow-down';
@@ -1837,6 +2251,12 @@ export declare const completeIconSet: ({
     name: 'apple-safari';
     data: string;
 } | {
+    name: 'archive-filled';
+    data: string;
+} | {
+    name: 'archive-outlined';
+    data: string;
+} | {
     name: 'arrow-down-outlined';
     data: string;
 } | {
@@ -1879,6 +2299,15 @@ export declare const completeIconSet: ({
     name: 'brush-brackets-outlined';
     data: string;
 } | {
+    name: 'calendar-check-outlined';
+    data: string;
+} | {
+    name: 'calendar-cross-outlined';
+    data: string;
+} | {
+    name: 'calendar-outlined';
+    data: string;
+} | {
     name: 'calendar-pen-outlined';
     data: string;
 } | {
@@ -1903,6 +2332,9 @@ export declare const completeIconSet: ({
     name: 'compass-outlined';
     data: string;
 } | {
+    name: 'copy-outlined';
+    data: string;
+} | {
     name: 'eye-closed-outlined';
     data: string;
 } | {
@@ -1924,7 +2356,211 @@ export declare const completeIconSet: ({
     name: 'fingerprint-outlined';
     data: string;
 } | {
+    name: 'flag-al';
+    data: string;
+} | {
+    name: 'flag-am';
+    data: string;
+} | {
+    name: 'flag-bg';
+    data: string;
+} | {
+    name: 'flag-circle-al';
+    data: string;
+} | {
+    name: 'flag-circle-am';
+    data: string;
+} | {
+    name: 'flag-circle-bg';
+    data: string;
+} | {
+    name: 'flag-circle-cn';
+    data: string;
+} | {
+    name: 'flag-circle-cz';
+    data: string;
+} | {
+    name: 'flag-circle-de';
+    data: string;
+} | {
+    name: 'flag-circle-dk';
+    data: string;
+} | {
+    name: 'flag-circle-ee';
+    data: string;
+} | {
+    name: 'flag-circle-en';
+    data: string;
+} | {
+    name: 'flag-circle-es';
+    data: string;
+} | {
+    name: 'flag-circle-fi';
+    data: string;
+} | {
+    name: 'flag-circle-fr';
+    data: string;
+} | {
+    name: 'flag-circle-gb';
+    data: string;
+} | {
+    name: 'flag-circle-gr';
+    data: string;
+} | {
+    name: 'flag-circle-hr';
+    data: string;
+} | {
+    name: 'flag-circle-hu';
+    data: string;
+} | {
+    name: 'flag-circle-is';
+    data: string;
+} | {
+    name: 'flag-circle-it';
+    data: string;
+} | {
+    name: 'flag-circle-jp';
+    data: string;
+} | {
+    name: 'flag-circle-kr';
+    data: string;
+} | {
+    name: 'flag-circle-lv';
+    data: string;
+} | {
+    name: 'flag-circle-mk';
+    data: string;
+} | {
+    name: 'flag-circle-nl';
+    data: string;
+} | {
+    name: 'flag-circle-no';
+    data: string;
+} | {
+    name: 'flag-circle-pl';
+    data: string;
+} | {
+    name: 'flag-circle-pt';
+    data: string;
+} | {
+    name: 'flag-circle-ro';
+    data: string;
+} | {
+    name: 'flag-circle-rs';
+    data: string;
+} | {
+    name: 'flag-circle-ru';
+    data: string;
+} | {
+    name: 'flag-circle-se';
+    data: string;
+} | {
+    name: 'flag-circle-si';
+    data: string;
+} | {
+    name: 'flag-circle-sk';
+    data: string;
+} | {
+    name: 'flag-circle-th';
+    data: string;
+} | {
+    name: 'flag-circle-tr';
+    data: string;
+} | {
+    name: 'flag-cn';
+    data: string;
+} | {
+    name: 'flag-cz';
+    data: string;
+} | {
+    name: 'flag-de';
+    data: string;
+} | {
+    name: 'flag-dk';
+    data: string;
+} | {
+    name: 'flag-ee';
+    data: string;
+} | {
+    name: 'flag-en';
+    data: string;
+} | {
+    name: 'flag-es';
+    data: string;
+} | {
+    name: 'flag-fi';
+    data: string;
+} | {
+    name: 'flag-fr';
+    data: string;
+} | {
+    name: 'flag-gb';
+    data: string;
+} | {
+    name: 'flag-gr';
+    data: string;
+} | {
+    name: 'flag-hr';
+    data: string;
+} | {
+    name: 'flag-hu';
+    data: string;
+} | {
+    name: 'flag-is';
+    data: string;
+} | {
+    name: 'flag-it';
+    data: string;
+} | {
+    name: 'flag-jp';
+    data: string;
+} | {
+    name: 'flag-kr';
+    data: string;
+} | {
+    name: 'flag-lv';
+    data: string;
+} | {
+    name: 'flag-mk';
+    data: string;
+} | {
+    name: 'flag-nl';
+    data: string;
+} | {
+    name: 'flag-no';
+    data: string;
+} | {
     name: 'flag-outlined';
+    data: string;
+} | {
+    name: 'flag-pl';
+    data: string;
+} | {
+    name: 'flag-pt';
+    data: string;
+} | {
+    name: 'flag-ro';
+    data: string;
+} | {
+    name: 'flag-rs';
+    data: string;
+} | {
+    name: 'flag-ru';
+    data: string;
+} | {
+    name: 'flag-se';
+    data: string;
+} | {
+    name: 'flag-si';
+    data: string;
+} | {
+    name: 'flag-sk';
+    data: string;
+} | {
+    name: 'flag-th';
+    data: string;
+} | {
+    name: 'flag-tr';
     data: string;
 } | {
     name: 'google-calendar';
@@ -1987,6 +2623,9 @@ export declare const completeIconSet: ({
     name: 'list-unordered-outlined';
     data: string;
 } | {
+    name: 'loop-outlined';
+    data: string;
+} | {
     name: 'mail-open-outlined';
     data: string;
 } | {
@@ -2035,6 +2674,9 @@ export declare const completeIconSet: ({
     name: 'mozilla-firefox';
     data: string;
 } | {
+    name: 'openai';
+    data: string;
+} | {
     name: 'paperplane-tilt-outlined';
     data: string;
 } | {
@@ -2050,6 +2692,9 @@ export declare const completeIconSet: ({
     name: 'planet-outlined';
     data: string;
 } | {
+    name: 'push-notification';
+    data: string;
+} | {
     name: 'puzzle-piece-outlined';
     data: string;
 } | {
@@ -2059,10 +2704,76 @@ export declare const completeIconSet: ({
     name: 'redo-outlined';
     data: string;
 } | {
+    name: 'replace-outlined';
+    data: string;
+} | {
+    name: 'rte-blockquote';
+    data: string;
+} | {
+    name: 'rte-bold';
+    data: string;
+} | {
+    name: 'rte-emoji';
+    data: string;
+} | {
+    name: 'rte-image';
+    data: string;
+} | {
+    name: 'rte-italic';
+    data: string;
+} | {
+    name: 'rte-layout';
+    data: string;
+} | {
+    name: 'rte-lg-ai';
+    data: string;
+} | {
+    name: 'rte-lg-blockquote';
+    data: string;
+} | {
+    name: 'rte-lg-h-1';
+    data: string;
+} | {
+    name: 'rte-lg-h-2';
+    data: string;
+} | {
+    name: 'rte-lg-image';
+    data: string;
+} | {
+    name: 'rte-lg-layout';
+    data: string;
+} | {
+    name: 'rte-lg-text';
+    data: string;
+} | {
+    name: 'rte-link';
+    data: string;
+} | {
+    name: 'rte-ol';
+    data: string;
+} | {
+    name: 'rte-redo';
+    data: string;
+} | {
+    name: 'rte-ul';
+    data: string;
+} | {
+    name: 'rte-undo';
+    data: string;
+} | {
+    name: 'rte-variable';
+    data: string;
+} | {
+    name: 'rte-video';
+    data: string;
+} | {
     name: 'sliders-outlined';
     data: string;
 } | {
     name: 'social-media-outlined';
+    data: string;
+} | {
+    name: 'sorting-outlined';
     data: string;
 } | {
     name: 'status-available';
@@ -2114,6 +2825,9 @@ export declare const completeIconSet: ({
     data: string;
 } | {
     name: 'undo-outlined';
+    data: string;
+} | {
+    name: 'video-outlined';
     data: string;
 } | {
     name: 'w-alert-outlined';
