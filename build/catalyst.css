@@ -3535,3 +3535,10 @@ code {
   text-rendering: optimizeLegibility;
   font-display: fallback;
 }
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("assets/fonts/SourceSans3VF-Upright.ttf.woff2") format("woff2"), url("assets/fonts/SourceSans3VF-Upright.ttf.woff") format("woff");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: fallback;
+}
