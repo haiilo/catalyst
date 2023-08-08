@@ -160,13 +160,28 @@ $button-sizes: (
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: cat-token('font.decoration.linkButtonHover');
     background-color: rgba(var(--base), 0.1);
   }
 
   &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
-    text-decoration: cat-token('font.decoration.linkButtonHover');
     background-color: rgba(var(--base), 0.1);
+  }
+}
+
+.cat-button-link {
+  background-color: transparent;
+  color: cat-token-wrap(var(--text));
+
+  &.cat-button-disabled {
+    --text: #{cat-token('color.ui.font.muted', $wrap: false)};
+  }
+
+  &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
+    text-decoration: cat-token('font.decoration.linkHover');
+  }
+
+  &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
+    text-decoration: cat-token('font.decoration.linkHover');
   }
 }
 

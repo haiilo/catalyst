@@ -28,7 +28,7 @@ export class CatButton {
   /**
    * The rendering style of the button.
    */
-  @Prop() variant: 'filled' | 'outlined' | 'text' = 'outlined';
+  @Prop() variant: 'filled' | 'outlined' | 'text' | 'link' = 'outlined';
 
   /**
    * The color palette of the button.
