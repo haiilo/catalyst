@@ -97,9 +97,13 @@
       },
       "ss3v": {
         "name": { "$type": "asset", "$value": "Source Sans 3" },
-        "woff2ss3v": {
-        "$type": "asset",
-        "$value": "SourceSans3VF-Upright.woff2"
+        "woff": {
+          "$type": "asset",
+          "$value": "SourceSans3VF-Upright.ttf.woff"
+        },
+        "woff2": {
+          "$type": "asset",
+          "$value": "SourceSans3VF-Upright.ttf.woff2"
         }
       }
     }

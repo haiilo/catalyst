@@ -166,9 +166,13 @@
           "$type": "asset",
           "$value": "Source Sans 3"
         },
-        "woff2ss3v": {
+        "woff": {
           "$type": "asset",
-          "$value": "SourceSans3VF-Upright.woff2"
+          "$value": "SourceSans3VF-Upright.ttf.woff"
+        },
+        "woff2": {
+          "$type": "asset",
+          "$value": "SourceSans3VF-Upright.ttf.woff2"
         }
       }
     }
@@ -731,11 +735,11 @@
     "family": {
       "head": {
         "$type": "fontFamily",
-        "$value": "Source Sans 3"
+        "$value": "Lato"
       },
       "body": {
         "$type": "fontFamily",
-        "$value": "Source Sans 3"
+        "$value": "Lato"
       },
       "mono": {
         "$type": "fontFamily",

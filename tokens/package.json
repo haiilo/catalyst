@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild": "pnpm run clean",
     "build": "style-dictionary build --config config.js",
-    "postbuild": "copyfiles -f assets/fonts/* node_modules/source-sans/VF/* dist/assets/fonts",
+    "postbuild": "copyfiles -f assets/fonts/* node_modules/source-sans/WOFF*/VF/* dist/assets/fonts",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
   },

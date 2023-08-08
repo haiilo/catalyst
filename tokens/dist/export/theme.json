@@ -233,11 +233,11 @@
   },
   "font-family-head": {
     "$type": "fontFamily",
-    "$value": "Source Sans 3"
+    "$value": "Lato"
   },
   "font-family-body": {
     "$type": "fontFamily",
-    "$value": "Source Sans 3"
+    "$value": "Lato"
   },
   "font-family-mono": {
     "$type": "fontFamily",

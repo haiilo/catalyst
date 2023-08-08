@@ -557,11 +557,11 @@
     "family": {
       "head": {
         "$type": "fontFamily",
-        "$value": "Source Sans 3"
+        "$value": "Lato"
       },
       "body": {
         "$type": "fontFamily",
-        "$value": "Source Sans 3"
+        "$value": "Lato"
       },
       "mono": {
         "$type": "fontFamily",
