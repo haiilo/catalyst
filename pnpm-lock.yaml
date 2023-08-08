@@ -109,6 +109,42 @@ importers:
         specifier: ~4.6.3
         version: 4.6.3
 
+  angular/dist/catalyst:
+    dependencies:
+      '@angular/cdk':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@6.6.0)
+      '@angular/core':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
+      '@haiilo/catalyst':
+        specifier: workspace:*
+        version: link:../../../core
+      '@haiilo/catalyst-tokens':
+        specifier: workspace:*
+        version: link:../../../tokens
+      loglevel:
+        specifier: 1.8.1
+        version: 1.8.1
+      rxjs:
+        specifier: ^6.5.3 || ^7.4.0
+        version: 6.6.0
+      tslib:
+        specifier: ^2.3.0
+        version: 2.3.0
+
+  angular/dist/catalyst-formly:
+    dependencies:
+      '@angular/core':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      '@haiilo/catalyst-angular':
+        specifier: workspace:*
+        version: link:../../projects/catalyst
+      tslib:
+        specifier: ^2.3.0
+        version: 2.3.0
+
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
@@ -527,7 +563,7 @@ packages:
       '@angular/common': 14.2.7(@angular/core@14.2.7)(rxjs@6.6.0)
       '@angular/core': 14.2.7(rxjs@6.6.0)(zone.js@0.11.4)
       rxjs: 6.6.0
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       parse5: 5.1.1
     dev: false
@@ -542,7 +578,7 @@ packages:
       '@angular/common': 14.3.0(@angular/core@14.2.7)(rxjs@6.6.0)
       '@angular/core': 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
       rxjs: 6.6.0
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       parse5: 5.1.1
     dev: false
@@ -646,7 +682,7 @@ packages:
       zone.js: ~0.11.4
     dependencies:
       rxjs: 6.6.0
-      tslib: 2.3.0
+      tslib: 2.6.1
       zone.js: 0.11.4
 
   /@angular/core@14.2.7(rxjs@6.6.0)(zone.js@0.11.8):
@@ -657,7 +693,7 @@ packages:
       zone.js: ~0.11.4
     dependencies:
       rxjs: 6.6.0
-      tslib: 2.3.0
+      tslib: 2.6.1
       zone.js: 0.11.8
     dev: false
 
@@ -669,7 +705,7 @@ packages:
       zone.js: ~0.11.4
     dependencies:
       rxjs: 7.8.1
-      tslib: 2.3.0
+      tslib: 2.6.1
       zone.js: 0.11.8
     dev: false
 
@@ -8970,7 +9006,7 @@ packages:
   /injection-js@2.4.0:
     resolution: {integrity: sha512-6jiJt0tCAo9zjHbcwLiPL+IuNe9SQ6a9g0PEzafThW3fOQi0mrmiJGBJvDD6tmhPh8cQHIQtCOrJuBfQME4kPA==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.6.1
     dev: true
 
   /inquirer@3.3.0:
@@ -10923,7 +10959,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -10943,7 +10979,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -14659,7 +14695,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.6.1
 
   /safe-array-concat@1.0.0:
     resolution: {integrity: sha512-9dVEFruWIsnie89yym+xWTAYASdpw3CJV7Li/6zBewGf9z2i1j31rP6jnY0pHEO4QZh6N0K11bFjWmdR8UGdPQ==}
