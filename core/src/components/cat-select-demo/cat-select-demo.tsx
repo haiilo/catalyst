@@ -248,7 +248,7 @@ export class CatSelectTest {
           clearable
           errorUpdate={false}
         ></cat-select>
-        <cat-dropdown overflow noAutoClose>
+        <cat-dropdown overflow>
           <cat-button slot="trigger" style={{ width: '50%' }}>
             Open select
           </cat-button>

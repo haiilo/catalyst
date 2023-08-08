@@ -239,6 +239,7 @@
           <cat-button variant="filled">Filled</cat-button>
           <cat-button variant="outlined">Outlined</cat-button>
           <cat-button variant="text">Text</cat-button>
+          <cat-button variant="link">Link</cat-button>
 
           <h3>Color</h3>
           <cat-button icon="sparkle-filled" variant="filled" color="primary">Primary</cat-button>
@@ -754,6 +755,15 @@
             <h4>Datetime</h4>
             <cat-datepicker-inline value="2022-06-21T00:00:00Z"></cat-datepicker-inline>
           </cat-card>
+          <h3>Nested Datepicker</h3>
+          <cat-dropdown>
+            <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
+            <div slot="content" class="cat-p-m">
+              <cat-input></cat-input>
+              <cat-datepicker mode="date" label="Date"></cat-datepicker>
+              <cat-datepicker mode="date" label="Date"></cat-datepicker>
+            </div>
+          </cat-dropdown>
         </section>
 
         <section id="notification">

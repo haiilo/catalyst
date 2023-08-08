@@ -49,7 +49,7 @@ export class CatDropdown {
 
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
-    // we need to delay the initialization of the trigger until first,
+    // we need to delay the initialization of the trigger until first
     // interaction because the element might still be hidden (and thus not
     // tabbable) if contained in another Stencil web component
     if (!this.trigger) {
@@ -57,10 +57,17 @@ export class CatDropdown {
       this.toggle();
     }
 
-    const button = event.target as HTMLButtonElement;
-
-    // hide dropdown on button click
-    if (!this.noAutoClose && event.composedPath().includes(this.content) && button.slot !== 'trigger') {
+    // hide dropdown on button clicks inside the dropdown content
+    const path = event.composedPath();
+    if (
+      !this.noAutoClose &&
+      // check if click was inside of the dropdown content
+      path.includes(this.content) &&
+      // check if click was not on a trigger for a sub-dropdown
+      (event.target as Element)?.slot !== 'trigger' &&
+      // check if click was not an element marked with data-dropdown-no-close
+      !path.slice(0, path.indexOf(this.content)).find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    ) {
       this.close();
     }
   }
@@ -76,8 +83,8 @@ export class CatDropdown {
    * Opens the dropdown.
    */
   async open(): Promise<void> {
-    if (this.isOpen === null) {
-      return; // busy
+    if (this.isOpen === null || this.isOpen) {
+      return; // busy or open
     }
 
     this.isOpen = null;
@@ -95,16 +102,12 @@ export class CatDropdown {
               getShadowRoot: true
             },
             allowOutsideClick: true,
-            clickOutsideDeactivates: event => {
-              const shouldClose =
-                !this.noAutoClose &&
-                !event.composedPath().includes(this.content) &&
-                (!this.trigger || !event.composedPath().includes(this.trigger));
-              if (shouldClose) {
-                this.close();
-              }
-              return shouldClose;
-            },
+            clickOutsideDeactivates: event =>
+              !this.noAutoClose &&
+              // check if click was outside of the dropdown content
+              !event.composedPath().includes(this.content) &&
+              // check if click was not on an element marked with data-dropdown-no-close
+              !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
             onPostDeactivate: () => this.close()
           });
       this.trap.activate();
@@ -116,8 +119,8 @@ export class CatDropdown {
    */
   @Method()
   async close(): Promise<void> {
-    if (this.isOpen === null || !this.isOpen) {
-      return; // busy
+    if (!this.isOpen) {
+      return; // busy or closed
     }
 
     this.isOpen = null;
@@ -226,5 +229,9 @@ export class CatDropdown {
         });
       });
     }
+  }
+
+  private hasAttribute(elem: EventTarget, attr: string) {
+    return elem instanceof HTMLElement && elem.hasAttribute(attr);
   }
 }

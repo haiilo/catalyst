@@ -550,9 +550,9 @@ export class CatSelect {
             'select-horizontal': this.horizontal
           }}
         >
-          <div class="label-container">
+          <div class={{ 'label-container': true, hidden: this.labelHidden }}>
             {(this.hasSlottedLabel || this.label) && (
-              <label htmlFor={this.id} class={{ hidden: this.labelHidden }}>
+              <label htmlFor={this.id}>
                 <span class="label-wrapper" part="label">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                   <div class="label-metadata">
@@ -622,7 +622,7 @@ export class CatSelect {
                             a11yLabel={i18n.t('select.deselect')}
                             onClick={() => this.deselect(item.item.id)}
                             tabIndex={-1}
-                            onCatClick={event => event.stopPropagation()}
+                            data-dropdown-no-close
                           ></cat-button>
                         )}
                       </span>
@@ -666,10 +666,8 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onCatClick={event => {
-                    event.stopPropagation();
-                    this.clear();
-                  }}
+                  onCatClick={() => this.clear()}
+                  data-dropdown-no-close
                 ></cat-button>
               ) : null}
               {!this.state.isResolving && (
@@ -684,7 +682,7 @@ export class CatSelect {
                   aria-expanded={this.state.isOpen}
                   tabIndex={-1}
                   disabled={this.disabled || this.state.isResolving}
-                  onCatClick={event => event.stopPropagation()}
+                  data-dropdown-no-close
                 ></cat-button>
               )}
             </div>

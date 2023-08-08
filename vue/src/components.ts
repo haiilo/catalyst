@@ -119,6 +119,7 @@ export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('c
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'nativePickerAttributes',
   'catChange',
   'catFocus',
   'catBlur'
@@ -133,6 +134,7 @@ export const CatDatepickerInline = /*@__PURE__*/ defineContainer<JSX.CatDatepick
   'readonly',
   'step',
   'value',
+  'nativePickerAttributes',
   'catChange'
 ]);
 
