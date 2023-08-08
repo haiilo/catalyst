@@ -1,0 +1,11 @@
+@use '../variables' as *;
+
+@mixin cat-font-ss3v($path) {
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('#{$path}/#{cat-token("asset.font.ss3v.woff2ss3v")}') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    @content
+  }
+}

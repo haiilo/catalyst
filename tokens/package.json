@@ -19,10 +19,15 @@
   "scripts": {
     "prebuild": "pnpm run clean",
     "build": "style-dictionary build --config config.js",
+    "postbuild": "copyfiles -f assets/fonts/* node_modules/source-sans/VF/* dist/assets/fonts",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
   },
+  "dependencies": {
+    "source-sans": "github:adobe-fonts/source-sans#ed18089"
+  },
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "style-dictionary": "^3.8.0",
     "style-dictionary-utils": "^1.5.0",
     "tinycolor2": "^1.6.0"
