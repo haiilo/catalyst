@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.4.0](https://github.com/haiilo/catalyst/compare/v6.3.3...v6.4.0) (2023-08-08)
+
+
+### Features
+
+* **core:** Added source sans 3 as variable font option ([#334](https://github.com/haiilo/catalyst/issues/334)) ([5824a0e](https://github.com/haiilo/catalyst/commit/5824a0e035321e1eea4bb7697f4b1a6ede09ca67))
+* **core:** new "link" style for button ([#330](https://github.com/haiilo/catalyst/issues/330)) ([833a98c](https://github.com/haiilo/catalyst/commit/833a98c6148b6ab069a37fab271bcd239cdde895))
+
 ### [6.3.3](https://github.com/haiilo/catalyst/compare/v6.3.2...v6.3.3) (2023-08-03)
 
 
