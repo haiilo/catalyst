@@ -8,6 +8,6 @@
       url('#{$path}/#{cat-token("asset.font.ss3v.woff")}') format('woff');
     font-weight: 200 900;
     font-style: normal;
-    @content
+    @content;
   }
 }
