@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.1](https://github.com/haiilo/catalyst/compare/v6.4.0...v6.4.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* **core:** remove prettier errors ([dee7a07](https://github.com/haiilo/catalyst/commit/dee7a07d4f42f866ea55b00c846bd9ad72c1e379))
+* **core:** use correct token asset path ([73eb465](https://github.com/haiilo/catalyst/commit/73eb46538a9d7c745e7f8ed10dbe02ab6b7ac8dd))
+
 ## [6.4.0](https://github.com/haiilo/catalyst/compare/v6.3.3...v6.4.0) (2023-08-08)
 
 
