@@ -7,7 +7,7 @@ import { existsSync } from 'fs';
 import { inlineSvg } from 'stencil-inline-svg';
 
 function getAssetsTokensPath() {
-  const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/assets';
+  const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/dist/assets';
   return existsSync(assetsTokensPath) ? '.' + assetsTokensPath : '../.' + assetsTokensPath;
 }
 
