@@ -17,6 +17,12 @@ export class CatI18nRegistry {
     // events that are dispatched when messages are added or removed in other
     // applications and add or remove messages if the event was not dispatched
     // by this registry.
+    window.addEventListener('cat-i18n-setLocale', event => {
+      const { detail } = (event as CustomEvent) || {};
+      if (detail && detail.id !== this.id) {
+        this.setLocale(detail.locale, true);
+      }
+    });
     window.addEventListener('cat-i18n-set', event => {
       const { detail } = (event as CustomEvent) || {};
       if (detail && detail.id !== this.id) {
@@ -42,10 +48,11 @@ export class CatI18nRegistry {
     return this._locale ?? window?.navigator?.language ?? 'en';
   }
 
-  setLocale(locale: string): void {
+  setLocale(locale: string, silent = false): void {
     try {
       this._locale = Intl.getCanonicalLocales(locale)[0];
       log.info(`[CatI18nRegistry] Set locale: ${this._locale}`);
+      !silent && window.dispatchEvent(this.buildEvent('cat-i18n-setLocale', { locale, id: this.id }));
     } catch (err) {
       log.error(`[CatI18nRegistry] Invalid locale: ${locale}`);
     }
