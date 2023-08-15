@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.2](https://github.com/haiilo/catalyst/compare/v6.4.1...v6.4.2) (2023-08-15)
+
+
+### Features
+
+* **core:** rework main overview site ([07f3f48](https://github.com/haiilo/catalyst/commit/07f3f48f51e4ea858332345eaafe8f7a233c791e))
+
+
+### Bug Fixes
+
+* **core:** emit correct values for daterange picker ([087dcb8](https://github.com/haiilo/catalyst/commit/087dcb844ca2a03c894b01d8becea731ecc684a1))
+* **core:** sync setLocale across multiple i18n registries ([22bcd01](https://github.com/haiilo/catalyst/commit/22bcd017f063ceb4f4bb7e555fbafa9a4f1ff3e0))
+* **core:** update dependencies ([9da11bd](https://github.com/haiilo/catalyst/commit/9da11bd6777dfcb39ac7e855cc5ffa55b1cb1de5))
+
 ### [6.4.1](https://github.com/haiilo/catalyst/compare/v6.4.0...v6.4.1) (2023-08-09)
 
 
