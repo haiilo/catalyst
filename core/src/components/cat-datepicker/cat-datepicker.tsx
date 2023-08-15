@@ -176,7 +176,9 @@ export class CatDatepickerFlat {
   onValueChanged(value: string) {
     if (value) {
       this.pickr?.setDate(value, false);
-      this.catChange.emit(value);
+      if (this.mode !== 'daterange' || value.includes(' - ')) {
+        this.catChange.emit(value);
+      }
     } else {
       this.pickr?.clear(false);
       this.catChange.emit(undefined);

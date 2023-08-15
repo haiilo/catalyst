@@ -19,6 +19,7 @@ export function getConfig(
 ): flatpickr.Options.Options {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const plugins = options.mode === 'week' ? [new (weekSelectPlugin as any)({})] : [];
+  const format = dateFormat(options.mode);
 
   return {
     ...more,
@@ -27,7 +28,7 @@ export function getConfig(
     altInput: true,
     prevArrow: '←',
     nextArrow: '→',
-    dateFormat: dateFormat(options.mode),
+    dateFormat: format,
     altFormat: options.format,
     ariaDateFormat: options.format,
     mode: options.mode === 'daterange' ? 'range' : 'single',
@@ -44,9 +45,25 @@ export function getConfig(
         flatpickr.calendarContainer.setAttribute(key, value);
       }
     },
+    onClose: function (dates, _dateStr, instance) {
+      if (options.mode === 'daterange' && dates.length < 2) {
+        instance.clear();
+      }
+    },
     onChange: (dates, dateStr, flatpickr) => {
       let value = dateStr || undefined;
-      if (options.mode === 'week') {
+      if (options.mode === 'daterange') {
+        if (dates.length < 2) {
+          return;
+        } else {
+          const start = dates[0];
+          const end = dates[1];
+          end.setHours(23);
+          end.setMinutes(59);
+          end.setSeconds(59);
+          value = `${flatpickr.formatDate(start, format)} - ${flatpickr.formatDate(end, format)}`;
+        }
+      } else if (options.mode === 'week') {
         value = dates[0] ? flatpickr.config.getWeek(dates[0]).toString() : undefined;
       }
       options.applyChange(value);

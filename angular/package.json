@@ -21,7 +21,7 @@
     "@angular/forms": "^14.2.7",
     "@angular/platform-browser": "^14.2.7",
     "@angular/platform-browser-dynamic": "^14.2.7",
-    "@haiilo/catalyst-icons": "0.3.23",
+    "@haiilo/catalyst-icons": "^1.0.6",
     "@ngx-formly/core": "^6.1.8",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
@@ -40,7 +40,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^14.2.2",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.2",
     "typescript": "~4.6.3"
   }
 }
