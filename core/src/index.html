@@ -38,12 +38,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-scrollspy@2.2.0/dist/vanillajs-scrollspy.min.js"></script>
     <link rel="stylesheet" href="/build/catalyst.css" />
     <style>
-
-      html, body{
+      html,
+      body {
         background: #fff;
       }
 
-      body{
+      body {
         padding: 2rem 4rem;
       }
 
@@ -53,19 +53,19 @@
         gap: 8rem;
       }
 
-      .toolbar{
-        display:flex;
+      .toolbar {
+        display: flex;
         flex-direction: row;
-        align-items:center;
+        align-items: center;
         justify-content: space-between;
         background: #fff;
-        border-bottom:1px solid #ebecf0;
+        border-bottom: 1px solid #ebecf0;
         position: sticky;
-        top:0;
+        top: 0;
         z-index: 3;
       }
 
-      .tabs{
+      .tabs {
         box-shadow: none;
       }
 
@@ -73,9 +73,9 @@
         align-self: flex-start;
         position: sticky;
         top: 3.5rem;
-        width:300px;
+        width: 300px;
         padding: 4rem 0;
-        border-right:1px solid #ebecf0;
+        border-right: 1px solid #ebecf0;
       }
 
       #nav ul {
@@ -89,13 +89,13 @@
       }
 
       .content {
-        max-width:600px;
-        padding:2rem 0;
+        max-width: 600px;
+        padding: 2rem 0;
       }
 
-      .canvas-fake{
+      .canvas-fake {
         background: #f2f4f7;
-        border-radius: .5rem;
+        border-radius: 0.5rem;
         padding: 3.5rem;
       }
 
@@ -121,7 +121,6 @@
   </head>
   <body>
     <div class="body">
-
       <h1>Catalyst Web Components</h1>
 
       <div class="toolbar">
@@ -130,20 +129,15 @@
           <cat-tab label="Text" id="tab-text"></cat-tab>
         </cat-tabs>
         <div class="cat-flex cat-items-center cat-gap-s">
-          <cat-button 
-            url="https://github.com/haiilo/catalyst" 
-            url-target="_blank"
-            size="s" 
-            class="cat-elevation-1"
-            >
+          <cat-button url="https://github.com/haiilo/catalyst" url-target="_blank" size="s" class="cat-elevation-1">
             GitHub
           </cat-button>
-          <cat-button 
-            url="https://haiilo.github.io/catalyst-icons/" 
+          <cat-button
+            url="https://haiilo.github.io/catalyst-icons/"
             url-target="_blank"
-            size="s" 
+            size="s"
             class="cat-elevation-1"
-            >
+          >
             Icons
           </cat-button>
         </div>
