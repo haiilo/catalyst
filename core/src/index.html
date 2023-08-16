@@ -47,24 +47,23 @@
         padding: 2rem 4rem;
       }
 
-      body.ss3{
-        --cat-font-family-head: "Source Sans 3";
-        --cat-font-family-body: "Source Sans 3";
+      body.ss3 {
+        --cat-font-family-head: 'Source Sans 3';
+        --cat-font-family-body: 'Source Sans 3';
       }
 
-      body.custom-theme{
-        --cat-primary-bg:91, 94, 219;
-        --cat-primary-bg-hover:78, 81, 191;
-        --cat-primary-bg-active:65, 67, 159;
+      body.custom-theme {
+        --cat-primary-bg: 91, 94, 219;
+        --cat-primary-bg-hover: 78, 81, 191;
+        --cat-primary-bg-active: 65, 67, 159;
 
-        --cat-primary-fill:255, 255, 255;
-        --cat-primary-fill-hover:255, 255, 255;
-        --cat-primary-fill-active:255, 255, 255;
+        --cat-primary-fill: 255, 255, 255;
+        --cat-primary-fill-hover: 255, 255, 255;
+        --cat-primary-fill-active: 255, 255, 255;
 
-        --cat-primary-text:91, 94, 219;
-        --cat-primary-text-hover:78, 81, 191;
-        --cat-primary-text-active:65, 67, 159;
-        
+        --cat-primary-text: 91, 94, 219;
+        --cat-primary-text-hover: 78, 81, 191;
+        --cat-primary-text-active: 65, 67, 159;
       }
 
       .wrapper {
@@ -164,20 +163,19 @@
         border-right: 1px solid #ebecf0;
       }
 
-      .switches{
+      .switches {
         position: fixed;
         bottom: 1rem;
         right: 1rem;
-        display:flex;
+        display: flex;
         flex-direction: column;
-        gap: .5rem;
+        gap: 0.5rem;
         align-items: end;
       }
 
-      .switches cat-button{
-        width:fit-content;
+      .switches cat-button {
+        width: fit-content;
       }
-
     </style>
   </head>
   <body>
@@ -1249,6 +1247,9 @@
               sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
               aliquam erat volutpat.
             </p>
+            <p>At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet.</p>
             <h2>Lorem Ipsum</h2>
             <p>
               Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
@@ -1285,7 +1286,15 @@
             </blockquote>
             <h3>Understanding Employee Engagement</h3>
             <figure>
-              <iframe width="100%" height="350px" src="https://www.youtube-nocookie.com/embed/2t2BBU0gdO0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe
+                width="100%"
+                height="350px"
+                src="https://www.youtube-nocookie.com/embed/2t2BBU0gdO0?controls=0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </figure>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Employee engagement is crucial for an
@@ -1372,24 +1381,24 @@
         const font = document.getElementById('toggleSS3');
         const bodyTag = document.body;
         const theme = document.getElementById('toggleTheme');
-    
-        font.addEventListener('click', function() {
+
+        font.addEventListener('click', function () {
           if (bodyTag.classList.contains('ss3')) {
-          bodyTag.classList.remove('ss3');
-          font.innerHTML = 'Switch to Source Sans 3';
+            bodyTag.classList.remove('ss3');
+            font.innerHTML = 'Switch to Source Sans 3';
           } else {
-              bodyTag.classList.add('ss3');
-              font.innerHTML = 'Switch to Lato';
+            bodyTag.classList.add('ss3');
+            font.innerHTML = 'Switch to Lato';
           }
         });
 
-        theme.addEventListener('click', function() {
+        theme.addEventListener('click', function () {
           if (bodyTag.classList.contains('custom-theme')) {
-          bodyTag.classList.remove('custom-theme');
-          theme.innerHTML = 'Use custom theme';
+            bodyTag.classList.remove('custom-theme');
+            theme.innerHTML = 'Use custom theme';
           } else {
-              bodyTag.classList.add('custom-theme');
-              theme.innerHTML = 'Use default theme';
+            bodyTag.classList.add('custom-theme');
+            theme.innerHTML = 'Use default theme';
           }
         });
       </script>
