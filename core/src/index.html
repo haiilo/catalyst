@@ -38,28 +38,44 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-scrollspy@2.2.0/dist/vanillajs-scrollspy.min.js"></script>
     <link rel="stylesheet" href="/build/catalyst.css" />
     <style>
-      .body {
-        width: 48rem;
-        margin: 8rem auto;
+      html,
+      body {
+        background: #fff;
       }
+
+      body {
+        padding: 2rem 4rem;
+      }
+
       .wrapper {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         gap: 8rem;
       }
 
-      .content {
-        flex: 3 0 0;
-        min-width: 0;
+      .toolbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        border-bottom: 1px solid #ebecf0;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+      }
+
+      .tabs {
+        box-shadow: none;
       }
 
       #nav {
         align-self: flex-start;
         position: sticky;
-        top: 4rem;
-        flex: 1 0 0;
-        min-width: 0;
-        margin-top: 2rem;
+        top: 3.5rem;
+        width: 300px;
+        padding: 4rem 0;
+        border-right: 1px solid #ebecf0;
       }
 
       #nav ul {
@@ -72,9 +88,20 @@
         font-weight: bold;
       }
 
+      .content {
+        max-width: 600px;
+        padding: 2rem 0;
+      }
+
+      .canvas-fake {
+        background: #f2f4f7;
+        border-radius: 0.5rem;
+        padding: 3.5rem;
+      }
+
       section {
         flex: 0 1 auto;
-        padding: 2rem 0;
+        padding: 5rem 0;
       }
 
       section:not(:last-of-type) {
@@ -94,12 +121,27 @@
   </head>
   <body>
     <div class="body">
-      <h1>Catalyst</h1>
+      <h1>Catalyst Web Components</h1>
 
-      <cat-tabs active-tab="tab-comp">
-        <cat-tab label="Components" id="tab-comp"></cat-tab>
-        <cat-tab label="Text" id="tab-text"></cat-tab>
-      </cat-tabs>
+      <div class="toolbar">
+        <cat-tabs class="tabs" active-tab="tab-comp">
+          <cat-tab label="Components" id="tab-comp"></cat-tab>
+          <cat-tab label="Text" id="tab-text"></cat-tab>
+        </cat-tabs>
+        <div class="cat-flex cat-items-center cat-gap-s">
+          <cat-button url="https://github.com/haiilo/catalyst" url-target="_blank" size="s" class="cat-elevation-1">
+            GitHub
+          </cat-button>
+          <cat-button
+            url="https://haiilo.github.io/catalyst-icons/"
+            url-target="_blank"
+            size="s"
+            class="cat-elevation-1"
+          >
+            Icons
+          </cat-button>
+        </div>
+      </div>
 
       <!-- CATALYST COMPONENTS -->
       <div id="tab-comp-content">
@@ -385,56 +427,61 @@
 
             <section id="card">
               <h2>Card</h2>
-              <cat-card>
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-                <p>
-                  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                  sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-              </cat-card>
+
+              <div class="canvas-fake">
+                <cat-card>
+                  <h3>Lorem ipsum dolor sit amet</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua.
+                  </p>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                    sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                  </p>
+                </cat-card>
+              </div>
               <h3>Navigation</h3>
-              <cat-card>
-                <nav>
-                  <ul>
-                    <li class="cat-nav-head">Headline</li>
-                    <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                    <li>
-                      <cat-button class="cat-nav-item" color="primary">Nav item 1</cat-button>
-                    </li>
-                    <li>
-                      <cat-button class="cat-nav-item" active>Nav item 2</cat-button>
-                    </li>
-                    <li>
-                      <cat-button class="cat-nav-item" color="warning">Nav item 3</cat-button>
-                    </li>
-                    <li>
-                      <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
-                    </li>
-                    <li>
-                      <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
-                    </li>
-                    <li class="cat-hr"></li>
-                    <li>
-                      <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)" active
-                        >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
-                      </cat-button>
-                    </li>
-                  </ul>
-                  <hr />
-                  <ul>
-                    <li>
-                      <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
-                        >Nav item 3</cat-button
-                      >
-                    </li>
-                  </ul>
-                </nav>
-              </cat-card>
+              <div class="canvas-fake">
+                <cat-card>
+                  <nav>
+                    <ul>
+                      <li class="cat-nav-head">Headline</li>
+                      <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                      <li>
+                        <cat-button class="cat-nav-item" color="primary">Nav item 1</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" active>Nav item 2</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" color="warning">Nav item 3</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
+                      </li>
+                      <li class="cat-hr"></li>
+                      <li>
+                        <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)" active
+                          >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                        </cat-button>
+                      </li>
+                    </ul>
+                    <hr />
+                    <ul>
+                      <li>
+                        <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
+                          >Nav item 3</cat-button
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </cat-card>
+              </div>
             </section>
 
             <section id="checkbox">
