@@ -47,6 +47,11 @@
         padding: 2rem 4rem;
       }
 
+      body.ss3{
+        --cat-font-family-head: "Source Sans 3";
+        --cat-font-family-body: "Source Sans 3";
+      }
+
       .wrapper {
         display: flex;
         flex-direction: row;
@@ -72,9 +77,9 @@
       #nav {
         align-self: flex-start;
         position: sticky;
-        top: 3.5rem;
+        top: 8rem;
         width: 300px;
-        padding: 4rem 0;
+        margin: 4rem 0;
         border-right: 1px solid #ebecf0;
       }
 
@@ -118,33 +123,37 @@
         margin-bottom: 1rem;
       }
 
-      section.typography{
+      section.typography {
         display: flex;
         gap: 5rem;
       }
 
       /* Text page stylings */
 
-      section.typography .example{
+      section.typography .example {
         max-width: 600px;
         margin: 0 auto;
       }
 
-      section.typography .example img{
-        max-width: calc(100% + 2rem);
-        margin-left: -1rem;
+      figure img {
+        max-width: 100%;
       }
 
-      section.typography aside{
+      section.typography aside {
         display: flex;
         flex-direction: column;
         gap: 7rem;
-        max-width:450px;
+        max-width: 450px;
         box-sizing: content-box;
         padding-right: 5rem;
         border-right: 1px solid #ebecf0;
       }
 
+      #toggleSS3{
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -159,13 +168,13 @@
           <cat-tab label="Icons" id="tab-icon"></cat-tab>
         </cat-tabs>
         <div class="cat-flex cat-items-center cat-gap-s">
-          <cat-button 
-            url="https://github.com/haiilo/catalyst" 
-            url-target="_blank" 
-            size="s" 
+          <cat-button
+            url="https://github.com/haiilo/catalyst"
+            url-target="_blank"
+            size="s"
             class="cat-elevation-1"
             icon="github"
-            >
+          >
             View on GitHub
           </cat-button>
           <cat-button
@@ -665,7 +674,7 @@
                 </cat-dropdown>
               </div>
 
-              <cat-card>
+              <cat-card class="cat-flex cat-items-center cat-gap-m cat-border cat-pv-s">
                 Dropdown inside a card
                 <cat-dropdown>
                   <cat-button slot="trigger">Click me</cat-button>
@@ -843,7 +852,7 @@
               <cat-datepicker mode="week" label="Week"></cat-datepicker>
               <cat-datepicker mode="daterange" label="Daterange"></cat-datepicker>
               <h3>Inline Datepicker</h3>
-              <cat-card class="cat-inline-flex cat-flex-col">
+              <cat-card class="cat-inline-flex cat-flex-col cat-border">
                 <h4>Datetime</h4>
                 <cat-datepicker-inline value="2022-06-21T00:00:00Z"></cat-datepicker-inline>
               </cat-card>
@@ -1105,85 +1114,215 @@
       <!-- CATALYST TEXT -->
       <div id="tab-text-content" style="display: none">
         <section id="typo" class="typography">
+          <!-- Sidebar -->
           <aside>
+            <!-- Headings -->
             <div class="cat-flex cat-flex-col cat-gap-s">
-              <h6 class="cat-muted cat-mb-l">
-                Headline styles
-              </h6>
+              <h6 class="cat-muted cat-mb-l">Headline styles</h6>
               <h1>Whereas recognition of the inherent dignity</h1>
-              <hr>
+              <span class="cat-mono-s cat-muted">h1, .cat-h1</span>
+              <hr />
               <h2>Whereas recognition of the inherent dignity</h2>
-              <hr>
+              <span class="cat-mono-s cat-muted">h2, .cat-h3</span>
+              <hr />
               <h3>Whereas recognition of the inherent dignity</h3>
-              <hr>
+              <span class="cat-mono-s cat-muted">h3, .cat-h3</span>
+              <hr />
               <h4>Whereas recognition of the inherent dignity</h4>
-              <hr>
+              <span class="cat-mono-s cat-muted">h4, .cat-h4</span>
+              <hr />
               <h5>Whereas recognition of the inherent dignity</h5>
-              <hr>
+              <span class="cat-mono-s cat-muted">h5, .cat-h5</span>
+              <hr />
               <h6>Whereas recognition of the inherent dignity</h6>
+              <span class="cat-mono-s cat-muted">h6, .cat-h6</span>
             </div>
+            <!-- Body styles -->
             <div class="cat-flex cat-flex-col cat-gap-s">
-              <h6 class="cat-muted cat-mb-l">
-                Body styles
-              </h6>
-    
+              <h6 class="cat-muted cat-mb-l">Body styles</h6>
+
+              <p class="cat-ellipsis-2 cat-lead">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Lead, .cat-lead</span>
+              <hr />
               <p class="cat-ellipsis-2 cat-text-xl">
-                No one shall be subjected to arbitrary arrest, detention or exile. 
-                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
               </p>
-              <hr>
+              <span class="cat-mono-s cat-muted">Body XL, .cat-text-xl</span>
+              <hr />
               <p class="cat-ellipsis-2 cat-text-l">
-                No one shall be subjected to arbitrary arrest, detention or exile. 
-                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
               </p>
-              <hr>
+              <span class="cat-mono-s cat-muted">Body L, .cat-text-l</span>
+              <hr />
               <p class="cat-ellipsis-2">
-                No one shall be subjected to arbitrary arrest, detention or exile. 
-                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
               </p>
-              <hr>
+              <span class="cat-mono-s cat-muted">Body M (Default), .cat-text-m</span>
+              <hr />
               <p class="cat-ellipsis-2 cat-text-s">
-                No one shall be subjected to arbitrary arrest, detention or exile. 
-                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
               </p>
-              <hr>
+              <span class="cat-mono-s cat-muted">Body S, .cat-text-s</span>
+              <hr />
               <p class="cat-ellipsis-2 cat-text-xs">
-                No one shall be subjected to arbitrary arrest, detention or exile. 
-                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
               </p>
+              <span class="cat-mono-s cat-muted">Body XS, .cat-text-xs</span>
             </div>
           </aside>
-          <div class="example">
-            <h6 class="cat-muted cat-mb-l">
-              Example article, pulled from <a href="https://www.figma.com/de/blog/the-future-of-design-systems-is-semantic/" target="_blank">Figma</a>
-            </h6>
-            <h1>
-              The future of design systems is semantic
-            </h1>
-            <img src="https://cdn.sanity.io/images/599r6htc/localized/10e55cde1be89fb32aa3d7414fa3cd83b0859a51-3264x1836.jpg" alt="">
-            <p class="cat-text-l">
-              Variables, one of Figma’s newest features, help you streamline designs and connect more closely to code, but what do they tell us about larger shifts in the industry? We dig into what they might signal for the future of design systems.
+          <!-- Example typesetting -->
+          <article class="example">
+            <h6 class="cat-muted cat-mb-l">Example article</h6>
+            <h1>Typesetting test</h1>
+            <p class="cat-lead">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet.
             </p>
-            <h3>Table of contents</h3>
+            <figure>
+              <img
+                src="https://cdn.sanity.io/images/599r6htc/localized/10e55cde1be89fb32aa3d7414fa3cd83b0859a51-3264x1836.jpg"
+                alt=""
+              />
+            </figure>
+            <h2>Dolor Vero</h2>
+            <h3>Consetetur sadipscing elitr</h3>
+            <p>
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+              ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+              consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim
+              qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor
+              sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+              aliquam erat volutpat.
+            </p>
+            <h2>Lorem Ipsum</h2>
+            <p>
+              Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
+              ea commodo consequat.
+            </p>
+            <h3>Vulputate velit esse</h3>
+            <p>
+              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
+              eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+              zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
+              option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+            </p>
             <ol>
-              <li>Heading 1</li>
-              <li>Heading …</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Integer nec odio. Praesent libero.</li>
+              <li>Sed cursus ante dapibus diam. Sed nisi.</li>
+              <li>Nulla quis sem at nibh elementum imperdiet.</li>
+              <li>Duis sagittis ipsum. Praesent mauris.</li>
+              <li>Fusce nec tellus sed augue semper porta.</li>
+              <li>Mauris massa. Vestibulum lacinia arcu eget nulla.</li>
+              <li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</li>
+              <li>Curabitur sodales ligula in libero.</li>
+              <li>Sed dignissim lacinia nunc. Curabitur tortor.</li>
             </ol>
-            <p>There were tons of big moments at Config 2023, but for those working with design systems—whether building them, maintaining them, or using them—one likely stood out from the rest: variables.</p>
-            <p>Ever since we started supporting design systems, the community has been asking us to bring design tokens capability into Figma. This year, we finally made that wish come true with variables, which deliver on the same use case and more.</p>
-            <p>But more than just codifying design decisions, variables also literally vary to unlock design theming and dynamic prototyping logic. As reusable and changeable values, this feature goes a step further than tokens in their holistic approach and signal a larger shift in how we design today. So, we sat down with the people working across design systems tooling both inside and outside Figma to understand what the rise of tokens and features like variables mean for the future of design systems.</p>
-            <h2>Token primer</h2>
-            <p>Picture this: You’ve just been tasked with reining in your product’s color palette. The product has been around for a whopping 15 years—relatively unheard of in the app space—and has been touched by quite a few folks before your time. Still, though. How many colors could there really be? Fifty? A hundred? How many colors are there in the world, anyway? Turns out, a lot. When an intrepid team of designers at Google Maps took on a similar project, they discovered that the tool had over 700 colors and, a year later, winnowed that palette down to 25 hues.</p>
-            <h2>The token origin story</h2>
-            <p>Design tokens—or tokens, for short—have been rattling around the design systems space since early 2014.* Tokens are bits of data that represent small, repeatable design decisions such as border radii, sizing, typography, or colors. By separating design properties from specific components or implementation details, they allow for a more versatile, platform-agnostic approach. Elements such as color, number, and string can have multiple values, or tokens, that can be easily updated across a product (or several), reducing redundancy and maintaining consistency wherever they are used. So, if you have to change the color of all the trees, that change can be made in one place and reflected everywhere else. (Great for managing rising complexity, right?)</p>
-          </div>
+            <hr />
+            <h2>What does all of that mean for us?</h2>
+            <p>
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet, consetetur sadipscing elitr.
+            </p>
+            <blockquote>
+              "The only way to do great work is to love what you do."
+              <span>– Steve Jobs</span>
+            </blockquote>
+            <h3>Understanding Employee Engagement</h3>
+            <figure>
+              <iframe width="100%" height="350px" src="https://www.youtube-nocookie.com/embed/2t2BBU0gdO0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </figure>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Employee engagement is crucial for an
+              organization's growth and productivity. It's more than just job satisfaction; it's the enthusiasm and
+              involvement an employee has towards their work and the organization's mission.
+            </p>
+
+            <h4>The Benefits of High Engagement</h4>
+            <p>
+              Engaged employees tend to be more productive, have higher job satisfaction, and are more likely to stay
+              with their current employer. They contribute positively to the organizational culture and foster
+              collaboration amongst peers.
+            </p>
+
+            <h5>Key Benefits Include:</h5>
+            <ul>
+              <li>Increased productivity and performance</li>
+              <li>Higher retention rates</li>
+              <li>Improved workplace morale</li>
+              <li>Enhanced company reputation</li>
+              <li>Higher customer satisfaction</li>
+            </ul>
+
+            <h4>Strategies to Enhance Engagement</h4>
+            <p>
+              Building a strong engagement strategy requires a deep understanding of the employees' needs, aspirations,
+              and concerns. Regular feedback, transparent communication, and consistent recognition play pivotal roles
+              in this aspect.
+            </p>
+
+            <h5>Tips for Effective Engagement:</h5>
+            <ul>
+              <li>Regular one-on-one meetings</li>
+              <li>Provide growth opportunities</li>
+              <li>Recognize and reward achievements</li>
+              <li>Promote work-life balance</li>
+              <li>Encourage team collaborations and events</li>
+            </ul>
+
+            <h3>Measuring Employee Engagement</h3>
+            <p>
+              Understanding the level of engagement in an organization is essential for its continual improvement.
+              Surveys, feedback sessions, and monitoring key performance indicators can provide valuable insights.
+            </p>
+          </article>
         </section>
       </div>
 
       <!-- CATALYST ICONS -->
       <div id="tab-icon-content" style="display: none">
-        <iframe src="https://haiilo.github.io/catalyst-icons/" frameborder="0" scrolling="no" width="100%" height="26500px"></iframe>
+        <iframe
+          src="https://haiilo.github.io/catalyst-icons/"
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="26500px"
+        ></iframe>
       </div>
+
+      <!-- Swtich Font -->
+      <cat-button size="s" class="cat-elevation-1" id="toggleSS3">Switch to Source Sans 3</cat-button>
 
       <script>
         const tabComp = document.getElementById('tab-comp').addEventListener('tabClick', function () {
@@ -1200,6 +1339,20 @@
           document.getElementById('tab-comp-content').style.display = 'none';
           document.getElementById('tab-text-content').style.display = 'none';
           document.getElementById('tab-icon-content').style.display = 'block';
+        });
+      </script>
+      <script>
+        const toggle = document.getElementById('toggleSS3');
+        const bodyTag = document.body;
+    
+        toggle.addEventListener('click', function() {
+          if (bodyTag.classList.contains('ss3')) {
+          bodyTag.classList.remove('ss3');
+          toggle.innerHTML = 'Switch to Source Sans 3';
+          } else {
+              bodyTag.classList.add('ss3');
+              toggle.innerHTML = 'Switch to Lato';
+          }
         });
       </script>
     </div>
