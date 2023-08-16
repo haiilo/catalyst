@@ -185,8 +185,8 @@ importers:
         specifier: ^7.19.6
         version: 7.19.6
       '@haiilo/catalyst-icons':
-        specifier: ^1.0.6
-        version: 1.0.6
+        specifier: ^1.0.7
+        version: 1.0.7
       '@stencil/angular-output-target':
         specifier: ^0.8.0
         version: 0.8.0(@stencil/core@4.0.5)
@@ -2678,6 +2678,12 @@ packages:
   /@haiilo/catalyst-icons@1.0.6:
     resolution: {integrity: sha512-AIqS+jwliGIuIwLL1jp+OCcm+SlYXQ8BJl07y/4vS3Gz5fidrPBtG+iJ+qA4VppZ3kGO044o2jORC3a30tBuyg==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
+    dev: false
+
+  /@haiilo/catalyst-icons@1.0.7:
+    resolution: {integrity: sha512-aneDXhzOZ55SSVxOM9+iMdAZnGYJ/1w+mJD3po4Seh1ZQWgSTob+oeO8VUErYEybyYuPF2oWFg2IB6E78+tmBQ==}
+    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
+    dev: true
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
