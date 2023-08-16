@@ -117,12 +117,41 @@
       section > h3:not(:last-child) {
         margin-bottom: 1rem;
       }
+
+      section.typography{
+        display: flex;
+        gap: 5rem;
+      }
+
+      /* Text page stylings */
+
+      section.typography .example{
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      section.typography .example img{
+        max-width: calc(100% + 2rem);
+        margin-left: -1rem;
+      }
+
+      section.typography aside{
+        display: flex;
+        flex-direction: column;
+        gap: 7rem;
+        max-width:450px;
+        box-sizing: content-box;
+        padding-right: 5rem;
+        border-right: 1px solid #ebecf0;
+      }
+
     </style>
   </head>
   <body>
     <div class="body">
       <h1>Catalyst Web Components</h1>
 
+      <!-- TOP TABS & BUTTONS -->
       <div class="toolbar">
         <cat-tabs class="tabs" active-tab="tab-comp">
           <cat-tab label="Components" id="tab-comp"></cat-tab>
@@ -1067,9 +1096,79 @@
 
       <!-- CATALYST TEXT -->
       <div id="tab-text-content" style="display: none">
-        <section id="typo">
-          <h2>Typography</h2>
-          <cat-card> TODO </cat-card>
+        <section id="typo" class="typography">
+          <aside>
+            <div class="cat-flex cat-flex-col cat-gap-s">
+              <h6 class="cat-muted cat-mb-l">
+                Headline styles
+              </h6>
+              <h1>Whereas recognition of the inherent dignity</h1>
+              <hr>
+              <h2>Whereas recognition of the inherent dignity</h2>
+              <hr>
+              <h3>Whereas recognition of the inherent dignity</h3>
+              <hr>
+              <h4>Whereas recognition of the inherent dignity</h4>
+              <hr>
+              <h5>Whereas recognition of the inherent dignity</h5>
+              <hr>
+              <h6>Whereas recognition of the inherent dignity</h6>
+            </div>
+            <div class="cat-flex cat-flex-col cat-gap-s">
+              <h6 class="cat-muted cat-mb-l">
+                Body styles
+              </h6>
+    
+              <p class="cat-ellipsis-2 cat-text-xl">
+                No one shall be subjected to arbitrary arrest, detention or exile. 
+                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <hr>
+              <p class="cat-ellipsis-2 cat-text-l">
+                No one shall be subjected to arbitrary arrest, detention or exile. 
+                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <hr>
+              <p class="cat-ellipsis-2">
+                No one shall be subjected to arbitrary arrest, detention or exile. 
+                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <hr>
+              <p class="cat-ellipsis-2 cat-text-s">
+                No one shall be subjected to arbitrary arrest, detention or exile. 
+                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <hr>
+              <p class="cat-ellipsis-2 cat-text-xs">
+                No one shall be subjected to arbitrary arrest, detention or exile. 
+                Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+            </div>
+          </aside>
+          <div class="example">
+            <h6 class="cat-muted cat-mb-l">
+              Example article, pulled from <a href="https://www.figma.com/de/blog/the-future-of-design-systems-is-semantic/" target="_blank">Figma</a>
+            </h6>
+            <h1>
+              The future of design systems is semantic
+            </h1>
+            <img src="https://cdn.sanity.io/images/599r6htc/localized/10e55cde1be89fb32aa3d7414fa3cd83b0859a51-3264x1836.jpg" alt="">
+            <p class="cat-text-l">
+              Variables, one of Figma’s newest features, help you streamline designs and connect more closely to code, but what do they tell us about larger shifts in the industry? We dig into what they might signal for the future of design systems.
+            </p>
+            <h3>Table of contents</h3>
+            <ol>
+              <li>Heading 1</li>
+              <li>Heading …</li>
+            </ol>
+            <p>There were tons of big moments at Config 2023, but for those working with design systems—whether building them, maintaining them, or using them—one likely stood out from the rest: variables.</p>
+            <p>Ever since we started supporting design systems, the community has been asking us to bring design tokens capability into Figma. This year, we finally made that wish come true with variables, which deliver on the same use case and more.</p>
+            <p>But more than just codifying design decisions, variables also literally vary to unlock design theming and dynamic prototyping logic. As reusable and changeable values, this feature goes a step further than tokens in their holistic approach and signal a larger shift in how we design today. So, we sat down with the people working across design systems tooling both inside and outside Figma to understand what the rise of tokens and features like variables mean for the future of design systems.</p>
+            <h2>Token primer</h2>
+            <p>Picture this: You’ve just been tasked with reining in your product’s color palette. The product has been around for a whopping 15 years—relatively unheard of in the app space—and has been touched by quite a few folks before your time. Still, though. How many colors could there really be? Fifty? A hundred? How many colors are there in the world, anyway? Turns out, a lot. When an intrepid team of designers at Google Maps took on a similar project, they discovered that the tool had over 700 colors and, a year later, winnowed that palette down to 25 hues.</p>
+            <h2>The token origin story</h2>
+            <p>Design tokens—or tokens, for short—have been rattling around the design systems space since early 2014.* Tokens are bits of data that represent small, repeatable design decisions such as border radii, sizing, typography, or colors. By separating design properties from specific components or implementation details, they allow for a more versatile, platform-agnostic approach. Elements such as color, number, and string can have multiple values, or tokens, that can be easily updated across a product (or several), reducing redundancy and maintaining consistency wherever they are used. So, if you have to change the color of all the trees, that change can be made in one place and reflected everywhere else. (Great for managing rising complexity, right?)</p>
+          </div>
         </section>
       </div>
 
