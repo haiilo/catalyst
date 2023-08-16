@@ -52,6 +52,21 @@
         --cat-font-family-body: "Source Sans 3";
       }
 
+      body.custom-theme{
+        --cat-primary-bg:91, 94, 219;
+        --cat-primary-bg-hover:78, 81, 191;
+        --cat-primary-bg-active:65, 67, 159;
+
+        --cat-primary-fill:255, 255, 255;
+        --cat-primary-fill-hover:255, 255, 255;
+        --cat-primary-fill-active:255, 255, 255;
+
+        --cat-primary-text:91, 94, 219;
+        --cat-primary-text-hover:78, 81, 191;
+        --cat-primary-text-active:65, 67, 159;
+        
+      }
+
       .wrapper {
         display: flex;
         flex-direction: row;
@@ -149,11 +164,20 @@
         border-right: 1px solid #ebecf0;
       }
 
-      #toggleSS3{
+      .switches{
         position: fixed;
         bottom: 1rem;
         right: 1rem;
+        display:flex;
+        flex-direction: column;
+        gap: .5rem;
+        align-items: end;
       }
+
+      .switches cat-button{
+        width:fit-content;
+      }
+
     </style>
   </head>
   <body>
@@ -1321,8 +1345,11 @@
         ></iframe>
       </div>
 
-      <!-- Swtich Font -->
-      <cat-button size="s" class="cat-elevation-1" id="toggleSS3">Switch to Source Sans 3</cat-button>
+      <!-- Switches -->
+      <div class="switches">
+        <cat-button size="s" class="cat-elevation-1" id="toggleSS3">Switch to Source Sans 3</cat-button>
+        <cat-button size="s" class="cat-elevation-1" id="toggleTheme">Use custom theme</cat-button>
+      </div>
 
       <script>
         const tabComp = document.getElementById('tab-comp').addEventListener('tabClick', function () {
@@ -1342,16 +1369,27 @@
         });
       </script>
       <script>
-        const toggle = document.getElementById('toggleSS3');
+        const font = document.getElementById('toggleSS3');
         const bodyTag = document.body;
+        const theme = document.getElementById('toggleTheme');
     
-        toggle.addEventListener('click', function() {
+        font.addEventListener('click', function() {
           if (bodyTag.classList.contains('ss3')) {
           bodyTag.classList.remove('ss3');
-          toggle.innerHTML = 'Switch to Source Sans 3';
+          font.innerHTML = 'Switch to Source Sans 3';
           } else {
               bodyTag.classList.add('ss3');
-              toggle.innerHTML = 'Switch to Lato';
+              font.innerHTML = 'Switch to Lato';
+          }
+        });
+
+        theme.addEventListener('click', function() {
+          if (bodyTag.classList.contains('custom-theme')) {
+          bodyTag.classList.remove('custom-theme');
+          theme.innerHTML = 'Use custom theme';
+          } else {
+              bodyTag.classList.add('custom-theme');
+              theme.innerHTML = 'Use default theme';
           }
         });
       </script>
