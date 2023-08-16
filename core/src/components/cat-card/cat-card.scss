@@ -21,7 +21,7 @@ $-padding: 1.25rem;
 
 ::slotted(nav),
 ::slotted(nav:last-child) {
-  margin: #{$cat-body-margin-bottom * 0.5 - $-padding} #{-$-padding} !important;
+  margin: #{0.25rem - $-padding} #{0.25rem - $-padding} !important;
 }
 
 // --- pull out helper classes
