@@ -19,6 +19,11 @@ $-padding: 1.25rem;
   margin-bottom: 0 !important;
 }
 
+::slotted(nav),
+::slotted(nav:last-child) {
+  margin: #{0.25rem - $-padding} #{0.25rem - $-padding} !important;
+}
+
 // --- pull out helper classes
 
 ::slotted(.cat-card-pull) {
