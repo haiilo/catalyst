@@ -156,18 +156,11 @@
         <cat-tabs class="tabs" active-tab="tab-comp">
           <cat-tab label="Components" id="tab-comp"></cat-tab>
           <cat-tab label="Text" id="tab-text"></cat-tab>
+          <cat-tab label="Icons" id="tab-icon"></cat-tab>
         </cat-tabs>
         <div class="cat-flex cat-items-center cat-gap-s">
           <cat-button url="https://github.com/haiilo/catalyst" url-target="_blank" size="s" class="cat-elevation-1">
             GitHub
-          </cat-button>
-          <cat-button
-            url="https://haiilo.github.io/catalyst-icons/"
-            url-target="_blank"
-            size="s"
-            class="cat-elevation-1"
-          >
-            Icons
           </cat-button>
           <cat-button
             url="https://app.slack.com/client/T03BH7BHD/C02JFK9BM0F"
@@ -1181,14 +1174,26 @@
         </section>
       </div>
 
+      <!-- CATALYST ICONS -->
+      <div id="tab-icon-content" style="display: none">
+        <iframe src="https://haiilo.github.io/catalyst-icons/" frameborder="0" scrolling="no" width="100%" height="26500px"></iframe>
+      </div>
+
       <script>
         const tabComp = document.getElementById('tab-comp').addEventListener('tabClick', function () {
           document.getElementById('tab-comp-content').style.display = 'block';
           document.getElementById('tab-text-content').style.display = 'none';
+          document.getElementById('tab-icon-content').style.display = 'none';
         });
         const tabText = document.getElementById('tab-text').addEventListener('tabClick', function () {
           document.getElementById('tab-comp-content').style.display = 'none';
           document.getElementById('tab-text-content').style.display = 'block';
+          document.getElementById('tab-icon-content').style.display = 'none';
+        });
+        const tabIcon = document.getElementById('tab-icon').addEventListener('tabClick', function () {
+          document.getElementById('tab-comp-content').style.display = 'none';
+          document.getElementById('tab-text-content').style.display = 'none';
+          document.getElementById('tab-icon-content').style.display = 'block';
         });
       </script>
     </div>
