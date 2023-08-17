@@ -1219,7 +1219,7 @@
             </div>
           </aside>
           <!-- Example typesetting -->
-          <article class="example">
+          <cat-article class="example">
             <h6 class="cat-muted cat-mb-l">Example article</h6>
             <h1>Typesetting test</h1>
             <p class="cat-lead">
@@ -1247,9 +1247,10 @@
               sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
               aliquam erat volutpat.
             </p>
-            <p>At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-              amet.</p>
+            <p>
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            </p>
             <h2>Lorem Ipsum</h2>
             <p>
               Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
@@ -1339,7 +1340,7 @@
               Understanding the level of engagement in an organization is essential for its continual improvement.
               Surveys, feedback sessions, and monitoring key performance indicators can provide valuable insights.
             </p>
-          </article>
+          </cat-article>
         </section>
       </div>
 
@@ -1377,6 +1378,7 @@
           document.getElementById('tab-icon-content').style.display = 'block';
         });
       </script>
+
       <script>
         const font = document.getElementById('toggleSS3');
         const bodyTag = document.body;
@@ -1400,6 +1402,50 @@
             bodyTag.classList.add('custom-theme');
             theme.innerHTML = 'Use default theme';
           }
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const headings = [
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            '.cat-h1',
+            '.cat-h2',
+            '.cat-h3',
+            '.cat-h4',
+            '.cat-h5',
+            '.cat-h6'
+          ];
+
+          headings.forEach(selector => {
+            document.querySelectorAll(selector).forEach(element => {
+              const nextSibling = element.nextElementSibling;
+
+              if (nextSibling) {
+                // For the first condition
+                if (headings.some(heading => nextSibling.matches(heading))) {
+                  element.classList.add('type-space-small');
+                }
+
+                // For the second condition
+                const secondConditionSelectors = [
+                  ...['h3', 'h4', 'h5', 'h6', '.cat-h3', '.cat-h4', '.cat-h5', '.cat-h6'].filter(sel =>
+                    element.matches(sel)
+                  ),
+                  ...(element.matches('p') && nextSibling.matches('p') ? ['p'] : [])
+                ];
+
+                if (secondConditionSelectors.length && ['ul', 'ol', 'p'].some(sel => nextSibling.matches(sel))) {
+                  element.classList.add('type-space-medium');
+                }
+              }
+            });
+          });
         });
       </script>
     </div>

@@ -241,11 +241,11 @@ code {
 
 // ----- editorial typography
 
-article{
-
+cat-article,
+.cat-article {
   font-size: 1rem;
 
-  $cat-head-margin-bottom: 1.5rem; 
+  $cat-head-margin-bottom: 1.5rem;
   $cat-body-margin-bottom: 2.5rem;
 
   :where(h1, h2, h3, h4, h5, h6),
@@ -259,17 +259,40 @@ article{
     margin-bottom: $cat-head-margin-bottom;
   }
 
-  :where(h1, h2, h3, h4, h5, h6, .cat-h1, .cat-h2, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6 ) {
+  .type-space-small {
     margin-top: 0;
-    margin-bottom:calc($cat-body-margin-bottom * 0.2);
+    margin-bottom: calc($cat-body-margin-bottom * 0.2);
   }
 
-  :where(h3, h4, h5, h6, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(+ ul, + ol, + p){
-    margin-bottom:calc($cat-body-margin-bottom * 0.4);
+  .type-space-medium {
+    margin-top: 0;
+    margin-bottom: calc($cat-body-margin-bottom * 0.4);
   }
+
+  // :where(h1, h2, h3, h4, h5, h6, .cat-h1, .cat-h2, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(
+  //     + h1,
+  //     + h2,
+  //     + h3,
+  //     + h4,
+  //     + h5,
+  //     + h6,
+  //     + .cat-h1,
+  //     + .cat-h2,
+  //     + .cat-h3,
+  //     + .cat-h4,
+  //     + .cat-h5,
+  //     + .cat-h6
+  //   ) {
+  //     margin-top: 0;
+  //     margin-bottom:calc($cat-body-margin-bottom * 0.2);
+  // }
+
+  // :where(h3, h4, h5, h6, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(+ ul, + ol, + p) {
+  //   margin-bottom:calc($cat-body-margin-bottom * 0.4);
+  // }
 
   h5,
-  .cat-h5{
+  .cat-h5 {
     font-size: 1rem;
   }
 
@@ -282,18 +305,17 @@ article{
     margin-bottom: $cat-body-margin-bottom;
   }
 
-  :where(p):has(+ p){
+  :where(p):has(+ p) {
     margin-bottom: calc($cat-body-margin-bottom * 0.4);
   }
 
-  hr, 
-  .cat-hr{
+  hr,
+  .cat-hr {
     margin: $cat-body-margin-bottom 0;
   }
 
   ol li,
-  ul li{
-    margin-bottom:calc($cat-body-margin-bottom * 0.2);
+  ul li {
+    margin-bottom: calc($cat-body-margin-bottom * 0.2);
   }
-
 }
