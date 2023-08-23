@@ -2077,6 +2077,73 @@ code {
   padding: 0.0625rem 0.25rem;
 }
 
+cat-article,
+.cat-article {
+  font-size: 1rem;
+}
+cat-article :where(h1, h2, h3, h4, h5, h6),
+cat-article .cat-h1,
+cat-article .cat-h2,
+cat-article .cat-h3,
+cat-article .cat-h4,
+cat-article .cat-h5,
+cat-article .cat-h6,
+.cat-article :where(h1, h2, h3, h4, h5, h6),
+.cat-article .cat-h1,
+.cat-article .cat-h2,
+.cat-article .cat-h3,
+.cat-article .cat-h4,
+.cat-article .cat-h5,
+.cat-article .cat-h6 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+cat-article .type-space-small,
+.cat-article .type-space-small {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+cat-article .type-space-medium,
+.cat-article .type-space-medium {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+cat-article h5,
+cat-article .cat-h5,
+.cat-article h5,
+.cat-article .cat-h5 {
+  font-size: 1rem;
+}
+cat-article :where(p),
+cat-article ol,
+cat-article ul,
+cat-article blockquote,
+cat-article figure,
+.cat-article :where(p),
+.cat-article ol,
+.cat-article ul,
+.cat-article blockquote,
+.cat-article figure {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+cat-article :where(p):has(+ p),
+.cat-article :where(p):has(+ p) {
+  margin-bottom: 1rem;
+}
+cat-article hr,
+cat-article .cat-hr,
+.cat-article hr,
+.cat-article .cat-hr {
+  margin: 2.5rem 0;
+}
+cat-article ol li,
+cat-article ul li,
+.cat-article ol li,
+.cat-article ul li {
+  margin-bottom: 0.5rem;
+}
+
 /**
  * Auto-generated file. Do not edit directly.
  */
