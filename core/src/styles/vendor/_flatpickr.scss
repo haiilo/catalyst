@@ -166,6 +166,8 @@
   &.flatpickr-disabled,
   &.flatpickr-disabled:hover {
     color: cat-token('color.ui.font.muted');
+    font-weight: inherit;
+    background-color: inherit !important;
   }
 
   &.today {

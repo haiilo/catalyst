@@ -200,6 +200,18 @@ export class CatDatepickerFlat {
     this.pickr = this.initDatepicker(this.input);
   }
 
+  @Watch('min')
+  @Watch('max')
+  onMinChanged() {
+    this.pickr?.set('minDate', this.min);
+    this.pickr?.set('maxDate', this.max);
+    if (this.value && !this.pickr?.selectedDates?.length) {
+      // Dynamically changing 'minDate' or 'maxDate' does not emit a change if
+      // the value is cleared due to an invalid date.
+      this.pickr?.clear();
+    }
+  }
+
   /**
    * Programmatically move focus to the datepicker. Use this method instead of
    * `input.focus()`.
