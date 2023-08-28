@@ -47,6 +47,25 @@
         padding: 2rem 4rem;
       }
 
+      body.ss3 {
+        --cat-font-family-head: 'Source Sans 3';
+        --cat-font-family-body: 'Source Sans 3';
+      }
+
+      body.custom-theme {
+        --cat-primary-bg: 91, 94, 219;
+        --cat-primary-bg-hover: 78, 81, 191;
+        --cat-primary-bg-active: 65, 67, 159;
+
+        --cat-primary-fill: 255, 255, 255;
+        --cat-primary-fill-hover: 255, 255, 255;
+        --cat-primary-fill-active: 255, 255, 255;
+
+        --cat-primary-text: 91, 94, 219;
+        --cat-primary-text-hover: 78, 81, 191;
+        --cat-primary-text-active: 65, 67, 159;
+      }
+
       .wrapper {
         display: flex;
         flex-direction: row;
@@ -72,9 +91,9 @@
       #nav {
         align-self: flex-start;
         position: sticky;
-        top: 3.5rem;
+        top: 8rem;
         width: 300px;
-        padding: 4rem 0;
+        margin: 4rem 0;
         border-right: 1px solid #ebecf0;
       }
 
@@ -117,28 +136,77 @@
       section > h3:not(:last-child) {
         margin-bottom: 1rem;
       }
+
+      section.typography {
+        display: flex;
+        gap: 5rem;
+      }
+
+      /* Text page stylings */
+
+      section.typography .example {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      figure img {
+        max-width: 100%;
+      }
+
+      section.typography aside {
+        display: flex;
+        flex-direction: column;
+        gap: 7rem;
+        max-width: 450px;
+        box-sizing: content-box;
+        padding-right: 5rem;
+        border-right: 1px solid #ebecf0;
+      }
+
+      .switches {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: end;
+      }
+
+      .switches cat-button {
+        width: fit-content;
+      }
     </style>
   </head>
   <body>
     <div class="body">
       <h1>Catalyst Web Components</h1>
 
+      <!-- TOP TABS & BUTTONS -->
       <div class="toolbar">
         <cat-tabs class="tabs" active-tab="tab-comp">
           <cat-tab label="Components" id="tab-comp"></cat-tab>
           <cat-tab label="Text" id="tab-text"></cat-tab>
+          <cat-tab label="Icons" id="tab-icon"></cat-tab>
         </cat-tabs>
         <div class="cat-flex cat-items-center cat-gap-s">
-          <cat-button url="https://github.com/haiilo/catalyst" url-target="_blank" size="s" class="cat-elevation-1">
-            GitHub
-          </cat-button>
           <cat-button
-            url="https://haiilo.github.io/catalyst-icons/"
+            url="https://github.com/haiilo/catalyst"
             url-target="_blank"
             size="s"
             class="cat-elevation-1"
+            icon="github"
           >
-            Icons
+            View on GitHub
+          </cat-button>
+          <cat-button
+            url="https://app.slack.com/client/T03BH7BHD/C02JFK9BM0F"
+            url-target="_blank"
+            size="s"
+            class="cat-elevation-1"
+            icon="slack"
+          >
+            Join us on Slack
           </cat-button>
         </div>
       </div>
@@ -628,7 +696,7 @@
                 </cat-dropdown>
               </div>
 
-              <cat-card>
+              <cat-card class="cat-flex cat-items-center cat-gap-m cat-border cat-pv-s">
                 Dropdown inside a card
                 <cat-dropdown>
                   <cat-button slot="trigger">Click me</cat-button>
@@ -806,7 +874,7 @@
               <cat-datepicker mode="week" label="Week"></cat-datepicker>
               <cat-datepicker mode="daterange" label="Daterange"></cat-datepicker>
               <h3>Inline Datepicker</h3>
-              <cat-card class="cat-inline-flex cat-flex-col">
+              <cat-card class="cat-inline-flex cat-flex-col cat-border">
                 <h4>Datetime</h4>
                 <cat-datepicker-inline value="2022-06-21T00:00:00Z"></cat-datepicker-inline>
               </cat-card>
@@ -1067,20 +1135,317 @@
 
       <!-- CATALYST TEXT -->
       <div id="tab-text-content" style="display: none">
-        <section id="typo">
-          <h2>Typography</h2>
-          <cat-card> TODO </cat-card>
+        <section id="typo" class="typography">
+          <!-- Sidebar -->
+          <aside>
+            <!-- Headings -->
+            <div class="cat-flex cat-flex-col cat-gap-s">
+              <h6 class="cat-muted cat-mb-l">Headline styles</h6>
+              <h1>Whereas recognition of the inherent dignity</h1>
+              <span class="cat-mono-s cat-muted">h1, .cat-h1</span>
+              <hr />
+              <h2>Whereas recognition of the inherent dignity</h2>
+              <span class="cat-mono-s cat-muted">h2, .cat-h3</span>
+              <hr />
+              <h3>Whereas recognition of the inherent dignity</h3>
+              <span class="cat-mono-s cat-muted">h3, .cat-h3</span>
+              <hr />
+              <h4>Whereas recognition of the inherent dignity</h4>
+              <span class="cat-mono-s cat-muted">h4, .cat-h4</span>
+              <hr />
+              <h5>Whereas recognition of the inherent dignity</h5>
+              <span class="cat-mono-s cat-muted">h5, .cat-h5</span>
+              <hr />
+              <h6>Whereas recognition of the inherent dignity</h6>
+              <span class="cat-mono-s cat-muted">h6, .cat-h6</span>
+            </div>
+            <!-- Body styles -->
+            <div class="cat-flex cat-flex-col cat-gap-s">
+              <h6 class="cat-muted cat-mb-l">Body styles</h6>
+
+              <p class="cat-ellipsis-2 cat-lead">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Lead, .cat-lead</span>
+              <hr />
+              <p class="cat-ellipsis-2 cat-text-xl">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Body XL, .cat-text-xl</span>
+              <hr />
+              <p class="cat-ellipsis-2 cat-text-l">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Body L, .cat-text-l</span>
+              <hr />
+              <p class="cat-ellipsis-2">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Body M (Default), .cat-text-m</span>
+              <hr />
+              <p class="cat-ellipsis-2 cat-text-s">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Body S, .cat-text-s</span>
+              <hr />
+              <p class="cat-ellipsis-2 cat-text-xs">
+                No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality
+                to a fair and public hearing by an independent and impartial tribunal, in the determination of his
+                rights and obligations and of any criminal charge against him. No one shall be subjected to arbitrary
+                interference with his privacy, family, home or correspondence, nor to attacks upon his honour and
+                reputation. Everyone has the right to the protection of the law against such interference or attacks.
+              </p>
+              <span class="cat-mono-s cat-muted">Body XS, .cat-text-xs</span>
+            </div>
+          </aside>
+          <!-- Example typesetting -->
+          <cat-article class="example">
+            <h6 class="cat-muted cat-mb-l">Example article</h6>
+            <h1>Typesetting test</h1>
+            <p class="cat-lead">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet.
+            </p>
+            <figure>
+              <img
+                src="https://cdn.sanity.io/images/599r6htc/localized/10e55cde1be89fb32aa3d7414fa3cd83b0859a51-3264x1836.jpg"
+                alt=""
+              />
+            </figure>
+            <h2>Dolor Vero</h2>
+            <h3>Consetetur sadipscing elitr</h3>
+            <p>
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+              ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+              consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim
+              qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor
+              sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+              aliquam erat volutpat.
+            </p>
+            <p>
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            </p>
+            <h2>Lorem Ipsum</h2>
+            <p>
+              Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
+              ea commodo consequat.
+            </p>
+            <h3>Vulputate velit esse</h3>
+            <p>
+              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
+              eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+              zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
+              option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+            </p>
+            <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Integer nec odio. Praesent libero.</li>
+              <li>Sed cursus ante dapibus diam. Sed nisi.</li>
+              <li>Nulla quis sem at nibh elementum imperdiet.</li>
+              <li>Duis sagittis ipsum. Praesent mauris.</li>
+              <li>Fusce nec tellus sed augue semper porta.</li>
+              <li>Mauris massa. Vestibulum lacinia arcu eget nulla.</li>
+              <li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</li>
+              <li>Curabitur sodales ligula in libero.</li>
+              <li>Sed dignissim lacinia nunc. Curabitur tortor.</li>
+            </ol>
+            <hr />
+            <h2>What does all of that mean for us?</h2>
+            <p>
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet, consetetur sadipscing elitr.
+            </p>
+            <blockquote>
+              "The only way to do great work is to love what you do."
+              <span>– Steve Jobs</span>
+            </blockquote>
+            <h3>Understanding Employee Engagement</h3>
+            <figure>
+              <iframe
+                width="100%"
+                height="350px"
+                src="https://www.youtube-nocookie.com/embed/2t2BBU0gdO0?controls=0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </figure>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Employee engagement is crucial for an
+              organization's growth and productivity. It's more than just job satisfaction; it's the enthusiasm and
+              involvement an employee has towards their work and the organization's mission.
+            </p>
+
+            <h4>The Benefits of High Engagement</h4>
+            <p>
+              Engaged employees tend to be more productive, have higher job satisfaction, and are more likely to stay
+              with their current employer. They contribute positively to the organizational culture and foster
+              collaboration amongst peers.
+            </p>
+
+            <h5>Key Benefits Include:</h5>
+            <ul>
+              <li>Increased productivity and performance</li>
+              <li>Higher retention rates</li>
+              <li>Improved workplace morale</li>
+              <li>Enhanced company reputation</li>
+              <li>Higher customer satisfaction</li>
+            </ul>
+
+            <h4>Strategies to Enhance Engagement</h4>
+            <p>
+              Building a strong engagement strategy requires a deep understanding of the employees' needs, aspirations,
+              and concerns. Regular feedback, transparent communication, and consistent recognition play pivotal roles
+              in this aspect.
+            </p>
+
+            <h5>Tips for Effective Engagement:</h5>
+            <ul>
+              <li>Regular one-on-one meetings</li>
+              <li>Provide growth opportunities</li>
+              <li>Recognize and reward achievements</li>
+              <li>Promote work-life balance</li>
+              <li>Encourage team collaborations and events</li>
+            </ul>
+
+            <h3>Measuring Employee Engagement</h3>
+            <p>
+              Understanding the level of engagement in an organization is essential for its continual improvement.
+              Surveys, feedback sessions, and monitoring key performance indicators can provide valuable insights.
+            </p>
+          </cat-article>
         </section>
+      </div>
+
+      <!-- CATALYST ICONS -->
+      <div id="tab-icon-content" style="display: none">
+        <iframe
+          src="https://haiilo.github.io/catalyst-icons/"
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="26500px"
+        ></iframe>
+      </div>
+
+      <!-- Switches -->
+      <div class="switches">
+        <cat-button size="s" class="cat-elevation-1" id="toggleSS3">Switch to Source Sans 3</cat-button>
+        <cat-button size="s" class="cat-elevation-1" id="toggleTheme">Use custom theme</cat-button>
       </div>
 
       <script>
         const tabComp = document.getElementById('tab-comp').addEventListener('tabClick', function () {
           document.getElementById('tab-comp-content').style.display = 'block';
           document.getElementById('tab-text-content').style.display = 'none';
+          document.getElementById('tab-icon-content').style.display = 'none';
         });
         const tabText = document.getElementById('tab-text').addEventListener('tabClick', function () {
           document.getElementById('tab-comp-content').style.display = 'none';
           document.getElementById('tab-text-content').style.display = 'block';
+          document.getElementById('tab-icon-content').style.display = 'none';
+        });
+        const tabIcon = document.getElementById('tab-icon').addEventListener('tabClick', function () {
+          document.getElementById('tab-comp-content').style.display = 'none';
+          document.getElementById('tab-text-content').style.display = 'none';
+          document.getElementById('tab-icon-content').style.display = 'block';
+        });
+      </script>
+
+      <script>
+        const font = document.getElementById('toggleSS3');
+        const bodyTag = document.body;
+        const theme = document.getElementById('toggleTheme');
+
+        font.addEventListener('click', function () {
+          if (bodyTag.classList.contains('ss3')) {
+            bodyTag.classList.remove('ss3');
+            font.innerHTML = 'Switch to Source Sans 3';
+          } else {
+            bodyTag.classList.add('ss3');
+            font.innerHTML = 'Switch to Lato';
+          }
+        });
+
+        theme.addEventListener('click', function () {
+          if (bodyTag.classList.contains('custom-theme')) {
+            bodyTag.classList.remove('custom-theme');
+            theme.innerHTML = 'Use custom theme';
+          } else {
+            bodyTag.classList.add('custom-theme');
+            theme.innerHTML = 'Use default theme';
+          }
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const headings = [
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            '.cat-h1',
+            '.cat-h2',
+            '.cat-h3',
+            '.cat-h4',
+            '.cat-h5',
+            '.cat-h6'
+          ];
+
+          headings.forEach(selector => {
+            document.querySelectorAll(selector).forEach(element => {
+              const nextSibling = element.nextElementSibling;
+
+              if (nextSibling) {
+                // For the first condition
+                if (headings.some(heading => nextSibling.matches(heading))) {
+                  element.classList.add('type-space-small');
+                }
+
+                // For the second condition
+                const secondConditionSelectors = [
+                  ...['h3', 'h4', 'h5', 'h6', '.cat-h3', '.cat-h4', '.cat-h5', '.cat-h6'].filter(sel =>
+                    element.matches(sel)
+                  ),
+                  ...(element.matches('p') && nextSibling.matches('p') ? ['p'] : [])
+                ];
+
+                if (secondConditionSelectors.length && ['ul', 'ol', 'p'].some(sel => nextSibling.matches(sel))) {
+                  element.classList.add('type-space-medium');
+                }
+              }
+            });
+          });
         });
       </script>
     </div>
