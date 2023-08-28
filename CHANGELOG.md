@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.3](https://github.com/haiilo/catalyst/compare/v6.4.2...v6.4.3) (2023-08-28)
+
+
+### Features
+
+* new type section on overview page ([4636f85](https://github.com/haiilo/catalyst/commit/4636f855790c76eeb40e797b11f3a20aaaeac150))
+
+
+### Bug Fixes
+
+* **core:** fixed broken spacings in nav cat-card ([#360](https://github.com/haiilo/catalyst/issues/360)) ([3bcaf73](https://github.com/haiilo/catalyst/commit/3bcaf73b61b9cd255a2a8ef7097f579d87484b55))
+* **core:** min and max are not updating after datepicker initialized (closes [#370](https://github.com/haiilo/catalyst/issues/370)) ([9ee44d0](https://github.com/haiilo/catalyst/commit/9ee44d025dbc59f5cae60a2cd9b5d85642f5b783))
+
 ### [6.4.2](https://github.com/haiilo/catalyst/compare/v6.4.1...v6.4.2) (2023-08-15)
 
 
