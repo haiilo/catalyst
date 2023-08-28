@@ -1422,6 +1422,8 @@ span.flatpickr-weekday {
 }
 .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
   color: rgb(var(--cat-font-color-muted, 81, 92, 108));
+  font-weight: inherit;
+  background-color: inherit !important;
 }
 .flatpickr-day.today {
   color: rgb(var(--cat-primary-text, 0, 129, 148));
