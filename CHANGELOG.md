@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.4](https://github.com/haiilo/catalyst/compare/v6.4.3...v6.4.4) (2023-08-28)
+
+
+### Bug Fixes
+
+* **core:** button font weight is not adjustable (closes [#365](https://github.com/haiilo/catalyst/issues/365)) ([00b6343](https://github.com/haiilo/catalyst/commit/00b634352d86deebf19dc040554129b39421e519))
+
 ### [6.4.3](https://github.com/haiilo/catalyst/compare/v6.4.2...v6.4.3) (2023-08-28)
 
 
