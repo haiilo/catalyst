@@ -118,7 +118,7 @@ $button-sizes: (
 .cat-button-filled {
   background-color: cat-token-wrap(var(--bg));
   color: cat-token-wrap(var(--fill));
-  font-weight: 600;
+  font-weight: var(--cat-font-weight-button, 600);
   @include cat-font-smooth;
 
   &.cat-button-disabled {
