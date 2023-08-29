@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.5](https://github.com/haiilo/catalyst/compare/v6.4.4...v6.4.5) (2023-08-29)
+
+
+### Bug Fixes
+
+* **core:** single select shows no items when there are still options (closes [#364](https://github.com/haiilo/catalyst/issues/364)) ([146c6f7](https://github.com/haiilo/catalyst/commit/146c6f7dec9427ee40e2c4c8010898831893b6b3))
+
 ### [6.4.4](https://github.com/haiilo/catalyst/compare/v6.4.3...v6.4.4) (2023-08-28)
 
 
