@@ -862,7 +862,9 @@ export class CatSelect {
   }
 
   private show() {
-    if (!this.state.isOpen) {
+    if (!this.state.isOpen && this.connector) {
+      // reconnect to reset the connection, i.e. the pagination
+      this.connect(this.connector);
       this.patchState({ isOpen: true });
       this.catOpen.emit();
       this.term$.next('');
