@@ -44,8 +44,6 @@ a new release
 
 1. Start in root folder
 1. Run `pnpm run release:{patch|minor|major}`
-1. Run `pnpm run build`
-1. Run `pnpm install`
 1. Run `pnpm run publish`
 1. Run `git push --follow-tags origin main`
 
