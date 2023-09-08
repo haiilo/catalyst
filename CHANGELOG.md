@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.6](https://github.com/haiilo/catalyst/compare/v6.4.5...v6.4.6) (2023-09-08)
+
+
+### Bug Fixes
+
+* **core:** datepicker uses incorrect formatting tokens ([742a8b0](https://github.com/haiilo/catalyst/commit/742a8b05e2ca6b4e2b499185593ff103d28aedb1))
+
 ### [6.4.5](https://github.com/haiilo/catalyst/compare/v6.4.4...v6.4.5) (2023-08-29)
 
 
