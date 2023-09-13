@@ -12,7 +12,7 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'cat-dialog-inner'
+    class: 'cat-dialog'
   }
 })
 export class CatDialogComponent implements AfterContentInit {

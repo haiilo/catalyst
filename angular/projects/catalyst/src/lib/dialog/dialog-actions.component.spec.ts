@@ -8,7 +8,9 @@ describe('CatDialogActionsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CatDialogActionsComponent]
-    }).compileComponents();
+    })
+      .overrideTemplate(CatDialogActionsComponent, '')
+      .compileComponents();
 
     fixture = TestBed.createComponent(CatDialogActionsComponent);
     component = fixture.componentInstance;

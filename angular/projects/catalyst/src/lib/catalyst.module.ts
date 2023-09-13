@@ -84,15 +84,15 @@ export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotification
     ...CatComponents,
     ...CatDirectives,
     CatDialogComponent,
-    CatDialogActionsComponent,
-    CatDialogHeaderComponent
+    CatDialogHeaderComponent,
+    CatDialogActionsComponent
   ],
   exports: [
     ...CatComponents,
     ...CatDirectives,
     CatDialogComponent,
-    CatDialogActionsComponent,
-    CatDialogHeaderComponent
+    CatDialogHeaderComponent,
+    CatDialogActionsComponent
   ],
   providers: []
 })

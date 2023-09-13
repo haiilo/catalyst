@@ -30,7 +30,7 @@ export class CatDialogService {
   ): Observable<R | undefined> {
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
-      panelClass: 'cat-dialog',
+      panelClass: 'cat-dialog-pane',
       width: '600px',
       minWidth: 'clamp(240px, 100vw - 16px, 320px)',
       minHeight: 'clamp(144px, 100vh - 16px, 160px)',
