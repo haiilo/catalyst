@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.7](https://github.com/haiilo/catalyst/compare/v6.4.6...v6.4.7) (2023-09-13)
+
+
+### Bug Fixes
+
+* **angular:** angular CDK dialog styles are not scoped properly ([38788af](https://github.com/haiilo/catalyst/commit/38788af854f5025cfae3ac0153d1d98d0bc848e7))
+
 ### [6.4.6](https://github.com/haiilo/catalyst/compare/v6.4.5...v6.4.6) (2023-09-08)
 
 
