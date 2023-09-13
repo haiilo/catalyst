@@ -1618,6 +1618,8 @@ body {
 }
 
 .cat-dialog {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: var(--cat-border-radius-l, 0.5rem);
   box-shadow: 0 32px 64px -12px rgba(27, 31, 38, 0.14);
