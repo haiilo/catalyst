@@ -37,35 +37,35 @@
   },
   "secondary-bg": {
     "$type": "color",
-    "$value": "#697687"
+    "$value": "#f2f4f7"
   },
   "secondary-bg-hover": {
     "$type": "color",
-    "$value": "#697687"
+    "$value": "#ebecf0"
   },
   "secondary-bg-active": {
     "$type": "color",
-    "$value": "#697687"
+    "$value": "#d7dbe0"
   },
   "secondary-fill": {
     "$type": "color",
-    "$value": "#ffffff"
+    "$value": "#515c6c"
   },
   "secondary-fill-hover": {
     "$type": "color",
-    "$value": "#ffffff"
+    "$value": "#394251"
   },
   "secondary-fill-active": {
     "$type": "color",
-    "$value": "#ffffff"
+    "$value": "#1b1f26"
   },
   "secondary-text": {
     "$type": "color",
-    "$value": "#000000"
+    "$value": "#394251"
   },
   "secondary-text-hover": {
     "$type": "color",
-    "$value": "#000000"
+    "$value": "#1b1f26"
   },
   "secondary-text-active": {
     "$type": "color",
@@ -121,15 +121,15 @@
   },
   "warning-fill": {
     "$type": "color",
-    "$value": "#000000"
+    "$value": "#394251"
   },
   "warning-fill-hover": {
     "$type": "color",
-    "$value": "#000000"
+    "$value": "#394251"
   },
   "warning-fill-active": {
     "$type": "color",
-    "$value": "#000000"
+    "$value": "#394251"
   },
   "warning-text": {
     "$type": "color",
@@ -221,11 +221,11 @@
   },
   "font-color-muted": {
     "$type": "color",
-    "$value": "#515c6c"
+    "$value": "#697687"
   },
   "font-color-quote": {
     "$type": "color",
-    "$value": "#697687"
+    "$value": "#515c6c"
   },
   "font-color-tooltip": {
     "$type": "color",

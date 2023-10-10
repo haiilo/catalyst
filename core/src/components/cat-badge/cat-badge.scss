@@ -49,19 +49,19 @@ $-paddings: (
 
 // ----- theme
 
+$-outline: inset 0 0 0 1px cat-token-wrap(var(--text), $alpha: 0.2);
+
 :host([variant='filled']) {
-  background-color: cat-token-wrap(var(--bg), 1);
+  background-color: cat-token-wrap(var(--bg));
   color: cat-token-wrap(var(--fill));
   font-weight: 600;
   @include cat-font-smooth;
 }
 
-$-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
-
 :host([variant='outlined']) {
   background-color: cat-token('color.ui.background.surface');
-  box-shadow: $-outline;
   color: cat-token-wrap(var(--text));
+  box-shadow: $-outline;
 }
 
 @mixin theme($theme) {
@@ -69,13 +69,6 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
-    @if $theme == 'secondary' {
-      --border: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
-      --bg: #{cat-token('color.theme.#{$theme}.bg', .1, $wrap: false)};
-      --fill: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
-    } @else {
-      --border: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
-    }
   }
 }
 

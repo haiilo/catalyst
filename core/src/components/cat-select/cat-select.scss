@@ -54,10 +54,6 @@ label {
   padding: 0.25rem;
   --border-color: #{cat-token('color.ui.border.dark', $wrap: false)};
 
-  ::placeholder {
-    color: cat-token('color.ui.font.muted');
-  }
-
   &:not(.select-disabled):hover {
     box-shadow:
       inset 0 0 0 1px rgb(var(--border-color)),
@@ -133,8 +129,16 @@ label {
   flex: 1 1 auto;
   @include cat-ellipsis;
 
+  &::placeholder {
+    color: cat-token('color.ui.font.placeholder');
+  }
+
   .select-disabled & {
     cursor: inherit;
+
+    &::placeholder {
+      color: cat-token('color.ui.font.muted');
+    }
   }
 }
 
