@@ -43,10 +43,13 @@ $-icon-colors: (
 
 @mixin theme($theme) {
   :host([color='#{$theme}']) {
-    background-color: cat-token('color.theme.#{$theme}.bg', 0.1);
+    background-color: cat-token('color.theme.#{$theme}.bg', 1);
+    color: cat-token('color.theme.#{$theme}.fill');
+    --cat-font-color-head: #{cat-token('color.theme.#{$theme}.fill')};
+    --cat-font-color-body: #{cat-token('color.theme.#{$theme}.fill')};
 
     cat-icon {
-      color: map.get($-icon-colors, $theme);
+      color: cat-token('color.theme.#{$theme}.fill');
     }
   }
 }

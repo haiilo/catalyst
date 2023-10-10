@@ -50,8 +50,8 @@ $-paddings: (
 // ----- theme
 
 :host([variant='filled']) {
-  background-color: cat-token-wrap(var(--bg), 0.1);
-  color: cat-token-wrap(var(--text));
+  background-color: cat-token-wrap(var(--bg), 1);
+  color: cat-token-wrap(var(--fill));
   font-weight: 600;
   @include cat-font-smooth;
 }
