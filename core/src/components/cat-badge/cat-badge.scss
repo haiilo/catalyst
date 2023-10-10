@@ -71,6 +71,8 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--border), $alpha: 0.2);
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     @if $theme == 'secondary' {
       --border: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+      background-color: cat-token-wrap(var(--bg), .1);
+      color: cat-token-wrap(var(--text));
     } @else {
       --border: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
     }

@@ -51,6 +51,14 @@ $-icon-colors: (
     cat-icon {
       color: cat-token('color.theme.#{$theme}.fill');
     }
+
+    @if $theme == 'secondary' {
+      background-color: cat-token('color.theme.#{$theme}.bg', 0.1);
+      color: cat-token('color.theme.#{$theme}.text');
+      cat-icon{
+        color: cat-token('color.theme.#{$theme}.bg');
+      }
+    }
   }
 }
 
