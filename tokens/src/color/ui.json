@@ -66,12 +66,12 @@
       "font": {
         "head": {
           "$type": "color",
-          "$value": "{color.base.black.value}",
+          "$value": "{color.ui.font.body.value}",
           "cssProp": "font-color-head"
         },
         "headInverted": {
           "$type": "color",
-          "$value": "{color.base.white.value}"
+          "$value": "{color.ui.font.bodyInverted.value}"
         },
         "body": {
           "$type": "color",
@@ -93,12 +93,20 @@
         },
         "muted": {
           "$type": "color",
-          "$value": "{color.base.neutral.500.value}",
+          "$value": "{color.base.neutral.400.value}",
           "cssProp": "font-color-muted"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "{color.base.neutral.500.value}"
+        },
+        "hint": {
+          "$type": "color",
+          "$value": "{color.base.neutral.500.value}"
         },
         "quote": {
           "$type": "color",
-          "$value": "{color.base.neutral.400.value}",
+          "$value": "{color.base.neutral.500.value}",
           "cssProp": "font-color-quote"
         },
         "tooltip": {

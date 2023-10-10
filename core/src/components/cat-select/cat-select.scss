@@ -55,6 +55,10 @@ label {
   --border-color: #{cat-token('color.ui.border.dark', $wrap: false)};
 
   ::placeholder {
+    color: cat-token('color.ui.font.placeholder');
+  }
+
+  &.select-disabled ::placeholder {
     color: cat-token('color.ui.font.muted');
   }
 

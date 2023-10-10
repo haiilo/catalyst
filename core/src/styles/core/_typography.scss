@@ -217,7 +217,7 @@ pre {
 kbd,
 code {
   margin: 0 0.125rem;
-  color: cat-token('color.ui.font.muted');
+  color: cat-token('color.ui.font.hint');
   background: cat-token('color.ui.background.surface');
   box-shadow: 0 0 0 2px cat-token('color.ui.border.default');
   border-radius: cat-border-radius('s');

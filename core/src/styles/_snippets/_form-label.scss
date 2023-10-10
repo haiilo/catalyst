@@ -38,7 +38,7 @@ $cat-input-height: 2.5rem;
   align-items: center;
   max-height: 1.25rem;
   @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
+  color: cat-token('color.ui.font.hint');
 }
 
 .label-character-count {
@@ -47,7 +47,7 @@ $cat-input-height: 2.5rem;
   margin-left: auto;
   max-height: 1.25rem;
   @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
+  color: cat-token('color.ui.font.hint');
 }
 
 .input-horizontal,

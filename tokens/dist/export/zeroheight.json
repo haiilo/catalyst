@@ -438,35 +438,35 @@
       "secondary": {
         "bg": {
           "$type": "color",
-          "$value": "#697687"
+          "$value": "#f2f4f7"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "#697687"
+          "$value": "#ebecf0"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "#697687"
+          "$value": "#d7dbe0"
         },
         "fill": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "#515c6c"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "#394251"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "#1b1f26"
         },
         "text": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#394251"
         },
         "textHover": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#1b1f26"
         },
         "textActive": {
           "$type": "color",
@@ -564,15 +564,15 @@
         },
         "fill": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#394251"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#394251"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#394251"
         },
         "text": {
           "$type": "color",
@@ -718,11 +718,19 @@
         },
         "muted": {
           "$type": "color",
+          "$value": "#697687"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "#515c6c"
+        },
+        "hint": {
+          "$type": "color",
           "$value": "#515c6c"
         },
         "quote": {
           "$type": "color",
-          "$value": "#697687"
+          "$value": "#515c6c"
         },
         "tooltip": {
           "$type": "color",
