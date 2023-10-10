@@ -268,7 +268,9 @@ export class CatTextarea {
                 onFocus={this.onFocus.bind(this)}
                 onBlur={this.onBlur.bind(this)}
                 aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+                aria-describedby={(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length)
+                  ? this.id + '-hint'
+                  : undefined}
               ></textarea>
               {this.invalid && (
                 <cat-icon

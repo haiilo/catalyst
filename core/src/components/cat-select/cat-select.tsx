@@ -644,7 +644,9 @@ export class CatSelect {
                   aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
                   aria-activedescendant={this.activeDescendant}
                   aria-invalid={this.invalid ? 'true' : undefined}
-                  aria-describedby={this.hint?.length ? this.id + '-hint' : undefined}
+                  aria-describedby={(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length)
+                    ? this.id + '-hint'
+                    : undefined}
                   onInput={this.onInput.bind(this)}
                   value={!this.multiple ? this.state.term : undefined}
                   placeholder={this.placeholder}

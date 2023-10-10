@@ -325,7 +325,9 @@ export class CatInput {
                 onFocus={this.onFocus.bind(this)}
                 onBlur={this.onBlur.bind(this)}
                 aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hint?.length || this.invalid ? this.id + '-hint' : undefined}
+                aria-describedby={(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length)
+                  ? this.id + '-hint'
+                  : undefined}
               ></input>
               {this.clearable && !this.disabled && !this.readonly && this.value && (
                 <cat-button

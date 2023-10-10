@@ -165,6 +165,9 @@ export class CatCheckbox {
             onInput={this.onInput.bind(this)}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
+            aria-describedby={(this.hint || this.hasSlottedHint)
+              ? this.id + '-hint'
+              : undefined}
           />
           <span class="box" aria-hidden="true" part="checkbox">
             <svg class="check" viewBox="0 0 12 10">

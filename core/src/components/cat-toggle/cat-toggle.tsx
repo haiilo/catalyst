@@ -162,6 +162,9 @@ export class CatToggle {
             onInput={this.onInput.bind(this)}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
+            aria-describedby={(this.hint || this.hasSlottedHint)
+              ? this.id + '-hint'
+              : undefined}
           />
           <span class="toggle" part="toggle"></span>
           <span class="label" part="label">
