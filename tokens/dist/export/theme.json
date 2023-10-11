@@ -217,7 +217,7 @@
   },
   "font-color-quote": {
     "$type": "color",
-    "$value": "#697687"
+    "$value": "#515c6c"
   },
   "font-color-tooltip": {
     "$type": "color",
