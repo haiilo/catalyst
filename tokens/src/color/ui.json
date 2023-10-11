@@ -93,16 +93,8 @@
         },
         "muted": {
           "$type": "color",
-          "$value": "{color.base.neutral.400.value}",
+          "$value": "{color.base.neutral.500.value}",
           "cssProp": "font-color-muted"
-        },
-        "placeholder": {
-          "$type": "color",
-          "$value": "{color.base.neutral.500.value}"
-        },
-        "hint": {
-          "$type": "color",
-          "$value": "{color.base.neutral.500.value}"
         },
         "quote": {
           "$type": "color",

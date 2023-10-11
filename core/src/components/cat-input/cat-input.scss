@@ -52,10 +52,6 @@
     background: cat-token('color.ui.background.muted');
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
-
-    ::placeholder {
-      color: cat-token('color.ui.font.muted');
-    }
   }
 
   &:not(.input-disabled):hover {
@@ -134,7 +130,7 @@ input {
   }
 
   &::placeholder {
-    color: cat-token('color.ui.font.placeholder');
+    color: cat-token('color.ui.font.muted');
   }
 
   /* stylelint-disable property-no-vendor-prefix */

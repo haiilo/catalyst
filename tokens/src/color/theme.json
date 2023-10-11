@@ -83,42 +83,42 @@
       "secondary": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.neutral.100.value}",
+          "$value": "{color.base.neutral.400.value}",
           "cssProp": "secondary-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.neutral.200.value}",
+          "$value": "{color.base.neutral.400.value}",
           "cssProp": "secondary-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.neutral.300.value}",
+          "$value": "{color.base.neutral.400.value}",
           "cssProp": "secondary-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.neutral.500.value}",
+          "$value": "{color.base.white.value}",
           "cssProp": "secondary-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.neutral.600.value}",
+          "$value": "{color.base.white.value}",
           "cssProp": "secondary-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.neutral.700.value}",
+          "$value": "{color.base.white.value}",
           "cssProp": "secondary-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.neutral.600.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "secondary-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.neutral.700.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "secondary-text-hover"
         },
         "textActive": {
@@ -215,17 +215,17 @@
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.neutral.600.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "warning-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.neutral.600.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "warning-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.neutral.600.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "warning-fill-active"
         },
         "text": {

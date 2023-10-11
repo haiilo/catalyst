@@ -2,18 +2,6 @@
 @use 'mixins' as *;
 @use 'sass:map';
 
-// -----
-
-$-icon-colors: (
-  'primary': cat-token('color.theme.primary.text'),
-  'secondary': cat-token('color.base.neutral.400'),
-  'success': cat-token('color.base.green.400'),
-  'warning': cat-token('color.base.orange.400'),
-  'danger': cat-token('color.base.red.400')
-);
-
-// -----
-
 :host {
   display: flex;
   gap: 0.5rem;

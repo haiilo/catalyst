@@ -130,15 +130,11 @@ label {
   @include cat-ellipsis;
 
   &::placeholder {
-    color: cat-token('color.ui.font.placeholder');
+    color: cat-token('color.ui.font.muted');
   }
 
   .select-disabled & {
     cursor: inherit;
-
-    &::placeholder {
-      color: cat-token('color.ui.font.muted');
-    }
   }
 }
 

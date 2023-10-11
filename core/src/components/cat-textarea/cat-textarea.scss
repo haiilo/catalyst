@@ -70,10 +70,6 @@ textarea {
     cursor: not-allowed;
     color: cat-token('color.ui.font.muted');
     resize: none;
-
-    &::placeholder {
-      color: cat-token('color.ui.font.muted');
-    }
   }
 
   &:not(:disabled):hover {
@@ -92,7 +88,7 @@ textarea {
   }
 
   &::placeholder {
-    color: cat-token('color.ui.font.placeholder');
+    color: cat-token('color.ui.font.muted');
   }
 
   /* stylelint-disable property-no-vendor-prefix */

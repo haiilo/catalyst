@@ -438,35 +438,35 @@
       "secondary": {
         "bg": {
           "$type": "color",
-          "$value": "#f2f4f7"
+          "$value": "#697687"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "#ebecf0"
+          "$value": "#697687"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "#d7dbe0"
+          "$value": "#697687"
         },
         "fill": {
           "$type": "color",
-          "$value": "#515c6c"
+          "$value": "#ffffff"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "#394251"
+          "$value": "#ffffff"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "#1b1f26"
+          "$value": "#ffffff"
         },
         "text": {
           "$type": "color",
-          "$value": "#394251"
+          "$value": "#000000"
         },
         "textHover": {
           "$type": "color",
-          "$value": "#1b1f26"
+          "$value": "#000000"
         },
         "textActive": {
           "$type": "color",
@@ -564,15 +564,15 @@
         },
         "fill": {
           "$type": "color",
-          "$value": "#394251"
+          "$value": "#000000"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "#394251"
+          "$value": "#000000"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "#394251"
+          "$value": "#000000"
         },
         "text": {
           "$type": "color",
@@ -717,14 +717,6 @@
           "$value": "#ffffff"
         },
         "muted": {
-          "$type": "color",
-          "$value": "#697687"
-        },
-        "placeholder": {
-          "$type": "color",
-          "$value": "#515c6c"
-        },
-        "hint": {
           "$type": "color",
           "$value": "#515c6c"
         },
