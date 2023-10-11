@@ -2,6 +2,18 @@
 @forward 'variables.tokens';
 
 // --------
+// -- Variables
+//    These variables are not part of the design tokens, as they do not have a
+//    corresponding value assigned to them. They are still used throughout the
+//    design system to allow for easy customization while maintaining correct
+//    style inheritance.
+// --------
+
+$cat-font-family-head: var(--cat-font-family-head);
+$cat-font-color-head: rgb(var(--cat-font-color-head));
+$cat-font-color-mono: rgb(var(--cat-font-color-mono));
+
+// --------
 // -- Spacings
 // --------
 
@@ -14,6 +26,20 @@ $cat-nav-padding-horizontal: 0.75rem;
 // --------
 
 $cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
+/* stylelint-disable value-keyword-case */
+$font-fallback-base:
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  'Noto Sans',
+  'Liberation Sans',
+  Arial,
+  sans-serif !default;
+$font-fallback-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+/* stylelint-enable value-keyword-case */
 
 // --------
 // -- Elevations

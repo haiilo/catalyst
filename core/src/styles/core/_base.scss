@@ -10,6 +10,6 @@ body {
 
 body {
   @include cat-body('m');
-  font-family: cat-body-font-family();
-  color: cat-token('color.ui.font.body');
+  font-family: cat-token('font.family.body'), $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
+  color: cat-token('color.ui.font.base');
 }

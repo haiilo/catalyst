@@ -64,30 +64,12 @@
         }
       },
       "font": {
-        "head": {
+        "base": {
           "$type": "color",
           "$value": "{color.base.black.value}",
-          "cssProp": "font-color-head"
+          "cssProp": "font-color-base"
         },
-        "headInverted": {
-          "$type": "color",
-          "$value": "{color.base.white.value}"
-        },
-        "body": {
-          "$type": "color",
-          "$value": "{color.base.black.value}",
-          "cssProp": "font-color-body"
-        },
-        "bodyInverted": {
-          "$type": "color",
-          "$value": "{color.base.white.value}"
-        },
-        "mono": {
-          "$type": "color",
-          "$value": "{color.base.black.value}",
-          "cssProp": "font-color-mono"
-        },
-        "monoInverted": {
+        "baseInverted": {
           "$type": "color",
           "$value": "{color.base.white.value}"
         },

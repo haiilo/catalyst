@@ -514,27 +514,11 @@
         }
       },
       "font": {
-        "head": {
+        "base": {
           "$type": "color",
           "$value": "#000000"
         },
-        "headInverted": {
-          "$type": "color",
-          "$value": "#ffffff"
-        },
-        "body": {
-          "$type": "color",
-          "$value": "#000000"
-        },
-        "bodyInverted": {
-          "$type": "color",
-          "$value": "#ffffff"
-        },
-        "mono": {
-          "$type": "color",
-          "$value": "#000000"
-        },
-        "monoInverted": {
+        "baseInverted": {
           "$type": "color",
           "$value": "#ffffff"
         },

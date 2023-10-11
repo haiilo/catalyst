@@ -1,15 +1,16 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-:where(h1, h2, h3, h4, h5, h6),
+// -- reset margins
+
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre),
 .cat-h1,
 .cat-h2,
 .cat-h3,
 .cat-h4,
 .cat-h5,
 .cat-h6 {
-  margin-top: 0;
-  margin-bottom: $cat-head-margin-bottom;
+  margin: 0;
 }
 
 // -- head styles
@@ -32,11 +33,6 @@
   .cat-mono-#{$key} {
     @include cat-mono($key);
   }
-}
-
-:where(p) {
-  margin-top: 0;
-  margin-bottom: $cat-body-margin-bottom;
 }
 
 hr,
@@ -120,11 +116,6 @@ dl {
   }
 }
 
-:where(ol, ul, dl) {
-  margin-top: 0;
-  margin-bottom: $cat-body-margin-bottom;
-}
-
 nav ol,
 nav ul,
 ol.cat-plain,
@@ -150,10 +141,6 @@ dd {
 }
 
 // ----- blockquotes & figures
-
-:where(blockquote, figure) {
-  margin: 0 0 $cat-body-margin-bottom;
-}
 
 blockquote {
   padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
@@ -209,11 +196,6 @@ pre {
   }
 }
 
-:where(pre) {
-  margin-top: 0;
-  margin-bottom: $cat-body-margin-bottom;
-}
-
 kbd,
 code {
   margin: 0 0.125rem;
@@ -241,6 +223,40 @@ code {
 
 // ----- editorial typography
 
+@supports selector(:has(*)) {
+  :where(h1, h2, h3, h4, h5, h6),
+  .cat-h1,
+  .cat-h2,
+  .cat-h3,
+  .cat-h4,
+  .cat-h5,
+  .cat-h6 {
+    margin-bottom: $cat-head-margin-bottom;
+  }
+
+  :where(p, ol, ul, dl, blockquote, figure, pre) {
+    margin-bottom: $cat-body-margin-bottom;
+  }
+}
+
+@supports not selector(:has(*)) {
+  :where(h1, h2, h3, h4, h5, h6),
+  .cat-h1,
+  .cat-h2,
+  .cat-h3,
+  .cat-h4,
+  .cat-h5,
+  .cat-h6 {
+    margin-bottom: $cat-head-margin-bottom;
+  }
+
+  :where(p, ol, ul, dl, blockquote, figure, pre) {
+    margin-bottom: $cat-body-margin-bottom;
+  }
+}
+
+
+/*
 cat-article,
 .cat-article {
   font-size: 1rem;
@@ -319,3 +335,4 @@ cat-article,
     margin-bottom: calc($cat-body-margin-bottom * 0.2);
   }
 }
+*/

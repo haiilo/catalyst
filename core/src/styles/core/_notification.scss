@@ -7,14 +7,13 @@
   background: cat-token('color.ui.background.surface');
   padding: 1.25rem;
   box-shadow: none;
-  color: cat-token('color.ui.font.body');
+  color: cat-token('color.ui.font.base');
   width: 400px;
   max-width: 400px;
   cursor: unset;
 
   &.cat-toastify-dark {
-    --cat-font-color-head: #{cat-token('color.ui.font.headInverted', $wrap: false)};
-    --cat-font-color-body: #{cat-token('color.ui.font.bodyInverted', $wrap: false)};
+    --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
     --cat-primary-text: #{cat-token('color.theme.primaryInverted.text', $wrap: false)};
     --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.textHover', $wrap: false)};
     --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.textActive', $wrap: false)};

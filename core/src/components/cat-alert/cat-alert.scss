@@ -19,7 +19,6 @@ $-icon-colors: (
   gap: 0.5rem;
   padding: 1.25rem;
   border-radius: cat-border-radius('l');
-  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {
