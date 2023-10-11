@@ -13,7 +13,7 @@
 
 .input-hint,
 ::slotted([slot='hint']) {
-  color: rgb(var(--cat-hint-color, inherit));
+  color: cat-token('color.ui.font.muted');
   line-height: 1.5;
   flex: 1 1 auto;
   min-width: 0;

@@ -66,12 +66,12 @@
       "font": {
         "head": {
           "$type": "color",
-          "$value": "{color.ui.font.body.value}",
+          "$value": "{color.base.black.value}",
           "cssProp": "font-color-head"
         },
         "headInverted": {
           "$type": "color",
-          "$value": "{color.ui.font.bodyInverted.value}"
+          "$value": "{color.base.white.value}"
         },
         "body": {
           "$type": "color",

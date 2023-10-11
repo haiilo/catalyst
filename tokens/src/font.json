@@ -3,7 +3,7 @@
     "family": {
       "head": {
         "$type": "fontFamily",
-        "$value": "{font.family.body.value}",
+        "$value": "{asset.font.lato.name.value}",
         "cssProp": "font-family-head"
       },
       "body": {
