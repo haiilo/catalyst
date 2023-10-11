@@ -98,7 +98,7 @@
         },
         "quote": {
           "$type": "color",
-          "$value": "{color.base.neutral.400.value}",
+          "$value": "{color.base.neutral.500.value}",
           "cssProp": "font-color-quote"
         },
         "tooltip": {

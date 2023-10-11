@@ -544,7 +544,7 @@
         },
         "quote": {
           "$type": "color",
-          "$value": "#697687"
+          "$value": "#515c6c"
         },
         "tooltip": {
           "$type": "color",
@@ -837,12 +837,6 @@
         "$type": "dimension",
         "$value": 4
       }
-    }
-  },
-  "test": {
-    "bases": {
-      "$type": "number",
-      "$value": 1000
     }
   },
   "time": {

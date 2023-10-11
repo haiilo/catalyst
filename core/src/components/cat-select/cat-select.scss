@@ -129,6 +129,10 @@ label {
   flex: 1 1 auto;
   @include cat-ellipsis;
 
+  &::placeholder {
+    color: cat-token('color.ui.font.muted');
+  }
+
   .select-disabled & {
     cursor: inherit;
   }
