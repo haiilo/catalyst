@@ -29,7 +29,7 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "style-dictionary": "^3.8.0",
-    "style-dictionary-utils": "^2.0.0",
+    "style-dictionary-utils": "^2.0.1",
     "tinycolor2": "^1.6.0"
   }
 }
