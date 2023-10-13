@@ -153,9 +153,7 @@ export class CatRadio {
               onInput={this.onInput.bind(this)}
               onFocus={this.onFocus.bind(this)}
               onBlur={this.onBlur.bind(this)}
-              aria-describedby={(this.hint || this.hasSlottedHint)
-                ? this.id + '-hint'
-                : undefined}
+              aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
             />
             <span class="circle"></span>
           </span>
@@ -163,7 +161,7 @@ export class CatRadio {
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
         </label>
-        {(this.hint || this.hasSlottedHint) && (
+        {this.hasHint && (
           <div class={{ 'hint-wrapper': true, 'label-left': this.labelLeft }}>
             <div class="circle-placeholder"></div>
             <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
@@ -171,6 +169,10 @@ export class CatRadio {
         )}
       </Host>
     );
+  }
+
+  private get hasHint() {
+    return !!this.hint || !!this.hasSlottedHint;
   }
 
   private onInput() {

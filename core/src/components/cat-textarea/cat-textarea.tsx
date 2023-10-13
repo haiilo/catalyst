@@ -268,9 +268,7 @@ export class CatTextarea {
                 onFocus={this.onFocus.bind(this)}
                 onBlur={this.onBlur.bind(this)}
                 aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length)
-                  ? this.id + '-hint'
-                  : undefined}
+                aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
               ></textarea>
               {this.invalid && (
                 <cat-icon
@@ -281,7 +279,7 @@ export class CatTextarea {
                 ></cat-icon>
               )}
             </div>
-            {(this.hint || this.hasSlottedHint || !!Object.keys(this.errorMap || {}).length) && (
+            {this.hasHint && (
               <CatFormHint
                 id={this.id}
                 hint={this.hint}
@@ -295,8 +293,12 @@ export class CatTextarea {
     );
   }
 
+  private get hasHint() {
+    return !!this.hint || !!this.hasSlottedHint || this.invalid;
+  }
+
   private get invalid() {
-    return !!this.errorMap;
+    return !!Object.keys(this.errorMap || {}).length;
   }
 
   private onInput() {
