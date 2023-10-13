@@ -434,7 +434,9 @@ export class CatSelect {
         this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
-      this.hide();
+      if (this.hide()) {
+        event.stopPropagation();
+      }
     } else if (event.key === 'Backspace' || event.key === 'Delete') {
       this.input?.focus();
       if (!this.multiple || !this.state.term || (this.input?.selectionStart === 0 && event.key === 'Backspace')) {
@@ -880,7 +882,9 @@ export class CatSelect {
     if (this.state.isOpen) {
       this.patchState({ isOpen: false, activeOptionIndex: -1 });
       this.catClose.emit();
+      return true;
     }
+    return false;
   }
 
   private search(term: string) {

@@ -6,6 +6,18 @@
     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
     elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
   </p>
+
+  <form [formGroup]="form">
+    <cat-select
+      label="Select"
+      formControlName="option"
+      [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+      hint="this is a hint"
+      [connector]="countryConnector"
+      [clearable]="true"
+    ></cat-select>
+  </form>
+
   <cat-dialog-actions>
     <cat-button variant="filled" color="primary">Primary</cat-button>
     <cat-button>Secondary</cat-button>

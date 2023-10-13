@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { of } from 'rxjs';
 import {
   CatCheckboxFieldType,
   CatDatepickerFieldType,
@@ -15,21 +14,8 @@ import {
   CatToggleFieldType
 } from '../../../catalyst-formly/src';
 import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
+import { countryConnector } from './app.countries';
 import { DialogComponent } from './dialog/dialog.component';
-
-interface Country {
-  id: string;
-  country: string;
-}
-
-const countries: Country[] = [
-  { id: '0', country: 'Afghanistan' },
-  { id: '1', country: 'Albania' },
-  { id: '2', country: 'Algeria' },
-  { id: '3', country: 'American Samoa' },
-  { id: '4', country: 'Andorra' },
-  { id: '5', country: 'Angola' }
-];
 
 @Component({
   selector: 'app-root',
@@ -45,11 +31,7 @@ export class AppComponent implements OnInit {
     date: new FormControl(null, [Validators.required])
   });
 
-  countryConnector: any = {
-    resolve: (ids: string[]) => of(ids.map(id => countries.find(value => value.id === id)!)),
-    retrieve: () => of({ content: countries, last: true }),
-    render: (country: Country) => ({ label: country.country })
-  };
+  countryConnector = countryConnector;
 
   fields: FormlyFieldConfig[] = [
     {
