@@ -223,38 +223,48 @@ code {
 
 // ----- editorial typography
 
-@supports selector(:has(*)) {
-  :where(h1, h2, h3, h4, h5, h6),
+article,
+.cat-article {
+  :where(h1, h2, h3),
   .cat-h1,
   .cat-h2,
-  .cat-h3,
+  .cat-h3 {
+    margin-bottom: $cat-head-margin-bottom;
+
+    &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
+      margin-bottom: $cat-head-margin-bottom * 0.5;
+    }
+  }
+
+  :where(h4, h5, h6),
   .cat-h4,
   .cat-h5,
   .cat-h6 {
-    margin-bottom: $cat-head-margin-bottom;
+    margin-bottom: $cat-head-margin-bottom * 0.5;
+
+    &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
+      margin-bottom: $cat-head-margin-bottom * 0.25;
+    }
   }
 
   :where(p, ol, ul, dl, blockquote, figure, pre) {
     margin-bottom: $cat-body-margin-bottom;
   }
+
+  // @supports selector(:has(*)) {
+  //   :where(h1, h2, h3, h4, h5, h6),
+  //   .cat-h1,
+  //   .cat-h2,
+  //   .cat-h3,
+  //   .cat-h4,
+  //   .cat-h5,
+  //   .cat-h6 {
+  //     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
+  //       margin-bottom: $cat-head-margin-bottom * 0.5;
+  //     }
+  //   }
+  // }
 }
-
-@supports not selector(:has(*)) {
-  :where(h1, h2, h3, h4, h5, h6),
-  .cat-h1,
-  .cat-h2,
-  .cat-h3,
-  .cat-h4,
-  .cat-h5,
-  .cat-h6 {
-    margin-bottom: $cat-head-margin-bottom;
-  }
-
-  :where(p, ol, ul, dl, blockquote, figure, pre) {
-    margin-bottom: $cat-body-margin-bottom;
-  }
-}
-
 
 /*
 cat-article,
@@ -285,23 +295,6 @@ cat-article,
     margin-bottom: calc($cat-body-margin-bottom * 0.4);
   }
 
-  // :where(h1, h2, h3, h4, h5, h6, .cat-h1, .cat-h2, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(
-  //     + h1,
-  //     + h2,
-  //     + h3,
-  //     + h4,
-  //     + h5,
-  //     + h6,
-  //     + .cat-h1,
-  //     + .cat-h2,
-  //     + .cat-h3,
-  //     + .cat-h4,
-  //     + .cat-h5,
-  //     + .cat-h6
-  //   ) {
-  //     margin-top: 0;
-  //     margin-bottom:calc($cat-body-margin-bottom * 0.2);
-  // }
 
   // :where(h3, h4, h5, h6, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(+ ul, + ol, + p) {
   //   margin-bottom:calc($cat-body-margin-bottom * 0.4);
