@@ -215,7 +215,11 @@ export class CatInput {
    */
   @Method()
   async doFocus(options?: FocusOptions): Promise<void> {
-    this.input.focus(options);
+    // hack to make datepicker inputs focusable. The datepicker hides the input
+    // element and dynamically creates a sibling. We need to find the new input
+    // element and focus it instead.
+    const input = this.input.type === 'hidden' ? this.findSiblingInput(this.input.nextSibling) : this.input;
+    input?.focus(options);
   }
 
   /**
@@ -300,7 +304,9 @@ export class CatInput {
                 {this.textPrefix}
               </span>
             )}
-            {this.icon && !this.iconRight && <cat-icon icon={this.icon} class="icon-prefix" size="l"></cat-icon>}
+            {this.icon && !this.iconRight && (
+              <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
+            )}
             <div class="input-inner-wrapper">
               <input
                 {...this.nativeAttributes}
@@ -341,7 +347,7 @@ export class CatInput {
               )}
             </div>
             {!this.invalid && this.icon && this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-suffix" size="l"></cat-icon>
+              <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
             )}
             {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
             {this.textSuffix && (
@@ -408,5 +414,14 @@ export class CatInput {
     if (!hasFocus) {
       this.showErrors();
     }
+  }
+
+  private findSiblingInput(node: Node | null): HTMLInputElement | undefined {
+    if (node instanceof HTMLInputElement) {
+      return node;
+    } else if (node?.nextSibling) {
+      return this.findSiblingInput(node.nextSibling);
+    }
+    return undefined;
   }
 }
