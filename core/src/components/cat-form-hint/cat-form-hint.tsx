@@ -28,7 +28,7 @@ export const CatFormHint: FunctionalComponent<CatFormHintProps> = props => {
   const { id, hint, slottedHint, errorMap } = props;
   const errors = Object.entries(errorMap || {});
   return (
-    <div id={id + '-hint'} class="hint-section">
+    <div aria-live="polite" id={id + '-hint'} class="hint-section">
       {errors.length
         ? errors.map(([key, params]) => (
             <p class={(props.class ?? '') + ' input-hint cat-text-danger'}>{i18n.t(`error.${key}`, params)}</p>
