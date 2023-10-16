@@ -967,6 +967,16 @@ export namespace Components {
          */
         "activeTab": string;
         /**
+          * Activates the tab with the given id.
+          * @param id The tab id.
+         */
+        "setActive": (id: string) => Promise<void>;
+        /**
+          * Activates the tab with the given index.
+          * @param index The tab index.
+         */
+        "setActiveIndex": (index: number) => Promise<void>;
+        /**
           * The alignment of the tabs.
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
@@ -1208,6 +1218,10 @@ export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
 export interface CatTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTabElement;
+}
+export interface CatTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTabsElement;
 }
 export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2492,6 +2506,10 @@ declare namespace LocalJSX {
           * The ID of the active tab.
          */
         "activeTab"?: string;
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onCatChange"?: (event: CatTabsCustomEvent<{ id: string; index: number }>) => void;
         /**
           * The alignment of the tabs.
          */

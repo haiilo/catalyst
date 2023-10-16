@@ -18,6 +18,36 @@ window, using tabs as a navigational element.
 | `tabsAlign` | `tabs-align` | The alignment of the tabs. | `"center" \| "justify" \| "left" \| "right"` | `'left'` |
 
 
+## Events
+
+| Event       | Description                         | Type                                          |
+| ----------- | ----------------------------------- | --------------------------------------------- |
+| `catChange` | Emitted when active tab is changed. | `CustomEvent<{ id: string; index: number; }>` |
+
+
+## Methods
+
+### `setActive(id: string) => Promise<void>`
+
+Activates the tab with the given id.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setActiveIndex(index: number) => Promise<void>`
+
+Activates the tab with the given index.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Shadow Parts
 
 | Part    | Description            |
