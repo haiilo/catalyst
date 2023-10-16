@@ -10,6 +10,7 @@ import { Component, Element, Event, EventEmitter, h, Listen, Prop, Watch } from 
 })
 export class CatRadioGroup {
   private catRadioGroup: HTMLCatRadioElement[] = [];
+  private mutationObserver?: MutationObserver;
 
   @Element() hostElement!: HTMLElement;
 
@@ -67,24 +68,28 @@ export class CatRadioGroup {
 
   @Watch('disabled')
   onDisabledChanged(disabled: boolean) {
-    this.catRadioGroup.forEach(catRadio => (catRadio.disabled = disabled));
+    this.catRadioGroup.forEach(catRadio => (catRadio.disabled = catRadio.disabled || disabled));
   }
 
   @Watch('labelLeft')
   onLabelLeftChanged(labelLeft: boolean) {
-    this.catRadioGroup.forEach(catRadio => {
-      if (labelLeft) {
-        catRadio.labelLeft = labelLeft;
-      }
-    });
+    this.catRadioGroup.forEach(catRadio => (catRadio.labelLeft = catRadio.labelLeft || labelLeft));
   }
 
   componentDidLoad(): void {
-    this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
-    this.onNameChanged(this.name);
-    this.onValueChanged(this.value);
-    this.onDisabledChanged(this.disabled);
-    this.onLabelLeftChanged(this.labelLeft);
+    this.init();
+    this.mutationObserver = new MutationObserver(
+      mutations => mutations.some(value => value.target.nodeName === 'CAT-RADIO') && this.init()
+    );
+    this.mutationObserver?.observe(this.hostElement, {
+      childList: true,
+      attributes: true,
+      subtree: true
+    });
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver?.disconnect();
   }
 
   @Listen('keydown')
@@ -131,6 +136,14 @@ export class CatRadioGroup {
         <slot></slot>
       </div>
     );
+  }
+
+  private init() {
+    this.catRadioGroup = Array.from(this.hostElement.querySelectorAll(`cat-radio`));
+    this.onNameChanged(this.name);
+    this.onValueChanged(this.value);
+    this.onDisabledChanged(this.disabled);
+    this.onLabelLeftChanged(this.labelLeft);
   }
 
   private updateTabIndex() {

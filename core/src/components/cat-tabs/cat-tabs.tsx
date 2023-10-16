@@ -48,7 +48,6 @@ export class CatTabs {
     this.mutationObserver = new MutationObserver(
       mutations => mutations.some(value => value.target.nodeName === 'CAT-TAB') && this.syncTabs()
     );
-
     this.mutationObserver?.observe(this.hostElement, {
       childList: true,
       attributes: true,
