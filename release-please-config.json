@@ -1,13 +1,33 @@
 {
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
-    ".": {
-      "changelog-path": "CHANGELOG.md",
-      "release-type": "node",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false
+    "tokens": {
+      "component": "catalyst-tokens"
+    },
+    "core": {
+      "component": "catalyst-core"
+    },
+    "angular/projects/catalyst": {
+      "component": "catalyst-angular"
+    },
+    "angular/projects/catalyst-formly": {
+      "component": "catalyst-angular-formly"
+    },
+    "react": {
+      "component": "catalyst-react"
     }
   },
-  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "catalyst",
+      "components": [
+        "catalyst-tokens",
+        "catalyst-core",
+        "catalyst-angular",
+        "catalyst-angular-formly",
+        "catalyst-react"
+      ]
+    }
+  ]
 }
