@@ -1,33 +1,33 @@
-name: 'Tokens'
-on:
-  push:
-    branches:
-      - '*'
-    paths:
-      - 'tokens/**'
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
-      - name: Install and Build
-        run: |
-          pnpm install
-          pnpm run build:tokens
-      - name: Commit files
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'CI: update tokens'
-          commit_user_name: GitHub Actions
-          commit_user_email: actions@github.com
+# name: 'Tokens'
+# on:
+#   push:
+#     branches:
+#       - '*'
+#     paths:
+#       - 'tokens/**'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v2
+#         with:
+#           version: 8
+#       - name: Setup Node
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version-file: .nvmrc
+#           cache: pnpm
+#           cache-dependency-path: pnpm-lock.yaml
+#       - name: Install and Build
+#         run: |
+#           pnpm install
+#           pnpm run build:tokens
+#       - name: Commit files
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           commit_message: 'CI: update tokens'
+#           commit_user_name: GitHub Actions
+#           commit_user_email: actions@github.com

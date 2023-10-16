@@ -1,0 +1,7 @@
+{
+  "tokens": "6.5.1",
+  "core": "6.5.1",
+  "angular/projects/catalyst": "6.5.1",
+  "angular/projects/catalyst-formly": "6.5.1",
+  "react": "6.5.1"
+}
