@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.5.1](https://github.com/haiilo/catalyst/compare/v6.5.0...v6.5.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* **core:** not able to programmatically set active tab ([ec1cc1c](https://github.com/haiilo/catalyst/commit/ec1cc1cb1a0d6fca6a68734250b31c897df2077d))
+* **core:** update radio group on dynamic radio changes (closes [#400](https://github.com/haiilo/catalyst/issues/400)) ([2761ceb](https://github.com/haiilo/catalyst/commit/2761cebc671f3d843a2e2dd6f921e550bb9fc192))
+
 ## [6.5.0](https://github.com/haiilo/catalyst/compare/v6.4.7...v6.5.0) (2023-10-16)
 
 
