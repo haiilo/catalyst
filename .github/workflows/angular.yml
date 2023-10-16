@@ -1,30 +1,30 @@
-name: 'Angular'
-on:
-  push:
-    branches:
-      - '*'
-    paths:
-      - 'angular/**'
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
-      - name: Install and Build
-        run: |
-          pnpm install
-          pnpm run build:tokens
-          pnpm run build:core
-          pnpm run build:angular
-          pnpm run build:angular-formly
+# name: 'Angular'
+# on:
+#   push:
+#     branches:
+#       - '*'
+#     paths:
+#       - 'angular/**'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v2
+#         with:
+#           version: 8
+#       - name: Setup Node
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version-file: .nvmrc
+#           cache: pnpm
+#           cache-dependency-path: pnpm-lock.yaml
+#       - name: Install and Build
+#         run: |
+#           pnpm install
+#           pnpm run build:tokens
+#           pnpm run build:core
+#           pnpm run build:angular
+#           pnpm run build:angular-formly
