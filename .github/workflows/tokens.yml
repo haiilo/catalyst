@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install
-        uses: ./install.yml
+        uses: ./.github/workflows/install.yml
       - name: Build
         run: pnpm run build:tokens
       - name: Commit files
