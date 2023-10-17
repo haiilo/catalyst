@@ -1,41 +1,44 @@
-# name: 'Deploy'
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - 'core/**'
-# jobs:
-#   gh-pages:
-#     concurrency: ci-${{ github.ref }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#       - name: Setup pnpm
-#         uses: pnpm/action-setup@v2
-#         with:
-#           version: 8
-#       - name: Setup Node
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version-file: .nvmrc
-#           cache: pnpm
-#           cache-dependency-path: pnpm-lock.yaml
-#       - name: Install and Build
-#         run: |
-#           pnpm install
-#           pnpm run build:tokens
-#           pnpm run build:core
-#       - name: Find and Replace
-#         uses: jacobtomlinson/gha-find-replace@v2
-#         with:
-#           find: '/build/'
-#           replace: 'https://haiilo.github.io/catalyst/build/'
-#           regex: false
-#           include: core/www/index.html
-#       - name: Deploy
-#         uses: JamesIves/github-pages-deploy-action@v4.2.3
-#         with:
-#           branch: gh-pages
-#           folder: core/www
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+    # paths:
+    #   - "tokens/**"
+    #   - "core/**"
+
+jobs:
+  gh-pages:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install and Build
+        run: |
+          pnpm install
+          pnpm run build:tokens
+          pnpm run build:core
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "/build/"
+          replace: "https://haiilo.github.io/catalyst/build/"
+          regex: false
+          include: core/www/index.html
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: core/www

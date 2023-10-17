@@ -1,15 +1,40 @@
-name: 'Tokens'
+name: Tokens
 
 on:
   push:
     branches:
-      - '*'
+      - "*"
     # paths:
-    #   - 'tokens/**'
+    #   - "tokens/**"
 
 jobs:
   install:
-    uses: ./.github/workflows/install.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install
+        run: pnpm install
   build:
     runs-on: ubuntu-latest
     needs: install
@@ -19,6 +44,6 @@ jobs:
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'CI: update tokens'
+          commit_message: "CI: update tokens"
           commit_user_name: GitHub Actions
           commit_user_email: actions@github.com
