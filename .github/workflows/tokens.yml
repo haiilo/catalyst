@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - run: pwd
+      - run: ls -la
       - name: Install
         uses: ./.github/workflows/install.yml
       - name: Build
