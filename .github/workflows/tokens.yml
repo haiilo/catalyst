@@ -8,15 +8,12 @@ on:
     #   - 'tokens/**'
 
 jobs:
+  install:
+    uses: ./.github/workflows/install.yml
   build:
     runs-on: ubuntu-latest
+    needs: install
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - run: pwd
-      - run: ls -la
-      - name: Install
-        uses: ./.github/workflows/install.yml
       - name: Build
         run: pnpm run build:tokens
       - name: Commit files
