@@ -21,7 +21,7 @@ export class CatTabs {
   /**
    * The ID of the active tab.
    */
-  @Prop({ reflect: true }) activeTab = '';
+  @Prop({ mutable: true, reflect: true }) activeTab = '';
 
   /**
    * The alignment of the tabs.
@@ -57,7 +57,7 @@ export class CatTabs {
   onKeydown(event: KeyboardEvent): void {
     if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
       const elements = this.hostElement.shadowRoot?.querySelectorAll<HTMLCatButtonElement>('cat-button[role="tab"]');
-      const targetElements = Array.from(elements || []).filter(button => !button.disabled);
+      const targetElements = Array.from(elements ?? []).filter(button => !button.disabled);
       const activeElement = this.hostElement.shadowRoot?.activeElement as HTMLCatButtonElement;
       const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
       const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;

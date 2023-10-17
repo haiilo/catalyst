@@ -184,7 +184,7 @@
 
       <!-- TOP TABS & BUTTONS -->
       <div class="toolbar">
-        <cat-tabs class="tabs" active-tab="tab-comp">
+        <cat-tabs class="tabs" active-tab="tab-comp" id="tabs-top">
           <cat-tab label="Components" id="tab-comp"></cat-tab>
           <cat-tab label="Text" id="tab-text"></cat-tab>
           <cat-tab label="Icons" id="tab-icon"></cat-tab>
@@ -1362,44 +1362,32 @@
       </div>
 
       <script>
-        const tabComp = document.getElementById('tab-comp').addEventListener('tabClick', function () {
-          document.getElementById('tab-comp-content').style.display = 'block';
-          document.getElementById('tab-text-content').style.display = 'none';
-          document.getElementById('tab-icon-content').style.display = 'none';
-        });
-        const tabText = document.getElementById('tab-text').addEventListener('tabClick', function () {
-          document.getElementById('tab-comp-content').style.display = 'none';
-          document.getElementById('tab-text-content').style.display = 'block';
-          document.getElementById('tab-icon-content').style.display = 'none';
-        });
-        const tabIcon = document.getElementById('tab-icon').addEventListener('tabClick', function () {
-          document.getElementById('tab-comp-content').style.display = 'none';
-          document.getElementById('tab-text-content').style.display = 'none';
-          document.getElementById('tab-icon-content').style.display = 'block';
+        document.getElementById('tabs-top').addEventListener('catChange', function (e) {
+          document.getElementById('tab-comp-content').style.display = e.detail.index === 0 ? 'block' : 'none';
+          document.getElementById('tab-text-content').style.display = e.detail.index === 1 ? 'block' : 'none';
+          document.getElementById('tab-icon-content').style.display = e.detail.index === 2 ? 'block' : 'none';
         });
       </script>
 
       <script>
+        const body = document.body;
         const font = document.getElementById('toggleSS3');
-        const bodyTag = document.body;
-        const theme = document.getElementById('toggleTheme');
-
         font.addEventListener('click', function () {
-          if (bodyTag.classList.contains('ss3')) {
-            bodyTag.classList.remove('ss3');
+          if (body.classList.contains('ss3')) {
+            body.classList.remove('ss3');
             font.innerHTML = 'Switch to Source Sans 3';
           } else {
-            bodyTag.classList.add('ss3');
+            body.classList.add('ss3');
             font.innerHTML = 'Switch to Lato';
           }
         });
-
+        const theme = document.getElementById('toggleTheme');
         theme.addEventListener('click', function () {
-          if (bodyTag.classList.contains('custom-theme')) {
-            bodyTag.classList.remove('custom-theme');
+          if (body.classList.contains('custom-theme')) {
+            body.classList.remove('custom-theme');
             theme.innerHTML = 'Use custom theme';
           } else {
-            bodyTag.classList.add('custom-theme');
+            body.classList.add('custom-theme');
             theme.innerHTML = 'Use default theme';
           }
         });
