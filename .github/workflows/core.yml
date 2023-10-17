@@ -100,7 +100,7 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm run build:tokens
-      # - name: Install Chrome
-      #   run: sudo apt-get install -y google-chrome-stable
+      - name: Install Chrome
+        run: node node_modules/puppeteer/install.js
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
