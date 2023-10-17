@@ -2,19 +2,24 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
     "tokens": {
-      "component": "catalyst-tokens"
+      "component": "catalyst-tokens",
+      "changelog-path": "CHANGELOG.md"
     },
     "core": {
-      "component": "catalyst-core"
+      "component": "catalyst-core",
+      "changelog-path": "CHANGELOG.md"
     },
     "angular/projects/catalyst": {
-      "component": "catalyst-angular"
+      "component": "catalyst-angular",
+      "changelog-path": "CHANGELOG.md"
     },
     "angular/projects/catalyst-formly": {
-      "component": "catalyst-angular-formly"
+      "component": "catalyst-angular-formly",
+      "changelog-path": "CHANGELOG.md"
     },
     "react": {
-      "component": "catalyst-react"
+      "component": "catalyst-react",
+      "changelog-path": "CHANGELOG.md"
     }
   },
   "plugins": [
