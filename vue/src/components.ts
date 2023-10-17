@@ -318,7 +318,8 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
 
 export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', undefined, [
   'activeTab',
-  'tabsAlign'
+  'tabsAlign',
+  'catChange'
 ]);
 
 

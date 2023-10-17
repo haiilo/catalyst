@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.5.1](https://github.com/haiilo/catalyst/compare/v6.5.0...v6.5.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* **core:** not able to programmatically set active tab ([ec1cc1c](https://github.com/haiilo/catalyst/commit/ec1cc1cb1a0d6fca6a68734250b31c897df2077d))
+* **core:** update radio group on dynamic radio changes (closes [#400](https://github.com/haiilo/catalyst/issues/400)) ([2761ceb](https://github.com/haiilo/catalyst/commit/2761cebc671f3d843a2e2dd6f921e550bb9fc192))
+
+## [6.5.0](https://github.com/haiilo/catalyst/compare/v6.4.7...v6.5.0) (2023-10-16)
+
+
+### Features
+
+* **core:** spike translation function support ([14ef956](https://github.com/haiilo/catalyst/commit/14ef9569a2e300e273281476ec7d356dc2cf611a))
+* new look for alerts and badges ([#396](https://github.com/haiilo/catalyst/issues/396)) ([b572c8e](https://github.com/haiilo/catalyst/commit/b572c8efe546dfef57756f6ab25575467edcac1e))
+
+
+### Bug Fixes
+
+* **angular:** update errors on blur (closes [#397](https://github.com/haiilo/catalyst/issues/397)) ([29254c2](https://github.com/haiilo/catalyst/commit/29254c246ea1b3c2bcdb0ae1f37316599a734151))
+* **core:** allow datepicker to open on icon click (closes [#394](https://github.com/haiilo/catalyst/issues/394)) ([8c5ee85](https://github.com/haiilo/catalyst/commit/8c5ee856242c84e95df11ffd693b122288e3a453))
+* **core:** nested selects closes modal on esc (closes [#387](https://github.com/haiilo/catalyst/issues/387)) ([d425bf1](https://github.com/haiilo/catalyst/commit/d425bf1227f3b050a9ac881679ff1bc1045e2a54))
+* **core:** update dependencies ([7e8f331](https://github.com/haiilo/catalyst/commit/7e8f331e38afb961ea6d49c28a5e1554838058ea))
+* form error hints are not announced by the screen reader ([#398](https://github.com/haiilo/catalyst/issues/398)) ([9e23dca](https://github.com/haiilo/catalyst/commit/9e23dca07347bbbee5c0c140194a44de2c1aa428))
+* **tokens:** update dev dependencies ([7cd9290](https://github.com/haiilo/catalyst/commit/7cd92900f72c294f3e0b1081133f7a92499b6442))
+* update dev dependencies ([430566b](https://github.com/haiilo/catalyst/commit/430566b82809d1af760a36e27ddddd5856804136))
+
 ### [6.4.7](https://github.com/haiilo/catalyst/compare/v6.4.6...v6.4.7) (2023-09-13)
 
 

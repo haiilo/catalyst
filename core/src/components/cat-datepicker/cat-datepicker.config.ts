@@ -25,6 +25,7 @@ export function getConfig(
     ...more,
     locale: options.locale,
     plugins,
+    allowInput: true,
     altInput: true,
     prevArrow: '←',
     nextArrow: '→',

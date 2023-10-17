@@ -52,8 +52,8 @@
     "node": ">=18.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.7",
-    "@commitlint/config-conventional": "^17.6.7",
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
     "husky": "^8.0.3",
     "replace-in-file": "^7.0.1",
     "standard-version": "^9.5.0"

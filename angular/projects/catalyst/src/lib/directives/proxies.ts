@@ -960,7 +960,8 @@ export declare interface CatTab extends Components.CatTab {
 }
 
 @ProxyCmp({
-  inputs: ['activeTab', 'tabsAlign']
+  inputs: ['activeTab', 'tabsAlign'],
+  methods: ['setActive', 'setActiveIndex']
 })
 @Component({
   selector: 'cat-tabs',
@@ -978,10 +979,16 @@ export class CatTabs {
   ) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
-export declare interface CatTabs extends Components.CatTabs {}
+export declare interface CatTabs extends Components.CatTabs {
+  /**
+   * Emitted when active tab is changed.
+   */
+  catChange: EventEmitter<CustomEvent<{ id: string; index: number }>>;
+}
 
 @ProxyCmp({
   inputs: [

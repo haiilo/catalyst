@@ -9,7 +9,7 @@ describe('CatFormHint', () => {
       template: () => <CatFormHint id="host-id"></CatFormHint>
     });
     expect(page.root).toEqualHtml(`
-     <div class="hint-section" id="host-id-hint"></div>
+     <div class="hint-section" id="host-id-hint" aria-live="polite"></div>
     `);
   });
 });

@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 /**
  * Tabs are used to display multiple panels to be contained within a single
@@ -12,43 +12,30 @@ import { Component, h, Element, State, Watch, Listen, Host, Prop } from '@stenci
   shadow: true
 })
 export class CatTabs {
-  private buttons: HTMLCatButtonElement[] = [];
   private mutationObserver?: MutationObserver;
 
   @Element() hostElement!: HTMLElement;
 
   @State() tabs: HTMLCatTabElement[] = [];
 
-  @State() activeTabId?: string;
-
   /**
    * The ID of the active tab.
    */
-  @Prop() activeTab = '';
+  @Prop({ reflect: true }) activeTab = '';
 
   /**
    * The alignment of the tabs.
    */
   @Prop() tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
 
-  @Watch('activeTabId')
-  onActiveTabIdChanged(newActiveTab: string): void {
-    const activeTab = this.tabs.find(value => value.id === newActiveTab);
-    activeTab?.click();
-  }
-
   componentWillLoad(): void {
     this.syncTabs();
-    if (this.tabs.length) {
-      this.activeTabId = this.activeTab;
-    }
   }
 
   componentDidLoad() {
     this.mutationObserver = new MutationObserver(
       mutations => mutations.some(value => value.target.nodeName === 'CAT-TAB') && this.syncTabs()
     );
-
     this.mutationObserver?.observe(this.hostElement, {
       childList: true,
       attributes: true,
@@ -60,10 +47,17 @@ export class CatTabs {
     this.mutationObserver?.disconnect();
   }
 
+  @Watch('activeTab')
+  onActiveTabChange(id: string) {
+    const index = this.tabs.findIndex(tab => tab.id === id);
+    this.catChange.emit({ id, index });
+  }
+
   @Listen('keydown')
   onKeydown(event: KeyboardEvent): void {
     if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
-      const targetElements = this.buttons.filter(button => !button.disabled);
+      const elements = this.hostElement.shadowRoot?.querySelectorAll<HTMLCatButtonElement>('cat-button[role="tab"]');
+      const targetElements = Array.from(elements || []).filter(button => !button.disabled);
       const activeElement = this.hostElement.shadowRoot?.activeElement as HTMLCatButtonElement;
       const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
       const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
@@ -73,22 +67,46 @@ export class CatTabs {
     }
   }
 
+  /**
+   * Activates the tab with the given id.
+   *
+   * @param id The tab id.
+   */
+  @Method()
+  async setActive(id: string): Promise<void> {
+    this.activate(this.tabs.find(tab => tab.id === id));
+  }
+
+  /**
+   * Activates the tab with the given index.
+   *
+   * @param index The tab index.
+   */
+  @Method()
+  async setActiveIndex(index: number): Promise<void> {
+    this.activate(this.tabs[index]);
+  }
+
+  /**
+   * Emitted when active tab is changed.
+   */
+  @Event() catChange!: EventEmitter<{ id: string; index: number }>;
+
   render() {
     return (
       <Host>
         {this.tabs.map((tab: HTMLCatTabElement) => {
           return (
             <cat-button
-              ref={el => el && this.updateButtonsRef(el)}
               buttonId={tab.id}
               role="tab"
               part="tab"
               class={{
                 'cat-tab': true,
-                'cat-tab-active': Boolean(this.activeTabId && tab.id === this.activeTabId)
+                'cat-tab-active': tab.id === this.activeTab
               }}
-              active={Boolean(this.activeTabId && tab.id === this.activeTabId)}
-              color={this.activeTabId && tab.id === this.activeTabId ? 'primary' : 'secondary'}
+              active={tab.id === this.activeTab}
+              color={tab.id === this.activeTab ? 'primary' : 'secondary'}
               variant="text"
               icon={tab.icon}
               iconOnly={tab.iconOnly}
@@ -96,7 +114,7 @@ export class CatTabs {
               url={tab.url}
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
-              onCatClick={() => (this.activeTabId = tab.id)}
+              onCatClick={() => this.activate(tab)}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
               data-dropdown-no-close
@@ -109,17 +127,18 @@ export class CatTabs {
     );
   }
 
-  private updateButtonsRef(button: HTMLCatButtonElement) {
-    const indexOf = this.buttons.indexOf(button);
-
-    if (indexOf >= 0) {
-      this.buttons[indexOf] = button;
-    } else {
-      this.buttons.push(button);
-    }
-  }
-
   private syncTabs() {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
+    this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab))[0]?.id;
+  }
+
+  private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
+    return !!tab && !tab.deactivated && !tab.url && tab.id !== this.activeTab;
+  }
+
+  private activate(tab?: HTMLCatTabElement) {
+    if (this.canActivate(tab)) {
+      this.activeTab = tab.id;
+    }
   }
 }

@@ -7,6 +7,8 @@ export class CatI18nRegistry {
   private readonly i18n: Map<string, string> = new Map();
   private _locale?: string;
 
+  _translator?: (key: string, params?: unknown) => string;
+
   private constructor() {
     // hide constructor
 
@@ -72,7 +74,7 @@ export class CatI18nRegistry {
   }
 
   t(key: string, params?: { [key: string]: unknown }): string {
-    const message = this.i18n.get(key);
+    const message = this._translator?.(key, params) ?? this.i18n.get(key);
     if (message === undefined) {
       log.error(`[CatI18nRegistry] Unknown message key: ${key}`);
       return key;
