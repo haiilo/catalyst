@@ -1,7 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'src/components/cat-form-hint/cat-form-hint';
-@use '_snippets/checkbox-hint';
 
 $radio-width: 1.25rem;
 $radio-height: 1.25rem;

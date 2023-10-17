@@ -31,23 +31,19 @@ $cat-input-height: 2.5rem;
   flex-grow: 1;
   justify-content: space-between;
   gap: 0.25rem;
+  color: cat-token('color.ui.font.muted');
 }
 
-.label-optional {
-  display: flex;
+.label-optional,
+.label-character-count {
+  display: inline-flex;
   align-items: center;
   max-height: 1.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
+  @include cat-body('xs', null);
 }
 
 .label-character-count {
-  display: flex;
-  align-items: center;
   margin-left: auto;
-  max-height: 1.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
 }
 
 .input-horizontal,

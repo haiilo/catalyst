@@ -114,7 +114,7 @@
 
   .flatpickr-weekday {
     color: cat-token('color.ui.font.muted');
-    @include cat-body(xs, $weight: 700);
+    @include cat-body(xs, 700);
   }
 }
 
@@ -134,7 +134,7 @@
 
   span.flatpickr-day,
   span.flatpickr-day:hover {
-    @include cat-body(xs, $weight: 700);
+    @include cat-body(xs, 700);
     color: cat-token('color.ui.font.muted');
     text-align: center;
     line-height: 2.25rem;
@@ -263,7 +263,7 @@
     }
 
     &::after {
-      @include cat-body(xs, $weight: 700);
+      @include cat-body(xs, 700);
       position: static;
       border: 0 !important;
       font-size: 10px;

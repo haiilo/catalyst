@@ -168,7 +168,7 @@ blockquote {
 }
 
 figcaption {
-  @include cat-body('s');
+  @include cat-body('s', null);
 }
 
 // ----- code
@@ -223,12 +223,9 @@ code {
 
 // ----- editorial typography
 
-article,
-.cat-article {
+:is(article, .cat-article) {
   :where(h1, h2, h3),
-  .cat-h1,
-  .cat-h2,
-  .cat-h3 {
+  :is(.cat-h1, .cat-h2, .cat-h3) {
     margin-bottom: $cat-head-margin-bottom;
 
     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
@@ -237,95 +234,19 @@ article,
   }
 
   :where(h4, h5, h6),
-  .cat-h4,
-  .cat-h5,
-  .cat-h6 {
+  :is(.cat-h4, .cat-h5, .cat-h6) {
     margin-bottom: $cat-head-margin-bottom * 0.5;
 
-    &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
-      margin-bottom: $cat-head-margin-bottom * 0.25;
-    }
+    // &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
+    //   margin-bottom: $cat-head-margin-bottom * 0.25;
+    // }
   }
 
   :where(p, ol, ul, dl, blockquote, figure, pre) {
     margin-bottom: $cat-body-margin-bottom;
   }
 
-  // @supports selector(:has(*)) {
-  //   :where(h1, h2, h3, h4, h5, h6),
-  //   .cat-h1,
-  //   .cat-h2,
-  //   .cat-h3,
-  //   .cat-h4,
-  //   .cat-h5,
-  //   .cat-h6 {
-  //     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
-  //       margin-bottom: $cat-head-margin-bottom * 0.5;
-  //     }
-  //   }
-  // }
-}
-
-/*
-cat-article,
-.cat-article {
-  font-size: 1rem;
-
-  $cat-head-margin-bottom: 1.5rem;
-  $cat-body-margin-bottom: 2.5rem;
-
-  :where(h1, h2, h3, h4, h5, h6),
-  .cat-h1,
-  .cat-h2,
-  .cat-h3,
-  .cat-h4,
-  .cat-h5,
-  .cat-h6 {
-    margin-top: 0;
-    margin-bottom: $cat-head-margin-bottom;
-  }
-
-  .type-space-small {
-    margin-top: 0;
-    margin-bottom: calc($cat-body-margin-bottom * 0.2);
-  }
-
-  .type-space-medium {
-    margin-top: 0;
-    margin-bottom: calc($cat-body-margin-bottom * 0.4);
-  }
-
-
-  // :where(h3, h4, h5, h6, .cat-h3, .cat-h4, .cat-h5, .cat-h6):has(+ ul, + ol, + p) {
-  //   margin-bottom:calc($cat-body-margin-bottom * 0.4);
-  // }
-
-  h5,
-  .cat-h5 {
-    font-size: 1rem;
-  }
-
-  :where(p),
-  ol,
-  ul,
-  blockquote,
-  figure {
-    margin-top: 0;
+  :where(cat-alert, cat-card) {
     margin-bottom: $cat-body-margin-bottom;
   }
-
-  :where(p):has(+ p) {
-    margin-bottom: calc($cat-body-margin-bottom * 0.4);
-  }
-
-  hr,
-  .cat-hr {
-    margin: $cat-body-margin-bottom 0;
-  }
-
-  ol li,
-  ul li {
-    margin-bottom: calc($cat-body-margin-bottom * 0.2);
-  }
 }
-*/
