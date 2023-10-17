@@ -1,3 +1,29 @@
+name: 'Release'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+      - run: pnpm run build
+      # - run: pnpm run publish
+        # env:
+          # NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
 # name: 'Release'
 # on:
 #   push:
