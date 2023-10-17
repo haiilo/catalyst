@@ -3,7 +3,10 @@ name: Angular
 on:
   push:
     branches:
-      - "*"
+      - main
+    paths:
+      - "angular/**"
+  pull_request:
     paths:
       - "angular/**"
 
