@@ -3,7 +3,7 @@
 
 // -- reset margins
 
-:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre),
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr),
 .cat-h1,
 .cat-h2,
 .cat-h3,
@@ -38,7 +38,6 @@
 hr,
 .cat-hr {
   display: block;
-  margin: $cat-body-margin-bottom 0;
   border: 0;
   height: 1px;
   background-color: cat-token('color.ui.border.default');
@@ -223,7 +222,7 @@ code {
 
 // ----- editorial typography
 
-:is(article, .cat-article) {
+.cat-article {
   :where(h1, h2, h3),
   :is(.cat-h1, .cat-h2, .cat-h3) {
     margin-bottom: $cat-head-margin-bottom;
@@ -236,17 +235,14 @@ code {
   :where(h4, h5, h6),
   :is(.cat-h4, .cat-h5, .cat-h6) {
     margin-bottom: $cat-head-margin-bottom * 0.5;
-
-    // &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
-    //   margin-bottom: $cat-head-margin-bottom * 0.25;
-    // }
   }
 
-  :where(p, ol, ul, dl, blockquote, figure, pre) {
+  :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
     margin-bottom: $cat-body-margin-bottom;
   }
 
-  :where(cat-alert, cat-card) {
-    margin-bottom: $cat-body-margin-bottom;
+  hr,
+  .cat-hr {
+    margin: $cat-body-margin-bottom;
   }
 }
