@@ -13,7 +13,7 @@
   flex-direction: column;
   gap: 0.25rem;
   color: cat-token('color.ui.font.muted');
-  @include cat-body('s', $weight: null);
+  @include cat-body('s', null);
 
   .input-hint,
   ::slotted([slot='hint']) {

@@ -37,12 +37,6 @@ label {
   gap: 1rem;
 }
 
-.input-optional {
-  margin-left: 0.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
-}
-
 .select-wrapper {
   display: flex;
   align-items: flex-start;
