@@ -2392,7 +2392,19 @@ code {
   color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
 }
 
+.cat-text-active {
+  color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
+}
+
 .cat-muted {
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
+}
+
+.cat-text-muted {
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
+}
+
+.cat-bg-muted {
   color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
 }
 
