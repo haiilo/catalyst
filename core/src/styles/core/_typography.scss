@@ -223,28 +223,30 @@ code {
 // ----- editorial typography
 
 .cat-article {
+  @include cat-break-word;
+
   :where(h1, h2, h3),
   :is(.cat-h1, .cat-h2, .cat-h3) {
     color: $cat-font-color-head;
-    margin-bottom: $cat-head-margin-bottom;
+    margin-bottom: calc($cat-head-margin-bottom * var(--cat-article-spacer, 1));
 
     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
-      margin-bottom: $cat-head-margin-bottom * 0.5;
+      margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
     }
   }
 
   :where(h4, h5, h6),
   :is(.cat-h4, .cat-h5, .cat-h6) {
     color: $cat-font-color-head;
-    margin-bottom: $cat-head-margin-bottom * 0.5;
+    margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
   }
 
   :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
-    margin-bottom: $cat-body-margin-bottom;
+    margin-bottom: calc($cat-body-margin-bottom * var(--cat-article-spacer, 1));
   }
 
   hr,
   .cat-hr {
-    margin: $cat-body-margin-bottom;
+    margin: calc($cat-body-margin-bottom * var(--cat-article-spacer, 1)) 0;
   }
 }
