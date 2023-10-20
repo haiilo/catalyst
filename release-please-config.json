@@ -5,24 +5,19 @@
   "commit-search-depth": 250,
   "packages": {
     "tokens": {
-      "component": "catalyst-tokens",
-      "changelog-path": "../CHANGELOG.md"
+      "component": "catalyst-tokens"
     },
     "core": {
-      "component": "catalyst-core",
-      "changelog-path": "../CHANGELOG.md"
+      "component": "catalyst-core"
     },
     "angular/projects/catalyst": {
-      "component": "catalyst-angular",
-      "changelog-path": "../../../CHANGELOG.md"
+      "component": "catalyst-angular"
     },
     "angular/projects/catalyst-formly": {
-      "component": "catalyst-angular-formly",
-      "changelog-path": "../../../CHANGELOG.md"
+      "component": "catalyst-angular-formly"
     },
     "react": {
-      "component": "catalyst-react",
-      "changelog-path": "../CHANGELOG.md"
+      "component": "catalyst-react"
     }
   },
   "plugins": [
