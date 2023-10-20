@@ -1320,10 +1320,9 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-current-month {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.125rem;
   line-height: 1.5rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
   height: 100%;
@@ -1365,7 +1364,7 @@ span.flatpickr-weekday {
 }
 .flatpickr-months .flatpickr-prev-month:hover,
 .flatpickr-months .flatpickr-next-month:hover {
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
 }
 
 .flatpickr-weekdays {
@@ -1410,7 +1409,7 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-day {
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   height: 2.25rem;
   line-height: 2.25rem;
   border: 0;
@@ -1487,7 +1486,7 @@ span.flatpickr-weekday {
   justify-content: center;
 }
 .numInputWrapper span:hover {
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   background: transparent;
 }
 
@@ -1514,13 +1513,12 @@ span.flatpickr-weekday {
 .flatpickr-time .flatpickr-time-separator,
 .flatpickr-time .flatpickr-am-pm {
   margin: 0 0.25rem;
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.125rem;
   line-height: 1.5rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: 400;
   font-feature-settings: "pnum";
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   line-height: 2.25rem;
 }
 
@@ -1538,7 +1536,7 @@ span.flatpickr-weekday {
 }
 .flatpickr-time input {
   background: transparent !important;
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   font-size: 0.9375rem;
   line-height: 2.25rem;
   font-family: inherit;
@@ -1578,6 +1576,8 @@ span.flatpickr-weekday {
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 /**
  * Auto-generated file. Do not edit directly.
  */
@@ -1593,7 +1593,7 @@ body {
   line-height: 1.25rem;
   font-weight: var(--cat-font-weight-body, 400);
   font-family: var(--cat-font-family-body, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
 }
 
 /**
@@ -1667,6 +1667,18 @@ body {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
+.cat-form :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle):not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.cat-form cat-radio:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+/**
+ * Auto-generated file. Do not edit directly.
+ */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 nav hr,
 nav .cat-hr {
   margin: 0.25rem -0.25rem;
@@ -1680,10 +1692,9 @@ nav .cat-nav-text > :last-child {
   margin-bottom: 0 !important;
 }
 nav .cat-nav-head {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.9375rem;
   line-height: 1.25rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
@@ -1699,14 +1710,13 @@ nav .cat-nav-head {
   background: white;
   padding: 1.25rem;
   box-shadow: none;
-  color: rgb(var(--cat-font-color-body, 0, 0, 0));
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   width: 400px;
   max-width: 400px;
   cursor: unset;
 }
 .cat-toastify.cat-toastify-dark {
-  --cat-font-color-head: 255, 255, 255;
-  --cat-font-color-body: 255, 255, 255;
+  --cat-font-color-base: 255, 255, 255;
   --cat-primary-text: 147, 180, 242;
   --cat-primary-text-hover: 147, 180, 242;
   --cat-primary-text-active: 147, 180, 242;
@@ -1743,73 +1753,66 @@ nav .cat-nav-head {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
-:where(h1, h2, h3, h4, h5, h6),
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr),
 .cat-h1,
 .cat-h2,
 .cat-h3,
 .cat-h4,
 .cat-h5,
 .cat-h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 :where(h1),
 .cat-h1 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.75rem;
   line-height: 2rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
 :where(h2),
 .cat-h2 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.5rem;
   line-height: 1.75rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
 :where(h3),
 .cat-h3 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.25rem;
   line-height: 1.5rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
 :where(h4),
 .cat-h4 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.125rem;
   line-height: 1.5rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
 :where(h5),
 .cat-h5 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.9375rem;
   line-height: 1.25rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
 
 :where(h6),
 .cat-h6 {
-  font-family: var(--cat-font-family-head, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--cat-font-family-head), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.875rem;
   line-height: 1rem;
-  color: rgb(var(--cat-font-color-head, 0, 0, 0));
   font-weight: var(--cat-font-weight-head, 600);
   font-feature-settings: "pnum";
 }
@@ -1848,7 +1851,7 @@ nav .cat-nav-head {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1.125rem;
   line-height: 1.5rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
 }
 
@@ -1856,7 +1859,7 @@ nav .cat-nav-head {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.9375rem;
   line-height: 1.25rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
 }
 
@@ -1864,7 +1867,7 @@ nav .cat-nav-head {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
   line-height: 1.125rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
 }
 
@@ -1872,7 +1875,7 @@ nav .cat-nav-head {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
 }
 
@@ -1880,19 +1883,13 @@ nav .cat-nav-head {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.625rem;
   line-height: 0.875rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
-}
-
-:where(p) {
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 hr,
 .cat-hr {
   display: block;
-  margin: 1rem 0;
   border: 0;
   height: 1px;
   background-color: rgb(var(--cat-border-color, 235, 236, 240));
@@ -1962,11 +1959,6 @@ dl dl {
   margin-bottom: 0;
 }
 
-:where(ol, ul, dl) {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
 nav ol,
 nav ul,
 ol.cat-plain,
@@ -1989,10 +1981,6 @@ dd {
   font-size: 1.25rem;
   line-height: 1.5rem;
   font-weight: 300;
-}
-
-:where(blockquote, figure) {
-  margin: 0 0 1rem;
 }
 
 blockquote {
@@ -2021,7 +2009,6 @@ blockquote.cat-text-right {
 figcaption {
   font-size: 0.875rem;
   line-height: 1.125rem;
-  font-weight: var(--cat-font-weight-body, 400);
 }
 
 code,
@@ -2031,7 +2018,7 @@ pre {
   font-family: var(--cat-font-family-mono, ""), SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
   line-height: 1.125rem;
-  color: rgb(var(--cat-font-color-mono, 0, 0, 0));
+  color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
   font-weight: var(--cat-font-weight-mono, 400);
 }
@@ -2048,11 +2035,6 @@ pre code {
   border-radius: 0;
   word-wrap: normal;
   word-break: normal;
-}
-
-:where(pre) {
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 kbd,
@@ -2081,76 +2063,33 @@ code {
   padding: 0.0625rem 0.25rem;
 }
 
-cat-article,
-.cat-article {
-  font-size: 1rem;
+.cat-article :where(h1, h2, h3),
+.cat-article :is(.cat-h1, .cat-h2, .cat-h3) {
+  color: rgb(var(--cat-font-color-head));
+  margin-bottom: 1rem;
 }
-cat-article :where(h1, h2, h3, h4, h5, h6),
-cat-article .cat-h1,
-cat-article .cat-h2,
-cat-article .cat-h3,
-cat-article .cat-h4,
-cat-article .cat-h5,
-cat-article .cat-h6,
-.cat-article :where(h1, h2, h3, h4, h5, h6),
-.cat-article .cat-h1,
-.cat-article .cat-h2,
-.cat-article .cat-h3,
-.cat-article .cat-h4,
-.cat-article .cat-h5,
-.cat-article .cat-h6 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-cat-article .type-space-small,
-.cat-article .type-space-small {
-  margin-top: 0;
+.cat-article :where(h1, h2, h3):has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6),
+.cat-article :is(.cat-h1, .cat-h2, .cat-h3):has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
   margin-bottom: 0.5rem;
 }
-cat-article .type-space-medium,
-.cat-article .type-space-medium {
-  margin-top: 0;
-  margin-bottom: 1rem;
+.cat-article :where(h4, h5, h6),
+.cat-article :is(.cat-h4, .cat-h5, .cat-h6) {
+  color: rgb(var(--cat-font-color-head));
+  margin-bottom: 0.5rem;
 }
-cat-article h5,
-cat-article .cat-h5,
-.cat-article h5,
-.cat-article .cat-h5 {
-  font-size: 1rem;
+.cat-article :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
+  margin-bottom: 2rem;
 }
-cat-article :where(p),
-cat-article ol,
-cat-article ul,
-cat-article blockquote,
-cat-article figure,
-.cat-article :where(p),
-.cat-article ol,
-.cat-article ul,
-.cat-article blockquote,
-.cat-article figure {
-  margin-top: 0;
-  margin-bottom: 2.5rem;
-}
-cat-article :where(p):has(+ p),
-.cat-article :where(p):has(+ p) {
-  margin-bottom: 1rem;
-}
-cat-article hr,
-cat-article .cat-hr,
 .cat-article hr,
 .cat-article .cat-hr {
-  margin: 2.5rem 0;
-}
-cat-article ol li,
-cat-article ul li,
-.cat-article ol li,
-.cat-article ul li {
-  margin-bottom: 0.5rem;
+  margin: 2rem;
 }
 
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-radius-l {
   border-radius: var(--cat-border-radius-l, 0.5rem);
 }
@@ -2230,6 +2169,8 @@ cat-article ul li,
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-bg-primary {
   background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
   color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
@@ -2467,6 +2408,8 @@ cat-article ul li,
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-none {
   display: none !important;
 }
@@ -2613,6 +2556,8 @@ cat-article ul li,
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-elevation-transition {
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -2684,6 +2629,8 @@ cat-article ul li,
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-flex-row {
   display: flex;
   flex-direction: row;
@@ -2970,6 +2917,8 @@ cat-article ul li,
 /**
  * Auto-generated file. Do not edit directly.
  */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-m-auto {
   margin: auto !important;
 }
