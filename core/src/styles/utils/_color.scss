@@ -36,11 +36,25 @@
   }
 }
 
+// deprecated
 .cat-active {
   color: cat-token('color.theme.primary.text') !important;
 }
 
+.cat-text-active {
+  color: cat-token('color.theme.primary.text') !important;
+}
+
+// deprecated
 .cat-muted {
+  color: cat-token('color.ui.font.muted') !important;
+}
+
+.cat-text-muted {
+  color: cat-token('color.ui.font.muted') !important;
+}
+
+.cat-bg-muted {
   color: cat-token('color.ui.font.muted') !important;
 }
 
