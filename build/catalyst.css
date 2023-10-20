@@ -2063,26 +2063,30 @@ code {
   padding: 0.0625rem 0.25rem;
 }
 
+.cat-article {
+  word-wrap: break-word;
+  word-break: break-word;
+}
 .cat-article :where(h1, h2, h3),
 .cat-article :is(.cat-h1, .cat-h2, .cat-h3) {
   color: rgb(var(--cat-font-color-head));
-  margin-bottom: 1rem;
+  margin-bottom: calc(1rem * var(--cat-article-spacer, 1));
 }
 .cat-article :where(h1, h2, h3):has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6),
 .cat-article :is(.cat-h1, .cat-h2, .cat-h3):has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
-  margin-bottom: 0.5rem;
+  margin-bottom: calc(0.5rem * var(--cat-article-spacer, 1));
 }
 .cat-article :where(h4, h5, h6),
 .cat-article :is(.cat-h4, .cat-h5, .cat-h6) {
   color: rgb(var(--cat-font-color-head));
-  margin-bottom: 0.5rem;
+  margin-bottom: calc(0.5rem * var(--cat-article-spacer, 1));
 }
 .cat-article :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
-  margin-bottom: 2rem;
+  margin-bottom: calc(2rem * var(--cat-article-spacer, 1));
 }
 .cat-article hr,
 .cat-article .cat-hr {
-  margin: 2rem;
+  margin: calc(2rem * var(--cat-article-spacer, 1)) 0;
 }
 
 /**
