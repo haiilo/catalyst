@@ -10,7 +10,6 @@
   gap: 0.5rem;
   line-height: 1.25rem;
   position: relative;
-  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {
@@ -36,12 +35,6 @@ label {
 .select-field.select-horizontal {
   flex-direction: row;
   gap: 1rem;
-}
-
-.input-optional {
-  margin-left: 0.25rem;
-  @include cat-body('xs');
-  color: cat-token('color.ui.font.muted');
 }
 
 .select-wrapper {
@@ -208,14 +201,14 @@ cat-spinner {
 }
 
 .select-empty {
-  margin: $cat-body-margin-bottom 0;
+  margin: 1rem 0;
   padding: 0 1.25rem;
 }
 
 .select-options {
   list-style-type: none;
   margin: 0;
-  padding: $cat-body-margin-bottom * 0.5 0;
+  padding: 0.5rem 0;
 
   cat-checkbox,
   .select-option-single {

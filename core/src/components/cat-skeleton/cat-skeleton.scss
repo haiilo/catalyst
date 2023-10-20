@@ -34,11 +34,11 @@ $skeleton-sizes: (
   display: none;
 }
 
-:host([variant='head']) {
+:host([variant='head']:not(:last-child)) {
   margin-bottom: $cat-head-margin-bottom;
 }
 
-:host([variant='body']) {
+:host([variant='body']:not(:last-child)) {
   margin-bottom: $cat-body-margin-bottom;
 }
 

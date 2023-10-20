@@ -9,7 +9,6 @@
   flex-direction: column;
   gap: 0.5rem;
   @include cat-body('m');
-  margin-bottom: $cat-body-margin-bottom;
 }
 
 :host([hidden]) {

@@ -105,7 +105,7 @@
   color: cat-token('color.ui.font.muted');
 
   &:hover {
-    color: cat-token('color.ui.font.body');
+    color: cat-token('color.ui.font.base');
   }
 }
 
@@ -114,7 +114,7 @@
 
   .flatpickr-weekday {
     color: cat-token('color.ui.font.muted');
-    @include cat-body(xs, $weight: 700);
+    @include cat-body(xs, 700);
   }
 }
 
@@ -134,7 +134,7 @@
 
   span.flatpickr-day,
   span.flatpickr-day:hover {
-    @include cat-body(xs, $weight: 700);
+    @include cat-body(xs, 700);
     color: cat-token('color.ui.font.muted');
     text-align: center;
     line-height: 2.25rem;
@@ -152,7 +152,7 @@
 }
 
 .flatpickr-day {
-  color: cat-token('color.ui.font.body');
+  color: cat-token('color.ui.font.base');
   height: 2.25rem;
   line-height: 2.25rem;
   border: 0;
@@ -263,7 +263,7 @@
     }
 
     &::after {
-      @include cat-body(xs, $weight: 700);
+      @include cat-body(xs, 700);
       position: static;
       border: 0 !important;
       font-size: 10px;
@@ -273,7 +273,7 @@
     }
 
     &:hover {
-      color: cat-token('color.ui.font.body');
+      color: cat-token('color.ui.font.base');
       background: transparent;
     }
   }
@@ -305,7 +305,7 @@
 .flatpickr-time .flatpickr-am-pm {
   margin: 0 0.25rem;
   @include cat-head(4, 400);
-  color: cat-token('color.ui.font.body');
+  color: cat-token('color.ui.font.base');
   line-height: 2.25rem;
 }
 
@@ -325,7 +325,7 @@
 
   input {
     background: transparent !important;
-    color: cat-token('color.ui.font.body');
+    color: cat-token('color.ui.font.base');
     font-size: cat-token('size.font.body.m');
     line-height: 2.25rem;
     font-family: inherit;

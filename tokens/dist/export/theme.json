@@ -207,15 +207,7 @@
     "$type": "color",
     "$value": "#0071ff"
   },
-  "font-color-head": {
-    "$type": "color",
-    "$value": "#000000"
-  },
-  "font-color-body": {
-    "$type": "color",
-    "$value": "#000000"
-  },
-  "font-color-mono": {
+  "font-color-base": {
     "$type": "color",
     "$value": "#000000"
   },

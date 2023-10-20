@@ -1,0 +1,14 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.cat-form {
+  :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle):not(
+      :last-child
+    ) {
+    margin-bottom: $cat-form-margin-bottom;
+  }
+
+  cat-radio:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}

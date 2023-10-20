@@ -1,25 +1,6 @@
 @use '../variables' as *;
 
-/* stylelint-disable value-keyword-case */
-$font-fallback-sans-serif:
-  system-ui,
-  -apple-system,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  'Noto Sans',
-  'Liberation Sans',
-  Arial,
-  sans-serif !default;
-$font-fallback-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
-/* stylelint-enable value-keyword-case */
-
 // ---- Head
-
-@function cat-head-font-family() {
-  @return cat-token('font.family.head'), $font-fallback-sans-serif, cat-token('font.family.emoji'), $font-fallback-emoji;
-}
 
 @function cat-head-font-size($size) {
   @return cat-token('size.font.head.#{$size}');
@@ -30,19 +11,15 @@ $font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation M
 }
 
 @mixin cat-head($size, $weight: cat-token('font.weight.head')) {
-  font-family: cat-head-font-family();
+  // skip color, as it is only set for editorial styles
+  font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
   font-size: cat-head-font-size($size);
   line-height: cat-head-line-height($size);
-  color: cat-token('color.ui.font.head');
   font-weight: $weight;
   font-feature-settings: 'pnum';
 }
 
 // ---- Body
-
-@function cat-body-font-family() {
-  @return cat-token('font.family.body'), $font-fallback-sans-serif, cat-token('font.family.emoji'), $font-fallback-emoji;
-}
 
 @function cat-body-font-size($size) {
   @return cat-token('size.font.body.#{$size}');
@@ -78,7 +55,7 @@ $font-fallback-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation M
   font-family: cat-mono-font-family();
   font-size: cat-mono-font-size($size);
   line-height: cat-mono-line-height($size);
-  color: cat-token('color.ui.font.mono');
+  color: $cat-font-color-mono;
   font-weight: $weight;
 }
 

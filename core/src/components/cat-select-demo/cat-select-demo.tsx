@@ -15,8 +15,7 @@ interface Country {
 }
 
 @Component({
-  tag: 'cat-select-demo',
-  shadow: true
+  tag: 'cat-select-demo'
 })
 export class CatSelectTest {
   private multipleSelect?: HTMLCatSelectElement;

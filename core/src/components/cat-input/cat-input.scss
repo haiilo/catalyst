@@ -6,8 +6,7 @@
 
 :host {
   display: flex;
-  @include cat-body('m');
-  margin-bottom: $cat-body-margin-bottom;
+  @include cat-body('m', null);
 }
 
 :host([hidden]) {
