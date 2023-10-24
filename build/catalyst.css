@@ -1947,24 +1947,11 @@ ul {
   padding-left: 2rem;
 }
 
-ol ol,
-ol ul,
-ol dl,
-ul ol,
-ul ul,
-ul dl,
-dl ol,
-dl ul,
-dl dl {
-  margin-bottom: 0;
-}
-
 nav ol,
 nav ul,
 ol.cat-plain,
 ul.cat-plain {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
@@ -1972,7 +1959,7 @@ dt {
   font-weight: 600;
 }
 
-dd {
+dd:not(:last-child) {
   margin-bottom: 0.5rem;
   margin-left: 0;
 }
@@ -2081,8 +2068,19 @@ code {
   color: rgb(var(--cat-font-color-head));
   margin-bottom: calc(0.5rem * var(--cat-article-spacer, 1));
 }
-.cat-article :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
+.cat-article :where(p, ol, ul, dl, blockquote, figure, pre, table, cat-alert, cat-card):not(:last-child) {
   margin-bottom: calc(2rem * var(--cat-article-spacer, 1));
+}
+.cat-article ol ol,
+.cat-article ol ul,
+.cat-article ol dl,
+.cat-article ul ol,
+.cat-article ul ul,
+.cat-article ul dl,
+.cat-article dl ol,
+.cat-article dl ul,
+.cat-article dl dl {
+  margin-bottom: 0;
 }
 .cat-article hr,
 .cat-article .cat-hr {
@@ -2178,6 +2176,10 @@ code {
 .cat-bg-primary {
   background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
   color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.primary.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.primary.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.primary.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-primary-hover {
@@ -2186,6 +2188,10 @@ code {
 .cat-bg-primary-hover:hover {
   background-color: rgb(var(--cat-primary-bg-hover, 1, 115, 132)) !important;
   color: rgb(var(--cat-primary-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.primary.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.primary.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.primary.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-primary,
@@ -2209,6 +2215,10 @@ code {
 .cat-bg-primaryInverted {
   background-color: #93b4f2 !important;
   color: black !important;
+  --cat-primary-text: cat-token("color.theme.primaryInverted.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.primaryInverted.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.primaryInverted.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-primaryInverted-hover {
@@ -2217,6 +2227,10 @@ code {
 .cat-bg-primaryInverted-hover:hover {
   background-color: #93b4f2 !important;
   color: black !important;
+  --cat-primary-text: cat-token("color.theme.primaryInverted.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.primaryInverted.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.primaryInverted.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-primaryInverted,
@@ -2240,6 +2254,10 @@ code {
 .cat-bg-secondary {
   background-color: rgb(var(--cat-secondary-bg, 105, 118, 135)) !important;
   color: rgb(var(--cat-secondary-fill, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.secondary.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.secondary.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.secondary.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-secondary-hover {
@@ -2248,6 +2266,10 @@ code {
 .cat-bg-secondary-hover:hover {
   background-color: rgb(var(--cat-secondary-bg-hover, 105, 118, 135)) !important;
   color: rgb(var(--cat-secondary-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.secondary.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.secondary.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.secondary.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-secondary,
@@ -2271,6 +2293,10 @@ code {
 .cat-bg-secondaryInverted {
   background-color: #697687 !important;
   color: black !important;
+  --cat-primary-text: cat-token("color.theme.secondaryInverted.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.secondaryInverted.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.secondaryInverted.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-secondaryInverted-hover {
@@ -2279,6 +2305,10 @@ code {
 .cat-bg-secondaryInverted-hover:hover {
   background-color: #697687 !important;
   color: black !important;
+  --cat-primary-text: cat-token("color.theme.secondaryInverted.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.secondaryInverted.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.secondaryInverted.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-secondaryInverted,
@@ -2302,6 +2332,10 @@ code {
 .cat-bg-success {
   background-color: rgb(var(--cat-success-bg, 0, 132, 88)) !important;
   color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.success.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.success.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.success.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-success-hover {
@@ -2310,6 +2344,10 @@ code {
 .cat-bg-success-hover:hover {
   background-color: rgb(var(--cat-success-bg-hover, 0, 117, 78)) !important;
   color: rgb(var(--cat-success-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.success.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.success.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.success.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-success,
@@ -2333,6 +2371,10 @@ code {
 .cat-bg-warning {
   background-color: rgb(var(--cat-warning-bg, 255, 206, 128)) !important;
   color: rgb(var(--cat-warning-fill, 0, 0, 0)) !important;
+  --cat-primary-text: cat-token("color.theme.warning.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.warning.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.warning.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-warning-hover {
@@ -2341,6 +2383,10 @@ code {
 .cat-bg-warning-hover:hover {
   background-color: rgb(var(--cat-warning-bg-hover, 255, 214, 148)) !important;
   color: rgb(var(--cat-warning-fill-hover, 0, 0, 0)) !important;
+  --cat-primary-text: cat-token("color.theme.warning.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.warning.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.warning.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-warning,
@@ -2364,6 +2410,10 @@ code {
 .cat-bg-danger {
   background-color: rgb(var(--cat-danger-bg, 217, 52, 13)) !important;
   color: rgb(var(--cat-danger-fill, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.danger.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.danger.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.danger.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-bg-danger-hover {
@@ -2372,6 +2422,10 @@ code {
 .cat-bg-danger-hover:hover {
   background-color: rgb(var(--cat-danger-bg-hover, 194, 46, 11)) !important;
   color: rgb(var(--cat-danger-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: cat-token("color.theme.danger.fill", $wrap: false);
+  --cat-primary-text-hover: cat-token("color.theme.danger.fill-hover", $wrap: false);
+  --cat-primary-text-active: cat-token("color.theme.danger.fill-active", $wrap: false);
+  --cat-link-decoration: underline;
 }
 
 .cat-text-danger,
@@ -2409,7 +2463,7 @@ code {
 }
 
 .cat-bg-muted {
-  color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
+  background-color: #f2f4f7 !important;
 }
 
 .cat-text-reset {
