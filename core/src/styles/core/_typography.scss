@@ -105,22 +105,11 @@ ul {
   padding-left: 2rem;
 }
 
-ol,
-ul,
-dl {
-  ol,
-  ul,
-  dl {
-    margin-bottom: 0;
-  }
-}
-
 nav ol,
 nav ul,
 ol.cat-plain,
 ul.cat-plain {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
@@ -128,7 +117,7 @@ dt {
   font-weight: 600;
 }
 
-dd {
+dd:not(:last-child) {
   margin-bottom: 0.5rem;
   margin-left: 0;
 }
@@ -241,8 +230,18 @@ code {
     margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
   }
 
-  :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
+  :where(p, ol, ul, dl, blockquote, figure, pre, table, cat-alert, cat-card):not(:last-child) {
     margin-bottom: calc($cat-body-margin-bottom * var(--cat-article-spacer, 1));
+  }
+
+  ol,
+  ul,
+  dl {
+    ol,
+    ul,
+    dl {
+      margin-bottom: 0;
+    }
   }
 
   hr,
