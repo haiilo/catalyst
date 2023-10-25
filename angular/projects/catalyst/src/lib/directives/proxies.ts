@@ -221,6 +221,7 @@ export declare interface CatCard extends Components.CatCard {}
     'labelLeft',
     'name',
     'nativeAttributes',
+    'noValue',
     'required',
     'resolvedValue',
     'value'
@@ -243,6 +244,7 @@ export declare interface CatCard extends Components.CatCard {}
     'labelLeft',
     'name',
     'nativeAttributes',
+    'noValue',
     'required',
     'resolvedValue',
     'value'
@@ -265,7 +267,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  catChange: EventEmitter<CustomEvent<boolean | string | null>>;
+  catChange: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the checkbox received focus.
    */
@@ -1078,6 +1080,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
     'labelLeft',
     'name',
     'nativeAttributes',
+    'noValue',
     'required',
     'resolvedValue',
     'value'
@@ -1099,6 +1102,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
     'labelLeft',
     'name',
     'nativeAttributes',
+    'noValue',
     'required',
     'resolvedValue',
     'value'
@@ -1121,7 +1125,7 @@ export declare interface CatToggle extends Components.CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  catChange: EventEmitter<CustomEvent<boolean | string | null>>;
+  catChange: EventEmitter<CustomEvent<any>>;
   /**
    * Emitted when the toggle received focus.
    */

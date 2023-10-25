@@ -279,17 +279,21 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * The value of the unchecked checkbox.
+         */
+        "noValue"?: any;
+        /**
           * Required state of the checkbox.
          */
         "required": boolean;
         /**
           * The resolved value of the checkbox, based on the checked state and value.
          */
-        "resolvedValue": string | boolean | null;
+        "resolvedValue": any;
         /**
-          * The value of the checkbox.
+          * The value of the checked checkbox.
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface CatDatepicker {
         /**
@@ -1124,17 +1128,21 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * The value of the unchecked toggle.
+         */
+        "noValue"?: any;
+        /**
           * Required state of the toggle.
          */
         "required": boolean;
         /**
-          * The resolved value of the toggle, based on the checked state and value.
+          * The resolved value of the toggle, based on the checked state, value and noValue.
          */
-        "resolvedValue": string | boolean | null;
+        "resolvedValue": any;
         /**
-          * The value of the toggle.
+          * The value of the checked toggle.
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface CatTooltip {
         /**
@@ -1747,13 +1755,17 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * The value of the unchecked checkbox.
+         */
+        "noValue"?: any;
+        /**
           * Emitted when the checkbox loses focus.
          */
         "onCatBlur"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the checkbox is changed.
          */
-        "onCatChange"?: (event: CatCheckboxCustomEvent<boolean | string | null>) => void;
+        "onCatChange"?: (event: CatCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the checkbox received focus.
          */
@@ -1765,11 +1777,11 @@ declare namespace LocalJSX {
         /**
           * The resolved value of the checkbox, based on the checked state and value.
          */
-        "resolvedValue"?: string | boolean | null;
+        "resolvedValue"?: any;
         /**
-          * The value of the checkbox.
+          * The value of the checked checkbox.
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface CatDatepicker {
         /**
@@ -2648,13 +2660,17 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * The value of the unchecked toggle.
+         */
+        "noValue"?: any;
+        /**
           * Emitted when the toggle loses focus.
          */
         "onCatBlur"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked status of the toggle is changed.
          */
-        "onCatChange"?: (event: CatToggleCustomEvent<boolean | string | null>) => void;
+        "onCatChange"?: (event: CatToggleCustomEvent<any>) => void;
         /**
           * Emitted when the toggle received focus.
          */
@@ -2664,13 +2680,13 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The resolved value of the toggle, based on the checked state and value.
+          * The resolved value of the toggle, based on the checked state, value and noValue.
          */
-        "resolvedValue"?: string | boolean | null;
+        "resolvedValue"?: any;
         /**
-          * The value of the toggle.
+          * The value of the checked toggle.
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface CatTooltip {
         /**

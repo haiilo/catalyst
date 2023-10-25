@@ -24,18 +24,19 @@ number of options.
 | `labelLeft`        | `label-left`     | Whether the label should appear to the left of the checkbox.                              | `boolean`                                 | `false`     |
 | `name`             | `name`           | The name of the input.                                                                    | `string \| undefined`                     | `undefined` |
 | `nativeAttributes` | --               | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
+| `noValue`          | `no-value`       | The value of the unchecked checkbox.                                                      | `any`                                     | `undefined` |
 | `required`         | `required`       | Required state of the checkbox.                                                           | `boolean`                                 | `false`     |
-| `resolvedValue`    | `resolved-value` | The resolved value of the checkbox, based on the checked state and value.                 | `boolean \| null \| string`               | `null`      |
-| `value`            | `value`          | The value of the checkbox.                                                                | `string \| undefined`                     | `undefined` |
+| `resolvedValue`    | `resolved-value` | The resolved value of the checkbox, based on the checked state and value.                 | `any`                                     | `null`      |
+| `value`            | `value`          | The value of the checked checkbox.                                                        | `any`                                     | `undefined` |
 
 
 ## Events
 
-| Event       | Description                                                 | Type                                     |
-| ----------- | ----------------------------------------------------------- | ---------------------------------------- |
-| `catBlur`   | Emitted when the checkbox loses focus.                      | `CustomEvent<FocusEvent>`                |
-| `catChange` | Emitted when the checked status of the checkbox is changed. | `CustomEvent<boolean \| null \| string>` |
-| `catFocus`  | Emitted when the checkbox received focus.                   | `CustomEvent<FocusEvent>`                |
+| Event       | Description                                                 | Type                      |
+| ----------- | ----------------------------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the checkbox loses focus.                      | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the checked status of the checkbox is changed. | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the checkbox received focus.                   | `CustomEvent<FocusEvent>` |
 
 
 ## Methods

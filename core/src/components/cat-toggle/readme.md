@@ -23,18 +23,19 @@ feature or option that can be turned on or off.
 | `labelLeft`        | `label-left`     | Whether the label should appear to the left of the toggle.                                | `boolean`                                 | `false`     |
 | `name`             | `name`           | The name of the input.                                                                    | `string \| undefined`                     | `undefined` |
 | `nativeAttributes` | --               | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
+| `noValue`          | `no-value`       | The value of the unchecked toggle.                                                        | `any`                                     | `undefined` |
 | `required`         | `required`       | Required state of the toggle.                                                             | `boolean`                                 | `false`     |
-| `resolvedValue`    | `resolved-value` | The resolved value of the toggle, based on the checked state and value.                   | `boolean \| null \| string`               | `null`      |
-| `value`            | `value`          | The value of the toggle.                                                                  | `string \| undefined`                     | `undefined` |
+| `resolvedValue`    | `resolved-value` | The resolved value of the toggle, based on the checked state, value and noValue.          | `any`                                     | `null`      |
+| `value`            | `value`          | The value of the checked toggle.                                                          | `any`                                     | `undefined` |
 
 
 ## Events
 
-| Event       | Description                                               | Type                                     |
-| ----------- | --------------------------------------------------------- | ---------------------------------------- |
-| `catBlur`   | Emitted when the toggle loses focus.                      | `CustomEvent<FocusEvent>`                |
-| `catChange` | Emitted when the checked status of the toggle is changed. | `CustomEvent<boolean \| null \| string>` |
-| `catFocus`  | Emitted when the toggle received focus.                   | `CustomEvent<FocusEvent>`                |
+| Event       | Description                                               | Type                      |
+| ----------- | --------------------------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the toggle loses focus.                      | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the checked status of the toggle is changed. | `CustomEvent<any>`        |
+| `catFocus`  | Emitted when the toggle received focus.                   | `CustomEvent<FocusEvent>` |
 
 
 ## Methods
