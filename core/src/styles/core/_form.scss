@@ -12,3 +12,9 @@
     margin-bottom: 0.5rem;
   }
 }
+
+.cat-label {
+  @include cat-body('m');
+  display: block;
+  margin-bottom: 0.5rem;
+}
