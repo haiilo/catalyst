@@ -1674,6 +1674,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.cat-label {
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  font-weight: var(--cat-font-weight-body, 400);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 /**
  * Auto-generated file. Do not edit directly.
  */
