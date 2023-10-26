@@ -83,7 +83,7 @@ export namespace Components {
         /**
           * The color palette of the badge.
          */
-        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Draw attention to the badge with a subtle animation.
          */
@@ -129,7 +129,7 @@ export namespace Components {
         /**
           * The color palette of the button.
          */
-        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
@@ -1569,7 +1569,7 @@ declare namespace LocalJSX {
         /**
           * The color palette of the badge.
          */
-        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Draw attention to the badge with a subtle animation.
          */
@@ -1615,7 +1615,7 @@ declare namespace LocalJSX {
         /**
           * The color palette of the button.
          */
-        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */

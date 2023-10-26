@@ -9,6 +9,7 @@ import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-fi
 import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
 import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
 import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
+import infoCircleFilled from '@haiilo/catalyst-icons/tmp/assets/info-circle-filled.svg';
 import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
 import log from 'loglevel';
 
@@ -24,11 +25,12 @@ export class CatIconRegistry {
     // register default icons that are used in the framework by other components
     this.addIcons(
       {
-        'alert-danger': crossCircleFilled,
         'alert-primary': starCircleFilled,
         'alert-secondary': clockFilled,
+        'alert-info': infoCircleFilled,
         'alert-success': checkCircleFilled,
         'alert-warning': dangerFilled,
+        'alert-danger': crossCircleFilled,
         'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,

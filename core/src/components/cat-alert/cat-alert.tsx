@@ -14,6 +14,7 @@ export class CatAlert {
   private readonly mapIcon: Map<string, string> = new Map([
     ['primary', '$cat:alert-primary'],
     ['secondary', '$cat:alert-secondary'],
+    ['info', '$cat:alert-info'],
     ['success', '$cat:alert-success'],
     ['warning', '$cat:alert-warning'],
     ['danger', '$cat:alert-danger']
@@ -21,6 +22,7 @@ export class CatAlert {
   private readonly mapRole: Map<string, string> = new Map([
     ['primary', 'status'],
     ['secondary', 'status'],
+    ['info', 'status'],
     ['success', 'status'],
     ['warning', 'alert'],
     ['danger', 'alert']

@@ -33,7 +33,7 @@ export class CatButton {
   /**
    * The color palette of the button.
    */
-  @Prop() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'secondary';
+  @Prop() color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger' = 'secondary';
 
   /**
    * Set the button into an active state.

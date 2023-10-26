@@ -213,6 +213,7 @@ $button-sizes: (
 
 @include theme('primary');
 @include theme('secondary');
+@include theme('info');
 @include theme('success');
 @include theme('warning');
 @include theme('danger');

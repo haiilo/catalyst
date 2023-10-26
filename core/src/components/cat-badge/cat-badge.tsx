@@ -20,7 +20,7 @@ export class CatBadge {
   /**
    * The color palette of the badge.
    */
-  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger' = 'primary';
 
   /**
    * The size of the badge.

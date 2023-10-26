@@ -150,6 +150,53 @@
         "textHover": { "$type": "color", "$value": "{color.base.white.value}" },
         "textActive": { "$type": "color", "$value": "{color.base.white.value}" }
       },
+      "info": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.base.blue.400.value}",
+          "cssProp": "success-bg"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "{color.base.blue.500.value}",
+          "cssProp": "success-bg-hover"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "{color.base.blue.600.value}",
+          "cssProp": "success-bg-active"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill-hover"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "{color.base.white.value}",
+          "cssProp": "success-fill-active"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{color.base.blue.400.value}",
+          "cssProp": "success-text"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "{color.base.blue.500.value}",
+          "cssProp": "success-text-hover"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "{color.base.blue.600.value}",
+          "cssProp": "success-text-active"
+        }
+      },
       "success": {
         "bg": {
           "$type": "color",
