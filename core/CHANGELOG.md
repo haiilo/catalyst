@@ -1,5 +1,19 @@
 # Changelog
 
+## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v7.0.1...catalyst-core-v7.1.0) (2023-10-26)
+
+
+### Features
+
+* add cat-label css class helper ([bd56b19](https://github.com/haiilo/catalyst/commit/bd56b195455daa0aa02afcbda91ad1ce5e77b3e7))
+* add new info state to theming ([3c8c2ba](https://github.com/haiilo/catalyst/commit/3c8c2ba41fb38e2158de8809ec816d4df31e8890))
+* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
+
+
+### Bug Fixes
+
+* update typo styles for nested links in alerts ([4ca67d9](https://github.com/haiilo/catalyst/commit/4ca67d912dbc3cfa90fe6889034819d45175a4ca))
+
 ## [7.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v7.0.0...catalyst-core-v7.0.1) (2023-10-20)
 
 

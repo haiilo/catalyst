@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v7.0.1...catalyst-tokens-v7.1.0) (2023-10-26)
+
+
+### Features
+
+* add new info state to theming ([3c8c2ba](https://github.com/haiilo/catalyst/commit/3c8c2ba41fb38e2158de8809ec816d4df31e8890))
+
 ## [7.0.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v7.0.0...catalyst-tokens-v7.0.1) (2023-10-20)
 
 
