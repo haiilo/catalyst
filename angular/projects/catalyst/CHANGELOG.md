@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v7.0.1...catalyst-angular-v7.1.0) (2023-10-26)
+
+
+### Features
+
+* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
+
 ## [7.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v7.0.0...catalyst-angular-v7.0.1) (2023-10-20)
 
 
