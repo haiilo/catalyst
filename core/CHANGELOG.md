@@ -1,5 +1,21 @@
 # Changelog
 
+## [8.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v7.1.0...catalyst-core-v8.0.0) (2023-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tokens:** rename --font-family-body to font-family-base
+
+### Features
+
+* **core:** add more select connector helpers ([98bad9a](https://github.com/haiilo/catalyst/commit/98bad9aa890eb553d9227c100cdb4fae76c27dc6))
+
+
+### Bug Fixes
+
+* **tokens:** rename --font-family-body to font-family-base ([c6804d9](https://github.com/haiilo/catalyst/commit/c6804d93a6f96294f36c9c79fce557eac3940f67))
+
 ## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v7.0.1...catalyst-core-v7.1.0) (2023-10-26)
 
 
