@@ -14,4 +14,4 @@ export {
   Page,
   RenderInfo
 } from './components/cat-select/cat-select';
-export { stringArrayConnector } from './components/cat-select/connectors';
+export { objectArrayConnector, stringArrayConnector, stringMapConnector } from './components/cat-select/connectors';
