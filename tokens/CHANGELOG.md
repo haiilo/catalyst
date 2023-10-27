@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.0.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v7.1.0...catalyst-tokens-v8.0.0) (2023-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tokens:** rename --font-family-body to font-family-base
+
+### Bug Fixes
+
+* **tokens:** rename --font-family-body to font-family-base ([c6804d9](https://github.com/haiilo/catalyst/commit/c6804d93a6f96294f36c9c79fce557eac3940f67))
+
 ## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v7.0.1...catalyst-tokens-v7.1.0) (2023-10-26)
 
 
