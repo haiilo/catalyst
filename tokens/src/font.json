@@ -1,15 +1,10 @@
 {
   "font": {
     "family": {
-      "head": {
+      "base": {
         "$type": "fontFamily",
         "$value": "{asset.font.lato.name.value}",
-        "cssProp": "font-family-head"
-      },
-      "body": {
-        "$type": "fontFamily",
-        "$value": "{asset.font.lato.name.value}",
-        "cssProp": "font-family-body"
+        "cssProp": "font-family-base"
       },
       "mono": {
         "$type": "fontFamily",

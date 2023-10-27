@@ -11,8 +11,7 @@
 }
 
 @mixin cat-head($size, $weight: cat-token('font.weight.head')) {
-  // skip color, as it is only set for editorial styles
-  font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
+  // skip color and family, as it is only set for editorial styles
   font-size: cat-head-font-size($size);
   line-height: cat-head-line-height($size);
   font-weight: $weight;

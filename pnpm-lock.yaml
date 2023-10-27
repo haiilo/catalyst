@@ -109,6 +109,42 @@ importers:
         specifier: ~4.6.3
         version: 4.6.3
 
+  angular/dist/catalyst:
+    dependencies:
+      '@angular/cdk':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@7.8.1)
+      '@angular/core':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      '@haiilo/catalyst':
+        specifier: workspace:*
+        version: link:../../../core
+      '@haiilo/catalyst-tokens':
+        specifier: workspace:*
+        version: link:../../../tokens
+      loglevel:
+        specifier: 1.8.1
+        version: 1.8.1
+      rxjs:
+        specifier: ^6.5.3 || ^7.4.0
+        version: 7.8.1
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.1
+
+  angular/dist/catalyst-formly:
+    dependencies:
+      '@angular/core':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      '@haiilo/catalyst-angular':
+        specifier: workspace:*
+        version: link:../../projects/catalyst
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.1
+
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
@@ -547,6 +583,21 @@ packages:
       parse5: 5.1.1
     dev: false
 
+  /@angular/cdk@14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-/tEsYaUbDSnfEmKVvAMramIptmhI67O+9STjOV0i+74XR2NospeK0fkbywIANu1n3w6AHGMotvRWJrjmbCElFg==}
+    peerDependencies:
+      '@angular/common': ^14.0.0 || ^15.0.0
+      '@angular/core': ^14.0.0 || ^15.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 14.3.0(@angular/core@14.2.7)(rxjs@7.8.1)
+      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      rxjs: 7.8.1
+      tslib: 2.6.1
+    optionalDependencies:
+      parse5: 5.1.1
+    dev: false
+
   /@angular/cli@14.2.7:
     resolution: {integrity: sha512-RM4CJwtqD7cKFQ7hNGJ56s9YMeJxYqCN5Ss0SzsKN1nXYqz8HykMW8fhUbZQ9HFVy/Ml3LGoh1yGo/tXywAWcA==}
     engines: {node: ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -599,6 +650,18 @@ packages:
     dependencies:
       '@angular/core': 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
       rxjs: 6.6.0
+      tslib: 2.6.1
+    dev: false
+
+  /@angular/common@14.3.0(@angular/core@14.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-pV9oyG3JhGWeQ+TFB0Qub6a1VZWMNZ6/7zEopvYivdqa5yDLLDSBRWb6P80RuONXyGnM1pa7l5nYopX+r/23GQ==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/core': 14.3.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      rxjs: 7.8.1
       tslib: 2.6.1
     dev: false
 

@@ -217,6 +217,7 @@ code {
   :where(h1, h2, h3),
   :is(.cat-h1, .cat-h2, .cat-h3) {
     color: $cat-font-color-head;
+    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * var(--cat-article-spacer, 1));
 
     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
@@ -227,6 +228,7 @@ code {
   :where(h4, h5, h6),
   :is(.cat-h4, .cat-h5, .cat-h6) {
     color: $cat-font-color-head;
+    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
   }
 

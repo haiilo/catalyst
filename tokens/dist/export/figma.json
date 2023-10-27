@@ -607,11 +607,7 @@
   },
   "font": {
     "family": {
-      "head": {
-        "$type": "fontFamily",
-        "$value": "Lato"
-      },
-      "body": {
+      "base": {
         "$type": "fontFamily",
         "$value": "Lato"
       },
