@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.0.0...catalyst-core-v8.0.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* 21242 as the motion reduction implementation prevents transition dom events from firing ([#417](https://github.com/haiilo/catalyst/issues/417)) ([672a027](https://github.com/haiilo/catalyst/commit/672a02797e777def2fdefda00bef6e020914d216))
+
 ## [8.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v7.1.0...catalyst-core-v8.0.0) (2023-10-27)
 
 
