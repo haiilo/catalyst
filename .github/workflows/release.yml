@@ -51,6 +51,9 @@ jobs:
       - name: Build
         run: pnpm run build
         if: ${{ steps.release.outputs.releases_created }}
+      - name: Install (again - testing...)
+        run: pnpm install
+        if: ${{ steps.release.outputs.releases_created }}
       - run: pnpm run publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
