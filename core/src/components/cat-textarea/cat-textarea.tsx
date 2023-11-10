@@ -41,7 +41,7 @@ export class CatTextarea {
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
@@ -222,12 +222,12 @@ export class CatTextarea {
                 <span class="label-wrapper" part="label">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                   <div class="label-metadata">
-                    {!this.required && this.requiredMarker.startsWith('optional') && (
+                    {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.optional')})
                       </span>
                     )}
-                    {this.required && this.requiredMarker.startsWith('required') && (
+                    {this.required && this.requiredMarker?.startsWith('required') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.required')})
                       </span>

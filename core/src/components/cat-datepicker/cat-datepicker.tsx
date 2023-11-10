@@ -23,7 +23,7 @@ export class CatDatepickerFlat {
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
