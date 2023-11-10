@@ -141,6 +141,9 @@ importers:
       '@haiilo/catalyst-angular':
         specifier: workspace:*
         version: link:../../projects/catalyst
+      '@ngx-formly/core':
+        specifier: ^6.0.0
+        version: 6.1.8(@angular/forms@14.2.7)(rxjs@7.8.1)
       tslib:
         specifier: ^2.3.0
         version: 2.6.1
