@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v8.0.1...catalyst-angular-formly-v8.0.2) (2023-11-10)
+
+
+### Bug Fixes
+
+* **core:** improve formly handling and select connector utils ([33ccc89](https://github.com/haiilo/catalyst/commit/33ccc8991f194ad7fc626162e8d4bc7d053447ee))
+
 ## [8.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v8.0.0...catalyst-angular-formly-v8.0.1) (2023-11-02)
 
 

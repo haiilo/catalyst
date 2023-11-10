@@ -1,7 +1,7 @@
 {
-  "tokens": "8.0.1",
-  "core": "8.0.1",
-  "angular/projects/catalyst": "8.0.1",
-  "angular/projects/catalyst-formly": "8.0.1",
-  "react": "8.0.1"
+  "tokens": "8.0.2",
+  "core": "8.0.2",
+  "angular/projects/catalyst": "8.0.2",
+  "angular/projects/catalyst-formly": "8.0.2",
+  "react": "8.0.2"
 }
