@@ -177,6 +177,9 @@ importers:
       '@haiilo/catalyst-angular':
         specifier: workspace:*
         version: link:../catalyst
+      '@ngx-formly/core':
+        specifier: ^6.0.0
+        version: 6.1.8(@angular/forms@14.2.7)(rxjs@7.8.1)
       tslib:
         specifier: ^2.3.0
         version: 2.3.0
@@ -641,6 +644,18 @@ packages:
       tslib: 2.6.1
     dev: false
 
+  /@angular/common@14.2.7(@angular/core@14.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-vfydeB8urLzhRnZev/1Zm87k9jWlNfhSTk09yUnqvzcORfd3xOkcei0qc1xdIHCTEMyTREC+umsYHDmlEpZsVw==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/core': 14.2.7
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      rxjs: 7.8.1
+      tslib: 2.6.1
+    dev: false
+
   /@angular/common@14.3.0(@angular/core@14.2.7)(rxjs@6.6.0):
     resolution: {integrity: sha512-pV9oyG3JhGWeQ+TFB0Qub6a1VZWMNZ6/7zEopvYivdqa5yDLLDSBRWb6P80RuONXyGnM1pa7l5nYopX+r/23GQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
@@ -752,6 +767,22 @@ packages:
       tslib: 2.6.1
     dev: false
 
+  /@angular/forms@14.2.7(@angular/common@14.2.7)(@angular/core@14.2.7)(@angular/platform-browser@14.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-tEhCIE4mzlD2S0bYE+4e4RG7lOIeRZjjcKw0nlpwE0AneM03gzFlQvbHLDi3qeu8Kc7XkF6C3FJQI/Q7nMiARg==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/common': 14.2.7
+      '@angular/core': 14.2.7
+      '@angular/platform-browser': 14.2.7
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 14.2.7(@angular/core@14.2.7)(rxjs@7.8.1)
+      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/platform-browser': 14.2.7(@angular/common@14.2.7)(@angular/core@14.2.7)
+      rxjs: 7.8.1
+      tslib: 2.6.1
+    dev: false
+
   /@angular/platform-browser-dynamic@14.2.7(@angular/common@14.2.7)(@angular/compiler@14.2.7)(@angular/core@14.2.7)(@angular/platform-browser@14.2.7):
     resolution: {integrity: sha512-P3c4fXH0+RDlL9uzuU5Xea5OQ3ozmoWawFtf4faH7fD3deHlNmrwROBXAlHkYRjbGcAiuxpEx6NjBGdmYWPaKg==}
     engines: {node: ^14.15.0 || >=16.10.0}
@@ -782,6 +813,22 @@ packages:
       '@angular/animations': 14.2.7(@angular/core@14.2.7)
       '@angular/common': 14.2.7(@angular/core@14.2.7)(rxjs@6.6.0)
       '@angular/core': 14.2.7(rxjs@6.6.0)(zone.js@0.11.4)
+      tslib: 2.6.1
+    dev: false
+
+  /@angular/platform-browser@14.2.7(@angular/common@14.2.7)(@angular/core@14.2.7):
+    resolution: {integrity: sha512-Hcn64kppozH5WlX/rkZoCGZyFFkLs0a4+rWen6uaZVxDWbas/PqR/a2LQerdS0Rn65/x+0l0w23u8TN0PnQPVA==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/animations': 14.2.7
+      '@angular/common': 14.2.7
+      '@angular/core': 14.2.7
+    peerDependenciesMeta:
+      '@angular/animations':
+        optional: true
+    dependencies:
+      '@angular/common': 14.2.7(@angular/core@14.2.7)(rxjs@7.8.1)
+      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
       tslib: 2.6.1
     dev: false
 
@@ -3078,6 +3125,17 @@ packages:
     dependencies:
       '@angular/forms': 14.2.7(@angular/common@14.2.7)(@angular/core@14.2.7)(@angular/platform-browser@14.2.7)(rxjs@6.6.0)
       rxjs: 6.6.0
+      tslib: 2.6.1
+    dev: false
+
+  /@ngx-formly/core@6.1.8(@angular/forms@14.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-WVInXYF/fJx7aNUn8y8mqLUaotxAmxbdMzC5GJwJ4oNa8a2kmwWIBAzfoe7YhyWR/t/pGANTu9tsYZaFtQxPVQ==}
+    peerDependencies:
+      '@angular/forms': '>=13.2.0'
+      rxjs: ^6.5.3 || ^7.0.0
+    dependencies:
+      '@angular/forms': 14.2.7(@angular/common@14.2.7)(@angular/core@14.2.7)(@angular/platform-browser@14.2.7)(rxjs@7.8.1)
+      rxjs: 7.8.1
       tslib: 2.6.1
     dev: false
 

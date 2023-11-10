@@ -392,7 +392,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The step size to use when changing the time.
          */
@@ -604,7 +604,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the input is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Use round input edges.
          */
@@ -874,7 +874,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the select is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Optional hint text to be displayed on the new item to be added.
          */
@@ -1067,7 +1067,7 @@ export namespace Components {
         /**
           * Whether the label need a marker to shown if the textarea is required or optional.
          */
-        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
          */
