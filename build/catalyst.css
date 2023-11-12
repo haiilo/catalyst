@@ -1984,7 +1984,6 @@ pre {
   line-height: 1.125rem;
   color: rgb(var(--cat-font-color-mono));
   font-weight: var(--cat-font-weight-mono, 400);
-  font-weight: var(--cat-font-weight-mono, 400);
 }
 
 pre {
