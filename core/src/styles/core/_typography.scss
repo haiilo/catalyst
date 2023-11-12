@@ -166,7 +166,6 @@ samp,
 kbd,
 pre {
   @include cat-mono('m');
-  font-weight: cat-token('font.weight.mono');
 }
 
 pre {
