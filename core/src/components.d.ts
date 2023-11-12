@@ -1269,11 +1269,24 @@ declare global {
         prototype: HTMLCatBadgeElement;
         new (): HTMLCatBadgeElement;
     };
+    interface HTMLCatButtonElementEventMap {
+        "catClick": MouseEvent;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Buttons are used for interface actions. Primary style should be used only
      * once per view for main call-to-action.
      */
     interface HTMLCatButtonElement extends Components.CatButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatButtonElementEventMap>(type: K, listener: (this: HTMLCatButtonElement, ev: CatButtonCustomEvent<HTMLCatButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatButtonElementEventMap>(type: K, listener: (this: HTMLCatButtonElement, ev: CatButtonCustomEvent<HTMLCatButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatButtonElement: {
         prototype: HTMLCatButtonElement;
@@ -1299,29 +1312,78 @@ declare global {
         prototype: HTMLCatCardElement;
         new (): HTMLCatCardElement;
     };
+    interface HTMLCatCheckboxElementEventMap {
+        "catChange": any;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Checkboxes are used to let a user choose one or more options from a limited
      * number of options.
      */
     interface HTMLCatCheckboxElement extends Components.CatCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatCheckboxElementEventMap>(type: K, listener: (this: HTMLCatCheckboxElement, ev: CatCheckboxCustomEvent<HTMLCatCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatCheckboxElementEventMap>(type: K, listener: (this: HTMLCatCheckboxElement, ev: CatCheckboxCustomEvent<HTMLCatCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatCheckboxElement: {
         prototype: HTMLCatCheckboxElement;
         new (): HTMLCatCheckboxElement;
     };
+    interface HTMLCatDatepickerElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     interface HTMLCatDatepickerElement extends Components.CatDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDatepickerElementEventMap>(type: K, listener: (this: HTMLCatDatepickerElement, ev: CatDatepickerCustomEvent<HTMLCatDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDatepickerElementEventMap>(type: K, listener: (this: HTMLCatDatepickerElement, ev: CatDatepickerCustomEvent<HTMLCatDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatDatepickerElement: {
         prototype: HTMLCatDatepickerElement;
         new (): HTMLCatDatepickerElement;
     };
+    interface HTMLCatDatepickerInlineElementEventMap {
+        "catChange": string;
+    }
     interface HTMLCatDatepickerInlineElement extends Components.CatDatepickerInline, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDatepickerInlineElementEventMap>(type: K, listener: (this: HTMLCatDatepickerInlineElement, ev: CatDatepickerInlineCustomEvent<HTMLCatDatepickerInlineElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDatepickerInlineElementEventMap>(type: K, listener: (this: HTMLCatDatepickerInlineElement, ev: CatDatepickerInlineCustomEvent<HTMLCatDatepickerInlineElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatDatepickerInlineElement: {
         prototype: HTMLCatDatepickerInlineElement;
         new (): HTMLCatDatepickerInlineElement;
     };
+    interface HTMLCatDropdownElementEventMap {
+        "catOpen": FocusEvent;
+        "catClose": FocusEvent;
+    }
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDropdownElementEventMap>(type: K, listener: (this: HTMLCatDropdownElement, ev: CatDropdownCustomEvent<HTMLCatDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDropdownElementEventMap>(type: K, listener: (this: HTMLCatDropdownElement, ev: CatDropdownCustomEvent<HTMLCatDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatDropdownElement: {
         prototype: HTMLCatDropdownElement;
@@ -1343,17 +1405,33 @@ declare global {
         prototype: HTMLCatIconElement;
         new (): HTMLCatIconElement;
     };
+    interface HTMLCatInputElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Inputs are used to allow users to provide text input when the expected input
      * is short. As well as plain text, Input supports various types of text,
      * including passwords and numbers.
      */
     interface HTMLCatInputElement extends Components.CatInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatInputElementEventMap>(type: K, listener: (this: HTMLCatInputElement, ev: CatInputCustomEvent<HTMLCatInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatInputElementEventMap>(type: K, listener: (this: HTMLCatInputElement, ev: CatInputCustomEvent<HTMLCatInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatInputElement: {
         prototype: HTMLCatInputElement;
         new (): HTMLCatInputElement;
     };
+    interface HTMLCatPaginationElementEventMap {
+        "catChange": number;
+    }
     /**
      * A navigation component to switch between different pages of paged chunks of
      * data such as a table. Pagination is built with list HTML elements and a
@@ -1362,45 +1440,107 @@ declare global {
      * correctly highlighted using `aria-current`.
      */
     interface HTMLCatPaginationElement extends Components.CatPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatPaginationElementEventMap>(type: K, listener: (this: HTMLCatPaginationElement, ev: CatPaginationCustomEvent<HTMLCatPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatPaginationElementEventMap>(type: K, listener: (this: HTMLCatPaginationElement, ev: CatPaginationCustomEvent<HTMLCatPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatPaginationElement: {
         prototype: HTMLCatPaginationElement;
         new (): HTMLCatPaginationElement;
     };
+    interface HTMLCatRadioElementEventMap {
+        "catChange": boolean | string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Radio Buttons are graphical interface elements that allow user to choose
      * only one of a predefined set of mutually exclusive options.
      */
     interface HTMLCatRadioElement extends Components.CatRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatRadioElementEventMap>(type: K, listener: (this: HTMLCatRadioElement, ev: CatRadioCustomEvent<HTMLCatRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatRadioElementEventMap>(type: K, listener: (this: HTMLCatRadioElement, ev: CatRadioCustomEvent<HTMLCatRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatRadioElement: {
         prototype: HTMLCatRadioElement;
         new (): HTMLCatRadioElement;
     };
+    interface HTMLCatRadioGroupElementEventMap {
+        "catChange": boolean | string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * A group of radio buttons.
      */
     interface HTMLCatRadioGroupElement extends Components.CatRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatRadioGroupElementEventMap>(type: K, listener: (this: HTMLCatRadioGroupElement, ev: CatRadioGroupCustomEvent<HTMLCatRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatRadioGroupElementEventMap>(type: K, listener: (this: HTMLCatRadioGroupElement, ev: CatRadioGroupCustomEvent<HTMLCatRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatRadioGroupElement: {
         prototype: HTMLCatRadioGroupElement;
         new (): HTMLCatRadioGroupElement;
     };
+    interface HTMLCatScrollableElementEventMap {
+        "scrolledTop": void;
+        "scrolledLeft": void;
+        "scrolledRight": void;
+        "scrolledBottom": void;
+    }
     /**
      * An element to display scrollable content.
      */
     interface HTMLCatScrollableElement extends Components.CatScrollable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatScrollableElementEventMap>(type: K, listener: (this: HTMLCatScrollableElement, ev: CatScrollableCustomEvent<HTMLCatScrollableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatScrollableElementEventMap>(type: K, listener: (this: HTMLCatScrollableElement, ev: CatScrollableCustomEvent<HTMLCatScrollableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatScrollableElement: {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
+    interface HTMLCatSelectElementEventMap {
+        "catOpen": FocusEvent;
+        "catClose": FocusEvent;
+        "catChange": InputEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Select lets user choose one option from an options' menu. Consider using
      * select when you have 6 or more options. Select component supports any content
      * type.
      */
     interface HTMLCatSelectElement extends Components.CatSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatSelectElementEventMap>(type: K, listener: (this: HTMLCatSelectElement, ev: CatSelectCustomEvent<HTMLCatSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatSelectElementEventMap>(type: K, listener: (this: HTMLCatSelectElement, ev: CatSelectCustomEvent<HTMLCatSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatSelectElement: {
         prototype: HTMLCatSelectElement;
@@ -1430,41 +1570,89 @@ declare global {
         prototype: HTMLCatSpinnerElement;
         new (): HTMLCatSpinnerElement;
     };
+    interface HTMLCatTabElementEventMap {
+        "tabClick": MouseEvent;
+    }
     /**
      * A single tab inside a tabs component.
      */
     interface HTMLCatTabElement extends Components.CatTab, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTabElementEventMap>(type: K, listener: (this: HTMLCatTabElement, ev: CatTabCustomEvent<HTMLCatTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTabElementEventMap>(type: K, listener: (this: HTMLCatTabElement, ev: CatTabCustomEvent<HTMLCatTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatTabElement: {
         prototype: HTMLCatTabElement;
         new (): HTMLCatTabElement;
     };
+    interface HTMLCatTabsElementEventMap {
+        "catChange": { id: string; index: number };
+    }
     /**
      * Tabs are used to display multiple panels to be contained within a single
      * window, using tabs as a navigational element.
      */
     interface HTMLCatTabsElement extends Components.CatTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTabsElementEventMap>(type: K, listener: (this: HTMLCatTabsElement, ev: CatTabsCustomEvent<HTMLCatTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTabsElementEventMap>(type: K, listener: (this: HTMLCatTabsElement, ev: CatTabsCustomEvent<HTMLCatTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatTabsElement: {
         prototype: HTMLCatTabsElement;
         new (): HTMLCatTabsElement;
     };
+    interface HTMLCatTextareaElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Textarea specifies a control that allows user to write text over multiple
      * rows. Used when the expected user input is long. For shorter input, use the
      * input component.
      */
     interface HTMLCatTextareaElement extends Components.CatTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTextareaElementEventMap>(type: K, listener: (this: HTMLCatTextareaElement, ev: CatTextareaCustomEvent<HTMLCatTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTextareaElementEventMap>(type: K, listener: (this: HTMLCatTextareaElement, ev: CatTextareaCustomEvent<HTMLCatTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatTextareaElement: {
         prototype: HTMLCatTextareaElement;
         new (): HTMLCatTextareaElement;
     };
+    interface HTMLCatToggleElementEventMap {
+        "catChange": any;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
      */
     interface HTMLCatToggleElement extends Components.CatToggle, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatToggleElementEventMap>(type: K, listener: (this: HTMLCatToggleElement, ev: CatToggleCustomEvent<HTMLCatToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatToggleElementEventMap>(type: K, listener: (this: HTMLCatToggleElement, ev: CatToggleCustomEvent<HTMLCatToggleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatToggleElement: {
         prototype: HTMLCatToggleElement;
