@@ -89,9 +89,10 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description        |
-| --------- | ------------------ |
-| `"label"` | The label content. |
+| Part         | Description                  |
+| ------------ | ---------------------------- |
+| `"label"`    | The native label element.    |
+| `"textarea"` | The native textarea element. |
 
 
 ## Dependencies

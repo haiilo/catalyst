@@ -73,10 +73,10 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part       | Description         |
-| ---------- | ------------------- |
-| `"label"`  | The label content.  |
-| `"toggle"` | The toggle element. |
+| Part      | Description               |
+| --------- | ------------------------- |
+| `"input"` | The native input element. |
+| `"label"` | The label content.        |
 
 
 ----------------------------------------------

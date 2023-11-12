@@ -10,8 +10,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the toggle.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part toggle - The toggle element.
  * @part label - The label content.
+ * @part input - The native input element.
  */
 @Component({
   tag: 'cat-toggle',
@@ -158,6 +158,7 @@ export class CatToggle {
         >
           <input
             {...this.nativeAttributes}
+            part="input"
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
             type="checkbox"
@@ -173,7 +174,7 @@ export class CatToggle {
             onBlur={this.onBlur.bind(this)}
             aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
           />
-          <span class="toggle" part="toggle"></span>
+          <span class="toggle"></span>
           <span class="label" part="label">
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>

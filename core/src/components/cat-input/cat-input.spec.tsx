@@ -14,8 +14,8 @@ describe('cat-input', () => {
         <mock:shadow-root>
           <div class="input-field">
             <div class="label-container">
-              <label htmlfor="cat-input-0">
-                <span class="label-wrapper" part="label">Label 
+              <label htmlfor="cat-input-0" part="label">
+                <span class="label-wrapper">Label 
                   <div class="label-metadata">
                     <span aria-hidden="true" class="label-optional">(input.optional)</span>
                   </div>
@@ -25,7 +25,7 @@ describe('cat-input', () => {
             <div class="input-container">
               <div class="input-wrapper">
                 <div class="input-inner-wrapper">
-                  <input id="cat-input-0" type="text">
+                  <input id="cat-input-0" part="input" type="text">
                 </div>
               </div>
             </div>

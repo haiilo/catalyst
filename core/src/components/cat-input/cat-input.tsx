@@ -14,7 +14,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the input.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part label - The label content.
+ * @part label - The native label element.
+ * @part input - The native input element.
  * @part prefix - The text prefix.
  * @part suffix - The text suffix.
  */
@@ -264,8 +265,8 @@ export class CatInput {
       >
         <div class={{ 'label-container': true, hidden: this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
-            <label htmlFor={this.id}>
-              <span class="label-wrapper" part="label">
+            <label htmlFor={this.id} part="label">
+              <span class="label-wrapper">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                 <div class="label-metadata">
                   {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
@@ -310,6 +311,7 @@ export class CatInput {
             <div class="input-inner-wrapper">
               <input
                 {...this.nativeAttributes}
+                part="input"
                 ref={el => (this.input = el as HTMLInputElement)}
                 id={this.id}
                 class={{

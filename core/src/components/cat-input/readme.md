@@ -98,11 +98,12 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part       | Description        |
-| ---------- | ------------------ |
-| `"label"`  | The label content. |
-| `"prefix"` | The text prefix.   |
-| `"suffix"` | The text suffix.   |
+| Part       | Description               |
+| ---------- | ------------------------- |
+| `"input"`  | The native input element. |
+| `"label"`  | The native label element. |
+| `"prefix"` | The text prefix.          |
+| `"suffix"` | The text suffix.          |
 
 
 ## Dependencies

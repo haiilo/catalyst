@@ -11,8 +11,8 @@ describe('cat-checkbox', () => {
      <cat-checkbox label="Label">
         <mock:shadow-root>
           <label htmlfor="cat-checkbox-0">
-            <input id="cat-checkbox-0" type="checkbox">
-            <span aria-hidden="true" class="box" part="checkbox">
+            <input id="cat-checkbox-0" part="input" type="checkbox">
+            <span aria-hidden="true" class="box">
               <svg class="check" viewBox="0 0 12 10">
                 <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
               </svg>

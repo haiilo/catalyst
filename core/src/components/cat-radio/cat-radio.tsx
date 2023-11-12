@@ -11,6 +11,7 @@ let nextUniqueId = 0;
  * @slot hint - Optional hint element to be displayed with the radio.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
  * @part label - The label content.
+ * @part input - The native input element.
  */
 @Component({
   tag: 'cat-radio',
@@ -142,6 +143,7 @@ export class CatRadio {
           <span class="radio">
             <input
               {...this.nativeAttributes}
+              part="input"
               ref={el => (this.input = el as HTMLInputElement)}
               id={this.identifier || this.id}
               type="radio"

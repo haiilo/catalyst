@@ -14,8 +14,8 @@ describe('cat-select', () => {
         <mock:shadow-root>
           <div class="select-field">
             <div class="label-container">
-              <label htmlfor="cat-input-0">
-                <span class="label-wrapper" part="label">Label
+              <label htmlfor="cat-input-0" part="label">
+                <span class="label-wrapper">Label
                   <div class="label-metadata">
                     <span aria-hidden="true" class="label-optional">
                       (input.optional)
@@ -28,7 +28,7 @@ describe('cat-select', () => {
             <div class="select-container">
               <div aria-controls="select-listbox-cat-input-0" class="select-wrapper" id="cat-input-0" role="combobox">
                 <div class="select-wrapper-inner">
-                  <input aria-controls="select-listbox-cat-input-0" class="select-input" value="">
+                  <input aria-controls="select-listbox-cat-input-0" class="select-input" part="input" value="">
                 </div>
                 <cat-button a11ylabel="select.open" aria-controls="select-listbox-cat-input-0" class="select-btn" data-dropdown-no-close icon="$cat:select-open" icononly="" size="s" tabindex="-1" variant="text"></cat-button>
               </div>
