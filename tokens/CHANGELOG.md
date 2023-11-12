@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v8.0.2...catalyst-tokens-v8.1.0) (2023-11-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
 ## [8.0.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v8.0.1...catalyst-tokens-v8.0.2) (2023-11-10)
 
 
