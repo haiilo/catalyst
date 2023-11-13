@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.0.2...catalyst-core-v8.1.0) (2023-11-12)
+
+
+### Features
+
+* **core:** streamline CSS shadow parts on form elements ([5dd17a4](https://github.com/haiilo/catalyst/commit/5dd17a4bf92363ee0a759cee1085a29e02cbad38))
+* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
+
+
+### Bug Fixes
+
+* backport jest ([1e498df](https://github.com/haiilo/catalyst/commit/1e498dfc380e7c7a4c240e1150a60c4a13e92962))
+* **core:** fix linting error ([1fd2512](https://github.com/haiilo/catalyst/commit/1fd2512de6cacab51ba0811b3d549a2e563eb349))
+
 ## [8.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.0.1...catalyst-core-v8.0.2) (2023-11-10)
 
 

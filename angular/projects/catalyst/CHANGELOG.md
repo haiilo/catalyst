@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.0.2...catalyst-angular-v8.1.0) (2023-11-12)
+
+
+### Features
+
+* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
+
 ## [8.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.0.1...catalyst-angular-v8.0.2) (2023-11-10)
 
 
