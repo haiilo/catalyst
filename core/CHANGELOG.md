@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.1.0...catalyst-core-v8.1.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* **core:** add missing spacer var for forms ([8cfea11](https://github.com/haiilo/catalyst/commit/8cfea11362e3c00d09232a7ef27b9a88b5f851c8))
+
 ## [8.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.0.2...catalyst-core-v8.1.0) (2023-11-12)
 
 
