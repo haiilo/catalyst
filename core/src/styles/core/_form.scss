@@ -2,10 +2,11 @@
 @use '../mixins' as *;
 
 .cat-form {
+  .cat-form-element,
   :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle):not(
       :last-child
     ) {
-    margin-bottom: $cat-form-margin-bottom;
+    margin-bottom: calc($cat-form-margin-bottom * 0.5 * var(--cat-form-spacer, 1));
   }
 
   cat-radio:not(:last-child) {
