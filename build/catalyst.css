@@ -1644,8 +1644,9 @@ body {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
+.cat-form .cat-form-element,
 .cat-form :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle):not(:last-child) {
-  margin-bottom: 1.5rem;
+  margin-bottom: calc(0.75rem * var(--cat-form-spacer, 1));
 }
 .cat-form cat-radio:not(:last-child) {
   margin-bottom: 0.5rem;
