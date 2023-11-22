@@ -6,7 +6,7 @@
   :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle):not(
       :last-child
     ) {
-    margin-bottom: calc($cat-form-margin-bottom * 0.5 * var(--cat-form-spacer, 1));
+    margin-bottom: calc($cat-form-margin-bottom * var(--cat-form-spacer, 1));
   }
 
   cat-radio:not(:last-child) {
