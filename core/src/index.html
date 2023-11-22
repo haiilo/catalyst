@@ -871,7 +871,7 @@
                 <span slot="hint">This is another!</span>
               </cat-input>
               <cat-input label="Label" max-length="100">
-                <label slot="label">Priority Label</label>
+                <span slot="label">Priority Label</span>
               </cat-input>
               <h3>Types</h3>
               <cat-input label="Color" type="color"></cat-input>
@@ -888,7 +888,10 @@
 
             <section id="datepicker">
               <h2>Datepicker</h2>
-              <cat-datepicker mode="date" label="Date"></cat-datepicker>
+              <cat-datepicker mode="date">
+                <span slot="label">Priority Label</span>
+                <span slot="hint">Priority Hint</span>
+              </cat-datepicker>
               <cat-datepicker mode="datetime" label="Datetime" disabled></cat-datepicker>
               <cat-datepicker mode="time" label="Time"></cat-datepicker>
               <cat-datepicker mode="week" label="Week"></cat-datepicker>

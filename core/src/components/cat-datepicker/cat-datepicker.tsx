@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { findClosest } from '../../utils/find-closest';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -19,6 +19,12 @@ export class CatDatepickerFlat {
   private get input(): HTMLInputElement | undefined {
     return this._input?.shadowRoot?.querySelector('input') ?? undefined;
   }
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -200,6 +206,11 @@ export class CatDatepickerFlat {
     this.pickr = this.initDatepicker(this.input);
   }
 
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
   @Watch('min')
   @Watch('max')
   onMinChanged() {
@@ -270,7 +281,18 @@ export class CatDatepickerFlat {
           e.stopPropagation();
           this.catBlur.emit(e.detail);
         }}
-      ></cat-input>
+      >
+        {this.hasSlottedLabel && (
+          <span slot="label">
+            <slot name="label"></slot>
+          </span>
+        )}
+        {this.hasSlottedHint && (
+          <span slot="hint">
+            <slot name="hint"></slot>
+          </span>
+        )}
+      </cat-input>
     );
   }
 
