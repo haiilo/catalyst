@@ -57,7 +57,7 @@ export class CatTab {
   /**
    * Emitted when tab is clicked.
    */
-  @Event() tabClick!: EventEmitter<MouseEvent>;
+  @Event() catClick!: EventEmitter<MouseEvent>;
 
   connectedCallback() {
     if (!this.hostElement.id) {
@@ -67,7 +67,7 @@ export class CatTab {
 
   @Listen('click')
   onClick(event: MouseEvent) {
-    this.tabClick.emit(event);
+    this.catClick.emit(event);
   }
 
   render() {

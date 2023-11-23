@@ -114,7 +114,7 @@ export class CatTabs {
               url={tab.url}
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
-              onCatClick={() => this.activate(tab)}
+              onCatClick={() => this.click(tab)}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
               data-dropdown-no-close
@@ -134,6 +134,13 @@ export class CatTabs {
 
   private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
     return !!tab && !tab.deactivated && !tab.url && tab.id !== this.activeTab;
+  }
+
+  private click(tab?: HTMLCatTabElement) {
+    if (this.canActivate(tab)) {
+      tab.click();
+      this.activate(tab);
+    }
   }
 
   private activate(tab?: HTMLCatTabElement) {

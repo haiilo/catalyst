@@ -1571,7 +1571,7 @@ declare global {
         new (): HTMLCatSpinnerElement;
     };
     interface HTMLCatTabElementEventMap {
-        "tabClick": MouseEvent;
+        "catClick": MouseEvent;
     }
     /**
      * A single tab inside a tabs component.
@@ -2687,7 +2687,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when tab is clicked.
          */
-        "onTabClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
+        "onCatClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
