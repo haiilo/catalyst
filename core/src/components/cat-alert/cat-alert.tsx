@@ -53,7 +53,7 @@ export class CatAlert {
   render() {
     return (
       <Host>
-        {!this.noIcon && <cat-icon size="l" icon={this.icon ? this.icon : this.mapIcon.get(this.color)}></cat-icon>}
+        {!this.noIcon && <cat-icon size="l" icon={this.icon || this.mapIcon.get(this.color)}></cat-icon>}
         <div class="content">
           <slot></slot>
         </div>
