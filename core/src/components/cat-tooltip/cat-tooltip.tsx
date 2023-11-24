@@ -18,7 +18,7 @@ export class CatTooltip {
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
-  private hidden = false;
+  private inactive = false;
   private cleanupFloatingUi?: () => void;
 
   private readonly boundShowListener: () => void;
@@ -37,7 +37,7 @@ export class CatTooltip {
 
   @Element() hostElement!: HTMLElement;
 
-  @State() hasSlottedContent = false;
+  @State() open = false;
 
   /**
    * The content of the tooltip.
@@ -105,8 +105,7 @@ export class CatTooltip {
   }
 
   componentWillRender(): void {
-    this.hasSlottedContent = !!this.hostElement.querySelector('[slot="content"]');
-    this.hidden = this.disabled || (!this.content && !this.hasSlottedContent);
+    this.inactive = this.disabled || (!this.content && !this.hostElement.querySelector('[slot="content"]'));
   }
 
   disconnectedCallback(): void {
@@ -129,15 +128,20 @@ export class CatTooltip {
         <div
           ref={el => (this.tooltip = el)}
           id={this.id}
-          aria-hidden={this.hidden}
+          role="tooltip"
+          aria-hidden={!this.open}
+          aria-live={this.open ? 'polite' : 'off'}
           class={{
             tooltip: true,
-            'tooltip-hidden': this.hidden,
+            'tooltip-hidden': this.inactive,
             'tooltip-round': this.round,
             [`tooltip-${this.size}`]: Boolean(this.size)
           }}
         >
-          {this.hasSlottedContent ? <slot name="content" /> : this.content}
+          <slot name="content">
+            {/* The paragraph is needed here to make aria-live work properly. */}
+            <p>{this.content}</p>
+          </slot>
         </div>
       </Host>
     );
@@ -206,12 +210,14 @@ export class CatTooltip {
     if (this.trigger && this.tooltip) {
       this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
     }
-    if (!this.hidden) {
+    if (!this.inactive) {
+      this.open = true;
       this.tooltip?.classList.add('tooltip-show');
     }
   }
 
   private hideTooltip() {
+    this.open = false;
     this.tooltip?.classList.remove('tooltip-show');
     this.cleanupFloatingUi?.();
     this.cleanupFloatingUi = undefined;
