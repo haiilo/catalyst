@@ -2,45 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [8.1.2-beta.0](https://github.com/haiilo/catalyst/compare/v6.5.1...v8.1.2-beta.0) (2023-11-26)
-
-
-### ⚠ BREAKING CHANGES
-
-* **tokens:** rename --font-family-body to font-family-base
-* **core:** full rework of editorial typo styles incl. removal of default margins (#405)
-
-### Features
-
-* add cat-label css class helper ([bd56b19](https://github.com/haiilo/catalyst/commit/bd56b195455daa0aa02afcbda91ad1ce5e77b3e7))
-* add new info state to theming ([3c8c2ba](https://github.com/haiilo/catalyst/commit/3c8c2ba41fb38e2158de8809ec816d4df31e8890))
-* bootstrap releases ([#402](https://github.com/haiilo/catalyst/issues/402)) ([70c28a8](https://github.com/haiilo/catalyst/commit/70c28a83ae1897f773cb10000f771eceeb8cd976))
-* **core:** add more select connector helpers ([98bad9a](https://github.com/haiilo/catalyst/commit/98bad9aa890eb553d9227c100cdb4fae76c27dc6))
-* **core:** full rework of editorial typo styles incl. removal of default margins ([#405](https://github.com/haiilo/catalyst/issues/405)) ([70e6b9e](https://github.com/haiilo/catalyst/commit/70e6b9ea687f68fad5f1fa6da42e1f917133d584))
-* **core:** streamline CSS shadow parts on form elements ([5dd17a4](https://github.com/haiilo/catalyst/commit/5dd17a4bf92363ee0a759cee1085a29e02cbad38))
-* **core:** support slotted labels and hints in datepicker (closes [#424](https://github.com/haiilo/catalyst/issues/424)) ([6ac32a4](https://github.com/haiilo/catalyst/commit/6ac32a4d876cadc76f0ac7c80c5efc2023f9608f))
-* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
-* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
-
-
-### Bug Fixes
-
-* 21242 as the motion reduction implementation prevents transition dom events from firing ([#417](https://github.com/haiilo/catalyst/issues/417)) ([672a027](https://github.com/haiilo/catalyst/commit/672a02797e777def2fdefda00bef6e020914d216))
-* adjust release please ci setup ([7550312](https://github.com/haiilo/catalyst/commit/75503127c5f32f8fb2bcd43d54441db67d785159))
-* adjust release please ci setup ([fd7a0d5](https://github.com/haiilo/catalyst/commit/fd7a0d55b2688b422166d0d5b378142b6b6d99b2))
-* backport jest ([1e498df](https://github.com/haiilo/catalyst/commit/1e498dfc380e7c7a4c240e1150a60c4a13e92962))
-* **core:** activeTab in tabs is not mutable (closes [#406](https://github.com/haiilo/catalyst/issues/406)) ([8d9f87c](https://github.com/haiilo/catalyst/commit/8d9f87c9b76114c5cf0b0e416f2c34ad67a38f12))
-* **core:** add missing color helpers ([3067619](https://github.com/haiilo/catalyst/commit/30676191c68b6280a0775887c77de9b0cf905890))
-* **core:** add missing spacer var for forms ([8cfea11](https://github.com/haiilo/catalyst/commit/8cfea11362e3c00d09232a7ef27b9a88b5f851c8))
-* **core:** adjust spacings ([6379808](https://github.com/haiilo/catalyst/commit/6379808dbdc7c29c378d27e3777489bcb055053e))
-* **core:** emit catClick on tab click (closes [#416](https://github.com/haiilo/catalyst/issues/416)) ([73a5a95](https://github.com/haiilo/catalyst/commit/73a5a95a384e66d075cd75b39be42cee9c102c4c))
-* **core:** fix linting error ([1fd2512](https://github.com/haiilo/catalyst/commit/1fd2512de6cacab51ba0811b3d549a2e563eb349))
-* **core:** improve formly handling and select connector utils ([33ccc89](https://github.com/haiilo/catalyst/commit/33ccc8991f194ad7fc626162e8d4bc7d053447ee))
-* **core:** support narrow articles ([edd7092](https://github.com/haiilo/catalyst/commit/edd709270351c6c596bebf382abee2385e986397))
-* **core:** tooltips are announced by the screenreader (closes [#425](https://github.com/haiilo/catalyst/issues/425)) ([71df679](https://github.com/haiilo/catalyst/commit/71df679c068d62f86913f0de9a1730a8006edf19))
-* **tokens:** rename --font-family-body to font-family-base ([c6804d9](https://github.com/haiilo/catalyst/commit/c6804d93a6f96294f36c9c79fce557eac3940f67))
-* update typo styles for nested links in alerts ([4ca67d9](https://github.com/haiilo/catalyst/commit/4ca67d912dbc3cfa90fe6889034819d45175a4ca))
-
 ### [6.5.1](https://github.com/haiilo/catalyst/compare/v6.5.0...v6.5.1) (2023-10-16)
 
 
