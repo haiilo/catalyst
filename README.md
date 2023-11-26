@@ -39,6 +39,7 @@ alias pnt='pnpm run test'
 
 ## Release
 
+Make sure you have all the rights to publish to NPM.
 Sadly, the release process is not automated (yet). Here are the steps to take for
 a new release
 
