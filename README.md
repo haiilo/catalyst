@@ -39,6 +39,7 @@ alias pnt='pnpm run test'
 
 ## Release
 
+Make sure you have all the rights to publish to NPM.
 Sadly, the release process is not automated (yet). Here are the steps to take for
 a new release
 
@@ -48,6 +49,21 @@ a new release
 1. Run `pnpm run install`
 1. Run `pnpm run publish`
 1. Run `git push --follow-tags origin main`
+
+
+## Beta Release
+
+This type of releases are used to test new features before they are released to
+the public. They are published to the `beta` tag on NPM. Here are the steps to
+take for a new beta release
+
+1. Start in root folder
+1. Run `pnpm run release:beta`
+1. Run `pnpm run build`
+1. Run `pnpm run install`
+1. Run `pnpm run publish:beta`
+1. Run `git push --follow-tags origin main`
+2. Use new version in your project by specifying catalyst library (version is yours) `"@haiilo/catalyst-angular": "8.1.2-beta.0"`
 
 ## Code Contributors
 
