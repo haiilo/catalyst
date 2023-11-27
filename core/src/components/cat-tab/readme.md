@@ -27,7 +27,7 @@ A single tab inside a tabs component.
 
 | Event      | Description                  | Type                      |
 | ---------- | ---------------------------- | ------------------------- |
-| `tabClick` | Emitted when tab is clicked. | `CustomEvent<MouseEvent>` |
+| `catClick` | Emitted when tab is clicked. | `CustomEvent<MouseEvent>` |
 
 
 ----------------------------------------------

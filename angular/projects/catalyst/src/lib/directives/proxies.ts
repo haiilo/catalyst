@@ -950,7 +950,7 @@ export class CatTab {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['tabClick']);
+    proxyOutputs(this, this.el, ['catClick']);
   }
 }
 
@@ -958,7 +958,7 @@ export declare interface CatTab extends Components.CatTab {
   /**
    * Emitted when tab is clicked.
    */
-  tabClick: EventEmitter<CustomEvent<MouseEvent>>;
+  catClick: EventEmitter<CustomEvent<MouseEvent>>;
 }
 
 @ProxyCmp({
