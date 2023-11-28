@@ -349,11 +349,11 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       style-dictionary:
-        specifier: ^3.8.0
-        version: 3.8.0
+        specifier: ^3.9.0
+        version: 3.9.0
       style-dictionary-utils:
-        specifier: ^2.0.1
-        version: 2.0.1(color2k@2.0.2)(json5@2.2.3)(prettier@2.8.8)(style-dictionary@3.8.0)
+        specifier: ^2.0.4
+        version: 2.0.4(color2k@2.0.2)(json5@2.2.3)(prettier@2.8.8)(style-dictionary@3.9.0)
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
@@ -15765,8 +15765,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /style-dictionary-utils@2.0.1(color2k@2.0.2)(json5@2.2.3)(prettier@2.8.8)(style-dictionary@3.8.0):
-    resolution: {integrity: sha512-+xHcpNojLU83DWQOLINmZ094VT+Xj8Fr/SqpxVHLNHCKO85v0IX244svVh9RClWEwZGNzh5wP4zXgILo743Fzw==}
+  /style-dictionary-utils@2.0.4(color2k@2.0.2)(json5@2.2.3)(prettier@2.8.8)(style-dictionary@3.9.0):
+    resolution: {integrity: sha512-EVIWd4w8IFj3BF/STJCsRxgqpUfUJrcgblU7I4BLUgrg6ybd4VYQnRQ4TYA/AElRZdWQD1uEWAgi3l/+3Rj5mQ==}
     peerDependencies:
       color2k: ^2.0.0
       json5: ^2.2.1
@@ -15776,11 +15776,11 @@ packages:
       color2k: 2.0.2
       json5: 2.2.3
       prettier: 2.8.8
-      style-dictionary: 3.8.0
+      style-dictionary: 3.9.0
     dev: true
 
-  /style-dictionary@3.8.0:
-    resolution: {integrity: sha512-wHlB/f5eO3mDcYv6WtOz6gvQC477jBKrwuIXe+PtHskTCBsJdAOvL8hCquczJxDui2TnwpeNE+2msK91JJomZg==}
+  /style-dictionary@3.9.0:
+    resolution: {integrity: sha512-mnq8QfPJoj3ellKHRKZwmCgYUGgwYtoagW5edyKpR09O1W4/XqBdeKXoY/LbeIKqHrqVR7sGgk6E/dNYkPS4aA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
