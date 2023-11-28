@@ -278,8 +278,8 @@ export class CatSelect {
       this.errorMapSrc = Array.isArray(value)
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
-        ? {}
-        : value || undefined;
+          ? {}
+          : value || undefined;
       this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
@@ -931,8 +931,8 @@ export class CatSelect {
     this.isSelected(item.item.id)
       ? this.deselect(item.item.id)
       : this.tags && this.isTagSelected(item.render.label)
-      ? this.removeTag(item.render.label)
-      : this.select(item);
+        ? this.removeTag(item.render.label)
+        : this.select(item);
   }
 
   private clear() {

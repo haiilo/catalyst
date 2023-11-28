@@ -249,8 +249,8 @@ export class CatInput {
       this.errorMapSrc = Array.isArray(value)
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
-        ? {}
-        : value || undefined;
+          ? {}
+          : value || undefined;
       this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
