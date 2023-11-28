@@ -103,8 +103,8 @@ importers:
         specifier: ^14.2.2
         version: 14.2.2(@angular/compiler-cli@14.2.7)(@types/node@12.11.1)(tslib@2.3.0)(typescript@4.6.3)
       prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.1.0
+        version: 3.1.0
       typescript:
         specifier: ~4.6.3
         version: 4.6.3
@@ -13935,12 +13935,6 @@ packages:
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: true
-
-  /prettier@3.0.2:
-    resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
-    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
