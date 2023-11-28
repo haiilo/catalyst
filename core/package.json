@@ -47,7 +47,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
     "@haiilo/catalyst-tokens": "workspace:*",
-    "@stencil/core": "4.7.1",
+    "@stencil/core": "4.8.0",
     "autosize": "6.0.1",
     "autosize-input": "1.0.2",
     "flatpickr": "4.6.13",
