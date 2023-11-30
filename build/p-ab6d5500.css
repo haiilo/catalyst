@@ -1591,7 +1591,7 @@ body {
  *        |- .cat-dialog-actions
 **/
 .cat-backdrop {
-  background-color: rgba(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
+  background-color: rbg(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
 }
 
 .cat-dialog {
@@ -1737,13 +1737,7 @@ nav .cat-nav-head {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
-:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr),
-.cat-h1,
-.cat-h2,
-.cat-h3,
-.cat-h4,
-.cat-h5,
-.cat-h6 {
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr) {
   margin: 0;
 }
 
