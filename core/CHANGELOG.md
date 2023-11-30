@@ -1,5 +1,29 @@
 # Changelog
 
+## [8.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.1.1...catalyst-core-v8.2.0) (2023-11-30)
+
+
+### Features
+
+* **angular:** added errorInit to show form errors directly after initialization (default: false) ([c18a400](https://github.com/haiilo/catalyst/commit/c18a4000c1f3e0360f95ba838726f0a600a23c22))
+* **core:** move to @stencil/core v4.8.0 ([f272cbb](https://github.com/haiilo/catalyst/commit/f272cbb3147434fb4adefc3db29cb0e3bc7aa7a8))
+* **core:** support error state of tabs ([ebc28b0](https://github.com/haiilo/catalyst/commit/ebc28b0a4fb0c97555af410259b888c132a11e4e))
+* **core:** support slotted labels and hints in datepicker (closes [#424](https://github.com/haiilo/catalyst/issues/424)) ([6ac32a4](https://github.com/haiilo/catalyst/commit/6ac32a4d876cadc76f0ac7c80c5efc2023f9608f))
+* **core:** update eslint ([9e16908](https://github.com/haiilo/catalyst/commit/9e1690808d83ced15855a67efbc98fb09299715c))
+* **core:** update icons to v2.1.0 ([66015d0](https://github.com/haiilo/catalyst/commit/66015d0e5eec2295f00af66bfdb2572eb6c32939))
+* **core:** update prettier to v3.1.0 ([6821fad](https://github.com/haiilo/catalyst/commit/6821fad0a7bef4a0be664c601854d9afa1f84bf0))
+* **core:** update ts and finally move to jest v29 ([6a1c0ac](https://github.com/haiilo/catalyst/commit/6a1c0acd633bd02eab4f03139038a1921e9c9508))
+
+
+### Bug Fixes
+
+* **core:** adjust spacings ([6379808](https://github.com/haiilo/catalyst/commit/6379808dbdc7c29c378d27e3777489bcb055053e))
+* **core:** emit catClick on tab click (closes [#416](https://github.com/haiilo/catalyst/issues/416)) ([73a5a95](https://github.com/haiilo/catalyst/commit/73a5a95a384e66d075cd75b39be42cee9c102c4c))
+* **core:** fix broken dialog background definition ([795956d](https://github.com/haiilo/catalyst/commit/795956d9e07d8b83947f587ff0b2abe99dbda605))
+* **core:** language switch is broken in demo page ([4de6e94](https://github.com/haiilo/catalyst/commit/4de6e9470bf713d7cc73b23f43a58fca29b6795f))
+* **core:** remove unneded margin overwrite from catalyst headline classes ([25ffe00](https://github.com/haiilo/catalyst/commit/25ffe0057bcc56eadf282e20c5c45151e372b980))
+* **core:** tooltips are announced by the screenreader (closes [#425](https://github.com/haiilo/catalyst/issues/425)) ([71df679](https://github.com/haiilo/catalyst/commit/71df679c068d62f86913f0de9a1730a8006edf19))
+
 ## [8.1.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.1.0...catalyst-core-v8.1.1) (2023-11-14)
 
 
