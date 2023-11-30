@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Host, Optional, Self, SkipSelf } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Host, Input, Optional, Self, SkipSelf } from '@angular/core';
 import { ControlContainer, NgControl, Validators } from '@angular/forms';
 
 @Directive({
@@ -9,6 +9,12 @@ import { ControlContainer, NgControl, Validators } from '@angular/forms';
   }
 })
 export class ValueAccessorDecorator implements AfterViewInit {
+  /**
+   * Whether to show errors directly after initialization
+   * (i.e. before the user has interacted with the input).
+   */
+  @Input() errorInit = false;
+
   constructor(
     private readonly el: ElementRef,
     @Self() @Optional() private readonly controlDirective?: NgControl,
@@ -21,6 +27,9 @@ export class ValueAccessorDecorator implements AfterViewInit {
     const control = this.controlContainer?.control?.get(controlName);
     if (control?.hasValidator(Validators.required)) {
       this.el.nativeElement.required = true;
+    }
+    if (this.errorInit) {
+      this.updateErrors();
     }
   }
 

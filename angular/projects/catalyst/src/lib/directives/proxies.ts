@@ -932,14 +932,14 @@ export class CatSpinner {
 export declare interface CatSpinner extends Components.CatSpinner {}
 
 @ProxyCmp({
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget']
+  inputs: ['deactivated', 'error', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget']
 })
 @Component({
   selector: 'cat-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['deactivated', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget']
+  inputs: ['deactivated', 'error', 'icon', 'iconOnly', 'iconRight', 'label', 'nativeAttributes', 'url', 'urlTarget']
 })
 export class CatTab {
   protected el: HTMLElement;

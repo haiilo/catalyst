@@ -11,16 +11,17 @@ A single tab inside a tabs component.
 
 ## Properties
 
-| Property           | Attribute     | Description                                                         | Type                                           | Default     |
-| ------------------ | ------------- | ------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `deactivated`      | `deactivated` | Specifies that the tab should be deactivated.                       | `boolean`                                      | `false`     |
-| `icon`             | `icon`        | The name of an icon to be displayed in the tab.                     | `string \| undefined`                          | `undefined` |
-| `iconOnly`         | `icon-only`   | Hide the actual button content and only display the tab.            | `"l" \| "m" \| "s" \| "xl" \| "xs" \| boolean` | `false`     |
-| `iconRight`        | `icon-right`  | Display the icon on the right.                                      | `boolean`                                      | `false`     |
-| `label`            | `label`       | The label of the tab.                                               | `string`                                       | `''`        |
-| `nativeAttributes` | --            | Attributes that will be added to the native HTML button element     | `undefined \| { [key: string]: string; }`      | `undefined` |
-| `url`              | `url`         | A destination to link to, rendered in the href attribute of a link. | `string \| undefined`                          | `undefined` |
-| `urlTarget`        | `url-target`  | Specifies where to open the linked document.                        | `"_blank" \| "_self" \| undefined`             | `undefined` |
+| Property           | Attribute     | Description                                                                                                                                                | Type                                           | Default     |
+| ------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `deactivated`      | `deactivated` | Specifies that the tab should be deactivated.                                                                                                              | `boolean`                                      | `false`     |
+| `error`            | `error`       | Specifies that the tab content pane contains an error. This will color the tab in an error state and also switch to an error icon if an icon is specified. | `boolean`                                      | `false`     |
+| `icon`             | `icon`        | The name of an icon to be displayed in the tab.                                                                                                            | `string \| undefined`                          | `undefined` |
+| `iconOnly`         | `icon-only`   | Hide the actual button content and only display the tab.                                                                                                   | `"l" \| "m" \| "s" \| "xl" \| "xs" \| boolean` | `false`     |
+| `iconRight`        | `icon-right`  | Display the icon on the right.                                                                                                                             | `boolean`                                      | `false`     |
+| `label`            | `label`       | The label of the tab.                                                                                                                                      | `string`                                       | `''`        |
+| `nativeAttributes` | --            | Attributes that will be added to the native HTML button element                                                                                            | `undefined \| { [key: string]: string; }`      | `undefined` |
+| `url`              | `url`         | A destination to link to, rendered in the href attribute of a link.                                                                                        | `string \| undefined`                          | `undefined` |
+| `urlTarget`        | `url-target`  | Specifies where to open the linked document.                                                                                                               | `"_blank" \| "_self" \| undefined`             | `undefined` |
 
 
 ## Events
