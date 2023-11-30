@@ -3,13 +3,7 @@
 
 // -- reset margins
 
-:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr),
-.cat-h1,
-.cat-h2,
-.cat-h3,
-.cat-h4,
-.cat-h5,
-.cat-h6 {
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr) {
   margin: 0;
 }
 
