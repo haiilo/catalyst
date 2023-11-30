@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.1.1...catalyst-angular-v8.2.0) (2023-11-30)
+
+
+### Features
+
+* **angular:** added errorInit to show form errors directly after initialization (default: false) ([c18a400](https://github.com/haiilo/catalyst/commit/c18a4000c1f3e0360f95ba838726f0a600a23c22))
+
 ## [8.1.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.1.0...catalyst-angular-v8.1.1) (2023-11-14)
 
 
