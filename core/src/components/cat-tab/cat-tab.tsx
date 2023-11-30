@@ -50,6 +50,13 @@ export class CatTab {
   @Prop({ reflect: true }) deactivated = false;
 
   /**
+   * Specifies that the tab content pane contains an error. This will color
+   * the tab in an error state and also switch to an error icon if an icon
+   * is specified.
+   */
+  @Prop({ reflect: true }) error = false;
+
+  /**
    * Attributes that will be added to the native HTML button element
    */
   @Prop() nativeAttributes?: { [key: string]: string };

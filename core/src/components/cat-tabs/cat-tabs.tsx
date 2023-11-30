@@ -103,12 +103,13 @@ export class CatTabs {
               part="tab"
               class={{
                 'cat-tab': true,
-                'cat-tab-active': tab.id === this.activeTab
+                'cat-tab-active': tab.id === this.activeTab,
+                'cat-tab-error': tab.error
               }}
               active={tab.id === this.activeTab}
-              color={tab.id === this.activeTab ? 'primary' : 'secondary'}
+              color={tab.error ? 'danger' : tab.id === this.activeTab ? 'primary' : 'secondary'}
               variant="text"
-              icon={tab.icon}
+              icon={tab.icon ? (tab.error ? '$cat:input-error' : tab.icon) : undefined}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
               url={tab.url}

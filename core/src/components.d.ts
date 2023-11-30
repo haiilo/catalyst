@@ -933,6 +933,10 @@ export namespace Components {
          */
         "deactivated": boolean;
         /**
+          * Specifies that the tab content pane contains an error. This will color the tab in an error state and also switch to an error icon if an icon is specified.
+         */
+        "error": boolean;
+        /**
           * The name of an icon to be displayed in the tab.
          */
         "icon"?: string;
@@ -2664,6 +2668,10 @@ declare namespace LocalJSX {
           * Specifies that the tab should be deactivated.
          */
         "deactivated"?: boolean;
+        /**
+          * Specifies that the tab content pane contains an error. This will color the tab in an error state and also switch to an error icon if an icon is specified.
+         */
+        "error"?: boolean;
         /**
           * The name of an icon to be displayed in the tab.
          */
