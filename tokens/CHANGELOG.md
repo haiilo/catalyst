@@ -1,5 +1,17 @@
 # Changelog
 
+## [8.2.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v8.1.1...catalyst-tokens-v8.2.0) (2023-11-30)
+
+
+### Features
+
+* **tokens:** update styledictionary ([e97cbcd](https://github.com/haiilo/catalyst/commit/e97cbcd70d4d613aa8c16f298afd8bbff41cb9f4))
+
+
+### Bug Fixes
+
+* **tokens:** fix broken token build ([be1d67c](https://github.com/haiilo/catalyst/commit/be1d67c69774541443028d896cc4013b2f459673))
+
 ## [8.1.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v8.1.0...catalyst-tokens-v8.1.1) (2023-11-14)
 
 
