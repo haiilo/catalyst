@@ -17,7 +17,7 @@ function getFirstDayOfWeek(language: string): number {
 
 function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
   const date = new Date();
-  const firstDayOfWeek = date.getUTCDate() - date.getUTCDay();
+  const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
   const format = new Intl.DateTimeFormat(language, { weekday }).format;
   return [...Array(7).keys()].map(day => format(date.setUTCDate(firstDayOfWeek + day)));
 }
