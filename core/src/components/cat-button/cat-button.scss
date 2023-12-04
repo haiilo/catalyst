@@ -243,8 +243,8 @@ $button-sizes: (
 
     &.cat-button-icon {
       width: $-total-height;
-      padding-left: 0;
-      padding-right: 0;
+      height: $-total-height;
+      padding: 0;
     }
   }
 
