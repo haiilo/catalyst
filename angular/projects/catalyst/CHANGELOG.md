@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.2.0...catalyst-angular-v8.3.0) (2023-12-04)
+
+
+### Features
+
+* **core:** add select methods for focus and blur ([1d3ac8f](https://github.com/haiilo/catalyst/commit/1d3ac8f2dc73ec1cbcc76a8407fb7ebeb754ba98))
+
 ## [8.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.1.1...catalyst-angular-v8.2.0) (2023-11-30)
 
 
