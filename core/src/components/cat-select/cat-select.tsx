@@ -487,6 +487,35 @@ export class CatSelect {
   }
 
   /**
+   * Programmatically move focus to the input. Use this method instead of
+   * `input.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    this.input?.focus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the input. Use this method instead of
+   * `input.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.input?.blur();
+  }
+
+  /**
+   * Clear the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.clearInput();
+  }
+
+  /**
    * Connect the functions of the select
    *
    * @param connector - The {@link CatSelectConnector} of the select.
@@ -670,7 +699,7 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onCatClick={() => this.clear()}
+                  onCatClick={() => this.clearInput()}
                   data-dropdown-no-close
                 ></cat-button>
               ) : null}
@@ -935,7 +964,7 @@ export class CatSelect {
         : this.select(item);
   }
 
-  private clear() {
+  private clearInput() {
     if (this.input && this.state.term) {
       this.patchState({ selection: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');

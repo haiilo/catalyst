@@ -798,7 +798,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'tags',
     'value'
   ],
-  methods: ['connect']
+  methods: ['doFocus', 'doBlur', 'clear', 'connect']
 })
 @Component({
   selector: 'cat-select',

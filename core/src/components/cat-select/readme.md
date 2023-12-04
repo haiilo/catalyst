@@ -50,9 +50,41 @@ type.
 
 ## Methods
 
+### `clear() => Promise<void>`
+
+Clear the input.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `connect(connector: CatSelectConnector) => Promise<void>`
 
 Connect the functions of the select
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doBlur() => Promise<void>`
+
+Programmatically remove focus from the input. Use this method instead of
+`input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions) => Promise<void>`
+
+Programmatically move focus to the input. Use this method instead of
+`input.focus()`.
 
 #### Returns
 
