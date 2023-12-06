@@ -29,6 +29,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [type]="props.type"
       [errors]="props.errors"
       [errorUpdate]="props.errorUpdate"
+      [errorInit]="props.errorInit"
       [hint]="props.hint"
       [nativeAttributes]="props.nativeAttributes"
     >
