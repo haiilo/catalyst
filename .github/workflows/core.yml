@@ -104,6 +104,6 @@ jobs:
       - name: Build
         run: pnpm run build:tokens
       - name: Install Chrome
-        run: node node_modules/puppeteer/install.js
+        run: node node_modules/puppeteer/install.mjs
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
