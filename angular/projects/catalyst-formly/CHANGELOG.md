@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.3.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v8.3.0...catalyst-angular-formly-v8.3.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **angular-formly:** add missing errorInit prop to formly bindings ([77ad994](https://github.com/haiilo/catalyst/commit/77ad99422935de2e43d3f119a6073bb1c019fe50))
+
 ## [8.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v8.2.0...catalyst-angular-formly-v8.3.0) (2023-12-04)
 
 
