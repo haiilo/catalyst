@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.3.0...catalyst-core-v8.3.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **core:** fix broken dialog background (closes [#436](https://github.com/haiilo/catalyst/issues/436)) ([0dab1ad](https://github.com/haiilo/catalyst/commit/0dab1ad459d6d4ad75ff12f8e52868f2a816be0c))
+* **core:** fix broken scss build ([386f978](https://github.com/haiilo/catalyst/commit/386f97822a96304867c0a3ac8abb03966eecf945))
+
 ## [8.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.2.0...catalyst-core-v8.3.0) (2023-12-04)
 
 
