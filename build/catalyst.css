@@ -1591,7 +1591,7 @@ body {
  *        |- .cat-dialog-actions
 **/
 .cat-backdrop {
-  background-color: rbg(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
+  background-color: rgb(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
 }
 
 .cat-dialog {
