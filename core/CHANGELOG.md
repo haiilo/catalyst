@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.3.1...catalyst-core-v8.3.2) (2024-01-10)
+
+
+### Bug Fixes
+
+* **core:** fix broken datepicker days (closes [#438](https://github.com/haiilo/catalyst/issues/438)) ([adc48b9](https://github.com/haiilo/catalyst/commit/adc48b997922651a430f2c9486c06bc0ab65377e))
+
 ## [8.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.3.0...catalyst-core-v8.3.1) (2023-12-15)
 
 
