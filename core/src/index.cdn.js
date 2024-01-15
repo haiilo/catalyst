@@ -33,6 +33,8 @@
       'input.clear': 'Clear',
       'input.optional': 'Optional',
       'input.required': 'Required',
+      'input.showPassword': 'Show password',
+      'input.hidePassword': 'Hide password',
       'notification.dismiss': 'Dismiss',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',
