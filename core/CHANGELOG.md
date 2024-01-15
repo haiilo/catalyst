@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.4.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.0...catalyst-core-v8.4.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* **core:** add missing translation keys to CDN version ([c8fce82](https://github.com/haiilo/catalyst/commit/c8fce82f0d9d93ed75c30f97a9c71f2ad795a749))
+
 ## [8.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.3.2...catalyst-core-v8.4.0) (2024-01-15)
 
 
