@@ -39,6 +39,8 @@ export class CatInput {
 
   @State() hasSlottedHint = false;
 
+  @State() isPasswordShown = false;
+
   @State() errorMap?: ErrorMap;
 
   /**
@@ -60,6 +62,11 @@ export class CatInput {
    * Whether the input should show a clear button.
    */
   @Prop() clearable = false;
+
+  /**
+   * Whether the input should show a password toggle button for password inputs.
+   */
+  @Prop() togglePassword = false;
 
   /**
    * Whether the input is disabled.
@@ -315,7 +322,8 @@ export class CatInput {
                 ref={el => (this.input = el as HTMLInputElement)}
                 id={this.id}
                 class={{
-                  'has-clearable': this.clearable && !this.disabled && !this.readonly
+                  'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
+                  'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value
                 }}
                 autocomplete={this.autoComplete}
                 disabled={this.disabled}
@@ -327,7 +335,7 @@ export class CatInput {
                 placeholder={this.placeholder}
                 readonly={this.readonly}
                 required={this.required}
-                type={this.type}
+                type={this.isPasswordShown ? 'text' : this.type}
                 value={this.value}
                 onInput={this.onInput.bind(this)}
                 onFocus={this.onFocus.bind(this)}
@@ -345,6 +353,17 @@ export class CatInput {
                   a11y-label={i18n.t('input.clear')}
                   onClick={this.clear.bind(this)}
                   data-dropdown-no-close
+                ></cat-button>
+              )}
+              {this.togglePassword && !this.disabled && !this.readonly && this.value && (
+                <cat-button
+                  class="toggle-password"
+                  icon={this.isPasswordShown ? '$cat:input-password-hide' : '$cat:input-password-show'}
+                  icon-only="true"
+                  size="s"
+                  variant="text"
+                  a11y-label={i18n.t(this.isPasswordShown ? 'input.hidePassword' : 'input.showPassword')}
+                  onClick={this.doTogglePassword.bind(this)}
                 ></cat-button>
               )}
             </div>
@@ -394,6 +413,10 @@ export class CatInput {
     if (coerceBoolean(this.errorUpdate)) {
       this.showErrors();
     }
+  }
+
+  private doTogglePassword() {
+    this.isPasswordShown = !this.isPasswordShown;
   }
 
   private showErrors() {

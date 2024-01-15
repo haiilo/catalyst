@@ -124,8 +124,13 @@ input {
     color: cat-token('color.ui.font.muted');
   }
 
-  &.has-clearable {
+  &.has-clearable,
+  &.has-toggle-password {
     padding-right: 1.5rem;
+  }
+
+  &.has-clearable.has-toggle-password {
+    padding-right: 3.5rem;
   }
 
   &::placeholder {
@@ -147,4 +152,14 @@ input {
   position: absolute;
   top: calc(50% - 1rem);
   right: -0.5rem;
+}
+
+.toggle-password {
+  position: absolute;
+  top: calc(50% - 1rem);
+  right: -0.5rem;
+
+  .has-clearable ~ & {
+    right: 1.5rem;
+  }
 }

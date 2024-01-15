@@ -9,6 +9,8 @@ import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-fi
 import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
 import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
 import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
+import eyeClosedOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-closed-outlined.svg';
+import eyeOpenOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-open-outlined.svg';
 import infoCircleFilled from '@haiilo/catalyst-icons/tmp/assets/info-circle-filled.svg';
 import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
 import log from 'loglevel';
@@ -34,6 +36,8 @@ export class CatIconRegistry {
         'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,
+        'input-password-show': eyeOpenOutlined,
+        'input-password-hide': eyeClosedOutlined,
         'notification-close': crossCircleOutlined,
         'pagination-left': chevronLeftOutlined,
         'pagination-right': chevronRightOutlined,

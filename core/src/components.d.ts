@@ -618,6 +618,10 @@ export namespace Components {
          */
         "textSuffix"?: string;
         /**
+          * Whether the input should show a password toggle button for password inputs.
+         */
+        "togglePassword": boolean;
+        /**
           * Type of form control.
          */
         "type": InputType;
@@ -2320,6 +2324,10 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * Whether the input should show a password toggle button for password inputs.
+         */
+        "togglePassword"?: boolean;
         /**
           * Type of form control.
          */

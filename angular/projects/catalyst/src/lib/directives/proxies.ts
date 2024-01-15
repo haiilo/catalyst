@@ -511,6 +511,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'round',
     'textPrefix',
     'textSuffix',
+    'togglePassword',
     'type',
     'value'
   ],
@@ -547,6 +548,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'round',
     'textPrefix',
     'textSuffix',
+    'togglePassword',
     'type',
     'value'
   ]
