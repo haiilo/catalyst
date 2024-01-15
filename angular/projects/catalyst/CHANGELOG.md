@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.3.2...catalyst-angular-v8.4.0) (2024-01-15)
+
+
+### Features
+
+* **core:** add password toggle button to inputs ([6779f5d](https://github.com/haiilo/catalyst/commit/6779f5d91572ea6f1d9131b944c2f1e0c0767fca))
+
 ## [8.3.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.3.1...catalyst-angular-v8.3.2) (2024-01-10)
 
 
