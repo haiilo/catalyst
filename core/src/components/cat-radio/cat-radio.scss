@@ -34,6 +34,7 @@ label {
 
 .circle-placeholder {
   width: calc($radio-width + 1px);
+  flex-shrink: 0;
 }
 
 .circle {
