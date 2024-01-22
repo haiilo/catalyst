@@ -1,5 +1,14 @@
 # Changelog
 
+## [8.4.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.1...catalyst-core-v8.4.2) (2024-01-22)
+
+
+### Bug Fixes
+
+* **core:** avoid flex wrap in single selects ([e09fba1](https://github.com/haiilo/catalyst/commit/e09fba140fe5f2606eafcd8fe6073c122a580c56))
+* **core:** fix wrng indentation of radio buttons ([6260e58](https://github.com/haiilo/catalyst/commit/6260e58ca1bcea71c96619a9e3feee1d6b82a6a0))
+* **core:** set bold font to 700 ([932551a](https://github.com/haiilo/catalyst/commit/932551a5d36531f01fd606c34e270f000adb62cf))
+
 ## [8.4.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.0...catalyst-core-v8.4.1) (2024-01-15)
 
 
