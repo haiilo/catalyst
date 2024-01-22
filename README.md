@@ -51,7 +51,7 @@ Every commit that is prefixed with [conventional commit](https://www.conventiona
 
 Additionally, the new release is directly published to npm.
 
-### Manually creating a new version
+### Manually creating a new version (not recommended)
 
 All projects in the repository are using [semantic-release](https://www.npmjs.com/package/semantic-release) and define helper scripts in the respective `package.json` files. To create a new release bundle (i.e. release all projects in a new version), simply use the following combination of utility scripts provided in the top level `package.json`:
 
