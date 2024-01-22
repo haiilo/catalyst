@@ -579,7 +579,8 @@ export class CatSelect {
         <div
           class={{
             'select-field': true,
-            'select-horizontal': this.horizontal
+            'select-horizontal': this.horizontal,
+            'select-multiple': this.multiple
           }}
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>
