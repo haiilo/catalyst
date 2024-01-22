@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 /**
  * Configuration options for modal dialogs.
  */
-export type CatDialogConfig<D = unknown> = Pick<DialogConfig<D>, 'data' | 'disableClose' | 'height' | 'role' | 'width'>;
+export type CatDialogConfig<D = unknown> = Pick<DialogConfig<D>, 'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass'>;
 
 /**
  * A service for managing modal dialogs.
