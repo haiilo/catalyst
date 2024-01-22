@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.4.2](https://github.com/haiilo/catalyst/compare/catalyst-react-v8.4.1...catalyst-react-v8.4.2) (2024-01-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [8.4.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v8.4.0...catalyst-react-v8.4.1) (2024-01-15)
 
 
