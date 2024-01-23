@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.4.2...catalyst-angular-v8.5.0) (2024-01-23)
+
+
+### Features
+
+* **angular:** add panelClass to dialogs ([214e44e](https://github.com/haiilo/catalyst/commit/214e44e35f21b7529697e7a710f6321181a7cfb1))
+
 ## [8.4.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.4.1...catalyst-angular-v8.4.2) (2024-01-22)
 
 
