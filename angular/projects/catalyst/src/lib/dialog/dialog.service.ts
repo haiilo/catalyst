@@ -6,7 +6,10 @@ import { Observable } from 'rxjs';
 /**
  * Configuration options for modal dialogs.
  */
-export type CatDialogConfig<D = unknown> = Pick<DialogConfig<D>, 'data' | 'disableClose' | 'height' | 'role' | 'width'>;
+export type CatDialogConfig<D = unknown> = Pick<
+  DialogConfig<D>,
+  'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass'
+>;
 
 /**
  * A service for managing modal dialogs.
@@ -28,9 +31,10 @@ export class CatDialogService {
     component: ComponentType<unknown>,
     config?: CatDialogConfig<D>
   ): Observable<R | undefined> {
+    const panelClass = config?.panelClass ?? [];
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
-      panelClass: 'cat-dialog-pane',
+      panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])],
       width: '600px',
       minWidth: 'clamp(240px, 100vw - 16px, 320px)',
       minHeight: 'clamp(144px, 100vh - 16px, 160px)',
