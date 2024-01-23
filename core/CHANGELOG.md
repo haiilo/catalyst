@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.2...catalyst-core-v8.5.0) (2024-01-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
 ## [8.4.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.1...catalyst-core-v8.4.2) (2024-01-22)
 
 
