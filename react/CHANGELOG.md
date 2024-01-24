@@ -1,5 +1,12 @@
 # Changelog
 
+## [9.1.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v9.0.0...catalyst-react-v9.1.0) (2024-01-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [9.0.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v8.5.0...catalyst-react-v9.0.0) (2024-01-24)
 
 
