@@ -1,5 +1,18 @@
 # Changelog
 
+## [9.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v9.0.0...catalyst-core-v9.1.0) (2024-01-24)
+
+
+### Features
+
+* add styles for cat-dialog-pull-out class ([#448](https://github.com/haiilo/catalyst/issues/448)) ([acba12b](https://github.com/haiilo/catalyst/commit/acba12b1a2efba2c45cca907707a9c05ac2f4c8e))
+
+
+### Bug Fixes
+
+* **core:** fix broken catalyst color references in tooltips, alerts and color utilities ([25112fe](https://github.com/haiilo/catalyst/commit/25112feb4e59bae88494c0eeb6475b7faff30aba))
+* **core:** radio buttons accept non-string values ([dec8302](https://github.com/haiilo/catalyst/commit/dec83025c9fad14e1fd68fc1220a1af422bb7aac))
+
 ## [9.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.5.0...catalyst-core-v9.0.0) (2024-01-24)
 
 

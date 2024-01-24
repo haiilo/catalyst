@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-react",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
   "publishConfig": {
