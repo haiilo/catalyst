@@ -54,6 +54,11 @@ $-dialog-padding: 1.5rem;
   }
 }
 
+.cat-dialog-pull-out {
+  margin-left: -#{$-dialog-padding};
+  margin-right: -#{$-dialog-padding};
+}
+
 .cat-dialog-actions {
   display: flex;
   padding: $-dialog-padding;
