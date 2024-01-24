@@ -22,7 +22,7 @@ only one of a predefined set of mutually exclusive options.
 | `name`             | `name`         | The name of the radio component.                                                          | `string \| undefined`                     | `undefined` |
 | `nativeAttributes` | --             | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
 | `required`         | `required`     | Whether the radio is required.                                                            | `boolean`                                 | `false`     |
-| `value`            | `value`        | The value of the radio component.                                                         | `string`                                  | `''`        |
+| `value`            | `value`        | The value of the radio component.                                                         | `any`                                     | `''`        |
 
 
 ## Events

@@ -22,7 +22,8 @@ export class CatRadioGroup {
   /**
    * The value of the radio group.
    */
-  @Prop({ mutable: true }) value?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) value?: any;
 
   /**
    * Whether this radio group is disabled.

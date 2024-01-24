@@ -736,7 +736,7 @@ export namespace Components {
         /**
           * The value of the radio component.
          */
-        "value": string;
+        "value": any;
     }
     /**
      * A group of radio buttons.
@@ -761,7 +761,7 @@ export namespace Components {
         /**
           * The value of the radio group.
          */
-        "value"?: string;
+        "value"?: any;
     }
     /**
      * An element to display scrollable content.
@@ -2450,7 +2450,7 @@ declare namespace LocalJSX {
         /**
           * The value of the radio component.
          */
-        "value"?: string;
+        "value"?: any;
     }
     /**
      * A group of radio buttons.
@@ -2487,7 +2487,7 @@ declare namespace LocalJSX {
         /**
           * The value of the radio group.
          */
-        "value"?: string;
+        "value"?: any;
     }
     /**
      * An element to display scrollable content.

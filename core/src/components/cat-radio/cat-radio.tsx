@@ -70,7 +70,8 @@ export class CatRadio {
   /**
    * The value of the radio component.
    */
-  @Prop() value = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() value: any = '';
 
   /**
    * Optional hint text(s) to be displayed with the radio.
@@ -179,6 +180,7 @@ export class CatRadio {
 
   private onInput() {
     this.checked = true;
+    console.log('onInput', this.value);
     this.catChange.emit(this.value);
   }
 
