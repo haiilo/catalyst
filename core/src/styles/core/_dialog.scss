@@ -66,3 +66,41 @@ $-dialog-padding: 1.5rem;
     }
   }
 }
+
+.cat-dialog-pull {
+  &.cat-dialog-header,
+  &.cat-dialog-actions {
+    margin: -#{$-dialog-padding};
+  }
+
+  .cat-dialog-content & {
+    margin-left: -#{$-dialog-padding};
+    margin-right: -#{$-dialog-padding};
+  }
+}
+
+.cat-dialog-pull-h {
+  margin-left: -#{$-dialog-padding};
+  margin-right: -#{$-dialog-padding};
+}
+
+.cat-dialog-pull-v {
+  margin-top: -#{$-dialog-padding};
+  margin-bottom: -#{$-dialog-padding};
+}
+
+.cat-dialog-pull-r {
+  margin-right: -#{$-dialog-padding};
+}
+
+.cat-dialog-pull-l {
+  margin-left: -#{$-dialog-padding};
+}
+
+.cat-dialog-pull-t {
+  margin-top: -#{$-dialog-padding};
+}
+
+.cat-dialog-pull-b {
+  margin-bottom: -#{$-dialog-padding};
+}
