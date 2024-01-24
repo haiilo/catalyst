@@ -70,7 +70,7 @@ $-dialog-padding: 1.5rem;
 .cat-dialog-pull {
   &.cat-dialog-header,
   &.cat-dialog-actions {
-    margin: -#{$-dialog-padding}
+    margin: -#{$-dialog-padding};
   }
 
   .cat-dialog-content & {
