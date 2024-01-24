@@ -180,7 +180,6 @@ export class CatRadio {
 
   private onInput() {
     this.checked = true;
-    console.log('onInput', this.value);
     this.catChange.emit(this.value);
   }
 
