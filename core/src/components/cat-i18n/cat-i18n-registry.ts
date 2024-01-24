@@ -1,13 +1,15 @@
 import log from 'loglevel';
 
+export type CatI18nTranslationFn = (key: string, params?: unknown) => string;
+
 export class CatI18nRegistry {
   private static instance: CatI18nRegistry;
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly i18n: Map<string, string> = new Map();
-  private _locale?: string;
 
-  _translator?: (key: string, params?: unknown) => string;
+  private _locale?: string;
+  private _translator?: CatI18nTranslationFn;
 
   private constructor() {
     // hide constructor
@@ -60,10 +62,15 @@ export class CatI18nRegistry {
     }
   }
 
-  set(i18n: { [key: string]: string }, silent = false): void {
-    const i18nEntries = Object.entries(i18n);
-    i18nEntries.forEach(([key, message]) => this.i18n.set(key, message));
-    log.info(`[CatI18nRegistry] Registered ${i18nEntries.length !== 1 ? 'messages' : 'message'}`);
+  set(i18n: { [key: string]: string } | CatI18nTranslationFn, silent = false): void {
+    if (typeof i18n === 'function') {
+      this._translator = i18n;
+      log.info(`[CatI18nRegistry] Registered translator`);
+    } else {
+      const i18nEntries = Object.entries(i18n);
+      i18nEntries.forEach(([key, message]) => this.i18n.set(key, message));
+      log.info(`[CatI18nRegistry] Registered ${i18nEntries.length !== 1 ? 'messages' : 'message'}`);
+    }
     !silent && window.dispatchEvent(this.buildEvent('cat-i18n-set', { i18n, id: this.id }));
   }
 
@@ -74,12 +81,14 @@ export class CatI18nRegistry {
   }
 
   t(key: string, params?: { [key: string]: unknown }): string {
-    const message = this._translator?.(key, params) ?? this.i18n.get(key);
+    const message =
+      this._translator?.(key, params) ??
+      this.i18n.get(key)?.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => `${params?.[key] ?? ''}`);
     if (message === undefined) {
       log.error(`[CatI18nRegistry] Unknown message key: ${key}`);
       return key;
     }
-    return message.replace(/{{\s*([-a-zA-Z._]+)\s*}}/g, (_match, key) => `${params?.[key] ?? ''}`);
+    return message;
   }
 
   private buildEvent<T>(name: string, detail?: T) {
