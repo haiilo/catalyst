@@ -1,5 +1,16 @@
 # Changelog
 
+## [9.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.5.0...catalyst-core-v9.0.0) (2024-01-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** make translator property in i18n service private. use set() to update it
+
+### Features
+
+* **core:** make translator property in i18n service private. use set() to update it ([d4c21e5](https://github.com/haiilo/catalyst/commit/d4c21e5711d1a99d1929446946c8a3c8c9beb7c3))
+
 ## [8.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v8.4.2...catalyst-core-v8.5.0) (2024-01-23)
 
 
