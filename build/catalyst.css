@@ -1639,6 +1639,40 @@ body {
   }
 }
 
+.cat-dialog-pull.cat-dialog-header, .cat-dialog-pull.cat-dialog-actions {
+  margin: -1.5rem;
+}
+.cat-dialog-content .cat-dialog-pull {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.cat-dialog-pull-h {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.cat-dialog-pull-v {
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+}
+
+.cat-dialog-pull-r {
+  margin-right: -1.5rem;
+}
+
+.cat-dialog-pull-l {
+  margin-left: -1.5rem;
+}
+
+.cat-dialog-pull-t {
+  margin-top: -1.5rem;
+}
+
+.cat-dialog-pull-b {
+  margin-bottom: -1.5rem;
+}
+
 /**
  * Auto-generated file. Do not edit directly.
  */
