@@ -2149,9 +2149,9 @@ code {
 .cat-bg-primary {
   background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
   color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.primary.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.primary.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.primary.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-primary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-primary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-primary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2161,9 +2161,9 @@ code {
 .cat-bg-primary-hover:hover {
   background-color: rgb(var(--cat-primary-bg-hover, 1, 115, 132)) !important;
   color: rgb(var(--cat-primary-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.primary.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.primary.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.primary.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-primary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-primary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-primary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2188,9 +2188,9 @@ code {
 .cat-bg-primaryInverted {
   background-color: #93b4f2 !important;
   color: black !important;
-  --cat-primary-text: cat-token("color.theme.primaryInverted.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.primaryInverted.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.primaryInverted.fill-active", $wrap: false);
+  --cat-primary-text: 0, 0, 0;
+  --cat-primary-text-hover: 0, 0, 0;
+  --cat-primary-text-active: 0, 0, 0;
   --cat-link-decoration: underline;
 }
 
@@ -2200,9 +2200,9 @@ code {
 .cat-bg-primaryInverted-hover:hover {
   background-color: #93b4f2 !important;
   color: black !important;
-  --cat-primary-text: cat-token("color.theme.primaryInverted.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.primaryInverted.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.primaryInverted.fill-active", $wrap: false);
+  --cat-primary-text: 0, 0, 0;
+  --cat-primary-text-hover: 0, 0, 0;
+  --cat-primary-text-active: 0, 0, 0;
   --cat-link-decoration: underline;
 }
 
@@ -2227,9 +2227,9 @@ code {
 .cat-bg-secondary {
   background-color: rgb(var(--cat-secondary-bg, 105, 118, 135)) !important;
   color: rgb(var(--cat-secondary-fill, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.secondary.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.secondary.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.secondary.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-secondary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-secondary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-secondary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2239,9 +2239,9 @@ code {
 .cat-bg-secondary-hover:hover {
   background-color: rgb(var(--cat-secondary-bg-hover, 105, 118, 135)) !important;
   color: rgb(var(--cat-secondary-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.secondary.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.secondary.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.secondary.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-secondary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-secondary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-secondary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2266,9 +2266,9 @@ code {
 .cat-bg-secondaryInverted {
   background-color: #697687 !important;
   color: black !important;
-  --cat-primary-text: cat-token("color.theme.secondaryInverted.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.secondaryInverted.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.secondaryInverted.fill-active", $wrap: false);
+  --cat-primary-text: 0, 0, 0;
+  --cat-primary-text-hover: 0, 0, 0;
+  --cat-primary-text-active: 0, 0, 0;
   --cat-link-decoration: underline;
 }
 
@@ -2278,9 +2278,9 @@ code {
 .cat-bg-secondaryInverted-hover:hover {
   background-color: #697687 !important;
   color: black !important;
-  --cat-primary-text: cat-token("color.theme.secondaryInverted.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.secondaryInverted.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.secondaryInverted.fill-active", $wrap: false);
+  --cat-primary-text: 0, 0, 0;
+  --cat-primary-text-hover: 0, 0, 0;
+  --cat-primary-text-active: 0, 0, 0;
   --cat-link-decoration: underline;
 }
 
@@ -2305,9 +2305,9 @@ code {
 .cat-bg-info {
   background-color: rgb(var(--cat-success-bg, 0, 115, 230)) !important;
   color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.info.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.info.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.info.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2317,9 +2317,9 @@ code {
 .cat-bg-info-hover:hover {
   background-color: rgb(var(--cat-success-bg-hover, 0, 107, 227)) !important;
   color: rgb(var(--cat-success-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.info.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.info.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.info.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2344,9 +2344,9 @@ code {
 .cat-bg-success {
   background-color: rgb(var(--cat-success-bg, 0, 132, 88)) !important;
   color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.success.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.success.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.success.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2356,9 +2356,9 @@ code {
 .cat-bg-success-hover:hover {
   background-color: rgb(var(--cat-success-bg-hover, 0, 117, 78)) !important;
   color: rgb(var(--cat-success-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.success.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.success.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.success.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2383,9 +2383,9 @@ code {
 .cat-bg-warning {
   background-color: rgb(var(--cat-warning-bg, 255, 206, 128)) !important;
   color: rgb(var(--cat-warning-fill, 0, 0, 0)) !important;
-  --cat-primary-text: cat-token("color.theme.warning.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.warning.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.warning.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-warning-fill, 0, 0, 0);
+  --cat-primary-text-hover: var(--cat-warning-fill-hover, 0, 0, 0);
+  --cat-primary-text-active: var(--cat-warning-fill-active, 0, 0, 0);
   --cat-link-decoration: underline;
 }
 
@@ -2395,9 +2395,9 @@ code {
 .cat-bg-warning-hover:hover {
   background-color: rgb(var(--cat-warning-bg-hover, 255, 214, 148)) !important;
   color: rgb(var(--cat-warning-fill-hover, 0, 0, 0)) !important;
-  --cat-primary-text: cat-token("color.theme.warning.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.warning.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.warning.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-warning-fill, 0, 0, 0);
+  --cat-primary-text-hover: var(--cat-warning-fill-hover, 0, 0, 0);
+  --cat-primary-text-active: var(--cat-warning-fill-active, 0, 0, 0);
   --cat-link-decoration: underline;
 }
 
@@ -2422,9 +2422,9 @@ code {
 .cat-bg-danger {
   background-color: rgb(var(--cat-danger-bg, 217, 52, 13)) !important;
   color: rgb(var(--cat-danger-fill, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.danger.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.danger.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.danger.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-danger-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-danger-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-danger-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2434,9 +2434,9 @@ code {
 .cat-bg-danger-hover:hover {
   background-color: rgb(var(--cat-danger-bg-hover, 194, 46, 11)) !important;
   color: rgb(var(--cat-danger-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: cat-token("color.theme.danger.fill", $wrap: false);
-  --cat-primary-text-hover: cat-token("color.theme.danger.fill-hover", $wrap: false);
-  --cat-primary-text-active: cat-token("color.theme.danger.fill-active", $wrap: false);
+  --cat-primary-text: var(--cat-danger-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-danger-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-danger-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
