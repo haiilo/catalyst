@@ -12,12 +12,13 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   host: {
     class: 'cat-dialog-actions',
     '[class.cat-dialog-actions-center]': 'align === "center"',
-    '[class.cat-dialog-actions-end]': 'align === "end"'
+    '[class.cat-dialog-actions-end]': 'align === "end"',
+    '[class.cat-dialog-actions-space-between]': 'align === "space-between"'
   }
 })
 export class CatDialogActionsComponent {
   /**
    * Horizontal alignment of action buttons.
    */
-  @Input() align: 'start' | 'center' | 'end' = 'end';
+  @Input() align: 'start' | 'center' | 'end' | 'space-between' = 'end';
 }
