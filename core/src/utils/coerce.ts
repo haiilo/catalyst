@@ -11,5 +11,5 @@ export function coerceNumber(value: any, fallbackValue = 0) {
 }
 
 function isNumberValue(value: any): boolean {
-  return !isNaN(parseFloat(value as any)) && !isNaN(Number(value));
+  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
 }
