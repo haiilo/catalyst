@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v9.1.0...catalyst-angular-v10.0.0) (2024-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451))
+
+### Features
+
+* add space-between alignment for dialog actions buttons ([#450](https://github.com/haiilo/catalyst/issues/450)) ([a4abb0f](https://github.com/haiilo/catalyst/commit/a4abb0f458fcefd8641ad768a512de16ae371057))
+* **angular:** adjust peer dependency versions for angular and angular CDK ([a6403f7](https://github.com/haiilo/catalyst/commit/a6403f7142dfe7ed926aa646571f8752015eaff6))
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451)) ([2e48742](https://github.com/haiilo/catalyst/commit/2e48742bbfb5d4071ecd8efa09ab99e352b27c6f))
+
 ## [9.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v9.0.0...catalyst-angular-v9.1.0) (2024-01-24)
 
 
