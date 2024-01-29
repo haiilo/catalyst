@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.1...catalyst-core-v10.0.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* **core:** remove prettier errors ([5ab6dbc](https://github.com/haiilo/catalyst/commit/5ab6dbcf230f0355af21ed6dfe2a8cda8357bcdc))
+
 ## [10.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.0...catalyst-core-v10.0.1) (2024-01-29)
 
 
