@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.0...catalyst-core-v10.0.1) (2024-01-29)
+
+
+### Bug Fixes
+
+* cleanup ([07ec13d](https://github.com/haiilo/catalyst/commit/07ec13d88bd9d77944f4b9f8ec2850ab0474afb9))
+
 ## [10.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v9.1.0...catalyst-core-v10.0.0) (2024-01-29)
 
 
