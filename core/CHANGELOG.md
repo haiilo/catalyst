@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v9.1.0...catalyst-core-v10.0.0) (2024-01-29)
+
+
+### Features
+
+* **angular:** improve i18n logging ([bdf0979](https://github.com/haiilo/catalyst/commit/bdf09796133a5d046a61b78c8657bd975b58afd3))
+
+
+### Bug Fixes
+
+* **core:** remove console log ([d1d5b59](https://github.com/haiilo/catalyst/commit/d1d5b597ca84b8a5f31ff297b1d90edb21127990))
+
 ## [9.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v9.0.0...catalyst-core-v9.1.0) (2024-01-24)
 
 
