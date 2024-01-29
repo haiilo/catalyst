@@ -88,7 +88,9 @@ export class CatIconRegistry {
     const iconEntries = Object.entries(icons);
     const iconSize = iconEntries.length;
     iconEntries.forEach(([name, data]) => this.icons.set(this.buildName(name, setName), data));
-    log.info(`[CatIconRegistry::${this.id}] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`);
+    log.info(
+      `[CatIconRegistry::${this.id}] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`
+    );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-added', { id: this.id, icons, setName }));
     return this;
   }
@@ -96,7 +98,11 @@ export class CatIconRegistry {
   removeIcons(names: string[], setName?: string, silent = false): CatIconRegistry {
     const iconSize = names.length;
     names.forEach(name => this.icons.delete(this.buildName(name, setName)));
-    log.info(`[CatIconRegistry::${this.id}] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` from set ${setName}` : ''}`);
+    log.info(
+      `[CatIconRegistry::${this.id}] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${
+        setName ? ` from set ${setName}` : ''
+      }`
+    );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-removed', { id: this.id, names, setName }));
     return this;
   }
