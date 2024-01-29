@@ -39,7 +39,7 @@ alias pnt='pnpm run test'
 
 ## Release
 
-### Creating a new version
+### Creating a new version via CI (recommended)
 
 The entire release process is automated via Google's [release please](https://github.com/googleapis/release-please) action. Release Please automates `CHANGELOG` generation, the creation of GitHub releases, and version bumps for all projects of the monorepo. As of now, the version numbers of all projects are kept in sync. That means that releasing a new version will increase the version of every project, even if the project has not been changed.
 
