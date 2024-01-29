@@ -151,10 +151,10 @@ importers:
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        specifier: '>=14.0.0'
         version: 14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@6.6.0)
       '@angular/core':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        specifier: '>=14.0.0'
         version: 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
       '@haiilo/catalyst':
         specifier: workspace:*
