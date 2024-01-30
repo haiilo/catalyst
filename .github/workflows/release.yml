@@ -16,7 +16,6 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         id: release
         with:
-          manifest-file: release-please-config.yml
           release-type: node
       - name: Checkout
         uses: actions/checkout@v4
