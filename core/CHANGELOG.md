@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.2...catalyst-core-v10.0.3) (2024-02-05)
+
+
+### Bug Fixes
+
+* **core:** fix broken month labels in datepicker (closes [#456](https://github.com/haiilo/catalyst/issues/456)) ([e4de85c](https://github.com/haiilo/catalyst/commit/e4de85c41840d37ce2c0bccbc122b9aa5739639b))
+
 ## [10.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.1...catalyst-core-v10.0.2) (2024-01-29)
 
 
