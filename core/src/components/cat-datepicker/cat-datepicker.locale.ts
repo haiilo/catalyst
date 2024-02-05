@@ -23,7 +23,7 @@ function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 
 }
 
 function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
-  const date = new Date();
+  const date = new Date(0);
   const format = new Intl.DateTimeFormat(language, { month }).format;
   return [...Array(12).keys()].map(month => format(new Date(date.getTime()).setUTCMonth(month)));
 }
