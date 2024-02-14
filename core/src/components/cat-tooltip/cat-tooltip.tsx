@@ -152,7 +152,11 @@ export class CatTooltip {
       await computePosition(this.trigger, this.tooltip, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatTooltip.OFFSET), flip(), shift({ padding: CatTooltip.SHIFT_PADDING })]
+        middleware: [
+          offset(CatTooltip.OFFSET),
+          flip({ fallbackAxisSideDirection: 'start' }),
+          shift({ padding: CatTooltip.SHIFT_PADDING })
+        ]
       }).then(({ x, y }) => {
         if (this.tooltip) {
           Object.assign(this.tooltip.style, {
