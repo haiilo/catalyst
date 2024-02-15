@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.3...catalyst-core-v10.0.4) (2024-02-15)
+
+
+### Bug Fixes
+
+* add flip fallback axis for tooltips ([#458](https://github.com/haiilo/catalyst/issues/458)) ([7e47cf1](https://github.com/haiilo/catalyst/commit/7e47cf18c0dc07b8bb032598de2511cb67d40ba4))
+
 ## [10.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.2...catalyst-core-v10.0.3) (2024-02-05)
 
 
