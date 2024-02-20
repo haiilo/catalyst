@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.4...catalyst-core-v10.0.5) (2024-02-20)
+
+
+### Bug Fixes
+
+* extend content width to 100% in cat-alert component ([96d9831](https://github.com/haiilo/catalyst/commit/96d9831049a69dbabe4d2de70b6e2983e2995d67))
+
 ## [10.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.3...catalyst-core-v10.0.4) (2024-02-15)
 
 
