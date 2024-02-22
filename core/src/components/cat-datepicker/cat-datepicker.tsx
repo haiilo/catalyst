@@ -298,6 +298,7 @@ export class CatDatepickerFlat {
 
   private initDatepicker(input?: HTMLInputElement): flatpickr.Instance | undefined {
     if (this.disabled || this.readonly || !input) {
+      console.log('test');
       return;
     }
 
