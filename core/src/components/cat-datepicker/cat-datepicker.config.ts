@@ -1,6 +1,7 @@
 import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { CatDatepickerMode } from './cat-datepicker.mode';
+import { Hook } from 'flatpickr/dist/types/options';
 
 export function getConfig(
   options: {
@@ -14,6 +15,9 @@ export function getConfig(
     readonly: boolean;
     nativePickerAttributes: { [key: string]: string };
     applyChange: (value?: string) => void;
+    appendTo?: HTMLElement | undefined;
+    position?: (instance: flatpickr.Instance, positionElement: HTMLElement | undefined) => void;
+    onReady?: Hook;
   },
   more: flatpickr.Options.Options = {}
 ): flatpickr.Options.Options {
@@ -40,10 +44,18 @@ export function getConfig(
     weekNumbers: true,
     minuteIncrement: options.step,
     clickOpens: !options.disabled && !options.readonly,
+    appendTo: options.appendTo,
+    // flatpickr has open bug about incorrect positioning when appendTo is used,
+    // we have to use custom logic to calculate position
+    // https://github.com/flatpickr/flatpickr/issues/1619
+    position: options.appendTo && options.position ? options.position : 'auto',
     onReady: (_dates, _dateStr, flatpickr) => {
       for (const key in options.nativePickerAttributes) {
         const value = options.nativePickerAttributes[key];
         flatpickr.calendarContainer.setAttribute(key, value);
+      }
+      if (options.appendTo && typeof options.onReady === 'function') {
+        options.onReady(_dates, _dateStr, flatpickr);
       }
     },
     onClose: function (dates, _dateStr, instance) {

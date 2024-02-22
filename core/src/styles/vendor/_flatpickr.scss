@@ -10,6 +10,7 @@
   border: 1px solid cat-token('color.ui.border.default');
   background: cat-token('color.ui.background.surface');
   padding: 1rem;
+  position: fixed;
 
   &:not(.inline).animate {
     transform: translateY(-1rem);

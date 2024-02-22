@@ -297,6 +297,10 @@ export namespace Components {
     }
     interface CatDatepicker {
         /**
+          * Instead of body, appends the calendar to the cat-datepicker element instead
+         */
+        "attachToElement": boolean;
+        /**
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
@@ -1993,6 +1997,10 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface CatDatepicker {
+        /**
+          * Instead of body, appends the calendar to the cat-datepicker element instead
+         */
+        "attachToElement"?: boolean;
         /**
           * Hint for form autofill feature.
          */
