@@ -192,19 +192,17 @@ export class CatDatepickerFlat {
   }
 
   @Watch('disabled')
-  onDisabledChanged(value: boolean) {
-    this.pickr?.set('clickOpens', !value && !this.readonly);
-    if (this.pickr?.altInput) {
-      this.pickr.altInput.disabled = value;
-    }
-  }
-
   @Watch('readonly')
-  onReadonlyChanged(value: boolean) {
-    this.pickr?.set('clickOpens', !value && !this.disabled);
-    if (this.pickr?.altInput) {
-      this.pickr.altInput.readOnly = value;
-    }
+  onDisabledChanged() {
+    // Dynamically changing 'disabled' value is not working due to a bug in the
+    // library. We thus need to fully recreate the date picker after the value
+    // has been updated.
+    this.pickr?.destroy();
+    this.pickr = undefined;
+    setTimeout(() => {
+      this.input ? this.input.disabled = this.disabled : null
+      this.pickr = this.initDatepicker(this.input);
+    });
   }
 
   componentDidLoad() {
