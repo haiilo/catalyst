@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
     test: new FormControl('test', [Validators.pattern('a+'), Validators.required, Validators.minLength(3)]),
     relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required]),
-    date: new FormControl(null, [Validators.required])
+    date: new FormControl(null, [Validators.required]),
+    datepickerDisabled: new FormControl(true)
   });
 
   countryConnector = countryConnector;
@@ -148,6 +149,20 @@ export class AppComponent implements OnInit {
     this.form.controls.test.valueChanges.subscribe(() => {
       this.form.controls.relatedInput.updateValueAndValidity();
     });
+    if (this.form.controls.datepickerDisabled.value) {
+      this.form.controls.date.disable();
+    } else {
+      this.form.controls.date.enable();
+    }
+  }
+
+  onCheckboxChange(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.form.controls.date.disable();
+    } else {
+      this.form.controls.date.enable();
+    }
   }
 
   equalTo(controlName: string) {

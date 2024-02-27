@@ -199,7 +199,10 @@ export class CatDatepickerFlat {
     // has been updated.
     this.pickr?.destroy();
     this.pickr = undefined;
-    setTimeout(() => (this.pickr = this.initDatepicker(this.input)));
+    setTimeout(() => {
+      this.input ? (this.input.disabled = this.disabled) : null;
+      this.pickr = this.initDatepicker(this.input);
+    });
   }
 
   componentDidLoad() {
@@ -297,7 +300,7 @@ export class CatDatepickerFlat {
   }
 
   private initDatepicker(input?: HTMLInputElement): flatpickr.Instance | undefined {
-    if (this.disabled || this.readonly || !input) {
+    if (!input) {
       return;
     }
 

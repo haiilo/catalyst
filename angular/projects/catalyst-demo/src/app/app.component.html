@@ -25,11 +25,26 @@
     [connector]="countryConnector"
     [clearable]="true"
   ></cat-select>
+  <!--  Datepicker Section 1 -->
+  <cat-checkbox #checkBox
+                label="Should disable next datepicker">
+  </cat-checkbox>
+  <cat-datepicker
+    [disabled]="checkBox.checked"
+    label="Datepicker"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="Depends on [disabled] attribute"
+  ></cat-datepicker>
+  <!--  Datepicker Section 2 -->
+  <cat-checkbox (catChange)="onCheckboxChange($event)"
+                formControlName="datepickerDisabled"
+                label="Should disable next datepicker">
+  </cat-checkbox>
   <cat-datepicker
     label="Datepicker"
     formControlName="date"
     [nativeAttributes]="{ 'data-test': 'test-attribute' }"
-    hint="this is a hint"
+    hint="Depends on formControl state"
   ></cat-datepicker>
   <formly-form [form]="form" [fields]="fields"></formly-form>
 </form>
