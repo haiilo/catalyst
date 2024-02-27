@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.6](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.5...catalyst-core-v10.0.6) (2024-02-27)
+
+
+### Bug Fixes
+
+* datepicker disabled state change is unstable ([#466](https://github.com/haiilo/catalyst/issues/466)) ([d287f49](https://github.com/haiilo/catalyst/commit/d287f492ddb9fcac9ff2875b0e37c707259ea420))
+
 ## [10.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.4...catalyst-core-v10.0.5) (2024-02-20)
 
 
