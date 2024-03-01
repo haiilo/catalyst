@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.0.7](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.6...catalyst-core-v10.0.7) (2024-03-01)
+
+
+### Bug Fixes
+
+* make mode dynamically changeable for datepicker ([#468](https://github.com/haiilo/catalyst/issues/468)) ([d17d28a](https://github.com/haiilo/catalyst/commit/d17d28a387f0299f8acf3fc0bf5ad963e67948d3))
+* make mode dynamically changeable for datepicker ([#468](https://github.com/haiilo/catalyst/issues/468)) ([d17d28a](https://github.com/haiilo/catalyst/commit/d17d28a387f0299f8acf3fc0bf5ad963e67948d3))
+
 ## [10.0.6](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.5...catalyst-core-v10.0.6) (2024-02-27)
 
 
