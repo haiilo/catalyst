@@ -206,7 +206,6 @@ export class CatDatepickerFlat {
     });
   }
 
-
   componentDidLoad() {
     this.pickr = this.initDatepicker(this.input);
   }
