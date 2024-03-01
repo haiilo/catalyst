@@ -27,10 +27,10 @@
   ></cat-select>
   <!--  Datepicker Section 1 -->
   <cat-checkbox #checkBox
-                label="Should disable next datepicker">
+                label="Should toggle between date and datetime">
   </cat-checkbox>
   <cat-datepicker
-    [disabled]="checkBox.checked"
+    [mode]="checkBox.checked ? 'date' : 'datetime'"
     label="Datepicker"
     [nativeAttributes]="{ 'data-test': 'test-attribute' }"
     hint="Depends on [disabled] attribute"

@@ -193,8 +193,9 @@ export class CatDatepickerFlat {
 
   @Watch('disabled')
   @Watch('readonly')
+  @Watch('mode')
   onDisabledChanged() {
-    // Dynamically changing 'disabled' value is not working due to a bug in the
+    // Dynamically changing config value is not working due to a bug in the
     // library. We thus need to fully recreate the date picker after the value
     // has been updated.
     this.pickr?.destroy();
