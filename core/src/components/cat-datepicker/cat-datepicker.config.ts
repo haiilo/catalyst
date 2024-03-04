@@ -1,7 +1,7 @@
 import flatpickr from 'flatpickr';
 import weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { CatDatepickerMode } from './cat-datepicker.mode';
-import { Hook } from 'flatpickr/dist/types/options';
+import { BaseOptions, Hook } from 'flatpickr/dist/types/options';
 
 export function getConfig(
   options: {
@@ -16,7 +16,7 @@ export function getConfig(
     nativePickerAttributes: { [key: string]: string };
     applyChange: (value?: string) => void;
     appendTo?: HTMLElement | undefined;
-    position?: (instance: flatpickr.Instance, positionElement: HTMLElement | undefined) => void | string;
+    position?: BaseOptions['position'];
     onReady?: Hook;
   },
   more: flatpickr.Options.Options = {}

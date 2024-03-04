@@ -8,6 +8,7 @@ import { getFormat } from './cat-datepicker.format';
 import { getLocale } from './cat-datepicker.locale';
 import { CatDatepickerMode } from './cat-datepicker.mode';
 import { autoUpdate, computePosition, flip, Placement, ReferenceElement } from '@floating-ui/dom';
+import { BaseOptions } from 'flatpickr/dist/types/options';
 
 @Component({
   tag: 'cat-datepicker',
@@ -144,7 +145,7 @@ export class CatDatepickerFlat {
    * Horizontal can be left, center or right.
    * If @attachToElement is passed the value should be in Placement format
    */
-  @Prop() position?: string | Placement;
+  @Prop() position?: BaseOptions['position'] | Placement;
 
   /**
    * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
@@ -341,7 +342,7 @@ export class CatDatepickerFlat {
           ? (flatpickr, positionElement) => {
               this.updatePosition(flatpickr, positionElement);
             }
-          : (this.position as string) || undefined,
+          : (this.position as BaseOptions['position']) || undefined,
         onReady: (_dates, _dateStr, flatpickr) => {
           autoUpdate(input, flatpickr.calendarContainer, () => this.updatePosition(flatpickr, flatpickr._input));
         },
