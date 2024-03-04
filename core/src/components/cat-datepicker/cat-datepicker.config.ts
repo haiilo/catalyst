@@ -16,7 +16,7 @@ export function getConfig(
     nativePickerAttributes: { [key: string]: string };
     applyChange: (value?: string) => void;
     appendTo?: HTMLElement | undefined;
-    position?: (instance: flatpickr.Instance, positionElement: HTMLElement | undefined) => void;
+    position?: (instance: flatpickr.Instance, positionElement: HTMLElement | undefined) => void | string;
     onReady?: Hook;
   },
   more: flatpickr.Options.Options = {}
@@ -45,10 +45,7 @@ export function getConfig(
     minuteIncrement: options.step,
     clickOpens: !options.disabled && !options.readonly,
     appendTo: options.appendTo,
-    // flatpickr has open bug about incorrect positioning when appendTo is used,
-    // we have to use custom logic to calculate position
-    // https://github.com/flatpickr/flatpickr/issues/1619
-    position: options.appendTo && options.position ? options.position : 'auto',
+    position: options.position ? options.position : 'auto',
     onReady: (_dates, _dateStr, flatpickr) => {
       for (const key in options.nativePickerAttributes) {
         const value = options.nativePickerAttributes[key];

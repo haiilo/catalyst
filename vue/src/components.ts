@@ -117,6 +117,7 @@ export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('c
   'required',
   'step',
   'attachToElement',
+  'position',
   'value',
   'errors',
   'errorUpdate',

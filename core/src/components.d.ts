@@ -7,15 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
-import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
+import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { InputType } from "./components/cat-input/input-type";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
-export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
+export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { InputType } from "./components/cat-input/input-type";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
@@ -385,6 +385,11 @@ export namespace Components {
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
+        /**
+          * Where the calendar is rendered relative to the input vertically and horizontally. In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required). Horizontal can be left, center or right. If
+          * @attachToElement is passed the value should be in Placement format
+         */
+        "position"?: string | Placement;
         /**
           * The value is not editable.
          */
@@ -2089,6 +2094,11 @@ declare namespace LocalJSX {
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
+        /**
+          * Where the calendar is rendered relative to the input vertically and horizontally. In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required). Horizontal can be left, center or right. If
+          * @attachToElement is passed the value should be in Placement format
+         */
+        "position"?: string | Placement;
         /**
           * The value is not editable.
          */
