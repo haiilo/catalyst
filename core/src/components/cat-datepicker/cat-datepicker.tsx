@@ -7,6 +7,8 @@ import { getConfig } from './cat-datepicker.config';
 import { getFormat } from './cat-datepicker.format';
 import { getLocale } from './cat-datepicker.locale';
 import { CatDatepickerMode } from './cat-datepicker.mode';
+import { autoUpdate, computePosition, flip, Placement, ReferenceElement } from '@floating-ui/dom';
+import { BaseOptions } from 'flatpickr/dist/types/options';
 
 @Component({
   tag: 'cat-datepicker',
@@ -16,6 +18,7 @@ import { CatDatepickerMode } from './cat-datepicker.mode';
 export class CatDatepickerFlat {
   private pickr?: flatpickr.Instance;
   private _input?: HTMLCatInputElement;
+  private _calendarWrapper?: HTMLDivElement;
   private get input(): HTMLInputElement | undefined {
     return this._input?.shadowRoot?.querySelector('input') ?? undefined;
   }
@@ -130,6 +133,19 @@ export class CatDatepickerFlat {
    * The step size to use when changing the time.
    */
   @Prop() step = 5;
+
+  /**
+   * Instead of body, appends the calendar to the cat-datepicker element instead
+   */
+  @Prop() attachToElement = false;
+
+  /**
+   * Where the calendar is rendered relative to the input vertically and horizontally.
+   * In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required).
+   * Horizontal can be left, center or right.
+   * If @attachToElement is passed the value should be in Placement format
+   */
+  @Prop() position?: BaseOptions['position'] | Placement;
 
   /**
    * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
@@ -249,7 +265,7 @@ export class CatDatepickerFlat {
   }
 
   render() {
-    return (
+    return [
       <cat-input
         ref={el => (this._input = el)}
         requiredMarker={this.requiredMarker}
@@ -296,8 +312,9 @@ export class CatDatepickerFlat {
             <slot name="hint"></slot>
           </span>
         )}
-      </cat-input>
-    );
+      </cat-input>,
+      <div ref={el => (this._calendarWrapper = el)} class="datepicker-wrapper"></div>
+    ];
   }
 
   private initDatepicker(input?: HTMLInputElement): flatpickr.Instance | undefined {
@@ -320,9 +337,40 @@ export class CatDatepickerFlat {
         step: this.step,
         disabled: this.disabled,
         readonly: this.readonly,
+        appendTo: this.attachToElement ? this._calendarWrapper : undefined,
         nativePickerAttributes: { ...nativePickerAttributes, ...this.nativePickerAttributes },
+        // flatpickr has open bug about incorrect positioning when appendTo is used,
+        // we have to use custom logic to calculate position
+        // https://github.com/flatpickr/flatpickr/issues/1619
+        position: this.attachToElement
+          ? (flatpickr, positionElement) => {
+              this.updatePosition(flatpickr, positionElement);
+            }
+          : (this.position as BaseOptions['position']) || undefined,
+        onReady: (_dates, _dateStr, flatpickr) => {
+          autoUpdate(input, flatpickr.calendarContainer, () => this.updatePosition(flatpickr, flatpickr._input));
+        },
         applyChange: value => (this.value = value)
       })
     );
+  }
+
+  private updatePosition(flatpickr: flatpickr.Instance, positionElement: HTMLElement | undefined): void {
+    if (positionElement) {
+      computePosition(positionElement as ReferenceElement, flatpickr.calendarContainer, {
+        strategy: 'fixed',
+        placement: this.position || 'bottom-start',
+        middleware: [flip()]
+      }).then(({ x, y, placement }) => {
+        if (flatpickr.calendarContainer) {
+          flatpickr.calendarContainer.dataset.placement = placement;
+          Object.assign(flatpickr.calendarContainer.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+            position: 'fixed'
+          });
+        }
+      });
+    }
   }
 }

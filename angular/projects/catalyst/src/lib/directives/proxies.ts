@@ -280,6 +280,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 @ProxyCmp({
   inputs: [
+    'attachToElement',
     'autoComplete',
     'clearable',
     'disabled',
@@ -299,6 +300,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'nativeAttributes',
     'nativePickerAttributes',
     'placeholder',
+    'position',
     'readonly',
     'required',
     'requiredMarker',
@@ -315,6 +317,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'attachToElement',
     'autoComplete',
     'clearable',
     'disabled',
@@ -334,6 +337,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'nativeAttributes',
     'nativePickerAttributes',
     'placeholder',
+    'position',
     'readonly',
     'required',
     'requiredMarker',

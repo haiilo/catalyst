@@ -13,6 +13,7 @@ describe('cat-datepicker', () => {
       <cat-datepicker label="Label">
         <mock:shadow-root>
           <cat-input errorupdate="0" label="Label" requiredmarker="optional"></cat-input>
+          <div class="datepicker-wrapper"></div>
         </mock:shadow-root>
       </cat-datepicker>
     `);

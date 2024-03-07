@@ -1,5 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@import '~flatpickr/dist/flatpickr.css';
+@import 'vendor/flatpickr';
 
 :host {
   display: flex;
