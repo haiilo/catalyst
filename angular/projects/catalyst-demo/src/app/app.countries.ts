@@ -11,7 +11,7 @@ export const countries: Country[] = [
   { id: '2', country: 'Algeria' },
   { id: '3', country: 'American Samoa' },
   { id: '4', country: 'Andorra' },
-  { id: '5', country: 'Angola' }
+  { id: '5', country: 'Germany' }
 ];
 
 export const countryConnector: any = {
