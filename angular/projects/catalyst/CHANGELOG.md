@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.7...catalyst-angular-v10.1.0) (2024-03-07)
+
+
+### Features
+
+* add attachToElement and position properties to cat-datepicker component ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+* add attachToElement property to cat-datepicker component ([#462](https://github.com/haiilo/catalyst/issues/462)) ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+
 ## [10.0.7](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.6...catalyst-angular-v10.0.7) (2024-03-01)
 
 
