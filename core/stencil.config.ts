@@ -97,7 +97,8 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts',
-      valueAccessorConfigs: angularValueAccessorBindings
+      valueAccessorConfigs: angularValueAccessorBindings,
+      outputType: 'standalone'
     }),
     reactOutputTarget({
       componentCorePackage: '@haiilo/catalyst',

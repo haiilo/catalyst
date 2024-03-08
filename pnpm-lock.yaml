@@ -230,8 +230,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       '@stencil/angular-output-target':
-        specifier: ^0.8.3
-        version: 0.8.3(@stencil/core@4.8.0)
+        specifier: ^0.8.4
+        version: 0.8.4(@stencil/core@4.8.0)
       '@stencil/react-output-target':
         specifier: ^0.5.3
         version: 0.5.3(@stencil/core@4.8.0)
@@ -3489,8 +3489,8 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: true
 
-  /@stencil/angular-output-target@0.8.3(@stencil/core@4.8.0):
-    resolution: {integrity: sha512-I/QO1sEx09WWUaNlA30EBhlXYftOSfSBTwYBwC65qlpHDIlD5WU3EAtKhU5IphfwhxnD63kvOoU1YvTUXFHNng==}
+  /@stencil/angular-output-target@0.8.4(@stencil/core@4.8.0):
+    resolution: {integrity: sha512-QvmHTueXXs5vB9W2L12uEzFmAuR8sqATJV2b+SCFmYsjJSaymiSqR3dKo2wnr0tZiTgU1t16BWaUKiSh3wPXpw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:

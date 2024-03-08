@@ -1,3 +1,5 @@
+import type { CatI18nTranslationFn } from '../cat-i18n-registry';
+
 export class CatI18nRegistry {
   static getInstance() {
     return new CatI18nRegistry();
@@ -11,11 +13,7 @@ export class CatI18nRegistry {
     // NOOP
   }
 
-  set(_i18n: { [key: string]: string }): void {
-    // NOOP
-  }
-
-  clear(): void {
+  set(_translationFn: CatI18nTranslationFn): void {
     // NOOP
   }
 
