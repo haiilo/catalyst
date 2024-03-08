@@ -2,6 +2,101 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.1.2](https://github.com/haiilo/catalyst/compare/v6.5.1...v10.1.2) (2024-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y (#451)
+* **core:** make translator property in i18n service private. use set() to update it
+* **tokens:** rename --font-family-body to font-family-base
+* **core:** full rework of editorial typo styles incl. removal of default margins (#405)
+
+### Features
+
+* add attachToElement property to cat-datepicker component ([#462](https://github.com/haiilo/catalyst/issues/462)) ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+* add cat-label css class helper ([bd56b19](https://github.com/haiilo/catalyst/commit/bd56b195455daa0aa02afcbda91ad1ce5e77b3e7))
+* add new info state to theming ([3c8c2ba](https://github.com/haiilo/catalyst/commit/3c8c2ba41fb38e2158de8809ec816d4df31e8890))
+* add space-between alignment for dialog actions buttons ([#450](https://github.com/haiilo/catalyst/issues/450)) ([a4abb0f](https://github.com/haiilo/catalyst/commit/a4abb0f458fcefd8641ad768a512de16ae371057))
+* add styles for cat-dialog-pull-out class ([#448](https://github.com/haiilo/catalyst/issues/448)) ([acba12b](https://github.com/haiilo/catalyst/commit/acba12b1a2efba2c45cca907707a9c05ac2f4c8e))
+* **angular:** add panelClass to dialogs ([214e44e](https://github.com/haiilo/catalyst/commit/214e44e35f21b7529697e7a710f6321181a7cfb1))
+* **angular:** added errorInit to show form errors directly after initialization (default: false) ([c18a400](https://github.com/haiilo/catalyst/commit/c18a4000c1f3e0360f95ba838726f0a600a23c22))
+* **angular:** adjust peer dependency versions for angular and angular CDK ([a6403f7](https://github.com/haiilo/catalyst/commit/a6403f7142dfe7ed926aa646571f8752015eaff6))
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451)) ([2e48742](https://github.com/haiilo/catalyst/commit/2e48742bbfb5d4071ecd8efa09ab99e352b27c6f))
+* **angular:** improve i18n logging ([bdf0979](https://github.com/haiilo/catalyst/commit/bdf09796133a5d046a61b78c8657bd975b58afd3))
+* **angular:** update prettier ([eb1b37e](https://github.com/haiilo/catalyst/commit/eb1b37e073cbc1bfd9fe1fa916fe43687f095730))
+* bootstrap releases ([#402](https://github.com/haiilo/catalyst/issues/402)) ([70c28a8](https://github.com/haiilo/catalyst/commit/70c28a83ae1897f773cb10000f771eceeb8cd976))
+* **core:** add more select connector helpers ([98bad9a](https://github.com/haiilo/catalyst/commit/98bad9aa890eb553d9227c100cdb4fae76c27dc6))
+* **core:** add password toggle button to inputs ([6779f5d](https://github.com/haiilo/catalyst/commit/6779f5d91572ea6f1d9131b944c2f1e0c0767fca))
+* **core:** add select methods for focus and blur ([1d3ac8f](https://github.com/haiilo/catalyst/commit/1d3ac8f2dc73ec1cbcc76a8407fb7ebeb754ba98))
+* **core:** full rework of editorial typo styles incl. removal of default margins ([#405](https://github.com/haiilo/catalyst/issues/405)) ([70e6b9e](https://github.com/haiilo/catalyst/commit/70e6b9ea687f68fad5f1fa6da42e1f917133d584))
+* **core:** make translator property in i18n service private. use set() to update it ([d4c21e5](https://github.com/haiilo/catalyst/commit/d4c21e5711d1a99d1929446946c8a3c8c9beb7c3))
+* **core:** move to @stencil/core v4.8.0 ([f272cbb](https://github.com/haiilo/catalyst/commit/f272cbb3147434fb4adefc3db29cb0e3bc7aa7a8))
+* **core:** streamline CSS shadow parts on form elements ([5dd17a4](https://github.com/haiilo/catalyst/commit/5dd17a4bf92363ee0a759cee1085a29e02cbad38))
+* **core:** support error state of tabs ([ebc28b0](https://github.com/haiilo/catalyst/commit/ebc28b0a4fb0c97555af410259b888c132a11e4e))
+* **core:** support slotted labels and hints in datepicker (closes [#424](https://github.com/haiilo/catalyst/issues/424)) ([6ac32a4](https://github.com/haiilo/catalyst/commit/6ac32a4d876cadc76f0ac7c80c5efc2023f9608f))
+* **core:** update eslint ([9e16908](https://github.com/haiilo/catalyst/commit/9e1690808d83ced15855a67efbc98fb09299715c))
+* **core:** update icons to v2.1.0 ([66015d0](https://github.com/haiilo/catalyst/commit/66015d0e5eec2295f00af66bfdb2572eb6c32939))
+* **core:** update prettier to v3.1.0 ([6821fad](https://github.com/haiilo/catalyst/commit/6821fad0a7bef4a0be664c601854d9afa1f84bf0))
+* **core:** update ts and finally move to jest v29 ([6a1c0ac](https://github.com/haiilo/catalyst/commit/6a1c0acd633bd02eab4f03139038a1921e9c9508))
+* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
+* **tokens:** update styledictionary ([e97cbcd](https://github.com/haiilo/catalyst/commit/e97cbcd70d4d613aa8c16f298afd8bbff41cb9f4))
+* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
+
+
+### Bug Fixes
+
+* 21242 as the motion reduction implementation prevents transition dom events from firing ([#417](https://github.com/haiilo/catalyst/issues/417)) ([672a027](https://github.com/haiilo/catalyst/commit/672a02797e777def2fdefda00bef6e020914d216))
+* add flip fallback axis for tooltips ([#458](https://github.com/haiilo/catalyst/issues/458)) ([7e47cf1](https://github.com/haiilo/catalyst/commit/7e47cf18c0dc07b8bb032598de2511cb67d40ba4))
+* adjust release please ci setup ([7550312](https://github.com/haiilo/catalyst/commit/75503127c5f32f8fb2bcd43d54441db67d785159))
+* adjust release please ci setup ([fd7a0d5](https://github.com/haiilo/catalyst/commit/fd7a0d55b2688b422166d0d5b378142b6b6d99b2))
+* **angular-formly:** add missing errorInit prop to formly bindings ([77ad994](https://github.com/haiilo/catalyst/commit/77ad99422935de2e43d3f119a6073bb1c019fe50))
+* **angular:** add germany as language ([#477](https://github.com/haiilo/catalyst/issues/477)) ([99e28d5](https://github.com/haiilo/catalyst/commit/99e28d5b65c8795c42abd09891f21fcfd656f5ec))
+* backport jest ([1e498df](https://github.com/haiilo/catalyst/commit/1e498dfc380e7c7a4c240e1150a60c4a13e92962))
+* cleanup ([07ec13d](https://github.com/haiilo/catalyst/commit/07ec13d88bd9d77944f4b9f8ec2850ab0474afb9))
+* **core:** activeTab in tabs is not mutable (closes [#406](https://github.com/haiilo/catalyst/issues/406)) ([8d9f87c](https://github.com/haiilo/catalyst/commit/8d9f87c9b76114c5cf0b0e416f2c34ad67a38f12))
+* **core:** add missing color helpers ([3067619](https://github.com/haiilo/catalyst/commit/30676191c68b6280a0775887c77de9b0cf905890))
+* **core:** add missing spacer var for forms ([8cfea11](https://github.com/haiilo/catalyst/commit/8cfea11362e3c00d09232a7ef27b9a88b5f851c8))
+* **core:** add missing translation keys to CDN version ([c8fce82](https://github.com/haiilo/catalyst/commit/c8fce82f0d9d93ed75c30f97a9c71f2ad795a749))
+* **core:** adjust spacings ([6379808](https://github.com/haiilo/catalyst/commit/6379808dbdc7c29c378d27e3777489bcb055053e))
+* **core:** avoid flex wrap in single selects ([e09fba1](https://github.com/haiilo/catalyst/commit/e09fba140fe5f2606eafcd8fe6073c122a580c56))
+* **core:** emit catClick on tab click (closes [#416](https://github.com/haiilo/catalyst/issues/416)) ([73a5a95](https://github.com/haiilo/catalyst/commit/73a5a95a384e66d075cd75b39be42cee9c102c4c))
+* **core:** fix broken catalyst color references in tooltips, alerts and color utilities ([25112fe](https://github.com/haiilo/catalyst/commit/25112feb4e59bae88494c0eeb6475b7faff30aba))
+* **core:** fix broken datepicker days (closes [#438](https://github.com/haiilo/catalyst/issues/438)) ([adc48b9](https://github.com/haiilo/catalyst/commit/adc48b997922651a430f2c9486c06bc0ab65377e))
+* **core:** fix broken dialog background (closes [#436](https://github.com/haiilo/catalyst/issues/436)) ([0dab1ad](https://github.com/haiilo/catalyst/commit/0dab1ad459d6d4ad75ff12f8e52868f2a816be0c))
+* **core:** fix broken dialog background definition ([795956d](https://github.com/haiilo/catalyst/commit/795956d9e07d8b83947f587ff0b2abe99dbda605))
+* **core:** fix broken month labels in datepicker (closes [#456](https://github.com/haiilo/catalyst/issues/456)) ([e4de85c](https://github.com/haiilo/catalyst/commit/e4de85c41840d37ce2c0bccbc122b9aa5739639b))
+* **core:** fix broken scss build ([386f978](https://github.com/haiilo/catalyst/commit/386f97822a96304867c0a3ac8abb03966eecf945))
+* **core:** fix broken tests in CI ([e65f344](https://github.com/haiilo/catalyst/commit/e65f344affa6eb9abb9391e40a2bb26ca1ed7cb6))
+* **core:** fix broken week day names in datepicker ([35d8e12](https://github.com/haiilo/catalyst/commit/35d8e1237bacdfbc438120c6f07213acb1d9492b))
+* **core:** fix linting error ([1fd2512](https://github.com/haiilo/catalyst/commit/1fd2512de6cacab51ba0811b3d549a2e563eb349))
+* **core:** fix pnpm lock file ([#476](https://github.com/haiilo/catalyst/issues/476)) ([e73475a](https://github.com/haiilo/catalyst/commit/e73475a28d5368315b6c89f3afd2fcc6a5c07aa3))
+* **core:** fix wrng indentation of radio buttons ([6260e58](https://github.com/haiilo/catalyst/commit/6260e58ca1bcea71c96619a9e3feee1d6b82a6a0))
+* **core:** improve formly handling and select connector utils ([33ccc89](https://github.com/haiilo/catalyst/commit/33ccc8991f194ad7fc626162e8d4bc7d053447ee))
+* **core:** language switch is broken in demo page ([4de6e94](https://github.com/haiilo/catalyst/commit/4de6e9470bf713d7cc73b23f43a58fca29b6795f))
+* **core:** radio buttons accept non-string values ([dec8302](https://github.com/haiilo/catalyst/commit/dec83025c9fad14e1fd68fc1220a1af422bb7aac))
+* **core:** remove console log ([d1d5b59](https://github.com/haiilo/catalyst/commit/d1d5b597ca84b8a5f31ff297b1d90edb21127990))
+* **core:** remove prettier errors ([5ab6dbc](https://github.com/haiilo/catalyst/commit/5ab6dbcf230f0355af21ed6dfe2a8cda8357bcdc))
+* **core:** remove unneded margin overwrite from catalyst headline classes ([25ffe00](https://github.com/haiilo/catalyst/commit/25ffe0057bcc56eadf282e20c5c45151e372b980))
+* **core:** set bold font to 700 ([932551a](https://github.com/haiilo/catalyst/commit/932551a5d36531f01fd606c34e270f000adb62cf))
+* **core:** support narrow articles ([edd7092](https://github.com/haiilo/catalyst/commit/edd709270351c6c596bebf382abee2385e986397))
+* **core:** tooltips are announced by the screenreader (closes [#425](https://github.com/haiilo/catalyst/issues/425)) ([71df679](https://github.com/haiilo/catalyst/commit/71df679c068d62f86913f0de9a1730a8006edf19))
+* **core:** update lockfile ([6278c0d](https://github.com/haiilo/catalyst/commit/6278c0d748be4ee4cc793956626c3907271cc8de))
+* **core:** xs icon buttons have wrong height ([28fc081](https://github.com/haiilo/catalyst/commit/28fc0815438eac2645b08631f6c157ec1b758609))
+* datepicker disabled state change is unstable ([#466](https://github.com/haiilo/catalyst/issues/466)) ([d287f49](https://github.com/haiilo/catalyst/commit/d287f492ddb9fcac9ff2875b0e37c707259ea420))
+* extend content width to 100% in cat-alert component ([96d9831](https://github.com/haiilo/catalyst/commit/96d9831049a69dbabe4d2de70b6e2983e2995d67))
+* fix pnpm lock file ([#474](https://github.com/haiilo/catalyst/issues/474)) ([1c22734](https://github.com/haiilo/catalyst/commit/1c22734109b68bb4f5b246c5a930cc027d1dddf1))
+* make mode dynamically changeable for datepicker ([#468](https://github.com/haiilo/catalyst/issues/468)) ([d17d28a](https://github.com/haiilo/catalyst/commit/d17d28a387f0299f8acf3fc0bf5ad963e67948d3))
+* release.yml ([baf99ea](https://github.com/haiilo/catalyst/commit/baf99ea32d32e267410e4e6cb77590ff7831650a))
+* run prettier after build ([10e973c](https://github.com/haiilo/catalyst/commit/10e973cec4c69667cad7b0213462ce8a44b66df6))
+* **tokens:** fix broken token build ([be1d67c](https://github.com/haiilo/catalyst/commit/be1d67c69774541443028d896cc4013b2f459673))
+* **tokens:** rename --font-family-body to font-family-base ([c6804d9](https://github.com/haiilo/catalyst/commit/c6804d93a6f96294f36c9c79fce557eac3940f67))
+* trigger new release ([7c8b7a1](https://github.com/haiilo/catalyst/commit/7c8b7a1762b60199704936694fd81b6c005f67c2))
+* update lock file ([#471](https://github.com/haiilo/catalyst/issues/471)) ([6eda0b7](https://github.com/haiilo/catalyst/commit/6eda0b7a87cc54064f4a1cddfc322ee09e8cf52d))
+* update lockfile ([fdc3ab0](https://github.com/haiilo/catalyst/commit/fdc3ab0573d37177fd3b99e43850f41cd63f4e7e))
+* update release-please config ([619c19e](https://github.com/haiilo/catalyst/commit/619c19ec443613a0c17e6c632d5c9966613dc68c))
+* update typo styles for nested links in alerts ([4ca67d9](https://github.com/haiilo/catalyst/commit/4ca67d912dbc3cfa90fe6889034819d45175a4ca))
+
 ### [10.1.1](https://github.com/haiilo/catalyst/compare/v6.5.1...v10.1.1) (2024-03-08)
 
 
