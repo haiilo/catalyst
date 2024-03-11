@@ -359,7 +359,7 @@ export class CatDatepickerFlat {
     if (positionElement) {
       computePosition(positionElement as ReferenceElement, flatpickr.calendarContainer, {
         strategy: 'fixed',
-        placement: this.position || 'bottom-start',
+        placement: (this.position as Placement) || 'bottom-start',
         middleware: [flip()]
       }).then(({ x, y, placement }) => {
         if (flatpickr.calendarContainer) {
