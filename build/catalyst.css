@@ -1590,6 +1590,10 @@ body {
  *        |- .cat-dialog-content
  *        |- .cat-dialog-actions
 **/
+.cat-backdrop {
+  background-color: rgb(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
+}
+
 .cat-dialog {
   display: flex;
   flex-direction: column;
