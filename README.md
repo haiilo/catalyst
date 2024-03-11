@@ -63,7 +63,7 @@ All projects in the repository are using [semantic-release](https://www.npmjs.co
 
 **Note:** Make sure you are logged in with your npm account and you have permissions to release under the haiilo organisation. Otherwise contact one of the collaborators to request access.
 
-## Code Contributors
+## Code contributors
 
 This project exists thanks to all the people who contribute.
 
