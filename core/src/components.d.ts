@@ -390,7 +390,7 @@ export namespace Components {
           * Where the calendar is rendered relative to the input vertically and horizontally. In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required). Horizontal can be left, center or right. If
           * @attachToElement is passed the value should be in Placement format
          */
-        "position"?: BaseOptions["position"] | Placement;
+        "position"?: BaseOptions['position'] | Placement;
         /**
           * The value is not editable.
          */
@@ -2099,7 +2099,7 @@ declare namespace LocalJSX {
           * Where the calendar is rendered relative to the input vertically and horizontally. In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required). Horizontal can be left, center or right. If
           * @attachToElement is passed the value should be in Placement format
          */
-        "position"?: BaseOptions["position"] | Placement;
+        "position"?: BaseOptions['position'] | Placement;
         /**
           * The value is not editable.
          */
