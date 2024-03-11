@@ -56,6 +56,12 @@ Type: `Promise<void>`
 Programmatically move focus to the toggle. Use this method instead of
 `input.focus()`.
 
+#### Parameters
+
+| Name      | Type                        | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
+
 #### Returns
 
 Type: `Promise<void>`

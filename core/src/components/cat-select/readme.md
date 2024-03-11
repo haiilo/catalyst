@@ -64,6 +64,12 @@ Type: `Promise<void>`
 
 Connect the functions of the select
 
+#### Parameters
+
+| Name        | Type                      | Description                                     |
+| ----------- | ------------------------- | ----------------------------------------------- |
+| `connector` | `CatSelectConnector<any>` | - The {@link CatSelectConnector} of the select. |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -85,6 +91,12 @@ Type: `Promise<void>`
 
 Programmatically move focus to the input. Use this method instead of
 `input.focus()`.
+
+#### Parameters
+
+| Name      | Type                        | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
 
 #### Returns
 

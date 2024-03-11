@@ -15,6 +15,7 @@ import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValu
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
+export { BaseOptions } from "flatpickr/dist/types/options";
 export { Placement } from "@floating-ui/dom";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { InputType } from "./components/cat-input/input-type";
