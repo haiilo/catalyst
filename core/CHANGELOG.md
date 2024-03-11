@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.1.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.1.0...catalyst-core-v10.1.1) (2024-03-11)
+
+
+### Bug Fixes
+
+* **core:** fix position type for datepicker ([#479](https://github.com/haiilo/catalyst/issues/479)) ([6588692](https://github.com/haiilo/catalyst/commit/6588692faec3f7c1ebd4d62a76bfc90896479800))
+
 ## [10.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.0.7...catalyst-core-v10.1.0) (2024-03-07)
 
 
