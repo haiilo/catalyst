@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.1.1...catalyst-core-v10.2.0) (2024-03-12)
+
+
+### Features
+
+* **core:** update dependencies ([2bfadd1](https://github.com/haiilo/catalyst/commit/2bfadd1aa3fe38bb3f1ecbe8ff329f77d6d28555))
+
+
+### Bug Fixes
+
+* **core:** add missing styles ([83f5b69](https://github.com/haiilo/catalyst/commit/83f5b69cbfe14a2abb38b681d248a36b8ce4dae8))
+
 ## [10.1.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.1.0...catalyst-core-v10.1.1) (2024-03-11)
 
 

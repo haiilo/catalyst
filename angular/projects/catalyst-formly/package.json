@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-angular-formly",
-  "version": "10.1.1",
+  "version": "10.2.0",
   "description": "Angular Formly bindings for Catalyst Design System",
   "license": "MIT",
   "scripts": {

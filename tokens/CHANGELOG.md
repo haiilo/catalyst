@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.1.1...catalyst-tokens-v10.2.0) (2024-03-12)
+
+
+### Features
+
+* **core:** update dependencies ([2bfadd1](https://github.com/haiilo/catalyst/commit/2bfadd1aa3fe38bb3f1ecbe8ff329f77d6d28555))
+
+
+### Bug Fixes
+
+* **tokens:** fix wrong CSS property names for info theme ([2ba027d](https://github.com/haiilo/catalyst/commit/2ba027dd8554210fcc97214c6bad8d461cc838d2))
+
 ## [10.1.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.1.0...catalyst-tokens-v10.1.1) (2024-03-11)
 
 
