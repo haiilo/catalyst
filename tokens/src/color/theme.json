@@ -154,47 +154,47 @@
         "bg": {
           "$type": "color",
           "$value": "{color.base.blue.400.value}",
-          "cssProp": "success-bg"
+          "cssProp": "info-bg"
         },
         "bgHover": {
           "$type": "color",
           "$value": "{color.base.blue.500.value}",
-          "cssProp": "success-bg-hover"
+          "cssProp": "info-bg-hover"
         },
         "bgActive": {
           "$type": "color",
           "$value": "{color.base.blue.600.value}",
-          "cssProp": "success-bg-active"
+          "cssProp": "info-bg-active"
         },
         "fill": {
           "$type": "color",
           "$value": "{color.base.white.value}",
-          "cssProp": "success-fill"
+          "cssProp": "info-fill"
         },
         "fillHover": {
           "$type": "color",
           "$value": "{color.base.white.value}",
-          "cssProp": "success-fill-hover"
+          "cssProp": "info-fill-hover"
         },
         "fillActive": {
           "$type": "color",
           "$value": "{color.base.white.value}",
-          "cssProp": "success-fill-active"
+          "cssProp": "info-fill-active"
         },
         "text": {
           "$type": "color",
           "$value": "{color.base.blue.400.value}",
-          "cssProp": "success-text"
+          "cssProp": "info-text"
         },
         "textHover": {
           "$type": "color",
           "$value": "{color.base.blue.500.value}",
-          "cssProp": "success-text-hover"
+          "cssProp": "info-text-hover"
         },
         "textActive": {
           "$type": "color",
           "$value": "{color.base.blue.600.value}",
-          "cssProp": "success-text-active"
+          "cssProp": "info-text-active"
         }
       },
       "success": {
