@@ -50,13 +50,13 @@
   },
   "engines": {
     "pnpm": ">=8.0.0",
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "husky": "^8.0.3",
-    "replace-in-file": "^7.0.2",
+    "replace-in-file": "^7.1.0",
     "standard-version": "^9.5.0"
   }
 }
