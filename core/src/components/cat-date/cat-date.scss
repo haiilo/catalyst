@@ -1,0 +1,26 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  h3 {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.day-disabled {
+  color: cat-token('color.ui.font.muted');
+}
