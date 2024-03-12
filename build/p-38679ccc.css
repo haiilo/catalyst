@@ -2337,11 +2337,11 @@ code {
 }
 
 .cat-bg-info {
-  background-color: rgb(var(--cat-success-bg, 0, 115, 230)) !important;
-  color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
-  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
-  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
-  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
+  background-color: rgb(var(--cat-info-bg, 0, 115, 230)) !important;
+  color: rgb(var(--cat-info-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-info-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-info-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-info-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2349,17 +2349,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-info-hover:hover {
-  background-color: rgb(var(--cat-success-bg-hover, 0, 107, 227)) !important;
-  color: rgb(var(--cat-success-fill-hover, 255, 255, 255)) !important;
-  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
-  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
-  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
+  background-color: rgb(var(--cat-info-bg-hover, 0, 107, 227)) !important;
+  color: rgb(var(--cat-info-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-info-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-info-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-info-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-info,
 .cat-link-info {
-  color: rgb(var(--cat-success-text, 0, 115, 230)) !important;
+  color: rgb(var(--cat-info-text, 0, 115, 230)) !important;
 }
 
 .cat-link-info,
@@ -2368,11 +2368,11 @@ code {
 }
 .cat-link-info:hover,
 .cat-text-info-hover:hover {
-  color: rgb(var(--cat-success-text-hover, 0, 107, 227)) !important;
+  color: rgb(var(--cat-info-text-hover, 0, 107, 227)) !important;
 }
 .cat-link-info:active,
 .cat-text-info-hover:active {
-  color: rgb(var(--cat-success-text-active, 0, 96, 223)) !important;
+  color: rgb(var(--cat-info-text-active, 0, 96, 223)) !important;
 }
 
 .cat-bg-success {
