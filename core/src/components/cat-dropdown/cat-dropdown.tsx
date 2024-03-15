@@ -75,6 +75,7 @@ export class CatDropdown {
   /**
    * Toggles the dropdown.
    */
+  @Method()
   async toggle(): Promise<void> {
     this.isOpen ? this.close() : this.open();
   }
@@ -82,6 +83,7 @@ export class CatDropdown {
   /**
    * Opens the dropdown.
    */
+  @Method()
   async open(): Promise<void> {
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open

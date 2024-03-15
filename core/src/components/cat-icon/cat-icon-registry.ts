@@ -1,18 +1,25 @@
-import cross16 from '@haiilo/catalyst-icons/tmp/assets/16-cross.svg';
-import alertCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/alert-circle-outlined.svg';
-import checkCircleFilled from '@haiilo/catalyst-icons/tmp/assets/check-circle-filled.svg';
-import chevronDownOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-down-outlined.svg';
-import chevronLeftOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-left-outlined.svg';
-import chevronRightOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-right-outlined.svg';
-import clockFilled from '@haiilo/catalyst-icons/tmp/assets/clock-filled.svg';
-import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-filled.svg';
-import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
-import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
-import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
-import eyeClosedOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-closed-outlined.svg';
-import eyeOpenOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-open-outlined.svg';
-import infoCircleFilled from '@haiilo/catalyst-icons/tmp/assets/info-circle-filled.svg';
-import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
+import {
+  ci16ChevronDoubleLeft,
+  ci16ChevronDoubleRight,
+  ci16ChevronLeft,
+  ci16ChevronRight,
+  ci16Cross,
+  ciAlertCircleOutlined,
+  ciCalendarOutlined,
+  ciCheckCircleFilled,
+  ciChevronDownOutlined,
+  ciChevronLeftOutlined,
+  ciChevronRightOutlined,
+  ciClockFilled,
+  ciCrossCircleFilled,
+  ciCrossCircleOutlined,
+  ciCrossOutlined,
+  ciDangerFilled,
+  ciEyeClosedOutlined,
+  ciEyeOpenOutlined,
+  ciInfoCircleFilled,
+  ciStarCircleFilled
+} from '@haiilo/catalyst-icons';
 import log from 'loglevel';
 
 export class CatIconRegistry {
@@ -27,26 +34,27 @@ export class CatIconRegistry {
     // register default icons that are used in the framework by other components
     this.addIcons(
       {
-        'alert-primary': starCircleFilled,
-        'alert-secondary': clockFilled,
-        'alert-info': infoCircleFilled,
-        'alert-success': checkCircleFilled,
-        'alert-warning': dangerFilled,
-        'alert-danger': crossCircleFilled,
-        'datepicker-month-prev': chevronLeftOutlined,
-        'datepicker-month-next': chevronRightOutlined,
-        'datepicker-year-prev': chevronLeftOutlined,
-        'datepicker-year-next': chevronRightOutlined,
-        'dialog-close': crossOutlined,
-        'input-close': crossCircleOutlined,
-        'input-error': alertCircleOutlined,
-        'input-password-show': eyeOpenOutlined,
-        'input-password-hide': eyeClosedOutlined,
-        'notification-close': crossCircleOutlined,
-        'pagination-left': chevronLeftOutlined,
-        'pagination-right': chevronRightOutlined,
-        'select-clear': cross16,
-        'select-open': chevronDownOutlined
+        'alert-primary': ciStarCircleFilled.data,
+        'alert-secondary': ciClockFilled.data,
+        'alert-info': ciInfoCircleFilled.data,
+        'alert-success': ciCheckCircleFilled.data,
+        'alert-warning': ciDangerFilled.data,
+        'alert-danger': ciCrossCircleFilled.data,
+        'datepicker-month-prev': ci16ChevronLeft.data,
+        'datepicker-month-next': ci16ChevronRight.data,
+        'datepicker-year-prev': ci16ChevronDoubleLeft.data,
+        'datepicker-year-next': ci16ChevronDoubleRight.data,
+        'datepicker-calendar': ciCalendarOutlined.data,
+        'dialog-close': ciCrossOutlined.data,
+        'input-close': ciCrossCircleOutlined.data,
+        'input-error': ciAlertCircleOutlined.data,
+        'input-password-show': ciEyeOpenOutlined.data,
+        'input-password-hide': ciEyeClosedOutlined.data,
+        'notification-close': ciCrossCircleOutlined.data,
+        'pagination-left': ciChevronLeftOutlined.data,
+        'pagination-right': ciChevronRightOutlined.data,
+        'select-clear': ci16Cross.data,
+        'select-open': ciChevronDownOutlined.data
       },
       '$cat',
       true

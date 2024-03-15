@@ -14,6 +14,13 @@
        */
       catIconRegistry.addIcons(ci);
       catI18nRegistry.set({
+        'datepicker.prevYear': 'Previous year',
+        'datepicker.nextYear': 'Next year',
+        'datepicker.prevMonth': 'Previous month',
+        'datepicker.nextMonth': 'Next month',
+        'datepicker.cursor': 'Cursor keys can navigate dates.',
+        'datepicker.today': 'Today',
+        // 'datepicker.nextYear': 'Year',
         'datepicker.year': 'Year',
         'datepicker.month': 'Month',
         'datepicker.hour': 'Hour',
@@ -246,10 +253,16 @@
           </nav>
           <div class="content">
 
-            <cat-date></cat-date>
+            <cat-date
+            
+            label="sdffsf"
+            clearable
+            hint="sdfdsf"
+
+            ></cat-date>
 
 
-            <section id="alert">
+            <section id="alert" class="cat-article">
               <h2>Alert</h2>
               <cat-alert tabindex="3">
                 <p>

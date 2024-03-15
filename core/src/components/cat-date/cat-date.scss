@@ -2,15 +2,19 @@
 @use 'mixins' as *;
 
 :host {
-  display: inline-flex;
-  flex-direction: column;
 }
 
 :host([hidden]) {
   display: none;
 }
 
-.header {
+.picker {
+  padding: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.picker-head {
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -18,9 +22,74 @@
   h3 {
     flex: 1;
     text-align: center;
+    margin: 0;
   }
 }
 
-.day-disabled {
-  color: cat-token('color.ui.font.muted');
+.picker-grid {
+  display: grid;
+  grid-template-rows: 2rem repeat(6, 1fr);
+  grid-template-columns: 2rem repeat(7, 1fr);
+  grid-template-areas:
+    '. h h h h h h h'
+    'w d d d d d d d'
+    'w d d d d d d d'
+    'w d d d d d d d'
+    'w d d d d d d d'
+    'w d d d d d d d'
+    'w d d d d d d d';
+  margin: 1rem 0 0.5rem;
+}
+
+.picker-grid-head {
+  grid-area: h;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  justify-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.picker-grid-weeks {
+  grid-area: w;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  align-items: center;
+  justify-items: right;
+  padding-right: 0.5rem;
+}
+
+.picker-grid-days {
+  grid-area: d;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.picker-grid-head > *,
+.picker-grid-weeks > * {
+  @include cat-body('xs', 600);
+  color: cat-token('color.ui.font.muted') !important;
+  text-decoration: none;
+}
+
+.date-other {
+  opacity: 0.5;
+}
+
+.picker-foot {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cursor-help {
+  margin: 0;
+  @include cat-body('s');
+  color: cat-token('color.ui.font.muted') !important;
+  text-align: center;
+}
+
+.cursor-aria {
+  @include cat-visually-hidden;
 }

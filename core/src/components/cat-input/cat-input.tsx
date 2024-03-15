@@ -1,4 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import Cleave from 'cleave.js';
+import type { CleaveOptions } from 'cleave.js/options';
 import log from 'loglevel';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -246,6 +248,11 @@ export class CatInput {
   async clear(): Promise<void> {
     this.value = '';
     this.catChange.emit(this.value);
+  }
+
+  @Method()
+  async mask(options: CleaveOptions): Promise<any> {
+    return new Cleave(this.input, options);
   }
 
   @Watch('errors')

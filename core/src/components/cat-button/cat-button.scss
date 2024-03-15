@@ -364,3 +364,12 @@ $button-sizes: (
     }
   }
 }
+
+// ----- datepicker
+
+:host(.cat-picker-item) {
+  .cat-button {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,4 +1,7 @@
-import { Component, Host, State, h } from '@stencil/core';
+import { Component, Element, Host, Listen, Prop, State, h } from '@stencil/core';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import { addDays, addMonth, isSameDay, isSameMonth } from './cat-date-math';
+import { getLocale } from './cat-date-util';
 
 @Component({
   tag: 'cat-date',
@@ -6,248 +9,272 @@ import { Component, Host, State, h } from '@stencil/core';
   shadow: true
 })
 export class CatDate {
-  private readonly daysShort = this.daysForLocale('en', 'short');
-  private readonly daysLong = this.daysForLocale('en', 'long');
-  private readonly months = this.monthsForLocale('en');
+  private readonly language = i18n.getLocale();
+  private readonly locale = getLocale(this.language);
+  private input!: HTMLCatInputElement;
+  private dropdown!: HTMLCatDropdownElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() selectionDate: Date | null = null;
 
   @State() viewDate: Date = new Date(); // must be first of month
 
-  private days(date: Date) {
-    const firstDayOfWeek = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    const days = [...Array(daysInMonth).keys()];
-    const daysBefore = [...Array(firstDayOfWeek).keys()].map(day =>
-      new Date(date.getFullYear(), date.getMonth(), day - firstDayOfWeek).getDate()
-    );
-    const daysAfter = [...Array(42 - days.length - daysBefore.length).keys()];
-    return [
-      ...daysBefore.map(day => ({day: day + 1, disabled: true, today: false})),
-      ...days.map(day => ({day: day + 1, disabled: false})),
-      ...daysAfter.map(day => ({day: day + 1, disabled: true, today: false}))
-    ];
+  @State() focusDate: Date | null = null;
+
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() horizontal = false;
+  @Prop() autoComplete?: string;
+  @Prop() clearable = false;
+  @Prop() disabled = false;
+  @Prop() hint?: string | string[];
+  @Prop() icon?: string;
+  @Prop() iconRight = false;
+  @Prop() identifier?: string;
+  @Prop() label = '';
+  @Prop() labelHidden = false;
+
+  componentDidLoad() {
+    const format = this.locale.format.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
+    const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(format) || [];
+    this.input.mask({
+      date: true,
+      delimiter: d1,
+      datePattern: [p1, p2, p3]
+    });
+  }
+
+  componentDidRender() {
+    if (this.focusDate) {
+      // if the focus date has changed, focus the new date after the render
+      // this is necessary because the focus date might shift due to the view date change
+      this.hostElement.shadowRoot?.querySelector<any>(`[data-date="${this.asString(this.focusDate)}"]`)?.doFocus();
+    }
+  }
+
+  @Listen('keydown')
+  onKeyDown(e: KeyboardEvent) {
+    if (!this.hostElement.shadowRoot?.querySelector(`[data-date]:focus`)) {
+      return;
+    }
+    if (e.key === 'ArrowLeft' && this.focusDate) {
+      e.preventDefault();
+      this.focus(e.shiftKey ? addMonth(this.focusDate, -1) : addDays(this.focusDate, -1));
+    } else if (e.key === 'ArrowRight' && this.focusDate) {
+      e.preventDefault();
+      this.focus(e.shiftKey ? addMonth(this.focusDate, 1) : addDays(this.focusDate, 1));
+    } else if (e.key === 'ArrowUp' && this.focusDate) {
+      e.preventDefault();
+      this.focus(addDays(this.focusDate, -7));
+    } else if (e.key === 'ArrowDown' && this.focusDate) {
+      e.preventDefault();
+      this.focus(addDays(this.focusDate, 7));
+    }
+  }
+
+  @Listen('catOpen')
+  onOpen() {
+    this.focusDate = null;
+    this.viewDate = this.selectionDate || new Date();
+  }
+
+  private focus(date: Date) {
+    this.focusDate = date;
+    this.viewDate = new Date(date.getFullYear(), date.getMonth());
+  }
+
+  private select(date: Date) {
+    this.focus(date);
+    this.selectionDate = date;
   }
 
   render() {
-    console.log(this.days(this.viewDate));
+    const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     return (
       <Host>
-        <div id="myDatepicker" class="datepicker">
-          <div id="id-datepicker-1" role="dialog" aria-modal="true" aria-label="Choose Date">
-            <div class="header">
+        {this.selectionDate?.toDateString()}
+        <cat-input
+          ref={el => (this.input = el as HTMLCatInputElement)}
+          requiredMarker={this.requiredMarker}
+          horizontal={this.horizontal}
+          autoComplete={this.autoComplete}
+          clearable={this.clearable}
+          disabled={this.disabled}
+          hint={this.hint}
+          icon={this.icon}
+          iconRight={this.iconRight}
+          identifier={this.identifier}
+          label={this.label}
+          labelHidden={this.labelHidden}
+          placeholder={this.locale.format}
+          value={this.getInputValue()}
+          onCatChange={this.onInputChange.bind(this)}
+          data-dropdown-no-close
+        ></cat-input>
+        <cat-dropdown ref={el => (this.dropdown = el as HTMLCatDropdownElement)}>
+          <cat-button slot="trigger" icon="$cat:datepicker-calendar" iconOnly></cat-button>
+          <div class="picker" slot="content">
+            <div class="picker-head">
               <cat-button
-                icon='$cat:datepicker-year-prev' iconOnly
-                size='xs'
-                a11y-label="previous year"
-                onClick={() => (this.viewDate = new Date(this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)))}
-              >
-                prev year
-              </cat-button>
-              <cat-button
-                icon='$cat:datepicker-month-prev'
+                icon="$cat:datepicker-year-prev"
                 iconOnly
-                size='xs'
-                a11y-label="previous month"
+                size="xs"
+                round
+                variant="text"
+                a11y-label={this.locale.prevYear}
+                onClick={() => (this.viewDate = new Date(this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)))}
+                data-dropdown-no-close
+              ></cat-button>
+              <cat-button
+                icon="$cat:datepicker-month-prev"
+                iconOnly
+                size="xs"
+                round
+                variant="text"
+                a11y-label={this.locale.prevMonth}
                 onClick={() => (this.viewDate = new Date(this.viewDate.setMonth(this.viewDate.getMonth() - 1)))}
-              >
-                prev month
-              </cat-button>
+                data-dropdown-no-close
+              ></cat-button>
               <h3 id="id-grid-label" aria-live="polite">
-                {this.months[this.viewDate.getMonth()]} {this.viewDate.getFullYear()}
+                {this.locale.months.long[this.viewDate.getMonth()]} {this.viewDate.getFullYear()}
               </h3>
               <cat-button
-                icon='$cat:datepicker-month-next'
+                icon="$cat:datepicker-month-next"
                 iconOnly
-                size='xs'
-                a11y-label="next month"
+                size="xs"
+                round
+                variant="text"
+                a11y-label={this.locale.nextMonth}
                 onClick={() => (this.viewDate = new Date(this.viewDate.setMonth(this.viewDate.getMonth() + 1)))}
-              >
-                next month
-              </cat-button>
+                data-dropdown-no-close
+              ></cat-button>
               <cat-button
-                icon='$cat:datepicker-year-next'
+                icon="$cat:datepicker-year-next"
                 iconOnly
-                size='xs'
-                a11y-label="next year"
+                size="xs"
+                round
+                variant="text"
+                a11y-label={this.locale.nextYear}
                 onClick={() => (this.viewDate = new Date(this.viewDate.setFullYear(this.viewDate.getFullYear() + 1)))}
-              >
-                next year
-              </cat-button>
+                data-dropdown-no-close
+              ></cat-button>
             </div>
-            <div class="table-wrap">
-              <table role="grid" aria-labelledby="id-grid-label">
-                <thead>
-                  <tr>
-                    {Array.from(Array(7), (_, i) => (
-                      <th scope="col" abbr={this.daysLong[i]}>
-                        {this.daysShort[i]}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Array.from(Array(6), (_, i) => (
-                    <tr>
-                      {Array.from(Array(7), (_, j) => (
-                        <td 
-                        class={{ 'day-disabled': this.days(this.viewDate)[i * 7 + j].disabled }}
-                        >
-                          <cat-button size="s">
-                          {this.days(this.viewDate)[i * 7 + j].day}
-                          </cat-button>
-                          </td>
-                      ))}
-                    </tr>
+            <div class="picker-grid" onFocusin={this.onGridFocus.bind(this)}>
+              <div class="picker-grid-head">
+                {Array.from(Array(7), (_, i) => (
+                  <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
+                ))}
+              </div>
+              <div class="picker-grid-weeks">
+                {dateGrid
+                  .filter((_, i) => i % 7 === 0)
+                  .map(day => (
+                    <div>{this.getWeekNumber(day)}</div>
                   ))}
-
-                  {/* {this.days(this.viewDate).map((day, index) => (
-                    <tr key={index}>
-                      {Array.from(Array(7), (_, i) => (
-                        <td
-                          tabindex="-1"
-                          data-date={`${this.viewDate.getUTCFullYear()}-${this.viewDate.getUTCMonth() + 1}-${day}`}
-                        >
-                          {day}
-                        </td>
-                      ))}
-                    </tr>
-                  ))} */}
-
-                  {/* <tr>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td tabindex="-1" data-date="2020-02-01">
-                      1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td tabindex="-1" data-date="2020-02-02">
-                      2
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-03">
-                      3
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-04">
-                      4
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-05">
-                      5
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-06">
-                      6
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-07">
-                      7
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-08">
-                      8
-                    </td>
-                  </tr>
-                  <tr>
-                    <td tabindex="-1" data-date="2020-02-09">
-                      9
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-10">
-                      10
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-11">
-                      11
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-12">
-                      12
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-13">
-                      13
-                    </td>
-                    <td tabindex="0" data-date="2020-02-14" role="gridcell" aria-selected="true">
-                      14
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-15">
-                      15
-                    </td>
-                  </tr>
-                  <tr>
-                    <td tabindex="-1" data-date="2020-02-16">
-                      16
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-17">
-                      17
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-18">
-                      18
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-19">
-                      19
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-20">
-                      20
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-21">
-                      21
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-22">
-                      22
-                    </td>
-                  </tr>
-                  <tr>
-                    <td tabindex="-1" data-date="2020-02-23">
-                      23
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-24">
-                      24
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-25">
-                      25
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-26">
-                      26
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-27">
-                      27
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-28">
-                      28
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-29">
-                      29
-                    </td>
-                  </tr>
-                  <tr>
-                    <td tabindex="-1" data-date="2020-02-30">
-                      30
-                    </td>
-                    <td tabindex="-1" data-date="2020-02-31">
-                      31
-                    </td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                    <td class="disabled" tabindex="-1"></td>
-                  </tr> */}
-                </tbody>
-              </table>
+              </div>
+              <div class="picker-grid-days">
+                {dateGrid.map(day => (
+                  <cat-button
+                    class={{
+                      'cat-picker-item': true,
+                      'date-other': !isSameMonth(this.viewDate, day),
+                      'date-today': isSameDay(new Date(), day),
+                      'date-selected': isSameDay(this.selectionDate, day)
+                    }}
+                    nativeAttributes={{ tabindex: this.canFocus(day) ? '0' : '-1' }}
+                    variant={isSameDay(new Date(), day) ? 'outlined' : 'text'}
+                    a11yLabel={this.getA11yLabelDay(day)}
+                    active={isSameDay(this.selectionDate, day)}
+                    color={isSameDay(this.selectionDate, day) ? 'primary' : 'secondary'}
+                    onClick={() => this.select(day)}
+                    onFocus={() => (this.focusDate = day)}
+                    data-date={this.asString(day)}
+                  >
+                    {day.getDate()}
+                  </cat-button>
+                ))}
+              </div>
             </div>
-            <div class="dialog-message" aria-live="polite"></div>
+            <div class="picker-foot">
+              <cat-button data-dropdown-no-close onClick={() => this.select(new Date())}>
+                {this.locale.today}
+              </cat-button>
+              <p class="cursor-help">{this.locale.cursor}</p>
+              <p class="cursor-aria" aria-live="polite"></p>
+            </div>
           </div>
-        </div>
+        </cat-dropdown>
       </Host>
     );
   }
 
-  private daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
-    const date = new Date();
-    const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
-    const format = new Intl.DateTimeFormat(language, { weekday }).format;
-    return [...Array(7).keys()].map(day => format(new Date(date.getTime()).setUTCDate(firstDayOfWeek + day)));
+  private onGridFocus() {
+    const node = this.hostElement.shadowRoot?.querySelector('.cursor-aria');
+    if (node) {
+      node.innerHTML = this.locale.cursor;
+    }
   }
 
-  private monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
-    const date = new Date(0);
-    const format = new Intl.DateTimeFormat(language, { month }).format;
-    return [...Array(12).keys()].map(month => format(new Date(date.getTime()).setUTCMonth(month)));
+  private onInputChange({ detail }: CustomEvent<string>) {
+    if (!detail) {
+      this.selectionDate = null;
+      // this.dropdown.close();
+      return;
+    }
+  }
+
+  private dateGrid(year: number, month: number) {
+    const firstDayOfWeek = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const days = [...Array(daysInMonth).keys()];
+    const daysBefore = [...Array(firstDayOfWeek).keys()].map(day =>
+      new Date(year, month, day - firstDayOfWeek).getDate()
+    );
+    const daysAfter = [...Array(42 - days.length - daysBefore.length).keys()];
+    return [
+      ...daysBefore.map(day => new Date(year, month - 1, day + 1)),
+      ...days.map(day => new Date(year, month, day + 1)),
+      ...daysAfter.map(day => new Date(year, month + 1, day + 1))
+    ];
+  }
+
+  private getInputValue() {
+    const format = new Intl.DateTimeFormat(this.language, { year: 'numeric', month: '2-digit', day: '2-digit' });
+    return this.selectionDate ? format.format(this.selectionDate) : '';
+  }
+
+  private getA11yLabelDay(date: Date) {
+    const format = new Intl.DateTimeFormat(this.language, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long'
+    });
+    return format.format(date);
+  }
+
+  private canFocus(date: Date) {
+    if (this.focusDate) {
+      return isSameDay(this.focusDate, date);
+    }
+    const now = new Date();
+    return isSameMonth(this.viewDate, now)
+      ? isSameDay(now, date)
+      : isSameMonth(this.viewDate, date) && date.getDate() === 1;
+  }
+
+  private asString(date: Date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  private getWeekNumber(date: Date, iso8601 = true) {
+    const currentDate = new Date(date.getTime());
+    const dayNum = iso8601 ? currentDate.getDay() || 7 : currentDate.getDay();
+    currentDate.setDate(currentDate.getDate() + 4 - dayNum);
+    const yearStart = new Date(currentDate.getFullYear(), 0, 1);
+    return Math.ceil(((+currentDate - +yearStart) / 86400000 + 1) / 7);
   }
 }

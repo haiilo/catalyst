@@ -11,6 +11,7 @@ import { BaseOptions } from "flatpickr/dist/types/options";
 import { Placement } from "@floating-ui/dom";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { InputType } from "./components/cat-input/input-type";
+import { CleaveOptions } from "cleave.js/options";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
@@ -19,6 +20,7 @@ export { BaseOptions } from "flatpickr/dist/types/options";
 export { Placement } from "@floating-ui/dom";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { InputType } from "./components/cat-input/input-type";
+export { CleaveOptions } from "cleave.js/options";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export namespace Components {
@@ -298,6 +300,17 @@ export namespace Components {
         "value"?: any;
     }
     interface CatDate {
+        "autoComplete"?: string;
+        "clearable": boolean;
+        "disabled": boolean;
+        "hint"?: string | string[];
+        "horizontal": boolean;
+        "icon"?: string;
+        "iconRight": boolean;
+        "identifier"?: string;
+        "label": string;
+        "labelHidden": boolean;
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatDatepicker {
         /**
@@ -467,6 +480,10 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * Opens the dropdown.
+         */
+        "open": () => Promise<void>;
+        /**
           * Allow overflow when dropdown is open.
          */
         "overflow": boolean;
@@ -474,6 +491,10 @@ export namespace Components {
           * The placement of the dropdown.
          */
         "placement": Placement;
+        /**
+          * Toggles the dropdown.
+         */
+        "toggle": () => Promise<void>;
     }
     interface CatFormGroup {
         /**
@@ -578,6 +599,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        "mask": (options: CleaveOptions) => Promise<any>;
         /**
           * A maximum value for date, time and numeric values.
          */
@@ -2013,6 +2035,17 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface CatDate {
+        "autoComplete"?: string;
+        "clearable"?: boolean;
+        "disabled"?: boolean;
+        "hint"?: string | string[];
+        "horizontal"?: boolean;
+        "icon"?: string;
+        "iconRight"?: boolean;
+        "identifier"?: string;
+        "label"?: string;
+        "labelHidden"?: boolean;
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
     }
     interface CatDatepicker {
         /**
