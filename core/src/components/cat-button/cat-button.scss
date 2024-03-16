@@ -367,6 +367,14 @@ $button-sizes: (
 
 // ----- datepicker
 
+:host(.cat-picker-toggle) {
+  .cat-button {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
 :host(.cat-picker-item) {
   .cat-button {
     padding-left: 0;

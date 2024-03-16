@@ -5,7 +5,7 @@ describe('cat-date', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatDate],
-      html: `<cat-date></cat-date>`,
+      html: `<cat-date></cat-date>`
     });
     expect(page.root).toEqualHtml(`
       <cat-date>

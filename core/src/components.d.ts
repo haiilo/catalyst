@@ -311,6 +311,7 @@ export namespace Components {
         "label": string;
         "labelHidden": boolean;
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "select": (date: Date) => Promise<void>;
     }
     interface CatDatepicker {
         /**

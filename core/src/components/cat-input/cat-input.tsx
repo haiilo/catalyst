@@ -304,85 +304,90 @@ export class CatInput {
           )}
         </div>
         <div class="input-container">
-          <div
-            class={{
-              'input-wrapper': true,
-              'input-round': this.round,
-              'input-readonly': this.readonly,
-              'input-disabled': this.disabled,
-              'input-invalid': this.invalid
-            }}
-            onClick={() => this.input.focus()}
-          >
-            {this.textPrefix && (
-              <span class="text-prefix" part="prefix">
-                {this.textPrefix}
-              </span>
-            )}
-            {this.icon && !this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
-            )}
-            <div class="input-inner-wrapper">
-              <input
-                {...this.nativeAttributes}
-                part="input"
-                ref={el => (this.input = el as HTMLInputElement)}
-                id={this.id}
-                class={{
-                  'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
-                  'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value
-                }}
-                autocomplete={this.autoComplete}
-                disabled={this.disabled}
-                max={this.max}
-                maxlength={this.maxLength}
-                min={this.min}
-                minlength={this.minLength}
-                name={this.name}
-                placeholder={this.placeholder}
-                readonly={this.readonly}
-                required={this.required}
-                type={this.isPasswordShown ? 'text' : this.type}
-                value={this.value}
-                onInput={this.onInput.bind(this)}
-                onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}
-                aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
-              ></input>
-              {this.clearable && !this.disabled && !this.readonly && this.value && (
-                <cat-button
-                  class="clearable"
-                  icon="$cat:input-close"
-                  icon-only="true"
-                  size="s"
-                  variant="text"
-                  a11y-label={i18n.t('input.clear')}
-                  onClick={this.clear.bind(this)}
-                  data-dropdown-no-close
-                ></cat-button>
+          <div class="input-outer-wrapper">
+            <div
+              class={{
+                'input-wrapper': true,
+                'input-round': this.round,
+                'input-readonly': this.readonly,
+                'input-disabled': this.disabled,
+                'input-invalid': this.invalid
+              }}
+              onClick={() => this.input.focus()}
+            >
+              {this.textPrefix && (
+                <span class="text-prefix" part="prefix">
+                  {this.textPrefix}
+                </span>
               )}
-              {this.togglePassword && !this.disabled && !this.readonly && this.value && (
-                <cat-button
-                  class="toggle-password"
-                  icon={this.isPasswordShown ? '$cat:input-password-hide' : '$cat:input-password-show'}
-                  icon-only="true"
-                  size="s"
-                  variant="text"
-                  a11y-label={i18n.t(this.isPasswordShown ? 'input.hidePassword' : 'input.showPassword')}
-                  onClick={this.doTogglePassword.bind(this)}
-                ></cat-button>
+              {this.icon && !this.iconRight && (
+                <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
+              )}
+              <div class="input-inner-wrapper">
+                <input
+                  {...this.nativeAttributes}
+                  part="input"
+                  ref={el => (this.input = el as HTMLInputElement)}
+                  id={this.id}
+                  class={{
+                    'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
+                    'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value
+                  }}
+                  autocomplete={this.autoComplete}
+                  disabled={this.disabled}
+                  max={this.max}
+                  maxlength={this.maxLength}
+                  min={this.min}
+                  minlength={this.minLength}
+                  name={this.name}
+                  placeholder={this.placeholder}
+                  readonly={this.readonly}
+                  required={this.required}
+                  type={this.isPasswordShown ? 'text' : this.type}
+                  value={this.value}
+                  onInput={this.onInput.bind(this)}
+                  onFocus={this.onFocus.bind(this)}
+                  onBlur={this.onBlur.bind(this)}
+                  aria-invalid={this.invalid ? 'true' : undefined}
+                  aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+                ></input>
+                {this.clearable && !this.disabled && !this.readonly && this.value && (
+                  <cat-button
+                    class="clearable"
+                    icon="$cat:input-close"
+                    icon-only="true"
+                    size="s"
+                    variant="text"
+                    a11y-label={i18n.t('input.clear')}
+                    onClick={this.clear.bind(this)}
+                    data-dropdown-no-close
+                  ></cat-button>
+                )}
+                {this.togglePassword && !this.disabled && !this.readonly && this.value && (
+                  <cat-button
+                    class="toggle-password"
+                    icon={this.isPasswordShown ? '$cat:input-password-hide' : '$cat:input-password-show'}
+                    icon-only="true"
+                    size="s"
+                    variant="text"
+                    a11y-label={i18n.t(this.isPasswordShown ? 'input.hidePassword' : 'input.showPassword')}
+                    onClick={this.doTogglePassword.bind(this)}
+                  ></cat-button>
+                )}
+              </div>
+              {!this.invalid && this.icon && this.iconRight && (
+                <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
+              )}
+              {this.invalid && (
+                <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+              )}
+              {this.textSuffix && (
+                <span class="text-suffix" part="suffix">
+                  {this.textSuffix}
+                </span>
               )}
             </div>
-            {!this.invalid && this.icon && this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
-            )}
-            {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
-            {this.textSuffix && (
-              <span class="text-suffix" part="suffix">
-                {this.textSuffix}
-              </span>
-            )}
+            <slot name="addon"></slot>
           </div>
           {this.hasHint && (
             <CatFormHint
