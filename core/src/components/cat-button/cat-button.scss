@@ -372,6 +372,10 @@ $button-sizes: (
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    &:focus {
+      z-index: 1;
+    }
   }
 }
 
@@ -379,5 +383,9 @@ $button-sizes: (
   .cat-button {
     padding-left: 0;
     padding-right: 0;
+
+    &:focus {
+      z-index: 1;
+    }
   }
 }

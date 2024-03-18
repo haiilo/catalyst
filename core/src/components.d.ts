@@ -481,6 +481,10 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "noKeybindings": boolean;
+        /**
           * Opens the dropdown.
          */
         "open": () => Promise<void>;
@@ -2218,6 +2222,10 @@ declare namespace LocalJSX {
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose"?: boolean;
+        /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "noKeybindings"?: boolean;
         /**
           * Emitted when the dropdown is closed.
          */

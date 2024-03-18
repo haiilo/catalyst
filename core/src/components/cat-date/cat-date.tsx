@@ -56,7 +56,7 @@ export class CatDate {
   @Listen('keydown')
   onKeyDown(e: KeyboardEvent) {
     if (!this.hostElement.shadowRoot?.querySelector(`[data-date]:focus`)) {
-      return;
+      return; // only move focus if date grid has focus
     }
     if (e.key === 'ArrowLeft' && this.focusDate) {
       e.preventDefault();
@@ -75,6 +75,7 @@ export class CatDate {
 
   @Listen('catOpen')
   onOpen() {
+    this.setAriaLive('');
     this.focusDate = null;
     this.viewDate = this.selectionDate
       ? new Date(this.selectionDate.getFullYear(), this.selectionDate.getMonth(), 1)
@@ -91,7 +92,6 @@ export class CatDate {
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     return (
       <Host>
-        {this.selectionDate?.toDateString()}
         <cat-input
           class="cat-picker-input"
           ref={el => (this.input = el as HTMLCatInputElement)}
@@ -108,10 +108,10 @@ export class CatDate {
           labelHidden={this.labelHidden}
           placeholder={this.locale.format}
           value={this.getInputValue()}
-          onCatChange={this.onInputChange.bind(this)}
+          onCatBlur={this.onInputBlur.bind(this)}
           data-dropdown-no-close
         >
-          <cat-dropdown slot="addon" placement="bottom-end">
+          <cat-dropdown slot="addon" placement="bottom-end" noKeybindings>
             <cat-button slot="trigger" icon="$cat:datepicker-calendar" iconOnly class="cat-picker-toggle"></cat-button>
             <div class="picker" slot="content">
               <div class="picker-head">
@@ -135,9 +135,7 @@ export class CatDate {
                   onClick={() => this.navigate('prev', 'month')}
                   data-dropdown-no-close
                 ></cat-button>
-                <h3 id="id-grid-label" aria-live="polite">
-                  {this.locale.months.long[this.viewDate.getMonth()]} {this.viewDate.getFullYear()}
-                </h3>
+                <h3>{this.getHeadline()}</h3>
                 <cat-button
                   icon="$cat:datepicker-month-next"
                   iconOnly
@@ -159,7 +157,7 @@ export class CatDate {
                   data-dropdown-no-close
                 ></cat-button>
               </div>
-              <div class="picker-grid" onFocusin={this.onGridFocus.bind(this)}>
+              <div class="picker-grid" onFocusin={() => this.setAriaLive(this.locale.cursor)}>
                 <div class="picker-grid-head">
                   {Array.from(Array(7), (_, i) => (
                     <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
@@ -207,8 +205,24 @@ export class CatDate {
             </div>
           </cat-dropdown>
         </cat-input>
+        <p>Selection is: {this.selectionDate ? this.selectionDate.toLocaleDateString() : 'null'}</p>
       </Host>
     );
+  }
+
+  private parse(value: string) {
+    const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(this.locale.format) || [];
+    const formatParts = [p1, p2, p3];
+    const parts = value.split(d1).map(s => Number(s || 'x'));
+    let year = parts[formatParts.indexOf('YYYY') || formatParts.indexOf('YY')] || new Date().getFullYear();
+    const month = parts[formatParts.indexOf('MM')];
+    const day = parts[formatParts.indexOf('DD')];
+    if (!Number.isInteger(month) || !Number.isInteger(day)) {
+      return null;
+    } else if (year < 100) {
+      year += year < 50 ? 2000 : 1900;
+    }
+    return new Date(year, month - 1, day);
   }
 
   private focus(date: Date) {
@@ -221,27 +235,26 @@ export class CatDate {
     this.viewDate = new Date(
       direction === 'prev'
         ? period === 'year'
-          ? this.viewDate.getFullYear() - 1
+          ? this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)
           : this.viewDate.setMonth(this.viewDate.getMonth() - 1)
         : period === 'year'
-          ? this.viewDate.getFullYear() + 1
+          ? this.viewDate.setFullYear(this.viewDate.getFullYear() + 1)
           : this.viewDate.setMonth(this.viewDate.getMonth() + 1)
     );
+    // announce the new month and year
+    this.setAriaLive(this.getHeadline());
   }
 
-  private onGridFocus() {
+  private setAriaLive(text: string) {
     const node = this.hostElement.shadowRoot?.querySelector('.cursor-aria');
     if (node) {
-      node.innerHTML = this.locale.cursor;
+      node.innerHTML = text;
     }
   }
 
-  private onInputChange({ detail }: CustomEvent<string>) {
-    if (!detail) {
-      this.selectionDate = null;
-      // this.dropdown.close();
-      return;
-    }
+  private onInputBlur() {
+    this.selectionDate = this.parse(this.input.value ?? '');
+    this.input.value = this.getInputValue();
   }
 
   private dateGrid(year: number, month: number) {
@@ -257,6 +270,10 @@ export class CatDate {
       ...days.map(day => new Date(year, month, day + 1)),
       ...daysAfter.map(day => new Date(year, month + 1, day + 1))
     ];
+  }
+
+  private getHeadline() {
+    return `${this.locale.months.long[this.viewDate.getMonth()]} ${this.viewDate.getFullYear()}`;
   }
 
   private getInputValue() {

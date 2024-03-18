@@ -33,6 +33,11 @@ export class CatDropdown {
   @Prop() noAutoClose = false;
 
   /**
+   * Do not navigate focus inside the dropdown via vertical arrow keys.
+   */
+  @Prop() noKeybindings = false;
+
+  /**
    * Allow overflow when dropdown is open.
    */
   @Prop() overflow = false;
@@ -139,6 +144,9 @@ export class CatDropdown {
   }
 
   componentDidLoad(): void {
+    if (this.noKeybindings) {
+      return;
+    }
     this.keyListener = event => {
       if (this.isOpen && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
         const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });
