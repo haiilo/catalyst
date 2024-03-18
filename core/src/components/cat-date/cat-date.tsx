@@ -122,7 +122,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.prevYear}
-                  onClick={() => (this.viewDate = new Date(this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)))}
+                  onClick={() => this.navigate('prev', 'year')}
                   data-dropdown-no-close
                 ></cat-button>
                 <cat-button
@@ -132,7 +132,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.prevMonth}
-                  onClick={() => (this.viewDate = new Date(this.viewDate.setMonth(this.viewDate.getMonth() - 1)))}
+                  onClick={() => this.navigate('prev', 'month')}
                   data-dropdown-no-close
                 ></cat-button>
                 <h3 id="id-grid-label" aria-live="polite">
@@ -145,7 +145,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.nextMonth}
-                  onClick={() => (this.viewDate = new Date(this.viewDate.setMonth(this.viewDate.getMonth() + 1)))}
+                  onClick={() => this.navigate('next', 'month')}
                   data-dropdown-no-close
                 ></cat-button>
                 <cat-button
@@ -155,7 +155,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.nextYear}
-                  onClick={() => (this.viewDate = new Date(this.viewDate.setFullYear(this.viewDate.getFullYear() + 1)))}
+                  onClick={() => this.navigate('next', 'year')}
                   data-dropdown-no-close
                 ></cat-button>
               </div>
@@ -182,10 +182,12 @@ export class CatDate {
                         'date-selected': isSameDay(this.selectionDate, day)
                       }}
                       nativeAttributes={{ tabindex: this.canFocus(day) ? '0' : '-1' }}
-                      variant={isSameDay(new Date(), day) ? 'outlined' : 'text'}
+                      variant={
+                        isSameDay(this.selectionDate, day) ? 'filled' : isSameDay(new Date(), day) ? 'outlined' : 'text'
+                      }
                       a11yLabel={this.getA11yLabelDay(day)}
                       active={isSameDay(this.selectionDate, day)}
-                      color={isSameDay(this.selectionDate, day) ? 'primary' : 'secondary'}
+                      color={isSameDay(this.selectionDate, day) || isSameDay(new Date(), day) ? 'primary' : 'secondary'}
                       onClick={() => this.select(day)}
                       onFocus={() => (this.focusDate = day)}
                       data-date={this.toLocalISO(day)}
@@ -212,6 +214,19 @@ export class CatDate {
   private focus(date: Date) {
     this.focusDate = date;
     this.viewDate = new Date(date.getFullYear(), date.getMonth());
+  }
+
+  private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
+    this.focusDate = null;
+    this.viewDate = new Date(
+      direction === 'prev'
+        ? period === 'year'
+          ? this.viewDate.getFullYear() - 1
+          : this.viewDate.setMonth(this.viewDate.getMonth() - 1)
+        : period === 'year'
+          ? this.viewDate.getFullYear() + 1
+          : this.viewDate.setMonth(this.viewDate.getMonth() + 1)
+    );
   }
 
   private onGridFocus() {
@@ -268,13 +283,15 @@ export class CatDate {
   }
 
   private canFocus(date: Date) {
-    if (this.focusDate) {
-      return isSameDay(this.focusDate, date);
-    }
     const now = new Date();
-    return isSameMonth(this.viewDate, now)
-      ? isSameDay(now, date)
-      : isSameMonth(this.viewDate, date) && date.getDate() === 1;
+    if (this.focusDate && isSameMonth(this.focusDate, this.viewDate)) {
+      return isSameMonth(this.focusDate, date) && isSameDay(this.focusDate, date);
+    } else if (this.selectionDate && isSameMonth(this.selectionDate, this.viewDate)) {
+      return isSameMonth(this.selectionDate, date) && isSameDay(this.selectionDate, date);
+    } else if (isSameMonth(this.viewDate, now)) {
+      return isSameMonth(this.viewDate, date) && isSameDay(now, date);
+    }
+    return isSameMonth(this.viewDate, date) && date.getDate() === 1;
   }
 
   private toLocalISO(date: Date) {
