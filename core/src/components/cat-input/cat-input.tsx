@@ -106,7 +106,7 @@ export class CatInput {
   @Prop() labelHidden = false;
 
   /**
-   * A maximum value for date, time and numeric values.
+   * A maximum value for time and numeric values.
    */
   @Prop() max?: number | string;
 
@@ -116,7 +116,7 @@ export class CatInput {
   @Prop() maxLength?: number;
 
   /**
-   * A minimum value for date, time and numeric values.
+   * A minimum value for time and numeric values.
    */
   @Prop() min?: number | string;
 

@@ -1,7 +1,9 @@
+import { Placement } from '@floating-ui/dom';
 import { Component, Element, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import { addDays, addMonth, isSameDay, isSameMonth } from './cat-date-math';
-import { getLocale } from './cat-date-util';
+import { getLocale } from './cat-date-locale';
+import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
 
 @Component({
   tag: 'cat-date',
@@ -15,29 +17,160 @@ export class CatDate {
 
   @Element() hostElement!: HTMLElement;
 
-  @State() viewDate: Date = new Date();
+  @State() viewDate: Date = this.now;
 
   @State() focusDate: Date | null = null;
 
   @State() selectionDate: Date | null = null;
 
+  /**
+   * Whether the label need a marker to shown if the input is required or optional.
+   */
   @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+
+  /**
+   * Whether the label is on top or left.
+   */
   @Prop() horizontal = false;
+
+  /**
+   * Hint for form autofill feature.
+   */
   @Prop() autoComplete?: string;
+
+  /**
+   * Whether the input should show a clear button.
+   */
   @Prop() clearable = false;
+
+  /**
+   * Whether the input is disabled.
+   */
   @Prop() disabled = false;
+
+  /**
+   * Optional hint text(s) to be displayed with the input.
+   */
   @Prop() hint?: string | string[];
+
+  /**
+   * The name of an icon to be displayed in the input.
+   */
   @Prop() icon?: string;
+
+  /**
+   * Display the icon on the right.
+   */
   @Prop() iconRight = false;
+
+  /**
+   * A unique identifier for the input.
+   */
   @Prop() identifier?: string;
+
+  /**
+   * The label for the input.
+   */
   @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
   @Prop() labelHidden = false;
 
+  /**
+   * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+   */
+  @Prop() max?: string;
+
+  get maxDate() {
+    const [y, m, d] = this.max?.split('-').map(Number) || [];
+    return this.max ? new Date(y, m - 1, d) : null;
+  }
+
+  /**
+   * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+   */
+  @Prop() min?: string;
+
+  get minDate() {
+    const [y, m, d] = this.min?.split('-').map(Number) || [];
+    return this.min ? new Date(y, m - 1, d) : null;
+  }
+
+  /**
+   * The name of the form control. Submitted with the form as part of a name/value pair.
+   */
+  @Prop() name?: string;
+
+  /**
+   * The placeholder text to display within the input.
+   */
+  @Prop() placeholder?: string;
+
+  /**
+   * A textual prefix to be displayed in the input.
+   */
+  @Prop() textPrefix?: string;
+
+  /**
+   * A textual suffix to be displayed in the input.
+   */
+  @Prop() textSuffix?: string;
+
+  /**
+   * The value is not editable.
+   */
+  @Prop() readonly = false;
+
+  /**
+   * A value is required or must be check for the form to be submittable.
+   */
+  @Prop() required = false;
+  /**
+   * The value of the control.
+   */
+  @Prop({ mutable: true }) value?: string;
+
+  /**
+   * The validation errors for this input. Will render a hint under the input
+   * with the translated error message(s) `error.${key}`. If an object is
+   * passed, the keys will be used as error keys and the values translation
+   * parameters.
+   * If the value is `true`, the input will be marked as invalid without any
+   * hints under the input.
+   */
+  @Prop() errors?: boolean | string[] | ErrorMap;
+
+  /**
+   * Fine-grained control over when the errors are shown. Can be `false` to
+   * never show errors, `true` to show errors on blur, or a number to show
+   * errors on change with the given delay in milliseconds.
+   */
+  @Prop() errorUpdate: boolean | number = 0;
+
+  /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * The placement of the dropdown.
+   */
+  @Prop() placement: Placement = 'bottom-end';
+
+  private get now() {
+    const date = new Date();
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
   componentDidLoad() {
-    const format = this.locale.format.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
+    const format = this.locale.formatStr.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
     const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(format) || [];
     this.input.mask({
       date: true,
+      dateMin: this.min,
+      dateMax: this.max,
       delimiter: d1,
       datePattern: [p1, p2, p3]
     });
@@ -77,15 +210,21 @@ export class CatDate {
   onOpen() {
     this.setAriaLive('');
     this.focusDate = null;
-    this.viewDate = this.selectionDate
+    const viewDate = this.selectionDate
       ? new Date(this.selectionDate.getFullYear(), this.selectionDate.getMonth(), 1)
-      : new Date();
+      : this.now;
+    this.viewDate = clampDate(this.minDate, viewDate, this.maxDate);
   }
 
   @Method()
   async select(date: Date): Promise<void> {
-    this.focus(date);
-    this.selectionDate = date;
+    const newDate = clampDate(
+      this.minDate,
+      new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+      this.maxDate
+    );
+    this.focus(newDate);
+    this.selectionDate = newDate;
   }
 
   render() {
@@ -104,15 +243,37 @@ export class CatDate {
           icon={this.icon}
           iconRight={this.iconRight}
           identifier={this.identifier}
-          label={this.label}
           labelHidden={this.labelHidden}
-          placeholder={this.locale.format}
+          name={this.name}
+          placeholder={this.placeholder}
+          textPrefix={this.textPrefix}
+          textSuffix={this.textSuffix}
+          readonly={this.readonly}
+          required={this.required}
+          errors={this.errors}
+          errorUpdate={this.errorUpdate}
+          nativeAttributes={this.nativeAttributes}
           value={this.getInputValue()}
           onCatBlur={this.onInputBlur.bind(this)}
           data-dropdown-no-close
         >
-          <cat-dropdown slot="addon" placement="bottom-end" noKeybindings>
-            <cat-button slot="trigger" icon="$cat:datepicker-calendar" iconOnly class="cat-picker-toggle"></cat-button>
+          <span slot="label">
+            {this.label}
+            <span class="label-aria"> ({this.locale.formatStr})</span>
+          </span>
+          <cat-dropdown slot="addon" placement={this.placement} noKeybindings>
+            <cat-button
+              slot="trigger"
+              icon="$cat:datepicker-calendar"
+              iconOnly
+              class="cat-picker-toggle"
+              disabled={this.disabled}
+              a11yLabel={
+                this.selectionDate
+                  ? `${this.locale.change}, ${this.getA11yLabelDay(this.selectionDate)}`
+                  : this.locale.choose
+              }
+            ></cat-button>
             <div class="picker" slot="content">
               <div class="picker-head">
                 <cat-button
@@ -122,6 +283,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.prevYear}
+                  disabled={isSameYear(this.viewDate, this.minDate)}
                   onClick={() => this.navigate('prev', 'year')}
                   data-dropdown-no-close
                 ></cat-button>
@@ -132,6 +294,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.prevMonth}
+                  disabled={isSameMonth(this.viewDate, this.minDate)}
                   onClick={() => this.navigate('prev', 'month')}
                   data-dropdown-no-close
                 ></cat-button>
@@ -143,6 +306,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.nextMonth}
+                  disabled={isSameMonth(this.viewDate, this.maxDate)}
                   onClick={() => this.navigate('next', 'month')}
                   data-dropdown-no-close
                 ></cat-button>
@@ -153,6 +317,7 @@ export class CatDate {
                   round
                   variant="text"
                   a11y-label={this.locale.nextYear}
+                  disabled={isSameYear(this.viewDate, this.maxDate)}
                   onClick={() => this.navigate('next', 'year')}
                   data-dropdown-no-close
                 ></cat-button>
@@ -176,16 +341,17 @@ export class CatDate {
                       class={{
                         'cat-picker-item': true,
                         'date-other': !isSameMonth(this.viewDate, day),
-                        'date-today': isSameDay(new Date(), day),
+                        'date-today': isSameDay(this.now, day),
                         'date-selected': isSameDay(this.selectionDate, day)
                       }}
                       nativeAttributes={{ tabindex: this.canFocus(day) ? '0' : '-1' }}
                       variant={
-                        isSameDay(this.selectionDate, day) ? 'filled' : isSameDay(new Date(), day) ? 'outlined' : 'text'
+                        isSameDay(this.selectionDate, day) ? 'filled' : isSameDay(this.now, day) ? 'outlined' : 'text'
                       }
                       a11yLabel={this.getA11yLabelDay(day)}
                       active={isSameDay(this.selectionDate, day)}
-                      color={isSameDay(this.selectionDate, day) || isSameDay(new Date(), day) ? 'primary' : 'secondary'}
+                      color={isSameDay(this.selectionDate, day) || isSameDay(this.now, day) ? 'primary' : 'secondary'}
+                      disabled={!this.canClick(day)}
                       onClick={() => this.select(day)}
                       onFocus={() => (this.focusDate = day)}
                       data-date={this.toLocalISO(day)}
@@ -196,7 +362,11 @@ export class CatDate {
                 </div>
               </div>
               <div class="picker-foot">
-                <cat-button data-dropdown-no-close onClick={() => this.select(new Date())}>
+                <cat-button
+                  disabled={!this.canClick(this.now)}
+                  data-dropdown-no-close
+                  onClick={() => this.select(this.now)}
+                >
                   {this.locale.today}
                 </cat-button>
                 <p class="cursor-help">{this.locale.cursor}</p>
@@ -211,10 +381,10 @@ export class CatDate {
   }
 
   private parse(value: string) {
-    const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(this.locale.format) || [];
+    const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(this.locale.formatStr) || [];
     const formatParts = [p1, p2, p3];
     const parts = value.split(d1).map(s => Number(s || 'x'));
-    let year = parts[formatParts.indexOf('YYYY') || formatParts.indexOf('YY')] || new Date().getFullYear();
+    let year = parts[formatParts.indexOf('YYYY') || formatParts.indexOf('YY')] || this.now.getFullYear();
     const month = parts[formatParts.indexOf('MM')];
     const day = parts[formatParts.indexOf('DD')];
     if (!Number.isInteger(month) || !Number.isInteger(day)) {
@@ -226,8 +396,8 @@ export class CatDate {
   }
 
   private focus(date: Date) {
-    this.focusDate = date;
-    this.viewDate = new Date(date.getFullYear(), date.getMonth());
+    this.focusDate = clampDate(this.minDate, date, this.maxDate);
+    this.viewDate = new Date(this.focusDate.getFullYear(), this.focusDate.getMonth());
   }
 
   private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
@@ -299,16 +469,23 @@ export class CatDate {
     return Math.ceil(((+currentDate - +yearStart) / 86400000 + 1) / 7);
   }
 
-  private canFocus(date: Date) {
-    const now = new Date();
+  private canClick(date: Date) {
+    const min = this.minDate;
+    const max = this.maxDate;
+    return (!min || min <= date) && (!max || max >= date);
+  }
+
+  private canFocus(date: Date): boolean {
+    const now = this.now;
     if (this.focusDate && isSameMonth(this.focusDate, this.viewDate)) {
       return isSameMonth(this.focusDate, date) && isSameDay(this.focusDate, date);
     } else if (this.selectionDate && isSameMonth(this.selectionDate, this.viewDate)) {
       return isSameMonth(this.selectionDate, date) && isSameDay(this.selectionDate, date);
-    } else if (isSameMonth(this.viewDate, now)) {
+    } else if (isSameMonth(this.viewDate, now) && (!this.minDate || this.minDate <= now)) {
       return isSameMonth(this.viewDate, date) && isSameDay(now, date);
     }
-    return isSameMonth(this.viewDate, date) && date.getDate() === 1;
+    const minDay = isSameMonth(date, this.minDate) ? this.minDate?.getDate() ?? 1 : 1;
+    return isSameMonth(this.viewDate, date) && date.getDate() === minDay;
   }
 
   private toLocalISO(date: Date) {

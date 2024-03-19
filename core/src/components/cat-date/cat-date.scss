@@ -2,10 +2,15 @@
 @use 'mixins' as *;
 
 :host {
+  display: contents;
 }
 
 :host([hidden]) {
   display: none;
+}
+
+.label-aria {
+  @include cat-visually-hidden;
 }
 
 .picker {

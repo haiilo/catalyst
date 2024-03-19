@@ -6,19 +6,19 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
+import { Placement } from "@floating-ui/dom";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
-import { Placement } from "@floating-ui/dom";
-import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { InputType } from "./components/cat-input/input-type";
 import { CleaveOptions } from "cleave.js/options";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
+export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
+export { Placement } from "@floating-ui/dom";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
-export { Placement } from "@floating-ui/dom";
-export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { InputType } from "./components/cat-input/input-type";
 export { CleaveOptions } from "cleave.js/options";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
@@ -300,18 +300,103 @@ export namespace Components {
         "value"?: any;
     }
     interface CatDate {
+        /**
+          * Hint for form autofill feature.
+         */
         "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
         "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
         "disabled": boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
         "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
         "horizontal": boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
         "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
         "iconRight": boolean;
+        /**
+          * A unique identifier for the input.
+         */
         "identifier"?: string;
+        /**
+          * The label for the input.
+         */
         "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
         "labelHidden": boolean;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement": Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         "select": (date: Date) => Promise<void>;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control.
+         */
+        "value"?: string;
     }
     interface CatDatepicker {
         /**
@@ -606,7 +691,7 @@ export namespace Components {
         "labelHidden": boolean;
         "mask": (options: CleaveOptions) => Promise<any>;
         /**
-          * A maximum value for date, time and numeric values.
+          * A maximum value for time and numeric values.
          */
         "max"?: number | string;
         /**
@@ -614,7 +699,7 @@ export namespace Components {
          */
         "maxLength"?: number;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value for time and numeric values.
          */
         "min"?: number | string;
         /**
@@ -2040,17 +2125,102 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface CatDate {
+        /**
+          * Hint for form autofill feature.
+         */
         "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
         "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
         "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
         "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
         "horizontal"?: boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
         "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
         "iconRight"?: boolean;
+        /**
+          * A unique identifier for the input.
+         */
         "identifier"?: string;
+        /**
+          * The label for the input.
+         */
         "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
         "labelHidden"?: boolean;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement"?: Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control.
+         */
+        "value"?: string;
     }
     interface CatDatepicker {
         /**
@@ -2334,7 +2504,7 @@ declare namespace LocalJSX {
          */
         "labelHidden"?: boolean;
         /**
-          * A maximum value for date, time and numeric values.
+          * A maximum value for time and numeric values.
          */
         "max"?: number | string;
         /**
@@ -2342,7 +2512,7 @@ declare namespace LocalJSX {
          */
         "maxLength"?: number;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value for time and numeric values.
          */
         "min"?: number | string;
         /**

@@ -24,7 +24,7 @@ function getWeekInfo(language: string) {
   };
 }
 
-function getFormat(language: string): string {
+function getFormat(language: string) {
   const format = new Intl.DateTimeFormat(language, { year: 'numeric', month: '2-digit', day: '2-digit' })
     .format(new Date(3456, 10, 22))
     .replace('3456', 'YYYY')
@@ -42,7 +42,9 @@ export function getLocale(language: string) {
     nextMonth: i18n.t('datepicker.nextMonth'),
     cursor: i18n.t('datepicker.cursor'),
     today: i18n.t('datepicker.today'),
-    format: getFormat(language),
+    change: i18n.t('datepicker.change'),
+    choose: i18n.t('datepicker.choose'),
+    formatStr: getFormat(language),
     weekInfo: getWeekInfo(language),
     days: {
       short: getDays(language, 'short'),

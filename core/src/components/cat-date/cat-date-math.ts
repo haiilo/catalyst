@@ -17,13 +17,17 @@ export function addMonth(date: Date, n: number): Date {
 }
 
 export function isSameYear(date1: Date | null, date2: Date | null): boolean {
-  return date1?.getFullYear() === date2?.getFullYear();
+  return !!date1 && !!date2 && date1.getFullYear() === date2.getFullYear();
 }
 
 export function isSameMonth(date1: Date | null, date2: Date | null): boolean {
-  return date1?.getMonth() === date2?.getMonth() && isSameYear(date1, date2);
+  return !!date1 && !!date2 && date1.getMonth() === date2.getMonth() && isSameYear(date1, date2);
 }
 
 export function isSameDay(date1: Date | null, date2: Date | null): boolean {
-  return date1?.getDate() === date2?.getDate() && isSameMonth(date1, date2);
+  return !!date1 && !!date2 && date1.getDate() === date2.getDate() && isSameMonth(date1, date2);
+}
+
+export function clampDate(min: Date | null, date: Date, max: Date | null): Date {
+  return new Date(Math.min(Math.max(date.getTime(), min?.getTime() ?? -Infinity), max?.getTime() ?? Infinity));
 }
