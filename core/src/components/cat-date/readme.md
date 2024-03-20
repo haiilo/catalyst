@@ -35,17 +35,64 @@
 | `value`            | `value`           | The value of the control, given in local ISO 8601 date format YYYY-MM-DD.                                                                                                                                                                                                                                                       | `string \| undefined`                                                                                                                                                | `undefined`    |
 
 
+## Events
+
+| Event       | Description                            | Type                      |
+| ----------- | -------------------------------------- | ------------------------- |
+| `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
+| `catChange` | Emitted when the value is changed.     | `CustomEvent<string>`     |
+| `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
+
+
 ## Methods
 
-### `select(date: Date) => Promise<void>`
+### `clear() => Promise<void>`
+
+Clear the input.
+
+#### Returns
+
+Type: `Promise<void>`
 
 
+
+### `doBlur() => Promise<void>`
+
+Programmatically remove focus from the input. Use this method instead of
+`input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions) => Promise<void>`
+
+Programmatically move focus to the input. Use this method instead of
+`input.focus()`.
 
 #### Parameters
 
-| Name   | Type   | Description |
-| ------ | ------ | ----------- |
-| `date` | `Date` |             |
+| Name      | Type                        | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `select(date: Date) => Promise<void>`
+
+Select a date in the picker.
+
+#### Parameters
+
+| Name   | Type   | Description         |
+| ------ | ------ | ------------------- |
+| `date` | `Date` | The date to select. |
 
 #### Returns
 

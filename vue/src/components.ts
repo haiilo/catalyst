@@ -118,7 +118,10 @@ export const CatDate = /*@__PURE__*/ defineContainer<JSX.CatDate>('cat-date', un
   'errors',
   'errorUpdate',
   'nativeAttributes',
-  'placement'
+  'placement',
+  'catChange',
+  'catFocus',
+  'catBlur'
 ]);
 
 

@@ -250,6 +250,11 @@ export class CatInput {
     this.catChange.emit(this.value);
   }
 
+  /**
+   * Adds a Cleave.js mask to the input.
+   * 
+   * @param options The Cleave.js options.
+   */
   @Method()
   async mask(options: CleaveOptions): Promise<void> {
     new Cleave(this.input, options);

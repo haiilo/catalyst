@@ -305,7 +305,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'textSuffix',
     'value'
   ],
-  methods: ['select']
+  methods: ['select', 'doFocus', 'doBlur', 'clear']
 })
 @Component({
   selector: 'cat-date',
@@ -348,10 +348,24 @@ export class CatDate {
   ) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
-export declare interface CatDate extends Components.CatDate {}
+export declare interface CatDate extends Components.CatDate {
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when the input received focus.
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+}
 
 @ProxyCmp({
   inputs: [

@@ -1,5 +1,5 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
@@ -160,6 +160,21 @@ export class CatDate {
    */
   @Prop() placement: Placement = 'bottom-end';
 
+  /**
+   * Emitted when the value is changed.
+   */
+  @Event() catChange!: EventEmitter<string>;
+
+  /**
+   * Emitted when the input received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
+
   private get now() {
     const date = new Date();
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -217,6 +232,11 @@ export class CatDate {
     this.viewDate = clampDate(this.minDate, viewDate, this.maxDate);
   }
 
+  /**
+   * Select a date in the picker.
+   *
+   * @param date The date to select.
+   */
   @Method()
   async select(date: Date): Promise<void> {
     const newDate = clampDate(
@@ -227,6 +247,36 @@ export class CatDate {
     this.focus(newDate);
     this.selectionDate = newDate;
     this.value = newDate.toISOString();
+    this.catChange.emit(this.value);
+  }
+
+  /**
+   * Programmatically move focus to the input. Use this method instead of
+   * `input.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    this.input.doFocus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the input. Use this method instead of
+   * `input.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.input.doBlur();
+  }
+
+  /**
+   * Clear the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.input.clear();
   }
 
   render() {
@@ -256,7 +306,8 @@ export class CatDate {
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
           value={this.getInputValue()}
-          onCatBlur={this.onInputBlur.bind(this)}
+          onCatFocus={e => this.catFocus.emit(e.detail)}
+          onCatBlur={e => this.onInputBlur(e.detail)}
           data-dropdown-no-close
         >
           <span slot="label">
@@ -423,10 +474,12 @@ export class CatDate {
     }
   }
 
-  private onInputBlur() {
+  private onInputBlur(e: FocusEvent) {
     this.selectionDate = this.parse(this.input.value ?? '');
     this.value = this.selectionDate?.toISOString();
+    this.catChange.emit(this.value);
     this.input.value = this.getInputValue();
+    this.catBlur.emit(e);
   }
 
   private dateGrid(year: number, month: number) {

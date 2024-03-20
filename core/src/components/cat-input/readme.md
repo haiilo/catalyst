@@ -96,13 +96,13 @@ Type: `Promise<void>`
 
 ### `mask(options: CleaveOptions) => Promise<void>`
 
-
+Adds a Cleave.js mask to the input.
 
 #### Parameters
 
-| Name      | Type            | Description |
-| --------- | --------------- | ----------- |
-| `options` | `CleaveOptions` |             |
+| Name      | Type            | Description            |
+| --------- | --------------- | ---------------------- |
+| `options` | `CleaveOptions` | The Cleave.js options. |
 
 #### Returns
 

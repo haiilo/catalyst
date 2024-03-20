@@ -305,6 +305,10 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
+          * Clear the input.
+         */
+        "clear": () => Promise<void>;
+        /**
           * Whether the input should show a clear button.
          */
         "clearable": boolean;
@@ -312,6 +316,15 @@ export namespace Components {
           * Whether the input is disabled.
          */
         "disabled": boolean;
+        /**
+          * Programmatically remove focus from the input. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically move focus to the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
          */
@@ -384,6 +397,10 @@ export namespace Components {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * Select a date in the picker.
+          * @param date The date to select.
+         */
         "select": (date: Date) => Promise<void>;
         /**
           * A textual prefix to be displayed in the input.
@@ -689,6 +706,10 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Adds a Cleave.js mask to the input.
+          * @param options The Cleave.js options.
+         */
         "mask": (options: CleaveOptions) => Promise<void>;
         /**
           * A maximum value for time and numeric values.
@@ -1333,6 +1354,10 @@ export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatCheckboxElement;
 }
+export interface CatDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDateElement;
+}
 export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
@@ -1481,7 +1506,20 @@ declare global {
         prototype: HTMLCatCheckboxElement;
         new (): HTMLCatCheckboxElement;
     };
+    interface HTMLCatDateElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
     interface HTMLCatDateElement extends Components.CatDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDateElementEventMap>(type: K, listener: (this: HTMLCatDateElement, ev: CatDateCustomEvent<HTMLCatDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDateElementEventMap>(type: K, listener: (this: HTMLCatDateElement, ev: CatDateCustomEvent<HTMLCatDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatDateElement: {
         prototype: HTMLCatDateElement;
@@ -2189,6 +2227,18 @@ declare namespace LocalJSX {
           * Attributes that will be added to the native HTML input element.
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatDateCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDateCustomEvent<string>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatDateCustomEvent<FocusEvent>) => void;
         /**
           * The placeholder text to display within the input.
          */
