@@ -251,8 +251,8 @@ export class CatInput {
   }
 
   @Method()
-  async mask(options: CleaveOptions): Promise<any> {
-    return new Cleave(this.input, options);
+  async mask(options: CleaveOptions): Promise<void> {
+    new Cleave(this.input, options);
   }
 
   @Watch('errors')

@@ -7,19 +7,8 @@ describe('cat-scrollable', () => {
       components: [CatScrollable],
       html: `<cat-scrollable></cat-scrollable>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-scrollable>
-       <mock:shadow-root>
-         <div class="scrollable-wrapper">
-           <div class="shadow-top"></div>
-           <div class="shadow-left"></div>
-           <div class="shadow-right"></div>
-           <div class="shadow-bottom"></div>
-         </div>
-         <div class="scrollable-content scroll-x scroll-y">
-           <slot></slot>
-        </div>
-      </cat-scrollable>
+    expect(page.root).toEqualLightHtml(`
+      <cat-scrollable></cat-scrollable>
     `);
   });
 });

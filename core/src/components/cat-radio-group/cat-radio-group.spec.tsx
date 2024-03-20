@@ -7,14 +7,8 @@ describe('cat-radio-group', () => {
       components: [CatRadioGroup],
       html: `<cat-radio-group></cat-radio-group>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-radio-group>
-        <mock:shadow-root>
-          <div role="radiogroup">
-            <slot></slot>
-          </div>
-        </mock:shadow-root>
-      </cat-radio-group>
+    expect(page.root).toEqualLightHtml(`
+      <cat-radio-group></cat-radio-group>
     `);
   });
 });

@@ -280,6 +280,81 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
 
 @ProxyCmp({
   inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
+  methods: ['select']
+})
+@Component({
+  selector: 'cat-date',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ]
+})
+export class CatDate {
+  protected el: HTMLElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatDate extends Components.CatDate {}
+
+@ProxyCmp({
+  inputs: [
     'attachToElement',
     'autoComplete',
     'clearable',
@@ -406,15 +481,15 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
 }
 
 @ProxyCmp({
-  inputs: ['noAutoClose', 'overflow', 'placement'],
-  methods: ['close']
+  inputs: ['noAutoClose', 'noKeybindings', 'overflow', 'placement'],
+  methods: ['toggle', 'open', 'close']
 })
 @Component({
   selector: 'cat-dropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['noAutoClose', 'overflow', 'placement']
+  inputs: ['noAutoClose', 'noKeybindings', 'overflow', 'placement']
 })
 export class CatDropdown {
   protected el: HTMLElement;
@@ -519,7 +594,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'type',
     'value'
   ],
-  methods: ['doFocus', 'doBlur', 'clear']
+  methods: ['doFocus', 'doBlur', 'clear', 'mask']
 })
 @Component({
   selector: 'cat-input',

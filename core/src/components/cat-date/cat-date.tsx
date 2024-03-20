@@ -127,8 +127,9 @@ export class CatDate {
    * A value is required or must be check for the form to be submittable.
    */
   @Prop() required = false;
+
   /**
-   * The value of the control.
+   * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
    */
   @Prop({ mutable: true }) value?: string;
 
@@ -225,6 +226,7 @@ export class CatDate {
     );
     this.focus(newDate);
     this.selectionDate = newDate;
+    this.value = newDate.toISOString();
   }
 
   render() {
@@ -375,7 +377,6 @@ export class CatDate {
             </div>
           </cat-dropdown>
         </cat-input>
-        <p>Selection is: {this.selectionDate ? this.selectionDate.toLocaleDateString() : 'null'}</p>
       </Host>
     );
   }
@@ -424,6 +425,7 @@ export class CatDate {
 
   private onInputBlur() {
     this.selectionDate = this.parse(this.input.value ?? '');
+    this.value = this.selectionDate?.toISOString();
     this.input.value = this.getInputValue();
   }
 

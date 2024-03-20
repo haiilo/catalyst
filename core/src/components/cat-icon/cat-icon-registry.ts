@@ -1,25 +1,23 @@
-import {
-  ci16ChevronDoubleLeft,
-  ci16ChevronDoubleRight,
-  ci16ChevronLeft,
-  ci16ChevronRight,
-  ci16Cross,
-  ciAlertCircleOutlined,
-  ciCalendarOutlined,
-  ciCheckCircleFilled,
-  ciChevronDownOutlined,
-  ciChevronLeftOutlined,
-  ciChevronRightOutlined,
-  ciClockFilled,
-  ciCrossCircleFilled,
-  ciCrossCircleOutlined,
-  ciCrossOutlined,
-  ciDangerFilled,
-  ciEyeClosedOutlined,
-  ciEyeOpenOutlined,
-  ciInfoCircleFilled,
-  ciStarCircleFilled
-} from '@haiilo/catalyst-icons';
+import chevronDoubleLeft16 from '@haiilo/catalyst-icons/src/16-chevron-double-left.svg';
+import chevronDoubleRight16 from '@haiilo/catalyst-icons/src/16-chevron-double-right.svg';
+import chevronLeft16 from '@haiilo/catalyst-icons/src/16-chevron-left.svg';
+import chevronRight16 from '@haiilo/catalyst-icons/src/16-chevron-right.svg';
+import cross16 from '@haiilo/catalyst-icons/src/16-cross.svg';
+import alertCircleOutlined from '@haiilo/catalyst-icons/src/alert-circle-outlined.svg';
+import calendarOutlined from '@haiilo/catalyst-icons/src/calendar-outlined.svg';
+import checkCircleFilled from '@haiilo/catalyst-icons/src/check-circle-filled.svg';
+import chevronDownOutlined from '@haiilo/catalyst-icons/src/chevron-down-outlined.svg';
+import chevronLeftOutlined from '@haiilo/catalyst-icons/src/chevron-left-outlined.svg';
+import chevronRightOutlined from '@haiilo/catalyst-icons/src/chevron-right-outlined.svg';
+import clockFilled from '@haiilo/catalyst-icons/src/clock-filled.svg';
+import crossCircleFilled from '@haiilo/catalyst-icons/src/cross-circle-filled.svg';
+import crossCircleOutlined from '@haiilo/catalyst-icons/src/cross-circle-outlined.svg';
+import crossOutlined from '@haiilo/catalyst-icons/src/cross-outlined.svg';
+import dangerFilled from '@haiilo/catalyst-icons/src/danger-filled.svg';
+import eyeClosedOutlined from '@haiilo/catalyst-icons/src/eye-closed-outlined.svg';
+import eyeOpenOutlined from '@haiilo/catalyst-icons/src/eye-open-outlined.svg';
+import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg';
+import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
 import log from 'loglevel';
 
 export class CatIconRegistry {
@@ -34,27 +32,27 @@ export class CatIconRegistry {
     // register default icons that are used in the framework by other components
     this.addIcons(
       {
-        'alert-primary': ciStarCircleFilled.data,
-        'alert-secondary': ciClockFilled.data,
-        'alert-info': ciInfoCircleFilled.data,
-        'alert-success': ciCheckCircleFilled.data,
-        'alert-warning': ciDangerFilled.data,
-        'alert-danger': ciCrossCircleFilled.data,
-        'datepicker-month-prev': ci16ChevronLeft.data,
-        'datepicker-month-next': ci16ChevronRight.data,
-        'datepicker-year-prev': ci16ChevronDoubleLeft.data,
-        'datepicker-year-next': ci16ChevronDoubleRight.data,
-        'datepicker-calendar': ciCalendarOutlined.data,
-        'dialog-close': ciCrossOutlined.data,
-        'input-close': ciCrossCircleOutlined.data,
-        'input-error': ciAlertCircleOutlined.data,
-        'input-password-show': ciEyeOpenOutlined.data,
-        'input-password-hide': ciEyeClosedOutlined.data,
-        'notification-close': ciCrossCircleOutlined.data,
-        'pagination-left': ciChevronLeftOutlined.data,
-        'pagination-right': ciChevronRightOutlined.data,
-        'select-clear': ci16Cross.data,
-        'select-open': ciChevronDownOutlined.data
+        'alert-primary': starCircleFilled,
+        'alert-secondary': clockFilled,
+        'alert-info': infoCircleFilled,
+        'alert-success': checkCircleFilled,
+        'alert-warning': dangerFilled,
+        'alert-danger': crossCircleFilled,
+        'datepicker-month-prev': chevronLeft16,
+        'datepicker-month-next': chevronRight16,
+        'datepicker-year-prev': chevronDoubleLeft16,
+        'datepicker-year-next': chevronDoubleRight16,
+        'datepicker-calendar': calendarOutlined,
+        'dialog-close': crossOutlined,
+        'input-close': crossCircleOutlined,
+        'input-error': alertCircleOutlined,
+        'input-password-show': eyeOpenOutlined,
+        'input-password-hide': eyeClosedOutlined,
+        'notification-close': crossCircleOutlined,
+        'pagination-left': chevronLeftOutlined,
+        'pagination-right': chevronRightOutlined,
+        'select-clear': cross16,
+        'select-open': chevronDownOutlined
       },
       '$cat',
       true

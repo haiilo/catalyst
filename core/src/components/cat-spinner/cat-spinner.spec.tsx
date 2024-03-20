@@ -7,7 +7,7 @@ describe('cat-spinner', () => {
       components: [CatSpinner],
       html: `<cat-spinner></cat-spinner>`
     });
-    expect(page.root?.shadowRoot).toEqualHtml(`
+    expect(page.root?.shadowRoot).toEqualLightHtml(`
           <span aria-hidden="true" class="spinner-m">
             <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="24" r="21.5"></circle>

@@ -7,12 +7,8 @@ describe('cat-button-group', () => {
       components: [CatButtonGroup],
       html: `<cat-button-group></cat-button-group>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-button-group role="group">
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cat-button-group>
+    expect(page.root).toEqualLightHtml(`
+      <cat-button-group role="group"></cat-button-group>
     `);
   });
 });

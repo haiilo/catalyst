@@ -394,7 +394,7 @@ export namespace Components {
          */
         "textSuffix"?: string;
         /**
-          * The value of the control.
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "value"?: string;
     }
@@ -689,7 +689,7 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
-        "mask": (options: CleaveOptions) => Promise<any>;
+        "mask": (options: CleaveOptions) => Promise<void>;
         /**
           * A maximum value for time and numeric values.
          */
@@ -2218,7 +2218,7 @@ declare namespace LocalJSX {
          */
         "textSuffix"?: string;
         /**
-          * The value of the control.
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "value"?: string;
     }

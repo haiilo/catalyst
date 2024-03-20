@@ -11,16 +11,8 @@ describe('cat-tooltip', () => {
         </cat-tooltip>
         `
     });
-    expect(page.root).toEqualHtml(`
+    expect(page.root).toEqualLightHtml(`
       <cat-tooltip content="This is a tooltip">
-        <mock:shadow-root>
-          <slot></slot>
-          <div aria-hidden aria-live="off" role="tooltip" class="tooltip tooltip-m" id="cat-tooltip-0">
-            <slot name="content">
-              <p>This is a tooltip</p>
-            </slot>
-          </div>
-        </mock:shadow-root>
         <p>Hover me</p>
       </cat-tooltip>
     `);

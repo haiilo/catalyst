@@ -7,15 +7,8 @@ describe('cat-alert', () => {
       components: [CatAlert],
       html: `<cat-alert></cat-alert>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-alert color="primary" role="status" tabindex="0">
-        <mock:shadow-root>
-          <cat-icon icon="$cat:alert-primary" size="l"></cat-icon>
-          <div class="content">
-              <slot></slot>
-          </div>
-        </mock:shadow-root>
-      </cat-alert>
+    expect(page.root).toEqualLightHtml(`
+      <cat-alert color="primary" role="status" tabindex="0"></cat-alert>
     `);
   });
 });
