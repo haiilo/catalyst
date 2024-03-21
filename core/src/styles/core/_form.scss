@@ -3,9 +3,18 @@
 
 .cat-form {
   .cat-form-element,
-  :is(cat-checkbox, cat-datepicker, cat-inline, cat-input, cat-radio-group, cat-select, cat-textarea, cat-toggle, cat-date, cat-time):not(
-      :last-child
-    ) {
+  :is(
+      cat-checkbox,
+      cat-datepicker,
+      cat-inline,
+      cat-input,
+      cat-radio-group,
+      cat-select,
+      cat-textarea,
+      cat-toggle,
+      cat-date,
+      cat-time
+    ):not(:last-child) {
     margin-bottom: calc($cat-form-margin-bottom * var(--cat-form-spacer, 1));
   }
 

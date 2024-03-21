@@ -33,6 +33,7 @@
 
 .picker-grid {
   display: grid;
+  /* stylelint-disable declaration-block-no-redundant-longhand-properties */
   grid-template-rows: 2rem repeat(6, 1fr);
   grid-template-columns: 2rem repeat(7, 1fr);
   grid-template-areas:
@@ -43,6 +44,7 @@
     'w d d d d d d d'
     'w d d d d d d d'
     'w d d d d d d d';
+  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   margin: 1rem 0 0.5rem;
 }
 
@@ -50,8 +52,7 @@
   grid-area: h;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  align-items: end;
-  justify-items: center;
+  place-items: end center;
   padding-bottom: 0.5rem;
 }
 
@@ -59,8 +60,7 @@
   grid-area: w;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
-  align-items: center;
-  justify-items: right;
+  place-items: center right;
   padding-right: 0.5rem;
 }
 
