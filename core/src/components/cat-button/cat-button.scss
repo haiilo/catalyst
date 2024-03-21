@@ -367,6 +367,17 @@ $button-sizes: (
 
 // ----- datepicker
 
+:host(.cat-time-format) {
+  .cat-button {
+    border-radius: 0;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+}
+
+:host(.cat-time-toggle),
 :host(.cat-picker-toggle) {
   .cat-button {
     margin-left: -1px;

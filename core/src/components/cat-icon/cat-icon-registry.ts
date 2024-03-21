@@ -10,6 +10,7 @@ import chevronDownOutlined from '@haiilo/catalyst-icons/src/chevron-down-outline
 import chevronLeftOutlined from '@haiilo/catalyst-icons/src/chevron-left-outlined.svg';
 import chevronRightOutlined from '@haiilo/catalyst-icons/src/chevron-right-outlined.svg';
 import clockFilled from '@haiilo/catalyst-icons/src/clock-filled.svg';
+import clockOutlined from '@haiilo/catalyst-icons/src/clock-outlined.svg';
 import crossCircleFilled from '@haiilo/catalyst-icons/src/cross-circle-filled.svg';
 import crossCircleOutlined from '@haiilo/catalyst-icons/src/cross-circle-outlined.svg';
 import crossOutlined from '@haiilo/catalyst-icons/src/cross-outlined.svg';
@@ -43,6 +44,7 @@ export class CatIconRegistry {
         'datepicker-year-prev': chevronDoubleLeft16,
         'datepicker-year-next': chevronDoubleRight16,
         'datepicker-calendar': calendarOutlined,
+        'timepicker-clock': clockOutlined,
         'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,

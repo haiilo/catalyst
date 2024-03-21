@@ -169,9 +169,10 @@ input {
   }
 }
 
-// ----- datepicker
+// ----- date- & timepicker
 
-:host(.cat-picker-input) {
+:host(.cat-date-input),
+:host(.cat-time-input) {
   .input-wrapper {
     z-index: 1;
     border-top-right-radius: 0;

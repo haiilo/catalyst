@@ -5,6 +5,19 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
 
+/*
+vars
+element
+state
+prop
+watch
+event
+lifecycle
+listen
+method
+render
+privates
+*/
 @Component({
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',
@@ -284,7 +297,7 @@ export class CatDate {
     return (
       <Host>
         <cat-input
-          class="cat-picker-input"
+          class="cat-date-input"
           ref={el => (this.input = el as HTMLCatInputElement)}
           requiredMarker={this.requiredMarker}
           horizontal={this.horizontal}
@@ -308,7 +321,6 @@ export class CatDate {
           value={this.getInputValue()}
           onCatFocus={e => this.catFocus.emit(e.detail)}
           onCatBlur={e => this.onInputBlur(e.detail)}
-          data-dropdown-no-close
         >
           <span slot="label">
             {this.label}
@@ -333,7 +345,6 @@ export class CatDate {
                   icon="$cat:datepicker-year-prev"
                   iconOnly
                   size="xs"
-                  round
                   variant="text"
                   a11y-label={this.locale.prevYear}
                   disabled={isSameYear(this.viewDate, this.minDate)}
@@ -344,7 +355,6 @@ export class CatDate {
                   icon="$cat:datepicker-month-prev"
                   iconOnly
                   size="xs"
-                  round
                   variant="text"
                   a11y-label={this.locale.prevMonth}
                   disabled={isSameMonth(this.viewDate, this.minDate)}
@@ -356,7 +366,6 @@ export class CatDate {
                   icon="$cat:datepicker-month-next"
                   iconOnly
                   size="xs"
-                  round
                   variant="text"
                   a11y-label={this.locale.nextMonth}
                   disabled={isSameMonth(this.viewDate, this.maxDate)}
@@ -367,7 +376,6 @@ export class CatDate {
                   icon="$cat:datepicker-year-next"
                   iconOnly
                   size="xs"
-                  round
                   variant="text"
                   a11y-label={this.locale.nextYear}
                   disabled={isSameYear(this.viewDate, this.maxDate)}
