@@ -3,8 +3,9 @@
 <button (click)="openDialog()">Open</button>
 <h2>Form Components</h2>
 <form [formGroup]="form">
-  <h1>new datepicker</h1>
-  <cat-date formControlName="date2" clearable></cat-date>
+  <h1>new datepicker & timepicker</h1>
+  <cat-date label="Date" formControlName="date2" clearable></cat-date>
+  <cat-time label="Time" formControlName="time" clearable></cat-time>
   <pre>{{ form.getRawValue() | json }}</pre>
   <cat-input
     label="Input"
