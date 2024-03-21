@@ -13,7 +13,6 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
 export class CatTime {
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
-
   private input?: HTMLCatInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -192,6 +191,7 @@ export class CatTime {
 
   @Listen('catOpen')
   onOpen() {
+    //TODO: fix timeout
     if (this.selectionTime) {
       const time = new Date(this.selectionTime);
       time.setMinutes(Math.floor(this.selectionTime.getMinutes() / 15) * 15);

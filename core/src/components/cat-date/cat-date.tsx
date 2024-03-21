@@ -5,19 +5,6 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
 
-/*
-vars
-element
-state
-prop
-watch
-event
-lifecycle
-listen
-method
-render
-privates
-*/
 @Component({
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',
@@ -26,9 +13,13 @@ privates
 export class CatDate {
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
-  private input!: HTMLCatInputElement;
+  private input?: HTMLCatInputElement;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
 
   @State() viewDate: Date = this.now;
 
@@ -193,10 +184,22 @@ export class CatDate {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
+  componentWillLoad() {
+    const [match, year, month, day] = this.value?.match(/^(\d{4})-(\d{2})-(\d{2})/) ?? [];
+    if (match) {
+      this.select(new Date(Number(year), Number(month) - 1, Number(day)));
+    }
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
   componentDidLoad() {
     const format = this.locale.formatStr.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
     const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(format) || [];
-    this.input.mask({
+    this.input?.mask({
       date: true,
       dateMin: this.min,
       dateMax: this.max,
@@ -213,6 +216,16 @@ export class CatDate {
         ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.toLocalISO(this.focusDate)}"]`)
         ?.doFocus();
     }
+  }
+
+  @Listen('catOpen')
+  onOpen() {
+    this.setAriaLive('');
+    this.focusDate = null;
+    const viewDate = this.selectionDate
+      ? new Date(this.selectionDate.getFullYear(), this.selectionDate.getMonth(), 1)
+      : this.now;
+    this.viewDate = clampDate(this.minDate, viewDate, this.maxDate);
   }
 
   @Listen('keydown')
@@ -233,16 +246,6 @@ export class CatDate {
       e.preventDefault();
       this.focus(addDays(this.focusDate, 7));
     }
-  }
-
-  @Listen('catOpen')
-  onOpen() {
-    this.setAriaLive('');
-    this.focusDate = null;
-    const viewDate = this.selectionDate
-      ? new Date(this.selectionDate.getFullYear(), this.selectionDate.getMonth(), 1)
-      : this.now;
-    this.viewDate = clampDate(this.minDate, viewDate, this.maxDate);
   }
 
   /**
@@ -272,7 +275,7 @@ export class CatDate {
    */
   @Method()
   async doFocus(options?: FocusOptions): Promise<void> {
-    this.input.doFocus(options);
+    this.input?.doFocus(options);
   }
 
   /**
@@ -281,7 +284,7 @@ export class CatDate {
    */
   @Method()
   async doBlur(): Promise<void> {
-    this.input.doBlur();
+    this.input?.doBlur();
   }
 
   /**
@@ -289,7 +292,7 @@ export class CatDate {
    */
   @Method()
   async clear(): Promise<void> {
-    this.input.clear();
+    this.input?.clear();
   }
 
   render() {
@@ -483,6 +486,9 @@ export class CatDate {
   }
 
   private onInputBlur(e: FocusEvent) {
+    if (!this.input) {
+      return;
+    }
     this.selectionDate = this.parse(this.input.value ?? '');
     this.value = this.selectionDate?.toISOString();
     this.catChange.emit(this.value);
@@ -532,12 +538,6 @@ export class CatDate {
     return Math.ceil(((+currentDate - +yearStart) / 86400000 + 1) / 7);
   }
 
-  private canClick(date: Date) {
-    const min = this.minDate;
-    const max = this.maxDate;
-    return (!min || min <= date) && (!max || max >= date);
-  }
-
   private canFocus(date: Date): boolean {
     const now = this.now;
     if (this.focusDate && isSameMonth(this.focusDate, this.viewDate)) {
@@ -549,6 +549,12 @@ export class CatDate {
     }
     const minDay = isSameMonth(date, this.minDate) ? this.minDate?.getDate() ?? 1 : 1;
     return isSameMonth(this.viewDate, date) && date.getDate() === minDay;
+  }
+
+  private canClick(date: Date) {
+    const min = this.minDate;
+    const max = this.maxDate;
+    return (!min || min <= date) && (!max || max >= date);
   }
 
   private toLocalISO(date: Date) {

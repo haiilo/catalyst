@@ -62,12 +62,14 @@ Type: `Promise<void>`
 
  - [cat-date](../cat-date)
  - [cat-select-demo](../cat-select-demo)
+ - [cat-time](../cat-time)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-date --> cat-dropdown
   cat-select-demo --> cat-dropdown
+  cat-time --> cat-dropdown
   style cat-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

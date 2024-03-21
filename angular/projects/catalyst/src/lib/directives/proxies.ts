@@ -1166,6 +1166,97 @@ export declare interface CatTextarea extends Components.CatTextarea {
 
 @ProxyCmp({
   inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
+  methods: ['select', 'doFocus', 'doBlur', 'clear']
+})
+@Component({
+  selector: 'cat-time',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ]
+})
+export class CatTime {
+  protected el: HTMLElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+export declare interface CatTime extends Components.CatTime {
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when the input received focus.
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+}
+
+@ProxyCmp({
+  inputs: [
     'checked',
     'disabled',
     'hint',

@@ -106,6 +106,7 @@ Type: `Promise<void>`
  - [cat-select](../cat-select)
  - [cat-select-demo](../cat-select-demo)
  - [cat-tabs](../cat-tabs)
+ - [cat-time](../cat-time)
 
 ### Depends on
 
@@ -123,6 +124,7 @@ graph TD;
   cat-select --> cat-button
   cat-select-demo --> cat-button
   cat-tabs --> cat-button
+  cat-time --> cat-button
   style cat-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
