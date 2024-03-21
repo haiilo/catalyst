@@ -27,9 +27,9 @@ including passwords and numbers.
 | `identifier`       | `identifier`      | A unique identifier for the input.                                                                                                                                                                                                                                                                                              | `string \| undefined`                                                                                       | `undefined`  |
 | `label`            | `label`           | The label for the input.                                                                                                                                                                                                                                                                                                        | `string`                                                                                                    | `''`         |
 | `labelHidden`      | `label-hidden`    | Visually hide the label, but still show it to assistive technologies like screen readers.                                                                                                                                                                                                                                       | `boolean`                                                                                                   | `false`      |
-| `max`              | `max`             | A maximum value for date, time and numeric values.                                                                                                                                                                                                                                                                              | `number \| string \| undefined`                                                                             | `undefined`  |
+| `max`              | `max`             | A maximum value for numeric values.                                                                                                                                                                                                                                                                                             | `number \| string \| undefined`                                                                             | `undefined`  |
 | `maxLength`        | `max-length`      | A maximum length (number of characters) for textual values.                                                                                                                                                                                                                                                                     | `number \| undefined`                                                                                       | `undefined`  |
-| `min`              | `min`             | A minimum value for date, time and numeric values.                                                                                                                                                                                                                                                                              | `number \| string \| undefined`                                                                             | `undefined`  |
+| `min`              | `min`             | A minimum value for numeric values.                                                                                                                                                                                                                                                                                             | `number \| string \| undefined`                                                                             | `undefined`  |
 | `minLength`        | `min-length`      | A minimum length (number of characters) for textual values.                                                                                                                                                                                                                                                                     | `number \| undefined`                                                                                       | `undefined`  |
 | `name`             | `name`            | The name of the form control. Submitted with the form as part of a name/value pair.                                                                                                                                                                                                                                             | `string \| undefined`                                                                                       | `undefined`  |
 | `nativeAttributes` | --                | Attributes that will be added to the native HTML input element.                                                                                                                                                                                                                                                                 | `undefined \| { [key: string]: string; }`                                                                   | `undefined`  |
@@ -94,6 +94,22 @@ Type: `Promise<void>`
 
 
 
+### `mask(options: CleaveOptions) => Promise<void>`
+
+Adds a Cleave.js mask to the input.
+
+#### Parameters
+
+| Name      | Type            | Description            |
+| --------- | --------------- | ---------------------- |
+| `options` | `CleaveOptions` | The Cleave.js options. |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Slots
 
@@ -117,7 +133,9 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [cat-date](../cat-date)
  - [cat-datepicker](../cat-datepicker)
+ - [cat-time](../cat-time)
 
 ### Depends on
 
@@ -131,7 +149,9 @@ graph TD;
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-date --> cat-input
   cat-datepicker --> cat-input
+  cat-time --> cat-input
   style cat-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

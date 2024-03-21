@@ -27,6 +27,7 @@
 }
 
 .input-wrapper {
+  flex: 1 1 auto;
   display: flex;
   align-items: stretch;
   gap: 0.75rem;
@@ -101,6 +102,10 @@
   align-self: center;
 }
 
+.input-outer-wrapper {
+  display: flex;
+}
+
 .input-inner-wrapper {
   display: flex;
   align-items: center;
@@ -161,5 +166,16 @@ input {
 
   .has-clearable ~ & {
     right: 1.5rem;
+  }
+}
+
+// ----- date- & timepicker
+
+:host(.cat-date-input),
+:host(.cat-time-input) {
+  .input-wrapper {
+    z-index: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }

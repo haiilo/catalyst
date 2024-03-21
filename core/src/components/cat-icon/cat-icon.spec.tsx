@@ -8,7 +8,7 @@ describe('cat-icon', () => {
       components: [CatIcon],
       html: `<cat-icon icon="icon"></cat-icon>`
     });
-    expect(page.root?.shadowRoot).toEqualHtml(`
+    expect(page.root?.shadowRoot).toEqualLightHtml(`
       <span aria-hidden="true" class="icon icon-m" part="icon"></span>
     `);
   });

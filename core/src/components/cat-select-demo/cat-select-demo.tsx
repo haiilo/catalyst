@@ -177,7 +177,7 @@ export class CatSelectTest {
 
   render() {
     return (
-      <Host style={{ display: 'flex', flexDirection: 'column' }}>
+      <Host style={{ display: 'flex', flexDirection: 'column' }} class="cat-form">
         <cat-select
           label="Multiple Select"
           hint="This is a hint!"

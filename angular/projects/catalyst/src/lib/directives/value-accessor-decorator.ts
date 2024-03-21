@@ -3,7 +3,7 @@ import { ControlContainer, NgControl, Validators } from '@angular/forms';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-input, cat-textarea, cat-datepicker, cat-select',
+  selector: 'cat-input, cat-textarea, cat-datepicker, cat-select, cat-date, cat-time',
   host: {
     '(catBlur)': 'updateErrors()'
   }

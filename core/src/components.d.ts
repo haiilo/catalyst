@@ -6,19 +6,21 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
+import { Placement } from "@floating-ui/dom";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
-import { Placement } from "@floating-ui/dom";
-import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { InputType } from "./components/cat-input/input-type";
+import { CleaveOptions } from "cleave.js/options";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 export { Breakpoint } from "./utils/breakpoints";
+export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
+export { Placement } from "@floating-ui/dom";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
-export { Placement } from "@floating-ui/dom";
-export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { InputType } from "./components/cat-input/input-type";
+export { CleaveOptions } from "cleave.js/options";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export namespace Components {
@@ -297,6 +299,122 @@ export namespace Components {
          */
         "value"?: any;
     }
+    interface CatDate {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Clear the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Programmatically remove focus from the input. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically move focus to the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement": Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * Select a date in the picker.
+          * @param date The date to select.
+         */
+        "select": (date: Date) => Promise<void>;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
     interface CatDatepicker {
         /**
           * Instead of body, appends the calendar to the cat-datepicker element instead
@@ -465,6 +583,14 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "noKeybindings": boolean;
+        /**
+          * Opens the dropdown.
+         */
+        "open": () => Promise<void>;
+        /**
           * Allow overflow when dropdown is open.
          */
         "overflow": boolean;
@@ -472,6 +598,10 @@ export namespace Components {
           * The placement of the dropdown.
          */
         "placement": Placement;
+        /**
+          * Toggles the dropdown.
+         */
+        "toggle": () => Promise<void>;
     }
     interface CatFormGroup {
         /**
@@ -577,7 +707,12 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
-          * A maximum value for date, time and numeric values.
+          * Adds a Cleave.js mask to the input.
+          * @param options The Cleave.js options.
+         */
+        "mask": (options: CleaveOptions) => Promise<void>;
+        /**
+          * A maximum value for numeric values.
          */
         "max"?: number | string;
         /**
@@ -585,7 +720,7 @@ export namespace Components {
          */
         "maxLength"?: number;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value for numeric values.
          */
         "min"?: number | string;
         /**
@@ -1109,6 +1244,126 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface CatTime {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Clear the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Programmatically remove focus from the input. Use this method instead of `input.blur()`.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically move focus to the input. Use this method instead of `input.focus()`.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal": boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * A maximum time value given in HH:mm format.
+         */
+        "max"?: string;
+        /**
+          * A minimum value given in HH:mm format.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement": Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * Select a time in the picker.
+          * @param date The time to select.
+         */
+        "select": (date: Date | null) => Promise<void>;
+        /**
+          * The step size for times in minutes.
+         */
+        "step": number;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control given in HH:mm format
+         */
+        "value"?: string;
+    }
     /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
@@ -1219,6 +1474,10 @@ export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatCheckboxElement;
 }
+export interface CatDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDateElement;
+}
 export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
@@ -1266,6 +1525,10 @@ export interface CatTabsCustomEvent<T> extends CustomEvent<T> {
 export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTextareaElement;
+}
+export interface CatTimeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTimeElement;
 }
 export interface CatToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1366,6 +1629,25 @@ declare global {
     var HTMLCatCheckboxElement: {
         prototype: HTMLCatCheckboxElement;
         new (): HTMLCatCheckboxElement;
+    };
+    interface HTMLCatDateElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
+    interface HTMLCatDateElement extends Components.CatDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDateElementEventMap>(type: K, listener: (this: HTMLCatDateElement, ev: CatDateCustomEvent<HTMLCatDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDateElementEventMap>(type: K, listener: (this: HTMLCatDateElement, ev: CatDateCustomEvent<HTMLCatDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatDateElement: {
+        prototype: HTMLCatDateElement;
+        new (): HTMLCatDateElement;
     };
     interface HTMLCatDatepickerElementEventMap {
         "catChange": string;
@@ -1667,6 +1949,25 @@ declare global {
         prototype: HTMLCatTextareaElement;
         new (): HTMLCatTextareaElement;
     };
+    interface HTMLCatTimeElementEventMap {
+        "catChange": string;
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
+    interface HTMLCatTimeElement extends Components.CatTime, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTimeElementEventMap>(type: K, listener: (this: HTMLCatTimeElement, ev: CatTimeCustomEvent<HTMLCatTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTimeElementEventMap>(type: K, listener: (this: HTMLCatTimeElement, ev: CatTimeCustomEvent<HTMLCatTimeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatTimeElement: {
+        prototype: HTMLCatTimeElement;
+        new (): HTMLCatTimeElement;
+    };
     interface HTMLCatToggleElementEventMap {
         "catChange": any;
         "catFocus": FocusEvent;
@@ -1704,6 +2005,7 @@ declare global {
         "cat-button-group": HTMLCatButtonGroupElement;
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
+        "cat-date": HTMLCatDateElement;
         "cat-datepicker": HTMLCatDatepickerElement;
         "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
@@ -1721,6 +2023,7 @@ declare global {
         "cat-tab": HTMLCatTabElement;
         "cat-tabs": HTMLCatTabsElement;
         "cat-textarea": HTMLCatTextareaElement;
+        "cat-time": HTMLCatTimeElement;
         "cat-toggle": HTMLCatToggleElement;
         "cat-tooltip": HTMLCatTooltipElement;
     }
@@ -2003,6 +2306,116 @@ declare namespace LocalJSX {
          */
         "value"?: any;
     }
+    interface CatDate {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatDateCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDateCustomEvent<string>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatDateCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement"?: Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
     interface CatDatepicker {
         /**
           * Instead of body, appends the calendar to the cat-datepicker element instead
@@ -2174,6 +2587,10 @@ declare namespace LocalJSX {
          */
         "noAutoClose"?: boolean;
         /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "noKeybindings"?: boolean;
+        /**
           * Emitted when the dropdown is closed.
          */
         "onCatClose"?: (event: CatDropdownCustomEvent<FocusEvent>) => void;
@@ -2281,7 +2698,7 @@ declare namespace LocalJSX {
          */
         "labelHidden"?: boolean;
         /**
-          * A maximum value for date, time and numeric values.
+          * A maximum value for numeric values.
          */
         "max"?: number | string;
         /**
@@ -2289,7 +2706,7 @@ declare namespace LocalJSX {
          */
         "maxLength"?: number;
         /**
-          * A minimum value for date, time and numeric values.
+          * A minimum value for numeric values.
          */
         "min"?: number | string;
         /**
@@ -2855,6 +3272,120 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface CatTime {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the input.
+         */
+        "hint"?: string | string[];
+        /**
+          * Whether the label is on top or left.
+         */
+        "horizontal"?: boolean;
+        /**
+          * The name of an icon to be displayed in the input.
+         */
+        "icon"?: string;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * A maximum time value given in HH:mm format.
+         */
+        "max"?: string;
+        /**
+          * A minimum value given in HH:mm format.
+         */
+        "min"?: string;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatTimeCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatTimeCustomEvent<string>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatTimeCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the input.
+         */
+        "placeholder"?: string;
+        /**
+          * The placement of the dropdown.
+         */
+        "placement"?: Placement;
+        /**
+          * The value is not editable.
+         */
+        "readonly"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * The step size for times in minutes.
+         */
+        "step"?: number;
+        /**
+          * A textual prefix to be displayed in the input.
+         */
+        "textPrefix"?: string;
+        /**
+          * A textual suffix to be displayed in the input.
+         */
+        "textSuffix"?: string;
+        /**
+          * The value of the control given in HH:mm format
+         */
+        "value"?: string;
+    }
     /**
      * Toggles are graphical interface switches that give user control over a
      * feature or option that can be turned on or off.
@@ -2967,6 +3498,7 @@ declare namespace LocalJSX {
         "cat-button-group": CatButtonGroup;
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
+        "cat-date": CatDate;
         "cat-datepicker": CatDatepicker;
         "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
@@ -2984,6 +3516,7 @@ declare namespace LocalJSX {
         "cat-tab": CatTab;
         "cat-tabs": CatTabs;
         "cat-textarea": CatTextarea;
+        "cat-time": CatTime;
         "cat-toggle": CatToggle;
         "cat-tooltip": CatTooltip;
     }
@@ -3026,6 +3559,7 @@ declare module "@stencil/core" {
              * number of options.
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
+            "cat-date": LocalJSX.CatDate & JSXBase.HTMLAttributes<HTMLCatDateElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
             "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
@@ -3092,6 +3626,7 @@ declare module "@stencil/core" {
              * input component.
              */
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            "cat-time": LocalJSX.CatTime & JSXBase.HTMLAttributes<HTMLCatTimeElement>;
             /**
              * Toggles are graphical interface switches that give user control over a
              * feature or option that can be turned on or off.

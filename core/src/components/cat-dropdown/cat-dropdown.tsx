@@ -33,6 +33,11 @@ export class CatDropdown {
   @Prop() noAutoClose = false;
 
   /**
+   * Do not navigate focus inside the dropdown via vertical arrow keys.
+   */
+  @Prop() noKeybindings = false;
+
+  /**
    * Allow overflow when dropdown is open.
    */
   @Prop() overflow = false;
@@ -75,6 +80,7 @@ export class CatDropdown {
   /**
    * Toggles the dropdown.
    */
+  @Method()
   async toggle(): Promise<void> {
     this.isOpen ? this.close() : this.open();
   }
@@ -82,6 +88,7 @@ export class CatDropdown {
   /**
    * Opens the dropdown.
    */
+  @Method()
   async open(): Promise<void> {
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
@@ -137,6 +144,9 @@ export class CatDropdown {
   }
 
   componentDidLoad(): void {
+    if (this.noKeybindings) {
+      return;
+    }
     this.keyListener = event => {
       if (this.isOpen && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
         const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });

@@ -1,18 +1,24 @@
-import cross16 from '@haiilo/catalyst-icons/tmp/assets/16-cross.svg';
-import alertCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/alert-circle-outlined.svg';
-import checkCircleFilled from '@haiilo/catalyst-icons/tmp/assets/check-circle-filled.svg';
-import chevronDownOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-down-outlined.svg';
-import chevronLeftOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-left-outlined.svg';
-import chevronRightOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-right-outlined.svg';
-import clockFilled from '@haiilo/catalyst-icons/tmp/assets/clock-filled.svg';
-import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-filled.svg';
-import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
-import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
-import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
-import eyeClosedOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-closed-outlined.svg';
-import eyeOpenOutlined from '@haiilo/catalyst-icons/tmp/assets/eye-open-outlined.svg';
-import infoCircleFilled from '@haiilo/catalyst-icons/tmp/assets/info-circle-filled.svg';
-import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
+import chevronDoubleLeft16 from '@haiilo/catalyst-icons/src/16-chevron-double-left.svg';
+import chevronDoubleRight16 from '@haiilo/catalyst-icons/src/16-chevron-double-right.svg';
+import chevronLeft16 from '@haiilo/catalyst-icons/src/16-chevron-left.svg';
+import chevronRight16 from '@haiilo/catalyst-icons/src/16-chevron-right.svg';
+import cross16 from '@haiilo/catalyst-icons/src/16-cross.svg';
+import alertCircleOutlined from '@haiilo/catalyst-icons/src/alert-circle-outlined.svg';
+import calendarOutlined from '@haiilo/catalyst-icons/src/calendar-outlined.svg';
+import checkCircleFilled from '@haiilo/catalyst-icons/src/check-circle-filled.svg';
+import chevronDownOutlined from '@haiilo/catalyst-icons/src/chevron-down-outlined.svg';
+import chevronLeftOutlined from '@haiilo/catalyst-icons/src/chevron-left-outlined.svg';
+import chevronRightOutlined from '@haiilo/catalyst-icons/src/chevron-right-outlined.svg';
+import clockFilled from '@haiilo/catalyst-icons/src/clock-filled.svg';
+import clockOutlined from '@haiilo/catalyst-icons/src/clock-outlined.svg';
+import crossCircleFilled from '@haiilo/catalyst-icons/src/cross-circle-filled.svg';
+import crossCircleOutlined from '@haiilo/catalyst-icons/src/cross-circle-outlined.svg';
+import crossOutlined from '@haiilo/catalyst-icons/src/cross-outlined.svg';
+import dangerFilled from '@haiilo/catalyst-icons/src/danger-filled.svg';
+import eyeClosedOutlined from '@haiilo/catalyst-icons/src/eye-closed-outlined.svg';
+import eyeOpenOutlined from '@haiilo/catalyst-icons/src/eye-open-outlined.svg';
+import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg';
+import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
 import log from 'loglevel';
 
 export class CatIconRegistry {
@@ -33,6 +39,12 @@ export class CatIconRegistry {
         'alert-success': checkCircleFilled,
         'alert-warning': dangerFilled,
         'alert-danger': crossCircleFilled,
+        'datepicker-month-prev': chevronLeft16,
+        'datepicker-month-next': chevronRight16,
+        'datepicker-year-prev': chevronDoubleLeft16,
+        'datepicker-year-next': chevronDoubleRight16,
+        'datepicker-calendar': calendarOutlined,
+        'timepicker-clock': clockOutlined,
         'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,

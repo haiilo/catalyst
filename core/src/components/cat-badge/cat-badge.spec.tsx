@@ -7,12 +7,8 @@ describe('cat-badge', () => {
       components: [CatBadge],
       html: `<cat-badge></cat-badge>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-badge color="primary" size="m" variant="filled">
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cat-badge>
+    expect(page.root).toEqualLightHtml(`
+      <cat-badge color="primary" size="m" variant="filled"></cat-badge>
     `);
   });
 });

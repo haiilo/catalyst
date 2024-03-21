@@ -10,17 +10,11 @@ describe('cat-dropdown', () => {
         <nav slot="content"></nav>
       </cat-dropdown>`
     });
-    expect(page.root).toEqualHtml(`
+    expect(page.root).toEqualLightHtml(`
      <cat-dropdown>
-        <mock:shadow-root>
-         <slot name="trigger"></slot>
-         <div class="content overflow-auto" id="cat-dropdown-0">
-           <slot name="content"></slot>
-         </div>
-       </mock:shadow-root>
        <button slot="trigger"></button>
        <nav slot="content"></nav>
-      </cat-dropdown>
+     </cat-dropdown>
     `);
   });
 });

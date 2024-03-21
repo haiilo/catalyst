@@ -364,3 +364,39 @@ $button-sizes: (
     }
   }
 }
+
+// ----- datepicker
+
+:host(.cat-time-format) {
+  .cat-button {
+    border-radius: 0;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+}
+
+:host(.cat-time-toggle),
+:host(.cat-picker-toggle) {
+  .cat-button {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+}
+
+:host(.cat-picker-item) {
+  .cat-button {
+    padding-left: 0;
+    padding-right: 0;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+}

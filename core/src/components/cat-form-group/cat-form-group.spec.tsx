@@ -7,12 +7,8 @@ describe('cat-form-group', () => {
       components: [CatFormGroup],
       html: `<cat-form-group></cat-form-group>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-form-group>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cat-form-group>
+    expect(page.root).toEqualLightHtml(`
+      <cat-form-group></cat-form-group>
     `);
   });
 });

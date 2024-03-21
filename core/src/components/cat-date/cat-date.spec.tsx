@@ -1,16 +1,17 @@
 jest.mock('../cat-i18n/cat-i18n-registry');
 
 import { newSpecPage } from '@stencil/core/testing';
-import { CatSelect } from './cat-select';
+import { CatInput } from '../cat-input/cat-input';
+import { CatDate } from './cat-date';
 
-describe('cat-select', () => {
+describe('cat-date', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CatSelect],
-      html: `<cat-select label="Label"></cat-select>`
+      components: [CatDate, CatInput],
+      html: `<cat-date></cat-date>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-select label="Label"></cat-select>
+      <cat-date></cat-date>
     `);
   });
 });

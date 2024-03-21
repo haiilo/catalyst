@@ -198,12 +198,18 @@ importers:
       '@stencil/core':
         specifier: 4.12.6
         version: 4.12.6
+      '@types/cleave.js':
+        specifier: ^1.4.12
+        version: 1.4.12
       autosize:
         specifier: 6.0.1
         version: 6.0.1
       autosize-input:
         specifier: 1.0.2
         version: 1.0.2
+      cleave.js:
+        specifier: ^1.6.0
+        version: 1.6.0
       flatpickr:
         specifier: 4.6.13
         version: 4.6.13
@@ -227,8 +233,8 @@ importers:
         specifier: ^7.23.3
         version: 7.23.3
       '@haiilo/catalyst-icons':
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.2.5
+        version: 2.2.5
       '@stencil/angular-output-target':
         specifier: ^0.8.4
         version: 0.8.4(@stencil/core@4.12.6)
@@ -2922,8 +2928,8 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     dev: false
 
-  /@haiilo/catalyst-icons@2.1.0:
-    resolution: {integrity: sha512-Rb67XrH6377Ox4JyTHEC1Es+nAdVy3yK7aZAXui37IEY8tO8hOiI+R/wtsEH5toqufnjJAzpF1XzXIxt8LSK2g==}
+  /@haiilo/catalyst-icons@2.2.5:
+    resolution: {integrity: sha512-mdDvmyG/rg8B+edXoOluBD8xzALHlJ2sbAa1NKsnxSg6erP+pCVlOMRlG9NfM3Kn6EICKIw5mV64KwTg1+POxg==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.14:
@@ -3592,6 +3598,12 @@ packages:
       '@types/node': 15.12.2
     dev: true
 
+  /@types/cleave.js@1.4.12:
+    resolution: {integrity: sha512-d+TDoy5wsWfG/lTLNV4CCziGzJovbX5RCrYzrfG2iB5F6yvrzeTtGEgoXW3/7oRj0H6gAzLxuvwmgNEx4Og4QA==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: false
+
   /@types/component-emitter@1.2.11:
     resolution: {integrity: sha512-SRXjM+tfsSlA9VuG8hGO2nft2p8zjXCK1VcC6N4NXbBbYbSia9kzCChYQajIjzIqOOOuh5Ock6MmV2oux4jDZQ==}
     dev: true
@@ -3769,7 +3781,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
 
   /@types/qs@6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
@@ -3791,7 +3802,6 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
-    dev: true
 
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
@@ -3811,7 +3821,6 @@ packages:
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-    dev: true
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
@@ -5675,6 +5684,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /cleave.js@1.6.0:
+    resolution: {integrity: sha512-ivqesy3j5hQVG3gywPfwKPbi/7ZSftY/UNp5uphnqjr25yI2CP8FS2ODQPzuLXXnNLi29e2+PgPkkiKUXLs/Nw==}
+    dev: false
+
   /cli-boxes@1.0.0:
     resolution: {integrity: sha512-3Fo5wu8Ytle8q9iCzS4D2MWVL2X7JVWRiS1BnXbTFDhS9c/REkM9vd1AmabsoZoY5/dGi5TT9iKL8Kb6DeBRQg==}
     engines: {node: '>=0.10.0'}
@@ -6513,7 +6526,6 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
-    dev: true
 
   /cuint@0.2.2:
     resolution: {integrity: sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==}
