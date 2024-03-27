@@ -155,7 +155,7 @@ export class CatTime {
   /**
    * The step size for times in minutes.
    */
-  @Prop() step = 15;
+  @Prop() step = 30;
 
   /**
    * Emitted when the value is changed.
@@ -191,16 +191,15 @@ export class CatTime {
 
   @Listen('catOpen')
   onOpen() {
-    //TODO: fix timeout
-    if (this.selectionTime) {
-      const time = new Date(this.selectionTime);
-      time.setMinutes(Math.floor(this.selectionTime.getMinutes() / 15) * 15);
-      const elem = this.hostElement.shadowRoot?.querySelector(`[data-time="${this.formatIso(time)}"]`);
-      setTimeout(() => elem?.scrollIntoView({ block: 'center' }), 1);
-    } else {
-      const elem = this.hostElement.shadowRoot?.querySelector('[data-time="08:00"]');
-      setTimeout(() => elem?.scrollIntoView(), 1);
-    }
+    const query = (selector: string) => this.hostElement.shadowRoot?.querySelector<HTMLCatButtonElement>(selector);
+    const time = clampTime(this.min ?? null, this.selectionTime ?? new Date(2000, 5, 1, 8), this.max ?? null);
+    const elem1 = query(`[data-time="${this.formatIso(time)}"]`);
+    time.setMinutes(Math.floor(time.getMinutes() / this.step) * this.step);
+    const elem2 = query(`[data-time="${this.formatIso(time)}"]`);
+    setTimeout(() => {
+      (elem2 ?? elem1)?.doFocus();
+      (elem2 ?? elem1)?.scrollIntoView(this.selectionTime ? { block: 'center' } : undefined);
+    }, 1); // not entirely sure why this is necessary
   }
 
   /**
@@ -317,18 +316,28 @@ export class CatTime {
               ></cat-button>
               <nav slot="content" class="cat-nav">
                 <ul>
-                  {this.timeArray().map(time => (
-                    <li>
-                      <cat-button
-                        class="cat-nav-item"
-                        disabled={isBefore(time, this.min ?? null) || isAfter(time, this.max ?? null)}
-                        onCatClick={() => this.select(time)}
-                        data-time={this.formatIso(time)}
-                      >
-                        {this.format(time)}
-                      </cat-button>
-                    </li>
-                  ))}
+                  {this.timeArray().map(time => {
+                    const isoTime = this.formatIso(time);
+                    const disabled = isBefore(time, this.min ?? null) || isAfter(time, this.max ?? null);
+                    return (
+                      <li>
+                        <cat-button
+                          class={{
+                            'cat-nav-item': true,
+                            'time-disabled': disabled
+                          }}
+                          disabled={disabled}
+                          active={isoTime === this.value}
+                          color={isoTime === this.value ? 'primary' : 'secondary'}
+                          variant={isoTime === this.value ? 'filled' : 'outlined'}
+                          onCatClick={() => this.select(time)}
+                          data-time={isoTime}
+                        >
+                          {this.format(time)}
+                        </cat-button>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </cat-dropdown>

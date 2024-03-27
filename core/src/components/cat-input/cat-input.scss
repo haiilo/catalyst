@@ -63,6 +63,10 @@
   &:focus-within {
     outline: 2px solid cat-token('color.ui.border.focus');
     outline-offset: -1px;
+
+    &:has(.clearable:focus) {
+      outline: none;
+    }
   }
 
   &.input-invalid {

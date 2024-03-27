@@ -40,7 +40,7 @@ export function getLocale(language: string) {
     nextYear: i18n.t('datepicker.nextYear'),
     prevMonth: i18n.t('datepicker.prevMonth'),
     nextMonth: i18n.t('datepicker.nextMonth'),
-    cursor: i18n.t('datepicker.cursor'),
+    arrowKeys: i18n.t('datepicker.arrowKeys'),
     today: i18n.t('datepicker.today'),
     change: i18n.t('datepicker.change'),
     choose: i18n.t('datepicker.choose'),

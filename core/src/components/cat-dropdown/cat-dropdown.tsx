@@ -2,7 +2,7 @@ import { autoUpdate, computePosition, flip, offset, Placement, size } from '@flo
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import { FocusableElement, tabbable } from 'tabbable';
+import type { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
@@ -19,7 +19,6 @@ export class CatDropdown {
   private trigger?: FocusableElement;
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
-  private keyListener?: (event: KeyboardEvent) => void;
   private isOpen: boolean | null = false;
 
   /**
@@ -36,6 +35,12 @@ export class CatDropdown {
    * Do not navigate focus inside the dropdown via vertical arrow keys.
    */
   @Prop() noKeybindings = false;
+
+  /**
+   * Do not change the size of the dropdown to ensure it isn’t too big to fit
+   * in the viewport (or more specifically, its clipping context).
+   */
+  @Prop() noResize = false;
 
   /**
    * Allow overflow when dropdown is open.
@@ -115,7 +120,22 @@ export class CatDropdown {
               !event.composedPath().includes(this.content) &&
               // check if click was not on an element marked with data-dropdown-no-close
               !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
-            onPostDeactivate: () => this.close()
+            onPostDeactivate: () => this.close(),
+            setReturnFocus: elem => this.trigger || elem,
+            isKeyForward: event => {
+              if (!this.noKeybindings && event.key === 'ArrowDown') {
+                event.preventDefault();
+                return true;
+              }
+              return event.key === 'Tab';
+            },
+            isKeyBackward: event => {
+              if (!this.noKeybindings && event.key === 'ArrowUp') {
+                event.preventDefault();
+                return true;
+              }
+              return event.key === 'Tab' && event.shiftKey;
+            }
           });
       this.trap.activate();
     });
@@ -141,30 +161,6 @@ export class CatDropdown {
       this.trap?.deactivate();
       this.catClose.emit();
     }, timeTransitionS);
-  }
-
-  componentDidLoad(): void {
-    if (this.noKeybindings) {
-      return;
-    }
-    this.keyListener = event => {
-      if (this.isOpen && ['ArrowDown', 'ArrowUp'].includes(event.key)) {
-        const targetElements = tabbable(this.content, { includeContainer: false, getShadowRoot: true });
-        const activeElement = firstTabbable(document.activeElement);
-        const activeIdx = activeElement ? targetElements.indexOf(activeElement) : -1;
-        const activeOff = event.key === 'ArrowDown' ? 1 : -1;
-        const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
-        targetElements[targetIdx].focus();
-        event.preventDefault();
-      }
-    };
-    document.addEventListener('keydown', this.keyListener);
-  }
-
-  disconnectedCallback(): void {
-    if (this.keyListener) {
-      document.removeEventListener('keydown', this.keyListener);
-    }
   }
 
   render() {
@@ -215,22 +211,23 @@ export class CatDropdown {
 
   private update() {
     if (this.trigger) {
+      const resize = this.noResize
+        ? []
+        : [
+            size({
+              padding: CatDropdown.OFFSET,
+              apply({ availableWidth, availableHeight, elements }) {
+                Object.assign(elements.floating.style, {
+                  maxWidth: `${availableWidth}px`,
+                  maxHeight: `${availableHeight}px`
+                });
+              }
+            })
+          ];
       computePosition(this.trigger, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [
-          offset(CatDropdown.OFFSET),
-          flip(),
-          size({
-            padding: CatDropdown.OFFSET,
-            apply({ availableWidth, availableHeight, elements }) {
-              Object.assign(elements.floating.style, {
-                maxWidth: `${availableWidth}px`,
-                maxHeight: `${availableHeight}px`
-              });
-            }
-          })
-        ]
+        middleware: [offset(CatDropdown.OFFSET), flip(), ...resize]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {

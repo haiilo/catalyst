@@ -370,33 +370,36 @@ $button-sizes: (
 :host(.cat-time-format) {
   .cat-button {
     border-radius: 0;
-
-    &:focus {
-      z-index: 1;
-    }
   }
 }
 
-:host(.cat-time-toggle),
-:host(.cat-picker-toggle) {
+:host(.cat-date-toggle),
+:host(.cat-time-toggle) {
   .cat-button {
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+}
 
-    &:focus {
+:host(.cat-date-item),
+:host(.cat-date-toggle),
+:host(.cat-time-format),
+:host(.cat-time-toggle) {
+  .cat-button {
+    &:hover {
       z-index: 1;
+    }
+
+    &:focus-visible {
+      z-index: 2;
     }
   }
 }
 
-:host(.cat-picker-item) {
+:host(.cat-date-item) {
   .cat-button {
     padding-left: 0;
     padding-right: 0;
-
-    &:focus {
-      z-index: 1;
-    }
   }
 }

@@ -14,6 +14,9 @@ export class CatDate {
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
   private input?: HTMLCatInputElement;
+  private isOpen = false;
+  // additonally store the focus date to ensure correct focus after potential re-render
+  private focusDate: Date | null = null;
 
   @Element() hostElement!: HTMLElement;
 
@@ -22,8 +25,6 @@ export class CatDate {
   @State() hasSlottedHint = false;
 
   @State() viewDate: Date = this.now;
-
-  @State() focusDate: Date | null = null;
 
   @State() selectionDate: Date | null = null;
 
@@ -184,6 +185,14 @@ export class CatDate {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
+  private get focusedDate() {
+    const [all, year, month, day] =
+      this.hostElement.shadowRoot
+        ?.querySelector<HTMLCatButtonElement>(`[data-date]:focus`)
+        ?.dataset.date?.match(/^(\d{4})-(\d{2})-(\d{2})/) ?? [];
+    return all ? new Date(Number(year), Number(month) - 1, Number(day)) : null;
+  }
+
   componentWillLoad() {
     const [match, year, month, day] = this.value?.match(/^(\d{4})-(\d{2})-(\d{2})/) ?? [];
     if (match) {
@@ -210,41 +219,49 @@ export class CatDate {
 
   componentDidRender() {
     if (this.focusDate) {
-      // if the focus date has changed, focus the new date after the render
-      // this is necessary because the focus date might shift due to the view date change
       this.hostElement.shadowRoot
         ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.toLocalISO(this.focusDate)}"]`)
         ?.doFocus();
+      this.focusDate = null;
     }
   }
 
   @Listen('catOpen')
   onOpen() {
+    this.isOpen = true;
     this.setAriaLive('');
-    this.focusDate = null;
     const viewDate = this.selectionDate
       ? new Date(this.selectionDate.getFullYear(), this.selectionDate.getMonth(), 1)
       : this.now;
     this.viewDate = clampDate(this.minDate, viewDate, this.maxDate);
   }
 
+  @Listen('catClose')
+  onClose() {
+    this.isOpen = false;
+  }
+
   @Listen('keydown')
   onKeyDown(e: KeyboardEvent) {
-    if (!this.hostElement.shadowRoot?.querySelector(`[data-date]:focus`)) {
-      return; // only move focus if date grid has focus
+    if (!this.isOpen || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+      return;
     }
-    if (e.key === 'ArrowLeft' && this.focusDate) {
+    const focused = this.focusedDate;
+    if (!focused) {
       e.preventDefault();
-      this.focus(e.shiftKey ? addMonth(this.focusDate, -1) : addDays(this.focusDate, -1));
-    } else if (e.key === 'ArrowRight' && this.focusDate) {
+      this.focus(this.selectionDate || this.now);
+    } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      this.focus(e.shiftKey ? addMonth(this.focusDate, 1) : addDays(this.focusDate, 1));
-    } else if (e.key === 'ArrowUp' && this.focusDate) {
+      this.focus(e.shiftKey ? addMonth(focused, -1) : addDays(focused, -1));
+    } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      this.focus(addDays(this.focusDate, -7));
-    } else if (e.key === 'ArrowDown' && this.focusDate) {
+      this.focus(e.shiftKey ? addMonth(focused, 1) : addDays(focused, 1));
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      this.focus(addDays(this.focusDate, 7));
+      this.focus(addDays(focused, -7));
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.focus(addDays(focused, 7));
     }
   }
 
@@ -255,6 +272,7 @@ export class CatDate {
    */
   @Method()
   async select(date: Date): Promise<void> {
+    const oldValue = this.value;
     const newDate = clampDate(
       this.minDate,
       new Date(date.getFullYear(), date.getMonth(), date.getDate()),
@@ -263,7 +281,9 @@ export class CatDate {
     this.focus(newDate);
     this.selectionDate = newDate;
     this.value = newDate.toISOString();
-    this.catChange.emit(this.value);
+    if (oldValue !== this.value) {
+      this.catChange.emit(this.value);
+    }
   }
 
   /**
@@ -329,12 +349,12 @@ export class CatDate {
             {this.label}
             <span class="label-aria"> ({this.locale.formatStr})</span>
           </span>
-          <cat-dropdown slot="addon" placement={this.placement} noKeybindings>
+          <cat-dropdown slot="addon" placement={this.placement} noKeybindings noResize>
             <cat-button
               slot="trigger"
               icon="$cat:datepicker-calendar"
               iconOnly
-              class="cat-picker-toggle"
+              class="cat-date-toggle"
               disabled={this.disabled}
               a11yLabel={
                 this.selectionDate
@@ -386,7 +406,7 @@ export class CatDate {
                   data-dropdown-no-close
                 ></cat-button>
               </div>
-              <div class="picker-grid" onFocusin={() => this.setAriaLive(this.locale.cursor)}>
+              <div class="picker-grid" onFocusin={() => this.setAriaLive(this.locale.arrowKeys)}>
                 <div class="picker-grid-head">
                   {Array.from(Array(7), (_, i) => (
                     <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
@@ -403,12 +423,14 @@ export class CatDate {
                   {dateGrid.map(day => (
                     <cat-button
                       class={{
-                        'cat-picker-item': true,
+                        'cat-date-item': true,
                         'date-other': !isSameMonth(this.viewDate, day),
                         'date-today': isSameDay(this.now, day),
-                        'date-selected': isSameDay(this.selectionDate, day)
+                        'date-selected': isSameDay(this.selectionDate, day),
+                        'date-focusable': this.canFocus(day),
+                        'date-disabled': !this.canClick(day)
                       }}
-                      nativeAttributes={{ tabindex: this.canFocus(day) ? '0' : '-1' }}
+                      nativeAttributes={!this.canFocus(day) ? { tabindex: '-1' } : {}}
                       variant={
                         isSameDay(this.selectionDate, day) ? 'filled' : isSameDay(this.now, day) ? 'outlined' : 'text'
                       }
@@ -417,7 +439,6 @@ export class CatDate {
                       color={isSameDay(this.selectionDate, day) || isSameDay(this.now, day) ? 'primary' : 'secondary'}
                       disabled={!this.canClick(day)}
                       onClick={() => this.select(day)}
-                      onFocus={() => (this.focusDate = day)}
                       data-date={this.toLocalISO(day)}
                     >
                       {day.getDate()}
@@ -427,13 +448,14 @@ export class CatDate {
               </div>
               <div class="picker-foot">
                 <cat-button
+                  size="s"
                   disabled={!this.canClick(this.now)}
                   data-dropdown-no-close
                   onClick={() => this.select(this.now)}
                 >
                   {this.locale.today}
                 </cat-button>
-                <p class="cursor-help">{this.locale.cursor}</p>
+                <p class="cursor-help">{this.locale.arrowKeys}</p>
                 <p class="cursor-aria" aria-live="polite"></p>
               </div>
             </div>
@@ -461,10 +483,12 @@ export class CatDate {
   private focus(date: Date) {
     this.focusDate = clampDate(this.minDate, date, this.maxDate);
     this.viewDate = new Date(this.focusDate.getFullYear(), this.focusDate.getMonth());
+    this.hostElement.shadowRoot
+      ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.toLocalISO(this.focusDate)}"]`)
+      ?.doFocus();
   }
 
   private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
-    this.focusDate = null;
     this.viewDate = new Date(
       direction === 'prev'
         ? period === 'year'
@@ -489,9 +513,13 @@ export class CatDate {
     if (!this.input) {
       return;
     }
-    this.selectionDate = this.parse(this.input.value ?? '');
+    const oldValue = this.value;
+    const value = this.parse(this.input.value ?? '');
+    this.selectionDate = value ? clampDate(this.minDate, value, this.maxDate) : value;
     this.value = this.selectionDate?.toISOString();
-    this.catChange.emit(this.value);
+    if (oldValue !== this.value) {
+      this.catChange.emit(this.value);
+    }
     this.input.value = this.getInputValue();
     this.catBlur.emit(e);
   }
@@ -540,8 +568,9 @@ export class CatDate {
 
   private canFocus(date: Date): boolean {
     const now = this.now;
-    if (this.focusDate && isSameMonth(this.focusDate, this.viewDate)) {
-      return isSameMonth(this.focusDate, date) && isSameDay(this.focusDate, date);
+    const focused = this.focusedDate;
+    if (focused && isSameMonth(focused, this.viewDate)) {
+      return isSameMonth(focused, date) && isSameDay(focused, date);
     } else if (this.selectionDate && isSameMonth(this.selectionDate, this.viewDate)) {
       return isSameMonth(this.selectionDate, date) && isSameDay(this.selectionDate, date);
     } else if (isSameMonth(this.viewDate, now) && (!this.minDate || this.minDate <= now)) {
