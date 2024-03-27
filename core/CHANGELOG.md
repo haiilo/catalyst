@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.2.0...catalyst-core-v10.3.0) (2024-03-27)
+
+
+### Features
+
+* **core:** add new cat-date picker and cat-time picker ([#486](https://github.com/haiilo/catalyst/issues/486)) ([5b97a7b](https://github.com/haiilo/catalyst/commit/5b97a7b890dd5e6ffbf9ca92eb7cb4de6f2bd064))
+
+
+### Bug Fixes
+
+* remove various bugs in new date & timepicker ([9ab390b](https://github.com/haiilo/catalyst/commit/9ab390b4300621fb3f758a5c6e4280ee3f590303))
+
 ## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.1.1...catalyst-core-v10.2.0) (2024-03-12)
 
 
