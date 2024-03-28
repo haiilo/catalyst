@@ -68,7 +68,7 @@
     "@stencil/vue-output-target": "^0.8.7",
     "@types/autosize": "^4.0.3",
     "@types/jest": "^29.5.10",
-    "@types/node": "^18.18.13",
+    "@types/node": "^20.11.30",
     "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
