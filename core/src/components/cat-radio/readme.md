@@ -22,7 +22,7 @@ only one of a predefined set of mutually exclusive options.
 | `name`             | `name`         | The name of the radio component.                                                          | `string \| undefined`                     | `undefined` |
 | `nativeAttributes` | --             | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
 | `required`         | `required`     | Whether the radio is required.                                                            | `boolean`                                 | `false`     |
-| `value`            | `value`        | The value of the radio component.                                                         | `string`                                  | `''`        |
+| `value`            | `value`        | The value of the radio component.                                                         | `any`                                     | `''`        |
 
 
 ## Events
@@ -52,6 +52,12 @@ Type: `Promise<void>`
 Programmatically move focus to the radio button. Use this method instead of
 `input.focus()`.
 
+#### Parameters
+
+| Name      | Type                        | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -69,9 +75,10 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description        |
-| --------- | ------------------ |
-| `"label"` | The label content. |
+| Part      | Description               |
+| --------- | ------------------------- |
+| `"input"` | The native input element. |
+| `"label"` | The label content.        |
 
 
 ----------------------------------------------

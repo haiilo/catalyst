@@ -93,7 +93,6 @@ label {
 .select-wrapper-inner {
   display: flex;
   flex: 1 1 auto;
-  flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
   min-width: 0;
@@ -110,6 +109,10 @@ label {
   cat-avatar {
     --cat-avatar-size: 1.25rem;
     --cat-avatar-font-size: 0.5rem;
+  }
+
+  .select-multiple & {
+    flex-wrap: wrap;
   }
 }
 

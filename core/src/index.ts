@@ -1,5 +1,5 @@
 export { Components, JSX } from './components';
-export { CatI18nRegistry, catI18nRegistry } from './components/cat-i18n/cat-i18n-registry';
+export { CatI18nRegistry, CatI18nTranslationFn, catI18nRegistry } from './components/cat-i18n/cat-i18n-registry';
 export { CatIconRegistry, catIconRegistry } from './components/cat-icon/cat-icon-registry';
 export {
   CatNotificationService,
@@ -14,4 +14,4 @@ export {
   Page,
   RenderInfo
 } from './components/cat-select/cat-select';
-export { stringArrayConnector } from './components/cat-select/connectors';
+export { objectArrayConnector, stringArrayConnector, stringMapConnector } from './components/cat-select/connectors';

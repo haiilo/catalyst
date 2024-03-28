@@ -24,6 +24,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [noItems]="props.noItems"
       [errors]="props.errors"
       [errorUpdate]="props.errorUpdate"
+      [errorInit]="props.errorInit"
       [nativeAttributes]="props.nativeAttributes"
       [connector]="props.connector"
     >

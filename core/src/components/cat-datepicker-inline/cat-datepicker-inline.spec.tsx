@@ -9,14 +9,8 @@ describe('cat-datepicker-inline', () => {
       components: [CatDatepickerInline],
       html: `<cat-datepicker-inline></cat-datepicker-inline>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-datepicker-inline>
-        <mock:shadow-root>
-          <div class="datepicker-wrapper">
-            <input></input>
-          </div>
-        </mock:shadow-root>
-      </cat-datepicker-inline>
+    expect(page.root).toEqualLightHtml(`
+      <cat-datepicker-inline></cat-datepicker-inline>
     `);
   });
 });

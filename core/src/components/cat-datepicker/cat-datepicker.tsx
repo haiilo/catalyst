@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { findClosest } from '../../utils/find-closest';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -7,6 +7,8 @@ import { getConfig } from './cat-datepicker.config';
 import { getFormat } from './cat-datepicker.format';
 import { getLocale } from './cat-datepicker.locale';
 import { CatDatepickerMode } from './cat-datepicker.mode';
+import { autoUpdate, computePosition, flip, Placement, ReferenceElement } from '@floating-ui/dom';
+import { BaseOptions } from 'flatpickr/dist/types/options';
 
 @Component({
   tag: 'cat-datepicker',
@@ -16,14 +18,21 @@ import { CatDatepickerMode } from './cat-datepicker.mode';
 export class CatDatepickerFlat {
   private pickr?: flatpickr.Instance;
   private _input?: HTMLCatInputElement;
+  private _calendarWrapper?: HTMLDivElement;
   private get input(): HTMLInputElement | undefined {
     return this._input?.shadowRoot?.querySelector('input') ?? undefined;
   }
 
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
+
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
@@ -126,6 +135,19 @@ export class CatDatepickerFlat {
   @Prop() step = 5;
 
   /**
+   * Instead of body, appends the calendar to the cat-datepicker element instead
+   */
+  @Prop() attachToElement = false;
+
+  /**
+   * Where the calendar is rendered relative to the input vertically and horizontally.
+   * In the format of "[vertical] [horizontal]". Vertical can be auto, above or below (required).
+   * Horizontal can be left, center or right.
+   * If @attachToElement is passed the value should be in Placement format
+   */
+  @Prop() position?: BaseOptions['position'] | Placement;
+
+  /**
    * The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.
    */
   @Prop({ mutable: true }) value?: string;
@@ -187,17 +209,26 @@ export class CatDatepickerFlat {
 
   @Watch('disabled')
   @Watch('readonly')
+  @Watch('mode')
   onDisabledChanged() {
-    // Dynamically changing 'disabled' value is not working due to a bug in the
+    // Dynamically changing config value is not working due to a bug in the
     // library. We thus need to fully recreate the date picker after the value
     // has been updated.
     this.pickr?.destroy();
     this.pickr = undefined;
-    setTimeout(() => (this.pickr = this.initDatepicker(this.input)));
+    setTimeout(() => {
+      this.input ? (this.input.disabled = this.disabled) : null;
+      this.pickr = this.initDatepicker(this.input);
+    });
   }
 
   componentDidLoad() {
     this.pickr = this.initDatepicker(this.input);
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   @Watch('min')
@@ -234,7 +265,7 @@ export class CatDatepickerFlat {
   }
 
   render() {
-    return (
+    return [
       <cat-input
         ref={el => (this._input = el)}
         requiredMarker={this.requiredMarker}
@@ -270,12 +301,24 @@ export class CatDatepickerFlat {
           e.stopPropagation();
           this.catBlur.emit(e.detail);
         }}
-      ></cat-input>
-    );
+      >
+        {this.hasSlottedLabel && (
+          <span slot="label">
+            <slot name="label"></slot>
+          </span>
+        )}
+        {this.hasSlottedHint && (
+          <span slot="hint">
+            <slot name="hint"></slot>
+          </span>
+        )}
+      </cat-input>,
+      <div ref={el => (this._calendarWrapper = el)} class="datepicker-wrapper"></div>
+    ];
   }
 
   private initDatepicker(input?: HTMLInputElement): flatpickr.Instance | undefined {
-    if (this.disabled || this.readonly || !input) {
+    if (!input) {
       return;
     }
 
@@ -294,9 +337,40 @@ export class CatDatepickerFlat {
         step: this.step,
         disabled: this.disabled,
         readonly: this.readonly,
+        appendTo: this.attachToElement ? this._calendarWrapper : undefined,
         nativePickerAttributes: { ...nativePickerAttributes, ...this.nativePickerAttributes },
+        // flatpickr has open bug about incorrect positioning when appendTo is used,
+        // we have to use custom logic to calculate position
+        // https://github.com/flatpickr/flatpickr/issues/1619
+        position: this.attachToElement
+          ? (flatpickr, positionElement) => {
+              this.updatePosition(flatpickr, positionElement);
+            }
+          : (this.position as BaseOptions['position']) || undefined,
+        onReady: (_dates, _dateStr, flatpickr) => {
+          autoUpdate(input, flatpickr.calendarContainer, () => this.updatePosition(flatpickr, flatpickr._input));
+        },
         applyChange: value => (this.value = value)
       })
     );
+  }
+
+  private updatePosition(flatpickr: flatpickr.Instance, positionElement: HTMLElement | undefined): void {
+    if (positionElement) {
+      computePosition(positionElement as ReferenceElement, flatpickr.calendarContainer, {
+        strategy: 'fixed',
+        placement: (this.position as Placement) || 'bottom-start',
+        middleware: [flip()]
+      }).then(({ x, y, placement }) => {
+        if (flatpickr.calendarContainer) {
+          flatpickr.calendarContainer.dataset.placement = placement;
+          Object.assign(flatpickr.calendarContainer.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+            position: 'fixed'
+          });
+        }
+      });
+    }
   }
 }

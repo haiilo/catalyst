@@ -3,5 +3,9 @@
 }
 
 .cat-dialog-actions-end {
-  flex-direction: row-reverse;
+  justify-content: end;
+}
+
+.cat-dialog-actions-space-between {
+  justify-content: space-between;
 }

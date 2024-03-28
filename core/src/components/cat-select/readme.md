@@ -32,7 +32,7 @@ type.
 | `placeholder`      | `placeholder`     | The placeholder text to display within the select.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `string \| undefined`                                                                                                                                                | `undefined`      |
 | `placement`        | `placement`       | The placement of the select.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
 | `required`         | `required`        | A value is required or must be checked for the form to be submittable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `boolean`                                                                                                                                                            | `false`          |
-| `requiredMarker`   | `required-marker` | Whether the label need a marker to shown if the select is required or optional.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"none!" \| "none" \| "optional!" \| "optional" \| "required!" \| "required"`                                                                                        | `'optional'`     |
+| `requiredMarker`   | `required-marker` | Whether the label need a marker to shown if the select is required or optional.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"none!" \| "none" \| "optional!" \| "optional" \| "required!" \| "required" \| undefined`                                                                           | `'optional'`     |
 | `tagHint`          | `tag-hint`        | Optional hint text to be displayed on the new item to be added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `string \| undefined`                                                                                                                                                | `undefined`      |
 | `tags`             | `tags`            | Whether the select should add new items.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `boolean`                                                                                                                                                            | `false`          |
 | `value`            | `value`           | The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created | `CatSelectMultipleTaggingValue \| CatSelectTaggingValue \| string \| string[] \| undefined`                                                                          | `undefined`      |
@@ -50,9 +50,53 @@ type.
 
 ## Methods
 
+### `clear() => Promise<void>`
+
+Clear the input.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `connect(connector: CatSelectConnector) => Promise<void>`
 
 Connect the functions of the select
+
+#### Parameters
+
+| Name        | Type                      | Description                                     |
+| ----------- | ------------------------- | ----------------------------------------------- |
+| `connector` | `CatSelectConnector<any>` | - The {@link CatSelectConnector} of the select. |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doBlur() => Promise<void>`
+
+Programmatically remove focus from the input. Use this method instead of
+`input.blur()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions) => Promise<void>`
+
+Programmatically move focus to the input. Use this method instead of
+`input.focus()`.
+
+#### Parameters
+
+| Name      | Type                        | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
 
 #### Returns
 
@@ -71,9 +115,10 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description        |
-| --------- | ------------------ |
-| `"label"` | The label content. |
+| Part      | Description               |
+| --------- | ------------------------- |
+| `"input"` | The native input element. |
+| `"label"` | The native label element. |
 
 
 ## Dependencies

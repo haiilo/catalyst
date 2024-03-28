@@ -20,6 +20,7 @@
 
 .content {
   align-self: center;
+  width: 100%;
 }
 
 ::slotted(:last-child) {
@@ -32,11 +33,17 @@
   :host([color='#{$theme}']) {
     background-color: cat-token('color.theme.#{$theme}.bg');
     color: cat-token('color.theme.#{$theme}.fill');
+    // adjust nested links
+    --cat-primary-text: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
+    --cat-primary-text-hover: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
+    --cat-primary-text-active: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
+    --cat-link-decoration: underline;
   }
 }
 
 @include theme('primary');
 @include theme('secondary');
+@include theme('info');
 @include theme('success');
 @include theme('warning');
 @include theme('danger');

@@ -61,6 +61,10 @@
     color: cat-token('color.theme.primary.textActive');
   }
 
+  &.cat-tab-error {
+    color: cat-token('color.theme.danger.textActive');
+  }
+
   &.cat-tab-active::after {
     opacity: 1;
   }

@@ -213,6 +213,7 @@ $button-sizes: (
 
 @include theme('primary');
 @include theme('secondary');
+@include theme('info');
 @include theme('success');
 @include theme('warning');
 @include theme('danger');
@@ -242,8 +243,8 @@ $button-sizes: (
 
     &.cat-button-icon {
       width: $-total-height;
-      padding-left: 0;
-      padding-right: 0;
+      height: $-total-height;
+      padding: 0;
     }
   }
 
@@ -319,8 +320,9 @@ $button-sizes: (
 :host(.cat-tab) {
   &::part(button) {
     padding: 1.125rem 0.75rem;
-    --cat-primary-text: transparent;
     --cat-secondary-bg: transparent;
+    --cat-primary-text: transparent;
+    --cat-danger-text: transparent;
   }
 
   &::part(content) {
@@ -360,5 +362,44 @@ $button-sizes: (
     &:focus-visible {
       outline-offset: -2px;
     }
+  }
+}
+
+// ----- datepicker
+
+:host(.cat-time-format) {
+  .cat-button {
+    border-radius: 0;
+  }
+}
+
+:host(.cat-date-toggle),
+:host(.cat-time-toggle) {
+  .cat-button {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+:host(.cat-date-item),
+:host(.cat-date-toggle),
+:host(.cat-time-format),
+:host(.cat-time-toggle) {
+  .cat-button {
+    &:hover {
+      z-index: 1;
+    }
+
+    &:focus-visible {
+      z-index: 2;
+    }
+  }
+}
+
+:host(.cat-date-item) {
+  .cat-button {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

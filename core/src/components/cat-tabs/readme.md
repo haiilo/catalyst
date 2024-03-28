@@ -31,6 +31,12 @@ window, using tabs as a navigational element.
 
 Activates the tab with the given id.
 
+#### Parameters
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| `id` | `string` | The tab id. |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -40,6 +46,12 @@ Type: `Promise<void>`
 ### `setActiveIndex(index: number) => Promise<void>`
 
 Activates the tab with the given index.
+
+#### Parameters
+
+| Name    | Type     | Description    |
+| ------- | -------- | -------------- |
+| `index` | `number` | The tab index. |
 
 #### Returns
 

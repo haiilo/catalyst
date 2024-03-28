@@ -74,6 +74,7 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--text), $alpha: 0.2);
 
 @include theme('primary');
 @include theme('secondary');
+@include theme('info');
 @include theme('success');
 @include theme('warning');
 @include theme('danger');

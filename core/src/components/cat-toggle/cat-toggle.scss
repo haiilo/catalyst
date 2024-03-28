@@ -39,6 +39,7 @@ input {
 
 .toggle-placeholder {
   width: calc($toggle-width + 1px);
+  flex-shrink: 0;
 }
 
 .toggle {

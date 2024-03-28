@@ -7,11 +7,8 @@ describe('cat-tab', () => {
       components: [CatTab],
       html: `<cat-tab></cat-tab>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-tab id="cat-tab-0" label="">
-        <mock:shadow-root>
-        </mock:shadow-root>
-      </cat-tab>
+    expect(page.root).toEqualLightHtml(`
+      <cat-tab id="cat-tab-0" label=""></cat-tab>
     `);
   });
 });

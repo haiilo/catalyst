@@ -267,6 +267,36 @@
           "$value": "#93b4f2"
         }
       },
+      "blue": {
+        "100": {
+          "$type": "color",
+          "$value": "#b3d5f8"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#80b9f3"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#2688ea"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#0073e6"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#006be3"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#0060df"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#0043d5"
+        }
+      },
       "green": {
         "100": {
           "$type": "color",
@@ -511,6 +541,44 @@
           "$value": "#ffffff"
         }
       },
+      "info": {
+        "bg": {
+          "$type": "color",
+          "$value": "#0073e6"
+        },
+        "bgHover": {
+          "$type": "color",
+          "$value": "#006be3"
+        },
+        "bgActive": {
+          "$type": "color",
+          "$value": "#0060df"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "fillHover": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "fillActive": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "#0073e6"
+        },
+        "textHover": {
+          "$type": "color",
+          "$value": "#006be3"
+        },
+        "textActive": {
+          "$type": "color",
+          "$value": "#0060df"
+        }
+      },
       "success": {
         "bg": {
           "$type": "color",
@@ -717,11 +785,7 @@
   },
   "font": {
     "family": {
-      "head": {
-        "$type": "fontFamily",
-        "$value": "Lato"
-      },
-      "body": {
+      "base": {
         "$type": "fontFamily",
         "$value": "Lato"
       },

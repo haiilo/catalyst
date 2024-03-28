@@ -1,15 +1,24 @@
-import cross16 from '@haiilo/catalyst-icons/tmp/assets/16-cross.svg';
-import alertCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/alert-circle-outlined.svg';
-import checkCircleFilled from '@haiilo/catalyst-icons/tmp/assets/check-circle-filled.svg';
-import chevronDownOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-down-outlined.svg';
-import chevronLeftOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-left-outlined.svg';
-import chevronRightOutlined from '@haiilo/catalyst-icons/tmp/assets/chevron-right-outlined.svg';
-import clockFilled from '@haiilo/catalyst-icons/tmp/assets/clock-filled.svg';
-import crossCircleFilled from '@haiilo/catalyst-icons/tmp/assets/cross-circle-filled.svg';
-import crossCircleOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-circle-outlined.svg';
-import crossOutlined from '@haiilo/catalyst-icons/tmp/assets/cross-outlined.svg';
-import dangerFilled from '@haiilo/catalyst-icons/tmp/assets/danger-filled.svg';
-import starCircleFilled from '@haiilo/catalyst-icons/tmp/assets/star-circle-filled.svg';
+import chevronDoubleLeft16 from '@haiilo/catalyst-icons/src/16-chevron-double-left.svg';
+import chevronDoubleRight16 from '@haiilo/catalyst-icons/src/16-chevron-double-right.svg';
+import chevronLeft16 from '@haiilo/catalyst-icons/src/16-chevron-left.svg';
+import chevronRight16 from '@haiilo/catalyst-icons/src/16-chevron-right.svg';
+import cross16 from '@haiilo/catalyst-icons/src/16-cross.svg';
+import alertCircleOutlined from '@haiilo/catalyst-icons/src/alert-circle-outlined.svg';
+import calendarOutlined from '@haiilo/catalyst-icons/src/calendar-outlined.svg';
+import checkCircleFilled from '@haiilo/catalyst-icons/src/check-circle-filled.svg';
+import chevronDownOutlined from '@haiilo/catalyst-icons/src/chevron-down-outlined.svg';
+import chevronLeftOutlined from '@haiilo/catalyst-icons/src/chevron-left-outlined.svg';
+import chevronRightOutlined from '@haiilo/catalyst-icons/src/chevron-right-outlined.svg';
+import clockFilled from '@haiilo/catalyst-icons/src/clock-filled.svg';
+import clockOutlined from '@haiilo/catalyst-icons/src/clock-outlined.svg';
+import crossCircleFilled from '@haiilo/catalyst-icons/src/cross-circle-filled.svg';
+import crossCircleOutlined from '@haiilo/catalyst-icons/src/cross-circle-outlined.svg';
+import crossOutlined from '@haiilo/catalyst-icons/src/cross-outlined.svg';
+import dangerFilled from '@haiilo/catalyst-icons/src/danger-filled.svg';
+import eyeClosedOutlined from '@haiilo/catalyst-icons/src/eye-closed-outlined.svg';
+import eyeOpenOutlined from '@haiilo/catalyst-icons/src/eye-open-outlined.svg';
+import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg';
+import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
 import log from 'loglevel';
 
 export class CatIconRegistry {
@@ -24,14 +33,23 @@ export class CatIconRegistry {
     // register default icons that are used in the framework by other components
     this.addIcons(
       {
-        'alert-danger': crossCircleFilled,
         'alert-primary': starCircleFilled,
         'alert-secondary': clockFilled,
+        'alert-info': infoCircleFilled,
         'alert-success': checkCircleFilled,
         'alert-warning': dangerFilled,
+        'alert-danger': crossCircleFilled,
+        'datepicker-month-prev': chevronLeft16,
+        'datepicker-month-next': chevronRight16,
+        'datepicker-year-prev': chevronDoubleLeft16,
+        'datepicker-year-next': chevronDoubleRight16,
+        'datepicker-calendar': calendarOutlined,
+        'timepicker-clock': clockOutlined,
         'dialog-close': crossOutlined,
         'input-close': crossCircleOutlined,
         'input-error': alertCircleOutlined,
+        'input-password-show': eyeOpenOutlined,
+        'input-password-hide': eyeClosedOutlined,
         'notification-close': crossCircleOutlined,
         'pagination-left': chevronLeftOutlined,
         'pagination-right': chevronRightOutlined,
@@ -73,7 +91,7 @@ export class CatIconRegistry {
   getIcon(name: string, setName?: string): string | undefined {
     const icon = this.icons.get(this.buildName(name, setName));
     if (!icon) {
-      log.error(`[CatIconRegistry] Unknown icon${setName ? ` in set ${setName}` : ''}: ${name}`);
+      log.error(`[CatIconRegistry::${this.id}] Unknown icon${setName ? ` in set ${setName}` : ''}: ${name}`);
     }
     return icon;
   }
@@ -82,7 +100,9 @@ export class CatIconRegistry {
     const iconEntries = Object.entries(icons);
     const iconSize = iconEntries.length;
     iconEntries.forEach(([name, data]) => this.icons.set(this.buildName(name, setName), data));
-    log.info(`[CatIconRegistry] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`);
+    log.info(
+      `[CatIconRegistry::${this.id}] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`
+    );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-added', { id: this.id, icons, setName }));
     return this;
   }
@@ -90,7 +110,11 @@ export class CatIconRegistry {
   removeIcons(names: string[], setName?: string, silent = false): CatIconRegistry {
     const iconSize = names.length;
     names.forEach(name => this.icons.delete(this.buildName(name, setName)));
-    log.info(`[CatIconRegistry] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` from set ${setName}` : ''}`);
+    log.info(
+      `[CatIconRegistry::${this.id}] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${
+        setName ? ` from set ${setName}` : ''
+      }`
+    );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-removed', { id: this.id, names, setName }));
     return this;
   }

@@ -14,7 +14,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the textarea.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part label - The label content.
+ * @part label - The native label element.
+ * @part textarea - The native textarea element.
  */
 @Component({
   tag: 'cat-textarea',
@@ -41,7 +42,7 @@ export class CatTextarea {
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
@@ -201,8 +202,8 @@ export class CatTextarea {
       this.errorMapSrc = Array.isArray(value)
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
-        ? {}
-        : value || undefined;
+          ? {}
+          : value || undefined;
       this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
@@ -218,16 +219,16 @@ export class CatTextarea {
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>
             {(this.hasSlottedLabel || this.label) && (
-              <label htmlFor={this.id}>
-                <span class="label-wrapper" part="label">
+              <label htmlFor={this.id} part="label">
+                <span class="label-wrapper">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                   <div class="label-metadata">
-                    {!this.required && this.requiredMarker.startsWith('optional') && (
+                    {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.optional')})
                       </span>
                     )}
-                    {this.required && this.requiredMarker.startsWith('required') && (
+                    {this.required && this.requiredMarker?.startsWith('required') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.required')})
                       </span>
@@ -253,6 +254,7 @@ export class CatTextarea {
             >
               <textarea
                 {...this.nativeAttributes}
+                part="textarea"
                 ref={el => (this.textarea = el as HTMLTextAreaElement)}
                 id={this.id}
                 disabled={this.disabled}

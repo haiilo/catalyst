@@ -30,7 +30,6 @@ export class CatButtonGroup {
 
   private onSlotChange(): void {
     this.formElements = Array.from(this.hostElement.querySelectorAll('cat-button'));
-
     this.formElements.forEach((element, index) => {
       element.buttonGroupPosition = index === 0 ? 'first' : index === this.formElements.length - 1 ? 'last' : 'middle';
     });

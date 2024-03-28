@@ -103,7 +103,8 @@ let nextTagUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the select.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part label - The label content.
+ * @part label - The native label element.
+ * @part input - The native input element.
  */
 @Component({
   tag: 'cat-select',
@@ -143,7 +144,7 @@ export class CatSelect {
   /**
    * Whether the label need a marker to shown if the select is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
@@ -277,8 +278,8 @@ export class CatSelect {
       this.errorMapSrc = Array.isArray(value)
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
-        ? {}
-        : value || undefined;
+          ? {}
+          : value || undefined;
       this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
@@ -486,6 +487,35 @@ export class CatSelect {
   }
 
   /**
+   * Programmatically move focus to the input. Use this method instead of
+   * `input.focus()`.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    this.input?.focus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the input. Use this method instead of
+   * `input.blur()`.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.input?.blur();
+  }
+
+  /**
+   * Clear the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.clearInput();
+  }
+
+  /**
    * Connect the functions of the select
    *
    * @param connector - The {@link CatSelectConnector} of the select.
@@ -549,21 +579,22 @@ export class CatSelect {
         <div
           class={{
             'select-field': true,
-            'select-horizontal': this.horizontal
+            'select-horizontal': this.horizontal,
+            'select-multiple': this.multiple
           }}
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>
             {(this.hasSlottedLabel || this.label) && (
-              <label htmlFor={this.id}>
-                <span class="label-wrapper" part="label">
+              <label htmlFor={this.id} part="label">
+                <span class="label-wrapper">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                   <div class="label-metadata">
-                    {!this.required && this.requiredMarker.startsWith('optional') && (
+                    {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.optional')})
                       </span>
                     )}
-                    {this.required && this.requiredMarker.startsWith('required') && (
+                    {this.required && this.requiredMarker?.startsWith('required') && (
                       <span class="label-optional" aria-hidden="true">
                         ({i18n.t('input.required')})
                       </span>
@@ -641,6 +672,7 @@ export class CatSelect {
                 ) : null}
                 <input
                   {...this.nativeAttributes}
+                  part="input"
                   class="select-input"
                   ref={el => (this.input = el)}
                   aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
@@ -668,7 +700,7 @@ export class CatSelect {
                   variant="text"
                   size="s"
                   a11yLabel={i18n.t('input.clear')}
-                  onCatClick={() => this.clear()}
+                  onCatClick={() => this.clearInput()}
                   data-dropdown-no-close
                 ></cat-button>
               ) : null}
@@ -929,11 +961,11 @@ export class CatSelect {
     this.isSelected(item.item.id)
       ? this.deselect(item.item.id)
       : this.tags && this.isTagSelected(item.render.label)
-      ? this.removeTag(item.render.label)
-      : this.select(item);
+        ? this.removeTag(item.render.label)
+        : this.select(item);
   }
 
-  private clear() {
+  private clearInput() {
     if (this.input && this.state.term) {
       this.patchState({ selection: [], term: '', activeOptionIndex: -1, tempSelection: [] });
       this.term$.next('');

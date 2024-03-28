@@ -103,18 +103,19 @@ export class CatTabs {
               part="tab"
               class={{
                 'cat-tab': true,
-                'cat-tab-active': tab.id === this.activeTab
+                'cat-tab-active': tab.id === this.activeTab,
+                'cat-tab-error': tab.error
               }}
               active={tab.id === this.activeTab}
-              color={tab.id === this.activeTab ? 'primary' : 'secondary'}
+              color={tab.error ? 'danger' : tab.id === this.activeTab ? 'primary' : 'secondary'}
               variant="text"
-              icon={tab.icon}
+              icon={tab.icon ? (tab.error ? '$cat:input-error' : tab.icon) : undefined}
               iconOnly={tab.iconOnly}
               iconRight={tab.iconRight}
               url={tab.url}
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
-              onCatClick={() => this.activate(tab)}
+              onCatClick={() => this.click(tab)}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
               data-dropdown-no-close
@@ -134,6 +135,13 @@ export class CatTabs {
 
   private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
     return !!tab && !tab.deactivated && !tab.url && tab.id !== this.activeTab;
+  }
+
+  private click(tab?: HTMLCatTabElement) {
+    if (this.canActivate(tab)) {
+      tab.click();
+      this.activate(tab);
+    }
   }
 
   private activate(tab?: HTMLCatTabElement) {

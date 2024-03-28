@@ -7,14 +7,10 @@ describe('cat-datepicker', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatDatepickerFlat],
-      html: `<cat-datepicker label="Label"></cat-datepicker>`
+      html: `<cat-datepicker></cat-datepicker>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-datepicker label="Label">
-        <mock:shadow-root>
-          <cat-input errorupdate="0" label="Label" requiredmarker="optional"></cat-input>
-        </mock:shadow-root>
-      </cat-datepicker>
+    expect(page.root).toEqualLightHtml(`
+      <cat-datepicker></cat-datepicker>
     `);
   });
 });

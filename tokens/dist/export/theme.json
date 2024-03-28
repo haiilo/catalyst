@@ -71,6 +71,42 @@
     "$type": "color",
     "$value": "#000000"
   },
+  "info-bg": {
+    "$type": "color",
+    "$value": "#0073e6"
+  },
+  "info-bg-hover": {
+    "$type": "color",
+    "$value": "#006be3"
+  },
+  "info-bg-active": {
+    "$type": "color",
+    "$value": "#0060df"
+  },
+  "info-fill": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
+  "info-fill-hover": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
+  "info-fill-active": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
+  "info-text": {
+    "$type": "color",
+    "$value": "#0073e6"
+  },
+  "info-text-hover": {
+    "$type": "color",
+    "$value": "#006be3"
+  },
+  "info-text-active": {
+    "$type": "color",
+    "$value": "#0060df"
+  },
   "success-bg": {
     "$type": "color",
     "$value": "#008458"
@@ -223,11 +259,7 @@
     "$type": "color",
     "$value": "#ffffff"
   },
-  "font-family-head": {
-    "$type": "fontFamily",
-    "$value": "Lato"
-  },
-  "font-family-body": {
+  "font-family-base": {
     "$type": "fontFamily",
     "$value": "Lato"
   },

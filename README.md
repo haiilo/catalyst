@@ -39,17 +39,31 @@ alias pnt='pnpm run test'
 
 ## Release
 
-Sadly, the release process is not automated (yet). Here are the steps to take for
-a new release
+### Creating a new version via CI (recommended)
 
-1. Start in root folder
-1. Run `pnpm run release:{patch|minor|major}`
-1. Run `pnpm run build`
-1. Run `pnpm run install`
-1. Run `pnpm run publish`
-1. Run `git push --follow-tags origin main`
+The entire release process is automated via Google's [release please](https://github.com/googleapis/release-please) action. Release Please automates `CHANGELOG` generation, the creation of GitHub releases, and version bumps for all projects of the monorepo. As of now, the version numbers of all projects are kept in sync. That means that releasing a new version will increase the version of every project, even if the project has not been changed.
 
-## Code Contributors
+Every commit that is prefixed with [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines triggers the creation (or update) of a release PR in the GitHub project. The PR is labeled with "[autorelease: pending](https://github.com/haiilo/catalyst/pulls?q=is%3Apr+is%3Aopen+label%3A%22autorelease%3A+pending%22)". These Release PRs are kept up-to-date as additional work is merged. When you're ready to tag a release, simply merge the release PR. When the Release PR is merged, release-please takes the following steps:
+
+* Updates the `CHANGELOG` file(s), along with other language specific files (for example `package.json`).
+* Tags the commit with the version number.
+* Creates a GitHub Release based on the tag.
+
+Additionally, the new release is directly published to npm.
+
+### Manually creating a new version (not recommended)
+
+All projects in the repository are using [semantic-release](https://www.npmjs.com/package/semantic-release) and define helper scripts in the respective `package.json` files. To create a new release bundle (i.e. release all projects in a new version), simply use the following combination of utility scripts provided in the top level `package.json`:
+
+* Run `pnpm run release:{patch|minor|major}` to create a new version in every project of the repository.
+* Run `pnpm run build` to build all projects.
+* Run `pnpm install` to install dependencies for every project.
+* Run `pnpm run publish` to publish every project to npmjs.com.
+* Run `git push --follow-tags origin main` to push your changes.
+
+**Note:** Make sure you are logged in with your npm account and you have permissions to release under the haiilo organisation. Otherwise contact one of the collaborators to request access.
+
+## Code contributors
 
 This project exists thanks to all the people who contribute.
 

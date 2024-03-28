@@ -17,7 +17,7 @@ A group of radio buttons.
 | `disabled`  | `disabled`   | Whether this radio group is disabled.                                                                              | `boolean`             | `false`     |
 | `labelLeft` | `label-left` | Whether the label of the radios should appear to the left of them.                                                 | `boolean`             | `false`     |
 | `name`      | `name`       | The name of the radio group component.                                                                             | `string \| undefined` | `undefined` |
-| `value`     | `value`      | The value of the radio group.                                                                                      | `string \| undefined` | `undefined` |
+| `value`     | `value`      | The value of the radio group.                                                                                      | `any`                 | `undefined` |
 
 
 ## Events

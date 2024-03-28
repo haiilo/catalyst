@@ -1,4 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import Cleave from 'cleave.js';
+import type { CleaveOptions } from 'cleave.js/options';
 import log from 'loglevel';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -14,7 +16,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the input.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part label - The label content.
+ * @part label - The native label element.
+ * @part input - The native input element.
  * @part prefix - The text prefix.
  * @part suffix - The text suffix.
  */
@@ -38,12 +41,14 @@ export class CatInput {
 
   @State() hasSlottedHint = false;
 
+  @State() isPasswordShown = false;
+
   @State() errorMap?: ErrorMap;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
-  @Prop() requiredMarker: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * Whether the label is on top or left.
@@ -59,6 +64,11 @@ export class CatInput {
    * Whether the input should show a clear button.
    */
   @Prop() clearable = false;
+
+  /**
+   * Whether the input should show a password toggle button for password inputs.
+   */
+  @Prop() togglePassword = false;
 
   /**
    * Whether the input is disabled.
@@ -96,7 +106,7 @@ export class CatInput {
   @Prop() labelHidden = false;
 
   /**
-   * A maximum value for date, time and numeric values.
+   * A maximum value for numeric values.
    */
   @Prop() max?: number | string;
 
@@ -106,7 +116,7 @@ export class CatInput {
   @Prop() maxLength?: number;
 
   /**
-   * A minimum value for date, time and numeric values.
+   * A minimum value for numeric values.
    */
   @Prop() min?: number | string;
 
@@ -240,6 +250,16 @@ export class CatInput {
     this.catChange.emit(this.value);
   }
 
+  /**
+   * Adds a Cleave.js mask to the input.
+   *
+   * @param options The Cleave.js options.
+   */
+  @Method()
+  async mask(options: CleaveOptions): Promise<void> {
+    new Cleave(this.input, options);
+  }
+
   @Watch('errors')
   onErrorsChanged(value?: boolean | string[] | ErrorMap) {
     if (!coerceBoolean(this.errorUpdate)) {
@@ -248,8 +268,8 @@ export class CatInput {
       this.errorMapSrc = Array.isArray(value)
         ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
         : value === true
-        ? {}
-        : value || undefined;
+          ? {}
+          : value || undefined;
       this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
     }
   }
@@ -264,16 +284,16 @@ export class CatInput {
       >
         <div class={{ 'label-container': true, hidden: this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
-            <label htmlFor={this.id}>
-              <span class="label-wrapper" part="label">
+            <label htmlFor={this.id} part="label">
+              <span class="label-wrapper">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                 <div class="label-metadata">
-                  {!this.required && this.requiredMarker.startsWith('optional') && (
+                  {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
                     <span class="label-optional" aria-hidden="true">
                       ({i18n.t('input.optional')})
                     </span>
                   )}
-                  {this.required && this.requiredMarker.startsWith('required') && (
+                  {this.required && this.requiredMarker?.startsWith('required') && (
                     <span class="label-optional" aria-hidden="true">
                       ({i18n.t('input.required')})
                     </span>
@@ -289,72 +309,90 @@ export class CatInput {
           )}
         </div>
         <div class="input-container">
-          <div
-            class={{
-              'input-wrapper': true,
-              'input-round': this.round,
-              'input-readonly': this.readonly,
-              'input-disabled': this.disabled,
-              'input-invalid': this.invalid
-            }}
-            onClick={() => this.input.focus()}
-          >
-            {this.textPrefix && (
-              <span class="text-prefix" part="prefix">
-                {this.textPrefix}
-              </span>
-            )}
-            {this.icon && !this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
-            )}
-            <div class="input-inner-wrapper">
-              <input
-                {...this.nativeAttributes}
-                ref={el => (this.input = el as HTMLInputElement)}
-                id={this.id}
-                class={{
-                  'has-clearable': this.clearable && !this.disabled && !this.readonly
-                }}
-                autocomplete={this.autoComplete}
-                disabled={this.disabled}
-                max={this.max}
-                maxlength={this.maxLength}
-                min={this.min}
-                minlength={this.minLength}
-                name={this.name}
-                placeholder={this.placeholder}
-                readonly={this.readonly}
-                required={this.required}
-                type={this.type}
-                value={this.value}
-                onInput={this.onInput.bind(this)}
-                onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}
-                aria-invalid={this.invalid ? 'true' : undefined}
-                aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
-              ></input>
-              {this.clearable && !this.disabled && !this.readonly && this.value && (
-                <cat-button
-                  class="clearable"
-                  icon="$cat:input-close"
-                  icon-only="true"
-                  size="s"
-                  variant="text"
-                  a11y-label={i18n.t('input.clear')}
-                  onClick={this.clear.bind(this)}
-                  data-dropdown-no-close
-                ></cat-button>
+          <div class="input-outer-wrapper">
+            <div
+              class={{
+                'input-wrapper': true,
+                'input-round': this.round,
+                'input-readonly': this.readonly,
+                'input-disabled': this.disabled,
+                'input-invalid': this.invalid
+              }}
+              onClick={() => this.input.focus()}
+            >
+              {this.textPrefix && (
+                <span class="text-prefix" part="prefix">
+                  {this.textPrefix}
+                </span>
+              )}
+              {this.icon && !this.iconRight && (
+                <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
+              )}
+              <div class="input-inner-wrapper">
+                <input
+                  {...this.nativeAttributes}
+                  part="input"
+                  ref={el => (this.input = el as HTMLInputElement)}
+                  id={this.id}
+                  class={{
+                    'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
+                    'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value
+                  }}
+                  autocomplete={this.autoComplete}
+                  disabled={this.disabled}
+                  max={this.max}
+                  maxlength={this.maxLength}
+                  min={this.min}
+                  minlength={this.minLength}
+                  name={this.name}
+                  placeholder={this.placeholder}
+                  readonly={this.readonly}
+                  required={this.required}
+                  type={this.isPasswordShown ? 'text' : this.type}
+                  value={this.value}
+                  onInput={this.onInput.bind(this)}
+                  onFocus={this.onFocus.bind(this)}
+                  onBlur={this.onBlur.bind(this)}
+                  aria-invalid={this.invalid ? 'true' : undefined}
+                  aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+                ></input>
+                {this.clearable && !this.disabled && !this.readonly && this.value && (
+                  <cat-button
+                    class="clearable"
+                    icon="$cat:input-close"
+                    icon-only="true"
+                    size="s"
+                    variant="text"
+                    a11y-label={i18n.t('input.clear')}
+                    onClick={this.clear.bind(this)}
+                    data-dropdown-no-close
+                  ></cat-button>
+                )}
+                {this.togglePassword && !this.disabled && !this.readonly && this.value && (
+                  <cat-button
+                    class="toggle-password"
+                    icon={this.isPasswordShown ? '$cat:input-password-hide' : '$cat:input-password-show'}
+                    icon-only="true"
+                    size="s"
+                    variant="text"
+                    a11y-label={i18n.t(this.isPasswordShown ? 'input.hidePassword' : 'input.showPassword')}
+                    onClick={this.doTogglePassword.bind(this)}
+                  ></cat-button>
+                )}
+              </div>
+              {!this.invalid && this.icon && this.iconRight && (
+                <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
+              )}
+              {this.invalid && (
+                <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>
+              )}
+              {this.textSuffix && (
+                <span class="text-suffix" part="suffix">
+                  {this.textSuffix}
+                </span>
               )}
             </div>
-            {!this.invalid && this.icon && this.iconRight && (
-              <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
-            )}
-            {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
-            {this.textSuffix && (
-              <span class="text-suffix" part="suffix">
-                {this.textSuffix}
-              </span>
-            )}
+            <slot name="addon"></slot>
           </div>
           {this.hasHint && (
             <CatFormHint
@@ -392,6 +430,10 @@ export class CatInput {
     if (coerceBoolean(this.errorUpdate)) {
       this.showErrors();
     }
+  }
+
+  private doTogglePassword() {
+    this.isPasswordShown = !this.isPasswordShown;
   }
 
   private showErrors() {

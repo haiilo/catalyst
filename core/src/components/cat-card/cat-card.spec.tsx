@@ -7,12 +7,8 @@ describe('cat-card', () => {
       components: [CatCard],
       html: `<cat-card></cat-card>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-card>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cat-card>
+    expect(page.root).toEqualLightHtml(`
+      <cat-card></cat-card>
     `);
   });
 });

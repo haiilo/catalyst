@@ -50,6 +50,13 @@ export class CatTab {
   @Prop({ reflect: true }) deactivated = false;
 
   /**
+   * Specifies that the tab content pane contains an error. This will color
+   * the tab in an error state and also switch to an error icon if an icon
+   * is specified.
+   */
+  @Prop({ reflect: true }) error = false;
+
+  /**
    * Attributes that will be added to the native HTML button element
    */
   @Prop() nativeAttributes?: { [key: string]: string };
@@ -57,7 +64,7 @@ export class CatTab {
   /**
    * Emitted when tab is clicked.
    */
-  @Event() tabClick!: EventEmitter<MouseEvent>;
+  @Event() catClick!: EventEmitter<MouseEvent>;
 
   connectedCallback() {
     if (!this.hostElement.id) {
@@ -67,7 +74,7 @@ export class CatTab {
 
   @Listen('click')
   onClick(event: MouseEvent) {
-    this.tabClick.emit(event);
+    this.catClick.emit(event);
   }
 
   render() {

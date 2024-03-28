@@ -3,6 +3,202 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.1.1...catalyst-angular-v10.2.0) (2024-03-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.1.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.1.0...catalyst-angular-v10.1.1) (2024-03-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.7...catalyst-angular-v10.1.0) (2024-03-07)
+
+
+### Features
+
+* add attachToElement and position properties to cat-datepicker component ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+* add attachToElement property to cat-datepicker component ([#462](https://github.com/haiilo/catalyst/issues/462)) ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+
+## [10.0.7](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.6...catalyst-angular-v10.0.7) (2024-03-01)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.6](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.5...catalyst-angular-v10.0.6) (2024-02-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.5](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.4...catalyst-angular-v10.0.5) (2024-02-20)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.3...catalyst-angular-v10.0.4) (2024-02-15)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.2...catalyst-angular-v10.0.3) (2024-02-05)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.1...catalyst-angular-v10.0.2) (2024-01-29)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.0.0...catalyst-angular-v10.0.1) (2024-01-29)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v9.1.0...catalyst-angular-v10.0.0) (2024-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451))
+
+### Features
+
+* add space-between alignment for dialog actions buttons ([#450](https://github.com/haiilo/catalyst/issues/450)) ([a4abb0f](https://github.com/haiilo/catalyst/commit/a4abb0f458fcefd8641ad768a512de16ae371057))
+* **angular:** adjust peer dependency versions for angular and angular CDK ([a6403f7](https://github.com/haiilo/catalyst/commit/a6403f7142dfe7ed926aa646571f8752015eaff6))
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451)) ([2e48742](https://github.com/haiilo/catalyst/commit/2e48742bbfb5d4071ecd8efa09ab99e352b27c6f))
+
+## [9.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v9.0.0...catalyst-angular-v9.1.0) (2024-01-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [9.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.5.0...catalyst-angular-v9.0.0) (2024-01-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.4.2...catalyst-angular-v8.5.0) (2024-01-23)
+
+
+### Features
+
+* **angular:** add panelClass to dialogs ([214e44e](https://github.com/haiilo/catalyst/commit/214e44e35f21b7529697e7a710f6321181a7cfb1))
+
+## [8.4.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.4.1...catalyst-angular-v8.4.2) (2024-01-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.4.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.4.0...catalyst-angular-v8.4.1) (2024-01-15)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.3.2...catalyst-angular-v8.4.0) (2024-01-15)
+
+
+### Features
+
+* **core:** add password toggle button to inputs ([6779f5d](https://github.com/haiilo/catalyst/commit/6779f5d91572ea6f1d9131b944c2f1e0c0767fca))
+
+## [8.3.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.3.1...catalyst-angular-v8.3.2) (2024-01-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.3.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.3.0...catalyst-angular-v8.3.1) (2023-12-15)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.2.0...catalyst-angular-v8.3.0) (2023-12-04)
+
+
+### Features
+
+* **core:** add select methods for focus and blur ([1d3ac8f](https://github.com/haiilo/catalyst/commit/1d3ac8f2dc73ec1cbcc76a8407fb7ebeb754ba98))
+
+## [8.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.1.1...catalyst-angular-v8.2.0) (2023-11-30)
+
+
+### Features
+
+* **angular:** added errorInit to show form errors directly after initialization (default: false) ([c18a400](https://github.com/haiilo/catalyst/commit/c18a4000c1f3e0360f95ba838726f0a600a23c22))
+
+## [8.1.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.1.0...catalyst-angular-v8.1.1) (2023-11-14)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.0.2...catalyst-angular-v8.1.0) (2023-11-12)
+
+
+### Features
+
+* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
+
+## [8.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.0.1...catalyst-angular-v8.0.2) (2023-11-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v8.0.0...catalyst-angular-v8.0.1) (2023-11-02)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [8.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v7.1.0...catalyst-angular-v8.0.0) (2023-10-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [7.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v7.0.1...catalyst-angular-v7.1.0) (2023-10-26)
+
+
+### Features
+
+* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
+
 ## [7.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v7.0.0...catalyst-angular-v7.0.1) (2023-10-20)
 
 

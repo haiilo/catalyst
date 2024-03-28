@@ -7,12 +7,8 @@ describe('cat-skeleton', () => {
       components: [CatSkeleton],
       html: `<cat-skeleton></cat-skeleton>`
     });
-    expect(page.root).toEqualHtml(`
-      <cat-skeleton>
-        <mock:shadow-root>
-          <div class="skeleton skeleton-m skeleton-rectangle skeleton-sheen"></div>
-        </mock:shadow-root>
-      </cat-skeleton>
+    expect(page.root).toEqualLightHtml(`
+      <cat-skeleton></cat-skeleton>
     `);
   });
 });

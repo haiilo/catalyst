@@ -10,8 +10,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the toggle.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part toggle - The toggle element.
  * @part label - The label content.
+ * @part input - The native input element.
  */
 @Component({
   tag: 'cat-toggle',
@@ -68,14 +68,22 @@ export class CatToggle {
   @Prop() required = false;
 
   /**
-   * The value of the toggle.
+   * The value of the checked toggle.
    */
-  @Prop() value?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() value?: any;
 
   /**
-   * The resolved value of the toggle, based on the checked state and value.
+   * The value of the unchecked toggle.
    */
-  @Prop({ mutable: true }) resolvedValue: string | boolean | null = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() noValue?: any;
+
+  /**
+   * The resolved value of the toggle, based on the checked state, value and noValue.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) resolvedValue: any = null;
 
   /**
    * Optional hint text(s) to be displayed with the toggle.
@@ -95,7 +103,8 @@ export class CatToggle {
   /**
    * Emitted when the checked status of the toggle is changed.
    */
-  @Event() catChange!: EventEmitter<boolean | string | null>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Event() catChange!: EventEmitter<any>;
 
   /**
    * Emitted when the toggle received focus.
@@ -149,6 +158,7 @@ export class CatToggle {
         >
           <input
             {...this.nativeAttributes}
+            part="input"
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
             type="checkbox"
@@ -164,7 +174,7 @@ export class CatToggle {
             onBlur={this.onBlur.bind(this)}
             aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
           />
-          <span class="toggle" part="toggle"></span>
+          <span class="toggle"></span>
           <span class="label" part="label">
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
           </span>
@@ -198,6 +208,6 @@ export class CatToggle {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.value == null ? this.checked : this.checked ? this.value : null;
+    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
   }
 }

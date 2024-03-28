@@ -10,8 +10,8 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the checkbox.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
- * @part checkbox - The checkbox element.
  * @part label - The label content.
+ * @part input - The native input element.
  */
 @Component({
   tag: 'cat-checkbox',
@@ -72,14 +72,22 @@ export class CatCheckbox {
   @Prop() required = false;
 
   /**
-   * The value of the checkbox.
+   * The value of the checked checkbox.
    */
-  @Prop() value?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() value?: any;
+
+  /**
+   * The value of the unchecked checkbox.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() noValue?: any;
 
   /**
    * The resolved value of the checkbox, based on the checked state and value.
    */
-  @Prop({ mutable: true }) resolvedValue: string | boolean | null = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) resolvedValue: any = null;
 
   /**
    * Optional hint text(s) to be displayed with the checkbox.
@@ -99,7 +107,8 @@ export class CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-  @Event() catChange!: EventEmitter<boolean | string | null>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Event() catChange!: EventEmitter<any>;
 
   /**
    * Emitted when the checkbox received focus.
@@ -153,6 +162,7 @@ export class CatCheckbox {
         >
           <input
             {...this.nativeAttributes}
+            part="input"
             ref={el => (this.input = el as HTMLInputElement)}
             id={this.id}
             type="checkbox"
@@ -167,7 +177,7 @@ export class CatCheckbox {
             onBlur={this.onBlur.bind(this)}
             aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
           />
-          <span class="box" aria-hidden="true" part="checkbox">
+          <span class="box" aria-hidden="true">
             <svg class="check" viewBox="0 0 12 10">
               <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
             </svg>
@@ -209,6 +219,6 @@ export class CatCheckbox {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.value == null ? this.checked : this.checked ? this.value : null;
+    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
   }
 }

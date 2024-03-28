@@ -28,6 +28,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [step]="props.step"
       [errors]="props.errors"
       [errorUpdate]="props.errorUpdate"
+      [errorInit]="props.errorInit"
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-datepicker>

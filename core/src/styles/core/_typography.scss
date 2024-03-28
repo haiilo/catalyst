@@ -3,13 +3,7 @@
 
 // -- reset margins
 
-:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr),
-.cat-h1,
-.cat-h2,
-.cat-h3,
-.cat-h4,
-.cat-h5,
-.cat-h6 {
+:where(h1, h2, h3, h4, h5, h6, p, ol, ul, dl, blockquote, figure, pre, hr) {
   margin: 0;
 }
 
@@ -76,7 +70,7 @@ a[tabindex='-1']:focus {
 b,
 strong,
 .cat-strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 mark,
@@ -105,30 +99,19 @@ ul {
   padding-left: 2rem;
 }
 
-ol,
-ul,
-dl {
-  ol,
-  ul,
-  dl {
-    margin-bottom: 0;
-  }
-}
-
 nav ol,
 nav ul,
 ol.cat-plain,
 ul.cat-plain {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
 dt {
-  font-weight: 600;
+  font-weight: 700;
 }
 
-dd {
+dd:not(:last-child) {
   margin-bottom: 0.5rem;
   margin-left: 0;
 }
@@ -177,7 +160,6 @@ samp,
 kbd,
 pre {
   @include cat-mono('m');
-  font-weight: cat-token('font.weight.mono');
 }
 
 pre {
@@ -228,6 +210,7 @@ code {
   :where(h1, h2, h3),
   :is(.cat-h1, .cat-h2, .cat-h3) {
     color: $cat-font-color-head;
+    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * var(--cat-article-spacer, 1));
 
     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
@@ -238,11 +221,22 @@ code {
   :where(h4, h5, h6),
   :is(.cat-h4, .cat-h5, .cat-h6) {
     color: $cat-font-color-head;
+    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
   }
 
-  :where(p, ol, ul, dl, blockquote, figure, pre, cat-alert, cat-card) {
+  :where(p, ol, ul, dl, blockquote, figure, pre, table, cat-alert, cat-card):not(:last-child) {
     margin-bottom: calc($cat-body-margin-bottom * var(--cat-article-spacer, 1));
+  }
+
+  ol,
+  ul,
+  dl {
+    ol,
+    ul,
+    dl {
+      margin-bottom: 0;
+    }
   }
 
   hr,

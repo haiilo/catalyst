@@ -17,15 +17,15 @@ function getFirstDayOfWeek(language: string): number {
 
 function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
   const date = new Date();
-  const firstDayOfWeek = date.getUTCDate() - date.getUTCDay();
+  const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
   const format = new Intl.DateTimeFormat(language, { weekday }).format;
-  return [...Array(7).keys()].map(day => format(date.setUTCDate(firstDayOfWeek + day)));
+  return [...Array(7).keys()].map(day => format(new Date(date.getTime()).setUTCDate(firstDayOfWeek + day)));
 }
 
 function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
-  const date = new Date();
+  const date = new Date(0);
   const format = new Intl.DateTimeFormat(language, { month }).format;
-  return [...Array(12).keys()].map(month => format(date.setUTCMonth(month)));
+  return [...Array(12).keys()].map(month => format(new Date(date.getTime()).setUTCMonth(month)));
 }
 
 export function getLocale(language: string): flatpickr.CustomLocale {

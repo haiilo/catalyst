@@ -8,7 +8,7 @@ describe('CatFormHint', () => {
       components: [],
       template: () => <CatFormHint id="host-id"></CatFormHint>
     });
-    expect(page.root).toEqualHtml(`
+    expect(page.root).toEqualLightHtml(`
      <div class="hint-section" id="host-id-hint" aria-live="polite"></div>
     `);
   });
