@@ -90,14 +90,18 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  justify-content: space-between;
 }
 
 .cursor-help {
+  flex: 1;
   margin: 0;
   @include cat-body('s');
   color: cat-token('color.ui.font.muted') !important;
   text-align: center;
+
+  &.cursor-right {
+    text-align: right;
+  }
 }
 
 .cursor-aria {

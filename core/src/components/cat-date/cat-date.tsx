@@ -447,15 +447,19 @@ export class CatDate {
                 </div>
               </div>
               <div class="picker-foot">
-                <cat-button
-                  size="s"
-                  disabled={!this.canClick(this.now)}
-                  data-dropdown-no-close
-                  onClick={() => this.select(this.now)}
+                {this.canClick(this.now) && (
+                  <cat-button size="s" data-dropdown-no-close onClick={() => this.select(this.now)}>
+                    {this.locale.today}
+                  </cat-button>
+                )}
+                <p
+                  class={{
+                    'cursor-help': true,
+                    'cursor-right': this.canClick(this.now)
+                  }}
                 >
-                  {this.locale.today}
-                </cat-button>
-                <p class="cursor-help">{this.locale.arrowKeys}</p>
+                  {this.locale.arrowKeys}
+                </p>
                 <p class="cursor-aria" aria-live="polite"></p>
               </div>
             </div>
