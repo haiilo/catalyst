@@ -199,7 +199,7 @@ export class CatTime {
     setTimeout(() => {
       (elem2 ?? elem1)?.doFocus();
       (elem2 ?? elem1)?.scrollIntoView(this.selectionTime ? { block: 'center' } : undefined);
-    }, 1); // not entirely sure why this is necessary
+    }); // not entirely sure why this is necessary
   }
 
   /**
@@ -222,7 +222,7 @@ export class CatTime {
     // we need to set the input explicitly to sync the input even without a
     // rerender (if the value is not changed)
     if (this.input) {
-      this.input.value = this.value ?? '';
+      this.input.value = this.format(this.selectionTime, false);
     }
     if (oldValue !== this.value) {
       this.catChange.emit(this.value);

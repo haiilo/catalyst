@@ -106,7 +106,6 @@ export class CatDropdown {
       this.isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
-      this.catOpen.emit();
       this.trap = this.trap
         ? this.trap.updateContainerElements(this.content)
         : focusTrap.createFocusTrap(this.content, {
@@ -121,6 +120,7 @@ export class CatDropdown {
               // check if click was not on an element marked with data-dropdown-no-close
               !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
             onPostDeactivate: () => this.close(),
+            onPostActivate: () => this.catOpen.emit(),
             setReturnFocus: elem => this.trigger || elem,
             isKeyForward: event => {
               if (!this.noKeybindings && event.key === 'ArrowDown') {
