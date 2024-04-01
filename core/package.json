@@ -47,7 +47,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.3",
     "@haiilo/catalyst-tokens": "workspace:*",
-    "@stencil/core": "4.12.6",
+    "@stencil/core": "4.13.0",
     "@types/cleave.js": "^1.4.12",
     "autosize": "6.0.1",
     "autosize-input": "1.0.2",
