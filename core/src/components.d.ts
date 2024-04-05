@@ -398,11 +398,6 @@ export namespace Components {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * Select a date in the picker.
-          * @param date The date to select.
-         */
-        "select": (date: Date) => Promise<void>;
-        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -410,6 +405,53 @@ export namespace Components {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
+    interface CatDateInline {
+        /**
+          * Clear the picker.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Hides the clear button.
+         */
+        "noClear": boolean;
+        /**
+          * Hides the arrow navigation hint.
+         */
+        "noHint": boolean;
+        /**
+          * Hides the today button.
+         */
+        "noToday": boolean;
+        /**
+          * Hides the week numbers.
+         */
+        "noWeekNumbers": boolean;
+        /**
+          * Resets the view of the picker.
+         */
+        "resetView": () => Promise<void>;
+        /**
+          * Select a date in the picker.
+          * @param date The date to select.
+         */
+        "select": (date: Date | null) => Promise<void>;
+        /**
+          * The size of the date picker.
+         */
+        "size": 's' | 'm';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
@@ -1482,6 +1524,10 @@ export interface CatDateCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDateElement;
 }
+export interface CatDateInlineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDateInlineElement;
+}
 export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDatepickerElement;
@@ -1652,6 +1698,23 @@ declare global {
     var HTMLCatDateElement: {
         prototype: HTMLCatDateElement;
         new (): HTMLCatDateElement;
+    };
+    interface HTMLCatDateInlineElementEventMap {
+        "catChange": string;
+    }
+    interface HTMLCatDateInlineElement extends Components.CatDateInline, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDateInlineElementEventMap>(type: K, listener: (this: HTMLCatDateInlineElement, ev: CatDateInlineCustomEvent<HTMLCatDateInlineElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDateInlineElementEventMap>(type: K, listener: (this: HTMLCatDateInlineElement, ev: CatDateInlineCustomEvent<HTMLCatDateInlineElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatDateInlineElement: {
+        prototype: HTMLCatDateInlineElement;
+        new (): HTMLCatDateInlineElement;
     };
     interface HTMLCatDatepickerElementEventMap {
         "catChange": string;
@@ -2010,6 +2073,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-date": HTMLCatDateElement;
+        "cat-date-inline": HTMLCatDateInlineElement;
         "cat-datepicker": HTMLCatDatepickerElement;
         "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
@@ -2415,6 +2479,44 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
+    interface CatDateInline {
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Hides the clear button.
+         */
+        "noClear"?: boolean;
+        /**
+          * Hides the arrow navigation hint.
+         */
+        "noHint"?: boolean;
+        /**
+          * Hides the today button.
+         */
+        "noToday"?: boolean;
+        /**
+          * Hides the week numbers.
+         */
+        "noWeekNumbers"?: boolean;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
+        /**
+          * The size of the date picker.
+         */
+        "size"?: 's' | 'm';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
@@ -3507,6 +3609,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-date": CatDate;
+        "cat-date-inline": CatDateInline;
         "cat-datepicker": CatDatepicker;
         "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
@@ -3568,6 +3671,7 @@ declare module "@stencil/core" {
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             "cat-date": LocalJSX.CatDate & JSXBase.HTMLAttributes<HTMLCatDateElement>;
+            "cat-date-inline": LocalJSX.CatDateInline & JSXBase.HTMLAttributes<HTMLCatDateInlineElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
             "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;

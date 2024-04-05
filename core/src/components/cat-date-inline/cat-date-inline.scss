@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 
 :host {
-  display: block;
+  display: inline-block;
 }
 
 :host([hidden]) {
@@ -14,7 +14,6 @@
 }
 
 .picker {
-  padding: 1rem;
   display: inline-flex;
   flex-direction: column;
 }
@@ -25,9 +24,18 @@
   align-items: center;
 
   h3 {
+    @include cat-head(4);
     flex: 1;
     text-align: center;
     margin: 0;
+  }
+
+  .picker-small & {
+    gap: 0.25rem;
+
+    h3 {
+      @include cat-head(5);
+    }
   }
 }
 
@@ -35,17 +43,34 @@
   display: grid;
   /* stylelint-disable declaration-block-no-redundant-longhand-properties */
   grid-template-rows: 2rem repeat(6, 1fr);
-  grid-template-columns: 2rem repeat(7, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   grid-template-areas:
-    '. h h h h h h h'
-    'w d d d d d d d'
-    'w d d d d d d d'
-    'w d d d d d d d'
-    'w d d d d d d d'
-    'w d d d d d d d'
-    'w d d d d d d d';
+    'h h h h h h h'
+    'd d d d d d d'
+    'd d d d d d d'
+    'd d d d d d d'
+    'd d d d d d d'
+    'd d d d d d d'
+    'd d d d d d d';
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   margin: 1rem 0 0.5rem;
+
+  &.picker-grid-weekdays {
+    grid-template-columns: 2rem repeat(7, 1fr);
+    grid-template-areas:
+      '. h h h h h h h'
+      'w d d d d d d d'
+      'w d d d d d d d'
+      'w d d d d d d d'
+      'w d d d d d d d'
+      'w d d d d d d d'
+      'w d d d d d d d';
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+  }
+
+  .picker-small & {
+    margin: 0.5rem 0;
+  }
 }
 
 .picker-grid-head {
@@ -90,17 +115,36 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  width: min-content;
+  min-width: 100%;
+  justify-content: space-between;
+
+  .picker-small & {
+    gap: 0.5rem;
+  }
 }
 
 .cursor-help {
-  flex: 1;
   margin: 0;
   @include cat-body('s');
   color: cat-token('color.ui.font.muted') !important;
   text-align: center;
+  flex: 1;
 
-  &.cursor-right {
+  &:first-child {
+    text-align: left;
+  }
+
+  &:last-child {
     text-align: right;
+  }
+  
+  &:only-child {
+    text-align: center;
+  }
+
+  .picker-small & {
+    @include cat-body('xs');
   }
 }
 
