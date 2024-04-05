@@ -84,22 +84,6 @@ Type: `Promise<void>`
 
 
 
-### `select(date: Date) => Promise<void>`
-
-Select a date in the picker.
-
-#### Parameters
-
-| Name   | Type   | Description         |
-| ------ | ------ | ------------------- |
-| `date` | `Date` | The date to select. |
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 
@@ -108,6 +92,7 @@ Type: `Promise<void>`
 - [cat-input](../cat-input)
 - [cat-dropdown](../cat-dropdown)
 - [cat-button](../cat-button)
+- [cat-date-inline](../cat-date-inline)
 
 ### Graph
 ```mermaid
@@ -115,10 +100,12 @@ graph TD;
   cat-date --> cat-input
   cat-date --> cat-dropdown
   cat-date --> cat-button
+  cat-date --> cat-date-inline
   cat-input --> cat-icon
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-date-inline --> cat-button
   style cat-date fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -269,7 +269,6 @@ export class CatDate {
               a11yLabel={this.getTriggerA11yLabel()}
             ></cat-button>
             <div slot="content">
-              <button>TODO</button>
               <cat-date-inline
                 ref={el => (this.dateInline = el as HTMLCatDateInlineElement)}
                 min={this.min}

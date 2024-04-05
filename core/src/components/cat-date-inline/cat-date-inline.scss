@@ -56,6 +56,7 @@
   margin: 1rem 0 0.5rem;
 
   &.picker-grid-weekdays {
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     grid-template-columns: 2rem repeat(7, 1fr);
     grid-template-areas:
       '. h h h h h h h'
@@ -138,7 +139,7 @@
   &:last-child {
     text-align: right;
   }
-  
+
   &:only-child {
     text-align: center;
   }
