@@ -3,6 +3,9 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
 
+/**
+ * An inline date picker component to select a date.
+ */
 @Component({
   tag: 'cat-date-inline',
   styleUrl: 'cat-date-inline.scss',

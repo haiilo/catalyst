@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tooltips display additional information when the user hovers over or
+interacts with a trigger element. The tooltip can be customized with
+different placements, sizes, and styles.
+
 ## Properties
 
 | Property            | Attribute             | Description                                                                                                                                        | Type                                                                                                                                                                 | Default |

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An inline date picker component to select a date.
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                   | Type                  | Default     |

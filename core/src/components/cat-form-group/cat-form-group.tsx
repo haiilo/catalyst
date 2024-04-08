@@ -6,6 +6,9 @@ type HTMLCatFormFieldElement =
   | HTMLCatSelectElement
   | HTMLCatDatepickerElement;
 
+/**
+ * A form group component to group form fields and labels.
+ */
 @Component({
   tag: 'cat-form-group',
   styleUrl: 'cat-form-group.scss',

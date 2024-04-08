@@ -31,6 +31,9 @@ export interface ToastOptions {
   onDismiss: (toast: ToastRef) => void;
 }
 
+/**
+ * A service to show additional information via toast notifications.
+ */
 export class CatNotificationService {
   private static instance: CatNotificationService;
   private static duration = 3000;

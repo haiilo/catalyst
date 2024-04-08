@@ -5,6 +5,9 @@ import { clampDate } from '../cat-date-inline/cat-date-math';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
+/**
+ * A date input component to select a date from a calendar in a dropdown.
+ */
 @Component({
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',

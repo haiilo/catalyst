@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A form group component to group form fields and labels.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                  | Type                                           | Default     |
