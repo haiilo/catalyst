@@ -7,7 +7,6 @@ import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
 
-
 /**
  * A dropdown component to display a list of actions in a dropdown menu or to
  * show additional content on demand.
