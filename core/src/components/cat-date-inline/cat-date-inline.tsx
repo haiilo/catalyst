@@ -128,7 +128,6 @@ export class CatDateInline {
     const [minDate, maxDate] = this.getMinMaxDate();
     const newDate = clampDate(minDate, new Date(date.getFullYear(), date.getMonth(), date.getDate()), maxDate);
     this.focus(newDate);
-    // this.selectionDate = newDate;
     this.value = this.locale.toLocalISO(newDate);
     if (oldValue !== this.value) {
       this.catChange.emit(this.value);
@@ -141,7 +140,6 @@ export class CatDateInline {
   @Method()
   async clear(): Promise<void> {
     const oldValue = this.value;
-    // this.selectionDate = null;
     this.value = undefined;
     if (oldValue !== this.value) {
       this.catChange.emit(this.value);
