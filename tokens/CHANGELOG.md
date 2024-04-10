@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.3.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.2.0...catalyst-tokens-v10.3.0) (2024-04-10)
+
+
+### Features
+
+* adjust font sources to contain the correct sun emoji ([42389eb](https://github.com/haiilo/catalyst/commit/42389eb5d697e94ed07fa873ed206fdeead00e3a))
+
 ## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.1.1...catalyst-tokens-v10.2.0) (2024-03-12)
 
 
