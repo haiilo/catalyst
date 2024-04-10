@@ -259,7 +259,7 @@ export class CatDate {
           <cat-dropdown
             slot="addon"
             placement={this.placement}
-            noKeybindings
+            arrowNavigation="none"
             noResize
             onCatOpen={() => this.dateInline?.resetView()}
           >

@@ -627,6 +627,10 @@ export namespace Components {
      */
     interface CatDropdown {
         /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "arrowNavigation": 'horizontal' | 'vertical' | 'none';
+        /**
           * Closes the dropdown.
          */
         "close": () => Promise<void>;
@@ -634,10 +638,6 @@ export namespace Components {
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose": boolean;
-        /**
-          * Do not navigate focus inside the dropdown via vertical arrow keys.
-         */
-        "noKeybindings": boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
@@ -2741,13 +2741,13 @@ declare namespace LocalJSX {
      */
     interface CatDropdown {
         /**
+          * Do not navigate focus inside the dropdown via vertical arrow keys.
+         */
+        "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
+        /**
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose"?: boolean;
-        /**
-          * Do not navigate focus inside the dropdown via vertical arrow keys.
-         */
-        "noKeybindings"?: boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
