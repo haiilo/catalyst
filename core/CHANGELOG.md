@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.3.0...catalyst-core-v10.3.1) (2024-04-10)
+
+
+### Bug Fixes
+
+* **core:** fix formatting error ([b0c4c6d](https://github.com/haiilo/catalyst/commit/b0c4c6dfdd60b048751161ed779ec7a6b2519746))
+
 ## [10.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.2.0...catalyst-core-v10.3.0) (2024-04-10)
 
 
