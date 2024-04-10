@@ -34,7 +34,7 @@ export class CatDropdown {
   /**
    * Do not navigate focus inside the dropdown via vertical arrow keys.
    */
-  @Prop() noKeybindings = false;
+  @Prop() arrowNavigation: 'horizontal' | 'vertical' | 'none' = 'vertical';
 
   /**
    * Do not change the size of the dropdown to ensure it isn’t too big to fit
@@ -123,14 +123,20 @@ export class CatDropdown {
             onPostActivate: () => this.catOpen.emit(),
             setReturnFocus: elem => this.trigger || elem,
             isKeyForward: event => {
-              if (!this.noKeybindings && event.key === 'ArrowDown') {
+              if (
+                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
+                (this.arrowNavigation === 'vertical' && event.key === 'ArrowDown')
+              ) {
                 event.preventDefault();
                 return true;
               }
               return event.key === 'Tab';
             },
             isKeyBackward: event => {
-              if (!this.noKeybindings && event.key === 'ArrowUp') {
+              if (
+                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowLeft') ||
+                (this.arrowNavigation === 'vertical' && event.key === 'ArrowUp')
+              ) {
                 event.preventDefault();
                 return true;
               }

@@ -349,7 +349,7 @@ export class CatDate {
             {this.label}
             <span class="label-aria"> ({this.locale.formatStr})</span>
           </span>
-          <cat-dropdown slot="addon" placement={this.placement} noKeybindings noResize>
+          <cat-dropdown slot="addon" placement={this.placement} arrowNavigation='none' noResize>
             <cat-button
               slot="trigger"
               icon="$cat:datepicker-calendar"
