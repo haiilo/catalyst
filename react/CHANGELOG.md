@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.3.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.3.0...catalyst-react-v10.3.1) (2024-04-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [10.3.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.2.0...catalyst-react-v10.3.0) (2024-04-10)
+
+
+### Features
+
+* **core:** add new cat-date picker and cat-time picker ([#486](https://github.com/haiilo/catalyst/issues/486)) ([5b97a7b](https://github.com/haiilo/catalyst/commit/5b97a7b890dd5e6ffbf9ca92eb7cb4de6f2bd064))
+
 ## [10.2.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.1.1...catalyst-react-v10.2.0) (2024-03-12)
 
 
