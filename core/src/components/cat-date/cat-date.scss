@@ -9,6 +9,10 @@
   display: none;
 }
 
+.label-aria {
+  @include cat-visually-hidden;
+}
+
 cat-date-inline {
   margin: 1rem;
 }

@@ -9,13 +9,26 @@
   display: none;
 }
 
-.label-aria {
-  @include cat-visually-hidden;
-}
-
 .picker {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
+  min-width: calc(2rem + 7 * 2.5rem);
+  max-width: calc(2rem + 7 * 4rem);
+
+  &.picker-weeks {
+    min-width: calc(7 * 2.5rem);
+    max-width: calc(7 * 4rem);
+  }
+
+  &.picker-small {
+    min-width: calc(2rem + 7 * 2rem);
+    max-width: calc(2rem + 7 * 3rem);
+
+    &.picker-weeks {
+      min-width: calc(7 * 2rem);
+      max-width: calc(7 * 3rem);
+    }
+  }
 }
 
 .picker-head {
@@ -55,7 +68,7 @@
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   margin: 1rem 0 0.5rem;
 
-  &.picker-grid-weekdays {
+  .picker-weeks & {
     /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     grid-template-columns: 2rem repeat(7, 1fr);
     grid-template-areas:
@@ -151,4 +164,8 @@
 
 .cursor-aria {
   @include cat-visually-hidden;
+}
+
+.date-range {
+  --cat-border-radius-m: 0;
 }

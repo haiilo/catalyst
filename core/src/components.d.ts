@@ -444,7 +444,11 @@ export namespace Components {
         /**
           * Hides the week numbers.
          */
-        "noWeekNumbers": boolean;
+        "noWeeks": boolean;
+        /**
+          * Allow the selection of a range of dates, i.e. start and end date.
+         */
+        "range": boolean;
         /**
           * Resets the view of the picker.
          */
@@ -2556,11 +2560,15 @@ declare namespace LocalJSX {
         /**
           * Hides the week numbers.
          */
-        "noWeekNumbers"?: boolean;
+        "noWeeks"?: boolean;
         /**
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
+        /**
+          * Allow the selection of a range of dates, i.e. start and end date.
+         */
+        "range"?: boolean;
         /**
           * The size of the date picker.
          */

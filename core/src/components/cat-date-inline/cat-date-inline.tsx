@@ -39,7 +39,7 @@ export class CatDateInline {
   /**
    * Hides the week numbers.
    */
-  @Prop() noWeekNumbers = false;
+  @Prop() noWeeks = false;
 
   /**
    * The size of the date picker.
@@ -55,6 +55,11 @@ export class CatDateInline {
    * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
    */
   @Prop() max?: string;
+
+  /**
+   * Allow the selection of a range of dates, i.e. start and end date.
+   */
+  @Prop() range = false;
 
   /**
    * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
@@ -76,7 +81,11 @@ export class CatDateInline {
 
   componentWillLoad() {
     // select the initial value
-    this.select(this.locale.fromLocalISO(this.value));
+    const [startDate, endDate] = this.getValue();
+    this.select(startDate);
+    if (this.range && endDate) {
+      this.select(endDate);
+    }
   }
 
   componentDidRender() {
@@ -95,10 +104,10 @@ export class CatDateInline {
       return;
     }
     const focusedDate = this.focusedDate;
-    const valueDate = this.locale.fromLocalISO(this.value);
     if (!focusedDate) {
       e.preventDefault();
-      this.focus(valueDate || this.locale.now());
+      const [startDate] = this.getValue();
+      this.focus(startDate || this.locale.now());
     } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
       this.focus(e.shiftKey ? addMonth(focusedDate, -1) : addDays(focusedDate, -1));
@@ -128,7 +137,18 @@ export class CatDateInline {
     const [minDate, maxDate] = this.getMinMaxDate();
     const newDate = clampDate(minDate, new Date(date.getFullYear(), date.getMonth(), date.getDate()), maxDate);
     this.focus(newDate);
-    this.value = this.locale.toLocalISO(newDate);
+
+    if (this.range) {
+      const [startDate, endDate] = this.getValue();
+      if (!startDate || endDate || newDate < startDate) {
+        this.value = this.toRangeValue(newDate, null);
+      } else {
+        this.value = this.toRangeValue(startDate, newDate);
+      }
+    } else {
+      this.value = this.locale.toLocalISO(newDate);
+    }
+
     if (oldValue !== this.value) {
       this.catChange.emit(this.value);
     }
@@ -152,17 +172,17 @@ export class CatDateInline {
   @Method()
   async resetView(): Promise<void> {
     const [minDate, maxDate] = this.getMinMaxDate();
-    const valueDate = this.locale.fromLocalISO(this.value);
-    this.viewDate = valueDate ?? clampDate(minDate, this.locale.now(), maxDate);
+    const [dateStart] = this.getValue();
+    this.viewDate = dateStart ?? clampDate(minDate, this.locale.now(), maxDate);
   }
 
   render() {
     const [minDate, maxDate] = this.getMinMaxDate();
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
-    const valueDate = this.locale.fromLocalISO(this.value);
+    const [dateStart, dateEnd] = this.getValue();
     return (
       <Host>
-        <div class={{ picker: true, 'picker-small': this.size === 's' }}>
+        <div class={{ picker: true, 'picker-small': this.size === 's', 'picker-weeks': !this.noWeeks }}>
           <div class="picker-head">
             <cat-button
               icon="$cat:datepicker-year-prev"
@@ -206,16 +226,13 @@ export class CatDateInline {
               data-dropdown-no-close
             ></cat-button>
           </div>
-          <div
-            class={{ 'picker-grid': true, 'picker-grid-weekdays': !this.noWeekNumbers }}
-            onFocusin={() => this.setAriaLive(this.locale.arrowKeys)}
-          >
+          <div class="picker-grid" onFocusin={() => this.setAriaLive(this.locale.arrowKeys)}>
             <div class="picker-grid-head">
               {Array.from(Array(7), (_, i) => (
                 <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
               ))}
             </div>
-            {!this.noWeekNumbers && (
+            {!this.noWeeks && (
               <div class="picker-grid-weeks">
                 {dateGrid
                   .filter((_, i) => i % 7 === 0)
@@ -225,31 +242,37 @@ export class CatDateInline {
               </div>
             )}
             <div class="picker-grid-days">
-              {dateGrid.map(day => (
-                <cat-button
-                  class={{
-                    'cat-date-item': true,
-                    'date-other': !isSameMonth(this.viewDate, day),
-                    'date-today': isSameDay(this.locale.now(), day),
-                    'date-selected': isSameDay(valueDate, day),
-                    'date-focusable': this.canFocus(day),
-                    'date-disabled': !this.canClick(day)
-                  }}
-                  size={this.size}
-                  nativeAttributes={!this.canFocus(day) ? { tabindex: '-1' } : {}}
-                  variant={
-                    isSameDay(valueDate, day) ? 'filled' : isSameDay(this.locale.now(), day) ? 'outlined' : 'text'
-                  }
-                  a11yLabel={this.locale.toLocalStr(day)}
-                  active={isSameDay(valueDate, day)}
-                  color={isSameDay(valueDate, day) || isSameDay(this.locale.now(), day) ? 'primary' : 'secondary'}
-                  disabled={!this.canClick(day)}
-                  onClick={() => this.select(day)}
-                  data-date={this.locale.toLocalISO(day)}
-                >
-                  {day.getDate()}
-                </cat-button>
-              ))}
+              {dateGrid.map(day => {
+                const isStartDate = isSameDay(dateStart, day);
+                const isEndDate = isSameDay(dateEnd, day);
+                const isRange = !!dateStart && !!dateEnd && day > dateStart && day < dateEnd;
+                const isToday = isSameDay(this.locale.now(), day);
+                return (
+                  <cat-button
+                    class={{
+                      'cat-date-item': true,
+                      'date-other': !isSameMonth(this.viewDate, day),
+                      'date-today': isToday,
+                      'date-start': this.range && isStartDate,
+                      'date-range': this.range && isRange,
+                      'date-end': this.range && isEndDate,
+                      'date-focusable': this.canFocus(day),
+                      'date-disabled': !this.canClick(day)
+                    }}
+                    size={this.size}
+                    nativeAttributes={!this.canFocus(day) ? { tabindex: '-1' } : {}}
+                    variant={isStartDate || isEndDate ? 'filled' : isToday ? 'outlined' : 'text'}
+                    a11yLabel={this.locale.toLocalStr(day)}
+                    active={isStartDate || isEndDate || isRange}
+                    color={isStartDate || isEndDate || isToday ? 'primary' : 'secondary'}
+                    disabled={!this.canClick(day)}
+                    onClick={() => this.select(day)}
+                    data-date={this.locale.toLocalISO(day)}
+                  >
+                    {day.getDate()}
+                  </cat-button>
+                );
+              })}
             </div>
           </div>
           <div class="picker-foot">
@@ -332,11 +355,11 @@ export class CatDateInline {
     const now = this.locale.now();
     const [minDate] = this.getMinMaxDate();
     const focusedDate = this.focusedDate;
-    const valueDate = this.locale.fromLocalISO(this.value);
+    const [startDate] = this.getValue();
     if (focusedDate && isSameMonth(focusedDate, this.viewDate)) {
       return isSameMonth(focusedDate, date) && isSameDay(focusedDate, date);
-    } else if (valueDate && isSameMonth(valueDate, this.viewDate)) {
-      return isSameMonth(valueDate, date) && isSameDay(valueDate, date);
+    } else if (startDate && isSameMonth(startDate, this.viewDate)) {
+      return isSameMonth(startDate, date) && isSameDay(startDate, date);
     } else if (isSameMonth(this.viewDate, now) && (!minDate || minDate <= now)) {
       return isSameMonth(this.viewDate, date) && isSameDay(now, date);
     }
@@ -353,5 +376,18 @@ export class CatDateInline {
     const minDate = this.locale.fromLocalISO(this.min);
     const maxDate = this.locale.fromLocalISO(this.max);
     return [minDate, maxDate];
+  }
+
+  private getValue(): [Date | null, Date | null] {
+    if (this.range) {
+      const [startDate, endDate] = JSON.parse(this.value || '[]') as [string | null, string | null];
+      return [this.locale.fromLocalISO(startDate), this.locale.fromLocalISO(endDate)];
+    } else {
+      return [this.locale.fromLocalISO(this.value), null];
+    }
+  }
+
+  private toRangeValue(startDate: Date | null, endDate: Date | null): string {
+    return JSON.stringify([startDate, endDate].map(date => (date ? this.locale.toLocalISO(date) : null)));
   }
 }
