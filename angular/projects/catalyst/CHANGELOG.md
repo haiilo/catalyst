@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.3.1...catalyst-angular-v10.4.0) (2024-04-15)
+
+
+### Features
+
+* **angular:** add openWithRef to dialog service so dialog reference can be obtained by the user ([#494](https://github.com/haiilo/catalyst/issues/494)) ([7990167](https://github.com/haiilo/catalyst/commit/7990167e4598667a315ffd4b7ddc8d1819806d79))
+
 ## [10.3.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.3.0...catalyst-angular-v10.3.1) (2024-04-10)
 
 
