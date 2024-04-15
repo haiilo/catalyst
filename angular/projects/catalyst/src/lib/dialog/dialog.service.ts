@@ -1,4 +1,4 @@
-import { Dialog, DialogConfig } from '@angular/cdk/dialog';
+import { Dialog, DialogConfig, DialogRef } from '@angular/cdk/dialog';
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -31,6 +31,17 @@ export class CatDialogService {
     component: ComponentType<unknown>,
     config?: CatDialogConfig<D>
   ): Observable<R | undefined> {
+    return this.openWithRef<R, D>(component, config).closed;
+  }
+
+  /**
+   * Opens a modal dialog containing the given component and returns a reference to the dialog.
+   *
+   * @param component - The component to render as dialog content.
+   * @param config - The dialog configuration.
+   * @returns A reference to the just opened dialog.
+   */
+  openWithRef<R = unknown, D = unknown>(component: ComponentType<unknown>, config?: CatDialogConfig<D>): DialogRef<R> {
     const panelClass = config?.panelClass ?? [];
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
@@ -41,7 +52,7 @@ export class CatDialogService {
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
       ...config
-    }).closed;
+    });
   }
 
   /**
