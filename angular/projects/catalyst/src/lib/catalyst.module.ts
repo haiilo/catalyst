@@ -15,12 +15,15 @@ import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
 import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
 import { CatDialogComponent } from './dialog/dialog.component';
 import { BooleanValueAccessor } from './directives/boolean-value-accessor';
+import { DateValueAccessor } from './directives/date-value-accessor';
 import * as Components from './directives/proxies';
 import { RadioValueAccessor } from './directives/radio-value-accessor';
 import { SelectValueAccessor } from './directives/select-value-accessor';
 import { SelectValueAccessorDecorator } from './directives/select-value-accessor-decorator';
 import { TextValueAccessor } from './directives/text-value-accessor';
+import { TimeValueAccessor } from './directives/time-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
+import { DatetimeComponent } from './datetime/datetime.component';
 
 const CatComponents = [
   Components.CatAlert,
@@ -51,11 +54,14 @@ const CatComponents = [
 
 const CatDirectives = [
   BooleanValueAccessor,
+  DateValueAccessor,
   RadioValueAccessor,
   SelectValueAccessor,
   SelectValueAccessorDecorator,
   TextValueAccessor,
-  ValueAccessorDecorator
+  TimeValueAccessor,
+  ValueAccessorDecorator,
+  DatetimeComponent
 ];
 
 export const CAT_LOG_TOKEN = new InjectionToken<RootLogger>('CAT_LOG', {

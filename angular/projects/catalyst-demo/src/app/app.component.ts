@@ -29,8 +29,9 @@ export class AppComponent implements OnInit {
     relatedInput: new FormControl(null, [this.equalTo('test')]),
     option: new FormControl(null, [Validators.required]),
     date: new FormControl(null, [Validators.required]),
-    date2: new FormControl(null, [Validators.required]),
-    time: new FormControl('20:20', [Validators.required]),
+    date2: new FormControl(new Date(), [Validators.required]),
+    date3: new FormControl(new Date(), [Validators.required]),
+    time: new FormControl(new Date(), [Validators.required]),
     datepickerDisabled: new FormControl(true)
   });
 

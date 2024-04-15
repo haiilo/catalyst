@@ -23,9 +23,9 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
       'cat-textarea',
       'cat-datepicker',
       'cat-datepicker-inline',
-      'cat-date',
-      'cat-date-inline',
-      'cat-time'
+      // 'cat-date',
+      // 'cat-date-inline',
+      // 'cat-time'
     ],
     event: 'catChange',
     targetAttr: 'value',
