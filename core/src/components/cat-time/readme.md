@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A time input component to select a time in a dropdown.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                                                                                                                 | Default        |

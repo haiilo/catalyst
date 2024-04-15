@@ -5,6 +5,9 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-time-locale';
 import { clampTime, isAfter, isBefore } from './cat-time-math';
 
+/**
+ * A time input component to select a time in a dropdown.
+ */
 @Component({
   tag: 'cat-time',
   styleUrl: 'cat-time.scss',

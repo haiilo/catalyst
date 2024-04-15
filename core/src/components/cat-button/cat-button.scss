@@ -399,7 +399,21 @@ $button-sizes: (
 
 :host(.cat-date-item) {
   .cat-button {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    aspect-ratio: 1;
+  }
+}
+
+:host(.date-start:not(.date-end)) {
+  .cat-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+:host(.date-end:not(.date-start)) {
+  .cat-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }

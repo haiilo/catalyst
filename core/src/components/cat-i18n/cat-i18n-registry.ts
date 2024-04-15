@@ -2,6 +2,12 @@ import log from 'loglevel';
 
 export type CatI18nTranslationFn = (key: string, params?: unknown) => string;
 
+/**
+ * A registry for lightweight internationalization (i18n) in applications using
+ * the Catalyst design system. The registry stores translations and provides
+ * methods for setting the locale, registering translations, and retrieving
+ * translated messages.
+ */
 export class CatI18nRegistry {
   private static instance: CatI18nRegistry;
 

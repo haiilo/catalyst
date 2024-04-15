@@ -299,6 +299,9 @@ export namespace Components {
          */
         "value"?: any;
     }
+    /**
+     * A date input component to select a date from a calendar in a dropdown.
+     */
     interface CatDate {
         /**
           * Hint for form autofill feature.
@@ -398,11 +401,6 @@ export namespace Components {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
-          * Select a date in the picker.
-          * @param date The date to select.
-         */
-        "select": (date: Date) => Promise<void>;
-        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -410,6 +408,60 @@ export namespace Components {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
+    /**
+     * An inline date picker component to select a date.
+     */
+    interface CatDateInline {
+        /**
+          * Clear the picker.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Hides the clear button.
+         */
+        "noClear": boolean;
+        /**
+          * Hides the arrow navigation hint.
+         */
+        "noHint": boolean;
+        /**
+          * Hides the today button.
+         */
+        "noToday": boolean;
+        /**
+          * Hides the week numbers.
+         */
+        "noWeeks": boolean;
+        /**
+          * Allow the selection of a range of dates, i.e. start and end date.
+         */
+        "range": boolean;
+        /**
+          * Resets the view of the picker.
+         */
+        "resetView": () => Promise<void>;
+        /**
+          * Select a date in the picker.
+          * @param date The date to select.
+         */
+        "select": (date: Date | null) => Promise<void>;
+        /**
+          * The size of the date picker.
+         */
+        "size": 's' | 'm';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
@@ -573,6 +625,10 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * A dropdown component to display a list of actions in a dropdown menu or to
+     * show additional content on demand.
+     */
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
@@ -607,6 +663,9 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    /**
+     * A form group component to group form fields and labels.
+     */
     interface CatFormGroup {
         /**
           * Whether the label is on top or left.
@@ -1248,6 +1307,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * A time input component to select a time in a dropdown.
+     */
     interface CatTime {
         /**
           * Hint for form autofill feature.
@@ -1435,6 +1497,11 @@ export namespace Components {
          */
         "value"?: any;
     }
+    /**
+     * Tooltips display additional information when the user hovers over or
+     * interacts with a trigger element. The tooltip can be customized with
+     * different placements, sizes, and styles.
+     */
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -1481,6 +1548,10 @@ export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
 export interface CatDateCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatDateElement;
+}
+export interface CatDateInlineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatDateInlineElement;
 }
 export interface CatDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1639,6 +1710,9 @@ declare global {
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
+    /**
+     * A date input component to select a date from a calendar in a dropdown.
+     */
     interface HTMLCatDateElement extends Components.CatDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatDateElementEventMap>(type: K, listener: (this: HTMLCatDateElement, ev: CatDateCustomEvent<HTMLCatDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1652,6 +1726,26 @@ declare global {
     var HTMLCatDateElement: {
         prototype: HTMLCatDateElement;
         new (): HTMLCatDateElement;
+    };
+    interface HTMLCatDateInlineElementEventMap {
+        "catChange": string;
+    }
+    /**
+     * An inline date picker component to select a date.
+     */
+    interface HTMLCatDateInlineElement extends Components.CatDateInline, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatDateInlineElementEventMap>(type: K, listener: (this: HTMLCatDateInlineElement, ev: CatDateInlineCustomEvent<HTMLCatDateInlineElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatDateInlineElementEventMap>(type: K, listener: (this: HTMLCatDateInlineElement, ev: CatDateInlineCustomEvent<HTMLCatDateInlineElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatDateInlineElement: {
+        prototype: HTMLCatDateInlineElement;
+        new (): HTMLCatDateInlineElement;
     };
     interface HTMLCatDatepickerElementEventMap {
         "catChange": string;
@@ -1693,6 +1787,10 @@ declare global {
         "catOpen": FocusEvent;
         "catClose": FocusEvent;
     }
+    /**
+     * A dropdown component to display a list of actions in a dropdown menu or to
+     * show additional content on demand.
+     */
     interface HTMLCatDropdownElement extends Components.CatDropdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatDropdownElementEventMap>(type: K, listener: (this: HTMLCatDropdownElement, ev: CatDropdownCustomEvent<HTMLCatDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1707,6 +1805,9 @@ declare global {
         prototype: HTMLCatDropdownElement;
         new (): HTMLCatDropdownElement;
     };
+    /**
+     * A form group component to group form fields and labels.
+     */
     interface HTMLCatFormGroupElement extends Components.CatFormGroup, HTMLStencilElement {
     }
     var HTMLCatFormGroupElement: {
@@ -1958,6 +2059,9 @@ declare global {
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
+    /**
+     * A time input component to select a time in a dropdown.
+     */
     interface HTMLCatTimeElement extends Components.CatTime, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatTimeElementEventMap>(type: K, listener: (this: HTMLCatTimeElement, ev: CatTimeCustomEvent<HTMLCatTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1995,6 +2099,11 @@ declare global {
         prototype: HTMLCatToggleElement;
         new (): HTMLCatToggleElement;
     };
+    /**
+     * Tooltips display additional information when the user hovers over or
+     * interacts with a trigger element. The tooltip can be customized with
+     * different placements, sizes, and styles.
+     */
     interface HTMLCatTooltipElement extends Components.CatTooltip, HTMLStencilElement {
     }
     var HTMLCatTooltipElement: {
@@ -2010,6 +2119,7 @@ declare global {
         "cat-card": HTMLCatCardElement;
         "cat-checkbox": HTMLCatCheckboxElement;
         "cat-date": HTMLCatDateElement;
+        "cat-date-inline": HTMLCatDateInlineElement;
         "cat-datepicker": HTMLCatDatepickerElement;
         "cat-datepicker-inline": HTMLCatDatepickerInlineElement;
         "cat-dropdown": HTMLCatDropdownElement;
@@ -2310,6 +2420,9 @@ declare namespace LocalJSX {
          */
         "value"?: any;
     }
+    /**
+     * A date input component to select a date from a calendar in a dropdown.
+     */
     interface CatDate {
         /**
           * Hint for form autofill feature.
@@ -2415,6 +2528,51 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "value"?: string;
+    }
+    /**
+     * An inline date picker component to select a date.
+     */
+    interface CatDateInline {
+        /**
+          * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Hides the clear button.
+         */
+        "noClear"?: boolean;
+        /**
+          * Hides the arrow navigation hint.
+         */
+        "noHint"?: boolean;
+        /**
+          * Hides the today button.
+         */
+        "noToday"?: boolean;
+        /**
+          * Hides the week numbers.
+         */
+        "noWeeks"?: boolean;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
+        /**
+          * Allow the selection of a range of dates, i.e. start and end date.
+         */
+        "range"?: boolean;
+        /**
+          * The size of the date picker.
+         */
+        "size"?: 's' | 'm';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
@@ -2585,6 +2743,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A dropdown component to display a list of actions in a dropdown menu or to
+     * show additional content on demand.
+     */
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
@@ -2615,6 +2777,9 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
     }
+    /**
+     * A form group component to group form fields and labels.
+     */
     interface CatFormGroup {
         /**
           * Whether the label is on top or left.
@@ -3280,6 +3445,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * A time input component to select a time in a dropdown.
+     */
     interface CatTime {
         /**
           * Hint for form autofill feature.
@@ -3464,6 +3632,11 @@ declare namespace LocalJSX {
          */
         "value"?: any;
     }
+    /**
+     * Tooltips display additional information when the user hovers over or
+     * interacts with a trigger element. The tooltip can be customized with
+     * different placements, sizes, and styles.
+     */
     interface CatTooltip {
         /**
           * The content of the tooltip.
@@ -3507,6 +3680,7 @@ declare namespace LocalJSX {
         "cat-card": CatCard;
         "cat-checkbox": CatCheckbox;
         "cat-date": CatDate;
+        "cat-date-inline": CatDateInline;
         "cat-datepicker": CatDatepicker;
         "cat-datepicker-inline": CatDatepickerInline;
         "cat-dropdown": CatDropdown;
@@ -3567,10 +3741,24 @@ declare module "@stencil/core" {
              * number of options.
              */
             "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
+            /**
+             * A date input component to select a date from a calendar in a dropdown.
+             */
             "cat-date": LocalJSX.CatDate & JSXBase.HTMLAttributes<HTMLCatDateElement>;
+            /**
+             * An inline date picker component to select a date.
+             */
+            "cat-date-inline": LocalJSX.CatDateInline & JSXBase.HTMLAttributes<HTMLCatDateInlineElement>;
             "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
             "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
+            /**
+             * A dropdown component to display a list of actions in a dropdown menu or to
+             * show additional content on demand.
+             */
             "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
+            /**
+             * A form group component to group form fields and labels.
+             */
             "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**
              * Icons are used to provide additional meaning or in places where text label
@@ -3634,12 +3822,20 @@ declare module "@stencil/core" {
              * input component.
              */
             "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            /**
+             * A time input component to select a time in a dropdown.
+             */
             "cat-time": LocalJSX.CatTime & JSXBase.HTMLAttributes<HTMLCatTimeElement>;
             /**
              * Toggles are graphical interface switches that give user control over a
              * feature or option that can be turned on or off.
              */
             "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
+            /**
+             * Tooltips display additional information when the user hovers over or
+             * interacts with a trigger element. The tooltip can be customized with
+             * different placements, sizes, and styles.
+             */
             "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }

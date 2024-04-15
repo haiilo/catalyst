@@ -4,6 +4,11 @@ import isTouchScreen from '../../utils/is-touch-screen';
 
 let nextUniqueId = 0;
 
+/**
+ * Tooltips display additional information when the user hovers over or
+ * interacts with a trigger element. The tooltip can be customized with
+ * different placements, sizes, and styles.
+ */
 @Component({
   tag: 'cat-tooltip',
   styleUrl: 'cat-tooltip.scss',

@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A dropdown component to display a list of actions in a dropdown menu or to
+show additional content on demand.
+
 ## Properties
 
 | Property          | Attribute          | Description                                                                                                                            | Type                                                                                                                                                                 | Default          |

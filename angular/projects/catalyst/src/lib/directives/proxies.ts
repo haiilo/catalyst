@@ -305,7 +305,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'textSuffix',
     'value'
   ],
-  methods: ['select', 'doFocus', 'doBlur', 'clear']
+  methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
   selector: 'cat-date',
@@ -365,6 +365,37 @@ export declare interface CatDate extends Components.CatDate {
    * Emitted when the input loses focus.
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+}
+
+@ProxyCmp({
+  inputs: ['max', 'min', 'noClear', 'noHint', 'noToday', 'noWeeks', 'range', 'size', 'value'],
+  methods: ['select', 'clear', 'resetView']
+})
+@Component({
+  selector: 'cat-date-inline',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['max', 'min', 'noClear', 'noHint', 'noToday', 'noWeeks', 'range', 'size', 'value']
+})
+export class CatDateInline {
+  protected el: HTMLElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange']);
+  }
+}
+
+export declare interface CatDateInline extends Components.CatDateInline {
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<string>>;
 }
 
 @ProxyCmp({

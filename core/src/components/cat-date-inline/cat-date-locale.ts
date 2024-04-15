@@ -44,6 +44,7 @@ export function getLocale(language: string) {
     today: i18n.t('datepicker.today'),
     change: i18n.t('datepicker.change'),
     choose: i18n.t('datepicker.choose'),
+    clear: i18n.t('datepicker.clear'),
     formatStr: getFormat(language),
     weekInfo: getWeekInfo(language),
     days: {
@@ -53,6 +54,27 @@ export function getLocale(language: string) {
     months: {
       short: getMonths(language, 'short'),
       long: getMonths(language, 'long')
-    }
+    },
+    now: () => {
+      const date = new Date();
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    },
+    fromLocalISO: (date?: string | null) => {
+      const [match, year, month, day] = date?.match(/^(\d{4})-(\d{2})-(\d{2})/) ?? [];
+      return match ? new Date(Number(year), Number(month) - 1, Number(day)) : null;
+    },
+    toLocalISO: (date: Date) => {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
+    toLocalStr: (date: Date) =>
+      new Intl.DateTimeFormat(language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+      }).format(date)
   };
 }

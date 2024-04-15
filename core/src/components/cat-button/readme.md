@@ -101,6 +101,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [cat-date](../cat-date)
+ - [cat-date-inline](../cat-date-inline)
  - [cat-input](../cat-input)
  - [cat-pagination](../cat-pagination)
  - [cat-select](../cat-select)
@@ -119,6 +120,7 @@ graph TD;
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-date --> cat-button
+  cat-date-inline --> cat-button
   cat-input --> cat-button
   cat-pagination --> cat-button
   cat-select --> cat-button
