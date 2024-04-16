@@ -639,6 +639,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "disableInitialFocus": boolean;
+        /**
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose": boolean;
@@ -2752,6 +2756,10 @@ declare namespace LocalJSX {
           * Do not navigate focus inside the dropdown via vertical arrow keys.
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
+        /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "disableInitialFocus"?: boolean;
         /**
           * Do not close the dropdown on outside clicks.
          */
