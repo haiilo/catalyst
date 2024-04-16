@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.4.0...catalyst-core-v10.5.0) (2024-04-16)
+
+
+### Features
+
+* **core:** implement new inline date picker ([#491](https://github.com/haiilo/catalyst/issues/491)) ([44253a8](https://github.com/haiilo/catalyst/commit/44253a8ac53d080189e29cd19a9570f042b6b08e))
+* **core:** selectively disable icon syncing ([9dde03e](https://github.com/haiilo/catalyst/commit/9dde03ee7a58c8c974ba97b360537d55b7707686))
+
 ## [10.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.3.1...catalyst-core-v10.4.0) (2024-04-15)
 
 
