@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.0.3
-        version: 19.1.0(@types/node@15.12.2)(typescript@5.3.2)
+        version: 19.1.0(@types/node@20.11.30)(typescript@5.3.2)
       '@commitlint/config-conventional':
         specifier: ^19.0.3
         version: 19.1.0
@@ -108,45 +108,6 @@ importers:
       typescript:
         specifier: ~4.6.3
         version: 4.6.3
-
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=14.0.0'
-        version: 14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@7.8.1)
-      '@angular/core':
-        specifier: '>=14.0.0'
-        version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.1
-      tslib:
-        specifier: ^2.3.0
-        version: 2.6.1
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
-        version: 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^6.0.0
-        version: 6.1.8(@angular/forms@14.2.7)(rxjs@7.8.1)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.6.1
 
   angular/projects/catalyst:
     dependencies:
@@ -595,21 +556,6 @@ packages:
       parse5: 5.1.1
     dev: false
 
-  /@angular/cdk@14.2.7(@angular/common@14.3.0)(@angular/core@14.2.7)(rxjs@7.8.1):
-    resolution: {integrity: sha512-/tEsYaUbDSnfEmKVvAMramIptmhI67O+9STjOV0i+74XR2NospeK0fkbywIANu1n3w6AHGMotvRWJrjmbCElFg==}
-    peerDependencies:
-      '@angular/common': ^14.0.0 || ^15.0.0
-      '@angular/core': ^14.0.0 || ^15.0.0
-      rxjs: ^6.5.3 || ^7.4.0
-    dependencies:
-      '@angular/common': 14.3.0(@angular/core@14.2.7)(rxjs@7.8.1)
-      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
-      rxjs: 7.8.1
-      tslib: 2.6.1
-    optionalDependencies:
-      parse5: 5.1.1
-    dev: false
-
   /@angular/cli@14.2.7:
     resolution: {integrity: sha512-RM4CJwtqD7cKFQ7hNGJ56s9YMeJxYqCN5Ss0SzsKN1nXYqz8HykMW8fhUbZQ9HFVy/Ml3LGoh1yGo/tXywAWcA==}
     engines: {node: ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -674,18 +620,6 @@ packages:
     dependencies:
       '@angular/core': 14.2.7(rxjs@6.6.0)(zone.js@0.11.8)
       rxjs: 6.6.0
-      tslib: 2.6.1
-    dev: false
-
-  /@angular/common@14.3.0(@angular/core@14.2.7)(rxjs@7.8.1):
-    resolution: {integrity: sha512-pV9oyG3JhGWeQ+TFB0Qub6a1VZWMNZ6/7zEopvYivdqa5yDLLDSBRWb6P80RuONXyGnM1pa7l5nYopX+r/23GQ==}
-    engines: {node: ^14.15.0 || >=16.10.0}
-    peerDependencies:
-      '@angular/core': 14.3.0
-      rxjs: ^6.5.3 || ^7.4.0
-    dependencies:
-      '@angular/core': 14.2.7(rxjs@7.8.1)(zone.js@0.11.8)
-      rxjs: 7.8.1
       tslib: 2.6.1
     dev: false
 
@@ -2336,14 +2270,14 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@commitlint/cli@19.1.0(@types/node@15.12.2)(typescript@5.3.2):
+  /@commitlint/cli@19.1.0(@types/node@20.11.30)(typescript@5.3.2):
     resolution: {integrity: sha512-SYGm8HGbVzrlSYeB6oo6pG1Ec6bOMJcDsXgNGa4vgZQsPj6nJkcbTWlIRmtmIk0tHi0d5sCljGuQ+g/0NCPv7w==}
     engines: {node: '>=v18'}
     hasBin: true
     dependencies:
       '@commitlint/format': 19.0.3
       '@commitlint/lint': 19.1.0
-      '@commitlint/load': 19.1.0(@types/node@15.12.2)(typescript@5.3.2)
+      '@commitlint/load': 19.1.0(@types/node@20.11.30)(typescript@5.3.2)
       '@commitlint/read': 19.0.3
       '@commitlint/types': 19.0.3
       execa: 8.0.1
@@ -2412,7 +2346,7 @@ packages:
       '@commitlint/types': 19.0.3
     dev: true
 
-  /@commitlint/load@19.1.0(@types/node@15.12.2)(typescript@5.3.2):
+  /@commitlint/load@19.1.0(@types/node@20.11.30)(typescript@5.3.2):
     resolution: {integrity: sha512-rWqnvNDpeshX8JfUC/qjpDkQB78qF+4uHcJmIRJMwvlj6zWce08SP/TPKN3GlNKgXhAawwcAPxXL9qOTTdiOBA==}
     engines: {node: '>=v18'}
     dependencies:
@@ -2422,7 +2356,7 @@ packages:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       cosmiconfig: 8.3.6(typescript@5.3.2)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@15.12.2)(cosmiconfig@8.3.6)(typescript@5.3.2)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.11.30)(cosmiconfig@8.3.6)(typescript@5.3.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -6247,7 +6181,7 @@ packages:
       vary: 1.1.2
     dev: true
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@15.12.2)(cosmiconfig@8.3.6)(typescript@5.3.2):
+  /cosmiconfig-typescript-loader@5.0.0(@types/node@20.11.30)(cosmiconfig@8.3.6)(typescript@5.3.2):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
     peerDependencies:
@@ -6255,7 +6189,7 @@ packages:
       cosmiconfig: '>=8.2'
       typescript: '>=4'
     dependencies:
-      '@types/node': 15.12.2
+      '@types/node': 20.11.30
       cosmiconfig: 8.3.6(typescript@5.3.2)
       jiti: 1.21.0
       typescript: 5.3.2

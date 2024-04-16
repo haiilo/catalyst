@@ -1,5 +1,5 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { getLocale } from '../cat-date-inline/cat-date-locale';
 import { clampDate } from '../cat-date-inline/cat-date-math';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -152,6 +152,16 @@ export class CatDate {
    */
   @Prop() placement: Placement = 'bottom-end';
 
+  @Watch('min')
+  onMinChanged(min?: string) {
+    this.reclamp('min', min);
+  }
+
+  @Watch('max')
+  onMaxChanged(max?: string) {
+    this.reclamp('max', max);
+  }
+
   /**
    * Emitted when the value is changed.
    */
@@ -249,8 +259,14 @@ export class CatDate {
           errorUpdate={this.errorUpdate}
           nativeAttributes={this.nativeAttributes}
           value={this.inputValue}
-          onCatFocus={e => this.catFocus.emit(e.detail)}
-          onCatBlur={e => this.onInputBlur(e.detail)}
+          onCatFocus={e => {
+            e.stopPropagation();
+            this.catFocus.emit(e.detail);
+          }}
+          onCatBlur={e => {
+            e.stopPropagation();
+            this.onInputBlur(e.detail);
+          }}
         >
           <span slot="label">
             {this.label}
@@ -315,6 +331,7 @@ export class CatDate {
   }
 
   private onDateChange(e: CustomEvent<string>) {
+    e.stopPropagation();
     const oldValue = this.value;
     const date = e.detail ? new Date(e.detail) : null;
     this.value = date ? this.locale.toLocalISO(date) : undefined;
@@ -336,5 +353,20 @@ export class CatDate {
       year += year < 50 ? 2000 : 1900;
     }
     return new Date(year, month - 1, day);
+  }
+
+  private reclamp(mode: 'min' | 'max', limit: string | undefined) {
+    const oldValue = this.value;
+    const oldDate = this.locale.fromLocalISO(oldValue);
+    const limitDate = this.locale.fromLocalISO(limit);
+    if (!oldDate || !limitDate) {
+      return;
+    }
+    const newDate = clampDate(mode === 'min' ? limitDate : null, oldDate, mode === 'max' ? limitDate : null);
+    const newValue = this.locale.toLocalISO(newDate);
+    if (oldValue !== newValue) {
+      this.value = newValue;
+      this.catChange.emit(newValue);
+    }
   }
 }

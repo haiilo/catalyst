@@ -21,6 +21,9 @@ export class TimeValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);
   }
+  get nativeElement() {
+    return this.el.nativeElement;
+  }
   writeValue(value: any) {
     if (value && value instanceof Date) {
       const hours = value.getHours().toString().padStart(2, '0');
@@ -33,12 +36,9 @@ export class TimeValueAccessor extends ValueAccessor {
     const [match, hours, mins] = value?.match(/^(\d{2}):(\d{2})/) ?? [];
     if (match) {
       const date = new Date();
-      date.setHours(Number(hours));
-      date.setMinutes(Number(mins));
-      date.setSeconds(0);
-      date.setMilliseconds(0);
+      date.setHours(Number(hours), Number(mins), 0, 0);
       return super.handleChangeEvent(date);
     }
-    return super.handleChangeEvent(undefined);
+    return super.handleChangeEvent(null);
   }
 }

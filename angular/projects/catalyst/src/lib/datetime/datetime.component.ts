@@ -1,27 +1,117 @@
-import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { AfterContentInit, Component, ContentChild, Input, ViewEncapsulation } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DateValueAccessor } from '../directives/date-value-accessor';
+import { TimeValueAccessor } from '../directives/time-value-accessor';
 
 @Component({
   selector: 'cat-datetime',
-  templateUrl: './datetime.component.html',
-  styleUrls: ['./datetime.component.scss']
+  template: '<ng-content></ng-content>',
+  styles: ['cat-datetime { display: contents; }'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: DatetimeComponent,
+      multi: true
+    }
+  ]
 })
-export class DatetimeComponent implements OnInit, ControlValueAccessor {
+export class DatetimeComponent implements AfterContentInit, ControlValueAccessor {
+  protected lastValue: any;
+  protected lastDateValue: any;
+  protected lastTimeValue: any;
 
-  constructor() { }
+  @ContentChild(DateValueAccessor) dateInput?: DateValueAccessor;
+  @ContentChild(TimeValueAccessor) timeInput?: TimeValueAccessor;
 
-  ngOnInit(): void {
+  private _min?: Date | null;
+  get min(): Date | null {
+    return this._min ?? null;
   }
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+  @Input() set min(value: Date | null | undefined) {
+    this._min = value;
+    setTimeout(() => {
+      const min = value ? this.toLocalISOString(value) : undefined;
+      this.dateInput?.nativeElement.setAttribute('min', min);
+      //TODO: time input min
+    });
   }
-  registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+
+  private _max?: Date | null;
+  get max(): Date | null {
+    return this._max ?? null;
   }
-  registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+  @Input() set max(value: Date | null | undefined) {
+    this._max = value;
+    setTimeout(() => {
+      const max = value ? this.toLocalISOString(value) : undefined;
+      this.dateInput?.nativeElement.setAttribute('max', max);
+      //TODO: time input max
+    });
   }
+
+  ngAfterContentInit(): void {
+    if (!this.dateInput) {
+      throw new Error('Missing child element <cat-date></cat-date>');
+    }
+    if (!this.timeInput) {
+      throw new Error('Missing child element <cat-time></cat-time>');
+    }
+  }
+
+  writeValue(value: any): void {
+    this.lastValue = this.lastDateValue = this.lastTimeValue = value;
+    setTimeout(() => {
+      this.dateInput?.writeValue(value);
+      this.timeInput?.writeValue(value);
+    });
+  }
+
+  registerOnChange(fn: (value: any) => void) {
+    setTimeout(() => {
+      this.dateInput?.registerOnChange((value: any) => {
+        this.lastDateValue = value;
+        fn(this.value);
+      });
+      this.timeInput?.registerOnChange((value: any) => {
+        this.lastTimeValue = value;
+        fn(this.value);
+      });
+    });
+  }
+
+  registerOnTouched(fn: () => void) {
+    setTimeout(() => {
+      this.dateInput?.registerOnTouched(fn);
+      this.timeInput?.registerOnTouched(fn);
+    });
+  }
+
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    setTimeout(() => {
+      this.dateInput?.setDisabledState(isDisabled);
+      this.timeInput?.setDisabledState(isDisabled);
+    });
+  }
+
+  private get value() {
+    if (this.lastDateValue && this.lastTimeValue) {
+      const result = new Date(this.lastDateValue);
+      result.setHours(
+        this.lastTimeValue.getHours(),
+        this.lastTimeValue.getMinutes(),
+        this.lastTimeValue.getSeconds(),
+        this.lastTimeValue.getMilliseconds()
+      );
+      return result;
+    }
+    return null;
+  }
+
+  private toLocalISOString(value: Date) {
+    const year = value.getFullYear();
+    const month = (value.getMonth() + 1).toString().padStart(2, '0');
+    const day = value.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }

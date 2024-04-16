@@ -1,6 +1,13 @@
-<form [formGroup]="form">
-  <cat-date label="Date" formControlName="date2" clearable></cat-date>
-  <cat-time label="Time" formControlName="time" clearable></cat-time>
-  <cat-datetime label="DateTime" formControlName="date3"></cat-datetime>
+<form [formGroup]="form" style="max-width: 300px;">
+  <p>Start</p>
+  <cat-datetime formControlName="startDate" [max]="form.controls.endDate.value">
+    <cat-date clearable label="start" label-hidden></cat-date>
+    <cat-time clearable label="start" label-hidden></cat-time>
+  </cat-datetime>
+  <p>End</p>
+  <cat-datetime formControlName="endDate" [min]="form.controls.startDate.value">
+    <cat-date clearable label="end" label-hidden ></cat-date>
+    <cat-time clearable label="end" label-hidden></cat-time>
+  </cat-datetime>
   <pre>{{ form.getRawValue() | json }}</pre>
 </form>

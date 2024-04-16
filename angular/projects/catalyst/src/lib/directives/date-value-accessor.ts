@@ -21,6 +21,9 @@ export class DateValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);
   }
+  get nativeElement() {
+    return this.el.nativeElement;
+  }
   writeValue(value: any) {
     if (value && value instanceof Date) {
       const year = value.getFullYear();
