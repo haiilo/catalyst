@@ -27,6 +27,9 @@ export class CatIconRegistry {
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly icons: Map<string, string> = new Map();
 
+  // ignore syncing in backwards compatible manner
+  syncIcons: boolean = true;
+
   private constructor() {
     // hide constructor
 
@@ -69,13 +72,13 @@ export class CatIconRegistry {
     // this registry.
     window.addEventListener('cat-icons-added', event => {
       const { detail } = (event as CustomEvent) || {};
-      if (detail && detail.id !== this.id) {
+      if (this.syncIcons && detail && detail.id !== this.id) {
         this.addIcons(detail.icons, detail.setName, true);
       }
     });
     window.addEventListener('cat-icons-removed', event => {
       const { detail } = (event as CustomEvent) || {};
-      if (detail && detail.id !== this.id) {
+      if (this.syncIcons && detail && detail.id !== this.id) {
         this.removeIcons(detail.names, detail.setName, true);
       }
     });
