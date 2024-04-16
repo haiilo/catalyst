@@ -156,7 +156,7 @@ export class CatDropdown {
               }
               return event.key === 'Tab' && event.shiftKey;
             },
-            initialFocus: () => this.disableInitialFocus ? false : undefined
+            initialFocus: () => (this.disableInitialFocus ? false : undefined)
           });
       this.trap.activate();
     });
