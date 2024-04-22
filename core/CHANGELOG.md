@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.7.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.6.0...catalyst-core-v10.7.0) (2024-04-22)
+
+
+### Features
+
+* **angular:** add angular compatibility layer for new date and time picker ([#498](https://github.com/haiilo/catalyst/issues/498)) ([304c226](https://github.com/haiilo/catalyst/commit/304c226977c64c76d2e715ffa054127273d092a1))
+* **core:** refine form spacings ([c29ed02](https://github.com/haiilo/catalyst/commit/c29ed02e1297d566cb5bc8013bb8b8f6ebe0e8df))
+
+
+### Bug Fixes
+
+* **core:** fix broken tab navigation in new datepicker ([118f1ce](https://github.com/haiilo/catalyst/commit/118f1ceb916364d88e2c9f4bd83d771924468864))
+* fix wrong size of checkboxes ([08aa64f](https://github.com/haiilo/catalyst/commit/08aa64f3f0f55092ca9a3723f66a5dbb8f42ddde))
+
 ## [10.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.5.0...catalyst-core-v10.6.0) (2024-04-22)
 
 

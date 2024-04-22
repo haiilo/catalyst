@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.7.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.6.0...catalyst-angular-v10.7.0) (2024-04-22)
+
+
+### Features
+
+* **angular:** add angular compatibility layer for new date and time picker ([#498](https://github.com/haiilo/catalyst/issues/498)) ([304c226](https://github.com/haiilo/catalyst/commit/304c226977c64c76d2e715ffa054127273d092a1))
+
 ## [10.6.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.5.0...catalyst-angular-v10.6.0) (2024-04-22)
 
 
