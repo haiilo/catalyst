@@ -52,6 +52,12 @@ export class CatDropdown {
   @Prop() overflow = false;
 
   /**
+   * No element in dropdown will receive focus when dropdown is open.
+   * By default, the first element in tab order will receive a focus.
+   */
+  @Prop() noInitialFocus = false;
+
+  /**
    * Emitted when the dropdown is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
@@ -99,6 +105,10 @@ export class CatDropdown {
    */
   @Method()
   async open(): Promise<void> {
+    if (!this.trigger) {
+      this.initTrigger();
+    }
+
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
     }
@@ -145,7 +155,8 @@ export class CatDropdown {
                 return true;
               }
               return event.key === 'Tab' && event.shiftKey;
-            }
+            },
+            initialFocus: () => (this.noInitialFocus ? false : undefined)
           });
       this.trap.activate();
     });

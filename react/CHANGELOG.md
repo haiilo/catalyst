@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.5.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.4.0...catalyst-react-v10.5.0) (2024-04-16)
+
+
+### Features
+
+* **core:** implement new inline date picker ([#491](https://github.com/haiilo/catalyst/issues/491)) ([44253a8](https://github.com/haiilo/catalyst/commit/44253a8ac53d080189e29cd19a9570f042b6b08e))
+
 ## [10.4.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.3.1...catalyst-react-v10.4.0) (2024-04-15)
 
 
