@@ -1689,10 +1689,10 @@ cat-textarea,
 cat-toggle,
 cat-date,
 cat-time):not(:last-child) {
-  margin-bottom: calc(1.5rem * var(--cat-form-spacer, 1));
+  margin-bottom: calc(1rem * var(--cat-form-spacer, 1));
 }
 .cat-form cat-radio:not(:last-child) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .cat-label {
