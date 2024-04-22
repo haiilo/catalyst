@@ -1,8 +1,8 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
-import { getLocale } from './cat-time-locale';
+import { formatIso, getLocale } from './cat-time-locale';
 import { clampTime, isAfter, isBefore } from './cat-time-math';
 
 /**
@@ -160,6 +160,20 @@ export class CatTime {
    */
   @Prop() step = 30;
 
+  @Watch('min')
+  onMinChanged(min?: string, oldMin?: string) {
+    if (min !== oldMin) {
+      this.reclamp('min', min);
+    }
+  }
+
+  @Watch('max')
+  onMaxChanged(max?: string, oldMax?: string) {
+    if (max !== oldMax) {
+      this.reclamp('max', max);
+    }
+  }
+
   /**
    * Emitted when the value is changed.
    */
@@ -196,9 +210,9 @@ export class CatTime {
   onOpen() {
     const query = (selector: string) => this.hostElement.shadowRoot?.querySelector<HTMLCatButtonElement>(selector);
     const time = clampTime(this.min ?? null, this.selectionTime ?? new Date(2000, 5, 1, 8), this.max ?? null);
-    const elem1 = query(`[data-time="${this.formatIso(time)}"]`);
+    const elem1 = query(`[data-time="${formatIso(time)}"]`);
     time.setMinutes(Math.floor(time.getMinutes() / this.step) * this.step);
-    const elem2 = query(`[data-time="${this.formatIso(time)}"]`);
+    const elem2 = query(`[data-time="${formatIso(time)}"]`);
     setTimeout(() => {
       (elem2 ?? elem1)?.doFocus();
       (elem2 ?? elem1)?.scrollIntoView(this.selectionTime ? { block: 'center' } : undefined);
@@ -220,7 +234,7 @@ export class CatTime {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
       this.isAm = this.format(time).toLowerCase().includes('am');
       this.selectionTime = time;
-      this.value = this.formatIso(time);
+      this.value = formatIso(time);
     }
     // we need to set the input explicitly to sync the input even without a
     // rerender (if the value is not changed)
@@ -320,7 +334,7 @@ export class CatTime {
               <nav slot="content" class="cat-nav">
                 <ul>
                   {this.timeArray().map(time => {
-                    const isoTime = this.formatIso(time);
+                    const isoTime = formatIso(time);
                     const disabled = isBefore(time, this.min ?? null) || isAfter(time, this.max ?? null);
                     return (
                       <li>
@@ -402,7 +416,15 @@ export class CatTime {
     return includeAmPm ? str : str.replace(/\s?(am|pm)/i, '');
   }
 
-  private formatIso(date: Date) {
-    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+  private reclamp(mode: 'min' | 'max', limit: string | undefined) {
+    if (!this.value) return;
+    const min = (mode === 'min' ? limit : this.min) ?? null;
+    const max = (mode === 'max' ? limit : this.max) ?? null;
+    const [match, hh, mm] = this.value.match(/(\d{2}):(\d{2})/) ?? [];
+    const newValue = match ? formatIso(clampTime(min, new Date(2000, 5, 1, Number(hh), Number(mm)), max)) : undefined;
+    if (this.value !== newValue) {
+      this.syncValue(newValue ?? '');
+      this.catChange.emit(newValue);
+    }
   }
 }

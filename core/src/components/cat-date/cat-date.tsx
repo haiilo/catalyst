@@ -153,13 +153,17 @@ export class CatDate {
   @Prop() placement: Placement = 'bottom-end';
 
   @Watch('min')
-  onMinChanged(min?: string) {
-    this.reclamp('min', min);
+  onMinChanged(min?: string, oldMin?: string) {
+    if (min !== oldMin) {
+      this.reclamp('min', min);
+    }
   }
 
   @Watch('max')
-  onMaxChanged(max?: string) {
-    this.reclamp('max', max);
+  onMaxChanged(max?: string, oldMax?: string) {
+    if (max !== oldMax) {
+      this.reclamp('max', max);
+    }
   }
 
   /**

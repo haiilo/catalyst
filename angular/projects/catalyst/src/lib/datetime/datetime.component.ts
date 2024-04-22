@@ -115,7 +115,11 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
     const limitIso = limit ? this.toLocalISODate(limit) : undefined;
     const dateIso = this.lastDateValue ? this.toLocalISODate(this.lastDateValue) : undefined;
     const attr = limit && limitIso === dateIso ? this.toLocalISOTime(limit) : undefined;
-    this.timeInput?.nativeElement.setAttribute(mode, attr);
+    if (attr) {
+      this.timeInput?.nativeElement.setAttribute(mode, attr);
+    } else {
+      this.timeInput?.nativeElement.removeAttribute(mode);
+    }
   }
 
   private toLocalISODate(value: Date) {
