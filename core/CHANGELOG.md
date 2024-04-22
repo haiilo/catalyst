@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.5.0...catalyst-core-v10.6.0) (2024-04-22)
+
+
+### Features
+
+* **core:** CatDropdown improvement ([#499](https://github.com/haiilo/catalyst/issues/499)) ([ae27bcc](https://github.com/haiilo/catalyst/commit/ae27bcce1d33533f694bc6997280db9154ed3a5c))
+
 ## [10.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.4.0...catalyst-core-v10.5.0) (2024-04-16)
 
 
