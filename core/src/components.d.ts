@@ -639,13 +639,13 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
-         */
-        "disableInitialFocus": boolean;
-        /**
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose": boolean;
+        /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "noInitialFocus": boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
@@ -2757,13 +2757,13 @@ declare namespace LocalJSX {
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
         /**
-          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
-         */
-        "disableInitialFocus"?: boolean;
-        /**
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose"?: boolean;
+        /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "noInitialFocus"?: boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */

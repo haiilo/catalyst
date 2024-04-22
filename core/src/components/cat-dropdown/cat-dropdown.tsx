@@ -55,7 +55,7 @@ export class CatDropdown {
    * No element in dropdown will receive focus when dropdown is open.
    * By default, the first element in tab order will receive a focus.
    */
-  @Prop() disableInitialFocus = false;
+  @Prop() noInitialFocus = false;
 
   /**
    * Emitted when the dropdown is opened.
@@ -156,7 +156,7 @@ export class CatDropdown {
               }
               return event.key === 'Tab' && event.shiftKey;
             },
-            initialFocus: () => (this.disableInitialFocus ? false : undefined)
+            initialFocus: () => (this.noInitialFocus ? false : undefined)
           });
       this.trap.activate();
     });
