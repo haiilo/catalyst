@@ -92,7 +92,7 @@ export class CatDateInline {
     if (this.focusDate) {
       // re-focus the previously focused date after re-render
       this.hostElement.shadowRoot
-        ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.locale.toLocalStr(this.focusDate)}"]`)
+        ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.locale.toLocalISO(this.focusDate)}"]`)
         ?.doFocus();
       this.focusDate = null;
     }
