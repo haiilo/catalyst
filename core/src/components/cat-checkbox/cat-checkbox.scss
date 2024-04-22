@@ -63,6 +63,7 @@ input {
     background-color cat-token('time.transition.s') ease,
     border-color cat-token('time.transition.s') ease;
   pointer-events: none;
+  box-sizing: border-box;
 
   svg {
     fill: none;
