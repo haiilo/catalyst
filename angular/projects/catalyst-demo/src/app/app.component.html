@@ -1,15 +1,54 @@
-<form [formGroup]="form" style="max-width: 450px">
-  <p>Start</p>
-  <cat-datetime formControlName="startDate" [max]="form.controls.endDate.value">
-    <cat-date clearable label="start" label-hidden></cat-date>
-    <cat-time clearable label="start" label-hidden></cat-time>
-  </cat-datetime>
-  <br />
-  <p>End</p>
-  <cat-datetime formControlName="endDate" [min]="form.controls.startDate.value">
-    <cat-date clearable label="end" label-hidden></cat-date>
-    <cat-time clearable label="end" label-hidden></cat-time>
-  </cat-datetime>
-  <br />
+<h1>Catalyst Demo</h1>
+<h2>Dialog</h2>
+<button (click)="openDialog()">Open</button>
+<h2>Form Components</h2>
+<form [formGroup]="form">
+  <h1>new datepicker & timepicker</h1>
+  <cat-date label="Date" formControlName="date2" clearable></cat-date>
+  <cat-time label="Time" formControlName="time" clearable></cat-time>
   <pre>{{ form.getRawValue() | json }}</pre>
+  <cat-input
+    label="Input"
+    formControlName="test"
+    textPrefix="write 'aaa' to make it valid"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="this is a hint"
+  ></cat-input>
+  <cat-input label="relatedInput" formControlName="relatedInput" [errorUpdate]="4000"></cat-input>
+  <cat-textarea
+    label="Textarea"
+    formControlName="test"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="this is a hint"
+  ></cat-textarea>
+  <cat-select
+    label="Select"
+    formControlName="option"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="this is a hint"
+    [connector]="countryConnector"
+    [clearable]="true"
+  ></cat-select>
+  <!--  Datepicker Section 1 -->
+  <cat-checkbox #checkBox label="Should toggle between date and datetime"> </cat-checkbox>
+  <cat-datepicker
+    [mode]="checkBox.checked ? 'date' : 'datetime'"
+    label="Datepicker"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="Depends on [disabled] attribute"
+  ></cat-datepicker>
+  <!--  Datepicker Section 2 -->
+  <cat-checkbox
+    (catChange)="onCheckboxChange($event)"
+    formControlName="datepickerDisabled"
+    label="Should disable next datepicker"
+  >
+  </cat-checkbox>
+  <cat-datepicker
+    label="Datepicker"
+    formControlName="date"
+    [nativeAttributes]="{ 'data-test': 'test-attribute' }"
+    hint="Depends on formControl state"
+  ></cat-datepicker>
+  <formly-form [form]="form" [fields]="fields"></formly-form>
 </form>
