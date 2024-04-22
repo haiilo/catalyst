@@ -643,6 +643,10 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "noInitialFocus": boolean;
+        /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
         "noResize": boolean;
@@ -2756,6 +2760,10 @@ declare namespace LocalJSX {
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose"?: boolean;
+        /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+         */
+        "noInitialFocus"?: boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
