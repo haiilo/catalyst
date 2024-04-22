@@ -31,9 +31,9 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
   @Input() set min(value: Date | null | undefined) {
     this._min = value;
     setTimeout(() => {
-      const min = value ? this.toLocalISOString(value) : undefined;
+      const min = value ? this.toLocalISODate(value) : undefined;
       this.dateInput?.nativeElement.setAttribute('min', min);
-      //TODO: time input min
+      this.limitTime('min');
     });
   }
 
@@ -44,9 +44,9 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
   @Input() set max(value: Date | null | undefined) {
     this._max = value;
     setTimeout(() => {
-      const max = value ? this.toLocalISOString(value) : undefined;
+      const max = value ? this.toLocalISODate(value) : undefined;
       this.dateInput?.nativeElement.setAttribute('max', max);
-      //TODO: time input max
+      this.limitTime('max');
     });
   }
 
@@ -71,6 +71,8 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
     setTimeout(() => {
       this.dateInput?.registerOnChange((value: any) => {
         this.lastDateValue = value;
+        this.limitTime('min');
+        this.limitTime('max');
         fn(this.value);
       });
       this.timeInput?.registerOnChange((value: any) => {
@@ -108,10 +110,24 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
     return null;
   }
 
-  private toLocalISOString(value: Date) {
+  private limitTime(mode: 'min' | 'max') {
+    const limit = mode === 'min' ? this.min : this.max;
+    const limitIso = limit ? this.toLocalISODate(limit) : undefined;
+    const dateIso = this.lastDateValue ? this.toLocalISODate(this.lastDateValue) : undefined;
+    const attr = limit && limitIso === dateIso ? this.toLocalISOTime(limit) : undefined;
+    this.timeInput?.nativeElement.setAttribute(mode, attr);
+  }
+
+  private toLocalISODate(value: Date) {
     const year = value.getFullYear();
     const month = (value.getMonth() + 1).toString().padStart(2, '0');
     const day = value.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  private toLocalISOTime(value: Date) {
+    const hours = value.getHours().toString().padStart(2, '0');
+    const mins = value.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${mins}`;
   }
 }

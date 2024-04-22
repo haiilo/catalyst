@@ -10,6 +10,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   form = new FormGroup({
     startDate: new FormControl(null),
-    endDate: new FormControl(null),
+    endDate: new FormControl(null)
   });
 }
