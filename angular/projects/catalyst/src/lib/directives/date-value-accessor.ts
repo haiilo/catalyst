@@ -25,16 +25,33 @@ export class DateValueAccessor extends ValueAccessor {
     return this.el.nativeElement;
   }
   writeValue(value: any) {
-    if (value && value instanceof Date) {
-      const year = value.getFullYear();
-      const month = (value.getMonth() + 1).toString().padStart(2, '0');
-      const day = value.getDate().toString().padStart(2, '0');
-      return super.writeValue(`${year}-${month}-${day}`);
+    if (!this.el.nativeElement.range) {
+      return super.writeValue(this.toISO(value));
+    } else if (value instanceof Array) {
+      const data = [this.toISO(value[0]), this.toISO(value[1])];
+      return super.writeValue(JSON.stringify(data));
     }
     return super.writeValue(undefined);
   }
   handleChangeEvent(value: any) {
+    if (!this.el.nativeElement.range) {
+      return super.handleChangeEvent(this.toDate(value));
+    } else if (typeof value === 'string') {
+      return super.handleChangeEvent(JSON.parse(value).map(this.toDate));
+    }
+    super.handleChangeEvent(null);
+  }
+  private toISO(value: any) {
+    if (value instanceof Date) {
+      const year = value.getFullYear();
+      const month = (value.getMonth() + 1).toString().padStart(2, '0');
+      const day = value.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+    return undefined;
+  }
+  private toDate(value: any) {
     const [match, year, month, day] = value?.match(/^(\d{4})-(\d{2})-(\d{2})/) ?? [];
-    return super.handleChangeEvent(match ? new Date(Number(year), Number(month) - 1, Number(day)) : null);
+    return match ? new Date(Number(year), Number(month) - 1, Number(day)) : null;
   }
 }
