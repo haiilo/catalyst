@@ -27,9 +27,9 @@ export class CatDateInline {
   @Prop() noClear = false;
 
   /**
-   * Hides the arrow navigation hint.
+   * Shows an arrow keys navigation hint.
    */
-  @Prop() noHint = false;
+  @Prop() hint = false;
 
   /**
    * Hides the today button.
@@ -37,9 +37,9 @@ export class CatDateInline {
   @Prop() noToday = false;
 
   /**
-   * Hides the week numbers.
+   * Show week numbers.
    */
-  @Prop() noWeeks = false;
+  @Prop() weeks = false;
 
   /**
    * The size of the date picker.
@@ -182,7 +182,7 @@ export class CatDateInline {
     const [dateStart, dateEnd] = this.getValue();
     return (
       <Host>
-        <div class={{ picker: true, 'picker-small': this.size === 's', 'picker-weeks': !this.noWeeks }}>
+        <div class={{ picker: true, 'picker-small': this.size === 's', 'picker-weeks': this.weeks }}>
           <div class="picker-head">
             <cat-button
               icon="$cat:datepicker-year-prev"
@@ -232,7 +232,7 @@ export class CatDateInline {
                 <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
               ))}
             </div>
-            {!this.noWeeks && (
+            {this.weeks && (
               <div class="picker-grid-weeks">
                 {dateGrid
                   .filter((_, i) => i % 7 === 0)
@@ -281,7 +281,7 @@ export class CatDateInline {
                 {this.locale.today}
               </cat-button>
             )}
-            {!this.noHint && <p class="cursor-help">{this.locale.arrowKeys}</p>}
+            {this.hint && <p class="cursor-help">{this.locale.arrowKeys}</p>}
             {!this.noClear && (
               <cat-button size="s" disabled={!this.value} data-dropdown-no-close onClick={() => this.clear()}>
                 {this.locale.clear}

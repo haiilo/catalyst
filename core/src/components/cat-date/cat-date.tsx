@@ -297,6 +297,8 @@ export class CatDate {
                 min={this.min}
                 max={this.max}
                 value={this.value}
+                hint
+                weeks
                 noClear
                 onCatChange={this.onDateChange.bind(this)}
               ></cat-date-inline>

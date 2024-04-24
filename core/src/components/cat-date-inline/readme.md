@@ -13,15 +13,15 @@ An inline date picker component to select a date.
 
 | Property  | Attribute  | Description                                                                   | Type                  | Default     |
 | --------- | ---------- | ----------------------------------------------------------------------------- | --------------------- | ----------- |
+| `hint`    | `hint`     | Shows an arrow keys navigation hint.                                          | `boolean`             | `false`     |
 | `max`     | `max`      | A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD. | `string \| undefined` | `undefined` |
 | `min`     | `min`      | A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD. | `string \| undefined` | `undefined` |
 | `noClear` | `no-clear` | Hides the clear button.                                                       | `boolean`             | `false`     |
-| `noHint`  | `no-hint`  | Hides the arrow navigation hint.                                              | `boolean`             | `false`     |
 | `noToday` | `no-today` | Hides the today button.                                                       | `boolean`             | `false`     |
-| `noWeeks` | `no-weeks` | Hides the week numbers.                                                       | `boolean`             | `false`     |
 | `range`   | `range`    | Allow the selection of a range of dates, i.e. start and end date.             | `boolean`             | `false`     |
 | `size`    | `size`     | The size of the date picker.                                                  | `"m" \| "s"`          | `'m'`       |
 | `value`   | `value`    | The value of the control, given in local ISO 8601 date format YYYY-MM-DD.     | `string \| undefined` | `undefined` |
+| `weeks`   | `weeks`    | Show week numbers.                                                            | `boolean`             | `false`     |
 
 
 ## Events

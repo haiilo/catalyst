@@ -422,6 +422,10 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Shows an arrow keys navigation hint.
+         */
+        "hint": boolean;
+        /**
           * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "max"?: string;
@@ -434,17 +438,9 @@ export namespace Components {
          */
         "noClear": boolean;
         /**
-          * Hides the arrow navigation hint.
-         */
-        "noHint": boolean;
-        /**
           * Hides the today button.
          */
         "noToday": boolean;
-        /**
-          * Hides the week numbers.
-         */
-        "noWeeks": boolean;
         /**
           * Allow the selection of a range of dates, i.e. start and end date.
          */
@@ -466,6 +462,10 @@ export namespace Components {
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "value"?: string;
+        /**
+          * Show week numbers.
+         */
+        "weeks": boolean;
     }
     interface CatDatepicker {
         /**
@@ -2542,6 +2542,10 @@ declare namespace LocalJSX {
      */
     interface CatDateInline {
         /**
+          * Shows an arrow keys navigation hint.
+         */
+        "hint"?: boolean;
+        /**
           * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "max"?: string;
@@ -2554,17 +2558,9 @@ declare namespace LocalJSX {
          */
         "noClear"?: boolean;
         /**
-          * Hides the arrow navigation hint.
-         */
-        "noHint"?: boolean;
-        /**
           * Hides the today button.
          */
         "noToday"?: boolean;
-        /**
-          * Hides the week numbers.
-         */
-        "noWeeks"?: boolean;
         /**
           * Emitted when the value is changed.
          */
@@ -2581,6 +2577,10 @@ declare namespace LocalJSX {
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "value"?: string;
+        /**
+          * Show week numbers.
+         */
+        "weeks"?: boolean;
     }
     interface CatDatepicker {
         /**
