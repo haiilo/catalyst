@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.7.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.7.0...catalyst-core-v10.7.1) (2024-04-24)
+
+
+### Bug Fixes
+
+* **core:** correctly focus initial values of datepicker ([c831068](https://github.com/haiilo/catalyst/commit/c831068708725d051680f93b1456c2da78902eff))
+
 ## [10.7.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.6.0...catalyst-core-v10.7.0) (2024-04-22)
 
 
