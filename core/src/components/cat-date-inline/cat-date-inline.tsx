@@ -80,11 +80,11 @@ export class CatDateInline {
   }
 
   componentWillLoad() {
-    // select the initial value
     const [startDate, endDate] = this.getValue();
-    this.select(startDate);
-    if (this.range && endDate) {
-      this.select(endDate);
+    if (endDate) {
+      this.focus(endDate);
+    } else if (startDate) {
+      this.focus(startDate);
     }
   }
 
