@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.7.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.7.0...catalyst-angular-v10.7.1) (2024-04-24)
+
+
+### Bug Fixes
+
+* **angular:** correctly handle range values in angular value accessor of datepicker ([6e95435](https://github.com/haiilo/catalyst/commit/6e95435b4c39a00f3ce7b6f2540e84c7b4a76d13))
+
 ## [10.7.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.6.0...catalyst-angular-v10.7.0) (2024-04-22)
 
 
