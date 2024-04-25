@@ -130,7 +130,6 @@ export const CatDateInline = /*@__PURE__*/ defineContainer<JSX.CatDateInline>('c
   'hint',
   'noToday',
   'weeks',
-  'size',
   'min',
   'max',
   'range',

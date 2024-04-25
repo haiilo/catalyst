@@ -42,11 +42,6 @@ export class CatDateInline {
   @Prop() weeks = false;
 
   /**
-   * The size of the date picker.
-   */
-  @Prop() size: 's' | 'm' = 'm';
-
-  /**
    * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
    */
   @Prop() min?: string;
@@ -182,7 +177,7 @@ export class CatDateInline {
     const [dateStart, dateEnd] = this.getValue();
     return (
       <Host>
-        <div class={{ picker: true, 'picker-small': this.size === 's', 'picker-weeks': this.weeks }}>
+        <div class={{ picker: true, 'picker-weeks': this.weeks }}>
           <div class="picker-head">
             <cat-button
               icon="$cat:datepicker-year-prev"
@@ -259,7 +254,6 @@ export class CatDateInline {
                       'date-focusable': this.canFocus(day),
                       'date-disabled': !this.canClick(day)
                     }}
-                    size={this.size}
                     nativeAttributes={!this.canFocus(day) ? { tabindex: '-1' } : {}}
                     variant={isStartDate || isEndDate ? 'filled' : isToday ? 'outlined' : 'text'}
                     a11yLabel={this.locale.toLocalStr(day)}

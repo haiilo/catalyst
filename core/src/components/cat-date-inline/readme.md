@@ -19,7 +19,6 @@ An inline date picker component to select a date.
 | `noClear` | `no-clear` | Hides the clear button.                                                       | `boolean`             | `false`     |
 | `noToday` | `no-today` | Hides the today button.                                                       | `boolean`             | `false`     |
 | `range`   | `range`    | Allow the selection of a range of dates, i.e. start and end date.             | `boolean`             | `false`     |
-| `size`    | `size`     | The size of the date picker.                                                  | `"m" \| "s"`          | `'m'`       |
 | `value`   | `value`    | The value of the control, given in local ISO 8601 date format YYYY-MM-DD.     | `string \| undefined` | `undefined` |
 | `weeks`   | `weeks`    | Show week numbers.                                                            | `boolean`             | `false`     |
 

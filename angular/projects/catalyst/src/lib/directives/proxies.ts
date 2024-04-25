@@ -368,7 +368,7 @@ export declare interface CatDate extends Components.CatDate {
 }
 
 @ProxyCmp({
-  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'size', 'value', 'weeks'],
+  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'value', 'weeks'],
   methods: ['select', 'clear', 'resetView']
 })
 @Component({
@@ -376,7 +376,7 @@ export declare interface CatDate extends Components.CatDate {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'size', 'value', 'weeks']
+  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'value', 'weeks']
 })
 export class CatDateInline {
   protected el: HTMLElement;

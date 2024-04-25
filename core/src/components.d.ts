@@ -455,10 +455,6 @@ export namespace Components {
          */
         "select": (date: Date | null) => Promise<void>;
         /**
-          * The size of the date picker.
-         */
-        "size": 's' | 'm';
-        /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "value"?: string;
@@ -2569,10 +2565,6 @@ declare namespace LocalJSX {
           * Allow the selection of a range of dates, i.e. start and end date.
          */
         "range"?: boolean;
-        /**
-          * The size of the date picker.
-         */
-        "size"?: 's' | 'm';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */
