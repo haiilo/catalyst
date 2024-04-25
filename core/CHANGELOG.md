@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.8.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.7.1...catalyst-core-v10.8.0) (2024-04-25)
+
+
+### Features
+
+* **core:** change default values for datepicker attributes ([c67bcb2](https://github.com/haiilo/catalyst/commit/c67bcb24d975c54649e89f1c9aa1b1d043327383))
+
+
+### Bug Fixes
+
+* **core:** refine datepicker sizing ([79076a9](https://github.com/haiilo/catalyst/commit/79076a93e007423aff0da1579cd8729e589d62e1))
+
 ## [10.7.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.7.0...catalyst-core-v10.7.1) (2024-04-24)
 
 
