@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.8.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.8.0...catalyst-core-v10.8.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* **core:** set correct first day of week in new datepicker ([8d8c8f8](https://github.com/haiilo/catalyst/commit/8d8c8f87a04e589e636d4b8070898a223a9b1f54))
+
 ## [10.8.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.7.1...catalyst-core-v10.8.0) (2024-04-25)
 
 
