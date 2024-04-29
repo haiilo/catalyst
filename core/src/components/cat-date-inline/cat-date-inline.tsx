@@ -223,9 +223,10 @@ export class CatDateInline {
           </div>
           <div class="picker-grid" onFocusin={() => this.setAriaLive(this.locale.arrowKeys)}>
             <div class="picker-grid-head">
-              {Array.from(Array(7), (_, i) => (
-                <abbr title={this.locale.days.long[i]}>{this.locale.days.short[i]}</abbr>
-              ))}
+              {Array.from(Array(7), (_, i) => {
+                const day = (i + this.locale.weekInfo.firstDay) % 7;
+                return <abbr title={this.locale.days.long[day]}>{this.locale.days.short[day]}</abbr>;
+              })}
             </div>
             {this.weeks && (
               <div class="picker-grid-weeks">
@@ -242,12 +243,14 @@ export class CatDateInline {
                 const isEndDate = isSameDay(dateEnd, day);
                 const isRange = !!dateStart && !!dateEnd && day > dateStart && day < dateEnd;
                 const isToday = isSameDay(this.locale.now(), day);
+                const isWeekend = this.locale.weekInfo.weekend.includes(day.getDay() || 7);
                 return (
                   <cat-button
                     class={{
                       'cat-date-item': true,
                       'date-other': !isSameMonth(this.viewDate, day),
                       'date-today': isToday,
+                      'date-weekend': isWeekend,
                       'date-start': this.range && isStartDate,
                       'date-range': this.range && isRange,
                       'date-end': this.range && isEndDate,
@@ -319,18 +322,22 @@ export class CatDateInline {
   }
 
   private dateGrid(year: number, month: number) {
-    const firstDayOfWeek = new Date(year, month, 1).getDay();
+    const daysOffset = (new Date(year, month, 1).getDay() - this.locale.weekInfo.firstDay + 7) % 7;
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const days = [...Array(daysInMonth).keys()];
-    const daysBefore = [...Array(firstDayOfWeek).keys()].map(day =>
-      new Date(year, month, day - firstDayOfWeek).getDate()
-    );
+    const daysBefore = this.getLastDaysOfMonth(year, month, daysOffset);
     const daysAfter = [...Array(42 - days.length - daysBefore.length).keys()];
     return [
       ...daysBefore.map(day => new Date(year, month - 1, day + 1)),
       ...days.map(day => new Date(year, month, day + 1)),
       ...daysAfter.map(day => new Date(year, month + 1, day + 1))
     ];
+  }
+
+  private getLastDaysOfMonth(year: number, month: number, x: number): number[] {
+    const lastDayOfMonth = new Date(year, month, 0).getDate();
+    const daysOfMonth = Array.from({ length: lastDayOfMonth }, (_, index) => index);
+    return x ? daysOfMonth.slice(-x) : [];
   }
 
   private getHeadline() {
