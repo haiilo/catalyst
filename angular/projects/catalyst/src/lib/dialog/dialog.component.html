@@ -1,5 +1,10 @@
 <ng-content select="cat-dialog-header"></ng-content>
-<cat-scrollable>
+<cat-scrollable
+  [noOverscroll]="noOverscroll"
+  [noScrolledInit]="noContentScrolledInit"
+  [scrolledBuffer]="contentScrolledBuffer"
+  (scrolledBottom)="contentScrolledBottom.emit()"
+>
   <div class="cat-dialog-content">
     <ng-content></ng-content>
   </div>
