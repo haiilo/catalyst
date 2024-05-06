@@ -33,17 +33,17 @@ export class CatDialogComponent implements AfterContentInit {
   /**
    * Flag to not fire an initial scroll event after content initialization.
    */
-  @Input() noContentScrolledInit = false;
+  @Input() noScrolledInit = false;
 
   /**
    * Buffer to be used to calculate the content scroll distance.
    */
-  @Input() contentScrolledBuffer = 0;
+  @Input() scrolledBuffer = 0;
 
   /**
    * Emitted when the dialog content is fully scrolled to the bottom.
    */
-  @Output() contentScrolledBottom = new EventEmitter<void>();
+  @Output() scrolledBottom = new EventEmitter<void>();
 
   @ContentChild(CatDialogHeaderComponent)
   private header?: CatDialogHeaderComponent;
