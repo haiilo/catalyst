@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.9.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.8.1...catalyst-angular-v10.9.0) (2024-05-06)
+
+
+### Features
+
+* **angular:** expose some cat-scrollable props and methods in cat-dialog component ([#512](https://github.com/haiilo/catalyst/issues/512)) ([a04adc7](https://github.com/haiilo/catalyst/commit/a04adc7290ac19598629bb98cd0affc2e8e6567e))
+
 ## [10.8.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.8.0...catalyst-angular-v10.8.1) (2024-04-29)
 
 
