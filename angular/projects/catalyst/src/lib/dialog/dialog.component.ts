@@ -1,5 +1,14 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { CatDialogHeaderComponent } from './dialog-header.component';
 
 /**
@@ -16,6 +25,26 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
   }
 })
 export class CatDialogComponent implements AfterContentInit {
+  /**
+   * Flag to disable/enable overscroll behavior.
+   */
+  @Input() noOverscroll = false;
+
+  /**
+   * Flag to not fire an initial scroll event after content initialization.
+   */
+  @Input() noScrolledInit = false;
+
+  /**
+   * Buffer to be used to calculate the content scroll distance.
+   */
+  @Input() scrolledBuffer = 0;
+
+  /**
+   * Emitted when the dialog content is fully scrolled to the bottom.
+   */
+  @Output() scrolledBottom = new EventEmitter<void>();
+
   @ContentChild(CatDialogHeaderComponent)
   private header?: CatDialogHeaderComponent;
 
