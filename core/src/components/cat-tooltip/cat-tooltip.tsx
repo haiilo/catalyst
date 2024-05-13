@@ -85,7 +85,7 @@ export class CatTooltip {
    */
   @Prop() longTouchDuration = 1000;
 
-  @Listen('keydown')
+  @Listen('keydown', { target: 'window' })
   handleKeyDown({ key }: KeyboardEvent) {
     key === 'Escape' && this.hideTooltip();
   }
