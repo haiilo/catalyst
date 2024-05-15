@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, Event, EventEmitter, h } from '@stencil/core';
 
 /**
  * Cards are surfaces that display content and actions on a single topic. They
@@ -10,7 +10,16 @@ import { Component, h } from '@stencil/core';
   shadow: true
 })
 export class CatCard {
+  /**
+   * Emitted when the card and all the children are fully loaded.
+   */
+  @Event() catLoad!: EventEmitter<FocusEvent>;
+
   render() {
     return <slot></slot>;
+  }
+
+  componentDidLoad() {
+    this.catLoad.emit();
   }
 }

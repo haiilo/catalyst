@@ -1541,6 +1541,10 @@ export interface CatButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatButtonElement;
 }
+export interface CatCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatCardElement;
+}
 export interface CatCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatCheckboxElement;
@@ -1672,11 +1676,22 @@ declare global {
         prototype: HTMLCatButtonGroupElement;
         new (): HTMLCatButtonGroupElement;
     };
+    interface HTMLCatCardElementEventMap {
+        "catLoad": FocusEvent;
+    }
     /**
      * Cards are surfaces that display content and actions on a single topic. They
      * should be easy to scan for relevant and actionable information.
      */
     interface HTMLCatCardElement extends Components.CatCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatCardElementEventMap>(type: K, listener: (this: HTMLCatCardElement, ev: CatCardCustomEvent<HTMLCatCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatCardElementEventMap>(type: K, listener: (this: HTMLCatCardElement, ev: CatCardCustomEvent<HTMLCatCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatCardElement: {
         prototype: HTMLCatCardElement;
@@ -2345,6 +2360,10 @@ declare namespace LocalJSX {
      * should be easy to scan for relevant and actionable information.
      */
     interface CatCard {
+        /**
+          * Emitted when the card and all the children are fully loaded.
+         */
+        "onCatLoad"?: (event: CatCardCustomEvent<FocusEvent>) => void;
     }
     /**
      * Checkboxes are used to let a user choose one or more options from a limited

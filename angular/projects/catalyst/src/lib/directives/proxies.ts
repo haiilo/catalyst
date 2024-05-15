@@ -204,10 +204,16 @@ export class CatCard {
   ) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catLoad']);
   }
 }
 
-export declare interface CatCard extends Components.CatCard {}
+export declare interface CatCard extends Components.CatCard {
+  /**
+   * Emitted when the card and all the children are fully loaded.
+   */
+  catLoad: EventEmitter<CustomEvent<FocusEvent>>;
+}
 
 @ProxyCmp({
   inputs: [
