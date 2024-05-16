@@ -70,7 +70,9 @@ export const CatButtonGroup = /*@__PURE__*/ defineContainer<JSX.CatButtonGroup>(
 ]);
 
 
-export const CatCard = /*@__PURE__*/ defineContainer<JSX.CatCard>('cat-card', undefined);
+export const CatCard = /*@__PURE__*/ defineContainer<JSX.CatCard>('cat-card', undefined, [
+  'catLoad'
+]);
 
 
 export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-checkbox', undefined, [
