@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.10.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.9.0...catalyst-core-v10.10.0) (2024-05-16)
+
+
+### Features
+
+* **core:** added catLoad event to cat-card, emits when component was fully rendered and loaded ([#515](https://github.com/haiilo/catalyst/issues/515)) ([7b079ce](https://github.com/haiilo/catalyst/commit/7b079ce2e2083605eb8f7ab34b2152eb3f8d2b44))
+
 ## [10.9.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.8.1...catalyst-core-v10.9.0) (2024-05-06)
 
 
