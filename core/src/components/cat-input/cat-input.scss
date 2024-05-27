@@ -89,6 +89,7 @@
   display: inline-flex;
   align-items: center;
   @include cat-select(none);
+  color: cat-token('color.ui.font.muted');
 }
 
 .text-prefix {
