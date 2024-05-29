@@ -1,5 +1,22 @@
 # Changelog
 
+## [10.11.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.10.0...catalyst-core-v10.11.0) (2024-05-29)
+
+
+### Features
+
+* **core:** add missing label on inline datepicker (closes [#523](https://github.com/haiilo/catalyst/issues/523)) ([828f7b3](https://github.com/haiilo/catalyst/commit/828f7b3f62a43a6d0451f94d10b8c0f89ea7c9c6))
+* **core:** color input prefixes in muted color ([1da5cb2](https://github.com/haiilo/catalyst/commit/1da5cb20275355b6d6f11a5f0f56dfa420bcb56f))
+
+
+### Bug Fixes
+
+* **angular:** add missing proxy build ([adcd406](https://github.com/haiilo/catalyst/commit/adcd406fa5db6e119cb6408db19232ecc463217e))
+* **core:** add missing shadow for notifications ([e00b71c](https://github.com/haiilo/catalyst/commit/e00b71cea665168223018c3e10c98e485fae4ea8))
+* **core:** adjust minor a11y issues with selects ([bcb8d94](https://github.com/haiilo/catalyst/commit/bcb8d945ae62a95b0cf46817ce7f939c9789def2))
+* **core:** delay a11y checks (closes [#455](https://github.com/haiilo/catalyst/issues/455)) ([ae6811e](https://github.com/haiilo/catalyst/commit/ae6811ec2888840bbc271918a997b4412535127a))
+* **core:** fix typo in docs ([32837bc](https://github.com/haiilo/catalyst/commit/32837bc96414a6ab5b4670b0509b2dd407f03ace))
+
 ## [10.10.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.9.0...catalyst-core-v10.10.0) (2024-05-16)
 
 
