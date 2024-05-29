@@ -37,7 +37,9 @@ export class DateValueAccessor extends ValueAccessor {
     if (!this.el.nativeElement.range) {
       return super.handleChangeEvent(this.toDate(value));
     } else if (typeof value === 'string') {
-      return super.handleChangeEvent(JSON.parse(value).map(this.toDate));
+      const data = JSON.parse(value).map(this.toDate);
+      data[1]?.setHours(23, 59, 59, 999);
+      return super.handleChangeEvent(data);
     }
     super.handleChangeEvent(null);
   }
