@@ -90,7 +90,8 @@
             "inlineStyleLanguage": "scss",
             "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
             "styles": ["projects/catalyst-demo/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["loglevel"]
           },
           "configurations": {
             "production": {
