@@ -33,6 +33,8 @@ const CatComponents = [
   Components.CatButtonGroup,
   Components.CatCard,
   Components.CatCheckbox,
+  Components.CatDate,
+  Components.CatDateInline,
   Components.CatDatepicker,
   Components.CatDropdown,
   Components.CatFormGroup,
