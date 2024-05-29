@@ -422,9 +422,26 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Programmatically move focus to the inline datepicker, i,e, the first focusable date.
+          * @param options An optional object providing options to control aspects of the focusing process.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
+        /**
           * Shows an arrow keys navigation hint.
          */
         "hint": boolean;
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
         /**
           * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
          */
@@ -445,6 +462,14 @@ export namespace Components {
           * Allow the selection of a range of dates, i.e. start and end date.
          */
         "range": boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Resets the view of the picker.
          */
@@ -2561,6 +2586,18 @@ declare namespace LocalJSX {
          */
         "hint"?: boolean;
         /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the input.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
           * A maximum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
          */
         "max"?: string;
@@ -2584,6 +2621,14 @@ declare namespace LocalJSX {
           * Allow the selection of a range of dates, i.e. start and end date.
          */
         "range"?: boolean;
+        /**
+          * A value is required or must be check for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
          */

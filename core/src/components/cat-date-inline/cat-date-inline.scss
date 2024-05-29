@@ -1,11 +1,18 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use '_snippets/form-label';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 :host([hidden]) {
+  display: none;
+}
+
+.label-container:empty {
   display: none;
 }
 

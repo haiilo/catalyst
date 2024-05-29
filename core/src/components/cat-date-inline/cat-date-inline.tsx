@@ -2,6 +2,10 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
+import { delayedAssertWarn } from '../../utils/assert';
+import firstTabbable from '../../utils/first-tabbable';
+
+let nextUniqueId = 0;
 
 /**
  * An inline date picker component to select a date.
@@ -12,6 +16,11 @@ import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from
   shadow: true
 })
 export class CatDateInline {
+  private readonly _id = `cat-date-inline-${nextUniqueId++}`;
+  private get id() {
+    return this.identifier || this._id;
+  }
+
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
   // additonally store the focus date to ensure correct focus after potential re-render
@@ -19,12 +28,21 @@ export class CatDateInline {
 
   @Element() hostElement!: HTMLElement;
 
+  @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
+
   @State() viewDate: Date = this.locale.now();
 
   /**
    * Hides the clear button.
    */
   @Prop() noClear = false;
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
 
   /**
    * Shows an arrow keys navigation hint.
@@ -42,6 +60,16 @@ export class CatDateInline {
   @Prop() weeks = false;
 
   /**
+   * The label for the input.
+   */
+  @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
    * A minimum value for the date, given in local ISO 8601 date format YYYY-MM-DD.
    */
   @Prop() min?: string;
@@ -55,6 +83,16 @@ export class CatDateInline {
    * Allow the selection of a range of dates, i.e. start and end date.
    */
   @Prop() range = false;
+
+  /**
+   * A value is required or must be check for the form to be submittable.
+   */
+  @Prop() required = false;
+
+  /**
+   * Whether the label need a marker to shown if the input is required or optional.
+   */
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
 
   /**
    * The value of the control, given in local ISO 8601 date format YYYY-MM-DD.
@@ -77,10 +115,22 @@ export class CatDateInline {
   componentWillLoad() {
     const [startDate, endDate] = this.getValue();
     if (endDate) {
-      this.focus(endDate);
+      this.focus(endDate, false);
     } else if (startDate) {
-      this.focus(startDate);
+      this.focus(startDate, false);
     }
+  }
+
+  componentWillRender(): void {
+    delayedAssertWarn(
+      this,
+      () => {
+        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+        return !!this.label && !!this.hasSlottedLabel;
+      },
+      '[A11y] Missing ARIA label on input'
+    );
   }
 
   componentDidRender() {
@@ -171,13 +221,46 @@ export class CatDateInline {
     this.viewDate = dateStart ?? clampDate(minDate, this.locale.now(), maxDate);
   }
 
+  /**
+   * Programmatically move focus to the inline datepicker, i,e, the first
+   * focusable date.
+   *
+   * @param options An optional object providing options to control aspects of
+   * the focusing process.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    firstTabbable(this.hostElement.shadowRoot?.querySelector('.picker-grid-days'))?.focus(options);
+  }
+
   render() {
     const [minDate, maxDate] = this.getMinMaxDate();
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();
     return (
       <Host>
-        <div class={{ picker: true, 'picker-weeks': this.weeks }}>
+        <div class={{ 'label-container': true, hidden: this.labelHidden }}>
+          {(this.hasSlottedLabel || this.label) && (
+            <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
+              <span class="label-wrapper">
+                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+                <div class="label-metadata">
+                  {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.optional')})
+                    </span>
+                  )}
+                  {this.required && this.requiredMarker?.startsWith('required') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.required')})
+                    </span>
+                  )}
+                </div>
+              </span>
+            </label>
+          )}
+        </div>
+        <div class={{ picker: true, 'picker-weeks': this.weeks }} id={this.id} aria-describedby={`${this.id}-label`}>
           <div class="picker-head">
             <cat-button
               icon="$cat:datepicker-year-prev"
@@ -291,13 +374,16 @@ export class CatDateInline {
     );
   }
 
-  private focus(date: Date) {
+  private focus(date: Date, focus = true) {
     const [minDate, maxDate] = this.getMinMaxDate();
-    this.focusDate = clampDate(minDate, date, maxDate);
-    this.viewDate = new Date(this.focusDate.getFullYear(), this.focusDate.getMonth());
-    this.hostElement.shadowRoot
-      ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.locale.toLocalISO(this.focusDate)}"]`)
-      ?.doFocus();
+    const focusDate = clampDate(minDate, date, maxDate);
+    this.viewDate = new Date(focusDate.getFullYear(), focusDate.getMonth());
+    if (focus) {
+      this.focusDate = focusDate;
+      this.hostElement.shadowRoot
+        ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.locale.toLocalISO(focusDate)}"]`)
+        ?.doFocus();
+    }
   }
 
   private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
