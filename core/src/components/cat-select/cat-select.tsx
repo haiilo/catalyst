@@ -585,7 +585,7 @@ export class CatSelect {
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>
             {(this.hasSlottedLabel || this.label) && (
-              <label htmlFor={this.id} part="label">
+              <label htmlFor={`select-${this.id}-input`} part="label">
                 <span class="label-wrapper">
                   {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                   <div class="label-metadata">
@@ -673,12 +673,15 @@ export class CatSelect {
                 <input
                   {...this.nativeAttributes}
                   part="input"
+                  id={`select-${this.id}-input`}
                   class="select-input"
+                  role="combobox"
                   ref={el => (this.input = el)}
                   aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
                   aria-activedescendant={this.activeDescendant}
                   aria-invalid={this.invalid ? 'true' : undefined}
                   aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+                  aria-autocomplete="list"
                   onInput={this.onInput.bind(this)}
                   value={!this.multiple ? this.state.term : undefined}
                   placeholder={this.placeholder}
