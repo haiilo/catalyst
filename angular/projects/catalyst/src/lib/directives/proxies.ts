@@ -374,15 +374,43 @@ export declare interface CatDate extends Components.CatDate {
 }
 
 @ProxyCmp({
-  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'value', 'weeks'],
-  methods: ['select', 'clear', 'resetView']
+  inputs: [
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'noClear',
+    'noToday',
+    'range',
+    'required',
+    'requiredMarker',
+    'value',
+    'weeks'
+  ],
+  methods: ['select', 'clear', 'resetView', 'doFocus']
 })
 @Component({
   selector: 'cat-date-inline',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['hint', 'max', 'min', 'noClear', 'noToday', 'range', 'value', 'weeks']
+  inputs: [
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'noClear',
+    'noToday',
+    'range',
+    'required',
+    'requiredMarker',
+    'value',
+    'weeks'
+  ]
 })
 export class CatDateInline {
   protected el: HTMLElement;

@@ -129,12 +129,17 @@ export const CatDate = /*@__PURE__*/ defineContainer<JSX.CatDate>('cat-date', un
 
 export const CatDateInline = /*@__PURE__*/ defineContainer<JSX.CatDateInline>('cat-date-inline', undefined, [
   'noClear',
+  'identifier',
   'hint',
   'noToday',
   'weeks',
+  'label',
+  'labelHidden',
   'min',
   'max',
   'range',
+  'required',
+  'requiredMarker',
   'value',
   'catChange'
 ]);
