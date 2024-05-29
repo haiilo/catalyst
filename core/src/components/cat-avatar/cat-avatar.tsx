@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-import log from 'loglevel';
+import { delayedAssertWarn } from '../../utils/assert';
 import loadImg from '../../utils/load-img';
 
 /**
@@ -70,9 +70,7 @@ export class CatAvatar {
   }
 
   componentWillRender(): void {
-    if (!this.label) {
-      log.warn('[A11y] Missing ARIA label on avatar', this);
-    }
+    delayedAssertWarn(this, () => !!this.label, '[A11y] Missing ARIA label on avatar');
   }
 
   render() {

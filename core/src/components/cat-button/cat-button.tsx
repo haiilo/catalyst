@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import log from 'loglevel';
+import { delayedAssertWarn } from '../../utils/assert';
 import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
 
@@ -185,9 +185,7 @@ export class CatButton {
   }
 
   componentWillRender(): void {
-    if (this.isIconButton && !this.a11yLabel) {
-      log.warn('[A11y] Missing ARIA label on icon button', this);
-    }
+    delayedAssertWarn(this, () => !this.isIconButton || !!this.a11yLabel, '[A11y] Missing ARIA label on icon button');
   }
 
   @Listen('click')

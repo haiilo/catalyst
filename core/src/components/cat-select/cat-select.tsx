@@ -1,7 +1,6 @@
 import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import autosizeInput from 'autosize-input';
-import log from 'loglevel';
 import {
   catchError,
   debounce,
@@ -19,6 +18,7 @@ import {
   tap,
   timer
 } from 'rxjs';
+import { delayedAssertWarn } from '../../utils/assert';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
@@ -360,11 +360,15 @@ export class CatSelect {
 
   componentWillRender(): void {
     this.onErrorsChanged(this.errors);
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    if (!this.label && !this.hasSlottedLabel) {
-      log.warn('[A11y] Missing ARIA label on select', this);
-    }
+    delayedAssertWarn(
+      this,
+      () => {
+        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+        return !!this.label && !!this.hasSlottedLabel;
+      },
+      '[A11y] Missing ARIA label on select'
+    );
   }
 
   @Listen('blur')

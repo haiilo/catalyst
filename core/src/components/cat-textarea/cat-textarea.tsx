@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import autosize from 'autosize';
-import log from 'loglevel';
+import { delayedAssertWarn } from '../../utils/assert';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
@@ -153,11 +153,15 @@ export class CatTextarea {
 
   componentWillRender(): void {
     this.onErrorsChanged(this.errors);
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-    if (!this.label && !this.hasSlottedLabel) {
-      log.warn('[A11y] Missing ARIA label on textarea', this);
-    }
+    delayedAssertWarn(
+      this,
+      () => {
+        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+        return !!this.label && !!this.hasSlottedLabel;
+      },
+      '[A11y] Missing ARIA label on textarea'
+    );
   }
 
   componentDidLoad(): void {
