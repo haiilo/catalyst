@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.11.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.10.0...catalyst-angular-v10.11.0) (2024-05-29)
+
+
+### Bug Fixes
+
+* **angular:** add missing component exports (closes [#518](https://github.com/haiilo/catalyst/issues/518)) ([ad76f6d](https://github.com/haiilo/catalyst/commit/ad76f6d64e02bac66d18cb89ccfe355d4fddd246))
+* **angular:** add missing proxy build ([adcd406](https://github.com/haiilo/catalyst/commit/adcd406fa5db6e119cb6408db19232ecc463217e))
+* **angular:** emit end date with 23:59:59.999 (closes [#522](https://github.com/haiilo/catalyst/issues/522)) ([f6f5fc0](https://github.com/haiilo/catalyst/commit/f6f5fc05b77a1bf442273aa62f61590b2078d1cc))
+
 ## [10.10.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.9.0...catalyst-angular-v10.10.0) (2024-05-16)
 
 
