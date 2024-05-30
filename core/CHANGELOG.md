@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.11.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.11.0...catalyst-core-v10.11.1) (2024-05-30)
+
+
+### Bug Fixes
+
+* **core:** add aria label for inline datepicker ([92c9ed1](https://github.com/haiilo/catalyst/commit/92c9ed148337fc199f6d36971bd12799cfc8be91))
+
 ## [10.11.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.10.0...catalyst-core-v10.11.0) (2024-05-29)
 
 
