@@ -418,6 +418,10 @@ export namespace Components {
      */
     interface CatDateInline {
         /**
+          * Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker.
+         */
+        "a11yLabel"?: string;
+        /**
           * Clear the picker.
          */
         "clear": () => Promise<void>;
@@ -2581,6 +2585,10 @@ declare namespace LocalJSX {
      * An inline date picker component to select a date.
      */
     interface CatDateInline {
+        /**
+          * Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker.
+         */
+        "a11yLabel"?: string;
         /**
           * Shows an arrow keys navigation hint.
          */

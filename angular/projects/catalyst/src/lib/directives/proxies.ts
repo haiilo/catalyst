@@ -375,6 +375,7 @@ export declare interface CatDate extends Components.CatDate {
 
 @ProxyCmp({
   inputs: [
+    'a11yLabel',
     'hint',
     'identifier',
     'label',
@@ -397,6 +398,7 @@ export declare interface CatDate extends Components.CatDate {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'a11yLabel',
     'hint',
     'identifier',
     'label',

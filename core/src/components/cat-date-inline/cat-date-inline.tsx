@@ -90,6 +90,12 @@ export class CatDateInline {
   @Prop() required = false;
 
   /**
+   * Adds accessible label for the datepicker. The label will be read by
+   * assistive technology upon focusing the datepicker.
+   */
+  @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
+
+  /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
   @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'optional';
@@ -238,7 +244,7 @@ export class CatDateInline {
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();
     return (
-      <Host>
+      <Host aria-label={this.a11yLabel} FocusIn={() => this.a11yLabel && this.setAriaLive(this.a11yLabel)}>
         <div class={{ 'label-container': true, hidden: this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
             <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
