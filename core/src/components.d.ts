@@ -676,6 +676,10 @@ export namespace Components {
          */
         "noResize": boolean;
         /**
+          * Trigger element will not receive focus when dropdown is closed.
+         */
+        "noReturnFocus": boolean;
+        /**
           * Opens the dropdown.
          */
         "open": () => Promise<void>;
@@ -2832,6 +2836,10 @@ declare namespace LocalJSX {
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
          */
         "noResize"?: boolean;
+        /**
+          * Trigger element will not receive focus when dropdown is closed.
+         */
+        "noReturnFocus"?: boolean;
         /**
           * Emitted when the dropdown is closed.
          */
