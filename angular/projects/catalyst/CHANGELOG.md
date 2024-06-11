@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.11.1...catalyst-angular-v10.12.0) (2024-06-11)
+
+
+### Features
+
+* **core:** add noReturnFocus property to cat-dropdown ([#528](https://github.com/haiilo/catalyst/issues/528)) ([8407082](https://github.com/haiilo/catalyst/commit/84070826c310d4849bff3ca194a37627fa130cf8))
+
 ## [10.11.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.11.0...catalyst-angular-v10.11.1) (2024-05-30)
 
 
