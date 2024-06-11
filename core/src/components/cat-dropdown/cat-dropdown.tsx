@@ -58,6 +58,11 @@ export class CatDropdown {
   @Prop() noInitialFocus = false;
 
   /**
+   * Trigger element will not receive focus when dropdown is closed.
+   */
+  @Prop() noReturnFocus = false;
+
+  /**
    * Emitted when the dropdown is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
@@ -135,7 +140,7 @@ export class CatDropdown {
               !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
             onPostDeactivate: () => this.close(),
             onPostActivate: () => this.catOpen.emit(),
-            setReturnFocus: elem => this.trigger || elem,
+            setReturnFocus: elem => (this.noReturnFocus ? false : this.trigger || elem),
             isKeyForward: event => {
               if (
                 (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
