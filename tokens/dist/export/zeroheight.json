@@ -783,6 +783,68 @@
       }
     }
   },
+  "font": {
+    "family": {
+      "base": {
+        "$type": "fontFamily",
+        "$value": "Lato"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "''"
+      },
+      "emoji": {
+        "$type": "fontFamily",
+        "$value": "''"
+      }
+    },
+    "weight": {
+      "head": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "body": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "mono": {
+        "$type": "fontWeight",
+        "$value": 400
+      }
+    },
+    "decoration": {
+      "link": {
+        "$type": "fontDecoration",
+        "$value": "none"
+      },
+      "linkHover": {
+        "$type": "fontDecoration",
+        "$value": "underline"
+      },
+      "linkButton": {
+        "$type": "fontDecoration",
+        "$value": "none"
+      },
+      "linkButtonHover": {
+        "$type": "fontDecoration",
+        "$value": "none"
+      }
+    }
+  },
+  "opacity": {
+    "disabled": {
+      "$type": "opacity",
+      "$value": 0.65
+    },
+    "backdrop": {
+      "$type": "opacity",
+      "$value": 0.4
+    },
+    "tooltip": {
+      "$type": "opacity",
+      "$value": 1
+    }
+  },
   "size": {
     "border": {
       "radius": {
@@ -1001,68 +1063,6 @@
         "$type": "dimension",
         "$value": "0.25rem"
       }
-    }
-  },
-  "font": {
-    "family": {
-      "base": {
-        "$type": "fontFamily",
-        "$value": "Lato"
-      },
-      "mono": {
-        "$type": "fontFamily",
-        "$value": "''"
-      },
-      "emoji": {
-        "$type": "fontFamily",
-        "$value": "''"
-      }
-    },
-    "weight": {
-      "head": {
-        "$type": "fontWeight",
-        "$value": 600
-      },
-      "body": {
-        "$type": "fontWeight",
-        "$value": 400
-      },
-      "mono": {
-        "$type": "fontWeight",
-        "$value": 400
-      }
-    },
-    "decoration": {
-      "link": {
-        "$type": "fontDecoration",
-        "$value": "none"
-      },
-      "linkHover": {
-        "$type": "fontDecoration",
-        "$value": "underline"
-      },
-      "linkButton": {
-        "$type": "fontDecoration",
-        "$value": "none"
-      },
-      "linkButtonHover": {
-        "$type": "fontDecoration",
-        "$value": "none"
-      }
-    }
-  },
-  "opacity": {
-    "disabled": {
-      "$type": "opacity",
-      "$value": 0.65
-    },
-    "backdrop": {
-      "$type": "opacity",
-      "$value": 0.4
-    },
-    "tooltip": {
-      "$type": "opacity",
-      "$value": 1
     }
   },
   "time": {

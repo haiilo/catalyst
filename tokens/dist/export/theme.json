@@ -259,18 +259,6 @@
     "$type": "color",
     "$value": "#ffffff"
   },
-  "border-radius-l": {
-    "$type": "dimension",
-    "$value": "0.5rem"
-  },
-  "border-radius-m": {
-    "$type": "dimension",
-    "$value": "0.25rem"
-  },
-  "border-radius-s": {
-    "$type": "dimension",
-    "$value": "0.125rem"
-  },
   "font-family-base": {
     "$type": "fontFamily",
     "$value": "Lato"
@@ -322,6 +310,18 @@
   "opacity-tooltip": {
     "$type": "opacity",
     "$value": 1
+  },
+  "border-radius-l": {
+    "$type": "dimension",
+    "$value": "0.5rem"
+  },
+  "border-radius-m": {
+    "$type": "dimension",
+    "$value": "0.25rem"
+  },
+  "border-radius-s": {
+    "$type": "dimension",
+    "$value": "0.125rem"
   },
   "z-index": {
     "$type": "number",
