@@ -1257,7 +1257,7 @@ span.flatpickr-weekday {
   font-weight: var(--cat-font-weight-body, 400);
   box-shadow: 0 4px 6px -2px rgba(27, 31, 38, 0.03), 0 12px 16px -4px rgba(27, 31, 38, 0.08);
   border-radius: var(--cat-border-radius-m, 0.25rem);
-  border: 1px solid #ebecf0;
+  border: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
   background: white;
   padding: 1rem;
 }
@@ -1318,7 +1318,7 @@ span.flatpickr-weekday {
   border-radius: var(--cat-border-radius-m, 0.25rem);
 }
 .flatpickr-current-month .flatpickr-monthDropdown-months:hover, .flatpickr-current-month .flatpickr-monthDropdown-months:focus-within {
-  background-color: rgba(0, 129, 148, 0.05);
+  background-color: rgba(var(--cat-primary-bg, 0, 129, 148), 0.05);
 }
 .flatpickr-current-month input.cur-year {
   padding: 0;
@@ -1338,18 +1338,18 @@ span.flatpickr-weekday {
   align-items: center;
   display: flex;
   justify-content: center;
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
 }
 .flatpickr-months .flatpickr-prev-month:hover,
 .flatpickr-months .flatpickr-next-month:hover {
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
 }
 
 .flatpickr-weekdays {
   height: 2rem;
 }
 .flatpickr-weekdays .flatpickr-weekday {
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
@@ -1371,7 +1371,7 @@ span.flatpickr-weekday {
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
   text-align: center;
   line-height: 2.25rem;
 }
@@ -1387,7 +1387,7 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-day {
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   height: 2.25rem;
   line-height: 2.25rem;
   border: 0;
@@ -1398,28 +1398,28 @@ span.flatpickr-weekday {
   font-weight: 700;
 }
 .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
   font-weight: inherit;
   background-color: inherit !important;
 }
 .flatpickr-day.today {
-  color: #008194;
-  box-shadow: inset 0 0 0 2px #008194;
+  color: rgb(var(--cat-primary-text, 0, 129, 148));
+  box-shadow: inset 0 0 0 2px rgb(var(--cat-primary-text, 0, 129, 148));
 }
 .flatpickr-day.today:hover, .flatpickr-day.today:focus {
   background-color: #f2f4f7;
-  color: #008194;
+  color: rgb(var(--cat-primary-text, 0, 129, 148));
 }
 .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover, .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay, .flatpickr-day.notAllowed, .flatpickr-day.notAllowed.prevMonthDay, .flatpickr-day.notAllowed.nextMonthDay {
-  color: rgba(81, 92, 108, 0.5);
+  color: rgba(var(--cat-font-color-muted, 81, 92, 108), 0.5);
 }
 .flatpickr-day.selected, .flatpickr-day.selected:hover, .flatpickr-day.selected:focus, .flatpickr-day.selected.inRange, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange, .flatpickr-day.startRange:hover, .flatpickr-day.startRange:focus, .flatpickr-day.startRange.inRange, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange, .flatpickr-day.endRange:hover, .flatpickr-day.endRange:focus, .flatpickr-day.endRange.inRange, .flatpickr-day.endRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay {
   font-weight: 700;
-  background-color: #008194 !important;
-  color: white !important;
+  background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
+  color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
 }
 .flatpickr-day.inRange, .flatpickr-day.prevMonthDay.inRange, .flatpickr-day.nextMonthDay.inRange, .flatpickr-day.today.inRange, .flatpickr-day.prevMonthDay.today.inRange, .flatpickr-day.nextMonthDay.today.inRange, .flatpickr-day:hover, .flatpickr-day.prevMonthDay:hover, .flatpickr-day.nextMonthDay:hover, .flatpickr-day:focus, .flatpickr-day.prevMonthDay:focus, .flatpickr-day.nextMonthDay:focus {
-  background-color: rgba(0, 129, 148, 0.1);
+  background-color: rgba(var(--cat-primary-bg, 0, 129, 148), 0.1);
 }
 .flatpickr-day.selected.startRange, .flatpickr-day.startRange.startRange, .flatpickr-day.endRange.startRange {
   border-top-left-radius: var(--cat-border-radius-m, 0.25rem);
@@ -1435,14 +1435,14 @@ span.flatpickr-weekday {
   border-radius: var(--cat-border-radius-m, 0.25rem);
 }
 .numInputWrapper:hover, .numInputWrapper:focus-within {
-  background-color: rgba(0, 129, 148, 0.05);
+  background-color: rgba(var(--cat-primary-bg, 0, 129, 148), 0.05);
 }
 .numInputWrapper span {
   border: none;
   background: transparent;
   width: 1rem;
   padding: 0;
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
 }
 .numInputWrapper span.arrowUp::after {
   content: "↑";
@@ -1464,12 +1464,12 @@ span.flatpickr-weekday {
   justify-content: center;
 }
 .numInputWrapper span:hover {
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   background: transparent;
 }
 
 .flatpickr-calendar.hasTime .flatpickr-time {
-  border: 1px solid #ebecf0;
+  border: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
   border-radius: var(--cat-border-radius-m, 0.25rem);
   min-width: 12rem;
   height: auto;
@@ -1495,7 +1495,7 @@ span.flatpickr-weekday {
   line-height: 1.5rem;
   font-weight: 400;
   font-feature-settings: "pnum";
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   line-height: 2.25rem;
 }
 
@@ -1505,7 +1505,7 @@ span.flatpickr-weekday {
 }
 .flatpickr-time .flatpickr-am-pm:hover, .flatpickr-time .flatpickr-am-pm:focus {
   border-radius: var(--cat-border-radius-m, 0.25rem);
-  background-color: rgba(0, 129, 148, 0.05);
+  background-color: rgba(var(--cat-primary-bg, 0, 129, 148), 0.05);
 }
 
 .flatpickr-time {
@@ -1513,7 +1513,7 @@ span.flatpickr-weekday {
 }
 .flatpickr-time input {
   background: transparent !important;
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   font-size: 0.9375rem;
   line-height: 2.25rem;
   font-family: inherit;
@@ -1562,15 +1562,15 @@ span.flatpickr-weekday {
 /* stylelint-enable value-keyword-case */
 html,
 body {
-  background-color: #f2f4f7;
+  background-color: rgb(var(--cat-bg, 242, 244, 247));
 }
 
 body {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: var(--cat-font-weight-body, 400);
-  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  color: black;
+  font-family: var(--cat-font-family-base, "Lato"), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, var(--cat-font-family-emoji, ""), "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
 }
 
 /**
@@ -1591,7 +1591,7 @@ body {
  *        |- .cat-dialog-actions
 **/
 .cat-backdrop {
-  background-color: RGB(27, 31, 38, var(--cat-opacity-backdrop, 0.4));
+  background-color: RGB(var(--cat-bg-backdrop, 27, 31, 38), var(--cat-opacity-backdrop, 0.4));
 }
 
 .cat-dialog {
@@ -1738,7 +1738,7 @@ nav .cat-nav-head {
   background: white;
   padding: 1.25rem;
   box-shadow: none;
-  color: black;
+  color: rgb(var(--cat-font-color-base, 0, 0, 0));
   width: 400px;
   max-width: 400px;
   cursor: unset;
@@ -1908,22 +1908,22 @@ hr,
   display: block;
   border: 0;
   height: 1px;
-  background-color: #ebecf0;
+  background-color: rgb(var(--cat-border-color, 235, 236, 240));
   overflow: hidden;
   flex-shrink: 0;
 }
 
 a {
-  color: #008194;
+  color: rgb(var(--cat-primary-text, 0, 129, 148));
   text-decoration: var(--cat-link-decoration, none);
   transition: color 125ms linear;
 }
 a:hover {
-  color: #017384;
+  color: rgb(var(--cat-primary-text-hover, 1, 115, 132));
   text-decoration: var(--cat-link-decoration-hover, underline);
 }
 a:active {
-  color: #026371;
+  color: rgb(var(--cat-primary-text-active, 2, 99, 113));
 }
 a:focus-visible {
   outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
@@ -1942,7 +1942,7 @@ strong,
 mark,
 .cat-mark {
   padding: 0.125rem 0.25rem;
-  background-color: rgba(0, 129, 148, 0.2);
+  background-color: rgba(var(--cat-primary-bg, 0, 129, 148), 0.2);
 }
 
 small,
@@ -1989,7 +1989,7 @@ dd:not(:last-child) {
 blockquote {
   padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
   border-left: 2px solid #697687;
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-quote, 81, 92, 108));
   font-size: 1.125rem;
   line-height: 1.5rem;
   font-style: italic;
@@ -2042,9 +2042,9 @@ pre code {
 kbd,
 code {
   margin: 0 0.125rem;
-  color: #515c6c;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108));
   background: white;
-  box-shadow: 0 0 0 2px #ebecf0;
+  box-shadow: 0 0 0 2px rgb(var(--cat-border-color, 235, 236, 240));
   border-radius: var(--cat-border-radius-s, 0.125rem);
 }
 
@@ -2130,55 +2130,55 @@ code {
 }
 
 .cat-border-light {
-  border: 1px solid #f2f4f7;
+  border: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 
 .cat-border {
-  border: 1px solid #ebecf0;
+  border: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 
 .cat-border-top {
-  border-top: 1px solid #ebecf0;
+  border-top: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 .cat-border-top-light {
-  border-top: 1px solid #f2f4f7;
+  border-top: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 .cat-border-top-dark {
-  border-top: 1px solid #d7dbe0;
+  border-top: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
 
 .cat-border-right {
-  border-right: 1px solid #ebecf0;
+  border-right: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 .cat-border-right-light {
-  border-right: 1px solid #f2f4f7;
+  border-right: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 .cat-border-right-dark {
-  border-right: 1px solid #d7dbe0;
+  border-right: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
 
 .cat-border-bottom {
-  border-bottom: 1px solid #ebecf0;
+  border-bottom: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 .cat-border-bottom-light {
-  border-bottom: 1px solid #f2f4f7;
+  border-bottom: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 .cat-border-bottom-dark {
-  border-bottom: 1px solid #d7dbe0;
+  border-bottom: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
 
 .cat-border-left {
-  border-left: 1px solid #ebecf0;
+  border-left: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
 }
 .cat-border-left-light {
-  border-left: 1px solid #f2f4f7;
+  border-left: 1px solid rgb(var(--cat-border-color-light, 242, 244, 247));
 }
 .cat-border-left-dark {
-  border-left: 1px solid #d7dbe0;
+  border-left: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
 
 .cat-border-dark {
-  border: 1px solid #d7dbe0;
+  border: 1px solid rgb(var(--cat-border-color-dark, 215, 219, 224));
 }
 
 .cat-border-none {
@@ -2191,11 +2191,11 @@ code {
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
 .cat-bg-primary {
-  background-color: #008194 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-primary-bg, 0, 129, 148)) !important;
+  color: rgb(var(--cat-primary-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-primary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-primary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-primary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2203,17 +2203,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-primary-hover:hover {
-  background-color: #017384 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-primary-bg-hover, 1, 115, 132)) !important;
+  color: rgb(var(--cat-primary-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-primary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-primary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-primary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-primary,
 .cat-link-primary {
-  color: #008194 !important;
+  color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
 }
 
 .cat-link-primary,
@@ -2222,11 +2222,11 @@ code {
 }
 .cat-link-primary:hover,
 .cat-text-primary-hover:hover {
-  color: #017384 !important;
+  color: rgb(var(--cat-primary-text-hover, 1, 115, 132)) !important;
 }
 .cat-link-primary:active,
 .cat-text-primary-hover:active {
-  color: #026371 !important;
+  color: rgb(var(--cat-primary-text-active, 2, 99, 113)) !important;
 }
 
 .cat-bg-primaryInverted {
@@ -2269,11 +2269,11 @@ code {
 }
 
 .cat-bg-secondary {
-  background-color: #697687 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-secondary-bg, 105, 118, 135)) !important;
+  color: rgb(var(--cat-secondary-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-secondary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-secondary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-secondary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2281,17 +2281,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-secondary-hover:hover {
-  background-color: #697687 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-secondary-bg-hover, 105, 118, 135)) !important;
+  color: rgb(var(--cat-secondary-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-secondary-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-secondary-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-secondary-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-secondary,
 .cat-link-secondary {
-  color: black !important;
+  color: rgb(var(--cat-secondary-text, 0, 0, 0)) !important;
 }
 
 .cat-link-secondary,
@@ -2300,11 +2300,11 @@ code {
 }
 .cat-link-secondary:hover,
 .cat-text-secondary-hover:hover {
-  color: black !important;
+  color: rgb(var(--cat-secondary-text-hover, 0, 0, 0)) !important;
 }
 .cat-link-secondary:active,
 .cat-text-secondary-hover:active {
-  color: black !important;
+  color: rgb(var(--cat-secondary-text-active, 0, 0, 0)) !important;
 }
 
 .cat-bg-secondaryInverted {
@@ -2347,11 +2347,11 @@ code {
 }
 
 .cat-bg-info {
-  background-color: #0073e6 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-info-bg, 0, 115, 230)) !important;
+  color: rgb(var(--cat-info-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-info-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-info-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-info-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2359,17 +2359,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-info-hover:hover {
-  background-color: #006be3 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-info-bg-hover, 0, 107, 227)) !important;
+  color: rgb(var(--cat-info-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-info-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-info-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-info-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-info,
 .cat-link-info {
-  color: #0073e6 !important;
+  color: rgb(var(--cat-info-text, 0, 115, 230)) !important;
 }
 
 .cat-link-info,
@@ -2378,19 +2378,19 @@ code {
 }
 .cat-link-info:hover,
 .cat-text-info-hover:hover {
-  color: #006be3 !important;
+  color: rgb(var(--cat-info-text-hover, 0, 107, 227)) !important;
 }
 .cat-link-info:active,
 .cat-text-info-hover:active {
-  color: #0060df !important;
+  color: rgb(var(--cat-info-text-active, 0, 96, 223)) !important;
 }
 
 .cat-bg-success {
-  background-color: #008458 !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-success-bg, 0, 132, 88)) !important;
+  color: rgb(var(--cat-success-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2398,17 +2398,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-success-hover:hover {
-  background-color: #00754e !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-success-bg-hover, 0, 117, 78)) !important;
+  color: rgb(var(--cat-success-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-success-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-success-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-success-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-success,
 .cat-link-success {
-  color: #008458 !important;
+  color: rgb(var(--cat-success-text, 0, 132, 88)) !important;
 }
 
 .cat-link-success,
@@ -2417,19 +2417,19 @@ code {
 }
 .cat-link-success:hover,
 .cat-text-success-hover:hover {
-  color: #00754e !important;
+  color: rgb(var(--cat-success-text-hover, 0, 117, 78)) !important;
 }
 .cat-link-success:active,
 .cat-text-success-hover:active {
-  color: #006946 !important;
+  color: rgb(var(--cat-success-text-active, 0, 105, 70)) !important;
 }
 
 .cat-bg-warning {
-  background-color: #ffce80 !important;
-  color: black !important;
-  --cat-primary-text: 0, 0, 0;
-  --cat-primary-text-hover: 0, 0, 0;
-  --cat-primary-text-active: 0, 0, 0;
+  background-color: rgb(var(--cat-warning-bg, 255, 206, 128)) !important;
+  color: rgb(var(--cat-warning-fill, 0, 0, 0)) !important;
+  --cat-primary-text: var(--cat-warning-fill, 0, 0, 0);
+  --cat-primary-text-hover: var(--cat-warning-fill-hover, 0, 0, 0);
+  --cat-primary-text-active: var(--cat-warning-fill-active, 0, 0, 0);
   --cat-link-decoration: underline;
 }
 
@@ -2437,17 +2437,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-warning-hover:hover {
-  background-color: #ffd694 !important;
-  color: black !important;
-  --cat-primary-text: 0, 0, 0;
-  --cat-primary-text-hover: 0, 0, 0;
-  --cat-primary-text-active: 0, 0, 0;
+  background-color: rgb(var(--cat-warning-bg-hover, 255, 214, 148)) !important;
+  color: rgb(var(--cat-warning-fill-hover, 0, 0, 0)) !important;
+  --cat-primary-text: var(--cat-warning-fill, 0, 0, 0);
+  --cat-primary-text-hover: var(--cat-warning-fill-hover, 0, 0, 0);
+  --cat-primary-text-active: var(--cat-warning-fill-active, 0, 0, 0);
   --cat-link-decoration: underline;
 }
 
 .cat-text-warning,
 .cat-link-warning {
-  color: #9f6100 !important;
+  color: rgb(var(--cat-warning-text, 159, 97, 0)) !important;
 }
 
 .cat-link-warning,
@@ -2456,19 +2456,19 @@ code {
 }
 .cat-link-warning:hover,
 .cat-text-warning-hover:hover {
-  color: #9f6100 !important;
+  color: rgb(var(--cat-warning-text-hover, 159, 97, 0)) !important;
 }
 .cat-link-warning:active,
 .cat-text-warning-hover:active {
-  color: #9f6100 !important;
+  color: rgb(var(--cat-warning-text-active, 159, 97, 0)) !important;
 }
 
 .cat-bg-danger {
-  background-color: #d9340d !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-danger-bg, 217, 52, 13)) !important;
+  color: rgb(var(--cat-danger-fill, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-danger-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-danger-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-danger-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
@@ -2476,17 +2476,17 @@ code {
   transition: background-color 125ms, color 125ms;
 }
 .cat-bg-danger-hover:hover {
-  background-color: #c22e0b !important;
-  color: white !important;
-  --cat-primary-text: 255, 255, 255;
-  --cat-primary-text-hover: 255, 255, 255;
-  --cat-primary-text-active: 255, 255, 255;
+  background-color: rgb(var(--cat-danger-bg-hover, 194, 46, 11)) !important;
+  color: rgb(var(--cat-danger-fill-hover, 255, 255, 255)) !important;
+  --cat-primary-text: var(--cat-danger-fill, 255, 255, 255);
+  --cat-primary-text-hover: var(--cat-danger-fill-hover, 255, 255, 255);
+  --cat-primary-text-active: var(--cat-danger-fill-active, 255, 255, 255);
   --cat-link-decoration: underline;
 }
 
 .cat-text-danger,
 .cat-link-danger {
-  color: #d9340d !important;
+  color: rgb(var(--cat-danger-text, 217, 52, 13)) !important;
 }
 
 .cat-link-danger,
@@ -2495,27 +2495,27 @@ code {
 }
 .cat-link-danger:hover,
 .cat-text-danger-hover:hover {
-  color: #c22e0b !important;
+  color: rgb(var(--cat-danger-text-hover, 194, 46, 11)) !important;
 }
 .cat-link-danger:active,
 .cat-text-danger-hover:active {
-  color: #ae2a0a !important;
+  color: rgb(var(--cat-danger-text-active, 174, 42, 10)) !important;
 }
 
 .cat-active {
-  color: #008194 !important;
+  color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
 }
 
 .cat-text-active {
-  color: #008194 !important;
+  color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
 }
 
 .cat-muted {
-  color: #515c6c !important;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
 }
 
 .cat-text-muted {
-  color: #515c6c !important;
+  color: rgb(var(--cat-font-color-muted, 81, 92, 108)) !important;
 }
 
 .cat-bg-muted {
