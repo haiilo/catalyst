@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
-import { delayedAssertWarn } from '../../utils/assert';
 import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
@@ -125,18 +124,6 @@ export class CatDateInline {
     } else if (startDate) {
       this.focus(startDate, false);
     }
-  }
-
-  componentWillRender(): void {
-    delayedAssertWarn(
-      this,
-      () => {
-        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-        return !!this.label && !!this.hasSlottedLabel;
-      },
-      '[A11y] Missing ARIA label on input'
-    );
   }
 
   componentDidRender() {

@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
-import { delayedAssertWarn } from '../../utils/assert';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
@@ -102,18 +101,6 @@ export class CatRadio {
    * Emitted when the radio loses focus.
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
-
-  componentWillRender(): void {
-    delayedAssertWarn(
-      this,
-      () => {
-        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-        return !!this.label && !!this.hasSlottedLabel;
-      },
-      '[A11y] Missing ARIA label on radio'
-    );
-  }
 
   /**
    * Programmatically move focus to the radio button. Use this method instead of
