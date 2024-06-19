@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.12.0...catalyst-tokens-v10.13.0) (2024-06-19)
+
+
+### Features
+
+* **core:** update dependencies ([#531](https://github.com/haiilo/catalyst/issues/531)) ([df37388](https://github.com/haiilo/catalyst/commit/df373885b88b221c3950f7ac23df77b2990ac428))
+
+
+### Bug Fixes
+
+* **tokens:** fix broken color variables ([9de1247](https://github.com/haiilo/catalyst/commit/9de12470e8e3a50f40e54c4e115b368177de7808))
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.11.1...catalyst-tokens-v10.12.0) (2024-06-11)
 
 
