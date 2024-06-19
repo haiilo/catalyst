@@ -14,20 +14,20 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
 }
 
 .tooltip {
-  --cat-font-color-head: #{cat-token('color.ui.font.tooltip', $wrap: false)};
-  --cat-font-color-body: #{cat-token('color.ui.font.tooltip', $wrap: false)};
+  // --cat-font-color-head: #{cat-token('color.ui.font.tooltip', $wrap: false)};
+  // --cat-font-color-body: #{cat-token('color.ui.font.tooltip', $wrap: false)};
   position: fixed;
   width: max-content;
   top: 0;
   left: 0;
   box-sizing: border-box;
   @include cat-body('s', 500);
-  background-color: cat-token('color.ui.background.tooltip');
+  background-color: $cat-color-ui-background-tooltip;
   border-radius: cat-border-radius('m');
-  color: cat-token('color.ui.font.tooltip');
+  color: $cat-color-ui-font-tooltip;
   transition:
-    opacity cat-token('time.transition.m') linear,
-    visibility cat-token('time.transition.m') linear;
+    opacity $cat-time-transition-m linear,
+    visibility $cat-time-transition-m linear;
   visibility: hidden;
   opacity: 0;
   box-shadow: $-box-shadow;

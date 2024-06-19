@@ -3,11 +3,11 @@
 
 // ---- Border radius
 
-@each $size, $_def in cat-token('size.border.radius') {
-  .cat-radius-#{$size} {
-    border-radius: cat-border-radius($size);
-  }
-}
+// @each $size, $_def in $cat-size-border-radius {
+//   .cat-radius-#{$size} {
+//     border-radius: cat-border-radius($size);
+//   }
+// }
 
 .cat-radius-0 {
   border-radius: cat-border-radius('0');
@@ -20,29 +20,29 @@
 // ---- Border style
 
 .cat-border-light {
-  border: 1px solid cat-token('color.ui.border.light');
+  border: 1px solid $cat-color-ui-border-light;
 }
 
 .cat-border {
-  border: 1px solid cat-token('color.ui.border.default');
+  border: 1px solid $cat-color-ui-border-default;
 }
 
 @each $side in top, right, bottom, left {
   .cat-border-#{$side} {
-    border-#{$side}: 1px solid cat-token('color.ui.border.default');
+    border-#{$side}: 1px solid $cat-color-ui-border-default;
 
     &-light {
-      border-#{$side}: 1px solid cat-token('color.ui.border.light');
+      border-#{$side}: 1px solid $cat-color-ui-border-light;
     }
 
     &-dark {
-      border-#{$side}: 1px solid cat-token('color.ui.border.dark');
+      border-#{$side}: 1px solid $cat-color-ui-border-dark;
     }
   }
 }
 
 .cat-border-dark {
-  border: 1px solid cat-token('color.ui.border.dark');
+  border: 1px solid $cat-color-ui-border-dark;
 }
 
 .cat-border-none {

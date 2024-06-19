@@ -346,10 +346,6 @@ importers:
         version: 4.6.4
 
   tokens:
-    dependencies:
-      source-sans:
-        specifier: github:adobe-fonts/source-sans#ed18089
-        version: https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089
     devDependencies:
       copyfiles:
         specifier: 2.4.1
@@ -360,9 +356,6 @@ importers:
       style-dictionary-utils:
         specifier: 2.4.1
         version: 2.4.1(style-dictionary@3.8.0)
-      tinycolor2:
-        specifier: 1.6.0
-        version: 1.6.0
 
 packages:
 
@@ -7534,10 +7527,6 @@ packages:
   source-map@0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
-
-  source-sans@https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089:
-    resolution: {tarball: https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089}
-    version: 3.46.0
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
@@ -17662,8 +17651,6 @@ snapshots:
   source-map@0.6.1: {}
 
   source-map@0.7.4: {}
-
-  source-sans@https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089: {}
 
   sourcemap-codec@1.4.8: {}
 

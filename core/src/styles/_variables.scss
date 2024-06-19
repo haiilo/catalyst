@@ -1,5 +1,5 @@
-@use 'variables.tokens' as *;
-@forward 'variables.tokens';
+@use '~@haiilo/catalyst-tokens/dist/scss/variables' as *;
+@forward '~@haiilo/catalyst-tokens/dist/scss/variables';
 
 // --------
 // -- Variables

@@ -30,11 +30,11 @@
 
 // -- Gap
 
-@each $size, $value in cat-token('size.spacing') {
-  @include -layout-property('gap-#{$size}', 'gap', $value);
-  @include -layout-property('gap-x-#{$size}', 'column-gap', $value);
-  @include -layout-property('gap-y-#{$size}', 'row-gap', $value);
-}
+// @each $size, $value in $cat-size-spacing {
+//   @include -layout-property('gap-#{$size}', 'gap', $value);
+//   @include -layout-property('gap-x-#{$size}', 'column-gap', $value);
+//   @include -layout-property('gap-y-#{$size}', 'row-gap', $value);
+// }
 
 // -- Alignment
 

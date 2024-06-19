@@ -56,12 +56,12 @@ input {
   position: relative;
   height: $checkbox-height;
   width: $checkbox-width;
-  background-color: cat-token('color.ui.background.input');
-  border: 1px solid cat-token('color.ui.border.dark');
+  background-color: $cat-color-ui-background-input;
+  border: 1px solid $cat-color-ui-border-dark;
   border-radius: cat-border-radius(s);
   transition:
-    background-color cat-token('time.transition.s') ease,
-    border-color cat-token('time.transition.s') ease;
+    background-color $cat-time-transition-s ease,
+    border-color $cat-time-transition-s ease;
   pointer-events: none;
   box-sizing: border-box;
 
@@ -72,7 +72,7 @@ input {
     stroke-linejoin: round;
     stroke-dasharray: 16px;
     stroke-dashoffset: 16px;
-    transition: all cat-token('time.transition.s') ease;
+    transition: all $cat-time-transition-s ease;
     width: 50%;
     position: absolute;
     top: 50%;
@@ -81,9 +81,9 @@ input {
   }
 
   :checked + & {
-    background-color: cat-token('color.theme.primary.bg');
-    border-color: cat-token('color.theme.primary.bg');
-    stroke: cat-token('color.theme.primary.fill');
+    background-color: $cat-color-theme-primary-bg;
+    border-color: $cat-color-theme-primary-bg;
+    stroke: $cat-color-theme-primary-fill;
 
     .check {
       stroke-dashoffset: 0;
@@ -91,9 +91,9 @@ input {
   }
 
   :indeterminate + & {
-    background-color: cat-token('color.theme.primary.bg');
-    border-color: cat-token('color.theme.primary.bg');
-    stroke: cat-token('color.theme.primary.fill');
+    background-color: $cat-color-theme-primary-bg;
+    border-color: $cat-color-theme-primary-bg;
+    stroke: $cat-color-theme-primary-fill;
 
     .check {
       stroke-dashoffset: 16px;
@@ -105,27 +105,27 @@ input {
   }
 
   :focus-visible + & {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 2px solid $cat-color-ui-border-focus;
     outline-offset: 1px;
   }
 
   .is-disabled & {
-    background-color: cat-token('color.ui.background.muted');
-    border-color: cat-token('color.ui.border.dark');
-    stroke: cat-token('color.ui.font.muted');
+    background-color: $cat-color-ui-background-muted;
+    border-color: $cat-color-ui-border-dark;
+    stroke: $cat-color-ui-font-muted;
   }
 }
 
 :host(.cat-error) {
   .box {
-    border: 1px solid cat-token('color.theme.danger.bg');
+    border: 1px solid $cat-color-theme-danger-bg;
   }
 
   :checked + .box,
   :indeterminate + .box {
-    background-color: cat-token('color.theme.danger.bg');
-    border-color: cat-token('color.theme.danger.bg');
-    stroke: cat-token('color.theme.danger.fill');
+    background-color: $cat-color-theme-danger-bg;
+    border-color: $cat-color-theme-danger-bg;
+    stroke: $cat-color-theme-danger-fill;
   }
 }
 
@@ -140,5 +140,5 @@ input {
 
 .is-disabled {
   cursor: not-allowed;
-  color: cat-token('color.ui.font.muted');
+  color: $cat-color-ui-font-muted;
 }

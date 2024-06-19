@@ -6,8 +6,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Hairline")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffHairline")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-hairline}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-hairline}') format('woff');
       font-style: normal;
       font-weight: 100;
       text-rendering: optimizeLegibility;
@@ -16,8 +16,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2HairlineItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffHairlineItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-hairline-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-hairline-italic}') format('woff');
       font-style: italic;
       font-weight: 100;
       text-rendering: optimizeLegibility;
@@ -28,8 +28,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Thin")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffThin")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-thin}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-thin}') format('woff');
       font-style: normal;
       font-weight: 200;
       text-rendering: optimizeLegibility;
@@ -38,8 +38,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2ThinItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffThinItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-thin-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-thin-italic}') format('woff');
       font-style: italic;
       font-weight: 200;
       text-rendering: optimizeLegibility;
@@ -50,8 +50,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Light")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffLight")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-light}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-light}') format('woff');
       font-style: normal;
       font-weight: 300;
       text-rendering: optimizeLegibility;
@@ -60,8 +60,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2LightItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffLightItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-light-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-light-italic}') format('woff');
       font-style: italic;
       font-weight: 300;
       text-rendering: optimizeLegibility;
@@ -72,8 +72,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Regular")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffRegular")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-regular}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-regular}') format('woff');
       font-style: normal;
       font-weight: 400;
       text-rendering: optimizeLegibility;
@@ -82,8 +82,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Italic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-italic}') format('woff');
       font-style: italic;
       font-weight: 400;
       text-rendering: optimizeLegibility;
@@ -94,8 +94,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Medium")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffMedium")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-medium}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-medium}') format('woff');
       font-style: normal;
       font-weight: 500;
       text-rendering: optimizeLegibility;
@@ -104,8 +104,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2MediumItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffMediumItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-medium-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-medium-italic}') format('woff');
       font-style: italic;
       font-weight: 500;
       text-rendering: optimizeLegibility;
@@ -116,8 +116,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Semibold")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffSemibold")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-semibold}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-semibold}') format('woff');
       font-style: normal;
       font-weight: 600;
       text-rendering: optimizeLegibility;
@@ -126,8 +126,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2SemiboldItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffSemiboldItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-semibold-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-semibold-italic}') format('woff');
       font-style: italic;
       font-weight: 600;
       text-rendering: optimizeLegibility;
@@ -138,8 +138,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Bold")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffBold")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-bold}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-bold}') format('woff');
       font-style: normal;
       font-weight: 700;
       text-rendering: optimizeLegibility;
@@ -148,8 +148,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2BoldItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffBoldItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-bold-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-bold-italic}') format('woff');
       font-style: italic;
       font-weight: 700;
       text-rendering: optimizeLegibility;
@@ -160,8 +160,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Heavy")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffHeavy")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-heavy}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-heavy}') format('woff');
       font-style: normal;
       font-weight: 800;
       text-rendering: optimizeLegibility;
@@ -170,8 +170,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2HeavyItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffHeavyItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-heavy-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-heavy-italic}') format('woff');
       font-style: italic;
       font-weight: 800;
       text-rendering: optimizeLegibility;
@@ -182,8 +182,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2Black")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffBlack")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-black}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-black}') format('woff');
       font-style: normal;
       font-weight: 900;
       text-rendering: optimizeLegibility;
@@ -192,8 +192,8 @@
     @font-face {
       font-family: Lato;
       src:
-        url('#{$path}/#{cat-token("asset.font.lato.woff2BlackItalic")}') format('woff2'),
-        url('#{$path}/#{cat-token("asset.font.lato.woffBlackItalic")}') format('woff');
+        url('#{$path}/#{$cat-asset-font-lato-woff2-black-italic}') format('woff2'),
+        url('#{$path}/#{$cat-asset-font-lato-woff-black-italic}') format('woff');
       font-style: italic;
       font-weight: 900;
       text-rendering: optimizeLegibility;

@@ -14,7 +14,7 @@
 }
 
 :host(:focus-visible) {
-  outline: 2px solid cat-token('color.ui.border.focus');
+  outline: 2px solid $cat-color-ui-border-focus;
   outline-offset: 1px;
 }
 
@@ -31,12 +31,12 @@
 
 @mixin theme($theme) {
   :host([color='#{$theme}']) {
-    background-color: cat-token('color.theme.#{$theme}.bg');
-    color: cat-token('color.theme.#{$theme}.fill');
+    // background-color: cat-token('color.theme.#{$theme}.bg');
+    // color: cat-token('color.theme.#{$theme}.fill');
     // adjust nested links
-    --cat-primary-text: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
+    // --cat-primary-text: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
+    // --cat-primary-text-hover: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
+    // --cat-primary-text-active: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
     --cat-link-decoration: underline;
   }
 }

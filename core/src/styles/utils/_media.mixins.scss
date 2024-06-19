@@ -3,15 +3,15 @@
 // ---- Responsive
 
 @mixin until($size, $media-type: screen) {
-  @media #{$media-type} and (max-width: #{cat-token('size.screen.#{$size}') - 1px}) {
-    @content;
-  }
+  // @media #{$media-type} and (max-width: #{cat-token('size.screen.#{$size}') - 1px}) {
+  //   @content;
+  // }
 }
 
 @mixin from($size, $media-type: screen) {
-  @media #{$media-type} and (min-width: #{cat-token('size.screen.#{$size}')}) {
-    @content;
-  }
+  // @media #{$media-type} and (min-width: #{cat-token('size.screen.#{$size}')}) {
+  //   @content;
+  // }
 }
 
 // ---- Print

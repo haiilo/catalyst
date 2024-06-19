@@ -1,71 +1,71 @@
 @use '../variables' as *;
 
-@each $name, $theme in cat-token('color.theme') {
-  .cat-bg-#{$name} {
-    background-color: cat-token('color.theme.#{$name}.bg') !important;
-    color: cat-token('color.theme.#{$name}.fill') !important;
-    // adjust nested links
-    --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
-    --cat-link-decoration: underline;
-  }
+// @each $name, $theme in $cat-color-theme {
+//   .cat-bg-#{$name} {
+//     background-color: cat-token('color.theme.#{$name}.bg') !important;
+//     color: cat-token('color.theme.#{$name}.fill') !important;
+//     // adjust nested links
+//     --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
+//     --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
+//     --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
+//     --cat-link-decoration: underline;
+//   }
 
-  .cat-bg-#{$name}-hover {
-    transition:
-      background-color cat-token('time.transition.s'),
-      color cat-token('time.transition.s');
+//   .cat-bg-#{$name}-hover {
+//     transition:
+//       background-color $cat-time-transition-s,
+//       color $cat-time-transition-s;
 
-    &:hover {
-      background-color: cat-token('color.theme.#{$name}.bgHover') !important;
-      color: cat-token('color.theme.#{$name}.fillHover') !important;
-      // adjust nested links
-      --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
-      --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
-      --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
-      --cat-link-decoration: underline;
-    }
-  }
+//     &:hover {
+//       background-color: cat-token('color.theme.#{$name}.bgHover') !important;
+//       color: cat-token('color.theme.#{$name}.fillHover') !important;
+//       // adjust nested links
+//       --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
+//       --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
+//       --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
+//       --cat-link-decoration: underline;
+//     }
+//   }
 
-  .cat-text-#{$name},
-  .cat-link-#{$name} {
-    color: cat-token('color.theme.#{$name}.text') !important;
-  }
+//   .cat-text-#{$name},
+//   .cat-link-#{$name} {
+//     color: cat-token('color.theme.#{$name}.text') !important;
+//   }
 
-  .cat-link-#{$name},
-  .cat-text-#{$name}-hover {
-    transition: color cat-token('time.transition.s');
+//   .cat-link-#{$name},
+//   .cat-text-#{$name}-hover {
+//     transition: color $cat-time-transition-s;
 
-    &:hover {
-      color: cat-token('color.theme.#{$name}.textHover') !important;
-    }
+//     &:hover {
+//       color: cat-token('color.theme.#{$name}.text-hover') !important;
+//     }
 
-    &:active {
-      color: cat-token('color.theme.#{$name}.textActive') !important;
-    }
-  }
-}
+//     &:active {
+//       color: cat-token('color.theme.#{$name}.text-active') !important;
+//     }
+//   }
+// }
 
 // deprecated
 .cat-active {
-  color: cat-token('color.theme.primary.text') !important;
+  color: $cat-color-theme-primary-text !important;
 }
 
 .cat-text-active {
-  color: cat-token('color.theme.primary.text') !important;
+  color: $cat-color-theme-primary-text !important;
 }
 
 // deprecated
 .cat-muted {
-  color: cat-token('color.ui.font.muted') !important;
+  color: $cat-color-ui-font-muted !important;
 }
 
 .cat-text-muted {
-  color: cat-token('color.ui.font.muted') !important;
+  color: $cat-color-ui-font-muted !important;
 }
 
 .cat-bg-muted {
-  background-color: cat-token('color.ui.background.muted') !important;
+  background-color: $cat-color-ui-background-muted !important;
 }
 
 .cat-text-reset {

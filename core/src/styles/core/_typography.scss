@@ -8,33 +8,33 @@
 }
 
 // -- head styles
-@each $key, $value in cat-token('size.font.head') {
-  :where(h#{$key}),
-  .cat-h#{$key} {
-    @include cat-head($key);
-  }
-}
+// @each $key, $value in $cat-size-font-head {
+//   :where(h#{$key}),
+//   .cat-h#{$key} {
+//     @include cat-head($key);
+//   }
+// }
 
-// -- body styles
-@each $key, $value in cat-token('size.font.body') {
-  .cat-text-#{$key} {
-    @include cat-body($key);
-  }
-}
+// // -- body styles
+// @each $key, $value in $cat-size-font-body {
+//   .cat-text-#{$key} {
+//     @include cat-body($key);
+//   }
+// }
 
-// -- mono styles
-@each $key, $value in cat-token('size.font.mono') {
-  .cat-mono-#{$key} {
-    @include cat-mono($key);
-  }
-}
+// // -- mono styles
+// @each $key, $value in $cat-size-font-mono {
+//   .cat-mono-#{$key} {
+//     @include cat-mono($key);
+//   }
+// }
 
 hr,
 .cat-hr {
   display: block;
   border: 0;
   height: 1px;
-  background-color: cat-token('color.ui.border.default');
+  background-color: $cat-color-ui-border-default;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -42,21 +42,21 @@ hr,
 // ----- links
 
 a {
-  color: cat-token('color.theme.primary.text');
-  text-decoration: cat-token('font.decoration.link');
-  transition: color cat-token('time.transition.s') linear;
+  color: $cat-color-theme-primary-text;
+  text-decoration: $cat-font-decoration-link;
+  transition: color $cat-time-transition-s linear;
 
   &:hover {
-    color: cat-token('color.theme.primary.textHover');
-    text-decoration: cat-token('font.decoration.linkHover');
+    color: $cat-color-theme-primary-text-hover;
+    text-decoration: $cat-font-decoration-link-hover;
   }
 
   &:active {
-    color: cat-token('color.theme.primary.textActive');
+    color: $cat-color-theme-primary-text-active;
   }
 
   &:focus-visible {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 2px solid $cat-color-ui-border-focus;
     // outline-offset: -2px;
   }
 }
@@ -126,8 +126,8 @@ dd:not(:last-child) {
 
 blockquote {
   padding: 0.75rem 0 0.75rem calc(1.5rem - 2px);
-  border-left: 2px solid cat-token('color.ui.border.quote');
-  color: cat-token('color.ui.font.quote');
+  border-left: 2px solid $cat-color-ui-border-quote;
+  color: $cat-color-ui-font-quote;
   @include cat-body('l', null);
   font-style: italic;
 
@@ -145,7 +145,7 @@ blockquote {
     padding-left: 0;
     padding-right: calc(2rem - 4px);
     border-left: none;
-    border-right: 2px solid cat-token('color.ui.border.quote');
+    border-right: 2px solid $cat-color-ui-border-quote;
   }
 }
 
@@ -180,9 +180,9 @@ pre {
 kbd,
 code {
   margin: 0 0.125rem;
-  color: cat-token('color.ui.font.muted');
-  background: cat-token('color.ui.background.surface');
-  box-shadow: 0 0 0 2px cat-token('color.ui.border.default');
+  color: $cat-color-ui-font-muted;
+  background: $cat-color-ui-background-surface;
+  box-shadow: 0 0 0 2px $cat-color-ui-border-default;
   border-radius: cat-border-radius('s');
 }
 
@@ -210,7 +210,7 @@ code {
   :where(h1, h2, h3),
   :is(.cat-h1, .cat-h2, .cat-h3) {
     color: $cat-font-color-head;
-    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
+    font-family: $cat-font-family-head, $font-fallback-base, $cat-font-family-emoji, $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * var(--cat-article-spacer, 1));
 
     &:has(+ h1, + h2, + h3, + h4, + h5, + h6, + .cat-h1, + .cat-h2, + .cat-h3, + .cat-h4, + .cat-h5, + .cat-h6) {
@@ -221,7 +221,7 @@ code {
   :where(h4, h5, h6),
   :is(.cat-h4, .cat-h5, .cat-h6) {
     color: $cat-font-color-head;
-    font-family: $cat-font-family-head, $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
+    font-family: $cat-font-family-head, $font-fallback-base, $cat-font-family-emoji, $font-fallback-emoji;
     margin-bottom: calc($cat-head-margin-bottom * 0.5 * var(--cat-article-spacer, 1));
   }
 

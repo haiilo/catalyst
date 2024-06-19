@@ -4,24 +4,24 @@
 .cat-toastify {
   display: flex;
   border-radius: cat-border-radius('l');
-  background: cat-token('color.ui.background.surface');
+  background: $cat-color-ui-background-surface;
   padding: 1.25rem;
   box-shadow: none;
-  color: cat-token('color.ui.font.base');
+  color: $cat-color-ui-font-base;
   width: 400px;
   max-width: 400px;
   cursor: unset;
   @include cat-elevation(4);
 
   &.cat-toastify-dark {
-    --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
-    --cat-primary-text: #{cat-token('color.theme.primaryInverted.text', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.textHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.textActive', $wrap: false)};
-    --cat-secondary-text: #{cat-token('color.theme.secondaryInverted.text', $wrap: false)};
-    --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
-    --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
-    background: cat-token('color.ui.background.surfaceInverted');
+    // --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
+    // --cat-primary-text: #{cat-token('color.theme.primaryInverted.text', $wrap: false)};
+    // --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.text-hover', $wrap: false)};
+    // --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.text-active', $wrap: false)};
+    // --cat-secondary-text: #{cat-token('color.theme.secondaryInverted.text', $wrap: false)};
+    // --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.text-hover', $wrap: false)};
+    // --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.text-active', $wrap: false)};
+    background: $cat-color-ui-background-surface-inverted;
   }
 }
 

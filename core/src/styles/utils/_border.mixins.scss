@@ -1,11 +1,12 @@
 @use '../variables' as *;
 
 @function cat-border-radius($size) {
-  @if $size == '0' or $size == 0 {
-    @return 0;
-  } @else if $size == 'full' {
-    @return 100rem;
-  } @else {
-    @return cat-token('size.border.radius.#{$size}');
-  }
+  // @if $size == '0' or $size == 0 {
+  //   @return 0;
+  // } @else if $size == 'full' {
+  //   @return 100rem;
+  // } @else {
+  //   @return cat-token('size.border.radius.#{$size}');
+  // }
+  @return 1rem;
 }

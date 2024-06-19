@@ -2,5 +2,5 @@
 
 @mixin cat-disabled() {
   cursor: not-allowed;
-  opacity: cat-token('opacity.disabled');
+  opacity: $cat-opacity-disabled;
 }

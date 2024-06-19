@@ -3,11 +3,11 @@
 
 html,
 body {
-  background-color: cat-token('color.ui.background.canvas');
+  background-color: $cat-color-ui-background-canvas;
 }
 
 body {
   @include cat-body('m');
-  font-family: cat-token('font.family.base'), $font-fallback-base, cat-token('font.family.emoji'), $font-fallback-emoji;
-  color: cat-token('color.ui.font.base');
+  font-family: $cat-font-family-base, $font-fallback-base, $cat-font-family-emoji, $font-fallback-emoji;
+  color: $cat-color-ui-font-base;
 }

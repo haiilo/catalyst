@@ -4,8 +4,8 @@
 
 // -----
 
-$-background-color: cat-token('color.base.neutral.100');
-$-color: cat-token('color.base.neutral.500');
+$-background-color: red; //$cat-color-base-neutral-100;
+$-color: blue; //$cat-color-base-neutral-500;
 $-sizes: (
   'xl': 3.5rem,
   'l': 3rem,
@@ -47,7 +47,7 @@ $-sizes: (
   @include cat-select(none);
 
   &:focus-visible {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 2px solid $cat-color-ui-border-focus;
     outline-offset: 1px;
   }
 }

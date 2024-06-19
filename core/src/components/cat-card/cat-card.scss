@@ -6,7 +6,7 @@ $-padding: 1.25rem;
 :host {
   display: block;
   border-radius: cat-border-radius('l');
-  background-color: cat-token('color.ui.background.surface');
+  background-color: $cat-color-ui-background-surface;
   padding: $-padding;
 }
 

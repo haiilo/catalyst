@@ -1,7 +1,8 @@
 @use '../variables' as *;
 
 @function cat-z-index($key) {
-  $base: cat-token('z-index.base');
-  $value: cat-token('z-index.' + $key);
-  @return calc($base + $value);
+  // $base: cat-token('z-index.base');
+  // $value: cat-token('z-index.' + $key);
+  // @return calc($base + $value);
+  @return 1;
 }

@@ -51,16 +51,16 @@ input {
   width: $toggle-width;
   height: $toggle-height;
   border-radius: 10rem;
-  background-color: cat-token('color.ui.border.dark');
-  transition: background-color cat-token('time.transition.s') ease;
+  background-color: $cat-color-ui-border-dark;
+  transition: background-color $cat-time-transition-s ease;
   pointer-events: none;
 
   :checked + & {
-    background-color: cat-token('color.theme.primary.bg');
+    background-color: $cat-color-theme-primary-bg;
   }
 
   :focus-visible + & {
-    outline: 2px solid cat-token('color.ui.border.focus');
+    outline: 2px solid $cat-color-ui-border-focus;
     outline-offset: 1px;
   }
 
@@ -72,17 +72,17 @@ input {
     background: #fff;
     border-radius: 10rem;
     transform: translateX(calc(2px - 0.5rem));
-    transition: transform cat-token('time.transition.s') linear;
+    transition: transform $cat-time-transition-s linear;
     @include cat-elevation(2);
 
     :checked + & {
       transform: translateX(calc(-2px + 0.5rem));
-      background: cat-token('color.theme.primary.fill');
+      background: $cat-color-theme-primary-fill;
     }
   }
 
   .is-disabled & {
-    background-color: cat-token('color.ui.border.dark');
+    background-color: $cat-color-ui-border-dark;
   }
 }
 
@@ -92,10 +92,10 @@ input {
   }
 
   :checked + .toggle {
-    background-color: cat-token('color.theme.danger.bg');
+    background-color: $cat-color-theme-danger-bg;
 
     &::after {
-      background: cat-token('color.theme.danger.fill');
+      background: $cat-color-theme-danger-fill;
     }
   }
 }
@@ -110,5 +110,5 @@ input {
 
 .is-disabled {
   cursor: not-allowed;
-  color: cat-token('color.ui.font.muted');
+  color: $cat-color-ui-font-muted;
 }
