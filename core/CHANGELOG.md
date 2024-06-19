@@ -1,5 +1,18 @@
 # Changelog
 
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.12.0...catalyst-core-v10.13.0) (2024-06-19)
+
+
+### Features
+
+* **core:** remove error logging for missing aria attributes ([a0bdf28](https://github.com/haiilo/catalyst/commit/a0bdf28f4f7f897ad9e05b398ac54bf0189d1174))
+* **core:** update dependencies ([#531](https://github.com/haiilo/catalyst/issues/531)) ([df37388](https://github.com/haiilo/catalyst/commit/df373885b88b221c3950f7ac23df77b2990ac428))
+
+
+### Bug Fixes
+
+* **core:** reset select value if input is required ([3366817](https://github.com/haiilo/catalyst/commit/3366817c1caea00ba0ef878a9db1fe3e1385875f))
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.11.1...catalyst-core-v10.12.0) (2024-06-11)
 
 
