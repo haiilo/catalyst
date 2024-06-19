@@ -1004,8 +1004,7 @@ export class CatSelect {
         selectionClone.pop();
         this.patchState({ selection: selectionClone, tempSelection: [...this.state.selection] });
       }
-
-      if (!this.input?.value.trim()) {
+      if (!this.required && !this.input?.value.trim()) {
         this.patchState({ tempSelection: [] });
       }
     }
