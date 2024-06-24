@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.13.0...catalyst-core-v10.14.0) (2024-06-24)
+
+
+### Features
+
+* **core:** add reverse flex direction classes ([#530](https://github.com/haiilo/catalyst/issues/530)) ([76d76cc](https://github.com/haiilo/catalyst/commit/76d76cc8ef2b7cfddb1a0d17968d9db58f8b997d))
+
+
+### Bug Fixes
+
+* **core:** fix broken slotted labels and hints ([54b5d6f](https://github.com/haiilo/catalyst/commit/54b5d6ffc9f411253e222ebd22ce4da521360dfb))
+
 ## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.12.0...catalyst-core-v10.13.0) (2024-06-19)
 
 
