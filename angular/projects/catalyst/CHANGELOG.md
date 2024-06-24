@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.13.0...catalyst-angular-v10.14.0) (2024-06-24)
+
+
+### Bug Fixes
+
+* **core:** fix broken slotted labels and hints ([54b5d6f](https://github.com/haiilo/catalyst/commit/54b5d6ffc9f411253e222ebd22ce4da521360dfb))
+
 ## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.12.0...catalyst-angular-v10.13.0) (2024-06-19)
 
 
