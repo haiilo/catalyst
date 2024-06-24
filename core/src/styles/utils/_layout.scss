@@ -12,7 +12,13 @@
 @include -layout-property('flex-row', 'flex-direction', 'row') {
   display: flex;
 }
+@include -layout-property('flex-row-rev', 'flex-direction', 'row-reverse') {
+  display: flex;
+}
 @include -layout-property('flex-col', 'flex-direction', 'column') {
+  display: flex;
+}
+@include -layout-property('flex-col-rev', 'flex-direction', 'column-reverse') {
   display: flex;
 }
 
