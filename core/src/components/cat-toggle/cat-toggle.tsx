@@ -119,6 +119,11 @@ export class CatToggle {
     this.updateResolved();
   }
 
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
   /**
    * Programmatically move focus to the toggle. Use this method instead of
    * `input.focus()`.

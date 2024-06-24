@@ -28,6 +28,7 @@ export class CatCheckbox {
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
   @State() hasSlottedHint = false;
 
   /**
@@ -121,6 +122,11 @@ export class CatCheckbox {
 
   componentWillLoad() {
     this.updateResolved();
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   /**

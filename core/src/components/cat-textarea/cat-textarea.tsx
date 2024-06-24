@@ -152,6 +152,8 @@ export class CatTextarea {
 
   componentWillRender(): void {
     this.onErrorsChanged(this.errors);
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   componentDidLoad(): void {

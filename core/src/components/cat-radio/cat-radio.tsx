@@ -102,6 +102,11 @@ export class CatRadio {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
   /**
    * Programmatically move focus to the radio button. Use this method instead of
    * `input.focus()`.

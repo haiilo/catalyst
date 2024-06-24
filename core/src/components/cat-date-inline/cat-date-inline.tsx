@@ -28,7 +28,6 @@ export class CatDateInline {
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
-
   @State() hasSlottedHint = false;
 
   @State() viewDate: Date = this.locale.now();
@@ -124,6 +123,11 @@ export class CatDateInline {
     } else if (startDate) {
       this.focus(startDate, false);
     }
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   componentDidRender() {
