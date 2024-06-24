@@ -2762,9 +2762,19 @@ code {
   flex-direction: row;
 }
 
+.cat-flex-row-rev {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .cat-flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.cat-flex-col-rev {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .cat-flex-1 {
