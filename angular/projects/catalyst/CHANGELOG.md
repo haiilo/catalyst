@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.14.0...catalyst-angular-v10.14.1) (2024-06-27)
+
+
+### Bug Fixes
+
+* **react:** update lock file ([2b962c7](https://github.com/haiilo/catalyst/commit/2b962c761551fa5980a986829c07984900ef4fd7))
+
 ## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.13.0...catalyst-angular-v10.14.0) (2024-06-24)
 
 
