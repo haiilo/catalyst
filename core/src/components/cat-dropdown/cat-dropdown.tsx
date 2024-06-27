@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset, Placement, size } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement, size } from '@floating-ui/dom';
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
@@ -21,6 +21,8 @@ export class CatDropdown {
   private readonly id = nextUniqueId++;
   private triggerSlot!: HTMLSlotElement;
   private trigger?: FocusableElement;
+  private anchorSlot!: HTMLSlotElement;
+  private anchor?: Element;
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private isOpen: boolean | null = false;
@@ -110,6 +112,9 @@ export class CatDropdown {
    */
   @Method()
   async open(): Promise<void> {
+    // we need to delay the initialization of the trigger until first
+    // interaction because the element might still be hidden (and thus not
+    // tabbable) if contained in another Stencil web component
     if (!this.trigger) {
       this.initTrigger();
     }
@@ -192,6 +197,7 @@ export class CatDropdown {
   render() {
     return (
       <Host>
+        <slot name="anchor" ref={el => (this.anchorSlot = el as HTMLSlotElement)}></slot>
         <slot name="trigger" ref={el => (this.triggerSlot = el as HTMLSlotElement)}></slot>
         <div
           id={this.contentId}
@@ -204,6 +210,10 @@ export class CatDropdown {
     );
   }
 
+  componentDidLoad() {
+    this.initAnchor();
+  }
+
   private get contentId() {
     return `cat-dropdown-${this.id}`;
   }
@@ -214,7 +224,16 @@ export class CatDropdown {
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
     this.trigger.addEventListener('click', () => this.toggle());
-    autoUpdate(this.trigger, this.content, () => this.update());
+    if (!this.anchor) {
+      autoUpdate(this.trigger, this.content, () => this.update(this.trigger));
+    }
+  }
+
+  private initAnchor() {
+    this.anchor = (this.anchorSlot?.assignedElements?.() || [])[0];
+    if (this.anchor) {
+      autoUpdate(this.anchor, this.content, () => this.update(this.anchor));
+    }
   }
 
   private findTrigger() {
@@ -235,8 +254,8 @@ export class CatDropdown {
     return trigger;
   }
 
-  private update() {
-    if (this.trigger) {
+  private update(anchorElement: ReferenceElement | undefined) {
+    if (anchorElement) {
       const resize = this.noResize
         ? []
         : [
@@ -250,7 +269,7 @@ export class CatDropdown {
               }
             })
           ];
-      computePosition(this.trigger, this.content, {
+      computePosition(anchorElement, this.content, {
         strategy: 'fixed',
         placement: this.placement,
         middleware: [offset(CatDropdown.OFFSET), flip(), ...resize]
