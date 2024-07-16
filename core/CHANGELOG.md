@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.14.1...catalyst-core-v10.15.0) (2024-07-16)
+
+
+### Features
+
+* **core:** add anchor slot to dropdown for cases when trigger and anchor are 2 different elements ([#527](https://github.com/haiilo/catalyst/issues/527)) ([146cb42](https://github.com/haiilo/catalyst/commit/146cb4273b39202447288eb53be71a66571ff548))
+
 ## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.14.0...catalyst-core-v10.14.1) (2024-06-27)
 
 
