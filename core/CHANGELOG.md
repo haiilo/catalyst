@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.0...catalyst-core-v10.15.1) (2024-07-24)
+
+
+### Bug Fixes
+
+* **core:** reset input value when select value is set programmatically ([4c79ef7](https://github.com/haiilo/catalyst/commit/4c79ef7fd8c3b0647e8b9a5247b75192acf8ab32))
+
 ## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.14.1...catalyst-core-v10.15.0) (2024-07-16)
 
 
