@@ -883,10 +883,12 @@ export class CatSelect {
             selection.push({ item, render: { label: item.name } });
           });
       }
+      const term = !this.multiple && selection.length ? selection[0].render.label : '';
+      this.input && (this.input.value = term);
       this.patchState({
         isResolving: false,
         selection,
-        term: !this.multiple && selection.length ? selection[0].render.label : ''
+        term
       });
     });
   }
