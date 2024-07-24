@@ -884,12 +884,9 @@ export class CatSelect {
           });
       }
       const term = !this.multiple && selection.length ? selection[0].render.label : '';
+      this.patchState({ isResolving: false, selection, term, activeOptionIndex: -1 });
+      this.term$.next('');
       this.input && (this.input.value = term);
-      this.patchState({
-        isResolving: false,
-        selection,
-        term
-      });
     });
   }
 
