@@ -343,10 +343,12 @@ $button-sizes: (
 
 :host(.cat-text-left) .cat-button {
   justify-content: left;
+  text-align: left;
 }
 
 :host(.cat-text-right) .cat-button {
   justify-content: right;
+  text-align: right;
 }
 
 // ----- navigation
