@@ -1,5 +1,14 @@
 # Changelog
 
+## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.1...catalyst-core-v10.15.2) (2024-07-24)
+
+
+### Bug Fixes
+
+* **core:** correct text alignment in multipline buttons (fixes [#534](https://github.com/haiilo/catalyst/issues/534)) ([fd93ce2](https://github.com/haiilo/catalyst/commit/fd93ce2a15e3901715ae03a04267b2c5bc90a010))
+* **core:** reset input search when select value is set programmatically ([6096aa7](https://github.com/haiilo/catalyst/commit/6096aa70d6aee3b7e2a016d98fd569329739b5d6))
+* **core:** reset input search when select value is set programmatically ([257ae0a](https://github.com/haiilo/catalyst/commit/257ae0a537f8197fef5a6f625552f0156e8d15d0))
+
 ## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.0...catalyst-core-v10.15.1) (2024-07-24)
 
 
