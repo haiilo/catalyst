@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.2...catalyst-core-v10.15.3) (2024-07-26)
+
+
+### Bug Fixes
+
+* **core:** read label of inline datepicker by screenreader ([f346293](https://github.com/haiilo/catalyst/commit/f3462934f702b863b523022e46a2ce5c112e7a8e))
+
 ## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.1...catalyst-core-v10.15.2) (2024-07-24)
 
 
