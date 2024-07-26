@@ -123,6 +123,7 @@ export class CatDateInline {
     } else if (startDate) {
       this.focus(startDate, false);
     }
+    this.hostElement.addEventListener('focusin', () => this.setAriaLive(this.a11yLabel));
   }
 
   componentWillRender(): void {
@@ -235,8 +236,8 @@ export class CatDateInline {
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();
     return (
-      <Host aria-label={this.a11yLabel} FocusIn={() => this.a11yLabel && this.setAriaLive(this.a11yLabel)}>
-        <div class={{ 'label-container': true, hidden: this.labelHidden }}>
+      <Host aria-label={this.label || undefined}>
+        <div class={{ 'label-container': true, 'label-hidden': this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
             <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
               <span class="label-wrapper">
@@ -397,9 +398,9 @@ export class CatDateInline {
     this.setAriaLive(this.getHeadline());
   }
 
-  private setAriaLive(text: string) {
+  private setAriaLive(text?: string) {
     const node = this.hostElement.shadowRoot?.querySelector('.cursor-aria');
-    if (node) {
+    if (node && text) {
       node.innerHTML = text;
     }
   }
