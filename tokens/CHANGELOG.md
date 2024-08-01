@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.3...catalyst-tokens-v10.16.0) (2024-07-31)
+
+
+### Features
+
+* **tokens:** add hex colors as token output ([94919c2](https://github.com/haiilo/catalyst/commit/94919c2ff77bf5062f6cfda8dc403694ff0d6de5))
+
 ## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.2...catalyst-tokens-v10.15.3) (2024-07-26)
 
 
