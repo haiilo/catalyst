@@ -18,7 +18,7 @@
     "publish:angular": "cd angular/dist/catalyst && pnpm publish",
     "publish:angular-formly": "cd angular/dist/catalyst-formly && pnpm publish",
     "publish:react": "pnpm --filter @haiilo/catalyst-react publish",
-    "publish": "pnpm run publish:tokens && pnpm run publish:core && pnpm run publish:angular && pnpm run publish:angular-formly && pnpm run publish:react",
+    "license": "pnpm run -r license",
     "clean": "pnpm run -r clean",
     "reset": "pnpm run -r reset && rm -rf ./node_modules"
   },

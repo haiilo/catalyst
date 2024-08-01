@@ -4,7 +4,8 @@
   "description": "Angular Formly bindings for Catalyst Design System",
   "license": "MIT",
   "scripts": {
-    "reset": "rm -rf ./node_modules"
+    "reset": "rm -rf ./node_modules",
+    "license": "npx --yes @haiilo/license-check"
   },
   "publishConfig": {
     "access": "public"

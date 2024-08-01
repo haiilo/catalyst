@@ -9,6 +9,7 @@
     "test": "ng test",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
+    "license": "npx --yes @haiilo/license-check",
     "clean": "rm -rf ./.angular ./dist",
     "reset": "rm -rf ./.angular ./dist ./node_modules"
   },

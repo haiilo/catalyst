@@ -4,6 +4,7 @@
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
   "scripts": {
+    "license": "npx --yes @haiilo/license-check",
     "reset": "rm -rf ./node_modules"
   },
   "publishConfig": {
