@@ -37,7 +37,6 @@
     "prettier:check": "prettier --check .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint **/*.scss",
-    "license": "npx --yes @haiilo/license-check",
     "clean": "rm -rf ./.stencil ./dist ./loader ./www",
     "reset": "rm -rf ./.stencil ./dist ./loader ./www ./node_modules"
   },

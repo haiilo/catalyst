@@ -16,7 +16,6 @@
     "build": "pnpm run tsc",
     "tsc": "tsc -p .",
     "rollup": "rollup -c",
-    "license": "npx --yes @haiilo/license-check",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
   },
