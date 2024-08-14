@@ -1,5 +1,32 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
 @use '~@haiilo/catalyst-tokens/dist/scss/variables' as *;
 @forward '~@haiilo/catalyst-tokens/dist/scss/variables';
+
+@function -map-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map.get($map, $key);
+  }
+  @return $map;
+}
+
+@function -split($string, $separator: ' ') {
+  $result: ();
+  $index: string.index($string, $separator);
+  @while $index != null {
+    $item: string.slice($string, 1, $index - 1);
+    $result: list.append($result, $item);
+    $string: string.slice($string, $index + string.length($separator));
+    $index: string.index($string, $separator);
+  }
+  $result: list.append($result, $string);
+  @return $result;
+}
+
+@function cat-token($key) {
+  @return -map-get($tokens, -split($key, '.')...);
+}
 
 // --------
 // -- Variables
@@ -25,7 +52,7 @@ $cat-nav-padding-horizontal: 0.75rem;
 // -- Typography
 // --------
 
-$cat-mark-color: cat-token('color.theme.primary.bg', 0.2);
+$cat-mark-color: red; //cat-token('color.theme.primary.bg', 0.2);
 /* stylelint-disable value-keyword-case */
 $font-fallback-base:
   system-ui,

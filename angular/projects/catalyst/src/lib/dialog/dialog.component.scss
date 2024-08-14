@@ -5,7 +5,7 @@
 @include cdk.overlay();
 
 .cat-backdrop {
-  transition-duration: cat-token('time.transition.l');
+  //transition-duration: cat-token('time.transition.l');
 }
 
 .cat-dialog-pane {
