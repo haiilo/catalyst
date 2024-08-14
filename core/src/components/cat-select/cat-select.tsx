@@ -18,7 +18,6 @@ import {
   tap,
   timer
 } from 'rxjs';
-import { delayedAssertWarn } from '../../utils/assert';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
@@ -360,15 +359,8 @@ export class CatSelect {
 
   componentWillRender(): void {
     this.onErrorsChanged(this.errors);
-    delayedAssertWarn(
-      this,
-      () => {
-        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-        return !!this.label && !!this.hasSlottedLabel;
-      },
-      '[A11y] Missing ARIA label on select'
-    );
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   @Listen('blur')
@@ -891,11 +883,10 @@ export class CatSelect {
             selection.push({ item, render: { label: item.name } });
           });
       }
-      this.patchState({
-        isResolving: false,
-        selection,
-        term: !this.multiple && selection.length ? selection[0].render.label : ''
-      });
+      const term = !this.multiple && selection.length ? selection[0].render.label : '';
+      this.patchState({ isResolving: false, selection, term, activeOptionIndex: -1 });
+      this.term$.next(term);
+      this.input && (this.input.value = term);
     });
   }
 
@@ -1014,8 +1005,7 @@ export class CatSelect {
         selectionClone.pop();
         this.patchState({ selection: selectionClone, tempSelection: [...this.state.selection] });
       }
-
-      if (!this.input?.value.trim()) {
+      if (!this.required && !this.input?.value.trim()) {
         this.patchState({ tempSelection: [] });
       }
     }

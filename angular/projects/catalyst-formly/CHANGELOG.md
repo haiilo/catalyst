@@ -1,5 +1,61 @@
 # Changelog
 
+## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.15.3...catalyst-angular-formly-v10.16.0) (2024-07-31)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.15.2...catalyst-angular-formly-v10.15.3) (2024-07-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.15.1...catalyst-angular-formly-v10.15.2) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.15.0...catalyst-angular-formly-v10.15.1) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.14.1...catalyst-angular-formly-v10.15.0) (2024-07-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.14.0...catalyst-angular-formly-v10.14.1) (2024-06-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.13.0...catalyst-angular-formly-v10.14.0) (2024-06-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.12.0...catalyst-angular-formly-v10.13.0) (2024-06-19)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.11.1...catalyst-angular-formly-v10.12.0) (2024-06-11)
 
 

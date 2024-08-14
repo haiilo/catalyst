@@ -1,5 +1,74 @@
 # Changelog
 
+## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.3...catalyst-core-v10.16.0) (2024-07-31)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.2...catalyst-core-v10.15.3) (2024-07-26)
+
+
+### Bug Fixes
+
+* **core:** read label of inline datepicker by screenreader ([f346293](https://github.com/haiilo/catalyst/commit/f3462934f702b863b523022e46a2ce5c112e7a8e))
+
+## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.1...catalyst-core-v10.15.2) (2024-07-24)
+
+
+### Bug Fixes
+
+* **core:** correct text alignment in multipline buttons (fixes [#534](https://github.com/haiilo/catalyst/issues/534)) ([fd93ce2](https://github.com/haiilo/catalyst/commit/fd93ce2a15e3901715ae03a04267b2c5bc90a010))
+* **core:** reset input search when select value is set programmatically ([6096aa7](https://github.com/haiilo/catalyst/commit/6096aa70d6aee3b7e2a016d98fd569329739b5d6))
+* **core:** reset input search when select value is set programmatically ([257ae0a](https://github.com/haiilo/catalyst/commit/257ae0a537f8197fef5a6f625552f0156e8d15d0))
+
+## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.0...catalyst-core-v10.15.1) (2024-07-24)
+
+
+### Bug Fixes
+
+* **core:** reset input value when select value is set programmatically ([4c79ef7](https://github.com/haiilo/catalyst/commit/4c79ef7fd8c3b0647e8b9a5247b75192acf8ab32))
+
+## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.14.1...catalyst-core-v10.15.0) (2024-07-16)
+
+
+### Features
+
+* **core:** add anchor slot to dropdown for cases when trigger and anchor are 2 different elements ([#527](https://github.com/haiilo/catalyst/issues/527)) ([146cb42](https://github.com/haiilo/catalyst/commit/146cb4273b39202447288eb53be71a66571ff548))
+
+## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.14.0...catalyst-core-v10.14.1) (2024-06-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.13.0...catalyst-core-v10.14.0) (2024-06-24)
+
+
+### Features
+
+* **core:** add reverse flex direction classes ([#530](https://github.com/haiilo/catalyst/issues/530)) ([76d76cc](https://github.com/haiilo/catalyst/commit/76d76cc8ef2b7cfddb1a0d17968d9db58f8b997d))
+
+
+### Bug Fixes
+
+* **core:** fix broken slotted labels and hints ([54b5d6f](https://github.com/haiilo/catalyst/commit/54b5d6ffc9f411253e222ebd22ce4da521360dfb))
+
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.12.0...catalyst-core-v10.13.0) (2024-06-19)
+
+
+### Features
+
+* **core:** remove error logging for missing aria attributes ([a0bdf28](https://github.com/haiilo/catalyst/commit/a0bdf28f4f7f897ad9e05b398ac54bf0189d1174))
+* **core:** update dependencies ([#531](https://github.com/haiilo/catalyst/issues/531)) ([df37388](https://github.com/haiilo/catalyst/commit/df373885b88b221c3950f7ac23df77b2990ac428))
+
+
+### Bug Fixes
+
+* **core:** reset select value if input is required ([3366817](https://github.com/haiilo/catalyst/commit/3366817c1caea00ba0ef878a9db1fe3e1385875f))
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.11.1...catalyst-core-v10.12.0) (2024-06-11)
 
 

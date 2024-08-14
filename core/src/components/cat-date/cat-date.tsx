@@ -1,5 +1,5 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { getLocale } from '../cat-date-inline/cat-date-locale';
 import { clampDate } from '../cat-date-inline/cat-date-math';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -20,10 +20,6 @@ export class CatDate {
   private dateInline?: HTMLCatDateInlineElement;
 
   @Element() hostElement!: HTMLElement;
-
-  @State() hasSlottedLabel = false;
-
-  @State() hasSlottedHint = false;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -189,11 +185,6 @@ export class CatDate {
       return format.format(date);
     }
     return '';
-  }
-
-  componentWillRender(): void {
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   componentDidLoad() {

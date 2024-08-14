@@ -1,5 +1,66 @@
 # Changelog
 
+## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.3...catalyst-tokens-v10.16.0) (2024-07-31)
+
+
+### Features
+
+* **tokens:** add hex colors as token output ([94919c2](https://github.com/haiilo/catalyst/commit/94919c2ff77bf5062f6cfda8dc403694ff0d6de5))
+
+## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.2...catalyst-tokens-v10.15.3) (2024-07-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.1...catalyst-tokens-v10.15.2) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.0...catalyst-tokens-v10.15.1) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.14.1...catalyst-tokens-v10.15.0) (2024-07-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.14.0...catalyst-tokens-v10.14.1) (2024-06-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.13.0...catalyst-tokens-v10.14.0) (2024-06-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.12.0...catalyst-tokens-v10.13.0) (2024-06-19)
+
+
+### Features
+
+* **core:** update dependencies ([#531](https://github.com/haiilo/catalyst/issues/531)) ([df37388](https://github.com/haiilo/catalyst/commit/df373885b88b221c3950f7ac23df77b2990ac428))
+
+
+### Bug Fixes
+
+* **tokens:** fix broken color variables ([9de1247](https://github.com/haiilo/catalyst/commit/9de12470e8e3a50f40e54c4e115b368177de7808))
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.11.1...catalyst-tokens-v10.12.0) (2024-06-11)
 
 

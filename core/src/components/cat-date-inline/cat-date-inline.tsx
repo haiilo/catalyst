@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
-import { delayedAssertWarn } from '../../utils/assert';
 import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
@@ -29,7 +28,6 @@ export class CatDateInline {
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
-
   @State() hasSlottedHint = false;
 
   @State() viewDate: Date = this.locale.now();
@@ -125,18 +123,12 @@ export class CatDateInline {
     } else if (startDate) {
       this.focus(startDate, false);
     }
+    this.hostElement.addEventListener('focusin', () => this.setAriaLive(this.a11yLabel));
   }
 
   componentWillRender(): void {
-    delayedAssertWarn(
-      this,
-      () => {
-        this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-        this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
-        return !!this.label && !!this.hasSlottedLabel;
-      },
-      '[A11y] Missing ARIA label on input'
-    );
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   componentDidRender() {
@@ -244,8 +236,8 @@ export class CatDateInline {
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();
     return (
-      <Host aria-label={this.a11yLabel} FocusIn={() => this.a11yLabel && this.setAriaLive(this.a11yLabel)}>
-        <div class={{ 'label-container': true, hidden: this.labelHidden }}>
+      <Host aria-label={this.label || undefined}>
+        <div class={{ 'label-container': true, 'label-hidden': this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
             <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
               <span class="label-wrapper">
@@ -406,9 +398,9 @@ export class CatDateInline {
     this.setAriaLive(this.getHeadline());
   }
 
-  private setAriaLive(text: string) {
+  private setAriaLive(text?: string) {
     const node = this.hostElement.shadowRoot?.querySelector('.cursor-aria');
-    if (node) {
+    if (node && text) {
       node.innerHTML = text;
     }
   }

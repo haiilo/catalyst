@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.15.3...catalyst-angular-v10.16.0) (2024-07-31)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.15.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.15.2...catalyst-angular-v10.15.3) (2024-07-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.15.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.15.1...catalyst-angular-v10.15.2) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.15.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.15.0...catalyst-angular-v10.15.1) (2024-07-24)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.15.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.14.1...catalyst-angular-v10.15.0) (2024-07-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.14.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.14.0...catalyst-angular-v10.14.1) (2024-06-27)
+
+
+### Bug Fixes
+
+* **react:** update lock file ([2b962c7](https://github.com/haiilo/catalyst/commit/2b962c761551fa5980a986829c07984900ef4fd7))
+
+## [10.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.13.0...catalyst-angular-v10.14.0) (2024-06-24)
+
+
+### Bug Fixes
+
+* **core:** fix broken slotted labels and hints ([54b5d6f](https://github.com/haiilo/catalyst/commit/54b5d6ffc9f411253e222ebd22ce4da521360dfb))
+
+## [10.13.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.12.0...catalyst-angular-v10.13.0) (2024-06-19)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
 ## [10.12.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.11.1...catalyst-angular-v10.12.0) (2024-06-11)
 
 
