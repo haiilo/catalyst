@@ -49,26 +49,26 @@ $-paddings: (
 
 // ----- theme
 
-// $-outline: inset 0 0 0 1px cat-token-wrap(var(--text), $alpha: 0.2);
+$-outline: inset 0 0 0 1px color-mix(in srgb, var(--text) 20%, transparent);
 
 :host([variant='filled']) {
-  // background-color: cat-token-wrap(var(--bg));
-  // color: cat-token-wrap(var(--fill));
+  background-color: var(--bg);
+  color: var(--fill);
   font-weight: 600;
   @include cat-font-smooth;
 }
 
 :host([variant='outlined']) {
-  background-color: $cat-color-ui-background-surface;
-  // color: cat-token-wrap(var(--text));
-  // box-shadow: $-outline;
+  background-color: cat-token('color.ui.background.surface');
+  color: var(--text);
+  box-shadow: $-outline;
 }
 
 @mixin theme($theme) {
   :host([color='#{$theme}']) {
-    // --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
-    // --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
-    // --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    --bg: #{cat-token('color.theme.#{$theme}.bg')};
+    --fill: #{cat-token('color.theme.#{$theme}.fill')};
+    --text: #{cat-token('color.theme.#{$theme}.text')};
   }
 }
 
@@ -98,8 +98,7 @@ $-paddings: (
 
 // ----- pulse
 
-// $-pulse-0: 0 0 0 0 cat-token-wrap(var(--bg));
-$-pulse-0: transparent 0 0 0 0.5rem;
+$-pulse-0: 0 0 0 0 var(--bg);
 $-pulse-70: transparent 0 0 0 0.5rem;
 $-pulse-100: transparent 0 0 0 0;
 
@@ -126,15 +125,15 @@ $-pulse-100: transparent 0 0 0 0;
 }
 
 @keyframes pulse-outlined {
-  // 0% {
-  //   box-shadow: $-pulse-0, $-outline;
-  // }
+  0% {
+    box-shadow: $-pulse-0, $-outline;
+  }
 
-  // 70% {
-  //   box-shadow: $-pulse-70, $-outline;
-  // }
+  70% {
+    box-shadow: $-pulse-70, $-outline;
+  }
 
-  // 100% {
-  //   box-shadow: $-pulse-100, $-outline;
-  // }
+  100% {
+    box-shadow: $-pulse-100, $-outline;
+  }
 }

@@ -107,7 +107,7 @@
 .picker-grid-head > *,
 .picker-grid-weeks > * {
   @include cat-body('xs', 600);
-  color: $cat-color-ui-font-muted !important;
+  color: cat-token('color.ui.font.muted') !important;
   text-decoration: none;
 }
 
@@ -146,7 +146,7 @@
 .cursor-help {
   margin-block: 0;
   @include cat-body('xs');
-  color: $cat-color-ui-font-muted !important;
+  color: cat-token('color.ui.font.muted') !important;
   text-align: center;
   flex: 1;
 

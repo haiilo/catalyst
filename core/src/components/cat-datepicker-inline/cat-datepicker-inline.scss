@@ -33,7 +33,7 @@
     input,
     .flatpickr-time-separator,
     .flatpickr-am-pm {
-      color: $cat-color-ui-font-muted;
+      color: cat-token('color.ui.font.muted');
       opacity: 0.75;
     }
   }
