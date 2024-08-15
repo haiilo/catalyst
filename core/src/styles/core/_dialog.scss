@@ -17,7 +17,7 @@
 $-dialog-padding: 1.5rem;
 
 .cat-backdrop {
-  // background-color: #{cat-token('color.ui.background.backdrop', cat-token('opacity.backdrop'))};
+  background-color: color-mix(in srgb, #{cat-token('color.ui.background.backdrop')} #{cat-token('opacity.backdrop')}, transparent);
 }
 
 .cat-dialog {

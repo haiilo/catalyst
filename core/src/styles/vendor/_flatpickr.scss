@@ -78,7 +78,7 @@
 
     &:hover,
     &:focus-within {
-      // background-color: cat-token('color.theme.primary.bg', 0.05);
+      background-color: color-mix(in srgb, #{cat-token('color.theme.primary.bg')} 5%, transparent);
     }
   }
 
@@ -188,7 +188,7 @@
   &.notAllowed,
   &.notAllowed.prevMonthDay,
   &.notAllowed.nextMonthDay {
-    // color: cat-token('color.ui.font.muted', 0.5);
+    color: color-mix(in srgb, #{cat-token('color.ui.font.muted')} 5%, transparent);
   }
 
   &.selected,
@@ -218,7 +218,7 @@
   &:focus,
   &.prevMonthDay:focus,
   &.nextMonthDay:focus {
-    // background-color: cat-token('color.theme.primary.bg', 0.1);
+    background-color: color-mix(in srgb, #{cat-token('color.theme.primary.bg')} 10%, transparent);
   }
 
   &.selected.startRange,
@@ -242,7 +242,7 @@
 
   &:hover,
   &:focus-within {
-    // background-color: cat-token('color.theme.primary.bg', 0.05);
+    background-color: color-mix(in srgb, #{cat-token('color.theme.primary.bg')} 5%, transparent);
   }
 
   span {
@@ -316,7 +316,7 @@
   &:hover,
   &:focus {
     border-radius: cat-border-radius('m');
-    // background-color: cat-token('color.theme.primary.bg', 0.05);
+    background-color: color-mix(in srgb, #{cat-token('color.theme.primary.bg')} 5%, transparent);
   }
 }
 
