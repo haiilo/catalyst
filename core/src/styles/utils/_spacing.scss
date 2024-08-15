@@ -1,48 +1,48 @@
 @use 'sass:map';
 @use '../variables' as *;
 
-// $-spacings: map.merge(
-//   (
-//     'auto': auto,
-//     '0': 0
-//   ),
-//   $cat-size-spacing
-// );
+$-spacings: map.merge(
+  (
+    'auto': auto,
+    '0': 0
+  ),
+  cat-token('size.spacing')
+);
 
-// @each $name, $spacing in $-spacings {
-//   .cat-m-#{$name} {
-//     margin: $spacing !important;
-//   }
-//   .cat-mv-#{$name} {
-//     margin-top: $spacing !important;
-//     margin-bottom: $spacing !important;
-//   }
-//   .cat-mh-#{$name} {
-//     margin-left: $spacing !important;
-//     margin-right: $spacing !important;
-//   }
-//   @each $dir in (top, bottom, left, right) {
-//     .cat-m#{str-slice($dir, 0, 1)}-#{$name} {
-//       margin-#{$dir}: $spacing !important;
-//     }
-//   }
+@each $name, $spacing in $-spacings {
+  .cat-m-#{$name} {
+    margin: $spacing !important;
+  }
+  .cat-mv-#{$name} {
+    margin-top: $spacing !important;
+    margin-bottom: $spacing !important;
+  }
+  .cat-mh-#{$name} {
+    margin-left: $spacing !important;
+    margin-right: $spacing !important;
+  }
+  @each $dir in (top, bottom, left, right) {
+    .cat-m#{str-slice($dir, 0, 1)}-#{$name} {
+      margin-#{$dir}: $spacing !important;
+    }
+  }
 
-//   @if $spacing != auto {
-//     .cat-p-#{$name} {
-//       padding: $spacing !important;
-//     }
-//     .cat-pv-#{$name} {
-//       padding-top: $spacing !important;
-//       padding-bottom: $spacing !important;
-//     }
-//     .cat-ph-#{$name} {
-//       padding-left: $spacing !important;
-//       padding-right: $spacing !important;
-//     }
-//     @each $dir in (top, bottom, left, right) {
-//       .cat-p#{str-slice($dir, 0, 1)}-#{$name} {
-//         padding-#{$dir}: $spacing !important;
-//       }
-//     }
-//   }
-// }
+  @if $spacing != auto {
+    .cat-p-#{$name} {
+      padding: $spacing !important;
+    }
+    .cat-pv-#{$name} {
+      padding-top: $spacing !important;
+      padding-bottom: $spacing !important;
+    }
+    .cat-ph-#{$name} {
+      padding-left: $spacing !important;
+      padding-right: $spacing !important;
+    }
+    @each $dir in (top, bottom, left, right) {
+      .cat-p#{str-slice($dir, 0, 1)}-#{$name} {
+        padding-#{$dir}: $spacing !important;
+      }
+    }
+  }
+}

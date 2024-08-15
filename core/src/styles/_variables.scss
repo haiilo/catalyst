@@ -52,7 +52,7 @@ $cat-nav-padding-horizontal: 0.75rem;
 // -- Typography
 // --------
 
-$cat-mark-color: red; //cat-token('color.theme.primary.bg', 0.2);
+$cat-mark-color: color-mix(in srgb, #{cat-token('color.theme.primary.bg')} 20%, transparent);
 /* stylelint-disable value-keyword-case */
 $font-fallback-base:
   system-ui,

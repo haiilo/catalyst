@@ -22,9 +22,9 @@
 
 @function cat-body-font-size($size) {
   @return cat-token('size.font.body.#{$size}');
-  }
-  
-  @function cat-body-line-height($size) {
+}
+
+@function cat-body-line-height($size) {
   @return cat-token('size.line.body.#{$size}');
 }
 

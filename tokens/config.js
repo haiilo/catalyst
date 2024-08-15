@@ -54,19 +54,18 @@ module.exports = {
         format: 'typescript/es6-declarations',
       }]
     },
-    // cssHex: {
-    //   transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css'],
-    //   prefix: 'cat',
-    //   buildPath: 'dist/css/',
-    //   files: [{
-    //     destination: 'variables-hex.css',
-    //     format: 'css/variables',
-    //     options: {
-    //       fileHeader: 'cat/header',
-    //       outputReferences: false
-    //     }
-    //   }]
-    // },
+    cssHex: {
+      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css'],
+      prefix: 'cat',
+      buildPath: 'dist/css/',
+      files: [{
+        destination: 'variables.css',
+        format: 'css/variables',
+        options: {
+          outputReferences: true
+        }
+      }]
+    },
     scss: {
       transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'cat/cssProp', 'cat/scssPrivate'],
       prefix: 'cat',

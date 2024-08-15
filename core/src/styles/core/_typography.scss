@@ -8,26 +8,26 @@
 }
 
 // -- head styles
-// @each $key, $value in $cat-size-font-head {
-//   :where(h#{$key}),
-//   .cat-h#{$key} {
-//     @include cat-head($key);
-//   }
-// }
+@each $key, $value in cat-token('size.font.head') {
+  :where(h#{$key}),
+  .cat-h#{$key} {
+    @include cat-head($key);
+  }
+}
 
-// // -- body styles
-// @each $key, $value in $cat-size-font-body {
-//   .cat-text-#{$key} {
-//     @include cat-body($key);
-//   }
-// }
+// -- body styles
+@each $key, $value in cat-token('size.font.body') {
+  .cat-text-#{$key} {
+    @include cat-body($key);
+  }
+}
 
-// // -- mono styles
-// @each $key, $value in $cat-size-font-mono {
-//   .cat-mono-#{$key} {
-//     @include cat-mono($key);
-//   }
-// }
+// -- mono styles
+@each $key, $value in cat-token('size.font.mono') {
+  .cat-mono-#{$key} {
+    @include cat-mono($key);
+  }
+}
 
 hr,
 .cat-hr {
