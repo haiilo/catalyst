@@ -9,12 +9,12 @@ $-display-props: none, inline, inline-block, block, grid, flex, inline-flex;
   }
 }
 
-// @each $key, $value in $cat-size-screen {
-//   @include from($key) {
-//     @each $prop in $-display-props {
-//       .cat-#{$prop}\:#{$key} {
-//         display: $prop !important;
-//       }
-//     }
-//   }
-// }
+@each $key, $value in cat-token('size.screen') {
+  @include from($key) {
+    @each $prop in $-display-props {
+      .cat-#{$prop}\:#{$key} {
+        display: $prop !important;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@
 :host {
   display: flex;
   flex-direction: row;
-  box-shadow: inset 0 -1px 0 0 $cat-color-ui-border-default;
+  box-shadow: inset 0 -1px 0 0 cat-token('color.ui.border.default');
 }
 
 :host([hidden]) {
@@ -58,11 +58,11 @@
 
   &.cat-tab-active {
     font-weight: 700;
-    color: $cat-color-theme-primary-text-active;
+    color: cat-token('color.theme.primary.textActive');
   }
 
   &.cat-tab-error {
-    color: $cat-color-theme-danger-text-active;
+    color: cat-token('color.theme.danger.textActive');
   }
 
   &.cat-tab-active::after {

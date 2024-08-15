@@ -17,13 +17,13 @@
 $-dialog-padding: 1.5rem;
 
 .cat-backdrop {
-  // background-color: RGB(#{cat-token('color.ui.background.backdrop', $cat-opacity-backdrop, $wrap: false)});
+  // background-color: #{cat-token('color.ui.background.backdrop', cat-token('opacity.backdrop'))};
 }
 
 .cat-dialog {
   display: flex;
   flex-direction: column;
-  background-color: $cat-color-ui-background-surface;
+  background-color: cat-token('color.ui.background.surface');
   border-radius: cat-border-radius('l');
   @include cat-elevation(7);
   container: dialog / inline-size;

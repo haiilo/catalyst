@@ -3,16 +3,14 @@
 // ---- Head
 
 @function cat-head-font-size($size) {
-  // @return cat-token('size.font.head.#{$size}');
-  @return 1rem;
+  @return cat-token('size.font.head.#{$size}');
 }
 
 @function cat-head-line-height($size) {
-  // @return cat-token('size.line.head.#{$size}');
-  @return 1rem;
+  @return cat-token('size.line.head.#{$size}');
 }
 
-@mixin cat-head($size, $weight: $cat-font-weight-head) {
+@mixin cat-head($size, $weight: cat-token('font.weight.head')) {
   // skip color and family, as it is only set for editorial styles
   font-size: cat-head-font-size($size);
   line-height: cat-head-line-height($size);
@@ -23,16 +21,14 @@
 // ---- Body
 
 @function cat-body-font-size($size) {
-  // @return cat-token('size.font.body.#{$size}');
-  @return 1rem;
+  @return cat-token('size.font.body.#{$size}');
   }
   
   @function cat-body-line-height($size) {
-    // @return cat-token('size.line.body.#{$size}');
-    @return 1rem;
+  @return cat-token('size.line.body.#{$size}');
 }
 
-@mixin cat-body($size, $weight: $cat-font-weight-body) {
+@mixin cat-body($size, $weight: cat-token('font.weight.body')) {
   // skip font family, as it is set on the body
   // skip color, as it is set on the body
   font-size: cat-body-font-size($size);
@@ -43,20 +39,18 @@
 // ---- Mono
 
 @function cat-mono-font-family() {
-  @return $cat-font-family-mono, $font-fallback-monospace;
+  @return cat-token('font.family.mono'), $font-fallback-monospace;
 }
 
 @function cat-mono-font-size($size) {
-  // @return cat-token('size.font.mono.#{$size}');
-  @return 1rem;
+  @return cat-token('size.font.mono.#{$size}');
 }
 
 @function cat-mono-line-height($size) {
-  // @return cat-token('size.line.mono.#{$size}');
-  @return 1rem;
+  @return cat-token('size.line.mono.#{$size}');
 }
 
-@mixin cat-mono($size, $weight: $cat-font-weight-mono) {
+@mixin cat-mono($size, $weight: cat-token('font.weight.mono')) {
   font-family: cat-mono-font-family();
   font-size: cat-mono-font-size($size);
   line-height: cat-mono-line-height($size);

@@ -42,11 +42,11 @@
   position: absolute;
   top: calc(0.625rem - 2px);
   right: 0.75rem;
-  // background: cat-token('color.ui.background.input', 0.75);
+  background: color-mix(in srgb, #{cat-token('color.ui.background.input')} 75%, transparent);
   border-radius: 100rem;
 
   .textarea-disabled & {
-    // background: cat-token('color.ui.background.muted', 0.75);
+    background: color-mix(in srgb, #{cat-token('color.ui.background.muted')} 75%, transparent);
   }
 }
 
@@ -56,38 +56,38 @@ textarea {
   box-sizing: border-box;
   min-height: form-label.$cat-input-height;
   font: inherit;
-  background: $cat-color-ui-background-input;
+  background: cat-token('color.ui.background.input');
   border-radius: cat-border-radius('m');
   border: none;
-  box-shadow: inset 0 0 0 1px rgb(var(--border-color));
-  transition: box-shadow $cat-time-transition-s linear;
+  box-shadow: inset 0 0 0 1px var(--border-color);
+  transition: box-shadow cat-token('time.transition.s') linear;
   resize: vertical;
-  // --border-color: #{cat-token('color.ui.border.dark', $wrap: false)};
+  --border-color: #{cat-token('color.ui.border.dark')};
 
   &:disabled {
-    background: $cat-color-ui-background-muted;
+    background: cat-token('color.ui.background.muted');
     cursor: not-allowed;
-    color: $cat-color-ui-font-muted;
+    color: cat-token('color.ui.font.muted');
     resize: none;
   }
 
   &:not(:disabled):hover {
     box-shadow:
-      inset 0 0 0 1px rgb(var(--border-color)),
-      0 0 0 1px rgb(var(--border-color));
+      inset 0 0 0 1px var(--border-color),
+      0 0 0 1px var(--border-color);
   }
 
   &:focus {
-    outline: 2px solid $cat-color-ui-border-focus;
+    outline: 2px solid cat-token('color.ui.border.focus');
     outline-offset: -1px;
   }
 
   .textarea-invalid & {
-    // --border-color: #{cat-token('color.theme.danger.bg', 0.2, $wrap: false)};
+    --border-color: color-mix(in srgb, #{cat-token('color.theme.danger.bg')} 20%, transparent);
   }
 
   &::placeholder {
-    color: $cat-color-ui-font-muted;
+    color: cat-token('color.ui.font.muted');
   }
 
   /* stylelint-disable property-no-vendor-prefix */
@@ -95,7 +95,7 @@ textarea {
     &,
     &:hover,
     &:focus {
-      -webkit-box-shadow: 0 0 0 9999px $cat-color-ui-background-input-autofill inset;
+      -webkit-box-shadow: 0 0 0 9999px cat-token('color.ui.background.inputAutofill') inset;
     }
   }
   /* stylelint-enable property-no-vendor-prefix */

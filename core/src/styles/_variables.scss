@@ -37,8 +37,8 @@
 // --------
 
 $cat-font-family-head: var(--cat-font-family-head);
-$cat-font-color-head: rgb(var(--cat-font-color-head));
-$cat-font-color-mono: rgb(var(--cat-font-color-mono));
+$cat-font-color-head: var(--cat-font-color-head);
+$cat-font-color-mono: var(--cat-font-color-mono);
 
 // --------
 // -- Spacings

@@ -20,8 +20,8 @@ $skeleton-sizes: (
   flex-direction: column;
   position: relative;
 
-  // --background: #{$cat-color-ui-background-skeleton};
-  // --highlight: #{$cat-color-ui-background-skeletonHighlight};
+  --background: #{cat-token('color.ui.background.skeleton')};
+  --highlight: #{cat-token('color.ui.background.skeletonHighlight')};
   --speed: 2s;
 }
 
