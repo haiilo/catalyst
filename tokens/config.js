@@ -24,6 +24,15 @@ StyleDictionary.registerTransform({
   transformer: token => `var(--cat-${token.cssProp}, ${token.value})`
 });
 
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'opacity/percent',
+  transitive: true,
+  matcher: token => token.$type === 'opacity',
+  transformer: token => token.value * 100 + '%'
+});
+
 StyleDictionary.registerTransform({
   type: 'name',
   name: 'cat/scssPrivate',
@@ -55,7 +64,7 @@ module.exports = {
       }]
     },
     cssHex: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/hex', 'opacity/percent'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -67,7 +76,7 @@ module.exports = {
       }]
     },
     scss: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'cat/cssProp', 'cat/scssPrivate'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'opacity/percent', 'cat/cssProp', 'cat/scssPrivate'],
       prefix: 'cat',
       buildPath: 'dist/scss/',
       files: [{
