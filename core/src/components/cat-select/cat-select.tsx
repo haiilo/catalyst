@@ -540,7 +540,9 @@ export class CatSelect {
           number$.pipe(
             tap(() => this.patchState({ isLoading: true })),
             switchMap(number => connector.retrieve(term, number)),
-            tap(page => this.patchState({ isLoading: false, totalElements: page.totalElements, isFirstLoading: false })),
+            tap(page =>
+              this.patchState({ isLoading: false, totalElements: page.totalElements, isFirstLoading: false })
+            ),
             takeWhile(page => !page.last, true),
             scan((items, page) => [...items, ...page.content], [] as Item[])
           )
