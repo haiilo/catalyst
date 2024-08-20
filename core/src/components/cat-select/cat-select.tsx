@@ -61,6 +61,7 @@ export interface CatSelectState {
   term: string;
   isOpen: boolean;
   isLoading: boolean;
+  isFirstLoading: boolean;
   isResolving: boolean;
   options: { item: Item; render: RenderInfo }[];
   tempSelection: { item: Item; render: RenderInfo }[];
@@ -84,6 +85,7 @@ const INIT_STATE: CatSelectState = {
   term: '',
   isOpen: false,
   isLoading: false,
+  isFirstLoading: true,
   isResolving: false,
   options: [],
   selection: [],
@@ -534,12 +536,13 @@ export class CatSelect {
               startWith(0)
             ))
         ),
-        tap(() => this.patchState({ options: [] })),
         switchMap(term =>
           number$.pipe(
             tap(() => this.patchState({ isLoading: true })),
             switchMap(number => connector.retrieve(term, number)),
-            tap(page => this.patchState({ isLoading: false, totalElements: page.totalElements })),
+            tap(page =>
+              this.patchState({ isLoading: false, totalElements: page.totalElements, isFirstLoading: false })
+            ),
             takeWhile(page => !page.last, true),
             scan((items, page) => [...items, ...page.content], [] as Item[])
           )
@@ -752,7 +755,7 @@ export class CatSelect {
                 id={`select-listbox-${this.id}`}
               >
                 {this.optionsList}
-                {this.state.isLoading
+                {this.state.isFirstLoading
                   ? Array.from(Array(CatSelect.SKELETON_COUNT)).map(() => (
                       <li class="select-option-loading">
                         <cat-skeleton variant="body" lines={1}></cat-skeleton>
@@ -901,7 +904,7 @@ export class CatSelect {
     if (!this.state.isOpen && this.connector) {
       // reconnect to reset the connection, i.e. the pagination
       this.connect(this.connector);
-      this.patchState({ isOpen: true });
+      this.patchState({ isOpen: true, isFirstLoading: true, options: [] });
       this.catOpen.emit();
       this.term$.next('');
       this.input?.classList.remove('select-input-transparent-caret');
@@ -933,7 +936,7 @@ export class CatSelect {
         newSelection = [...this.state.selection, item];
       } else {
         newSelection = [item];
-        this.search(item.render.label);
+        this.patchState({ term: item.render.label, activeOptionIndex: -1, activeSelectionIndex: -1 });
       }
       this.patchState({ selection: newSelection, tempSelection: [] });
 
