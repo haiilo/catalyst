@@ -352,7 +352,7 @@ export class CatSelect {
 
   componentDidLoad(): void {
     if (this.input) {
-      autosizeInput(this.input);
+      autosizeInput(this.input, { minWidth: true });
     }
     if (this.trigger && this.dropdown) {
       autoUpdate(this.trigger, this.dropdown, () => this.update());
