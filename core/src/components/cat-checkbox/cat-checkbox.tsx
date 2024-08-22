@@ -160,8 +160,13 @@ export class CatCheckbox {
       <Host>
         <label
           htmlFor={this.id}
-          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft,
-            'align-center': this.alignment === 'center', 'align-end': this.alignment === 'flex-end' }}
+          class={{
+            'is-hidden': this.labelHidden,
+            'is-disabled': this.disabled,
+            'label-left': this.labelLeft,
+            'align-center': this.alignment === 'center',
+            'align-end': this.alignment === 'flex-end'
+          }}
         >
           <input
             {...this.nativeAttributes}

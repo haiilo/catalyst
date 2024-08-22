@@ -138,12 +138,17 @@ export class CatRadio {
       <Host>
         <label
           htmlFor={this.id}
-          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft,
-            'align-center': this.alignment === 'center', 'align-end': this.alignment === 'flex-end' }}
+          class={{
+            'is-hidden': this.labelHidden,
+            'is-disabled': this.disabled,
+            'label-left': this.labelLeft,
+            'align-center': this.alignment === 'center',
+            'align-end': this.alignment === 'flex-end'
+          }}
           role="radio"
           aria-checked={this.checked ? 'true' : 'false'}
         >
-          <span class="radio" >
+          <span class="radio">
             <input
               {...this.nativeAttributes}
               part="input"
