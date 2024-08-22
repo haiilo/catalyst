@@ -12,23 +12,23 @@ number of options.
 
 ## Properties
 
-| Property           | Attribute        | Description                                                                               | Type                                      | Default        |
-| ------------------ | ---------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- | -------------- |
-| `alignment`        | `alignment`      | The alignment of the checkbox.                                                            | `"center" \| "flex-end" \| "flex-start"`  | `'flex-start'` |
-| `checked`          | `checked`        | Checked state of the checkbox                                                             | `boolean`                                 | `false`        |
-| `disabled`         | `disabled`       | Disabled state of the checkbox                                                            | `boolean`                                 | `false`        |
-| `hint`             | `hint`           | Optional hint text(s) to be displayed with the checkbox.                                  | `string \| string[] \| undefined`         | `undefined`    |
-| `identifier`       | `identifier`     | A unique identifier for the input.                                                        | `string \| undefined`                     | `undefined`    |
-| `indeterminate`    | `indeterminate`  | Indeterminate state of the checkbox                                                       | `boolean`                                 | `false`        |
-| `label`            | `label`          | Label of the checkbox which is presented in the UI                                        | `string`                                  | `''`           |
-| `labelHidden`      | `label-hidden`   | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                                 | `false`        |
-| `labelLeft`        | `label-left`     | Whether the label should appear to the left of the checkbox.                              | `boolean`                                 | `false`        |
-| `name`             | `name`           | The name of the input.                                                                    | `string \| undefined`                     | `undefined`    |
-| `nativeAttributes` | --               | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined`    |
-| `noValue`          | `no-value`       | The value of the unchecked checkbox.                                                      | `any`                                     | `undefined`    |
-| `required`         | `required`       | Required state of the checkbox.                                                           | `boolean`                                 | `false`        |
-| `resolvedValue`    | `resolved-value` | The resolved value of the checkbox, based on the checked state and value.                 | `any`                                     | `null`         |
-| `value`            | `value`          | The value of the checked checkbox.                                                        | `any`                                     | `undefined`    |
+| Property           | Attribute        | Description                                                                               | Type                                      | Default     |
+| ------------------ | ---------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
+| `alignment`        | `alignment`      | The alignment of the checkbox.                                                            | `"bottom" \| "center" \| "top"`           | `'top'`     |
+| `checked`          | `checked`        | Checked state of the checkbox                                                             | `boolean`                                 | `false`     |
+| `disabled`         | `disabled`       | Disabled state of the checkbox                                                            | `boolean`                                 | `false`     |
+| `hint`             | `hint`           | Optional hint text(s) to be displayed with the checkbox.                                  | `string \| string[] \| undefined`         | `undefined` |
+| `identifier`       | `identifier`     | A unique identifier for the input.                                                        | `string \| undefined`                     | `undefined` |
+| `indeterminate`    | `indeterminate`  | Indeterminate state of the checkbox                                                       | `boolean`                                 | `false`     |
+| `label`            | `label`          | Label of the checkbox which is presented in the UI                                        | `string`                                  | `''`        |
+| `labelHidden`      | `label-hidden`   | Visually hide the label, but still show it to assistive technologies like screen readers. | `boolean`                                 | `false`     |
+| `labelLeft`        | `label-left`     | Whether the label should appear to the left of the checkbox.                              | `boolean`                                 | `false`     |
+| `name`             | `name`           | The name of the input.                                                                    | `string \| undefined`                     | `undefined` |
+| `nativeAttributes` | --               | Attributes that will be added to the native HTML input element.                           | `undefined \| { [key: string]: string; }` | `undefined` |
+| `noValue`          | `no-value`       | The value of the unchecked checkbox.                                                      | `any`                                     | `undefined` |
+| `required`         | `required`       | Required state of the checkbox.                                                           | `boolean`                                 | `false`     |
+| `resolvedValue`    | `resolved-value` | The resolved value of the checkbox, based on the checked state and value.                 | `any`                                     | `null`      |
+| `value`            | `value`          | The value of the checked checkbox.                                                        | `any`                                     | `undefined` |
 
 
 ## Events

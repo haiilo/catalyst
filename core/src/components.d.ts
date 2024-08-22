@@ -236,7 +236,7 @@ export namespace Components {
         /**
           * The alignment of the checkbox.
          */
-        "alignment": 'center' | 'flex-start' | 'flex-end';
+        "alignment": 'center' | 'top' | 'bottom';
         /**
           * Checked state of the checkbox
          */
@@ -933,7 +933,7 @@ export namespace Components {
         /**
           * The alignment of the checkbox.
          */
-        "alignment": 'center' | 'flex-start' | 'flex-end';
+        "alignment": 'center' | 'top' | 'bottom';
         /**
           * Whether this radio is checked.
          */
@@ -1479,7 +1479,7 @@ export namespace Components {
         /**
           * The alignment of the checkbox.
          */
-        "alignment": 'center' | 'flex-start' | 'flex-end';
+        "alignment": 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
          */
@@ -2418,7 +2418,7 @@ declare namespace LocalJSX {
         /**
           * The alignment of the checkbox.
          */
-        "alignment"?: 'center' | 'flex-start' | 'flex-end';
+        "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Checked state of the checkbox
          */
@@ -3104,7 +3104,7 @@ declare namespace LocalJSX {
         /**
           * The alignment of the checkbox.
          */
-        "alignment"?: 'center' | 'flex-start' | 'flex-end';
+        "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Whether this radio is checked.
          */
@@ -3670,7 +3670,7 @@ declare namespace LocalJSX {
         /**
           * The alignment of the checkbox.
          */
-        "alignment"?: 'center' | 'flex-start' | 'flex-end';
+        "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
          */

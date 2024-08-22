@@ -85,7 +85,7 @@ export class CatRadio {
   /**
    * The alignment of the checkbox.
    */
-  @Prop() alignment: 'center' | 'flex-start' | 'flex-end' = 'flex-start';
+  @Prop() alignment: 'center' | 'top' | 'bottom' = 'top';
 
   /**
    * Attributes that will be added to the native HTML input element.
@@ -143,7 +143,7 @@ export class CatRadio {
             'is-disabled': this.disabled,
             'label-left': this.labelLeft,
             'align-center': this.alignment === 'center',
-            'align-end': this.alignment === 'flex-end'
+            'align-end': this.alignment === 'bottom'
           }}
           role="radio"
           aria-checked={this.checked ? 'true' : 'false'}
