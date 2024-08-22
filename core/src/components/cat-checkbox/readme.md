@@ -14,6 +14,7 @@ number of options.
 
 | Property           | Attribute        | Description                                                                               | Type                                      | Default     |
 | ------------------ | ---------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
+| `alignment`        | `alignment`      | The alignment of the checkbox.                                                            | `"bottom" \| "center" \| "top"`           | `'top'`     |
 | `checked`          | `checked`        | Checked state of the checkbox                                                             | `boolean`                                 | `false`     |
 | `disabled`         | `disabled`       | Disabled state of the checkbox                                                            | `boolean`                                 | `false`     |
 | `hint`             | `hint`           | Optional hint text(s) to be displayed with the checkbox.                                  | `string \| string[] \| undefined`         | `undefined` |

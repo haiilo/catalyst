@@ -234,6 +234,10 @@ export namespace Components {
      */
     interface CatCheckbox {
         /**
+          * The alignment of the checkbox.
+         */
+        "alignment": 'center' | 'top' | 'bottom';
+        /**
           * Checked state of the checkbox
          */
         "checked": boolean;
@@ -927,6 +931,10 @@ export namespace Components {
      */
     interface CatRadio {
         /**
+          * The alignment of the checkbox.
+         */
+        "alignment": 'center' | 'top' | 'bottom';
+        /**
           * Whether this radio is checked.
          */
         "checked": boolean;
@@ -1468,6 +1476,10 @@ export namespace Components {
      * feature or option that can be turned on or off.
      */
     interface CatToggle {
+        /**
+          * The alignment of the checkbox.
+         */
+        "alignment": 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
          */
@@ -2404,6 +2416,10 @@ declare namespace LocalJSX {
      */
     interface CatCheckbox {
         /**
+          * The alignment of the checkbox.
+         */
+        "alignment"?: 'center' | 'top' | 'bottom';
+        /**
           * Checked state of the checkbox
          */
         "checked"?: boolean;
@@ -3086,6 +3102,10 @@ declare namespace LocalJSX {
      */
     interface CatRadio {
         /**
+          * The alignment of the checkbox.
+         */
+        "alignment"?: 'center' | 'top' | 'bottom';
+        /**
           * Whether this radio is checked.
          */
         "checked"?: boolean;
@@ -3647,6 +3667,10 @@ declare namespace LocalJSX {
      * feature or option that can be turned on or off.
      */
     interface CatToggle {
+        /**
+          * The alignment of the checkbox.
+         */
+        "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
          */

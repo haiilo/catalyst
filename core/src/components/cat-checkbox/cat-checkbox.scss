@@ -142,3 +142,11 @@ input {
   cursor: not-allowed;
   color: cat-token('color.ui.font.muted');
 }
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}

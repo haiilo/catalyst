@@ -217,6 +217,7 @@ export declare interface CatCard extends Components.CatCard {
 
 @ProxyCmp({
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',
@@ -240,6 +241,7 @@ export declare interface CatCard extends Components.CatCard {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',
@@ -795,6 +797,7 @@ export declare interface CatPagination extends Components.CatPagination {
 
 @ProxyCmp({
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',
@@ -815,6 +818,7 @@ export declare interface CatPagination extends Components.CatPagination {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',
@@ -1324,6 +1328,7 @@ export declare interface CatTime extends Components.CatTime {
 
 @ProxyCmp({
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',
@@ -1346,6 +1351,7 @@ export declare interface CatTime extends Components.CatTime {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'alignment',
     'checked',
     'disabled',
     'hint',

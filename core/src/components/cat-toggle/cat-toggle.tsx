@@ -95,6 +95,11 @@ export class CatToggle {
   @Prop() labelLeft = false;
 
   /**
+   * The alignment of the checkbox.
+   */
+  @Prop() alignment: 'center' | 'top' | 'bottom' = 'top';
+
+  /**
    * Attributes that will be added to the native HTML input element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
@@ -150,7 +155,13 @@ export class CatToggle {
       <Host>
         <label
           htmlFor={this.id}
-          class={{ 'is-hidden': this.labelHidden, 'is-disabled': this.disabled, 'label-left': this.labelLeft }}
+          class={{
+            'is-hidden': this.labelHidden,
+            'is-disabled': this.disabled,
+            'label-left': this.labelLeft,
+            'align-center': this.alignment === 'center',
+            'align-end': this.alignment === 'bottom'
+          }}
         >
           <input
             {...this.nativeAttributes}

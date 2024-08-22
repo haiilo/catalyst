@@ -12,6 +12,7 @@ only one of a predefined set of mutually exclusive options.
 
 | Property           | Attribute      | Description                                                                               | Type                                      | Default     |
 | ------------------ | -------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
+| `alignment`        | `alignment`    | The alignment of the checkbox.                                                            | `"bottom" \| "center" \| "top"`           | `'top'`     |
 | `checked`          | `checked`      | Whether this radio is checked.                                                            | `boolean`                                 | `false`     |
 | `disabled`         | `disabled`     | Whether this radio is disabled.                                                           | `boolean`                                 | `false`     |
 | `hint`             | `hint`         | Optional hint text(s) to be displayed with the radio.                                     | `string \| string[] \| undefined`         | `undefined` |
