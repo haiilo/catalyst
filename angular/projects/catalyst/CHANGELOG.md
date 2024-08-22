@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.17.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.16.0...catalyst-angular-v10.17.0) (2024-08-22)
+
+
+### Features
+
+* **core:** add alignment property to radio, checkboxes and toggles ([#548](https://github.com/haiilo/catalyst/issues/548)) ([345bec9](https://github.com/haiilo/catalyst/commit/345bec90955c78a86812157b28dc2b2b3d111595))
+
 ## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.15.3...catalyst-angular-v10.16.0) (2024-07-31)
 
 
