@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.17.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.17.0...catalyst-angular-v10.17.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* **angular:** initialize injection tokens in build artifact ([#550](https://github.com/haiilo/catalyst/issues/550)) ([e7b6243](https://github.com/haiilo/catalyst/commit/e7b6243edeb2613eae302c10d17474d070bc0b5a))
+
 ## [10.17.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.16.0...catalyst-angular-v10.17.0) (2024-08-22)
 
 
