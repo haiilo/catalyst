@@ -1,16 +1,7 @@
 import { DialogModule } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
-import {
-  CatI18nRegistry,
-  CatIconRegistry,
-  CatNotificationService,
-  catI18nRegistry,
-  catIconRegistry,
-  catNotificationService
-} from '@haiilo/catalyst';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
-import log, { RootLogger } from 'loglevel';
 import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
 import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
 import { CatDialogComponent } from './dialog/dialog.component';
@@ -65,26 +56,6 @@ const CatDirectives = [
   ValueAccessorDecorator,
   DatetimeComponent
 ];
-
-export const CAT_LOG_TOKEN = new InjectionToken<RootLogger>('CAT_LOG', {
-  providedIn: 'root',
-  factory: () => log
-});
-
-export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
-  providedIn: 'root',
-  factory: () => catI18nRegistry
-});
-
-export const CAT_ICON_REGISTRY_TOKEN = new InjectionToken<CatIconRegistry>('CAT_ICON_REGISTRY', {
-  providedIn: 'root',
-  factory: () => catIconRegistry
-});
-
-export const CAT_NOTIFICATION_SERVICE_TOKEN = new InjectionToken<CatNotificationService>('CAT_NOTIFICATION_SERVICE', {
-  providedIn: 'root',
-  factory: () => catNotificationService
-});
 
 @NgModule({
   imports: [CommonModule, DialogModule],
