@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CatI18nRegistry } from '@haiilo/catalyst';
-import { CAT_I18N_REGISTRY_TOKEN } from '../catalyst.module';
+import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
 
 /**
  * The header of a dialog.
