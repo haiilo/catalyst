@@ -4,6 +4,8 @@ import isTouchScreen from '../../utils/is-touch-screen';
 
 let nextUniqueId = 0;
 
+export type TooltipPlacement = Placement;
+
 /**
  * Tooltips display additional information when the user hovers over or
  * interacts with a trigger element. The tooltip can be customized with
@@ -58,7 +60,7 @@ export class CatTooltip {
   /**
    * The placement of the tooltip.
    */
-  @Prop() placement: Placement = 'top';
+  @Prop() placement: TooltipPlacement = 'top';
 
   /**
    * Use round tooltip edges.

@@ -12,8 +12,8 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { CleaveOptions } from "cleave.js/options";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
-import { Observable } from "rxjs";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
@@ -21,8 +21,7 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { CleaveOptions } from "cleave.js/options";
-export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
-export { Observable } from "rxjs";
+export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
 export namespace Components {
     /**
      * Informs user about important changes or conditions in the interface. Use this
@@ -1567,7 +1566,7 @@ export namespace Components {
         /**
           * The placement of the tooltip.
          */
-        "placement": Placement;
+        "placement": TooltipPlacement;
         /**
           * Use round tooltip edges.
          */
@@ -3761,7 +3760,7 @@ declare namespace LocalJSX {
         /**
           * The placement of the tooltip.
          */
-        "placement"?: Placement;
+        "placement"?: TooltipPlacement;
         /**
           * Use round tooltip edges.
          */
