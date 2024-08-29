@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.17.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.17.0...catalyst-tokens-v10.17.1) (2024-08-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [10.17.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.16.0...catalyst-tokens-v10.17.0) (2024-08-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
 ## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.15.3...catalyst-tokens-v10.16.0) (2024-07-31)
 
 

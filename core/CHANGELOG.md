@@ -1,5 +1,26 @@
 # Changelog
 
+## [10.17.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.17.0...catalyst-core-v10.17.1) (2024-08-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.17.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.16.0...catalyst-core-v10.17.0) (2024-08-22)
+
+
+### Features
+
+* **core:** add alignment property to radio, checkboxes and toggles ([#548](https://github.com/haiilo/catalyst/issues/548)) ([345bec9](https://github.com/haiilo/catalyst/commit/345bec90955c78a86812157b28dc2b2b3d111595))
+* **core:** do not show skeleton on search in select ([#545](https://github.com/haiilo/catalyst/issues/545)) ([9aff647](https://github.com/haiilo/catalyst/commit/9aff6475c80cff5a834618016817060b9756f058))
+* **core:** use minWidth: true setting for cat-select input autosize ([#547](https://github.com/haiilo/catalyst/issues/547)) ([924ab0b](https://github.com/haiilo/catalyst/commit/924ab0b6a3e2ede0fd97e64dcccdb50fe9684c58))
+
+
+### Bug Fixes
+
+* **core:** prevent avatars from shrinking in flex containers ([11d6d4f](https://github.com/haiilo/catalyst/commit/11d6d4f50f05eb99f7c051b40a71c600ebe3f5dc))
+
 ## [10.16.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.15.3...catalyst-core-v10.16.0) (2024-07-31)
 
 

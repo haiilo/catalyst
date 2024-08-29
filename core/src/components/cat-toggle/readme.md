@@ -14,6 +14,7 @@ feature or option that can be turned on or off.
 
 | Property           | Attribute        | Description                                                                               | Type                                      | Default     |
 | ------------------ | ---------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
+| `alignment`        | `alignment`      | The alignment of the checkbox.                                                            | `"bottom" \| "center" \| "top"`           | `'top'`     |
 | `checked`          | `checked`        | Checked state of the toggle.                                                              | `boolean`                                 | `false`     |
 | `disabled`         | `disabled`       | Disabled state of the toggle.                                                             | `boolean`                                 | `false`     |
 | `hint`             | `hint`           | Optional hint text(s) to be displayed with the toggle.                                    | `string \| string[] \| undefined`         | `undefined` |

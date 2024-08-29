@@ -107,3 +107,11 @@ input {
     background-color: cat-token('color.ui.border.dark');
   }
 }
+
+.align-center .radio {
+  align-self: center;
+}
+
+.align-end .radio {
+  align-self: flex-end;
+}

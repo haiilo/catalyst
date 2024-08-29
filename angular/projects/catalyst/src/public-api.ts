@@ -1,3 +1,4 @@
+export * from './lib/injection-token';
 export * from './lib/catalyst.module';
 export * from './lib/datetime/datetime.component';
 export { CatDialogActionsComponent } from './lib/dialog/dialog-actions.component';
