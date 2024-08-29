@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
 
@@ -22,7 +22,11 @@ export class CatButton {
   private mediaQueryList?: MediaQueryList;
   private mediaQueryListener?: (event: MediaQueryListEvent) => void;
 
+  @Element() hostElement!: HTMLElement;
+
   @State() _iconOnly = true;
+
+  @State() hasSlottedContent = false;
 
   /**
    * The rendering style of the button.
@@ -183,6 +187,10 @@ export class CatButton {
     this.onIconOnlyChanged(this.iconOnly);
   }
 
+  componentWillRender(): void {
+    this.hasSlottedContent = this.hostElement.hasChildNodes();
+  }
+
   @Listen('click')
   haltDisabledEvents(event: Event): void {
     if (this.disabled || this.loading) {
@@ -235,6 +243,7 @@ export class CatButton {
           part="button"
           class={{
             'cat-button': true,
+            'cat-button-empty': !this.hasSlottedContent,
             'cat-button-active': this.active,
             'cat-button-icon': this.isIconButton,
             'cat-button-round': this.round,
@@ -268,6 +277,7 @@ export class CatButton {
           part="button"
           class={{
             'cat-button': true,
+            'cat-button-empty': !this.hasSlottedContent,
             'cat-button-active': this.active,
             'cat-button-icon': this.isIconButton,
             'cat-button-round': this.round ?? this.isIconButton,

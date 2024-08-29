@@ -51,6 +51,10 @@ $button-sizes: (
   display: flex;
   flex-direction: column;
   min-width: 0;
+
+  .cat-button-empty & {
+    display: none;
+  }
 }
 
 .cat-button-content-inner {
