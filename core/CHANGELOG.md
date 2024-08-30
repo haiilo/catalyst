@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.18.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.17.1...catalyst-core-v10.18.0) (2024-08-30)
+
+
+### Features
+
+* **core:** expose TooltipPlacement ([#552](https://github.com/haiilo/catalyst/issues/552)) ([f4d076e](https://github.com/haiilo/catalyst/commit/f4d076e80575c02b5995e89b9bd365efb7a25271))
+
+
+### Bug Fixes
+
+* **core:** remove space for standalone icons in buttons ([ea061f2](https://github.com/haiilo/catalyst/commit/ea061f2711dfe7a8bcf6acd62f3f7987238e56cc))
+
 ## [10.17.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.17.0...catalyst-core-v10.17.1) (2024-08-27)
 
 
