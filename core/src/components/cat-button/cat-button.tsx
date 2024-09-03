@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
+import { findClosest } from '../../utils/find-closest';
 
 /**
  * Buttons are used for interface actions. Primary style should be used only
@@ -196,6 +197,9 @@ export class CatButton {
     if (this.disabled || this.loading) {
       event.preventDefault();
       event.stopImmediatePropagation();
+    } else if (this.submit) {
+      const form = findClosest('form', this.hostElement);
+      form?.dispatchEvent(new SubmitEvent('submit', { submitter: this.button }));
     }
   }
 
