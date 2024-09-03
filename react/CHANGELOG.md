@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.19.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.19.0...catalyst-react-v10.19.1) (2024-09-03)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [10.19.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.18.0...catalyst-react-v10.19.0) (2024-09-03)
 
 

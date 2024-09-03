@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.19.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.0...catalyst-core-v10.19.1) (2024-09-03)
+
+
+### Bug Fixes
+
+* **core:** fix placement import in cat-tooltip ([#558](https://github.com/haiilo/catalyst/issues/558)) ([a816760](https://github.com/haiilo/catalyst/commit/a816760c3b2a1a29614d898a0cfbb9f5dfdb3552))
+
 ## [10.19.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.18.0...catalyst-core-v10.19.0) (2024-09-03)
 
 
