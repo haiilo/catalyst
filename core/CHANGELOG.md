@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.19.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.18.0...catalyst-core-v10.19.0) (2024-09-03)
+
+
+### Features
+
+* **core:** export TooltipPlacement ([#554](https://github.com/haiilo/catalyst/issues/554)) ([5859b0b](https://github.com/haiilo/catalyst/commit/5859b0b6333548ca7f1048fc4d27555e05b3d87c))
+
+
+### Bug Fixes
+
+* **core:** fix submit mode for cat-button ([#555](https://github.com/haiilo/catalyst/issues/555)) ([10b6b95](https://github.com/haiilo/catalyst/commit/10b6b95ffb332db582182ee639b4ea6ff85ba46b))
+
 ## [10.18.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.17.1...catalyst-core-v10.18.0) (2024-08-30)
 
 
