@@ -28,6 +28,8 @@ export class CatTime {
 
   @State() isAm = true;
 
+  @State() programmaticallyChanged = false;
+
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
@@ -176,8 +178,14 @@ export class CatTime {
 
   @Watch('value')
   onValueChanged(value: string, oldValue: string) {
+
+    if (this.programmaticallyChanged){
+      this.programmaticallyChanged = false;
+      return;
+    }
     if (value !== oldValue) {
-      this.syncValue(value);
+      this.programmaticallyChanged = true;
+      this.syncValue(value)
     }
   }
 
@@ -197,6 +205,14 @@ export class CatTime {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillLoad() {
+    const [, hh ] = this.value?.match(/(\d{2}):(\d{2})/)?.map(Number) ?? [];
+    if (this.locale.timeFormat === '12') {
+      if (hh === 0 || hh < 12) {
+        this.isAm = true;  // AM for 00:00 to 11:59
+      } else {
+        this.isAm = false; // PM for 12:00 to 23:59
+      }
+    }
     this.syncValue(this.value ?? '');
   }
 
@@ -354,7 +370,10 @@ export class CatTime {
                           active={isoTime === this.value}
                           color={isoTime === this.value ? 'primary' : 'secondary'}
                           variant={isoTime === this.value ? 'filled' : 'outlined'}
-                          onCatClick={() => this.select(time)}
+                          onCatClick={() => {
+                            this.programmaticallyChanged = true;
+                            this.select(time)
+                          }}
                           data-time={isoTime}
                         >
                           {this.format(time)}
@@ -393,6 +412,7 @@ export class CatTime {
       this.select(null);
       return;
     }
+
     this.select(
       this.locale.timeFormat === '24'
         ? new Date(2000, 5, 1, hh, mm, 0)
@@ -402,6 +422,7 @@ export class CatTime {
 
   private toggleAm() {
     if (this.selectionTime) {
+      this.programmaticallyChanged = true;
       this.select(new Date(this.selectionTime.getTime() + (this.isAm ? 12 : -12) * 3600000));
     } else {
       this.isAm = !this.isAm;
@@ -409,6 +430,9 @@ export class CatTime {
   }
 
   private onInputBlur(e: FocusEvent) {
+    if (this.input?.value !== this.value) {
+      this.programmaticallyChanged = true;
+    }
     this.syncValue(this.input?.value ?? '');
     this.catBlur.emit(e);
   }
@@ -430,6 +454,8 @@ export class CatTime {
     const [match, hh, mm] = this.value.match(/(\d{2}):(\d{2})/) ?? [];
     const newValue = match ? formatIso(clampTime(min, new Date(2000, 5, 1, Number(hh), Number(mm)), max)) : undefined;
     if (this.value !== newValue) {
+
+      this.programmaticallyChanged = true;
       this.syncValue(newValue ?? '');
       this.catChange.emit(newValue);
     }
