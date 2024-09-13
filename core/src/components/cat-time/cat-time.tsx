@@ -174,6 +174,13 @@ export class CatTime {
     }
   }
 
+  @Watch('value')
+  onValueChanged(value: string, oldValue: string) {
+    if (value !== oldValue) {
+      this.syncValue(value);
+    }
+  }
+
   /**
    * Emitted when the value is changed.
    */

@@ -2,6 +2,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { defineCustomElements } from '@haiilo/catalyst/loader';
+import { DatetimeComponent } from './datetime/datetime.component';
 import { CatDialogActionsComponent } from './dialog/dialog-actions.component';
 import { CatDialogHeaderComponent } from './dialog/dialog-header.component';
 import { CatDialogComponent } from './dialog/dialog.component';
@@ -14,7 +15,6 @@ import { SelectValueAccessorDecorator } from './directives/select-value-accessor
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { TimeValueAccessor } from './directives/time-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
-import { DatetimeComponent } from './datetime/datetime.component';
 
 const CatComponents = [
   Components.CatAlert,
@@ -41,6 +41,7 @@ const CatComponents = [
   Components.CatTab,
   Components.CatTabs,
   Components.CatTextarea,
+  Components.CatTime,
   Components.CatToggle,
   Components.CatTooltip
 ];
