@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.19.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.1...catalyst-core-v10.19.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* **core:** export and fix cat-time value changes ([#561](https://github.com/haiilo/catalyst/issues/561)) ([369da92](https://github.com/haiilo/catalyst/commit/369da921edb247dccfcc701febf26361b31383d8))
+
 ## [10.19.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.0...catalyst-core-v10.19.1) (2024-09-03)
 
 
