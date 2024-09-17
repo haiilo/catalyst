@@ -856,11 +856,11 @@
               </cat-form-group>
 
               <script>
-                let input = document.getElementById("cat-input-1");
+                let input = document.getElementById('cat-input-1');
                 input.addEventListener('input', () => {
                   let elementById = document.getElementById('time2');
-                  elementById.value = "13:58";
-                })
+                  elementById.value = '13:58';
+                });
                 const formElem = document.getElementById('form-group-1');
                 setTimeout(() => {
                   const htmlElement = document.createElement('cat-input');
@@ -915,7 +915,7 @@
             <section id="datepicker" class="cat-form">
               <h2>Datepicker</h2>
               <cat-date label="New Datepicker"></cat-date>
-              <cat-time id="time2" label="New Timepicker"></cat-time>
+              <cat-time id="time2" label="New Timepicker" value="12:00"></cat-time>
               <cat-datepicker mode="date">
                 <span slot="label">Priority Label</span>
                 <span slot="hint">Priority Hint</span>
@@ -970,7 +970,6 @@
                     action: 'Seite neu laden'
                   });
                 };
-                document.querySelector()
               </script>
             </section>
 
