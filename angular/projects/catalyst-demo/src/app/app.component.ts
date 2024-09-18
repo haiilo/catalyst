@@ -31,6 +31,8 @@ export class AppComponent implements OnInit {
     date: new FormControl(null, [Validators.required]),
     date2: new FormControl(null, [Validators.required]),
     time: new FormControl('20:20', [Validators.required]),
+    dateTime: new FormControl(new Date('Thu Jun 01 2000 01:00:00 GMT+0100'), [Validators.required]),
+    toggle: new FormControl(true),
     datepickerDisabled: new FormControl(true)
   });
 
@@ -149,6 +151,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.controls.test.valueChanges.subscribe(() => {
+      this.form.controls.dateTime.setValue(new Date('Thu Jun 01 2000 15:00:00 GMT+0100'));
       this.form.controls.relatedInput.updateValueAndValidity();
     });
     if (this.form.controls.datepickerDisabled.value) {

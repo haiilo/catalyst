@@ -28,6 +28,8 @@ export class CatTime {
 
   @State() isAm = true;
 
+  @State() valueChangedBySelection = false;
+
   /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
@@ -176,7 +178,10 @@ export class CatTime {
 
   @Watch('value')
   onValueChanged(value: string, oldValue: string) {
-    if (value !== oldValue) {
+    if (this.valueChangedBySelection) {
+      this.valueChangedBySelection = false;
+    } else if (value !== oldValue) {
+      this.set12hFormat();
       this.syncValue(value);
     }
   }
@@ -197,6 +202,7 @@ export class CatTime {
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillLoad() {
+    this.set12hFormat();
     this.syncValue(this.value ?? '');
   }
 
@@ -234,6 +240,7 @@ export class CatTime {
   @Method()
   async select(date: Date | null): Promise<void> {
     const oldValue = this.value;
+    let newValue = this.value;
     if (!date) {
       this.selectionTime = null;
       this.value = undefined;
@@ -241,15 +248,19 @@ export class CatTime {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
       this.isAm = this.format(time).toLowerCase().includes('am');
       this.selectionTime = time;
-      this.value = formatIso(time);
+      newValue = formatIso(time);
     }
     // we need to set the input explicitly to sync the input even without a
     // rerender (if the value is not changed)
     if (this.input) {
       this.input.value = this.format(this.selectionTime, false);
     }
-    if (oldValue !== this.value) {
+    if (oldValue !== newValue) {
+      this.valueChangedBySelection = true;
+      this.value = newValue;
       this.catChange.emit(this.value);
+    } else {
+      this.valueChangedBySelection = false;
     }
   }
 
@@ -393,11 +404,19 @@ export class CatTime {
       this.select(null);
       return;
     }
+
     this.select(
       this.locale.timeFormat === '24'
         ? new Date(2000, 5, 1, hh, mm, 0)
         : new Date(2000, 5, 1, (hh % 12) + (this.isAm ? 0 : 12), mm, 0)
     );
+  }
+
+  private set12hFormat() {
+    const [, hh] = this.value?.match(/(\d{2}):(\d{2})/)?.map(Number) ?? [];
+    if (this.locale.timeFormat === '12') {
+      this.isAm = hh === 0 || hh < 12;
+    }
   }
 
   private toggleAm() {
