@@ -28,7 +28,7 @@ export class CatTime {
 
   @State() isAm = true;
 
-  @State() programmaticallyChanged = false;
+  @State() valueChangedBySelection = false;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -178,12 +178,9 @@ export class CatTime {
 
   @Watch('value')
   onValueChanged(value: string, oldValue: string) {
-    if (this.programmaticallyChanged) {
-      this.programmaticallyChanged = false;
-      return;
-    }
-    if (value !== oldValue) {
-      this.programmaticallyChanged = true;
+    if (this.valueChangedBySelection) {
+      this.valueChangedBySelection = false;
+    } else if (value !== oldValue) {
       this.set12hFormat();
       this.syncValue(value);
     }
@@ -259,11 +256,11 @@ export class CatTime {
       this.input.value = this.format(this.selectionTime, false);
     }
     if (oldValue !== newValue) {
-      this.programmaticallyChanged = true;
+      this.valueChangedBySelection = true;
       this.value = newValue;
       this.catChange.emit(this.value);
     } else {
-      this.programmaticallyChanged = false;
+      this.valueChangedBySelection = false;
     }
   }
 
