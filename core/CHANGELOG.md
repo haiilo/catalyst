@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.2...catalyst-core-v10.19.3) (2024-09-18)
+
+
+### Bug Fixes
+
+* **core:** fix setting value programmatically on cat-time ([#564](https://github.com/haiilo/catalyst/issues/564)) ([654d75a](https://github.com/haiilo/catalyst/commit/654d75aa6d80006d58becd8444ed6fe66163ec84))
+
 ## [10.19.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.1...catalyst-core-v10.19.2) (2024-09-13)
 
 

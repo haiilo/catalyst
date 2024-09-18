@@ -1,7 +1,7 @@
 {
-  "tokens": "10.19.2",
-  "core": "10.19.2",
-  "angular/projects/catalyst": "10.19.2",
-  "angular/projects/catalyst-formly": "10.19.2",
-  "react": "10.19.2"
+  "tokens": "10.19.3",
+  "core": "10.19.3",
+  "angular/projects/catalyst": "10.19.3",
+  "angular/projects/catalyst-formly": "10.19.3",
+  "react": "10.19.3"
 }
