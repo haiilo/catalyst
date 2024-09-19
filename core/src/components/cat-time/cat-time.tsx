@@ -182,7 +182,7 @@ export class CatTime {
       this.valueChangedBySelection = false;
     } else if (value !== oldValue) {
       this.set12hFormat();
-      this.syncValue(value);
+      this.syncValue(value ?? '');
     }
   }
 
