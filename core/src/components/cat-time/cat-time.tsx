@@ -243,7 +243,7 @@ export class CatTime {
     let newValue = this.value;
     if (!date) {
       this.selectionTime = null;
-      this.value = undefined;
+      newValue = undefined;
     } else {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
       this.isAm = this.format(time).toLowerCase().includes('am');
