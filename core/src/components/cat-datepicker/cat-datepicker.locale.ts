@@ -1,8 +1,8 @@
 import flatpickr from 'flatpickr';
-import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import {catI18nRegistry as i18n} from '../cat-i18n/cat-i18n-registry';
 
 export function getHour12(language: string): boolean {
-  const dateStr = new Intl.DateTimeFormat(language, { hour: '2-digit', minute: '2-digit' })
+  const dateStr = new Intl.DateTimeFormat(language, {hour: '2-digit', minute: '2-digit'})
     .format(new Date())
     .toLowerCase();
   return dateStr.includes('am') || dateStr.includes('pm');
@@ -18,14 +18,16 @@ function getFirstDayOfWeek(language: string): number {
 function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
   const date = new Date();
   const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
-  const format = new Intl.DateTimeFormat(language, { weekday }).format;
+  const format = new Intl.DateTimeFormat(language, {weekday}).format;
   return [...Array(7).keys()].map(day => format(new Date(date.getTime()).setUTCDate(firstDayOfWeek + day)));
 }
 
 function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
-  const date = new Date(0);
-  const format = new Intl.DateTimeFormat(language, { month }).format;
-  return [...Array(12).keys()].map(month => format(new Date(date.getTime()).setUTCMonth(month)));
+  return Array.from({ length: 12 }, (_, i) => {
+    const date = new Date();
+    date.setMonth(i);
+    return date.toLocaleString(language, { month: month });
+  });
 }
 
 export function getLocale(language: string): flatpickr.CustomLocale {
