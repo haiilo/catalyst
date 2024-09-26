@@ -9,6 +9,8 @@
 }
 
 .cat-dialog-pane {
+  transform: translateZ(0);
+
   .cdk-dialog-container > *:only-child {
     display: block;
     width: 100%;
