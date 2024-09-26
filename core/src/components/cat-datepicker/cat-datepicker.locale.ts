@@ -1,8 +1,8 @@
 import flatpickr from 'flatpickr';
-import {catI18nRegistry as i18n} from '../cat-i18n/cat-i18n-registry';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 export function getHour12(language: string): boolean {
-  const dateStr = new Intl.DateTimeFormat(language, {hour: '2-digit', minute: '2-digit'})
+  const dateStr = new Intl.DateTimeFormat(language, { hour: '2-digit', minute: '2-digit' })
     .format(new Date())
     .toLowerCase();
   return dateStr.includes('am') || dateStr.includes('pm');
@@ -18,7 +18,7 @@ function getFirstDayOfWeek(language: string): number {
 function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
   const date = new Date();
   const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
-  const format = new Intl.DateTimeFormat(language, {weekday}).format;
+  const format = new Intl.DateTimeFormat(language, { weekday }).format;
   return [...Array(7).keys()].map(day => format(new Date(date.getTime()).setUTCDate(firstDayOfWeek + day)));
 }
 
