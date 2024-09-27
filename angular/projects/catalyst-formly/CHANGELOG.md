@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.19.4...catalyst-angular-formly-v10.20.0) (2024-09-27)
+
+
+### Features
+
+* **angular:** add formly date element ([#573](https://github.com/haiilo/catalyst/issues/573)) ([896cd9d](https://github.com/haiilo/catalyst/commit/896cd9d56c16e318b0cd9d1431647a10930b97c2))
+
 ## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.19.3...catalyst-angular-formly-v10.19.4) (2024-09-26)
 
 
