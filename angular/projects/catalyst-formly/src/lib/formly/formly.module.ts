@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { CatalystModule } from '@haiilo/catalyst-angular';
 import { CatCheckboxFieldType } from './formly-checkbox/formly-checkbox.component';
+import { CatDateFieldType } from './formly-date/formly-date.component';
 import { CatDatepickerFieldType } from './formly-datepicker/formly-datepicker.component';
 import { CatInputFieldType } from './formly-input/formly-input.component';
 import { CatRadioGroupFieldType } from './formly-radio-group/formly-radio-group.component';
@@ -15,6 +16,7 @@ import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
 @NgModule({
   declarations: [
     CatCheckboxFieldType,
+    CatDateFieldType,
     CatDatepickerFieldType,
     CatInputFieldType,
     CatRadioFieldType,
@@ -60,12 +62,17 @@ import { CatToggleFieldType } from './formly-toggle/formly-toggle.component';
         {
           name: 'cat-select-formly',
           component: CatSelectFieldType
+        },
+        {
+          name: 'cat-date-formly',
+          component: CatDateFieldType
         }
       ]
     })
   ],
   exports: [
     CatCheckboxFieldType,
+    CatDateFieldType,
     CatDatepickerFieldType,
     CatInputFieldType,
     CatRadioFieldType,

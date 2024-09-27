@@ -7,3 +7,4 @@ export * from './lib/formly/formly-textarea/formly-textarea.component';
 export * from './lib/formly/formly-radio-group/formly-radio-group.component';
 export * from './lib/formly/formly-datepicker/formly-datepicker.component';
 export * from './lib/formly/formly-select/formly-select.component';
+export * from './lib/formly/formly-date/formly-date.component';
