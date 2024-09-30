@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.20.0...catalyst-core-v10.21.0) (2024-09-30)
+
+
+### Features
+
+* **core:** add required marker for checkboxes ([#575](https://github.com/haiilo/catalyst/issues/575)) ([43f8d7c](https://github.com/haiilo/catalyst/commit/43f8d7c11cbb31008dba96120f1b34042580327f))
+
 ## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.4...catalyst-core-v10.20.0) (2024-09-27)
 
 
