@@ -230,6 +230,7 @@ export declare interface CatCard extends Components.CatCard {
     'nativeAttributes',
     'noValue',
     'required',
+    'requiredMarker',
     'resolvedValue',
     'value'
   ],
@@ -254,6 +255,7 @@ export declare interface CatCard extends Components.CatCard {
     'nativeAttributes',
     'noValue',
     'required',
+    'requiredMarker',
     'resolvedValue',
     'value'
   ]

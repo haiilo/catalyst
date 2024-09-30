@@ -91,6 +91,7 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'labelLeft',
   'alignment',
   'nativeAttributes',
+  'requiredMarker',
   'catChange',
   'catFocus',
   'catBlur'
