@@ -12,7 +12,8 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { CleaveOptions } from "cleave.js/options";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
