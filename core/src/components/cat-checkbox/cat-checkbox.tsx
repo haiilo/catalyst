@@ -199,7 +199,7 @@ export class CatCheckbox {
               <polyline points="1.5 5 10.5 5"></polyline>
             </svg>
           </span>
-          <span class={{ label: true, 'label-wrapper': !this.hasSlottedLabel }} part="label">
+          <span class={{ 'label': true, 'label-wrapper': !this.hasSlottedLabel }} part="label">
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
             <span class="label-metadata">
               {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
