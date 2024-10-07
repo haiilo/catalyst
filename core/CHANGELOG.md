@@ -1,5 +1,33 @@
 # Changelog
 
+## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.0...catalyst-core-v10.21.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* **core:** add required marker to checkbox formly element ([#577](https://github.com/haiilo/catalyst/issues/577)) ([bdc2fd8](https://github.com/haiilo/catalyst/commit/bdc2fd8358909712c9fafe50c995c0253528b704))
+
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.20.0...catalyst-core-v10.21.0) (2024-09-30)
+
+
+### Features
+
+* **core:** add required marker for checkboxes ([#575](https://github.com/haiilo/catalyst/issues/575)) ([43f8d7c](https://github.com/haiilo/catalyst/commit/43f8d7c11cbb31008dba96120f1b34042580327f))
+
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.4...catalyst-core-v10.20.0) (2024-09-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.3...catalyst-core-v10.19.4) (2024-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
 ## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.2...catalyst-core-v10.19.3) (2024-09-18)
 
 

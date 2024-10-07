@@ -12,7 +12,8 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { CleaveOptions } from "cleave.js/options";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
@@ -21,7 +22,9 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { CleaveOptions } from "cleave.js/options";
-export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+export { Observable } from "rxjs";
+export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export namespace Components {
     /**
      * Informs user about important changes or conditions in the interface. Use this
@@ -293,6 +296,10 @@ export namespace Components {
           * Required state of the checkbox.
          */
         "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The resolved value of the checkbox, based on the checked state and value.
          */
@@ -2478,6 +2485,10 @@ declare namespace LocalJSX {
           * Required state of the checkbox.
          */
         "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The resolved value of the checkbox, based on the checked state and value.
          */

@@ -1,5 +1,33 @@
 # Changelog
 
+## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.21.0...catalyst-angular-formly-v10.21.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* **core:** add required marker to checkbox formly element ([#577](https://github.com/haiilo/catalyst/issues/577)) ([bdc2fd8](https://github.com/haiilo/catalyst/commit/bdc2fd8358909712c9fafe50c995c0253528b704))
+
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.20.0...catalyst-angular-formly-v10.21.0) (2024-09-30)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.19.4...catalyst-angular-formly-v10.20.0) (2024-09-27)
+
+
+### Features
+
+* **angular:** add formly date element ([#573](https://github.com/haiilo/catalyst/issues/573)) ([896cd9d](https://github.com/haiilo/catalyst/commit/896cd9d56c16e318b0cd9d1431647a10930b97c2))
+
+## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.19.3...catalyst-angular-formly-v10.19.4) (2024-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
 ## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.19.2...catalyst-angular-formly-v10.19.3) (2024-09-18)
 
 

@@ -18,11 +18,11 @@ $cat-input-height: 2.5rem;
 
 .label-container {
   flex-basis: var(--label-size, 33.33%);
+}
 
-  .label-wrapper {
-    display: flex;
-    gap: 0.25rem;
-  }
+.label-wrapper {
+  display: flex;
+  gap: 0.25rem;
 }
 
 .label-metadata {

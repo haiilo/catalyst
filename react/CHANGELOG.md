@@ -1,5 +1,33 @@
 # Changelog
 
+## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.21.0...catalyst-react-v10.21.1) (2024-09-30)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.20.0...catalyst-react-v10.21.0) (2024-09-30)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.19.4...catalyst-react-v10.20.0) (2024-09-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.19.3...catalyst-react-v10.19.4) (2024-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.19.2...catalyst-react-v10.19.3) (2024-09-18)
 
 
