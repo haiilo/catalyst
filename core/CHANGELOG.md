@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.21.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.1...catalyst-core-v10.21.2) (2024-10-07)
+
+
+### Bug Fixes
+
+* **core:** datepicker month locale are not correct ([#571](https://github.com/haiilo/catalyst/issues/571)) ([28dff07](https://github.com/haiilo/catalyst/commit/28dff072f7988f42112cec3562d535f63d5f6e6d))
+
 ## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.0...catalyst-core-v10.21.1) (2024-09-30)
 
 
