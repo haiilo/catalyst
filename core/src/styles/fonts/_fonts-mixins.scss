@@ -1,11 +1,7 @@
 @use 'fonts.mixins.lato' as *;
-@use 'fonts.mixins.ss3v' as *;
 
 @mixin cat-fonts($path) {
   @include cat-font-lato($path, 300, 400, 500, 600, 700) {
-    font-display: fallback;
-  }
-  @include cat-font-ss3v($path) {
     font-display: fallback;
   }
 }
