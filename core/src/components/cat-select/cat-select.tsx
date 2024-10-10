@@ -735,6 +735,7 @@ export class CatSelect {
 
         <div
           class="select-dropdown"
+          part="dropdown"
           ref={el => (this.dropdown = el)}
           style={{ display: this.state.isOpen ? 'block' : undefined }}
         >
