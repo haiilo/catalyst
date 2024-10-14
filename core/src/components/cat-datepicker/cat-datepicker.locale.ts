@@ -25,7 +25,7 @@ function daysForLocale(language: string, weekday: 'long' | 'short' | 'narrow' = 
 function monthsForLocale(language: string, month: 'long' | 'short' = 'long') {
   return Array.from({ length: 12 }, (_, i) => {
     const date = new Date();
-    date.setMonth(i);
+    date.setUTCMonth(i);
     return date.toLocaleString(language, { month });
   });
 }
