@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.21.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.2...catalyst-angular-v10.21.3) (2024-10-15)
+
+
+### Bug Fixes
+
+* **angular:** add flex grow to dialog scrollable ([#581](https://github.com/haiilo/catalyst/issues/581)) ([152a714](https://github.com/haiilo/catalyst/commit/152a714253d097436f5b257f34b7044fa2441ffa))
+
 ## [10.21.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.1...catalyst-angular-v10.21.2) (2024-10-07)
 
 
