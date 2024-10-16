@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.21.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.3...catalyst-angular-v10.21.4) (2024-10-16)
+
+
+### Bug Fixes
+
+* **angular:** fix panel class config with default class ([a51cdac](https://github.com/haiilo/catalyst/commit/a51cdac101ad65973e85be51e9ea165a9a316704))
+
 ## [10.21.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.2...catalyst-angular-v10.21.3) (2024-10-15)
 
 
