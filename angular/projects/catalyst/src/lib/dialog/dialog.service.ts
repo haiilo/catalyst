@@ -45,13 +45,13 @@ export class CatDialogService {
     const panelClass = config?.panelClass ?? [];
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
-      panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])],
       width: '600px',
       minWidth: 'clamp(240px, 100vw - 16px, 320px)',
       minHeight: 'clamp(144px, 100vh - 16px, 160px)',
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
-      ...config
+      ...config,
+      panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])]
     });
   }
 
