@@ -117,16 +117,6 @@
   <cat-checkbox label="Label 2" requiredMarker="optional"> </cat-checkbox>
   <cat-scrollable>abxcasds</cat-scrollable>
 
-  <cat-select
-    label="Tag Select without dropdown"
-    hint="this is a hint"
-    [clearable]="true"
-    [multiple]="true"
-    [tags]="true"
-    [disableDropdown]="true"
-    [tagCreationKeys]="['Enter', ' ', ',']"
-  ></cat-select>
-
   <cat-tag hint="this is a hint"><div slot="label">TEST SLOTTED LABEL</div></cat-tag>
   <cat-tag label="This is my tag select with values" [value]="['1', '2', '3']" (catChange)="logChanges($event)">
   </cat-tag>

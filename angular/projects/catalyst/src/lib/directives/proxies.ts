@@ -946,7 +946,6 @@ export declare interface CatScrollable extends Components.CatScrollable {
   inputs: [
     'clearable',
     'debounce',
-    'disableDropdown',
     'disabled',
     'errorUpdate',
     'errors',
@@ -963,7 +962,6 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'placement',
     'required',
     'requiredMarker',
-    'tagCreationKeys',
     'tagHint',
     'tags',
     'value'
@@ -978,7 +976,6 @@ export declare interface CatScrollable extends Components.CatScrollable {
   inputs: [
     'clearable',
     'debounce',
-    'disableDropdown',
     'disabled',
     'errorUpdate',
     'errors',
@@ -995,7 +992,6 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'placement',
     'required',
     'requiredMarker',
-    'tagCreationKeys',
     'tagHint',
     'tags',
     'value'

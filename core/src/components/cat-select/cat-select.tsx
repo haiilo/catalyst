@@ -260,16 +260,6 @@ export class CatSelect {
    */
   @Prop() nativeAttributes?: { [key: string]: string };
 
-  /**
-   * Property for tag inputs that disables the dropdown functionality
-   */
-  @Prop() disableDropdown = false;
-
-  /**
-   * The keys that lead to a new tag input when pressed (does not take pasting into account). Defaults to `Enter`.
-   */
-  @Prop() tagCreationKeys: string[] = ['Enter'];
-
   @Watch('connector')
   onConnectorChanged(connector: CatSelectConnector) {
     this.reset(connector);
@@ -417,15 +407,14 @@ export class CatSelect {
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
-    console.log(['Enter', ' '].includes(event.key), event.key);
+
     if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
       if (
         this.tags &&
         this.state.activeOptionIndex === 0 &&
-        this.state.options[0].item.id === `select-${this.id}-option-tag` &&
-        ['Enter', ' '].includes(event.key)
+        this.state.options[0].item.id === `select-${this.id}-option-tag`
       ) {
         event.preventDefault();
         if (this.multiple) {
@@ -440,7 +429,7 @@ export class CatSelect {
         } else {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
-      } else if (this.tags && this.tagCreationKeys.includes(event.key) && this.state.activeOptionIndex < 0) {
+      } else if (this.tags && event.key === 'Enter' && this.state.activeOptionIndex < 0) {
         this.createTag(this.state.term);
       }
     } else if (event.key === 'Escape') {
@@ -472,14 +461,6 @@ export class CatSelect {
           this.select(this.state.options[this.state.activeOptionIndex]);
         }
       }
-    } else if (
-      this.tags &&
-      this.tagCreationKeys.includes(event.key) &&
-      this.state.activeOptionIndex < 0 &&
-      isInputFocused
-    ) {
-      event.preventDefault();
-      this.createTag(this.state.term);
     } else if (event.key.length === 1) {
       this.input?.focus();
     }
@@ -725,7 +706,7 @@ export class CatSelect {
                   data-dropdown-no-close
                 ></cat-button>
               ) : null}
-              {!this.state.isResolving && !this.disableDropdown && (
+              {!this.state.isResolving && (
                 <cat-button
                   iconOnly
                   icon="$cat:select-open"
@@ -920,7 +901,7 @@ export class CatSelect {
   }
 
   private show() {
-    if (!this.state.isOpen && this.connector && !this.disableDropdown) {
+    if (!this.state.isOpen && this.connector) {
       // reconnect to reset the connection, i.e. the pagination
       this.connect(this.connector);
       this.patchState({ isOpen: true, isFirstLoading: true, options: [] });
