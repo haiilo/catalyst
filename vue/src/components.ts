@@ -342,6 +342,8 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'disableDropdown',
+  'tagCreationKeys',
   'catOpen',
   'catClose',
   'catChange',

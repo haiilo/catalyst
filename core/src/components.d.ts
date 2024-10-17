@@ -1076,6 +1076,10 @@ export namespace Components {
          */
         "debounce": number;
         /**
+          * Property for tag inputs that disables the dropdown functionality
+         */
+        "disableDropdown": boolean;
+        /**
           * Whether the select is disabled.
          */
         "disabled": boolean;
@@ -1148,6 +1152,7 @@ export namespace Components {
           * Whether the label need a marker to shown if the select is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "tagCreationKeys": string[];
         /**
           * Optional hint text to be displayed on the new item to be added.
          */
@@ -3273,6 +3278,10 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
+          * Property for tag inputs that disables the dropdown functionality
+         */
+        "disableDropdown"?: boolean;
+        /**
           * Whether the select is disabled.
          */
         "disabled"?: boolean;
@@ -3352,6 +3361,7 @@ declare namespace LocalJSX {
           * Whether the label need a marker to shown if the select is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "tagCreationKeys"?: string[];
         /**
           * Optional hint text to be displayed on the new item to be added.
          */
