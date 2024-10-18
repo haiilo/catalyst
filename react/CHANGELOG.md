@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.22.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.21.4...catalyst-react-v10.22.0) (2024-10-18)
+
+
+### Features
+
+* **core:** enable tag inputs without dropdowns ([#586](https://github.com/haiilo/catalyst/issues/586)) ([e3b76e3](https://github.com/haiilo/catalyst/commit/e3b76e32ecfe4152242b9568b977d0ada42648ca))
+
 ## [10.21.4](https://github.com/haiilo/catalyst/compare/catalyst-react-v10.21.3...catalyst-react-v10.21.4) (2024-10-16)
 
 
