@@ -43,7 +43,8 @@ const CatComponents = [
   Components.CatTextarea,
   Components.CatTime,
   Components.CatToggle,
-  Components.CatTooltip
+  Components.CatTooltip,
+  Components.CatTag
 ];
 
 const CatDirectives = [

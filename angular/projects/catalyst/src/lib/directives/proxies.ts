@@ -1170,6 +1170,74 @@ export declare interface CatTabs extends Components.CatTabs {
     'errorUpdate',
     'errors',
     'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'required',
+    'requiredMarker',
+    'tagCreationChars',
+    'value'
+  ]
+})
+@Component({
+  selector: 'cat-tag',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'required',
+    'requiredMarker',
+    'tagCreationChars',
+    'value'
+  ]
+})
+export class CatTag {
+  protected el: HTMLElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+  }
+}
+
+export declare interface CatTag extends Components.CatTag {
+  /**
+   * Emitted when the value is changed.
+   */
+  catChange: EventEmitter<CustomEvent<string[]>>;
+  /**
+   * Emitted when the input received focus.
+   */
+  catFocus: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+}
+
+@ProxyCmp({
+  inputs: [
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
     'horizontal',
     'identifier',
     'label',

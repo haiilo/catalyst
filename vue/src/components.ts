@@ -389,6 +389,27 @@ export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', un
 ]);
 
 
+export const CatTag = /*@__PURE__*/ defineContainer<JSX.CatTag>('cat-tag', undefined, [
+  'requiredMarker',
+  'disabled',
+  'placeholder',
+  'hint',
+  'identifier',
+  'label',
+  'name',
+  'labelHidden',
+  'required',
+  'nativeAttributes',
+  'value',
+  'errors',
+  'errorUpdate',
+  'tagCreationChars',
+  'catChange',
+  'catFocus',
+  'catBlur'
+]);
+
+
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'requiredMarker',
   'horizontal',
