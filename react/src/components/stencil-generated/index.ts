@@ -32,6 +32,7 @@ export const CatSkeleton = /*@__PURE__*/createReactComponent<JSX.CatSkeleton, HT
 export const CatSpinner = /*@__PURE__*/createReactComponent<JSX.CatSpinner, HTMLCatSpinnerElement>('cat-spinner');
 export const CatTab = /*@__PURE__*/createReactComponent<JSX.CatTab, HTMLCatTabElement>('cat-tab');
 export const CatTabs = /*@__PURE__*/createReactComponent<JSX.CatTabs, HTMLCatTabsElement>('cat-tabs');
+export const CatTag = /*@__PURE__*/createReactComponent<JSX.CatTag, HTMLCatTagElement>('cat-tag');
 export const CatTextarea = /*@__PURE__*/createReactComponent<JSX.CatTextarea, HTMLCatTextareaElement>('cat-textarea');
 export const CatTime = /*@__PURE__*/createReactComponent<JSX.CatTime, HTMLCatTimeElement>('cat-time');
 export const CatToggle = /*@__PURE__*/createReactComponent<JSX.CatToggle, HTMLCatToggleElement>('cat-toggle');

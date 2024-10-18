@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-select',
+  selector: 'cat-select, cat-tag',
   host: {
     '(catChange)': 'handleChangeEvent($event.target.value)'
   },

@@ -1262,6 +1262,68 @@ export namespace Components {
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
+    interface CatTag {
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the select is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the select.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+         */
+        "tagCreationChars": string[];
+        /**
+          * The value of the control.
+         */
+        "value"?: string[];
+    }
     /**
      * Textarea specifies a control that allows user to write text over multiple
      * rows. Used when the expected user input is long. For shorter input, use the
@@ -1651,6 +1713,10 @@ export interface CatTabCustomEvent<T> extends CustomEvent<T> {
 export interface CatTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTabsElement;
+}
+export interface CatTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTagElement;
 }
 export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2096,6 +2162,25 @@ declare global {
         prototype: HTMLCatTabsElement;
         new (): HTMLCatTabsElement;
     };
+    interface HTMLCatTagElementEventMap {
+        "catChange": string[];
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
+    interface HTMLCatTagElement extends Components.CatTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatTagElement: {
+        prototype: HTMLCatTagElement;
+        new (): HTMLCatTagElement;
+    };
     interface HTMLCatTextareaElementEventMap {
         "catChange": string;
         "catFocus": FocusEvent;
@@ -2202,6 +2287,7 @@ declare global {
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
         "cat-tabs": HTMLCatTabsElement;
+        "cat-tag": HTMLCatTagElement;
         "cat-textarea": HTMLCatTextareaElement;
         "cat-time": HTMLCatTimeElement;
         "cat-toggle": HTMLCatToggleElement;
@@ -3464,6 +3550,80 @@ declare namespace LocalJSX {
          */
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
+    interface CatTag {
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the select is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the select.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatTagCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatTagCustomEvent<string[]>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatTagCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+         */
+        "tagCreationChars"?: string[];
+        /**
+          * The value of the control.
+         */
+        "value"?: string[];
+    }
     /**
      * Textarea specifies a control that allows user to write text over multiple
      * rows. Used when the expected user input is long. For shorter input, use the
@@ -3811,6 +3971,7 @@ declare namespace LocalJSX {
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
         "cat-tabs": CatTabs;
+        "cat-tag": CatTag;
         "cat-textarea": CatTextarea;
         "cat-time": CatTime;
         "cat-toggle": CatToggle;
@@ -3930,6 +4091,7 @@ declare module "@stencil/core" {
              * window, using tabs as a navigational element.
              */
             "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            "cat-tag": LocalJSX.CatTag & JSXBase.HTMLAttributes<HTMLCatTagElement>;
             /**
              * Textarea specifies a control that allows user to write text over multiple
              * rows. Used when the expected user input is long. For shorter input, use the

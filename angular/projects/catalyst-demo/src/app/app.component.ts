@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     datepickerDisabled: new FormControl(true)
   });
 
+  tagFormControl = new FormControl<string[]>(['tag1', 'tag2'], [Validators.required]);
+
   countryConnector = countryConnector;
 
   fields: FormlyFieldConfig[] = [
@@ -181,5 +183,9 @@ export class AppComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       panelClass: ['cat-panel']
     });
+  }
+
+  logChanges($event: any) {
+    console.log($event);
   }
 }
