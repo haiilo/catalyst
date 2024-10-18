@@ -93,6 +93,11 @@ export class CatTag {
   @Prop({ mutable: true }) value?: string[];
 
   /**
+   * Whether the input should show a clear button.
+   */
+  @Prop() clearable = false;
+
+  /**
    * The validation errors for this input. Will render a hint under the input
    * with the translated error message(s) `error.${key}`. If an object is
    * passed, the keys will be used as error keys and the values translation
@@ -150,7 +155,6 @@ export class CatTag {
 
   @Watch('errors')
   onErrorsChanged(value?: boolean | string[] | ErrorMap) {
-    console.log('error changed', value, this.errors);
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
@@ -210,19 +214,34 @@ export class CatTag {
               )}
             </div>
           ))}
-          <input
-            {...this.nativeAttributes}
-            part="input"
-            id={`tags-${this.id}-input`}
-            class="tags-input"
-            role="combobox"
-            ref={el => (this.input = el)}
-            aria-invalid={this.invalid ? 'true' : undefined}
-            aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
-            onInput={this.onInput.bind(this)}
-            placeholder={this.placeholder}
-            disabled={this.disabled}
-          ></input>
+          <div class="input-inner-wrapper">
+            <input
+              {...this.nativeAttributes}
+              part="input"
+              id={`tags-${this.id}-input`}
+              class="tags-input"
+              role="combobox"
+              ref={el => (this.input = el)}
+              aria-invalid={this.invalid ? 'true' : undefined}
+              aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+              onInput={this.onInput.bind(this)}
+              placeholder={this.placeholder}
+              disabled={this.disabled}
+            ></input>
+            {this.clearable && !this.disabled && (this.value?.length ?? 0) > 0 && (
+              <cat-button
+                class="clearable"
+                icon="$cat:input-close"
+                icon-only="true"
+                size="s"
+                variant="text"
+                a11y-label={i18n.t('input.clear')}
+                onClick={this.clear.bind(this)}
+                data-dropdown-no-close
+              ></cat-button>
+            )}
+            {this.invalid && <cat-icon icon="$cat:input-error" class="icon-suffix cat-text-danger" size="l"></cat-icon>}
+          </div>
         </div>
         {this.hasHint && (
           <CatFormHint
@@ -242,11 +261,18 @@ export class CatTag {
     ].filter(value => !!value && !this.value?.includes(value));
     if (currentValue.length > 1) {
       this.value = [...(this.value ?? []), ...currentValue];
-      console.log(this.input?.value, this.value);
       this.catChange.emit(this.value);
       if (this.input) {
         this.input.value = '';
       }
+    }
+  }
+
+  private clear() {
+    this.value = [];
+    this.catChange.emit(this.value);
+    if (this.input) {
+      this.input.value = '';
     }
   }
 
@@ -279,6 +305,9 @@ export class CatTag {
   private createSplitRegex(delimiters: string[]): RegExp {
     // Escape special regex characters in the array
     const escapedDelimiters = delimiters.map(delimiter => delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+    // Add newline characters to the list of delimiters
+    escapedDelimiters.push('\\n', '\\r');
 
     // Join the escaped delimiters to create a character class
     const regexPattern = `[${escapedDelimiters.join('')}]`;

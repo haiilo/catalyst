@@ -120,6 +120,11 @@
   <cat-tag hint="this is a hint"><div slot="label">TEST SLOTTED LABEL</div></cat-tag>
   <cat-tag label="This is my tag select with values" [value]="['1', '2', '3']" (catChange)="logChanges($event)">
   </cat-tag>
-  <cat-tag label="Tag select with form control" [formControl]="tagFormControl" [tagCreationChars]="[' ', ',']">
+  <cat-tag
+    label="Tag select with form control"
+    [formControl]="tagFormControl"
+    [tagCreationChars]="[' ', ',']"
+    [clearable]="true"
+  >
   </cat-tag>
 </form>

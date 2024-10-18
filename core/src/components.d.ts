@@ -1264,6 +1264,10 @@ export namespace Components {
     }
     interface CatTag {
         /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
           * Whether the select is disabled.
          */
         "disabled": boolean;
@@ -3547,6 +3551,10 @@ declare namespace LocalJSX {
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
     interface CatTag {
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
         /**
           * Whether the select is disabled.
          */

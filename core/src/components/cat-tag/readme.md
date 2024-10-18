@@ -9,6 +9,7 @@
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                                       | Default      |
 | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ |
+| `clearable`        | `clearable`       | Whether the input should show a clear button.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                  | `false`      |
 | `disabled`         | `disabled`        | Whether the select is disabled.                                                                                                                                                                                                                                                                                                 | `boolean`                                                                                  | `false`      |
 | `errorUpdate`      | `error-update`    | Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.                                                                                                                             | `boolean \| number`                                                                        | `0`          |
 | `errors`           | `errors`          | The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input. | `boolean \| string[] \| undefined \| { [key: string]: any; }`                              | `undefined`  |
@@ -47,11 +48,13 @@
 ### Depends on
 
 - [cat-button](../cat-button)
+- [cat-icon](../cat-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-tag --> cat-button
+  cat-tag --> cat-icon
   cat-button --> cat-icon
   cat-button --> cat-spinner
   style cat-tag fill:#f9f,stroke:#333,stroke-width:4px

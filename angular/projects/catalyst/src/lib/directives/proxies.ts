@@ -746,14 +746,14 @@ export declare interface CatTabs extends Components.CatTabs {
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'name', 'nativeAttributes', 'placeholder', 'required', 'requiredMarker', 'tagCreationChars', 'value']
+  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'name', 'nativeAttributes', 'placeholder', 'required', 'requiredMarker', 'tagCreationChars', 'value']
 })
 @Component({
   selector: 'cat-tag',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'name', 'nativeAttributes', 'placeholder', 'required', 'requiredMarker', 'tagCreationChars', 'value'],
+  inputs: ['clearable', 'disabled', 'errorUpdate', 'errors', 'hint', 'identifier', 'label', 'labelHidden', 'name', 'nativeAttributes', 'placeholder', 'required', 'requiredMarker', 'tagCreationChars', 'value'],
 })
 export class CatTag {
   protected el: HTMLElement;

@@ -112,3 +112,12 @@ input {
     margin-left: -0.25rem;
   }
 }
+
+.icon-suffix {
+  align-self: center;
+}
+
+.input-inner-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+}
