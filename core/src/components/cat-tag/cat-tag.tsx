@@ -138,7 +138,8 @@ export class CatTag {
 
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
-    if (['Enter', ...this.tagCreationChars].includes(event.key)) {
+    const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
+    if (['Enter', ...this.tagCreationChars].includes(event.key) && isInputFocused) {
       event.preventDefault();
       if (this.input?.value.trim() && !this.value?.includes(this.input?.value.trim())) {
         this.value = [...(this.value ?? []), this.input.value.trim()];
@@ -147,7 +148,12 @@ export class CatTag {
       if (this.input) {
         this.input.value = '';
       }
-    } else if (['Backspace'].includes(event.key) && this.input?.selectionStart === 0 && (this.value?.length ?? 0) > 0) {
+    } else if (
+      ['Backspace'].includes(event.key) &&
+      this.input?.selectionStart === 0 &&
+      (this.value?.length ?? 0) > 0 &&
+      isInputFocused
+    ) {
       this.value = this.value?.slice(0, -1) ?? [];
       this.catChange.emit(this.value);
     }
