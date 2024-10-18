@@ -8,10 +8,9 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-tag',
   styleUrl: 'cat-tag.scss',
-  shadow: true,
+  shadow: true
 })
 export class CatTag {
-
   private readonly _id = `cat-input-${nextUniqueId++}`;
 
   private input?: HTMLInputElement;
@@ -37,7 +36,6 @@ export class CatTag {
   @State() tags: string[] = [];
 
   @State() errorMap?: ErrorMap;
-
 
   /**
    * Whether the label need a marker to shown if the select is required or optional.
@@ -116,8 +114,7 @@ export class CatTag {
    * Pasted values will also be split by those chars.
    * Defaults to `[' ']`.
    */
-  @Prop() tagCreationChars: string[] = [' ']
-
+  @Prop() tagCreationChars: string[] = [' '];
 
   /**
    * Emitted when the value is changed.
@@ -139,11 +136,11 @@ export class CatTag {
     if (['Enter', ...this.tagCreationChars].includes(event.key)) {
       event.preventDefault();
       if (this.input?.value.trim() && !this.value?.includes(this.input?.value.trim())) {
-        this.value = [...(this.value ?? []), this.input.value.trim()]
+        this.value = [...(this.value ?? []), this.input.value.trim()];
         this.catChange.emit(this.value);
       }
-      if(this.input) {
-        this.input.value = ''
+      if (this.input) {
+        this.input.value = '';
       }
     } else if (['Backspace'].includes(event.key) && this.input?.selectionStart === 0 && (this.value?.length ?? 0) > 0) {
       this.value = this.value?.slice(0, -1) ?? [];
@@ -153,7 +150,7 @@ export class CatTag {
 
   @Watch('errors')
   onErrorsChanged(value?: boolean | string[] | ErrorMap) {
-    console.log('error changed', value, this.errors)
+    console.log('error changed', value, this.errors);
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
@@ -175,54 +172,56 @@ export class CatTag {
   render() {
     return (
       <Host>
-        <div class={ { 'label-container': true, hidden: this.labelHidden } }>
-          { (this.hasSlottedLabel || this.label) && (
-            <label htmlFor={ `tags-${ this.id }-input` } part="label">
-                <span class="label-wrapper">
-                  { (this.hasSlottedLabel && <slot name="label"></slot>) || this.label }
-                  <div class="label-metadata">
-                    { !this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
-                      <span class="label-optional" aria-hidden="true">
-                        ({ i18n.t('input.optional') })
-                      </span>
-                    ) }
-                    { this.required && this.requiredMarker?.startsWith('required') && (
-                      <span class="label-optional" aria-hidden="true">
-                        ({ i18n.t('input.required') })
-                      </span>
-                    ) }
-                  </div>
-                </span>
+        <div class={{ 'label-container': true, hidden: this.labelHidden }}>
+          {(this.hasSlottedLabel || this.label) && (
+            <label htmlFor={`tags-${this.id}-input`} part="label">
+              <span class="label-wrapper">
+                {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+                <div class="label-metadata">
+                  {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.optional')})
+                    </span>
+                  )}
+                  {this.required && this.requiredMarker?.startsWith('required') && (
+                    <span class="label-optional" aria-hidden="true">
+                      ({i18n.t('input.required')})
+                    </span>
+                  )}
+                </div>
+              </span>
             </label>
-          ) }
+          )}
         </div>
         <div class={{ 'input-wrapper': true, 'input-disabled': this.disabled, 'input-invalid': this.invalid }}>
-          { this.value?.map(value => (
+          {this.value?.map(value => (
             <div class="tag-pill">
-              <span>{ value }</span>
-              { !this.disabled && (<cat-button
-                size="xs"
-                variant="text"
-                icon="$cat:select-clear"
-                iconOnly
-                a11yLabel={ i18n.t('select.deselect') }
-                onClick={ () => this.deselect(value) }
-                tabIndex={ -1 }
-              ></cat-button>)}
-            </div>)
-          ) }
+              <span>{value}</span>
+              {!this.disabled && (
+                <cat-button
+                  size="xs"
+                  variant="text"
+                  icon="$cat:select-clear"
+                  iconOnly
+                  a11yLabel={i18n.t('select.deselect')}
+                  onClick={() => this.deselect(value)}
+                  tabIndex={-1}
+                ></cat-button>
+              )}
+            </div>
+          ))}
           <input
-            { ...this.nativeAttributes }
+            {...this.nativeAttributes}
             part="input"
-            id={ `tags-${ this.id }-input` }
+            id={`tags-${this.id}-input`}
             class="tags-input"
             role="combobox"
-            ref={ el => (this.input = el) }
-            aria-invalid={ this.invalid ? 'true' : undefined }
-            aria-describedby={ this.hasHint ? this.id + '-hint' : undefined }
-            onInput={ this.onInput.bind(this) }
-            placeholder={ this.placeholder }
-            disabled={ this.disabled }
+            ref={el => (this.input = el)}
+            aria-invalid={this.invalid ? 'true' : undefined}
+            aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+            onInput={this.onInput.bind(this)}
+            placeholder={this.placeholder}
+            disabled={this.disabled}
           ></input>
         </div>
         {this.hasHint && (
@@ -238,16 +237,15 @@ export class CatTag {
   }
 
   private onInput() {
-    const currentValue =  [...new Set((this.input?.value?.split(this.createSplitRegex(this.tagCreationChars)) ?? []))].filter(value =>
-      !!value &&
-      !this.value?.includes(value)
-    );
+    const currentValue = [
+      ...new Set(this.input?.value?.split(this.createSplitRegex(this.tagCreationChars)) ?? [])
+    ].filter(value => !!value && !this.value?.includes(value));
     if (currentValue.length > 1) {
-      this.value = [...(this.value ?? []), ...currentValue]
+      this.value = [...(this.value ?? []), ...currentValue];
       console.log(this.input?.value, this.value);
       this.catChange.emit(this.value);
-      if(this.input) {
-        this.input.value = ''
+      if (this.input) {
+        this.input.value = '';
       }
     }
   }
@@ -259,7 +257,6 @@ export class CatTag {
   private showErrors() {
     this.errorMap = this.errorMapSrc;
   }
-
 
   private errorUpdateTimeoutId?: number;
   private showErrorsIfTimeout() {
@@ -279,11 +276,9 @@ export class CatTag {
     }
   }
 
- private createSplitRegex(delimiters: string[]): RegExp {
+  private createSplitRegex(delimiters: string[]): RegExp {
     // Escape special regex characters in the array
-    const escapedDelimiters = delimiters.map(delimiter =>
-      delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    );
+    const escapedDelimiters = delimiters.map(delimiter => delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 
     // Join the escaped delimiters to create a character class
     const regexPattern = `[${escapedDelimiters.join('')}]`;
