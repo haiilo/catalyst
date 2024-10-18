@@ -417,6 +417,7 @@ export class CatSelect {
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
+    console.log(['Enter', ' '].includes(event.key), event.key);
     if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       this.onArrowKeyDown(event);
     } else if (['Enter', ' '].includes(event.key) && isInputFocused) {
