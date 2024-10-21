@@ -318,7 +318,6 @@ export class CatTag {
     // Join the escaped delimiters to create a character class
     const regexPattern = `[${escapedDelimiters.join('')}]`;
 
-    // Return a new RegExp object with the global flag for splitting
     return new RegExp(regexPattern, 'g');
   }
 }
