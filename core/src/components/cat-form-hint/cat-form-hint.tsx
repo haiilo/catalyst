@@ -15,7 +15,7 @@ interface CatFormHintProps {
   hint?: string | string[];
   slottedHint?: HTMLSlotElement;
   class?: string;
-  errorMap?: ErrorMap;
+  errorMap?: ErrorMap | true;
 }
 
 /**

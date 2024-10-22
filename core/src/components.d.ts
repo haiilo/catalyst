@@ -339,7 +339,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -529,7 +529,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -777,7 +777,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1089,7 +1089,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1272,7 +1272,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1348,7 +1348,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1446,7 +1446,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -2601,7 +2601,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2780,7 +2780,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3027,7 +3027,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3363,7 +3363,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3560,7 +3560,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3635,7 +3635,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3732,7 +3732,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
