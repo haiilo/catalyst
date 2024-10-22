@@ -75,6 +75,11 @@ export class CatInput {
   @Prop() disabled = false;
 
   /**
+   * Displays the input in a loading state with a spinner.
+   */
+  @Prop() loading = false;
+
+  /**
    * Optional hint text(s) to be displayed with the input.
    */
   @Prop() hint?: string | string[];
@@ -352,6 +357,7 @@ export class CatInput {
                   aria-invalid={this.invalid ? 'true' : undefined}
                   aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
                 ></input>
+                {this.loading && <cat-spinner size="m"></cat-spinner>}
                 {this.clearable && !this.disabled && !this.readonly && this.value && (
                   <cat-button
                     class="clearable"
