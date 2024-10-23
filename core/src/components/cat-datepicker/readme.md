@@ -90,6 +90,7 @@ Type: `Promise<void>`
 graph TD;
   cat-datepicker --> cat-input
   cat-input --> cat-icon
+  cat-input --> cat-spinner
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner

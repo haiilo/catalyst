@@ -109,45 +109,6 @@ importers:
         specifier: ~4.6.3
         version: 4.6.4
 
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=14.0.0'
-        version: 14.2.7(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1)
-      '@angular/core':
-        specifier: '>=14.0.0'
-        version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.1
-      tslib:
-        specifier: ^2.3.0
-        version: 2.6.2
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
-        version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^6.0.0
-        version: 6.3.0(@angular/forms@14.3.0(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(@angular/platform-browser@14.3.0(@angular/animations@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8)))(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8)))(rxjs@7.8.1))(rxjs@7.8.1)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.6.2
-
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
@@ -4129,7 +4090,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -11261,7 +11222,7 @@ snapshots:
       '@babel/core': 7.24.7
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.76.1
+      webpack: 5.76.1(esbuild@0.15.5)
 
   babel-messages@6.23.0:
     dependencies:
@@ -18131,15 +18092,6 @@ snapshots:
     optionalDependencies:
       esbuild: 0.15.5
 
-  terser-webpack-plugin@5.3.10(webpack@5.76.1):
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.25
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.2
-      terser: 5.30.4
-      webpack: 5.76.1
-
   terser@5.14.2:
     dependencies:
       '@jridgewell/source-map': 0.3.6
@@ -18588,37 +18540,6 @@ snapshots:
     dependencies:
       typed-assert: 1.0.9
       webpack: 5.76.1(esbuild@0.15.5)
-
-  webpack@5.76.1:
-    dependencies:
-      '@types/eslint-scope': 3.7.7
-      '@types/estree': 0.0.51
-      '@webassemblyjs/ast': 1.11.1
-      '@webassemblyjs/wasm-edit': 1.11.1
-      '@webassemblyjs/wasm-parser': 1.11.1
-      acorn: 8.11.3
-      acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.23.0
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.16.0
-      es-module-lexer: 0.9.3
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(webpack@5.76.1)
-      watchpack: 2.4.1
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
 
   webpack@5.76.1(esbuild@0.15.5):
     dependencies:

@@ -106,6 +106,7 @@ graph TD;
   cat-date --> cat-button
   cat-date --> cat-date-inline
   cat-input --> cat-icon
+  cat-input --> cat-spinner
   cat-input --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
