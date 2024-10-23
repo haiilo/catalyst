@@ -94,9 +94,9 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description |
-| --------- | ----------- |
-| `"label"` |             |
+| Part      | Description               |
+| --------- | ------------------------- |
+| `"label"` | The native label element. |
 
 
 ## Dependencies

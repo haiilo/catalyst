@@ -1262,6 +1262,9 @@ export namespace Components {
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface CatTag {
         /**
           * Whether the input should show a clear button.
@@ -2167,6 +2170,9 @@ declare global {
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface HTMLCatTagElement extends Components.CatTag, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3550,6 +3556,9 @@ declare namespace LocalJSX {
          */
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface CatTag {
         /**
           * Whether the input should show a clear button.
@@ -4091,6 +4100,9 @@ declare module "@stencil/core" {
              * window, using tabs as a navigational element.
              */
             "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            /**
+             * An input that allows multiple values to be entered as tags.
+             */
             "cat-tag": LocalJSX.CatTag & JSXBase.HTMLAttributes<HTMLCatTagElement>;
             /**
              * Textarea specifies a control that allows user to write text over multiple

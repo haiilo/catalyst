@@ -260,7 +260,7 @@ export class CatInput {
   }
 
   @Watch('errors')
-  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: any, update: boolean = true) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {

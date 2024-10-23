@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+An input that allows multiple values to be entered as tags.
+
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                                       | Default      |
@@ -37,10 +41,10 @@
 
 ## Shadow Parts
 
-| Part      | Description |
-| --------- | ----------- |
-| `"input"` |             |
-| `"label"` |             |
+| Part      | Description               |
+| --------- | ------------------------- |
+| `"input"` | The native input element. |
+| `"label"` | The native label element. |
 
 
 ## Dependencies

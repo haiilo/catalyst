@@ -5,6 +5,12 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
+/**
+ * An input that allows multiple values to be entered as tags.
+ *
+ * @part input - The native input element.
+ * @part label - The native label element.
+ */
 @Component({
   tag: 'cat-tag',
   styleUrl: 'cat-tag.scss',
@@ -161,7 +167,7 @@ export class CatTag {
   }
 
   @Watch('errors')
-  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: any, update: boolean = true) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
