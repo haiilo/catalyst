@@ -813,6 +813,10 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
+          * Displays the input in a loading state with a spinner.
+         */
+        "loading": boolean;
+        /**
           * Adds a Cleave.js mask to the input.
           * @param options The Cleave.js options.
          */
@@ -3068,6 +3072,10 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Displays the input in a loading state with a spinner.
+         */
+        "loading"?: boolean;
         /**
           * A maximum value for numeric values.
          */

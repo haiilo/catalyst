@@ -27,6 +27,7 @@ including passwords and numbers.
 | `identifier`       | `identifier`      | A unique identifier for the input.                                                                                                                                                                                                                                                                                              | `string \| undefined`                                                                                       | `undefined`  |
 | `label`            | `label`           | The label for the input.                                                                                                                                                                                                                                                                                                        | `string`                                                                                                    | `''`         |
 | `labelHidden`      | `label-hidden`    | Visually hide the label, but still show it to assistive technologies like screen readers.                                                                                                                                                                                                                                       | `boolean`                                                                                                   | `false`      |
+| `loading`          | `loading`         | Displays the input in a loading state with a spinner.                                                                                                                                                                                                                                                                           | `boolean`                                                                                                   | `false`      |
 | `max`              | `max`             | A maximum value for numeric values.                                                                                                                                                                                                                                                                                             | `number \| string \| undefined`                                                                             | `undefined`  |
 | `maxLength`        | `max-length`      | A maximum length (number of characters) for textual values.                                                                                                                                                                                                                                                                     | `number \| undefined`                                                                                       | `undefined`  |
 | `min`              | `min`             | A minimum value for numeric values.                                                                                                                                                                                                                                                                                             | `number \| string \| undefined`                                                                             | `undefined`  |
@@ -141,12 +142,14 @@ Type: `Promise<void>`
 
 - [cat-icon](../cat-icon)
 - [cat-button](../cat-button)
+- [cat-spinner](../cat-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-input --> cat-icon
   cat-input --> cat-button
+  cat-input --> cat-spinner
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-date --> cat-input

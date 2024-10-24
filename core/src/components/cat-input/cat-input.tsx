@@ -75,6 +75,11 @@ export class CatInput {
   @Prop() disabled = false;
 
   /**
+   * Displays the input in a loading state with a spinner.
+   */
+  @Prop() loading = false;
+
+  /**
    * Optional hint text(s) to be displayed with the input.
    */
   @Prop() hint?: string | string[];
@@ -379,6 +384,7 @@ export class CatInput {
                   ></cat-button>
                 )}
               </div>
+              {this.loading && <cat-spinner size="m" class="icon-loading"></cat-spinner>}
               {!this.invalid && this.icon && this.iconRight && (
                 <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
               )}
