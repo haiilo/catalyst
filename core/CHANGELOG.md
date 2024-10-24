@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.22.1...catalyst-core-v10.23.0) (2024-10-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.22.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.22.0...catalyst-core-v10.22.1) (2024-10-21)
+
+
+### Bug Fixes
+
+* **core:** remove unnecessary comment ([#588](https://github.com/haiilo/catalyst/issues/588)) ([8d7fd10](https://github.com/haiilo/catalyst/commit/8d7fd109a97106e87ebfa72c30e9e4f23cf452c1))
+
 ## [10.22.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.4...catalyst-core-v10.22.0) (2024-10-18)
 
 
