@@ -102,7 +102,6 @@ export class CatNotificationService {
       }
     }
 
-    // Add event listener for custom event CatNotificationClose
     node.addEventListener('cat-close', event => {
       const { detail } = (event as CustomEvent) || {};
       ref.toast?.hideToast(detail);
