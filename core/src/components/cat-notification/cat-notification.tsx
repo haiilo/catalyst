@@ -4,9 +4,11 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 interface ToastRef {
   toast?: {
     showToast: () => void;
-    hideToast: () => void;
+    hideToast: (result?: any) => void;
   };
 }
+
+type ToastResultRef = ToastRef & { result?: any };
 
 export interface ToastOptions {
   /** The appearance mode of the notification. (Default: `dark`) */
@@ -27,8 +29,8 @@ export interface ToastOptions {
   onAction: (toast: ToastRef) => void;
   /** Callback executed when the notification is clicked. Receives a reference to the notification as first argument. */
   onClick: (toast: ToastRef) => void;
-  /** Callback executed when the notification is dismissed. Receives a reference to the notification as first argument. */
-  onDismiss: (toast: ToastRef) => void;
+  /** Callback executed when the notification is dismissed. Receives a reference to the notification as first argument and an optional result as second argument. */
+  onDismiss: (toast: ToastRef, result?: any) => void;
 }
 
 /**
@@ -49,17 +51,23 @@ export class CatNotificationService {
     return CatNotificationService.instance;
   }
 
-  show(content: string | Node, options?: Partial<ToastOptions>): () => void {
-    const ref: ToastRef = {};
+  show(content: string | Node, options?: Partial<ToastOptions>): (result?: any) => void {
+    const ref: ToastResultRef = {};
     const toastContent = this.getNode(content, ref, options);
     const toastOptions = this.getOptions(toastContent, ref, options);
     const toast = Toastify(toastOptions);
-    ref.toast = toast;
-    toast.showToast();
-    return () => toast.hideToast();
+    ref.toast = {
+      showToast: () => toast.showToast(),
+      hideToast: (result?: any) => {
+        ref.result = result;
+        toast.hideToast();
+      }
+    };
+    ref.toast.showToast();
+    return (result?: any) => ref.toast?.hideToast(result);
   }
 
-  private getNode(content: string | Node, ref: ToastRef, options?: Partial<ToastOptions>): HTMLElement {
+  private getNode(content: string | Node, ref: ToastResultRef, options?: Partial<ToastOptions>): HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `<div class="cat-toastify-wrapper">
       ${options?.icon ? `<cat-icon class="cat-toastify-icon" icon="${options.icon}" size="l"></cat-icon>` : ''}
@@ -94,10 +102,15 @@ export class CatNotificationService {
       }
     }
 
+    node.addEventListener('cat-close', event => {
+      const { detail } = (event as CustomEvent) || {};
+      ref.toast?.hideToast(detail);
+    });
+
     return node;
   }
 
-  private getOptions(node: Node, ref: ToastRef, options?: Partial<ToastOptions>): Options {
+  private getOptions(node: Node, ref: ToastResultRef, options?: Partial<ToastOptions>): Options {
     const [gravity, position] = (options?.placement?.split('-') ?? ['bottom', 'left']) as [
       Options['gravity'],
       Options['position']
@@ -112,7 +125,10 @@ export class CatNotificationService {
       className: options?.mode === 'light' ? 'cat-toastify' : 'cat-toastify cat-toastify-dark',
       stopOnFocus: true,
       onClick: () => options?.onClick?.(ref),
-      callback: () => options?.onDismiss?.(ref),
+      callback: () => {
+        const { toast, result } = ref;
+        options?.onDismiss?.({ toast }, result);
+      },
       offset: {
         x: '1rem',
         y: '1rem'
