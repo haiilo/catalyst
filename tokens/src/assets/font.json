@@ -87,24 +87,6 @@
           "$type": "asset",
           "$value": "Lato-ThinItalic.woff2"
         }
-      },
-      "azeretMono": {
-        "name": { "$type": "asset", "$value": "Azeret Mono" },
-        "woff2Regular": {
-          "$type": "asset",
-          "$value": "AzeretMono-Regular.woff2"
-        }
-      },
-      "ss3v": {
-        "name": { "$type": "asset", "$value": "Source Sans 3" },
-        "woff": {
-          "$type": "asset",
-          "$value": "SourceSans3VF-Upright.ttf.woff"
-        },
-        "woff2": {
-          "$type": "asset",
-          "$value": "SourceSans3VF-Upright.ttf.woff2"
-        }
       }
     }
   }

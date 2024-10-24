@@ -34,9 +34,9 @@
     background-color: cat-token('color.theme.#{$theme}.bg');
     color: cat-token('color.theme.#{$theme}.fill');
     // adjust nested links
-    --cat-primary-text: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
+    --cat-primary-text: #{cat-token('color.theme.#{$theme}.fill')};
+    --cat-primary-text-hover: #{cat-token('color.theme.#{$theme}.fillHover')};
+    --cat-primary-text-active: #{cat-token('color.theme.#{$theme}.fillActive')};
     --cat-link-decoration: underline;
   }
 }

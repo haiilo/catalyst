@@ -88,7 +88,7 @@ input {
 
 :host(.cat-error) {
   .toggle {
-    background-color: cat-token('color.theme.danger.bg', 0.2);
+    background-color: color-mix(in srgb, #{cat-token('color.theme.danger.bg')} 20%, transparent);
   }
 
   :checked + .toggle {
