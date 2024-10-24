@@ -20,12 +20,14 @@ Spinners are used to indicate users that their action is being processed.
 ### Used by
 
  - [cat-button](../cat-button)
+ - [cat-input](../cat-input)
  - [cat-select](../cat-select)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-button --> cat-spinner
+  cat-input --> cat-spinner
   cat-select --> cat-spinner
   style cat-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
