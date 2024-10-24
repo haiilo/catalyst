@@ -30,7 +30,7 @@ export class CatDialogComponent implements AfterContentInit {
    * Flag to disable scrolling behavior of dialog content. Default is false. If set to true the
    * using component is responsible for not overflowing the viewport.
    */
-  @Input() disableScrolling = false;
+  @Input() noScroll = false;
 
   /**
    * Flag to disable/enable overscroll behavior.

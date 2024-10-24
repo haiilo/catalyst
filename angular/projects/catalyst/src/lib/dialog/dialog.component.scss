@@ -42,3 +42,8 @@
     transform: none;
   }
 }
+
+.cat-dialog-content.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
