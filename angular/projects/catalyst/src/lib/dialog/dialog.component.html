@@ -1,5 +1,6 @@
 <ng-content select="cat-dialog-header"></ng-content>
-<cat-scrollable *ngIf="!disableScrolling; else noScroll"
+<cat-scrollable
+  *ngIf="!disableScrolling; else noScroll"
   [noOverscroll]="noOverscroll"
   [noScrolledInit]="noScrolledInit"
   [scrolledBuffer]="scrolledBuffer"

@@ -25,7 +25,6 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
   }
 })
 export class CatDialogComponent implements AfterContentInit {
-
   /**
    * Flag to disable scrolling behavior of dialog content. Default is false. If set to true the
    * using component is responsible for not overflowing the viewport.
