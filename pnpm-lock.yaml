@@ -109,6 +109,45 @@ importers:
         specifier: ~4.6.3
         version: 4.6.4
 
+  angular/dist/catalyst:
+    dependencies:
+      '@angular/cdk':
+        specifier: '>=14.0.0'
+        version: 14.2.7(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1)
+      '@angular/core':
+        specifier: '>=14.0.0'
+        version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
+      '@haiilo/catalyst':
+        specifier: workspace:*
+        version: link:../../../core
+      '@haiilo/catalyst-tokens':
+        specifier: workspace:*
+        version: link:../../../tokens
+      loglevel:
+        specifier: 1.8.1
+        version: 1.8.1
+      rxjs:
+        specifier: ^6.5.3 || ^7.4.0
+        version: 7.8.1
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.2
+
+  angular/dist/catalyst-formly:
+    dependencies:
+      '@angular/core':
+        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
+      '@haiilo/catalyst-angular':
+        specifier: workspace:*
+        version: link:../../projects/catalyst
+      '@ngx-formly/core':
+        specifier: ^6.0.0
+        version: 6.3.0(@angular/forms@14.3.0(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(@angular/platform-browser@14.3.0(@angular/animations@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8)))(@angular/common@14.3.0(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8))(rxjs@7.8.1))(@angular/core@14.3.0(rxjs@7.8.1)(zone.js@0.11.8)))(rxjs@7.8.1))(rxjs@7.8.1)
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.2
+
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
@@ -4090,7 +4129,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}

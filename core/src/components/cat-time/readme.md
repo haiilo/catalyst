@@ -121,8 +121,8 @@ graph TD;
   cat-time --> cat-button
   cat-time --> cat-dropdown
   cat-input --> cat-icon
-  cat-input --> cat-spinner
   cat-input --> cat-button
+  cat-input --> cat-spinner
   cat-button --> cat-icon
   cat-button --> cat-spinner
   style cat-time fill:#f9f,stroke:#333,stroke-width:4px

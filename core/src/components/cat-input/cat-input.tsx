@@ -360,7 +360,6 @@ export class CatInput {
                   aria-invalid={this.invalid ? 'true' : undefined}
                   aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
                 ></input>
-                {this.loading && <cat-spinner size="m"></cat-spinner>}
                 {this.clearable && !this.disabled && !this.readonly && this.value && (
                   <cat-button
                     class="clearable"
@@ -385,6 +384,7 @@ export class CatInput {
                   ></cat-button>
                 )}
               </div>
+              {this.loading && <cat-spinner size="m" class="icon-loading"></cat-spinner>}
               {!this.invalid && this.icon && this.iconRight && (
                 <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
               )}

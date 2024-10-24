@@ -14,7 +14,7 @@ including passwords and numbers.
 ## Properties
 
 | Property           | Attribute         | Description                                                                                                                                                                                                                                                                                                                     | Type                                                                                                        | Default      |
-|--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|--------------|
+| ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------ |
 | `autoComplete`     | `auto-complete`   | Hint for form autofill feature.                                                                                                                                                                                                                                                                                                 | `string \| undefined`                                                                                       | `undefined`  |
 | `clearable`        | `clearable`       | Whether the input should show a clear button.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                                   | `false`      |
 | `disabled`         | `disabled`        | Whether the input is disabled.                                                                                                                                                                                                                                                                                                  | `boolean`                                                                                                   | `false`      |
@@ -141,15 +141,15 @@ Type: `Promise<void>`
 ### Depends on
 
 - [cat-icon](../cat-icon)
-- [cat-spinner](../cat-spinner)
 - [cat-button](../cat-button)
+- [cat-spinner](../cat-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-input --> cat-icon
-  cat-input --> cat-spinner
   cat-input --> cat-button
+  cat-input --> cat-spinner
   cat-button --> cat-icon
   cat-button --> cat-spinner
   cat-date --> cat-input
