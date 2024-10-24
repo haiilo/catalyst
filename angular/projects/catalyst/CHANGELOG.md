@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.23.0...catalyst-angular-v10.24.0) (2024-10-24)
+
+
+### Features
+
+* **core:** add input loading indicator ([#597](https://github.com/haiilo/catalyst/issues/597)) ([d1c956b](https://github.com/haiilo/catalyst/commit/d1c956b8a6dec02f2057820ef02be0c354b12f22))
+
+
+### Bug Fixes
+
+* **angular:** fix height of content if dialog gets a fixed height ([#594](https://github.com/haiilo/catalyst/issues/594)) ([6afbe1d](https://github.com/haiilo/catalyst/commit/6afbe1d11a510b614c4e3b84e1a0cb4ee07803bd))
+* **core:** avoid endless loop on input error handling ([#591](https://github.com/haiilo/catalyst/issues/591)) ([6c2d191](https://github.com/haiilo/catalyst/commit/6c2d19119131c7d0ccaeb2bad0cbe7a1a1b81a9c))
+
 ## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.22.1...catalyst-angular-v10.23.0) (2024-10-23)
 
 

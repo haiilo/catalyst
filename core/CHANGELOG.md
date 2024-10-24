@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.23.0...catalyst-core-v10.24.0) (2024-10-24)
+
+
+### Features
+
+* **core:** add ability to close toasts via event incl. a result ([#596](https://github.com/haiilo/catalyst/issues/596)) ([84db69d](https://github.com/haiilo/catalyst/commit/84db69d0007756eded87c22ac7a5a22f042d49f8))
+* **core:** add input loading indicator ([#597](https://github.com/haiilo/catalyst/issues/597)) ([d1c956b](https://github.com/haiilo/catalyst/commit/d1c956b8a6dec02f2057820ef02be0c354b12f22))
+
+
+### Bug Fixes
+
+* **core:** avoid endless loop on input error handling ([#591](https://github.com/haiilo/catalyst/issues/591)) ([6c2d191](https://github.com/haiilo/catalyst/commit/6c2d19119131c7d0ccaeb2bad0cbe7a1a1b81a9c))
+* **core:** fix small styling issues in toasst notifications ([5568011](https://github.com/haiilo/catalyst/commit/55680116c8798c3997d1dfc7273f276de0b442b4))
+
 ## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.22.1...catalyst-core-v10.23.0) (2024-10-23)
 
 
