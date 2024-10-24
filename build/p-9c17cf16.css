@@ -1777,7 +1777,7 @@ nav .cat-nav-head {
   gap: 0.875rem 1rem;
 }
 
-cat-toastify-inner {
+.cat-toastify-inner {
   flex: 1 1 auto;
 }
 
