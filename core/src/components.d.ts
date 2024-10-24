@@ -339,7 +339,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -529,7 +529,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -777,7 +777,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1089,7 +1089,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1262,6 +1262,9 @@ export namespace Components {
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface CatTag {
         /**
           * Whether the input should show a clear button.
@@ -1272,7 +1275,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1348,7 +1351,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1446,7 +1449,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -2167,6 +2170,9 @@ declare global {
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface HTMLCatTagElement extends Components.CatTag, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2601,7 +2607,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2780,7 +2786,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3027,7 +3033,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3363,7 +3369,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3550,6 +3556,9 @@ declare namespace LocalJSX {
          */
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
     interface CatTag {
         /**
           * Whether the input should show a clear button.
@@ -3560,7 +3569,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3635,7 +3644,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3732,7 +3741,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -4091,6 +4100,9 @@ declare module "@stencil/core" {
              * window, using tabs as a navigational element.
              */
             "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            /**
+             * An input that allows multiple values to be entered as tags.
+             */
             "cat-tag": LocalJSX.CatTag & JSXBase.HTMLAttributes<HTMLCatTagElement>;
             /**
              * Textarea specifies a control that allows user to write text over multiple
