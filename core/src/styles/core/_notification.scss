@@ -12,6 +12,7 @@
   max-width: 400px;
   cursor: unset;
   @include cat-elevation(4);
+  overflow: hidden;
 
   &.cat-toastify-dark {
     --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
@@ -44,4 +45,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.875rem 1rem;
+}
+
+cat-toastify-inner {
+  flex: 1 1 auto;
 }

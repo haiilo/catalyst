@@ -8,6 +8,8 @@ let nextUniqueId = 0;
 
 /**
  * An inline date picker component to select a date.
+ *
+ * @part label - The native label element.
  */
 @Component({
   tag: 'cat-date-inline',

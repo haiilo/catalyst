@@ -5,6 +5,12 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
+/**
+ * An input that allows multiple values to be entered as tags.
+ *
+ * @part input - The native input element.
+ * @part label - The native label element.
+ */
 @Component({
   tag: 'cat-tag',
   styleUrl: 'cat-tag.scss',
@@ -12,30 +18,22 @@ let nextUniqueId = 0;
 })
 export class CatTag {
   private readonly _id = `cat-input-${nextUniqueId++}`;
-
-  private input?: HTMLInputElement;
-  private errorMapSrc?: ErrorMap;
-
   private get id() {
     return this.identifier || this._id;
   }
 
-  private get invalid() {
-    return !!Object.keys(this.errorMap || {}).length;
-  }
-
-  private get hasHint() {
-    return !!this.hint || this.invalid;
-  }
+  private input!: HTMLInputElement;
+  private errorMapSrc?: ErrorMap | true;
 
   @Element() hostElement!: HTMLElement;
 
   @State() hasSlottedLabel = false;
+
   @State() hasSlottedHint = false;
 
   @State() tags: string[] = [];
 
-  @State() errorMap?: ErrorMap;
+  @State() errorMap?: ErrorMap | true;
 
   /**
    * Whether the label need a marker to shown if the select is required or optional.
@@ -110,7 +108,7 @@ export class CatTag {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -136,6 +134,15 @@ export class CatTag {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.onErrorsChanged(this.errors, undefined, false);
+  }
+
+  componentWillRender(): void {
+    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
+    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
   @Listen('keydown')
   onKeyDown(event: KeyboardEvent): void {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
@@ -160,23 +167,17 @@ export class CatTag {
   }
 
   @Watch('errors')
-  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-          ? {}
-          : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      this.errorMapSrc = Array.isArray(newValue)
+        ? (newValue as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
+        : newValue || undefined;
+      if (update) {
+        this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      }
     }
-  }
-
-  componentWillRender(): void {
-    this.onErrorsChanged(this.errors);
-    this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
-    this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
   render() {
@@ -227,7 +228,7 @@ export class CatTag {
               id={`tags-${this.id}-input`}
               class="tags-input"
               role="combobox"
-              ref={el => (this.input = el)}
+              ref={el => (this.input = el as HTMLInputElement)}
               aria-invalid={this.invalid ? 'true' : undefined}
               aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
               onInput={this.onInput.bind(this)}
@@ -259,6 +260,14 @@ export class CatTag {
         )}
       </Host>
     );
+  }
+
+  private get hasHint() {
+    return !!this.hint || this.invalid;
+  }
+
+  private get invalid() {
+    return this.errorMap === true || !!Object.keys(this.errorMap || {}).length;
   }
 
   private onInput() {

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.22.1...catalyst-angular-v10.23.0) (2024-10-23)
+
+
+### Features
+
+* **angular:** add no scroll input to dialog component ([#592](https://github.com/haiilo/catalyst/issues/592)) ([aa10da3](https://github.com/haiilo/catalyst/commit/aa10da36b79130027d7e564afd20c527a373fe2b))
+
 ## [10.22.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.22.0...catalyst-angular-v10.22.1) (2024-10-21)
 
 

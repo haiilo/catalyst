@@ -28,7 +28,7 @@ export class CatTextarea {
   }
 
   private textarea!: HTMLTextAreaElement;
-  private errorMapSrc?: ErrorMap;
+  private errorMapSrc?: ErrorMap | true;
 
   @Element() hostElement!: HTMLElement;
 
@@ -36,7 +36,7 @@ export class CatTextarea {
 
   @State() hasSlottedHint = false;
 
-  @State() errorMap?: ErrorMap;
+  @State() errorMap?: ErrorMap | true;
 
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
@@ -126,7 +126,7 @@ export class CatTextarea {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -150,8 +150,11 @@ export class CatTextarea {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.onErrorsChanged(this.errors, undefined, false);
+  }
+
   componentWillRender(): void {
-    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
@@ -191,16 +194,16 @@ export class CatTextarea {
   }
 
   @Watch('errors')
-  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-          ? {}
-          : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      this.errorMapSrc = Array.isArray(newValue)
+        ? (newValue as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
+        : newValue || undefined;
+      if (update) {
+        this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      }
     }
   }
 
@@ -296,7 +299,7 @@ export class CatTextarea {
   }
 
   private get invalid() {
-    return !!Object.keys(this.errorMap || {}).length;
+    return this.errorMap === true || !!Object.keys(this.errorMap || {}).length;
   }
 
   private onInput() {
