@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.0...catalyst-core-v10.24.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **core:** fix notification alignment due to CSS typo ([156b86a](https://github.com/haiilo/catalyst/commit/156b86a0d9e93679b95280cd0c3f71cb201b199a))
+
 ## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.23.0...catalyst-core-v10.24.0) (2024-10-24)
 
 
