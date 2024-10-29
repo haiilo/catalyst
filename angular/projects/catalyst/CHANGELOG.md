@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.0...catalyst-angular-v10.24.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **angular:** fix no scroll template variable for dialogs ([7616530](https://github.com/haiilo/catalyst/commit/76165302f5e142514a72d7e3c55a12e047cec26a))
+
 ## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.23.0...catalyst-angular-v10.24.0) (2024-10-24)
 
 
