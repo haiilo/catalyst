@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.24.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.1...catalyst-angular-v10.24.2) (2024-10-29)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
 ## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.0...catalyst-angular-v10.24.1) (2024-10-29)
 
 

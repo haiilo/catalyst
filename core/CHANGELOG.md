@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.24.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.1...catalyst-core-v10.24.2) (2024-10-29)
+
+
+### Bug Fixes
+
+* **angular:** provide fix for missing hint and missing detection ([#599](https://github.com/haiilo/catalyst/issues/599)) ([2c0c41b](https://github.com/haiilo/catalyst/commit/2c0c41b0a7ce3f3ecd108b3f266e0e1c751e2b4b))
+* **core:** fix linting errors on any type ([#600](https://github.com/haiilo/catalyst/issues/600)) ([debcc0a](https://github.com/haiilo/catalyst/commit/debcc0a8ae5e5115187dbc6a90912d381b4ad8ec))
+
 ## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.0...catalyst-core-v10.24.1) (2024-10-29)
 
 
