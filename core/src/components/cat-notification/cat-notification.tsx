@@ -1,14 +1,17 @@
 import Toastify, { Options } from 'toastify-js';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ToastResult = any;
+
 interface ToastRef {
   toast?: {
     showToast: () => void;
-    hideToast: (result?: any) => void;
+    hideToast: (result?: ToastResult) => void;
   };
 }
 
-type ToastResultRef = ToastRef & { result?: any };
+type ToastResultRef = ToastRef & { result?: ToastResult };
 
 export interface ToastOptions {
   /** The appearance mode of the notification. (Default: `dark`) */
@@ -30,7 +33,7 @@ export interface ToastOptions {
   /** Callback executed when the notification is clicked. Receives a reference to the notification as first argument. */
   onClick: (toast: ToastRef) => void;
   /** Callback executed when the notification is dismissed. Receives a reference to the notification as first argument and an optional result as second argument. */
-  onDismiss: (toast: ToastRef, result?: any) => void;
+  onDismiss: (toast: ToastRef, result?: ToastResult) => void;
 }
 
 /**
@@ -51,20 +54,20 @@ export class CatNotificationService {
     return CatNotificationService.instance;
   }
 
-  show(content: string | Node, options?: Partial<ToastOptions>): (result?: any) => void {
+  show(content: string | Node, options?: Partial<ToastOptions>): (result?: ToastResult) => void {
     const ref: ToastResultRef = {};
     const toastContent = this.getNode(content, ref, options);
     const toastOptions = this.getOptions(toastContent, ref, options);
     const toast = Toastify(toastOptions);
     ref.toast = {
       showToast: () => toast.showToast(),
-      hideToast: (result?: any) => {
+      hideToast: (result?: ToastResult) => {
         ref.result = result;
         toast.hideToast();
       }
     };
     ref.toast.showToast();
-    return (result?: any) => ref.toast?.hideToast(result);
+    return (result?: ToastResult) => ref.toast?.hideToast(result);
   }
 
   private getNode(content: string | Node, ref: ToastResultRef, options?: Partial<ToastOptions>): HTMLElement {
