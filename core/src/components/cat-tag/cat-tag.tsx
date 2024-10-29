@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, Event, EventEmitter, Listen, Element, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
@@ -263,7 +263,7 @@ export class CatTag {
   }
 
   private get hasHint() {
-    return !!this.hint || this.invalid;
+    return !!this.hint || !!this.hasSlottedHint || this.invalid;
   }
 
   private get invalid() {
@@ -293,6 +293,7 @@ export class CatTag {
 
   private deselect(value: string) {
     this.value = this.value?.filter(element => element !== value);
+    this.catChange.emit(this.value);
   }
 
   private showErrors() {
