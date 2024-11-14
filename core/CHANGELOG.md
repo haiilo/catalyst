@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.24.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.2...catalyst-core-v10.24.3) (2024-11-14)
+
+
+### Bug Fixes
+
+* **core:** do not delay dropdown focus trap deactivation ([#603](https://github.com/haiilo/catalyst/issues/603)) ([dcd6198](https://github.com/haiilo/catalyst/commit/dcd61986005640f08494833dedd9420605e526b8))
+
 ## [10.24.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.1...catalyst-core-v10.24.2) (2024-10-29)
 
 
