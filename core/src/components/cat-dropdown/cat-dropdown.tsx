@@ -182,6 +182,7 @@ export class CatDropdown {
     }
 
     this.isOpen = null;
+    this.trap?.deactivate();
     this.content.classList.remove('show');
     // give CSS transition time to apply
     setTimeout(() => {
@@ -189,7 +190,6 @@ export class CatDropdown {
       this.content.classList.remove('show');
       this.content.style.display = '';
       this.trigger?.setAttribute('aria-expanded', 'false');
-      this.trap?.deactivate();
       this.catClose.emit();
     }, timeTransitionS);
   }
