@@ -404,6 +404,7 @@ export const CatTag = /*@__PURE__*/ defineContainer<JSX.CatTag>('cat-tag', undef
   'errors',
   'errorUpdate',
   'tagCreationChars',
+  'addOnBlur',
   'catChange',
   'catFocus',
   'catBlur'

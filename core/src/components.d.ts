@@ -1271,6 +1271,10 @@ export namespace Components {
      */
     interface CatTag {
         /**
+          * Whether the catChange event will be emitted when the input is blurred.
+         */
+        "addOnBlur": boolean;
+        /**
           * Whether the input should show a clear button.
          */
         "clearable": boolean;
@@ -3568,6 +3572,10 @@ declare namespace LocalJSX {
      * An input that allows multiple values to be entered as tags.
      */
     interface CatTag {
+        /**
+          * Whether the catChange event will be emitted when the input is blurred.
+         */
+        "addOnBlur"?: boolean;
         /**
           * Whether the input should show a clear button.
          */
