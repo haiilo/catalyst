@@ -284,7 +284,7 @@ export class CatTag {
   }
 
   private onBlur() {
-    if(this.addOnBlur) {
+    if (this.addOnBlur) {
       this.addInputValue();
     }
   }
