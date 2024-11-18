@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.3...catalyst-angular-v10.25.0) (2024-11-18)
+
+
+### Features
+
+* **core:** emit catChange on blur for cat-tag ([#605](https://github.com/haiilo/catalyst/issues/605)) ([56045d2](https://github.com/haiilo/catalyst/commit/56045d218b8753fc80162ed98c44611f1dd25e39))
+
 ## [10.24.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.2...catalyst-angular-v10.24.3) (2024-11-14)
 
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.3...catalyst-core-v10.25.0) (2024-11-18)
+
+
+### Features
+
+* **core:** emit catChange on blur for cat-tag ([#605](https://github.com/haiilo/catalyst/issues/605)) ([56045d2](https://github.com/haiilo/catalyst/commit/56045d218b8753fc80162ed98c44611f1dd25e39))
+* **core:** notifications on mobile ([#606](https://github.com/haiilo/catalyst/issues/606)) ([46f982f](https://github.com/haiilo/catalyst/commit/46f982f71e1adb482e1bec1c9d83d346887e616a))
+
 ## [10.24.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.2...catalyst-core-v10.24.3) (2024-11-14)
 
 
