@@ -1,6 +1,8 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+$mobile-side-padding: 0.5rem;
+
 .cat-toastify {
   display: flex;
   border-radius: cat-border-radius('l');
@@ -23,6 +25,16 @@
     --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
     --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
     background: cat-token('color.ui.background.surfaceInverted');
+  }
+
+  @include until('xs') {
+    transform: translate($mobile-side-padding, -1rem) !important;
+    width: calc(100% - #{$mobile-side-padding * 2});
+    max-width: calc(100% - #{$mobile-side-padding * 2});
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
   }
 }
 
