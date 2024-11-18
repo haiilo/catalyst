@@ -1755,6 +1755,17 @@ nav .cat-nav-head {
   --cat-secondary-text-active: 255, 255, 255;
   background: #1b1f26;
 }
+@media screen and (max-width: 539px) {
+  .cat-toastify {
+    transform: translate(0.5rem, -1rem) !important;
+    width: calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+  }
+}
 
 .cat-toastify-wrapper {
   display: flex;
