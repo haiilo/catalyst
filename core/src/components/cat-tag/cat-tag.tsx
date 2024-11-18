@@ -120,7 +120,7 @@ export class CatTag {
   @Prop() tagCreationChars: string[] = [' '];
 
   /**
-   * Whether the catChange event will be emitted when the input is blurred.
+   * Whether new tag is added when the input is blurred.
    */
   @Prop() addOnBlur = false;
 

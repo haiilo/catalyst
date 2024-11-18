@@ -1271,7 +1271,7 @@ export namespace Components {
      */
     interface CatTag {
         /**
-          * Whether the catChange event will be emitted when the input is blurred.
+          * Whether new tag is added when the input is blurred.
          */
         "addOnBlur": boolean;
         /**
@@ -3573,7 +3573,7 @@ declare namespace LocalJSX {
      */
     interface CatTag {
         /**
-          * Whether the catChange event will be emitted when the input is blurred.
+          * Whether new tag is added when the input is blurred.
          */
         "addOnBlur"?: boolean;
         /**
