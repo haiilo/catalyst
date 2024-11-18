@@ -1164,6 +1164,7 @@ export declare interface CatTabs extends Components.CatTabs {
 
 @ProxyCmp({
   inputs: [
+    'addOnBlur',
     'clearable',
     'disabled',
     'errorUpdate',
@@ -1187,6 +1188,7 @@ export declare interface CatTabs extends Components.CatTabs {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'addOnBlur',
     'clearable',
     'disabled',
     'errorUpdate',

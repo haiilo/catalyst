@@ -120,6 +120,11 @@ export class CatTag {
   @Prop() tagCreationChars: string[] = [' '];
 
   /**
+   * Whether new tag is added when the input is blurred.
+   */
+  @Prop() addOnBlur = false;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string[]>;
@@ -148,13 +153,7 @@ export class CatTag {
     const isInputFocused = this.hostElement.shadowRoot?.activeElement === this.input;
     if (['Enter', ...this.tagCreationChars].includes(event.key) && isInputFocused) {
       event.preventDefault();
-      if (this.input?.value.trim() && !this.value?.includes(this.input?.value.trim())) {
-        this.value = [...(this.value ?? []), this.input.value.trim()];
-        this.catChange.emit(this.value);
-      }
-      if (this.input) {
-        this.input.value = '';
-      }
+      this.addInputValue();
     } else if (
       ['Backspace'].includes(event.key) &&
       this.input?.selectionStart === 0 &&
@@ -232,6 +231,7 @@ export class CatTag {
               aria-invalid={this.invalid ? 'true' : undefined}
               aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
               onInput={this.onInput.bind(this)}
+              onBlur={this.onBlur.bind(this)}
               placeholder={this.placeholder}
               disabled={this.disabled}
             ></input>
@@ -280,6 +280,23 @@ export class CatTag {
       if (this.input) {
         this.input.value = '';
       }
+    }
+  }
+
+  private onBlur() {
+    if (this.addOnBlur) {
+      this.addInputValue();
+    }
+  }
+
+  private addInputValue() {
+    const inputValue = this.input?.value.trim();
+    if (inputValue && !this.value?.includes(inputValue)) {
+      this.value = [...(this.value ?? []), inputValue];
+      this.catChange.emit(this.value);
+    }
+    if (this.input) {
+      this.input.value = '';
     }
   }
 
