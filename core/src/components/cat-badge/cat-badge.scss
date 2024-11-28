@@ -34,6 +34,7 @@ $-paddings: (
   border-radius: cat-border-radius('m');
   text-decoration: none;
   line-height: 1.5;
+  flex-shrink: 0;
 
   slot {
     display: inline-block;
