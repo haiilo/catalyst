@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.0...catalyst-core-v10.25.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** submit buttons leads to refresh in firefox ([#608](https://github.com/haiilo/catalyst/issues/608)) ([1a1f600](https://github.com/haiilo/catalyst/commit/1a1f600c24a667a02d8497a13c38d32b5de5d176))
+
 ## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.3...catalyst-core-v10.25.0) (2024-11-18)
 
 
