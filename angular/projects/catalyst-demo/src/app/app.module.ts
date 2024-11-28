@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CatalystModule } from '@haiilo/catalyst-angular';
 import { FormlyModule } from '@ngx-formly/core';
@@ -14,7 +14,8 @@ import { DialogComponent } from './dialog/dialog.component';
     FormlyModule.forRoot(),
     CatalystModule.forRoot(),
     CatalystFormlyModule,
-    CatalystModule
+    CatalystModule,
+    FormsModule
   ],
   declarations: [AppComponent, DialogComponent],
   bootstrap: [AppComponent]

@@ -199,7 +199,10 @@ export class CatButton {
       event.stopImmediatePropagation();
     } else if (this.submit) {
       const form = findClosest('form', this.hostElement);
-      form?.dispatchEvent(new SubmitEvent('submit', { submitter: this.button }));
+      const event = new SubmitEvent('submit', { submitter: this.button, cancelable: true });
+      form?.dispatchEvent(event);
+      event.stopPropagation();
+      event.preventDefault();
     }
   }
 
