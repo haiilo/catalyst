@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.1...catalyst-core-v10.25.2) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** don't shrink badges ([2717359](https://github.com/haiilo/catalyst/commit/271735967168bf30355192e186c34b5d1c3277e7))
+* **core:** submit button should not cause a reload in firefox ([#611](https://github.com/haiilo/catalyst/issues/611)) ([ecf2d15](https://github.com/haiilo/catalyst/commit/ecf2d155df12b4db2769e7f55ee7225c2bf6f04e))
+
 ## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.0...catalyst-core-v10.25.1) (2024-11-28)
 
 
