@@ -199,10 +199,10 @@ export class CatButton {
       event.stopImmediatePropagation();
     } else if (this.submit) {
       const form = findClosest('form', this.hostElement);
-      const event = new SubmitEvent('submit', { submitter: this.button, cancelable: true });
-      form?.dispatchEvent(event);
-      event.stopPropagation();
-      event.preventDefault();
+      if (form && form instanceof HTMLFormElement) {
+        // we can't provide a submitter as it is hidden in the shadow DOM
+        form.requestSubmit();
+      }
     }
   }
 
