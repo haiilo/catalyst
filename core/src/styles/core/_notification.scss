@@ -17,13 +17,13 @@ $mobile-side-padding: 0.5rem;
   overflow: hidden;
 
   &.cat-toastify-dark {
-    --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
-    --cat-primary-text: #{cat-token('color.theme.primaryInverted.text', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.textHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.textActive', $wrap: false)};
-    --cat-secondary-text: #{cat-token('color.theme.secondaryInverted.text', $wrap: false)};
-    --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
-    --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
+    --cat-font-color-base: #{cat-token('color.ui.font.baseInverted')};
+    --cat-primary-text: #{cat-token('color.theme.primaryInverted.text')};
+    --cat-primary-text-hover: #{cat-token('color.theme.primaryInverted.textHover')};
+    --cat-primary-text-active: #{cat-token('color.theme.primaryInverted.textActive')};
+    --cat-secondary-text: #{cat-token('color.theme.secondaryInverted.text')};
+    --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover')};
+    --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive')};
     background: cat-token('color.ui.background.surfaceInverted');
   }
 
