@@ -188,4 +188,8 @@ export class AppComponent implements OnInit {
   logChanges($event: any) {
     console.log($event);
   }
+
+  submitIt($event: any) {
+    console.log('hello', $event);
+  }
 }
