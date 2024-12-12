@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.2...catalyst-angular-v10.25.3) (2024-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+
 ## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.1...catalyst-angular-v10.25.2) (2024-11-28)
 
 
