@@ -5,9 +5,9 @@
     background-color: cat-token('color.theme.#{$name}.bg') !important;
     color: cat-token('color.theme.#{$name}.fill') !important;
     // adjust nested links
-    --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
-    --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
-    --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
+    --cat-primary-text: #{cat-token('color.theme.#{$name}.fill')};
+    --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover')};
+    --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive')};
     --cat-link-decoration: underline;
   }
 
@@ -20,9 +20,9 @@
       background-color: cat-token('color.theme.#{$name}.bgHover') !important;
       color: cat-token('color.theme.#{$name}.fillHover') !important;
       // adjust nested links
-      --cat-primary-text: #{cat-token('color.theme.#{$name}.fill', $wrap: false)};
-      --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover', $wrap: false)};
-      --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive', $wrap: false)};
+      --cat-primary-text: #{cat-token('color.theme.#{$name}.fill')};
+      --cat-primary-text-hover: #{cat-token('color.theme.#{$name}.fillHover')};
+      --cat-primary-text-active: #{cat-token('color.theme.#{$name}.fillActive')};
       --cat-link-decoration: underline;
     }
   }

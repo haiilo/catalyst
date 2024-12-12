@@ -120,47 +120,47 @@ $button-sizes: (
 // ----- theme
 
 .cat-button-filled {
-  background-color: cat-token-wrap(var(--bg));
-  color: cat-token-wrap(var(--fill));
+  background-color: var(--bg);
+  color: var(--fill);
   font-weight: var(--cat-font-weight-button, 600);
   @include cat-font-smooth;
 
   &.cat-button-disabled {
-    --bg: #{cat-token('color.ui.background.muted', $wrap: false)};
-    --fill: #{cat-token('color.ui.font.muted', $wrap: false)};
+    --bg: #{cat-token('color.ui.background.muted')};
+    --fill: #{cat-token('color.ui.font.muted')};
   }
 }
 
 .cat-button-outlined {
   background-color: cat-token('color.ui.background.surface');
-  box-shadow: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
-  color: cat-token-wrap(var(--text));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--base) 20%, transparent);
+  color: var(--text);
 
   &.cat-button-disabled {
-    --base: #{cat-token('color.ui.font.muted', $wrap: false)};
-    --text: #{cat-token('color.ui.font.muted', $wrap: false)};
+    --base: #{cat-token('color.ui.font.muted')};
+    --text: #{cat-token('color.ui.font.muted')};
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, var(--base) 10%, transparent);
   }
 
   &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, var(--base) 10%, transparent);
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, var(--base) 10%, transparent);
   }
 }
 
 .cat-button-text {
   background-color: transparent;
-  color: cat-token-wrap(var(--text));
+  color: var(--text);
   text-decoration: cat-token('font.decoration.linkButton');
 
   &.cat-button-disabled {
-    --text: #{cat-token('color.ui.font.muted', $wrap: false)};
+    --text: #{cat-token('color.ui.font.muted')};
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
@@ -174,10 +174,10 @@ $button-sizes: (
 
 .cat-button-link {
   background-color: transparent;
-  color: cat-token-wrap(var(--text));
+  color: var(--text);
 
   &.cat-button-disabled {
-    --text: #{cat-token('color.ui.font.muted', $wrap: false)};
+    --text: #{cat-token('color.ui.font.muted')};
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
@@ -191,26 +191,26 @@ $button-sizes: (
 
 @mixin theme($theme) {
   .cat-button-#{$theme} {
-    --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
-    --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
-    --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    --bg: #{cat-token('color.theme.#{$theme}.bg')};
+    --fill: #{cat-token('color.theme.#{$theme}.fill')};
+    --text: #{cat-token('color.theme.#{$theme}.text')};
     @if $theme == 'secondary' {
-      --base: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
+      --base: #{cat-token('color.theme.#{$theme}.bg')};
     } @else {
-      --base: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+      --base: #{cat-token('color.theme.#{$theme}.text')};
     }
 
     &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{cat-token('color.theme.#{$theme}.bgHover', $wrap: false)};
-      --fill: #{cat-token('color.theme.#{$theme}.fillHover', $wrap: false)};
-      --text: #{cat-token('color.theme.#{$theme}.textHover', $wrap: false)};
+      --bg: #{cat-token('color.theme.#{$theme}.bgHover')};
+      --fill: #{cat-token('color.theme.#{$theme}.fillHover')};
+      --text: #{cat-token('color.theme.#{$theme}.textHover')};
     }
 
     &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading),
     &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-      --bg: #{cat-token('color.theme.#{$theme}.bgActive', $wrap: false)};
-      --fill: #{cat-token('color.theme.#{$theme}.fillActive', $wrap: false)};
-      --text: #{cat-token('color.theme.#{$theme}.textActive', $wrap: false)};
+      --bg: #{cat-token('color.theme.#{$theme}.bgActive')};
+      --fill: #{cat-token('color.theme.#{$theme}.fillActive')};
+      --text: #{cat-token('color.theme.#{$theme}.textActive')};
     }
   }
 }
