@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.3...catalyst-angular-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+
 ## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.2...catalyst-angular-v10.25.3) (2024-12-12)
 
 
