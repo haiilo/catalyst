@@ -133,7 +133,7 @@ $button-sizes: (
 
 .cat-button-outlined {
   background-color: cat-token('color.ui.background.surface');
-  box-shadow: inset 0 0 0 1px cat-token-wrap(var(--base), $alpha: 0.2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, cat-token-wrap(var(--base)) 20%, #ffffff);
   color: cat-token-wrap(var(--text));
 
   &.cat-button-disabled {
@@ -142,15 +142,15 @@ $button-sizes: (
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #ffffff);
   }
 
   &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #ffffff);
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: cat-token-wrap(var(--base), $alpha: 0.1);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #ffffff);
   }
 }
 
