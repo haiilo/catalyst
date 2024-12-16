@@ -91,6 +91,18 @@ export namespace Components {
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
           * Draw attention to the badge with a subtle animation.
          */
         "pulse": boolean;
@@ -2373,6 +2385,18 @@ declare namespace LocalJSX {
           * The color palette of the badge.
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
         /**
           * Draw attention to the badge with a subtle animation.
          */

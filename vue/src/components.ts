@@ -32,7 +32,10 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
   'color',
   'size',
   'round',
-  'pulse'
+  'pulse',
+  'icon',
+  'iconOnly',
+  'iconRight'
 ]);
 
 

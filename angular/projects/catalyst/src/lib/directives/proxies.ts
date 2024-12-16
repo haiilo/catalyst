@@ -55,14 +55,14 @@ export class CatAvatar {
 export declare interface CatAvatar extends Components.CatAvatar {}
 
 @ProxyCmp({
-  inputs: ['color', 'pulse', 'round', 'size', 'variant']
+  inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant']
 })
 @Component({
   selector: 'cat-badge',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'pulse', 'round', 'size', 'variant']
+  inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant']
 })
 export class CatBadge {
   protected el: HTMLElement;

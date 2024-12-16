@@ -38,6 +38,7 @@ doesn't fit.
 
  - [cat-alert](../cat-alert)
  - [cat-avatar](../cat-avatar)
+ - [cat-badge](../cat-badge)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
  - [cat-select](../cat-select)
@@ -49,6 +50,7 @@ doesn't fit.
 graph TD;
   cat-alert --> cat-icon
   cat-avatar --> cat-icon
+  cat-badge --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon
   cat-select --> cat-icon
