@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.0...catalyst-core-v10.26.1) (2024-12-16)
+
+
+### Bug Fixes
+
+* **core:** setting empty value in cat-time ([#566](https://github.com/haiilo/catalyst/issues/566)) ([9d1df0a](https://github.com/haiilo/catalyst/commit/9d1df0a5dc9f6d7464413e19cca18d86ca3b258a))
+
 ## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.3...catalyst-core-v10.26.0) (2024-12-16)
 
 
