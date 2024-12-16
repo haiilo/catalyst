@@ -1,5 +1,18 @@
 # Changelog
 
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.3...catalyst-core-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+* **core:** use correct background color for outlines buttons with non-white backgrounds ([b2f4557](https://github.com/haiilo/catalyst/commit/b2f4557edf8ac325ab756d42595e3a8769207c6d))
+
 ## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.2...catalyst-core-v10.25.3) (2024-12-12)
 
 
