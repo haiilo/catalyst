@@ -1,5 +1,13 @@
-import { AfterContentInit, Component, ContentChild, Input, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  InjectFlags,
+  Injector,
+  Input,
+  ViewEncapsulation
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, Validators } from '@angular/forms';
 import { DateValueAccessor } from '../directives/date-value-accessor';
 import { TimeValueAccessor } from '../directives/time-value-accessor';
 
@@ -50,12 +58,21 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
     });
   }
 
+  constructor(private injector: Injector) {}
+
   ngAfterContentInit(): void {
     if (!this.dateInput) {
       throw new Error('Missing child element <cat-date></cat-date>');
     }
     if (!this.timeInput) {
       throw new Error('Missing child element <cat-time></cat-time>');
+    }
+
+    // @ts-ignore
+    const control = this.injector.get(NgControl, undefined, InjectFlags.Optional);
+    if (control?.control?.hasValidator(Validators.required)) {
+      this.dateInput.nativeElement.required = true;
+      this.timeInput.nativeElement.required = true;
     }
   }
 
