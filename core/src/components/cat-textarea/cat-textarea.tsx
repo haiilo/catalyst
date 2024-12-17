@@ -19,7 +19,9 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-textarea',
   styleUrl: 'cat-textarea.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true,
+  }
 })
 export class CatTextarea {
   private readonly _id = `cat-textarea-${nextUniqueId++}`;
@@ -208,6 +210,7 @@ export class CatTextarea {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <div

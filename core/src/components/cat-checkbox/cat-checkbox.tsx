@@ -16,7 +16,9 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-checkbox',
   styleUrls: ['cat-checkbox.scss'],
-  shadow: true
+  shadow: {
+    delegatesFocus: true,
+  }
 })
 export class CatCheckbox {
   private readonly _id = `cat-checkbox-${nextUniqueId++}`;
@@ -162,6 +164,7 @@ export class CatCheckbox {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <label
