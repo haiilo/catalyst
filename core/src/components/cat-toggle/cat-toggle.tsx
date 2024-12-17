@@ -218,6 +218,6 @@ export class CatToggle {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
+    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
   }
 }
