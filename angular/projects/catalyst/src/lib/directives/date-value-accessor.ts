@@ -1,5 +1,5 @@
-import { Directive, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Directive, ElementRef, Optional, SkipSelf } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 import { ValueAccessor } from './value-accessor';
 
@@ -7,7 +7,8 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-date, cat-date-inline',
   host: {
-    '(catChange)': 'handleChangeEvent($event.target.value)'
+    '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
+    '(catBlur)': 'updateErrors()'
   },
   providers: [
     {
@@ -18,7 +19,10 @@ import { ValueAccessor } from './value-accessor';
   ]
 })
 export class DateValueAccessor extends ValueAccessor {
-  constructor(el: ElementRef) {
+  constructor(
+    el: ElementRef,
+    @Optional() @SkipSelf() private readonly ngControl?: NgControl
+  ) {
     super(el);
   }
   get nativeElement() {
@@ -43,6 +47,14 @@ export class DateValueAccessor extends ValueAccessor {
     }
     super.handleChangeEvent(null);
   }
+
+  updateErrors() {
+    setTimeout(() => {
+      this.el.nativeElement.errors =
+        this.ngControl?.control?.errors?.required && !this.el.nativeElement.value ? { required: true } : null;
+    });
+  }
+
   private toISO(value: any) {
     if (value instanceof Date) {
       const year = value.getFullYear();
