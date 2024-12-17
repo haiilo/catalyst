@@ -12,7 +12,7 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatDate {

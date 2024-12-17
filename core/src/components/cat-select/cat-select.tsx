@@ -111,7 +111,7 @@ let nextTagUniqueId = 0;
   tag: 'cat-select',
   styleUrl: 'cat-select.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatSelect {

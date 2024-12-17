@@ -20,7 +20,7 @@ let nextUniqueId = 0;
   tag: 'cat-textarea',
   styleUrl: 'cat-textarea.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatTextarea {

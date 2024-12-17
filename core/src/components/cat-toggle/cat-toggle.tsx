@@ -16,7 +16,7 @@ let nextUniqueId = 0;
   tag: 'cat-toggle',
   styleUrls: ['cat-toggle.scss'],
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatToggle {
@@ -218,6 +218,6 @@ export class CatToggle {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
+    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
   }
 }

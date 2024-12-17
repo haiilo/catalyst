@@ -16,7 +16,7 @@ import { findClosest } from '../../utils/find-closest';
   tag: 'cat-button',
   styleUrl: 'cat-button.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatButton {

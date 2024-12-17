@@ -10,7 +10,7 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatTabs {

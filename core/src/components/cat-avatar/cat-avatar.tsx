@@ -8,7 +8,7 @@ import loadImg from '../../utils/load-img';
   tag: 'cat-avatar',
   styleUrl: 'cat-avatar.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatAvatar {

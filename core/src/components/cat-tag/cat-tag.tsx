@@ -15,7 +15,7 @@ let nextUniqueId = 0;
   tag: 'cat-tag',
   styleUrl: 'cat-tag.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatTag {

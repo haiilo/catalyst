@@ -24,7 +24,7 @@ let nextUniqueId = 0;
   tag: 'cat-input',
   styleUrl: 'cat-input.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatInput {

@@ -17,7 +17,7 @@ let nextUniqueId = 0;
   tag: 'cat-checkbox',
   styleUrls: ['cat-checkbox.scss'],
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatCheckbox {
@@ -248,6 +248,6 @@ export class CatCheckbox {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
+    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
   }
 }

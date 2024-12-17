@@ -12,7 +12,7 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
   tag: 'cat-time',
   styleUrl: 'cat-time.scss',
   shadow: {
-    delegatesFocus: true,
+    delegatesFocus: true
   }
 })
 export class CatTime {
