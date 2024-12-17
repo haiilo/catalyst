@@ -10,7 +10,7 @@ describe('cat-select', () => {
       html: `<cat-select label="Label"></cat-select>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-select label="Label"></cat-select>
+      <cat-select label="Label" tabindex="0"></cat-select>
     `);
   });
 });

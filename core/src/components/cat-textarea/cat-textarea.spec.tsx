@@ -10,7 +10,7 @@ describe('cat-textarea', () => {
       html: `<cat-textarea label="Label"></cat-textarea>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-textarea label="Label"></cat-textarea>
+      <cat-textarea label="Label" tabindex="0"></cat-textarea>
     `);
   });
 });

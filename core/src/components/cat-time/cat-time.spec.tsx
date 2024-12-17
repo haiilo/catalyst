@@ -11,7 +11,7 @@ describe('cat-time', () => {
       html: `<cat-time></cat-time>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-time></cat-time>
+      <cat-time tabindex="0"></cat-time>
     `);
   });
 });

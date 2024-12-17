@@ -110,7 +110,9 @@ let nextTagUniqueId = 0;
 @Component({
   tag: 'cat-select',
   styleUrl: 'cat-select.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatSelect {
   private static readonly SKELETON_COUNT = 4;
@@ -576,6 +578,7 @@ export class CatSelect {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <div
