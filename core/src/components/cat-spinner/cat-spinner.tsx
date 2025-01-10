@@ -28,13 +28,13 @@ export class CatSpinner {
   render() {
     return (
       <span
-        role='progressbar'
-        tabindex='-1'
+        role="progressbar"
+        tabindex="-1"
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         aria-valuenow={this.value}
-        aria-valuemin='0'
-        aria-valuemax='100'
+        aria-valuemin="0"
+        aria-valuemax="100"
         class={{
           [`spinner-${this.size}`]: this.size !== 'inline'
         }}
