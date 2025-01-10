@@ -1078,14 +1078,14 @@ export class CatSkeleton {
 export declare interface CatSkeleton extends Components.CatSkeleton {}
 
 @ProxyCmp({
-  inputs: ['a11yLabel', 'size']
+  inputs: ['a11yLabel', 'size', 'value']
 })
 @Component({
   selector: 'cat-spinner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel', 'size']
+  inputs: ['a11yLabel', 'size', 'value']
 })
 export class CatSpinner {
   protected el: HTMLElement;

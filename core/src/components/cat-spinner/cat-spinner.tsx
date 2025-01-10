@@ -20,11 +20,21 @@ export class CatSpinner {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  /**
+   * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+   */
+  @Prop({ attribute: 'value' }) value: number = 0;
+
   render() {
     return (
       <span
+        role='progressbar'
+        tabindex='-1'
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
+        aria-valuenow={this.value}
+        aria-valuemin='0'
+        aria-valuemax='100'
         class={{
           [`spinner-${this.size}`]: this.size !== 'inline'
         }}
