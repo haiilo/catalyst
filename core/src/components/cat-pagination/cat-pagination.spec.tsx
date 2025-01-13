@@ -9,7 +9,7 @@ describe('cat-pagination', () => {
       html: `<cat-pagination></cat-pagination>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-pagination tabindex="0"></cat-pagination>
+      <cat-pagination></cat-pagination>
     `);
   });
 });

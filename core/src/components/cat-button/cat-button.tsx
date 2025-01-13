@@ -15,9 +15,7 @@ import { findClosest } from '../../utils/find-closest';
 @Component({
   tag: 'cat-button',
   styleUrl: 'cat-button.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
@@ -238,7 +236,6 @@ export class CatButton {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     if (this.url) {
       return (
         <Host data-button-group={this.buttonGroupPosition}>

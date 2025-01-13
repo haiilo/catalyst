@@ -11,9 +11,7 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 @Component({
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatDate {
   private readonly language = i18n.getLocale();
@@ -232,7 +230,6 @@ export class CatDate {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input

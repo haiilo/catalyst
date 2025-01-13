@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
@@ -11,12 +11,9 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 @Component({
   tag: 'cat-pagination',
   styleUrl: 'cat-pagination.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatPagination {
-  @Element() hostElement!: HTMLElement;
   /**
    * The current page.
    */
@@ -73,7 +70,6 @@ export class CatPagination {
   @Event() catChange!: EventEmitter<number>;
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <nav role="navigation">
         <ol

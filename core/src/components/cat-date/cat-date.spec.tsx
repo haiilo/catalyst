@@ -12,7 +12,7 @@ describe('cat-date', () => {
       html: `<cat-date></cat-date>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-date tabindex="0"></cat-date>
+      <cat-date></cat-date>
     `);
   });
 });

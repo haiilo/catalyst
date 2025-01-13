@@ -10,7 +10,7 @@ describe('cat-input', () => {
       html: `<cat-input label="Label"></cat-input>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-input label="Label" tabindex="0"></cat-input>
+      <cat-input label="Label"></cat-input>
     `);
   });
 });

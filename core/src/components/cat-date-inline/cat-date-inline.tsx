@@ -14,9 +14,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-date-inline',
   styleUrl: 'cat-date-inline.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatDateInline {
   private readonly _id = `cat-date-inline-${nextUniqueId++}`;
@@ -236,7 +234,6 @@ export class CatDateInline {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     const [minDate, maxDate] = this.getMinMaxDate();
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();

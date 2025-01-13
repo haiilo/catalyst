@@ -8,7 +8,7 @@ describe('cat-radio', () => {
       html: `<cat-radio label="Label"></cat-radio>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-radio label="Label" tabindex="0"></cat-radio>
+      <cat-radio label="Label"></cat-radio>
     `);
   });
 });

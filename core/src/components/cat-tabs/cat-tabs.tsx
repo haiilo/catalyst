@@ -9,9 +9,7 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 @Component({
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatTabs {
   private mutationObserver?: MutationObserver;
@@ -95,7 +93,6 @@ export class CatTabs {
   @Event() catChange!: EventEmitter<{ id: string; index: number }>;
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         {this.tabs.map((tab: HTMLCatTabElement) => {

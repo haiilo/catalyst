@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import loadImg from '../../utils/load-img';
 
 /**
@@ -7,14 +7,10 @@ import loadImg from '../../utils/load-img';
 @Component({
   tag: 'cat-avatar',
   styleUrl: 'cat-avatar.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatAvatar {
   @State() backgroundImage?: string;
-
-  @Element() hostElement!: HTMLElement;
 
   /**
    * The size of the avatar.
@@ -74,7 +70,6 @@ export class CatAvatar {
 
   render() {
     if (this.url) {
-      this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
       return (
         <a href={this.url} target={this.urlTarget} style={this.cssStyle} class={this.cssClass} aria-label={this.label}>
           {this.content}

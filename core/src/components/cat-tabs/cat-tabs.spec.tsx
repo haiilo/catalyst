@@ -8,7 +8,7 @@ describe('cat-tabs', () => {
       html: `<cat-tabs></cat-tabs>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-tabs tabindex="0"></cat-tabs>
+      <cat-tabs></cat-tabs>
     `);
   });
 });

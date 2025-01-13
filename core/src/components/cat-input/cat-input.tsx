@@ -23,9 +23,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-input',
   styleUrl: 'cat-input.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatInput {
   private readonly _id = `cat-input-${nextUniqueId++}`;
@@ -281,7 +279,6 @@ export class CatInput {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <div
         class={{

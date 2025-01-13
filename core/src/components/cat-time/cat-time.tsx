@@ -11,9 +11,7 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
 @Component({
   tag: 'cat-time',
   styleUrl: 'cat-time.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatTime {
   private readonly language = i18n.getLocale();
@@ -296,7 +294,6 @@ export class CatTime {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input

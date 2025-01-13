@@ -15,9 +15,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  shadow: true
 })
 export class CatRadio {
   private readonly _id = `cat-radio-${++nextUniqueId}`;
@@ -136,7 +134,6 @@ export class CatRadio {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <label
