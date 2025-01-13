@@ -1212,6 +1212,10 @@ export namespace Components {
           * The size of the spinner.
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value": number;
     }
     /**
      * A single tab inside a tabs component.
@@ -3528,6 +3532,10 @@ declare namespace LocalJSX {
           * The size of the spinner.
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value"?: number;
     }
     /**
      * A single tab inside a tabs component.

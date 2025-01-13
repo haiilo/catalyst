@@ -366,7 +366,8 @@ export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-s
 
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
-  'a11yLabel'
+  'a11yLabel',
+  'value'
 ]);
 
 

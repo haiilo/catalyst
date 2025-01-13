@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     datepickerDisabled: new FormControl(true)
   });
 
+  formlyForm = new FormGroup({});
+
   tagFormControl = new FormControl<string[]>(['tag1', 'tag2'], [Validators.required]);
 
   countryConnector = countryConnector;
