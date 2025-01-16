@@ -1,5 +1,16 @@
 # Changelog
 
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.1...catalyst-core-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **core:** fixes broken style for cat-time buttons ([#621](https://github.com/haiilo/catalyst/issues/621)) ([fb41192](https://github.com/haiilo/catalyst/commit/fb41192c81da03acd40a34649e1710082322d658))
+* **core:** ignore elements with delegatesFocus property in firstTabbable util ([#627](https://github.com/haiilo/catalyst/issues/627)) ([0493185](https://github.com/haiilo/catalyst/commit/049318598d6c07fb4fae5fa112efca084dfddd26))
+* **core:** make shadow interaction components are recognized as focusable ([#620](https://github.com/haiilo/catalyst/issues/620)) ([bca90f2](https://github.com/haiilo/catalyst/commit/bca90f295409281c1395dd3692898f8830baf0c0))
+* **core:** support custom aria-haspopup on cat-dropdown trigger ([#628](https://github.com/haiilo/catalyst/issues/628)) ([df83dcf](https://github.com/haiilo/catalyst/commit/df83dcf63c548c6ab47830c43e972d1519111f45))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
 ## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.0...catalyst-core-v10.26.1) (2024-12-16)
 
 
