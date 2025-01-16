@@ -1,5 +1,5 @@
-import { Directive, ElementRef, Optional, SkipSelf } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { AfterViewInit, Directive, ElementRef, Optional, SkipSelf } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NgControl, Validators } from '@angular/forms';
 
 import { ValueAccessor } from './value-accessor';
 
@@ -18,7 +18,7 @@ import { ValueAccessor } from './value-accessor';
     }
   ]
 })
-export class TimeValueAccessor extends ValueAccessor {
+export class TimeValueAccessor extends ValueAccessor implements AfterViewInit {
   constructor(
     el: ElementRef,
     @Optional() @SkipSelf() private readonly ngControl?: NgControl
@@ -28,6 +28,13 @@ export class TimeValueAccessor extends ValueAccessor {
   get nativeElement() {
     return this.el.nativeElement;
   }
+
+  ngAfterViewInit() {
+    if (this.ngControl?.control?.hasValidator(Validators.required)) {
+      this.el.nativeElement.required = true;
+    }
+  }
+
   writeValue(value: any) {
     if (value && value instanceof Date) {
       const hours = value.getHours().toString().padStart(2, '0');
