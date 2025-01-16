@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.1...catalyst-angular-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **angular:** fix required error for datetime control ([#622](https://github.com/haiilo/catalyst/issues/622)) ([79f4701](https://github.com/haiilo/catalyst/commit/79f4701673e463f848de8978240b9b7b7403b7bf))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
 ## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.0...catalyst-angular-v10.26.1) (2024-12-16)
 
 
