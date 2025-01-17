@@ -430,7 +430,7 @@ export class CatDateInline {
   }
 
   private getHeadline() {
-    return `${this.locale.months.long[this.viewDate.getMonth()]} ${this.viewDate.getFullYear()}`;
+    return `${this.viewDate.toLocaleString('default', { month: 'long' })} ${this.viewDate.getFullYear()}`;
   }
 
   private getWeekNumber(date: Date, iso8601 = true) {
