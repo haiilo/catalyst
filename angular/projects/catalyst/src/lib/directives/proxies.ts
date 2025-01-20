@@ -1255,7 +1255,7 @@ export declare interface CatTag extends Components.CatTag {
     'rows',
     'value'
   ],
-  methods: ['doFocus', 'doBlur', 'clear']
+  methods: ['doFocus', 'doBlur', 'clear', 'updateSize']
 })
 @Component({
   selector: 'cat-textarea',

@@ -1439,6 +1439,10 @@ export namespace Components {
          */
         "rows": number;
         /**
+          * Update textarea size
+         */
+        "updateSize": () => Promise<void>;
+        /**
           * The initial value of the control.
          */
         "value"?: string;

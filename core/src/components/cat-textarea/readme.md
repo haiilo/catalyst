@@ -84,6 +84,16 @@ Type: `Promise<void>`
 
 
 
+### `updateSize() => Promise<void>`
+
+Update textarea size
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Slots
 

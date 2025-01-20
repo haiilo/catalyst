@@ -195,6 +195,14 @@ export class CatTextarea {
     this.catChange.emit(this.value);
   }
 
+  /**
+   * Update textarea size
+   */
+  @Method()
+  async updateSize(): Promise<void> {
+    autosize.update(this.textarea);
+  }
+
   @Watch('errors')
   onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
