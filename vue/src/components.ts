@@ -379,6 +379,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'url',
   'urlTarget',
   'deactivated',
+  'noActive',
   'error',
   'nativeAttributes',
   'catClick'

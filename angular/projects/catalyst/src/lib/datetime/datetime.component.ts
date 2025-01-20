@@ -1,10 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  Input,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateValueAccessor } from '../directives/date-value-accessor';
 import { TimeValueAccessor } from '../directives/time-value-accessor';

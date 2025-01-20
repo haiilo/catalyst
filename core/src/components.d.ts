@@ -1250,6 +1250,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive": boolean;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -3569,6 +3573,10 @@ declare namespace LocalJSX {
           * Attributes that will be added to the native HTML button element
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive"?: boolean;
         /**
           * Emitted when tab is clicked.
          */
