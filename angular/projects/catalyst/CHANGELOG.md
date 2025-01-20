@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.27.0...catalyst-angular-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
 ## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.1...catalyst-angular-v10.27.0) (2025-01-16)
 
 
