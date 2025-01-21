@@ -13,8 +13,7 @@ function getMonths(language: string, month: 'long' | 'short' = 'long') {
 
   return Array.from({ length: 12 }, (_, index) => {
     const fixedDate = new Date(date.getTime());
-    fixedDate.setUTCMonth(index);
-    fixedDate.setUTCHours(12);
+    fixedDate.setMonth(index);
 
     return format(fixedDate);
   });
