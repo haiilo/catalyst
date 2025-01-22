@@ -8,16 +8,8 @@ function getDays(language: string, weekday: 'long' | 'short' | 'narrow' = 'long'
 }
 
 function getMonths(language: string, month: 'long' | 'short' = 'long') {
-  const date = new Date(0);
   const format = new Intl.DateTimeFormat(language, { month }).format;
-
-  return Array.from({ length: 12 }, (_, index) => {
-    const fixedDate = new Date(date.getTime());
-    fixedDate.setUTCMonth(index);
-    fixedDate.setUTCHours(12);
-
-    return format(fixedDate);
-  });
+  return [...Array(12).keys()].map(month => format(new Date(2000, month, 1)));
 }
 
 function getWeekInfo(language: string) {
