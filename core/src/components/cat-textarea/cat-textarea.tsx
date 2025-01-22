@@ -54,6 +54,14 @@ export class CatTextarea {
   @Prop() disabled = false;
 
   /**
+   * Custom function to count the number of characters in the textarea.
+   * It may be needed when certain character patterns are counted differently,
+   * for example URLs if they are processed by URL shortener later.
+   * Passing it will also disable enforcing maxLength and minLength.
+   */
+  @Prop() countFunction?: (value: string) => number;
+
+  /**
    * Optional hint text(s) to be displayed with the textarea.
    */
   @Prop() hint?: string | string[];
@@ -161,7 +169,15 @@ export class CatTextarea {
 
   componentDidLoad(): void {
     autosize(this.textarea);
+    console.debug("countFunction", this.countFunction);
   }
+
+  getCount: () => number = () => {
+    if (this.countFunction && typeof this.countFunction === 'function') {
+      return this.countFunction(this.value ?? '');
+    }
+    return this.value?.length ?? 0;
+  };
 
   /**
    * Programmatically move focus to the textarea. Use this method instead of
@@ -232,9 +248,9 @@ export class CatTextarea {
                         ({i18n.t('input.required')})
                       </span>
                     )}
-                    {this.maxLength && (
+                    {(this.maxLength || this.countFunction) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.value?.length ?? 0}/{this.maxLength}
+                        {this.getCount()}/{this.maxLength}
                       </div>
                     )}
                   </div>
@@ -257,8 +273,8 @@ export class CatTextarea {
                 ref={el => (this.textarea = el as HTMLTextAreaElement)}
                 id={this.id}
                 disabled={this.disabled}
-                maxlength={this.maxLength}
-                minlength={this.minLength}
+                maxlength={!this.countFunction ? this.maxLength : undefined}
+                minlength={!this.countFunction ? this.minLength : undefined}
                 name={this.name}
                 placeholder={this.placeholder}
                 readonly={this.readonly}

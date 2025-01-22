@@ -1346,6 +1346,10 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Custom function to count the number of characters in the textarea. It may be needed when certain character patterns are counted differently, for example URLs if they are processed by URL shortener later. Passing it will also disable enforcing maxLength and minLength.
+         */
+        "countFunction"?: (value: string) => number;
+        /**
           * Whether the textarea is disabled.
          */
         "disabled": boolean;
@@ -3655,6 +3659,10 @@ declare namespace LocalJSX {
      * input component.
      */
     interface CatTextarea {
+        /**
+          * Custom function to count the number of characters in the textarea. It may be needed when certain character patterns are counted differently, for example URLs if they are processed by URL shortener later. Passing it will also disable enforcing maxLength and minLength.
+         */
+        "countFunction"?: (value: string) => number;
         /**
           * Whether the textarea is disabled.
          */

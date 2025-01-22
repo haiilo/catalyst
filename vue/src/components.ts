@@ -415,6 +415,7 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
   'requiredMarker',
   'horizontal',
   'disabled',
+  'countFunction',
   'hint',
   'identifier',
   'label',
