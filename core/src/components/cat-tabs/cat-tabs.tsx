@@ -9,7 +9,9 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 @Component({
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTabs {
   private mutationObserver?: MutationObserver;
@@ -93,6 +95,7 @@ export class CatTabs {
   @Event() catChange!: EventEmitter<{ id: string; index: number }>;
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         {this.tabs.map((tab: HTMLCatTabElement) => {
@@ -130,7 +133,7 @@ export class CatTabs {
 
   private syncTabs() {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
-    this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab))[0]?.id;
+    this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
   }
 
   private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
@@ -140,7 +143,9 @@ export class CatTabs {
   private click(tab?: HTMLCatTabElement) {
     if (this.canActivate(tab)) {
       tab.click();
-      this.activate(tab);
+      if (!tab.noActive) {
+        this.activate(tab);
+      }
     }
   }
 

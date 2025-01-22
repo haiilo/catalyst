@@ -11,7 +11,7 @@ describe('cat-date-inline', () => {
       html: `<cat-date-inline></cat-date-inline>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-date-inline></cat-date-inline>
+      <cat-date-inline tabindex="0"></cat-date-inline>
     `);
   });
 });

@@ -91,6 +91,18 @@ export namespace Components {
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
+        /**
           * Draw attention to the badge with a subtle animation.
          */
         "pulse": boolean;
@@ -1200,6 +1212,10 @@ export namespace Components {
           * The size of the spinner.
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value": number;
     }
     /**
      * A single tab inside a tabs component.
@@ -1233,6 +1249,10 @@ export namespace Components {
           * Attributes that will be added to the native HTML button element
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive": boolean;
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -2378,6 +2398,18 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
+        /**
           * Draw attention to the badge with a subtle animation.
          */
         "pulse"?: boolean;
@@ -3508,6 +3540,10 @@ declare namespace LocalJSX {
           * The size of the spinner.
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value"?: number;
     }
     /**
      * A single tab inside a tabs component.
@@ -3541,6 +3577,10 @@ declare namespace LocalJSX {
           * Attributes that will be added to the native HTML button element
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive"?: boolean;
         /**
           * Emitted when tab is clicked.
          */

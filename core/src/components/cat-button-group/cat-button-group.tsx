@@ -10,7 +10,7 @@ import { Component, Element, h, Host, Prop } from '@stencil/core';
   shadow: true
 })
 export class CatButtonGroup {
-  private formElements: HTMLCatButtonElement[] = [];
+  private buttonElements: HTMLCatButtonElement[] = [];
 
   @Element() hostElement!: HTMLElement;
 
@@ -29,9 +29,14 @@ export class CatButtonGroup {
   }
 
   private onSlotChange(): void {
-    this.formElements = Array.from(this.hostElement.querySelectorAll('cat-button'));
-    this.formElements.forEach((element, index) => {
-      element.buttonGroupPosition = index === 0 ? 'first' : index === this.formElements.length - 1 ? 'last' : 'middle';
+    this.buttonElements = Array.from(
+      this.hostElement.querySelectorAll(
+        ':scope > cat-button, :scope > cat-tooltip > cat-button, :scope > cat-dropdown cat-button[slot="trigger"]'
+      )
+    );
+    this.buttonElements.forEach((element, index) => {
+      element.buttonGroupPosition =
+        index === 0 ? 'first' : index === this.buttonElements.length - 1 ? 'last' : 'middle';
     });
   }
 }

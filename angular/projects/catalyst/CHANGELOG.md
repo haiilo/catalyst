@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.28.0...catalyst-angular-v10.28.1) (2025-01-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.27.0...catalyst-angular-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.1...catalyst-angular-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **angular:** fix required error for datetime control ([#622](https://github.com/haiilo/catalyst/issues/622)) ([79f4701](https://github.com/haiilo/catalyst/commit/79f4701673e463f848de8978240b9b7b7403b7bf))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
+## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.0...catalyst-angular-v10.26.1) (2024-12-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.3...catalyst-angular-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+
+## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.2...catalyst-angular-v10.25.3) (2024-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+
+## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.1...catalyst-angular-v10.25.2) (2024-11-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.0...catalyst-angular-v10.25.1) (2024-11-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
 ## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.3...catalyst-angular-v10.25.0) (2024-11-18)
 
 

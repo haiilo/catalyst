@@ -11,7 +11,9 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
 @Component({
   tag: 'cat-time',
   styleUrl: 'cat-time.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTime {
   private readonly language = i18n.getLocale();
@@ -182,7 +184,7 @@ export class CatTime {
       this.valueChangedBySelection = false;
     } else if (value !== oldValue) {
       this.set12hFormat();
-      this.syncValue(value);
+      this.syncValue(value ?? '');
     }
   }
 
@@ -243,7 +245,7 @@ export class CatTime {
     let newValue = this.value;
     if (!date) {
       this.selectionTime = null;
-      this.value = undefined;
+      newValue = undefined;
     } else {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
       this.isAm = this.format(time).toLowerCase().includes('am');
@@ -294,6 +296,7 @@ export class CatTime {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input

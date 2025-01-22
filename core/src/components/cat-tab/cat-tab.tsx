@@ -50,6 +50,14 @@ export class CatTab {
   @Prop({ reflect: true }) deactivated = false;
 
   /**
+   * Specifies that the tab does not have an active state and thus cannot be
+   * activated. This does not mean, that the tab is deactivated. The tab can
+   * still be clicked and emit the `catClick` event. This is helpful if a tab
+   * should only trigger a click action (such as opening a modal).
+   */
+  @Prop({ reflect: true }) noActive = false;
+
+  /**
    * Specifies that the tab content pane contains an error. This will color
    * the tab in an error state and also switch to an error icon if an icon
    * is specified.

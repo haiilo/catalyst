@@ -1,5 +1,72 @@
 # Changelog
 
+## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.0...catalyst-core-v10.28.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* **core:** cat-date-inline month display in headline ([#630](https://github.com/haiilo/catalyst/issues/630)) ([cd0df5d](https://github.com/haiilo/catalyst/commit/cd0df5d798e47af2f9bed0646b0415037917e721))
+
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.27.0...catalyst-core-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.1...catalyst-core-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **core:** fixes broken style for cat-time buttons ([#621](https://github.com/haiilo/catalyst/issues/621)) ([fb41192](https://github.com/haiilo/catalyst/commit/fb41192c81da03acd40a34649e1710082322d658))
+* **core:** ignore elements with delegatesFocus property in firstTabbable util ([#627](https://github.com/haiilo/catalyst/issues/627)) ([0493185](https://github.com/haiilo/catalyst/commit/049318598d6c07fb4fae5fa112efca084dfddd26))
+* **core:** make shadow interaction components are recognized as focusable ([#620](https://github.com/haiilo/catalyst/issues/620)) ([bca90f2](https://github.com/haiilo/catalyst/commit/bca90f295409281c1395dd3692898f8830baf0c0))
+* **core:** support custom aria-haspopup on cat-dropdown trigger ([#628](https://github.com/haiilo/catalyst/issues/628)) ([df83dcf](https://github.com/haiilo/catalyst/commit/df83dcf63c548c6ab47830c43e972d1519111f45))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
+## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.0...catalyst-core-v10.26.1) (2024-12-16)
+
+
+### Bug Fixes
+
+* **core:** setting empty value in cat-time ([#566](https://github.com/haiilo/catalyst/issues/566)) ([9d1df0a](https://github.com/haiilo/catalyst/commit/9d1df0a5dc9f6d7464413e19cca18d86ca3b258a))
+
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.3...catalyst-core-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+* **core:** use correct background color for outlines buttons with non-white backgrounds ([b2f4557](https://github.com/haiilo/catalyst/commit/b2f4557edf8ac325ab756d42595e3a8769207c6d))
+
+## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.2...catalyst-core-v10.25.3) (2024-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+
+## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.1...catalyst-core-v10.25.2) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** don't shrink badges ([2717359](https://github.com/haiilo/catalyst/commit/271735967168bf30355192e186c34b5d1c3277e7))
+* **core:** submit button should not cause a reload in firefox ([#611](https://github.com/haiilo/catalyst/issues/611)) ([ecf2d15](https://github.com/haiilo/catalyst/commit/ecf2d155df12b4db2769e7f55ee7225c2bf6f04e))
+
+## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.0...catalyst-core-v10.25.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** submit buttons leads to refresh in firefox ([#608](https://github.com/haiilo/catalyst/issues/608)) ([1a1f600](https://github.com/haiilo/catalyst/commit/1a1f600c24a667a02d8497a13c38d32b5de5d176))
+
 ## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.3...catalyst-core-v10.25.0) (2024-11-18)
 
 

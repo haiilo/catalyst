@@ -11,13 +11,16 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 @Component({
   tag: 'cat-date',
   styleUrl: 'cat-date.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatDate {
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
   private input?: HTMLCatInputElement;
   private dateInline?: HTMLCatDateInlineElement;
+  private inputFocused = false;
 
   @Element() hostElement!: HTMLElement;
 
@@ -229,6 +232,7 @@ export class CatDate {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input
@@ -255,6 +259,7 @@ export class CatDate {
           nativeAttributes={this.nativeAttributes}
           value={this.inputValue}
           onCatFocus={e => {
+            this.inputFocused = e.target === this.input;
             e.stopPropagation();
             this.catFocus.emit(e.detail);
           }}
@@ -306,9 +311,10 @@ export class CatDate {
   }
 
   private onInputBlur(e: FocusEvent) {
-    if (!this.input) {
+    if (!this.input || !this.inputFocused) {
       return;
     }
+    this.inputFocused = false;
     const oldValue = this.value;
     const dateParsed = this.parse(this.input.value ?? '');
     const dateMin = this.locale.fromLocalISO(this.min);
@@ -330,7 +336,7 @@ export class CatDate {
   private onDateChange(e: CustomEvent<string>) {
     e.stopPropagation();
     const oldValue = this.value;
-    const date = e.detail ? new Date(e.detail) : null;
+    const date = e.detail ? this.locale.fromLocalISO(e.detail) : null;
     this.value = date ? this.locale.toLocalISO(date) : undefined;
     if (oldValue !== this.value) {
       this.catChange.emit(this.value);

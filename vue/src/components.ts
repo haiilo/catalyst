@@ -32,7 +32,10 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
   'color',
   'size',
   'round',
-  'pulse'
+  'pulse',
+  'icon',
+  'iconOnly',
+  'iconRight'
 ]);
 
 
@@ -363,7 +366,8 @@ export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-s
 
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
-  'a11yLabel'
+  'a11yLabel',
+  'value'
 ]);
 
 
@@ -375,6 +379,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'url',
   'urlTarget',
   'deactivated',
+  'noActive',
   'error',
   'nativeAttributes',
   'catClick'

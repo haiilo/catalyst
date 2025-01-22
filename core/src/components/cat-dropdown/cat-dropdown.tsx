@@ -220,7 +220,8 @@ export class CatDropdown {
 
   private initTrigger() {
     this.trigger = this.findTrigger();
-    this.trigger.setAttribute('aria-haspopup', 'true');
+    const ariaHaspopup = this.trigger.getAttribute('aria-haspopup');
+    this.trigger.setAttribute('aria-haspopup', ariaHaspopup ?? 'true');
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
     this.trigger.addEventListener('click', () => this.toggle());
@@ -243,7 +244,7 @@ export class CatDropdown {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
         ? (elem as HTMLElement)
-        : elem?.querySelector('[data-trigger]') ?? undefined;
+        : (elem?.querySelector('[data-trigger]') ?? undefined);
     }
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
