@@ -136,11 +136,7 @@ export class CatTabs {
     this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
   }
 
-  private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
-    return !!tab && !tab.deactivated && !tab.url && tab.id !== this.activeTab;
-  }
-
-  private click(tab?: HTMLCatTabElement) {
+  private click(tab: HTMLCatTabElement) {
     if (this.canActivate(tab)) {
       tab.click();
       if (!tab.noActive) {
@@ -150,8 +146,14 @@ export class CatTabs {
   }
 
   private activate(tab?: HTMLCatTabElement) {
-    if (this.canActivate(tab)) {
+    if (!tab) {
+      this.activeTab = '';
+    } else if (this.canActivate(tab)) {
       this.activeTab = tab.id;
     }
+  }
+
+  private canActivate(tab: HTMLCatTabElement) {
+    return !tab.deactivated && !tab.url && tab.id !== this.activeTab;
   }
 }
