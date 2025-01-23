@@ -1,5 +1,19 @@
 # Changelog
 
+## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.0...catalyst-core-v10.28.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* **core:** cat-date-inline month display in headline ([#630](https://github.com/haiilo/catalyst/issues/630)) ([cd0df5d](https://github.com/haiilo/catalyst/commit/cd0df5d798e47af2f9bed0646b0415037917e721))
+
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.27.0...catalyst-core-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
 ## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.1...catalyst-core-v10.27.0) (2025-01-16)
 
 
