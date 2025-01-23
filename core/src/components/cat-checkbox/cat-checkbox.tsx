@@ -1,6 +1,6 @@
-import {Component, Element, Event, EventEmitter, h, Host, Method, Prop, State} from '@stencil/core';
-import {CatFormHint} from '../cat-form-hint/cat-form-hint';
-import {catI18nRegistry as i18n} from '../cat-i18n/cat-i18n-registry';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -27,11 +27,11 @@ export class CatCheckbox {
   /**
    * Checked state of the checkbox
    */
-  @Prop({mutable: true}) checked = false;
+  @Prop({ mutable: true }) checked = false;
   /**
    * Indeterminate state of the checkbox
    */
-  @Prop({mutable: true}) indeterminate = false;
+  @Prop({ mutable: true }) indeterminate = false;
   /**
    * Disabled state of the checkbox
    */
@@ -59,18 +59,18 @@ export class CatCheckbox {
   /**
    * The value of the checked checkbox.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() value?: any;
   /**
    * The value of the unchecked checkbox.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() noValue?: any;
   /**
    * The resolved value of the checkbox, based on the checked state and value.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({mutable: true}) resolvedValue: any = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) resolvedValue: any = null;
   /**
    * Optional hint text(s) to be displayed with the checkbox.
    */
@@ -94,7 +94,7 @@ export class CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Event() catChange!: EventEmitter<any>;
   /**
    * Emitted when the checkbox received focus.
@@ -184,7 +184,7 @@ export class CatCheckbox {
               <polyline points="1.5 5 10.5 5"></polyline>
             </svg>
           </span>
-          <span class={{label: true, 'label-wrapper': !this.hasSlottedLabel}} part="label">
+          <span class={{ label: true, 'label-wrapper': !this.hasSlottedLabel }} part="label">
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
             <span class="label-metadata">
               {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
@@ -201,9 +201,9 @@ export class CatCheckbox {
           </span>
         </label>
         {this.hasHint && (
-          <div class={{'hint-wrapper': true, 'label-left': this.labelLeft}}>
+          <div class={{ 'hint-wrapper': true, 'label-left': this.labelLeft }}>
             <div class="box-placeholder"></div>
-            <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>}/>
+            <CatFormHint id={this.id} hint={this.hint} slottedHint={this.hasSlottedHint && <slot name="hint"></slot>} />
           </div>
         )}
       </Host>
