@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.28.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.1...catalyst-core-v10.28.2) (2025-01-23)
+
+
+### Bug Fixes
+
+* **core:** make it possibile to have tabs without an active tab ([cdd3581](https://github.com/haiilo/catalyst/commit/cdd358119ad8d930547646ad0082d078c6db3843))
+
 ## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.0...catalyst-core-v10.28.1) (2025-01-22)
 
 
