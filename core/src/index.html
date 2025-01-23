@@ -1151,17 +1151,9 @@
               <h2>Textarea</h2>
               <cat-textarea label="Label" max-length="100"></cat-textarea>
               <br>
-              <cat-textarea label="Custom count function (any URL counts as 23 chars)" max-length="200"></cat-textarea>
-              <script>
-                var lengthWithUrlShortener = function (value) {
-                  const urlRegex = /(https?:\/\/[^\s]+)/g;
-                  const shortenedUrlLength = 23;
-                  const urlsCount = (value.match(urlRegex) || []).length;
-                  return value.replace(urlRegex, '').length + urlsCount * shortenedUrlLength;
-                };
-                var lastTextarea = document.currentScript.previousElementSibling;
-                lastTextarea.countFunction = lengthWithUrlShortener;
-              </script>
+              <cat-textarea label="Custom counter">
+                <span slot="counter">Show any text here</span>
+              </cat-textarea>
             </section>
 
             <section id="toggle" class="cat-form">

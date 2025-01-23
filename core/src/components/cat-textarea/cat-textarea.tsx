@@ -38,6 +38,8 @@ export class CatTextarea {
 
   @State() hasSlottedHint = false;
 
+  @State() hasSlottedCounter = false;
+
   @State() errorMap?: ErrorMap | true;
 
   /**
@@ -54,14 +56,6 @@ export class CatTextarea {
    * Whether the textarea is disabled.
    */
   @Prop() disabled = false;
-
-  /**
-   * Custom function to count the number of characters in the textarea.
-   * It may be needed when certain character patterns are counted differently,
-   * for example URLs if they are processed by URL shortener later.
-   * Passing it will also disable enforcing maxLength and minLength.
-   */
-  @Prop() countFunction?: (value: string) => number;
 
   /**
    * Optional hint text(s) to be displayed with the textarea.
@@ -167,19 +161,14 @@ export class CatTextarea {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
   }
 
   componentDidLoad(): void {
     autosize(this.textarea);
-    console.debug("countFunction", this.countFunction);
   }
 
-  getCount: () => number = () => {
-    if (this.countFunction && typeof this.countFunction === 'function') {
-      return this.countFunction(this.value ?? '');
-    }
-    return this.value?.length ?? 0;
-  };
+  getCount: () => number = () => this.value?.length ?? 0;
 
   /**
    * Programmatically move focus to the textarea. Use this method instead of
@@ -251,9 +240,11 @@ export class CatTextarea {
                         ({i18n.t('input.required')})
                       </span>
                     )}
-                    {(this.maxLength || this.countFunction) && (
+                    {(this.maxLength || this.hasSlottedCounter) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.getCount()}/{this.maxLength}
+                        {this.hasSlottedCounter
+                          ? <slot name="counter"></slot>
+                          : `${this.getCount()}/${this.maxLength}`}
                       </div>
                     )}
                   </div>
@@ -276,8 +267,8 @@ export class CatTextarea {
                 ref={el => (this.textarea = el as HTMLTextAreaElement)}
                 id={this.id}
                 disabled={this.disabled}
-                maxlength={!this.countFunction ? this.maxLength : undefined}
-                minlength={!this.countFunction ? this.minLength : undefined}
+                maxlength={this.maxLength}
+                minlength={this.minLength}
                 name={this.name}
                 placeholder={this.placeholder}
                 readonly={this.readonly}
