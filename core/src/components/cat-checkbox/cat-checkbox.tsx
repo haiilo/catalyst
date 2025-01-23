@@ -248,6 +248,6 @@ export class CatCheckbox {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
+    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
   }
 }
