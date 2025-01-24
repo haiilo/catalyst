@@ -240,8 +240,11 @@ export class CatTextarea {
                     )}
                     {(this.maxLength || this.hasSlottedCounter) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.hasSlottedCounter ?
-                          <slot name="counter"></slot> : `${this.value?.length ?? 0}/${this.maxLength}`}
+                        {this.hasSlottedCounter ? (
+                          <slot name="counter"></slot>
+                        ) : (
+                          `${this.value?.length ?? 0}/${this.maxLength}`
+                        )}
                       </div>
                     )}
                   </div>
