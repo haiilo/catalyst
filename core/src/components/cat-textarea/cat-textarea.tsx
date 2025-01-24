@@ -168,8 +168,6 @@ export class CatTextarea {
     autosize(this.textarea);
   }
 
-  getCount: () => number = () => this.value?.length ?? 0;
-
   /**
    * Programmatically move focus to the textarea. Use this method instead of
    * `textarea.focus()`.
@@ -242,7 +240,8 @@ export class CatTextarea {
                     )}
                     {(this.maxLength || this.hasSlottedCounter) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.hasSlottedCounter ? <slot name="counter"></slot> : `${this.getCount()}/${this.maxLength}`}
+                        {this.hasSlottedCounter ?
+                          <slot name="counter"></slot> : `${this.value?.length ?? 0}/${this.maxLength}`}
                       </div>
                     )}
                   </div>
