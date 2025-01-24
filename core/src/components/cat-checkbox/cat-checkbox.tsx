@@ -21,99 +21,117 @@ let nextUniqueId = 0;
   }
 })
 export class CatCheckbox {
-  @Element() hostElement!: HTMLElement;
-  @State() hasSlottedLabel = false;
-  @State() hasSlottedHint = false;
-  /**
-   * Checked state of the checkbox
-   */
-  @Prop({ mutable: true }) checked = false;
-  /**
-   * Indeterminate state of the checkbox
-   */
-  @Prop({ mutable: true }) indeterminate = false;
-  /**
-   * Disabled state of the checkbox
-   */
-  @Prop() disabled = false;
-  /**
-   * A unique identifier for the input.
-   */
-  @Prop() identifier?: string;
-  /**
-   * Label of the checkbox which is presented in the UI
-   */
-  @Prop() label = '';
-  /**
-   * Visually hide the label, but still show it to assistive technologies like screen readers.
-   */
-  @Prop() labelHidden = false;
-  /**
-   * The name of the input.
-   */
-  @Prop() name?: string;
-  /**
-   * Required state of the checkbox.
-   */
-  @Prop() required = false;
-  /**
-   * The value of the checked checkbox.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop() value?: any;
-  /**
-   * The value of the unchecked checkbox.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop() noValue?: any;
-  /**
-   * The resolved value of the checkbox, based on the checked state and value.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) resolvedValue: any = null;
-  /**
-   * Optional hint text(s) to be displayed with the checkbox.
-   */
-  @Prop() hint?: string | string[];
-  /**
-   * Whether the label should appear to the left of the checkbox.
-   */
-  @Prop() labelLeft = false;
-  /**
-   * The alignment of the checkbox.
-   */
-  @Prop() alignment: 'center' | 'top' | 'bottom' = 'top';
-  /**
-   * Attributes that will be added to the native HTML input element.
-   */
-  @Prop() nativeAttributes?: { [key: string]: string };
-  /**
-   * Whether the label need a marker to shown if the input is required or optional.
-   */
-  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'none';
-  /**
-   * Emitted when the checked status of the checkbox is changed.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Event() catChange!: EventEmitter<any>;
-  /**
-   * Emitted when the checkbox received focus.
-   */
-  @Event() catFocus!: EventEmitter<FocusEvent>;
-  /**
-   * Emitted when the checkbox loses focus.
-   */
-  @Event() catBlur!: EventEmitter<FocusEvent>;
   private readonly _id = `cat-checkbox-${nextUniqueId++}`;
-  private input!: HTMLInputElement;
-
   private get id() {
     return this.identifier || this._id;
   }
 
-  private get hasHint() {
-    return !!this.hint || !!this.hasSlottedHint;
-  }
+  private input!: HTMLInputElement;
+
+  @Element() hostElement!: HTMLElement;
+
+  @State() hasSlottedLabel = false;
+
+  @State() hasSlottedHint = false;
+
+  /**
+   * Checked state of the checkbox
+   */
+  @Prop({ mutable: true }) checked = false;
+
+  /**
+   * Indeterminate state of the checkbox
+   */
+  @Prop({ mutable: true }) indeterminate = false;
+
+  /**
+   * Disabled state of the checkbox
+   */
+  @Prop() disabled = false;
+
+  /**
+   * A unique identifier for the input.
+   */
+  @Prop() identifier?: string;
+
+  /**
+   * Label of the checkbox which is presented in the UI
+   */
+  @Prop() label = '';
+
+  /**
+   * Visually hide the label, but still show it to assistive technologies like screen readers.
+   */
+  @Prop() labelHidden = false;
+
+  /**
+   * The name of the input.
+   */
+  @Prop() name?: string;
+
+  /**
+   * Required state of the checkbox.
+   */
+  @Prop() required = false;
+
+  /**
+   * The value of the checked checkbox.
+   */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() value?: any;
+
+  /**
+   * The value of the unchecked checkbox.
+   */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() noValue?: any;
+
+  /**
+   * The resolved value of the checkbox, based on the checked state and value.
+   */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) resolvedValue: any = null;
+
+  /**
+   * Optional hint text(s) to be displayed with the checkbox.
+   */
+  @Prop() hint?: string | string[];
+
+  /**
+   * Whether the label should appear to the left of the checkbox.
+   */
+  @Prop() labelLeft = false;
+
+  /**
+   * The alignment of the checkbox.
+   */
+  @Prop() alignment: 'center' | 'top' | 'bottom' = 'top';
+
+  /**
+   * Attributes that will be added to the native HTML input element.
+   */
+  @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * Whether the label need a marker to shown if the input is required or optional.
+   */
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'none';
+
+  /**
+   * Emitted when the checked status of the checkbox is changed.
+   */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Event() catChange!: EventEmitter<any>;
+
+  /**
+   * Emitted when the checkbox received focus.
+   */
+  @Event() catFocus!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the checkbox loses focus.
+   */
+  @Event() catBlur!: EventEmitter<FocusEvent>;
 
   componentWillLoad() {
     this.updateResolved();
@@ -208,6 +226,10 @@ export class CatCheckbox {
         )}
       </Host>
     );
+  }
+
+  private get hasHint() {
+    return !!this.hint || !!this.hasSlottedHint;
   }
 
   private onInput() {

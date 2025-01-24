@@ -453,7 +453,7 @@ export class CatDateInline {
     } else if (isSameMonth(this.viewDate, now) && (!minDate || minDate <= now)) {
       return isSameMonth(this.viewDate, date) && isSameDay(now, date);
     }
-    const minDay = isSameMonth(date, minDate) ? minDate?.getDate() ?? 1 : 1;
+    const minDay = isSameMonth(date, minDate) ? (minDate?.getDate() ?? 1) : 1;
     return isSameMonth(this.viewDate, date) && date.getDate() === minDay;
   }
 
