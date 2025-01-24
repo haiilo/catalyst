@@ -244,7 +244,7 @@ export class CatDropdown {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
         ? (elem as HTMLElement)
-        : elem?.querySelector('[data-trigger]') ?? undefined;
+        : (elem?.querySelector('[data-trigger]') ?? undefined);
     }
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
