@@ -77,19 +77,19 @@ export class CatCheckbox {
   /**
    * The value of the checked checkbox.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() value?: any;
 
   /**
    * The value of the unchecked checkbox.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() noValue?: any;
 
   /**
    * The resolved value of the checkbox, based on the checked state and value.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop({ mutable: true }) resolvedValue: any = null;
 
   /**
@@ -120,7 +120,7 @@ export class CatCheckbox {
   /**
    * Emitted when the checked status of the checkbox is changed.
    */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Event() catChange!: EventEmitter<any>;
 
   /**
@@ -248,6 +248,6 @@ export class CatCheckbox {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
+    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
   }
 }
