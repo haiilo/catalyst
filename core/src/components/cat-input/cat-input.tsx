@@ -15,6 +15,7 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the input.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @slot counter - Custom counter element to be displayed in the top right corner of the label.
  * @part label - The native label element.
  * @part input - The native input element.
  * @part prefix - The text prefix.
@@ -41,6 +42,8 @@ export class CatInput {
   @State() hasSlottedLabel = false;
 
   @State() hasSlottedHint = false;
+
+  @State() hasSlottedCounter = false;
 
   @State() isPasswordShown = false;
 
@@ -220,6 +223,7 @@ export class CatInput {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
   }
 
   /**
@@ -305,9 +309,13 @@ export class CatInput {
                       ({i18n.t('input.required')})
                     </span>
                   )}
-                  {this.maxLength && (
+                  {(this.maxLength || this.hasSlottedCounter) && (
                     <div class="label-character-count" aria-hidden="true">
-                      {this.value?.toString().length ?? 0}/{this.maxLength}
+                      {this.hasSlottedCounter ? (
+                        <slot name="counter"></slot>
+                      ) : (
+                        `${this.value?.length ?? 0}/${this.maxLength}`
+                      )}
                     </div>
                   )}
                 </div>

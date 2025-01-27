@@ -13,6 +13,7 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the textarea.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @slot counter - Custom counter element to be displayed in the top right corner of the label.
  * @part label - The native label element.
  * @part textarea - The native textarea element.
  */
@@ -37,6 +38,8 @@ export class CatTextarea {
   @State() hasSlottedLabel = false;
 
   @State() hasSlottedHint = false;
+
+  @State() hasSlottedCounter = false;
 
   @State() errorMap?: ErrorMap | true;
 
@@ -159,6 +162,7 @@ export class CatTextarea {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
   }
 
   componentDidLoad(): void {
@@ -235,9 +239,13 @@ export class CatTextarea {
                         ({i18n.t('input.required')})
                       </span>
                     )}
-                    {this.maxLength && (
+                    {(this.maxLength || this.hasSlottedCounter) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.value?.length ?? 0}/{this.maxLength}
+                        {this.hasSlottedCounter ? (
+                          <slot name="counter"></slot>
+                        ) : (
+                          `${this.value?.length ?? 0}/${this.maxLength}`
+                        )}
                       </div>
                     )}
                   </div>
