@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.29.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.2...catalyst-core-v10.29.0) (2025-01-27)
+
+
+### Features
+
+* **core:** add custom counter slot to input and textarea ([a69fee0](https://github.com/haiilo/catalyst/commit/a69fee091388ff556e9c385cb5d6db4bb79ddd00))
+
 ## [10.28.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.1...catalyst-core-v10.28.2) (2025-01-23)
 
 
