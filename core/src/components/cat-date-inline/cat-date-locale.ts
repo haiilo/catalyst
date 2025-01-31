@@ -1,15 +1,13 @@
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 function getDays(language: string, weekday: 'long' | 'short' | 'narrow' = 'long') {
-  const date = new Date();
-  const firstDayOfWeek = (date.getUTCDate() - date.getUTCDay() + 7) % 7;
   const format = new Intl.DateTimeFormat(language, { weekday }).format;
-  return [...Array(7).keys()].map(day => format(new Date(date.getTime()).setUTCDate(firstDayOfWeek + day)));
+  return [...Array(7).keys()].map(day => format(new Date(2000, 4, 14 + day)));
 }
 
 function getMonths(language: string, month: 'long' | 'short' = 'long') {
   const format = new Intl.DateTimeFormat(language, { month }).format;
-  return [...Array(12).keys()].map(month => format(new Date(2000, month, 1)));
+  return [...Array(12).keys()].map(month => format(new Date(2000, month, 15)));
 }
 
 function getWeekInfo(language: string) {
