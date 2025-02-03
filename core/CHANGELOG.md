@@ -1,5 +1,23 @@
 # Changelog
 
+## [10.30.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.29.0...catalyst-core-v10.30.0) (2025-02-03)
+
+
+### Features
+
+* **core:** adjust sizing of tooltips ([8a453da](https://github.com/haiilo/catalyst/commit/8a453da98ed13af412d699192e59be60520808b4))
+
+
+### Bug Fixes
+
+* **core:** add border to light notifications (#closes 635) ([3d50d00](https://github.com/haiilo/catalyst/commit/3d50d00503728b22319ab2982c12e870b5b321b7))
+* **core:** adjust auto complete defaults for date and time inputs ([d849866](https://github.com/haiilo/catalyst/commit/d849866bd32ec485ed985dbf1d5b9de4ee1f0e57))
+* **core:** adjust auto complete defaults for date and time inputs ([c65eb74](https://github.com/haiilo/catalyst/commit/c65eb74d7e1e0a2daf049bd0429bcd324414c098))
+* **core:** adjust icon gap for large buttons ([5eac1f7](https://github.com/haiilo/catalyst/commit/5eac1f7d0161d8f8efdddf3c98e6321633ad34a2))
+* **core:** fix date navigation (closes [#654](https://github.com/haiilo/catalyst/issues/654)) ([#656](https://github.com/haiilo/catalyst/issues/656)) ([8ae8410](https://github.com/haiilo/catalyst/commit/8ae8410cb9a4eb84a4b4bb572ebcd751745a05dc))
+* **core:** fix month and weekday names (closes [#640](https://github.com/haiilo/catalyst/issues/640)) ([87ba2fb](https://github.com/haiilo/catalyst/commit/87ba2fb76de286528a3a55eb2024b2a4d80a73e6))
+* **core:** update dependencies ([bf9db7f](https://github.com/haiilo/catalyst/commit/bf9db7f48c00e8f65fc0da8b3e26ea188357e498))
+
 ## [10.29.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.2...catalyst-core-v10.29.0) (2025-01-27)
 
 

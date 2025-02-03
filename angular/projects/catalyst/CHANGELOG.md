@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.30.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.29.0...catalyst-angular-v10.30.0) (2025-02-03)
+
+
+### Bug Fixes
+
+* **core:** adjust auto complete defaults for date and time inputs ([c65eb74](https://github.com/haiilo/catalyst/commit/c65eb74d7e1e0a2daf049bd0429bcd324414c098))
+
 ## [10.29.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.28.2...catalyst-angular-v10.29.0) (2025-01-27)
 
 
