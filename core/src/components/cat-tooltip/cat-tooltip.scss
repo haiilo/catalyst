@@ -21,7 +21,6 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
   top: 0;
   left: 0;
   box-sizing: border-box;
-  @include cat-body('s', 500);
   background-color: cat-token('color.ui.background.tooltip');
   border-radius: cat-border-radius('m');
   color: cat-token('color.ui.font.tooltip');
@@ -57,25 +56,31 @@ $-shift-padding: 0.25rem; // padding given to the shift() middleware
 // ----- size
 
 .tooltip-s {
-  padding: 0.375rem 0.5rem;
+  padding: 0.25rem 0.375rem;
+  @include cat-body('xs', 500);
 
   &.tooltip-round {
-    padding: 0.375rem 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
 .tooltip-m {
-  padding: 0.75rem;
+  padding: 0.375rem 0.5rem;
+  @include cat-body('s', 500);
 
   &.tooltip-round {
-    padding: 0.75rem 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
 .tooltip-l {
-  padding: 1rem;
+  padding: 0.5rem 0.75rem;
+  @include cat-body('m', 500);
 
   &.tooltip-round {
-    padding: 1rem 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
