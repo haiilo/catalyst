@@ -229,7 +229,7 @@ $button-sizes: (
 
 // ----- size
 
-@mixin size($size, $fontSize, $padding) {
+@mixin size($size, $fontSize, $padding, $gap: 0.25rem) {
   $-line-height: cat-body-line-height($fontSize);
 
   $-total-height: map.get($button-sizes, $size);
@@ -240,7 +240,7 @@ $button-sizes: (
     min-width: map.get($button-sizes, $size);
     padding: $-padding-v $-padding-h;
     @include cat-body($fontSize, null);
-    gap: 0.25rem;
+    gap: $gap;
 
     // normalize icon size for line height
     @if $fontSize == 'm' {
@@ -322,7 +322,7 @@ $button-sizes: (
 @include size('s', 'm', 0.5rem);
 @include size('m', 'm', 0.75rem);
 @include size('l', 'm', 1rem);
-@include size('xl', 'l', 1.25rem);
+@include size('xl', 'l', 1.25rem, 0.5rem);
 
 // ----- tabs
 
