@@ -390,16 +390,18 @@ export class CatDateInline {
   }
 
   private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
-    this.viewDate = new Date(
-      direction === 'prev'
-        ? period === 'year'
-          ? this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)
-          : this.viewDate.setMonth(this.viewDate.getMonth() - 1)
-        : period === 'year'
-          ? this.viewDate.setFullYear(this.viewDate.getFullYear() + 1)
-          : this.viewDate.setMonth(this.viewDate.getMonth() + 1)
-    );
-    // announce the new month and year
+    const offset = direction === 'prev' ? -1 : 1;
+    const targetYear = this.viewDate.getFullYear() + (period === 'year' ? offset : 0);
+    const targetMonth = this.viewDate.getMonth() + (period === 'month' ? offset : 0);
+
+    const date = new Date(this.viewDate);
+    date.setFullYear(targetYear);
+    date.setMonth(targetMonth);
+
+    const minDate = new Date(targetYear, targetMonth, 1);
+    const maxDay = new Date(targetYear, targetMonth + 1, 0).getDate();
+    const maxDate = new Date(targetYear, targetMonth, maxDay);
+    this.viewDate = clampDate(minDate, date, maxDate);
     this.setAriaLive(this.getHeadline());
   }
 
