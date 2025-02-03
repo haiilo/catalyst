@@ -419,6 +419,7 @@ export const CatTag = /*@__PURE__*/ defineContainer<JSX.CatTag>('cat-tag', undef
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'requiredMarker',
   'horizontal',
+  'autoComplete',
   'disabled',
   'hint',
   'identifier',

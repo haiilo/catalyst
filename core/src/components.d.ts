@@ -328,7 +328,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the input.
          */
@@ -522,7 +522,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Whether the input should show a clear button.
          */
@@ -1362,6 +1362,10 @@ export namespace Components {
      */
     interface CatTextarea {
         /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
           * Clear the textarea.
          */
         "clear": () => Promise<void>;
@@ -1454,7 +1458,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the input.
          */
@@ -3695,6 +3699,10 @@ declare namespace LocalJSX {
      * input component.
      */
     interface CatTextarea {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
         /**
           * Whether the textarea is disabled.
          */

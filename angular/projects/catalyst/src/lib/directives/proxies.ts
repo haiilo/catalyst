@@ -1258,6 +1258,7 @@ export declare interface CatTag extends Components.CatTag {
 
 @ProxyCmp({
   inputs: [
+    'autoComplete',
     'disabled',
     'errorUpdate',
     'errors',
@@ -1285,6 +1286,7 @@ export declare interface CatTag extends Components.CatTag {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'autoComplete',
     'disabled',
     'errorUpdate',
     'errors',

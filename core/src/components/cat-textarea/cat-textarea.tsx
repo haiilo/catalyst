@@ -54,6 +54,11 @@ export class CatTextarea {
   @Prop() horizontal = false;
 
   /**
+   * Hint for form autofill feature.
+   */
+  @Prop() autoComplete?: string;
+
+  /**
    * Whether the textarea is disabled.
    */
   @Prop() disabled = false;
@@ -268,6 +273,7 @@ export class CatTextarea {
                 ref={el => (this.textarea = el as HTMLTextAreaElement)}
                 id={this.id}
                 disabled={this.disabled}
+                autocomplete={this.autoComplete}
                 maxlength={this.maxLength}
                 minlength={this.minLength}
                 name={this.name}

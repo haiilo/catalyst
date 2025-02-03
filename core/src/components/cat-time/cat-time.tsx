@@ -45,7 +45,7 @@ export class CatTime {
   /**
    * Hint for form autofill feature.
    */
-  @Prop() autoComplete?: string;
+  @Prop() autoComplete = 'off';
 
   /**
    * Whether the input should show a clear button.
