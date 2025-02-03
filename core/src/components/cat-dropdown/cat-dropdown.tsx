@@ -18,6 +18,18 @@ let nextUniqueId = 0;
 })
 export class CatDropdown {
   private static readonly OFFSET = 4;
+  private readonly focusableSelectors = [
+    'input',
+    'select',
+    'textarea',
+    'button',
+    'a[href]',
+    '[tabindex]',
+    'iframe',
+    '[contenteditable]',
+    'audio[controls]',
+    'video[controls]'
+  ];
   private readonly id = nextUniqueId++;
   private triggerSlot!: HTMLSlotElement;
   private trigger?: FocusableElement;
@@ -76,14 +88,6 @@ export class CatDropdown {
 
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
-    // we need to delay the initialization of the trigger until first
-    // interaction because the element might still be hidden (and thus not
-    // tabbable) if contained in another Stencil web component
-    if (!this.trigger) {
-      this.initTrigger();
-      this.toggle();
-    }
-
     // hide dropdown on button clicks inside the dropdown content
     const path = event.composedPath();
     if (
@@ -112,13 +116,6 @@ export class CatDropdown {
    */
   @Method()
   async open(): Promise<void> {
-    // we need to delay the initialization of the trigger until first
-    // interaction because the element might still be hidden (and thus not
-    // tabbable) if contained in another Stencil web component
-    if (!this.trigger) {
-      this.initTrigger();
-    }
-
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
     }
@@ -194,6 +191,11 @@ export class CatDropdown {
     }, timeTransitionS);
   }
 
+  componentDidLoad() {
+    this.initAnchor();
+    this.initTrigger();
+  }
+
   render() {
     return (
       <Host>
@@ -208,10 +210,6 @@ export class CatDropdown {
         </div>
       </Host>
     );
-  }
-
-  componentDidLoad() {
-    this.initAnchor();
   }
 
   private get contentId() {
@@ -239,7 +237,7 @@ export class CatDropdown {
 
   private findTrigger() {
     let trigger: FocusableElement | undefined;
-    const elems = this.triggerSlot?.assignedElements?.() || [];
+    let elems = this.triggerSlot?.assignedElements?.() || [];
     while (!trigger && elems.length) {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
@@ -248,6 +246,13 @@ export class CatDropdown {
     }
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
+    }
+    if (!trigger) {
+      elems = this.triggerSlot?.assignedElements?.() || [];
+      while (!trigger && elems.length) {
+        const elem = elems.shift();
+        trigger = this.findFirstTabbableIncludeHidden(elem as HTMLElement);
+      }
     }
     if (!trigger) {
       throw new Error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
@@ -286,5 +291,46 @@ export class CatDropdown {
 
   private hasAttribute(elem: EventTarget, attr: string) {
     return elem instanceof HTMLElement && elem.hasAttribute(attr);
+  }
+
+  private findFirstTabbableIncludeHidden(element: HTMLElement | ShadowRoot): HTMLElement | undefined {
+    if (element instanceof HTMLElement) {
+      const potentiallyTabbableElement = this.getPotentiallyTabbable(element);
+      if (potentiallyTabbableElement) {
+        return potentiallyTabbableElement;
+      }
+    }
+
+    const children = Array.from(element.querySelectorAll<HTMLElement>('*'));
+    for (const child of children) {
+      const potentiallyTabbableElement = this.getPotentiallyTabbable(child);
+
+      if (potentiallyTabbableElement) {
+        return potentiallyTabbableElement;
+      }
+    }
+    return undefined;
+  }
+
+  private couldBeTabbable(value: HTMLElement) {
+    if (!value.matches(this.focusableSelectors.join(','))) {
+      return false;
+    }
+
+    const tabindex = value.getAttribute('tabindex');
+    return tabindex === null || Number(tabindex) >= 0;
+  }
+
+  private getPotentiallyTabbable(element: HTMLElement) {
+    if (this.couldBeTabbable(element)) {
+      return element;
+    }
+    if (element.shadowRoot) {
+      const shadowTabbable = this.findFirstTabbableIncludeHidden(element.shadowRoot);
+      if (shadowTabbable) {
+        return shadowTabbable;
+      }
+    }
+    return undefined;
   }
 }
