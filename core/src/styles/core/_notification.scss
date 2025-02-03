@@ -8,7 +8,6 @@ $mobile-side-padding: 0.5rem;
   border-radius: cat-border-radius('l');
   background: cat-token('color.ui.background.surface');
   padding: 1.25rem;
-  box-shadow: none;
   color: cat-token('color.ui.font.base');
   width: 400px;
   max-width: 400px;
@@ -25,6 +24,10 @@ $mobile-side-padding: 0.5rem;
     --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
     --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
     background: cat-token('color.ui.background.surfaceInverted');
+  }
+
+  &:not(.cat-toastify-dark) {
+    @include cat-elevation(4, $box-shadow: 'inset 0 0 0 1px #{cat-token('color.ui.border.default')}');
   }
 
   @include until('xs') {

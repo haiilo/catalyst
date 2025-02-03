@@ -1,8 +1,14 @@
 @use 'sass:map';
 @use '../variables' as *;
 
-@mixin cat-elevation($level) {
-  box-shadow: map.get($cat-elevation, $level);
+@mixin cat-elevation($level, $box-shadow: '') {
+  @if $box-shadow != '' {
+    box-shadow:
+      #{$box-shadow},
+      map.get($cat-elevation, $level);
+  } @else {
+    box-shadow: map.get($cat-elevation, $level);
+  }
 }
 
 @mixin cat-elevation-transition {
