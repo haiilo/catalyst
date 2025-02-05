@@ -8,7 +8,7 @@ describe('cat-checkbox', () => {
       html: `<cat-checkbox label="Label"></cat-checkbox>`
     });
     expect(page.root).toEqualLightHtml(`
-     <cat-checkbox label="Label" tabindex="0"></cat-checkbox>
+     <cat-checkbox label="Label"></cat-checkbox>
     `);
   });
 });
