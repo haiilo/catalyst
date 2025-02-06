@@ -321,8 +321,8 @@ $button-sizes: (
 @include size('xs', 's', 0.25rem);
 @include size('s', 'm', 0.5rem);
 @include size('m', 'm', 0.75rem);
-@include size('l', 'm', 1rem);
-@include size('xl', 'l', 1.25rem, 0.5rem);
+@include size('l', 'm', 1rem, 0.5rem);
+@include size('xl', 'l', 1.25rem, 0.75rem);
 
 // ----- tabs
 
