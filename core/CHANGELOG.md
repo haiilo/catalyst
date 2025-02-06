@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.30.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.0...catalyst-core-v10.30.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* **core:** adjust button gaps ([a0691a2](https://github.com/haiilo/catalyst/commit/a0691a235a6fa2fdbc160bd1582c73de77357764))
+* **core:** fix multi-select in Safari ([#658](https://github.com/haiilo/catalyst/issues/658)) ([1472929](https://github.com/haiilo/catalyst/commit/14729298e1a0b05e620e3d8829402edaa7b80060))
+
 ## [10.30.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.29.0...catalyst-core-v10.30.0) (2025-02-03)
 
 
