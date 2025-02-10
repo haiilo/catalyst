@@ -26,6 +26,12 @@ export class CatDropdown {
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private isOpen: boolean | null = false;
+  /**
+   * Tracking the origin of opening the dropdown and specify if initial focus should be set.
+   * Currently we set it only when the origin is keyboard.
+   * We might not need to track this in future when focus-visible support is improved across browsers
+   */
+  private hasInitialFocus = false;
 
   /**
    * The placement of the dropdown.
@@ -56,6 +62,7 @@ export class CatDropdown {
   /**
    * No element in dropdown will receive focus when dropdown is open.
    * By default, the first element in tab order will receive a focus.
+   * @deprecated
    */
   @Prop() noInitialFocus = false;
 
@@ -80,6 +87,7 @@ export class CatDropdown {
     // interaction because the element might still be hidden (and thus not
     // tabbable) if contained in another Stencil web component
     if (!this.trigger) {
+      this.hasInitialFocus = this.isEventOriginFromKeyboard(event.detail);
       this.initTrigger();
       this.toggle();
     }
@@ -109,9 +117,10 @@ export class CatDropdown {
 
   /**
    * Opens the dropdown.
+   * @param isFocusVisible is dropdown should receive visible focus when it's opened.
    */
   @Method()
-  async open(): Promise<void> {
+  async open(isFocusVisible?: boolean): Promise<void> {
     // we need to delay the initialization of the trigger until first
     // interaction because the element might still be hidden (and thus not
     // tabbable) if contained in another Stencil web component
@@ -125,6 +134,7 @@ export class CatDropdown {
 
     this.isOpen = null;
     this.content.style.display = 'block';
+    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
     // give CSS transition time to apply
     setTimeout(() => {
       this.isOpen = true;
@@ -166,7 +176,9 @@ export class CatDropdown {
               }
               return event.key === 'Tab' && event.shiftKey;
             },
-            initialFocus: () => (this.noInitialFocus ? false : undefined)
+            initialFocus: () => {
+              return this.hasInitialFocus && !this.noInitialFocus ? undefined : false;
+            }
           });
       this.trap.activate();
     });
@@ -224,10 +236,17 @@ export class CatDropdown {
     this.trigger.setAttribute('aria-haspopup', ariaHaspopup ?? 'true');
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
-    this.trigger.addEventListener('click', () => this.toggle());
+    this.trigger.addEventListener('click', (event: Event) => {
+      this.hasInitialFocus = this.isEventOriginFromKeyboard(event as UIEvent);
+      this.toggle();
+    });
     if (!this.anchor) {
       autoUpdate(this.trigger, this.content, () => this.update(this.trigger));
     }
+  }
+
+  private isEventOriginFromKeyboard(event: UIEvent): boolean {
+    return event.detail === 0;
   }
 
   private initAnchor() {
