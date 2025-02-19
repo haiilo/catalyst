@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.30.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.1...catalyst-core-v10.30.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* **core:** change visibility helpers to only react on focus-visible ([94a0d93](https://github.com/haiilo/catalyst/commit/94a0d93ee1f9f32f8685d407328a0eec238a476e))
+
 ## [10.30.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.0...catalyst-core-v10.30.1) (2025-02-06)
 
 
