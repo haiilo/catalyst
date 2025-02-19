@@ -11,18 +11,18 @@
 }
 
 @mixin cat-visually-hidden-focusable {
-  &:not(:focus):not(:focus-within) {
+  &:not(:focus-visible):not(:has(:focus-visible)) {
     @include cat-visually-hidden;
   }
 }
 
 @mixin cat-visually-hidden-hoverable($container: null) {
   @if $container {
-    #{$container}:not(:hover):not(:focus):not(:focus-within) & {
+    #{$container}:not(:hover):not(:focus-visible):not(:has(:focus-visible)) & {
       @include cat-visually-hidden;
     }
   } @else {
-    *:not(:hover):not(:focus):not(:focus-within) > & {
+    *:not(:hover):not(:focus-visible):not(:has(:focus-visible)) > & {
       @include cat-visually-hidden;
     }
   }
