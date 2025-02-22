@@ -16,8 +16,8 @@ export class CatTooltipDirective implements OnInit {
   ) {}
 
   ngOnInit() {
-    const ref = (this.viewContainer.createComponent(CatTooltip, {
+    this.viewContainer.createComponent(CatTooltip, {
       projectableNodes: [this.viewContainer.createEmbeddedView(this.templateRef).rootNodes]
-    }).instance.content = this.catTooltip);
+    }).instance.content = this.catTooltip;
   }
 }
