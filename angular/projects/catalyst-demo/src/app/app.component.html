@@ -1,6 +1,6 @@
 <h1>Catalyst Demo</h1>
 <h2>Dialog</h2>
-<button (click)="openDialog()">Open</button>
+<cat-button (catClick)="openDialog()" *catTooltip="'test'">Open</cat-button>
 <h2>Form Components</h2>
 <form [formGroup]="form">
   <h1>new datetime picker</h1>
