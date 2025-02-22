@@ -98,6 +98,7 @@ export declare interface CatBadge extends Components.CatBadge {}
     'round',
     'size',
     'submit',
+    'testId',
     'url',
     'urlTarget',
     'value',
@@ -129,6 +130,7 @@ export declare interface CatBadge extends Components.CatBadge {}
     'round',
     'size',
     'submit',
+    'testId',
     'url',
     'urlTarget',
     'value',
@@ -232,6 +234,7 @@ export declare interface CatCard extends Components.CatCard {
     'required',
     'requiredMarker',
     'resolvedValue',
+    'testId',
     'value'
   ],
   methods: ['doFocus', 'doBlur']
@@ -257,6 +260,7 @@ export declare interface CatCard extends Components.CatCard {
     'required',
     'requiredMarker',
     'resolvedValue',
+    'testId',
     'value'
   ]
 })
@@ -674,6 +678,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'required',
     'requiredMarker',
     'round',
+    'testId',
     'textPrefix',
     'textSuffix',
     'togglePassword',
@@ -712,6 +717,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'required',
     'requiredMarker',
     'round',
+    'testId',
     'textPrefix',
     'textSuffix',
     'togglePassword',
@@ -812,6 +818,7 @@ export declare interface CatPagination extends Components.CatPagination {
     'name',
     'nativeAttributes',
     'required',
+    'testId',
     'value'
   ],
   methods: ['doFocus', 'doBlur']
@@ -833,6 +840,7 @@ export declare interface CatPagination extends Components.CatPagination {
     'name',
     'nativeAttributes',
     'required',
+    'testId',
     'value'
   ]
 })
@@ -966,6 +974,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'requiredMarker',
     'tagHint',
     'tags',
+    'testId',
     'value'
   ],
   methods: ['doFocus', 'doBlur', 'clear', 'connect']
@@ -996,6 +1005,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'requiredMarker',
     'tagHint',
     'tags',
+    'testId',
     'value'
   ]
 })
@@ -1201,6 +1211,7 @@ export declare interface CatTabs extends Components.CatTabs {
     'required',
     'requiredMarker',
     'tagCreationChars',
+    'testId',
     'value'
   ]
 })
@@ -1225,6 +1236,7 @@ export declare interface CatTabs extends Components.CatTabs {
     'required',
     'requiredMarker',
     'tagCreationChars',
+    'testId',
     'value'
   ]
 })
@@ -1276,6 +1288,7 @@ export declare interface CatTag extends Components.CatTag {
     'required',
     'requiredMarker',
     'rows',
+    'testId',
     'value'
   ],
   methods: ['doFocus', 'doBlur', 'clear']
@@ -1304,6 +1317,7 @@ export declare interface CatTag extends Components.CatTag {
     'required',
     'requiredMarker',
     'rows',
+    'testId',
     'value'
   ]
 })
@@ -1441,6 +1455,7 @@ export declare interface CatTime extends Components.CatTime {
     'noValue',
     'required',
     'resolvedValue',
+    'testId',
     'value'
   ],
   methods: ['doFocus', 'doBlur']
@@ -1464,6 +1479,7 @@ export declare interface CatTime extends Components.CatTime {
     'noValue',
     'required',
     'resolvedValue',
+    'testId',
     'value'
   ]
 })

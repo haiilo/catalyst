@@ -111,6 +111,13 @@ export class CatCheckbox {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the button that is used for testing purposes. The
+   * attribute is added as `data-test` attribute and acts as a shorthand for
+   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Whether the label need a marker to shown if the input is required or optional.
    */
   @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'none';
@@ -175,6 +182,7 @@ export class CatCheckbox {
           }}
         >
           <input
+            data-test={this.testId}
             {...this.nativeAttributes}
             part="input"
             ref={el => (this.input = el as HTMLInputElement)}

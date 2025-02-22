@@ -95,6 +95,13 @@ export class CatRadio {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the button that is used for testing purposes. The
+   * attribute is added as `data-test` attribute and acts as a shorthand for
+   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when the radio is changed.
    */
   @Event() catChange!: EventEmitter<boolean | string>;
@@ -153,6 +160,7 @@ export class CatRadio {
         >
           <span class="radio">
             <input
+              data-test={this.testId}
               {...this.nativeAttributes}
               part="input"
               ref={el => (this.input = el as HTMLInputElement)}

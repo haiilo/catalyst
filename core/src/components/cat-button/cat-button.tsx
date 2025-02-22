@@ -148,6 +148,13 @@ export class CatButton {
   @Prop() nativeContentAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the button that is used for testing purposes. The
+   * attribute is added as `data-test` attribute and acts as a shorthand for
+   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * The index of a button that is used inside a cat-button-group component
    */
   @Prop() buttonGroupPosition?: 'first' | 'last' | 'middle';
@@ -243,6 +250,7 @@ export class CatButton {
       return (
         <Host data-button-group={this.buttonGroupPosition}>
           <a
+            data-test={this.testId}
             {...this.nativeAttributes}
             ref={el => (this.button = el as HTMLAnchorElement)}
             href={this.disabled ? undefined : this.url}
@@ -278,6 +286,7 @@ export class CatButton {
       return (
         <Host data-button-group={this.buttonGroupPosition}>
           <button
+            data-test={this.testId}
             {...this.nativeAttributes}
             ref={el => (this.button = el as HTMLButtonElement)}
             type={this.submit ? 'submit' : 'button'}

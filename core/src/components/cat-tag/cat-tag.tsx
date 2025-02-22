@@ -88,6 +88,13 @@ export class CatTag {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the button that is used for testing purposes. The
+   * attribute is added as `data-test` attribute and acts as a shorthand for
+   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * The value of the control.
    */
   @Prop({ mutable: true }) value?: string[];
@@ -225,6 +232,7 @@ export class CatTag {
           ))}
           <div class="input-inner-wrapper">
             <input
+              data-test={this.testId}
               {...this.nativeAttributes}
               part="input"
               id={`tags-${this.id}-input`}

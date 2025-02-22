@@ -107,6 +107,13 @@ export class CatToggle {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the button that is used for testing purposes. The
+   * attribute is added as `data-test` attribute and acts as a shorthand for
+   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when the checked status of the toggle is changed.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -167,6 +174,7 @@ export class CatToggle {
           }}
         >
           <input
+            data-test={this.testId}
             {...this.nativeAttributes}
             part="input"
             ref={el => (this.input = el as HTMLInputElement)}

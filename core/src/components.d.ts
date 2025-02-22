@@ -210,6 +210,10 @@ export namespace Components {
          */
         "submit": boolean;
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -316,6 +320,10 @@ export namespace Components {
           * The resolved value of the checkbox, based on the checked state and value.
          */
         "resolvedValue": any;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked checkbox.
          */
@@ -878,6 +886,10 @@ export namespace Components {
          */
         "round": boolean;
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -1005,6 +1017,10 @@ export namespace Components {
           * Whether the radio is required.
          */
         "required": boolean;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the radio component.
          */
@@ -1172,6 +1188,10 @@ export namespace Components {
           * Whether the select should add new items.
          */
         "tags": boolean;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
@@ -1351,6 +1371,10 @@ export namespace Components {
          */
         "tagCreationChars": string[];
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the control.
          */
         "value"?: string[];
@@ -1446,6 +1470,10 @@ export namespace Components {
           * Specifies the initial number of lines in the textarea.
          */
         "rows": number;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The initial value of the control.
          */
@@ -1640,6 +1668,10 @@ export namespace Components {
           * The resolved value of the toggle, based on the checked state, value and noValue.
          */
         "resolvedValue": any;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked toggle.
          */
@@ -2516,6 +2548,10 @@ declare namespace LocalJSX {
          */
         "submit"?: boolean;
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -2629,6 +2665,10 @@ declare namespace LocalJSX {
           * The resolved value of the checkbox, based on the checked state and value.
          */
         "resolvedValue"?: any;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked checkbox.
          */
@@ -3173,6 +3213,10 @@ declare namespace LocalJSX {
          */
         "round"?: boolean;
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -3307,6 +3351,10 @@ declare namespace LocalJSX {
           * Whether the radio is required.
          */
         "required"?: boolean;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the radio component.
          */
@@ -3501,6 +3549,10 @@ declare namespace LocalJSX {
          */
         "tags"?: boolean;
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
@@ -3689,6 +3741,10 @@ declare namespace LocalJSX {
          */
         "tagCreationChars"?: string[];
         /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the control.
          */
         "value"?: string[];
@@ -3783,6 +3839,10 @@ declare namespace LocalJSX {
           * Specifies the initial number of lines in the textarea.
          */
         "rows"?: number;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The initial value of the control.
          */
@@ -3974,6 +4034,10 @@ declare namespace LocalJSX {
           * The resolved value of the toggle, based on the checked state, value and noValue.
          */
         "resolvedValue"?: any;
+        /**
+          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked toggle.
          */
