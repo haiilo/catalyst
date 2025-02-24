@@ -210,7 +210,7 @@ export namespace Components {
          */
         "submit": boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -321,7 +321,7 @@ export namespace Components {
          */
         "resolvedValue": any;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -886,7 +886,7 @@ export namespace Components {
          */
         "round": boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -1018,7 +1018,7 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -1189,7 +1189,7 @@ export namespace Components {
          */
         "tags": boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -1371,7 +1371,7 @@ export namespace Components {
          */
         "tagCreationChars": string[];
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -1471,7 +1471,7 @@ export namespace Components {
          */
         "rows": number;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -1669,7 +1669,7 @@ export namespace Components {
          */
         "resolvedValue": any;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -2548,7 +2548,7 @@ declare namespace LocalJSX {
          */
         "submit"?: boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -2666,7 +2666,7 @@ declare namespace LocalJSX {
          */
         "resolvedValue"?: any;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -3213,7 +3213,7 @@ declare namespace LocalJSX {
          */
         "round"?: boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -3352,7 +3352,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -3549,7 +3549,7 @@ declare namespace LocalJSX {
          */
         "tags"?: boolean;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -3741,7 +3741,7 @@ declare namespace LocalJSX {
          */
         "tagCreationChars"?: string[];
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -3840,7 +3840,7 @@ declare namespace LocalJSX {
          */
         "rows"?: number;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**
@@ -4035,7 +4035,7 @@ declare namespace LocalJSX {
          */
         "resolvedValue"?: any;
         /**
-          * A unique identifier for the button that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
         /**

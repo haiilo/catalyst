@@ -148,9 +148,9 @@ export class CatButton {
   @Prop() nativeContentAttributes?: { [key: string]: string };
 
   /**
-   * A unique identifier for the button that is used for testing purposes. The
-   * attribute is added as `data-test` attribute and acts as a shorthand for
-   * `nativeAttributes={ 'data-test': 'test-Id' }`.
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
    */
   @Prop() testId?: string;
 
