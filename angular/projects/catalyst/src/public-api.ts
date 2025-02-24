@@ -15,3 +15,4 @@ export * from './lib/directives/text-value-accessor';
 export * from './lib/directives/time-value-accessor';
 export * from './lib/directives/value-accessor';
 export * from './lib/directives/value-accessor-decorator';
+export { CatTooltipDirective } from './lib/tooltip/tooltip.directive';
