@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.31.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.30.2...catalyst-angular-v10.31.0) (2025-02-24)
+
+
+### Features
+
+* **angular:** add a structural directive to instantiate a basic tooltip ([#671](https://github.com/haiilo/catalyst/issues/671)) ([4fe1ecf](https://github.com/haiilo/catalyst/commit/4fe1ecf7be42aa5c62824d7dafbed00fe79f3047))
+* **angular:** add custom dialog size config ([#669](https://github.com/haiilo/catalyst/issues/669)) ([8d32fca](https://github.com/haiilo/catalyst/commit/8d32fcac280146df0047999dfcde6fc54047f6d5))
+* **core:** add test-id as a shorthand for data-test native attributes ([#670](https://github.com/haiilo/catalyst/issues/670)) ([1065ee3](https://github.com/haiilo/catalyst/commit/1065ee3b5745e5d31590dd42ed10f2a4e910b8a2))
+
 ## [10.30.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.30.1...catalyst-angular-v10.30.2) (2025-02-19)
 
 
