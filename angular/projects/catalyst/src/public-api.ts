@@ -4,7 +4,7 @@ export * from './lib/datetime/datetime.component';
 export { CatDialogActionsComponent } from './lib/dialog/dialog-actions.component';
 export { CatDialogHeaderComponent } from './lib/dialog/dialog-header.component';
 export { CatDialogComponent } from './lib/dialog/dialog.component';
-export { CatDialogConfig, CatDialogService } from './lib/dialog/dialog.service';
+export { CatDialogConfig, CatDialogService, CAT_DIALOG_SIZE_TOKEN } from './lib/dialog/dialog.service';
 export * from './lib/directives/boolean-value-accessor';
 export * from './lib/directives/date-value-accessor';
 export * from './lib/directives/proxies';
