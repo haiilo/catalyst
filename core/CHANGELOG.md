@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.31.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.2...catalyst-core-v10.31.0) (2025-02-24)
+
+
+### Features
+
+* **core:** add test-id as a shorthand for data-test native attributes ([#670](https://github.com/haiilo/catalyst/issues/670)) ([1065ee3](https://github.com/haiilo/catalyst/commit/1065ee3b5745e5d31590dd42ed10f2a4e910b8a2))
+
 ## [10.30.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.1...catalyst-core-v10.30.2) (2025-02-19)
 
 
