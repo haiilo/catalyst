@@ -202,6 +202,13 @@ export class CatInput {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
@@ -345,6 +352,7 @@ export class CatInput {
               )}
               <div class="input-inner-wrapper">
                 <input
+                  data-test={this.testId}
                   {...this.nativeAttributes}
                   part="input"
                   ref={el => (this.input = el as HTMLInputElement)}
