@@ -245,7 +245,7 @@
   },
   "border-color-card": {
     "$type": "color",
-    "$value": "#8c8c8c1f"
+    "$value": "#00000000"
   },
   "font-color-base": {
     "$type": "color",
