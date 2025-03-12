@@ -699,6 +699,7 @@ export namespace Components {
         "noAutoClose": boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated
          */
         "noInitialFocus": boolean;
         /**
@@ -711,8 +712,9 @@ export namespace Components {
         "noReturnFocus": boolean;
         /**
           * Opens the dropdown.
+          * @param isFocusVisible is dropdown should receive visible focus when it's opened.
          */
-        "open": () => Promise<void>;
+        "open": (isFocusVisible?: boolean) => Promise<void>;
         /**
           * Allow overflow when dropdown is open.
          */
@@ -3032,6 +3034,7 @@ declare namespace LocalJSX {
         "noAutoClose"?: boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated
          */
         "noInitialFocus"?: boolean;
         /**
