@@ -699,7 +699,7 @@ export namespace Components {
         "noAutoClose": boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
-          * @deprecated
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
          */
         "noInitialFocus": boolean;
         /**
@@ -3034,7 +3034,7 @@ declare namespace LocalJSX {
         "noAutoClose"?: boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
-          * @deprecated
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
          */
         "noInitialFocus"?: boolean;
         /**

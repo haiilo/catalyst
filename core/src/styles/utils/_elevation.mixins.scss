@@ -11,6 +11,10 @@
   }
 }
 
+@mixin cat-elevation-card {
+  box-shadow: 0 0 0 1px cat-token('color.ui.border.card');
+}
+
 @mixin cat-elevation-transition {
   transition: $cat-elevation-transition;
 }

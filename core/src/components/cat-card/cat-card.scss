@@ -8,6 +8,7 @@ $-padding: 1.25rem;
   border-radius: cat-border-radius('l');
   background-color: cat-token('color.ui.background.surface');
   padding: $-padding;
+  @include cat-elevation-card;
 }
 
 :host([hidden]) {
