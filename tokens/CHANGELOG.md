@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.32.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.32.0...catalyst-tokens-v10.32.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **core:** reset card border ([6b93f4e](https://github.com/haiilo/catalyst/commit/6b93f4eeb513a7b94b38295befd4d78ab3c5bd93))
+
 ## [10.32.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.31.1...catalyst-tokens-v10.32.0) (2025-03-12)
 
 
