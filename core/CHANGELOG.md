@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.31.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.31.0...catalyst-core-v10.31.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **core:** do not show focus in dropdown if it was opened by mouse click ([#664](https://github.com/haiilo/catalyst/issues/664)) ([2dcc67b](https://github.com/haiilo/catalyst/commit/2dcc67b471e6e74e15e84959800fe8ceb0c81e46))
+
 ## [10.31.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.2...catalyst-core-v10.31.0) (2025-02-24)
 
 
