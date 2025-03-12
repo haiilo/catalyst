@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.32.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.31.1...catalyst-tokens-v10.32.0) (2025-03-12)
+
+
+### Features
+
+* **core:** add border for cards ([#685](https://github.com/haiilo/catalyst/issues/685)) ([d3206af](https://github.com/haiilo/catalyst/commit/d3206af28b851ab9d0161acb8b114f4fd4d471c5))
+
 ## [10.31.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.31.0...catalyst-tokens-v10.31.1) (2025-03-12)
 
 
