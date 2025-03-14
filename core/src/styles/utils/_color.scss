@@ -32,6 +32,27 @@
     color: cat-token('color.theme.#{$name}.text') !important;
   }
 
+  button.cat-text-#{$name},
+  button.cat-link-#{$name} {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  button.cat-link-#{$name} {
+    &:hover:not(:disabled) {
+      text-decoration: cat-token('font.decoration.linkHover');
+    }
+
+    &:focus-visible {
+      outline: 2px solid cat-token('color.ui.border.focus');
+      outline-offset: 1px;
+    }
+  }
+
   .cat-link-#{$name},
   .cat-text-#{$name}-hover {
     transition: color cat-token('time.transition.s');
