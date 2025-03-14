@@ -2234,6 +2234,24 @@ code {
   color: rgb(var(--cat-primary-text, 0, 129, 148)) !important;
 }
 
+button.cat-text-primary,
+button.cat-link-primary {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-primary:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-primary:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
+}
+
 .cat-link-primary,
 .cat-text-primary-hover {
   transition: color 125ms;
@@ -2271,6 +2289,24 @@ code {
 .cat-text-primaryInverted,
 .cat-link-primaryInverted {
   color: #93b4f2 !important;
+}
+
+button.cat-text-primaryInverted,
+button.cat-link-primaryInverted {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-primaryInverted:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-primaryInverted:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
 }
 
 .cat-link-primaryInverted,
@@ -2312,6 +2348,24 @@ code {
   color: rgb(var(--cat-secondary-text, 0, 0, 0)) !important;
 }
 
+button.cat-text-secondary,
+button.cat-link-secondary {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-secondary:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-secondary:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
+}
+
 .cat-link-secondary,
 .cat-text-secondary-hover {
   transition: color 125ms;
@@ -2349,6 +2403,24 @@ code {
 .cat-text-secondaryInverted,
 .cat-link-secondaryInverted {
   color: white !important;
+}
+
+button.cat-text-secondaryInverted,
+button.cat-link-secondaryInverted {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-secondaryInverted:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-secondaryInverted:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
 }
 
 .cat-link-secondaryInverted,
@@ -2390,6 +2462,24 @@ code {
   color: rgb(var(--cat-info-text, 0, 115, 230)) !important;
 }
 
+button.cat-text-info,
+button.cat-link-info {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-info:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-info:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
+}
+
 .cat-link-info,
 .cat-text-info-hover {
   transition: color 125ms;
@@ -2427,6 +2517,24 @@ code {
 .cat-text-success,
 .cat-link-success {
   color: rgb(var(--cat-success-text, 0, 132, 88)) !important;
+}
+
+button.cat-text-success,
+button.cat-link-success {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-success:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-success:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
 }
 
 .cat-link-success,
@@ -2468,6 +2576,24 @@ code {
   color: rgb(var(--cat-warning-text, 159, 97, 0)) !important;
 }
 
+button.cat-text-warning,
+button.cat-link-warning {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-warning:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-warning:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
+}
+
 .cat-link-warning,
 .cat-text-warning-hover {
   transition: color 125ms;
@@ -2505,6 +2631,24 @@ code {
 .cat-text-danger,
 .cat-link-danger {
   color: rgb(var(--cat-danger-text, 217, 52, 13)) !important;
+}
+
+button.cat-text-danger,
+button.cat-link-danger {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button.cat-link-danger:hover:not(:disabled) {
+  text-decoration: var(--cat-link-decoration-hover, underline);
+}
+button.cat-link-danger:focus-visible {
+  outline: 2px solid rgb(var(--cat-border-color-focus, 0, 113, 255));
+  outline-offset: 1px;
 }
 
 .cat-link-danger,
