@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.32.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.1...catalyst-core-v10.32.2) (2025-03-14)
+
+
+### Bug Fixes
+
+* **core:** adjust styles for plain buttons with utility classes ([ebf1e1f](https://github.com/haiilo/catalyst/commit/ebf1e1fa42215e6ac47d67b513d1add2e21e8a64))
+
 ## [10.32.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.0...catalyst-core-v10.32.1) (2025-03-12)
 
 
