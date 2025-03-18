@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.2...catalyst-core-v10.33.0) (2025-03-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
 ## [10.32.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.1...catalyst-core-v10.32.2) (2025-03-14)
 
 

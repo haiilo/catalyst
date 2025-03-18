@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.32.2...catalyst-angular-formly-v10.33.0) (2025-03-18)
+
+
+### Features
+
+* **angular:** adjust peer dependency requirements ([3b3af38](https://github.com/haiilo/catalyst/commit/3b3af38571b8a6dce4cd5da3f2a38c5311776926))
+
 ## [10.32.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v10.32.1...catalyst-angular-formly-v10.32.2) (2025-03-14)
 
 
