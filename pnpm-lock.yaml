@@ -133,7 +133,7 @@ importers:
   angular/dist/catalyst-formly:
     dependencies:
       '@angular/core':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        specifier: '>=14.0.0'
         version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
       '@haiilo/catalyst-angular':
         specifier: workspace:*
@@ -172,7 +172,7 @@ importers:
   angular/projects/catalyst-formly:
     dependencies:
       '@angular/core':
-        specifier: ^14.0.0 || ^15.0.0 || ^16.0.0
+        specifier: '>=14.0.0'
         version: 14.3.0(rxjs@7.8.1)(zone.js@0.11.8)
       '@haiilo/catalyst-angular':
         specifier: workspace:*
