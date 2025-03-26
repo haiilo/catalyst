@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { fromEvent, merge, Observable, Subject } from 'rxjs';
-import { auditTime, distinctUntilChanged, filter, map, pairwise, takeUntil, tap } from 'rxjs/operators';
+import { auditTime, distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
 /**
  * An element to display scrollable content.
