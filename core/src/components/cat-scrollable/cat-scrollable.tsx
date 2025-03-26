@@ -86,12 +86,12 @@ export class CatScrollable {
       .pipe(
         auditTime(CatScrollable.THROTTLE),
         map(() => ({
-          top: this.getScrollOffset('top') > 0,
-          left: this.getScrollOffset('left') > 0,
-          right: this.getScrollOffset('right') > 0,
-          bottom: this.getScrollOffset('bottom') > 0
+          // 5px used to avoid shadow bug on Windows
+          top: this.getScrollOffset('top') > 5,
+          left: this.getScrollOffset('left') > 5,
+          right: this.getScrollOffset('right') > 5,
+          bottom: this.getScrollOffset('bottom') > 5
         })),
-        distinctUntilChanged(),
         takeUntil(this.destroyed)
       )
       .subscribe(({ top, left, right, bottom }) => {
@@ -143,8 +143,20 @@ export class CatScrollable {
         auditTime(CatScrollable.THROTTLE),
         map(() => this.getScrollOffset(from)),
         map(offset => offset <= this.scrolledBuffer),
-        distinctUntilChanged(),
         filter(isLower => isLower),
+        map(() => {
+          switch (from) {
+            case 'top':
+              return this.getScrollOffset('bottom');
+            case 'left':
+              return this.getScrollOffset('right');
+            case 'right':
+              return this.getScrollOffset('left');
+            case 'bottom':
+              return this.getScrollOffset('top');
+          }
+        }),
+        distinctUntilChanged(),
         takeUntil(this.destroyed)
       )
       .subscribe(() => emitter.emit());
