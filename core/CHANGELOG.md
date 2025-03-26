@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.0...catalyst-core-v10.33.1) (2025-03-26)
+
+
+### Bug Fixes
+
+* **core:** fixed cat-scrollable for windows ([#697](https://github.com/haiilo/catalyst/issues/697)) ([e34749c](https://github.com/haiilo/catalyst/commit/e34749cc564675d12e6789a1c5a2bb9ec0e041e3))
+
 ## [10.33.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.2...catalyst-core-v10.33.0) (2025-03-18)
 
 
