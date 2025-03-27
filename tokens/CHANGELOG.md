@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.33.2...catalyst-tokens-v10.33.3) (2025-03-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
 ## [10.33.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.33.1...catalyst-tokens-v10.33.2) (2025-03-27)
 
 
