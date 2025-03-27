@@ -19,7 +19,7 @@ import eyeClosedOutlined from '@haiilo/catalyst-icons/src/eye-closed-outlined.sv
 import eyeOpenOutlined from '@haiilo/catalyst-icons/src/eye-open-outlined.svg';
 import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg';
 import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
-import { error, info } from 'loglevel';
+import log from 'loglevel';
 
 export class CatIconRegistry {
   private static instance: CatIconRegistry;
@@ -94,7 +94,7 @@ export class CatIconRegistry {
   getIcon(name: string, setName?: string): string | undefined {
     const icon = this.icons.get(this.buildName(name, setName));
     if (!icon) {
-      error(`[CatIconRegistry::${this.id}] Unknown icon${setName ? ` in set ${setName}` : ''}: ${name}`);
+      log.error(`[CatIconRegistry::${this.id}] Unknown icon${setName ? ` in set ${setName}` : ''}: ${name}`);
     }
     return icon;
   }
@@ -103,7 +103,7 @@ export class CatIconRegistry {
     const iconEntries = Object.entries(icons);
     const iconSize = iconEntries.length;
     iconEntries.forEach(([name, data]) => this.icons.set(this.buildName(name, setName), data));
-    info(
+    log.info(
       `[CatIconRegistry::${this.id}] Added ${iconSize !== 1 ? 'icons' : 'icon'}${setName ? ` to set ${setName}` : ''}`
     );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-added', { id: this.id, icons, setName }));
@@ -113,7 +113,7 @@ export class CatIconRegistry {
   removeIcons(names: string[], setName?: string, silent = false): CatIconRegistry {
     const iconSize = names.length;
     names.forEach(name => this.icons.delete(this.buildName(name, setName)));
-    info(
+    log.info(
       `[CatIconRegistry::${this.id}] Removed ${iconSize !== 1 ? 'icons' : 'icon'}${
         setName ? ` from set ${setName}` : ''
       }`

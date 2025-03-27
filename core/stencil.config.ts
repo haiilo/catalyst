@@ -51,9 +51,6 @@ export const config: Config = {
       includePaths: ['src/styles', 'node_modules', '../node_modules']
     })
   ],
-  extras: {
-    enableImportInjection: true,
-  },
   sourceMap: true,
   globalStyle: 'src/styles/index.scss',
   outputTargets: [
