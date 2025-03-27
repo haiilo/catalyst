@@ -2,7 +2,6 @@ import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-outpu
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
 import { inlineSvg } from 'stencil-inline-svg';
 
@@ -45,6 +44,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 
 export const config: Config = {
   namespace: 'catalyst',
+  taskQueue: 'async',
   plugins: [
     inlineSvg(),
     sass({
@@ -66,14 +66,17 @@ export const config: Config = {
           src: getAssetsTokensPath(),
           dest: 'assets'
         },
-        {
-          src: './index.cdn.js',
-          warn: true
-        }
+        // {
+        //   src: './index.cdn.js',
+        //   warn: true
+        // }
       ]
     },
     {
-      type: 'dist-custom-elements'
+      type: 'dist-custom-elements',
+      // customElementsExportBehavior: 'auto-define-custom-elements',
+      externalRuntime: false,
+      dir: 'components'
     },
     {
       type: 'docs-readme',
@@ -100,17 +103,13 @@ export const config: Config = {
       valueAccessorConfigs: angularValueAccessorBindings
     }),
     reactOutputTarget({
-      componentCorePackage: '@haiilo/catalyst',
-      proxiesFile: '../react/src/components/stencil-generated/index.ts'
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@haiilo/catalyst',
-      proxiesFile: '../vue/src/components.ts'
+      stencilPackageName: '@haiilo/catalyst',
+      outDir: '../react/src'
     })
   ],
   testing: {
     setupFiles: ['./setupTests.js'],
-    browserHeadless: 'new',
+    browserHeadless: 'shell',
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     transform: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'

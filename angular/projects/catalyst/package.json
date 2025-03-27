@@ -3,6 +3,9 @@
   "version": "10.33.1",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
+  "module": "fesm2015/haiilo-catalyst-angular.mjs",
+  "main": "fesm2015/haiilo-catalyst-angular.js",
+  "types": "index.d.ts",
   "scripts": {
     "reset": "rm -rf ./node_modules"
   },
