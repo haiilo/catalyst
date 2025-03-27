@@ -1,4 +1,4 @@
-import log from 'loglevel';
+import { error } from 'loglevel';
 import { Platform } from './platform';
 
 // https://github.com/angular/components/blob/master/src/cdk/layout/media-matcher.ts
@@ -58,6 +58,6 @@ function createEmptyStyleRule(query: string) {
       mediaQueriesForWebkitCompatibility.add(query);
     }
   } catch (e) {
-    log.error(e);
+    error(e);
   }
 }

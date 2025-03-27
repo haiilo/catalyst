@@ -8,12 +8,6 @@ import {
   catNotificationService,
   CatNotificationService
 } from '@haiilo/catalyst';
-import log, { RootLogger } from 'loglevel';
-
-export const CAT_LOG_TOKEN = new InjectionToken<RootLogger>('CAT_LOG', {
-  providedIn: 'root',
-  factory: () => log
-});
 
 export const CAT_I18N_REGISTRY_TOKEN = new InjectionToken<CatI18nRegistry>('CAT_I18N_REGISTRY', {
   providedIn: 'root',
