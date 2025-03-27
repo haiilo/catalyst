@@ -53,6 +53,9 @@ export const config: Config = {
   ],
   sourceMap: true,
   globalStyle: 'src/styles/index.scss',
+  extras: {
+    enableImportInjection: true
+  },
   outputTargets: [
     {
       type: 'dist',
