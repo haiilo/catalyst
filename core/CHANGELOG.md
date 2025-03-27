@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.2...catalyst-core-v10.33.3) (2025-03-27)
+
+
+### Bug Fixes
+
+* **core:** revert changes on cat-visually-hidden ([1c3386b](https://github.com/haiilo/catalyst/commit/1c3386bfc431ad7098d920dd4a6287ba35f705c2))
+
 ## [10.33.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.1...catalyst-core-v10.33.2) (2025-03-27)
 
 
