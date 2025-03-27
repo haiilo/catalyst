@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.33.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.1...catalyst-core-v10.33.2) (2025-03-27)
+
+
+### Bug Fixes
+
+* **core:** enable import injection for vite builder ([#699](https://github.com/haiilo/catalyst/issues/699)) ([9a2f63f](https://github.com/haiilo/catalyst/commit/9a2f63fde73152ab5e901e4deecfe5f21a5a1366))
+
 ## [10.33.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.0...catalyst-core-v10.33.1) (2025-03-26)
 
 
