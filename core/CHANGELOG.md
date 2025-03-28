@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.34.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.3...catalyst-core-v10.34.0) (2025-03-28)
+
+
+### Features
+
+* **core:** use shift middleware for dropdown compute position method ([#696](https://github.com/haiilo/catalyst/issues/696)) ([7d4adf7](https://github.com/haiilo/catalyst/commit/7d4adf789edcd661c41342ca92e433d105edea5c))
+
 ## [10.33.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.2...catalyst-core-v10.33.3) (2025-03-27)
 
 
