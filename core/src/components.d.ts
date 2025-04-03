@@ -431,6 +431,10 @@ export namespace Components {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -1276,6 +1280,10 @@ export namespace Components {
          */
         "noActive": boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -1591,6 +1599,10 @@ export namespace Components {
           * The step size for times in minutes.
          */
         "step": number;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -2777,6 +2789,10 @@ declare namespace LocalJSX {
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -3641,6 +3657,10 @@ declare namespace LocalJSX {
          */
         "onCatClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -3955,6 +3975,10 @@ declare namespace LocalJSX {
           * The step size for times in minutes.
          */
         "step"?: number;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
