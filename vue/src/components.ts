@@ -127,6 +127,7 @@ export const CatDate = /*@__PURE__*/ defineContainer<JSX.CatDate>('cat-date', un
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'placement',
   'catChange',
   'catFocus',
@@ -387,6 +388,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'noActive',
   'error',
   'nativeAttributes',
+  'testId',
   'catClick'
 ]);
 
@@ -473,6 +475,7 @@ export const CatTime = /*@__PURE__*/ defineContainer<JSX.CatTime>('cat-time', un
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'placement',
   'step',
   'catChange',

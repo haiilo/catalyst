@@ -70,6 +70,13 @@ export class CatTab {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when tab is clicked.
    */
   @Event() catClick!: EventEmitter<MouseEvent>;

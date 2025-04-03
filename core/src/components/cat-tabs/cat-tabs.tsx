@@ -119,6 +119,7 @@ export class CatTabs {
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
               onCatClick={() => this.click(tab)}
+              testId={tab.testId}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
               data-dropdown-no-close
