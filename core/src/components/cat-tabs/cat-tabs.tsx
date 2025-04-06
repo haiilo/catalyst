@@ -5,6 +5,7 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
  * window, using tabs as a navigational element.
  *
  * @part tab - The header of the tab.
+ * @part more - An optional more button to display additional tabs.
  */
 @Component({
   tag: 'cat-tabs',
@@ -127,6 +128,7 @@ export class CatTabs {
             </cat-button>
           );
         })}
+        <slot name="more"></slot>
       </Host>
     );
   }

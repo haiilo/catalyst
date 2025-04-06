@@ -1143,6 +1143,21 @@
                   tab.deactivated = true;
                 }, 5000);
               </script>
+              <h3>More</h3>
+              <cat-tabs>
+                <cat-tab id="tab1" label="First"></cat-tab>
+                <cat-tab label="Second"></cat-tab>
+                <cat-tab label="Third" icon="sparkle-filled"></cat-tab>
+                <cat-dropdown slot="more">
+                  <cat-button class="cat-tab cat-ml-auto" slot="trigger" variant="text">More</cat-button>
+                  <nav slot="content">
+                    <ul>
+                      <cat-button class="cat-nav-item">Nav item 1</cat-button>
+                      <cat-button class="cat-nav-item">Nav item 1</cat-button>
+                    </ul>
+                  </nav>
+                </cat-dropdown>
+              </cat-tabs>
             </section>
 
             <section id="tags">

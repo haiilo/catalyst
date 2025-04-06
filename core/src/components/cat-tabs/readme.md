@@ -62,9 +62,10 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part    | Description            |
-| ------- | ---------------------- |
-| `"tab"` | The header of the tab. |
+| Part     | Description                                         |
+| -------- | --------------------------------------------------- |
+| `"more"` | An optional more button to display additional tabs. |
+| `"tab"`  | The header of the tab.                              |
 
 
 ## Dependencies
