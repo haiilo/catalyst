@@ -147,6 +147,13 @@ export class CatDate {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * The placement of the dropdown.
    */
   @Prop() placement: Placement = 'bottom-end';
@@ -256,6 +263,7 @@ export class CatDate {
           required={this.required}
           errors={this.errors}
           errorUpdate={this.errorUpdate}
+          testId={this.testId}
           nativeAttributes={this.nativeAttributes}
           value={this.inputValue}
           onCatFocus={e => {

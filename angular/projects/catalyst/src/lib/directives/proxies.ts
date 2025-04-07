@@ -315,6 +315,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'readonly',
     'required',
     'requiredMarker',
+    'testId',
     'textPrefix',
     'textSuffix',
     'value'
@@ -348,6 +349,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'readonly',
     'required',
     'requiredMarker',
+    'testId',
     'textPrefix',
     'textSuffix',
     'value'
@@ -1121,6 +1123,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
     'label',
     'nativeAttributes',
     'noActive',
+    'testId',
     'url',
     'urlTarget'
   ]
@@ -1139,6 +1142,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
     'label',
     'nativeAttributes',
     'noActive',
+    'testId',
     'url',
     'urlTarget'
   ]
@@ -1373,6 +1377,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
     'required',
     'requiredMarker',
     'step',
+    'testId',
     'textPrefix',
     'textSuffix',
     'value'
@@ -1407,6 +1412,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
     'required',
     'requiredMarker',
     'step',
+    'testId',
     'textPrefix',
     'textSuffix',
     'value'
