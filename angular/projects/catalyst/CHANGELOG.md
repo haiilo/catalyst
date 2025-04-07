@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.35.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.34.0...catalyst-angular-v10.35.0) (2025-04-07)
+
+
+### Features
+
+* **core:** add missing testId props ([#705](https://github.com/haiilo/catalyst/issues/705)) ([4820111](https://github.com/haiilo/catalyst/commit/4820111ac319b2fb39e93afa4c2dccd3df67b128))
+
 ## [10.34.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.33.3...catalyst-angular-v10.34.0) (2025-03-28)
 
 
