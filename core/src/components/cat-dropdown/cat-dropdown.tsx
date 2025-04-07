@@ -4,6 +4,7 @@ import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@
 import * as focusTrap from 'focus-trap';
 import type { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
+import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
 
 let nextUniqueId = 0;
 
@@ -18,18 +19,6 @@ let nextUniqueId = 0;
 })
 export class CatDropdown {
   private static readonly OFFSET = 4;
-  private readonly focusableSelectors = [
-    'input',
-    'select',
-    'textarea',
-    'button',
-    'a[href]',
-    '[tabindex]',
-    'iframe',
-    '[contenteditable]',
-    'audio[controls]',
-    'video[controls]'
-  ];
   private readonly id = nextUniqueId++;
   private triggerSlot!: HTMLSlotElement;
   private trigger?: FocusableElement;
@@ -250,7 +239,7 @@ export class CatDropdown {
       elems = this.triggerSlot?.assignedElements?.() || [];
       while (!trigger && elems.length) {
         const elem = elems.shift();
-        trigger = this.findFirstTabbableIncludeHidden(elem as HTMLElement);
+        trigger = findFirstTabbableIncludeHidden(elem as HTMLElement);
       }
     }
     if (!trigger) {
@@ -290,46 +279,5 @@ export class CatDropdown {
 
   private hasAttribute(elem: EventTarget, attr: string) {
     return elem instanceof HTMLElement && elem.hasAttribute(attr);
-  }
-
-  private findFirstTabbableIncludeHidden(element: HTMLElement | ShadowRoot): HTMLElement | undefined {
-    if (element instanceof HTMLElement) {
-      const potentiallyTabbableElement = this.getPotentiallyTabbable(element);
-      if (potentiallyTabbableElement) {
-        return potentiallyTabbableElement;
-      }
-    }
-
-    const children = Array.from(element.querySelectorAll<HTMLElement>('*'));
-    for (const child of children) {
-      const potentiallyTabbableElement = this.getPotentiallyTabbable(child);
-
-      if (potentiallyTabbableElement) {
-        return potentiallyTabbableElement;
-      }
-    }
-    return undefined;
-  }
-
-  private couldBeTabbable(value: HTMLElement) {
-    if (!value.matches(this.focusableSelectors.join(','))) {
-      return false;
-    }
-
-    const tabindex = value.getAttribute('tabindex');
-    return tabindex === null || Number(tabindex) >= 0;
-  }
-
-  private getPotentiallyTabbable(element: HTMLElement) {
-    if (this.couldBeTabbable(element)) {
-      return element;
-    }
-    if (element.shadowRoot) {
-      const shadowTabbable = this.findFirstTabbableIncludeHidden(element.shadowRoot);
-      if (shadowTabbable) {
-        return shadowTabbable;
-      }
-    }
-    return undefined;
   }
 }
