@@ -5,11 +5,14 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
  * window, using tabs as a navigational element.
  *
  * @part tab - The header of the tab.
+ * @part more - An optional more button to display additional tabs.
  */
 @Component({
   tag: 'cat-tabs',
   styleUrl: 'cat-tabs.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTabs {
   private mutationObserver?: MutationObserver;
@@ -93,6 +96,7 @@ export class CatTabs {
   @Event() catChange!: EventEmitter<{ id: string; index: number }>;
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         {this.tabs.map((tab: HTMLCatTabElement) => {
@@ -116,6 +120,7 @@ export class CatTabs {
               disabled={tab.deactivated}
               urlTarget={tab.urlTarget}
               onCatClick={() => this.click(tab)}
+              testId={tab.testId}
               nativeAttributes={{ ...tab.nativeAttributes }}
               nativeContentAttributes={{ 'data-text': tab.label }}
               data-dropdown-no-close
@@ -124,29 +129,34 @@ export class CatTabs {
             </cat-button>
           );
         })}
+        <slot name="more"></slot>
       </Host>
     );
   }
 
   private syncTabs() {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
-    this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab))[0]?.id;
+    this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
   }
 
-  private canActivate(tab?: HTMLCatTabElement): tab is HTMLCatTabElement {
-    return !!tab && !tab.deactivated && !tab.url && tab.id !== this.activeTab;
-  }
-
-  private click(tab?: HTMLCatTabElement) {
+  private click(tab: HTMLCatTabElement) {
     if (this.canActivate(tab)) {
       tab.click();
-      this.activate(tab);
+      if (!tab.noActive) {
+        this.activate(tab);
+      }
     }
   }
 
   private activate(tab?: HTMLCatTabElement) {
-    if (this.canActivate(tab)) {
+    if (!tab) {
+      this.activeTab = '';
+    } else if (this.canActivate(tab)) {
       this.activeTab = tab.id;
     }
+  }
+
+  private canActivate(tab: HTMLCatTabElement) {
+    return !tab.deactivated && !tab.url && tab.id !== this.activeTab;
   }
 }

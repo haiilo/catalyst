@@ -9,6 +9,8 @@
 }
 
 .cat-dialog-pane {
+  transform: translateZ(0);
+
   .cdk-dialog-container > *:only-child {
     display: block;
     width: 100%;
@@ -24,6 +26,10 @@
   min-height: inherit;
   max-height: inherit;
   animation: cat-dialog-enter cat-token('time.transition.m') ease;
+
+  cat-scrollable {
+    flex-grow: 1;
+  }
 }
 
 @keyframes cat-dialog-enter {
@@ -35,4 +41,9 @@
     opacity: 1;
     transform: none;
   }
+}
+
+.cat-dialog-content.no-scroll {
+  height: 100%;
+  overflow: hidden;
 }

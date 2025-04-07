@@ -1,17 +1,19 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+$mobile-side-padding: 0.5rem;
+
 .cat-toastify {
   display: flex;
   border-radius: cat-border-radius('l');
   background: cat-token('color.ui.background.surface');
   padding: 1.25rem;
-  box-shadow: none;
   color: cat-token('color.ui.font.base');
   width: 400px;
   max-width: 400px;
   cursor: unset;
   @include cat-elevation(4);
+  overflow: hidden;
 
   &.cat-toastify-dark {
     --cat-font-color-base: #{cat-token('color.ui.font.baseInverted', $wrap: false)};
@@ -22,6 +24,20 @@
     --cat-secondary-text-hover: #{cat-token('color.theme.secondaryInverted.textHover', $wrap: false)};
     --cat-secondary-text-active: #{cat-token('color.theme.secondaryInverted.textActive', $wrap: false)};
     background: cat-token('color.ui.background.surfaceInverted');
+  }
+
+  &:not(.cat-toastify-dark) {
+    @include cat-elevation(4, $box-shadow: 'inset 0 0 0 1px #{cat-token('color.ui.border.default')}');
+  }
+
+  @include until('xs') {
+    transform: translate($mobile-side-padding, -1rem) !important;
+    width: calc(100% - #{$mobile-side-padding * 2});
+    max-width: calc(100% - #{$mobile-side-padding * 2});
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
   }
 }
 
@@ -44,4 +60,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.875rem 1rem;
+}
+
+.cat-toastify-inner {
+  flex: 1 1 auto;
 }

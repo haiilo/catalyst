@@ -42,7 +42,7 @@ export class CatDatepickerFlat {
   /**
    * Hint for form autofill feature.
    */
-  @Prop() autoComplete?: string;
+  @Prop() autoComplete = 'off';
 
   /**
    * Whether the input should show a clear button.
@@ -165,7 +165,7 @@ export class CatDatepickerFlat {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 

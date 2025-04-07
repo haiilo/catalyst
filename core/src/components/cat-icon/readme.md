@@ -38,9 +38,11 @@ doesn't fit.
 
  - [cat-alert](../cat-alert)
  - [cat-avatar](../cat-avatar)
+ - [cat-badge](../cat-badge)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
  - [cat-select](../cat-select)
+ - [cat-tag](../cat-tag)
  - [cat-textarea](../cat-textarea)
 
 ### Graph
@@ -48,9 +50,11 @@ doesn't fit.
 graph TD;
   cat-alert --> cat-icon
   cat-avatar --> cat-icon
+  cat-badge --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon
   cat-select --> cat-icon
+  cat-tag --> cat-icon
   cat-textarea --> cat-icon
   style cat-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

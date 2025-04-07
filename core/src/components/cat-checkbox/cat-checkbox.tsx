@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 let nextUniqueId = 0;
 
@@ -110,6 +111,18 @@ export class CatCheckbox {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
+   * Whether the label need a marker to shown if the input is required or optional.
+   */
+  @Prop() requiredMarker?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!' = 'none';
+
+  /**
    * Emitted when the checked status of the checkbox is changed.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -169,6 +182,7 @@ export class CatCheckbox {
           }}
         >
           <input
+            data-test={this.testId}
             {...this.nativeAttributes}
             part="input"
             ref={el => (this.input = el as HTMLInputElement)}
@@ -193,8 +207,20 @@ export class CatCheckbox {
               <polyline points="1.5 5 10.5 5"></polyline>
             </svg>
           </span>
-          <span class="label" part="label">
+          <span class={{ label: true, 'label-wrapper': !this.hasSlottedLabel }} part="label">
             {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
+            <span class="label-metadata">
+              {!this.required && (this.requiredMarker ?? 'optional').startsWith('optional') && (
+                <span class="label-optional" aria-hidden="true">
+                  ({i18n.t('input.optional')})
+                </span>
+              )}
+              {this.required && this.requiredMarker?.startsWith('required') && (
+                <span class="label-optional" aria-hidden="true">
+                  ({i18n.t('input.required')})
+                </span>
+              )}
+            </span>
           </span>
         </label>
         {this.hasHint && (
@@ -227,6 +253,6 @@ export class CatCheckbox {
   }
 
   private updateResolved() {
-    this.resolvedValue = this.checked ? this.value ?? true : this.noValue ?? false;
+    this.resolvedValue = this.checked ? (this.value ?? true) : (this.noValue ?? false);
   }
 }

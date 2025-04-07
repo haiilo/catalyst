@@ -1,7 +1,14 @@
 import { Dialog, DialogConfig, DialogRef } from '@angular/cdk/dialog';
 import { ComponentType } from '@angular/cdk/portal';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
+
+/**
+ * Injection token for custom dialog sizes. The map should contain a key-value
+ * pair of size names and their corresponding CSS width values. The key `default`
+ * is used as the default size when no size is specified.
+ */
+export const CAT_DIALOG_SIZE_TOKEN = new InjectionToken<{ [key: string]: string }>('CatDialogSize');
 
 /**
  * Configuration options for modal dialogs.
@@ -18,7 +25,10 @@ export type CatDialogConfig<D = unknown> = Pick<
   providedIn: 'root'
 })
 export class CatDialogService {
-  constructor(private readonly dialog: Dialog) {}
+  constructor(
+    private readonly dialog: Dialog,
+    @Optional() @Inject(CAT_DIALOG_SIZE_TOKEN) private readonly size: { [key: string]: string } | null
+  ) {}
 
   /**
    * Opens a modal dialog containing the given component.
@@ -45,13 +55,13 @@ export class CatDialogService {
     const panelClass = config?.panelClass ?? [];
     return this.dialog.open<R, D>(component, {
       backdropClass: 'cat-backdrop',
-      panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])],
-      width: '600px',
       minWidth: 'clamp(240px, 100vw - 16px, 320px)',
       minHeight: 'clamp(144px, 100vh - 16px, 160px)',
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
-      ...config
+      ...config,
+      width: config?.width ? (this.size?.[config.width] ?? config.width) : (this.size?.['default'] ?? '600px'),
+      panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])]
     });
   }
 

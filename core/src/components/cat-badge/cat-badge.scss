@@ -34,6 +34,7 @@ $-paddings: (
   border-radius: cat-border-radius('m');
   text-decoration: none;
   line-height: 1.5;
+  flex-shrink: 0;
 
   slot {
     display: inline-block;
@@ -82,11 +83,18 @@ $-outline: inset 0 0 0 1px cat-token-wrap(var(--text), $alpha: 0.2);
 // ----- size
 
 @mixin size($size, $fontSize) {
+  $-total-height: map.get($-sizes, $size);
   :host([size='#{$size}']) {
     height: map.get($-sizes, $size);
     min-width: map.get($-sizes, $size);
     font-size: cat-body-font-size($fontSize);
     padding: map.get($-paddings, $size);
+    gap: 0.25rem;
+  }
+  :host([data-icon-badge='#{$size}']) {
+    width: $-total-height;
+    height: $-total-height;
+    padding: 0;
   }
 }
 

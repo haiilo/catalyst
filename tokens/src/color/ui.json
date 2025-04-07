@@ -61,6 +61,11 @@
         "quote": {
           "$type": "color",
           "$value": "{color.base.neutral.400.value}"
+        },
+        "card": {
+          "$type": "color",
+          "$value": "#00000000",
+          "cssProp": "border-color-card"
         }
       },
       "font": {

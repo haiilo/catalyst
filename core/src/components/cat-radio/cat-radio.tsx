@@ -15,7 +15,9 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-radio',
   styleUrl: 'cat-radio.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatRadio {
   private readonly _id = `cat-radio-${++nextUniqueId}`;
@@ -93,6 +95,13 @@ export class CatRadio {
   @Prop() nativeAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when the radio is changed.
    */
   @Event() catChange!: EventEmitter<boolean | string>;
@@ -134,6 +143,7 @@ export class CatRadio {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <label
@@ -150,6 +160,7 @@ export class CatRadio {
         >
           <span class="radio">
             <input
+              data-test={this.testId}
               {...this.nativeAttributes}
               part="input"
               ref={el => (this.input = el as HTMLInputElement)}

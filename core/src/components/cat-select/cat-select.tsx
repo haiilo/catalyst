@@ -110,7 +110,9 @@ let nextTagUniqueId = 0;
 @Component({
   tag: 'cat-select',
   styleUrl: 'cat-select.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatSelect {
   private static readonly SKELETON_COUNT = 4;
@@ -123,7 +125,7 @@ export class CatSelect {
   private dropdown?: HTMLElement;
   private trigger?: HTMLElement;
   private input?: HTMLInputElement;
-  private errorMapSrc?: ErrorMap;
+  private errorMapSrc?: ErrorMap | true;
 
   private subscription?: Subscription;
   private term$: Subject<string> = new Subject();
@@ -140,7 +142,7 @@ export class CatSelect {
 
   @State() hasSlottedHint = false;
 
-  @State() errorMap?: ErrorMap;
+  @State() errorMap?: ErrorMap | true;
 
   /**
    * Whether the label need a marker to shown if the select is required or optional.
@@ -251,7 +253,7 @@ export class CatSelect {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -259,6 +261,13 @@ export class CatSelect {
    * Attributes that will be added to the native HTML input element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
 
   @Watch('connector')
   onConnectorChanged(connector: CatSelectConnector) {
@@ -272,16 +281,16 @@ export class CatSelect {
   }
 
   @Watch('errors')
-  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-          ? {}
-          : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      this.errorMapSrc = Array.isArray(newValue)
+        ? (newValue as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
+        : newValue || undefined;
+      if (update) {
+        this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      }
     }
   }
 
@@ -359,8 +368,11 @@ export class CatSelect {
     }
   }
 
+  componentWillLoad(): void {
+    this.onErrorsChanged(this.errors, undefined, false);
+  }
+
   componentWillRender(): void {
-    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
@@ -573,6 +585,7 @@ export class CatSelect {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <div
@@ -670,6 +683,7 @@ export class CatSelect {
                   ></cat-avatar>
                 ) : null}
                 <input
+                  data-test={this.testId}
                   {...this.nativeAttributes}
                   part="input"
                   id={`select-${this.id}-input`}
@@ -779,7 +793,7 @@ export class CatSelect {
   }
 
   private get invalid() {
-    return !!Object.keys(this.errorMap || {}).length;
+    return this.errorMap === true || !!Object.keys(this.errorMap || {}).length;
   }
 
   private get optionsList() {

@@ -1,5 +1,5 @@
-import { Directive, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AfterViewInit, Directive, ElementRef, Optional, SkipSelf } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NgControl, Validators } from '@angular/forms';
 
 import { ValueAccessor } from './value-accessor';
 
@@ -7,7 +7,8 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-date, cat-date-inline',
   host: {
-    '(catChange)': 'handleChangeEvent($event.target.value)'
+    '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
+    '(catBlur)': 'updateErrors()'
   },
   providers: [
     {
@@ -17,13 +18,23 @@ import { ValueAccessor } from './value-accessor';
     }
   ]
 })
-export class DateValueAccessor extends ValueAccessor {
-  constructor(el: ElementRef) {
+export class DateValueAccessor extends ValueAccessor implements AfterViewInit {
+  constructor(
+    el: ElementRef,
+    @Optional() @SkipSelf() private readonly ngControl?: NgControl
+  ) {
     super(el);
   }
   get nativeElement() {
     return this.el.nativeElement;
   }
+
+  ngAfterViewInit() {
+    if (this.ngControl?.control?.hasValidator(Validators.required)) {
+      this.el.nativeElement.required = true;
+    }
+  }
+
   writeValue(value: any) {
     if (!this.el.nativeElement.range) {
       return super.writeValue(this.toISO(value));
@@ -43,6 +54,14 @@ export class DateValueAccessor extends ValueAccessor {
     }
     super.handleChangeEvent(null);
   }
+
+  updateErrors() {
+    setTimeout(() => {
+      this.el.nativeElement.errors =
+        this.ngControl?.control?.errors?.required && !this.el.nativeElement.value ? { required: true } : null;
+    });
+  }
+
   private toISO(value: any) {
     if (value instanceof Date) {
       const year = value.getFullYear();

@@ -15,6 +15,7 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the input.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @slot counter - Custom counter element to be displayed in the top right corner of the label.
  * @part label - The native label element.
  * @part input - The native input element.
  * @part prefix - The text prefix.
@@ -23,7 +24,9 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-input',
   styleUrl: 'cat-input.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatInput {
   private readonly _id = `cat-input-${nextUniqueId++}`;
@@ -32,7 +35,7 @@ export class CatInput {
   }
 
   private input!: HTMLInputElement;
-  private errorMapSrc?: ErrorMap;
+  private errorMapSrc?: ErrorMap | true;
 
   @Element() hostElement!: HTMLElement;
 
@@ -40,9 +43,11 @@ export class CatInput {
 
   @State() hasSlottedHint = false;
 
+  @State() hasSlottedCounter = false;
+
   @State() isPasswordShown = false;
 
-  @State() errorMap?: ErrorMap;
+  @State() errorMap?: ErrorMap | true;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -73,6 +78,11 @@ export class CatInput {
    * Whether the input is disabled.
    */
   @Prop() disabled = false;
+
+  /**
+   * Displays the input in a loading state with a spinner.
+   */
+  @Prop() loading = false;
 
   /**
    * Optional hint text(s) to be displayed with the input.
@@ -182,7 +192,7 @@ export class CatInput {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -190,6 +200,13 @@ export class CatInput {
    * Attributes that will be added to the native HTML input element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
 
   /**
    * Emitted when the value is changed.
@@ -206,10 +223,14 @@ export class CatInput {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.onErrorsChanged(this.errors, undefined, false);
+  }
+
   componentWillRender(): void {
-    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
   }
 
   /**
@@ -257,20 +278,21 @@ export class CatInput {
   }
 
   @Watch('errors')
-  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-          ? {}
-          : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      this.errorMapSrc = Array.isArray(newValue)
+        ? (newValue as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
+        : newValue || undefined;
+      if (update) {
+        this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      }
     }
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <div
         class={{
@@ -294,9 +316,13 @@ export class CatInput {
                       ({i18n.t('input.required')})
                     </span>
                   )}
-                  {this.maxLength && (
+                  {(this.maxLength || this.hasSlottedCounter) && (
                     <div class="label-character-count" aria-hidden="true">
-                      {this.value?.toString().length ?? 0}/{this.maxLength}
+                      {this.hasSlottedCounter ? (
+                        <slot name="counter"></slot>
+                      ) : (
+                        `${this.value?.length ?? 0}/${this.maxLength}`
+                      )}
                     </div>
                   )}
                 </div>
@@ -326,6 +352,7 @@ export class CatInput {
               )}
               <div class="input-inner-wrapper">
                 <input
+                  data-test={this.testId}
                   {...this.nativeAttributes}
                   part="input"
                   ref={el => (this.input = el as HTMLInputElement)}
@@ -376,6 +403,7 @@ export class CatInput {
                   ></cat-button>
                 )}
               </div>
+              {this.loading && <cat-spinner size="m" class="icon-loading"></cat-spinner>}
               {!this.invalid && this.icon && this.iconRight && (
                 <cat-icon icon={this.icon} class="icon-suffix" size="l" onClick={() => this.doFocus()}></cat-icon>
               )}
@@ -408,7 +436,7 @@ export class CatInput {
   }
 
   private get invalid() {
-    return !!Object.keys(this.errorMap || {}).length;
+    return this.errorMap === true || !!Object.keys(this.errorMap || {}).length;
   }
 
   private onInput() {

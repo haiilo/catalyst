@@ -12,7 +12,8 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { CleaveOptions } from "cleave.js/options";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
@@ -21,7 +22,9 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { CleaveOptions } from "cleave.js/options";
-export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue } from "./components/cat-select/cat-select";
+export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+export { Observable } from "rxjs";
+export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export namespace Components {
     /**
      * Informs user about important changes or conditions in the interface. Use this
@@ -87,6 +90,18 @@ export namespace Components {
           * The color palette of the badge.
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight": boolean;
         /**
           * Draw attention to the badge with a subtle animation.
          */
@@ -195,6 +210,10 @@ export namespace Components {
          */
         "submit": boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -294,9 +313,17 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * The resolved value of the checkbox, based on the checked state and value.
          */
         "resolvedValue": any;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked checkbox.
          */
@@ -309,7 +336,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the input.
          */
@@ -332,7 +359,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -403,6 +430,10 @@ export namespace Components {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -503,7 +534,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Whether the input should show a clear button.
          */
@@ -522,7 +553,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -672,6 +703,7 @@ export namespace Components {
         "noAutoClose": boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
          */
         "noInitialFocus": boolean;
         /**
@@ -684,8 +716,9 @@ export namespace Components {
         "noReturnFocus": boolean;
         /**
           * Opens the dropdown.
+          * @param isFocusVisible is dropdown should receive visible focus when it's opened.
          */
-        "open": () => Promise<void>;
+        "open": (isFocusVisible?: boolean) => Promise<void>;
         /**
           * Allow overflow when dropdown is open.
          */
@@ -770,7 +803,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -805,6 +838,10 @@ export namespace Components {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden": boolean;
+        /**
+          * Displays the input in a loading state with a spinner.
+         */
+        "loading": boolean;
         /**
           * Adds a Cleave.js mask to the input.
           * @param options The Cleave.js options.
@@ -854,6 +891,10 @@ export namespace Components {
           * Use round input edges.
          */
         "round": boolean;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -983,6 +1024,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the radio component.
          */
         "value": any;
@@ -1082,7 +1127,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1150,6 +1195,10 @@ export namespace Components {
          */
         "tags": boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
@@ -1189,6 +1238,10 @@ export namespace Components {
           * The size of the spinner.
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value": number;
     }
     /**
      * A single tab inside a tabs component.
@@ -1223,6 +1276,14 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive": boolean;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -1256,11 +1317,88 @@ export namespace Components {
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
     }
     /**
+     * An input that allows multiple values to be entered as tags.
+     */
+    interface CatTag {
+        /**
+          * Whether new tag is added when the input is blurred.
+         */
+        "addOnBlur": boolean;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable": boolean;
+        /**
+          * Whether the select is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+         */
+        "errorUpdate": boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the select.
+         */
+        "label": string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden": boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required": boolean;
+        /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+         */
+        "tagCreationChars": string[];
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
+          * The value of the control.
+         */
+        "value"?: string[];
+    }
+    /**
      * Textarea specifies a control that allows user to write text over multiple
      * rows. Used when the expected user input is long. For shorter input, use the
      * input component.
      */
     interface CatTextarea {
+        /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
         /**
           * Clear the textarea.
          */
@@ -1279,7 +1417,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1343,6 +1481,10 @@ export namespace Components {
          */
         "rows": number;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The initial value of the control.
          */
         "value"?: string;
@@ -1354,7 +1496,7 @@ export namespace Components {
         /**
           * Hint for form autofill feature.
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the input.
          */
@@ -1377,7 +1519,7 @@ export namespace Components {
          */
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate": boolean | number;
         /**
@@ -1458,6 +1600,10 @@ export namespace Components {
          */
         "step": number;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -1536,6 +1682,10 @@ export namespace Components {
           * The resolved value of the toggle, based on the checked state, value and noValue.
          */
         "resolvedValue": any;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked toggle.
          */
@@ -1644,6 +1794,10 @@ export interface CatTabCustomEvent<T> extends CustomEvent<T> {
 export interface CatTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatTabsElement;
+}
+export interface CatTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatTagElement;
 }
 export interface CatTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2089,6 +2243,28 @@ declare global {
         prototype: HTMLCatTabsElement;
         new (): HTMLCatTabsElement;
     };
+    interface HTMLCatTagElementEventMap {
+        "catChange": string[];
+        "catFocus": FocusEvent;
+        "catBlur": FocusEvent;
+    }
+    /**
+     * An input that allows multiple values to be entered as tags.
+     */
+    interface HTMLCatTagElement extends Components.CatTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatTagElementEventMap>(type: K, listener: (this: HTMLCatTagElement, ev: CatTagCustomEvent<HTMLCatTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatTagElement: {
+        prototype: HTMLCatTagElement;
+        new (): HTMLCatTagElement;
+    };
     interface HTMLCatTextareaElementEventMap {
         "catChange": string;
         "catFocus": FocusEvent;
@@ -2195,6 +2371,7 @@ declare global {
         "cat-spinner": HTMLCatSpinnerElement;
         "cat-tab": HTMLCatTabElement;
         "cat-tabs": HTMLCatTabsElement;
+        "cat-tag": HTMLCatTagElement;
         "cat-textarea": HTMLCatTextareaElement;
         "cat-time": HTMLCatTimeElement;
         "cat-toggle": HTMLCatToggleElement;
@@ -2266,6 +2443,18 @@ declare namespace LocalJSX {
           * The color palette of the badge.
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The name of an icon to be displayed in the button.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+         */
+        "iconRight"?: boolean;
         /**
           * Draw attention to the badge with a subtle animation.
          */
@@ -2373,6 +2562,10 @@ declare namespace LocalJSX {
          */
         "submit"?: boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A destination to link to, rendered in the href attribute of a link.
          */
         "url"?: string;
@@ -2479,9 +2672,17 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Whether the label need a marker to shown if the input is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
           * The resolved value of the checkbox, based on the checked state and value.
          */
         "resolvedValue"?: any;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * The value of the checked checkbox.
          */
@@ -2504,7 +2705,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2587,6 +2788,10 @@ declare namespace LocalJSX {
           * Whether the label need a marker to shown if the input is required or optional.
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -2683,7 +2888,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2845,6 +3050,7 @@ declare namespace LocalJSX {
         "noAutoClose"?: boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
          */
         "noInitialFocus"?: boolean;
         /**
@@ -2930,7 +3136,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2965,6 +3171,10 @@ declare namespace LocalJSX {
           * Visually hide the label, but still show it to assistive technologies like screen readers.
          */
         "labelHidden"?: boolean;
+        /**
+          * Displays the input in a loading state with a spinner.
+         */
+        "loading"?: boolean;
         /**
           * A maximum value for numeric values.
          */
@@ -3021,6 +3231,10 @@ declare namespace LocalJSX {
           * Use round input edges.
          */
         "round"?: boolean;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A textual prefix to be displayed in the input.
          */
@@ -3157,6 +3371,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the radio component.
          */
         "value"?: any;
@@ -3266,7 +3484,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3350,6 +3568,10 @@ declare namespace LocalJSX {
          */
         "tags"?: boolean;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
         "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
@@ -3389,6 +3611,10 @@ declare namespace LocalJSX {
           * The size of the spinner.
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        /**
+          * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+         */
+        "value"?: number;
     }
     /**
      * A single tab inside a tabs component.
@@ -3423,9 +3649,17 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+         */
+        "noActive"?: boolean;
+        /**
           * Emitted when tab is clicked.
          */
         "onCatClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
         /**
           * A destination to link to, rendered in the href attribute of a link.
          */
@@ -3454,17 +3688,106 @@ declare namespace LocalJSX {
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
     /**
+     * An input that allows multiple values to be entered as tags.
+     */
+    interface CatTag {
+        /**
+          * Whether new tag is added when the input is blurred.
+         */
+        "addOnBlur"?: boolean;
+        /**
+          * Whether the input should show a clear button.
+         */
+        "clearable"?: boolean;
+        /**
+          * Whether the select is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+         */
+        "errorUpdate"?: boolean | number;
+        /**
+          * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
+         */
+        "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * Optional hint text(s) to be displayed with the select.
+         */
+        "hint"?: string | string[];
+        /**
+          * A unique identifier for the input.
+         */
+        "identifier"?: string;
+        /**
+          * The label for the select.
+         */
+        "label"?: string;
+        /**
+          * Visually hide the label, but still show it to assistive technologies like screen readers.
+         */
+        "labelHidden"?: boolean;
+        /**
+          * The name of the form control. Submitted with the form as part of a name/value pair.
+         */
+        "name"?: string;
+        /**
+          * Attributes that will be added to the native HTML input element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onCatBlur"?: (event: CatTagCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value is changed.
+         */
+        "onCatChange"?: (event: CatTagCustomEvent<string[]>) => void;
+        /**
+          * Emitted when the input received focus.
+         */
+        "onCatFocus"?: (event: CatTagCustomEvent<FocusEvent>) => void;
+        /**
+          * The placeholder text to display within the select.
+         */
+        "placeholder"?: string;
+        /**
+          * A value is required or must be checked for the form to be submittable.
+         */
+        "required"?: boolean;
+        /**
+          * Whether the label need a marker to shown if the select is required or optional.
+         */
+        "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        /**
+          * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+         */
+        "tagCreationChars"?: string[];
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
+          * The value of the control.
+         */
+        "value"?: string[];
+    }
+    /**
      * Textarea specifies a control that allows user to write text over multiple
      * rows. Used when the expected user input is long. For shorter input, use the
      * input component.
      */
     interface CatTextarea {
         /**
+          * Hint for form autofill feature.
+         */
+        "autoComplete"?: string;
+        /**
           * Whether the textarea is disabled.
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3540,6 +3863,10 @@ declare namespace LocalJSX {
          */
         "rows"?: number;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The initial value of the control.
          */
         "value"?: string;
@@ -3561,7 +3888,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors on change with the given delay in milliseconds.
+          * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3649,6 +3976,10 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * A textual prefix to be displayed in the input.
          */
         "textPrefix"?: string;
@@ -3731,6 +4062,10 @@ declare namespace LocalJSX {
          */
         "resolvedValue"?: any;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
           * The value of the checked toggle.
          */
         "value"?: any;
@@ -3800,6 +4135,7 @@ declare namespace LocalJSX {
         "cat-spinner": CatSpinner;
         "cat-tab": CatTab;
         "cat-tabs": CatTabs;
+        "cat-tag": CatTag;
         "cat-textarea": CatTextarea;
         "cat-time": CatTime;
         "cat-toggle": CatToggle;
@@ -3919,6 +4255,10 @@ declare module "@stencil/core" {
              * window, using tabs as a navigational element.
              */
             "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            /**
+             * An input that allows multiple values to be entered as tags.
+             */
+            "cat-tag": LocalJSX.CatTag & JSXBase.HTMLAttributes<HTMLCatTagElement>;
             /**
              * Textarea specifies a control that allows user to write text over multiple
              * rows. Used when the expected user input is long. For shorter input, use the

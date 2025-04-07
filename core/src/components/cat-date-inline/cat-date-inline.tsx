@@ -8,11 +8,15 @@ let nextUniqueId = 0;
 
 /**
  * An inline date picker component to select a date.
+ *
+ * @part label - The native label element.
  */
 @Component({
   tag: 'cat-date-inline',
   styleUrl: 'cat-date-inline.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatDateInline {
   private readonly _id = `cat-date-inline-${nextUniqueId++}`;
@@ -232,6 +236,7 @@ export class CatDateInline {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     const [minDate, maxDate] = this.getMinMaxDate();
     const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
     const [dateStart, dateEnd] = this.getValue();
@@ -385,16 +390,18 @@ export class CatDateInline {
   }
 
   private navigate(direction: 'prev' | 'next', period: 'year' | 'month') {
-    this.viewDate = new Date(
-      direction === 'prev'
-        ? period === 'year'
-          ? this.viewDate.setFullYear(this.viewDate.getFullYear() - 1)
-          : this.viewDate.setMonth(this.viewDate.getMonth() - 1)
-        : period === 'year'
-          ? this.viewDate.setFullYear(this.viewDate.getFullYear() + 1)
-          : this.viewDate.setMonth(this.viewDate.getMonth() + 1)
-    );
-    // announce the new month and year
+    const offset = direction === 'prev' ? -1 : 1;
+    const targetYear = this.viewDate.getFullYear() + (period === 'year' ? offset : 0);
+    const targetMonth = this.viewDate.getMonth() + (period === 'month' ? offset : 0);
+
+    const date = new Date(this.viewDate);
+    date.setFullYear(targetYear);
+    date.setMonth(targetMonth);
+
+    const minDate = new Date(targetYear, targetMonth, 1);
+    const maxDay = new Date(targetYear, targetMonth + 1, 0).getDate();
+    const maxDate = new Date(targetYear, targetMonth, maxDay);
+    this.viewDate = clampDate(minDate, date, maxDate);
     this.setAriaLive(this.getHeadline());
   }
 
@@ -448,7 +455,7 @@ export class CatDateInline {
     } else if (isSameMonth(this.viewDate, now) && (!minDate || minDate <= now)) {
       return isSameMonth(this.viewDate, date) && isSameDay(now, date);
     }
-    const minDay = isSameMonth(date, minDate) ? minDate?.getDate() ?? 1 : 1;
+    const minDay = isSameMonth(date, minDate) ? (minDate?.getDate() ?? 1) : 1;
     return isSameMonth(this.viewDate, date) && date.getDate() === minDay;
   }
 

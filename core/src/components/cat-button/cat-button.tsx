@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { Breakpoint, Breakpoints, isBreakpoint } from '../../utils/breakpoints';
 import { MediaMatcher } from '../../utils/media-matcher';
 import { findClosest } from '../../utils/find-closest';
@@ -15,7 +15,9 @@ import { findClosest } from '../../utils/find-closest';
 @Component({
   tag: 'cat-button',
   styleUrl: 'cat-button.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatButton {
   private button!: HTMLButtonElement | HTMLAnchorElement;
@@ -146,6 +148,13 @@ export class CatButton {
   @Prop() nativeContentAttributes?: { [key: string]: string };
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
+
+  /**
    * The index of a button that is used inside a cat-button-group component
    */
   @Prop() buttonGroupPosition?: 'first' | 'last' | 'middle';
@@ -199,7 +208,10 @@ export class CatButton {
       event.stopImmediatePropagation();
     } else if (this.submit) {
       const form = findClosest('form', this.hostElement);
-      form?.dispatchEvent(new SubmitEvent('submit', { submitter: this.button }));
+      if (form && form instanceof HTMLFormElement) {
+        // we can't provide a submitter as it is hidden in the shadow DOM
+        form.requestSubmit();
+      }
     }
   }
 
@@ -233,73 +245,80 @@ export class CatButton {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     if (this.url) {
       return (
-        <a
-          {...this.nativeAttributes}
-          ref={el => (this.button = el as HTMLAnchorElement)}
-          href={this.disabled ? undefined : this.url}
-          target={this.urlTarget}
-          aria-disabled={this.disabled ? 'true' : null}
-          aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
-          id={this.buttonId}
-          part="button"
-          class={{
-            'cat-button': true,
-            'cat-button-empty': !this.hasSlottedContent,
-            'cat-button-active': this.active,
-            'cat-button-icon': this.isIconButton,
-            'cat-button-round': this.round,
-            'cat-button-loading': this.loading,
-            'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
-            [`cat-button-${this.variant}`]: Boolean(this.variant),
-            [`cat-button-${this.color}`]: Boolean(this.color),
-            [`cat-button-${this.size}`]: Boolean(this.size)
-          }}
-          onClick={this.onClick.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        >
-          {this.content}
-        </a>
+        <Host data-button-group={this.buttonGroupPosition}>
+          <a
+            data-test={this.testId}
+            {...this.nativeAttributes}
+            ref={el => (this.button = el as HTMLAnchorElement)}
+            href={this.disabled ? undefined : this.url}
+            target={this.urlTarget}
+            aria-disabled={this.disabled ? 'true' : null}
+            aria-label={this.a11yLabel}
+            aria-current={this.a11yCurrent}
+            id={this.buttonId}
+            part="button"
+            class={{
+              'cat-button': true,
+              'cat-button-empty': !this.hasSlottedContent,
+              'cat-button-active': this.active,
+              'cat-button-icon': this.isIconButton,
+              'cat-button-round': this.round,
+              'cat-button-loading': this.loading,
+              'cat-button-disabled': this.disabled,
+              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
+              [`cat-button-${this.variant}`]: Boolean(this.variant),
+              [`cat-button-${this.color}`]: Boolean(this.color),
+              [`cat-button-${this.size}`]: Boolean(this.size),
+              [`cat-button-group-${this.buttonGroupPosition}`]: Boolean(this.buttonGroupPosition)
+            }}
+            onClick={this.onClick.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          >
+            {this.content}
+          </a>
+        </Host>
       );
     } else {
       return (
-        <button
-          {...this.nativeAttributes}
-          ref={el => (this.button = el as HTMLButtonElement)}
-          type={this.submit ? 'submit' : 'button'}
-          name={this.name}
-          value={this.value}
-          disabled={this.disabled}
-          aria-disabled={this.disabled ? 'true' : null}
-          aria-label={this.a11yLabel}
-          aria-current={this.a11yCurrent}
-          id={this.buttonId}
-          part="button"
-          class={{
-            'cat-button': true,
-            'cat-button-empty': !this.hasSlottedContent,
-            'cat-button-active': this.active,
-            'cat-button-icon': this.isIconButton,
-            'cat-button-round': this.round ?? this.isIconButton,
-            'cat-button-loading': this.loading,
-            'cat-button-disabled': this.disabled,
-            'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
-            [`cat-button-${this.variant}`]: Boolean(this.variant),
-            [`cat-button-${this.color}`]: Boolean(this.color),
-            [`cat-button-${this.size}`]: Boolean(this.size),
-            [`cat-group-button-${this.buttonGroupPosition}`]: Boolean(this.buttonGroupPosition),
-            'cat-group-button': Boolean(this.buttonGroupPosition)
-          }}
-          onClick={this.onClick.bind(this)}
-          onFocus={this.onFocus.bind(this)}
-          onBlur={this.onBlur.bind(this)}
-        >
-          {this.content}
-        </button>
+        <Host data-button-group={this.buttonGroupPosition}>
+          <button
+            data-test={this.testId}
+            {...this.nativeAttributes}
+            ref={el => (this.button = el as HTMLButtonElement)}
+            type={this.submit ? 'submit' : 'button'}
+            name={this.name}
+            value={this.value}
+            disabled={this.disabled}
+            aria-disabled={this.disabled ? 'true' : null}
+            aria-label={this.a11yLabel}
+            aria-current={this.a11yCurrent}
+            id={this.buttonId}
+            part="button"
+            class={{
+              'cat-button': true,
+              'cat-button-empty': !this.hasSlottedContent,
+              'cat-button-active': this.active,
+              'cat-button-icon': this.isIconButton,
+              'cat-button-round': this.round ?? this.isIconButton,
+              'cat-button-loading': this.loading,
+              'cat-button-disabled': this.disabled,
+              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
+              [`cat-button-${this.variant}`]: Boolean(this.variant),
+              [`cat-button-${this.color}`]: Boolean(this.color),
+              [`cat-button-${this.size}`]: Boolean(this.size),
+              [`cat-button-group-${this.buttonGroupPosition}`]: Boolean(this.buttonGroupPosition)
+            }}
+            onClick={this.onClick.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          >
+            {this.content}
+          </button>
+        </Host>
       );
     }
   }

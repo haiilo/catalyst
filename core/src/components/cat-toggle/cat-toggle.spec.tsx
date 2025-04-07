@@ -8,7 +8,7 @@ describe('cat-toggle', () => {
       html: `<cat-toggle label="Label"></cat-toggle>`
     });
     expect(page.root).toEqualLightHtml(`
-      <cat-toggle label="Label"></cat-toggle>
+      <cat-toggle label="Label" tabindex="0"></cat-toggle>
     `);
   });
 });

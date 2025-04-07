@@ -44,7 +44,7 @@ StyleDictionary.registerTransform({
   matcher: token => token.$type === 'color',
   transformer: token => {
     var rgb = tinycolor(token.value).toRgb();
-    return `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+    return rgb.a === 1 ? `${rgb.r}, ${rgb.g}, ${rgb.b}` : `${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`;
   }
 });
 

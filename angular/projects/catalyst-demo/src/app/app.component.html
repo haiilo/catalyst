@@ -1,6 +1,6 @@
 <h1>Catalyst Demo</h1>
 <h2>Dialog</h2>
-<button (click)="openDialog()">Open</button>
+<cat-button (catClick)="openDialog()" *catTooltip="'test'">Open</cat-button>
 <h2>Form Components</h2>
 <form [formGroup]="form">
   <h1>new datetime picker</h1>
@@ -58,20 +58,20 @@
     [nativeAttributes]="{ 'data-test': 'test-attribute' }"
     hint="Depends on formControl state"
   ></cat-datepicker>
-  <formly-form [form]="form" [fields]="fields"></formly-form>
-  <cat-checkbox>
+  <formly-form [form]="formlyForm" [fields]="fields"></formly-form>
+  <cat-checkbox requiredMarker="optional">
     <div slot="label">
       <div>LABEL START</div>
       <div>Subline</div>
     </div>
   </cat-checkbox>
-  <cat-checkbox alignment="center">
+  <cat-checkbox alignment="center" [required]="false" requiredMarker="required">
     <div slot="label">
       <div>LABEL CENTER</div>
       <div>Subline</div>
     </div>
   </cat-checkbox>
-  <cat-checkbox alignment="bottom">
+  <cat-checkbox alignment="bottom" [required]="true" requiredMarker="required">
     <div slot="label">
       <div>LABEL END</div>
       <div>Subline</div>
@@ -113,4 +113,22 @@
       <div>Subline</div>
     </div>
   </cat-radio>
+  <cat-checkbox label="Label 1" [required]="true" requiredMarker="required"> </cat-checkbox>
+  <cat-checkbox label="Label 2" requiredMarker="optional"> </cat-checkbox>
+  <cat-scrollable>abxcasds</cat-scrollable>
+
+  <cat-tag hint="this is a hint"><div slot="label">TEST SLOTTED LABEL</div></cat-tag>
+  <cat-tag label="This is my tag select with values" [value]="['1', '2', '3']" (catChange)="logChanges($event)">
+  </cat-tag>
+  <cat-tag
+    label="Tag select with form control"
+    [formControl]="tagFormControl"
+    [tagCreationChars]="[' ', ',']"
+    [clearable]="true"
+  >
+    <span slot="hint">Hint</span>
+  </cat-tag>
+</form>
+<form class="cat-p-l" (ngSubmit)="submitIt($event)">
+  <cat-button [submit]="true">TEST SUBMIT</cat-button>
 </form>

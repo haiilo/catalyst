@@ -15,6 +15,7 @@ import { SelectValueAccessorDecorator } from './directives/select-value-accessor
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { TimeValueAccessor } from './directives/time-value-accessor';
 import { ValueAccessorDecorator } from './directives/value-accessor-decorator';
+import { CatTooltipDirective } from './tooltip/tooltip.directive';
 
 const CatComponents = [
   Components.CatAlert,
@@ -43,7 +44,8 @@ const CatComponents = [
   Components.CatTextarea,
   Components.CatTime,
   Components.CatToggle,
-  Components.CatTooltip
+  Components.CatTooltip,
+  Components.CatTag
 ];
 
 const CatDirectives = [
@@ -65,14 +67,16 @@ const CatDirectives = [
     ...CatDirectives,
     CatDialogComponent,
     CatDialogHeaderComponent,
-    CatDialogActionsComponent
+    CatDialogActionsComponent,
+    CatTooltipDirective
   ],
   exports: [
     ...CatComponents,
     ...CatDirectives,
     CatDialogComponent,
     CatDialogHeaderComponent,
-    CatDialogActionsComponent
+    CatDialogActionsComponent,
+    CatTooltipDirective
   ],
   providers: []
 })

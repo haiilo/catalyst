@@ -3,6 +3,286 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.34.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.33.3...catalyst-angular-v10.34.0) (2025-03-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.33.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.33.2...catalyst-angular-v10.33.3) (2025-03-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.33.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.33.1...catalyst-angular-v10.33.2) (2025-03-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.33.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.33.0...catalyst-angular-v10.33.1) (2025-03-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.33.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.32.2...catalyst-angular-v10.33.0) (2025-03-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.32.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.32.1...catalyst-angular-v10.32.2) (2025-03-14)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.32.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.32.0...catalyst-angular-v10.32.1) (2025-03-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.32.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.31.1...catalyst-angular-v10.32.0) (2025-03-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.31.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.31.0...catalyst-angular-v10.31.1) (2025-03-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.31.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.30.2...catalyst-angular-v10.31.0) (2025-02-24)
+
+
+### Features
+
+* **angular:** add a structural directive to instantiate a basic tooltip ([#671](https://github.com/haiilo/catalyst/issues/671)) ([4fe1ecf](https://github.com/haiilo/catalyst/commit/4fe1ecf7be42aa5c62824d7dafbed00fe79f3047))
+* **angular:** add custom dialog size config ([#669](https://github.com/haiilo/catalyst/issues/669)) ([8d32fca](https://github.com/haiilo/catalyst/commit/8d32fcac280146df0047999dfcde6fc54047f6d5))
+* **core:** add test-id as a shorthand for data-test native attributes ([#670](https://github.com/haiilo/catalyst/issues/670)) ([1065ee3](https://github.com/haiilo/catalyst/commit/1065ee3b5745e5d31590dd42ed10f2a4e910b8a2))
+
+## [10.30.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.30.1...catalyst-angular-v10.30.2) (2025-02-19)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.30.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.30.0...catalyst-angular-v10.30.1) (2025-02-06)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.30.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.29.0...catalyst-angular-v10.30.0) (2025-02-03)
+
+
+### Bug Fixes
+
+* **core:** adjust auto complete defaults for date and time inputs ([c65eb74](https://github.com/haiilo/catalyst/commit/c65eb74d7e1e0a2daf049bd0429bcd324414c098))
+
+## [10.29.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.28.2...catalyst-angular-v10.29.0) (2025-01-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.28.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.28.1...catalyst-angular-v10.28.2) (2025-01-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.28.0...catalyst-angular-v10.28.1) (2025-01-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.27.0...catalyst-angular-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.1...catalyst-angular-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **angular:** fix required error for datetime control ([#622](https://github.com/haiilo/catalyst/issues/622)) ([79f4701](https://github.com/haiilo/catalyst/commit/79f4701673e463f848de8978240b9b7b7403b7bf))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
+## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.26.0...catalyst-angular-v10.26.1) (2024-12-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.3...catalyst-angular-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+
+## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.2...catalyst-angular-v10.25.3) (2024-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+
+## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.1...catalyst-angular-v10.25.2) (2024-11-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.25.0...catalyst-angular-v10.25.1) (2024-11-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.3...catalyst-angular-v10.25.0) (2024-11-18)
+
+
+### Features
+
+* **core:** emit catChange on blur for cat-tag ([#605](https://github.com/haiilo/catalyst/issues/605)) ([56045d2](https://github.com/haiilo/catalyst/commit/56045d218b8753fc80162ed98c44611f1dd25e39))
+
+## [10.24.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.2...catalyst-angular-v10.24.3) (2024-11-14)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.24.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.1...catalyst-angular-v10.24.2) (2024-10-29)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.24.0...catalyst-angular-v10.24.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **angular:** fix no scroll template variable for dialogs ([7616530](https://github.com/haiilo/catalyst/commit/76165302f5e142514a72d7e3c55a12e047cec26a))
+
+## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.23.0...catalyst-angular-v10.24.0) (2024-10-24)
+
+
+### Features
+
+* **core:** add input loading indicator ([#597](https://github.com/haiilo/catalyst/issues/597)) ([d1c956b](https://github.com/haiilo/catalyst/commit/d1c956b8a6dec02f2057820ef02be0c354b12f22))
+
+
+### Bug Fixes
+
+* **angular:** fix height of content if dialog gets a fixed height ([#594](https://github.com/haiilo/catalyst/issues/594)) ([6afbe1d](https://github.com/haiilo/catalyst/commit/6afbe1d11a510b614c4e3b84e1a0cb4ee07803bd))
+* **core:** avoid endless loop on input error handling ([#591](https://github.com/haiilo/catalyst/issues/591)) ([6c2d191](https://github.com/haiilo/catalyst/commit/6c2d19119131c7d0ccaeb2bad0cbe7a1a1b81a9c))
+
+## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.22.1...catalyst-angular-v10.23.0) (2024-10-23)
+
+
+### Features
+
+* **angular:** add no scroll input to dialog component ([#592](https://github.com/haiilo/catalyst/issues/592)) ([aa10da3](https://github.com/haiilo/catalyst/commit/aa10da36b79130027d7e564afd20c527a373fe2b))
+
+## [10.22.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.22.0...catalyst-angular-v10.22.1) (2024-10-21)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.22.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.4...catalyst-angular-v10.22.0) (2024-10-18)
+
+
+### Features
+
+* **core:** enable tag inputs without dropdowns ([#586](https://github.com/haiilo/catalyst/issues/586)) ([e3b76e3](https://github.com/haiilo/catalyst/commit/e3b76e32ecfe4152242b9568b977d0ada42648ca))
+
+## [10.21.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.3...catalyst-angular-v10.21.4) (2024-10-16)
+
+
+### Bug Fixes
+
+* **angular:** fix panel class config with default class ([a51cdac](https://github.com/haiilo/catalyst/commit/a51cdac101ad65973e85be51e9ea165a9a316704))
+
+## [10.21.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.2...catalyst-angular-v10.21.3) (2024-10-15)
+
+
+### Bug Fixes
+
+* **angular:** add flex grow to dialog scrollable ([#581](https://github.com/haiilo/catalyst/issues/581)) ([152a714](https://github.com/haiilo/catalyst/commit/152a714253d097436f5b257f34b7044fa2441ffa))
+
+## [10.21.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.1...catalyst-angular-v10.21.2) (2024-10-07)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.21.0...catalyst-angular-v10.21.1) (2024-09-30)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.20.0...catalyst-angular-v10.21.0) (2024-09-30)
+
+
+### Features
+
+* **core:** add required marker for checkboxes ([#575](https://github.com/haiilo/catalyst/issues/575)) ([43f8d7c](https://github.com/haiilo/catalyst/commit/43f8d7c11cbb31008dba96120f1b34042580327f))
+
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.19.4...catalyst-angular-v10.20.0) (2024-09-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.19.3...catalyst-angular-v10.19.4) (2024-09-26)
+
+
+### Bug Fixes
+
+* **angular:** fix the position of popup cat-element inside the cat-dialog ([#570](https://github.com/haiilo/catalyst/issues/570)) ([71d62d1](https://github.com/haiilo/catalyst/commit/71d62d16730dec315e228edbf45552c26fc338b1))
+
 ## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.19.2...catalyst-angular-v10.19.3) (2024-09-18)
 
 

@@ -32,7 +32,10 @@ export const CatBadge = /*@__PURE__*/ defineContainer<JSX.CatBadge>('cat-badge',
   'color',
   'size',
   'round',
-  'pulse'
+  'pulse',
+  'icon',
+  'iconOnly',
+  'iconRight'
 ]);
 
 
@@ -58,6 +61,7 @@ export const CatButton = /*@__PURE__*/ defineContainer<JSX.CatButton>('cat-butto
   'a11yCurrent',
   'nativeAttributes',
   'nativeContentAttributes',
+  'testId',
   'buttonGroupPosition',
   'catClick',
   'catFocus',
@@ -91,6 +95,8 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
   'labelLeft',
   'alignment',
   'nativeAttributes',
+  'testId',
+  'requiredMarker',
   'catChange',
   'catFocus',
   'catBlur'
@@ -121,6 +127,7 @@ export const CatDate = /*@__PURE__*/ defineContainer<JSX.CatDate>('cat-date', un
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'placement',
   'catChange',
   'catFocus',
@@ -230,6 +237,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'clearable',
   'togglePassword',
   'disabled',
+  'loading',
   'hint',
   'icon',
   'iconRight',
@@ -252,6 +260,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'catChange',
   'catFocus',
   'catBlur'
@@ -286,6 +295,7 @@ export const CatRadio = /*@__PURE__*/ defineContainer<JSX.CatRadio>('cat-radio',
   'labelLeft',
   'alignment',
   'nativeAttributes',
+  'testId',
   'catChange',
   'catFocus',
   'catBlur'
@@ -341,6 +351,7 @@ export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-selec
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'catOpen',
   'catClose',
   'catChange',
@@ -361,7 +372,8 @@ export const CatSkeleton = /*@__PURE__*/ defineContainer<JSX.CatSkeleton>('cat-s
 
 export const CatSpinner = /*@__PURE__*/ defineContainer<JSX.CatSpinner>('cat-spinner', undefined, [
   'size',
-  'a11yLabel'
+  'a11yLabel',
+  'value'
 ]);
 
 
@@ -373,8 +385,10 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'url',
   'urlTarget',
   'deactivated',
+  'noActive',
   'error',
   'nativeAttributes',
+  'testId',
   'catClick'
 ]);
 
@@ -386,9 +400,34 @@ export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', un
 ]);
 
 
+export const CatTag = /*@__PURE__*/ defineContainer<JSX.CatTag>('cat-tag', undefined, [
+  'requiredMarker',
+  'disabled',
+  'placeholder',
+  'hint',
+  'identifier',
+  'label',
+  'name',
+  'labelHidden',
+  'required',
+  'nativeAttributes',
+  'testId',
+  'value',
+  'clearable',
+  'errors',
+  'errorUpdate',
+  'tagCreationChars',
+  'addOnBlur',
+  'catChange',
+  'catFocus',
+  'catBlur'
+]);
+
+
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'requiredMarker',
   'horizontal',
+  'autoComplete',
   'disabled',
   'hint',
   'identifier',
@@ -405,6 +444,7 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'catChange',
   'catFocus',
   'catBlur'
@@ -435,6 +475,7 @@ export const CatTime = /*@__PURE__*/ defineContainer<JSX.CatTime>('cat-time', un
   'errors',
   'errorUpdate',
   'nativeAttributes',
+  'testId',
   'placement',
   'step',
   'catChange',
@@ -458,6 +499,7 @@ export const CatToggle = /*@__PURE__*/ defineContainer<JSX.CatToggle>('cat-toggl
   'labelLeft',
   'alignment',
   'nativeAttributes',
+  'testId',
   'catChange',
   'catFocus',
   'catBlur'

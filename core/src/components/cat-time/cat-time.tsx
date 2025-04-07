@@ -11,7 +11,9 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
 @Component({
   tag: 'cat-time',
   styleUrl: 'cat-time.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTime {
   private readonly language = i18n.getLocale();
@@ -43,7 +45,7 @@ export class CatTime {
   /**
    * Hint for form autofill feature.
    */
-  @Prop() autoComplete?: string;
+  @Prop() autoComplete = 'off';
 
   /**
    * Whether the input should show a clear button.
@@ -143,7 +145,7 @@ export class CatTime {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -151,6 +153,13 @@ export class CatTime {
    * Attributes that will be added to the native HTML input element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
 
   /**
    * The placement of the dropdown.
@@ -182,7 +191,7 @@ export class CatTime {
       this.valueChangedBySelection = false;
     } else if (value !== oldValue) {
       this.set12hFormat();
-      this.syncValue(value);
+      this.syncValue(value ?? '');
     }
   }
 
@@ -243,7 +252,7 @@ export class CatTime {
     let newValue = this.value;
     if (!date) {
       this.selectionTime = null;
-      this.value = undefined;
+      newValue = undefined;
     } else {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
       this.isAm = this.format(time).toLowerCase().includes('am');
@@ -294,6 +303,7 @@ export class CatTime {
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input
@@ -319,6 +329,7 @@ export class CatTime {
           value={this.format(this.selectionTime, false)}
           errors={this.errors}
           errorUpdate={this.errorUpdate}
+          testId={this.testId}
           nativeAttributes={this.nativeAttributes}
           onCatFocus={e => this.catFocus.emit(e.detail)}
           onCatBlur={e => this.onInputBlur(e.detail)}

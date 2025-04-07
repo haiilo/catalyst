@@ -13,13 +13,16 @@ let nextUniqueId = 0;
  *
  * @slot hint - Optional hint element to be displayed with the textarea.
  * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @slot counter - Custom counter element to be displayed in the top right corner of the label.
  * @part label - The native label element.
  * @part textarea - The native textarea element.
  */
 @Component({
   tag: 'cat-textarea',
   styleUrl: 'cat-textarea.scss',
-  shadow: true
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTextarea {
   private readonly _id = `cat-textarea-${nextUniqueId++}`;
@@ -28,7 +31,7 @@ export class CatTextarea {
   }
 
   private textarea!: HTMLTextAreaElement;
-  private errorMapSrc?: ErrorMap;
+  private errorMapSrc?: ErrorMap | true;
 
   @Element() hostElement!: HTMLElement;
 
@@ -36,7 +39,9 @@ export class CatTextarea {
 
   @State() hasSlottedHint = false;
 
-  @State() errorMap?: ErrorMap;
+  @State() hasSlottedCounter = false;
+
+  @State() errorMap?: ErrorMap | true;
 
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
@@ -47,6 +52,11 @@ export class CatTextarea {
    * Whether the label is on top or left.
    */
   @Prop() horizontal = false;
+
+  /**
+   * Hint for form autofill feature.
+   */
+  @Prop() autoComplete?: string;
 
   /**
    * Whether the textarea is disabled.
@@ -126,7 +136,7 @@ export class CatTextarea {
   /**
    * Fine-grained control over when the errors are shown. Can be `false` to
    * never show errors, `true` to show errors on blur, or a number to show
-   * errors on change with the given delay in milliseconds.
+   * errors change with the given delay in milliseconds or immediately on blur.
    */
   @Prop() errorUpdate: boolean | number = 0;
 
@@ -134,6 +144,13 @@ export class CatTextarea {
    * Attributes that will be added to the native HTML textarea element.
    */
   @Prop() nativeAttributes?: { [key: string]: string };
+
+  /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute and acts
+   * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+   */
+  @Prop() testId?: string;
 
   /**
    * Emitted when the value is changed.
@@ -150,10 +167,14 @@ export class CatTextarea {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentWillLoad(): void {
+    this.onErrorsChanged(this.errors, undefined, false);
+  }
+
   componentWillRender(): void {
-    this.onErrorsChanged(this.errors);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+    this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
   }
 
   componentDidLoad(): void {
@@ -191,20 +212,21 @@ export class CatTextarea {
   }
 
   @Watch('errors')
-  onErrorsChanged(value?: boolean | string[] | ErrorMap) {
+  onErrorsChanged(newValue?: boolean | string[] | ErrorMap, _oldValue?: unknown, update: boolean = true) {
     if (!coerceBoolean(this.errorUpdate)) {
       this.errorMap = undefined;
     } else {
-      this.errorMapSrc = Array.isArray(value)
-        ? (value as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
-        : value === true
-          ? {}
-          : value || undefined;
-      this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      this.errorMapSrc = Array.isArray(newValue)
+        ? (newValue as string[]).reduce((acc, err) => ({ ...acc, [err]: undefined }), {})
+        : newValue || undefined;
+      if (update) {
+        this.showErrorsIfTimeout() || this.showErrorsIfNoFocus();
+      }
     }
   }
 
   render() {
+    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <div
@@ -229,9 +251,13 @@ export class CatTextarea {
                         ({i18n.t('input.required')})
                       </span>
                     )}
-                    {this.maxLength && (
+                    {(this.maxLength || this.hasSlottedCounter) && (
                       <div class="label-character-count" aria-hidden="true">
-                        {this.value?.length ?? 0}/{this.maxLength}
+                        {this.hasSlottedCounter ? (
+                          <slot name="counter"></slot>
+                        ) : (
+                          `${this.value?.length ?? 0}/${this.maxLength}`
+                        )}
                       </div>
                     )}
                   </div>
@@ -249,11 +275,13 @@ export class CatTextarea {
               }}
             >
               <textarea
+                data-test={this.testId}
                 {...this.nativeAttributes}
                 part="textarea"
                 ref={el => (this.textarea = el as HTMLTextAreaElement)}
                 id={this.id}
                 disabled={this.disabled}
+                autocomplete={this.autoComplete}
                 maxlength={this.maxLength}
                 minlength={this.minLength}
                 name={this.name}
@@ -296,7 +324,7 @@ export class CatTextarea {
   }
 
   private get invalid() {
-    return !!Object.keys(this.errorMap || {}).length;
+    return this.errorMap === true || !!Object.keys(this.errorMap || {}).length;
   }
 
   private onInput() {

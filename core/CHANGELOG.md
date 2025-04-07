@@ -1,5 +1,303 @@
 # Changelog
 
+## [10.34.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.3...catalyst-core-v10.34.0) (2025-03-28)
+
+
+### Features
+
+* **core:** use shift middleware for dropdown compute position method ([#696](https://github.com/haiilo/catalyst/issues/696)) ([7d4adf7](https://github.com/haiilo/catalyst/commit/7d4adf789edcd661c41342ca92e433d105edea5c))
+
+## [10.33.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.2...catalyst-core-v10.33.3) (2025-03-27)
+
+
+### Bug Fixes
+
+* **core:** revert changes on cat-visually-hidden ([1c3386b](https://github.com/haiilo/catalyst/commit/1c3386bfc431ad7098d920dd4a6287ba35f705c2))
+
+## [10.33.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.1...catalyst-core-v10.33.2) (2025-03-27)
+
+
+### Bug Fixes
+
+* **core:** enable import injection for vite builder ([#699](https://github.com/haiilo/catalyst/issues/699)) ([9a2f63f](https://github.com/haiilo/catalyst/commit/9a2f63fde73152ab5e901e4deecfe5f21a5a1366))
+
+## [10.33.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.0...catalyst-core-v10.33.1) (2025-03-26)
+
+
+### Bug Fixes
+
+* **core:** fixed cat-scrollable for windows ([#697](https://github.com/haiilo/catalyst/issues/697)) ([e34749c](https://github.com/haiilo/catalyst/commit/e34749cc564675d12e6789a1c5a2bb9ec0e041e3))
+
+## [10.33.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.2...catalyst-core-v10.33.0) (2025-03-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.32.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.1...catalyst-core-v10.32.2) (2025-03-14)
+
+
+### Bug Fixes
+
+* **core:** adjust styles for plain buttons with utility classes ([ebf1e1f](https://github.com/haiilo/catalyst/commit/ebf1e1fa42215e6ac47d67b513d1add2e21e8a64))
+
+## [10.32.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.32.0...catalyst-core-v10.32.1) (2025-03-12)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.32.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.31.1...catalyst-core-v10.32.0) (2025-03-12)
+
+
+### Features
+
+* **core:** add border for cards ([#685](https://github.com/haiilo/catalyst/issues/685)) ([d3206af](https://github.com/haiilo/catalyst/commit/d3206af28b851ab9d0161acb8b114f4fd4d471c5))
+
+## [10.31.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.31.0...catalyst-core-v10.31.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **core:** do not show focus in dropdown if it was opened by mouse click ([#664](https://github.com/haiilo/catalyst/issues/664)) ([2dcc67b](https://github.com/haiilo/catalyst/commit/2dcc67b471e6e74e15e84959800fe8ceb0c81e46))
+
+## [10.31.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.2...catalyst-core-v10.31.0) (2025-02-24)
+
+
+### Features
+
+* **core:** add test-id as a shorthand for data-test native attributes ([#670](https://github.com/haiilo/catalyst/issues/670)) ([1065ee3](https://github.com/haiilo/catalyst/commit/1065ee3b5745e5d31590dd42ed10f2a4e910b8a2))
+
+## [10.30.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.1...catalyst-core-v10.30.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* **core:** change visibility helpers to only react on focus-visible ([94a0d93](https://github.com/haiilo/catalyst/commit/94a0d93ee1f9f32f8685d407328a0eec238a476e))
+
+## [10.30.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.30.0...catalyst-core-v10.30.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* **core:** adjust button gaps ([a0691a2](https://github.com/haiilo/catalyst/commit/a0691a235a6fa2fdbc160bd1582c73de77357764))
+* **core:** fix multi-select in Safari ([#658](https://github.com/haiilo/catalyst/issues/658)) ([1472929](https://github.com/haiilo/catalyst/commit/14729298e1a0b05e620e3d8829402edaa7b80060))
+
+## [10.30.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.29.0...catalyst-core-v10.30.0) (2025-02-03)
+
+
+### Features
+
+* **core:** adjust sizing of tooltips ([8a453da](https://github.com/haiilo/catalyst/commit/8a453da98ed13af412d699192e59be60520808b4))
+
+
+### Bug Fixes
+
+* **core:** add border to light notifications (#closes 635) ([3d50d00](https://github.com/haiilo/catalyst/commit/3d50d00503728b22319ab2982c12e870b5b321b7))
+* **core:** adjust auto complete defaults for date and time inputs ([d849866](https://github.com/haiilo/catalyst/commit/d849866bd32ec485ed985dbf1d5b9de4ee1f0e57))
+* **core:** adjust auto complete defaults for date and time inputs ([c65eb74](https://github.com/haiilo/catalyst/commit/c65eb74d7e1e0a2daf049bd0429bcd324414c098))
+* **core:** adjust icon gap for large buttons ([5eac1f7](https://github.com/haiilo/catalyst/commit/5eac1f7d0161d8f8efdddf3c98e6321633ad34a2))
+* **core:** fix date navigation (closes [#654](https://github.com/haiilo/catalyst/issues/654)) ([#656](https://github.com/haiilo/catalyst/issues/656)) ([8ae8410](https://github.com/haiilo/catalyst/commit/8ae8410cb9a4eb84a4b4bb572ebcd751745a05dc))
+* **core:** fix month and weekday names (closes [#640](https://github.com/haiilo/catalyst/issues/640)) ([87ba2fb](https://github.com/haiilo/catalyst/commit/87ba2fb76de286528a3a55eb2024b2a4d80a73e6))
+* **core:** update dependencies ([bf9db7f](https://github.com/haiilo/catalyst/commit/bf9db7f48c00e8f65fc0da8b3e26ea188357e498))
+
+## [10.29.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.2...catalyst-core-v10.29.0) (2025-01-27)
+
+
+### Features
+
+* **core:** add custom counter slot to input and textarea ([a69fee0](https://github.com/haiilo/catalyst/commit/a69fee091388ff556e9c385cb5d6db4bb79ddd00))
+
+## [10.28.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.1...catalyst-core-v10.28.2) (2025-01-23)
+
+
+### Bug Fixes
+
+* **core:** make it possibile to have tabs without an active tab ([cdd3581](https://github.com/haiilo/catalyst/commit/cdd358119ad8d930547646ad0082d078c6db3843))
+
+## [10.28.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.28.0...catalyst-core-v10.28.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* **core:** cat-date-inline month display in headline ([#630](https://github.com/haiilo/catalyst/issues/630)) ([cd0df5d](https://github.com/haiilo/catalyst/commit/cd0df5d798e47af2f9bed0646b0415037917e721))
+
+## [10.28.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.27.0...catalyst-core-v10.28.0) (2025-01-20)
+
+
+### Features
+
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+
+## [10.27.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.1...catalyst-core-v10.27.0) (2025-01-16)
+
+
+### Features
+
+* **core:** fixes broken style for cat-time buttons ([#621](https://github.com/haiilo/catalyst/issues/621)) ([fb41192](https://github.com/haiilo/catalyst/commit/fb41192c81da03acd40a34649e1710082322d658))
+* **core:** ignore elements with delegatesFocus property in firstTabbable util ([#627](https://github.com/haiilo/catalyst/issues/627)) ([0493185](https://github.com/haiilo/catalyst/commit/049318598d6c07fb4fae5fa112efca084dfddd26))
+* **core:** make shadow interaction components are recognized as focusable ([#620](https://github.com/haiilo/catalyst/issues/620)) ([bca90f2](https://github.com/haiilo/catalyst/commit/bca90f295409281c1395dd3692898f8830baf0c0))
+* **core:** support custom aria-haspopup on cat-dropdown trigger ([#628](https://github.com/haiilo/catalyst/issues/628)) ([df83dcf](https://github.com/haiilo/catalyst/commit/df83dcf63c548c6ab47830c43e972d1519111f45))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+
+## [10.26.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.26.0...catalyst-core-v10.26.1) (2024-12-16)
+
+
+### Bug Fixes
+
+* **core:** setting empty value in cat-time ([#566](https://github.com/haiilo/catalyst/issues/566)) ([9d1df0a](https://github.com/haiilo/catalyst/commit/9d1df0a5dc9f6d7464413e19cca18d86ca3b258a))
+
+## [10.26.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.3...catalyst-core-v10.26.0) (2024-12-16)
+
+
+### Features
+
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+
+
+### Bug Fixes
+
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+* **core:** use correct background color for outlines buttons with non-white backgrounds ([b2f4557](https://github.com/haiilo/catalyst/commit/b2f4557edf8ac325ab756d42595e3a8769207c6d))
+
+## [10.25.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.2...catalyst-core-v10.25.3) (2024-12-12)
+
+
+### Bug Fixes
+
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+
+## [10.25.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.1...catalyst-core-v10.25.2) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** don't shrink badges ([2717359](https://github.com/haiilo/catalyst/commit/271735967168bf30355192e186c34b5d1c3277e7))
+* **core:** submit button should not cause a reload in firefox ([#611](https://github.com/haiilo/catalyst/issues/611)) ([ecf2d15](https://github.com/haiilo/catalyst/commit/ecf2d155df12b4db2769e7f55ee7225c2bf6f04e))
+
+## [10.25.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.25.0...catalyst-core-v10.25.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* **core:** submit buttons leads to refresh in firefox ([#608](https://github.com/haiilo/catalyst/issues/608)) ([1a1f600](https://github.com/haiilo/catalyst/commit/1a1f600c24a667a02d8497a13c38d32b5de5d176))
+
+## [10.25.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.3...catalyst-core-v10.25.0) (2024-11-18)
+
+
+### Features
+
+* **core:** emit catChange on blur for cat-tag ([#605](https://github.com/haiilo/catalyst/issues/605)) ([56045d2](https://github.com/haiilo/catalyst/commit/56045d218b8753fc80162ed98c44611f1dd25e39))
+* **core:** notifications on mobile ([#606](https://github.com/haiilo/catalyst/issues/606)) ([46f982f](https://github.com/haiilo/catalyst/commit/46f982f71e1adb482e1bec1c9d83d346887e616a))
+
+## [10.24.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.2...catalyst-core-v10.24.3) (2024-11-14)
+
+
+### Bug Fixes
+
+* **core:** do not delay dropdown focus trap deactivation ([#603](https://github.com/haiilo/catalyst/issues/603)) ([dcd6198](https://github.com/haiilo/catalyst/commit/dcd61986005640f08494833dedd9420605e526b8))
+
+## [10.24.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.1...catalyst-core-v10.24.2) (2024-10-29)
+
+
+### Bug Fixes
+
+* **angular:** provide fix for missing hint and missing detection ([#599](https://github.com/haiilo/catalyst/issues/599)) ([2c0c41b](https://github.com/haiilo/catalyst/commit/2c0c41b0a7ce3f3ecd108b3f266e0e1c751e2b4b))
+* **core:** fix linting errors on any type ([#600](https://github.com/haiilo/catalyst/issues/600)) ([debcc0a](https://github.com/haiilo/catalyst/commit/debcc0a8ae5e5115187dbc6a90912d381b4ad8ec))
+
+## [10.24.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.24.0...catalyst-core-v10.24.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **core:** fix notification alignment due to CSS typo ([156b86a](https://github.com/haiilo/catalyst/commit/156b86a0d9e93679b95280cd0c3f71cb201b199a))
+
+## [10.24.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.23.0...catalyst-core-v10.24.0) (2024-10-24)
+
+
+### Features
+
+* **core:** add ability to close toasts via event incl. a result ([#596](https://github.com/haiilo/catalyst/issues/596)) ([84db69d](https://github.com/haiilo/catalyst/commit/84db69d0007756eded87c22ac7a5a22f042d49f8))
+* **core:** add input loading indicator ([#597](https://github.com/haiilo/catalyst/issues/597)) ([d1c956b](https://github.com/haiilo/catalyst/commit/d1c956b8a6dec02f2057820ef02be0c354b12f22))
+
+
+### Bug Fixes
+
+* **core:** avoid endless loop on input error handling ([#591](https://github.com/haiilo/catalyst/issues/591)) ([6c2d191](https://github.com/haiilo/catalyst/commit/6c2d19119131c7d0ccaeb2bad0cbe7a1a1b81a9c))
+* **core:** fix small styling issues in toasst notifications ([5568011](https://github.com/haiilo/catalyst/commit/55680116c8798c3997d1dfc7273f276de0b442b4))
+
+## [10.23.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.22.1...catalyst-core-v10.23.0) (2024-10-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.22.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.22.0...catalyst-core-v10.22.1) (2024-10-21)
+
+
+### Bug Fixes
+
+* **core:** remove unnecessary comment ([#588](https://github.com/haiilo/catalyst/issues/588)) ([8d7fd10](https://github.com/haiilo/catalyst/commit/8d7fd109a97106e87ebfa72c30e9e4f23cf452c1))
+
+## [10.22.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.4...catalyst-core-v10.22.0) (2024-10-18)
+
+
+### Features
+
+* **core:** enable tag inputs without dropdowns ([#586](https://github.com/haiilo/catalyst/issues/586)) ([e3b76e3](https://github.com/haiilo/catalyst/commit/e3b76e32ecfe4152242b9568b977d0ada42648ca))
+
+## [10.21.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.3...catalyst-core-v10.21.4) (2024-10-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.21.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.2...catalyst-core-v10.21.3) (2024-10-15)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.21.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.1...catalyst-core-v10.21.2) (2024-10-07)
+
+
+### Bug Fixes
+
+* **core:** datepicker month locale are not correct ([#571](https://github.com/haiilo/catalyst/issues/571)) ([28dff07](https://github.com/haiilo/catalyst/commit/28dff072f7988f42112cec3562d535f63d5f6e6d))
+
+## [10.21.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.21.0...catalyst-core-v10.21.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* **core:** add required marker to checkbox formly element ([#577](https://github.com/haiilo/catalyst/issues/577)) ([bdc2fd8](https://github.com/haiilo/catalyst/commit/bdc2fd8358909712c9fafe50c995c0253528b704))
+
+## [10.21.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.20.0...catalyst-core-v10.21.0) (2024-09-30)
+
+
+### Features
+
+* **core:** add required marker for checkboxes ([#575](https://github.com/haiilo/catalyst/issues/575)) ([43f8d7c](https://github.com/haiilo/catalyst/commit/43f8d7c11cbb31008dba96120f1b34042580327f))
+
+## [10.20.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.4...catalyst-core-v10.20.0) (2024-09-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [10.19.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.3...catalyst-core-v10.19.4) (2024-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
 ## [10.19.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.19.2...catalyst-core-v10.19.3) (2024-09-18)
 
 

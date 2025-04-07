@@ -36,7 +36,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'radio'
   },
   {
-    elementSelectors: ['cat-select'],
+    elementSelectors: ['cat-select', 'cat-tag'],
     event: 'catChange',
     targetAttr: 'value',
     type: 'select'
@@ -53,6 +53,9 @@ export const config: Config = {
   ],
   sourceMap: true,
   globalStyle: 'src/styles/index.scss',
+  extras: {
+    enableImportInjection: true
+  },
   outputTargets: [
     {
       type: 'dist',

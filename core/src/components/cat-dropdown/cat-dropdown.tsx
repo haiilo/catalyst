@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement, size } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement, shift, size } from '@floating-ui/dom';
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
@@ -27,6 +27,12 @@ export class CatDropdown {
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private isOpen: boolean | null = false;
+  /**
+   * Tracking the origin of opening the dropdown and specify if initial focus should be set.
+   * Currently we set it only when the origin is keyboard.
+   * We might not need to track this in future when focus-visible support is improved across browsers
+   */
+  private hasInitialFocus = false;
 
   /**
    * The placement of the dropdown.
@@ -57,6 +63,10 @@ export class CatDropdown {
   /**
    * No element in dropdown will receive focus when dropdown is open.
    * By default, the first element in tab order will receive a focus.
+   * @deprecated
+   * Using noInitialFocus property would be a bad practice from a11y perspective.
+   * We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug.
+   * hasInitialFocus should resolve the cause of the original problem instead.
    */
   @Prop() noInitialFocus = false;
 
@@ -102,15 +112,17 @@ export class CatDropdown {
 
   /**
    * Opens the dropdown.
+   * @param isFocusVisible is dropdown should receive visible focus when it's opened.
    */
   @Method()
-  async open(): Promise<void> {
+  async open(isFocusVisible?: boolean): Promise<void> {
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
     }
 
     this.isOpen = null;
     this.content.style.display = 'block';
+    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
     // give CSS transition time to apply
     setTimeout(() => {
       this.isOpen = true;
@@ -152,7 +164,9 @@ export class CatDropdown {
               }
               return event.key === 'Tab' && event.shiftKey;
             },
-            initialFocus: () => (this.noInitialFocus ? false : undefined)
+            initialFocus: () => {
+              return this.hasInitialFocus && !this.noInitialFocus ? undefined : false;
+            }
           });
       this.trap.activate();
     });
@@ -168,6 +182,7 @@ export class CatDropdown {
     }
 
     this.isOpen = null;
+    this.trap?.deactivate();
     this.content.classList.remove('show');
     // give CSS transition time to apply
     setTimeout(() => {
@@ -175,7 +190,6 @@ export class CatDropdown {
       this.content.classList.remove('show');
       this.content.style.display = '';
       this.trigger?.setAttribute('aria-expanded', 'false');
-      this.trap?.deactivate();
       this.catClose.emit();
     }, timeTransitionS);
   }
@@ -207,13 +221,21 @@ export class CatDropdown {
 
   private initTrigger() {
     this.trigger = this.findTrigger();
-    this.trigger.setAttribute('aria-haspopup', 'true');
+    const ariaHaspopup = this.trigger.getAttribute('aria-haspopup');
+    this.trigger.setAttribute('aria-haspopup', ariaHaspopup ?? 'true');
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
-    this.trigger.addEventListener('click', () => this.toggle());
+    this.trigger.addEventListener('click', (event: Event) => {
+      this.hasInitialFocus = this.isEventOriginFromKeyboard(event as UIEvent);
+      this.toggle();
+    });
     if (!this.anchor) {
       autoUpdate(this.trigger, this.content, () => this.update(this.trigger));
     }
+  }
+
+  private isEventOriginFromKeyboard(event: UIEvent): boolean {
+    return event.detail === 0;
   }
 
   private initAnchor() {
@@ -230,7 +252,7 @@ export class CatDropdown {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
         ? (elem as HTMLElement)
-        : elem?.querySelector('[data-trigger]') ?? undefined;
+        : (elem?.querySelector('[data-trigger]') ?? undefined);
     }
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
@@ -266,7 +288,7 @@ export class CatDropdown {
       computePosition(anchorElement, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), flip(), ...resize]
+        middleware: [offset(CatDropdown.OFFSET), flip(), shift(), ...resize]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {

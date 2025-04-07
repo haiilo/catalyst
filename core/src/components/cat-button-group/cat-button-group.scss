@@ -3,13 +3,3 @@
   display: inline-flex;
   vertical-align: middle;
 }
-
-::slotted(cat-button[variant='outlined']),
-::slotted(cat-button:not([variant])) {
-  margin-right: -1px;
-}
-
-::slotted(cat-button[variant='outlined']:last-child),
-::slotted(cat-button:not([variant]):last-child) {
-  margin-right: 0;
-}
