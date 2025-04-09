@@ -1,5 +1,17 @@
 # Changelog
 
+## [10.35.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.34.0...catalyst-core-v10.35.0) (2025-04-07)
+
+
+### Features
+
+* **core:** add missing testId props ([#705](https://github.com/haiilo/catalyst/issues/705)) ([4820111](https://github.com/haiilo/catalyst/commit/4820111ac319b2fb39e93afa4c2dccd3df67b128))
+
+
+### Bug Fixes
+
+* **core:** add more slot for tabs ([53ed13b](https://github.com/haiilo/catalyst/commit/53ed13bf27d8454ff4db7d569b4d6c75c2ff3d13))
+
 ## [10.34.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.33.3...catalyst-core-v10.34.0) (2025-03-28)
 
 
