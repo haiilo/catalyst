@@ -1,4 +1,16 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Method,
+  Prop,
+  State,
+  Watch
+} from '@stencil/core';
 import autosize from 'autosize';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
@@ -20,6 +32,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-textarea',
   styleUrl: 'cat-textarea.scss',
+  formAssociated: true,
   shadow: {
     delegatesFocus: true
   }
@@ -42,6 +55,8 @@ export class CatTextarea {
   @State() hasSlottedCounter = false;
 
   @State() errorMap?: ErrorMap | true;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * Whether the label need a marker to shown if the textarea is required or optional.
@@ -172,6 +187,7 @@ export class CatTextarea {
   }
 
   componentWillRender(): void {
+    this.internals.setFormValue(this.value ?? null);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
@@ -329,6 +345,7 @@ export class CatTextarea {
 
   private onInput() {
     this.value = this.textarea.value;
+    this.internals.setFormValue(this.textarea.value);
     this.catChange.emit(this.value);
     this.showErrorsIfTimeout();
   }

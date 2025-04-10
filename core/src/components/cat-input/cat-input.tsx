@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import Cleave from 'cleave.js';
 import type { CleaveOptions } from 'cleave.js/options';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
@@ -24,6 +24,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-input',
   styleUrl: 'cat-input.scss',
+  formAssociated: true,
   shadow: {
     delegatesFocus: true
   }
@@ -48,6 +49,8 @@ export class CatInput {
   @State() isPasswordShown = false;
 
   @State() errorMap?: ErrorMap | true;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -228,6 +231,7 @@ export class CatInput {
   }
 
   componentWillRender(): void {
+    this.internals.setFormValue(this.value ?? null);
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
     this.hasSlottedCounter = !!this.hostElement.querySelector('[slot="counter"]');
@@ -441,6 +445,7 @@ export class CatInput {
 
   private onInput() {
     this.value = this.input.value;
+    this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
     this.showErrorsIfTimeout();
   }
