@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.36.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.35.0...catalyst-core-v10.36.0) (2025-04-11)
+
+
+### Features
+
+* **core:** use form-associated components for input, textarea, checkbox and toggle ([#712](https://github.com/haiilo/catalyst/issues/712)) ([8c8f4e8](https://github.com/haiilo/catalyst/commit/8c8f4e854aabbf4795dece860d6797653c8a8fa8))
+
 ## [10.35.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.34.0...catalyst-core-v10.35.0) (2025-04-07)
 
 
