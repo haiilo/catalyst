@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.36.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.36.0...catalyst-tokens-v10.36.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* **tokens:** readme typo fix ([194c01c](https://github.com/haiilo/catalyst/commit/194c01c2fe9aa286512753d4e61fa79786c1c991))
+
 ## [10.36.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v10.35.0...catalyst-tokens-v10.36.0) (2025-04-11)
 
 
