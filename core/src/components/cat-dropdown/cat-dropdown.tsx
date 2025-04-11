@@ -4,6 +4,7 @@ import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@
 import * as focusTrap from 'focus-trap';
 import type { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
+import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
 
 let nextUniqueId = 0;
 
@@ -86,15 +87,6 @@ export class CatDropdown {
 
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
-    // we need to delay the initialization of the trigger until first
-    // interaction because the element might still be hidden (and thus not
-    // tabbable) if contained in another Stencil web component
-    if (!this.trigger) {
-      this.hasInitialFocus = this.isEventOriginFromKeyboard(event.detail);
-      this.initTrigger();
-      this.toggle();
-    }
-
     // hide dropdown on button clicks inside the dropdown content
     const path = event.composedPath();
     if (
@@ -124,13 +116,6 @@ export class CatDropdown {
    */
   @Method()
   async open(isFocusVisible?: boolean): Promise<void> {
-    // we need to delay the initialization of the trigger until first
-    // interaction because the element might still be hidden (and thus not
-    // tabbable) if contained in another Stencil web component
-    if (!this.trigger) {
-      this.initTrigger();
-    }
-
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
     }
@@ -209,6 +194,11 @@ export class CatDropdown {
     }, timeTransitionS);
   }
 
+  componentDidLoad() {
+    this.initAnchor();
+    this.initTrigger();
+  }
+
   render() {
     return (
       <Host>
@@ -223,10 +213,6 @@ export class CatDropdown {
         </div>
       </Host>
     );
-  }
-
-  componentDidLoad() {
-    this.initAnchor();
   }
 
   private get contentId() {
@@ -261,7 +247,7 @@ export class CatDropdown {
 
   private findTrigger() {
     let trigger: FocusableElement | undefined;
-    const elems = this.triggerSlot?.assignedElements?.() || [];
+    let elems = this.triggerSlot?.assignedElements?.() || [];
     while (!trigger && elems.length) {
       const elem = elems.shift();
       trigger = elem?.hasAttribute('data-trigger')
@@ -270,6 +256,13 @@ export class CatDropdown {
     }
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
+    }
+    if (!trigger) {
+      elems = this.triggerSlot?.assignedElements?.() || [];
+      while (!trigger && elems.length) {
+        const elem = elems.shift();
+        trigger = findFirstTabbableIncludeHidden(elem as HTMLElement);
+      }
     }
     if (!trigger) {
       throw new Error('Cannot find tabbable element. Use [data-trigger] to set the trigger.');
