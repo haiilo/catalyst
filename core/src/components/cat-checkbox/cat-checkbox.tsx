@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
@@ -16,6 +16,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-checkbox',
   styleUrls: ['cat-checkbox.scss'],
+  formAssociated: true,
   shadow: true
 })
 export class CatCheckbox {
@@ -31,6 +32,8 @@ export class CatCheckbox {
   @State() hasSlottedLabel = false;
 
   @State() hasSlottedHint = false;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * Checked state of the checkbox
@@ -143,6 +146,7 @@ export class CatCheckbox {
   }
 
   componentWillRender(): void {
+    this.internals.setFormValue(this.checked ? (this.value ?? 'on') : (this.noValue ?? null));
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
@@ -239,6 +243,7 @@ export class CatCheckbox {
 
   private onInput() {
     this.checked = this.input.checked;
+    this.internals.setFormValue(this.input.checked ? (this.value ?? 'on') : (this.noValue ?? null));
     this.indeterminate = this.input.indeterminate;
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);

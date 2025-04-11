@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 import { CatFormHint } from '../cat-form-hint/cat-form-hint';
 
 let nextUniqueId = 0;
@@ -15,6 +15,7 @@ let nextUniqueId = 0;
 @Component({
   tag: 'cat-toggle',
   styleUrls: ['cat-toggle.scss'],
+  formAssociated: true,
   shadow: {
     delegatesFocus: true
   }
@@ -32,6 +33,8 @@ export class CatToggle {
   @State() hasSlottedLabel = false;
 
   @State() hasSlottedHint = false;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * Checked state of the toggle.
@@ -134,6 +137,7 @@ export class CatToggle {
   }
 
   componentWillRender(): void {
+    this.internals.setFormValue(this.checked ? (this.value ?? 'on') : (this.noValue ?? null));
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
@@ -213,6 +217,7 @@ export class CatToggle {
 
   private onInput() {
     this.checked = this.input.checked;
+    this.internals.setFormValue(this.input.checked ? (this.value ?? 'on') : (this.noValue ?? null));
     this.updateResolved();
     this.catChange.emit(this.resolvedValue);
   }
