@@ -1,9 +1,10 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, State } from '@stencil/core';
 import { getLocale } from '../cat-date-inline/cat-date-locale';
 import { clampDate } from '../cat-date-inline/cat-date-math';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import { DateUnit, FormatDateOptions } from 'cleave-zen';
 
 /**
  * A date input component to select a date from a calendar in a dropdown.
@@ -23,6 +24,8 @@ export class CatDate {
   private inputFocused = false;
 
   @Element() hostElement!: HTMLElement;
+
+  @State() dateMaskOptions?: FormatDateOptions;
 
   /**
    * Whether the label need a marker to shown if the input is required or optional.
@@ -200,13 +203,12 @@ export class CatDate {
   componentDidLoad() {
     const format = this.locale.formatStr.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
     const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(format) || [];
-    this.input?.mask({
-      date: true,
+    this.dateMaskOptions = {
       dateMin: this.min,
       dateMax: this.max,
       delimiter: d1,
-      datePattern: [p1, p2, p3]
-    });
+      datePattern: [p1 as DateUnit, p2 as DateUnit, p3 as DateUnit]
+    };
   }
 
   /**
@@ -266,6 +268,7 @@ export class CatDate {
           testId={this.testId}
           nativeAttributes={this.nativeAttributes}
           value={this.inputValue}
+          dateMaskOptions={this.dateMaskOptions}
           onCatFocus={e => {
             this.inputFocused = e.target === this.input;
             e.stopPropagation();
