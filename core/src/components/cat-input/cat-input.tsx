@@ -3,8 +3,7 @@ import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
-import { formatDate, FormatDateOptions, formatTime } from 'cleave-zen';
-import { FormatTimeOptions } from 'cleave-zen';
+import { formatDate, FormatDateOptions, formatTime, FormatTimeOptions } from 'cleave-zen';
 
 let nextUniqueId = 0;
 
