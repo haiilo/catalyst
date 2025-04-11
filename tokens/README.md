@@ -51,7 +51,7 @@ The library can be published by running `npm publish`. However, the preferred
 way to publish a new version of the library is via the CI setup. A new version
 of the library will automatically be published to
 [npm](https://www.npmjs.com/package/@haiilo/catalyst-tokens) when pushing a new
-tag on the main branch. To simplyfy this process, you can use the following npm
+tag on the main branch. To simplify this process, you can use the following npm
 commands:
 
  * **npm run release:major** releases a new *major* version
