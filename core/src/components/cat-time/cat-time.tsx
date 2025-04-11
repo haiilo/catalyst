@@ -4,6 +4,7 @@ import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { formatIso, getLocale } from './cat-time-locale';
 import { clampTime, isAfter, isBefore } from './cat-time-math';
+import { FormatTimeOptions } from 'cleave-zen';
 
 /**
  * A time input component to select a time in a dropdown.
@@ -18,6 +19,7 @@ import { clampTime, isAfter, isBefore } from './cat-time-math';
 export class CatTime {
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
+  private readonly timeMaskOptions: FormatTimeOptions = { timeFormat: this.locale.timeFormat, timePattern: ['h', 'm'] };
   private input?: HTMLCatInputElement;
 
   @Element() hostElement!: HTMLElement;
@@ -220,14 +222,6 @@ export class CatTime {
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
   }
 
-  componentDidLoad() {
-    this.input?.mask({
-      time: true,
-      timeFormat: this.locale.timeFormat,
-      timePattern: ['h', 'm']
-    });
-  }
-
   @Listen('catOpen')
   onOpen() {
     const query = (selector: string) => this.hostElement.shadowRoot?.querySelector<HTMLCatButtonElement>(selector);
@@ -331,6 +325,7 @@ export class CatTime {
           errorUpdate={this.errorUpdate}
           testId={this.testId}
           nativeAttributes={this.nativeAttributes}
+          timeMaskOptions={this.timeMaskOptions}
           onCatFocus={e => this.catFocus.emit(e.detail)}
           onCatBlur={e => this.onInputBlur(e.detail)}
         >

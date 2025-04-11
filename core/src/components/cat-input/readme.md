@@ -17,6 +17,7 @@ including passwords and numbers.
 | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------ |
 | `autoComplete`     | `auto-complete`   | Hint for form autofill feature.                                                                                                                                                                                                                                                                                                 | `string \| undefined`                                                                                       | `undefined`  |
 | `clearable`        | `clearable`       | Whether the input should show a clear button.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                                   | `false`      |
+| `dateMaskOptions`  | --                | Activates cleave-zen date mask on input                                                                                                                                                                                                                                                                                         | `FormatDateOptions \| undefined`                                                                            | `undefined`  |
 | `disabled`         | `disabled`        | Whether the input is disabled.                                                                                                                                                                                                                                                                                                  | `boolean`                                                                                                   | `false`      |
 | `errorUpdate`      | `error-update`    | Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.                                                                                                         | `boolean \| number`                                                                                         | `0`          |
 | `errors`           | `errors`          | The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input. | `boolean \| string[] \| undefined \| { [key: string]: any; }`                                               | `undefined`  |
@@ -42,6 +43,7 @@ including passwords and numbers.
 | `testId`           | `test-id`         | A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.                                                                                                             | `string \| undefined`                                                                                       | `undefined`  |
 | `textPrefix`       | `text-prefix`     | A textual prefix to be displayed in the input.                                                                                                                                                                                                                                                                                  | `string \| undefined`                                                                                       | `undefined`  |
 | `textSuffix`       | `text-suffix`     | A textual suffix to be displayed in the input.                                                                                                                                                                                                                                                                                  | `string \| undefined`                                                                                       | `undefined`  |
+| `timeMaskOptions`  | --                | Activates cleave-zen time mask on input                                                                                                                                                                                                                                                                                         | `FormatTimeOptions \| undefined`                                                                            | `undefined`  |
 | `togglePassword`   | `toggle-password` | Whether the input should show a password toggle button for password inputs.                                                                                                                                                                                                                                                     | `boolean`                                                                                                   | `false`      |
 | `type`             | `type`            | Type of form control.                                                                                                                                                                                                                                                                                                           | `"color" \| "email" \| "file" \| "number" \| "password" \| "range" \| "search" \| "tel" \| "text" \| "url"` | `'text'`     |
 | `value`            | `value`           | The value of the control.                                                                                                                                                                                                                                                                                                       | `string \| undefined`                                                                                       | `undefined`  |
@@ -89,22 +91,6 @@ Programmatically move focus to the input. Use this method instead of
 | Name      | Type                        | Description                                                                      |
 | --------- | --------------------------- | -------------------------------------------------------------------------------- |
 | `options` | `FocusOptions \| undefined` | An optional object providing options to control aspects of the focusing process. |
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `mask(options: CleaveOptions) => Promise<void>`
-
-Adds a Cleave.js mask to the input.
-
-#### Parameters
-
-| Name      | Type            | Description            |
-| --------- | --------------- | ---------------------- |
-| `options` | `CleaveOptions` | The Cleave.js options. |
 
 #### Returns
 
