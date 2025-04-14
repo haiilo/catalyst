@@ -50,7 +50,7 @@
     "@stencil/core": "4.18.3",
     "autosize": "6.0.1",
     "autosize-input": "1.0.2",
-    "cleave-zen": "^0.0.17",
+    "cleave-zen": "0.0.17",
     "flatpickr": "4.6.13",
     "focus-trap": "7.6.4",
     "loglevel": "1.9.2",
