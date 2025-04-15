@@ -572,7 +572,16 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
 }
 
 @ProxyCmp({
-  inputs: ['arrowNavigation', 'noAutoClose', 'noInitialFocus', 'noResize', 'noReturnFocus', 'overflow', 'placement'],
+  inputs: [
+    'arrowNavigation',
+    'justify',
+    'noAutoClose',
+    'noInitialFocus',
+    'noResize',
+    'noReturnFocus',
+    'overflow',
+    'placement'
+  ],
   methods: ['toggle', 'open', 'close']
 })
 @Component({
@@ -580,7 +589,16 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['arrowNavigation', 'noAutoClose', 'noInitialFocus', 'noResize', 'noReturnFocus', 'overflow', 'placement']
+  inputs: [
+    'arrowNavigation',
+    'justify',
+    'noAutoClose',
+    'noInitialFocus',
+    'noResize',
+    'noReturnFocus',
+    'overflow',
+    'placement'
+  ]
 })
 export class CatDropdown {
   protected el: HTMLElement;
