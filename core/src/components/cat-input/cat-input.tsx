@@ -3,9 +3,25 @@ import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
-import { formatDate, FormatDateOptions, formatTime, FormatTimeOptions } from 'cleave-zen';
+import { formatDate, formatTime } from 'cleave-zen';
 
 let nextUniqueId = 0;
+
+type TimeUnit = 'h' | 'm' | 's';
+type TimeFormatType = '12' | '24';
+type DateUnit = 'Y' | 'y' | 'm' | 'd';
+
+export interface FormatTimeMaskOptions {
+  timePattern?: TimeUnit[];
+  timeFormat?: TimeFormatType;
+}
+
+export interface FormatDateMaskOptions {
+  delimiter?: string;
+  datePattern?: DateUnit[];
+  dateMin?: string;
+  dateMax?: string;
+}
 
 /**
  * Inputs are used to allow users to provide text input when the expected input
@@ -213,12 +229,12 @@ export class CatInput {
   /**
    * Activates cleave-zen time mask on input
    */
-  @Prop() timeMaskOptions?: FormatTimeOptions;
+  @Prop() timeMaskOptions?: FormatTimeMaskOptions;
 
   /**
    * Activates cleave-zen date mask on input
    */
-  @Prop() dateMaskOptions?: FormatDateOptions;
+  @Prop() dateMaskOptions?: FormatDateMaskOptions;
 
   /**
    * Emitted when the value is changed.
