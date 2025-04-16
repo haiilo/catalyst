@@ -1,12 +1,27 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import Cleave from 'cleave.js';
-import type { CleaveOptions } from 'cleave.js/options';
 import { coerceBoolean, coerceNumber } from '../../utils/coerce';
 import { CatFormHint, ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { InputType } from './input-type';
+import { formatDate, formatTime } from 'cleave-zen';
 
 let nextUniqueId = 0;
+
+type TimeUnit = 'h' | 'm' | 's';
+type TimeFormatType = '12' | '24';
+type DateUnit = 'Y' | 'y' | 'm' | 'd';
+
+export interface FormatTimeMaskOptions {
+  timePattern?: TimeUnit[];
+  timeFormat?: TimeFormatType;
+}
+
+export interface FormatDateMaskOptions {
+  delimiter?: string;
+  datePattern?: DateUnit[];
+  dateMin?: string;
+  dateMax?: string;
+}
 
 /**
  * Inputs are used to allow users to provide text input when the expected input
@@ -212,6 +227,16 @@ export class CatInput {
   @Prop() testId?: string;
 
   /**
+   * Activates cleave-zen time mask on input
+   */
+  @Prop() timeMaskOptions?: FormatTimeMaskOptions;
+
+  /**
+   * Activates cleave-zen date mask on input
+   */
+  @Prop() dateMaskOptions?: FormatDateMaskOptions;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
@@ -269,16 +294,6 @@ export class CatInput {
   async clear(): Promise<void> {
     this.value = '';
     this.catChange.emit(this.value);
-  }
-
-  /**
-   * Adds a Cleave.js mask to the input.
-   *
-   * @param options The Cleave.js options.
-   */
-  @Method()
-  async mask(options: CleaveOptions): Promise<void> {
-    new Cleave(this.input, options);
   }
 
   @Watch('errors')
@@ -444,7 +459,15 @@ export class CatInput {
   }
 
   private onInput() {
-    this.value = this.input.value;
+    let formattedValue = this.input.value;
+    if (this.timeMaskOptions) {
+      formattedValue = formatTime(this.input.value, this.timeMaskOptions);
+    }
+    if (this.dateMaskOptions) {
+      formattedValue = formatDate(this.input.value, this.dateMaskOptions);
+    }
+    this.value = formattedValue;
+    this.input.value = formattedValue;
     this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
     this.showErrorsIfTimeout();

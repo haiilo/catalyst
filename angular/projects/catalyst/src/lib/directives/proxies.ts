@@ -676,6 +676,7 @@ export declare interface CatIcon extends Components.CatIcon {}
   inputs: [
     'autoComplete',
     'clearable',
+    'dateMaskOptions',
     'disabled',
     'errorUpdate',
     'errors',
@@ -701,11 +702,12 @@ export declare interface CatIcon extends Components.CatIcon {}
     'testId',
     'textPrefix',
     'textSuffix',
+    'timeMaskOptions',
     'togglePassword',
     'type',
     'value'
   ],
-  methods: ['doFocus', 'doBlur', 'clear', 'mask']
+  methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
   selector: 'cat-input',
@@ -715,6 +717,7 @@ export declare interface CatIcon extends Components.CatIcon {}
   inputs: [
     'autoComplete',
     'clearable',
+    'dateMaskOptions',
     'disabled',
     'errorUpdate',
     'errors',
@@ -740,6 +743,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'testId',
     'textPrefix',
     'textSuffix',
+    'timeMaskOptions',
     'togglePassword',
     'type',
     'value'

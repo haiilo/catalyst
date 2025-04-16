@@ -262,6 +262,8 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'errorUpdate',
   'nativeAttributes',
   'testId',
+  'timeMaskOptions',
+  'dateMaskOptions',
   'catChange',
   'catFocus',
   'catBlur'

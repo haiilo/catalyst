@@ -11,7 +11,7 @@ import { Placement } from "@floating-ui/dom";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
-import { CleaveOptions } from "cleave.js/options";
+import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
 import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -21,7 +21,7 @@ export { Placement } from "@floating-ui/dom";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
-export { CleaveOptions } from "cleave.js/options";
+export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
 export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -794,6 +794,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Activates cleave-zen date mask on input
+         */
+        "dateMaskOptions"?: FormatDateMaskOptions;
+        /**
           * Whether the input is disabled.
          */
         "disabled": boolean;
@@ -846,11 +850,6 @@ export namespace Components {
           * Displays the input in a loading state with a spinner.
          */
         "loading": boolean;
-        /**
-          * Adds a Cleave.js mask to the input.
-          * @param options The Cleave.js options.
-         */
-        "mask": (options: CleaveOptions) => Promise<void>;
         /**
           * A maximum value for numeric values.
          */
@@ -907,6 +906,10 @@ export namespace Components {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * Activates cleave-zen time mask on input
+         */
+        "timeMaskOptions"?: FormatTimeMaskOptions;
         /**
           * Whether the input should show a password toggle button for password inputs.
          */
@@ -3140,6 +3143,10 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Activates cleave-zen date mask on input
+         */
+        "dateMaskOptions"?: FormatDateMaskOptions;
+        /**
           * Whether the input is disabled.
          */
         "disabled"?: boolean;
@@ -3251,6 +3258,10 @@ declare namespace LocalJSX {
           * A textual suffix to be displayed in the input.
          */
         "textSuffix"?: string;
+        /**
+          * Activates cleave-zen time mask on input
+         */
+        "timeMaskOptions"?: FormatTimeMaskOptions;
         /**
           * Whether the input should show a password toggle button for password inputs.
          */
