@@ -16,8 +16,15 @@ $-max-height: calc(100vh - 48px);
 
 ::slotted(nav) {
   padding: 0.25rem;
-  min-width: $-min-width;
-  max-width: $-max-width;
+
+  .aligned & {
+    min-width: $-min-width;
+    max-width: $-max-width;
+  }
+
+  .justified & {
+    width: 100%;
+  }
 }
 
 .content {

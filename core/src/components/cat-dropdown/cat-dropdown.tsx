@@ -213,7 +213,7 @@ export class CatDropdown {
         <slot name="trigger" ref={el => (this.triggerSlot = el as HTMLSlotElement)}></slot>
         <div
           id={this.contentId}
-          class={{ content: true, 'overflow-auto': !this.overflow }}
+          class={{ content: true, 'overflow-auto': !this.overflow, justified: this.justify, aligned: !this.justify }}
           ref={el => (this.content = el as HTMLElement)}
         >
           <slot name="content"></slot>
@@ -289,13 +289,16 @@ export class CatDropdown {
               apply({ rects, availableWidth, availableHeight, elements }) {
                 if (justify) {
                   Object.assign(elements.floating.style, {
-                    minWidth: `${rects.reference.width}px`
+                    minWidth: `${rects.reference.width}px`,
+                    maxWidth: `${rects.reference.width}px`,
+                    maxHeight: `${availableHeight}px`
+                  });
+                } else {
+                  Object.assign(elements.floating.style, {
+                    maxWidth: `${availableWidth}px`,
+                    maxHeight: `${availableHeight}px`
                   });
                 }
-                Object.assign(elements.floating.style, {
-                  maxWidth: `${availableWidth}px`,
-                  maxHeight: `${availableHeight}px`
-                });
               }
             })
           ];

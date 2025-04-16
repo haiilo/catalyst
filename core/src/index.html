@@ -703,6 +703,28 @@
                   </nav>
                 </cat-dropdown>
 
+                <!-- Wide dropdown -->
+                <cat-dropdown justify>
+                  <cat-button slot="trigger" color="primary" variant="filled"
+                    >Button with very long content so that it is very wide</cat-button
+                  >
+                  <nav slot="content">
+                    <ul>
+                      <li class="cat-nav-head">Headline</li>
+                      <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
+                      </li>
+                    </ul>
+                  </nav>
+                </cat-dropdown>
+
                 <!-- Example: User menu -->
                 <cat-dropdown overflow>
                   <cat-button slot="trigger" variant="filled" color="primary" size="m">Example User Menu</cat-button>
@@ -776,14 +798,6 @@
 
               <cat-dropdown no-auto-close>
                 <cat-button slot="trigger">Button (keep open)</cat-button>
-                <div slot="content" class="cat-flex cat-flex-col cat-p-m">
-                  <p>Here is some content.</p>
-                  <cat-button>Action</cat-button>
-                </div>
-              </cat-dropdown>
-
-              <cat-dropdown justify>
-                <cat-button slot="trigger">Button with a justified dropdown</cat-button>
                 <div slot="content" class="cat-flex cat-flex-col cat-p-m">
                   <p>Here is some content.</p>
                   <cat-button>Action</cat-button>
