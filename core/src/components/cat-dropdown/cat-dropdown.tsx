@@ -257,6 +257,8 @@ export class CatDropdown {
     if (!trigger) {
       trigger = firstTabbable(this.triggerSlot);
     }
+    // if no tabbable element is still found let's attempt to search through elements with visibility:hidden styles
+    // which stencil assigns to component in prehydration state
     if (!trigger) {
       elems = this.triggerSlot?.assignedElements?.() || [];
       while (!trigger && elems.length) {
