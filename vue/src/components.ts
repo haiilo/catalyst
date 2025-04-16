@@ -204,6 +204,7 @@ export const CatDatepickerInline = /*@__PURE__*/ defineContainer<JSX.CatDatepick
 
 export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-dropdown', undefined, [
   'placement',
+  'justify',
   'noAutoClose',
   'arrowNavigation',
   'noResize',

@@ -39,6 +39,13 @@ export class CatDropdown {
   @Prop() placement: Placement = 'bottom-start';
 
   /**
+   * Make the dropdown match the width of the reference regardless of its
+   * contents. Note that this only applies to the minimum width of the
+   * dropdown. The maximum width is still limited by the viewport.
+   */
+  @Prop() justify = false;
+
+  /**
    * Do not close the dropdown on outside clicks.
    */
   @Prop() noAutoClose = false;
@@ -277,14 +284,19 @@ export class CatDropdown {
     return trigger;
   }
 
-  private update(anchorElement: ReferenceElement | undefined) {
+  private update(anchorElement: ReferenceElement | undefined, justify = this.justify) {
     if (anchorElement) {
       const resize = this.noResize
         ? []
         : [
             size({
               padding: CatDropdown.OFFSET,
-              apply({ availableWidth, availableHeight, elements }) {
+              apply({ rects, availableWidth, availableHeight, elements }) {
+                if (justify) {
+                  Object.assign(elements.floating.style, {
+                    minWidth: `${rects.reference.width}px`
+                  });
+                }
                 Object.assign(elements.floating.style, {
                   maxWidth: `${availableWidth}px`,
                   maxHeight: `${availableHeight}px`

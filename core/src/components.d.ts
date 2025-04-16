@@ -698,6 +698,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+         */
+        "justify": boolean;
+        /**
           * Do not close the dropdown on outside clicks.
          */
         "noAutoClose": boolean;
@@ -3044,6 +3048,10 @@ declare namespace LocalJSX {
           * Do not navigate focus inside the dropdown via vertical arrow keys.
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
+        /**
+          * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+         */
+        "justify"?: boolean;
         /**
           * Do not close the dropdown on outside clicks.
          */
