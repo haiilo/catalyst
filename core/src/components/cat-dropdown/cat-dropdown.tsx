@@ -40,7 +40,8 @@ export class CatDropdown {
 
   /**
    * Make the dropdown match the width of the reference regardless of its
-   * contents.
+   * contents. Note that this only applies to the minimum width of the
+   * dropdown. The maximum width is still limited by the viewport.
    */
   @Prop() justify = false;
 
