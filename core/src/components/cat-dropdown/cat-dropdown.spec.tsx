@@ -1,3 +1,5 @@
+jest.mock('../../utils/first-tabbable', () => (element: HTMLSlotElement) => element);
+
 import { newSpecPage } from '@stencil/core/testing';
 import { CatDropdown } from './cat-dropdown';
 
