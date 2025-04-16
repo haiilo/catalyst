@@ -1,5 +1,22 @@
 # Changelog
 
+## [11.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.37.0...catalyst-core-v11.0.0) (2025-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** fix existing implementation of dropdowns. breaking change in prev commit
+
+### Features
+
+* **core:** replace cleave.js with cleave-zen ([#717](https://github.com/haiilo/catalyst/issues/717)) ([04c0cf2](https://github.com/haiilo/catalyst/commit/04c0cf21f67d300b7cd50aca1eced793a64c601e))
+
+
+### Bug Fixes
+
+* **core:** fix existing implementation of dropdowns. breaking change in prev commit ([e602ea8](https://github.com/haiilo/catalyst/commit/e602ea8ef2dee79e1e992d2413f417744ada2a3f))
+* **core:** fix the dropdown hidden trigger initialization ([#568](https://github.com/haiilo/catalyst/issues/568)) ([4505b0d](https://github.com/haiilo/catalyst/commit/4505b0d674eacdea050b02ff57f705acaed22c8f))
+
 ## [10.37.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.36.1...catalyst-core-v10.37.0) (2025-04-16)
 
 

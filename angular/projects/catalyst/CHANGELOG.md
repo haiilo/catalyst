@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.37.0...catalyst-angular-v11.0.0) (2025-04-16)
+
+
+### Features
+
+* **core:** replace cleave.js with cleave-zen ([#717](https://github.com/haiilo/catalyst/issues/717)) ([04c0cf2](https://github.com/haiilo/catalyst/commit/04c0cf21f67d300b7cd50aca1eced793a64c601e))
+
 ## [10.37.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.36.1...catalyst-angular-v10.37.0) (2025-04-16)
 
 
