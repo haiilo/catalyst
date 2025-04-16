@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.37.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.36.1...catalyst-angular-v10.37.0) (2025-04-16)
+
+
+### Features
+
+* **core:** add option for dropdowns to match size of the reference element ([#721](https://github.com/haiilo/catalyst/issues/721)) ([48191cb](https://github.com/haiilo/catalyst/commit/48191cb573a15b1ba41baa8499166318cdc9c720))
+
 ## [10.36.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v10.36.0...catalyst-angular-v10.36.1) (2025-04-11)
 
 
