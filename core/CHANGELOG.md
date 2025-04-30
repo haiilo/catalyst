@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v11.0.0...catalyst-core-v11.1.0) (2025-04-30)
+
+
+### Features
+
+* **core:** add option to delay trigger initialization in cat-dropdown ([#732](https://github.com/haiilo/catalyst/issues/732)) ([8571186](https://github.com/haiilo/catalyst/commit/857118654cb4aef9106cd0fab3b5c8e55d11dd34))
+
 ## [11.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v10.37.0...catalyst-core-v11.0.0) (2025-04-16)
 
 
