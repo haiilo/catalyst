@@ -211,6 +211,7 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
   'overflow',
   'noInitialFocus',
   'noReturnFocus',
+  'delayedTriggerInit',
   'catOpen',
   'catClose'
 ]);

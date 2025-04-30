@@ -83,6 +83,12 @@ export class CatDropdown {
   @Prop() noReturnFocus = false;
 
   /**
+   * Whether the dropdown trigger should be initialized only before first opening.
+   * Can be useful when trigger is rendered dynamically.
+   */
+  @Prop() delayedTriggerInit = false;
+
+  /**
    * Emitted when the dropdown is opened.
    */
   @Event() catOpen!: EventEmitter<FocusEvent>;
@@ -94,6 +100,12 @@ export class CatDropdown {
 
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
+    if (!this.trigger && this.delayedTriggerInit) {
+      this.hasInitialFocus = this.isEventOriginFromKeyboard(event.detail);
+      this.initTrigger();
+      this.toggle();
+    }
+
     // hide dropdown on button clicks inside the dropdown content
     const path = event.composedPath();
     if (
@@ -123,6 +135,10 @@ export class CatDropdown {
    */
   @Method()
   async open(isFocusVisible?: boolean): Promise<void> {
+    if (!this.trigger && this.delayedTriggerInit) {
+      this.initTrigger();
+    }
+
     if (this.isOpen === null || this.isOpen) {
       return; // busy or open
     }
@@ -203,7 +219,9 @@ export class CatDropdown {
 
   componentDidLoad() {
     this.initAnchor();
-    this.initTrigger();
+    if (!this.delayedTriggerInit) {
+      this.initTrigger();
+    }
   }
 
   render() {
