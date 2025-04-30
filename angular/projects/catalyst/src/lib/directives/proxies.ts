@@ -574,6 +574,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
 @ProxyCmp({
   inputs: [
     'arrowNavigation',
+    'delayedTriggerInit',
     'justify',
     'noAutoClose',
     'noInitialFocus',
@@ -591,6 +592,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
     'arrowNavigation',
+    'delayedTriggerInit',
     'justify',
     'noAutoClose',
     'noInitialFocus',

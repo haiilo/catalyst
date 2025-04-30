@@ -698,6 +698,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+         */
+        "delayedTriggerInit": boolean;
+        /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */
         "justify": boolean;
@@ -3051,6 +3055,10 @@ declare namespace LocalJSX {
           * Do not navigate focus inside the dropdown via vertical arrow keys.
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
+        /**
+          * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+         */
+        "delayedTriggerInit"?: boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */
