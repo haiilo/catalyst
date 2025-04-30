@@ -219,7 +219,7 @@ export class CatDropdown {
 
   componentDidLoad() {
     this.initAnchor();
-    if(!this.delayedTriggerInit) {
+    if (!this.delayedTriggerInit) {
       this.initTrigger();
     }
   }
