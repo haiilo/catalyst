@@ -58,6 +58,13 @@ export class CatTab {
   @Prop({ reflect: true }) noActive = false;
 
   /**
+   * Specifies that the tab is always visible in adaptive mode.
+   * Only the first sticky tab will be taken into account.
+   * Sticky has advantage on activeTabAlwaysVisible if there is no space to show both.
+   */
+  @Prop({ reflect: true }) sticky = false;
+
+  /**
    * Specifies that the tab content pane contains an error. This will color
    * the tab in an error state and also switch to an error icon if an icon
    * is specified.

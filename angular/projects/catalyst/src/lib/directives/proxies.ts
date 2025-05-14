@@ -575,6 +575,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   inputs: [
     'arrowNavigation',
     'delayedTriggerInit',
+    'isOpen',
     'justify',
     'noAutoClose',
     'noInitialFocus',
@@ -593,6 +594,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   inputs: [
     'arrowNavigation',
     'delayedTriggerInit',
+    'isOpen',
     'justify',
     'noAutoClose',
     'noInitialFocus',
@@ -1147,6 +1149,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
     'label',
     'nativeAttributes',
     'noActive',
+    'sticky',
     'testId',
     'url',
     'urlTarget'
@@ -1166,6 +1169,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
     'label',
     'nativeAttributes',
     'noActive',
+    'sticky',
     'testId',
     'url',
     'urlTarget'
@@ -1192,7 +1196,7 @@ export declare interface CatTab extends Components.CatTab {
 }
 
 @ProxyCmp({
-  inputs: ['activeTab', 'tabsAlign'],
+  inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign'],
   methods: ['setActive', 'setActiveIndex']
 })
 @Component({
@@ -1200,7 +1204,7 @@ export declare interface CatTab extends Components.CatTab {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['activeTab', 'tabsAlign']
+  inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign']
 })
 export class CatTabs {
   protected el: HTMLElement;
