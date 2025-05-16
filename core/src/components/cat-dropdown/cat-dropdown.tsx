@@ -26,7 +26,7 @@ export class CatDropdown {
   private anchor?: Element;
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
-  private isOpen: boolean | null = false;
+  private _isOpen: boolean | null = false;
   /**
    * Tracking the origin of opening the dropdown and specify if initial focus should be set.
    * Currently we set it only when the origin is keyboard.
@@ -78,6 +78,14 @@ export class CatDropdown {
   @Prop() noInitialFocus = false;
 
   /**
+   * Whether the dropdown is open.
+   * @readonly
+   */
+  @Prop() get isOpen(): boolean {
+    return this._isOpen ?? false;
+  }
+
+  /**
    * Trigger element will not receive focus when dropdown is closed.
    */
   @Prop() noReturnFocus = false;
@@ -126,7 +134,7 @@ export class CatDropdown {
    */
   @Method()
   async toggle(): Promise<void> {
-    this.isOpen ? this.close() : this.open();
+    this._isOpen ? this.close() : this.open();
   }
 
   /**
@@ -143,12 +151,12 @@ export class CatDropdown {
       return; // busy or open
     }
 
-    this.isOpen = null;
+    this._isOpen = null;
     this.content.style.display = 'block';
     this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
     // give CSS transition time to apply
     setTimeout(() => {
-      this.isOpen = true;
+      this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
       this.trap = this.trap
@@ -200,16 +208,16 @@ export class CatDropdown {
    */
   @Method()
   async close(): Promise<void> {
-    if (!this.isOpen) {
+    if (!this._isOpen) {
       return; // busy or closed
     }
 
-    this.isOpen = null;
+    this._isOpen = null;
     this.trap?.deactivate();
     this.content.classList.remove('show');
     // give CSS transition time to apply
     setTimeout(() => {
-      this.isOpen = false;
+      this._isOpen = false;
       this.content.classList.remove('show');
       this.content.style.display = '';
       this.trigger?.setAttribute('aria-expanded', 'false');

@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 
 /**
  * Tabs are used to display multiple panels to be contained within a single
@@ -16,10 +17,14 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 })
 export class CatTabs {
   private mutationObserver?: MutationObserver;
+  private moreDropdown?: HTMLCatDropdownElement;
+  private moreButton?: HTMLCatButtonElement;
+  private readonly resizedObserver = new ResizeObserver(() => this.adjustAdaptiveTabs());
 
   @Element() hostElement!: HTMLElement;
 
   @State() tabs: HTMLCatTabElement[] = [];
+  @State() hiddenTabs: HTMLCatTabElement[] = [];
 
   /**
    * The ID of the active tab.
@@ -30,6 +35,17 @@ export class CatTabs {
    * The alignment of the tabs.
    */
   @Prop() tabsAlign: 'left' | 'center' | 'right' | 'justify' = 'left';
+
+  /**
+   * Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.
+   */
+  @Prop() adaptive = false;
+
+  /**
+   * Whether the active tab should always be visible. Applied when adaptive is enabled.
+   * Has less priority than sticky if there is no space to show both.
+   */
+  @Prop() activeTabAlwaysVisible = false;
 
   componentWillLoad(): void {
     this.syncTabs();
@@ -44,6 +60,13 @@ export class CatTabs {
       attributes: true,
       subtree: true
     });
+
+    if (this.adaptive) {
+      this.resizedObserver.observe(this.hostElement);
+      requestAnimationFrame(() => {
+        this.adjustAdaptiveTabs();
+      });
+    }
   }
 
   disconnectedCallback() {
@@ -91,6 +114,16 @@ export class CatTabs {
   }
 
   /**
+   * Recalculates visible and hidden adaptive tabs.
+   */
+  @Method()
+  async updateAdaptiveTabs(): Promise<void> {
+    if (this.adaptive) {
+      this.adjustAdaptiveTabs();
+    }
+  }
+
+  /**
    * Emitted when active tab is changed.
    */
   @Event() catChange!: EventEmitter<{ id: string; index: number }>;
@@ -99,44 +132,174 @@ export class CatTabs {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
-        {this.tabs.map((tab: HTMLCatTabElement) => {
-          return (
-            <cat-button
-              buttonId={tab.id}
-              role="tab"
-              part="tab"
-              class={{
-                'cat-tab': true,
-                'cat-tab-active': tab.id === this.activeTab,
-                'cat-tab-error': tab.error
-              }}
-              active={tab.id === this.activeTab}
-              color={tab.error ? 'danger' : tab.id === this.activeTab ? 'primary' : 'secondary'}
-              variant="text"
-              icon={tab.icon ? (tab.error ? '$cat:input-error' : tab.icon) : undefined}
-              iconOnly={tab.iconOnly}
-              iconRight={tab.iconRight}
-              url={tab.url}
-              disabled={tab.deactivated}
-              urlTarget={tab.urlTarget}
-              onCatClick={() => this.click(tab)}
-              testId={tab.testId}
-              nativeAttributes={{ ...tab.nativeAttributes }}
-              nativeContentAttributes={{ 'data-text': tab.label }}
-              data-dropdown-no-close
-            >
-              {tab.label}
-            </cat-button>
-          );
-        })}
-        <slot name="more"></slot>
+        <div role="tablist" class="cat-tab-list">
+          {this.tabs.map((tab: HTMLCatTabElement, index: number) => {
+            return (
+              <cat-button
+                buttonId={tab.id}
+                part="tab"
+                class={{
+                  'cat-tab': true,
+                  'cat-tab-active': tab.id === this.activeTab,
+                  'cat-tab-error': tab.error,
+                  'cat-tab-sticky': tab.sticky
+                }}
+                active={tab.id === this.activeTab}
+                color={tab.error ? 'danger' : tab.id === this.activeTab ? 'primary' : 'secondary'}
+                variant="text"
+                icon={tab.icon ? (tab.error ? '$cat:input-error' : tab.icon) : undefined}
+                iconOnly={tab.iconOnly}
+                iconRight={tab.iconRight}
+                url={tab.url}
+                disabled={tab.deactivated}
+                urlTarget={tab.urlTarget}
+                onCatClick={() => this.click(tab)}
+                testId={tab.testId}
+                nativeAttributes={{
+                  ...tab.nativeAttributes,
+                  role: 'tab',
+                  'aria-selected': String(tab.id === this.activeTab),
+                  'aria-setsize': String(this.tabs.length),
+                  'aria-posinset': String(index + 1)
+                }}
+                nativeContentAttributes={{ 'data-text': tab.label }}
+                data-dropdown-no-close
+              >
+                {tab.label}
+              </cat-button>
+            );
+          })}
+          {this.adaptive ? (
+            <cat-dropdown ref={el => (this.moreDropdown = el as HTMLCatDropdownElement)}>
+              <cat-button
+                ref={el => (this.moreButton = el as HTMLCatButtonElement)}
+                class={{
+                  'cat-tab-more-button': true,
+                  'cat-tab-active': !!this.hiddenTabs.find(tab => tab.id === this.activeTab)
+                }}
+                iconRight
+                icon={this.moreDropdown?.isOpen ? 'chevron-up-outlined' : 'chevron-down-outlined'}
+                slot="trigger"
+                part="more"
+                variant="text"
+                color={this.hiddenTabs.find(tab => tab.id === this.activeTab) ? 'primary' : 'secondary'}
+              >
+                {i18n.t('tabs.more')}
+              </cat-button>
+              <nav slot="content">
+                <ul>
+                  {this.hiddenTabs.map((tab: HTMLCatTabElement, index: number) => {
+                    return (
+                      <li>
+                        <cat-button
+                          class="cat-nav-item"
+                          active={tab.id === this.activeTab}
+                          urlTarget={tab.urlTarget}
+                          onCatClick={() => this.click(tab)}
+                          testId={tab.testId}
+                          nativeAttributes={{
+                            ...tab.nativeAttributes,
+                            role: 'tab',
+                            'aria-selected': String(tab.id === this.activeTab),
+                            'aria-setsize': String(this.tabs.length),
+                            'aria-posinset': String(index + 1)
+                          }}
+                          nativeContentAttributes={{ 'data-text': tab.label }}
+                        >
+                          {tab.label}
+                        </cat-button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            </cat-dropdown>
+          ) : null}
+        </div>
       </Host>
     );
+  }
+
+  private adjustAdaptiveTabs() {
+    const tabs = this.hostElement.shadowRoot?.querySelectorAll('.cat-tab') as NodeListOf<HTMLCatButtonElement>;
+    if (!tabs?.length) {
+      return;
+    }
+
+    // show all hidden tabs for correct calculation
+    for (const tab of tabs) {
+      tab.style.display = 'inline-flex';
+    }
+    // show hidden "more" button for correct calculation
+    if (this.moreButton) {
+      this.moreButton.style.display = 'inline-flex';
+    }
+
+    const MORE_WIDTH = this.moreButton?.offsetWidth || 0;
+    const visibleTabsIndexes: string[] = [];
+    let fittingWidth = 0;
+
+    const stickyTabIndex = this.tabs.findIndex(tab => tab.sticky);
+    const stickyTabWidth = tabs.item(stickyTabIndex)?.scrollWidth || 0;
+    const stickyTabIsVisible = stickyTabIndex > -1 && stickyTabWidth <= this.hostElement.offsetWidth;
+
+    const activeTabIndex = this.tabs.findIndex(tab => tab.id === this.activeTab);
+    const activeTabWidth = tabs.item(activeTabIndex)?.scrollWidth || 0;
+    const activeTabIsVisible =
+      this.activeTabAlwaysVisible &&
+      activeTabIndex > -1 &&
+      activeTabWidth + stickyTabWidth <= this.hostElement.offsetWidth;
+
+    if (stickyTabIsVisible) {
+      fittingWidth += stickyTabWidth;
+      visibleTabsIndexes.push(stickyTabIndex.toString());
+    }
+
+    if (activeTabIsVisible && stickyTabIndex !== activeTabIndex) {
+      fittingWidth += activeTabWidth;
+      visibleTabsIndexes.push(activeTabIndex.toString());
+    }
+
+    for (const [index, tab] of tabs.entries()) {
+      if ((activeTabIsVisible && index === activeTabIndex) || (stickyTabIsVisible && index === stickyTabIndex)) {
+        continue;
+      }
+
+      if (fittingWidth + tab.scrollWidth <= this.hostElement.offsetWidth) {
+        // tab fits within tabs parent
+        fittingWidth += tab.scrollWidth;
+        visibleTabsIndexes.push(index.toString());
+      } else if (fittingWidth + MORE_WIDTH <= this.hostElement.offsetWidth) {
+        // tab doesn't fit, but more button does
+        break;
+      } else {
+        // tab doesn't fit and more button doesn't fit either
+        // remove last fitting tab so that more button fits
+        visibleTabsIndexes.pop();
+        break;
+      }
+    }
+
+    this.hiddenTabs = this.tabs.filter((_, index) => !visibleTabsIndexes.includes(index.toString()));
+
+    if (this.moreButton) {
+      if (this.tabs.length > visibleTabsIndexes.length) {
+        this.moreButton.style.display = 'inline-flex';
+      } else {
+        this.moreButton.style.display = 'none';
+      }
+    }
+    for (const [index, tab] of tabs.entries()) {
+      if (!visibleTabsIndexes.includes(index.toString())) {
+        tab.style.display = 'none';
+      }
+    }
   }
 
   private syncTabs() {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
     this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
+    this.adjustAdaptiveTabs();
   }
 
   private click(tab: HTMLCatTabElement) {
@@ -154,6 +317,7 @@ export class CatTabs {
     } else if (this.canActivate(tab)) {
       this.activeTab = tab.id;
     }
+    this.adjustAdaptiveTabs();
   }
 
   private canActivate(tab: HTMLCatTabElement) {

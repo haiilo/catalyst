@@ -326,7 +326,8 @@ $button-sizes: (
 
 // ----- tabs
 
-:host(.cat-tab) {
+:host(.cat-tab),
+:host(.cat-tab-more-button) {
   &::part(button) {
     padding: 1.125rem 0.75rem;
     --cat-secondary-bg: transparent;

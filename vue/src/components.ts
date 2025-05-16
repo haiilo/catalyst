@@ -210,6 +210,7 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
   'noResize',
   'overflow',
   'noInitialFocus',
+  'isOpen',
   'noReturnFocus',
   'delayedTriggerInit',
   'catOpen',
@@ -390,6 +391,7 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
   'urlTarget',
   'deactivated',
   'noActive',
+  'sticky',
   'error',
   'nativeAttributes',
   'testId',
@@ -400,6 +402,8 @@ export const CatTab = /*@__PURE__*/ defineContainer<JSX.CatTab>('cat-tab', undef
 export const CatTabs = /*@__PURE__*/ defineContainer<JSX.CatTabs>('cat-tabs', undefined, [
   'activeTab',
   'tabsAlign',
+  'adaptive',
+  'activeTabAlwaysVisible',
   'catChange'
 ]);
 
