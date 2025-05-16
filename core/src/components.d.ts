@@ -705,7 +705,7 @@ export namespace Components {
           * Whether the dropdown is open.
           * @readonly
          */
-        "isOpen": boolean | null;
+        "isOpen": boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */
@@ -1343,6 +1343,10 @@ export namespace Components {
           * The alignment of the tabs.
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
+        /**
+          * Recalculates visible and hidden adaptive tabs.
+         */
+        "updateAdaptiveTabs": () => Promise<void>;
     }
     /**
      * An input that allows multiple values to be entered as tags.
@@ -3080,7 +3084,7 @@ declare namespace LocalJSX {
           * Whether the dropdown is open.
           * @readonly
          */
-        "isOpen"?: boolean | null;
+        "isOpen"?: boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */

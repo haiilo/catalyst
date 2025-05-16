@@ -81,8 +81,8 @@ export class CatDropdown {
    * Whether the dropdown is open.
    * @readonly
    */
-  @Prop() get isOpen() {
-    return this._isOpen;
+  @Prop() get isOpen(): boolean {
+    return this._isOpen ?? false;
   }
 
   /**

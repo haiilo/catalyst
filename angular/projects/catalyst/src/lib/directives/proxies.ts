@@ -1197,7 +1197,7 @@ export declare interface CatTab extends Components.CatTab {
 
 @ProxyCmp({
   inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign'],
-  methods: ['setActive', 'setActiveIndex']
+  methods: ['setActive', 'setActiveIndex', 'updateAdaptiveTabs']
 })
 @Component({
   selector: 'cat-tabs',

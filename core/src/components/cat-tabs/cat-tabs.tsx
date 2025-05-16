@@ -114,6 +114,16 @@ export class CatTabs {
   }
 
   /**
+   * Recalculates visible and hidden adaptive tabs.
+   */
+  @Method()
+  async updateAdaptiveTabs(): Promise<void> {
+    if (this.adaptive) {
+      this.adjustAdaptiveTabs();
+    }
+  }
+
+  /**
    * Emitted when active tab is changed.
    */
   @Event() catChange!: EventEmitter<{ id: string; index: number }>;
@@ -122,7 +132,7 @@ export class CatTabs {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
-        <div role="tablist">
+        <div role="tablist" class="cat-tab-list">
           {this.tabs.map((tab: HTMLCatTabElement, index: number) => {
             return (
               <cat-button
