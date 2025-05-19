@@ -1223,7 +1223,7 @@ export declare interface CatTabs extends Components.CatTabs {
   /**
    * Emitted when active tab is changed.
    */
-  catChange: EventEmitter<CustomEvent<{ id: string; index: number }>>;
+  catChange: EventEmitter<CustomEvent<{ id: string; index: number; fromDropdown: boolean }>>;
 }
 
 @ProxyCmp({
