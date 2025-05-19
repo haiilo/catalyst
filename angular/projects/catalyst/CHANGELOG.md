@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v11.1.0...catalyst-angular-v12.0.0) (2025-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737))
+
+### Features
+
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737)) ([f8c14ae](https://github.com/haiilo/catalyst/commit/f8c14ae7c6646e82b3f620518de89c6e591e9a3c))
+
 ## [11.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v11.0.0...catalyst-angular-v11.1.0) (2025-04-30)
 
 
