@@ -299,7 +299,9 @@ export class CatTabs {
   private syncTabs() {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
     this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
-    this.adjustAdaptiveTabs();
+    if (this.adaptive) {
+      this.adjustAdaptiveTabs();
+    }
   }
 
   private click(tab: HTMLCatTabElement) {
@@ -317,7 +319,9 @@ export class CatTabs {
     } else if (this.canActivate(tab)) {
       this.activeTab = tab.id;
     }
-    this.adjustAdaptiveTabs();
+    if (this.adaptive) {
+      this.adjustAdaptiveTabs();
+    }
   }
 
   private canActivate(tab: HTMLCatTabElement) {
