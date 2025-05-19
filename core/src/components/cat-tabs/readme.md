@@ -12,10 +12,12 @@ window, using tabs as a navigational element.
 
 ## Properties
 
-| Property    | Attribute    | Description                | Type                                         | Default  |
-| ----------- | ------------ | -------------------------- | -------------------------------------------- | -------- |
-| `activeTab` | `active-tab` | The ID of the active tab.  | `string`                                     | `''`     |
-| `tabsAlign` | `tabs-align` | The alignment of the tabs. | `"center" \| "justify" \| "left" \| "right"` | `'left'` |
+| Property                 | Attribute                   | Description                                                                                                                                         | Type                                         | Default  |
+| ------------------------ | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | -------- |
+| `activeTab`              | `active-tab`                | The ID of the active tab.                                                                                                                           | `string`                                     | `''`     |
+| `activeTabAlwaysVisible` | `active-tab-always-visible` | Whether the active tab should always be visible. Applied when adaptive is enabled. Has less priority than sticky if there is no space to show both. | `boolean`                                    | `false`  |
+| `adaptive`               | `adaptive`                  | Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.                                  | `boolean`                                    | `false`  |
+| `tabsAlign`              | `tabs-align`                | The alignment of the tabs.                                                                                                                          | `"center" \| "justify" \| "left" \| "right"` | `'left'` |
 
 
 ## Events
@@ -73,11 +75,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [cat-button](../cat-button)
+- [cat-dropdown](../cat-dropdown)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-tabs --> cat-button
+  cat-tabs --> cat-dropdown
   cat-button --> cat-icon
   cat-button --> cat-spinner
   style cat-tabs fill:#f9f,stroke:#333,stroke-width:4px

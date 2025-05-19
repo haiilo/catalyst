@@ -702,6 +702,11 @@ export namespace Components {
          */
         "delayedTriggerInit": boolean;
         /**
+          * Whether the dropdown is open.
+          * @readonly
+         */
+        "isOpen": boolean;
+        /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */
         "justify": boolean;
@@ -1291,6 +1296,10 @@ export namespace Components {
          */
         "noActive": boolean;
         /**
+          * Specifies that the tab is always visible in adaptive mode. Only the first sticky tab will be taken into account. Sticky has advantage on activeTabAlwaysVisible if there is no space to show both.
+         */
+        "sticky": boolean;
+        /**
           * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
@@ -1313,6 +1322,14 @@ export namespace Components {
          */
         "activeTab": string;
         /**
+          * Whether the active tab should always be visible. Applied when adaptive is enabled. Has less priority than sticky if there is no space to show both.
+         */
+        "activeTabAlwaysVisible": boolean;
+        /**
+          * Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.
+         */
+        "adaptive": boolean;
+        /**
           * Activates the tab with the given id.
           * @param id The tab id.
          */
@@ -1326,6 +1343,10 @@ export namespace Components {
           * The alignment of the tabs.
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
+        /**
+          * Recalculates visible and hidden adaptive tabs.
+         */
+        "updateAdaptiveTabs": () => Promise<void>;
     }
     /**
      * An input that allows multiple values to be entered as tags.
@@ -3060,6 +3081,11 @@ declare namespace LocalJSX {
          */
         "delayedTriggerInit"?: boolean;
         /**
+          * Whether the dropdown is open.
+          * @readonly
+         */
+        "isOpen"?: boolean;
+        /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
          */
         "justify"?: boolean;
@@ -3684,6 +3710,10 @@ declare namespace LocalJSX {
          */
         "onCatClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
+          * Specifies that the tab is always visible in adaptive mode. Only the first sticky tab will be taken into account. Sticky has advantage on activeTabAlwaysVisible if there is no space to show both.
+         */
+        "sticky"?: boolean;
+        /**
           * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
@@ -3705,6 +3735,14 @@ declare namespace LocalJSX {
           * The ID of the active tab.
          */
         "activeTab"?: string;
+        /**
+          * Whether the active tab should always be visible. Applied when adaptive is enabled. Has less priority than sticky if there is no space to show both.
+         */
+        "activeTabAlwaysVisible"?: boolean;
+        /**
+          * Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.
+         */
+        "adaptive"?: boolean;
         /**
           * Emitted when active tab is changed.
          */
