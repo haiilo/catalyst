@@ -1,5 +1,16 @@
 # Changelog
 
+## [12.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v11.1.0...catalyst-core-v12.0.0) (2025-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737))
+
+### Features
+
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737)) ([f8c14ae](https://github.com/haiilo/catalyst/commit/f8c14ae7c6646e82b3f620518de89c6e591e9a3c))
+
 ## [11.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v11.0.0...catalyst-core-v11.1.0) (2025-04-30)
 
 
