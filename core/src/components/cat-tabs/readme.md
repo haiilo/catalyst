@@ -22,9 +22,9 @@ window, using tabs as a navigational element.
 
 ## Events
 
-| Event       | Description                         | Type                                          |
-| ----------- | ----------------------------------- | --------------------------------------------- |
-| `catChange` | Emitted when active tab is changed. | `CustomEvent<{ id: string; index: number; }>` |
+| Event       | Description                         | Type                                                                 |
+| ----------- | ----------------------------------- | -------------------------------------------------------------------- |
+| `catChange` | Emitted when active tab is changed. | `CustomEvent<{ id: string; index: number; fromDropdown: boolean; }>` |
 
 
 ## Methods
@@ -54,6 +54,16 @@ Activates the tab with the given index.
 | Name    | Type     | Description    |
 | ------- | -------- | -------------- |
 | `index` | `number` | The tab index. |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `updateAdaptiveTabs() => Promise<void>`
+
+Recalculates visible and hidden adaptive tabs.
 
 #### Returns
 

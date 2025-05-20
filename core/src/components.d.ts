@@ -2255,7 +2255,7 @@ declare global {
         new (): HTMLCatTabElement;
     };
     interface HTMLCatTabsElementEventMap {
-        "catChange": { id: string; index: number };
+        "catChange": { id: string; index: number, fromDropdown: boolean };
     }
     /**
      * Tabs are used to display multiple panels to be contained within a single
@@ -3746,7 +3746,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onCatChange"?: (event: CatTabsCustomEvent<{ id: string; index: number }>) => void;
+        "onCatChange"?: (event: CatTabsCustomEvent<{ id: string; index: number, fromDropdown: boolean }>) => void;
         /**
           * The alignment of the tabs.
          */

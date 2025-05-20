@@ -76,7 +76,7 @@ export class CatTabs {
   @Watch('activeTab')
   onActiveTabChange(id: string) {
     const index = this.tabs.findIndex(tab => tab.id === id);
-    this.catChange.emit({ id, index });
+    this.catChange.emit({ id, index, fromDropdown: !!this.hiddenTabs.find(tab => tab.id === id) });
   }
 
   @Listen('keydown')
@@ -126,7 +126,7 @@ export class CatTabs {
   /**
    * Emitted when active tab is changed.
    */
-  @Event() catChange!: EventEmitter<{ id: string; index: number }>;
+  @Event() catChange!: EventEmitter<{ id: string; index: number; fromDropdown: boolean }>;
 
   render() {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
