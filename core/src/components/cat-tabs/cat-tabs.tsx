@@ -235,20 +235,21 @@ export class CatTabs {
       this.moreButton.style.display = 'inline-flex';
     }
 
-    const MORE_WIDTH = this.moreButton?.offsetWidth || 0;
+    const MORE_WIDTH = this.moreButton?.getBoundingClientRect().width || 0;
     const visibleTabsIndexes: string[] = [];
+    const containerWidth = this.hostElement.clientWidth;
     let fittingWidth = 0;
 
     const stickyTabIndex = this.tabs.findIndex(tab => tab.sticky);
-    const stickyTabWidth = tabs.item(stickyTabIndex)?.scrollWidth || 0;
-    const stickyTabIsVisible = stickyTabIndex > -1 && stickyTabWidth <= this.hostElement.offsetWidth;
+    const stickyTabWidth = tabs.item(stickyTabIndex)?.getBoundingClientRect().width || 0;
+    const stickyTabIsVisible = stickyTabIndex > -1 && stickyTabWidth + MORE_WIDTH <= containerWidth;
 
     const activeTabIndex = this.tabs.findIndex(tab => tab.id === this.activeTab);
-    const activeTabWidth = tabs.item(activeTabIndex)?.scrollWidth || 0;
+    const activeTabWidth = tabs.item(activeTabIndex)?.getBoundingClientRect().width || 0;
     const activeTabIsVisible =
       this.activeTabAlwaysVisible &&
       activeTabIndex > -1 &&
-      activeTabWidth + stickyTabWidth <= this.hostElement.offsetWidth;
+      activeTabWidth + stickyTabWidth + MORE_WIDTH <= containerWidth;
 
     if (stickyTabIsVisible) {
       fittingWidth += stickyTabWidth;
@@ -265,11 +266,13 @@ export class CatTabs {
         continue;
       }
 
-      if (fittingWidth + tab.scrollWidth <= this.hostElement.offsetWidth) {
+      const tabWidth = tab.getBoundingClientRect().width;
+
+      if (fittingWidth + tabWidth <= containerWidth) {
         // tab fits within tabs parent
-        fittingWidth += tab.scrollWidth;
+        fittingWidth += tabWidth;
         visibleTabsIndexes.push(index.toString());
-      } else if (fittingWidth + MORE_WIDTH <= this.hostElement.offsetWidth) {
+      } else if (fittingWidth + MORE_WIDTH <= containerWidth) {
         // tab doesn't fit, but more button does
         break;
       } else {
