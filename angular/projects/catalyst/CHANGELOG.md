@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.0.0...catalyst-angular-v12.1.0) (2025-05-20)
+
+
+### Features
+
+* **core:** add fromDropdown data in catChange even in cat-tabs ([#740](https://github.com/haiilo/catalyst/issues/740)) ([38e1cb3](https://github.com/haiilo/catalyst/commit/38e1cb35dc1732769369b8f671e8bd6c5e14c138))
+
 ## [12.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v11.1.0...catalyst-angular-v12.0.0) (2025-05-19)
 
 
