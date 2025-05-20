@@ -1,5 +1,14 @@
 # Changelog
 
+## [12.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.0.0...catalyst-core-v12.1.0) (2025-05-20)
+
+
+### Features
+
+* **core:** add fromDropdown data in catChange even in cat-tabs ([#740](https://github.com/haiilo/catalyst/issues/740)) ([38e1cb3](https://github.com/haiilo/catalyst/commit/38e1cb35dc1732769369b8f671e8bd6c5e14c138))
+* **core:** fix non-adaptive tabs ([#741](https://github.com/haiilo/catalyst/issues/741)) ([86337dd](https://github.com/haiilo/catalyst/commit/86337ddc215dbfbe68ffb472c60138a1a9669bd3))
+* **core:** more precise calculation of adaptive cat-tabs ([#742](https://github.com/haiilo/catalyst/issues/742)) ([ee1c49c](https://github.com/haiilo/catalyst/commit/ee1c49caac119b781171219371f9cb99f0e73340))
+
 ## [12.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v11.1.0...catalyst-core-v12.0.0) (2025-05-19)
 
 
