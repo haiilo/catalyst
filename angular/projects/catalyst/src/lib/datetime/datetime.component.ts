@@ -63,7 +63,14 @@ export class DatetimeComponent implements AfterContentInit, ControlValueAccessor
     this.lastValue = this.lastDateValue = this.lastTimeValue = value;
     setTimeout(() => {
       this.dateInput?.writeValue(value);
+      const timeAfterChangeDate = this.value?.getTime();
+      this.limitTime('min');
+      this.limitTime('max');
+      const isTimeChangedAfterLimit = this.value?.getTime() !== timeAfterChangeDate;
       this.timeInput?.writeValue(value);
+      if (isTimeChangedAfterLimit) {
+        this.timeInput?.handleChangeEvent(this.timeInput?.nativeElement.value);
+      }
     });
   }
 
