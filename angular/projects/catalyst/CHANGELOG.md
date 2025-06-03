@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.1.0...catalyst-angular-v12.2.0) (2025-06-03)
+
+
+### Features
+
+* **angular:** fix time value update in datetime component ([#744](https://github.com/haiilo/catalyst/issues/744)) ([92f219e](https://github.com/haiilo/catalyst/commit/92f219ebce1a4885e4e86369bcf888b0ae49235a))
+
 ## [12.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.0.0...catalyst-angular-v12.1.0) (2025-05-20)
 
 

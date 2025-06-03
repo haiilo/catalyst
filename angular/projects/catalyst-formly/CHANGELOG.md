@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.1.0...catalyst-angular-formly-v12.2.0) (2025-06-03)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
 ## [12.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.0.0...catalyst-angular-formly-v12.1.0) (2025-05-20)
 
 
