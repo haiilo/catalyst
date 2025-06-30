@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.2.0...catalyst-core-v12.3.0) (2025-06-30)
+
+
+### Features
+
+* **core:** allow typing decimal numbers in input type number ([#747](https://github.com/haiilo/catalyst/issues/747)) ([c2db7e8](https://github.com/haiilo/catalyst/commit/c2db7e85b57297cfcf155ad80dd0e0442ed55fda))
+
 ## [12.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.1.0...catalyst-core-v12.2.0) (2025-06-03)
 
 
