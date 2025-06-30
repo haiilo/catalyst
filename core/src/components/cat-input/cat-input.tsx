@@ -462,12 +462,13 @@ export class CatInput {
     let formattedValue = this.input.value;
     if (this.timeMaskOptions) {
       formattedValue = formatTime(this.input.value, this.timeMaskOptions);
+      this.input.value = formattedValue;
     }
     if (this.dateMaskOptions) {
       formattedValue = formatDate(this.input.value, this.dateMaskOptions);
+      this.input.value = formattedValue;
     }
     this.value = formattedValue;
-    this.input.value = formattedValue;
     this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
     this.showErrorsIfTimeout();
