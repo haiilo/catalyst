@@ -11,7 +11,7 @@ describe('cat-input', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  fit('should input type="number" allow typing numeric characters', async () => {
+  it('should input type="number" allow typing numeric characters', async () => {
     const page = await newE2EPage();
     await page.setContent('<cat-input type="number"></cat-input>');
     const input = await page.find('cat-input >>> input');
