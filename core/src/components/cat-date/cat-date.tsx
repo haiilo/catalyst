@@ -200,7 +200,7 @@ export class CatDate {
     return '';
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     const format = this.locale.formatStr.replace('YYYY', 'Y').replace('YY', 'y').replace('MM', 'm').replace('DD', 'd');
     const [, p1, d1, p2, p3] = /(\w+)([^\w]+)(\w+)[^\w]+(\w+)/.exec(format) || [];
     this.dateMaskOptions = {
