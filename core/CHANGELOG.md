@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.0...catalyst-core-v12.3.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* **core:** remove spacing from box-placeholder width ([#749](https://github.com/haiilo/catalyst/issues/749)) ([c15d3de](https://github.com/haiilo/catalyst/commit/c15d3defc2b3606d95637ce4042a106487985ff2))
+
 ## [12.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.2.0...catalyst-core-v12.3.0) (2025-06-30)
 
 
