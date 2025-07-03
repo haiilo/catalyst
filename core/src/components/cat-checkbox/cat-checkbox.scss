@@ -47,7 +47,7 @@ input {
 }
 
 .box-placeholder {
-  width: calc($checkbox-width);
+  width: $checkbox-width;
   flex-shrink: 0;
 }
 
