@@ -831,7 +831,7 @@
       },
       "linkButtonHover": {
         "$type": "fontDecoration",
-        "$value": "none"
+        "$value": "underline"
       }
     }
   },
