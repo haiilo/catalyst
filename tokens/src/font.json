@@ -52,7 +52,7 @@
       },
       "linkButtonHover": {
         "$type": "fontDecoration",
-        "$value": "none",
+        "$value": "underline",
         "cssProp": "link-button-decoration-hover"
       }
     }

@@ -301,7 +301,7 @@
   },
   "link-button-decoration-hover": {
     "$type": "fontDecoration",
-    "$value": "none"
+    "$value": "underline"
   },
   "opacity-disabled": {
     "$type": "opacity",
