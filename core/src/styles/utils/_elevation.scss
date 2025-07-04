@@ -5,6 +5,10 @@
   @include cat-elevation-transition;
 }
 
+.cat-elevation-none {
+  box-shadow: none !important;
+}
+
 @each $level, $_def in $cat-elevation {
   .cat-elevation-#{$level} {
     @include cat-elevation($level);
