@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.2...catalyst-core-v12.3.3) (2025-07-04)
+
+
+### Bug Fixes
+
+* **core:** fix display bug in link buttons that prevent showing underline decorations ([9e602ae](https://github.com/haiilo/catalyst/commit/9e602ae11b99fea9ec493974eeffcbf81dc71c5b))
+
 ## [12.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.1...catalyst-core-v12.3.2) (2025-07-04)
 
 
