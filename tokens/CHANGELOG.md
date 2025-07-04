@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v12.3.1...catalyst-tokens-v12.3.2) (2025-07-04)
+
+
+### Bug Fixes
+
+* **core:** link buttons should react to correct CSS variable ([#759](https://github.com/haiilo/catalyst/issues/759)) ([0682233](https://github.com/haiilo/catalyst/commit/0682233f8c7d3c6c6dc7039de43131c6e1e0a6bc))
+
 ## [12.3.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v12.3.0...catalyst-tokens-v12.3.1) (2025-07-03)
 
 
