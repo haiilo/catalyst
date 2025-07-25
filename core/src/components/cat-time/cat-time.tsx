@@ -21,6 +21,7 @@ export class CatTime {
   private readonly locale = getLocale(this.language);
   private readonly timeMaskOptions: FormatTimeOptions = { timeFormat: this.locale.timeFormat, timePattern: ['h', 'm'] };
   private input?: HTMLCatInputElement;
+  private localizedDayPeriods = this.getLocalizedDayPeriods(this.language);
 
   @Element() hostElement!: HTMLElement;
 
@@ -243,13 +244,13 @@ export class CatTime {
   @Method()
   async select(date: Date | null): Promise<void> {
     const oldValue = this.value;
-    let newValue = this.value;
+    let newValue: string | undefined;
     if (!date) {
       this.selectionTime = null;
       newValue = undefined;
     } else {
       const time = clampTime(this.min ?? null, date, this.max ?? null);
-      this.isAm = this.format(time).toLowerCase().includes('am');
+      this.isAm = this.format(time).toLowerCase().includes(this.localizedDayPeriods.am.toLowerCase());
       this.selectionTime = time;
       newValue = formatIso(time);
     }
@@ -341,7 +342,7 @@ export class CatTime {
                 disabled={this.disabled || this.readonly}
                 onCatClick={() => this.toggleAm()}
               >
-                {this.isAm ? 'AM' : 'PM'}
+                {this.isAm ? this.localizedDayPeriods.am : this.localizedDayPeriods.pm}
               </cat-button>
             )}
             <cat-dropdown slot="addon" placement={this.placement}>
@@ -445,7 +446,11 @@ export class CatTime {
           minute: '2-digit'
         }).format(date)
       : '';
-    return includeAmPm ? str : str.replace(/\s?(am|pm)/i, '');
+    const reg = new RegExp(
+      `\\s?(${this.localizedDayPeriods.am.toLowerCase()}|${this.localizedDayPeriods.pm.toLowerCase()})`,
+      'i'
+    );
+    return includeAmPm ? str : str.replace(reg, '');
   }
 
   private reclamp(mode: 'min' | 'max', limit: string | undefined) {
@@ -458,5 +463,23 @@ export class CatTime {
       this.syncValue(newValue ?? '');
       this.catChange.emit(newValue);
     }
+  }
+
+  private getLocalizedDayPeriods(language: string): { am: string; pm: string } {
+    const format = new Intl.DateTimeFormat(language, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+
+    const extractDayPeriod = (hour: number): string => {
+      const parts = format.formatToParts(new Date(2025, 0, 1, hour));
+      return parts.find(p => p.type === 'dayPeriod')?.value ?? '';
+    };
+
+    return {
+      am: extractDayPeriod(9), // Morning
+      pm: extractDayPeriod(15) // Afternoon
+    };
   }
 }
