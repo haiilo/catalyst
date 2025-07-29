@@ -2,10 +2,7 @@ import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { TimeFormatType } from 'cleave-zen/dist/time/types';
 
 export function getHour12(language: string): boolean {
-  const dateStr = new Intl.DateTimeFormat(language, { hour: '2-digit', minute: '2-digit' })
-    .format(new Date())
-    .toLowerCase();
-  return dateStr.includes('am') || dateStr.includes('pm');
+  return new Intl.DateTimeFormat(language, { hour: '2-digit', minute: '2-digit' }).resolvedOptions().hour12 ?? false;
 }
 
 export function getLocale(language: string): { [key: string]: string } & { timeFormat: TimeFormatType } {
