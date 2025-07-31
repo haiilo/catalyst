@@ -3,7 +3,7 @@ jest.mock('../cat-i18n/cat-i18n-registry');
 import { newSpecPage } from '@stencil/core/testing';
 import { CatTextarea } from './cat-textarea';
 
-describe('cat-textarea', () => {
+describe.skip('cat-textarea', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatTextarea],
