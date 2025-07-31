@@ -13,7 +13,7 @@ describe('cat-tooltip', () => {
     });
     expect(page.root).toEqualLightHtml(`
       <cat-tooltip content="This is a tooltip">
-        <p>Hover me</p>
+        <p aria-describedby="cat-tooltip-0">Hover me</p>
       </cat-tooltip>
     `);
   });
