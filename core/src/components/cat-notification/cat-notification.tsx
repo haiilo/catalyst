@@ -22,6 +22,8 @@ export interface ToastOptions {
   placement: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
   /** Enables auto-closing of the notification. (Default: `true`) */
   autoClose: boolean;
+  /** Show button to close the notification. (Default: `false`) */
+  closeButton: boolean;
   /** The duration in ms for the notification to be visible on screen. (Default: `3000`) */
   duration: number;
   /** An optional label for an action button. */
@@ -83,7 +85,7 @@ export class CatNotificationService {
         }
       </div>
       ${
-        options?.autoClose === false
+        options?.closeButton === true
           ? `<cat-button class="cat-toastify-close cat-button-pull" size="s" icon="$cat:notification-close" variant="text" icon-only="true" class="close" a11y-label="${i18n.t(
               'notification.dismiss'
             )}"></cat-button>`
