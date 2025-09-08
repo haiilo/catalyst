@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.3...catalyst-core-v12.3.4) (2025-09-08)
+
+
+### Bug Fixes
+
+* **core:** connect listeners in tooltip again after disconnection ([#767](https://github.com/haiilo/catalyst/issues/767)) ([72afd93](https://github.com/haiilo/catalyst/commit/72afd9311c2f4fe8fb1f746ac45f051860fc259a))
+
 ## [12.3.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.2...catalyst-core-v12.3.3) (2025-07-29)
 
 
