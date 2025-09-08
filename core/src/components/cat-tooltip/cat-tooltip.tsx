@@ -100,16 +100,11 @@ export class CatTooltip {
       this.trigger.setAttribute('aria-describedby', this.id);
     }
 
-    if (isTouchScreen) {
-      window.addEventListener('touchstart', this.boundWindowTouchStartListener);
-      this.trigger?.addEventListener('touchstart', this.boundTouchStartListener);
-      this.trigger?.addEventListener('touchend', this.boundTouchEndListener);
-    } else {
-      this.trigger?.addEventListener('focusin', this.boundShowListener);
-      this.trigger?.addEventListener('focusout', this.boundHideListener);
-      this.trigger?.addEventListener('mouseenter', this.boundShowListener);
-      this.trigger?.addEventListener('mouseleave', this.boundHideListener);
-    }
+    this.addListeners();
+  }
+
+  connectedCallback(): void {
+    this.addListeners();
   }
 
   componentWillRender(): void {
@@ -117,16 +112,7 @@ export class CatTooltip {
   }
 
   disconnectedCallback(): void {
-    if (isTouchScreen) {
-      window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
-      this.trigger?.removeEventListener('touchstart', this.boundTouchStartListener);
-      this.trigger?.removeEventListener('touchend', this.boundTouchEndListener);
-    } else {
-      this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
-      this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
-      this.trigger?.removeEventListener('focusin', this.boundShowListener);
-      this.trigger?.removeEventListener('focusout', this.boundHideListener);
-    }
+    this.removeListeners();
   }
 
   render() {
@@ -153,6 +139,32 @@ export class CatTooltip {
         </div>
       </Host>
     );
+  }
+
+  private addListeners() {
+    if (isTouchScreen) {
+      window.addEventListener('touchstart', this.boundWindowTouchStartListener);
+      this.trigger?.addEventListener('touchstart', this.boundTouchStartListener);
+      this.trigger?.addEventListener('touchend', this.boundTouchEndListener);
+    } else {
+      this.trigger?.addEventListener('focusin', this.boundShowListener);
+      this.trigger?.addEventListener('focusout', this.boundHideListener);
+      this.trigger?.addEventListener('mouseenter', this.boundShowListener);
+      this.trigger?.addEventListener('mouseleave', this.boundHideListener);
+    }
+  }
+
+  private removeListeners() {
+    if (isTouchScreen) {
+      window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
+      this.trigger?.removeEventListener('touchstart', this.boundTouchStartListener);
+      this.trigger?.removeEventListener('touchend', this.boundTouchEndListener);
+    } else {
+      this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
+      this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
+      this.trigger?.removeEventListener('focusin', this.boundShowListener);
+      this.trigger?.removeEventListener('focusout', this.boundHideListener);
+    }
   }
 
   private async update() {
