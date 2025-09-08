@@ -214,6 +214,7 @@ export class CatDropdown {
 
     this._isOpen = null;
     this.trap?.deactivate();
+    this.trap = undefined;
     this.content.classList.remove('show');
     // give CSS transition time to apply
     setTimeout(() => {
@@ -230,6 +231,11 @@ export class CatDropdown {
     if (!this.delayedTriggerInit) {
       this.initTrigger();
     }
+  }
+
+  disconnectedCallback() {
+    this.trap?.deactivate();
+    this.trap = undefined;
   }
 
   render() {
