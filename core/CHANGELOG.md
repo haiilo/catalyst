@@ -1,5 +1,13 @@
 # Changelog
 
+## [12.3.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.4...catalyst-core-v12.3.5) (2025-09-09)
+
+
+### Bug Fixes
+
+* **core:** deactivate dropdown focus trap when the dropdown removed from the DOM ([#769](https://github.com/haiilo/catalyst/issues/769)) ([7089e5d](https://github.com/haiilo/catalyst/commit/7089e5dd9bcd0b70a555ef581668d57b857da444))
+* **core:** hide tooltip when the target disconnected from DOM ([#770](https://github.com/haiilo/catalyst/issues/770)) ([0fdea33](https://github.com/haiilo/catalyst/commit/0fdea33d6877ac14c40bfa2d6a38607a7687dd32))
+
 ## [12.3.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.3...catalyst-core-v12.3.4) (2025-09-08)
 
 
