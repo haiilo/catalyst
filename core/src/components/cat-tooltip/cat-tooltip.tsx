@@ -113,6 +113,7 @@ export class CatTooltip {
 
   disconnectedCallback(): void {
     this.removeListeners();
+    this.hideTooltip();
   }
 
   render() {
