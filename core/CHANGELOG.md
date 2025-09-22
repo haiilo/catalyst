@@ -1,5 +1,13 @@
 # Changelog
 
+## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.0...catalyst-core-v12.4.1) (2025-09-22)
+
+
+### Bug Fixes
+
+* **core:** do not override horizontal settings of form elements in the form group ([#776](https://github.com/haiilo/catalyst/issues/776)) ([16bec5e](https://github.com/haiilo/catalyst/commit/16bec5e52dedd0fc4a554cc5821dc90338beba17))
+* **core:** fix unit tests warning ([#754](https://github.com/haiilo/catalyst/issues/754)) ([6a1ff9c](https://github.com/haiilo/catalyst/commit/6a1ff9cb8db024e0f8b8de98269d0e305de2b460))
+
 ## [12.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.5...catalyst-core-v12.4.0) (2025-09-22)
 
 
