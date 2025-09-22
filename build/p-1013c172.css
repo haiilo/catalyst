@@ -2127,6 +2127,27 @@ code {
  */
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
+.cat-table th {
+  font-weight: 600;
+  border-bottom: 2px solid rgb(var(--cat-border-color, 235, 236, 240));
+  text-align: left;
+  vertical-align: bottom;
+}
+.cat-table tr {
+  border-bottom: 1px solid rgb(var(--cat-border-color, 235, 236, 240));
+}
+.cat-table tr > * {
+  padding: 1rem 0.25rem;
+}
+.cat-table tr td {
+  vertical-align: top;
+}
+
+/**
+ * Auto-generated file. Do not edit directly.
+ */
+/* stylelint-disable value-keyword-case */
+/* stylelint-enable value-keyword-case */
 .cat-radius-l {
   border-radius: var(--cat-border-radius-l, 0.5rem);
 }
