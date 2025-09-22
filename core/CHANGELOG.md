@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.5...catalyst-core-v12.4.0) (2025-09-22)
+
+
+### Features
+
+* **core:** add table styles ([#773](https://github.com/haiilo/catalyst/issues/773)) ([0e67260](https://github.com/haiilo/catalyst/commit/0e672603f8055c88e1e92e58f2fff936138eacd6))
+
 ## [12.3.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.4...catalyst-core-v12.3.5) (2025-09-09)
 
 
