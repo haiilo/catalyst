@@ -132,3 +132,41 @@
 <form class="cat-p-l" (ngSubmit)="submitIt($event)">
   <cat-button [submit]="true">TEST SUBMIT</cat-button>
 </form>
+<cat-card>
+  <table class="cat-table" style="width: 100%">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col" style="text-align: right">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Alice</td>
+        <td>Admin</td>
+        <td style="text-align: right">92</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Bob</td>
+        <td>Editor</td>
+        <td style="text-align: right">81</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Carol</td>
+        <td>Viewer</td>
+        <td style="text-align: right">77</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" style="text-align: right">Average</td>
+        <td style="text-align: right">83.3</td>
+      </tr>
+    </tfoot>
+  </table>
+</cat-card>
