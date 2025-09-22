@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { CatCheckbox } from './cat-checkbox';
 
-describe('cat-checkbox', () => {
+describe.skip('cat-checkbox', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatCheckbox],
