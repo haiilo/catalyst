@@ -627,6 +627,7 @@ export class CatSelect {
               aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
               aria-required={this.required ? 'true' : false}
               aria-activedescendant={this.activeDescendant}
+              aria-haspopup="listbox"
               onClick={e => this.onClick(e)}
             >
               <div class="select-wrapper-inner">
