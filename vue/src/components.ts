@@ -209,10 +209,9 @@ export const CatDropdown = /*@__PURE__*/ defineContainer<JSX.CatDropdown>('cat-d
   'arrowNavigation',
   'noResize',
   'overflow',
-  'noInitialFocus',
   'isOpen',
-  'noReturnFocus',
   'delayedTriggerInit',
+  'focusTrap',
   'catOpen',
   'catClose'
 ]);
@@ -269,6 +268,43 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'catChange',
   'catFocus',
   'catBlur'
+]);
+
+
+export const CatMenu = /*@__PURE__*/ defineContainer<JSX.CatMenu>('cat-menu', undefined, [
+  'placement',
+  'triggerVariant',
+  'triggerSize',
+  'triggerIcon',
+  'triggerIconOnly',
+  'triggerLabel',
+  'triggerClass',
+  'triggerTestId',
+  'triggerNativeAttributes',
+  'disabled',
+  'justify',
+  'noAutoClose',
+  'noResize',
+  'overflow',
+  'delayedTriggerInit',
+  'catOpen',
+  'catClose',
+  'catTriggerClick'
+]);
+
+
+export const CatMenuItem = /*@__PURE__*/ defineContainer<JSX.CatMenuItem>('cat-menu-item', undefined, [
+  'identifier',
+  'icon',
+  'color',
+  'loading',
+  'iconOnly',
+  'iconRight',
+  'url',
+  'urlTarget',
+  'disabled',
+  'nativeAttributes',
+  'testId'
 ]);
 
 

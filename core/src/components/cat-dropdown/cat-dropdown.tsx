@@ -2,11 +2,12 @@ import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement,
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import type { FocusableElement } from 'tabbable';
+import { FocusableElement, tabbable } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
 
 let nextUniqueId = 0;
+export type DropdownPlacement = Placement;
 
 /**
  * A dropdown component to display a list of actions in a dropdown menu or to
@@ -27,12 +28,15 @@ export class CatDropdown {
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private _isOpen: boolean | null = false;
+  private readonly tabbableOptions = { getShadowRoot: true };
+  private cachedTabbableElements?: FocusableElement[];
+  private contentMutationObserver?: MutationObserver;
   /**
    * Tracking the origin of opening the dropdown and specify if initial focus should be set.
    * Currently we set it only when the origin is keyboard.
    * We might not need to track this in future when focus-visible support is improved across browsers
    */
-  private hasInitialFocus = false;
+  private isFocusVisible = false;
 
   /**
    * The placement of the dropdown.
@@ -68,16 +72,6 @@ export class CatDropdown {
   @Prop() overflow = false;
 
   /**
-   * No element in dropdown will receive focus when dropdown is open.
-   * By default, the first element in tab order will receive a focus.
-   * @deprecated
-   * Using noInitialFocus property would be a bad practice from a11y perspective.
-   * We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug.
-   * hasInitialFocus should resolve the cause of the original problem instead.
-   */
-  @Prop() noInitialFocus = false;
-
-  /**
    * Whether the dropdown is open.
    * @readonly
    */
@@ -86,15 +80,16 @@ export class CatDropdown {
   }
 
   /**
-   * Trigger element will not receive focus when dropdown is closed.
-   */
-  @Prop() noReturnFocus = false;
-
-  /**
    * Whether the dropdown trigger should be initialized only before first opening.
    * Can be useful when trigger is rendered dynamically.
    */
   @Prop() delayedTriggerInit = false;
+
+  /**
+   * Whether the focus should be trapped inside dropdown popup.
+   * Use it only when the dropdown popup content has role dialog.
+   */
+  @Prop() focusTrap = false;
 
   /**
    * Emitted when the dropdown is opened.
@@ -109,7 +104,7 @@ export class CatDropdown {
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
     if (!this.trigger && this.delayedTriggerInit) {
-      this.hasInitialFocus = this.isEventOriginFromKeyboard(event.detail);
+      this.isFocusVisible = this.isEventOriginFromKeyboard(event.detail);
       this.initTrigger();
       this.toggle();
     }
@@ -127,6 +122,70 @@ export class CatDropdown {
     ) {
       this.close();
     }
+  }
+
+  @Listen('keydown')
+  keydownHandler(event: KeyboardEvent) {
+    if (this.isOpen && event.key === 'Escape') {
+      this.close();
+    }
+    const shouldHandleVertical = this.arrowNavigation === 'vertical' && ['ArrowDown', 'ArrowUp'].includes(event.key);
+    const shouldHandleHorizontal = this.arrowNavigation === 'horizontal' && ['ArrowRight', 'ArrowLeft'].includes(event.key);
+    if (!this.focusTrap && (shouldHandleVertical || shouldHandleHorizontal)) {
+      const tabbableElements = this.getTabbableElements();
+      if (tabbableElements.length) {
+        const target = event.composedPath()[0] ?? event.target;
+        const activeIdx = tabbableElements.findIndex(tabbableElement => tabbableElement === target);
+        const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
+        const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + tabbableElements.length) % tabbableElements.length;
+        tabbableElements[targetIdx].focus();
+        event.preventDefault();
+      }
+    }
+  }
+
+  @Listen('click', { target: 'window' })
+  globalClickHandler(event: MouseEvent) {
+    if (
+      this.isOpen &&
+      !this.noAutoClose &&
+      // check if click was outside of the dropdown content
+      !event.composedPath().includes(this.content) &&
+      // check if click was not on an element marked with data-dropdown-no-close
+      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    ) {
+      this.close();
+    }
+  }
+
+  @Listen('focusout')
+  focusOutHandler() {
+    if (!this.isOpen || this.focusTrap || !this.isFocusVisible) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const activeElement = document.activeElement;
+      if (!activeElement || (!this.elementContains(this.content, activeElement) && activeElement !== document.body)) {
+        this.close(false);
+      }
+    });
+  }
+
+  private elementContains(root: Element, target: Element) {
+    if (root.contains(target)) return true;
+
+    const slots = root.querySelectorAll('slot');
+    for (const slot of slots) {
+      const assignedNodes = slot.assignedElements({ flatten: true });
+      for (const node of assignedNodes) {
+        if (this.elementContains(node, target)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -153,53 +212,51 @@ export class CatDropdown {
 
     this._isOpen = null;
     this.content.style.display = 'block';
-    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
+    this.isFocusVisible = isFocusVisible ?? this.isFocusVisible;
+    // Clear cached tabbable elements when opening
+    this.clearTabbableCache();
     // give CSS transition time to apply
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
-      this.trap = this.trap
-        ? this.trap.updateContainerElements(this.content)
-        : focusTrap.createFocusTrap(this.content, {
-            tabbableOptions: {
-              getShadowRoot: true
-            },
-            allowOutsideClick: true,
-            clickOutsideDeactivates: event =>
-              !this.noAutoClose &&
-              // check if click was outside of the dropdown content
-              !event.composedPath().includes(this.content) &&
-              // check if click was not on an element marked with data-dropdown-no-close
-              !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
-            onPostDeactivate: () => this.close(),
-            onPostActivate: () => this.catOpen.emit(),
-            setReturnFocus: elem => (this.noReturnFocus ? false : this.trigger || elem),
-            isKeyForward: event => {
-              if (
-                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
-                (this.arrowNavigation === 'vertical' && event.key === 'ArrowDown')
-              ) {
-                event.preventDefault();
-                return true;
+      if (this.focusTrap) {
+        this.trap = this.trap
+          ? this.trap.updateContainerElements(this.content)
+          : focusTrap.createFocusTrap(this.content, {
+              tabbableOptions: this.tabbableOptions,
+              allowOutsideClick: true,
+              setReturnFocus: elem => (!this.isFocusVisible ? false : this.trigger || elem),
+              isKeyForward: event => {
+                if (
+                  (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
+                  (this.arrowNavigation === 'vertical' && event.key === 'ArrowDown')
+                ) {
+                  event.preventDefault();
+                  return true;
+                }
+                return event.key === 'Tab';
+              },
+              isKeyBackward: event => {
+                if (
+                  (this.arrowNavigation === 'horizontal' && event.key === 'ArrowLeft') ||
+                  (this.arrowNavigation === 'vertical' && event.key === 'ArrowUp')
+                ) {
+                  event.preventDefault();
+                  return true;
+                }
+                return event.key === 'Tab' && event.shiftKey;
+              },
+              initialFocus: () => {
+                return this.isFocusVisible ? undefined : false;
               }
-              return event.key === 'Tab';
-            },
-            isKeyBackward: event => {
-              if (
-                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowLeft') ||
-                (this.arrowNavigation === 'vertical' && event.key === 'ArrowUp')
-              ) {
-                event.preventDefault();
-                return true;
-              }
-              return event.key === 'Tab' && event.shiftKey;
-            },
-            initialFocus: () => {
-              return this.hasInitialFocus && !this.noInitialFocus ? undefined : false;
-            }
-          });
-      this.trap.activate();
+            });
+        this.trap.activate();
+      }
+      if (this.isFocusVisible) {
+        firstTabbable(this.content)?.focus();
+      }
+      this.catOpen.emit();
     });
   }
 
@@ -207,7 +264,7 @@ export class CatDropdown {
    * Closes the dropdown.
    */
   @Method()
-  async close(): Promise<void> {
+  async close(shouldReturnFocus = this.isFocusVisible): Promise<void> {
     if (!this._isOpen) {
       return; // busy or closed
     }
@@ -216,6 +273,11 @@ export class CatDropdown {
     this.trap?.deactivate();
     this.trap = undefined;
     this.content.classList.remove('show');
+    // Clear cached tabbable elements when closing
+    this.clearTabbableCache();
+    if (shouldReturnFocus) {
+      this.trigger?.focus();
+    }
     // give CSS transition time to apply
     setTimeout(() => {
       this._isOpen = false;
@@ -236,6 +298,7 @@ export class CatDropdown {
   disconnectedCallback() {
     this.trap?.deactivate();
     this.trap = undefined;
+    this.clearTabbableCache();
   }
 
   render() {
@@ -265,7 +328,7 @@ export class CatDropdown {
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
     this.trigger.addEventListener('click', (event: Event) => {
-      this.hasInitialFocus = this.isEventOriginFromKeyboard(event as UIEvent);
+      this.isFocusVisible = this.isEventOriginFromKeyboard(event as UIEvent);
       this.toggle();
     });
     if (!this.anchor) {
@@ -350,5 +413,26 @@ export class CatDropdown {
 
   private hasAttribute(elem: EventTarget, attr: string) {
     return elem instanceof HTMLElement && elem.hasAttribute(attr);
+  }
+
+  private getTabbableElements() {
+    this.cachedTabbableElements ??= tabbable(this.content, this.tabbableOptions).filter(
+      element => !element.shadowRoot?.delegatesFocus
+    );
+    this.contentMutationObserver = new MutationObserver(() => {
+      this.cachedTabbableElements = undefined;
+    });
+    this.contentMutationObserver.observe(this.content, {
+      childList: true,
+      subtree: true,
+      attributes: true
+    });
+    return this.cachedTabbableElements;
+  }
+
+  private clearTabbableCache() {
+    this.cachedTabbableElements = undefined;
+    this.contentMutationObserver?.disconnect();
+    this.contentMutationObserver = undefined;
   }
 }

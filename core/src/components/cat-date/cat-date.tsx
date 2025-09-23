@@ -288,6 +288,7 @@ export class CatDate {
             placement={this.placement}
             arrowNavigation="none"
             noResize
+            focusTrap
             onCatOpen={() => this.dateInline?.resetView()}
           >
             <cat-button
