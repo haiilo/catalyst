@@ -27,8 +27,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))
       '@angular/cdk':
-        specifier: ^14.2.7
-        version: 14.2.7(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7))(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)
+        specifier: ^15.2.9
+        version: 15.2.9(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7))(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)
       '@angular/common':
         specifier: ^15.2.10
         version: 15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)
@@ -106,50 +106,11 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
 
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=14.0.0'
-        version: 14.2.7(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)
-      '@angular/core':
-        specifier: '>=14.0.0'
-        version: 15.2.10(rxjs@7.8.2)(zone.js@0.11.8)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.2
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: '>=14.0.0'
-        version: 15.2.10(rxjs@7.8.2)(zone.js@0.11.8)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^6.0.0
-        version: 6.3.12(@angular/forms@15.2.10(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(@angular/platform-browser@15.2.10(@angular/animations@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8)))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8)))(rxjs@7.8.2))(rxjs@7.8.2)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
         specifier: '>=15.0.0'
-        version: 20.2.4(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)
+        version: 15.2.9(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)
       '@angular/core':
         specifier: '>=15.0.0'
         version: 15.2.10(rxjs@7.8.2)(zone.js@0.11.8)
@@ -230,8 +191,8 @@ importers:
         specifier: ^2.6.1
         version: 2.21.1
       '@stencil/angular-output-target':
-        specifier: 1.1.1
-        version: 1.1.1(@stencil/core@4.31.0)
+        specifier: 0.10.2
+        version: 0.10.2(@stencil/core@4.31.0)
       '@stencil/react-output-target':
         specifier: ^0.5.3
         version: 0.5.3(@stencil/core@4.31.0)
@@ -336,8 +297,8 @@ importers:
         specifier: ^16.9.0
         version: 16.14.0(react@16.14.0)
       typescript:
-        specifier: ~4.6.3
-        version: 4.6.4
+        specifier: ~4.8.0
+        version: 4.8.4
 
   tokens:
     dependencies:
@@ -427,18 +388,11 @@ packages:
     peerDependencies:
       '@angular/core': 15.2.10
 
-  '@angular/cdk@14.2.7':
-    resolution: {integrity: sha512-/tEsYaUbDSnfEmKVvAMramIptmhI67O+9STjOV0i+74XR2NospeK0fkbywIANu1n3w6AHGMotvRWJrjmbCElFg==}
+  '@angular/cdk@15.2.9':
+    resolution: {integrity: sha512-koaM07N1AIQ5oHU27l0/FoQSSoYAwlAYwVZ4Di3bYrJsTBNCN2Xsby7wI8gZxdepMnV4Fe9si382BDBov+oO4Q==}
     peerDependencies:
-      '@angular/common': ^14.0.0 || ^15.0.0
-      '@angular/core': ^14.0.0 || ^15.0.0
-      rxjs: ^6.5.3 || ^7.4.0
-
-  '@angular/cdk@20.2.4':
-    resolution: {integrity: sha512-5UzrN854pnQH+Qw6XZRxx2zWkcOxKrzWPLXe+gHFxFhxWUZfJKGcTJeAj8bnmyb+C3lqBbGpoNQPQ8pFXQGEaQ==}
-    peerDependencies:
-      '@angular/common': ^20.0.0 || ^21.0.0
-      '@angular/core': ^20.0.0 || ^21.0.0
+      '@angular/common': ^15.0.0 || ^16.0.0
+      '@angular/core': ^15.0.0 || ^16.0.0
       rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/cli@15.2.11':
@@ -1920,8 +1874,8 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@stencil/angular-output-target@1.1.1':
-    resolution: {integrity: sha512-NMZjnbNi+gfUjlLRAWPLzwUuX1dGzkaIi/OqoVbElmZfxNI+kihZTW2EvDsA3SJx6bSJBsFNrIMx3tW9TQ3v6Q==}
+  '@stencil/angular-output-target@0.10.2':
+    resolution: {integrity: sha512-jPRa2NMAPtm/iMY+mUaWATbIhgY5zPJfUNQyF8nwC0rMrfXifPoRCf6BbH2S4Gy7SX0X4hlP+jAbVUjQNg/P+Q==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
 
@@ -6494,17 +6448,11 @@ packages:
   parse5@4.0.0:
     resolution: {integrity: sha512-VrZ7eOd3T1Fk4XWNXMgiGBK/z0MG48BWG2uQNU4I72fkQuKUTZpl+u9k+CxEG0twMVzSmXEEz12z5Fnw1jIQFA==}
 
-  parse5@5.1.1:
-    resolution: {integrity: sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==}
-
   parse5@6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
 
   parse5@7.3.0:
     resolution: {integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==}
-
-  parse5@8.0.0:
-    resolution: {integrity: sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==}
 
   parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
@@ -8188,8 +8136,8 @@ packages:
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  typescript@4.6.4:
-    resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
+  typescript@4.8.4:
+    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
 
@@ -8816,31 +8764,23 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@angular/cdk@14.2.7(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7))(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)':
+  '@angular/cdk@15.2.9(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7))(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)':
     dependencies:
       '@angular/common': 15.2.10(@angular/core@15.2.10(rxjs@6.6.7)(zone.js@0.11.8))(rxjs@6.6.7)
       '@angular/core': 15.2.10(rxjs@6.6.7)(zone.js@0.11.8)
       rxjs: 6.6.7
       tslib: 2.8.1
     optionalDependencies:
-      parse5: 5.1.1
+      parse5: 7.3.0
 
-  '@angular/cdk@14.2.7(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)':
+  '@angular/cdk@15.2.9(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)
       '@angular/core': 15.2.10(rxjs@7.8.2)(zone.js@0.11.8)
       rxjs: 7.8.2
       tslib: 2.8.1
     optionalDependencies:
-      parse5: 5.1.1
-
-  '@angular/cdk@20.2.4(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2))(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)':
-    dependencies:
-      '@angular/common': 15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.8))(rxjs@7.8.2)
-      '@angular/core': 15.2.10(rxjs@7.8.2)(zone.js@0.11.8)
-      parse5: 8.0.0
-      rxjs: 7.8.2
-      tslib: 2.8.1
+      parse5: 7.3.0
 
   '@angular/cli@15.2.11(chokidar@3.5.3)':
     dependencies:
@@ -10646,7 +10586,7 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@stencil/angular-output-target@1.1.1(@stencil/core@4.31.0)':
+  '@stencil/angular-output-target@0.10.2(@stencil/core@4.31.0)':
     dependencies:
       '@stencil/core': 4.31.0
 
@@ -16434,16 +16374,9 @@ snapshots:
 
   parse5@4.0.0: {}
 
-  parse5@5.1.1:
-    optional: true
-
   parse5@6.0.1: {}
 
   parse5@7.3.0:
-    dependencies:
-      entities: 6.0.1
-
-  parse5@8.0.0:
     dependencies:
       entities: 6.0.1
 
@@ -18279,7 +18212,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typescript@4.6.4: {}
+  typescript@4.8.4: {}
 
   typescript@4.9.5: {}
 

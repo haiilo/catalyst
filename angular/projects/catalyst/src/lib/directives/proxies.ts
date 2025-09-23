@@ -17,7 +17,7 @@ import { Components } from '@haiilo/catalyst';
   inputs: ['color', 'icon', 'noIcon']
 })
 export class CatAlert {
-  protected el: HTMLElement;
+  protected el: HTMLCatAlertElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -41,7 +41,7 @@ export declare interface CatAlert extends Components.CatAlert {}
   inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
 })
 export class CatAvatar {
-  protected el: HTMLElement;
+  protected el: HTMLCatAvatarElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -65,7 +65,7 @@ export declare interface CatAvatar extends Components.CatAvatar {}
   inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant']
 })
 export class CatBadge {
-  protected el: HTMLElement;
+  protected el: HTMLCatBadgeElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -138,7 +138,7 @@ export declare interface CatBadge extends Components.CatBadge {}
   ]
 })
 export class CatButton {
-  protected el: HTMLElement;
+  protected el: HTMLCatButtonElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -176,7 +176,7 @@ export declare interface CatButton extends Components.CatButton {
   inputs: ['a11yLabel']
 })
 export class CatButtonGroup {
-  protected el: HTMLElement;
+  protected el: HTMLCatButtonGroupElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -198,7 +198,7 @@ export declare interface CatButtonGroup extends Components.CatButtonGroup {}
   inputs: []
 })
 export class CatCard {
-  protected el: HTMLElement;
+  protected el: HTMLCatCardElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -265,7 +265,7 @@ export declare interface CatCard extends Components.CatCard {
   ]
 })
 export class CatCheckbox {
-  protected el: HTMLElement;
+  protected el: HTMLCatCheckboxElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -356,7 +356,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   ]
 })
 export class CatDate {
-  protected el: HTMLElement;
+  protected el: HTMLCatDateElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -425,7 +425,7 @@ export declare interface CatDate extends Components.CatDate {
   ]
 })
 export class CatDateInline {
-  protected el: HTMLElement;
+  protected el: HTMLCatDateInlineElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -514,7 +514,7 @@ export declare interface CatDateInline extends Components.CatDateInline {
   ]
 })
 export class CatDatepicker {
-  protected el: HTMLElement;
+  protected el: HTMLCatDatepickerElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -552,7 +552,7 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value']
 })
 export class CatDatepickerInline {
-  protected el: HTMLElement;
+  protected el: HTMLCatDatepickerInlineElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -605,7 +605,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   ]
 })
 export class CatDropdown {
-  protected el: HTMLElement;
+  protected el: HTMLCatDropdownElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -639,7 +639,7 @@ export declare interface CatDropdown extends Components.CatDropdown {
   inputs: ['horizontal', 'labelSize', 'requiredMarker']
 })
 export class CatFormGroup {
-  protected el: HTMLElement;
+  protected el: HTMLCatFormGroupElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -663,7 +663,7 @@ export declare interface CatFormGroup extends Components.CatFormGroup {}
   inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
 })
 export class CatIcon {
-  protected el: HTMLElement;
+  protected el: HTMLCatIconElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -754,7 +754,7 @@ export declare interface CatIcon extends Components.CatIcon {}
   ]
 })
 export class CatInput {
-  protected el: HTMLElement;
+  protected el: HTMLCatInputElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -814,7 +814,7 @@ export declare interface CatInput extends Components.CatInput {
   ]
 })
 export class CatPagination {
-  protected el: HTMLElement;
+  protected el: HTMLCatPaginationElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -873,7 +873,7 @@ export declare interface CatPagination extends Components.CatPagination {
   ]
 })
 export class CatRadio {
-  protected el: HTMLElement;
+  protected el: HTMLCatRadioElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -911,7 +911,7 @@ export declare interface CatRadio extends Components.CatRadio {
   inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
 export class CatRadioGroup {
-  protected el: HTMLElement;
+  protected el: HTMLCatRadioGroupElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -949,7 +949,7 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
 export class CatScrollable {
-  protected el: HTMLElement;
+  protected el: HTMLCatScrollableElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1038,7 +1038,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
   ]
 })
 export class CatSelect {
-  protected el: HTMLElement;
+  protected el: HTMLCatSelectElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1078,7 +1078,7 @@ export declare interface CatSelect extends Components.CatSelect {
   inputs: []
 })
 export class CatSelectDemo {
-  protected el: HTMLElement;
+  protected el: HTMLCatSelectDemoElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1102,7 +1102,7 @@ export declare interface CatSelectDemo extends Components.CatSelectDemo {}
   inputs: ['effect', 'lines', 'size', 'variant']
 })
 export class CatSkeleton {
-  protected el: HTMLElement;
+  protected el: HTMLCatSkeletonElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1126,7 +1126,7 @@ export declare interface CatSkeleton extends Components.CatSkeleton {}
   inputs: ['a11yLabel', 'size', 'value']
 })
 export class CatSpinner {
-  protected el: HTMLElement;
+  protected el: HTMLCatSpinnerElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1176,7 +1176,7 @@ export declare interface CatSpinner extends Components.CatSpinner {}
   ]
 })
 export class CatTab {
-  protected el: HTMLElement;
+  protected el: HTMLCatTabElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1207,7 +1207,7 @@ export declare interface CatTab extends Components.CatTab {
   inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign']
 })
 export class CatTabs {
-  protected el: HTMLElement;
+  protected el: HTMLCatTabsElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1273,7 +1273,7 @@ export declare interface CatTabs extends Components.CatTabs {
   ]
 })
 export class CatTag {
-  protected el: HTMLElement;
+  protected el: HTMLCatTagElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1354,7 +1354,7 @@ export declare interface CatTag extends Components.CatTag {
   ]
 })
 export class CatTextarea {
-  protected el: HTMLElement;
+  protected el: HTMLCatTextareaElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1447,7 +1447,7 @@ export declare interface CatTextarea extends Components.CatTextarea {
   ]
 })
 export class CatTime {
-  protected el: HTMLElement;
+  protected el: HTMLCatTimeElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1518,7 +1518,7 @@ export declare interface CatTime extends Components.CatTime {
   ]
 })
 export class CatToggle {
-  protected el: HTMLElement;
+  protected el: HTMLCatToggleElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1556,7 +1556,7 @@ export declare interface CatToggle extends Components.CatToggle {
   inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size']
 })
 export class CatTooltip {
-  protected el: HTMLElement;
+  protected el: HTMLCatTooltipElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
