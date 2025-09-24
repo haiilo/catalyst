@@ -20,8 +20,7 @@ describe('DatetimeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DatetimeComponent, DateValueAccessor]
-    })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;

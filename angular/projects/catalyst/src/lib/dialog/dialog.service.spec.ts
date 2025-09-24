@@ -7,10 +7,12 @@ describe('CatDialogService', () => {
   let dialog = jasmine.createSpyObj('dialog', ['closeAll', 'open']);
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{
-        provide: Dialog,
-        useValue: dialog
-      }]
+      providers: [
+        {
+          provide: Dialog,
+          useValue: dialog
+        }
+      ]
     });
     service = TestBed.inject(CatDialogService);
   });

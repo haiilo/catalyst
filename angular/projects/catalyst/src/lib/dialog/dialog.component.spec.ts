@@ -11,10 +11,12 @@ describe('CatDialogComponent', () => {
     dialogRef = jasmine.createSpyObj('dialogRef', ['close']);
     await TestBed.configureTestingModule({
       declarations: [CatDialogComponent],
-      providers: [{
-        provide: DialogRef,
-        useValue: dialogRef
-      }]
+      providers: [
+        {
+          provide: DialogRef,
+          useValue: dialogRef
+        }
+      ]
     })
       .overrideTemplate(CatDialogComponent, '')
       .compileComponents();
