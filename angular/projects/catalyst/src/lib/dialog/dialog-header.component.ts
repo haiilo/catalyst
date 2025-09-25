@@ -24,9 +24,11 @@ import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
   }
 })
 export class CatDialogHeaderComponent {
-  protected readonly closeTxt = this.i18n.t('dialog.close');
+  protected readonly closeTxt: string;
 
-  constructor(@Inject(CAT_I18N_REGISTRY_TOKEN) private readonly i18n: CatI18nRegistry) {}
+  constructor(@Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18n: CatI18nRegistry) {
+    this.closeTxt = i18n.t('dialog.close');
+  }
 
   /**
    * The title of the dialog.
