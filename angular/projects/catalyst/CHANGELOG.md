@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.4.1...catalyst-angular-v12.5.0) (2025-09-26)
+
+
+### Bug Fixes
+
+* **angular:** change dialog header subline class ([#779](https://github.com/haiilo/catalyst/issues/779)) ([3b512c5](https://github.com/haiilo/catalyst/commit/3b512c56086a962c4de61870a6b7f52f61c520d2))
+
 ## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.4.0...catalyst-angular-v12.4.1) (2025-09-22)
 
 
