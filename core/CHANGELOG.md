@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.0...catalyst-core-v12.5.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** fix linter ([#781](https://github.com/haiilo/catalyst/issues/781)) ([4ef2a93](https://github.com/haiilo/catalyst/commit/4ef2a936efe2483162a7b7c4b21a8f7adfe799c2))
+
 ## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.1...catalyst-core-v12.5.0) (2025-09-26)
 
 
