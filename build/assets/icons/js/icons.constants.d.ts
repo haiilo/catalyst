@@ -1,97 +1,5 @@
-export declare const ci16ReactionClapping: {
-    name: '16-reaction-clapping';
-    data: string;
-};
-export declare const ci16ReactionHeart: {
-    name: '16-reaction-heart';
-    data: string;
-};
-export declare const ci16ReactionLaughing: {
-    name: '16-reaction-laughing';
-    data: string;
-};
-export declare const ci16ReactionLightbulb: {
-    name: '16-reaction-lightbulb';
-    data: string;
-};
-export declare const ci16ReactionMood: {
-    name: '16-reaction-mood';
-    data: string;
-};
-export declare const ci16ReactionSmile: {
-    name: '16-reaction-smile';
-    data: string;
-};
-export declare const ci16ReactionThumbsDown: {
-    name: '16-reaction-thumbs-down';
-    data: string;
-};
-export declare const ci16ReactionThumbsUp: {
-    name: '16-reaction-thumbs-up';
-    data: string;
-};
-export declare const ci32ReactionClapping: {
-    name: '32-reaction-clapping';
-    data: string;
-};
-export declare const ci32ReactionHeart: {
-    name: '32-reaction-heart';
-    data: string;
-};
-export declare const ci32ReactionLaughing: {
-    name: '32-reaction-laughing';
-    data: string;
-};
-export declare const ci32ReactionLightbulb: {
-    name: '32-reaction-lightbulb';
-    data: string;
-};
-export declare const ci32ReactionMood: {
-    name: '32-reaction-mood';
-    data: string;
-};
-export declare const ci32ReactionSmile: {
-    name: '32-reaction-smile';
-    data: string;
-};
-export declare const ci32ReactionThumbsDown: {
-    name: '32-reaction-thumbs-down';
-    data: string;
-};
-export declare const ci32ReactionThumbsUp: {
-    name: '32-reaction-thumbs-up';
-    data: string;
-};
-export declare const ciReactionClapping: {
-    name: 'reaction-clapping';
-    data: string;
-};
-export declare const ciReactionHeart: {
-    name: 'reaction-heart';
-    data: string;
-};
-export declare const ciReactionLaughing: {
-    name: 'reaction-laughing';
-    data: string;
-};
-export declare const ciReactionLightbulb: {
-    name: 'reaction-lightbulb';
-    data: string;
-};
-export declare const ciReactionMood: {
-    name: 'reaction-mood';
-    data: string;
-};
-export declare const ciReactionSmile: {
-    name: 'reaction-smile';
-    data: string;
-};
-export declare const ciReactionThumbsDown: {
-    name: 'reaction-thumbs-down';
-    data: string;
-};
-export declare const ciReactionThumbsUp: {
-    name: 'reaction-thumbs-up';
+export declare const ciWMyTasksOutlined: {
+    name: 'w-my-tasks-outlined';
     data: string;
 };
 export declare const ci16BellStrikethrough: {
@@ -254,6 +162,10 @@ export declare const ci16ExternalLink: {
     name: '16-external-link';
     data: string;
 };
+export declare const ci16FlagFilled: {
+    name: '16-flag-filled';
+    data: string;
+};
 export declare const ci16Flag: {
     name: '16-flag';
     data: string;
@@ -262,8 +174,20 @@ export declare const ci16FlashCircleOutlined: {
     name: '16-flash-circle-outlined';
     data: string;
 };
+export declare const ci16Freshservice: {
+    name: '16-freshservice';
+    data: string;
+};
 export declare const ci16InfoCircleOutlined: {
     name: '16-info-circle-outlined';
+    data: string;
+};
+export declare const ci16JiraServiceManagement: {
+    name: '16-jira-service-management';
+    data: string;
+};
+export declare const ci16Jira: {
+    name: '16-jira';
     data: string;
 };
 export declare const ci16LinkLarge: {
@@ -294,6 +218,46 @@ export declare const ci16Play: {
     name: '16-play';
     data: string;
 };
+export declare const ci16ReactionClapping: {
+    name: '16-reaction-clapping';
+    data: string;
+};
+export declare const ci16ReactionHeart: {
+    name: '16-reaction-heart';
+    data: string;
+};
+export declare const ci16ReactionLaughing: {
+    name: '16-reaction-laughing';
+    data: string;
+};
+export declare const ci16ReactionLightbulb: {
+    name: '16-reaction-lightbulb';
+    data: string;
+};
+export declare const ci16ReactionMood: {
+    name: '16-reaction-mood';
+    data: string;
+};
+export declare const ci16ReactionSmile: {
+    name: '16-reaction-smile';
+    data: string;
+};
+export declare const ci16ReactionThumbsDown: {
+    name: '16-reaction-thumbs-down';
+    data: string;
+};
+export declare const ci16ReactionThumbsUp: {
+    name: '16-reaction-thumbs-up';
+    data: string;
+};
+export declare const ci16Servicenow: {
+    name: '16-servicenow';
+    data: string;
+};
+export declare const ci16StickyFilled: {
+    name: '16-sticky-filled';
+    data: string;
+};
 export declare const ci16StickyOutlined: {
     name: '16-sticky-outlined';
     data: string;
@@ -322,8 +286,40 @@ export declare const ci32ReactionCelebrate: {
     name: '32-reaction-celebrate';
     data: string;
 };
+export declare const ci32ReactionClapping: {
+    name: '32-reaction-clapping';
+    data: string;
+};
+export declare const ci32ReactionHeart: {
+    name: '32-reaction-heart';
+    data: string;
+};
+export declare const ci32ReactionLaughing: {
+    name: '32-reaction-laughing';
+    data: string;
+};
+export declare const ci32ReactionLightbulb: {
+    name: '32-reaction-lightbulb';
+    data: string;
+};
+export declare const ci32ReactionMood: {
+    name: '32-reaction-mood';
+    data: string;
+};
 export declare const ci32ReactionRecognize: {
     name: '32-reaction-recognize';
+    data: string;
+};
+export declare const ci32ReactionSmile: {
+    name: '32-reaction-smile';
+    data: string;
+};
+export declare const ci32ReactionThumbsDown: {
+    name: '32-reaction-thumbs-down';
+    data: string;
+};
+export declare const ci32ReactionThumbsUp: {
+    name: '32-reaction-thumbs-up';
     data: string;
 };
 export declare const ciA11YOutlined: {
@@ -372,6 +368,10 @@ export declare const ciArrowLeftOutlined: {
 };
 export declare const ciArrowPointingBoxOutlined: {
     name: 'arrow-pointing-box-outlined';
+    data: string;
+};
+export declare const ciArrowPointingImportOutlined: {
+    name: 'arrow-pointing-import-outlined';
     data: string;
 };
 export declare const ciArrowRedoOutlined: {
@@ -494,6 +494,10 @@ export declare const ciBrushBracketsOutlined: {
     name: 'brush-brackets-outlined';
     data: string;
 };
+export declare const ciBuildingBlocksFilled: {
+    name: 'building-blocks-filled';
+    data: string;
+};
 export declare const ciCalendarCheckOutlined: {
     name: 'calendar-check-outlined';
     data: string;
@@ -508,6 +512,10 @@ export declare const ciCalendarOutlined: {
 };
 export declare const ciCalendarPenOutlined: {
     name: 'calendar-pen-outlined';
+    data: string;
+};
+export declare const ciCameraFilled: {
+    name: 'camera-filled';
     data: string;
 };
 export declare const ciChatFilled: {
@@ -534,6 +542,10 @@ export declare const ciCheckOutlined: {
     name: 'check-outlined';
     data: string;
 };
+export declare const ciCheckSquareOutlined: {
+    name: 'check-square-outlined';
+    data: string;
+};
 export declare const ciChevronDownOutlined: {
     name: 'chevron-down-outlined';
     data: string;
@@ -544,6 +556,10 @@ export declare const ciChevronLeftOutlined: {
 };
 export declare const ciChevronRightOutlined: {
     name: 'chevron-right-outlined';
+    data: string;
+};
+export declare const ciChevronSortingOutlined: {
+    name: 'chevron-sorting-outlined';
     data: string;
 };
 export declare const ciChevronUpOutlined: {
@@ -642,6 +658,10 @@ export declare const ciDangerOutlined: {
     name: 'danger-outlined';
     data: string;
 };
+export declare const ciDashFilled: {
+    name: 'dash-filled';
+    data: string;
+};
 export declare const ciDotsCircleOutlined: {
     name: 'dots-circle-outlined';
     data: string;
@@ -712,6 +732,10 @@ export declare const ciFeedFilled: {
 };
 export declare const ciFeedOutlined: {
     name: 'feed-outlined';
+    data: string;
+};
+export declare const ciFileGenericFilled: {
+    name: 'file-generic-filled';
     data: string;
 };
 export declare const ciFileGeneric: {
@@ -1186,6 +1210,10 @@ export declare const ciFlashCircleOutlined: {
     name: 'flash-circle-outlined';
     data: string;
 };
+export declare const ciFlashFilled: {
+    name: 'flash-filled';
+    data: string;
+};
 export declare const ciFlashOutlined: {
     name: 'flash-outlined';
     data: string;
@@ -1200,6 +1228,10 @@ export declare const ciFolderOutlined: {
 };
 export declare const ciFolderPlusOutlined: {
     name: 'folder-plus-outlined';
+    data: string;
+};
+export declare const ciFreshservice: {
+    name: 'freshservice';
     data: string;
 };
 export declare const ciGenericBrowserOutlined: {
@@ -1278,8 +1310,24 @@ export declare const ciGradientOutlined: {
     name: 'gradient-outlined';
     data: string;
 };
+export declare const ciGroupFilled: {
+    name: 'group-filled';
+    data: string;
+};
 export declare const ciGroupOutlined: {
     name: 'group-outlined';
+    data: string;
+};
+export declare const ciHaiiloDark: {
+    name: 'haiilo-dark';
+    data: string;
+};
+export declare const ciHaiiloLight: {
+    name: 'haiilo-light';
+    data: string;
+};
+export declare const ciHaiilo: {
+    name: 'haiilo';
     data: string;
 };
 export declare const ciHalfStarFilled: {
@@ -1326,12 +1374,32 @@ export declare const ciItalicOutlined: {
     name: 'italic-outlined';
     data: string;
 };
+export declare const ciJiraServiceManagement: {
+    name: 'jira-service-management';
+    data: string;
+};
+export declare const ciJira: {
+    name: 'jira';
+    data: string;
+};
+export declare const ciKudoAlt: {
+    name: 'kudo-alt';
+    data: string;
+};
+export declare const ciKudos: {
+    name: 'kudos';
+    data: string;
+};
 export declare const ciLayersFilled: {
     name: 'layers-filled';
     data: string;
 };
 export declare const ciLayersOutlined: {
     name: 'layers-outlined';
+    data: string;
+};
+export declare const ciLightbulbOutlined: {
+    name: 'lightbulb-outlined';
     data: string;
 };
 export declare const ciLikesCircleFilled: {
@@ -1422,12 +1490,28 @@ export declare const ciMenuRightOutlined: {
     name: 'menu-right-outlined';
     data: string;
 };
+export declare const ciMicrosoftCopilot: {
+    name: 'microsoft-copilot';
+    data: string;
+};
 export declare const ciMicrosoftEdge: {
     name: 'microsoft-edge';
     data: string;
 };
+export declare const ciMicrosoftEmails: {
+    name: 'microsoft-emails';
+    data: string;
+};
 export declare const ciMicrosoftExcel: {
     name: 'microsoft-excel';
+    data: string;
+};
+export declare const ciMicrosoftForms: {
+    name: 'microsoft-forms';
+    data: string;
+};
+export declare const ciMicrosoftMeetings: {
+    name: 'microsoft-meetings';
     data: string;
 };
 export declare const ciMicrosoftOnedrive: {
@@ -1470,6 +1554,10 @@ export declare const ciMicrosoft: {
     name: 'microsoft';
     data: string;
 };
+export declare const ciMinusCircleOutlined: {
+    name: 'minus-circle-outlined';
+    data: string;
+};
 export declare const ciModulePlusOutlined: {
     name: 'module-plus-outlined';
     data: string;
@@ -1478,16 +1566,36 @@ export declare const ciMoneyOutlined: {
     name: 'money-outlined';
     data: string;
 };
+export declare const ciMonitorOutlined: {
+    name: 'monitor-outlined';
+    data: string;
+};
 export declare const ciMoreHorizontalFilled: {
     name: 'more-horizontal-filled';
+    data: string;
+};
+export declare const ciMoveHandleOutlined: {
+    name: 'move-handle-outlined';
+    data: string;
+};
+export declare const ciMoveOutlined: {
+    name: 'move-outlined';
     data: string;
 };
 export declare const ciMozillaFirefox: {
     name: 'mozilla-firefox';
     data: string;
 };
+export declare const ciNumbersBoxOutlined: {
+    name: 'numbers-box-outlined';
+    data: string;
+};
 export declare const ciOpenai: {
     name: 'openai';
+    data: string;
+};
+export declare const ciPageOutlined: {
+    name: 'page-outlined';
     data: string;
 };
 export declare const ciPaperclipBoxOutlined: {
@@ -1598,6 +1706,38 @@ export declare const ciQuoteOutlined: {
     name: 'quote-outlined';
     data: string;
 };
+export declare const ciReactionClapping: {
+    name: 'reaction-clapping';
+    data: string;
+};
+export declare const ciReactionHeart: {
+    name: 'reaction-heart';
+    data: string;
+};
+export declare const ciReactionLaughing: {
+    name: 'reaction-laughing';
+    data: string;
+};
+export declare const ciReactionLightbulb: {
+    name: 'reaction-lightbulb';
+    data: string;
+};
+export declare const ciReactionMood: {
+    name: 'reaction-mood';
+    data: string;
+};
+export declare const ciReactionSmile: {
+    name: 'reaction-smile';
+    data: string;
+};
+export declare const ciReactionThumbsDown: {
+    name: 'reaction-thumbs-down';
+    data: string;
+};
+export declare const ciReactionThumbsUp: {
+    name: 'reaction-thumbs-up';
+    data: string;
+};
 export declare const ciReactionsThumbsUpOutlined: {
     name: 'reactions-thumbs-up-outlined';
     data: string;
@@ -1624,6 +1764,10 @@ export declare const ciRestartOutlined: {
 };
 export declare const ciResultsOutlined: {
     name: 'results-outlined';
+    data: string;
+};
+export declare const ciRteBlockquoteFilled: {
+    name: 'rte-blockquote-filled';
     data: string;
 };
 export declare const ciRteBlockquote: {
@@ -1728,6 +1872,10 @@ export declare const ciSearchOutlined: {
 };
 export declare const ciSearchRestartOutlined: {
     name: 'search-restart-outlined';
+    data: string;
+};
+export declare const ciServicenow: {
+    name: 'servicenow';
     data: string;
 };
 export declare const ciSettingsOutlined: {
@@ -1890,6 +2038,10 @@ export declare const ciSuitecaseOutlined: {
     name: 'suitecase-outlined';
     data: string;
 };
+export declare const ciSun: {
+    name: 'sun';
+    data: string;
+};
 export declare const ciTagOutlined: {
     name: 'tag-outlined';
     data: string;
@@ -1962,6 +2114,10 @@ export declare const ciUndoOutlined: {
     name: 'undo-outlined';
     data: string;
 };
+export declare const ciUnpin: {
+    name: 'unpin';
+    data: string;
+};
 export declare const ciUploadOutlined: {
     name: 'upload-outlined';
     data: string;
@@ -1970,8 +2126,16 @@ export declare const ciUserCheckOutlined: {
     name: 'user-check-outlined';
     data: string;
 };
+export declare const ciUserCross: {
+    name: 'user-cross';
+    data: string;
+};
 export declare const ciUserFilled: {
     name: 'user-filled';
+    data: string;
+};
+export declare const ciUserOutlined: {
+    name: 'user-outlined';
     data: string;
 };
 export declare const ciUserPlusOutlined: {
@@ -1992,10 +2156,6 @@ export declare const ciVideoCameraOutlined: {
 };
 export declare const ciVideoOutlined: {
     name: 'video-outlined';
-    data: string;
-};
-export declare const ciWAlertOutlined: {
-    name: 'w-alert-outlined';
     data: string;
 };
 export declare const ciWBirthdaysUpcomingOutlined: {
@@ -2020,6 +2180,14 @@ export declare const ciWBookmarksOutlined: {
 };
 export declare const ciWButtonOutlined: {
     name: 'w-button-outlined';
+    data: string;
+};
+export declare const ciWCalloutOutlined: {
+    name: 'w-callout-outlined';
+    data: string;
+};
+export declare const ciWCodeOutlined: {
+    name: 'w-code-outlined';
     data: string;
 };
 export declare const ciWColleaguesNewOutlined: {
@@ -2078,12 +2246,12 @@ export declare const ciWHeadlineOutlined: {
     name: 'w-headline-outlined';
     data: string;
 };
-export declare const ciWHeroTeaserOutlined: {
-    name: 'w-hero-teaser-outlined';
+export declare const ciWHeroImageOutlined: {
+    name: 'w-hero-image-outlined';
     data: string;
 };
-export declare const ciWHtmlOutlined: {
-    name: 'w-html-outlined';
+export declare const ciWHeroTeaserOutlined: {
+    name: 'w-hero-teaser-outlined';
     data: string;
 };
 export declare const ciWIframeOutlined: {
@@ -2126,6 +2294,10 @@ export declare const ciWRssFeedOutlined: {
     name: 'w-rss-feed-outlined';
     data: string;
 };
+export declare const ciWRteOutlined: {
+    name: 'w-rte-outlined';
+    data: string;
+};
 export declare const ciWSubscriptionsOutlined: {
     name: 'w-subscriptions-outlined';
     data: string;
@@ -2144,6 +2316,10 @@ export declare const ciWTeaserOutlined: {
 };
 export declare const ciWTextOutlined: {
     name: 'w-text-outlined';
+    data: string;
+};
+export declare const ciWTimeOffOutlined: {
+    name: 'w-time-off-outlined';
     data: string;
 };
 export declare const ciWVideoOutlined: {
@@ -2178,1645 +2354,1777 @@ export declare const ciZive: {
     name: 'zive';
     data: string;
 };
-export type coyoIcon = '16-reaction-clapping' | '16-reaction-heart' | '16-reaction-laughing' | '16-reaction-lightbulb' | '16-reaction-mood' | '16-reaction-smile' | '16-reaction-thumbs-down' | '16-reaction-thumbs-up' | '32-reaction-clapping' | '32-reaction-heart' | '32-reaction-laughing' | '32-reaction-lightbulb' | '32-reaction-mood' | '32-reaction-smile' | '32-reaction-thumbs-down' | '32-reaction-thumbs-up' | 'reaction-clapping' | 'reaction-heart' | 'reaction-laughing' | 'reaction-lightbulb' | 'reaction-mood' | 'reaction-smile' | 'reaction-thumbs-down' | 'reaction-thumbs-up' | '16-bell-strikethrough' | '16-bell' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-chevron-double-left' | '16-chevron-double-right' | '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-clock-outlined' | '16-cross' | '16-double-chevron-down' | '16-earth-outlined' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-image' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-ol' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-editor-ul' | '16-external-link' | '16-flag' | '16-flash-circle-outlined' | '16-info-circle-outlined' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-lock-outlined' | '16-pen-outlined' | '16-pin-outlined' | '16-play' | '16-sticky-outlined' | '16-targeted-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | '16-warning-circle-outlined' | '32-reaction-appreciate' | '32-reaction-celebrate' | '32-reaction-recognize' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'alert-box-outlined' | 'alert-circle-outlined' | 'app-directory' | 'apple-safari' | 'archive-filled' | 'archive-outlined' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'article-filled' | 'article-outlined' | 'audio-outlined' | 'ava-sparkle-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'brush-brackets-outlined' | 'calendar-check-outlined' | 'calendar-cross-outlined' | 'calendar-outlined' | 'calendar-pen-outlined' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-double-outlined' | 'check-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-up-outlined' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'click-outlined' | 'clock-filled' | 'clock-outlined' | 'cols-2-outlined' | 'cols-3-outlined' | 'comment-outlined' | 'communities-filled' | 'communities-outlined' | 'compass-outlined' | 'content-filled' | 'content-outlined' | 'copy-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dots-circle-outlined' | 'double-chevron-down' | 'download-outlined' | 'earth-outlined' | 'emoji-angry' | 'emoji-happy' | 'emoji-neutral' | 'emoji-sad' | 'emoji-smile' | 'emoji-thinking' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'file-generic' | 'file-pdf' | 'file-text' | 'filter-outlined' | 'fingerprint-outlined' | 'flag-al' | 'flag-am' | 'flag-ba' | 'flag-bg' | 'flag-circle-al' | 'flag-circle-am' | 'flag-circle-ba' | 'flag-circle-bg' | 'flag-circle-cn' | 'flag-circle-cz' | 'flag-circle-de' | 'flag-circle-dk' | 'flag-circle-ee' | 'flag-circle-en' | 'flag-circle-es' | 'flag-circle-fi' | 'flag-circle-fr' | 'flag-circle-gb' | 'flag-circle-gr' | 'flag-circle-hr' | 'flag-circle-hu' | 'flag-circle-is' | 'flag-circle-it' | 'flag-circle-jp' | 'flag-circle-kr' | 'flag-circle-la' | 'flag-circle-lv' | 'flag-circle-mk' | 'flag-circle-nl' | 'flag-circle-no' | 'flag-circle-pl' | 'flag-circle-pt' | 'flag-circle-ro' | 'flag-circle-rs' | 'flag-circle-ru' | 'flag-circle-se' | 'flag-circle-si' | 'flag-circle-sk' | 'flag-circle-th' | 'flag-circle-tr' | 'flag-circle-vn' | 'flag-cn' | 'flag-cz' | 'flag-de' | 'flag-dk' | 'flag-ee' | 'flag-en' | 'flag-es' | 'flag-fi' | 'flag-fr' | 'flag-gb' | 'flag-gr' | 'flag-hr' | 'flag-hu' | 'flag-is' | 'flag-it' | 'flag-jp' | 'flag-kr' | 'flag-la' | 'flag-lv' | 'flag-mk' | 'flag-nl' | 'flag-no' | 'flag-outlined' | 'flag-pl' | 'flag-pt' | 'flag-rect-al' | 'flag-rect-am' | 'flag-rect-ba' | 'flag-rect-bg' | 'flag-rect-cn' | 'flag-rect-cz' | 'flag-rect-de' | 'flag-rect-dk' | 'flag-rect-ee' | 'flag-rect-en' | 'flag-rect-es' | 'flag-rect-fi' | 'flag-rect-fr' | 'flag-rect-gb' | 'flag-rect-gr' | 'flag-rect-hr' | 'flag-rect-hu' | 'flag-rect-is' | 'flag-rect-it' | 'flag-rect-jp' | 'flag-rect-kr' | 'flag-rect-la' | 'flag-rect-lv' | 'flag-rect-mk' | 'flag-rect-nl' | 'flag-rect-no' | 'flag-rect-pl' | 'flag-rect-pt' | 'flag-rect-ro' | 'flag-rect-rs' | 'flag-rect-ru' | 'flag-rect-se' | 'flag-rect-si' | 'flag-rect-sk' | 'flag-rect-th' | 'flag-rect-tr' | 'flag-rect-vn' | 'flag-ro' | 'flag-rs' | 'flag-ru' | 'flag-se' | 'flag-si' | 'flag-sk' | 'flag-th' | 'flag-tr' | 'flag-vn' | 'flash-circle-outlined' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'generic-browser-outlined' | 'gift-outlined' | 'github' | 'globe-outlined' | 'google-apps-script' | 'google-calendar' | 'google-chrome' | 'google-docs' | 'google-drawings' | 'google-drive' | 'google-forms' | 'google-mail' | 'google-my-maps' | 'google-sheets' | 'google-sites' | 'google-slides' | 'google-videos' | 'google' | 'gradient-outlined' | 'group-outlined' | 'half-star-filled' | 'hash-box-outlined' | 'hashtag-outlined' | 'history-outlined' | 'home-filled' | 'home-outlined' | 'inbox' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'layers-filled' | 'layers-outlined' | 'likes-circle-filled' | 'link-break-outlined' | 'link-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'loop-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-edge' | 'microsoft-excel' | 'microsoft-onedrive' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-teams' | 'microsoft-word' | 'microsoft-yammer' | 'microsoft' | 'module-plus-outlined' | 'money-outlined' | 'more-horizontal-filled' | 'mozilla-firefox' | 'openai' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'phone-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'planet-filled' | 'planet-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'push-notification' | 'puzzle-piece-outlined' | 'question-mark-circle-outlined' | 'quote-outlined' | 'reactions-thumbs-up-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'redo-outlined' | 'replace-outlined' | 'restart-outlined' | 'results-outlined' | 'rte-blockquote' | 'rte-bold' | 'rte-emoji' | 'rte-image' | 'rte-italic' | 'rte-layout' | 'rte-lg-ai' | 'rte-lg-blockquote' | 'rte-lg-h-1' | 'rte-lg-h-2' | 'rte-lg-image' | 'rte-lg-layout' | 'rte-lg-text' | 'rte-link' | 'rte-ol' | 'rte-redo' | 'rte-text-color' | 'rte-text-size' | 'rte-text' | 'rte-ul' | 'rte-undo' | 'rte-variable' | 'rte-video' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'shield-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'sliders-outlined' | 'smartphone-outlined' | 'smile' | 'social-media-outlined' | 'sorting-outlined' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'star-filled' | 'star-outlined' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'sticker-filled' | 'sticker-outlined' | 'sticky' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'suitecase-outlined' | 'tag-outlined' | 'targeted-outlined' | 'text-align-center-outlined' | 'text-align-left-outlined' | 'text-align-right-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-filled' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'upload-outlined' | 'user-check-outlined' | 'user-filled' | 'user-plus-outlined' | 'variable-box-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'video-outlined' | 'w-alert-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-blog-article-recommended-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-teaser-outlined' | 'w-html-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'write-outlined' | 'xing' | 'zive';
+export type coyoIcon = 'w-my-tasks-outlined' | '16-bell-strikethrough' | '16-bell' | '16-check-circle-filled' | '16-check-circle-outlined' | '16-check-double' | '16-check' | '16-chevron-double-left' | '16-chevron-double-right' | '16-chevron-down' | '16-chevron-left' | '16-chevron-right' | '16-chevron-up' | '16-clock-outlined' | '16-cross' | '16-double-chevron-down' | '16-earth-outlined' | '16-editor-arrow-down' | '16-editor-arrow-up' | '16-editor-bold' | '16-editor-delete' | '16-editor-h-1' | '16-editor-h-2' | '16-editor-h-3' | '16-editor-h-4' | '16-editor-h-5' | '16-editor-h-6' | '16-editor-headline' | '16-editor-image' | '16-editor-indent-decrease' | '16-editor-indent-increase' | '16-editor-italic' | '16-editor-link-break' | '16-editor-link' | '16-editor-ol' | '16-editor-paragraph' | '16-editor-plus' | '16-editor-search' | '16-editor-settings' | '16-editor-ul' | '16-external-link' | '16-flag-filled' | '16-flag' | '16-flash-circle-outlined' | '16-freshservice' | '16-info-circle-outlined' | '16-jira-service-management' | '16-jira' | '16-link-large' | '16-link-medium' | '16-link-small' | '16-lock-outlined' | '16-pen-outlined' | '16-pin-outlined' | '16-play' | '16-reaction-clapping' | '16-reaction-heart' | '16-reaction-laughing' | '16-reaction-lightbulb' | '16-reaction-mood' | '16-reaction-smile' | '16-reaction-thumbs-down' | '16-reaction-thumbs-up' | '16-servicenow' | '16-sticky-filled' | '16-sticky-outlined' | '16-targeted-outlined' | '16-thumbs-up-outlined' | '16-translate-box-outlined' | '16-warning-circle-outlined' | '32-reaction-appreciate' | '32-reaction-celebrate' | '32-reaction-clapping' | '32-reaction-heart' | '32-reaction-laughing' | '32-reaction-lightbulb' | '32-reaction-mood' | '32-reaction-recognize' | '32-reaction-smile' | '32-reaction-thumbs-down' | '32-reaction-thumbs-up' | 'a-11-y-outlined' | 'ai-filled' | 'ai-outlined' | 'alert-box-outlined' | 'alert-circle-outlined' | 'app-directory' | 'apple-safari' | 'archive-filled' | 'archive-outlined' | 'arrow-down-outlined' | 'arrow-left-outlined' | 'arrow-pointing-box-outlined' | 'arrow-pointing-import-outlined' | 'arrow-redo-outlined' | 'arrow-right-outlined' | 'arrow-up-outlined' | 'article-filled' | 'article-outlined' | 'audio-outlined' | 'ava-sparkle-outlined' | 'bar-chart-outlined' | 'bell-check-outlined' | 'bell-dot-filled' | 'bell-dot-outlined' | 'bell-filled' | 'bell-outlined' | 'bell-plus-outlined' | 'bell-ringing-filled' | 'bell-ringing-outlined' | 'blank' | 'block-align-center-outlined' | 'block-align-fw-outlined' | 'block-align-left-outlined' | 'block-align-right-outlined' | 'block-caption-outlined' | 'bold-outlined' | 'book-filled' | 'book-outlined' | 'bookmark-check-outlined' | 'bookmark-filled' | 'bookmark-outlined' | 'bookmark-plus-outlined' | 'brush-brackets-outlined' | 'building-blocks-filled' | 'calendar-check-outlined' | 'calendar-cross-outlined' | 'calendar-outlined' | 'calendar-pen-outlined' | 'camera-filled' | 'chat-filled' | 'chat-outlined' | 'check-circle-filled' | 'check-circle-outlined' | 'check-double-outlined' | 'check-outlined' | 'check-square-outlined' | 'chevron-down-outlined' | 'chevron-left-outlined' | 'chevron-right-outlined' | 'chevron-sorting-outlined' | 'chevron-up-outlined' | 'circle-filled-s' | 'circle-filled' | 'circle-outlined-s' | 'circle-outlined' | 'click-outlined' | 'clock-filled' | 'clock-outlined' | 'cols-2-outlined' | 'cols-3-outlined' | 'comment-outlined' | 'communities-filled' | 'communities-outlined' | 'compass-outlined' | 'content-filled' | 'content-outlined' | 'copy-outlined' | 'cross-circle-filled' | 'cross-circle-outlined' | 'cross-outlined' | 'cross-square-filled' | 'cross-square-outlined' | 'danger-filled' | 'danger-outlined' | 'dash-filled' | 'dots-circle-outlined' | 'double-chevron-down' | 'download-outlined' | 'earth-outlined' | 'emoji-angry' | 'emoji-happy' | 'emoji-neutral' | 'emoji-sad' | 'emoji-smile' | 'emoji-thinking' | 'events-filled' | 'events-outlined' | 'external-link-outlined' | 'eye-closed-outlined' | 'eye-open-outlined' | 'facebook' | 'feed-filled' | 'feed-outlined' | 'file-generic-filled' | 'file-generic' | 'file-pdf' | 'file-text' | 'filter-outlined' | 'fingerprint-outlined' | 'flag-al' | 'flag-am' | 'flag-ba' | 'flag-bg' | 'flag-circle-al' | 'flag-circle-am' | 'flag-circle-ba' | 'flag-circle-bg' | 'flag-circle-cn' | 'flag-circle-cz' | 'flag-circle-de' | 'flag-circle-dk' | 'flag-circle-ee' | 'flag-circle-en' | 'flag-circle-es' | 'flag-circle-fi' | 'flag-circle-fr' | 'flag-circle-gb' | 'flag-circle-gr' | 'flag-circle-hr' | 'flag-circle-hu' | 'flag-circle-is' | 'flag-circle-it' | 'flag-circle-jp' | 'flag-circle-kr' | 'flag-circle-la' | 'flag-circle-lv' | 'flag-circle-mk' | 'flag-circle-nl' | 'flag-circle-no' | 'flag-circle-pl' | 'flag-circle-pt' | 'flag-circle-ro' | 'flag-circle-rs' | 'flag-circle-ru' | 'flag-circle-se' | 'flag-circle-si' | 'flag-circle-sk' | 'flag-circle-th' | 'flag-circle-tr' | 'flag-circle-vn' | 'flag-cn' | 'flag-cz' | 'flag-de' | 'flag-dk' | 'flag-ee' | 'flag-en' | 'flag-es' | 'flag-fi' | 'flag-fr' | 'flag-gb' | 'flag-gr' | 'flag-hr' | 'flag-hu' | 'flag-is' | 'flag-it' | 'flag-jp' | 'flag-kr' | 'flag-la' | 'flag-lv' | 'flag-mk' | 'flag-nl' | 'flag-no' | 'flag-outlined' | 'flag-pl' | 'flag-pt' | 'flag-rect-al' | 'flag-rect-am' | 'flag-rect-ba' | 'flag-rect-bg' | 'flag-rect-cn' | 'flag-rect-cz' | 'flag-rect-de' | 'flag-rect-dk' | 'flag-rect-ee' | 'flag-rect-en' | 'flag-rect-es' | 'flag-rect-fi' | 'flag-rect-fr' | 'flag-rect-gb' | 'flag-rect-gr' | 'flag-rect-hr' | 'flag-rect-hu' | 'flag-rect-is' | 'flag-rect-it' | 'flag-rect-jp' | 'flag-rect-kr' | 'flag-rect-la' | 'flag-rect-lv' | 'flag-rect-mk' | 'flag-rect-nl' | 'flag-rect-no' | 'flag-rect-pl' | 'flag-rect-pt' | 'flag-rect-ro' | 'flag-rect-rs' | 'flag-rect-ru' | 'flag-rect-se' | 'flag-rect-si' | 'flag-rect-sk' | 'flag-rect-th' | 'flag-rect-tr' | 'flag-rect-vn' | 'flag-ro' | 'flag-rs' | 'flag-ru' | 'flag-se' | 'flag-si' | 'flag-sk' | 'flag-th' | 'flag-tr' | 'flag-vn' | 'flash-circle-outlined' | 'flash-filled' | 'flash-outlined' | 'folder-minus-outlined' | 'folder-outlined' | 'folder-plus-outlined' | 'freshservice' | 'generic-browser-outlined' | 'gift-outlined' | 'github' | 'globe-outlined' | 'google-apps-script' | 'google-calendar' | 'google-chrome' | 'google-docs' | 'google-drawings' | 'google-drive' | 'google-forms' | 'google-mail' | 'google-my-maps' | 'google-sheets' | 'google-sites' | 'google-slides' | 'google-videos' | 'google' | 'gradient-outlined' | 'group-filled' | 'group-outlined' | 'haiilo-dark' | 'haiilo-light' | 'haiilo' | 'half-star-filled' | 'hash-box-outlined' | 'hashtag-outlined' | 'history-outlined' | 'home-filled' | 'home-outlined' | 'inbox' | 'info-circle-filled' | 'info-circle-outlined' | 'instagram' | 'italic-outlined' | 'jira-service-management' | 'jira' | 'kudo-alt' | 'kudos' | 'layers-filled' | 'layers-outlined' | 'lightbulb-outlined' | 'likes-circle-filled' | 'link-break-outlined' | 'link-outlined' | 'linkedin' | 'list-ordered-outlined' | 'list-unordered-outlined' | 'location-outlined' | 'lock-filled' | 'lock-open-filled' | 'lock-open-outlined' | 'lock-outlined' | 'loop-outlined' | 'mail-open-outlined' | 'mail-outlined' | 'marketplace-filled' | 'marketplace-outlined' | 'maybe-circle-outlined' | 'megaphone-filled' | 'megaphone-outlined' | 'menu-left-outlined' | 'menu-outlined' | 'menu-right-outlined' | 'microsoft-copilot' | 'microsoft-edge' | 'microsoft-emails' | 'microsoft-excel' | 'microsoft-forms' | 'microsoft-meetings' | 'microsoft-onedrive' | 'microsoft-onenote' | 'microsoft-outlook' | 'microsoft-planner' | 'microsoft-powerpoint' | 'microsoft-sharepoint' | 'microsoft-teams' | 'microsoft-word' | 'microsoft-yammer' | 'microsoft' | 'minus-circle-outlined' | 'module-plus-outlined' | 'money-outlined' | 'monitor-outlined' | 'more-horizontal-filled' | 'move-handle-outlined' | 'move-outlined' | 'mozilla-firefox' | 'numbers-box-outlined' | 'openai' | 'page-outlined' | 'paperclip-box-outlined' | 'paperclip-outlined' | 'paperplane-tilt-outlined' | 'pen-outlined' | 'pen-writing' | 'phone-outlined' | 'photo-add-outlined' | 'photo-filled' | 'photo-outlined' | 'photo-remove-outlined' | 'planet-filled' | 'planet-outlined' | 'plus-circle-filled' | 'plus-circle-outlined' | 'plus-outlined' | 'plus-square-filled' | 'plus-square-outlined' | 'printer-filled' | 'printer-outlined' | 'profile-box-outlined' | 'profile-circle-outlined' | 'profiles-filled' | 'profiles-outlined' | 'push-notification' | 'puzzle-piece-outlined' | 'question-mark-circle-outlined' | 'quote-outlined' | 'reaction-clapping' | 'reaction-heart' | 'reaction-laughing' | 'reaction-lightbulb' | 'reaction-mood' | 'reaction-smile' | 'reaction-thumbs-down' | 'reaction-thumbs-up' | 'reactions-thumbs-up-outlined' | 'reading-glasses-filled' | 'reading-glasses-outlined' | 'redo-outlined' | 'replace-outlined' | 'restart-outlined' | 'results-outlined' | 'rte-blockquote-filled' | 'rte-blockquote' | 'rte-bold' | 'rte-emoji' | 'rte-image' | 'rte-italic' | 'rte-layout' | 'rte-lg-ai' | 'rte-lg-blockquote' | 'rte-lg-h-1' | 'rte-lg-h-2' | 'rte-lg-image' | 'rte-lg-layout' | 'rte-lg-text' | 'rte-link' | 'rte-ol' | 'rte-redo' | 'rte-text-color' | 'rte-text-size' | 'rte-text' | 'rte-ul' | 'rte-undo' | 'rte-variable' | 'rte-video' | 'search-filled' | 'search-outlined' | 'search-restart-outlined' | 'servicenow' | 'settings-outlined' | 'share-filled' | 'share-outlined' | 'shield-outlined' | 'sign-in-outlined' | 'sign-out-outlined' | 'signal-outlined' | 'slack' | 'sliders-outlined' | 'smartphone-outlined' | 'smile' | 'social-media-outlined' | 'sorting-outlined' | 'sp-grid-2-cols' | 'sp-grid-3-cols' | 'sp-grid-4-cols' | 'sp-grid-full' | 'sp-grid-sidebar-left-lg' | 'sp-grid-sidebar-left' | 'sp-grid-sidebar-right-lg' | 'sp-grid-sidebar-right' | 'sp-grid-social' | 'sparkle-filled' | 'sparkle-outlined' | 'star-circle-filled' | 'star-circle-outlined' | 'star-filled' | 'star-outlined' | 'status-available' | 'status-away' | 'status-dnd' | 'status-invisible' | 'status-ooo' | 'sticker-filled' | 'sticker-outlined' | 'sticky' | 'stream-filled' | 'stream-outlined' | 'strikethrough-outlined' | 'suitecase-outlined' | 'sun' | 'tag-outlined' | 'targeted-outlined' | 'text-align-center-outlined' | 'text-align-left-outlined' | 'text-align-right-outlined' | 'text-extend-outlined' | 'text-shorten-outlined' | 'text-summary-outlined' | 'thumbs-up-filled' | 'thumbs-up-outlined' | 'translate-box-filled' | 'translate-box-outlined' | 'translate-outlined' | 'trash-filled' | 'trash-outlined' | 'twitter' | 'underlined-outlined' | 'undo-outlined' | 'unpin' | 'upload-outlined' | 'user-check-outlined' | 'user-cross' | 'user-filled' | 'user-outlined' | 'user-plus-outlined' | 'variable-box-outlined' | 'video-camera-filled' | 'video-camera-outlined' | 'video-outlined' | 'w-birthdays-upcoming-outlined' | 'w-blog-article-new-outlined' | 'w-blog-article-outlined' | 'w-blog-article-recommended-outlined' | 'w-bookmarks-outlined' | 'w-button-outlined' | 'w-callout-outlined' | 'w-code-outlined' | 'w-colleagues-new-outlined' | 'w-complete-profile-outlined' | 'w-divider-outlined' | 'w-do-you-know-outlined' | 'w-document-outlined' | 'w-documents-m-365-outlined' | 'w-documents-new-outlined' | 'w-download-outlined' | 'w-events-upcoming-outlined' | 'w-facegame-outlined' | 'w-feed-outlined' | 'w-gallery-outlined' | 'w-hashtags-outlined' | 'w-headline-outlined' | 'w-hero-image-outlined' | 'w-hero-teaser-outlined' | 'w-iframe-outlined' | 'w-image-outlined' | 'w-launchpad-outlined' | 'w-media-outlined' | 'w-online-users-outlined' | 'w-plugin-trello-outlined' | 'w-plugin-twitter-outlined' | 'w-poll-outlined' | 'w-profile-outlined' | 'w-rss-feed-outlined' | 'w-rte-outlined' | 'w-subscriptions-outlined' | 'w-suggested-communities-outlined' | 'w-suggested-pages-outlined' | 'w-teaser-outlined' | 'w-text-outlined' | 'w-time-off-outlined' | 'w-video-outlined' | 'w-welcome-outlined' | 'w-wiki-article-new-outlined' | 'w-wiki-article-outlined' | 'wechat' | 'write-outlined' | 'xing' | 'zive';
 export interface CoyoIcon {
     name: coyoIcon;
     data: string;
 }
 export type CoyoIconNameSubset<T extends Readonly<CoyoIcon[]>> = T[number]['name'];
 export declare const ciAll: ({
-    name: '16-reaction-clapping';
+    name: "w-my-tasks-outlined";
     data: string;
 } | {
-    name: '16-reaction-heart';
+    name: "16-bell-strikethrough";
     data: string;
 } | {
-    name: '16-reaction-laughing';
+    name: "16-bell";
     data: string;
 } | {
-    name: '16-reaction-lightbulb';
+    name: "16-check-circle-filled";
     data: string;
 } | {
-    name: '16-reaction-mood';
+    name: "16-check-circle-outlined";
     data: string;
 } | {
-    name: '16-reaction-smile';
+    name: "16-check-double";
     data: string;
 } | {
-    name: '16-reaction-thumbs-down';
+    name: "16-check";
     data: string;
 } | {
-    name: '16-reaction-thumbs-up';
+    name: "16-chevron-double-left";
     data: string;
 } | {
-    name: '32-reaction-clapping';
+    name: "16-chevron-double-right";
     data: string;
 } | {
-    name: '32-reaction-heart';
+    name: "16-chevron-down";
     data: string;
 } | {
-    name: '32-reaction-laughing';
+    name: "16-chevron-left";
     data: string;
 } | {
-    name: '32-reaction-lightbulb';
+    name: "16-chevron-right";
     data: string;
 } | {
-    name: '32-reaction-mood';
+    name: "16-chevron-up";
     data: string;
 } | {
-    name: '32-reaction-smile';
+    name: "16-clock-outlined";
     data: string;
 } | {
-    name: '32-reaction-thumbs-down';
+    name: "16-cross";
     data: string;
 } | {
-    name: '32-reaction-thumbs-up';
+    name: "16-double-chevron-down";
     data: string;
 } | {
-    name: 'reaction-clapping';
+    name: "16-earth-outlined";
     data: string;
 } | {
-    name: 'reaction-heart';
+    name: "16-editor-arrow-down";
     data: string;
 } | {
-    name: 'reaction-laughing';
+    name: "16-editor-arrow-up";
     data: string;
 } | {
-    name: 'reaction-lightbulb';
+    name: "16-editor-bold";
     data: string;
 } | {
-    name: 'reaction-mood';
+    name: "16-editor-delete";
     data: string;
 } | {
-    name: 'reaction-smile';
+    name: "16-editor-h-1";
     data: string;
 } | {
-    name: 'reaction-thumbs-down';
+    name: "16-editor-h-2";
     data: string;
 } | {
-    name: 'reaction-thumbs-up';
+    name: "16-editor-h-3";
     data: string;
 } | {
-    name: '16-bell-strikethrough';
+    name: "16-editor-h-4";
     data: string;
 } | {
-    name: '16-bell';
+    name: "16-editor-h-5";
     data: string;
 } | {
-    name: '16-check-circle-filled';
+    name: "16-editor-h-6";
     data: string;
 } | {
-    name: '16-check-circle-outlined';
+    name: "16-editor-headline";
     data: string;
 } | {
-    name: '16-check-double';
+    name: "16-editor-image";
     data: string;
 } | {
-    name: '16-check';
+    name: "16-editor-indent-decrease";
     data: string;
 } | {
-    name: '16-chevron-double-left';
+    name: "16-editor-indent-increase";
     data: string;
 } | {
-    name: '16-chevron-double-right';
+    name: "16-editor-italic";
     data: string;
 } | {
-    name: '16-chevron-down';
+    name: "16-editor-link-break";
     data: string;
 } | {
-    name: '16-chevron-left';
+    name: "16-editor-link";
     data: string;
 } | {
-    name: '16-chevron-right';
+    name: "16-editor-ol";
     data: string;
 } | {
-    name: '16-chevron-up';
+    name: "16-editor-paragraph";
     data: string;
 } | {
-    name: '16-clock-outlined';
+    name: "16-editor-plus";
     data: string;
 } | {
-    name: '16-cross';
+    name: "16-editor-search";
     data: string;
 } | {
-    name: '16-double-chevron-down';
+    name: "16-editor-settings";
     data: string;
 } | {
-    name: '16-earth-outlined';
+    name: "16-editor-ul";
     data: string;
 } | {
-    name: '16-editor-arrow-down';
+    name: "16-external-link";
     data: string;
 } | {
-    name: '16-editor-arrow-up';
+    name: "16-flag-filled";
     data: string;
 } | {
-    name: '16-editor-bold';
+    name: "16-flag";
     data: string;
 } | {
-    name: '16-editor-delete';
+    name: "16-flash-circle-outlined";
     data: string;
 } | {
-    name: '16-editor-h-1';
+    name: "16-freshservice";
     data: string;
 } | {
-    name: '16-editor-h-2';
+    name: "16-info-circle-outlined";
     data: string;
 } | {
-    name: '16-editor-h-3';
+    name: "16-jira-service-management";
     data: string;
 } | {
-    name: '16-editor-h-4';
+    name: "16-jira";
     data: string;
 } | {
-    name: '16-editor-h-5';
+    name: "16-link-large";
     data: string;
 } | {
-    name: '16-editor-h-6';
+    name: "16-link-medium";
     data: string;
 } | {
-    name: '16-editor-headline';
+    name: "16-link-small";
     data: string;
 } | {
-    name: '16-editor-image';
+    name: "16-lock-outlined";
     data: string;
 } | {
-    name: '16-editor-indent-decrease';
+    name: "16-pen-outlined";
     data: string;
 } | {
-    name: '16-editor-indent-increase';
+    name: "16-pin-outlined";
     data: string;
 } | {
-    name: '16-editor-italic';
+    name: "16-play";
     data: string;
 } | {
-    name: '16-editor-link-break';
+    name: "16-reaction-clapping";
     data: string;
 } | {
-    name: '16-editor-link';
+    name: "16-reaction-heart";
     data: string;
 } | {
-    name: '16-editor-ol';
+    name: "16-reaction-laughing";
     data: string;
 } | {
-    name: '16-editor-paragraph';
+    name: "16-reaction-lightbulb";
     data: string;
 } | {
-    name: '16-editor-plus';
+    name: "16-reaction-mood";
     data: string;
 } | {
-    name: '16-editor-search';
+    name: "16-reaction-smile";
     data: string;
 } | {
-    name: '16-editor-settings';
+    name: "16-reaction-thumbs-down";
     data: string;
 } | {
-    name: '16-editor-ul';
+    name: "16-reaction-thumbs-up";
     data: string;
 } | {
-    name: '16-external-link';
+    name: "16-servicenow";
     data: string;
 } | {
-    name: '16-flag';
+    name: "16-sticky-filled";
     data: string;
 } | {
-    name: '16-flash-circle-outlined';
+    name: "16-sticky-outlined";
     data: string;
 } | {
-    name: '16-info-circle-outlined';
+    name: "16-targeted-outlined";
     data: string;
 } | {
-    name: '16-link-large';
+    name: "16-thumbs-up-outlined";
     data: string;
 } | {
-    name: '16-link-medium';
+    name: "16-translate-box-outlined";
     data: string;
 } | {
-    name: '16-link-small';
+    name: "16-warning-circle-outlined";
     data: string;
 } | {
-    name: '16-lock-outlined';
+    name: "32-reaction-appreciate";
     data: string;
 } | {
-    name: '16-pen-outlined';
+    name: "32-reaction-celebrate";
     data: string;
 } | {
-    name: '16-pin-outlined';
+    name: "32-reaction-clapping";
     data: string;
 } | {
-    name: '16-play';
+    name: "32-reaction-heart";
     data: string;
 } | {
-    name: '16-sticky-outlined';
+    name: "32-reaction-laughing";
     data: string;
 } | {
-    name: '16-targeted-outlined';
+    name: "32-reaction-lightbulb";
     data: string;
 } | {
-    name: '16-thumbs-up-outlined';
+    name: "32-reaction-mood";
     data: string;
 } | {
-    name: '16-translate-box-outlined';
+    name: "32-reaction-recognize";
     data: string;
 } | {
-    name: '16-warning-circle-outlined';
+    name: "32-reaction-smile";
     data: string;
 } | {
-    name: '32-reaction-appreciate';
+    name: "32-reaction-thumbs-down";
     data: string;
 } | {
-    name: '32-reaction-celebrate';
+    name: "32-reaction-thumbs-up";
     data: string;
 } | {
-    name: '32-reaction-recognize';
+    name: "a-11-y-outlined";
     data: string;
 } | {
-    name: 'a-11-y-outlined';
+    name: "ai-filled";
     data: string;
 } | {
-    name: 'ai-filled';
+    name: "ai-outlined";
     data: string;
 } | {
-    name: 'ai-outlined';
+    name: "alert-box-outlined";
     data: string;
 } | {
-    name: 'alert-box-outlined';
+    name: "alert-circle-outlined";
     data: string;
 } | {
-    name: 'alert-circle-outlined';
+    name: "app-directory";
     data: string;
 } | {
-    name: 'app-directory';
+    name: "apple-safari";
     data: string;
 } | {
-    name: 'apple-safari';
+    name: "archive-filled";
     data: string;
 } | {
-    name: 'archive-filled';
+    name: "archive-outlined";
     data: string;
 } | {
-    name: 'archive-outlined';
+    name: "arrow-down-outlined";
     data: string;
 } | {
-    name: 'arrow-down-outlined';
+    name: "arrow-left-outlined";
     data: string;
 } | {
-    name: 'arrow-left-outlined';
+    name: "arrow-pointing-box-outlined";
     data: string;
 } | {
-    name: 'arrow-pointing-box-outlined';
+    name: "arrow-pointing-import-outlined";
     data: string;
 } | {
-    name: 'arrow-redo-outlined';
+    name: "arrow-redo-outlined";
     data: string;
 } | {
-    name: 'arrow-right-outlined';
+    name: "arrow-right-outlined";
     data: string;
 } | {
-    name: 'arrow-up-outlined';
+    name: "arrow-up-outlined";
     data: string;
 } | {
-    name: 'article-filled';
+    name: "article-filled";
     data: string;
 } | {
-    name: 'article-outlined';
+    name: "article-outlined";
     data: string;
 } | {
-    name: 'audio-outlined';
+    name: "audio-outlined";
     data: string;
 } | {
-    name: 'ava-sparkle-outlined';
+    name: "ava-sparkle-outlined";
     data: string;
 } | {
-    name: 'bar-chart-outlined';
+    name: "bar-chart-outlined";
     data: string;
 } | {
-    name: 'bell-check-outlined';
+    name: "bell-check-outlined";
     data: string;
 } | {
-    name: 'bell-dot-filled';
+    name: "bell-dot-filled";
     data: string;
 } | {
-    name: 'bell-dot-outlined';
+    name: "bell-dot-outlined";
     data: string;
 } | {
-    name: 'bell-filled';
+    name: "bell-filled";
     data: string;
 } | {
-    name: 'bell-outlined';
+    name: "bell-outlined";
     data: string;
 } | {
-    name: 'bell-plus-outlined';
+    name: "bell-plus-outlined";
     data: string;
 } | {
-    name: 'bell-ringing-filled';
+    name: "bell-ringing-filled";
     data: string;
 } | {
-    name: 'bell-ringing-outlined';
+    name: "bell-ringing-outlined";
     data: string;
 } | {
-    name: 'blank';
+    name: "blank";
     data: string;
 } | {
-    name: 'block-align-center-outlined';
+    name: "block-align-center-outlined";
     data: string;
 } | {
-    name: 'block-align-fw-outlined';
+    name: "block-align-fw-outlined";
     data: string;
 } | {
-    name: 'block-align-left-outlined';
+    name: "block-align-left-outlined";
     data: string;
 } | {
-    name: 'block-align-right-outlined';
+    name: "block-align-right-outlined";
     data: string;
 } | {
-    name: 'block-caption-outlined';
+    name: "block-caption-outlined";
     data: string;
 } | {
-    name: 'bold-outlined';
+    name: "bold-outlined";
     data: string;
 } | {
-    name: 'book-filled';
+    name: "book-filled";
     data: string;
 } | {
-    name: 'book-outlined';
+    name: "book-outlined";
     data: string;
 } | {
-    name: 'bookmark-check-outlined';
+    name: "bookmark-check-outlined";
     data: string;
 } | {
-    name: 'bookmark-filled';
+    name: "bookmark-filled";
     data: string;
 } | {
-    name: 'bookmark-outlined';
+    name: "bookmark-outlined";
     data: string;
 } | {
-    name: 'bookmark-plus-outlined';
+    name: "bookmark-plus-outlined";
     data: string;
 } | {
-    name: 'brush-brackets-outlined';
+    name: "brush-brackets-outlined";
     data: string;
 } | {
-    name: 'calendar-check-outlined';
+    name: "building-blocks-filled";
     data: string;
 } | {
-    name: 'calendar-cross-outlined';
+    name: "calendar-check-outlined";
     data: string;
 } | {
-    name: 'calendar-outlined';
+    name: "calendar-cross-outlined";
     data: string;
 } | {
-    name: 'calendar-pen-outlined';
+    name: "calendar-outlined";
     data: string;
 } | {
-    name: 'chat-filled';
+    name: "calendar-pen-outlined";
     data: string;
 } | {
-    name: 'chat-outlined';
+    name: "camera-filled";
     data: string;
 } | {
-    name: 'check-circle-filled';
+    name: "chat-filled";
     data: string;
 } | {
-    name: 'check-circle-outlined';
+    name: "chat-outlined";
     data: string;
 } | {
-    name: 'check-double-outlined';
+    name: "check-circle-filled";
     data: string;
 } | {
-    name: 'check-outlined';
+    name: "check-circle-outlined";
     data: string;
 } | {
-    name: 'chevron-down-outlined';
+    name: "check-double-outlined";
     data: string;
 } | {
-    name: 'chevron-left-outlined';
+    name: "check-outlined";
     data: string;
 } | {
-    name: 'chevron-right-outlined';
+    name: "check-square-outlined";
     data: string;
 } | {
-    name: 'chevron-up-outlined';
+    name: "chevron-down-outlined";
     data: string;
 } | {
-    name: 'circle-filled-s';
+    name: "chevron-left-outlined";
     data: string;
 } | {
-    name: 'circle-filled';
+    name: "chevron-right-outlined";
     data: string;
 } | {
-    name: 'circle-outlined-s';
+    name: "chevron-sorting-outlined";
     data: string;
 } | {
-    name: 'circle-outlined';
+    name: "chevron-up-outlined";
     data: string;
 } | {
-    name: 'click-outlined';
+    name: "circle-filled-s";
     data: string;
 } | {
-    name: 'clock-filled';
+    name: "circle-filled";
     data: string;
 } | {
-    name: 'clock-outlined';
+    name: "circle-outlined-s";
     data: string;
 } | {
-    name: 'cols-2-outlined';
+    name: "circle-outlined";
     data: string;
 } | {
-    name: 'cols-3-outlined';
+    name: "click-outlined";
     data: string;
 } | {
-    name: 'comment-outlined';
+    name: "clock-filled";
     data: string;
 } | {
-    name: 'communities-filled';
+    name: "clock-outlined";
     data: string;
 } | {
-    name: 'communities-outlined';
+    name: "cols-2-outlined";
     data: string;
 } | {
-    name: 'compass-outlined';
+    name: "cols-3-outlined";
     data: string;
 } | {
-    name: 'content-filled';
+    name: "comment-outlined";
     data: string;
 } | {
-    name: 'content-outlined';
+    name: "communities-filled";
     data: string;
 } | {
-    name: 'copy-outlined';
+    name: "communities-outlined";
     data: string;
 } | {
-    name: 'cross-circle-filled';
+    name: "compass-outlined";
     data: string;
 } | {
-    name: 'cross-circle-outlined';
+    name: "content-filled";
     data: string;
 } | {
-    name: 'cross-outlined';
+    name: "content-outlined";
     data: string;
 } | {
-    name: 'cross-square-filled';
+    name: "copy-outlined";
     data: string;
 } | {
-    name: 'cross-square-outlined';
+    name: "cross-circle-filled";
     data: string;
 } | {
-    name: 'danger-filled';
+    name: "cross-circle-outlined";
     data: string;
 } | {
-    name: 'danger-outlined';
+    name: "cross-outlined";
     data: string;
 } | {
-    name: 'dots-circle-outlined';
+    name: "cross-square-filled";
     data: string;
 } | {
-    name: 'double-chevron-down';
+    name: "cross-square-outlined";
     data: string;
 } | {
-    name: 'download-outlined';
+    name: "danger-filled";
     data: string;
 } | {
-    name: 'earth-outlined';
+    name: "danger-outlined";
     data: string;
 } | {
-    name: 'emoji-angry';
+    name: "dash-filled";
     data: string;
 } | {
-    name: 'emoji-happy';
+    name: "dots-circle-outlined";
     data: string;
 } | {
-    name: 'emoji-neutral';
+    name: "double-chevron-down";
     data: string;
 } | {
-    name: 'emoji-sad';
+    name: "download-outlined";
     data: string;
 } | {
-    name: 'emoji-smile';
+    name: "earth-outlined";
     data: string;
 } | {
-    name: 'emoji-thinking';
+    name: "emoji-angry";
     data: string;
 } | {
-    name: 'events-filled';
+    name: "emoji-happy";
     data: string;
 } | {
-    name: 'events-outlined';
+    name: "emoji-neutral";
     data: string;
 } | {
-    name: 'external-link-outlined';
+    name: "emoji-sad";
     data: string;
 } | {
-    name: 'eye-closed-outlined';
+    name: "emoji-smile";
     data: string;
 } | {
-    name: 'eye-open-outlined';
+    name: "emoji-thinking";
     data: string;
 } | {
-    name: 'facebook';
+    name: "events-filled";
     data: string;
 } | {
-    name: 'feed-filled';
+    name: "events-outlined";
     data: string;
 } | {
-    name: 'feed-outlined';
+    name: "external-link-outlined";
     data: string;
 } | {
-    name: 'file-generic';
+    name: "eye-closed-outlined";
     data: string;
 } | {
-    name: 'file-pdf';
+    name: "eye-open-outlined";
     data: string;
 } | {
-    name: 'file-text';
+    name: "facebook";
     data: string;
 } | {
-    name: 'filter-outlined';
+    name: "feed-filled";
     data: string;
 } | {
-    name: 'fingerprint-outlined';
+    name: "feed-outlined";
     data: string;
 } | {
-    name: 'flag-al';
+    name: "file-generic-filled";
     data: string;
 } | {
-    name: 'flag-am';
+    name: "file-generic";
     data: string;
 } | {
-    name: 'flag-ba';
+    name: "file-pdf";
     data: string;
 } | {
-    name: 'flag-bg';
+    name: "file-text";
     data: string;
 } | {
-    name: 'flag-circle-al';
+    name: "filter-outlined";
     data: string;
 } | {
-    name: 'flag-circle-am';
+    name: "fingerprint-outlined";
     data: string;
 } | {
-    name: 'flag-circle-ba';
+    name: "flag-al";
     data: string;
 } | {
-    name: 'flag-circle-bg';
+    name: "flag-am";
     data: string;
 } | {
-    name: 'flag-circle-cn';
+    name: "flag-ba";
     data: string;
 } | {
-    name: 'flag-circle-cz';
+    name: "flag-bg";
     data: string;
 } | {
-    name: 'flag-circle-de';
+    name: "flag-circle-al";
     data: string;
 } | {
-    name: 'flag-circle-dk';
+    name: "flag-circle-am";
     data: string;
 } | {
-    name: 'flag-circle-ee';
+    name: "flag-circle-ba";
     data: string;
 } | {
-    name: 'flag-circle-en';
+    name: "flag-circle-bg";
     data: string;
 } | {
-    name: 'flag-circle-es';
+    name: "flag-circle-cn";
     data: string;
 } | {
-    name: 'flag-circle-fi';
+    name: "flag-circle-cz";
     data: string;
 } | {
-    name: 'flag-circle-fr';
+    name: "flag-circle-de";
     data: string;
 } | {
-    name: 'flag-circle-gb';
+    name: "flag-circle-dk";
     data: string;
 } | {
-    name: 'flag-circle-gr';
+    name: "flag-circle-ee";
     data: string;
 } | {
-    name: 'flag-circle-hr';
+    name: "flag-circle-en";
     data: string;
 } | {
-    name: 'flag-circle-hu';
+    name: "flag-circle-es";
     data: string;
 } | {
-    name: 'flag-circle-is';
+    name: "flag-circle-fi";
     data: string;
 } | {
-    name: 'flag-circle-it';
+    name: "flag-circle-fr";
     data: string;
 } | {
-    name: 'flag-circle-jp';
+    name: "flag-circle-gb";
     data: string;
 } | {
-    name: 'flag-circle-kr';
+    name: "flag-circle-gr";
     data: string;
 } | {
-    name: 'flag-circle-la';
+    name: "flag-circle-hr";
     data: string;
 } | {
-    name: 'flag-circle-lv';
+    name: "flag-circle-hu";
     data: string;
 } | {
-    name: 'flag-circle-mk';
+    name: "flag-circle-is";
     data: string;
 } | {
-    name: 'flag-circle-nl';
+    name: "flag-circle-it";
     data: string;
 } | {
-    name: 'flag-circle-no';
+    name: "flag-circle-jp";
     data: string;
 } | {
-    name: 'flag-circle-pl';
+    name: "flag-circle-kr";
     data: string;
 } | {
-    name: 'flag-circle-pt';
+    name: "flag-circle-la";
     data: string;
 } | {
-    name: 'flag-circle-ro';
+    name: "flag-circle-lv";
     data: string;
 } | {
-    name: 'flag-circle-rs';
+    name: "flag-circle-mk";
     data: string;
 } | {
-    name: 'flag-circle-ru';
+    name: "flag-circle-nl";
     data: string;
 } | {
-    name: 'flag-circle-se';
+    name: "flag-circle-no";
     data: string;
 } | {
-    name: 'flag-circle-si';
+    name: "flag-circle-pl";
     data: string;
 } | {
-    name: 'flag-circle-sk';
+    name: "flag-circle-pt";
     data: string;
 } | {
-    name: 'flag-circle-th';
+    name: "flag-circle-ro";
     data: string;
 } | {
-    name: 'flag-circle-tr';
+    name: "flag-circle-rs";
     data: string;
 } | {
-    name: 'flag-circle-vn';
+    name: "flag-circle-ru";
     data: string;
 } | {
-    name: 'flag-cn';
+    name: "flag-circle-se";
     data: string;
 } | {
-    name: 'flag-cz';
+    name: "flag-circle-si";
     data: string;
 } | {
-    name: 'flag-de';
+    name: "flag-circle-sk";
     data: string;
 } | {
-    name: 'flag-dk';
+    name: "flag-circle-th";
     data: string;
 } | {
-    name: 'flag-ee';
+    name: "flag-circle-tr";
     data: string;
 } | {
-    name: 'flag-en';
+    name: "flag-circle-vn";
     data: string;
 } | {
-    name: 'flag-es';
+    name: "flag-cn";
     data: string;
 } | {
-    name: 'flag-fi';
+    name: "flag-cz";
     data: string;
 } | {
-    name: 'flag-fr';
+    name: "flag-de";
     data: string;
 } | {
-    name: 'flag-gb';
+    name: "flag-dk";
     data: string;
 } | {
-    name: 'flag-gr';
+    name: "flag-ee";
     data: string;
 } | {
-    name: 'flag-hr';
+    name: "flag-en";
     data: string;
 } | {
-    name: 'flag-hu';
+    name: "flag-es";
     data: string;
 } | {
-    name: 'flag-is';
+    name: "flag-fi";
     data: string;
 } | {
-    name: 'flag-it';
+    name: "flag-fr";
     data: string;
 } | {
-    name: 'flag-jp';
+    name: "flag-gb";
     data: string;
 } | {
-    name: 'flag-kr';
+    name: "flag-gr";
     data: string;
 } | {
-    name: 'flag-la';
+    name: "flag-hr";
     data: string;
 } | {
-    name: 'flag-lv';
+    name: "flag-hu";
     data: string;
 } | {
-    name: 'flag-mk';
+    name: "flag-is";
     data: string;
 } | {
-    name: 'flag-nl';
+    name: "flag-it";
     data: string;
 } | {
-    name: 'flag-no';
+    name: "flag-jp";
     data: string;
 } | {
-    name: 'flag-outlined';
+    name: "flag-kr";
     data: string;
 } | {
-    name: 'flag-pl';
+    name: "flag-la";
     data: string;
 } | {
-    name: 'flag-pt';
+    name: "flag-lv";
     data: string;
 } | {
-    name: 'flag-rect-al';
+    name: "flag-mk";
     data: string;
 } | {
-    name: 'flag-rect-am';
+    name: "flag-nl";
     data: string;
 } | {
-    name: 'flag-rect-ba';
+    name: "flag-no";
     data: string;
 } | {
-    name: 'flag-rect-bg';
+    name: "flag-outlined";
     data: string;
 } | {
-    name: 'flag-rect-cn';
+    name: "flag-pl";
     data: string;
 } | {
-    name: 'flag-rect-cz';
+    name: "flag-pt";
     data: string;
 } | {
-    name: 'flag-rect-de';
+    name: "flag-rect-al";
     data: string;
 } | {
-    name: 'flag-rect-dk';
+    name: "flag-rect-am";
     data: string;
 } | {
-    name: 'flag-rect-ee';
+    name: "flag-rect-ba";
     data: string;
 } | {
-    name: 'flag-rect-en';
+    name: "flag-rect-bg";
     data: string;
 } | {
-    name: 'flag-rect-es';
+    name: "flag-rect-cn";
     data: string;
 } | {
-    name: 'flag-rect-fi';
+    name: "flag-rect-cz";
     data: string;
 } | {
-    name: 'flag-rect-fr';
+    name: "flag-rect-de";
     data: string;
 } | {
-    name: 'flag-rect-gb';
+    name: "flag-rect-dk";
     data: string;
 } | {
-    name: 'flag-rect-gr';
+    name: "flag-rect-ee";
     data: string;
 } | {
-    name: 'flag-rect-hr';
+    name: "flag-rect-en";
     data: string;
 } | {
-    name: 'flag-rect-hu';
+    name: "flag-rect-es";
     data: string;
 } | {
-    name: 'flag-rect-is';
+    name: "flag-rect-fi";
     data: string;
 } | {
-    name: 'flag-rect-it';
+    name: "flag-rect-fr";
     data: string;
 } | {
-    name: 'flag-rect-jp';
+    name: "flag-rect-gb";
     data: string;
 } | {
-    name: 'flag-rect-kr';
+    name: "flag-rect-gr";
     data: string;
 } | {
-    name: 'flag-rect-la';
+    name: "flag-rect-hr";
     data: string;
 } | {
-    name: 'flag-rect-lv';
+    name: "flag-rect-hu";
     data: string;
 } | {
-    name: 'flag-rect-mk';
+    name: "flag-rect-is";
     data: string;
 } | {
-    name: 'flag-rect-nl';
+    name: "flag-rect-it";
     data: string;
 } | {
-    name: 'flag-rect-no';
+    name: "flag-rect-jp";
     data: string;
 } | {
-    name: 'flag-rect-pl';
+    name: "flag-rect-kr";
     data: string;
 } | {
-    name: 'flag-rect-pt';
+    name: "flag-rect-la";
     data: string;
 } | {
-    name: 'flag-rect-ro';
+    name: "flag-rect-lv";
     data: string;
 } | {
-    name: 'flag-rect-rs';
+    name: "flag-rect-mk";
     data: string;
 } | {
-    name: 'flag-rect-ru';
+    name: "flag-rect-nl";
     data: string;
 } | {
-    name: 'flag-rect-se';
+    name: "flag-rect-no";
     data: string;
 } | {
-    name: 'flag-rect-si';
+    name: "flag-rect-pl";
     data: string;
 } | {
-    name: 'flag-rect-sk';
+    name: "flag-rect-pt";
     data: string;
 } | {
-    name: 'flag-rect-th';
+    name: "flag-rect-ro";
     data: string;
 } | {
-    name: 'flag-rect-tr';
+    name: "flag-rect-rs";
     data: string;
 } | {
-    name: 'flag-rect-vn';
+    name: "flag-rect-ru";
     data: string;
 } | {
-    name: 'flag-ro';
+    name: "flag-rect-se";
     data: string;
 } | {
-    name: 'flag-rs';
+    name: "flag-rect-si";
     data: string;
 } | {
-    name: 'flag-ru';
+    name: "flag-rect-sk";
     data: string;
 } | {
-    name: 'flag-se';
+    name: "flag-rect-th";
     data: string;
 } | {
-    name: 'flag-si';
+    name: "flag-rect-tr";
     data: string;
 } | {
-    name: 'flag-sk';
+    name: "flag-rect-vn";
     data: string;
 } | {
-    name: 'flag-th';
+    name: "flag-ro";
     data: string;
 } | {
-    name: 'flag-tr';
+    name: "flag-rs";
     data: string;
 } | {
-    name: 'flag-vn';
+    name: "flag-ru";
     data: string;
 } | {
-    name: 'flash-circle-outlined';
+    name: "flag-se";
     data: string;
 } | {
-    name: 'flash-outlined';
+    name: "flag-si";
     data: string;
 } | {
-    name: 'folder-minus-outlined';
+    name: "flag-sk";
     data: string;
 } | {
-    name: 'folder-outlined';
+    name: "flag-th";
     data: string;
 } | {
-    name: 'folder-plus-outlined';
+    name: "flag-tr";
     data: string;
 } | {
-    name: 'generic-browser-outlined';
+    name: "flag-vn";
     data: string;
 } | {
-    name: 'gift-outlined';
+    name: "flash-circle-outlined";
     data: string;
 } | {
-    name: 'github';
+    name: "flash-filled";
     data: string;
 } | {
-    name: 'globe-outlined';
+    name: "flash-outlined";
     data: string;
 } | {
-    name: 'google-apps-script';
+    name: "folder-minus-outlined";
     data: string;
 } | {
-    name: 'google-calendar';
+    name: "folder-outlined";
     data: string;
 } | {
-    name: 'google-chrome';
+    name: "folder-plus-outlined";
     data: string;
 } | {
-    name: 'google-docs';
+    name: "freshservice";
     data: string;
 } | {
-    name: 'google-drawings';
+    name: "generic-browser-outlined";
     data: string;
 } | {
-    name: 'google-drive';
+    name: "gift-outlined";
     data: string;
 } | {
-    name: 'google-forms';
+    name: "github";
     data: string;
 } | {
-    name: 'google-mail';
+    name: "globe-outlined";
     data: string;
 } | {
-    name: 'google-my-maps';
+    name: "google-apps-script";
     data: string;
 } | {
-    name: 'google-sheets';
+    name: "google-calendar";
     data: string;
 } | {
-    name: 'google-sites';
+    name: "google-chrome";
     data: string;
 } | {
-    name: 'google-slides';
+    name: "google-docs";
     data: string;
 } | {
-    name: 'google-videos';
+    name: "google-drawings";
     data: string;
 } | {
-    name: 'google';
+    name: "google-drive";
     data: string;
 } | {
-    name: 'gradient-outlined';
+    name: "google-forms";
     data: string;
 } | {
-    name: 'group-outlined';
+    name: "google-mail";
     data: string;
 } | {
-    name: 'half-star-filled';
+    name: "google-my-maps";
     data: string;
 } | {
-    name: 'hash-box-outlined';
+    name: "google-sheets";
     data: string;
 } | {
-    name: 'hashtag-outlined';
+    name: "google-sites";
     data: string;
 } | {
-    name: 'history-outlined';
+    name: "google-slides";
     data: string;
 } | {
-    name: 'home-filled';
+    name: "google-videos";
     data: string;
 } | {
-    name: 'home-outlined';
+    name: "google";
     data: string;
 } | {
-    name: 'inbox';
+    name: "gradient-outlined";
     data: string;
 } | {
-    name: 'info-circle-filled';
+    name: "group-filled";
     data: string;
 } | {
-    name: 'info-circle-outlined';
+    name: "group-outlined";
     data: string;
 } | {
-    name: 'instagram';
+    name: "haiilo-dark";
     data: string;
 } | {
-    name: 'italic-outlined';
+    name: "haiilo-light";
     data: string;
 } | {
-    name: 'layers-filled';
+    name: "haiilo";
     data: string;
 } | {
-    name: 'layers-outlined';
+    name: "half-star-filled";
     data: string;
 } | {
-    name: 'likes-circle-filled';
+    name: "hash-box-outlined";
     data: string;
 } | {
-    name: 'link-break-outlined';
+    name: "hashtag-outlined";
     data: string;
 } | {
-    name: 'link-outlined';
+    name: "history-outlined";
     data: string;
 } | {
-    name: 'linkedin';
+    name: "home-filled";
     data: string;
 } | {
-    name: 'list-ordered-outlined';
+    name: "home-outlined";
     data: string;
 } | {
-    name: 'list-unordered-outlined';
+    name: "inbox";
     data: string;
 } | {
-    name: 'location-outlined';
+    name: "info-circle-filled";
     data: string;
 } | {
-    name: 'lock-filled';
+    name: "info-circle-outlined";
     data: string;
 } | {
-    name: 'lock-open-filled';
+    name: "instagram";
     data: string;
 } | {
-    name: 'lock-open-outlined';
+    name: "italic-outlined";
     data: string;
 } | {
-    name: 'lock-outlined';
+    name: "jira-service-management";
     data: string;
 } | {
-    name: 'loop-outlined';
+    name: "jira";
     data: string;
 } | {
-    name: 'mail-open-outlined';
+    name: "kudo-alt";
     data: string;
 } | {
-    name: 'mail-outlined';
+    name: "kudos";
     data: string;
 } | {
-    name: 'marketplace-filled';
+    name: "layers-filled";
     data: string;
 } | {
-    name: 'marketplace-outlined';
+    name: "layers-outlined";
     data: string;
 } | {
-    name: 'maybe-circle-outlined';
+    name: "lightbulb-outlined";
     data: string;
 } | {
-    name: 'megaphone-filled';
+    name: "likes-circle-filled";
     data: string;
 } | {
-    name: 'megaphone-outlined';
+    name: "link-break-outlined";
     data: string;
 } | {
-    name: 'menu-left-outlined';
+    name: "link-outlined";
     data: string;
 } | {
-    name: 'menu-outlined';
+    name: "linkedin";
     data: string;
 } | {
-    name: 'menu-right-outlined';
+    name: "list-ordered-outlined";
     data: string;
 } | {
-    name: 'microsoft-edge';
+    name: "list-unordered-outlined";
     data: string;
 } | {
-    name: 'microsoft-excel';
+    name: "location-outlined";
     data: string;
 } | {
-    name: 'microsoft-onedrive';
+    name: "lock-filled";
     data: string;
 } | {
-    name: 'microsoft-onenote';
+    name: "lock-open-filled";
     data: string;
 } | {
-    name: 'microsoft-outlook';
+    name: "lock-open-outlined";
     data: string;
 } | {
-    name: 'microsoft-planner';
+    name: "lock-outlined";
     data: string;
 } | {
-    name: 'microsoft-powerpoint';
+    name: "loop-outlined";
     data: string;
 } | {
-    name: 'microsoft-sharepoint';
+    name: "mail-open-outlined";
     data: string;
 } | {
-    name: 'microsoft-teams';
+    name: "mail-outlined";
     data: string;
 } | {
-    name: 'microsoft-word';
+    name: "marketplace-filled";
     data: string;
 } | {
-    name: 'microsoft-yammer';
+    name: "marketplace-outlined";
     data: string;
 } | {
-    name: 'microsoft';
+    name: "maybe-circle-outlined";
     data: string;
 } | {
-    name: 'module-plus-outlined';
+    name: "megaphone-filled";
     data: string;
 } | {
-    name: 'money-outlined';
+    name: "megaphone-outlined";
     data: string;
 } | {
-    name: 'more-horizontal-filled';
+    name: "menu-left-outlined";
     data: string;
 } | {
-    name: 'mozilla-firefox';
+    name: "menu-outlined";
     data: string;
 } | {
-    name: 'openai';
+    name: "menu-right-outlined";
     data: string;
 } | {
-    name: 'paperclip-box-outlined';
+    name: "microsoft-copilot";
     data: string;
 } | {
-    name: 'paperclip-outlined';
+    name: "microsoft-edge";
     data: string;
 } | {
-    name: 'paperplane-tilt-outlined';
+    name: "microsoft-emails";
     data: string;
 } | {
-    name: 'pen-outlined';
+    name: "microsoft-excel";
     data: string;
 } | {
-    name: 'pen-writing';
+    name: "microsoft-forms";
     data: string;
 } | {
-    name: 'phone-outlined';
+    name: "microsoft-meetings";
     data: string;
 } | {
-    name: 'photo-add-outlined';
+    name: "microsoft-onedrive";
     data: string;
 } | {
-    name: 'photo-filled';
+    name: "microsoft-onenote";
     data: string;
 } | {
-    name: 'photo-outlined';
+    name: "microsoft-outlook";
     data: string;
 } | {
-    name: 'photo-remove-outlined';
+    name: "microsoft-planner";
     data: string;
 } | {
-    name: 'planet-filled';
+    name: "microsoft-powerpoint";
     data: string;
 } | {
-    name: 'planet-outlined';
+    name: "microsoft-sharepoint";
     data: string;
 } | {
-    name: 'plus-circle-filled';
+    name: "microsoft-teams";
     data: string;
 } | {
-    name: 'plus-circle-outlined';
+    name: "microsoft-word";
     data: string;
 } | {
-    name: 'plus-outlined';
+    name: "microsoft-yammer";
     data: string;
 } | {
-    name: 'plus-square-filled';
+    name: "microsoft";
     data: string;
 } | {
-    name: 'plus-square-outlined';
+    name: "minus-circle-outlined";
     data: string;
 } | {
-    name: 'printer-filled';
+    name: "module-plus-outlined";
     data: string;
 } | {
-    name: 'printer-outlined';
+    name: "money-outlined";
     data: string;
 } | {
-    name: 'profile-box-outlined';
+    name: "monitor-outlined";
     data: string;
 } | {
-    name: 'profile-circle-outlined';
+    name: "more-horizontal-filled";
     data: string;
 } | {
-    name: 'profiles-filled';
+    name: "move-handle-outlined";
     data: string;
 } | {
-    name: 'profiles-outlined';
+    name: "move-outlined";
     data: string;
 } | {
-    name: 'push-notification';
+    name: "mozilla-firefox";
     data: string;
 } | {
-    name: 'puzzle-piece-outlined';
+    name: "numbers-box-outlined";
     data: string;
 } | {
-    name: 'question-mark-circle-outlined';
+    name: "openai";
     data: string;
 } | {
-    name: 'quote-outlined';
+    name: "page-outlined";
     data: string;
 } | {
-    name: 'reactions-thumbs-up-outlined';
+    name: "paperclip-box-outlined";
     data: string;
 } | {
-    name: 'reading-glasses-filled';
+    name: "paperclip-outlined";
     data: string;
 } | {
-    name: 'reading-glasses-outlined';
+    name: "paperplane-tilt-outlined";
     data: string;
 } | {
-    name: 'redo-outlined';
+    name: "pen-outlined";
     data: string;
 } | {
-    name: 'replace-outlined';
+    name: "pen-writing";
     data: string;
 } | {
-    name: 'restart-outlined';
+    name: "phone-outlined";
     data: string;
 } | {
-    name: 'results-outlined';
+    name: "photo-add-outlined";
     data: string;
 } | {
-    name: 'rte-blockquote';
+    name: "photo-filled";
     data: string;
 } | {
-    name: 'rte-bold';
+    name: "photo-outlined";
     data: string;
 } | {
-    name: 'rte-emoji';
+    name: "photo-remove-outlined";
     data: string;
 } | {
-    name: 'rte-image';
+    name: "planet-filled";
     data: string;
 } | {
-    name: 'rte-italic';
+    name: "planet-outlined";
     data: string;
 } | {
-    name: 'rte-layout';
+    name: "plus-circle-filled";
     data: string;
 } | {
-    name: 'rte-lg-ai';
+    name: "plus-circle-outlined";
     data: string;
 } | {
-    name: 'rte-lg-blockquote';
+    name: "plus-outlined";
     data: string;
 } | {
-    name: 'rte-lg-h-1';
+    name: "plus-square-filled";
     data: string;
 } | {
-    name: 'rte-lg-h-2';
+    name: "plus-square-outlined";
     data: string;
 } | {
-    name: 'rte-lg-image';
+    name: "printer-filled";
     data: string;
 } | {
-    name: 'rte-lg-layout';
+    name: "printer-outlined";
     data: string;
 } | {
-    name: 'rte-lg-text';
+    name: "profile-box-outlined";
     data: string;
 } | {
-    name: 'rte-link';
+    name: "profile-circle-outlined";
     data: string;
 } | {
-    name: 'rte-ol';
+    name: "profiles-filled";
     data: string;
 } | {
-    name: 'rte-redo';
+    name: "profiles-outlined";
     data: string;
 } | {
-    name: 'rte-text-color';
+    name: "push-notification";
     data: string;
 } | {
-    name: 'rte-text-size';
+    name: "puzzle-piece-outlined";
     data: string;
 } | {
-    name: 'rte-text';
+    name: "question-mark-circle-outlined";
     data: string;
 } | {
-    name: 'rte-ul';
+    name: "quote-outlined";
     data: string;
 } | {
-    name: 'rte-undo';
+    name: "reaction-clapping";
     data: string;
 } | {
-    name: 'rte-variable';
+    name: "reaction-heart";
     data: string;
 } | {
-    name: 'rte-video';
+    name: "reaction-laughing";
     data: string;
 } | {
-    name: 'search-filled';
+    name: "reaction-lightbulb";
     data: string;
 } | {
-    name: 'search-outlined';
+    name: "reaction-mood";
     data: string;
 } | {
-    name: 'search-restart-outlined';
+    name: "reaction-smile";
     data: string;
 } | {
-    name: 'settings-outlined';
+    name: "reaction-thumbs-down";
     data: string;
 } | {
-    name: 'share-filled';
+    name: "reaction-thumbs-up";
     data: string;
 } | {
-    name: 'share-outlined';
+    name: "reactions-thumbs-up-outlined";
     data: string;
 } | {
-    name: 'shield-outlined';
+    name: "reading-glasses-filled";
     data: string;
 } | {
-    name: 'sign-in-outlined';
+    name: "reading-glasses-outlined";
     data: string;
 } | {
-    name: 'sign-out-outlined';
+    name: "redo-outlined";
     data: string;
 } | {
-    name: 'signal-outlined';
+    name: "replace-outlined";
     data: string;
 } | {
-    name: 'slack';
+    name: "restart-outlined";
     data: string;
 } | {
-    name: 'sliders-outlined';
+    name: "results-outlined";
     data: string;
 } | {
-    name: 'smartphone-outlined';
+    name: "rte-blockquote-filled";
     data: string;
 } | {
-    name: 'smile';
+    name: "rte-blockquote";
     data: string;
 } | {
-    name: 'social-media-outlined';
+    name: "rte-bold";
     data: string;
 } | {
-    name: 'sorting-outlined';
+    name: "rte-emoji";
     data: string;
 } | {
-    name: 'sp-grid-2-cols';
+    name: "rte-image";
     data: string;
 } | {
-    name: 'sp-grid-3-cols';
+    name: "rte-italic";
     data: string;
 } | {
-    name: 'sp-grid-4-cols';
+    name: "rte-layout";
     data: string;
 } | {
-    name: 'sp-grid-full';
+    name: "rte-lg-ai";
     data: string;
 } | {
-    name: 'sp-grid-sidebar-left-lg';
+    name: "rte-lg-blockquote";
     data: string;
 } | {
-    name: 'sp-grid-sidebar-left';
+    name: "rte-lg-h-1";
     data: string;
 } | {
-    name: 'sp-grid-sidebar-right-lg';
+    name: "rte-lg-h-2";
     data: string;
 } | {
-    name: 'sp-grid-sidebar-right';
+    name: "rte-lg-image";
     data: string;
 } | {
-    name: 'sp-grid-social';
+    name: "rte-lg-layout";
     data: string;
 } | {
-    name: 'sparkle-filled';
+    name: "rte-lg-text";
     data: string;
 } | {
-    name: 'sparkle-outlined';
+    name: "rte-link";
     data: string;
 } | {
-    name: 'star-circle-filled';
+    name: "rte-ol";
     data: string;
 } | {
-    name: 'star-circle-outlined';
+    name: "rte-redo";
     data: string;
 } | {
-    name: 'star-filled';
+    name: "rte-text-color";
     data: string;
 } | {
-    name: 'star-outlined';
+    name: "rte-text-size";
     data: string;
 } | {
-    name: 'status-available';
+    name: "rte-text";
     data: string;
 } | {
-    name: 'status-away';
+    name: "rte-ul";
     data: string;
 } | {
-    name: 'status-dnd';
+    name: "rte-undo";
     data: string;
 } | {
-    name: 'status-invisible';
+    name: "rte-variable";
     data: string;
 } | {
-    name: 'status-ooo';
+    name: "rte-video";
     data: string;
 } | {
-    name: 'sticker-filled';
+    name: "search-filled";
     data: string;
 } | {
-    name: 'sticker-outlined';
+    name: "search-outlined";
     data: string;
 } | {
-    name: 'sticky';
+    name: "search-restart-outlined";
     data: string;
 } | {
-    name: 'stream-filled';
+    name: "servicenow";
     data: string;
 } | {
-    name: 'stream-outlined';
+    name: "settings-outlined";
     data: string;
 } | {
-    name: 'strikethrough-outlined';
+    name: "share-filled";
     data: string;
 } | {
-    name: 'suitecase-outlined';
+    name: "share-outlined";
     data: string;
 } | {
-    name: 'tag-outlined';
+    name: "shield-outlined";
     data: string;
 } | {
-    name: 'targeted-outlined';
+    name: "sign-in-outlined";
     data: string;
 } | {
-    name: 'text-align-center-outlined';
+    name: "sign-out-outlined";
     data: string;
 } | {
-    name: 'text-align-left-outlined';
+    name: "signal-outlined";
     data: string;
 } | {
-    name: 'text-align-right-outlined';
+    name: "slack";
     data: string;
 } | {
-    name: 'text-extend-outlined';
+    name: "sliders-outlined";
     data: string;
 } | {
-    name: 'text-shorten-outlined';
+    name: "smartphone-outlined";
     data: string;
 } | {
-    name: 'text-summary-outlined';
+    name: "smile";
     data: string;
 } | {
-    name: 'thumbs-up-filled';
+    name: "social-media-outlined";
     data: string;
 } | {
-    name: 'thumbs-up-outlined';
+    name: "sorting-outlined";
     data: string;
 } | {
-    name: 'translate-box-filled';
+    name: "sp-grid-2-cols";
     data: string;
 } | {
-    name: 'translate-box-outlined';
+    name: "sp-grid-3-cols";
     data: string;
 } | {
-    name: 'translate-outlined';
+    name: "sp-grid-4-cols";
     data: string;
 } | {
-    name: 'trash-filled';
+    name: "sp-grid-full";
     data: string;
 } | {
-    name: 'trash-outlined';
+    name: "sp-grid-sidebar-left-lg";
     data: string;
 } | {
-    name: 'twitter';
+    name: "sp-grid-sidebar-left";
     data: string;
 } | {
-    name: 'underlined-outlined';
+    name: "sp-grid-sidebar-right-lg";
     data: string;
 } | {
-    name: 'undo-outlined';
+    name: "sp-grid-sidebar-right";
     data: string;
 } | {
-    name: 'upload-outlined';
+    name: "sp-grid-social";
     data: string;
 } | {
-    name: 'user-check-outlined';
+    name: "sparkle-filled";
     data: string;
 } | {
-    name: 'user-filled';
+    name: "sparkle-outlined";
     data: string;
 } | {
-    name: 'user-plus-outlined';
+    name: "star-circle-filled";
     data: string;
 } | {
-    name: 'variable-box-outlined';
+    name: "star-circle-outlined";
     data: string;
 } | {
-    name: 'video-camera-filled';
+    name: "star-filled";
     data: string;
 } | {
-    name: 'video-camera-outlined';
+    name: "star-outlined";
     data: string;
 } | {
-    name: 'video-outlined';
+    name: "status-available";
     data: string;
 } | {
-    name: 'w-alert-outlined';
+    name: "status-away";
     data: string;
 } | {
-    name: 'w-birthdays-upcoming-outlined';
+    name: "status-dnd";
     data: string;
 } | {
-    name: 'w-blog-article-new-outlined';
+    name: "status-invisible";
     data: string;
 } | {
-    name: 'w-blog-article-outlined';
+    name: "status-ooo";
     data: string;
 } | {
-    name: 'w-blog-article-recommended-outlined';
+    name: "sticker-filled";
     data: string;
 } | {
-    name: 'w-bookmarks-outlined';
+    name: "sticker-outlined";
     data: string;
 } | {
-    name: 'w-button-outlined';
+    name: "sticky";
     data: string;
 } | {
-    name: 'w-colleagues-new-outlined';
+    name: "stream-filled";
     data: string;
 } | {
-    name: 'w-complete-profile-outlined';
+    name: "stream-outlined";
     data: string;
 } | {
-    name: 'w-divider-outlined';
+    name: "strikethrough-outlined";
     data: string;
 } | {
-    name: 'w-do-you-know-outlined';
+    name: "suitecase-outlined";
     data: string;
 } | {
-    name: 'w-document-outlined';
+    name: "sun";
     data: string;
 } | {
-    name: 'w-documents-m-365-outlined';
+    name: "tag-outlined";
     data: string;
 } | {
-    name: 'w-documents-new-outlined';
+    name: "targeted-outlined";
     data: string;
 } | {
-    name: 'w-download-outlined';
+    name: "text-align-center-outlined";
     data: string;
 } | {
-    name: 'w-events-upcoming-outlined';
+    name: "text-align-left-outlined";
     data: string;
 } | {
-    name: 'w-facegame-outlined';
+    name: "text-align-right-outlined";
     data: string;
 } | {
-    name: 'w-feed-outlined';
+    name: "text-extend-outlined";
     data: string;
 } | {
-    name: 'w-gallery-outlined';
+    name: "text-shorten-outlined";
     data: string;
 } | {
-    name: 'w-hashtags-outlined';
+    name: "text-summary-outlined";
     data: string;
 } | {
-    name: 'w-headline-outlined';
+    name: "thumbs-up-filled";
     data: string;
 } | {
-    name: 'w-hero-teaser-outlined';
+    name: "thumbs-up-outlined";
     data: string;
 } | {
-    name: 'w-html-outlined';
+    name: "translate-box-filled";
     data: string;
 } | {
-    name: 'w-iframe-outlined';
+    name: "translate-box-outlined";
     data: string;
 } | {
-    name: 'w-image-outlined';
+    name: "translate-outlined";
     data: string;
 } | {
-    name: 'w-launchpad-outlined';
+    name: "trash-filled";
     data: string;
 } | {
-    name: 'w-media-outlined';
+    name: "trash-outlined";
     data: string;
 } | {
-    name: 'w-online-users-outlined';
+    name: "twitter";
     data: string;
 } | {
-    name: 'w-plugin-trello-outlined';
+    name: "underlined-outlined";
     data: string;
 } | {
-    name: 'w-plugin-twitter-outlined';
+    name: "undo-outlined";
     data: string;
 } | {
-    name: 'w-poll-outlined';
+    name: "unpin";
     data: string;
 } | {
-    name: 'w-profile-outlined';
+    name: "upload-outlined";
     data: string;
 } | {
-    name: 'w-rss-feed-outlined';
+    name: "user-check-outlined";
     data: string;
 } | {
-    name: 'w-subscriptions-outlined';
+    name: "user-cross";
     data: string;
 } | {
-    name: 'w-suggested-communities-outlined';
+    name: "user-filled";
     data: string;
 } | {
-    name: 'w-suggested-pages-outlined';
+    name: "user-outlined";
     data: string;
 } | {
-    name: 'w-teaser-outlined';
+    name: "user-plus-outlined";
     data: string;
 } | {
-    name: 'w-text-outlined';
+    name: "variable-box-outlined";
     data: string;
 } | {
-    name: 'w-video-outlined';
+    name: "video-camera-filled";
     data: string;
 } | {
-    name: 'w-welcome-outlined';
+    name: "video-camera-outlined";
     data: string;
 } | {
-    name: 'w-wiki-article-new-outlined';
+    name: "video-outlined";
     data: string;
 } | {
-    name: 'w-wiki-article-outlined';
+    name: "w-birthdays-upcoming-outlined";
     data: string;
 } | {
-    name: 'wechat';
+    name: "w-blog-article-new-outlined";
     data: string;
 } | {
-    name: 'write-outlined';
+    name: "w-blog-article-outlined";
     data: string;
 } | {
-    name: 'xing';
+    name: "w-blog-article-recommended-outlined";
     data: string;
 } | {
-    name: 'zive';
+    name: "w-bookmarks-outlined";
+    data: string;
+} | {
+    name: "w-button-outlined";
+    data: string;
+} | {
+    name: "w-callout-outlined";
+    data: string;
+} | {
+    name: "w-code-outlined";
+    data: string;
+} | {
+    name: "w-colleagues-new-outlined";
+    data: string;
+} | {
+    name: "w-complete-profile-outlined";
+    data: string;
+} | {
+    name: "w-divider-outlined";
+    data: string;
+} | {
+    name: "w-do-you-know-outlined";
+    data: string;
+} | {
+    name: "w-document-outlined";
+    data: string;
+} | {
+    name: "w-documents-m-365-outlined";
+    data: string;
+} | {
+    name: "w-documents-new-outlined";
+    data: string;
+} | {
+    name: "w-download-outlined";
+    data: string;
+} | {
+    name: "w-events-upcoming-outlined";
+    data: string;
+} | {
+    name: "w-facegame-outlined";
+    data: string;
+} | {
+    name: "w-feed-outlined";
+    data: string;
+} | {
+    name: "w-gallery-outlined";
+    data: string;
+} | {
+    name: "w-hashtags-outlined";
+    data: string;
+} | {
+    name: "w-headline-outlined";
+    data: string;
+} | {
+    name: "w-hero-image-outlined";
+    data: string;
+} | {
+    name: "w-hero-teaser-outlined";
+    data: string;
+} | {
+    name: "w-iframe-outlined";
+    data: string;
+} | {
+    name: "w-image-outlined";
+    data: string;
+} | {
+    name: "w-launchpad-outlined";
+    data: string;
+} | {
+    name: "w-media-outlined";
+    data: string;
+} | {
+    name: "w-online-users-outlined";
+    data: string;
+} | {
+    name: "w-plugin-trello-outlined";
+    data: string;
+} | {
+    name: "w-plugin-twitter-outlined";
+    data: string;
+} | {
+    name: "w-poll-outlined";
+    data: string;
+} | {
+    name: "w-profile-outlined";
+    data: string;
+} | {
+    name: "w-rss-feed-outlined";
+    data: string;
+} | {
+    name: "w-rte-outlined";
+    data: string;
+} | {
+    name: "w-subscriptions-outlined";
+    data: string;
+} | {
+    name: "w-suggested-communities-outlined";
+    data: string;
+} | {
+    name: "w-suggested-pages-outlined";
+    data: string;
+} | {
+    name: "w-teaser-outlined";
+    data: string;
+} | {
+    name: "w-text-outlined";
+    data: string;
+} | {
+    name: "w-time-off-outlined";
+    data: string;
+} | {
+    name: "w-video-outlined";
+    data: string;
+} | {
+    name: "w-welcome-outlined";
+    data: string;
+} | {
+    name: "w-wiki-article-new-outlined";
+    data: string;
+} | {
+    name: "w-wiki-article-outlined";
+    data: string;
+} | {
+    name: "wechat";
+    data: string;
+} | {
+    name: "write-outlined";
+    data: string;
+} | {
+    name: "xing";
+    data: string;
+} | {
+    name: "zive";
     data: string;
 })[];
