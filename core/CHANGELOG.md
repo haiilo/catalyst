@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.1...catalyst-core-v12.5.2) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** add focus and mouse event listeners even for touch screen devices ([#783](https://github.com/haiilo/catalyst/issues/783)) ([6797f0b](https://github.com/haiilo/catalyst/commit/6797f0be0bf364aeb43e085aa99c51fc5c1f9386))
+
 ## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.0...catalyst-core-v12.5.1) (2025-09-26)
 
 
