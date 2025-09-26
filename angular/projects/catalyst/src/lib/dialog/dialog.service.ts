@@ -60,7 +60,7 @@ export class CatDialogService {
       maxHeight: 'calc(100vh - 64px)',
       maxWidth: 'calc(100vw - 64px)',
       ...config,
-      width: config?.width ? (this.size?.[config.width] ?? config.width) : (this.size?.['default'] ?? '600px'),
+      width: config?.width ? this.size?.[config.width] ?? config.width : this.size?.['default'] ?? '600px',
       panelClass: ['cat-dialog-pane', ...(Array.isArray(panelClass) ? panelClass : [panelClass])]
     });
   }
