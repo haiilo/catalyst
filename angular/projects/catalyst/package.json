@@ -10,9 +10,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": ">=15.0.0",
-    "@angular/cdk": ">=15.0.0",
-    "rxjs": "^6.5.3 || ^7.4.0"
+    "@angular/core": ">=17.0.0",
+    "@angular/cdk": ">=17.0.0",
+    "rxjs": "^6.5.3 || ^7.5.0"
   },
   "dependencies": {
     "@haiilo/catalyst": "workspace:*",
