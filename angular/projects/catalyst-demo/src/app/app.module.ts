@@ -14,7 +14,6 @@ import { DialogComponent } from './dialog/dialog.component';
     FormlyModule.forRoot(),
     CatalystModule.forRoot(),
     CatalystFormlyModule,
-    CatalystModule,
     FormsModule
   ],
   declarations: [AppComponent, DialogComponent],
