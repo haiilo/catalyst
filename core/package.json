@@ -61,7 +61,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@haiilo/catalyst-icons": "^2.6.1",
-    "@stencil/angular-output-target": "0.10.2",
+    "@stencil/angular-output-target": "1.0.0",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/vue-output-target": "^0.8.7",
