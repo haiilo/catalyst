@@ -103,16 +103,16 @@ importers:
         specifier: ^3.1.0
         version: 3.6.2
       typescript:
-        specifier: ^5.2.0
+        specifier: ^5.4.0
         version: 5.4.5
 
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
-        specifier: '>=17.0.0'
+        specifier: '>=18.0.0'
         version: 18.2.14(@angular/common@18.2.14(@angular/core@18.2.14(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@18.2.14(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
       '@angular/core':
-        specifier: '>=17.0.0'
+        specifier: '>=18.0.0'
         version: 18.2.14(rxjs@7.8.2)(zone.js@0.14.10)
       '@haiilo/catalyst':
         specifier: workspace:*
@@ -124,7 +124,7 @@ importers:
         specifier: 1.8.1
         version: 1.8.1
       rxjs:
-        specifier: ^6.5.3 || ^7.5.0
+        specifier: ^6.5.3 || ^7.4.0
         version: 7.8.2
       tslib:
         specifier: ^2.3.0
@@ -133,7 +133,7 @@ importers:
   angular/projects/catalyst-formly:
     dependencies:
       '@angular/core':
-        specifier: '>=17.0.0'
+        specifier: '>=18.0.0'
         version: 18.2.14(rxjs@7.8.2)(zone.js@0.14.10)
       '@haiilo/catalyst-angular':
         specifier: workspace:*
