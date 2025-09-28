@@ -4,19 +4,20 @@ import { NG_VALUE_ACCESSOR, NgControl, Validators } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-  /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-time',
-  host: {
-    '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
-    '(catBlur)': 'updateErrors()'
-  },
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: TimeValueAccessor,
-      multi: true
-    }
-  ]
+    /* tslint:disable-next-line:directive-selector */
+    selector: 'cat-time',
+    host: {
+        '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
+        '(catBlur)': 'updateErrors()'
+    },
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: TimeValueAccessor,
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class TimeValueAccessor extends ValueAccessor implements AfterViewInit {
   constructor(

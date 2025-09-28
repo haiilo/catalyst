@@ -10,8 +10,9 @@ describe('DatetimeComponent', () => {
       <cat-datetime>
         <cat-date></cat-date>
       </cat-datetime>
-    `
-  })
+    `,
+    standalone: false
+})
   class TestComponent {}
 
   let component: TestComponent;

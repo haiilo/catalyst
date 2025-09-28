@@ -5,7 +5,8 @@ import { CatTooltip } from '../directives/proxies';
  * A directive that can be used to add a Catalyst tooltip to an element.
  */
 @Directive({
-  selector: '[catTooltip]'
+    selector: '[catTooltip]',
+    standalone: false
 })
 export class CatTooltipDirective implements OnInit {
   @Input() catTooltip!: string;

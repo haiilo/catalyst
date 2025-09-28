@@ -16,8 +16,8 @@ export type CatRadioType = {
 };
 
 @Component({
-  selector: 'formly-radio',
-  template: `
+    selector: 'formly-radio',
+    template: `
     <cat-radio
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -30,6 +30,7 @@ export type CatRadioType = {
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-radio>
-  `
+  `,
+    standalone: false
 })
 export class CatRadioFieldType extends FieldType<FieldTypeConfig> {}

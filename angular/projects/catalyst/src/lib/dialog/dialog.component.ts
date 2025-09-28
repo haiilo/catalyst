@@ -15,14 +15,15 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
  * A modal dialog.
  */
 @Component({
-  selector: 'cat-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: {
-    class: 'cat-dialog'
-  }
+    selector: 'cat-dialog',
+    templateUrl: './dialog.component.html',
+    styleUrls: ['./dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    host: {
+        class: 'cat-dialog'
+    },
+    standalone: false
 })
 export class CatDialogComponent implements AfterContentInit {
   /**

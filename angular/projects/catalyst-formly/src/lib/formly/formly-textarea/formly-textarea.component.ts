@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-textarea',
-  template: `
+    selector: 'formly-textarea',
+    template: `
     <cat-textarea
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -25,6 +25,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-textarea>
-  `
+  `,
+    standalone: false
 })
 export class CatTextareaFieldType extends FieldType<FieldTypeConfig> {}

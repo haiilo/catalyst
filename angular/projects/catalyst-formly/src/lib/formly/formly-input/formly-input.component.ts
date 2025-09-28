@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-input',
-  template: `
+    selector: 'formly-input',
+    template: `
     <cat-input
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -34,6 +34,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-input>
-  `
+  `,
+    standalone: false
 })
 export class CatInputFieldType extends FieldType<FieldTypeConfig> {}

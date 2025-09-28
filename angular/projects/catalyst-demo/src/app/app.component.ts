@@ -18,10 +18,11 @@ import { countryConnector } from './app.countries';
 import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
-  selector: 'app-root',
-  styleUrls: ['./app.component.scss'],
-  templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-root',
+    styleUrls: ['./app.component.scss'],
+    templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AppComponent implements OnInit {
   form = new FormGroup({
