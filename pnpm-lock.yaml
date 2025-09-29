@@ -27,8 +27,8 @@ importers:
         specifier: ^20.3.2
         version: 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))
       '@angular/cdk':
-        specifier: ^19.2.19
-        version: 19.2.19(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
+        specifier: ^20.2.5
+        version: 20.2.5(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/common':
         specifier: ^20.3.2
         version: 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
@@ -512,6 +512,13 @@ packages:
     peerDependencies:
       '@angular/common': ^19.0.0 || ^20.0.0
       '@angular/core': ^19.0.0 || ^20.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+
+  '@angular/cdk@20.2.5':
+    resolution: {integrity: sha512-1cpR/5jeKXLR1D+PsEvRn0QhSWD3/AjtbugJF5nlx/7L90YXhNFCmNAxAkdFKSn4YIDoPwMHgvOpS7yb51wohQ==}
+    peerDependencies:
+      '@angular/common': ^20.0.0 || ^21.0.0
+      '@angular/core': ^20.0.0 || ^21.0.0
       rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/cli@20.3.3':
@@ -9772,6 +9779,14 @@ snapshots:
       '@angular/common': 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1)
       parse5: 7.3.0
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
+  '@angular/cdk@20.2.5(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/common': 20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
+      '@angular/core': 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)(zone.js@0.15.1)
+      parse5: 8.0.0
       rxjs: 7.8.2
       tslib: 2.8.1
 
