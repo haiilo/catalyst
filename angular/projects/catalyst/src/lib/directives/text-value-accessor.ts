@@ -4,19 +4,19 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-    /* tslint:disable-next-line:directive-selector */
-    selector: 'cat-input, cat-textarea, cat-datepicker, cat-datepicker-inline',
-    host: {
-        '(catChange)': 'handleChangeEvent($event.target.value)'
-    },
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: TextValueAccessor,
-            multi: true
-        }
-    ],
-    standalone: false
+  /* tslint:disable-next-line:directive-selector */
+  selector: 'cat-input, cat-textarea, cat-datepicker, cat-datepicker-inline',
+  host: {
+    '(catChange)': 'handleChangeEvent($event.target?.["value"])'
+  },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: TextValueAccessor,
+      multi: true
+    }
+  ],
+  standalone: false
 })
 export class TextValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {

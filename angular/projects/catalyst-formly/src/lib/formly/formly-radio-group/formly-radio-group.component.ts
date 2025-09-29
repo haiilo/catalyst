@@ -10,8 +10,8 @@ export type CatRadioGroupType = {
 };
 
 @Component({
-    selector: 'formly-radio-group',
-    template: `
+  selector: 'formly-radio-group',
+  template: `
     <cat-radio-group
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -36,6 +36,6 @@ export type CatRadioGroupType = {
       </cat-radio>
     </cat-radio-group>
   `,
-    standalone: false
+  standalone: false
 })
 export class CatRadioGroupFieldType extends FieldType<FieldTypeConfig<CatRadioGroupType>> {}

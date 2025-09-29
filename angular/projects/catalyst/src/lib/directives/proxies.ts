@@ -10,12 +10,12 @@ import { Components } from '@haiilo/catalyst';
   inputs: ['color', 'icon', 'noIcon']
 })
 @Component({
-    selector: 'cat-alert',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['color', 'icon', 'noIcon'],
-    standalone: false
+  selector: 'cat-alert',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'icon', 'noIcon'],
+  standalone: false
 })
 export class CatAlert {
   protected el: HTMLCatAlertElement;
@@ -35,12 +35,12 @@ export declare interface CatAlert extends Components.CatAlert {}
   inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget']
 })
 @Component({
-    selector: 'cat-avatar',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget'],
-    standalone: false
+  selector: 'cat-avatar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['icon', 'initials', 'label', 'round', 'size', 'src', 'url', 'urlTarget'],
+  standalone: false
 })
 export class CatAvatar {
   protected el: HTMLCatAvatarElement;
@@ -60,12 +60,12 @@ export declare interface CatAvatar extends Components.CatAvatar {}
   inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant']
 })
 @Component({
-    selector: 'cat-badge',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant'],
-    standalone: false
+  selector: 'cat-badge',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'icon', 'iconOnly', 'iconRight', 'pulse', 'round', 'size', 'variant'],
+  standalone: false
 })
 export class CatBadge {
   protected el: HTMLCatBadgeElement;
@@ -110,36 +110,36 @@ export declare interface CatBadge extends Components.CatBadge {}
   methods: ['doFocus', 'doBlur', 'doClick']
 })
 @Component({
-    selector: 'cat-button',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'a11yCurrent',
-        'a11yLabel',
-        'active',
-        'buttonGroupPosition',
-        'buttonId',
-        'color',
-        'disabled',
-        'icon',
-        'iconOnly',
-        'iconRight',
-        'loading',
-        'name',
-        'nativeAttributes',
-        'nativeContentAttributes',
-        'noEllipsis',
-        'round',
-        'size',
-        'submit',
-        'testId',
-        'url',
-        'urlTarget',
-        'value',
-        'variant'
-    ],
-    standalone: false
+  selector: 'cat-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'a11yCurrent',
+    'a11yLabel',
+    'active',
+    'buttonGroupPosition',
+    'buttonId',
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'loading',
+    'name',
+    'nativeAttributes',
+    'nativeContentAttributes',
+    'noEllipsis',
+    'round',
+    'size',
+    'submit',
+    'testId',
+    'url',
+    'urlTarget',
+    'value',
+    'variant'
+  ],
+  standalone: false
 })
 export class CatButton {
   protected el: HTMLCatButtonElement;
@@ -173,12 +173,12 @@ export declare interface CatButton extends Components.CatButton {
   inputs: ['a11yLabel']
 })
 @Component({
-    selector: 'cat-button-group',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['a11yLabel'],
-    standalone: false
+  selector: 'cat-button-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel'],
+  standalone: false
 })
 export class CatButtonGroup {
   protected el: HTMLCatButtonGroupElement;
@@ -196,12 +196,12 @@ export declare interface CatButtonGroup extends Components.CatButtonGroup {}
 
 @ProxyCmp({})
 @Component({
-    selector: 'cat-card',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [],
-    standalone: false
+  selector: 'cat-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  standalone: false
 })
 export class CatCard {
   protected el: HTMLCatCardElement;
@@ -246,30 +246,30 @@ export declare interface CatCard extends Components.CatCard {
   methods: ['doFocus', 'doBlur']
 })
 @Component({
-    selector: 'cat-checkbox',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'alignment',
-        'checked',
-        'disabled',
-        'hint',
-        'identifier',
-        'indeterminate',
-        'label',
-        'labelHidden',
-        'labelLeft',
-        'name',
-        'nativeAttributes',
-        'noValue',
-        'required',
-        'requiredMarker',
-        'resolvedValue',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'alignment',
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'indeterminate',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'noValue',
+    'required',
+    'requiredMarker',
+    'resolvedValue',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatCheckbox {
   protected el: HTMLCatCheckboxElement;
@@ -330,38 +330,38 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
-    selector: 'cat-date',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'autoComplete',
-        'clearable',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'icon',
-        'iconRight',
-        'identifier',
-        'label',
-        'labelHidden',
-        'max',
-        'min',
-        'name',
-        'nativeAttributes',
-        'placeholder',
-        'placement',
-        'readonly',
-        'required',
-        'requiredMarker',
-        'testId',
-        'textPrefix',
-        'textSuffix',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-date',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'testId',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
+  standalone: false
 })
 export class CatDate {
   protected el: HTMLCatDateElement;
@@ -411,27 +411,27 @@ export declare interface CatDate extends Components.CatDate {
   methods: ['select', 'clear', 'resetView', 'doFocus']
 })
 @Component({
-    selector: 'cat-date-inline',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'a11yLabel',
-        'hint',
-        'identifier',
-        'label',
-        'labelHidden',
-        'max',
-        'min',
-        'noClear',
-        'noToday',
-        'range',
-        'required',
-        'requiredMarker',
-        'value',
-        'weeks'
-    ],
-    standalone: false
+  selector: 'cat-date-inline',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'a11yLabel',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'noClear',
+    'noToday',
+    'range',
+    'required',
+    'requiredMarker',
+    'value',
+    'weeks'
+  ],
+  standalone: false
 })
 export class CatDateInline {
   protected el: HTMLCatDateInlineElement;
@@ -487,41 +487,41 @@ export declare interface CatDateInline extends Components.CatDateInline {
   methods: ['doFocus', 'doBlur']
 })
 @Component({
-    selector: 'cat-datepicker',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'attachToElement',
-        'autoComplete',
-        'clearable',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'icon',
-        'iconRight',
-        'identifier',
-        'label',
-        'labelHidden',
-        'max',
-        'min',
-        'mode',
-        'name',
-        'nativeAttributes',
-        'nativePickerAttributes',
-        'placeholder',
-        'position',
-        'readonly',
-        'required',
-        'requiredMarker',
-        'step',
-        'textPrefix',
-        'textSuffix',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-datepicker',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'attachToElement',
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'mode',
+    'name',
+    'nativeAttributes',
+    'nativePickerAttributes',
+    'placeholder',
+    'position',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
+  standalone: false
 })
 export class CatDatepicker {
   protected el: HTMLCatDatepickerElement;
@@ -555,12 +555,12 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value']
 })
 @Component({
-    selector: 'cat-datepicker-inline',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value'],
-    standalone: false
+  selector: 'cat-datepicker-inline',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value'],
+  standalone: false
 })
 export class CatDatepickerInline {
   protected el: HTMLCatDatepickerInlineElement;
@@ -598,23 +598,23 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   methods: ['toggle', 'open', 'close']
 })
 @Component({
-    selector: 'cat-dropdown',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'arrowNavigation',
-        'delayedTriggerInit',
-        'isOpen',
-        'justify',
-        'noAutoClose',
-        'noInitialFocus',
-        'noResize',
-        'noReturnFocus',
-        'overflow',
-        'placement'
-    ],
-    standalone: false
+  selector: 'cat-dropdown',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'arrowNavigation',
+    'delayedTriggerInit',
+    'isOpen',
+    'justify',
+    'noAutoClose',
+    'noInitialFocus',
+    'noResize',
+    'noReturnFocus',
+    'overflow',
+    'placement'
+  ],
+  standalone: false
 })
 export class CatDropdown {
   protected el: HTMLCatDropdownElement;
@@ -644,12 +644,12 @@ export declare interface CatDropdown extends Components.CatDropdown {
   inputs: ['horizontal', 'labelSize', 'requiredMarker']
 })
 @Component({
-    selector: 'cat-form-group',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['horizontal', 'labelSize', 'requiredMarker'],
-    standalone: false
+  selector: 'cat-form-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['horizontal', 'labelSize', 'requiredMarker'],
+  standalone: false
 })
 export class CatFormGroup {
   protected el: HTMLCatFormGroupElement;
@@ -669,12 +669,12 @@ export declare interface CatFormGroup extends Components.CatFormGroup {}
   inputs: ['a11yLabel', 'icon', 'iconSrc', 'size']
 })
 @Component({
-    selector: 'cat-icon',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['a11yLabel', 'icon', 'iconSrc', 'size'],
-    standalone: false
+  selector: 'cat-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel', 'icon', 'iconSrc', 'size'],
+  standalone: false
 })
 export class CatIcon {
   protected el: HTMLCatIconElement;
@@ -728,45 +728,45 @@ export declare interface CatIcon extends Components.CatIcon {}
   methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
-    selector: 'cat-input',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'autoComplete',
-        'clearable',
-        'dateMaskOptions',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'icon',
-        'iconRight',
-        'identifier',
-        'label',
-        'labelHidden',
-        'loading',
-        'max',
-        'maxLength',
-        'min',
-        'minLength',
-        'name',
-        'nativeAttributes',
-        'placeholder',
-        'readonly',
-        'required',
-        'requiredMarker',
-        'round',
-        'testId',
-        'textPrefix',
-        'textSuffix',
-        'timeMaskOptions',
-        'togglePassword',
-        'type',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-input',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'dateMaskOptions',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'loading',
+    'max',
+    'maxLength',
+    'min',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'round',
+    'testId',
+    'textPrefix',
+    'textSuffix',
+    'timeMaskOptions',
+    'togglePassword',
+    'type',
+    'value'
+  ],
+  standalone: false
 })
 export class CatInput {
   protected el: HTMLCatInputElement;
@@ -811,23 +811,23 @@ export declare interface CatInput extends Components.CatInput {
   ]
 })
 @Component({
-    selector: 'cat-pagination',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'activePadding',
-        'compact',
-        'iconNext',
-        'iconPrev',
-        'page',
-        'pageCount',
-        'round',
-        'sidePadding',
-        'size',
-        'variant'
-    ],
-    standalone: false
+  selector: 'cat-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'activePadding',
+    'compact',
+    'iconNext',
+    'iconPrev',
+    'page',
+    'pageCount',
+    'round',
+    'sidePadding',
+    'size',
+    'variant'
+  ],
+  standalone: false
 })
 export class CatPagination {
   protected el: HTMLCatPaginationElement;
@@ -868,26 +868,26 @@ export declare interface CatPagination extends Components.CatPagination {
   methods: ['doFocus', 'doBlur']
 })
 @Component({
-    selector: 'cat-radio',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'alignment',
-        'checked',
-        'disabled',
-        'hint',
-        'identifier',
-        'label',
-        'labelHidden',
-        'labelLeft',
-        'name',
-        'nativeAttributes',
-        'required',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-radio',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'alignment',
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'required',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatRadio {
   protected el: HTMLCatRadioElement;
@@ -921,12 +921,12 @@ export declare interface CatRadio extends Components.CatRadio {
   inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
 })
 @Component({
-    selector: 'cat-radio-group',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value'],
-    standalone: false
+  selector: 'cat-radio-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value'],
+  standalone: false
 })
 export class CatRadioGroup {
   protected el: HTMLCatRadioGroupElement;
@@ -960,12 +960,12 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer']
 })
 @Component({
-    selector: 'cat-scrollable',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer'],
-    standalone: false
+  selector: 'cat-scrollable',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer'],
+  standalone: false
 })
 export class CatScrollable {
   protected el: HTMLCatScrollableElement;
@@ -1027,35 +1027,35 @@ export declare interface CatScrollable extends Components.CatScrollable {
   methods: ['doFocus', 'doBlur', 'clear', 'connect']
 })
 @Component({
-    selector: 'cat-select',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'clearable',
-        'debounce',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'identifier',
-        'label',
-        'labelHidden',
-        'multiple',
-        'name',
-        'nativeAttributes',
-        'noItems',
-        'placeholder',
-        'placement',
-        'required',
-        'requiredMarker',
-        'tagHint',
-        'tags',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-select',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'clearable',
+    'debounce',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'multiple',
+    'name',
+    'nativeAttributes',
+    'noItems',
+    'placeholder',
+    'placement',
+    'required',
+    'requiredMarker',
+    'tagHint',
+    'tags',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatSelect {
   protected el: HTMLCatSelectElement;
@@ -1091,12 +1091,12 @@ export declare interface CatSelect extends Components.CatSelect {
 
 @ProxyCmp({})
 @Component({
-    selector: 'cat-select-demo',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [],
-    standalone: false
+  selector: 'cat-select-demo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  standalone: false
 })
 export class CatSelectDemo {
   protected el: HTMLCatSelectDemoElement;
@@ -1116,12 +1116,12 @@ export declare interface CatSelectDemo extends Components.CatSelectDemo {}
   inputs: ['effect', 'lines', 'size', 'variant']
 })
 @Component({
-    selector: 'cat-skeleton',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['effect', 'lines', 'size', 'variant'],
-    standalone: false
+  selector: 'cat-skeleton',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['effect', 'lines', 'size', 'variant'],
+  standalone: false
 })
 export class CatSkeleton {
   protected el: HTMLCatSkeletonElement;
@@ -1141,12 +1141,12 @@ export declare interface CatSkeleton extends Components.CatSkeleton {}
   inputs: ['a11yLabel', 'size', 'value']
 })
 @Component({
-    selector: 'cat-spinner',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['a11yLabel', 'size', 'value'],
-    standalone: false
+  selector: 'cat-spinner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel', 'size', 'value'],
+  standalone: false
 })
 export class CatSpinner {
   protected el: HTMLCatSpinnerElement;
@@ -1179,25 +1179,25 @@ export declare interface CatSpinner extends Components.CatSpinner {}
   ]
 })
 @Component({
-    selector: 'cat-tab',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'deactivated',
-        'error',
-        'icon',
-        'iconOnly',
-        'iconRight',
-        'label',
-        'nativeAttributes',
-        'noActive',
-        'sticky',
-        'testId',
-        'url',
-        'urlTarget'
-    ],
-    standalone: false
+  selector: 'cat-tab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'deactivated',
+    'error',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'label',
+    'nativeAttributes',
+    'noActive',
+    'sticky',
+    'testId',
+    'url',
+    'urlTarget'
+  ],
+  standalone: false
 })
 export class CatTab {
   protected el: HTMLCatTabElement;
@@ -1224,12 +1224,12 @@ export declare interface CatTab extends Components.CatTab {
   methods: ['setActive', 'setActiveIndex', 'updateAdaptiveTabs']
 })
 @Component({
-    selector: 'cat-tabs',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign'],
-    standalone: false
+  selector: 'cat-tabs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign'],
+  standalone: false
 })
 export class CatTabs {
   protected el: HTMLCatTabsElement;
@@ -1273,30 +1273,30 @@ export declare interface CatTabs extends Components.CatTabs {
   ]
 })
 @Component({
-    selector: 'cat-tag',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'addOnBlur',
-        'clearable',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'identifier',
-        'label',
-        'labelHidden',
-        'name',
-        'nativeAttributes',
-        'placeholder',
-        'required',
-        'requiredMarker',
-        'tagCreationChars',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-tag',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'addOnBlur',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'required',
+    'requiredMarker',
+    'tagCreationChars',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatTag {
   protected el: HTMLCatTagElement;
@@ -1352,33 +1352,33 @@ export declare interface CatTag extends Components.CatTag {
   methods: ['doFocus', 'doBlur', 'clear']
 })
 @Component({
-    selector: 'cat-textarea',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'autoComplete',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'identifier',
-        'label',
-        'labelHidden',
-        'maxLength',
-        'minLength',
-        'name',
-        'nativeAttributes',
-        'placeholder',
-        'readonly',
-        'required',
-        'requiredMarker',
-        'rows',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'identifier',
+    'label',
+    'labelHidden',
+    'maxLength',
+    'minLength',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'rows',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatTextarea {
   protected el: HTMLCatTextareaElement;
@@ -1440,39 +1440,39 @@ export declare interface CatTextarea extends Components.CatTextarea {
   methods: ['select', 'doFocus', 'doBlur', 'clear']
 })
 @Component({
-    selector: 'cat-time',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'autoComplete',
-        'clearable',
-        'disabled',
-        'errorUpdate',
-        'errors',
-        'hint',
-        'horizontal',
-        'icon',
-        'iconRight',
-        'identifier',
-        'label',
-        'labelHidden',
-        'max',
-        'min',
-        'name',
-        'nativeAttributes',
-        'placeholder',
-        'placement',
-        'readonly',
-        'required',
-        'requiredMarker',
-        'step',
-        'testId',
-        'textPrefix',
-        'textSuffix',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-time',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'autoComplete',
+    'clearable',
+    'disabled',
+    'errorUpdate',
+    'errors',
+    'hint',
+    'horizontal',
+    'icon',
+    'iconRight',
+    'identifier',
+    'label',
+    'labelHidden',
+    'max',
+    'min',
+    'name',
+    'nativeAttributes',
+    'placeholder',
+    'placement',
+    'readonly',
+    'required',
+    'requiredMarker',
+    'step',
+    'testId',
+    'textPrefix',
+    'textSuffix',
+    'value'
+  ],
+  standalone: false
 })
 export class CatTime {
   protected el: HTMLCatTimeElement;
@@ -1523,28 +1523,28 @@ export declare interface CatTime extends Components.CatTime {
   methods: ['doFocus', 'doBlur']
 })
 @Component({
-    selector: 'cat-toggle',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: [
-        'alignment',
-        'checked',
-        'disabled',
-        'hint',
-        'identifier',
-        'label',
-        'labelHidden',
-        'labelLeft',
-        'name',
-        'nativeAttributes',
-        'noValue',
-        'required',
-        'resolvedValue',
-        'testId',
-        'value'
-    ],
-    standalone: false
+  selector: 'cat-toggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'alignment',
+    'checked',
+    'disabled',
+    'hint',
+    'identifier',
+    'label',
+    'labelHidden',
+    'labelLeft',
+    'name',
+    'nativeAttributes',
+    'noValue',
+    'required',
+    'resolvedValue',
+    'testId',
+    'value'
+  ],
+  standalone: false
 })
 export class CatToggle {
   protected el: HTMLCatToggleElement;
@@ -1578,12 +1578,12 @@ export declare interface CatToggle extends Components.CatToggle {
   inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size']
 })
 @Component({
-    selector: 'cat-tooltip',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<ng-content></ng-content>',
-    // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-    inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size'],
-    standalone: false
+  selector: 'cat-tooltip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size'],
+  standalone: false
 })
 export class CatTooltip {
   protected el: HTMLCatTooltipElement;

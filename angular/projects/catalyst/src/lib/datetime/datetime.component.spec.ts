@@ -12,7 +12,7 @@ describe('DatetimeComponent', () => {
       </cat-datetime>
     `,
     standalone: false
-})
+  })
   class TestComponent {}
 
   let component: TestComponent;

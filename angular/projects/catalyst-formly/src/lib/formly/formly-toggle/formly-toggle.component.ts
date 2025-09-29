@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'formly-toggle',
-    template: `
+  selector: 'formly-toggle',
+  template: `
     <cat-toggle
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -18,6 +18,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     >
     </cat-toggle>
   `,
-    standalone: false
+  standalone: false
 })
 export class CatToggleFieldType extends FieldType<FieldTypeConfig> {}

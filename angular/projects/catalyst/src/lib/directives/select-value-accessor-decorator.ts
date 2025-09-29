@@ -2,9 +2,9 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 import { CatSelectConnector } from '@haiilo/catalyst';
 
 @Directive({
-    /* tslint:disable-next-line:directive-selector */
-    selector: 'cat-select',
-    standalone: false
+  /* tslint:disable-next-line:directive-selector */
+  selector: 'cat-select',
+  standalone: false
 })
 export class SelectValueAccessorDecorator implements OnChanges {
   /**

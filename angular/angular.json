@@ -130,10 +130,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "catalyst-demo:build:production"
+              "buildTarget": "catalyst-demo:build:production"
             },
             "development": {
-              "browserTarget": "catalyst-demo:build:development"
+              "buildTarget": "catalyst-demo:build:development"
             }
           },
           "defaultConfiguration": "development"

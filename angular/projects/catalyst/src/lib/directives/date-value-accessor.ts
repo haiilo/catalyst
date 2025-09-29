@@ -4,20 +4,20 @@ import { NG_VALUE_ACCESSOR, NgControl, Validators } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-    /* tslint:disable-next-line:directive-selector */
-    selector: 'cat-date, cat-date-inline',
-    host: {
-        '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
-        '(catBlur)': 'updateErrors()'
-    },
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: DateValueAccessor,
-            multi: true
-        }
-    ],
-    standalone: false
+  /* tslint:disable-next-line:directive-selector */
+  selector: 'cat-date, cat-date-inline',
+  host: {
+    '(catChange)': 'handleChangeEvent($event.target.value); updateErrors()',
+    '(catBlur)': 'updateErrors()'
+  },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: DateValueAccessor,
+      multi: true
+    }
+  ],
+  standalone: false
 })
 export class DateValueAccessor extends ValueAccessor implements AfterViewInit {
   constructor(

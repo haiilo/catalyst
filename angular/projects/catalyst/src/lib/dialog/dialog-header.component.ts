@@ -14,15 +14,15 @@ import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
  * The header of a dialog.
  */
 @Component({
-    selector: 'cat-dialog-header',
-    templateUrl: './dialog-header.component.html',
-    styleUrls: ['./dialog-header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        class: 'cat-dialog-header'
-    },
-    standalone: false
+  selector: 'cat-dialog-header',
+  templateUrl: './dialog-header.component.html',
+  styleUrls: ['./dialog-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'cat-dialog-header'
+  },
+  standalone: false
 })
 export class CatDialogHeaderComponent {
   protected readonly closeTxt: string;

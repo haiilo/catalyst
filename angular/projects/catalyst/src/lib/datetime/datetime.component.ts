@@ -4,18 +4,18 @@ import { DateValueAccessor } from '../directives/date-value-accessor';
 import { TimeValueAccessor } from '../directives/time-value-accessor';
 
 @Component({
-    selector: 'cat-datetime',
-    template: '<ng-content></ng-content>',
-    styles: ['cat-datetime { display: contents; }'],
-    encapsulation: ViewEncapsulation.None,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: DatetimeComponent,
-            multi: true
-        }
-    ],
-    standalone: false
+  selector: 'cat-datetime',
+  template: '<ng-content></ng-content>',
+  styles: ['cat-datetime { display: contents; }'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: DatetimeComponent,
+      multi: true
+    }
+  ],
+  standalone: false
 })
 export class DatetimeComponent implements AfterContentInit, ControlValueAccessor {
   protected lastValue: any;

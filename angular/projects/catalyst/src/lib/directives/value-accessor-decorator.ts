@@ -2,12 +2,12 @@ import { AfterViewInit, Directive, ElementRef, Host, Input, Optional, Self, Skip
 import { ControlContainer, NgControl, Validators } from '@angular/forms';
 
 @Directive({
-    /* tslint:disable-next-line:directive-selector */
-    selector: 'cat-input, cat-textarea, cat-datepicker, cat-select, cat-date, cat-time, cat-tag',
-    host: {
-        '(catBlur)': 'updateErrors()'
-    },
-    standalone: false
+  /* tslint:disable-next-line:directive-selector */
+  selector: 'cat-input, cat-textarea, cat-datepicker, cat-select, cat-date, cat-time, cat-tag',
+  host: {
+    '(catBlur)': 'updateErrors()'
+  },
+  standalone: false
 })
 export class ValueAccessorDecorator implements AfterViewInit {
   /**

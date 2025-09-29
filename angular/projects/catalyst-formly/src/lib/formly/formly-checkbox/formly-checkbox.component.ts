@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'formly-checkbox',
-    template: `
+  selector: 'formly-checkbox',
+  template: `
     <cat-checkbox
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -19,6 +19,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     >
     </cat-checkbox>
   `,
-    standalone: false
+  standalone: false
 })
 export class CatCheckboxFieldType extends FieldType<FieldTypeConfig> {}

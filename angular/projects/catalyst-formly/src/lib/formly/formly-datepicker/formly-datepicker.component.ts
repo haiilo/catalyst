@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'formly-datepicker',
-    template: `
+  selector: 'formly-datepicker',
+  template: `
     <cat-datepicker
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -33,6 +33,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     >
     </cat-datepicker>
   `,
-    standalone: false
+  standalone: false
 })
 export class CatDatepickerFieldType extends FieldType<FieldTypeConfig> {}
