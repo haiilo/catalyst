@@ -214,11 +214,12 @@
                 document.getElementById('notification-trigger').onclick = function () {
                   catNotificationService.show('Item saved', {
                     autoClose: false,
+                    closeButton: true,
                     action: 'Show saved items'
                   });
                   catNotificationService.show('This is light', {
                     mode: 'light',
-                    autoClose: false,
+                    closeButton: true,
                     icon: 'globe-outlined',
                     action: 'Seite neu laden'
                   });
