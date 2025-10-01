@@ -1,12 +1,12 @@
 // -- Reset
-@import '~sanitize.css/sanitize.css';
+@import 'sanitize.css/sanitize.css';
 // had to be removed because transition events are not firing any more
 // could be re-introduce with a transition-duration of 1ms
 // @import '~sanitize.css/reduce-motion.css';
 
 // -- Vendor
-@import '~toastify-js/src/toastify.css';
-@import '~flatpickr/dist/flatpickr.css';
+@import 'toastify-js/src/toastify.css';
+@import 'flatpickr/dist/flatpickr.css';
 @import 'vendor/flatpickr';
 
 // -- Fonts
