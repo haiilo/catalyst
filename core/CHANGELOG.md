@@ -1,5 +1,16 @@
 # Changelog
 
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.2...catalyst-core-v13.0.0) (2025-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766))
+
+### Features
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766)) ([5341e36](https://github.com/haiilo/catalyst/commit/5341e3644341dc7efede28f2e1e2a2dab49c2264))
+
 ## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.1...catalyst-core-v12.5.2) (2025-09-26)
 
 
