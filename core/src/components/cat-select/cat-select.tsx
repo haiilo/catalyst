@@ -152,7 +152,7 @@ export class CatSelect {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
 
   /**
    * Enable multiple selection.
@@ -591,7 +591,7 @@ export class CatSelect {
         <div
           class={{
             'select-field': true,
-            'select-horizontal': this.horizontal,
+            'select-horizontal': this.horizontal ?? false,
             'select-multiple': this.multiple
           }}
         >

@@ -75,7 +75,7 @@ export class CatInput {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
 
   /**
    * Hint for form autofill feature.
@@ -316,7 +316,7 @@ export class CatInput {
       <div
         class={{
           'input-field': true,
-          'input-horizontal': this.horizontal
+          'input-horizontal': this.horizontal ?? false
         }}
       >
         <div class={{ 'label-container': true, hidden: this.labelHidden }}>

@@ -373,7 +373,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -567,7 +567,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -834,7 +834,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * The name of an icon to be displayed in the input.
          */
@@ -1157,7 +1157,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * A unique identifier for the input.
          */
@@ -1463,7 +1463,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * A unique identifier for the input.
          */
@@ -1565,7 +1565,7 @@ export namespace Components {
         /**
           * Whether the label is on top or left.
          */
-        "horizontal": boolean;
+        "horizontal"?: boolean;
         /**
           * The name of an icon to be displayed in the input.
          */

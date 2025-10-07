@@ -37,7 +37,7 @@ export class CatDatepickerFlat {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
 
   /**
    * Hint for form autofill feature.
