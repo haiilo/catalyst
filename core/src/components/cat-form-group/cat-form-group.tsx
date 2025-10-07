@@ -49,7 +49,8 @@ export class CatFormGroup {
   @Watch('horizontal')
   onHorizontalChanged(newHorizontal: boolean) {
     this.formElements.forEach(element => {
-      element.horizontal = element.horizontal ?? newHorizontal;
+      const horizontalAttr = element.getAttribute('horizontal');
+      element.horizontal = horizontalAttr ? horizontalAttr === 'true' : newHorizontal;
     });
   }
 
