@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.0...catalyst-core-v13.0.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **core:** fix horizontal attribute for cat-form-group and its children elements ([#787](https://github.com/haiilo/catalyst/issues/787)) ([cb151a4](https://github.com/haiilo/catalyst/commit/cb151a4e4359d878461e49ced3e547669fbaad75))
+
 ## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.2...catalyst-core-v13.0.0) (2025-10-01)
 
 
