@@ -26,6 +26,10 @@ $button-sizes: (
   margin-left: -1px;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 .cat-button {
   position: relative;
   font: inherit;
