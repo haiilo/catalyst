@@ -39,6 +39,7 @@ export class CatDate {
 
   /**
    * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   * @internal
    */
   @Prop() fallbackHorizontal?: boolean;
 
