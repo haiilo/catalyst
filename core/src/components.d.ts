@@ -367,6 +367,10 @@ export namespace Components {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
@@ -560,6 +564,10 @@ export namespace Components {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -827,6 +835,10 @@ export namespace Components {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -1151,6 +1163,10 @@ export namespace Components {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
@@ -1457,6 +1473,10 @@ export namespace Components {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -1558,6 +1578,10 @@ export namespace Components {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -2745,6 +2769,10 @@ declare namespace LocalJSX {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the input.
          */
         "hint"?: string | string[];
@@ -2927,6 +2955,10 @@ declare namespace LocalJSX {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -3192,6 +3224,10 @@ declare namespace LocalJSX {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -3545,6 +3581,10 @@ declare namespace LocalJSX {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the select.
          */
         "hint"?: string | string[];
@@ -3860,6 +3900,10 @@ declare namespace LocalJSX {
          */
         "errors"?: boolean | string[] | ErrorMap;
         /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -3960,6 +4004,10 @@ declare namespace LocalJSX {
           * The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input.
          */
         "errors"?: boolean | string[] | ErrorMap;
+        /**
+          * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+         */
+        "fallbackHorizontal"?: boolean;
         /**
           * Optional hint text(s) to be displayed with the input.
          */

@@ -40,6 +40,11 @@ export class CatDatepickerFlat {
   @Prop() horizontal?: boolean;
 
   /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   */
+  @Prop() fallbackHorizontal?: boolean;
+
+  /**
    * Hint for form autofill feature.
    */
   @Prop() autoComplete = 'off';
@@ -269,7 +274,7 @@ export class CatDatepickerFlat {
       <cat-input
         ref={el => (this._input = el)}
         requiredMarker={this.requiredMarker}
-        horizontal={this.horizontal}
+        horizontal={this.horizontal ?? this.fallbackHorizontal}
         autoComplete={this.autoComplete}
         clearable={this.clearable}
         disabled={this.disabled}

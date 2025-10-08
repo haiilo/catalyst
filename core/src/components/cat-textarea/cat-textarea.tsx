@@ -69,6 +69,11 @@ export class CatTextarea {
   @Prop() horizontal?: boolean;
 
   /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   */
+  @Prop() fallbackHorizontal?: boolean;
+
+  /**
    * Hint for form autofill feature.
    */
   @Prop() autoComplete?: string;
@@ -248,7 +253,7 @@ export class CatTextarea {
         <div
           class={{
             'textarea-field': true,
-            'textarea-horizontal': this.horizontal ?? false
+            'textarea-horizontal': this.horizontal ?? this.fallbackHorizontal ?? false
           }}
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>

@@ -155,6 +155,11 @@ export class CatSelect {
   @Prop() horizontal?: boolean;
 
   /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   */
+  @Prop() fallbackHorizontal?: boolean;
+
+  /**
    * Enable multiple selection.
    */
   @Prop() multiple = false;
@@ -591,7 +596,7 @@ export class CatSelect {
         <div
           class={{
             'select-field': true,
-            'select-horizontal': this.horizontal ?? false,
+            'select-horizontal': this.horizontal ?? this.fallbackHorizontal ?? false,
             'select-multiple': this.multiple
           }}
         >
