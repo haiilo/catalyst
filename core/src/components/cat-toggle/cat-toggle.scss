@@ -15,6 +15,10 @@ $toggle-height: 1.25rem;
   display: none;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 label {
   flex: 0 1 auto;
   display: flex;

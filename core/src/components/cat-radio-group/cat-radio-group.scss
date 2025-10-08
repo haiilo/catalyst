@@ -8,3 +8,7 @@
 :host([hidden]) {
   display: none;
 }
+
+:host([disabled="false"]) {
+  cursor: auto !important;
+}

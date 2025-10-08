@@ -16,6 +16,10 @@
   display: none;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 label {
   align-self: flex-start;
 

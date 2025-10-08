@@ -16,6 +16,10 @@
   display: none;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 .datepicker-disabled,
 .datepicker-readonly {
   .flatpickr-days,

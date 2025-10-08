@@ -13,6 +13,10 @@
   display: none;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 .input-field,
 .input-container {
   display: flex;
