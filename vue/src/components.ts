@@ -106,6 +106,7 @@ export const CatCheckbox = /*@__PURE__*/ defineContainer<JSX.CatCheckbox>('cat-c
 export const CatDate = /*@__PURE__*/ defineContainer<JSX.CatDate>('cat-date', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'autoComplete',
   'clearable',
   'disabled',
@@ -157,6 +158,7 @@ export const CatDateInline = /*@__PURE__*/ defineContainer<JSX.CatDateInline>('c
 export const CatDatepicker = /*@__PURE__*/ defineContainer<JSX.CatDatepicker>('cat-datepicker', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'autoComplete',
   'clearable',
   'disabled',
@@ -236,6 +238,7 @@ export const CatIcon = /*@__PURE__*/ defineContainer<JSX.CatIcon>('cat-icon', un
 export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'autoComplete',
   'clearable',
   'togglePassword',
@@ -337,6 +340,7 @@ export const CatScrollable = /*@__PURE__*/ defineContainer<JSX.CatScrollable>('c
 export const CatSelect = /*@__PURE__*/ defineContainer<JSX.CatSelect>('cat-select', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'multiple',
   'debounce',
   'placement',
@@ -435,6 +439,7 @@ export const CatTag = /*@__PURE__*/ defineContainer<JSX.CatTag>('cat-tag', undef
 export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-textarea', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'autoComplete',
   'disabled',
   'hint',
@@ -462,6 +467,7 @@ export const CatTextarea = /*@__PURE__*/ defineContainer<JSX.CatTextarea>('cat-t
 export const CatTime = /*@__PURE__*/ defineContainer<JSX.CatTime>('cat-time', undefined, [
   'requiredMarker',
   'horizontal',
+  'fallbackHorizontal',
   'autoComplete',
   'clearable',
   'disabled',
