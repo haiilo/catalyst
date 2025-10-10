@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.1...catalyst-core-v13.0.2) (2025-10-10)
+
+
+### Bug Fixes
+
+* **core:** do not shrink labels in horizontal view ([#790](https://github.com/haiilo/catalyst/issues/790)) ([b2d2f75](https://github.com/haiilo/catalyst/commit/b2d2f750d362bce5d170375f8cc80cb06c55394b))
+
 ## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.0...catalyst-core-v13.0.1) (2025-10-08)
 
 
