@@ -152,7 +152,13 @@ export class CatSelect {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
+
+  /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   * @internal
+   */
+  @Prop() fallbackHorizontal?: boolean;
 
   /**
    * Enable multiple selection.
@@ -591,7 +597,7 @@ export class CatSelect {
         <div
           class={{
             'select-field': true,
-            'select-horizontal': this.horizontal,
+            'select-horizontal': this.horizontal ?? this.fallbackHorizontal ?? false,
             'select-multiple': this.multiple
           }}
         >

@@ -1,5 +1,47 @@
 # Changelog
 
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v13.0.1...catalyst-angular-formly-v13.0.2) (2025-10-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v13.0.0...catalyst-angular-formly-v13.0.1) (2025-10-08)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.5.2...catalyst-angular-formly-v13.0.0) (2025-10-01)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.5.1...catalyst-angular-formly-v12.5.2) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.5.0...catalyst-angular-formly-v12.5.1) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.4.1...catalyst-angular-formly-v12.5.0) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
 ## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v12.4.0...catalyst-angular-formly-v12.4.1) (2025-09-22)
 
 

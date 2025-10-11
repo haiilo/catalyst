@@ -143,28 +143,28 @@ export class CatTooltip {
   }
 
   private addListeners() {
+    this.trigger?.addEventListener('focusin', this.boundShowListener);
+    this.trigger?.addEventListener('focusout', this.boundHideListener);
+    this.trigger?.addEventListener('mouseenter', this.boundShowListener);
+    this.trigger?.addEventListener('mouseleave', this.boundHideListener);
+
     if (isTouchScreen) {
       window.addEventListener('touchstart', this.boundWindowTouchStartListener);
       this.trigger?.addEventListener('touchstart', this.boundTouchStartListener);
       this.trigger?.addEventListener('touchend', this.boundTouchEndListener);
-    } else {
-      this.trigger?.addEventListener('focusin', this.boundShowListener);
-      this.trigger?.addEventListener('focusout', this.boundHideListener);
-      this.trigger?.addEventListener('mouseenter', this.boundShowListener);
-      this.trigger?.addEventListener('mouseleave', this.boundHideListener);
     }
   }
 
   private removeListeners() {
+    this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
+    this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
+    this.trigger?.removeEventListener('focusin', this.boundShowListener);
+    this.trigger?.removeEventListener('focusout', this.boundHideListener);
+
     if (isTouchScreen) {
       window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
       this.trigger?.removeEventListener('touchstart', this.boundTouchStartListener);
       this.trigger?.removeEventListener('touchend', this.boundTouchEndListener);
-    } else {
-      this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
-      this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
-      this.trigger?.removeEventListener('focusin', this.boundShowListener);
-      this.trigger?.removeEventListener('focusout', this.boundHideListener);
     }
   }
 

@@ -4,7 +4,9 @@ type HTMLCatFormFieldElement =
   | HTMLCatInputElement
   | HTMLCatTextareaElement
   | HTMLCatSelectElement
-  | HTMLCatDatepickerElement;
+  | HTMLCatDatepickerElement
+  | HTMLCatDateElement
+  | HTMLCatTimeElement;
 
 /**
  * A form group component to group form fields and labels.
@@ -49,7 +51,7 @@ export class CatFormGroup {
   @Watch('horizontal')
   onHorizontalChanged(newHorizontal: boolean) {
     this.formElements.forEach(element => {
-      element.horizontal = element.horizontal ?? newHorizontal;
+      element.fallbackHorizontal = newHorizontal;
     });
   }
 
@@ -63,7 +65,7 @@ export class CatFormGroup {
 
   private onSlotChange(): void {
     this.formElements = Array.from(
-      this.hostElement.querySelectorAll('cat-input, cat-textarea, cat-select, cat-datepicker')
+      this.hostElement.querySelectorAll('cat-input, cat-textarea, cat-select, cat-datepicker, cat-date, cat-time')
     ) as HTMLCatFormFieldElement[];
     this.onRequiredMarkerChanged(this.requiredMarker);
     this.onHorizontalChanged(this.horizontal);

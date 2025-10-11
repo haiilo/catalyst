@@ -75,7 +75,13 @@ export class CatInput {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
+
+  /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   * @internal
+   */
+  @Prop() fallbackHorizontal?: boolean;
 
   /**
    * Hint for form autofill feature.
@@ -316,7 +322,7 @@ export class CatInput {
       <div
         class={{
           'input-field': true,
-          'input-horizontal': this.horizontal
+          'input-horizontal': this.horizontal ?? this.fallbackHorizontal ?? false
         }}
       >
         <div class={{ 'label-container': true, hidden: this.labelHidden }}>

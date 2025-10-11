@@ -57,6 +57,10 @@ $cat-input-height: 2.5rem;
     flex-direction: column;
   }
 
+  .label-container {
+    flex-shrink: 0;
+  }
+
   label {
     min-height: $cat-input-height;
     display: inline-flex;

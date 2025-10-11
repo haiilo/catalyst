@@ -1,5 +1,51 @@
 # Changelog
 
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.1...catalyst-core-v13.0.2) (2025-10-10)
+
+
+### Bug Fixes
+
+* **core:** do not shrink labels in horizontal view ([#790](https://github.com/haiilo/catalyst/issues/790)) ([b2d2f75](https://github.com/haiilo/catalyst/commit/b2d2f750d362bce5d170375f8cc80cb06c55394b))
+
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.0...catalyst-core-v13.0.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **core:** fix horizontal attribute for cat-form-group and its children elements ([#787](https://github.com/haiilo/catalyst/issues/787)) ([cb151a4](https://github.com/haiilo/catalyst/commit/cb151a4e4359d878461e49ced3e547669fbaad75))
+
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.2...catalyst-core-v13.0.0) (2025-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766))
+
+### Features
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766)) ([5341e36](https://github.com/haiilo/catalyst/commit/5341e3644341dc7efede28f2e1e2a2dab49c2264))
+
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.1...catalyst-core-v12.5.2) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** add focus and mouse event listeners even for touch screen devices ([#783](https://github.com/haiilo/catalyst/issues/783)) ([6797f0b](https://github.com/haiilo/catalyst/commit/6797f0be0bf364aeb43e085aa99c51fc5c1f9386))
+
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.0...catalyst-core-v12.5.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** fix linter ([#781](https://github.com/haiilo/catalyst/issues/781)) ([4ef2a93](https://github.com/haiilo/catalyst/commit/4ef2a936efe2483162a7b7c4b21a8f7adfe799c2))
+
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.1...catalyst-core-v12.5.0) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
 ## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.0...catalyst-core-v12.4.1) (2025-09-22)
 
 

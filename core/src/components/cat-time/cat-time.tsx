@@ -43,7 +43,13 @@ export class CatTime {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
+
+  /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   * @internal
+   */
+  @Prop() fallbackHorizontal?: boolean;
 
   /**
    * Hint for form autofill feature.
@@ -305,7 +311,7 @@ export class CatTime {
           class="cat-time-input"
           ref={el => (this.input = el as HTMLCatInputElement)}
           requiredMarker={this.requiredMarker}
-          horizontal={this.horizontal}
+          horizontal={this.horizontal ?? this.fallbackHorizontal}
           autoComplete={this.autoComplete}
           clearable={this.clearable}
           disabled={this.disabled}

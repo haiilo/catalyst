@@ -1,5 +1,47 @@
 # Changelog
 
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.0.1...catalyst-react-v13.0.2) (2025-10-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.0.0...catalyst-react-v13.0.1) (2025-10-08)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v12.5.2...catalyst-react-v13.0.0) (2025-10-01)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-react-v12.5.1...catalyst-react-v12.5.2) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v12.5.0...catalyst-react-v12.5.1) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v12.4.1...catalyst-react-v12.5.0) (2025-09-26)
+
+
+### Features
+
+* **react:** update typescript version in react set of packages ([#777](https://github.com/haiilo/catalyst/issues/777)) ([b541ead](https://github.com/haiilo/catalyst/commit/b541ead80f7a359d8f2fd790d6376becc31d1c56))
+
 ## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v12.4.0...catalyst-react-v12.4.1) (2025-09-22)
 
 
