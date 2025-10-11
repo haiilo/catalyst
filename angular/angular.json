@@ -10,7 +10,7 @@
       "prefix": "cat",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/catalyst/ng-package.json"
           },
@@ -25,7 +25,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
             "main": "projects/catalyst/src/test.ts",
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
@@ -41,7 +41,7 @@
       "prefix": "cat",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/catalyst-formly/ng-package.json"
           },
@@ -56,7 +56,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
             "main": "projects/catalyst-formly/src/test.ts",
             "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
@@ -80,18 +80,20 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/catalyst-demo",
+            "outputPath": {
+              "base": "dist/catalyst-demo"
+            },
             "index": "projects/catalyst-demo/src/index.html",
-            "main": "projects/catalyst-demo/src/main.ts",
-            "polyfills": "projects/catalyst-demo/src/polyfills.ts",
+            "polyfills": ["projects/catalyst-demo/src/polyfills.ts"],
             "tsConfig": "projects/catalyst-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
             "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["loglevel"]
+            "allowedCommonJsDependencies": ["loglevel"],
+            "browser": "projects/catalyst-demo/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -116,9 +118,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -127,7 +127,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "catalyst-demo:build:production"
@@ -139,13 +139,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "catalyst-demo:build"
+            "buildTarget": "catalyst-demo:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
             "main": "projects/catalyst-demo/src/test.ts",
             "polyfills": "projects/catalyst-demo/src/polyfills.ts",
