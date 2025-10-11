@@ -18,7 +18,7 @@ export type CatRadioGroupType = {
       [name]="props.name"
       [a11yLabel]="props.a11yLabel"
       [labelLeft]="props.labelLeft"
-      >
+    >
       @for (option of props.options; track option) {
         <cat-radio
           [checked]="option.checked"
@@ -32,11 +32,11 @@ export type CatRadioGroupType = {
           [hint]="option.hint"
           [labelLeft]="option.labelLeft"
           [nativeAttributes]="option.nativeAttributes"
-          >
+        >
         </cat-radio>
       }
     </cat-radio-group>
-    `,
+  `,
   standalone: false
 })
 export class CatRadioGroupFieldType extends FieldType<FieldTypeConfig<CatRadioGroupType>> {}
