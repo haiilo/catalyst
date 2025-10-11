@@ -10,7 +10,7 @@
       "prefix": "cat",
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/catalyst/ng-package.json"
           },
@@ -25,7 +25,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/catalyst/src/test.ts",
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
@@ -41,7 +41,7 @@
       "prefix": "cat",
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/catalyst-formly/ng-package.json"
           },
@@ -56,7 +56,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/catalyst-formly/src/test.ts",
             "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
@@ -80,20 +80,18 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/catalyst-demo"
-            },
+            "outputPath": "dist/catalyst-demo",
             "index": "projects/catalyst-demo/src/index.html",
-            "polyfills": ["projects/catalyst-demo/src/polyfills.ts"],
+            "main": "projects/catalyst-demo/src/main.ts",
+            "polyfills": "projects/catalyst-demo/src/polyfills.ts",
             "tsConfig": "projects/catalyst-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
             "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["loglevel"],
-            "browser": "projects/catalyst-demo/src/main.ts"
+            "allowedCommonJsDependencies": ["loglevel"]
           },
           "configurations": {
             "production": {
@@ -118,7 +116,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -127,7 +127,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "catalyst-demo:build:production"
@@ -139,13 +139,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n",
+          "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "catalyst-demo:build"
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/catalyst-demo/src/test.ts",
             "polyfills": "projects/catalyst-demo/src/polyfills.ts",
@@ -158,32 +158,6 @@
           }
         }
       }
-    }
-  },
-  "schematics": {
-    "@schematics/angular:component": {
-      "type": "component"
-    },
-    "@schematics/angular:directive": {
-      "type": "directive"
-    },
-    "@schematics/angular:service": {
-      "type": "service"
-    },
-    "@schematics/angular:guard": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:interceptor": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:module": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:pipe": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:resolver": {
-      "typeSeparator": "."
     }
   }
 }

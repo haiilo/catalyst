@@ -1,17 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup, FormsModule,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
-import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import {
-  CatalystFormlyModule,
   CatCheckboxFieldType,
   CatDatepickerFieldType,
   CatInputFieldType,
@@ -21,33 +13,16 @@ import {
   CatTextareaFieldType,
   CatToggleFieldType
 } from '../../../catalyst-formly/src';
-import {
-  CAT_I18N_REGISTRY_TOKEN,
-  CAT_ICON_REGISTRY_TOKEN,
-  CatalystModule,
-  CatDialogService
-} from '../../../catalyst/src';
+import { CAT_I18N_REGISTRY_TOKEN, CAT_ICON_REGISTRY_TOKEN, CatDialogService } from '../../../catalyst/src';
 import { countryConnector } from './app.countries';
 import { DialogComponent } from './dialog/dialog.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { DialogModule } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  declarations: [DialogComponent],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(),
-    CatalystModule.forRoot(),
-    CatalystFormlyModule,
-    FormsModule,
-    DialogModule
-  ]
+  standalone: false
 })
 export class AppComponent implements OnInit {
   form = new FormGroup({
@@ -156,7 +131,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private readonly dialog: CatDialogService,
+    private dialog: CatDialogService,
     @Inject(CAT_ICON_REGISTRY_TOKEN) readonly iconRegistry: CatIconRegistry,
     @Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18nRegistry: CatI18nRegistry
   ) {
