@@ -14,7 +14,8 @@ import { TimeValueAccessor } from '../directives/time-value-accessor';
       useExisting: DatetimeComponent,
       multi: true
     }
-  ]
+  ],
+  standalone: false
 })
 export class DatetimeComponent implements AfterContentInit, ControlValueAccessor {
   protected lastValue: any;

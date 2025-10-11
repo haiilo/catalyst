@@ -21,7 +21,8 @@ import { DialogComponent } from './dialog/dialog.component';
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AppComponent implements OnInit {
   form = new FormGroup({
