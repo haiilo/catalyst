@@ -148,7 +148,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "main": "projects/catalyst-demo/src/test.ts",
-            "polyfills": "projects/catalyst-demo/src/polyfills.ts",
+            "polyfills": ["projects/catalyst-demo/src/polyfills.ts"],
             "tsConfig": "projects/catalyst-demo/tsconfig.spec.json",
             "karmaConfig": "projects/catalyst-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
