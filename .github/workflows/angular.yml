@@ -77,4 +77,4 @@ jobs:
       - name: Build
         run: pnpm run build:tokens
       - name: Test
-        run: pnpm run test:ci
+        run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
