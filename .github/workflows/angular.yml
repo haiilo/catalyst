@@ -78,5 +78,7 @@ jobs:
         run: |
           pnpm run build:tokens
           pnpm run build:core
+          pnpm run build:angular
+          pnpm run build:angular-formly
       - name: Test
         run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
