@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.2...catalyst-core-v13.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **core:** fix cat-tabs alignment (regression after adding More button) ([#794](https://github.com/haiilo/catalyst/issues/794)) ([6543b9b](https://github.com/haiilo/catalyst/commit/6543b9b1740be4ae520d136ac45d29eb297d674b))
+
 ## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.1...catalyst-core-v13.0.2) (2025-10-10)
 
 
