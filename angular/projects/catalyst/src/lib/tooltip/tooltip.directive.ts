@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Directive, Input, OnChanges, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { CatTooltip } from '../directives/proxies';
 
 /**
@@ -7,8 +7,10 @@ import { CatTooltip } from '../directives/proxies';
 @Directive({
   selector: '[catTooltip]'
 })
-export class CatTooltipDirective implements OnInit {
+export class CatTooltipDirective implements OnInit, OnChanges {
   @Input() catTooltip!: string;
+
+  private component?: ComponentRef<CatTooltip>;
 
   constructor(
     private templateRef: TemplateRef<unknown>,
@@ -16,8 +18,15 @@ export class CatTooltipDirective implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.viewContainer.createComponent(CatTooltip, {
+    this.component = this.viewContainer.createComponent(CatTooltip, {
       projectableNodes: [this.viewContainer.createEmbeddedView(this.templateRef).rootNodes]
-    }).instance.content = this.catTooltip;
+    });
+    this.component.instance.content = this.catTooltip;
+  }
+
+  ngOnChanges() {
+    if (this.component) {
+      this.component.instance.content = this.catTooltip;
+    }
   }
 }
