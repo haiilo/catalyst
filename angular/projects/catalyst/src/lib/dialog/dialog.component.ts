@@ -22,7 +22,8 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'cat-dialog'
-  }
+  },
+  standalone: false
 })
 export class CatDialogComponent implements AfterContentInit {
   /**

@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-radio, cat-radio-group',
   host: {
-    '(catChange)': 'handleChangeEvent($event.target.value)'
+    '(catChange)': 'handleChangeEvent($event.target?.["value"])'
   },
   providers: [
     {
@@ -15,7 +15,8 @@ import { ValueAccessor } from './value-accessor';
       useExisting: RadioValueAccessor,
       multi: true
     }
-  ]
+  ],
+  standalone: false
 })
 export class RadioValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {

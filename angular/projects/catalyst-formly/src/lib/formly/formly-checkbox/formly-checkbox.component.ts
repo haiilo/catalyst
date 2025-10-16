@@ -18,6 +18,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [requiredMarker]="props.requiredMarker"
     >
     </cat-checkbox>
-  `
+  `,
+  standalone: false
 })
 export class CatCheckboxFieldType extends FieldType<FieldTypeConfig> {}
