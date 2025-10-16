@@ -46,6 +46,7 @@ export interface FormatDateMaskOptions {
 })
 export class CatInput {
   private readonly _id = `cat-input-${nextUniqueId++}`;
+
   private get id() {
     return this.identifier || this._id;
   }
@@ -355,7 +356,7 @@ export class CatInput {
             </label>
           )}
         </div>
-        <div class="input-container">
+        <div class={{ 'input-color': this.type === 'color', 'input-container': true }}>
           <div class="input-outer-wrapper">
             <div
               class={{
@@ -375,7 +376,15 @@ export class CatInput {
               {this.icon && !this.iconRight && (
                 <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
               )}
-              <div class="input-inner-wrapper">
+              <div
+                class={{
+                  'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
+                  'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value,
+                  'input-inner-wrapper': true,
+                  'type-color': this.type === 'color'
+                }}
+              >
+                {this.type === 'color' && <span class="color-value">{this.value ?? '#000000'}</span>}
                 <input
                   data-test={this.testId}
                   {...this.nativeAttributes}
