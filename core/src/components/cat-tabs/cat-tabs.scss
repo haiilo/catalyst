@@ -12,11 +12,15 @@
 }
 
 :host([tabs-align='center']) {
-  justify-content: center;
+  .cat-tab-list {
+    justify-content: center;
+  }
 }
 
 :host([tabs-align='right']) {
-  justify-content: end;
+  .cat-tab-list {
+    justify-content: end;
+  }
 }
 
 :host([tabs-align='justify']) {
