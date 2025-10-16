@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.2...catalyst-angular-v13.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **angular:** update catTooltip directive content on change ([#797](https://github.com/haiilo/catalyst/issues/797)) ([b33b1e3](https://github.com/haiilo/catalyst/commit/b33b1e3a63dc36713358e5d719bcc3a94e3c0cd7))
+
 ## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.1...catalyst-angular-v13.0.2) (2025-10-10)
 
 
