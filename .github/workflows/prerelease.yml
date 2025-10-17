@@ -1,0 +1,115 @@
+name: Pre-release
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+    paths:
+      - 'tokens/**'
+      - 'core/**'
+      - 'angular/**'
+      - 'react/**'
+      - 'vue/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-latest
+    # Only run for PRs from feature branches (not from forks or dependabot)
+    if: github.event.pull_request.head.repo.full_name == github.repository && (startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'feat/'))
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Get current version
+        id: version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          BRANCH_NAME="${{ github.head_ref }}"
+          SANITIZED_BRANCH=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9-]/-/g' | sed 's/--*/-/g' | tr '[:upper:]' '[:lower:]')
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          PRERELEASE_VERSION="${CURRENT_VERSION}-${SANITIZED_BRANCH}.${PR_NUMBER}"
+          echo "version=$PRERELEASE_VERSION" >> $GITHUB_OUTPUT
+          echo "branch_tag=$SANITIZED_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Update package versions
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+
+          # Update all workspace package versions using pnpm
+          pnpm --filter @haiilo/catalyst-tokens version $VERSION --no-git-tag-version
+          pnpm --filter @haiilo/catalyst version $VERSION --no-git-tag-version
+          pnpm --filter @haiilo/catalyst-angular version $VERSION --no-git-tag-version
+          pnpm --filter @haiilo/catalyst-angular-formly version $VERSION --no-git-tag-version
+          pnpm --filter @haiilo/catalyst-react version $VERSION --no-git-tag-version
+
+      - name: Rebuild with new version
+        run: pnpm run build
+
+      - name: Publish pre-release to npm
+        run: |
+          NPM_TAG="${{ steps.version.outputs.branch_tag }}"
+          echo "Publishing pre-release ${{ steps.version.outputs.version }} with tag '$NPM_TAG'"
+
+          pnpm run publish:tokens -- --tag "$NPM_TAG" --no-git-checks
+          pnpm run publish:core -- --tag "$NPM_TAG" --no-git-checks
+          cd angular/dist/catalyst && pnpm publish --tag "$NPM_TAG" --no-git-checks && cd ../../..
+          cd angular/dist/catalyst-formly && pnpm publish --tag "$NPM_TAG" --no-git-checks && cd ../../..
+          pnpm run publish:react -- --tag "$NPM_TAG" --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            🚀 **Pre-release published!**
+
+            Version: `${{ steps.version.outputs.version }}`
+
+            Install with:
+            ```bash
+            npm install @haiilo/catalyst@${{ steps.version.outputs.branch_tag }}
+            # or
+            pnpm add @haiilo/catalyst@${{ steps.version.outputs.branch_tag }}
+            ```
