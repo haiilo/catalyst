@@ -1,0 +1,108 @@
+name: Pre-release Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository && (startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'feat/'))
+    steps:
+      - name: Prepare variables
+        id: vars
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          SANITIZED_BRANCH=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9-]/-/g' | sed 's/--*/-/g' | tr '[:upper:]' '[:lower:]')
+          echo "sanitized_branch=$SANITIZED_BRANCH" >> $GITHUB_OUTPUT
+          echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Deprecate pre-release versions
+        run: |
+          SANITIZED_BRANCH="${{ steps.vars.outputs.sanitized_branch }}"
+          PR_NUMBER="${{ steps.vars.outputs.pr_number }}"
+
+          echo "Deprecating pre-release versions for PR #${PR_NUMBER} (${SANITIZED_BRANCH})"
+
+          # Function to deprecate matching versions
+          deprecate_versions() {
+            local package=$1
+            echo "Processing package: $package"
+
+            # Get all versions for this package
+            versions=$(npm view $package versions --json 2>/dev/null || echo "[]")
+
+            # Early exit if package has no published versions
+            if [ "$(echo "$versions" | jq 'length')" -eq 0 ]; then
+              echo "  No versions found for $package"
+              return
+            fi
+
+            # Filter versions matching this PR's pattern (using --arg for safe escaping)
+            pattern="${SANITIZED_BRANCH}.${PR_NUMBER}"
+            matching_versions=$(echo "$versions" | jq -r --arg pattern "$pattern" '.[] | select(contains($pattern))')
+
+            if [ -z "$matching_versions" ]; then
+              echo "  No pre-release versions found for $package"
+              return
+            fi
+
+            # Deprecate each matching version
+            echo "$matching_versions" | while read -r version; do
+              if [ -n "$version" ]; then
+                echo "  Deprecating $package@$version"
+                npm deprecate "$package@$version" "Pre-release for PR #${PR_NUMBER} - PR closed" 2>/dev/null || echo "  Failed to deprecate $version"
+              fi
+            done
+          }
+
+          # Deprecate versions for all packages
+          deprecate_versions "@haiilo/catalyst-tokens"
+          deprecate_versions "@haiilo/catalyst"
+          deprecate_versions "@haiilo/catalyst-angular"
+          deprecate_versions "@haiilo/catalyst-angular-formly"
+          deprecate_versions "@haiilo/catalyst-react"
+
+          echo "Cleanup complete!"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Update PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            🧹 **Pre-release cleanup completed!**
+
+            All pre-release versions for this PR have been deprecated on npm.
+
+      - name: Remove dist tag
+        run: |
+          SANITIZED_BRANCH="${{ steps.vars.outputs.sanitized_branch }}"
+
+          echo "Removing dist-tag: $SANITIZED_BRANCH"
+
+          # Remove the dist-tag for each package in parallel
+          for pkg in catalyst-tokens catalyst catalyst-angular catalyst-angular-formly catalyst-react; do
+            npm dist-tag rm "@haiilo/${pkg}" "$SANITIZED_BRANCH" 2>/dev/null || true &
+          done
+          wait
+
+          echo "Dist-tags removed!"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
