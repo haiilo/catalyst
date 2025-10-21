@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.3...catalyst-core-v13.1.0) (2025-10-21)
+
+
+### Features
+
+* **core:** style cat-input of type color ([#793](https://github.com/haiilo/catalyst/issues/793)) ([495eec5](https://github.com/haiilo/catalyst/commit/495eec5707a0ba22a575963c4facf4275d526814))
+
 ## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.2...catalyst-core-v13.0.3) (2025-10-16)
 
 
