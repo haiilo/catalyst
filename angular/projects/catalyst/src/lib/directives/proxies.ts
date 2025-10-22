@@ -678,6 +678,7 @@ export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
   inputs: [
+    'accept',
     'autoComplete',
     'clearable',
     'dateMaskOptions',
@@ -696,6 +697,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'maxLength',
     'min',
     'minLength',
+    'multiple',
     'name',
     'nativeAttributes',
     'placeholder',
@@ -719,6 +721,7 @@ export declare interface CatIcon extends Components.CatIcon {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'accept',
     'autoComplete',
     'clearable',
     'dateMaskOptions',
@@ -737,6 +740,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'maxLength',
     'min',
     'minLength',
+    'multiple',
     'name',
     'nativeAttributes',
     'placeholder',

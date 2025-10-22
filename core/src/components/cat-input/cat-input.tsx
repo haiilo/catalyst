@@ -85,6 +85,16 @@ export class CatInput {
   @Prop() fallbackHorizontal?: boolean;
 
   /**
+   * Defines the file types the file input should accept.
+   */
+  @Prop() accept?: string;
+
+  /**
+   * Whether the input should allow multiple files to be selected.
+   */
+  @Prop() multiple?: boolean;
+
+  /**
    * Hint for form autofill feature.
    */
   @Prop() autoComplete?: string;
@@ -397,6 +407,8 @@ export class CatInput {
                   }}
                   autocomplete={this.autoComplete}
                   disabled={this.disabled}
+                  accept={this.type === 'file' ? this.accept : undefined}
+                  multiple={this.type === 'file' ? this.multiple : undefined}
                   max={this.max}
                   maxlength={this.maxLength}
                   min={this.min}
