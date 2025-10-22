@@ -799,6 +799,10 @@ export namespace Components {
      */
     interface CatInput {
         /**
+          * Defines the file types the file input should accept.
+         */
+        "accept"?: string;
+        /**
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
@@ -887,6 +891,10 @@ export namespace Components {
           * A minimum length (number of characters) for textual values.
          */
         "minLength"?: number;
+        /**
+          * Whether the input should allow multiple files to be selected.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -3201,6 +3209,10 @@ declare namespace LocalJSX {
      */
     interface CatInput {
         /**
+          * Defines the file types the file input should accept.
+         */
+        "accept"?: string;
+        /**
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
@@ -3276,6 +3288,10 @@ declare namespace LocalJSX {
           * A minimum length (number of characters) for textual values.
          */
         "minLength"?: number;
+        /**
+          * Whether the input should allow multiple files to be selected.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
