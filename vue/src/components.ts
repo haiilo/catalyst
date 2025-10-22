@@ -274,7 +274,7 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'catChange',
   'catFocus',
   'catBlur',
-  'filesSelected'
+  'catChangeFiles'
 ]);
 
 

@@ -196,6 +196,6 @@ export class AppComponent implements OnInit {
   }
 
   selectFile($event: any) {
-    console.log($event)
+    console.log($event);
   }
 }

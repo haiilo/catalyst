@@ -271,7 +271,7 @@ export class CatInput {
   /**
    * Emitted if the input type is "file" and files are selected.
    */
-  @Event() filesSelected!: EventEmitter<FileList | null>;
+  @Event() catChangeFiles!: EventEmitter<FileList | null>;
 
   componentWillLoad(): void {
     this.onErrorsChanged(this.errors, undefined, false);
@@ -317,7 +317,7 @@ export class CatInput {
     this.value = '';
     this.catChange.emit(this.value);
     if (this.type === 'file') {
-      this.filesSelected.emit(null);
+      this.catChangeFiles.emit(null);
     }
   }
 
@@ -507,7 +507,7 @@ export class CatInput {
     this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
     if (this.type === 'file') {
-      this.filesSelected.emit(this.input.files);
+      this.catChangeFiles.emit(this.input.files);
     }
     this.showErrorsIfTimeout();
   }
