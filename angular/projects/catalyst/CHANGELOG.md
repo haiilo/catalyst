@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.2.0...catalyst-angular-v13.3.0) (2025-10-22)
+
+
+### Features
+
+* **core:** emit files selected by input type file ([#805](https://github.com/haiilo/catalyst/issues/805)) ([4aedc50](https://github.com/haiilo/catalyst/commit/4aedc50452b8ede54cc33927ac9a102f270d2b07))
+
 ## [13.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.1.0...catalyst-angular-v13.2.0) (2025-10-22)
 
 
