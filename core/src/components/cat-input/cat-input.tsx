@@ -268,6 +268,11 @@ export class CatInput {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  /**
+   * Emitted if the input type is "file" and files are selected.
+   */
+  @Event() filesSelected!: EventEmitter<FileList | null>;
+
   componentWillLoad(): void {
     this.onErrorsChanged(this.errors, undefined, false);
   }
@@ -311,6 +316,9 @@ export class CatInput {
   async clear(): Promise<void> {
     this.value = '';
     this.catChange.emit(this.value);
+    if (this.type === 'file') {
+      this.filesSelected.emit(null);
+    }
   }
 
   @Watch('errors')
@@ -498,6 +506,9 @@ export class CatInput {
     this.value = formattedValue;
     this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
+    if (this.type === 'file') {
+      this.filesSelected.emit(this.input.files);
+    }
     this.showErrorsIfTimeout();
   }
 

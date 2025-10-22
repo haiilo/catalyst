@@ -766,7 +766,7 @@ export class CatInput {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur', 'filesSelected']);
   }
 }
 
@@ -783,6 +783,10 @@ export declare interface CatInput extends Components.CatInput {
    * Emitted when the input loses focus.
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted if the input type is "file" and files are selected.
+   */
+  filesSelected: EventEmitter<CustomEvent<FileList | null>>;
 }
 
 @ProxyCmp({

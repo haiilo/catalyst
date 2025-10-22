@@ -53,11 +53,12 @@ including passwords and numbers.
 
 ## Events
 
-| Event       | Description                            | Type                      |
-| ----------- | -------------------------------------- | ------------------------- |
-| `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.     | `CustomEvent<string>`     |
-| `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
+| Event           | Description                                                 | Type                            |
+| --------------- | ----------------------------------------------------------- | ------------------------------- |
+| `catBlur`       | Emitted when the input loses focus.                         | `CustomEvent<FocusEvent>`       |
+| `catChange`     | Emitted when the value is changed.                          | `CustomEvent<string>`           |
+| `catFocus`      | Emitted when the input received focus.                      | `CustomEvent<FocusEvent>`       |
+| `filesSelected` | Emitted if the input type is "file" and files are selected. | `CustomEvent<FileList \| null>` |
 
 
 ## Methods
