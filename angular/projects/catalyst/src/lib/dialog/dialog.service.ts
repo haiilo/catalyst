@@ -15,7 +15,7 @@ export const CAT_DIALOG_SIZE_TOKEN = new InjectionToken<{ [key: string]: string 
  */
 export type CatDialogConfig<D = unknown> = Pick<
   DialogConfig<D>,
-  'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass'
+  'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass' | 'restoreFocus'
 >;
 
 /**
