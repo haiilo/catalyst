@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.1.0...catalyst-angular-v13.2.0) (2025-10-22)
+
+
+### Features
+
+* **core:** style file inputs and support 'accept' and 'multiple' attributes ([#803](https://github.com/haiilo/catalyst/issues/803)) ([153c8fb](https://github.com/haiilo/catalyst/commit/153c8fb0e13bc0fda302263b50c729f5c189dc35))
+
 ## [13.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.3...catalyst-angular-v13.1.0) (2025-10-21)
 
 
