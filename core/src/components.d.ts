@@ -2105,6 +2105,7 @@ declare global {
         "catChange": string;
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
+        "catChangeFiles": FileList | null;
     }
     /**
      * Inputs are used to allow users to provide text input when the expected input
@@ -3308,6 +3309,10 @@ declare namespace LocalJSX {
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatInputCustomEvent<string>) => void;
+        /**
+          * Emitted if the input type is "file" and files are selected.
+         */
+        "onCatChangeFiles"?: (event: CatInputCustomEvent<FileList | null>) => void;
         /**
           * Emitted when the input received focus.
          */
