@@ -5,72 +5,152 @@
 [![GitHub Pages](https://github.com/haiilo/catalyst/actions/workflows/pages.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/pages.yml)
 ![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
 
-This project contains the Catalyst design system standalone Web Components using Stencil.
+This project contains the Catalyst design system standalone Web Components built with Stencil.
 
-# Stencil
-
-Stencil is a compiler for building fast web apps using Web Components.
-
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool. Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
-
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
-
-## Getting Started
-
-To start building a new web component using Stencil, clone this repo to a new directory:
+## Quick Start
 
 ```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
+# Install dependencies
+pnpm install
+
+# Build components
+pnpm run build
+
+# Start development server
+pnpm start
+
+# Run tests
+pnpm test
+
+# Run Storybook (interactive component documentation)
+pnpm run storybook
 ```
 
-and run:
+## 📚 Storybook
+
+Catalyst uses Storybook for component documentation and development. Storybook provides an interactive environment to browse components, view their variants, and test different props.
+
+### Running Storybook
 
 ```bash
-npm install
-npm start
+# Start Storybook dev server
+pnpm run storybook
+
+# Build static Storybook for deployment
+pnpm run storybook:build
 ```
 
-To build the component for production, run:
+Storybook will be available at http://localhost:6006/
+
+For more information on writing and contributing stories, see the [Storybook README](.storybook/README.md).
+
+## Development
+
+### Building Components
 
 ```bash
-npm run build
+pnpm run build        # Production build
+pnpm run build:watch  # Watch mode for development
 ```
 
-To run the unit tests for the components, run:
+### Testing
 
 ```bash
-npm test
+pnpm test             # Run all tests
+pnpm test:watch       # Watch mode
 ```
 
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+### Linting & Formatting
 
-## Naming Components
+```bash
+pnpm run lint         # Lint TypeScript/JavaScript
+pnpm run lint:style   # Lint SCSS
+pnpm run prettier     # Format code
+```
 
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
+## Project Structure
 
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
+```
+core/
+├── .storybook/          # Storybook configuration
+├── src/
+│   ├── components/      # Web components
+│   │   └── cat-*/
+│   │       ├── *.tsx           # Component implementation
+│   │       ├── *.scss          # Component styles
+│   │       ├── *.spec.tsx      # Unit tests
+│   │       └── *.stories.ts    # Storybook stories
+│   ├── styles/          # Global styles
+│   └── utils/           # Utility functions
+├── dist/                # Build output
+└── loader/              # Lazy-loading scripts
+```
 
-## Using this component
+## Web Components
 
-There are three strategies we recommend for using web components built with Stencil.
+Catalyst components are standards-based Web Components that work in any framework or with no framework at all. They are built with [Stencil](https://stenciljs.com/), which compiles to highly optimized Web Components.
 
-The first step for all three of these strategies is to [publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+### Usage
 
-### Script tag
+#### Script Tag
 
-- Put a script tag similar to this `<script type='module' src='https://unpkg.com/my-component@0.0.1/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
+```html
+<script type='module' src='https://unpkg.com/@haiilo/catalyst/dist/catalyst/catalyst.esm.js'></script>
+<link rel="stylesheet" href="https://unpkg.com/@haiilo/catalyst/dist/catalyst/catalyst.css">
 
-### Node Modules
+<cat-button variant="filled" color="primary">Click Me</cat-button>
+```
 
-- Run `npm install my-component --save`
-- Put a script tag similar to this `<script type='module' src='node_modules/my-component/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
+#### Node Modules
 
-### In a stencil-starter app
+```bash
+npm install @haiilo/catalyst
+```
 
-- Run `npm install my-component --save`
-- Add an import to the npm packages `import my-component;`
-- Then you can use the element anywhere in your template, JSX, html etc
+```javascript
+import { defineCustomElements } from '@haiilo/catalyst/loader';
+import '@haiilo/catalyst/dist/catalyst/catalyst.css';
+
+defineCustomElements();
+```
+
+#### Angular
+
+See the [@haiilo/catalyst-angular](../angular/README.md) package.
+
+#### React
+
+See the [@haiilo/catalyst-react](../react/README.md) package.
+
+#### Vue
+
+See the [@haiilo/catalyst-vue](../vue/README.md) package.
+
+## Contributing
+
+When adding new components:
+
+1. Generate component scaffold: `pnpm run generate`
+2. Implement the component in `src/components/`
+3. Add styles in the component's `.scss` file
+4. Write unit tests in `*.spec.tsx`
+5. Create Storybook stories in `*.stories.ts`
+6. Document props with JSDoc comments
+7. Run tests and linting before committing
+
+For detailed Storybook contribution guidelines, see [.storybook/README.md](.storybook/README.md).
+
+## Resources
+
+- [Catalyst Design Documentation](https://design.haiilo.com)
+- [Stencil Documentation](https://stenciljs.com/docs)
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [Storybook Documentation](https://storybook.js.org/docs)
+
+## License
+
+MIT - See [LICENSE](LICENSE) file for details.
+
+---
+
+Made with ❤️ in Hamburg, Germany
