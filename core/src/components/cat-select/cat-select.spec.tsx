@@ -50,6 +50,7 @@ describe('cat-select', () => {
       });
 
       // Directly update selection state (simulating what happens after user interaction)
+      // This mimics the internal flow when user clicks an option
       select['patchState']({
         selection: [{ item: { id: 'option1' }, render: { label: 'option1' } }],
         tempSelection: []
@@ -57,6 +58,26 @@ describe('cat-select', () => {
       await page.waitForChanges();
 
       expect(eventEmitted).toBe(true);
+    });
+
+    it('should not emit catChange event when value is changed programmatically', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      const catChangeSpy = jest.fn();
+
+      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await page.waitForChanges();
+
+      page.root?.addEventListener('catChange', catChangeSpy);
+
+      select.value = 'option2';
+      await page.waitForChanges();
+
+      expect(catChangeSpy).not.toHaveBeenCalled();
     });
   });
 });
