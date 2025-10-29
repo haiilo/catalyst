@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.0...catalyst-angular-v13.4.0) (2025-10-29)
+
+
+### Features
+
+* test beta prerelease configuration ([0a4ade7](https://github.com/haiilo/catalyst/commit/0a4ade791508bf53e9313d109279237831dfd74e))
+
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.2.0...catalyst-angular-v13.3.0) (2025-10-22)
 
 
