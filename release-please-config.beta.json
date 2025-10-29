@@ -4,27 +4,52 @@
     "tokens": {
       "component": "catalyst-tokens",
       "release-type": "node",
-      "prerelease": true
+      "versioning": "prerelease",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "core": {
       "component": "catalyst-core",
       "release-type": "node",
-      "prerelease": true
+      "versioning": "prerelease",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "angular/projects/catalyst": {
       "component": "catalyst-angular",
       "release-type": "node",
-      "prerelease": true
+      "versioning": "prerelease",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "angular/projects/catalyst-formly": {
       "component": "catalyst-angular-formly",
       "release-type": "node",
-      "prerelease": true
+      "versioning": "prerelease",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "react": {
       "component": "catalyst-react",
       "release-type": "node",
-      "prerelease": true
+      "versioning": "prerelease",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": true,
+      "prerelease-type": "beta"
     }
   },
   "plugins": [
@@ -39,6 +64,5 @@
         "catalyst-react"
       ]
     }
-  ],
-  "prerelease-type": "beta"
+  ]
 }
