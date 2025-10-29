@@ -131,3 +131,10 @@ jobs:
           name: core-coverage
           path: core/coverage/
           retention-days: 30
+      - name: Coverage report
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: core/coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          delete-old-comments: true

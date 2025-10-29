@@ -105,3 +105,10 @@ jobs:
           name: angular-coverage
           path: angular/coverage/
           retention-days: 30
+      - name: Coverage report
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: angular/coverage/catalyst/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          delete-old-comments: true
