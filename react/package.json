@@ -7,10 +7,6 @@
     "access": "public"
   },
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ionic-team/ionic.git"
-  },
   "scripts": {
     "prebuild": "pnpm run clean",
     "build": "pnpm run tsc",
