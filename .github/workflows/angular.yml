@@ -113,3 +113,4 @@ jobs:
           lcov-file: angular/coverage/catalyst/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
           delete-old-comments: true
+          title: 'Angular Coverage Report'
