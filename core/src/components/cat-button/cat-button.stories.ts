@@ -10,36 +10,36 @@ const meta: Meta = {
   component: 'cat-button',
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   },
   argTypes: {
     variant: {
       control: { type: 'select' },
       options: ['filled', 'outlined', 'text', 'link'],
-      description: 'The rendering style of the button',
+      description: 'The rendering style of the button'
     },
     color: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'info', 'success', 'warning', 'danger'],
-      description: 'The color palette of the button',
+      description: 'The color palette of the button'
     },
     size: {
       control: { type: 'select' },
       options: ['xs', 's', 'm', 'l', 'xl'],
-      description: 'The size of the button',
+      description: 'The size of the button'
     },
     disabled: {
       control: { type: 'boolean' },
-      description: 'Specifies that the button should be disabled',
+      description: 'Specifies that the button should be disabled'
     },
     loading: {
       control: { type: 'boolean' },
-      description: 'Displays the button in a loading state with a spinner',
+      description: 'Displays the button in a loading state with a spinner'
     },
     active: {
       control: { type: 'boolean' },
-      description: 'Set the button into an active state',
-    },
+      description: 'Set the button into an active state'
+    }
   },
   args: {
     variant: 'outlined',
@@ -47,8 +47,8 @@ const meta: Meta = {
     size: 'm',
     disabled: false,
     loading: false,
-    active: false,
-  },
+    active: false
+  }
 };
 
 export default meta;
@@ -60,9 +60,9 @@ type Story = StoryObj;
 export const Primary: Story = {
   args: {
     variant: 'filled',
-    color: 'primary',
+    color: 'primary'
   },
-  render: (args) => html`
+  render: args => html`
     <cat-button
       variant="${args.variant}"
       color="${args.color}"
@@ -73,7 +73,7 @@ export const Primary: Story = {
     >
       Click Me
     </cat-button>
-  `,
+  `
 };
 
 /**
@@ -87,7 +87,7 @@ export const AllVariants: Story = {
       <cat-button variant="text">Text</cat-button>
       <cat-button variant="link">Link</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -103,7 +103,7 @@ export const AllColors: Story = {
       <cat-button variant="filled" color="warning">Warning</cat-button>
       <cat-button variant="filled" color="danger">Danger</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -118,7 +118,7 @@ export const AllSizes: Story = {
       <cat-button size="l">Large</cat-button>
       <cat-button size="xl">Extra Large</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -132,5 +132,5 @@ export const States: Story = {
       <cat-button variant="filled" color="primary" disabled>Disabled</cat-button>
       <cat-button variant="filled" color="primary" loading>Loading</cat-button>
     </div>
-  `,
+  `
 };

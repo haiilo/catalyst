@@ -6,15 +6,15 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
+    '@storybook/addon-a11y'
   ],
   framework: {
     name: '@storybook/web-components-vite',
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: 'tag',
-  },
+    autodocs: 'tag'
+  }
 };
 
 export default config;

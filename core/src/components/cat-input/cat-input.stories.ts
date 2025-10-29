@@ -12,33 +12,33 @@ const meta: Meta = {
   argTypes: {
     label: {
       control: { type: 'text' },
-      description: 'The label for the input',
+      description: 'The label for the input'
     },
     placeholder: {
       control: { type: 'text' },
-      description: 'Placeholder text',
+      description: 'Placeholder text'
     },
     value: {
       control: { type: 'text' },
-      description: 'The input value',
+      description: 'The input value'
     },
     type: {
       control: { type: 'select' },
       options: ['text', 'email', 'password', 'number', 'tel', 'url', 'search'],
-      description: 'The input type',
+      description: 'The input type'
     },
     disabled: {
       control: { type: 'boolean' },
-      description: 'Whether the input is disabled',
+      description: 'Whether the input is disabled'
     },
     required: {
       control: { type: 'boolean' },
-      description: 'Whether the input is required',
+      description: 'Whether the input is required'
     },
     readonly: {
       control: { type: 'boolean' },
-      description: 'Whether the input is readonly',
-    },
+      description: 'Whether the input is readonly'
+    }
   },
   args: {
     label: 'Label',
@@ -46,8 +46,8 @@ const meta: Meta = {
     type: 'text',
     disabled: false,
     required: false,
-    readonly: false,
-  },
+    readonly: false
+  }
 };
 
 export default meta;
@@ -59,9 +59,9 @@ type Story = StoryObj;
 export const Primary: Story = {
   args: {
     label: 'First Name',
-    placeholder: 'Enter your first name',
+    placeholder: 'Enter your first name'
   },
-  render: (args) => html`
+  render: args => html`
     <cat-input
       label="${args.label}"
       placeholder="${args.placeholder}"
@@ -71,7 +71,7 @@ export const Primary: Story = {
       ?required="${args.required}"
       ?readonly="${args.readonly}"
     ></cat-input>
-  `,
+  `
 };
 
 /**
@@ -88,7 +88,7 @@ export const Types: Story = {
       <cat-input label="URL" type="url" placeholder="https://example.com"></cat-input>
       <cat-input label="Search" type="search" placeholder="Search..."></cat-input>
     </div>
-  `,
+  `
 };
 
 /**
@@ -103,7 +103,7 @@ export const States: Story = {
       <cat-input label="Disabled" disabled placeholder="Disabled input"></cat-input>
       <cat-input label="Readonly" readonly value="Readonly value"></cat-input>
     </div>
-  `,
+  `
 };
 
 /**
@@ -119,5 +119,5 @@ export const WithHints: Story = {
         <span slot="hint">We'll never share your email</span>
       </cat-input>
     </div>
-  `,
+  `
 };

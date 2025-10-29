@@ -13,34 +13,34 @@ const meta: Meta = {
     variant: {
       control: { type: 'select' },
       options: ['filled', 'outlined'],
-      description: 'The rendering style of the badge',
+      description: 'The rendering style of the badge'
     },
     color: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'info', 'success', 'warning', 'danger'],
-      description: 'The color palette of the badge',
+      description: 'The color palette of the badge'
     },
     size: {
       control: { type: 'select' },
       options: ['xs', 's', 'm', 'l', 'xl'],
-      description: 'The size of the badge',
+      description: 'The size of the badge'
     },
     round: {
       control: { type: 'boolean' },
-      description: 'Use round badge edges',
+      description: 'Use round badge edges'
     },
     pulse: {
       control: { type: 'boolean' },
-      description: 'Draw attention with a subtle animation',
-    },
+      description: 'Draw attention with a subtle animation'
+    }
   },
   args: {
     variant: 'filled',
     color: 'primary',
     size: 'm',
     round: false,
-    pulse: false,
-  },
+    pulse: false
+  }
 };
 
 export default meta;
@@ -51,9 +51,9 @@ type Story = StoryObj;
  */
 export const Primary: Story = {
   args: {
-    color: 'primary',
+    color: 'primary'
   },
-  render: (args) => html`
+  render: args => html`
     <cat-badge
       variant="${args.variant}"
       color="${args.color}"
@@ -63,7 +63,7 @@ export const Primary: Story = {
     >
       Badge
     </cat-badge>
-  `,
+  `
 };
 
 /**
@@ -75,7 +75,7 @@ export const Variants: Story = {
       <cat-badge variant="filled">Filled</cat-badge>
       <cat-badge variant="outlined">Outlined</cat-badge>
     </div>
-  `,
+  `
 };
 
 /**
@@ -91,7 +91,7 @@ export const Colors: Story = {
       <cat-badge color="warning">Warning</cat-badge>
       <cat-badge color="danger">Danger</cat-badge>
     </div>
-  `,
+  `
 };
 
 /**
@@ -106,7 +106,7 @@ export const Sizes: Story = {
       <cat-badge size="l">Large</cat-badge>
       <cat-badge size="xl">XL</cat-badge>
     </div>
-  `,
+  `
 };
 
 /**
@@ -120,7 +120,7 @@ export const Round: Story = {
       <cat-badge round color="danger">!</cat-badge>
       <cat-badge round color="success">✓</cat-badge>
     </div>
-  `,
+  `
 };
 
 /**
@@ -133,5 +133,5 @@ export const Pulse: Story = {
       <cat-badge pulse color="warning">Alert</cat-badge>
       <cat-badge pulse color="success">Live</cat-badge>
     </div>
-  `,
+  `
 };

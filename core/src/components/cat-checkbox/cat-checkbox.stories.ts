@@ -12,32 +12,32 @@ const meta: Meta = {
   argTypes: {
     label: {
       control: { type: 'text' },
-      description: 'Label of the checkbox',
+      description: 'Label of the checkbox'
     },
     checked: {
       control: { type: 'boolean' },
-      description: 'Checked state of the checkbox',
+      description: 'Checked state of the checkbox'
     },
     indeterminate: {
       control: { type: 'boolean' },
-      description: 'Indeterminate state of the checkbox',
+      description: 'Indeterminate state of the checkbox'
     },
     disabled: {
       control: { type: 'boolean' },
-      description: 'Disabled state of the checkbox',
+      description: 'Disabled state of the checkbox'
     },
     required: {
       control: { type: 'boolean' },
-      description: 'Required state of the checkbox',
-    },
+      description: 'Required state of the checkbox'
+    }
   },
   args: {
     label: 'Checkbox label',
     checked: false,
     indeterminate: false,
     disabled: false,
-    required: false,
-  },
+    required: false
+  }
 };
 
 export default meta;
@@ -48,9 +48,9 @@ type Story = StoryObj;
  */
 export const Primary: Story = {
   args: {
-    label: 'I agree to the terms and conditions',
+    label: 'I agree to the terms and conditions'
   },
-  render: (args) => html`
+  render: args => html`
     <cat-checkbox
       label="${args.label}"
       ?checked="${args.checked}"
@@ -58,7 +58,7 @@ export const Primary: Story = {
       ?disabled="${args.disabled}"
       ?required="${args.required}"
     ></cat-checkbox>
-  `,
+  `
 };
 
 /**
@@ -74,7 +74,7 @@ export const States: Story = {
       <cat-checkbox label="Checked & Disabled" checked disabled></cat-checkbox>
       <cat-checkbox label="Required" required></cat-checkbox>
     </div>
-  `,
+  `
 };
 
 /**
@@ -91,7 +91,7 @@ export const Group: Story = {
         <cat-checkbox label="Sales"></cat-checkbox>
       </div>
     </fieldset>
-  `,
+  `
 };
 
 /**
@@ -107,5 +107,5 @@ export const WithHints: Story = {
         <span slot="hint">Required to continue</span>
       </cat-checkbox>
     </div>
-  `,
+  `
 };
