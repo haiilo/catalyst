@@ -106,6 +106,17 @@ jobs:
           name: angular-coverage
           path: angular/coverage/
           retention-days: 30
+      - name: Check coverage on changed lines
+        if: github.event_name == 'pull_request'
+        uses: barecheck/code-coverage-action@v1
+        with:
+          barecheck-github-app-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: angular/coverage/catalyst/lcov.info
+          base-lcov-file: angular/coverage/catalyst/lcov.info
+          minimum-ratio: 80 # minimum coverage percentage
+          send-summary-comment: true
+          show-annotations: 'warning'
+          app-name: 'Angular'
       - name: Coverage report
         if: github.event_name == 'pull_request'
         uses: romeovs/lcov-reporter-action@v0.3.1
