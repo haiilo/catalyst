@@ -1,15 +1,22 @@
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/web-components-vite';
+
+const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y'],
+  addons: [
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs')
+  ],
+
   framework: {
-    name: '@storybook/web-components-vite',
+    name: getAbsolutePath('@storybook/web-components-vite'),
     options: {}
   },
-  docs: {
-    autodocs: 'tag'
-  },
+
   viteFinal: async (config, { configType }) => {
     // Only set base path for production (GitHub Pages subdirectory)
     if (configType === 'PRODUCTION') {
@@ -20,3 +27,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
