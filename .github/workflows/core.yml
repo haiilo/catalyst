@@ -106,4 +106,28 @@ jobs:
       - name: Install Chrome
         run: node node_modules/puppeteer/install.mjs
       - name: Test
-        run: pnpm --filter @haiilo/catalyst run test
+        run: pnpm --filter @haiilo/catalyst run test:ci
+      - name: Generate coverage summary
+        if: always()
+        run: |
+          if [ -f core/coverage/coverage-summary.json ]; then
+            echo "## Core Coverage Report" >> $GITHUB_STEP_SUMMARY
+            node -e "
+            const fs = require('fs');
+            const coverage = JSON.parse(fs.readFileSync('core/coverage/coverage-summary.json', 'utf8'));
+            const total = coverage.total;
+            console.log('| Metric | Coverage |');
+            console.log('|--------|----------|');
+            console.log(\`| Statements | \${total.statements.pct}% (\${total.statements.covered}/\${total.statements.total}) |\`);
+            console.log(\`| Branches | \${total.branches.pct}% (\${total.branches.covered}/\${total.branches.total}) |\`);
+            console.log(\`| Functions | \${total.functions.pct}% (\${total.functions.covered}/\${total.functions.total}) |\`);
+            console.log(\`| Lines | \${total.lines.pct}% (\${total.lines.covered}/\${total.lines.total}) |\`);
+            " >> $GITHUB_STEP_SUMMARY
+          fi
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-coverage
+          path: core/coverage/
+          retention-days: 30

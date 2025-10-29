@@ -118,6 +118,18 @@ export const config: Config = {
     transform: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'
     },
-    transformIgnorePatterns: ['node_modules/(?!(?:.pnpm/)?(@haiilo))']
+    transformIgnorePatterns: ['node_modules/(?!(?:.pnpm/)?(@haiilo))'],
+    collectCoverage: true,
+    coverageDirectory: 'coverage',
+    coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
+    coveragePathIgnorePatterns: ['/node_modules/', '/.stencil/', '/dist/', '/www/', '/loader/'],
+    coverageThreshold: {
+      global: {
+        branches: 50,
+        functions: 50,
+        lines: 50,
+        statements: 50
+      }
+    }
   }
 };
