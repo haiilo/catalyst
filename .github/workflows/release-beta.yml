@@ -15,6 +15,8 @@ jobs:
     outputs:
       releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - uses: googleapis/release-please-action@v4
         id: release
         with:
@@ -22,7 +24,7 @@ jobs:
 
   publish:
     needs: release-beta
-    if: ${{ fromJSON(needs.release-pr.outputs.releases_created) }}
+    if: ${{ fromJSON(needs.release-beta.outputs.releases_created) }}
     uses: ./.github/workflows/build-and-publish.yml
     with:
       publish-script: "publish:beta"
