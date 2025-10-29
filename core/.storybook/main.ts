@@ -14,6 +14,13 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag'
+  },
+  viteFinal: async (config, { configType }) => {
+    // Only set base path for production (GitHub Pages subdirectory)
+    if (configType === 'PRODUCTION') {
+      config.base = '/catalyst/storybook/';
+    }
+    return config;
   }
 };
 
