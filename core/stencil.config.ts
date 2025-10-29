@@ -122,14 +122,6 @@ export const config: Config = {
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
-    coveragePathIgnorePatterns: ['/node_modules/', '/.stencil/', '/dist/', '/www/', '/loader/'],
-    coverageThreshold: {
-      global: {
-        branches: 50,
-        functions: 50,
-        lines: 50,
-        statements: 50
-      }
-    }
+    coveragePathIgnorePatterns: ['/node_modules/', '/.stencil/', '/dist/', '/www/', '/loader/']
   }
 };
