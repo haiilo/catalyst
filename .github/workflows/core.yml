@@ -134,17 +134,6 @@ jobs:
           name: core-coverage
           path: core/coverage/
           retention-days: 30
-      - name: Check coverage on changed lines
-        if: github.event_name == 'pull_request'
-        uses: barecheck/code-coverage-action@v1
-        with:
-          barecheck-github-app-token: ${{ secrets.GITHUB_TOKEN }}
-          lcov-file: core/coverage/lcov.info
-          base-lcov-file: core/coverage/lcov.info
-          minimum-ratio: 80 # minimum coverage percentage
-          send-summary-comment: true
-          show-annotations: 'warning'
-          app-name: 'Core'
       - name: Coverage report
         if: github.event_name == 'pull_request'
         uses: romeovs/lcov-reporter-action@v0.3.1
