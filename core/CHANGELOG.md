@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.3.1) (2025-10-29)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([#807](https://github.com/haiilo/catalyst/issues/807)) ([083eee3](https://github.com/haiilo/catalyst/commit/083eee368baf86edb31c596876b77a4ca5cd71f9))
+
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
 
 
