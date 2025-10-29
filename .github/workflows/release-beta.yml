@@ -23,6 +23,7 @@ jobs:
           target-branch: beta
           config-file: release-please-config.beta.json
           manifest-file: .release-please-manifest.beta.json
+          versioning-strategy: prerelease
 
   publish:
     needs: release-beta
