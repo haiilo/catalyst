@@ -21,6 +21,7 @@ jobs:
         id: release
         with:
           config-file: release-please-config.beta.json
+          manifest-file: .release-please-manifest.beta.json
 
   publish:
     needs: release-beta
