@@ -120,12 +120,7 @@ export const config: Config = {
     },
     transformIgnorePatterns: ['node_modules/(?!(?:.pnpm/)?(@haiilo))'],
     collectCoverage: true,
-    collectCoverageFrom: [
-      'src/**/*.{ts,tsx}',
-      '!src/**/*.spec.{ts,tsx}',
-      '!src/**/*.e2e.{ts,tsx}',
-      '!src/**/*.d.ts'
-    ],
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.spec.{ts,tsx}', '!src/**/*.e2e.{ts,tsx}', '!src/**/*.d.ts'],
     coverageDirectory: 'coverage',
     coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
     coveragePathIgnorePatterns: ['/node_modules/', '/.stencil/', '/dist/', '/www/', '/loader/']
