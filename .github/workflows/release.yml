@@ -12,46 +12,17 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
-      - name: Checkout
-        uses: actions/checkout@v4
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          registry-url: "https://registry.npmjs.org"
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: false
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Get pnpm store directory
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Install
-        run: pnpm install
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Build
-        run: pnpm run build
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - name: Install (again - testing...)
-        run: pnpm install
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
-      - run: pnpm run publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        if: ${{ fromJSON(steps.release.outputs.releases_created) }}
+
+  publish:
+    needs: release
+    if: ${{ fromJSON(needs.release.outputs.releases_created) }}
+    uses: ./.github/workflows/build-and-publish.yml
+    with:
+      publish-script: "publish"
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

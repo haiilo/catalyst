@@ -10,8 +10,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  release-pr:
+  release-beta:
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -19,44 +21,10 @@ jobs:
           config-file: release-please-config.beta.json
 
   publish:
-    runs-on: ubuntu-latest
-    needs: release-pr
-    if: ${{ needs.release-pr.outputs.releases_created }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install
-        run: pnpm install
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Publish to npm with @beta tag
-        run: pnpm run publish:beta
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    needs: release-beta
+    if: ${{ fromJSON(needs.release-pr.outputs.releases_created) }}
+    uses: ./.github/workflows/build-and-publish.yml
+    with:
+      publish-script: "publish:beta"
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
