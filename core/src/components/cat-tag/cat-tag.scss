@@ -10,6 +10,10 @@
   gap: 0.5rem;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 input {
   font: inherit;
   margin: 0;
