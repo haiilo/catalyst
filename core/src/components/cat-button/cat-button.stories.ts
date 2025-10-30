@@ -14,11 +14,11 @@ const meta: Meta = {
   component: 'cat-button',
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   },
   // Use auto-generated args and argTypes
   args,
-  argTypes,
+  argTypes
 };
 
 export default meta;
@@ -31,10 +31,10 @@ type Story = StoryObj;
 export const Primary: Story = {
   args: {
     variant: 'filled',
-    color: 'primary',
+    color: 'primary'
   },
   // Use the template helper - it auto-generates the component with all args
-  render: (args) => html`${template(args, html`Click Me`)}`,
+  render: args => html`${template(args, html`Click Me`)}`
 };
 
 /**
@@ -48,7 +48,7 @@ export const AllVariants: Story = {
       <cat-button variant="text">Text</cat-button>
       <cat-button variant="link">Link</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -64,7 +64,7 @@ export const AllColors: Story = {
       <cat-button variant="filled" color="warning">Warning</cat-button>
       <cat-button variant="filled" color="danger">Danger</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -79,7 +79,7 @@ export const AllSizes: Story = {
       <cat-button size="l">Large</cat-button>
       <cat-button size="xl">Extra Large</cat-button>
     </div>
-  `,
+  `
 };
 
 /**
@@ -93,5 +93,5 @@ export const States: Story = {
       <cat-button variant="filled" color="primary" disabled>Disabled</cat-button>
       <cat-button variant="filled" color="primary" loading>Loading</cat-button>
     </div>
-  `,
+  `
 };

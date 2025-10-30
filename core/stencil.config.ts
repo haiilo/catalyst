@@ -72,7 +72,7 @@ export const config: Config = {
         {
           src: './index.cdn.js',
           warn: true
-        },
+        }
       ]
     },
     {
@@ -80,7 +80,7 @@ export const config: Config = {
     },
     {
       type: 'docs-json',
-      file: 'dist/custom-elements.json',
+      file: 'dist/custom-elements.json'
     },
     {
       type: 'docs-readme',

@@ -12,57 +12,63 @@ import '../dist/catalyst/catalyst.css';
 const customElementsManifest = {
   schemaVersion: '1.0.0',
   readme: '',
-  modules: stencilManifest.components?.map((component: any) => ({
-    kind: 'javascript-module',
-    path: component.filePath,
-    declarations: [
-      {
-        kind: 'class',
-        description: component.docs || '',
-        name: component.tag,
-        tagName: component.tag,
-        customElement: true,
-        members: component.props?.map((prop: any) => ({
-          kind: 'field',
-          name: prop.name,
-          type: { text: prop.type },
-          default: prop.default,
-          description: prop.docs || '',
-          attribute: prop.attr,
-          reflects: prop.reflectToAttr,
-        })) || [],
-        attributes: component.props?.map((prop: any) => ({
-          name: prop.attr || prop.name,
-          type: { text: prop.type },
-          default: prop.default,
-          description: prop.docs || '',
-          fieldName: prop.name,
-        })) || [],
-        events: component.events?.map((event: any) => ({
-          name: event.event,
-          type: { text: event.detail || 'CustomEvent' },
-          description: event.docs || '',
-        })) || [],
-        slots: component.slots?.map((slot: any) => ({
-          name: slot.name || '',
-          description: slot.docs || '',
-        })) || [],
-        cssProperties: component.styles?.map((style: any) => ({
-          name: style.name,
-          description: style.docs || '',
-        })) || [],
-      },
-    ],
-    exports: [
-      {
-        kind: 'custom-element-definition',
-        name: component.tag,
-        declaration: {
+  modules:
+    stencilManifest.components?.map((component: any) => ({
+      kind: 'javascript-module',
+      path: component.filePath,
+      declarations: [
+        {
+          kind: 'class',
+          description: component.docs || '',
           name: component.tag,
-        },
-      },
-    ],
-  })) || [],
+          tagName: component.tag,
+          customElement: true,
+          members:
+            component.props?.map((prop: any) => ({
+              kind: 'field',
+              name: prop.name,
+              type: { text: prop.type },
+              default: prop.default,
+              description: prop.docs || '',
+              attribute: prop.attr,
+              reflects: prop.reflectToAttr
+            })) || [],
+          attributes:
+            component.props?.map((prop: any) => ({
+              name: prop.attr || prop.name,
+              type: { text: prop.type },
+              default: prop.default,
+              description: prop.docs || '',
+              fieldName: prop.name
+            })) || [],
+          events:
+            component.events?.map((event: any) => ({
+              name: event.event,
+              type: { text: event.detail || 'CustomEvent' },
+              description: event.docs || ''
+            })) || [],
+          slots:
+            component.slots?.map((slot: any) => ({
+              name: slot.name || '',
+              description: slot.docs || ''
+            })) || [],
+          cssProperties:
+            component.styles?.map((style: any) => ({
+              name: style.name,
+              description: style.docs || ''
+            })) || []
+        }
+      ],
+      exports: [
+        {
+          kind: 'custom-element-definition',
+          name: component.tag,
+          declaration: {
+            name: component.tag
+          }
+        }
+      ]
+    })) || []
 };
 
 setCustomElementsManifest(customElementsManifest);
@@ -75,7 +81,7 @@ setStorybookHelpersConfig({
   /** Adds a <script> tag where a `component` variable will reference the story's component */
   setComponentVariable: false,
   /** renders default values for attributes and CSS properties */
-  renderDefaultValues: false,
+  renderDefaultValues: false
 });
 
 const preview = {
