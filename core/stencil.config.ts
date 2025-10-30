@@ -79,6 +79,10 @@ export const config: Config = {
       type: 'dist-custom-elements'
     },
     {
+      type: 'docs-json',
+      file: 'dist/custom-elements.json'
+    },
+    {
       type: 'docs-readme',
       footer: 'Made with love in Hamburg, Germany',
       strict: true

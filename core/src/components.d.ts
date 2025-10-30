@@ -122,6 +122,7 @@ export namespace Components {
     /**
      * Buttons are used for interface actions. Primary style should be used only
      * once per view for main call-to-action.
+     * @tag cat-button
      */
     interface CatButton {
         /**
@@ -137,6 +138,10 @@ export namespace Components {
          */
         "active": boolean;
         /**
+          * Another property...
+         */
+        "anotherProperty"?: string;
+        /**
           * The index of a button that is used inside a cat-button-group component
          */
         "buttonGroupPosition"?: 'first' | 'last' | 'middle';
@@ -149,7 +154,7 @@ export namespace Components {
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
-          * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+          * Specifies that the button should be . A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
         "disabled": boolean;
         /**
@@ -1913,6 +1918,7 @@ declare global {
     /**
      * Buttons are used for interface actions. Primary style should be used only
      * once per view for main call-to-action.
+     * @tag cat-button
      */
     interface HTMLCatButtonElement extends Components.CatButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatButtonElementEventMap>(type: K, listener: (this: HTMLCatButtonElement, ev: CatButtonCustomEvent<HTMLCatButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2540,6 +2546,7 @@ declare namespace LocalJSX {
     /**
      * Buttons are used for interface actions. Primary style should be used only
      * once per view for main call-to-action.
+     * @tag cat-button
      */
     interface CatButton {
         /**
@@ -2555,6 +2562,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * Another property...
+         */
+        "anotherProperty"?: string;
+        /**
           * The index of a button that is used inside a cat-button-group component
          */
         "buttonGroupPosition"?: 'first' | 'last' | 'middle';
@@ -2567,7 +2578,7 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
-          * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+          * Specifies that the button should be . A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
          */
         "disabled"?: boolean;
         /**
@@ -4297,6 +4308,7 @@ declare module "@stencil/core" {
             /**
              * Buttons are used for interface actions. Primary style should be used only
              * once per view for main call-to-action.
+             * @tag cat-button
              */
             "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             /**
