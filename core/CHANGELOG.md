@@ -1,18 +1,5 @@
 # Changelog
 
-## [13.4.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.4.0-beta) (2025-10-29)
-
-
-### Features
-
-* test beta prerelease configuration ([4365ad6](https://github.com/haiilo/catalyst/commit/4365ad646bb72f5e1c0245f969c0dddb7765fea3))
-* test beta prerelease configuration ([0a4ade7](https://github.com/haiilo/catalyst/commit/0a4ade791508bf53e9313d109279237831dfd74e))
-
-
-### Bug Fixes
-
-* **core:** prevent catChange event emission on select initialization ([#807](https://github.com/haiilo/catalyst/issues/807)) ([083eee3](https://github.com/haiilo/catalyst/commit/083eee368baf86edb31c596876b77a4ca5cd71f9))
-
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
 
 
