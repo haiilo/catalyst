@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.4.0-beta...catalyst-angular-v14.0.0-beta) (2025-11-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737))
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451))
+
+### Features
+
+* add attachToElement and position properties to cat-datepicker component ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+* add attachToElement property to cat-datepicker component ([#462](https://github.com/haiilo/catalyst/issues/462)) ([1d6c299](https://github.com/haiilo/catalyst/commit/1d6c2998f6a7413bf31ad375e863ff3416549d08))
+* add horizontal arrow navigation to dropdowns ([3bcb2e2](https://github.com/haiilo/catalyst/commit/3bcb2e29369f04f8ac25810d72a0b60089b1b5c5))
+* add space-between alignment for dialog actions buttons ([#450](https://github.com/haiilo/catalyst/issues/450)) ([a4abb0f](https://github.com/haiilo/catalyst/commit/a4abb0f458fcefd8641ad768a512de16ae371057))
+* **angular:** add a structural directive to instantiate a basic tooltip ([#671](https://github.com/haiilo/catalyst/issues/671)) ([4fe1ecf](https://github.com/haiilo/catalyst/commit/4fe1ecf7be42aa5c62824d7dafbed00fe79f3047))
+* **angular:** add angular compatibility layer for new date and time picker ([#498](https://github.com/haiilo/catalyst/issues/498)) ([304c226](https://github.com/haiilo/catalyst/commit/304c226977c64c76d2e715ffa054127273d092a1))
+* **angular:** add custom dialog size config ([#669](https://github.com/haiilo/catalyst/issues/669)) ([8d32fca](https://github.com/haiilo/catalyst/commit/8d32fcac280146df0047999dfcde6fc54047f6d5))
+* **angular:** add no scroll input to dialog component ([#592](https://github.com/haiilo/catalyst/issues/592)) ([aa10da3](https://github.com/haiilo/catalyst/commit/aa10da36b79130027d7e564afd20c527a373fe2b))
+* **angular:** add openWithRef to dialog service so dialog reference can be obtained by the user ([#494](https://github.com/haiilo/catalyst/issues/494)) ([7990167](https://github.com/haiilo/catalyst/commit/7990167e4598667a315ffd4b7ddc8d1819806d79))
+* **angular:** add panelClass to dialogs ([214e44e](https://github.com/haiilo/catalyst/commit/214e44e35f21b7529697e7a710f6321181a7cfb1))
+* **angular:** added errorInit to show form errors directly after initialization (default: false) ([c18a400](https://github.com/haiilo/catalyst/commit/c18a4000c1f3e0360f95ba838726f0a600a23c22))
+* **angular:** adjust peer dependency versions for angular and angular CDK ([a6403f7](https://github.com/haiilo/catalyst/commit/a6403f7142dfe7ed926aa646571f8752015eaff6))
+* **angular:** change dialog actions: replace row-reverse with justify-content end to fix a11y ([#451](https://github.com/haiilo/catalyst/issues/451)) ([2e48742](https://github.com/haiilo/catalyst/commit/2e48742bbfb5d4071ecd8efa09ab99e352b27c6f))
+* **angular:** expose some cat-scrollable props and methods in cat-dialog component ([#512](https://github.com/haiilo/catalyst/issues/512)) ([a04adc7](https://github.com/haiilo/catalyst/commit/a04adc7290ac19598629bb98cd0affc2e8e6567e))
+* **angular:** fix required error for datetime control ([#622](https://github.com/haiilo/catalyst/issues/622)) ([79f4701](https://github.com/haiilo/catalyst/commit/79f4701673e463f848de8978240b9b7b7403b7bf))
+* **angular:** fix time value update in datetime component ([#744](https://github.com/haiilo/catalyst/issues/744)) ([92f219e](https://github.com/haiilo/catalyst/commit/92f219ebce1a4885e4e86369bcf888b0ae49235a))
+* **core:** adaptive cat-tabs + stencil version update ([#737](https://github.com/haiilo/catalyst/issues/737)) ([f8c14ae](https://github.com/haiilo/catalyst/commit/f8c14ae7c6646e82b3f620518de89c6e591e9a3c))
+* **core:** add alignment property to radio, checkboxes and toggles ([#548](https://github.com/haiilo/catalyst/issues/548)) ([345bec9](https://github.com/haiilo/catalyst/commit/345bec90955c78a86812157b28dc2b2b3d111595))
+* **core:** add fromDropdown data in catChange even in cat-tabs ([#740](https://github.com/haiilo/catalyst/issues/740)) ([38e1cb3](https://github.com/haiilo/catalyst/commit/38e1cb35dc1732769369b8f671e8bd6c5e14c138))
+* **core:** add icons to badges ([5fdfe86](https://github.com/haiilo/catalyst/commit/5fdfe868dd5297ebad5cb0f43b08a113d0332ef5))
+* **core:** add input loading indicator ([#597](https://github.com/haiilo/catalyst/issues/597)) ([d1c956b](https://github.com/haiilo/catalyst/commit/d1c956b8a6dec02f2057820ef02be0c354b12f22))
+* **core:** add missing testId props ([#705](https://github.com/haiilo/catalyst/issues/705)) ([4820111](https://github.com/haiilo/catalyst/commit/4820111ac319b2fb39e93afa4c2dccd3df67b128))
+* **core:** add new cat-date picker and cat-time picker ([#486](https://github.com/haiilo/catalyst/issues/486)) ([5b97a7b](https://github.com/haiilo/catalyst/commit/5b97a7b890dd5e6ffbf9ca92eb7cb4de6f2bd064))
+* **core:** add noActive config option to cat-tab ([5ebf32b](https://github.com/haiilo/catalyst/commit/5ebf32b5470fce162e48489c9d83946482c03837))
+* **core:** add noReturnFocus property to cat-dropdown ([#528](https://github.com/haiilo/catalyst/issues/528)) ([8407082](https://github.com/haiilo/catalyst/commit/84070826c310d4849bff3ca194a37627fa130cf8))
+* **core:** add option for dropdowns to match size of the reference element ([#721](https://github.com/haiilo/catalyst/issues/721)) ([48191cb](https://github.com/haiilo/catalyst/commit/48191cb573a15b1ba41baa8499166318cdc9c720))
+* **core:** add option to delay trigger initialization in cat-dropdown ([#732](https://github.com/haiilo/catalyst/issues/732)) ([8571186](https://github.com/haiilo/catalyst/commit/857118654cb4aef9106cd0fab3b5c8e55d11dd34))
+* **core:** add password toggle button to inputs ([6779f5d](https://github.com/haiilo/catalyst/commit/6779f5d91572ea6f1d9131b944c2f1e0c0767fca))
+* **core:** add required marker for checkboxes ([#575](https://github.com/haiilo/catalyst/issues/575)) ([43f8d7c](https://github.com/haiilo/catalyst/commit/43f8d7c11cbb31008dba96120f1b34042580327f))
+* **core:** add select methods for focus and blur ([1d3ac8f](https://github.com/haiilo/catalyst/commit/1d3ac8f2dc73ec1cbcc76a8407fb7ebeb754ba98))
+* **core:** add test-id as a shorthand for data-test native attributes ([#670](https://github.com/haiilo/catalyst/issues/670)) ([1065ee3](https://github.com/haiilo/catalyst/commit/1065ee3b5745e5d31590dd42ed10f2a4e910b8a2))
+* **core:** added catLoad event to cat-card, emits when component was fully rendered and loaded ([#515](https://github.com/haiilo/catalyst/issues/515)) ([7b079ce](https://github.com/haiilo/catalyst/commit/7b079ce2e2083605eb8f7ab34b2152eb3f8d2b44))
+* **core:** CatDropdown improvement ([#499](https://github.com/haiilo/catalyst/issues/499)) ([ae27bcc](https://github.com/haiilo/catalyst/commit/ae27bcce1d33533f694bc6997280db9154ed3a5c))
+* **core:** change default values for datepicker attributes ([c67bcb2](https://github.com/haiilo/catalyst/commit/c67bcb24d975c54649e89f1c9aa1b1d043327383))
+* **core:** emit catChange on blur for cat-tag ([#605](https://github.com/haiilo/catalyst/issues/605)) ([56045d2](https://github.com/haiilo/catalyst/commit/56045d218b8753fc80162ed98c44611f1dd25e39))
+* **core:** emit files selected by input type file ([#805](https://github.com/haiilo/catalyst/issues/805)) ([4aedc50](https://github.com/haiilo/catalyst/commit/4aedc50452b8ede54cc33927ac9a102f270d2b07))
+* **core:** enable tag inputs without dropdowns ([#586](https://github.com/haiilo/catalyst/issues/586)) ([e3b76e3](https://github.com/haiilo/catalyst/commit/e3b76e32ecfe4152242b9568b977d0ada42648ca))
+* **core:** implement new inline date picker ([#491](https://github.com/haiilo/catalyst/issues/491)) ([44253a8](https://github.com/haiilo/catalyst/commit/44253a8ac53d080189e29cd19a9570f042b6b08e))
+* **core:** replace cleave.js with cleave-zen ([#717](https://github.com/haiilo/catalyst/issues/717)) ([04c0cf2](https://github.com/haiilo/catalyst/commit/04c0cf21f67d300b7cd50aca1eced793a64c601e))
+* **core:** style file inputs and support 'accept' and 'multiple' attributes ([#803](https://github.com/haiilo/catalyst/issues/803)) ([153c8fb](https://github.com/haiilo/catalyst/commit/153c8fb0e13bc0fda302263b50c729f5c189dc35))
+* **core:** use progressbar role for cat-spinner ([#624](https://github.com/haiilo/catalyst/issues/624)) ([646aedf](https://github.com/haiilo/catalyst/commit/646aedf67bec8cf4ad2bb435097638d292f5705b))
+* support non-boolean values for checkboxes and toggles ([e9ea78e](https://github.com/haiilo/catalyst/commit/e9ea78e0abe916f8fb1af926489346833e29592f))
+* update to stencil 4.7.1 ([599ce34](https://github.com/haiilo/catalyst/commit/599ce344ed859494447c9fd3471ca01465dc08b1))
+
+
+### Bug Fixes
+
+* **angular:** add flex grow to dialog scrollable ([#581](https://github.com/haiilo/catalyst/issues/581)) ([152a714](https://github.com/haiilo/catalyst/commit/152a714253d097436f5b257f34b7044fa2441ffa))
+* **angular:** add missing component exports (closes [#518](https://github.com/haiilo/catalyst/issues/518)) ([ad76f6d](https://github.com/haiilo/catalyst/commit/ad76f6d64e02bac66d18cb89ccfe355d4fddd246))
+* **angular:** add missing proxy build ([adcd406](https://github.com/haiilo/catalyst/commit/adcd406fa5db6e119cb6408db19232ecc463217e))
+* **angular:** angular CDK dialog styles are not scoped properly ([38788af](https://github.com/haiilo/catalyst/commit/38788af854f5025cfae3ac0153d1d98d0bc848e7))
+* **angular:** change dialog header subline class ([#779](https://github.com/haiilo/catalyst/issues/779)) ([3b512c5](https://github.com/haiilo/catalyst/commit/3b512c56086a962c4de61870a6b7f52f61c520d2))
+* **angular:** correctly handle range values in angular value accessor of datepicker ([6e95435](https://github.com/haiilo/catalyst/commit/6e95435b4c39a00f3ce7b6f2540e84c7b4a76d13))
+* **angular:** emit end date with 23:59:59.999 (closes [#522](https://github.com/haiilo/catalyst/issues/522)) ([f6f5fc0](https://github.com/haiilo/catalyst/commit/f6f5fc05b77a1bf442273aa62f61590b2078d1cc))
+* **angular:** fix height of content if dialog gets a fixed height ([#594](https://github.com/haiilo/catalyst/issues/594)) ([6afbe1d](https://github.com/haiilo/catalyst/commit/6afbe1d11a510b614c4e3b84e1a0cb4ee07803bd))
+* **angular:** fix no scroll template variable for dialogs ([7616530](https://github.com/haiilo/catalyst/commit/76165302f5e142514a72d7e3c55a12e047cec26a))
+* **angular:** fix panel class config with default class ([a51cdac](https://github.com/haiilo/catalyst/commit/a51cdac101ad65973e85be51e9ea165a9a316704))
+* **angular:** fix the position of popup cat-element inside the cat-dialog ([#570](https://github.com/haiilo/catalyst/issues/570)) ([71d62d1](https://github.com/haiilo/catalyst/commit/71d62d16730dec315e228edbf45552c26fc338b1))
+* **angular:** initialize injection tokens in build artifact ([#550](https://github.com/haiilo/catalyst/issues/550)) ([e7b6243](https://github.com/haiilo/catalyst/commit/e7b6243edeb2613eae302c10d17474d070bc0b5a))
+* **angular:** update catTooltip directive content on change ([#797](https://github.com/haiilo/catalyst/issues/797)) ([b33b1e3](https://github.com/haiilo/catalyst/commit/b33b1e3a63dc36713358e5d719bcc3a94e3c0cd7))
+* **angular:** update errors on blur (closes [#397](https://github.com/haiilo/catalyst/issues/397)) ([29254c2](https://github.com/haiilo/catalyst/commit/29254c246ea1b3c2bcdb0ae1f37316599a734151))
+* **core:** add aria label for inline datepicker ([92c9ed1](https://github.com/haiilo/catalyst/commit/92c9ed148337fc199f6d36971bd12799cfc8be91))
+* **core:** adjust auto complete defaults for date and time inputs ([c65eb74](https://github.com/haiilo/catalyst/commit/c65eb74d7e1e0a2daf049bd0429bcd324414c098))
+* **core:** avoid endless loop on input error handling ([#591](https://github.com/haiilo/catalyst/issues/591)) ([6c2d191](https://github.com/haiilo/catalyst/commit/6c2d19119131c7d0ccaeb2bad0cbe7a1a1b81a9c))
+* **core:** export and fix cat-time value changes ([#561](https://github.com/haiilo/catalyst/issues/561)) ([369da92](https://github.com/haiilo/catalyst/commit/369da921edb247dccfcc701febf26361b31383d8))
+* **core:** fix broken slotted labels and hints ([54b5d6f](https://github.com/haiilo/catalyst/commit/54b5d6ffc9f411253e222ebd22ce4da521360dfb))
+* **core:** fix date issues with inline communication ([#616](https://github.com/haiilo/catalyst/issues/616)) ([9da49ca](https://github.com/haiilo/catalyst/commit/9da49ca9ad35de4c6622e44958dcf2c25b7d5992))
+* **core:** fix display of nested buttons in button groups ([97cb183](https://github.com/haiilo/catalyst/commit/97cb183352a7e3a3d3488285e458faf63ffad68d))
+* **core:** not able to programmatically set active tab ([ec1cc1c](https://github.com/haiilo/catalyst/commit/ec1cc1cb1a0d6fca6a68734250b31c897df2077d))
+* **core:** refine datepicker sizing ([79076a9](https://github.com/haiilo/catalyst/commit/79076a93e007423aff0da1579cd8729e589d62e1))
+* **react:** update lock file ([2b962c7](https://github.com/haiilo/catalyst/commit/2b962c761551fa5980a986829c07984900ef4fd7))
+* remove various bugs in new date & timepicker ([9ab390b](https://github.com/haiilo/catalyst/commit/9ab390b4300621fb3f758a5c6e4280ee3f590303))
+
 ## [13.4.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.0...catalyst-angular-v13.4.0-beta) (2025-10-29)
 
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [14.0.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.4.0-beta...catalyst-react-v14.0.0-beta) (2025-11-07)
+
+
+### Features
+
+* **core:** add new cat-date picker and cat-time picker ([#486](https://github.com/haiilo/catalyst/issues/486)) ([5b97a7b](https://github.com/haiilo/catalyst/commit/5b97a7b890dd5e6ffbf9ca92eb7cb4de6f2bd064))
+* **core:** enable tag inputs without dropdowns ([#586](https://github.com/haiilo/catalyst/issues/586)) ([e3b76e3](https://github.com/haiilo/catalyst/commit/e3b76e32ecfe4152242b9568b977d0ada42648ca))
+* **core:** implement new inline date picker ([#491](https://github.com/haiilo/catalyst/issues/491)) ([44253a8](https://github.com/haiilo/catalyst/commit/44253a8ac53d080189e29cd19a9570f042b6b08e))
+* **react:** update typescript version in react set of packages ([#777](https://github.com/haiilo/catalyst/issues/777)) ([b541ead](https://github.com/haiilo/catalyst/commit/b541ead80f7a359d8f2fd790d6376becc31d1c56))
+
 ## [13.4.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.3.0...catalyst-react-v13.4.0-beta) (2025-10-29)
 
 
