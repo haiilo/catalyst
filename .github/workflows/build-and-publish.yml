@@ -53,6 +53,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Install (again - testing...)
+        run: pnpm install
+
       - name: Publish to npm
         run: pnpm run ${{ inputs.publish-script }}
         env:
