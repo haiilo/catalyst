@@ -339,8 +339,8 @@ export class CatSelect {
       if (!oldState.isResolving) {
         this.valueChangedBySelection = true;
         this.value = newValue;
+        this.catChange.emit();
       }
-      this.catChange.emit();
       this.showErrorsIfTimeout();
     }
   }
