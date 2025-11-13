@@ -11,6 +11,9 @@ on:
     paths:
       - "angular/**"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,3 +48,38 @@ jobs:
           pnpm run build:core
           pnpm run build:angular
           pnpm run build:angular-formly
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install
+        run: pnpm install
+      - name: Build
+        run: |
+          pnpm run build:tokens
+          pnpm run build:core
+          pnpm run build:angular
+          pnpm run build:angular-formly
+      - name: Test
+        run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci

@@ -3,7 +3,8 @@ import { CatSelectConnector } from '@haiilo/catalyst';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'cat-select'
+  selector: 'cat-select',
+  standalone: false
 })
 export class SelectValueAccessorDecorator implements OnChanges {
   /**

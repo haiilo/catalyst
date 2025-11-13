@@ -32,6 +32,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-datepicker>
-  `
+  `,
+  standalone: false
 })
 export class CatDatepickerFieldType extends FieldType<FieldTypeConfig> {}
