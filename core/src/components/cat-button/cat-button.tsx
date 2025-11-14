@@ -6,7 +6,7 @@ import { findClosest } from '../../utils/find-closest';
 /**
  * Buttons are used for interface actions. Primary style should be used only
  * once per view for main call-to-action.
- *
+ * @tag cat-button
  * @part button - The native anchor or button element.
  * @part content - The textual content of the button.
  * @part prefix - The prefix icon.
@@ -66,7 +66,7 @@ export class CatButton {
   @Prop() value?: string;
 
   /**
-   * Specifies that the button should be disabled. A disabled button is unusable
+   * Specifies that the button should be . A disabled button is unusable
    * and un-clickable. Corresponds with the native HTML disabled attribute.
    */
   @Prop() disabled = false;
@@ -82,6 +82,11 @@ export class CatButton {
    * Allows the button to submit a form.
    */
   @Prop() submit = false;
+
+  /**
+   * Another property...
+   */
+  @Prop() anotherProperty?: string;
 
   /**
    * Disables ellipse overflowing button content.

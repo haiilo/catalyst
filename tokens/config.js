@@ -54,6 +54,7 @@ StyleDictionary.registerTransform({
   transitive: true,
   matcher: token => !!token.cssProp,
   transformer: token => `var(--cat-${token.cssProp}, ${token.value})`
+  //FIXME: should be var(--cat-link-decoration-hover) which is referred by button-css
 });
 
 StyleDictionary.registerTransform({
