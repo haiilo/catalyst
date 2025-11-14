@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
+
+
+### Features
+
+* **core:** add tag name transform extra ([#834](https://github.com/haiilo/catalyst/issues/834)) ([78381b3](https://github.com/haiilo/catalyst/commit/78381b3b6e8770b8885d786030f82800e335e5be))
+
 ## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.1...catalyst-core-v13.3.2) (2025-11-07)
 
 
