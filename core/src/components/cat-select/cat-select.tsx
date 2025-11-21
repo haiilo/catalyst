@@ -339,7 +339,7 @@ export class CatSelect {
       if (!oldState.isResolving) {
         this.valueChangedBySelection = true;
         this.value = newValue;
-        this.catChange.emit();
+        this.catChange.emit(newValue);
       }
       this.showErrorsIfTimeout();
     }
@@ -358,7 +358,7 @@ export class CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue>;
 
   /**
    * Emitted when the select loses the focus.
