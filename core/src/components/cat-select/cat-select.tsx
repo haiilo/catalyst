@@ -97,6 +97,8 @@ const INIT_STATE: CatSelectState = {
 let nextUniqueId = 0;
 let nextTagUniqueId = 0;
 
+export type CatSelectValue = string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+
 /**
  * Select lets user choose one option from an options' menu. Consider using
  * select when you have 6 or more options. Select component supports any content
@@ -184,7 +186,7 @@ export class CatSelect {
    * In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,
    * in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
    */
-  @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+  @Prop({ mutable: true }) value?: CatSelectValue;
 
   /**
    * Whether the select is disabled.
@@ -358,7 +360,7 @@ export class CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue>;
+  @Event() catChange!: EventEmitter<CatSelectValue>;
 
   /**
    * Emitted when the select loses the focus.
