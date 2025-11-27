@@ -6,7 +6,7 @@
       "extra-files": [
         {
           "type": "json",
-          "path": ".release-please-manifest.beta.json",
+          "path": "/release-please-manifest.beta.json",
           "jsonpath": "$.tokens"
         }
       ]
@@ -16,7 +16,7 @@
       "extra-files": [
         {
           "type": "json",
-          "path": ".release-please-manifest.beta.json",
+          "path": "/release-please-manifest.beta.json",
           "jsonpath": "$.core"
         }
       ]
@@ -26,7 +26,7 @@
       "extra-files": [
         {
           "type": "json",
-          "path": ".release-please-manifest.beta.json",
+          "path": "/release-please-manifest.beta.json",
           "jsonpath": "$['angular/projects/catalyst']"
         }
       ]
@@ -36,7 +36,7 @@
       "extra-files": [
         {
           "type": "json",
-          "path": ".release-please-manifest.beta.json",
+          "path": "/release-please-manifest.beta.json",
           "jsonpath": "$['angular/projects/catalyst-formly']"
         }
       ]
@@ -46,7 +46,7 @@
       "extra-files": [
         {
           "type": "json",
-          "path": ".release-please-manifest.beta.json",
+          "path": "/release-please-manifest.beta.json",
           "jsonpath": "$.react"
         }
       ]
