@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.4.0...catalyst-angular-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+
 ## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.2...catalyst-angular-v13.4.0) (2025-11-14)
 
 
