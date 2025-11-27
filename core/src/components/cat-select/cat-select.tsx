@@ -98,8 +98,8 @@ let nextUniqueId = 0;
 let nextTagUniqueId = 0;
 
 /**
- * Select lets user choose one option from an options' menu. Consider using
- * select when you have 6 or more options. Select component supports any content type.
+ * Select lets user choose one option from an options' menu.
+ * Consider using select when you have 6 or more options. Select component supports any content type.
  *
  * @slot hint - Optional hint element to be displayed with the select.
  * @slot label - The slotted label. If both the label property and the label slot are present,
