@@ -103,7 +103,8 @@ let nextTagUniqueId = 0;
  * type.
  *
  * @slot hint - Optional hint element to be displayed with the select.
- * @slot label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed.
+ * @slot label - The slotted label. If both the label property and the label slot are present,
+ * only the label slot will be displayed.
  * @part label - The native label element.
  * @part input - The native input element.
  */
