@@ -4,6 +4,9 @@
     "tokens": {
       "component": "catalyst-tokens",
       "release-type": "node",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
       "prerelease": true,
       "prerelease-type": "beta",
       "versioning": "prerelease"
@@ -11,6 +14,9 @@
     "core": {
       "component": "catalyst-core",
       "release-type": "node",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
       "prerelease": true,
       "prerelease-type": "beta",
       "versioning": "prerelease"
@@ -18,6 +24,9 @@
     "angular/projects/catalyst": {
       "component": "catalyst-angular",
       "release-type": "node",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
       "prerelease": true,
       "prerelease-type": "beta",
       "versioning": "prerelease"
@@ -25,6 +34,9 @@
     "angular/projects/catalyst-formly": {
       "component": "catalyst-angular-formly",
       "release-type": "node",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
       "prerelease": true,
       "prerelease-type": "beta",
       "versioning": "prerelease"
@@ -32,6 +44,9 @@
     "react": {
       "component": "catalyst-react",
       "release-type": "node",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
       "prerelease": true,
       "prerelease-type": "beta",
       "versioning": "prerelease"
