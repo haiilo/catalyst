@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.4.0...catalyst-core-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+* **core:** trigger next minor release version ([c159271](https://github.com/haiilo/catalyst/commit/c159271cef3135a35a26f71a367fbf93a7e5dff1))
+
 ## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
 
 
