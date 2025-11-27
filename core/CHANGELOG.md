@@ -1,17 +1,25 @@
 # Changelog
 
-## [13.4.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.4.0-beta) (2025-10-29)
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
 
 
 ### Features
 
-* test beta prerelease configuration ([4365ad6](https://github.com/haiilo/catalyst/commit/4365ad646bb72f5e1c0245f969c0dddb7765fea3))
-* test beta prerelease configuration ([0a4ade7](https://github.com/haiilo/catalyst/commit/0a4ade791508bf53e9313d109279237831dfd74e))
+* **core:** add tag name transform extra ([#834](https://github.com/haiilo/catalyst/issues/834)) ([78381b3](https://github.com/haiilo/catalyst/commit/78381b3b6e8770b8885d786030f82800e335e5be))
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.1...catalyst-core-v13.3.2) (2025-11-07)
 
 
 ### Bug Fixes
 
-* **core:** prevent catChange event emission on select initialization ([#807](https://github.com/haiilo/catalyst/issues/807)) ([083eee3](https://github.com/haiilo/catalyst/commit/083eee368baf86edb31c596876b77a4ca5cd71f9))
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
 
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
 
