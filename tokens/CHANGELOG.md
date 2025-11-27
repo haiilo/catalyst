@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.4.0...catalyst-tokens-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+
 ## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.3.2...catalyst-tokens-v13.4.0) (2025-11-14)
 
 
