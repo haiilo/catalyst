@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.4.0-beta...catalyst-angular-v13.4.0-beta.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
 ## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.2...catalyst-angular-v13.4.0) (2025-11-14)
 
 
