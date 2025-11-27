@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.6.0-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v13.6.0-beta) (2025-11-27)
+
+
+### Features
+
+* **core:** update comments ([fd64565](https://github.com/haiilo/catalyst/commit/fd64565fc25c07e9eb3ec2699d0d513e2ffa581b))
+
 ## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.4.0...catalyst-core-v13.5.0) (2025-11-27)
 
 
