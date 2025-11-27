@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.5.1-beta...catalyst-react-v13.5.1-beta.1) (2025-11-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.5.0...catalyst-react-v13.5.1-beta) (2025-11-27)
 
 
