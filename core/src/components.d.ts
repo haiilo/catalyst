@@ -33,6 +33,7 @@ export namespace Components {
     interface CatAlert {
         /**
           * The color palette of the alert.
+          * @default 'primary'
          */
         "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
@@ -41,6 +42,7 @@ export namespace Components {
         "icon"?: string;
         /**
           * Whether the icon of the alert is deactivated.
+          * @default false
          */
         "noIcon": boolean;
     }
@@ -58,14 +60,17 @@ export namespace Components {
         "initials"?: string;
         /**
           * The label of the avatar.
+          * @default ''
          */
         "label": string;
         /**
           * Use round avatar edges.
+          * @default false
          */
         "round": boolean;
         /**
           * The size of the avatar.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -88,6 +93,7 @@ export namespace Components {
     interface CatBadge {
         /**
           * The color palette of the badge.
+          * @default 'primary'
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
@@ -96,26 +102,32 @@ export namespace Components {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly": boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
           * Draw attention to the badge with a subtle animation.
+          * @default false
          */
         "pulse": boolean;
         /**
           * Use round badge edges.
+          * @default false
          */
         "round": boolean;
         /**
           * The size of the badge.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the badge.
+          * @default 'filled'
          */
         "variant": 'filled' | 'outlined';
     }
@@ -134,6 +146,7 @@ export namespace Components {
         "a11yLabel"?: string;
         /**
           * Set the button into an active state.
+          * @default false
          */
         "active": boolean;
         /**
@@ -146,10 +159,12 @@ export namespace Components {
         "buttonId"?: string;
         /**
           * The color palette of the button.
+          * @default 'secondary'
          */
         "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -171,14 +186,17 @@ export namespace Components {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly": boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+          * @default false
          */
         "loading": boolean;
         /**
@@ -195,18 +213,22 @@ export namespace Components {
         "nativeContentAttributes"?: { [key: string]: string };
         /**
           * Disables ellipse overflowing button content.
+          * @default false
          */
         "noEllipsis": boolean;
         /**
           * Use round button edges.
+          * @default false
          */
         "round": boolean;
         /**
           * The size of the button.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * Allows the button to submit a form.
+          * @default false
          */
         "submit": boolean;
         /**
@@ -227,6 +249,7 @@ export namespace Components {
         "value"?: string;
         /**
           * The rendering style of the button.
+          * @default 'outlined'
          */
         "variant": 'filled' | 'outlined' | 'text' | 'link';
     }
@@ -253,14 +276,17 @@ export namespace Components {
     interface CatCheckbox {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment": 'center' | 'top' | 'bottom';
         /**
           * Checked state of the checkbox
+          * @default false
          */
         "checked": boolean;
         /**
           * Disabled state of the checkbox
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -282,18 +308,22 @@ export namespace Components {
         "identifier"?: string;
         /**
           * Indeterminate state of the checkbox
+          * @default false
          */
         "indeterminate": boolean;
         /**
           * Label of the checkbox which is presented in the UI
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
           * Whether the label should appear to the left of the checkbox.
+          * @default false
          */
         "labelLeft": boolean;
         /**
@@ -310,14 +340,17 @@ export namespace Components {
         "noValue"?: any;
         /**
           * Required state of the checkbox.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'none'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The resolved value of the checkbox, based on the checked state and value.
+          * @default null
          */
         "resolvedValue": any;
         /**
@@ -335,6 +368,7 @@ export namespace Components {
     interface CatDate {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete": string;
         /**
@@ -343,10 +377,12 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -360,6 +396,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -384,6 +421,7 @@ export namespace Components {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
@@ -392,10 +430,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -420,18 +460,22 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-end'
          */
         "placement": Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -470,6 +514,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Shows an arrow keys navigation hint.
+          * @default false
          */
         "hint": boolean;
         /**
@@ -478,10 +523,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -494,22 +541,27 @@ export namespace Components {
         "min"?: string;
         /**
           * Hides the clear button.
+          * @default false
          */
         "noClear": boolean;
         /**
           * Hides the today button.
+          * @default false
          */
         "noToday": boolean;
         /**
           * Allow the selection of a range of dates, i.e. start and end date.
+          * @default false
          */
         "range": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -527,24 +579,29 @@ export namespace Components {
         "value"?: string;
         /**
           * Show week numbers.
+          * @default false
          */
         "weeks": boolean;
     }
     interface CatDatepicker {
         /**
           * Instead of body, appends the calendar to the cat-datepicker element instead
+          * @default false
          */
         "attachToElement": boolean;
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete": string;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -558,6 +615,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -582,6 +640,7 @@ export namespace Components {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
@@ -590,10 +649,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -606,6 +667,7 @@ export namespace Components {
         "min"?: string;
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+          * @default 'date'
          */
         "mode": CatDatepickerMode;
         /**
@@ -631,18 +693,22 @@ export namespace Components {
         "position"?: BaseOptions['position'] | Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The step size to use when changing the time.
+          * @default 5
          */
         "step": number;
         /**
@@ -661,6 +727,7 @@ export namespace Components {
     interface CatDatepickerInline {
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -673,6 +740,7 @@ export namespace Components {
         "min"?: string;
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+          * @default 'date'
          */
         "mode": CatDatepickerMode;
         /**
@@ -681,10 +749,12 @@ export namespace Components {
         "nativePickerAttributes"?: { [key: string]: string };
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * The step size to use when changing the time.
+          * @default 5
          */
         "step": number;
         /**
@@ -699,6 +769,7 @@ export namespace Components {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @default 'vertical'
          */
         "arrowNavigation": 'horizontal' | 'vertical' | 'none';
         /**
@@ -707,6 +778,7 @@ export namespace Components {
         "close": () => Promise<void>;
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
          */
         "delayedTriggerInit": boolean;
         /**
@@ -716,23 +788,28 @@ export namespace Components {
         "isOpen": boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
          */
         "justify": boolean;
         /**
           * Do not close the dropdown on outside clicks.
+          * @default false
          */
         "noAutoClose": boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
           * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
+          * @default false
          */
         "noInitialFocus": boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
          */
         "noResize": boolean;
         /**
           * Trigger element will not receive focus when dropdown is closed.
+          * @default false
          */
         "noReturnFocus": boolean;
         /**
@@ -742,10 +819,12 @@ export namespace Components {
         "open": (isFocusVisible?: boolean) => Promise<void>;
         /**
           * Allow overflow when dropdown is open.
+          * @default false
          */
         "overflow": boolean;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-start'
          */
         "placement": Placement;
         /**
@@ -759,6 +838,7 @@ export namespace Components {
     interface CatFormGroup {
         /**
           * Whether the label is on top or left.
+          * @default false
          */
         "horizontal": boolean;
         /**
@@ -767,6 +847,7 @@ export namespace Components {
         "labelSize"?: string;
         /**
           * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
+          * @default 'auto'
          */
         "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
     }
@@ -789,6 +870,7 @@ export namespace Components {
         "iconSrc"?: string;
         /**
           * The size of the icon.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
@@ -812,6 +894,7 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
@@ -820,6 +903,7 @@ export namespace Components {
         "dateMaskOptions"?: FormatDateMaskOptions;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -833,6 +917,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -857,6 +942,7 @@ export namespace Components {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
@@ -865,14 +951,17 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
           * Displays the input in a loading state with a spinner.
+          * @default false
          */
         "loading": boolean;
         /**
@@ -909,18 +998,22 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Use round input edges.
+          * @default false
          */
         "round": boolean;
         /**
@@ -941,10 +1034,12 @@ export namespace Components {
         "timeMaskOptions"?: FormatTimeMaskOptions;
         /**
           * Whether the input should show a password toggle button for password inputs.
+          * @default false
          */
         "togglePassword": boolean;
         /**
           * Type of form control.
+          * @default 'text'
          */
         "type": InputType;
         /**
@@ -962,42 +1057,52 @@ export namespace Components {
     interface CatPagination {
         /**
           * The number of pages to be shown around the current page.
+          * @default 1
          */
         "activePadding": number;
         /**
           * Use compact pagination mode.
+          * @default false
          */
         "compact": boolean;
         /**
           * The icon of the "next" button.
+          * @default '$cat:pagination-right'
          */
         "iconNext": string;
         /**
           * The icon of the "previous" button.
+          * @default '$cat:pagination-left'
          */
         "iconPrev": string;
         /**
           * The current page.
+          * @default 0
          */
         "page": number;
         /**
           * The total number of pages.
+          * @default 1
          */
         "pageCount": number;
         /**
           * Use round button edges.
+          * @default false
          */
         "round": boolean;
         /**
           * The number of pages to be shown at the edges.
+          * @default 1
          */
         "sidePadding": number;
         /**
           * The size of the buttons.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the buttons.
+          * @default 'text'
          */
         "variant": 'filled' | 'outlined' | 'text';
     }
@@ -1008,14 +1113,17 @@ export namespace Components {
     interface CatRadio {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment": 'center' | 'top' | 'bottom';
         /**
           * Whether this radio is checked.
+          * @default false
          */
         "checked": boolean;
         /**
           * Whether this radio is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1037,14 +1145,17 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label of the radio that is visible.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
           * Whether the label should appear to the left of the radio component.
+          * @default false
          */
         "labelLeft": boolean;
         /**
@@ -1057,6 +1168,7 @@ export namespace Components {
         "nativeAttributes"?: { [key: string]: string };
         /**
           * Whether the radio is required.
+          * @default false
          */
         "required": boolean;
         /**
@@ -1065,6 +1177,7 @@ export namespace Components {
         "testId"?: string;
         /**
           * The value of the radio component.
+          * @default ''
          */
         "value": any;
     }
@@ -1078,10 +1191,12 @@ export namespace Components {
         "a11yLabel"?: string;
         /**
           * Whether this radio group is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Whether the label of the radios should appear to the left of them.
+          * @default false
          */
         "labelLeft": boolean;
         /**
@@ -1099,30 +1214,37 @@ export namespace Components {
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
+          * @default false
          */
         "noOverflowX": boolean;
         /**
           * Flags to disable/enable overflowY.
+          * @default false
          */
         "noOverflowY": boolean;
         /**
           * Flag to disable/enable overscroll behavior.
+          * @default false
          */
         "noOverscroll": boolean;
         /**
           * Flag to not fire an initial event after content initialization.
+          * @default false
          */
         "noScrolledInit": boolean;
         /**
           * Flags to disable/enable scroll shadowX.
+          * @default false
          */
         "noShadowX": boolean;
         /**
           * Flags to disable/enable scroll shadowY.
+          * @default false
          */
         "noShadowY": boolean;
         /**
           * Buffer to be used to calculate the scroll distance.
+          * @default 0
          */
         "scrolledBuffer": number;
     }
@@ -1137,6 +1259,7 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Whether the select should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
@@ -1146,10 +1269,12 @@ export namespace Components {
         "connect": (connector: CatSelectConnector) => Promise<void>;
         /**
           * The debounce time for the search.
+          * @default 250
          */
         "debounce": number;
         /**
           * Whether the select is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1163,6 +1288,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -1187,14 +1313,17 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the select.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
           * Enable multiple selection.
+          * @default false
          */
         "multiple": boolean;
         /**
@@ -1215,14 +1344,17 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The placement of the select.
+          * @default 'bottom-start'
          */
         "placement": Placement;
         /**
           * A value is required or must be checked for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the select is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -1231,6 +1363,7 @@ export namespace Components {
         "tagHint"?: string;
         /**
           * Whether the select should add new items.
+          * @default false
          */
         "tags": boolean;
         /**
@@ -1250,6 +1383,7 @@ export namespace Components {
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
+          * @default 'sheen'
          */
         "effect": 'plain' | 'sheen' | 'pulse';
         /**
@@ -1258,10 +1392,12 @@ export namespace Components {
         "lines"?: number;
         /**
           * The size of the skeleton. If the variant is set to "head", the size values "xs" to "xl" translate to the head levels `h1` to `h5`.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the skeleton.
+          * @default 'rectangle'
          */
         "variant": 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
@@ -1275,10 +1411,12 @@ export namespace Components {
         "a11yLabel"?: string;
         /**
           * The size of the spinner.
+          * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
         /**
           * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+          * @default 0
          */
         "value": number;
     }
@@ -1288,10 +1426,12 @@ export namespace Components {
     interface CatTab {
         /**
           * Specifies that the tab should be deactivated.
+          * @default false
          */
         "deactivated": boolean;
         /**
           * Specifies that the tab content pane contains an error. This will color the tab in an error state and also switch to an error icon if an icon is specified.
+          * @default false
          */
         "error": boolean;
         /**
@@ -1300,14 +1440,17 @@ export namespace Components {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the tab.
+          * @default false
          */
         "iconOnly": boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
           * The label of the tab.
+          * @default ''
          */
         "label": string;
         /**
@@ -1316,10 +1459,12 @@ export namespace Components {
         "nativeAttributes"?: { [key: string]: string };
         /**
           * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+          * @default false
          */
         "noActive": boolean;
         /**
           * Specifies that the tab is always visible in adaptive mode. Only the first sticky tab will be taken into account. Sticky has advantage on activeTabAlwaysVisible if there is no space to show both.
+          * @default false
          */
         "sticky": boolean;
         /**
@@ -1342,14 +1487,17 @@ export namespace Components {
     interface CatTabs {
         /**
           * The ID of the active tab.
+          * @default ''
          */
         "activeTab": string;
         /**
           * Whether the active tab should always be visible. Applied when adaptive is enabled. Has less priority than sticky if there is no space to show both.
+          * @default false
          */
         "activeTabAlwaysVisible": boolean;
         /**
           * Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.
+          * @default false
          */
         "adaptive": boolean;
         /**
@@ -1364,6 +1512,7 @@ export namespace Components {
         "setActiveIndex": (index: number) => Promise<void>;
         /**
           * The alignment of the tabs.
+          * @default 'left'
          */
         "tabsAlign": 'left' | 'center' | 'right' | 'justify';
         /**
@@ -1377,18 +1526,22 @@ export namespace Components {
     interface CatTag {
         /**
           * Whether new tag is added when the input is blurred.
+          * @default false
          */
         "addOnBlur": boolean;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
           * Whether the select is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -1405,10 +1558,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the select.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -1425,14 +1580,17 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * A value is required or must be checked for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the select is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+          * @default [' ']
          */
         "tagCreationChars": string[];
         /**
@@ -1460,6 +1618,7 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Whether the textarea is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1473,6 +1632,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -1497,10 +1657,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the textarea.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -1525,18 +1687,22 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the textarea is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
+          * @default 3
          */
         "rows": number;
         /**
@@ -1554,6 +1720,7 @@ export namespace Components {
     interface CatTime {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete": string;
         /**
@@ -1562,10 +1729,12 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable": boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1579,6 +1748,7 @@ export namespace Components {
         "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate": boolean | number;
         /**
@@ -1603,6 +1773,7 @@ export namespace Components {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
@@ -1611,10 +1782,12 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
@@ -1639,18 +1812,22 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-end'
          */
         "placement": Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly": boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required": boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -1660,6 +1837,7 @@ export namespace Components {
         "select": (date: Date | null) => Promise<void>;
         /**
           * The step size for times in minutes.
+          * @default 30
          */
         "step": number;
         /**
@@ -1686,14 +1864,17 @@ export namespace Components {
     interface CatToggle {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment": 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
+          * @default false
          */
         "checked": boolean;
         /**
           * Disabled state of the toggle.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1715,14 +1896,17 @@ export namespace Components {
         "identifier"?: string;
         /**
           * The label of the toggle that is visible.
+          * @default ''
          */
         "label": string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden": boolean;
         /**
           * Whether the label should appear to the left of the toggle.
+          * @default false
          */
         "labelLeft": boolean;
         /**
@@ -1739,10 +1923,12 @@ export namespace Components {
         "noValue"?: any;
         /**
           * Required state of the toggle.
+          * @default false
          */
         "required": boolean;
         /**
           * The resolved value of the toggle, based on the checked state, value and noValue.
+          * @default null
          */
         "resolvedValue": any;
         /**
@@ -1762,34 +1948,42 @@ export namespace Components {
     interface CatTooltip {
         /**
           * The content of the tooltip.
+          * @default ''
          */
         "content": string;
         /**
           * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+          * @default false
          */
         "disabled": boolean;
         /**
           * The delay time for hiding tooltip in ms.
+          * @default 0
          */
         "hideDelay": number;
         /**
           * The duration of tap to show the tooltip.
+          * @default 1000
          */
         "longTouchDuration": number;
         /**
           * The placement of the tooltip.
+          * @default 'top'
          */
         "placement": TooltipPlacement;
         /**
           * Use round tooltip edges.
+          * @default false
          */
         "round": boolean;
         /**
           * The delay time for showing tooltip in ms.
+          * @default 250
          */
         "showDelay": number;
         /**
           * The size of the tooltip.
+          * @default 'm'
          */
         "size": 's' | 'm' | 'l';
     }
@@ -2449,6 +2643,7 @@ declare namespace LocalJSX {
     interface CatAlert {
         /**
           * The color palette of the alert.
+          * @default 'primary'
          */
         "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
         /**
@@ -2457,6 +2652,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Whether the icon of the alert is deactivated.
+          * @default false
          */
         "noIcon"?: boolean;
     }
@@ -2474,14 +2670,17 @@ declare namespace LocalJSX {
         "initials"?: string;
         /**
           * The label of the avatar.
+          * @default ''
          */
         "label"?: string;
         /**
           * Use round avatar edges.
+          * @default false
          */
         "round"?: boolean;
         /**
           * The size of the avatar.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -2504,6 +2703,7 @@ declare namespace LocalJSX {
     interface CatBadge {
         /**
           * The color palette of the badge.
+          * @default 'primary'
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
@@ -2512,26 +2712,32 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly"?: boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
           * Draw attention to the badge with a subtle animation.
+          * @default false
          */
         "pulse"?: boolean;
         /**
           * Use round badge edges.
+          * @default false
          */
         "round"?: boolean;
         /**
           * The size of the badge.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the badge.
+          * @default 'filled'
          */
         "variant"?: 'filled' | 'outlined';
     }
@@ -2550,6 +2756,7 @@ declare namespace LocalJSX {
         "a11yLabel"?: string;
         /**
           * Set the button into an active state.
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -2562,10 +2769,12 @@ declare namespace LocalJSX {
         "buttonId"?: string;
         /**
           * The color palette of the button.
+          * @default 'secondary'
          */
         "color"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
         /**
           * Specifies that the button should be disabled. A disabled button is unusable and un-clickable. Corresponds with the native HTML disabled attribute.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2574,14 +2783,17 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly"?: boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -2598,6 +2810,7 @@ declare namespace LocalJSX {
         "nativeContentAttributes"?: { [key: string]: string };
         /**
           * Disables ellipse overflowing button content.
+          * @default false
          */
         "noEllipsis"?: boolean;
         /**
@@ -2614,14 +2827,17 @@ declare namespace LocalJSX {
         "onCatFocus"?: (event: CatButtonCustomEvent<FocusEvent>) => void;
         /**
           * Use round button edges.
+          * @default false
          */
         "round"?: boolean;
         /**
           * The size of the button.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * Allows the button to submit a form.
+          * @default false
          */
         "submit"?: boolean;
         /**
@@ -2642,6 +2858,7 @@ declare namespace LocalJSX {
         "value"?: string;
         /**
           * The rendering style of the button.
+          * @default 'outlined'
          */
         "variant"?: 'filled' | 'outlined' | 'text' | 'link';
     }
@@ -2672,14 +2889,17 @@ declare namespace LocalJSX {
     interface CatCheckbox {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Checked state of the checkbox
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Disabled state of the checkbox
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2692,18 +2912,22 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * Indeterminate state of the checkbox
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * Label of the checkbox which is presented in the UI
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
           * Whether the label should appear to the left of the checkbox.
+          * @default false
          */
         "labelLeft"?: boolean;
         /**
@@ -2732,14 +2956,17 @@ declare namespace LocalJSX {
         "onCatFocus"?: (event: CatCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the checkbox.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'none'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The resolved value of the checkbox, based on the checked state and value.
+          * @default null
          */
         "resolvedValue"?: any;
         /**
@@ -2757,18 +2984,22 @@ declare namespace LocalJSX {
     interface CatDate {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete"?: string;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2793,6 +3024,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
@@ -2801,10 +3033,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -2841,18 +3075,22 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-end'
          */
         "placement"?: Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -2882,6 +3120,7 @@ declare namespace LocalJSX {
         "a11yLabel"?: string;
         /**
           * Shows an arrow keys navigation hint.
+          * @default false
          */
         "hint"?: boolean;
         /**
@@ -2890,10 +3129,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -2906,10 +3147,12 @@ declare namespace LocalJSX {
         "min"?: string;
         /**
           * Hides the clear button.
+          * @default false
          */
         "noClear"?: boolean;
         /**
           * Hides the today button.
+          * @default false
          */
         "noToday"?: boolean;
         /**
@@ -2918,14 +3161,17 @@ declare namespace LocalJSX {
         "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
         /**
           * Allow the selection of a range of dates, i.e. start and end date.
+          * @default false
          */
         "range"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -2934,28 +3180,34 @@ declare namespace LocalJSX {
         "value"?: string;
         /**
           * Show week numbers.
+          * @default false
          */
         "weeks"?: boolean;
     }
     interface CatDatepicker {
         /**
           * Instead of body, appends the calendar to the cat-datepicker element instead
+          * @default false
          */
         "attachToElement"?: boolean;
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete"?: string;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -2980,6 +3232,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
@@ -2988,10 +3241,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -3004,6 +3259,7 @@ declare namespace LocalJSX {
         "min"?: string;
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+          * @default 'date'
          */
         "mode"?: CatDatepickerMode;
         /**
@@ -3041,18 +3297,22 @@ declare namespace LocalJSX {
         "position"?: BaseOptions['position'] | Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The step size to use when changing the time.
+          * @default 5
          */
         "step"?: number;
         /**
@@ -3071,6 +3331,7 @@ declare namespace LocalJSX {
     interface CatDatepickerInline {
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3083,6 +3344,7 @@ declare namespace LocalJSX {
         "min"?: string;
         /**
           * The mode of the datepicker, to select a date, time, both, a date range or a week number.
+          * @default 'date'
          */
         "mode"?: CatDatepickerMode;
         /**
@@ -3095,10 +3357,12 @@ declare namespace LocalJSX {
         "onCatChange"?: (event: CatDatepickerInlineCustomEvent<string>) => void;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * The step size to use when changing the time.
+          * @default 5
          */
         "step"?: number;
         /**
@@ -3113,10 +3377,12 @@ declare namespace LocalJSX {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @default 'vertical'
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
          */
         "delayedTriggerInit"?: boolean;
         /**
@@ -3126,23 +3392,28 @@ declare namespace LocalJSX {
         "isOpen"?: boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
          */
         "justify"?: boolean;
         /**
           * Do not close the dropdown on outside clicks.
+          * @default false
          */
         "noAutoClose"?: boolean;
         /**
           * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
           * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
+          * @default false
          */
         "noInitialFocus"?: boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
          */
         "noResize"?: boolean;
         /**
           * Trigger element will not receive focus when dropdown is closed.
+          * @default false
          */
         "noReturnFocus"?: boolean;
         /**
@@ -3155,10 +3426,12 @@ declare namespace LocalJSX {
         "onCatOpen"?: (event: CatDropdownCustomEvent<FocusEvent>) => void;
         /**
           * Allow overflow when dropdown is open.
+          * @default false
          */
         "overflow"?: boolean;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-start'
          */
         "placement"?: Placement;
     }
@@ -3168,6 +3441,7 @@ declare namespace LocalJSX {
     interface CatFormGroup {
         /**
           * Whether the label is on top or left.
+          * @default false
          */
         "horizontal"?: boolean;
         /**
@@ -3176,6 +3450,7 @@ declare namespace LocalJSX {
         "labelSize"?: string;
         /**
           * Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br /> By default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br /> - If there are more required, the optional will be marked.<br /> - If there are less required, it will mark the required.<br /><br /> If a form field had "!", the requiredMarked of the field would not change.
+          * @default 'auto'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'auto';
     }
@@ -3198,6 +3473,7 @@ declare namespace LocalJSX {
         "iconSrc"?: string;
         /**
           * The size of the icon.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
     }
@@ -3217,6 +3493,7 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
@@ -3225,10 +3502,12 @@ declare namespace LocalJSX {
         "dateMaskOptions"?: FormatDateMaskOptions;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3253,6 +3532,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
@@ -3261,14 +3541,17 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
           * Displays the input in a loading state with a spinner.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -3321,18 +3604,22 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Use round input edges.
+          * @default false
          */
         "round"?: boolean;
         /**
@@ -3353,10 +3640,12 @@ declare namespace LocalJSX {
         "timeMaskOptions"?: FormatTimeMaskOptions;
         /**
           * Whether the input should show a password toggle button for password inputs.
+          * @default false
          */
         "togglePassword"?: boolean;
         /**
           * Type of form control.
+          * @default 'text'
          */
         "type"?: InputType;
         /**
@@ -3374,18 +3663,22 @@ declare namespace LocalJSX {
     interface CatPagination {
         /**
           * The number of pages to be shown around the current page.
+          * @default 1
          */
         "activePadding"?: number;
         /**
           * Use compact pagination mode.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The icon of the "next" button.
+          * @default '$cat:pagination-right'
          */
         "iconNext"?: string;
         /**
           * The icon of the "previous" button.
+          * @default '$cat:pagination-left'
          */
         "iconPrev"?: string;
         /**
@@ -3394,26 +3687,32 @@ declare namespace LocalJSX {
         "onCatChange"?: (event: CatPaginationCustomEvent<number>) => void;
         /**
           * The current page.
+          * @default 0
          */
         "page"?: number;
         /**
           * The total number of pages.
+          * @default 1
          */
         "pageCount"?: number;
         /**
           * Use round button edges.
+          * @default false
          */
         "round"?: boolean;
         /**
           * The number of pages to be shown at the edges.
+          * @default 1
          */
         "sidePadding"?: number;
         /**
           * The size of the buttons.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the buttons.
+          * @default 'text'
          */
         "variant"?: 'filled' | 'outlined' | 'text';
     }
@@ -3424,14 +3723,17 @@ declare namespace LocalJSX {
     interface CatRadio {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Whether this radio is checked.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Whether this radio is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3444,14 +3746,17 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label of the radio that is visible.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
           * Whether the label should appear to the left of the radio component.
+          * @default false
          */
         "labelLeft"?: boolean;
         /**
@@ -3476,6 +3781,7 @@ declare namespace LocalJSX {
         "onCatFocus"?: (event: CatRadioCustomEvent<FocusEvent>) => void;
         /**
           * Whether the radio is required.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -3484,6 +3790,7 @@ declare namespace LocalJSX {
         "testId"?: string;
         /**
           * The value of the radio component.
+          * @default ''
          */
         "value"?: any;
     }
@@ -3497,10 +3804,12 @@ declare namespace LocalJSX {
         "a11yLabel"?: string;
         /**
           * Whether this radio group is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Whether the label of the radios should appear to the left of them.
+          * @default false
          */
         "labelLeft"?: boolean;
         /**
@@ -3530,26 +3839,32 @@ declare namespace LocalJSX {
     interface CatScrollable {
         /**
           * Flags to disable/enable overflowX.
+          * @default false
          */
         "noOverflowX"?: boolean;
         /**
           * Flags to disable/enable overflowY.
+          * @default false
          */
         "noOverflowY"?: boolean;
         /**
           * Flag to disable/enable overscroll behavior.
+          * @default false
          */
         "noOverscroll"?: boolean;
         /**
           * Flag to not fire an initial event after content initialization.
+          * @default false
          */
         "noScrolledInit"?: boolean;
         /**
           * Flags to disable/enable scroll shadowX.
+          * @default false
          */
         "noShadowX"?: boolean;
         /**
           * Flags to disable/enable scroll shadowY.
+          * @default false
          */
         "noShadowY"?: boolean;
         /**
@@ -3570,6 +3885,7 @@ declare namespace LocalJSX {
         "onScrolledTop"?: (event: CatScrollableCustomEvent<void>) => void;
         /**
           * Buffer to be used to calculate the scroll distance.
+          * @default 0
          */
         "scrolledBuffer"?: number;
     }
@@ -3580,18 +3896,22 @@ declare namespace LocalJSX {
     interface CatSelect {
         /**
           * Whether the select should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
           * The debounce time for the search.
+          * @default 250
          */
         "debounce"?: number;
         /**
           * Whether the select is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3616,14 +3936,17 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the select.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
           * Enable multiple selection.
+          * @default false
          */
         "multiple"?: boolean;
         /**
@@ -3660,14 +3983,17 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The placement of the select.
+          * @default 'bottom-start'
          */
         "placement"?: Placement;
         /**
           * A value is required or must be checked for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the select is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
@@ -3676,6 +4002,7 @@ declare namespace LocalJSX {
         "tagHint"?: string;
         /**
           * Whether the select should add new items.
+          * @default false
          */
         "tags"?: boolean;
         /**
@@ -3695,6 +4022,7 @@ declare namespace LocalJSX {
     interface CatSkeleton {
         /**
           * The animation style of the skeleton.
+          * @default 'sheen'
          */
         "effect"?: 'plain' | 'sheen' | 'pulse';
         /**
@@ -3703,10 +4031,12 @@ declare namespace LocalJSX {
         "lines"?: number;
         /**
           * The size of the skeleton. If the variant is set to "head", the size values "xs" to "xl" translate to the head levels `h1` to `h5`.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
           * The rendering style of the skeleton.
+          * @default 'rectangle'
          */
         "variant"?: 'rectangle' | 'square' | 'circle' | 'head' | 'body';
     }
@@ -3720,10 +4050,12 @@ declare namespace LocalJSX {
         "a11yLabel"?: string;
         /**
           * The size of the spinner.
+          * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
         /**
           * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+          * @default 0
          */
         "value"?: number;
     }
@@ -3733,10 +4065,12 @@ declare namespace LocalJSX {
     interface CatTab {
         /**
           * Specifies that the tab should be deactivated.
+          * @default false
          */
         "deactivated"?: boolean;
         /**
           * Specifies that the tab content pane contains an error. This will color the tab in an error state and also switch to an error icon if an icon is specified.
+          * @default false
          */
         "error"?: boolean;
         /**
@@ -3745,14 +4079,17 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the tab.
+          * @default false
          */
         "iconOnly"?: boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
           * The label of the tab.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -3761,6 +4098,7 @@ declare namespace LocalJSX {
         "nativeAttributes"?: { [key: string]: string };
         /**
           * Specifies that the tab does not have an active state and thus cannot be activated. This does not mean, that the tab is deactivated. The tab can still be clicked and emit the `catClick` event. This is helpful if a tab should only trigger a click action (such as opening a modal).
+          * @default false
          */
         "noActive"?: boolean;
         /**
@@ -3769,6 +4107,7 @@ declare namespace LocalJSX {
         "onCatClick"?: (event: CatTabCustomEvent<MouseEvent>) => void;
         /**
           * Specifies that the tab is always visible in adaptive mode. Only the first sticky tab will be taken into account. Sticky has advantage on activeTabAlwaysVisible if there is no space to show both.
+          * @default false
          */
         "sticky"?: boolean;
         /**
@@ -3791,14 +4130,17 @@ declare namespace LocalJSX {
     interface CatTabs {
         /**
           * The ID of the active tab.
+          * @default ''
          */
         "activeTab"?: string;
         /**
           * Whether the active tab should always be visible. Applied when adaptive is enabled. Has less priority than sticky if there is no space to show both.
+          * @default false
          */
         "activeTabAlwaysVisible"?: boolean;
         /**
           * Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.
+          * @default false
          */
         "adaptive"?: boolean;
         /**
@@ -3807,6 +4149,7 @@ declare namespace LocalJSX {
         "onCatChange"?: (event: CatTabsCustomEvent<{ id: string; index: number; fromDropdown: boolean }>) => void;
         /**
           * The alignment of the tabs.
+          * @default 'left'
          */
         "tabsAlign"?: 'left' | 'center' | 'right' | 'justify';
     }
@@ -3816,18 +4159,22 @@ declare namespace LocalJSX {
     interface CatTag {
         /**
           * Whether new tag is added when the input is blurred.
+          * @default false
          */
         "addOnBlur"?: boolean;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
           * Whether the select is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3844,10 +4191,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the select.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -3876,14 +4225,17 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * A value is required or must be checked for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the select is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * List of characters that should create a new tag. This need to be comparable to `keydownEvent.key`. Pasted values will also be split by those chars. Defaults to `[' ']`.
+          * @default [' ']
          */
         "tagCreationChars"?: string[];
         /**
@@ -3907,10 +4259,12 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * Whether the textarea is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -3935,10 +4289,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the textarea.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -3975,18 +4331,22 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the textarea is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * Specifies the initial number of lines in the textarea.
+          * @default 3
          */
         "rows"?: number;
         /**
@@ -4004,18 +4364,22 @@ declare namespace LocalJSX {
     interface CatTime {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete"?: string;
         /**
           * Whether the input should show a clear button.
+          * @default false
          */
         "clearable"?: boolean;
         /**
           * Whether the input is disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.
+          * @default 0
          */
         "errorUpdate"?: boolean | number;
         /**
@@ -4040,6 +4404,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**
@@ -4048,10 +4413,12 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label for the input.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
@@ -4088,22 +4455,27 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-end'
          */
         "placement"?: Placement;
         /**
           * The value is not editable.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * A value is required or must be check for the form to be submittable.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Whether the label need a marker to shown if the input is required or optional.
+          * @default 'optional'
          */
         "requiredMarker"?: 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         /**
           * The step size for times in minutes.
+          * @default 30
          */
         "step"?: number;
         /**
@@ -4130,14 +4502,17 @@ declare namespace LocalJSX {
     interface CatToggle {
         /**
           * The alignment of the checkbox.
+          * @default 'top'
          */
         "alignment"?: 'center' | 'top' | 'bottom';
         /**
           * Checked state of the toggle.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Disabled state of the toggle.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4150,14 +4525,17 @@ declare namespace LocalJSX {
         "identifier"?: string;
         /**
           * The label of the toggle that is visible.
+          * @default ''
          */
         "label"?: string;
         /**
           * Visually hide the label, but still show it to assistive technologies like screen readers.
+          * @default false
          */
         "labelHidden"?: boolean;
         /**
           * Whether the label should appear to the left of the toggle.
+          * @default false
          */
         "labelLeft"?: boolean;
         /**
@@ -4186,10 +4564,12 @@ declare namespace LocalJSX {
         "onCatFocus"?: (event: CatToggleCustomEvent<FocusEvent>) => void;
         /**
           * Required state of the toggle.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The resolved value of the toggle, based on the checked state, value and noValue.
+          * @default null
          */
         "resolvedValue"?: any;
         /**
@@ -4209,34 +4589,42 @@ declare namespace LocalJSX {
     interface CatTooltip {
         /**
           * The content of the tooltip.
+          * @default ''
          */
         "content"?: string;
         /**
           * Specifies that the tooltip should be disabled. A disabled tooltip is unusable, and invisible. Corresponds with the native HTML disabled attribute.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * The delay time for hiding tooltip in ms.
+          * @default 0
          */
         "hideDelay"?: number;
         /**
           * The duration of tap to show the tooltip.
+          * @default 1000
          */
         "longTouchDuration"?: number;
         /**
           * The placement of the tooltip.
+          * @default 'top'
          */
         "placement"?: TooltipPlacement;
         /**
           * Use round tooltip edges.
+          * @default false
          */
         "round"?: boolean;
         /**
           * The delay time for showing tooltip in ms.
+          * @default 250
          */
         "showDelay"?: number;
         /**
           * The size of the tooltip.
+          * @default 'm'
          */
         "size"?: 's' | 'm' | 'l';
     }

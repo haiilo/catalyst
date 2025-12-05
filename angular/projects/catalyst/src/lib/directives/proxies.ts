@@ -1,8 +1,16 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  NgZone
+} from '@angular/core';
 
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
+import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@haiilo/catalyst';
 
@@ -139,10 +147,14 @@ export declare interface CatBadge extends Components.CatBadge {}
     'value',
     'variant'
   ],
+  outputs: ['catClick', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatButton {
   protected el: HTMLCatButtonElement;
+  @Output() catClick = new EventEmitter<CustomEvent<MouseEvent>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -150,7 +162,6 @@ export class CatButton {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catClick', 'catFocus', 'catBlur']);
   }
 }
 
@@ -201,10 +212,12 @@ export declare interface CatButtonGroup extends Components.CatButtonGroup {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
+  outputs: ['catLoad'],
   standalone: false
 })
 export class CatCard {
   protected el: HTMLCatCardElement;
+  @Output() catLoad = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -212,7 +225,6 @@ export class CatCard {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catLoad']);
   }
 }
 
@@ -269,10 +281,14 @@ export declare interface CatCard extends Components.CatCard {
     'testId',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatCheckbox {
   protected el: HTMLCatCheckboxElement;
+  @Output() catChange = new EventEmitter<CustomEvent<any>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -280,7 +296,6 @@ export class CatCheckbox {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -361,10 +376,14 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'textSuffix',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatDate {
   protected el: HTMLCatDateElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -372,7 +391,6 @@ export class CatDate {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -431,10 +449,12 @@ export declare interface CatDate extends Components.CatDate {
     'value',
     'weeks'
   ],
+  outputs: ['catChange'],
   standalone: false
 })
 export class CatDateInline {
   protected el: HTMLCatDateInlineElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -442,7 +462,6 @@ export class CatDateInline {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -521,10 +540,14 @@ export declare interface CatDateInline extends Components.CatDateInline {
     'textSuffix',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatDatepicker {
   protected el: HTMLCatDatepickerElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -532,7 +555,6 @@ export class CatDatepicker {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -560,10 +582,12 @@ export declare interface CatDatepicker extends Components.CatDatepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'max', 'min', 'mode', 'nativePickerAttributes', 'readonly', 'step', 'value'],
+  outputs: ['catChange'],
   standalone: false
 })
 export class CatDatepickerInline {
   protected el: HTMLCatDatepickerInlineElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -571,7 +595,6 @@ export class CatDatepickerInline {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -614,10 +637,13 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
     'overflow',
     'placement'
   ],
+  outputs: ['catOpen', 'catClose'],
   standalone: false
 })
 export class CatDropdown {
   protected el: HTMLCatDropdownElement;
+  @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -625,7 +651,6 @@ export class CatDropdown {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose']);
   }
 }
 
@@ -770,10 +795,15 @@ export declare interface CatIcon extends Components.CatIcon {}
     'type',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur', 'catChangeFiles'],
   standalone: false
 })
 export class CatInput {
   protected el: HTMLCatInputElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catChangeFiles = new EventEmitter<CustomEvent<FileList | null>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -781,7 +811,6 @@ export class CatInput {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur', 'catChangeFiles']);
   }
 }
 
@@ -835,10 +864,12 @@ export declare interface CatInput extends Components.CatInput {
     'size',
     'variant'
   ],
+  outputs: ['catChange'],
   standalone: false
 })
 export class CatPagination {
   protected el: HTMLCatPaginationElement;
+  @Output() catChange = new EventEmitter<CustomEvent<number>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -846,7 +877,6 @@ export class CatPagination {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -895,10 +925,14 @@ export declare interface CatPagination extends Components.CatPagination {
     'testId',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatRadio {
   protected el: HTMLCatRadioElement;
+  @Output() catChange = new EventEmitter<CustomEvent<boolean | string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -906,7 +940,6 @@ export class CatRadio {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -934,10 +967,14 @@ export declare interface CatRadio extends Components.CatRadio {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value'],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatRadioGroup {
   protected el: HTMLCatRadioGroupElement;
+  @Output() catChange = new EventEmitter<CustomEvent<boolean | string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -945,7 +982,6 @@ export class CatRadioGroup {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -973,10 +1009,15 @@ export declare interface CatRadioGroup extends Components.CatRadioGroup {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['noOverflowX', 'noOverflowY', 'noOverscroll', 'noScrolledInit', 'noShadowX', 'noShadowY', 'scrolledBuffer'],
+  outputs: ['scrolledTop', 'scrolledLeft', 'scrolledRight', 'scrolledBottom'],
   standalone: false
 })
 export class CatScrollable {
   protected el: HTMLCatScrollableElement;
+  @Output() scrolledTop = new EventEmitter<CustomEvent<void>>();
+  @Output() scrolledLeft = new EventEmitter<CustomEvent<void>>();
+  @Output() scrolledRight = new EventEmitter<CustomEvent<void>>();
+  @Output() scrolledBottom = new EventEmitter<CustomEvent<void>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -984,7 +1025,6 @@ export class CatScrollable {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['scrolledTop', 'scrolledLeft', 'scrolledRight', 'scrolledBottom']);
   }
 }
 
@@ -1063,10 +1103,15 @@ export declare interface CatScrollable extends Components.CatScrollable {
     'testId',
     'value'
   ],
+  outputs: ['catOpen', 'catClose', 'catChange', 'catBlur'],
   standalone: false
 })
 export class CatSelect {
   protected el: HTMLCatSelectElement;
+  @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catChange = new EventEmitter<CustomEvent<InputEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1074,7 +1119,6 @@ export class CatSelect {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catChange', 'catBlur']);
   }
 }
 
@@ -1205,10 +1249,12 @@ export declare interface CatSpinner extends Components.CatSpinner {}
     'url',
     'urlTarget'
   ],
+  outputs: ['catClick'],
   standalone: false
 })
 export class CatTab {
   protected el: HTMLCatTabElement;
+  @Output() catClick = new EventEmitter<CustomEvent<MouseEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1216,7 +1262,6 @@ export class CatTab {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catClick']);
   }
 }
 
@@ -1237,10 +1282,12 @@ export declare interface CatTab extends Components.CatTab {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['activeTab', 'activeTabAlwaysVisible', 'adaptive', 'tabsAlign'],
+  outputs: ['catChange'],
   standalone: false
 })
 export class CatTabs {
   protected el: HTMLCatTabsElement;
+  @Output() catChange = new EventEmitter<CustomEvent<{ id: string; index: number; fromDropdown: boolean }>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1248,7 +1295,6 @@ export class CatTabs {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange']);
   }
 }
 
@@ -1304,10 +1350,14 @@ export declare interface CatTabs extends Components.CatTabs {
     'testId',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatTag {
   protected el: HTMLCatTagElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string[]>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1315,7 +1365,6 @@ export class CatTag {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -1386,10 +1435,14 @@ export declare interface CatTag extends Components.CatTag {
     'testId',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatTextarea {
   protected el: HTMLCatTextareaElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1397,7 +1450,6 @@ export class CatTextarea {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -1480,10 +1532,14 @@ export declare interface CatTextarea extends Components.CatTextarea {
     'textSuffix',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatTime {
   protected el: HTMLCatTimeElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1491,7 +1547,6 @@ export class CatTime {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
@@ -1552,10 +1607,14 @@ export declare interface CatTime extends Components.CatTime {
     'testId',
     'value'
   ],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatToggle {
   protected el: HTMLCatToggleElement;
+  @Output() catChange = new EventEmitter<CustomEvent<any>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -1563,7 +1622,6 @@ export class CatToggle {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
   }
 }
 
