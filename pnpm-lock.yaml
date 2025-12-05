@@ -65,10 +65,10 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^14.2.7
-        version: 14.2.13(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(chokidar@4.0.3)(karma@6.3.20)(ng-packagr@14.3.0(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(@types/node@12.20.55)(tslib@2.8.1)(typescript@4.6.4))(sass-embedded@1.93.2)(typescript@4.6.4)
+        version: 14.2.13(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(chokidar@3.6.0)(karma@6.3.20)(ng-packagr@14.3.0(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(@types/node@12.20.55)(tslib@2.8.1)(typescript@4.6.4))(sass-embedded@1.93.2)(typescript@4.6.4)
       '@angular/cli':
         specifier: ^14.2.7
-        version: 14.2.13(chokidar@4.0.3)
+        version: 14.2.13(chokidar@3.6.0)
       '@angular/compiler-cli':
         specifier: ^14.2.7
         version: 14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4)
@@ -96,6 +96,9 @@ importers:
       karma-jasmine-html-reporter:
         specifier: ~1.7.0
         version: 1.7.0(jasmine-core@3.8.0)(karma-jasmine@4.0.2(karma@6.3.20))(karma@6.3.20)
+      karma-spec-reporter:
+        specifier: ^0.0.36
+        version: 0.0.36(karma@6.3.20)
       ng-packagr:
         specifier: ^14.2.2
         version: 14.3.0(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(@types/node@12.20.55)(tslib@2.8.1)(typescript@4.6.4)
@@ -270,10 +273,10 @@ importers:
         version: 9.1.2(eslint@8.57.1)
       jest:
         specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.19.17)(node-notifier@5.4.5)
+        version: 29.7.0(@types/node@20.19.17)
       jest-cli:
         specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.19.17)(node-notifier@5.4.5)
+        version: 29.7.0(@types/node@20.19.17)
       prettier:
         specifier: ^3.3.2
         version: 3.6.2
@@ -2853,6 +2856,10 @@ packages:
 
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
+
+  colors@1.4.0:
+    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
+    engines: {node: '>=0.1.90'}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -5514,6 +5521,11 @@ packages:
   karma-source-map-support@1.4.0:
     resolution: {integrity: sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A==}
 
+  karma-spec-reporter@0.0.36:
+    resolution: {integrity: sha512-11bvOl1x6ryKZph7kmbmMpbi8vsngEGxGOoeTlIcDaH3ab3j8aPJnZ+r+K/SS0sBSGy5VGkGYO2+hLct7hw/6w==}
+    peerDependencies:
+      karma: '>=0.9'
+
   karma@6.3.20:
     resolution: {integrity: sha512-HRNQhMuKOwKpjYlWiJP0DUrJOh+QjaI/DTaD8b9rEm4Il3tJ8MijutVZH4ts10LuUFst/CedwTS6vieCN8yTSw==}
     engines: {node: '>= 10'}
@@ -6998,7 +7010,7 @@ packages:
   puppeteer@22.15.0:
     resolution: {integrity: sha512-XjCY1SiSEi1T7iSYuxS82ft85kwDJUS7wj1Z0eGVXKdtr5g4xnVcbjwxhq5xBnpK/E7x1VZZoJDxpjAOasHT4Q==}
     engines: {node: '>=18'}
-    deprecated: < 24.10.2 is no longer supported
+    deprecated: < 24.15.0 is no longer supported
     hasBin: true
 
   pure-rand@6.1.0:
@@ -8854,19 +8866,19 @@ snapshots:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@angular-devkit/architect@0.1402.13(chokidar@4.0.3)':
+  '@angular-devkit/architect@0.1402.13(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/core': 14.2.13(chokidar@4.0.3)
+      '@angular-devkit/core': 14.2.13(chokidar@3.6.0)
       rxjs: 6.6.7
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/build-angular@14.2.13(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(chokidar@4.0.3)(karma@6.3.20)(ng-packagr@14.3.0(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(@types/node@12.20.55)(tslib@2.8.1)(typescript@4.6.4))(sass-embedded@1.93.2)(typescript@4.6.4)':
+  '@angular-devkit/build-angular@14.2.13(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(chokidar@3.6.0)(karma@6.3.20)(ng-packagr@14.3.0(@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4))(@types/node@12.20.55)(tslib@2.8.1)(typescript@4.6.4))(sass-embedded@1.93.2)(typescript@4.6.4)':
     dependencies:
       '@ampproject/remapping': 2.2.0
-      '@angular-devkit/architect': 0.1402.13(chokidar@4.0.3)
-      '@angular-devkit/build-webpack': 0.1402.13(chokidar@4.0.3)(webpack-dev-server@4.11.0(webpack@5.76.1(esbuild@0.15.5)))(webpack@5.76.1(esbuild@0.15.5))
-      '@angular-devkit/core': 14.2.13(chokidar@4.0.3)
+      '@angular-devkit/architect': 0.1402.13(chokidar@3.6.0)
+      '@angular-devkit/build-webpack': 0.1402.13(chokidar@3.6.0)(webpack-dev-server@4.11.0(webpack@5.76.1))(webpack@5.76.1(esbuild@0.15.5))
+      '@angular-devkit/core': 14.2.13(chokidar@3.6.0)
       '@angular/compiler-cli': 14.3.0(@angular/compiler@14.3.0(@angular/core@14.3.0(rxjs@6.6.7)(zone.js@0.11.8)))(typescript@4.6.4)
       '@babel/core': 7.18.10
       '@babel/generator': 7.18.12
@@ -8923,8 +8935,8 @@ snapshots:
       tslib: 2.4.0
       typescript: 4.6.4
       webpack: 5.76.1(esbuild@0.15.5)
-      webpack-dev-middleware: 5.3.3(webpack@5.76.1(esbuild@0.15.5))
-      webpack-dev-server: 4.11.0(webpack@5.76.1(esbuild@0.15.5))
+      webpack-dev-middleware: 5.3.3(webpack@5.76.1)
+      webpack-dev-server: 4.11.0(webpack@5.76.1)
       webpack-merge: 5.8.0
       webpack-subresource-integrity: 5.1.0(webpack@5.76.1(esbuild@0.15.5))
     optionalDependencies:
@@ -8946,16 +8958,16 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1402.13(chokidar@4.0.3)(webpack-dev-server@4.11.0(webpack@5.76.1(esbuild@0.15.5)))(webpack@5.76.1(esbuild@0.15.5))':
+  '@angular-devkit/build-webpack@0.1402.13(chokidar@3.6.0)(webpack-dev-server@4.11.0(webpack@5.76.1))(webpack@5.76.1(esbuild@0.15.5))':
     dependencies:
-      '@angular-devkit/architect': 0.1402.13(chokidar@4.0.3)
+      '@angular-devkit/architect': 0.1402.13(chokidar@3.6.0)
       rxjs: 6.6.7
       webpack: 5.76.1(esbuild@0.15.5)
-      webpack-dev-server: 4.11.0(webpack@5.76.1(esbuild@0.15.5))
+      webpack-dev-server: 4.11.0(webpack@5.76.1)
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/core@14.2.13(chokidar@4.0.3)':
+  '@angular-devkit/core@14.2.13(chokidar@3.6.0)':
     dependencies:
       ajv: 8.11.0
       ajv-formats: 2.1.1(ajv@8.11.0)
@@ -8963,11 +8975,11 @@ snapshots:
       rxjs: 6.6.7
       source-map: 0.7.4
     optionalDependencies:
-      chokidar: 4.0.3
+      chokidar: 3.6.0
 
-  '@angular-devkit/schematics@14.2.13(chokidar@4.0.3)':
+  '@angular-devkit/schematics@14.2.13(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/core': 14.2.13(chokidar@4.0.3)
+      '@angular-devkit/core': 14.2.13(chokidar@3.6.0)
       jsonc-parser: 3.1.0
       magic-string: 0.26.2
       ora: 5.4.1
@@ -9004,12 +9016,12 @@ snapshots:
     optionalDependencies:
       parse5: 5.1.1
 
-  '@angular/cli@14.2.13(chokidar@4.0.3)':
+  '@angular/cli@14.2.13(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/architect': 0.1402.13(chokidar@4.0.3)
-      '@angular-devkit/core': 14.2.13(chokidar@4.0.3)
-      '@angular-devkit/schematics': 14.2.13(chokidar@4.0.3)
-      '@schematics/angular': 14.2.13(chokidar@4.0.3)
+      '@angular-devkit/architect': 0.1402.13(chokidar@3.6.0)
+      '@angular-devkit/core': 14.2.13(chokidar@3.6.0)
+      '@angular-devkit/schematics': 14.2.13(chokidar@3.6.0)
+      '@schematics/angular': 14.2.13(chokidar@3.6.0)
       '@yarnpkg/lockfile': 1.1.0
       ansi-colors: 4.1.3
       debug: 4.3.4
@@ -10338,10 +10350,10 @@ snapshots:
       jest-util: 29.7.0
       slash: 3.0.0
 
-  '@jest/core@29.7.0(node-notifier@5.4.5)':
+  '@jest/core@29.7.0':
     dependencies:
       '@jest/console': 29.7.0
-      '@jest/reporters': 29.7.0(node-notifier@5.4.5)
+      '@jest/reporters': 29.7.0
       '@jest/test-result': 29.7.0
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
@@ -10368,8 +10380,6 @@ snapshots:
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-ansi: 6.0.1
-    optionalDependencies:
-      node-notifier: 5.4.5
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -10411,7 +10421,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@jest/reporters@29.7.0(node-notifier@5.4.5)':
+  '@jest/reporters@29.7.0':
     dependencies:
       '@bcoe/v8-coverage': 0.2.3
       '@jest/console': 29.7.0
@@ -10437,8 +10447,6 @@ snapshots:
       string-length: 4.0.2
       strip-ansi: 6.0.1
       v8-to-istanbul: 9.3.0
-    optionalDependencies:
-      node-notifier: 5.4.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10746,10 +10754,10 @@ snapshots:
     transitivePeerDependencies:
       - zenObservable
 
-  '@schematics/angular@14.2.13(chokidar@4.0.3)':
+  '@schematics/angular@14.2.13(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/core': 14.2.13(chokidar@4.0.3)
-      '@angular-devkit/schematics': 14.2.13(chokidar@4.0.3)
+      '@angular-devkit/core': 14.2.13(chokidar@3.6.0)
+      '@angular-devkit/schematics': 14.2.13(chokidar@3.6.0)
       jsonc-parser: 3.1.0
     transitivePeerDependencies:
       - chokidar
@@ -12180,6 +12188,8 @@ snapshots:
   colorette@2.0.20: {}
 
   colorjs.io@0.5.2: {}
+
+  colors@1.4.0: {}
 
   combined-stream@1.0.8:
     dependencies:
@@ -14798,9 +14808,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  jest-cli@29.7.0(@types/node@20.19.17)(node-notifier@5.4.5):
+  jest-cli@29.7.0(@types/node@20.19.17):
     dependencies:
-      '@jest/core': 29.7.0(node-notifier@5.4.5)
+      '@jest/core': 29.7.0
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
       chalk: 4.1.2
@@ -14811,8 +14821,6 @@ snapshots:
       jest-util: 29.7.0
       jest-validate: 29.7.0
       yargs: 17.7.2
-    optionalDependencies:
-      node-notifier: 5.4.5
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -15313,14 +15321,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  jest@29.7.0(@types/node@20.19.17)(node-notifier@5.4.5):
+  jest@29.7.0(@types/node@20.19.17):
     dependencies:
-      '@jest/core': 29.7.0(node-notifier@5.4.5)
+      '@jest/core': 29.7.0
       '@jest/types': 29.6.3
       import-local: 3.2.0
-      jest-cli: 29.7.0(@types/node@20.19.17)(node-notifier@5.4.5)
-    optionalDependencies:
-      node-notifier: 5.4.5
+      jest-cli: 29.7.0(@types/node@20.19.17)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -15456,6 +15462,11 @@ snapshots:
   karma-source-map-support@1.4.0:
     dependencies:
       source-map-support: 0.5.21
+
+  karma-spec-reporter@0.0.36(karma@6.3.20):
+    dependencies:
+      colors: 1.4.0
+      karma: 6.3.20
 
   karma@6.3.20:
     dependencies:
@@ -18671,7 +18682,7 @@ snapshots:
       ansi-escapes: 3.2.0
       supports-hyperlinks: 1.0.1
 
-  terser-webpack-plugin@5.3.14(esbuild@0.15.5)(webpack@5.76.1(esbuild@0.15.5)):
+  terser-webpack-plugin@5.3.14(esbuild@0.15.5)(webpack@5.76.1):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
@@ -19088,7 +19099,7 @@ snapshots:
 
   webidl-conversions@4.0.2: {}
 
-  webpack-dev-middleware@5.3.3(webpack@5.76.1(esbuild@0.15.5)):
+  webpack-dev-middleware@5.3.3(webpack@5.76.1):
     dependencies:
       colorette: 2.0.20
       memfs: 3.5.3
@@ -19097,7 +19108,7 @@ snapshots:
       schema-utils: 4.3.2
       webpack: 5.76.1(esbuild@0.15.5)
 
-  webpack-dev-server@4.11.0(webpack@5.76.1(esbuild@0.15.5)):
+  webpack-dev-server@4.11.0(webpack@5.76.1):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4
@@ -19127,7 +19138,7 @@ snapshots:
       sockjs: 0.3.24
       spdy: 4.0.2
       webpack: 5.76.1(esbuild@0.15.5)
-      webpack-dev-middleware: 5.3.3(webpack@5.76.1(esbuild@0.15.5))
+      webpack-dev-middleware: 5.3.3(webpack@5.76.1)
       ws: 8.18.3
     transitivePeerDependencies:
       - bufferutil
@@ -19170,7 +19181,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.3
-      terser-webpack-plugin: 5.3.14(esbuild@0.15.5)(webpack@5.76.1(esbuild@0.15.5))
+      terser-webpack-plugin: 5.3.14(esbuild@0.15.5)(webpack@5.76.1)
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:
