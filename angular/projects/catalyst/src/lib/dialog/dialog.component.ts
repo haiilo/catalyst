@@ -5,6 +5,7 @@ import {
   Component,
   ContentChild,
   EventEmitter,
+  inject,
   Input,
   Output,
   ViewEncapsulation
@@ -22,7 +23,8 @@ import { CatDialogHeaderComponent } from './dialog-header.component';
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'cat-dialog'
-  }
+  },
+  standalone: false
 })
 export class CatDialogComponent implements AfterContentInit {
   /**
@@ -54,7 +56,7 @@ export class CatDialogComponent implements AfterContentInit {
   @ContentChild(CatDialogHeaderComponent)
   private header?: CatDialogHeaderComponent;
 
-  constructor(private readonly dialogRef: DialogRef) {}
+  private readonly dialogRef = inject(DialogRef);
 
   ngAfterContentInit(): void {
     this.header?.close.subscribe(() => this.dialogRef.close());

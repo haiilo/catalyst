@@ -10,8 +10,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": ">=14.0.0",
-    "@angular/cdk": ">=14.0.0",
+    "@angular/core": ">=21.0.0",
+    "@angular/cdk": ">=21.0.0",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
