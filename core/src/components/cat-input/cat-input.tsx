@@ -46,6 +46,7 @@ export interface FormatDateMaskOptions {
 })
 export class CatInput {
   private readonly _id = `cat-input-${nextUniqueId++}`;
+
   private get id() {
     return this.identifier || this._id;
   }
@@ -82,6 +83,16 @@ export class CatInput {
    * @internal
    */
   @Prop() fallbackHorizontal?: boolean;
+
+  /**
+   * Defines the file types the file input should accept.
+   */
+  @Prop() accept?: string;
+
+  /**
+   * Whether the input should allow multiple files to be selected.
+   */
+  @Prop() multiple?: boolean;
 
   /**
    * Hint for form autofill feature.
@@ -257,6 +268,11 @@ export class CatInput {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  /**
+   * Emitted if the input type is "file" and files are selected.
+   */
+  @Event() catChangeFiles!: EventEmitter<FileList | null>;
+
   componentWillLoad(): void {
     this.onErrorsChanged(this.errors, undefined, false);
   }
@@ -300,6 +316,9 @@ export class CatInput {
   async clear(): Promise<void> {
     this.value = '';
     this.catChange.emit(this.value);
+    if (this.type === 'file') {
+      this.catChangeFiles.emit(null);
+    }
   }
 
   @Watch('errors')
@@ -355,7 +374,7 @@ export class CatInput {
             </label>
           )}
         </div>
-        <div class="input-container">
+        <div class={{ 'input-color': this.type === 'color', 'input-container': true }}>
           <div class="input-outer-wrapper">
             <div
               class={{
@@ -375,7 +394,15 @@ export class CatInput {
               {this.icon && !this.iconRight && (
                 <cat-icon icon={this.icon} class="icon-prefix" size="l" onClick={() => this.doFocus()}></cat-icon>
               )}
-              <div class="input-inner-wrapper">
+              <div
+                class={{
+                  'has-clearable': this.clearable && !this.disabled && !this.readonly && !!this.value,
+                  'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value,
+                  'input-inner-wrapper': true,
+                  'type-color': this.type === 'color'
+                }}
+              >
+                {this.type === 'color' && <span class="color-value">{this.value ?? '#000000'}</span>}
                 <input
                   data-test={this.testId}
                   {...this.nativeAttributes}
@@ -388,6 +415,8 @@ export class CatInput {
                   }}
                   autocomplete={this.autoComplete}
                   disabled={this.disabled}
+                  accept={this.type === 'file' ? this.accept : undefined}
+                  multiple={this.type === 'file' ? this.multiple : undefined}
                   max={this.max}
                   maxlength={this.maxLength}
                   min={this.min}
@@ -477,6 +506,9 @@ export class CatInput {
     this.value = formattedValue;
     this.internals.setFormValue(this.input.value);
     this.catChange.emit(this.value);
+    if (this.type === 'file') {
+      this.catChangeFiles.emit(this.input.files);
+    }
     this.showErrorsIfTimeout();
   }
 

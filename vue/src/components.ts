@@ -239,6 +239,8 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'requiredMarker',
   'horizontal',
   'fallbackHorizontal',
+  'accept',
+  'multiple',
   'autoComplete',
   'clearable',
   'togglePassword',
@@ -271,7 +273,8 @@ export const CatInput = /*@__PURE__*/ defineContainer<JSX.CatInput>('cat-input',
   'dateMaskOptions',
   'catChange',
   'catFocus',
-  'catBlur'
+  'catBlur',
+  'catChangeFiles'
 ]);
 
 

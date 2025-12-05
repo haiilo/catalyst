@@ -799,6 +799,10 @@ export namespace Components {
      */
     interface CatInput {
         /**
+          * Defines the file types the file input should accept.
+         */
+        "accept"?: string;
+        /**
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
@@ -887,6 +891,10 @@ export namespace Components {
           * A minimum length (number of characters) for textual values.
          */
         "minLength"?: number;
+        /**
+          * Whether the input should allow multiple files to be selected.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
@@ -2097,6 +2105,7 @@ declare global {
         "catChange": string;
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
+        "catChangeFiles": FileList | null;
     }
     /**
      * Inputs are used to allow users to provide text input when the expected input
@@ -3201,6 +3210,10 @@ declare namespace LocalJSX {
      */
     interface CatInput {
         /**
+          * Defines the file types the file input should accept.
+         */
+        "accept"?: string;
+        /**
           * Hint for form autofill feature.
          */
         "autoComplete"?: string;
@@ -3277,6 +3290,10 @@ declare namespace LocalJSX {
          */
         "minLength"?: number;
         /**
+          * Whether the input should allow multiple files to be selected.
+         */
+        "multiple"?: boolean;
+        /**
           * The name of the form control. Submitted with the form as part of a name/value pair.
          */
         "name"?: string;
@@ -3292,6 +3309,10 @@ declare namespace LocalJSX {
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatInputCustomEvent<string>) => void;
+        /**
+          * Emitted if the input type is "file" and files are selected.
+         */
+        "onCatChangeFiles"?: (event: CatInputCustomEvent<FileList | null>) => void;
         /**
           * Emitted when the input received focus.
          */

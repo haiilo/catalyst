@@ -1,5 +1,76 @@
 # Changelog
 
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.1-beta...catalyst-core-v13.5.1-beta.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([15a69c2](https://github.com/haiilo/catalyst/commit/15a69c229d809f93a65405974f993c06b6eececf))
+
+## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v13.5.1-beta) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([b2d8d3b](https://github.com/haiilo/catalyst/commit/b2d8d3b72c78b9a14e0ac6994725f80239bc7d5e))
+
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.4.0...catalyst-core-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+* **core:** trigger next minor release version ([c159271](https://github.com/haiilo/catalyst/commit/c159271cef3135a35a26f71a367fbf93a7e5dff1))
+
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
+
+
+### Features
+
+* **core:** add tag name transform extra ([#834](https://github.com/haiilo/catalyst/issues/834)) ([78381b3](https://github.com/haiilo/catalyst/commit/78381b3b6e8770b8885d786030f82800e335e5be))
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.1...catalyst-core-v13.3.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
+## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
+
+
+### Features
+
+* **core:** emit files selected by input type file ([#805](https://github.com/haiilo/catalyst/issues/805)) ([4aedc50](https://github.com/haiilo/catalyst/commit/4aedc50452b8ede54cc33927ac9a102f270d2b07))
+
+## [13.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.1.0...catalyst-core-v13.2.0) (2025-10-22)
+
+
+### Features
+
+* **core:** style file inputs and support 'accept' and 'multiple' attributes ([#803](https://github.com/haiilo/catalyst/issues/803)) ([153c8fb](https://github.com/haiilo/catalyst/commit/153c8fb0e13bc0fda302263b50c729f5c189dc35))
+
+## [13.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.3...catalyst-core-v13.1.0) (2025-10-21)
+
+
+### Features
+
+* **core:** style cat-input of type color ([#793](https://github.com/haiilo/catalyst/issues/793)) ([495eec5](https://github.com/haiilo/catalyst/commit/495eec5707a0ba22a575963c4facf4275d526814))
+
+## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.2...catalyst-core-v13.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **core:** fix cat-tabs alignment (regression after adding More button) ([#794](https://github.com/haiilo/catalyst/issues/794)) ([6543b9b](https://github.com/haiilo/catalyst/commit/6543b9b1740be4ae520d136ac45d29eb297d674b))
+
 ## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.1...catalyst-core-v13.0.2) (2025-10-10)
 
 

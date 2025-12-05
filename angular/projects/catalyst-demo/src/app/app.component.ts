@@ -195,4 +195,8 @@ export class AppComponent implements OnInit {
   submitIt($event: any) {
     console.log('hello', $event);
   }
+
+  selectFile($event: any) {
+    console.log($event);
+  }
 }

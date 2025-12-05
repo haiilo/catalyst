@@ -692,6 +692,7 @@ export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
   inputs: [
+    'accept',
     'autoComplete',
     'clearable',
     'dateMaskOptions',
@@ -710,6 +711,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'maxLength',
     'min',
     'minLength',
+    'multiple',
     'name',
     'nativeAttributes',
     'placeholder',
@@ -733,6 +735,7 @@ export declare interface CatIcon extends Components.CatIcon {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'accept',
     'autoComplete',
     'clearable',
     'dateMaskOptions',
@@ -751,6 +754,7 @@ export declare interface CatIcon extends Components.CatIcon {}
     'maxLength',
     'min',
     'minLength',
+    'multiple',
     'name',
     'nativeAttributes',
     'placeholder',
@@ -777,7 +781,7 @@ export class CatInput {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur']);
+    proxyOutputs(this, this.el, ['catChange', 'catFocus', 'catBlur', 'catChangeFiles']);
   }
 }
 
@@ -794,6 +798,10 @@ export declare interface CatInput extends Components.CatInput {
    * Emitted when the input loses focus.
    */
   catBlur: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted if the input type is "file" and files are selected.
+   */
+  catChangeFiles: EventEmitter<CustomEvent<FileList | null>>;
 }
 
 @ProxyCmp({
