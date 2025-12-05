@@ -1127,9 +1127,8 @@ export namespace Components {
         "scrolledBuffer": number;
     }
     /**
-     * Select lets user choose one option from an options' menu. Consider using
-     * select when you have 6 or more options. Select component supports any content
-     * type.
+     * Select lets user choose one option from an options' menu.
+     * Consider using select when you have 6 or more options. Select component supports any content type.
      */
     interface CatSelect {
         /**
@@ -2225,9 +2224,8 @@ declare global {
         "catBlur": FocusEvent;
     }
     /**
-     * Select lets user choose one option from an options' menu. Consider using
-     * select when you have 6 or more options. Select component supports any content
-     * type.
+     * Select lets user choose one option from an options' menu.
+     * Consider using select when you have 6 or more options. Select component supports any content type.
      */
     interface HTMLCatSelectElement extends Components.CatSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCatSelectElementEventMap>(type: K, listener: (this: HTMLCatSelectElement, ev: CatSelectCustomEvent<HTMLCatSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3576,9 +3574,8 @@ declare namespace LocalJSX {
         "scrolledBuffer"?: number;
     }
     /**
-     * Select lets user choose one option from an options' menu. Consider using
-     * select when you have 6 or more options. Select component supports any content
-     * type.
+     * Select lets user choose one option from an options' menu.
+     * Consider using select when you have 6 or more options. Select component supports any content type.
      */
     interface CatSelect {
         /**
@@ -4366,9 +4363,8 @@ declare module "@stencil/core" {
              */
             "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             /**
-             * Select lets user choose one option from an options' menu. Consider using
-             * select when you have 6 or more options. Select component supports any content
-             * type.
+             * Select lets user choose one option from an options' menu.
+             * Consider using select when you have 6 or more options. Select component supports any content type.
              */
             "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
             "cat-select-demo": LocalJSX.CatSelectDemo & JSXBase.HTMLAttributes<HTMLCatSelectDemoElement>;

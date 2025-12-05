@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { CatI18nRegistry, CatIconRegistry } from '@haiilo/catalyst';
 import { ci } from '@haiilo/catalyst-icons';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import {
@@ -130,12 +129,12 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private dialog: CatDialogService,
-    @Inject(CAT_ICON_REGISTRY_TOKEN) readonly iconRegistry: CatIconRegistry,
-    @Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18nRegistry: CatI18nRegistry
-  ) {
-    i18nRegistry.set({
+  private readonly dialog = inject(CatDialogService);
+  private readonly iconRegistry = inject(CAT_ICON_REGISTRY_TOKEN);
+  private readonly i18nRegistry = inject(CAT_I18N_REGISTRY_TOKEN);
+
+  constructor() {
+    this.i18nRegistry.set({
       'error.required': 'This field is required',
       'error.minlength': 'This field is too short',
       'error.pattern': 'This field is invalid',
@@ -151,7 +150,7 @@ export class AppComponent implements OnInit {
       'datepicker.scroll': 'Scroll to increment',
       'datepicker.toggle': 'Click to toggle'
     });
-    iconRegistry.addIcons(ci);
+    this.iconRegistry.addIcons(ci);
   }
 
   ngOnInit(): void {

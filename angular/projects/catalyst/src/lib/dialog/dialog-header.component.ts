@@ -2,12 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Inject,
+  inject,
   Input,
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import { CatI18nRegistry } from '@haiilo/catalyst';
 import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
 
 /**
@@ -26,9 +25,10 @@ import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
 })
 export class CatDialogHeaderComponent {
   protected readonly closeTxt: string;
+  protected readonly i18n = inject(CAT_I18N_REGISTRY_TOKEN);
 
-  constructor(@Inject(CAT_I18N_REGISTRY_TOKEN) readonly i18n: CatI18nRegistry) {
-    this.closeTxt = i18n.t('dialog.close');
+  constructor() {
+    this.closeTxt = this.i18n.t('dialog.close');
   }
 
   /**
