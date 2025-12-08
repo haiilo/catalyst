@@ -37,8 +37,17 @@ jobs:
           replace: "https://haiilo.github.io/catalyst/build/"
           regex: false
           include: core/www/index.html
-      - name: Deploy
+      - name: Build Storybook
+        run: pnpm --filter @haiilo/catalyst run storybook:build
+      - name: Deploy Main Site
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
           branch: gh-pages
           folder: core/www
+      - name: Deploy Storybook to /storybook/
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: core/storybook-static
+          target-folder: storybook
+          clean: false

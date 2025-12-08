@@ -7,7 +7,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -18,6 +18,8 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     // quickfix: 'h' is defined but never used
-    '@typescript-eslint/no-unused-vars': [WARN, { varsIgnorePattern: '^h$' }]
+    '@typescript-eslint/no-unused-vars': [WARN, { varsIgnorePattern: '^h$' }],
+    // Allow importing @storybook/web-components for setCustomElementsManifest
+    'storybook/no-renderer-packages': OFF
   }
 };
