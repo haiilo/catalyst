@@ -1,30 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "node",
+  "prerelease": true,
+  "prerelease-type": "beta",
+  "versioning": "prerelease",
   "packages": {
     "tokens": {
-      "component": "catalyst-tokens",
-      "release-type": "node",
-      "prerelease": true
+      "component": "catalyst-tokens"
     },
     "core": {
-      "component": "catalyst-core",
-      "release-type": "node",
-      "prerelease": true
+      "component": "catalyst-core"
     },
     "angular/projects/catalyst": {
-      "component": "catalyst-angular",
-      "release-type": "node",
-      "prerelease": true
+      "component": "catalyst-angular"
     },
     "angular/projects/catalyst-formly": {
-      "component": "catalyst-angular-formly",
-      "release-type": "node",
-      "prerelease": true
+      "component": "catalyst-angular-formly"
     },
     "react": {
-      "component": "catalyst-react",
-      "release-type": "node",
-      "prerelease": true
+      "component": "catalyst-react"
     }
   },
   "plugins": [
@@ -39,6 +33,5 @@
         "catalyst-react"
       ]
     }
-  ],
-  "prerelease-type": "beta"
+  ]
 }

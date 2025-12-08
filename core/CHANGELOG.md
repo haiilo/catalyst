@@ -1,5 +1,48 @@
 # Changelog
 
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.1-beta...catalyst-core-v13.5.1-beta.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([15a69c2](https://github.com/haiilo/catalyst/commit/15a69c229d809f93a65405974f993c06b6eececf))
+
+## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v13.5.1-beta) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([b2d8d3b](https://github.com/haiilo/catalyst/commit/b2d8d3b72c78b9a14e0ac6994725f80239bc7d5e))
+
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.4.0...catalyst-core-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+* **core:** trigger next minor release version ([c159271](https://github.com/haiilo/catalyst/commit/c159271cef3135a35a26f71a367fbf93a7e5dff1))
+
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
+
+
+### Features
+
+* **core:** add tag name transform extra ([#834](https://github.com/haiilo/catalyst/issues/834)) ([78381b3](https://github.com/haiilo/catalyst/commit/78381b3b6e8770b8885d786030f82800e335e5be))
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.1...catalyst-core-v13.3.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
 
 

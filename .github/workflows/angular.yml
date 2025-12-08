@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - beta
     paths:
       - "angular/**"
   pull_request:

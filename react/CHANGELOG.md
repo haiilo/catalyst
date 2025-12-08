@@ -1,5 +1,47 @@
 # Changelog
 
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.5.1-beta...catalyst-react-v13.5.1-beta.1) (2025-11-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.5.0...catalyst-react-v13.5.1-beta) (2025-11-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.4.0...catalyst-react-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.3.2...catalyst-react-v13.4.0) (2025-11-14)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.3.1...catalyst-react-v13.3.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.3.0...catalyst-react-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
 ## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v13.2.0...catalyst-react-v13.3.0) (2025-10-22)
 
 
