@@ -193,8 +193,8 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@stencil/core':
-        specifier: 4.35.3
-        version: 4.35.3
+        specifier: 4.38.3
+        version: 4.38.3
       autosize:
         specifier: 6.0.1
         version: 6.0.1
@@ -231,16 +231,16 @@ importers:
         version: 2.23.6
       '@stencil/angular-output-target':
         specifier: 1.1.1
-        version: 1.1.1(@stencil/core@4.35.3)
+        version: 1.1.1(@stencil/core@4.38.3)
       '@stencil/react-output-target':
         specifier: 0.5.3
-        version: 0.5.3(@stencil/core@4.35.3)
+        version: 0.5.3(@stencil/core@4.38.3)
       '@stencil/sass':
         specifier: 3.2.3
-        version: 3.2.3(@stencil/core@4.35.3)
+        version: 3.2.3(@stencil/core@4.38.3)
       '@stencil/vue-output-target':
         specifier: 0.8.9
-        version: 0.8.9(@stencil/core@4.35.3)
+        version: 0.8.9(@stencil/core@4.38.3)
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
@@ -2306,8 +2306,8 @@ packages:
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
 
-  '@stencil/core@4.35.3':
-    resolution: {integrity: sha512-RH5/I+amV31QI8TMXhXkAkjzs2eod6Y07jkUYTl9kMB+X7c5wUpv95Y/2LtcAx0Rqdhh4SHbJiwpr0ApBZmv0g==}
+  '@stencil/core@4.38.3':
+    resolution: {integrity: sha512-rSDzGUfi58X8K79ySjlM6KlY+mq7D+ittzgNAdYHcsXHc70sBpdatFhnbOg25uVDiMf7xRAH9slP38pPdXnZOQ==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
@@ -10340,11 +10340,11 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@stencil/angular-output-target@1.1.1(@stencil/core@4.35.3)':
+  '@stencil/angular-output-target@1.1.1(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.38.3
 
-  '@stencil/core@4.35.3':
+  '@stencil/core@4.38.3':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.34.9
       '@rollup/rollup-darwin-x64': 4.34.9
@@ -10355,18 +10355,18 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/react-output-target@0.5.3(@stencil/core@4.35.3)':
+  '@stencil/react-output-target@0.5.3(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.38.3
 
-  '@stencil/sass@3.2.3(@stencil/core@4.35.3)':
+  '@stencil/sass@3.2.3(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.38.3
       sass-embedded: 1.93.3
 
-  '@stencil/vue-output-target@0.8.9(@stencil/core@4.35.3)':
+  '@stencil/vue-output-target@0.8.9(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.38.3
 
   '@szmarczak/http-timer@1.1.2':
     dependencies:
