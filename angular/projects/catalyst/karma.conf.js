@@ -5,7 +5,7 @@ module.exports = function (config) {
   console.log('\n========================================');
   console.log('  Testing: catalyst');
   console.log('========================================\n');
-  
+
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -14,8 +14,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('karma-spec-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('karma-spec-reporter')
     ],
     client: {
       jasmine: {

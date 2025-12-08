@@ -34,6 +34,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-input>
-  `
+  `,
+  standalone: false
 })
 export class CatInputFieldType extends FieldType<FieldTypeConfig> {}

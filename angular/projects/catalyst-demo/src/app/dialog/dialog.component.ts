@@ -4,7 +4,8 @@ import { countryConnector } from '../app.countries';
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html'
+  templateUrl: './dialog.component.html',
+  standalone: false
 })
 export class DialogComponent {
   form = new FormGroup({

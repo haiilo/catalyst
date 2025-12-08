@@ -30,6 +30,7 @@ export type CatRadioType = {
       [nativeAttributes]="props.nativeAttributes"
     >
     </cat-radio>
-  `
+  `,
+  standalone: false
 })
 export class CatRadioFieldType extends FieldType<FieldTypeConfig> {}

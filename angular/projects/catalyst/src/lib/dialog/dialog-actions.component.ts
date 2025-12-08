@@ -14,7 +14,8 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
     '[class.cat-dialog-actions-center]': 'align === "center"',
     '[class.cat-dialog-actions-end]': 'align === "end"',
     '[class.cat-dialog-actions-space-between]': 'align === "space-between"'
-  }
+  },
+  standalone: false
 })
 export class CatDialogActionsComponent {
   /**

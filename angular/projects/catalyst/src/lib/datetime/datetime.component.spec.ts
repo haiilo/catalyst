@@ -1,21 +1,30 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { DatetimeComponent } from './datetime.component';
+import { DateValueAccessor } from '../directives/date-value-accessor';
 
 describe('DatetimeComponent', () => {
-  let component: DatetimeComponent;
-  let fixture: ComponentFixture<DatetimeComponent>;
+  @Component({
+    template: `
+      <cat-datetime>
+        <cat-date></cat-date>
+        <cat-time></cat-time>
+      </cat-datetime>
+    `,
+    standalone: false
+  })
+  class TestComponent {}
+
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DatetimeComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-      .overrideTemplate(DatetimeComponent, '<cat-date></cat-date><cat-time></cat-time>')
-      .compileComponents();
+      declarations: [DatetimeComponent, DateValueAccessor]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(DatetimeComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
   });
 

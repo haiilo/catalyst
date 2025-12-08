@@ -16,7 +16,8 @@ import { ValueAccessor } from './value-accessor';
       useExisting: DateValueAccessor,
       multi: true
     }
-  ]
+  ],
+  standalone: false
 })
 export class DateValueAccessor extends ValueAccessor implements AfterViewInit {
   constructor(

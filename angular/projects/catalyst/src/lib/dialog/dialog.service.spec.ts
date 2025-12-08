@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { Dialog } from '@angular/cdk/dialog';
 import { CatDialogService } from './dialog.service';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 
 describe('CatDialogService', () => {
   let service: CatDialogService;
-
+  let dialog = jasmine.createSpyObj('dialog', ['closeAll', 'open']);
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         {
           provide: Dialog,
-          useValue: { open: jasmine.createSpy(), closeAll: jasmine.createSpy() }
+          useValue: dialog
         }
       ]
     });

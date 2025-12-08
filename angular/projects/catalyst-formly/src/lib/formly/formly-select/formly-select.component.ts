@@ -29,6 +29,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [connector]="props.connector"
     >
     </cat-select>
-  `
+  `,
+  standalone: false
 })
 export class CatSelectFieldType extends FieldType<FieldTypeConfig> {}

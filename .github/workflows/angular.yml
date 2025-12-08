@@ -11,6 +11,9 @@ on:
     paths:
       - "angular/**"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,9 +50,6 @@ jobs:
           pnpm run build:angular-formly
   test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -75,7 +75,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install
         run: pnpm install
-      - name: Build dependencies
+      - name: Build
         run: |
           pnpm run build:tokens
           pnpm run build:core

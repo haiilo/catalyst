@@ -19,22 +19,24 @@ export type CatRadioGroupType = {
       [a11yLabel]="props.a11yLabel"
       [labelLeft]="props.labelLeft"
     >
-      <cat-radio
-        *ngFor="let option of props.options"
-        [checked]="option.checked"
-        [disabled]="option.disabled"
-        [identifier]="option.identifier"
-        [label]="option.label"
-        [labelHidden]="option.labelHidden"
-        [name]="option.name"
-        [required]="option.required"
-        [value]="option.value"
-        [hint]="option.hint"
-        [labelLeft]="option.labelLeft"
-        [nativeAttributes]="option.nativeAttributes"
-      >
-      </cat-radio>
+      @for (option of props.options; track option) {
+        <cat-radio
+          [checked]="option.checked"
+          [disabled]="option.disabled"
+          [identifier]="option.identifier"
+          [label]="option.label"
+          [labelHidden]="option.labelHidden"
+          [name]="option.name"
+          [required]="option.required"
+          [value]="option.value"
+          [hint]="option.hint"
+          [labelLeft]="option.labelLeft"
+          [nativeAttributes]="option.nativeAttributes"
+        >
+        </cat-radio>
+      }
     </cat-radio-group>
-  `
+  `,
+  standalone: false
 })
 export class CatRadioGroupFieldType extends FieldType<FieldTypeConfig<CatRadioGroupType>> {}
