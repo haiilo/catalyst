@@ -1,6 +1,6 @@
 import { Dialog, DialogConfig, DialogRef } from '@angular/cdk/dialog';
 import { ComponentType } from '@angular/cdk/portal';
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -15,7 +15,7 @@ export const CAT_DIALOG_SIZE_TOKEN = new InjectionToken<{ [key: string]: string 
  */
 export type CatDialogConfig<D = unknown> = Pick<
   DialogConfig<D>,
-  'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass'
+  'data' | 'disableClose' | 'height' | 'role' | 'width' | 'panelClass' | 'restoreFocus'
 >;
 
 /**
@@ -25,10 +25,8 @@ export type CatDialogConfig<D = unknown> = Pick<
   providedIn: 'root'
 })
 export class CatDialogService {
-  constructor(
-    private readonly dialog: Dialog,
-    @Optional() @Inject(CAT_DIALOG_SIZE_TOKEN) private readonly size: { [key: string]: string } | null
-  ) {}
+  private readonly dialog = inject(Dialog);
+  private readonly size = inject(CAT_DIALOG_SIZE_TOKEN, { optional: true });
 
   /**
    * Opens a modal dialog containing the given component.

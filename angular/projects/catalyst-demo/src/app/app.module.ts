@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CatalystModule, CAT_DIALOG_SIZE_TOKEN } from '../../../catalyst/src';
@@ -14,7 +14,6 @@ import { DialogComponent } from './dialog/dialog.component';
     FormlyModule.forRoot(),
     CatalystModule.forRoot(),
     CatalystFormlyModule,
-    CatalystModule,
     FormsModule
   ],
   declarations: [AppComponent, DialogComponent],
@@ -27,7 +26,8 @@ import { DialogComponent } from './dialog/dialog.component';
         large: '800px',
         default: '500px'
       }
-    }
+    },
+    provideZoneChangeDetection()
   ],
   bootstrap: [AppComponent]
 })

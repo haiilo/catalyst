@@ -6,7 +6,8 @@ import { ControlContainer, NgControl, Validators } from '@angular/forms';
   selector: 'cat-input, cat-textarea, cat-datepicker, cat-select, cat-date, cat-time, cat-tag',
   host: {
     '(catBlur)': 'updateErrors()'
-  }
+  },
+  standalone: false
 })
 export class ValueAccessorDecorator implements AfterViewInit {
   /**

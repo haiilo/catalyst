@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-input, cat-textarea, cat-datepicker, cat-datepicker-inline',
   host: {
-    '(catChange)': 'handleChangeEvent($event.target.value)'
+    '(catChange)': 'handleChangeEvent($event.target?.["value"])'
   },
   providers: [
     {
@@ -15,7 +15,8 @@ import { ValueAccessor } from './value-accessor';
       useExisting: TextValueAccessor,
       multi: true
     }
-  ]
+  ],
+  standalone: false
 })
 export class TextValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {

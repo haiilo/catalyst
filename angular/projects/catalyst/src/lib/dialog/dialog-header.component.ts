@@ -2,12 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Inject,
+  inject,
   Input,
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import { CatI18nRegistry } from '@haiilo/catalyst';
 import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
 
 /**
@@ -21,12 +20,16 @@ import { CAT_I18N_REGISTRY_TOKEN } from '../injection-token';
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'cat-dialog-header'
-  }
+  },
+  standalone: false
 })
 export class CatDialogHeaderComponent {
-  protected readonly closeTxt = this.i18n.t('dialog.close');
+  protected readonly closeTxt: string;
+  protected readonly i18n = inject(CAT_I18N_REGISTRY_TOKEN);
 
-  constructor(@Inject(CAT_I18N_REGISTRY_TOKEN) private readonly i18n: CatI18nRegistry) {}
+  constructor() {
+    this.closeTxt = this.i18n.t('dialog.close');
+  }
 
   /**
    * The title of the dialog.
