@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.5.0...catalyst-tokens-v14.0.0) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
 ## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.5.1-beta...catalyst-tokens-v13.5.1-beta.1) (2025-11-27)
 
 
