@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.0...catalyst-core-v14.0.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** overwrite opacity from sanitize.css for inputs and textarea and specify the correct version for source-sans ([#853](https://github.com/haiilo/catalyst/issues/853)) ([7b20247](https://github.com/haiilo/catalyst/commit/7b20247820f66f91e2b254ae8aba9749a8ee0ce6))
+
 ## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v14.0.0) (2025-12-09)
 
 
