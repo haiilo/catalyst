@@ -1,5 +1,22 @@
 # Changelog
 
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v14.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792))
+
+### Features
+
+* update stencil to 4.38 version ([#852](https://github.com/haiilo/catalyst/issues/852)) ([1ed2c58](https://github.com/haiilo/catalyst/commit/1ed2c58ff9b4ce275e7c8d2a6ed070708118c5aa))
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792)) ([f343fd2](https://github.com/haiilo/catalyst/commit/f343fd2f3b460398dc1ad3970ccd8f9fcdfbc435))
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
 ## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.1-beta...catalyst-core-v13.5.1-beta.1) (2025-11-27)
 
 
