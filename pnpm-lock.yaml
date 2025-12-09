@@ -342,8 +342,8 @@ importers:
   tokens:
     dependencies:
       source-sans:
-        specifier: github:adobe-fonts/source-sans#ed18089
-        version: https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089
+        specifier: 3.52.0
+        version: 3.52.0
     devDependencies:
       copyfiles:
         specifier: 2.4.1
@@ -7497,9 +7497,8 @@ packages:
     resolution: {integrity: sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==}
     engines: {node: '>= 12'}
 
-  source-sans@https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089:
-    resolution: {tarball: https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089}
-    version: 3.46.0
+  source-sans@3.52.0:
+    resolution: {integrity: sha512-xsm7qlMI/JwxwNdp6pvpR6l+aZjn90fzOzoeUz/qoohIYbKbDwQNRIz5/ItYs7/hvqLirQNUoDFGXSVA3TU9tw==}
 
   spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
@@ -16774,7 +16773,7 @@ snapshots:
 
   source-map@0.7.6: {}
 
-  source-sans@https://codeload.github.com/adobe-fonts/source-sans/tar.gz/ed18089: {}
+  source-sans@3.52.0: {}
 
   spdx-correct@3.2.0:
     dependencies:
