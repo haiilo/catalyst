@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.1...catalyst-core-v14.0.2) (2025-12-11)
+
+
+### Bug Fixes
+
+* set addGlobalStyleToComponents to false ([#856](https://github.com/haiilo/catalyst/issues/856)) ([5b33756](https://github.com/haiilo/catalyst/commit/5b337567d7c45bd1192dd7da18aa3161b2a32e8c))
+
 ## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.0...catalyst-core-v14.0.1) (2025-12-09)
 
 
