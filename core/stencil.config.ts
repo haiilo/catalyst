@@ -55,7 +55,8 @@ export const config: Config = {
   globalStyle: 'src/styles/index.scss',
   extras: {
     enableImportInjection: true,
-    tagNameTransform: true
+    tagNameTransform: true,
+    addGlobalStyleToComponents: false
   },
   outputTargets: [
     {
