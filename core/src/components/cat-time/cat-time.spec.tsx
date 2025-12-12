@@ -4,7 +4,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { CatInput } from '../cat-input/cat-input';
 import { CatTime } from './cat-time';
 
-describe.skip('cat-time', () => {
+describe('cat-time', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatTime, CatInput],

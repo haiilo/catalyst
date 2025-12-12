@@ -1,0 +1,200 @@
+diff --git a/mock-doc/index.cjs b/mock-doc/index.cjs
+index a1b623871f55dc5c9c5c54039acfbb492c00ac10..8177187d37fdfbdaeadfa91b4199297364b568a1 100644
+--- a/mock-doc/index.cjs
++++ b/mock-doc/index.cjs
+@@ -6811,16 +6811,86 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
++    // Patched by Catalyst to provide working ElementInternals mock
++    // See: https://github.com/haiilo/catalyst/blob/main/ELEMENT_INTERNALS_MOCK.md
++    if (!this.__internals) {
++      const self = this;
++      this.__internals = {
++        _formValue: null,
++        _formState: null,
++        _validity: {
++          valueMissing: false,
++          typeMismatch: false,
++          patternMismatch: false,
++          tooLong: false,
++          tooShort: false,
++          rangeUnderflow: false,
++          rangeOverflow: false,
++          stepMismatch: false,
++          badInput: false,
++          customError: false,
++          valid: true
++        },
++        _validationMessage: "",
++        get form() {
++          return null;
++        },
++        get labels() {
++          return [];
++        },
++        get shadowRoot() {
++          return self.shadowRoot;
++        },
++        get states() {
++          return /* @__PURE__ */ new Set();
++        },
++        get validity() {
++          return this._validity;
++        },
++        get validationMessage() {
++          return this._validationMessage;
++        },
++        get willValidate() {
++          return true;
++        },
++        checkValidity() {
++          return this._validity.valid;
++        },
++        reportValidity() {
++          return this._validity.valid;
++        },
++        setFormValue(value, state) {
++          this._formValue = value;
++          this._formState = state !== void 0 ? state : value;
++        },
++        setValidity(flags, message, anchor) {
++          if (!flags || Object.keys(flags).length === 0) {
++            this._validity = {
++              valueMissing: false,
++              typeMismatch: false,
++              patternMismatch: false,
++              tooLong: false,
++              tooShort: false,
++              rangeUnderflow: false,
++              rangeOverflow: false,
++              stepMismatch: false,
++              badInput: false,
++              customError: false,
++              valid: true
++            };
++            this._validationMessage = "";
++          } else {
++            this._validity = {
++              ...this._validity,
++              ...flags,
++              valid: !Object.values(flags).some((flag) => flag === true)
++            };
++            this._validationMessage = message || "";
++          }
+         }
+-      }
+-    });
++      };
++    }
++    return this.__internals;
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
+diff --git a/mock-doc/index.js b/mock-doc/index.js
+index aa59a91dac87647147574fc6fd0700cf865cf8b1..815505ae62b7fa7845dbe15b05b474c6069c8e95 100644
+--- a/mock-doc/index.js
++++ b/mock-doc/index.js
+@@ -6758,16 +6758,86 @@ var MockNodeList = class {
+ };
+ var MockElement = class extends MockNode2 {
+   attachInternals() {
+-    return new Proxy({}, {
+-      get: function(_target, prop, _receiver) {
+-        if ("process" in globalThis && globalThis.process.env.__STENCIL_SPEC_TESTS__) {
+-          console.error(
+-            `NOTE: Property ${String(prop)} was accessed on ElementInternals, but this property is not implemented.
+-  Testing components with ElementInternals is fully supported in e2e tests.`
+-          );
++    // Patched by Catalyst to provide working ElementInternals mock
++    // See: https://github.com/haiilo/catalyst/blob/main/ELEMENT_INTERNALS_MOCK.md
++    if (!this.__internals) {
++      const self = this;
++      this.__internals = {
++        _formValue: null,
++        _formState: null,
++        _validity: {
++          valueMissing: false,
++          typeMismatch: false,
++          patternMismatch: false,
++          tooLong: false,
++          tooShort: false,
++          rangeUnderflow: false,
++          rangeOverflow: false,
++          stepMismatch: false,
++          badInput: false,
++          customError: false,
++          valid: true
++        },
++        _validationMessage: "",
++        get form() {
++          return null;
++        },
++        get labels() {
++          return [];
++        },
++        get shadowRoot() {
++          return self.shadowRoot;
++        },
++        get states() {
++          return /* @__PURE__ */ new Set();
++        },
++        get validity() {
++          return this._validity;
++        },
++        get validationMessage() {
++          return this._validationMessage;
++        },
++        get willValidate() {
++          return true;
++        },
++        checkValidity() {
++          return this._validity.valid;
++        },
++        reportValidity() {
++          return this._validity.valid;
++        },
++        setFormValue(value, state) {
++          this._formValue = value;
++          this._formState = state !== void 0 ? state : value;
++        },
++        setValidity(flags, message, anchor) {
++          if (!flags || Object.keys(flags).length === 0) {
++            this._validity = {
++              valueMissing: false,
++              typeMismatch: false,
++              patternMismatch: false,
++              tooLong: false,
++              tooShort: false,
++              rangeUnderflow: false,
++              rangeOverflow: false,
++              stepMismatch: false,
++              badInput: false,
++              customError: false,
++              valid: true
++            };
++            this._validationMessage = "";
++          } else {
++            this._validity = {
++              ...this._validity,
++              ...flags,
++              valid: !Object.values(flags).some((flag) => flag === true)
++            };
++            this._validationMessage = message || "";
++          }
+         }
+-      }
+-    });
++      };
++    }
++    return this.__internals;
+   }
+   constructor(ownerDocument, nodeName, namespaceURI = null) {
+     super(ownerDocument, 1 /* ELEMENT_NODE */, typeof nodeName === "string" ? nodeName : null, null);
