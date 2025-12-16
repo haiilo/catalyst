@@ -1,6 +1,6 @@
 // -- Reset
-@import '~sanitize.css/sanitize.css';
-@import '~sanitize.css/reduce-motion.css';
+@use 'sanitize.css/sanitize.css';
+@use 'sanitize.css/reduce-motion.css';
 
 // -- Core
 @import 'core/form';
