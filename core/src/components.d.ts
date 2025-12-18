@@ -12,7 +12,7 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
@@ -22,7 +22,7 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
-export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+export { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export namespace Components {
@@ -1373,7 +1373,7 @@ export namespace Components {
         /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
-        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }
@@ -2414,7 +2414,7 @@ declare global {
     interface HTMLCatSelectElementEventMap {
         "catOpen": FocusEvent;
         "catClose": FocusEvent;
-        "catChange": InputEvent;
+        "catChange": CatSelectValue;
         "catBlur": FocusEvent;
     }
     /**
@@ -3968,7 +3968,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatSelectCustomEvent<InputEvent>) => void;
+        "onCatChange"?: (event: CatSelectCustomEvent<CatSelectValue>) => void;
         /**
           * Emitted when the select dropdown is closed.
          */
@@ -4012,7 +4012,7 @@ declare namespace LocalJSX {
         /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
-        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }
