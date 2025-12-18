@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.2...catalyst-core-v14.0.3) (2025-12-18)
+
+
+### Bug Fixes
+
+* **core:** fix index.shadow.scss ([#861](https://github.com/haiilo/catalyst/issues/861)) ([5d7d2c3](https://github.com/haiilo/catalyst/commit/5d7d2c3f2817b64a7b645e4fc06e31404e379b84))
+* **core:** put adjustAdaptiveTabs into requestAnimationFrame in syncTabs ([#862](https://github.com/haiilo/catalyst/issues/862)) ([c09b90b](https://github.com/haiilo/catalyst/commit/c09b90be5f428d3f08cb270a35fee666b55e7dd2))
+
 ## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.1...catalyst-core-v14.0.2) (2025-12-11)
 
 
