@@ -303,7 +303,9 @@ export class CatTabs {
     this.tabs = Array.from(this.hostElement.querySelectorAll('cat-tab'));
     this.activeTab = this.activeTab || this.tabs.filter(tab => this.canActivate(tab) && !tab.noActive)[0]?.id;
     if (this.adaptive) {
-      this.adjustAdaptiveTabs();
+      requestAnimationFrame(() => {
+        this.adjustAdaptiveTabs();
+      });
     }
   }
 
