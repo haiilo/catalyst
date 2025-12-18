@@ -1,6 +1,6 @@
 {
   "name": "@haiilo/catalyst-angular",
-  "version": "14.0.2",
+  "version": "14.0.3",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
   "scripts": {
