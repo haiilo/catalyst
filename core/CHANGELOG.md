@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.3...catalyst-core-v14.0.4) (2025-12-23)
+
+
+### Bug Fixes
+
+* **core:** listen for floating element position update only when dropdown or select is open ([#864](https://github.com/haiilo/catalyst/issues/864)) ([7e157c2](https://github.com/haiilo/catalyst/commit/7e157c20de75b635b952ae0e918057cd64e1fcd5))
+
 ## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.2...catalyst-core-v14.0.3) (2025-12-18)
 
 
