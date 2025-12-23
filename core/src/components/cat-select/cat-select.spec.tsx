@@ -1,10 +1,33 @@
 jest.mock('../cat-i18n/cat-i18n-registry');
 
+jest.mock('autosize-input', () => jest.fn());
+
+const mockAutoUpdateCleanup = jest.fn();
+const mockAutoUpdate = jest.fn(() => mockAutoUpdateCleanup);
+const mockComputePosition = jest.fn(() =>
+  Promise.resolve({
+    x: 0,
+    y: 0,
+    placement: 'bottom-start'
+  })
+);
+
+jest.mock('@floating-ui/dom', () => ({
+  autoUpdate: mockAutoUpdate,
+  computePosition: mockComputePosition,
+  flip: jest.fn(() => ({})),
+  offset: jest.fn(() => ({}))
+}));
+
 import { newSpecPage } from '@stencil/core/testing';
 import { CatSelect } from './cat-select';
 import { stringArrayConnector } from './connectors';
 
 describe('cat-select', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders', async () => {
     const page = await newSpecPage({
       components: [CatSelect],
@@ -78,6 +101,109 @@ describe('cat-select', () => {
       await page.waitForChanges();
 
       expect(catChangeSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('autoUpdate lifecycle', () => {
+    it('should not set up autoUpdate on component load', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await page.waitForChanges();
+
+      expect(mockAutoUpdate).not.toHaveBeenCalled();
+    });
+
+    it('should set up autoUpdate when dropdown is opened', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await page.waitForChanges();
+
+      // Open dropdown by clicking on the trigger element
+      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      const dropdown = page.root?.shadowRoot?.querySelector('.select-dropdown');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+      const callArgs = mockAutoUpdate.mock.calls[0] as unknown[];
+      expect(callArgs[0]).toBe(trigger); // First arg should be trigger element
+      expect(callArgs[1]).toBe(dropdown); // Second arg should be dropdown element
+    });
+
+    it('should call cleanup function when dropdown is closed', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await page.waitForChanges();
+
+      // Open dropdown by clicking
+      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+
+      // Close dropdown by clicking again
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await page.waitForChanges();
+
+      // Verify cleanup function was called
+      expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not set up autoUpdate if connector is not connected', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      // Don't connect a connector
+
+      // Try to open dropdown without a connector by clicking
+      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(mockAutoUpdate).not.toHaveBeenCalled();
+    });
+
+    it('should close and cleanup autoUpdate on blur', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await page.waitForChanges();
+
+      // Open dropdown by clicking
+      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await page.waitForChanges();
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+
+      // Simulate blur event to close dropdown
+      const blurEvent = new FocusEvent('blur');
+      page.root?.dispatchEvent(blurEvent);
+      await page.waitForChanges();
+
+      // Should clean up autoUpdate
+      expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
     });
   });
 });
