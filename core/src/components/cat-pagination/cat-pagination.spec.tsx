@@ -1,5 +1,5 @@
 jest.mock('../cat-i18n/cat-i18n-registry');
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatPagination } from './cat-pagination';
 
 describe('cat-pagination', () => {

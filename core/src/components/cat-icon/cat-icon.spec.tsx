@@ -1,5 +1,5 @@
 jest.mock('./cat-icon-registry');
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatIcon } from './cat-icon';
 
 describe('cat-icon', () => {

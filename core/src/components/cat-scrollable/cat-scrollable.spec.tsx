@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatScrollable } from './cat-scrollable';
 
 describe('cat-scrollable', () => {

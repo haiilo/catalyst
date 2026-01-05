@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatToggle } from './cat-toggle';
 
 describe('cat-toggle', () => {

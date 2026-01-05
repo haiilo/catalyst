@@ -26,7 +26,7 @@ jest.mock('focus-trap', () => ({
   createFocusTrap: jest.fn(() => mockTrap)
 }));
 
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatDropdown } from './cat-dropdown';
 
 describe('cat-dropdown', () => {

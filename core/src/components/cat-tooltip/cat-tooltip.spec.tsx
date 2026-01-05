@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatTooltip } from './cat-tooltip';
 
 describe('cat-tooltip', () => {
