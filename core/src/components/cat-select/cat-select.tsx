@@ -131,6 +131,7 @@ export class CatSelect {
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
   private valueChangedBySelection = false;
+  private cleanupFloatingUi?: () => void;
 
   @Element() hostElement!: HTMLElement;
 
@@ -368,9 +369,6 @@ export class CatSelect {
   componentDidLoad(): void {
     if (this.input) {
       autosizeInput(this.input, { minWidth: true });
-    }
-    if (this.trigger && this.dropdown) {
-      autoUpdate(this.trigger, this.dropdown, () => this.update());
     }
   }
 
@@ -922,6 +920,9 @@ export class CatSelect {
 
   private show() {
     if (!this.state.isOpen && this.connector) {
+      if (this.trigger && this.dropdown) {
+        this.cleanupFloatingUi = autoUpdate(this.trigger, this.dropdown, () => this.update());
+      }
       // reconnect to reset the connection, i.e. the pagination
       this.connect(this.connector);
       this.patchState({ isOpen: true, isFirstLoading: true, options: [] });
@@ -934,6 +935,8 @@ export class CatSelect {
   private hide() {
     if (this.state.isOpen) {
       this.patchState({ isOpen: false, activeOptionIndex: -1 });
+      this.cleanupFloatingUi?.();
+      this.cleanupFloatingUi = undefined;
       this.catClose.emit();
       return true;
     }
