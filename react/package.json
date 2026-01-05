@@ -11,7 +11,6 @@
     "prebuild": "pnpm run clean",
     "build": "pnpm run tsc",
     "tsc": "tsc -p .",
-    "rollup": "rollup -c",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
   },
@@ -35,7 +34,6 @@
     "@types/react-dom": "^16.9.0",
     "jest": "29.7.0",
     "@testing-library/jest-dom": "6.9.1",
-    "np": "3.1.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "typescript": "5.9.3"
