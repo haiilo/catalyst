@@ -1,4 +1,4 @@
-import { replaceInFileSync } from 'replace-in-file'
+import { replaceInFileSync } from 'replace-in-file';
 // --- Replace '~' imports
 
 const results = replaceInFileSync({
