@@ -223,7 +223,9 @@ export class CatDatepickerFlat {
     this.pickr?.destroy();
     this.pickr = undefined;
     setTimeout(() => {
-      this.input ? (this.input.disabled = this.disabled) : null;
+      if (this.input) {
+        this.input.disabled = this.disabled
+      }
       this.pickr = this.initDatepicker(this.input);
     });
   }

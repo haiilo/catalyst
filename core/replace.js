@@ -1,8 +1,7 @@
-const replace = require('replace-in-file');
-
+import { replaceInFileSync } from 'replace-in-file'
 // --- Replace '~' imports
 
-const results = replace.sync({
+const results = replaceInFileSync({
   files: 'dist/catalyst/scss/**/*.scss',
   from: /@(import|use|forward) '~/g,
   to: "@$1 '"
@@ -21,7 +20,7 @@ if (output.length) {
 
 // --- Patch boolean value accessor
 
-const results2 = replace.sync({
+const results2 = replaceInFileSync({
   files: '../angular/projects/catalyst/src/lib/directives/boolean-value-accessor.ts',
   from: 'this.el.nativeElement.checked = this.lastValue = value == null ? false : value;',
   to: 'this.el.nativeElement.checked = this.lastValue = this.el.nativeElement.value == null ? value : this.el.nativeElement.value === value;'

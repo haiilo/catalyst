@@ -162,7 +162,6 @@ export class CatButton {
   @Watch('iconOnly')
   onIconOnlyChanged(value: boolean | Breakpoint): void {
     // teardown
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.mediaQueryList?.removeEventListener('change', this.mediaQueryListener!);
     this.mediaQueryList = undefined;
     this.mediaQueryListener = undefined;
