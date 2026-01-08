@@ -123,8 +123,9 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: zgosalvez/github-actions-report-lcov@v3
         with:
-          coverage-files: core/coverage/lcov.info
+          coverage-files: coverage/lcov.info
           minimum-coverage: 70
           artifact-name: core-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
           update-comment: true
+          working-directory: core
