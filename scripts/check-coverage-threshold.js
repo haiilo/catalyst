@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const https = require('https');
 
 /**
  * Parse lcov file and extract coverage data
@@ -117,66 +118,213 @@ function calculateCoverage(coverageData, changedFiles, coverageRoot) {
   };
 }
 
-// Main execution
-const args = process.argv.slice(2);
-const lcovFile = args[0];
-const threshold = parseFloat(args[1] || '70');
-const baseRef = args[2] || 'origin/main';
-const coverageRoot = args[3] || '';
+/**
+ * Make GitHub API request
+ * @param {string} token - GitHub token
+ * @param {string} method - HTTP method
+ * @param {string} path - API path
+ * @param {object} data - Request body
+ * @returns {Promise<object>}
+ */
+function githubRequest(token, method, path, data = null) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'api.github.com',
+      port: 443,
+      path,
+      method,
+      headers: {
+        'Authorization': `token ${token}`,
+        'User-Agent': 'coverage-check-script',
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      }
+    };
 
-if (!lcovFile) {
-  console.error('Usage: node check-coverage-threshold.js <lcov-file> [threshold] [base-ref] [coverage-root]');
-  process.exit(1);
-}
+    const req = https.request(options, (res) => {
+      let body = '';
+      res.on('data', (chunk) => body += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve(JSON.parse(body || '{}'));
+        } else {
+          reject(new Error(`GitHub API error: ${res.statusCode} ${body}`));
+        }
+      });
+    });
 
-if (!fs.existsSync(lcovFile)) {
-  console.error(`Error: LCOV file not found: ${lcovFile}`);
-  process.exit(1);
-}
+    req.on('error', reject);
 
-console.log('🔍 Checking coverage on changed files...\n');
-console.log(`Base ref: ${baseRef}`);
-console.log(`Threshold: ${threshold}%\n`);
+    if (data) {
+      req.write(JSON.stringify(data));
+    }
 
-// Get changed files
-const changedFiles = getChangedFiles(baseRef);
-console.log(`Found ${changedFiles.length} changed files`);
-
-if (changedFiles.length === 0) {
-  console.log('✅ No files changed, skipping coverage check');
-  process.exit(0);
-}
-
-// Parse lcov
-const coverageData = parseLcov(lcovFile);
-console.log(`Parsed coverage data for ${coverageData.size} files\n`);
-
-// Calculate coverage for changed files
-const result = calculateCoverage(coverageData, changedFiles, coverageRoot);
-
-console.log('📊 Coverage Report for Changed Files:');
-console.log('─'.repeat(60));
-
-if (result.fileDetails.length > 0) {
-  result.fileDetails.forEach(({ file, coverage, lines }) => {
-    console.log(`  ${file}`);
-    console.log(`    Coverage: ${coverage}% (${lines.hit}/${lines.found} lines)`);
+    req.end();
   });
-  console.log('─'.repeat(60));
-  console.log(`  Total Coverage: ${result.coverage}% (${result.coveredLines}/${result.totalLines} lines)\n`);
-} else {
-  console.log('  No coverage data found for changed files');
-  console.log('  (This might be normal if changes are only in test files, config, etc.)\n');
-  console.log('✅ Coverage check passed (no testable changes)');
-  process.exit(0);
 }
 
-// Check threshold
-if (result.coverage < threshold) {
-  console.error(`❌ Coverage ${result.coverage}% is below threshold ${threshold}%`);
-  console.error(`   Please add tests to cover the new code.\n`);
-  process.exit(1);
-} else {
-  console.log(`✅ Coverage ${result.coverage}% meets threshold ${threshold}%\n`);
-  process.exit(0);
+/**
+ * Find existing coverage comment
+ * @param {string} token - GitHub token
+ * @param {string} repo - Repository (owner/repo)
+ * @param {number} prNumber - PR number
+ * @param {string} identifier - Comment identifier
+ * @returns {Promise<object|null>}
+ */
+async function findExistingComment(token, repo, prNumber, identifier) {
+  try {
+    const comments = await githubRequest(token, 'GET', `/repos/${repo}/issues/${prNumber}/comments`);
+    return comments.find(comment => comment.body.includes(identifier)) || null;
+  } catch (error) {
+    console.error('Error finding existing comment:', error.message);
+    return null;
+  }
 }
+
+/**
+ * Format coverage report as markdown
+ * @param {object} result - Coverage result
+ * @param {number} threshold - Coverage threshold
+ * @param {string} title - Report title
+ * @returns {string}
+ */
+function formatMarkdownReport(result, threshold, title) {
+  const identifier = `<!-- coverage-check: ${title} -->`;
+  const status = result.coverage >= threshold ? '✅' : '❌';
+  const statusText = result.coverage >= threshold
+    ? `Coverage **${result.coverage}%** meets threshold **${threshold}%**`
+    : `Coverage **${result.coverage}%** is below threshold **${threshold}%**`;
+
+  let markdown = `${identifier}\n\n`;
+  markdown += `## ${status} ${title}\n\n`;
+  markdown += `${statusText}\n\n`;
+
+  if (result.fileDetails.length > 0) {
+    markdown += `### Coverage by File\n\n`;
+    markdown += `| File | Coverage | Lines |\n`;
+    markdown += `|------|----------|-------|\n`;
+
+    result.fileDetails.forEach(({ file, coverage, lines }) => {
+      const icon = parseFloat(coverage) >= threshold ? '✅' : '❌';
+      markdown += `| ${icon} \`${file}\` | **${coverage}%** | ${lines.hit}/${lines.found} |\n`;
+    });
+
+    markdown += `\n**Total:** ${result.coveredLines}/${result.totalLines} lines covered\n`;
+  } else {
+    markdown += `\n_No testable changes detected (changes may be in test files, config, etc.)_\n`;
+  }
+
+  return markdown;
+}
+
+/**
+ * Post or update PR comment
+ * @param {string} token - GitHub token
+ * @param {string} repo - Repository (owner/repo)
+ * @param {number} prNumber - PR number
+ * @param {string} body - Comment body
+ * @param {string} identifier - Comment identifier
+ */
+async function postOrUpdateComment(token, repo, prNumber, body, identifier) {
+  try {
+    const existingComment = await findExistingComment(token, repo, prNumber, identifier);
+
+    if (existingComment) {
+      await githubRequest(token, 'PATCH', `/repos/${repo}/issues/comments/${existingComment.id}`, { body });
+      console.log('✓ Updated existing PR comment');
+    } else {
+      await githubRequest(token, 'POST', `/repos/${repo}/issues/${prNumber}/comments`, { body });
+      console.log('✓ Posted new PR comment');
+    }
+  } catch (error) {
+    console.error('Error posting/updating comment:', error.message);
+  }
+}
+
+// Main execution
+async function main() {
+  const args = process.argv.slice(2);
+  const lcovFile = args[0];
+  const threshold = parseFloat(args[1] || '70');
+  const baseRef = args[2] || 'origin/main';
+  const coverageRoot = args[3] || '';
+  const title = args[4] || 'Coverage Report';
+
+  // GitHub context from environment variables
+  const githubToken = process.env.GITHUB_TOKEN;
+  const githubRepo = process.env.GITHUB_REPOSITORY;
+  const prNumber = process.env.PR_NUMBER;
+
+  if (!lcovFile) {
+    console.error('Usage: node check-coverage-threshold.js <lcov-file> [threshold] [base-ref] [coverage-root] [title]');
+    process.exit(1);
+  }
+
+  if (!fs.existsSync(lcovFile)) {
+    console.error(`Error: LCOV file not found: ${lcovFile}`);
+    process.exit(1);
+  }
+
+  console.log('🔍 Checking coverage on changed files...\n');
+  console.log(`Base ref: ${baseRef}`);
+  console.log(`Threshold: ${threshold}%\n`);
+
+  // Get changed files
+  const changedFiles = getChangedFiles(baseRef);
+  console.log(`Found ${changedFiles.length} changed files`);
+
+  if (changedFiles.length === 0) {
+    console.log('✅ No files changed, skipping coverage check');
+    process.exit(0);
+  }
+
+  // Parse lcov
+  const coverageData = parseLcov(lcovFile);
+  console.log(`Parsed coverage data for ${coverageData.size} files\n`);
+
+  // Calculate coverage for changed files
+  const result = calculateCoverage(coverageData, changedFiles, coverageRoot);
+
+  console.log('📊 Coverage Report for Changed Files:');
+  console.log('─'.repeat(60));
+
+  if (result.fileDetails.length > 0) {
+    result.fileDetails.forEach(({ file, coverage, lines }) => {
+      console.log(`  ${file}`);
+      console.log(`    Coverage: ${coverage}% (${lines.hit}/${lines.found} lines)`);
+    });
+    console.log('─'.repeat(60));
+    console.log(`  Total Coverage: ${result.coverage}% (${result.coveredLines}/${result.totalLines} lines)\n`);
+  } else {
+    console.log('  No coverage data found for changed files');
+    console.log('  (This might be normal if changes are only in test files, config, etc.)\n');
+  }
+
+  // Post PR comment if GitHub context is available
+  if (githubToken && githubRepo && prNumber) {
+    console.log('\n📝 Posting coverage report to PR...');
+    const markdown = formatMarkdownReport(result, threshold, title);
+    const identifier = `<!-- coverage-check: ${title} -->`;
+    await postOrUpdateComment(githubToken, githubRepo, parseInt(prNumber), markdown, identifier);
+  }
+
+  // Check threshold
+  if (result.fileDetails.length === 0) {
+    console.log('✅ Coverage check passed (no testable changes)');
+    process.exit(0);
+  }
+
+  if (result.coverage < threshold) {
+    console.error(`\n❌ Coverage ${result.coverage}% is below threshold ${threshold}%`);
+    console.error(`   Please add tests to cover the new code.\n`);
+    process.exit(1);
+  } else {
+    console.log(`\n✅ Coverage ${result.coverage}% meets threshold ${threshold}%\n`);
+    process.exit(0);
+  }
+}
+
+main().catch(error => {
+  console.error('Fatal error:', error);
+  process.exit(1);
+});

@@ -117,15 +117,10 @@ jobs:
           name: core-coverage
           path: core/coverage/
           retention-days: 30
-      - name: Coverage on New Code
-        if: github.event_name == 'pull_request'
-        uses: romeovs/lcov-reporter-action@v0.3.1
-        with:
-          lcov-file: core/coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          delete-old-comments: true
-          filter-changed-files: true
-          title: 'Core Coverage Report'
       - name: Check Coverage Threshold
         if: github.event_name == 'pull_request'
-        run: node scripts/check-coverage-threshold.js core/coverage/lcov.info 70 origin/${{ github.event.pull_request.base.ref }} core
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: node scripts/check-coverage-threshold.js core/coverage/lcov.info 70 origin/${{ github.event.pull_request.base.ref }} core "Core Coverage Report"
