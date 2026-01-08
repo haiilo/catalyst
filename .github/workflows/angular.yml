@@ -86,25 +86,7 @@ jobs:
           pnpm run build:angular-formly
       - name: Test with coverage
         run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
-      - name: Generate coverage summary
-        if: always()
-        run: |
-          if [ -f angular/coverage/catalyst/coverage-summary.json ]; then
-            echo "## Angular Coverage Report" >> $GITHUB_STEP_SUMMARY
-            node -e "
-            const fs = require('fs');
-            const coverage = JSON.parse(fs.readFileSync('angular/coverage/catalyst/coverage-summary.json', 'utf8'));
-            const total = coverage.total;
-            console.log('| Metric | Coverage |');
-            console.log('|--------|----------|');
-            console.log(\`| Statements | \${total.statements.pct}% (\${total.statements.covered}/\${total.statements.total}) |\`);
-            console.log(\`| Branches | \${total.branches.pct}% (\${total.branches.covered}/\${total.branches.total}) |\`);
-            console.log(\`| Functions | \${total.functions.pct}% (\${total.functions.covered}/\${total.functions.total}) |\`);
-            console.log(\`| Lines | \${total.lines.pct}% (\${total.lines.pct}/\${total.lines.total}) |\`);
-            " >> $GITHUB_STEP_SUMMARY
-          fi
       - name: Upload coverage artifact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: angular-coverage
