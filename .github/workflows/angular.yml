@@ -50,6 +50,9 @@ jobs:
           pnpm run build:angular-formly
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
