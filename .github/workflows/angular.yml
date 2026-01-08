@@ -104,7 +104,6 @@ jobs:
         with:
           coverage-files: angular/coverage/catalyst/lcov.info
           minimum-coverage: 70
-          artifact-name: angular-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
           update-comment: true
           working-directory: angular
