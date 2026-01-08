@@ -92,11 +92,12 @@ jobs:
           name: angular-coverage
           path: angular/coverage/
           retention-days: 30
-      - name: Coverage report
+      - name: Coverage on New Code
         if: github.event_name == 'pull_request'
-        uses: romeovs/lcov-reporter-action@v0.3.1
+        uses: zgosalvez/github-actions-report-lcov@v3
         with:
-          lcov-file: angular/coverage/catalyst/lcov.info
+          coverage-files: angular/coverage/catalyst/lcov.info
+          minimum-coverage: 70
+          artifact-name: angular-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          delete-old-comments: true
-          title: 'Angular Coverage Report'
+          update-comment: true

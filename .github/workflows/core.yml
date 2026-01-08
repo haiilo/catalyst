@@ -117,11 +117,12 @@ jobs:
           name: core-coverage
           path: core/coverage/
           retention-days: 30
-      - name: Coverage report
+      - name: Coverage on New Code
         if: github.event_name == 'pull_request'
-        uses: romeovs/lcov-reporter-action@v0.3.1
+        uses: zgosalvez/github-actions-report-lcov@v3
         with:
-          lcov-file: core/coverage/lcov.info
+          coverage-files: core/coverage/lcov.info
+          minimum-coverage: 70
+          artifact-name: core-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          delete-old-comments: true
-          title: 'Core Coverage Report'
+          update-comment: true
