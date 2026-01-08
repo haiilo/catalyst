@@ -119,6 +119,10 @@ jobs:
           retention-days: 30
       - name: Setup LCOV
         uses: hrishikesh-kadam/setup-lcov@v1
+      - name: Fix lcov inconsistencies
+        if: github.event_name == 'pull_request'
+        run: |
+          lcov --rc branch_coverage=0 -a core/coverage/lcov.info -o core/coverage/lcov.info
       - name: Coverage on New Code
         if: github.event_name == 'pull_request'
         uses: zgosalvez/github-actions-report-lcov@v3
