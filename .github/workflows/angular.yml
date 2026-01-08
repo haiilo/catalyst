@@ -98,7 +98,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: zgosalvez/github-actions-report-lcov@v3
         with:
-          coverage-files: coverage/catalyst/lcov.info
+          coverage-files: angular/coverage/catalyst/lcov.info
           minimum-coverage: 70
           artifact-name: angular-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
