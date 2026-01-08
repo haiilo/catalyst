@@ -92,6 +92,8 @@ jobs:
           name: angular-coverage
           path: angular/coverage/
           retention-days: 30
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
       - name: Coverage on New Code
         if: github.event_name == 'pull_request'
         uses: zgosalvez/github-actions-report-lcov@v3
