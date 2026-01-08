@@ -92,18 +92,15 @@ jobs:
           name: angular-coverage
           path: angular/coverage/
           retention-days: 30
-      - name: Setup LCOV
-        uses: hrishikesh-kadam/setup-lcov@v1
-      - name: Fix lcov inconsistencies
-        if: github.event_name == 'pull_request'
-        run: |
-          lcov --rc branch_coverage=0 -a angular/coverage/lcov.info -o angular/coverage/lcov.info
       - name: Coverage on New Code
         if: github.event_name == 'pull_request'
-        uses: zgosalvez/github-actions-report-lcov@v3
+        uses: romeovs/lcov-reporter-action@v0.3.1
         with:
-          coverage-files: angular/coverage/catalyst/lcov.info
-          minimum-coverage: 70
+          lcov-file: angular/coverage/catalyst/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          update-comment: true
-          working-directory: angular
+          delete-old-comments: true
+          filter-changed-files: true
+          title: 'Angular Coverage Report'
+      - name: Check Coverage Threshold
+        if: github.event_name == 'pull_request'
+        run: node scripts/check-coverage-threshold.js angular/coverage/catalyst/lcov.info 70 origin/${{ github.event.pull_request.base.ref }} angular
