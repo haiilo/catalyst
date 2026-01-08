@@ -1,5 +1,49 @@
 # Changelog
 
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.0.3...catalyst-angular-formly-v14.0.4) (2025-12-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.0.2...catalyst-angular-formly-v14.0.3) (2025-12-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.0.1...catalyst-angular-formly-v14.0.2) (2025-12-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.0.0...catalyst-angular-formly-v14.0.1) (2025-12-09)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v13.5.0...catalyst-angular-formly-v14.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792))
+
+### Features
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792)) ([f343fd2](https://github.com/haiilo/catalyst/commit/f343fd2f3b460398dc1ad3970ccd8f9fcdfbc435))
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
 ## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v13.5.1-beta...catalyst-angular-formly-v13.5.1-beta.1) (2025-11-27)
 
 

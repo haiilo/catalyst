@@ -28,6 +28,7 @@ input {
 
   &::placeholder {
     color: cat-token('color.ui.font.muted');
+    opacity: 1;
   }
 
   /* stylelint-disable property-no-vendor-prefix */

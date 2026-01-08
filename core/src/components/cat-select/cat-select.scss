@@ -127,6 +127,7 @@ label {
 
   &::placeholder {
     color: cat-token('color.ui.font.muted');
+    opacity: 1;
   }
 
   .select-disabled & {

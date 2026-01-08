@@ -1,5 +1,51 @@
 # Changelog
 
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.3...catalyst-core-v14.0.4) (2025-12-23)
+
+
+### Bug Fixes
+
+* **core:** listen for floating element position update only when dropdown or select is open ([#864](https://github.com/haiilo/catalyst/issues/864)) ([7e157c2](https://github.com/haiilo/catalyst/commit/7e157c20de75b635b952ae0e918057cd64e1fcd5))
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.2...catalyst-core-v14.0.3) (2025-12-18)
+
+
+### Bug Fixes
+
+* **core:** fix index.shadow.scss ([#861](https://github.com/haiilo/catalyst/issues/861)) ([5d7d2c3](https://github.com/haiilo/catalyst/commit/5d7d2c3f2817b64a7b645e4fc06e31404e379b84))
+* **core:** put adjustAdaptiveTabs into requestAnimationFrame in syncTabs ([#862](https://github.com/haiilo/catalyst/issues/862)) ([c09b90b](https://github.com/haiilo/catalyst/commit/c09b90be5f428d3f08cb270a35fee666b55e7dd2))
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.1...catalyst-core-v14.0.2) (2025-12-11)
+
+
+### Bug Fixes
+
+* set addGlobalStyleToComponents to false ([#856](https://github.com/haiilo/catalyst/issues/856)) ([5b33756](https://github.com/haiilo/catalyst/commit/5b337567d7c45bd1192dd7da18aa3161b2a32e8c))
+
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.0...catalyst-core-v14.0.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** overwrite opacity from sanitize.css for inputs and textarea and specify the correct version for source-sans ([#853](https://github.com/haiilo/catalyst/issues/853)) ([7b20247](https://github.com/haiilo/catalyst/commit/7b20247820f66f91e2b254ae8aba9749a8ee0ce6))
+
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v14.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792))
+
+### Features
+
+* update stencil to 4.38 version ([#852](https://github.com/haiilo/catalyst/issues/852)) ([1ed2c58](https://github.com/haiilo/catalyst/commit/1ed2c58ff9b4ce275e7c8d2a6ed070708118c5aa))
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792)) ([f343fd2](https://github.com/haiilo/catalyst/commit/f343fd2f3b460398dc1ad3970ccd8f9fcdfbc435))
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
 ## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.1-beta...catalyst-core-v13.5.1-beta.1) (2025-11-27)
 
 

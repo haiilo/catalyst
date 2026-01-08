@@ -1,5 +1,40 @@
 # Changelog
 
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.0.3...catalyst-tokens-v14.0.4) (2025-12-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.0.2...catalyst-tokens-v14.0.3) (2025-12-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.0.1...catalyst-tokens-v14.0.2) (2025-12-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.0.0...catalyst-tokens-v14.0.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** overwrite opacity from sanitize.css for inputs and textarea and specify the correct version for source-sans ([#853](https://github.com/haiilo/catalyst/issues/853)) ([7b20247](https://github.com/haiilo/catalyst/commit/7b20247820f66f91e2b254ae8aba9749a8ee0ce6))
+
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.5.0...catalyst-tokens-v14.0.0) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
 ## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v13.5.1-beta...catalyst-tokens-v13.5.1-beta.1) (2025-11-27)
 
 
