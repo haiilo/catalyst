@@ -5,8 +5,8 @@ import { Dialog } from '@angular/cdk/dialog';
 describe('CatDialogService', () => {
   let service: CatDialogService;
   let dialog = {
-    closeAll: vi.fn().mockName("dialog.closeAll"),
-    open: vi.fn().mockName("dialog.open")
+    closeAll: vi.fn().mockName('dialog.closeAll'),
+    open: vi.fn().mockName('dialog.open')
   };
   beforeEach(() => {
     TestBed.configureTestingModule({

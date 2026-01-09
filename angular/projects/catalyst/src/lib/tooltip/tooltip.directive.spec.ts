@@ -1,4 +1,4 @@
-import type { MockedObject } from "vitest";
+import type { MockedObject } from 'vitest';
 import { Component, TemplateRef, ViewContainerRef } from '@angular/core';
 import { CatTooltipDirective } from './tooltip.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -22,11 +22,11 @@ describe('CatTooltipDirective', () => {
 
   beforeEach(() => {
     templateRef = {
-        createEmbeddedView: vi.fn().mockName("TemplateRef.createEmbeddedView")
+      createEmbeddedView: vi.fn().mockName('TemplateRef.createEmbeddedView')
     } as MockedObject<TemplateRef<unknown>>;
     viewContainer = {
-        createComponent: vi.fn().mockName("ViewContainerRef.createComponent"),
-        createEmbeddedView: vi.fn().mockName("ViewContainerRef.createEmbeddedView")
+      createComponent: vi.fn().mockName('ViewContainerRef.createComponent'),
+      createEmbeddedView: vi.fn().mockName('ViewContainerRef.createEmbeddedView')
     } as MockedObject<ViewContainerRef>;
 
     TestBed.configureTestingModule({

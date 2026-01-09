@@ -1,4 +1,4 @@
-import type { MockedObject } from "vitest";
+import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CatDialogComponent } from './dialog.component';
 import { DialogRef } from '@angular/cdk/dialog';
@@ -9,7 +9,7 @@ describe('CatDialogComponent', () => {
   let dialogRef: MockedObject<DialogRef>;
 
   beforeEach(async () => {
-    dialogRef = { close: vi.fn().mockName("dialogRef.close") } as MockedObject<DialogRef>;
+    dialogRef = { close: vi.fn().mockName('dialogRef.close') } as MockedObject<DialogRef>;
     await TestBed.configureTestingModule({
       declarations: [CatDialogComponent],
       providers: [
