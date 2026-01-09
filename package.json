@@ -34,8 +34,7 @@
     "angular/projects/catalyst-formly",
     "core",
     "react",
-    "tokens",
-    "vue"
+    "tokens"
   ],
   "standard-version": {
     "packageFiles": [
