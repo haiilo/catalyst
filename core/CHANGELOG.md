@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.4...catalyst-core-v14.0.5) (2026-01-15)
+
+
+### Bug Fixes
+
+* **core:** add non-theme color option to cat-alert ([#860](https://github.com/haiilo/catalyst/issues/860)) ([6dbf872](https://github.com/haiilo/catalyst/commit/6dbf8720736457e2cf54cb44b4752b550cebff5d))
+* **core:** fix textarea resize after setting the value externally ([#884](https://github.com/haiilo/catalyst/issues/884)) ([e0327f1](https://github.com/haiilo/catalyst/commit/e0327f1940d502ea91b624bc1a37da3a857d95c3))
+
 ## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.3...catalyst-core-v14.0.4) (2025-12-23)
 
 
