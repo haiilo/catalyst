@@ -247,6 +247,15 @@ export class CatTextarea {
     }
   }
 
+  @Watch('value')
+  onValueChanged(): void {
+    // Value changed externally, update the textarea and autosize
+    if (this.textarea && this.textarea.value !== this.value) {
+      this.textarea.value = this.value ?? '';
+      autosize.update(this.textarea);
+    }
+  }
+
   render() {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
