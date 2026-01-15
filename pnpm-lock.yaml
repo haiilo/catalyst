@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@stencil/core@4.38.3':
-    hash: zumbt3pmxtbh6dnwn7wjwfcqtm
+    hash: 508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a
     path: patches/@stencil__core@4.38.3.patch
 
 importers:
@@ -93,11 +93,11 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       karma-jasmine:
-        specifier: 4.0.2
-        version: 4.0.2(karma@6.4.4)
+        specifier: 5.1.0
+        version: 5.1.0(karma@6.4.4)
       karma-jasmine-html-reporter:
         specifier: 1.7.0
-        version: 1.7.0(jasmine-core@3.8.0)(karma-jasmine@4.0.2(karma@6.4.4))(karma@6.4.4)
+        version: 1.7.0(jasmine-core@3.8.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4)
       ng-packagr:
         specifier: 21.0.0
         version: 21.0.0(@angular/compiler-cli@21.0.9(@angular/compiler@21.0.9)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3)
@@ -107,45 +107,6 @@ importers:
       typescript:
         specifier: 5.9.3
         version: 5.9.3
-
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=21.0.0'
-        version: 21.1.0(@angular/common@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.0.9(@angular/animations@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.2
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^7.0.0
-        version: 7.0.1(@angular/forms@21.0.9(@angular/common@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.0.9(@angular/animations@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.0.9(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.0.9(@angular/compiler@21.0.9)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(rxjs@7.8.2)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   angular/projects/catalyst:
     dependencies:
@@ -196,7 +157,7 @@ importers:
         version: link:../tokens
       '@stencil/core':
         specifier: 4.38.3
-        version: 4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm)
+        version: 4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a)
       autosize:
         specifier: 6.0.1
         version: 6.0.1
@@ -233,13 +194,13 @@ importers:
         version: 2.23.7
       '@stencil/angular-output-target':
         specifier: 1.1.1
-        version: 1.1.1(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))
+        version: 1.1.1(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))
       '@stencil/react-output-target':
         specifier: 0.5.3
-        version: 0.5.3(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))
+        version: 0.5.3(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))
       '@stencil/sass':
         specifier: 3.2.3
-        version: 3.2.3(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))
+        version: 3.2.3(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
@@ -3983,6 +3944,9 @@ packages:
   jasmine-core@3.8.0:
     resolution: {integrity: sha512-zl0nZWDrmbCiKns0NcjkFGYkVTGCPUgoHypTaj+G2AzaWus7QGoXARSlYsSle2VRpSdfJmM+hzmFKzQNhF2kHg==}
 
+  jasmine-core@4.6.1:
+    resolution: {integrity: sha512-VYz/BjjmC3klLJlLwA4Kw8ytk0zDSmbbDLNs794VnWmkcCB7I9aAL/D48VNQtmITyPvea2C3jdUMfc3kAoy0PQ==}
+
   jest-changed-files@29.7.0:
     resolution: {integrity: sha512-fEArFiwf1BpQ+4bXSprcDc3/x4HSzL4al2tozwVpDFpsxALjLYdyiIK4e5Vz66GQJIbXJ82+35PtysofptNX2w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -4193,11 +4157,11 @@ packages:
       karma: '>=0.9'
       karma-jasmine: '>=1.1'
 
-  karma-jasmine@4.0.2:
-    resolution: {integrity: sha512-ggi84RMNQffSDmWSyyt4zxzh2CQGwsxvYYsprgyR1j8ikzIduEdOlcLvXjZGwXG/0j41KUXOWsUCBfbEHPWP9g==}
-    engines: {node: '>= 10'}
+  karma-jasmine@5.1.0:
+    resolution: {integrity: sha512-i/zQLFrfEpRyQoJF9fsCdTMOF5c2dK7C7OmsuKg2D0YSsuZSfQDiLuaiktbuio6F2wiCsZSnSnieIQ0ant/uzQ==}
+    engines: {node: '>=12'}
     peerDependencies:
-      karma: '*'
+      karma: ^6.0.0
 
   karma@6.4.4:
     resolution: {integrity: sha512-LrtUxbdvt1gOpo3gxG+VAJlJAEMhbWlM4YrFQgql98FwF7+K8K12LYO4hnDdUkNjeztYrOXEMqgTajSWgmtI/w==}
@@ -7814,11 +7778,11 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@stencil/angular-output-target@1.1.1(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))':
+  '@stencil/angular-output-target@1.1.1(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))':
     dependencies:
-      '@stencil/core': 4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm)
+      '@stencil/core': 4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a)
 
-  '@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm)':
+  '@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a)':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.34.9
       '@rollup/rollup-darwin-x64': 4.34.9
@@ -7829,13 +7793,13 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/react-output-target@0.5.3(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))':
+  '@stencil/react-output-target@0.5.3(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))':
     dependencies:
-      '@stencil/core': 4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm)
+      '@stencil/core': 4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a)
 
-  '@stencil/sass@3.2.3(@stencil/core@4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm))':
+  '@stencil/sass@3.2.3(@stencil/core@4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a))':
     dependencies:
-      '@stencil/core': 4.38.3(patch_hash=zumbt3pmxtbh6dnwn7wjwfcqtm)
+      '@stencil/core': 4.38.3(patch_hash=508429e3462f42939ac71697c73c7125ea3a6d9da1f396cff16b4704d8ef2e5a)
       sass-embedded: 1.97.2
 
   '@testing-library/jest-dom@6.9.1':
@@ -9726,6 +9690,8 @@ snapshots:
 
   jasmine-core@3.8.0: {}
 
+  jasmine-core@4.6.1: {}
+
   jest-changed-files@29.7.0:
     dependencies:
       execa: 5.1.1
@@ -10163,15 +10129,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  karma-jasmine-html-reporter@1.7.0(jasmine-core@3.8.0)(karma-jasmine@4.0.2(karma@6.4.4))(karma@6.4.4):
+  karma-jasmine-html-reporter@1.7.0(jasmine-core@3.8.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4):
     dependencies:
       jasmine-core: 3.8.0
       karma: 6.4.4
-      karma-jasmine: 4.0.2(karma@6.4.4)
+      karma-jasmine: 5.1.0(karma@6.4.4)
 
-  karma-jasmine@4.0.2(karma@6.4.4):
+  karma-jasmine@5.1.0(karma@6.4.4):
     dependencies:
-      jasmine-core: 3.8.0
+      jasmine-core: 4.6.1
       karma: 6.4.4
 
   karma@6.4.4:
