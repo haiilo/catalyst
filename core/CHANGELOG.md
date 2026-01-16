@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.5...catalyst-core-v14.1.0) (2026-01-16)
+
+
+### Features
+
+* **core:** add possibility to define scrollbar-gutter and scrollbar-color for cat-scrollable ([#888](https://github.com/haiilo/catalyst/issues/888)) ([3bf1fcc](https://github.com/haiilo/catalyst/commit/3bf1fcc4a369846cbd19998fa3e7bb614589cc70))
+
 ## [14.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.4...catalyst-core-v14.0.5) (2026-01-15)
 
 
