@@ -98,6 +98,9 @@ importers:
       karma-jasmine-html-reporter:
         specifier: 1.7.0
         version: 1.7.0(jasmine-core@3.8.0)(karma-jasmine@4.0.2(karma@6.4.4))(karma@6.4.4)
+      karma-spec-reporter:
+        specifier: 0.0.36
+        version: 0.0.36(karma@6.4.4)
       ng-packagr:
         specifier: 21.0.0
         version: 21.0.0(@angular/compiler-cli@21.0.9(@angular/compiler@21.0.9)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3)
@@ -2988,6 +2991,10 @@ packages:
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
 
+  colors@1.4.0:
+    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
+    engines: {node: '>=0.1.90'}
+
   commander@14.0.2:
     resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
     engines: {node: '>=20'}
@@ -4198,6 +4205,11 @@ packages:
     engines: {node: '>= 10'}
     peerDependencies:
       karma: '*'
+
+  karma-spec-reporter@0.0.36:
+    resolution: {integrity: sha512-11bvOl1x6ryKZph7kmbmMpbi8vsngEGxGOoeTlIcDaH3ab3j8aPJnZ+r+K/SS0sBSGy5VGkGYO2+hLct7hw/6w==}
+    peerDependencies:
+      karma: '>=0.9'
 
   karma@6.4.4:
     resolution: {integrity: sha512-LrtUxbdvt1gOpo3gxG+VAJlJAEMhbWlM4YrFQgql98FwF7+K8K12LYO4hnDdUkNjeztYrOXEMqgTajSWgmtI/w==}
@@ -8613,6 +8625,8 @@ snapshots:
 
   colorjs.io@0.5.2: {}
 
+  colors@1.4.0: {}
+
   commander@14.0.2: {}
 
   commander@2.20.3: {}
@@ -10172,6 +10186,11 @@ snapshots:
   karma-jasmine@4.0.2(karma@6.4.4):
     dependencies:
       jasmine-core: 3.8.0
+      karma: 6.4.4
+
+  karma-spec-reporter@0.0.36(karma@6.4.4):
+    dependencies:
+      colors: 1.4.0
       karma: 6.4.4
 
   karma@6.4.4:

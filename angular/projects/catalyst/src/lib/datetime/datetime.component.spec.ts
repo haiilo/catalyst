@@ -9,6 +9,7 @@ describe('DatetimeComponent', () => {
     template: `
       <cat-datetime>
         <cat-date></cat-date>
+        <cat-time></cat-time>
       </cat-datetime>
     `,
     standalone: false
@@ -25,7 +26,6 @@ describe('DatetimeComponent', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

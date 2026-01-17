@@ -77,6 +77,9 @@ jobs:
           pnpm --filter @haiilo/catalyst run lint:style
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -107,4 +110,17 @@ jobs:
       - name: Install Chrome
         run: node node_modules/puppeteer/install.mjs
       - name: Test
-        run: pnpm --filter @haiilo/catalyst run test
+        run: pnpm --filter @haiilo/catalyst run test:ci
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-coverage
+          path: core/coverage/
+          retention-days: 30
+      - name: Check Coverage Threshold
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: node scripts/check-coverage-threshold.js core/coverage/lcov.info 70 origin/${{ github.event.pull_request.base.ref }} core "Core Coverage Report"

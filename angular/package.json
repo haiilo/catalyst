@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test catalyst --no-watch --browsers ChromeHeadless && ng test catalyst-demo --no-watch --browsers ChromeHeadless",
+    "test:ci": "ng test catalyst --no-watch --code-coverage; ng test catalyst-formly --no-watch --code-coverage; ng test catalyst-demo --no-watch --code-coverage",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "clean": "rm -rf ./.angular ./dist",
@@ -40,6 +40,7 @@
     "karma-coverage": "2.0.3",
     "karma-jasmine": "4.0.2",
     "karma-jasmine-html-reporter": "1.7.0",
+    "karma-spec-reporter": "0.0.36",
     "ng-packagr": "21.0.0",
     "prettier": "3.7.4",
     "typescript": "5.9.3"

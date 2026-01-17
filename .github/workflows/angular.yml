@@ -50,6 +50,9 @@ jobs:
           pnpm run build:angular-formly
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -81,5 +84,23 @@ jobs:
           pnpm run build:core
           pnpm run build:angular
           pnpm run build:angular-formly
-      - name: Test
+      - name: Test with coverage
         run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-coverage
+          path: angular/coverage/
+          retention-days: 30
+      - name: Coverage on New Code
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: angular/coverage/catalyst/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          delete-old-comments: true
+          filter-changed-files: true
+          title: 'Angular Coverage Report'
+      - name: Check Coverage Threshold
+        if: github.event_name == 'pull_request'
+        run: node scripts/check-coverage-threshold.js angular/coverage/catalyst/lcov.info 70 origin/${{ github.event.pull_request.base.ref }} angular
