@@ -108,5 +108,9 @@ export const config: Config = {
       componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../react/src/components/stencil-generated/index.ts'
     })
-  ]
+  ],
+  testing: {
+    browserHeadless: 'shell',
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox']
+  },
 };
