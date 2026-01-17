@@ -106,5 +106,12 @@ jobs:
         run: pnpm run build:tokens
       - name: Install Chrome
         run: node node_modules/puppeteer/install.mjs
-      - name: Test
+      - name: Test with coverage
         run: pnpm --filter @haiilo/catalyst run test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./core/coverage/lcov.info
+          flags: core
+          name: core-coverage
+          fail_ci_if_error: true

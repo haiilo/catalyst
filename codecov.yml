@@ -1,0 +1,30 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 50%
+        threshold: 1%
+        if_ci_failed: error
+    patch:
+      default:
+        target: 70%
+        threshold: 1%
+        if_ci_failed: error
+
+comment:
+  layout: "header, diff, flags, components"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+
+flags:
+  core:
+    paths:
+      - core/src/
+    carryforward: true
+  angular:
+    paths:
+      - angular/projects/catalyst/src/
+      - angular/projects/catalyst-formly/src/
+    carryforward: true
