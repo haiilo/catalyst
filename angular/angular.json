@@ -29,7 +29,8 @@
           "options": {
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
             "watch": false,
-            "browsers": ["chromium"]
+            "browsers": ["chromium"],
+            "runnerConfig": "vitest.config.ts"
           }
         }
       }
@@ -60,7 +61,8 @@
           "options": {
             "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
             "watch": false,
-            "browsers": ["chromium"]
+            "browsers": ["chromium"],
+            "runnerConfig": "vitest.config.ts"
           }
         }
       }
