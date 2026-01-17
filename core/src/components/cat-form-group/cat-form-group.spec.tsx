@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatFormGroup } from './cat-form-group';
 
 describe('cat-form-group', () => {

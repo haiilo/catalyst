@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatTab } from './cat-tab';
 
 describe('cat-tab', () => {

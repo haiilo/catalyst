@@ -19,7 +19,7 @@ jest.mock('@floating-ui/dom', () => ({
   offset: jest.fn(() => ({}))
 }));
 
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatSelect } from './cat-select';
 import { stringArrayConnector } from './connectors';
 

@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage } from 'jest-stencil-runner';
 import { CatButtonGroup } from './cat-button-group';
 
 describe('cat-button-group', () => {

@@ -110,12 +110,7 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupFiles: ['./setupTests.js'],
-    browserHeadless: 'new',
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
-    transform: {
-      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'
-    },
-    transformIgnorePatterns: ['node_modules/(?!(?:.pnpm/)?(@haiilo))']
-  }
+    browserHeadless: 'shell',
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox']
+  },
 };
