@@ -29,8 +29,7 @@
           "options": {
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
             "watch": false,
-            "browsers": ["chromium"],
-            "runnerConfig": "vitest.config.ts"
+            "browsers": ["chromium"]
           }
         }
       }
@@ -55,6 +54,14 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
+            "watch": false,
+            "browsers": ["chromium"]
+          }
         }
       }
     },
