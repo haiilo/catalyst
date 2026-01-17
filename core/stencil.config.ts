@@ -2,7 +2,6 @@ import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-outpu
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
 import { inlineSvg } from 'stencil-inline-svg';
 
@@ -108,10 +107,6 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../react/src/components/stencil-generated/index.ts'
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@haiilo/catalyst',
-      proxiesFile: '../vue/src/components.ts'
     })
   ]
 };
