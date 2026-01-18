@@ -30,19 +30,19 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "21.0.6",
-    "@angular/cli": "21.0.6",
-    "@angular/compiler-cli": "21.0.9",
+    "@angular/build": "21.1.0",
+    "@angular/cli": "21.1.0",
+    "@angular/compiler-cli": "21.1.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^12.11.1",
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
-    "@vitest/ui": "4.0.16",
+    "@vitest/ui": "4.0.17",
     "esbuild-plugin-ignore": "^1.1.1",
     "jsdom": "^27.4.0",
-    "ng-packagr": "21.0.0",
+    "ng-packagr": "21.1.0",
     "playwright": "^1.57.0",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "typescript": "5.9.3",
     "vitest": "^4.0.16"
   }
