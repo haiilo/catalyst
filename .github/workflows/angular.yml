@@ -86,6 +86,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./angular/coverage/**/lcov.info
           flags: angular
           name: angular-coverage
