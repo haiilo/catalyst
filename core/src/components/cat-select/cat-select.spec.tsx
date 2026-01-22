@@ -22,6 +22,7 @@ jest.mock('@floating-ui/dom', () => ({
 import { newSpecPage } from '@stencil/core/testing';
 import { CatSelect } from './cat-select';
 import { stringArrayConnector } from './connectors';
+import { Subject, of } from 'rxjs';
 
 describe('cat-select', () => {
   beforeEach(() => {
@@ -204,6 +205,64 @@ describe('cat-select', () => {
 
       // Should clean up autoUpdate
       expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('renderOptions$', () => {
+    it('should re-render options when renderOptions$ emits with updated external data', async () => {
+      const page = await newSpecPage({
+        components: [CatSelect],
+        html: `<cat-select label="Label"></cat-select>`
+      });
+
+      const select = page.rootInstance as CatSelect;
+      const renderSubject = new Subject<void>();
+
+      let renderCallCount = 0;
+      let useUpdatedDescription = false;
+      const items = [
+        { id: '1', label: 'Option 1', description: 'Description 1' },
+        { id: '2', label: 'Option 2', description: 'Description 2' }
+      ];
+
+      const connector = {
+        resolve: (ids: string[]) => of(items.filter(item => ids.includes(item.id))),
+        retrieve: (term: string) =>
+          of({
+            content: items.filter(item => item.label.toLowerCase().includes(term.toLowerCase())),
+            last: true,
+            totalElements: items.length
+          }),
+        render: (item: any) => {
+          renderCallCount++;
+          return {
+            label: item.label,
+            description: useUpdatedDescription ? 'Updated description' : 'Original description'
+          };
+        },
+        renderOptions$: renderSubject.asObservable()
+      };
+
+      await select.connect(connector);
+
+      // Trigger input event to populate options
+      const input = page.root?.shadowRoot?.querySelector('input');
+      input?.dispatchEvent(new Event('input', { bubbles: true }));
+      await page.waitForChanges();
+
+      const initialOptions = select['state'].options;
+      expect(initialOptions[0].render.description).toBe('Original description');
+
+      const initialRenderCount = renderCallCount;
+
+      useUpdatedDescription = true;
+
+      renderSubject.next();
+      await page.waitForChanges();
+
+      expect(renderCallCount).toBeGreaterThan(initialRenderCount);
+      const updatedOptions = select['state'].options;
+      expect(updatedOptions[0].render.description).toBe('Updated description');
     });
   });
 });
