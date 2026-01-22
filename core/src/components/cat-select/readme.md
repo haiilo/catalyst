@@ -115,10 +115,11 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description               |
-| --------- | ------------------------- |
-| `"input"` | The native input element. |
-| `"label"` | The native label element. |
+| Part       | Description               |
+| ---------- | ------------------------- |
+| `"input"`  | The native input element. |
+| `"label"`  | The native label element. |
+| `"option"` |                           |
 
 
 ## Dependencies
