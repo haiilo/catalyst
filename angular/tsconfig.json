@@ -7,6 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "strict": true,
+    "skipLibCheck": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -14,9 +15,8 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "es2022",
-    "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "target": "es2024",
+    "module": "preserve",
     "paths": {
       "@haiilo/catalyst-angular": ["dist/catalyst", "dist/catalyst/*"],
       "@haiilo/catalyst-angular-formly": ["dist/catalyst-formly", "dist/catalyst-formly/*"]
