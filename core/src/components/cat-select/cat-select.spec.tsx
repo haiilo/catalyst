@@ -233,7 +233,7 @@ describe('cat-select', () => {
             last: true,
             totalElements: items.length
           }),
-        render: (item: any) => {
+        render: (item: { label: string }) => {
           renderCallCount++;
           return {
             label: item.label,
