@@ -37,12 +37,12 @@
     "@types/node": "^12.11.1",
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
-    "@vitest/ui": "4.0.16",
+    "@vitest/ui": "4.0.18",
     "esbuild-plugin-ignore": "^1.1.1",
     "jsdom": "^27.4.0",
-    "ng-packagr": "21.0.0",
+    "ng-packagr": "21.1.0",
     "playwright": "^1.57.0",
-    "prettier": "3.7.4",
+    "prettier": "3.8.1",
     "typescript": "5.9.3",
     "vitest": "^4.0.16"
   }
