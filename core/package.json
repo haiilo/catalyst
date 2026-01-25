@@ -45,17 +45,17 @@
     "rxjs": "^7.5.5"
   },
   "dependencies": {
-    "@floating-ui/dom": "1.6.13",
+    "@floating-ui/dom": "1.7.4",
     "@haiilo/catalyst-tokens": "workspace:*",
     "@stencil/core": "4.38.3",
     "autosize": "6.0.1",
     "autosize-input": "1.0.2",
     "cleave-zen": "0.0.17",
     "flatpickr": "4.6.13",
-    "focus-trap": "7.6.4",
+    "focus-trap": "7.8.0",
     "loglevel": "1.9.2",
     "sanitize.css": "13.0.0",
-    "tabbable": "6.2.0",
+    "tabbable": "6.4.0",
     "toastify-js": "1.12.0"
   },
   "devDependencies": {
