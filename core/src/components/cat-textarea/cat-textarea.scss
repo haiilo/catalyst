@@ -15,6 +15,10 @@
   display: none;
 }
 
+:host([disabled="false"]) {
+  cursor: auto !important;
+}
+
 .textarea-field,
 .textarea-container {
   display: flex;
