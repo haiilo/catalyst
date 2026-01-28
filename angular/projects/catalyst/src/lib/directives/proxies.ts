@@ -1122,6 +1122,8 @@ export class CatSelect {
   }
 }
 
+import type { CatSelectValue as ICatSelectCatSelectValue } from '@haiilo/catalyst';
+
 export declare interface CatSelect extends Components.CatSelect {
   /**
    * Emitted when the select dropdown is opened.
@@ -1134,7 +1136,7 @@ export declare interface CatSelect extends Components.CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  catChange: EventEmitter<CustomEvent<InputEvent>>;
+  catChange: EventEmitter<CustomEvent<ICatSelectCatSelectValue>>;
   /**
    * Emitted when the select loses the focus.
    */
