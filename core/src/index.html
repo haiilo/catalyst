@@ -863,6 +863,10 @@
                 <cat-input label="Label" label-hidden="true" hint="NO LABEL" required></cat-input>
                 <cat-input label="Field 1" hint="This is a hint"></cat-input>
                 <cat-input
+                  label="Field 1"
+                  hint="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                ></cat-input>
+                <cat-input
                   label="This is a very long label with some more text"
                   required
                   hint="This is a hint"
@@ -962,8 +966,9 @@
               </cat-input>
               <h3>Types</h3>
               <cat-input label="Color" type="color"></cat-input>
+              <cat-input label="Color" type="color" clearable="true"></cat-input>
               <cat-input label="Email" type="email"></cat-input>
-              <cat-input label="File" type="file"></cat-input>
+              <cat-input label="File" type="file" accept="image/png, image/jpeg" multiple></cat-input>
               <cat-input label="Number" type="number"></cat-input>
               <cat-input label="Password" type="password"></cat-input>
               <cat-input label="Range" type="range"></cat-input>
@@ -1019,11 +1024,12 @@
                 document.getElementById('notification-trigger').onclick = function () {
                   catNotificationService.show('Item saved', {
                     autoClose: false,
+                    closeButton: true,
                     action: 'Show saved items'
                   });
                   catNotificationService.show('This is light', {
                     mode: 'light',
-                    autoClose: false,
+                    closeButton: true,
                     icon: 'globe-outlined',
                     action: 'Seite neu laden'
                   });
@@ -1458,7 +1464,15 @@
                 src="https://www.youtube-nocookie.com/embed/2t2BBU0gdO0?controls=0"
                 title="YouTube video player"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
                 allowfullscreen
               ></iframe>
             </figure>

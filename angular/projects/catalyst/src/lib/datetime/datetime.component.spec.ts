@@ -1,19 +1,34 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CatalystModule } from '../catalyst.module';
 
-import { DatetimeComponent } from './datetime.component';
+// Mock Stencil loader to prevent initialization errors in tests
+vi.mock('@haiilo/catalyst/loader', () => ({
+  defineCustomElements: vi.fn(() => Promise.resolve())
+}));
 
 describe('DatetimeComponent', () => {
-  let component: DatetimeComponent;
-  let fixture: ComponentFixture<DatetimeComponent>;
+  @Component({
+    template: `
+      <cat-datetime>
+        <cat-date></cat-date>
+        <cat-time></cat-time>
+      </cat-datetime>
+    `,
+    standalone: true,
+    imports: [CatalystModule]
+  })
+  class TestComponent {}
+
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DatetimeComponent]
-    })
-      .overrideTemplate(DatetimeComponent, '')
-      .compileComponents();
+      imports: [TestComponent]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(DatetimeComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

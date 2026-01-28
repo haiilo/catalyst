@@ -5,20 +5,19 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "strict": true,
+    "skipLibCheck": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "target": "es2024",
+    "module": "preserve",
     "paths": {
-      "*": ["*", "projects/catalyst/node_modules/*", "projects/catalyst-formly/node_modules/*"],
       "@haiilo/catalyst-angular": ["dist/catalyst", "dist/catalyst/*"],
       "@haiilo/catalyst-angular-formly": ["dist/catalyst-formly", "dist/catalyst-formly/*"]
     }
@@ -27,6 +26,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "typeCheckHostBindings": false
   }
 }

@@ -66,7 +66,13 @@ export class CatTextarea {
   /**
    * Whether the label is on top or left.
    */
-  @Prop() horizontal = false;
+  @Prop() horizontal?: boolean;
+
+  /**
+   * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
+   * @internal
+   */
+  @Prop() fallbackHorizontal?: boolean;
 
   /**
    * Hint for form autofill feature.
@@ -241,6 +247,15 @@ export class CatTextarea {
     }
   }
 
+  @Watch('value')
+  onValueChanged(): void {
+    // Value changed externally, update the textarea and autosize
+    if (this.textarea && this.textarea.value !== this.value) {
+      this.textarea.value = this.value ?? '';
+      autosize.update(this.textarea);
+    }
+  }
+
   render() {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
@@ -248,7 +263,7 @@ export class CatTextarea {
         <div
           class={{
             'textarea-field': true,
-            'textarea-horizontal': this.horizontal
+            'textarea-horizontal': this.horizontal ?? this.fallbackHorizontal ?? false
           }}
         >
           <div class={{ 'label-container': true, hidden: this.labelHidden }}>

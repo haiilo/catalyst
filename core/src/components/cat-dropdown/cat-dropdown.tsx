@@ -28,6 +28,7 @@ export class CatDropdown {
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private _isOpen: boolean | null = false;
+  private cleanupFloatingUi?: () => void;
   private readonly tabbableOptions = { getShadowRoot: true };
   private cachedTabbableElements?: FocusableElement[];
   private contentMutationObserver?: MutationObserver;
@@ -212,7 +213,13 @@ export class CatDropdown {
 
     this._isOpen = null;
     this.content.style.display = 'block';
-    this.isFocusVisible = isFocusVisible ?? this.isFocusVisible;
+    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
+
+    const trigger = this.anchor || this.trigger;
+    if (trigger) {
+      this.cleanupFloatingUi = autoUpdate(trigger, this.content, () => this.update(trigger));
+    }
+
     // Clear cached tabbable elements when opening
     this.clearTabbableCache();
     // give CSS transition time to apply
@@ -284,6 +291,8 @@ export class CatDropdown {
       this.content.classList.remove('show');
       this.content.style.display = '';
       this.trigger?.setAttribute('aria-expanded', 'false');
+      this.cleanupFloatingUi?.();
+      this.cleanupFloatingUi = undefined;
       this.catClose.emit();
     }, timeTransitionS);
   }
@@ -298,6 +307,8 @@ export class CatDropdown {
   disconnectedCallback() {
     this.trap?.deactivate();
     this.trap = undefined;
+    this.cleanupFloatingUi?.();
+    this.cleanupFloatingUi = undefined;
     this.clearTabbableCache();
   }
 
@@ -331,9 +342,6 @@ export class CatDropdown {
       this.isFocusVisible = this.isEventOriginFromKeyboard(event as UIEvent);
       this.toggle();
     });
-    if (!this.anchor) {
-      autoUpdate(this.trigger, this.content, () => this.update(this.trigger));
-    }
   }
 
   private isEventOriginFromKeyboard(event: UIEvent): boolean {
@@ -342,9 +350,6 @@ export class CatDropdown {
 
   private initAnchor() {
     this.anchor = (this.anchorSlot?.assignedElements?.() || [])[0];
-    if (this.anchor) {
-      autoUpdate(this.anchor, this.content, () => this.update(this.anchor));
-    }
   }
 
   private findTrigger() {

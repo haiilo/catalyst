@@ -2,7 +2,6 @@ import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-outpu
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { vueOutputTarget } from '@stencil/vue-output-target';
 import { existsSync } from 'fs';
 import { inlineSvg } from 'stencil-inline-svg';
 
@@ -54,7 +53,9 @@ export const config: Config = {
   sourceMap: true,
   globalStyle: 'src/styles/index.scss',
   extras: {
-    enableImportInjection: true
+    enableImportInjection: true,
+    tagNameTransform: true,
+    addGlobalStyleToComponents: false
   },
   outputTargets: [
     {
@@ -99,16 +100,13 @@ export const config: Config = {
     },
     angularOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
+      outputType: 'component',
       directivesProxyFile: '../angular/projects/catalyst/src/lib/directives/proxies.ts',
       valueAccessorConfigs: angularValueAccessorBindings
     }),
     reactOutputTarget({
       componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../react/src/components/stencil-generated/index.ts'
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@haiilo/catalyst',
-      proxiesFile: '../vue/src/components.ts'
     })
   ],
   testing: {

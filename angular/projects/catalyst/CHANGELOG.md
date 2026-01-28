@@ -3,6 +3,183 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.5...catalyst-angular-v14.1.0) (2026-01-16)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.5](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.4...catalyst-angular-v14.0.5) (2026-01-15)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.3...catalyst-angular-v14.0.4) (2025-12-23)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.2...catalyst-angular-v14.0.3) (2025-12-18)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.1...catalyst-angular-v14.0.2) (2025-12-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.0...catalyst-angular-v14.0.1) (2025-12-09)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.5.0...catalyst-angular-v14.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792))
+
+### Features
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792)) ([f343fd2](https://github.com/haiilo/catalyst/commit/f343fd2f3b460398dc1ad3970ccd8f9fcdfbc435))
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.5.1-beta...catalyst-angular-v13.5.1-beta.1) (2025-11-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.5.0...catalyst-angular-v13.5.1-beta) (2025-11-27)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.4.0...catalyst-angular-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.2...catalyst-angular-v13.4.0) (2025-11-14)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.1...catalyst-angular-v13.3.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.3.0...catalyst-angular-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
+## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.2.0...catalyst-angular-v13.3.0) (2025-10-22)
+
+
+### Features
+
+* **core:** emit files selected by input type file ([#805](https://github.com/haiilo/catalyst/issues/805)) ([4aedc50](https://github.com/haiilo/catalyst/commit/4aedc50452b8ede54cc33927ac9a102f270d2b07))
+
+## [13.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.1.0...catalyst-angular-v13.2.0) (2025-10-22)
+
+
+### Features
+
+* **core:** style file inputs and support 'accept' and 'multiple' attributes ([#803](https://github.com/haiilo/catalyst/issues/803)) ([153c8fb](https://github.com/haiilo/catalyst/commit/153c8fb0e13bc0fda302263b50c729f5c189dc35))
+
+## [13.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.3...catalyst-angular-v13.1.0) (2025-10-21)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.2...catalyst-angular-v13.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **angular:** update catTooltip directive content on change ([#797](https://github.com/haiilo/catalyst/issues/797)) ([b33b1e3](https://github.com/haiilo/catalyst/commit/b33b1e3a63dc36713358e5d719bcc3a94e3c0cd7))
+
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.1...catalyst-angular-v13.0.2) (2025-10-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v13.0.0...catalyst-angular-v13.0.1) (2025-10-08)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.5.2...catalyst-angular-v13.0.0) (2025-10-01)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.5.1...catalyst-angular-v12.5.2) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.5.0...catalyst-angular-v12.5.1) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.4.1...catalyst-angular-v12.5.0) (2025-09-26)
+
+
+### Bug Fixes
+
+* **angular:** change dialog header subline class ([#779](https://github.com/haiilo/catalyst/issues/779)) ([3b512c5](https://github.com/haiilo/catalyst/commit/3b512c56086a962c4de61870a6b7f52f61c520d2))
+
+## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.4.0...catalyst-angular-v12.4.1) (2025-09-22)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
 ## [12.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v12.3.5...catalyst-angular-v12.4.0) (2025-09-22)
 
 

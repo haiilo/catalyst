@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'cat-checkbox, cat-toggle',
   host: {
-    '(catChange)': 'handleChangeEvent($event.target.resolvedValue)'
+    '(catChange)': 'handleChangeEvent($event.target?.["resolvedValue"])'
   },
   providers: [
     {
@@ -15,13 +15,14 @@ import { ValueAccessor } from './value-accessor';
       useExisting: BooleanValueAccessor,
       multi: true
     }
-  ]
+  ],
+  standalone: false
 })
 export class BooleanValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);
   }
-  writeValue(value: any) {
+  override writeValue(value: any) {
     this.el.nativeElement.checked = this.lastValue =
       this.el.nativeElement.value == null ? value : this.el.nativeElement.value === value;
   }

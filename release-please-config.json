@@ -2,19 +2,54 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
     "tokens": {
-      "component": "catalyst-tokens"
+      "component": "catalyst-tokens",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "/.release-please-manifest.beta.json",
+          "jsonpath": "$.tokens"
+        }
+      ]
     },
     "core": {
-      "component": "catalyst-core"
+      "component": "catalyst-core",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "/.release-please-manifest.beta.json",
+          "jsonpath": "$.core"
+        }
+      ]
     },
     "angular/projects/catalyst": {
-      "component": "catalyst-angular"
+      "component": "catalyst-angular",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "/.release-please-manifest.beta.json",
+          "jsonpath": "$['angular/projects/catalyst']"
+        }
+      ]
     },
     "angular/projects/catalyst-formly": {
-      "component": "catalyst-angular-formly"
+      "component": "catalyst-angular-formly",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "/.release-please-manifest.beta.json",
+          "jsonpath": "$['angular/projects/catalyst-formly']"
+        }
+      ]
     },
     "react": {
-      "component": "catalyst-react"
+      "component": "catalyst-react",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "/.release-please-manifest.beta.json",
+          "jsonpath": "$.react"
+        }
+      ]
     }
   },
   "plugins": [

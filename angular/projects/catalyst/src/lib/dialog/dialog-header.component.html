@@ -1,15 +1,22 @@
-<div class="cat-dialog-header-content" *ngIf="headline || subline">
-  <h3 class="cat-h5 cat-m-0" *ngIf="headline">{{ headline }}</h3>
-  <h4 class="cat-h6 cat-m-0" *ngIf="subline">{{ subline }}</h4>
-</div>
+@if (headline || subline) {
+  <div class="cat-dialog-header-content">
+    @if (headline) {
+      <h3 class="cat-h5 cat-m-0">{{ headline }}</h3>
+    }
+    @if (subline) {
+      <h4 class="cat-text-m cat-m-0">{{ subline }}</h4>
+    }
+  </div>
+}
 <ng-content></ng-content>
-<cat-button
-  *ngIf="closable"
-  class="cat-dialog-close cat-button-pull"
-  variant="text"
-  size="s"
-  icon="$cat:dialog-close"
-  [iconOnly]="true"
-  [a11yLabel]="closeTxt"
-  (click)="close.emit()"
-></cat-button>
+@if (closable) {
+  <cat-button
+    class="cat-dialog-close cat-button-pull"
+    variant="text"
+    size="s"
+    icon="$cat:dialog-close"
+    [iconOnly]="true"
+    [a11yLabel]="closeTxt"
+    (click)="close.emit()"
+  ></cat-button>
+}

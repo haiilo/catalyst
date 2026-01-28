@@ -29,6 +29,7 @@
     [nativeAttributes]="{ 'data-test': 'test-attribute' }"
     hint="this is a hint"
   ></cat-textarea>
+  <cat-button (catClick)="form.controls.test.setValue('')">CLEAR</cat-button>
   <cat-select
     label="Select"
     formControlName="option"
@@ -169,4 +170,6 @@
       </tr>
     </tfoot>
   </table>
+
+  <cat-input type="file" label="Upload File" (catChangeFiles)="selectFile($event)"></cat-input>
 </cat-card>

@@ -1,23 +1,40 @@
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 import { CatTooltip } from '../directives/proxies';
 
 /**
  * A directive that can be used to add a Catalyst tooltip to an element.
  */
 @Directive({
-  selector: '[catTooltip]'
+  selector: '[catTooltip]',
+  standalone: false
 })
-export class CatTooltipDirective implements OnInit {
+export class CatTooltipDirective implements OnInit, OnChanges {
   @Input() catTooltip!: string;
 
-  constructor(
-    private templateRef: TemplateRef<unknown>,
-    private viewContainer: ViewContainerRef
-  ) {}
+  private component?: ComponentRef<CatTooltip>;
+
+  private readonly templateRef = inject(TemplateRef);
+  private readonly viewContainer = inject(ViewContainerRef);
 
   ngOnInit() {
-    this.viewContainer.createComponent(CatTooltip, {
+    this.component = this.viewContainer.createComponent(CatTooltip, {
       projectableNodes: [this.viewContainer.createEmbeddedView(this.templateRef).rootNodes]
-    }).instance.content = this.catTooltip;
+    });
+    this.component.instance.content = this.catTooltip;
+  }
+
+  ngOnChanges() {
+    if (this.component) {
+      this.component.instance.content = this.catTooltip;
+    }
   }
 }

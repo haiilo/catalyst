@@ -4,8 +4,8 @@
 @use 'sass:color';
 @use 'sass:string';
 
-@use '~@haiilo/catalyst-tokens/dist/scss/variables' as *;
-@forward '~@haiilo/catalyst-tokens/dist/scss/variables' show $tokens;
+@use '@haiilo/catalyst-tokens/dist/scss/variables' as *;
+@forward '@haiilo/catalyst-tokens/dist/scss/variables' show $tokens;
 
 // -----
 // -- Split a string using the given separator.

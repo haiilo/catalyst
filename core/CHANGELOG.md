@@ -1,5 +1,191 @@
 # Changelog
 
+## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.5...catalyst-core-v14.1.0) (2026-01-16)
+
+
+### Features
+
+* **core:** add possibility to define scrollbar-gutter and scrollbar-color for cat-scrollable ([#888](https://github.com/haiilo/catalyst/issues/888)) ([3bf1fcc](https://github.com/haiilo/catalyst/commit/3bf1fcc4a369846cbd19998fa3e7bb614589cc70))
+
+## [14.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.4...catalyst-core-v14.0.5) (2026-01-15)
+
+
+### Bug Fixes
+
+* **core:** add non-theme color option to cat-alert ([#860](https://github.com/haiilo/catalyst/issues/860)) ([6dbf872](https://github.com/haiilo/catalyst/commit/6dbf8720736457e2cf54cb44b4752b550cebff5d))
+* **core:** fix textarea resize after setting the value externally ([#884](https://github.com/haiilo/catalyst/issues/884)) ([e0327f1](https://github.com/haiilo/catalyst/commit/e0327f1940d502ea91b624bc1a37da3a857d95c3))
+
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.3...catalyst-core-v14.0.4) (2025-12-23)
+
+
+### Bug Fixes
+
+* **core:** listen for floating element position update only when dropdown or select is open ([#864](https://github.com/haiilo/catalyst/issues/864)) ([7e157c2](https://github.com/haiilo/catalyst/commit/7e157c20de75b635b952ae0e918057cd64e1fcd5))
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.2...catalyst-core-v14.0.3) (2025-12-18)
+
+
+### Bug Fixes
+
+* **core:** fix index.shadow.scss ([#861](https://github.com/haiilo/catalyst/issues/861)) ([5d7d2c3](https://github.com/haiilo/catalyst/commit/5d7d2c3f2817b64a7b645e4fc06e31404e379b84))
+* **core:** put adjustAdaptiveTabs into requestAnimationFrame in syncTabs ([#862](https://github.com/haiilo/catalyst/issues/862)) ([c09b90b](https://github.com/haiilo/catalyst/commit/c09b90be5f428d3f08cb270a35fee666b55e7dd2))
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.1...catalyst-core-v14.0.2) (2025-12-11)
+
+
+### Bug Fixes
+
+* set addGlobalStyleToComponents to false ([#856](https://github.com/haiilo/catalyst/issues/856)) ([5b33756](https://github.com/haiilo/catalyst/commit/5b337567d7c45bd1192dd7da18aa3161b2a32e8c))
+
+## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.0...catalyst-core-v14.0.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* **core:** overwrite opacity from sanitize.css for inputs and textarea and specify the correct version for source-sans ([#853](https://github.com/haiilo/catalyst/issues/853)) ([7b20247](https://github.com/haiilo/catalyst/commit/7b20247820f66f91e2b254ae8aba9749a8ee0ce6))
+
+## [14.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v14.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792))
+
+### Features
+
+* update stencil to 4.38 version ([#852](https://github.com/haiilo/catalyst/issues/852)) ([1ed2c58](https://github.com/haiilo/catalyst/commit/1ed2c58ff9b4ce275e7c8d2a6ed070708118c5aa))
+* update to angular 21 ([#792](https://github.com/haiilo/catalyst/issues/792)) ([f343fd2](https://github.com/haiilo/catalyst/commit/f343fd2f3b460398dc1ad3970ccd8f9fcdfbc435))
+
+
+### Bug Fixes
+
+* **core:** fix comment ([71afe65](https://github.com/haiilo/catalyst/commit/71afe65710b1de80db4421b9c4a9891550c3c22b))
+
+## [13.5.1-beta.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.1-beta...catalyst-core-v13.5.1-beta.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([15a69c2](https://github.com/haiilo/catalyst/commit/15a69c229d809f93a65405974f993c06b6eececf))
+
+## [13.5.1-beta](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.5.0...catalyst-core-v13.5.1-beta) (2025-11-27)
+
+
+### Bug Fixes
+
+* **core:** fix comment ([b2d8d3b](https://github.com/haiilo/catalyst/commit/b2d8d3b72c78b9a14e0ac6994725f80239bc7d5e))
+
+## [13.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.4.0...catalyst-core-v13.5.0) (2025-11-27)
+
+
+### Features
+
+* **core:** trigger build ([cad3005](https://github.com/haiilo/catalyst/commit/cad30058c1ffdc8e97e243fbb4cb75e4ac13394e))
+* **core:** trigger next minor release version ([c159271](https://github.com/haiilo/catalyst/commit/c159271cef3135a35a26f71a367fbf93a7e5dff1))
+
+## [13.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.2...catalyst-core-v13.4.0) (2025-11-14)
+
+
+### Features
+
+* **core:** add tag name transform extra ([#834](https://github.com/haiilo/catalyst/issues/834)) ([78381b3](https://github.com/haiilo/catalyst/commit/78381b3b6e8770b8885d786030f82800e335e5be))
+
+## [13.3.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.1...catalyst-core-v13.3.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** empty commit to shove the stuck release workflow ([f558225](https://github.com/haiilo/catalyst/commit/f55822599ab27a832d97fb93c45d561c7d02bbac))
+
+## [13.3.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.3.0...catalyst-core-v13.3.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **core:** prevent catChange event emission on select initialization ([8e7cfa6](https://github.com/haiilo/catalyst/commit/8e7cfa6c5cf63ce57fa631e22c79e1e926d74940))
+
+## [13.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.2.0...catalyst-core-v13.3.0) (2025-10-22)
+
+
+### Features
+
+* **core:** emit files selected by input type file ([#805](https://github.com/haiilo/catalyst/issues/805)) ([4aedc50](https://github.com/haiilo/catalyst/commit/4aedc50452b8ede54cc33927ac9a102f270d2b07))
+
+## [13.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.1.0...catalyst-core-v13.2.0) (2025-10-22)
+
+
+### Features
+
+* **core:** style file inputs and support 'accept' and 'multiple' attributes ([#803](https://github.com/haiilo/catalyst/issues/803)) ([153c8fb](https://github.com/haiilo/catalyst/commit/153c8fb0e13bc0fda302263b50c729f5c189dc35))
+
+## [13.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.3...catalyst-core-v13.1.0) (2025-10-21)
+
+
+### Features
+
+* **core:** style cat-input of type color ([#793](https://github.com/haiilo/catalyst/issues/793)) ([495eec5](https://github.com/haiilo/catalyst/commit/495eec5707a0ba22a575963c4facf4275d526814))
+
+## [13.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.2...catalyst-core-v13.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **core:** fix cat-tabs alignment (regression after adding More button) ([#794](https://github.com/haiilo/catalyst/issues/794)) ([6543b9b](https://github.com/haiilo/catalyst/commit/6543b9b1740be4ae520d136ac45d29eb297d674b))
+
+## [13.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.1...catalyst-core-v13.0.2) (2025-10-10)
+
+
+### Bug Fixes
+
+* **core:** do not shrink labels in horizontal view ([#790](https://github.com/haiilo/catalyst/issues/790)) ([b2d2f75](https://github.com/haiilo/catalyst/commit/b2d2f750d362bce5d170375f8cc80cb06c55394b))
+
+## [13.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v13.0.0...catalyst-core-v13.0.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **core:** fix horizontal attribute for cat-form-group and its children elements ([#787](https://github.com/haiilo/catalyst/issues/787)) ([cb151a4](https://github.com/haiilo/catalyst/commit/cb151a4e4359d878461e49ced3e547669fbaad75))
+
+## [13.0.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.2...catalyst-core-v13.0.0) (2025-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766))
+
+### Features
+
+* **core:** closeButton property in cat-notification service options ([#766](https://github.com/haiilo/catalyst/issues/766)) ([5341e36](https://github.com/haiilo/catalyst/commit/5341e3644341dc7efede28f2e1e2a2dab49c2264))
+
+## [12.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.1...catalyst-core-v12.5.2) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** add focus and mouse event listeners even for touch screen devices ([#783](https://github.com/haiilo/catalyst/issues/783)) ([6797f0b](https://github.com/haiilo/catalyst/commit/6797f0be0bf364aeb43e085aa99c51fc5c1f9386))
+
+## [12.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.5.0...catalyst-core-v12.5.1) (2025-09-26)
+
+
+### Bug Fixes
+
+* **core:** fix linter ([#781](https://github.com/haiilo/catalyst/issues/781)) ([4ef2a93](https://github.com/haiilo/catalyst/commit/4ef2a936efe2483162a7b7c4b21a8f7adfe799c2))
+
+## [12.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.1...catalyst-core-v12.5.0) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* **catalyst-core:** Synchronize catalyst versions
+
+## [12.4.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.4.0...catalyst-core-v12.4.1) (2025-09-22)
+
+
+### Bug Fixes
+
+* **core:** do not override horizontal settings of form elements in the form group ([#776](https://github.com/haiilo/catalyst/issues/776)) ([16bec5e](https://github.com/haiilo/catalyst/commit/16bec5e52dedd0fc4a554cc5821dc90338beba17))
+* **core:** fix unit tests warning ([#754](https://github.com/haiilo/catalyst/issues/754)) ([6a1ff9c](https://github.com/haiilo/catalyst/commit/6a1ff9cb8db024e0f8b8de98269d0e305de2b460))
+
 ## [12.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v12.3.5...catalyst-core-v12.4.0) (2025-09-22)
 
 

@@ -9,7 +9,6 @@
 | `@haiilo/catalyst-angular`   | Angular bindings for components   | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
 | `@haiilo/catalyst-angular-formly`   | Angular custom types for [Formly](https://formly.dev/)   | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
 | `@haiilo/catalyst-react`     | React bindings for components     | [![React](https://github.com/haiilo/catalyst/actions/workflows/react.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/react.yml) | [README](https://github.com/haiilo/catalyst/blob/main/react/README.md) |
-| `@haiilo/catalyst-vue`       | View bindings for components      |  | [README](https://github.com/haiilo/catalyst/blob/main/vue/README.md) |
 
 ## Setup
 
@@ -62,6 +61,47 @@ All projects in the repository are using [semantic-release](https://www.npmjs.co
 * Run `git push --follow-tags origin main` to push your changes.
 
 **Note:** Make sure you are logged in with your npm account and you have permissions to release under the haiilo organisation. Otherwise contact one of the collaborators to request access.
+
+## Local development
+Since the catalyst project is monorepo and managing multiple packages via workspaces, we can't simply refer the output folders in file protocol, we need to prepare it first and resolve workspace dependencies.
+
+Steps:
+1. Make changes;
+2. Run `pnpm build`;
+
+Extra steps for testing the changes in angular package:
+1.  Run `pnpm install` again;
+2. For 
+   - [angular](angular/projects/catalyst) Go to `/angular/dist/catalyst`;
+   - [angular-formly](angular/projects/catalyst-formly) Go to `/angular/dist/catalyst-formly`; 
+3. Run `pnpm pack`;
+
+In consumer project:
+In package json replace those packages you want to test with file protocol path: 
+```
+"@haiilo/catalyst": "file:../../../catalyst/core",
+"@haiilo/catalyst-angular": "file:../../../catalyst/angular/dist/catalyst/haiilo-catalyst-angular-13.4.0.tgz",
+```
+or
+```
+"@haiilo/catalyst": "file:../../../catalyst/core",
+"@haiilo/catalyst-react": "file:../../../catalyst/react/dist",
+```
+
+## Pre-releases
+> [!WARNING]  
+> Making a successful pre-release requires several careful manual steps, if you are not sure, better to go with regular release.
+>
+> At the moment Release Please is used for pre-releases as well as for releases
+
+1. Update `beta` branch with `main` branch (or alternatively make sure that all commits from `main` are contained in `beta`);
+2. Create feature branch from `beta` branch;
+3. Make the changes in you feature branch, open PR, wait for green pipeline and approve, merge your PR to `beta`;
+4. Release Please creates or updates already existed pre-release PR.
+5. When you're ready to tag a pre-release, simply merge the pre-release PR.
+>IMPORTANT! After testing of your pre-release branch is done you need to release you changes.
+6. Create PR `beta` > `main`. **While merging make sure the commit message is** [conventional](https://www.conventionalcommits.org/en/v1.0.0/). Otherwise, your changes will be ignored by regular release.
+7. Go with regular release steps.
 
 ## Code contributors
 

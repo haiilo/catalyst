@@ -33,7 +33,7 @@ export class CatAlert {
   /**
    * The color palette of the alert.
    */
-  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' = 'primary';
+  @Prop({ reflect: true }) color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'none' = 'primary';
 
   /**
    * The name of an icon to be displayed in the alert.
