@@ -249,6 +249,7 @@ export class CatDropdown {
           : focusTrap.createFocusTrap(this.content, {
               tabbableOptions: this.tabbableOptions,
               allowOutsideClick: true,
+              onPostActivate: () => this.catOpen.emit(),
               setReturnFocus: elem => (!this.isFocusVisible ? false : this.trigger || elem),
               isKeyForward: event => {
                 if (
@@ -275,11 +276,12 @@ export class CatDropdown {
               }
             });
         this.trap.activate();
+      } else {
+        if (this.isFocusVisible) {
+          firstTabbable(this.content)?.focus();
+        }
+        this.catOpen.emit();
       }
-      if (this.isFocusVisible) {
-        firstTabbable(this.content)?.focus();
-      }
-      this.catOpen.emit();
     });
   }
 
