@@ -783,6 +783,7 @@ export namespace Components {
         "delayedTriggerInit": boolean;
         /**
           * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
+          * @default false
          */
         "focusTrap": boolean;
         /**
@@ -1049,30 +1050,37 @@ export namespace Components {
     interface CatMenu {
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
          */
         "delayedTriggerInit": boolean;
         /**
           * Disable the menu.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
          */
         "justify": boolean;
         /**
           * Do not close the dropdown on outside clicks.
+          * @default false
          */
         "noAutoClose": boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
          */
         "noResize": boolean;
         /**
           * Allow overflow when dropdown is open.
+          * @default false
          */
         "overflow": boolean;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-start'
          */
         "placement": Placement;
         /**
@@ -1081,14 +1089,17 @@ export namespace Components {
         "triggerClass"?: string;
         /**
           * The trigger button icon.
+          * @default 'more-horizontal-filled'
          */
         "triggerIcon": string;
         /**
           * Show only the icon in the trigger button.
+          * @default true
          */
         "triggerIconOnly": boolean | Breakpoint;
         /**
           * The trigger button label (for accessibility).
+          * @default 'Show menu'
          */
         "triggerLabel": string;
         /**
@@ -1097,6 +1108,7 @@ export namespace Components {
         "triggerNativeAttributes"?: { [key: string]: string };
         /**
           * The trigger button size.
+          * @default 's'
          */
         "triggerSize": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -1105,6 +1117,7 @@ export namespace Components {
         "triggerTestId"?: string;
         /**
           * The trigger button variant.
+          * @default 'text'
          */
         "triggerVariant": 'filled' | 'outlined' | 'text';
     }
@@ -1118,6 +1131,7 @@ export namespace Components {
         "color"?: string;
         /**
           * Specifies that the menu item should be disabled.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1126,10 +1140,12 @@ export namespace Components {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly": boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight": boolean;
         /**
@@ -3537,6 +3553,7 @@ declare namespace LocalJSX {
         "delayedTriggerInit"?: boolean;
         /**
           * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
+          * @default false
          */
         "focusTrap"?: boolean;
         /**
@@ -3805,22 +3822,27 @@ declare namespace LocalJSX {
     interface CatMenu {
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
          */
         "delayedTriggerInit"?: boolean;
         /**
           * Disable the menu.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
          */
         "justify"?: boolean;
         /**
           * Do not close the dropdown on outside clicks.
+          * @default false
          */
         "noAutoClose"?: boolean;
         /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
          */
         "noResize"?: boolean;
         /**
@@ -3837,10 +3859,12 @@ declare namespace LocalJSX {
         "onCatTriggerClick"?: (event: CatMenuCustomEvent<MouseEvent>) => void;
         /**
           * Allow overflow when dropdown is open.
+          * @default false
          */
         "overflow"?: boolean;
         /**
           * The placement of the dropdown.
+          * @default 'bottom-start'
          */
         "placement"?: Placement;
         /**
@@ -3849,14 +3873,17 @@ declare namespace LocalJSX {
         "triggerClass"?: string;
         /**
           * The trigger button icon.
+          * @default 'more-horizontal-filled'
          */
         "triggerIcon"?: string;
         /**
           * Show only the icon in the trigger button.
+          * @default true
          */
         "triggerIconOnly"?: boolean | Breakpoint;
         /**
           * The trigger button label (for accessibility).
+          * @default 'Show menu'
          */
         "triggerLabel"?: string;
         /**
@@ -3865,6 +3892,7 @@ declare namespace LocalJSX {
         "triggerNativeAttributes"?: { [key: string]: string };
         /**
           * The trigger button size.
+          * @default 's'
          */
         "triggerSize"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -3873,6 +3901,7 @@ declare namespace LocalJSX {
         "triggerTestId"?: string;
         /**
           * The trigger button variant.
+          * @default 'text'
          */
         "triggerVariant"?: 'filled' | 'outlined' | 'text';
     }
@@ -3886,6 +3915,7 @@ declare namespace LocalJSX {
         "color"?: string;
         /**
           * Specifies that the menu item should be disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3894,10 +3924,12 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Hide the actual button content and only display the icon.
+          * @default false
          */
         "iconOnly"?: boolean | Breakpoint;
         /**
           * Display the icon on the right.
+          * @default false
          */
         "iconRight"?: boolean;
         /**

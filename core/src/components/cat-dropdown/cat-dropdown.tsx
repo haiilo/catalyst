@@ -166,26 +166,29 @@ export class CatDropdown {
     }
 
     requestAnimationFrame(() => {
-      const activeElement = document.activeElement;
-      if (!activeElement || (!this.elementContains(this.content, activeElement) && activeElement !== document.body)) {
+      const activeElement = this.getDeepActiveElement();
+      const isInDropdown = activeElement && activeElement !== document.body && this.isElementInDropdown(activeElement);
+
+      if (!activeElement || !isInDropdown) {
         this.close(false);
       }
     });
   }
 
-  private elementContains(root: Element, target: Element) {
-    if (root.contains(target)) return true;
-
-    const slots = root.querySelectorAll('slot');
-    for (const slot of slots) {
-      const assignedNodes = slot.assignedElements({ flatten: true });
-      for (const node of assignedNodes) {
-        if (this.elementContains(node, target)) {
-          return true;
-        }
-      }
+  private getDeepActiveElement(): Element | null {
+    let active = document.activeElement;
+    while (active?.shadowRoot?.activeElement) {
+      active = active.shadowRoot.activeElement;
     }
+    return active;
+  }
 
+  private isElementInDropdown(element: Element): boolean {
+    let current: Element | null = element;
+    while (current) {
+      if (current === this.content) return true;
+      current = (current as HTMLElement).assignedSlot || current.parentElement || (current.getRootNode() as ShadowRoot)?.host || null;
+    }
     return false;
   }
 
@@ -227,7 +230,7 @@ export class CatDropdown {
       this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
-      
+
       // Setup mutation observer for non-focus-trap mode
       if (!this.focusTrap) {
         this.contentMutationObserver = new MutationObserver(() => {
@@ -239,7 +242,7 @@ export class CatDropdown {
           attributes: true
         });
       }
-      
+
       if (this.focusTrap) {
         this.trap = this.trap
           ? this.trap.updateContainerElements(this.content)

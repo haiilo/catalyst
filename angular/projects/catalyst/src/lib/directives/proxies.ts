@@ -871,10 +871,15 @@ export declare interface CatInput extends Components.CatInput {
     'triggerSize',
     'triggerTestId',
     'triggerVariant'
-  ]
+  ],
+  outputs: ['catOpen', 'catClose', 'catTriggerClick'],
+  standalone: false
 })
 export class CatMenu {
-  protected el: HTMLElement;
+  protected el: HTMLCatMenuElement;
+  @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catTriggerClick = new EventEmitter<CustomEvent<MouseEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -882,7 +887,6 @@ export class CatMenu {
   ) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['catOpen', 'catClose', 'catTriggerClick']);
   }
 }
 
@@ -933,10 +937,11 @@ export declare interface CatMenu extends Components.CatMenu {
     'testId',
     'url',
     'urlTarget'
-  ]
+  ],
+  standalone: false
 })
 export class CatMenuItem {
-  protected el: HTMLElement;
+  protected el: HTMLCatMenuItemElement;
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
