@@ -213,7 +213,7 @@ export class CatDropdown {
 
     this._isOpen = null;
     this.content.style.display = 'block';
-    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
+    this.isFocusVisible = isFocusVisible ?? this.isFocusVisible;
 
     const trigger = this.anchor || this.trigger;
     if (trigger) {
@@ -227,6 +227,19 @@ export class CatDropdown {
       this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
+      
+      // Setup mutation observer for non-focus-trap mode
+      if (!this.focusTrap) {
+        this.contentMutationObserver = new MutationObserver(() => {
+          this.cachedTabbableElements = undefined;
+        });
+        this.contentMutationObserver.observe(this.content, {
+          childList: true,
+          subtree: true,
+          attributes: true
+        });
+      }
+      
       if (this.focusTrap) {
         this.trap = this.trap
           ? this.trap.updateContainerElements(this.content)
@@ -424,14 +437,6 @@ export class CatDropdown {
     this.cachedTabbableElements ??= tabbable(this.content, this.tabbableOptions).filter(
       element => !element.shadowRoot?.delegatesFocus
     );
-    this.contentMutationObserver = new MutationObserver(() => {
-      this.cachedTabbableElements = undefined;
-    });
-    this.contentMutationObserver.observe(this.content, {
-      childList: true,
-      subtree: true,
-      attributes: true
-    });
     return this.cachedTabbableElements;
   }
 
