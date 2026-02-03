@@ -230,12 +230,7 @@ export class CatMenu {
             disabled={this.disabled}
             onCatClick={this.onTriggerClick}
           ></cat-button>
-          <div
-            role="menu"
-            slot="content"
-            class="cat-menu-list"
-            aria-orientation="vertical"
-          >
+          <div role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
             <slot></slot>
           </div>
         </cat-dropdown>
