@@ -16,7 +16,6 @@ import { Breakpoint } from '../../utils/breakpoints';
 })
 export class CatMenu {
   private dropdown?: HTMLCatDropdownElement;
-  private triggerButton?: HTMLCatButtonElement;
   private catMenuItems: HTMLCatMenuItemElement[] = [];
   private mutationObserver?: MutationObserver;
 
@@ -143,9 +142,9 @@ export class CatMenu {
   }
 
   componentDidLoad(): void {
-    this.init();
+    this.syncMenuItems();
     this.mutationObserver = new MutationObserver(
-      mutations => mutations.some(value => value.target.nodeName === 'CAT-MENU-ITEM') && this.init()
+      mutations => mutations.some(value => value.target.nodeName === 'CAT-MENU-ITEM') && this.syncMenuItems()
     );
     this.mutationObserver?.observe(this.hostElement, {
       childList: true,
@@ -195,20 +194,8 @@ export class CatMenu {
     });
   };
 
-  private init() {
+  private syncMenuItems() {
     this.catMenuItems = Array.from(this.hostElement.querySelectorAll('cat-menu-item'));
-    this.updateTabIndex();
-  }
-
-  private updateTabIndex() {
-    if (this.catMenuItems.length) {
-      // All items should have tabindex="-1" - this is set in cat-menu-item render
-      // Focus management is done via doFocus() method
-    }
-  }
-
-  private get triggerId(): string {
-    return this.triggerButton?.buttonId || 'cat-menu-trigger';
   }
 
   render() {
@@ -228,7 +215,6 @@ export class CatMenu {
           onCatClose={event => this.catClose.emit(event.detail)}
         >
           <cat-button
-            ref={el => (this.triggerButton = el)}
             slot="trigger"
             variant={this.triggerVariant}
             size={this.triggerSize}
@@ -249,7 +235,6 @@ export class CatMenu {
             slot="content"
             class="cat-menu-list"
             aria-orientation="vertical"
-            aria-labelledby={this.triggerId}
           >
             <slot></slot>
           </div>
