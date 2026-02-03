@@ -146,43 +146,6 @@ export class CatDropdown {
     }
   }
 
-  @Listen('focusout')
-  focusOutHandler() {
-    if (!this.isOpen || this.focusTrap || !this.isFocusVisible) {
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      const activeElement = this.getDeepActiveElement();
-      const isInDropdown = activeElement && activeElement !== document.body && this.isElementInDropdown(activeElement);
-
-      if (!activeElement || !isInDropdown) {
-        this.close(false);
-      }
-    });
-  }
-
-  private getDeepActiveElement(): Element | null {
-    let active = document.activeElement;
-    while (active?.shadowRoot?.activeElement) {
-      active = active.shadowRoot.activeElement;
-    }
-    return active;
-  }
-
-  private isElementInDropdown(element: Element): boolean {
-    let current: Element | null = element;
-    while (current) {
-      if (current === this.content) return true;
-      current =
-        (current as HTMLElement).assignedSlot ||
-        current.parentElement ||
-        (current.getRootNode() as ShadowRoot)?.host ||
-        null;
-    }
-    return false;
-  }
-
   /**
    * Toggles the dropdown.
    */

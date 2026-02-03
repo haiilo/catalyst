@@ -115,6 +115,22 @@ export class CatMenu {
    */
   @Event() catTriggerClick!: EventEmitter<MouseEvent>;
 
+  @Listen('focusout')
+  onFocusOut(): void {
+    if (!this.dropdown?.isOpen) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const activeElement = document.activeElement;
+      const isInMenu = activeElement && this.catMenuItems.some(item => activeElement === item);
+
+      if (!activeElement || !isInMenu) {
+        this.dropdown?.close(false);
+      }
+    });
+  }
+
   @Listen('keydown', { target: 'document' })
   onDocumentKeydown(event: KeyboardEvent): void {
     if (!this.dropdown?.isOpen || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
