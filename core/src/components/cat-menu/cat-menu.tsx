@@ -118,68 +118,28 @@ export class CatMenu {
 
   @Listen('keydown', { target: 'document' })
   onDocumentKeydown(event: KeyboardEvent): void {
-    if (!this.dropdown?.isOpen) {
+    if (!this.dropdown?.isOpen || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
       return;
     }
 
-    // Check if the event is happening within our menu
-    const activeElement = this.getDeepActiveElement();
-
-    // Check if active element is within any of our menu items by walking up the composed path
-    let currentElement = activeElement as Element | null;
-    let isWithinMenu = false;
-
-    while (currentElement) {
-      if (this.catMenuItems.includes(currentElement as HTMLCatMenuItemElement)) {
-        isWithinMenu = true;
-        break;
-      }
-      // Walk up through shadow DOM boundaries
-      const parent = currentElement.parentElement || (currentElement.getRootNode() as ShadowRoot)?.host;
-      currentElement = parent as Element | null;
-    }
-
-    if (!isWithinMenu) {
+    const targetElements = this.catMenuItems.filter(item => !item.disabled);
+    if (!targetElements.length) {
       return;
     }
+    const activeIdx = targetElements.findIndex(item => document.activeElement === item);
 
-    if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key) && this.catMenuItems.length) {
-      const targetElements = this.catMenuItems.filter(item => !item.disabled);
-
-      if (!targetElements.length) {
-        return;
-      }
-
-      // Find which menu item contains the current focus
-      let activeIdx = -1;
-      for (let i = 0; i < targetElements.length; i++) {
-        let elem = activeElement as Element | null;
-        while (elem) {
-          if (elem === targetElements[i]) {
-            activeIdx = i;
-            break;
-          }
-          const parent = elem.parentElement || (elem.getRootNode() as ShadowRoot)?.host;
-          elem = parent as Element | null;
-        }
-        if (activeIdx >= 0) break;
-      }
-
-      let targetIdx: number;
-
-      if (event.key === 'Home') {
-        targetIdx = 0;
-      } else if (event.key === 'End') {
-        targetIdx = targetElements.length - 1;
-      } else {
-        const activeOff = event.key === 'ArrowDown' ? 1 : -1;
-        targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
-      }
-
-      targetElements[targetIdx].doFocus();
-      event.preventDefault();
-      event.stopPropagation();
+    let targetIdx: number;
+    if (event.key === 'Home') {
+      targetIdx = 0;
+    } else if (event.key === 'End') {
+      targetIdx = targetElements.length - 1;
+    } else {
+      const activeOff = event.key === 'ArrowDown' ? 1 : -1;
+      targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
     }
+
+    targetElements[targetIdx].doFocus();
+    event.preventDefault();
   }
 
   componentDidLoad(): void {
@@ -234,14 +194,6 @@ export class CatMenu {
       firstEnabledItem?.doFocus();
     });
   };
-
-  private getDeepActiveElement(): Element | null {
-    let active = document.activeElement;
-    while (active?.shadowRoot?.activeElement) {
-      active = active.shadowRoot.activeElement;
-    }
-    return active;
-  }
 
   private init() {
     this.catMenuItems = Array.from(this.hostElement.querySelectorAll('cat-menu-item'));
