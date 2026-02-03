@@ -43,6 +43,39 @@ through trigger-specific props.
 | `catTriggerClick` | Emitted when the trigger button is clicked. | `CustomEvent<MouseEvent>` |
 
 
+## Methods
+
+### `close() => Promise<void>`
+
+Closes the menu.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `open() => Promise<void>`
+
+Opens the menu.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggle() => Promise<void>`
+
+Toggles the menu.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

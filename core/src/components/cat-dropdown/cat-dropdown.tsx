@@ -2,7 +2,7 @@ import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement,
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import { FocusableElement, tabbable } from 'tabbable';
+import { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
 
@@ -30,8 +30,6 @@ export class CatDropdown {
   private _isOpen: boolean | null = false;
   private cleanupFloatingUi?: () => void;
   private readonly tabbableOptions = { getShadowRoot: true };
-  private cachedTabbableElements?: FocusableElement[];
-  private contentMutationObserver?: MutationObserver;
   /**
    * Tracking the origin of opening the dropdown and specify if initial focus should be set.
    * Currently we set it only when the origin is keyboard.
@@ -58,6 +56,7 @@ export class CatDropdown {
 
   /**
    * Do not navigate focus inside the dropdown via vertical arrow keys.
+   * @deprecated use cat-menu
    */
   @Prop() arrowNavigation: 'horizontal' | 'vertical' | 'none' = 'vertical';
 
@@ -89,8 +88,9 @@ export class CatDropdown {
   /**
    * Whether the focus should be trapped inside dropdown popup.
    * Use it only when the dropdown popup content has role dialog.
+   * @internal
    */
-  @Prop() focusTrap = false;
+  @Prop() focusTrap = true;
 
   /**
    * Emitted when the dropdown is opened.
@@ -129,19 +129,6 @@ export class CatDropdown {
   keydownHandler(event: KeyboardEvent) {
     if (this.isOpen && event.key === 'Escape') {
       this.close();
-    }
-    const shouldHandleVertical = this.arrowNavigation === 'vertical' && ['ArrowDown', 'ArrowUp'].includes(event.key);
-    const shouldHandleHorizontal = this.arrowNavigation === 'horizontal' && ['ArrowRight', 'ArrowLeft'].includes(event.key);
-    if (!this.focusTrap && (shouldHandleVertical || shouldHandleHorizontal)) {
-      const tabbableElements = this.getTabbableElements();
-      if (tabbableElements.length) {
-        const target = event.composedPath()[0] ?? event.target;
-        const activeIdx = tabbableElements.findIndex(tabbableElement => tabbableElement === target);
-        const activeOff = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
-        const targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + tabbableElements.length) % tabbableElements.length;
-        tabbableElements[targetIdx].focus();
-        event.preventDefault();
-      }
     }
   }
 
@@ -187,7 +174,11 @@ export class CatDropdown {
     let current: Element | null = element;
     while (current) {
       if (current === this.content) return true;
-      current = (current as HTMLElement).assignedSlot || current.parentElement || (current.getRootNode() as ShadowRoot)?.host || null;
+      current =
+        (current as HTMLElement).assignedSlot ||
+        current.parentElement ||
+        (current.getRootNode() as ShadowRoot)?.host ||
+        null;
     }
     return false;
   }
@@ -223,25 +214,11 @@ export class CatDropdown {
       this.cleanupFloatingUi = autoUpdate(trigger, this.content, () => this.update(trigger));
     }
 
-    // Clear cached tabbable elements when opening
-    this.clearTabbableCache();
     // give CSS transition time to apply
     requestAnimationFrame(() => {
       this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
-
-      // Setup mutation observer for non-focus-trap mode
-      if (!this.focusTrap) {
-        this.contentMutationObserver = new MutationObserver(() => {
-          this.cachedTabbableElements = undefined;
-        });
-        this.contentMutationObserver.observe(this.content, {
-          childList: true,
-          subtree: true,
-          attributes: true
-        });
-      }
 
       if (this.focusTrap) {
         this.trap = this.trap
@@ -298,8 +275,6 @@ export class CatDropdown {
     this.trap?.deactivate();
     this.trap = undefined;
     this.content.classList.remove('show');
-    // Clear cached tabbable elements when closing
-    this.clearTabbableCache();
     if (shouldReturnFocus) {
       this.trigger?.focus();
     }
@@ -327,7 +302,6 @@ export class CatDropdown {
     this.trap = undefined;
     this.cleanupFloatingUi?.();
     this.cleanupFloatingUi = undefined;
-    this.clearTabbableCache();
   }
 
   render() {
@@ -436,18 +410,5 @@ export class CatDropdown {
 
   private hasAttribute(elem: EventTarget, attr: string) {
     return elem instanceof HTMLElement && elem.hasAttribute(attr);
-  }
-
-  private getTabbableElements() {
-    this.cachedTabbableElements ??= tabbable(this.content, this.tabbableOptions).filter(
-      element => !element.shadowRoot?.delegatesFocus
-    );
-    return this.cachedTabbableElements;
-  }
-
-  private clearTabbableCache() {
-    this.cachedTabbableElements = undefined;
-    this.contentMutationObserver?.disconnect();
-    this.contentMutationObserver = undefined;
   }
 }

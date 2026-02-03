@@ -769,6 +769,7 @@ export namespace Components {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @deprecated use cat-menu
           * @default 'vertical'
          */
         "arrowNavigation": 'horizontal' | 'vertical' | 'none';
@@ -783,7 +784,7 @@ export namespace Components {
         "delayedTriggerInit": boolean;
         /**
           * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
-          * @default false
+          * @default true
          */
         "focusTrap": boolean;
         /**
@@ -1049,6 +1050,10 @@ export namespace Components {
      */
     interface CatMenu {
         /**
+          * Closes the menu.
+         */
+        "close": () => Promise<void>;
+        /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
           * @default false
          */
@@ -1074,6 +1079,10 @@ export namespace Components {
          */
         "noResize": boolean;
         /**
+          * Opens the menu.
+         */
+        "open": () => Promise<void>;
+        /**
           * Allow overflow when dropdown is open.
           * @default false
          */
@@ -1083,6 +1092,10 @@ export namespace Components {
           * @default 'bottom-start'
          */
         "placement": Placement;
+        /**
+          * Toggles the menu.
+         */
+        "toggle": () => Promise<void>;
         /**
           * Additional CSS class for the trigger button.
          */
@@ -1134,6 +1147,14 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
+        /**
+          * Programmatically remove focus from the menu item.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically move focus to the menu item.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The name of an icon to be displayed in the menu item.
          */
@@ -3543,6 +3564,7 @@ declare namespace LocalJSX {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @deprecated use cat-menu
           * @default 'vertical'
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
@@ -3553,7 +3575,7 @@ declare namespace LocalJSX {
         "delayedTriggerInit"?: boolean;
         /**
           * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
-          * @default false
+          * @default true
          */
         "focusTrap"?: boolean;
         /**

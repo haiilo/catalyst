@@ -609,7 +609,6 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   inputs: [
     'arrowNavigation',
     'delayedTriggerInit',
-    'focusTrap',
     'isOpen',
     'justify',
     'noAutoClose',
@@ -627,7 +626,6 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
   inputs: [
     'arrowNavigation',
     'delayedTriggerInit',
-    'focusTrap',
     'isOpen',
     'justify',
     'noAutoClose',
@@ -848,7 +846,8 @@ export declare interface CatInput extends Components.CatInput {
     'triggerSize',
     'triggerTestId',
     'triggerVariant'
-  ]
+  ],
+  methods: ['open', 'close', 'toggle']
 })
 @Component({
   selector: 'cat-menu',
@@ -918,7 +917,8 @@ export declare interface CatMenu extends Components.CatMenu {
     'testId',
     'url',
     'urlTarget'
-  ]
+  ],
+  methods: ['doFocus', 'doBlur']
 })
 @Component({
   selector: 'cat-menu-item',

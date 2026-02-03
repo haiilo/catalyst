@@ -836,6 +836,121 @@
               </cat-dropdown>
             </section>
 
+            <section id="menu">
+              <h2>Menu</h2>
+
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <!-- Basic menu -->
+                <cat-menu>
+                  <cat-menu-item icon="edit-outlined">Edit</cat-menu-item>
+                  <cat-menu-item icon="copy-outlined">Duplicate</cat-menu-item>
+                  <cat-menu-item icon="archive-outlined">Archive</cat-menu-item>
+                  <hr />
+                  <cat-menu-item icon="trash-outlined" color="danger">Delete</cat-menu-item>
+                </cat-menu>
+
+                <!-- Menu with custom trigger -->
+                <cat-menu trigger-icon="settings-outlined" trigger-label="Settings menu">
+                  <cat-menu-item icon="user-outlined">Profile</cat-menu-item>
+                  <cat-menu-item icon="sliders-outlined">Preferences</cat-menu-item>
+                  <cat-menu-item icon="bell-outlined">Notifications</cat-menu-item>
+                  <hr />
+                  <cat-menu-item icon="sign-out-outlined">Sign out</cat-menu-item>
+                </cat-menu>
+
+                <!-- Menu with text trigger -->
+                <cat-menu
+                  trigger-variant="filled"
+                  trigger-size="m"
+                  trigger-icon="chevron-down"
+                  trigger-icon-only="false"
+                  trigger-label="Actions menu"
+                >
+                  Actions
+                  <cat-menu-item icon="sparkle-filled">Favorite</cat-menu-item>
+                  <cat-menu-item icon="share-outlined">Share</cat-menu-item>
+                  <cat-menu-item icon="download-outlined">Download</cat-menu-item>
+                  <hr />
+                  <cat-menu-item icon="flag-outlined">Report</cat-menu-item>
+                </cat-menu>
+
+                <!-- Menu with disabled items -->
+                <cat-menu trigger-label="Menu with disabled items">
+                  <cat-menu-item icon="check-circle-outlined">Available action</cat-menu-item>
+                  <cat-menu-item icon="lock-outlined" disabled>Locked action</cat-menu-item>
+                  <cat-menu-item icon="eye-outlined">View details</cat-menu-item>
+                </cat-menu>
+              </div>
+
+              <h3>Menu Placement Examples</h3>
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <cat-menu placement="bottom-start" trigger-label="Bottom start menu">
+                  <cat-menu-item icon="align-left">Bottom start (default)</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+
+                <cat-menu placement="bottom-end" trigger-label="Bottom end menu">
+                  <cat-menu-item icon="align-right">Bottom end</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+
+                <cat-menu placement="top-start" trigger-label="Top start menu">
+                  <cat-menu-item icon="arrow-up">Top start</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+              </div>
+
+              <h3>Advanced Menu Examples</h3>
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <!-- Menu with links -->
+                <cat-menu trigger-label="Menu with links">
+                  <cat-menu-item icon="home-outlined" url="/" url-target="_self">Home</cat-menu-item>
+                  <cat-menu-item icon="info-circle-outlined" url="/about" url-target="_self">About</cat-menu-item>
+                  <cat-menu-item icon="link-outlined" url="https://example.com" url-target="_blank"
+                    >External link</cat-menu-item
+                  >
+                </cat-menu>
+
+                <!-- Menu with icons on the right -->
+                <cat-menu trigger-label="Right-aligned icons menu">
+                  <cat-menu-item icon="check-filled" icon-right>Completed</cat-menu-item>
+                  <cat-menu-item icon="clock-outlined" icon-right>Pending</cat-menu-item>
+                  <cat-menu-item icon="x-circle-outlined" icon-right>Failed</cat-menu-item>
+                </cat-menu>
+
+                <!-- Menu demonstrating keyboard navigation -->
+                <cat-menu trigger-label="Keyboard navigation demo">
+                  <cat-menu-item icon="keyboard-outlined">Use Arrow Up/Down to navigate</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Press Home to jump to first</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Press End to jump to last</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Press Escape to close</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Press Enter to activate</cat-menu-item>
+                </cat-menu>
+              </div>
+
+              <h3>Programmatic Control</h3>
+              <div class="cat-flex cat-items-center cat-gap-s">
+                <cat-menu id="programmatic-menu" trigger-label="Programmatically controlled">
+                  <cat-menu-item icon="sparkle-filled">Menu Item 1</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled">Menu Item 2</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled">Menu Item 3</cat-menu-item>
+                </cat-menu>
+                <cat-button onclick="document.getElementById('programmatic-menu').open()"> Open Menu </cat-button>
+                <cat-button onclick="document.getElementById('programmatic-menu').close()"> Close Menu </cat-button>
+                <cat-button onclick="document.getElementById('programmatic-menu').toggle()"> Toggle Menu </cat-button>
+              </div>
+
+              <script>
+                // Example: Listen to menu events
+                const menu = document.getElementById('programmatic-menu');
+                menu.addEventListener('catOpen', () => console.log('Menu opened'));
+                menu.addEventListener('catClose', () => console.log('Menu closed'));
+              </script>
+            </section>
+
             <section id="form">
               <h2>Form</h2>
               <form class="cat-form" action="." method="GET">

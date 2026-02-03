@@ -1,5 +1,5 @@
 import { Placement } from '@floating-ui/dom';
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 /**
@@ -15,6 +15,11 @@ import { Breakpoint } from '../../utils/breakpoints';
   shadow: true
 })
 export class CatMenu {
+  private dropdown?: HTMLCatDropdownElement;
+  private triggerButton?: HTMLCatButtonElement;
+  private catMenuItems: HTMLCatMenuItemElement[] = [];
+  private mutationObserver?: MutationObserver;
+
   @Element() hostElement!: HTMLElement;
 
   /**
@@ -79,7 +84,6 @@ export class CatMenu {
    */
   @Prop() noAutoClose = false;
 
-
   /**
    * Do not change the size of the dropdown to ensure it isn’t too big to fit
    * in the viewport (or more specifically, its clipping context).
@@ -90,7 +94,6 @@ export class CatMenu {
    * Allow overflow when dropdown is open.
    */
   @Prop() overflow = false;
-
 
   /**
    * Whether the dropdown trigger should be initialized only before first opening.
@@ -113,25 +116,167 @@ export class CatMenu {
    */
   @Event() catTriggerClick!: EventEmitter<MouseEvent>;
 
+  @Listen('keydown', { target: 'document' })
+  onDocumentKeydown(event: KeyboardEvent): void {
+    if (!this.dropdown?.isOpen) {
+      return;
+    }
+
+    // Check if the event is happening within our menu
+    const activeElement = this.getDeepActiveElement();
+
+    // Check if active element is within any of our menu items by walking up the composed path
+    let currentElement = activeElement as Element | null;
+    let isWithinMenu = false;
+
+    while (currentElement) {
+      if (this.catMenuItems.includes(currentElement as HTMLCatMenuItemElement)) {
+        isWithinMenu = true;
+        break;
+      }
+      // Walk up through shadow DOM boundaries
+      const parent = currentElement.parentElement || (currentElement.getRootNode() as ShadowRoot)?.host;
+      currentElement = parent as Element | null;
+    }
+
+    if (!isWithinMenu) {
+      return;
+    }
+
+    if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key) && this.catMenuItems.length) {
+      const targetElements = this.catMenuItems.filter(item => !item.disabled);
+
+      if (!targetElements.length) {
+        return;
+      }
+
+      // Find which menu item contains the current focus
+      let activeIdx = -1;
+      for (let i = 0; i < targetElements.length; i++) {
+        let elem = activeElement as Element | null;
+        while (elem) {
+          if (elem === targetElements[i]) {
+            activeIdx = i;
+            break;
+          }
+          const parent = elem.parentElement || (elem.getRootNode() as ShadowRoot)?.host;
+          elem = parent as Element | null;
+        }
+        if (activeIdx >= 0) break;
+      }
+
+      let targetIdx: number;
+
+      if (event.key === 'Home') {
+        targetIdx = 0;
+      } else if (event.key === 'End') {
+        targetIdx = targetElements.length - 1;
+      } else {
+        const activeOff = event.key === 'ArrowDown' ? 1 : -1;
+        targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
+      }
+
+      targetElements[targetIdx].doFocus();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
+  componentDidLoad(): void {
+    this.init();
+    this.mutationObserver = new MutationObserver(
+      mutations => mutations.some(value => value.target.nodeName === 'CAT-MENU-ITEM') && this.init()
+    );
+    this.mutationObserver?.observe(this.hostElement, {
+      childList: true,
+      attributes: true,
+      subtree: true
+    });
+  }
+
+  disconnectedCallback(): void {
+    this.mutationObserver?.disconnect();
+  }
+
+  /**
+   * Opens the menu.
+   */
+  @Method()
+  async open(): Promise<void> {
+    await this.dropdown?.open();
+  }
+
+  /**
+   * Closes the menu.
+   */
+  @Method()
+  async close(): Promise<void> {
+    await this.dropdown?.close();
+  }
+
+  /**
+   * Toggles the menu.
+   */
+  @Method()
+  async toggle(): Promise<void> {
+    await this.dropdown?.toggle();
+  }
+
   private onTriggerClick = (event: CustomEvent<MouseEvent>) => {
     this.catTriggerClick.emit(event.detail);
   };
+
+  private onMenuOpen = (event: CustomEvent<FocusEvent>) => {
+    this.catOpen.emit(event.detail);
+    // Set focus to first non-disabled menu item when menu opens
+    requestAnimationFrame(() => {
+      const firstEnabledItem = this.catMenuItems.find(item => !item.disabled);
+      firstEnabledItem?.doFocus();
+    });
+  };
+
+  private getDeepActiveElement(): Element | null {
+    let active = document.activeElement;
+    while (active?.shadowRoot?.activeElement) {
+      active = active.shadowRoot.activeElement;
+    }
+    return active;
+  }
+
+  private init() {
+    this.catMenuItems = Array.from(this.hostElement.querySelectorAll('cat-menu-item'));
+    this.updateTabIndex();
+  }
+
+  private updateTabIndex() {
+    if (this.catMenuItems.length) {
+      // All items should have tabindex="-1" - this is set in cat-menu-item render
+      // Focus management is done via doFocus() method
+    }
+  }
+
+  private get triggerId(): string {
+    return this.triggerButton?.buttonId || 'cat-menu-trigger';
+  }
 
   render() {
     return (
       <Host>
         <cat-dropdown
+          ref={el => (this.dropdown = el)}
+          focusTrap={false}
           placement={this.placement}
           justify={this.justify}
           noAutoClose={this.noAutoClose}
-          arrowNavigation="vertical"
+          arrowNavigation="none"
           noResize={this.noResize}
           overflow={this.overflow}
           delayedTriggerInit={this.delayedTriggerInit}
-          onCatOpen={(event) => this.catOpen.emit(event.detail)}
-          onCatClose={(event) => this.catClose.emit(event.detail)}
+          onCatOpen={this.onMenuOpen}
+          onCatClose={event => this.catClose.emit(event.detail)}
         >
           <cat-button
+            ref={el => (this.triggerButton = el)}
             slot="trigger"
             variant={this.triggerVariant}
             size={this.triggerSize}
@@ -140,11 +285,20 @@ export class CatMenu {
             a11yLabel={this.triggerLabel}
             class={this.triggerClass}
             testId={this.triggerTestId}
-            nativeAttributes={this.triggerNativeAttributes}
+            nativeAttributes={{
+              ...this.triggerNativeAttributes,
+              'aria-haspopup': 'menu'
+            }}
             disabled={this.disabled}
             onCatClick={this.onTriggerClick}
           ></cat-button>
-          <div role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
+          <div
+            role="menu"
+            slot="content"
+            class="cat-menu-list"
+            aria-orientation="vertical"
+            aria-labelledby={this.triggerId}
+          >
             <slot></slot>
           </div>
         </cat-dropdown>

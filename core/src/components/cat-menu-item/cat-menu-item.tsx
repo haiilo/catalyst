@@ -1,6 +1,5 @@
-import { Component, h, Host, Element, Prop } from '@stencil/core';
+import { Component, h, Host, Element, Prop, Method } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
-// import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
 
@@ -17,6 +16,8 @@ export class CatMenuItem {
   private get id() {
     return this.identifier || this._id;
   }
+  private button?: HTMLCatButtonElement;
+
   @Element() hostElement!: HTMLElement;
 
   /**
@@ -75,10 +76,27 @@ export class CatMenuItem {
    */
   @Prop() testId?: string;
 
+  /**
+   * Programmatically move focus to the menu item.
+   */
+  @Method()
+  async doFocus(options?: FocusOptions): Promise<void> {
+    this.button?.doFocus(options);
+  }
+
+  /**
+   * Programmatically remove focus from the menu item.
+   */
+  @Method()
+  async doBlur(): Promise<void> {
+    this.button?.doBlur();
+  }
+
   render() {
     return (
       <Host>
         <cat-button
+          ref={el => (this.button = el)}
           class="cat-nav-item"
           buttonId={this.id}
           part="menu-item"
@@ -92,7 +110,8 @@ export class CatMenuItem {
           testId={this.testId}
           nativeAttributes={{
             ...this.nativeAttributes,
-            role: 'menuitem'
+            role: 'menuitem',
+            tabindex: '-1'
           }}
         >
           <slot></slot>

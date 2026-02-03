@@ -26,6 +26,35 @@ A menu item component that renders as a button with proper ARIA semantics.
 | `urlTarget`        | `url-target` | Specifies where to open the linked document.                                                                                                                                                                        | `"_blank" \| "_self" \| undefined`             | `undefined` |
 
 
+## Methods
+
+### `doBlur() => Promise<void>`
+
+Programmatically remove focus from the menu item.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `doFocus(options?: FocusOptions) => Promise<void>`
+
+Programmatically move focus to the menu item.
+
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Shadow Parts
 
 | Part          | Description |
