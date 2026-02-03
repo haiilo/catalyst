@@ -1507,6 +1507,10 @@ export const ciMarketplaceOutlined = {
     name: 'marketplace-outlined',
     data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M18.463 3.25H5.537L3.54 7.242a2.75 2.75 0 0 0-.29 1.23V10a2.75 2.75 0 0 0 2 2.646v3.604H4a.75.75 0 0 0 0 1.5h1.25V20a.75.75 0 0 0 1.5 0v-2.25h10.5V20a.75.75 0 0 0 1.5 0v-2.25H20a.75.75 0 0 0 0-1.5h-1.25v-3.604a2.75 2.75 0 0 0 2-2.646V8.472c0-.427-.1-.848-.29-1.23zm-1.213 9.396v3.604H6.75v-3.604A2.75 2.75 0 0 0 8 11.887a2.74 2.74 0 0 0 2 .863c.788 0 1.499-.331 2-.863a2.74 2.74 0 0 0 2 .863c.788 0 1.499-.331 2-.863a2.75 2.75 0 0 0 1.25.76ZM18 11.25c.69 0 1.25-.56 1.25-1.25V8.472a1.25 1.25 0 0 0-.132-.559L17.537 4.75H6.463L4.882 7.913a1.25 1.25 0 0 0-.132.56V10a1.25 1.25 0 1 0 2.5 0V9a.75.75 0 0 1 1.5 0v1a1.25 1.25 0 1 0 2.5 0V9a.75.75 0 0 1 1.5 0v1a1.25 1.25 0 1 0 2.5 0V9a.75.75 0 0 1 1.5 0v1c0 .69.56 1.25 1.25 1.25" clip-rule="evenodd"/></svg>`,
 };
+export const ciMaximizeOutlined = {
+    name: 'maximize-outlined',
+    data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.25 10.5V7.31l3.22 3.22a.75.75 0 1 0 1.06-1.06L7.31 6.25h3.19a.75.75 0 0 0 0-1.5h-5a.75.75 0 0 0-.75.75v5a.75.75 0 0 0 1.5 0m7.25 7.25h3.19l-3.22-3.22a.75.75 0 1 1 1.06-1.06l3.22 3.22V13.5a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5"/></svg>`,
+};
 export const ciMaybeCircleOutlined = {
     name: 'maybe-circle-outlined',
     data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.53 12.53c.93-.93 1.437-.972 1.698-.92.372.075.714.39 1.302.98.452.454 1.096 1.1 1.948 1.27.99.198 1.982-.26 3.052-1.33a.75.75 0 1 0-1.06-1.06c-.93.93-1.437.972-1.698.92-.359-.072-.696-.375-1.242-.92l-.06-.06c-.452-.454-1.096-1.1-1.948-1.27-.99-.198-1.982.26-3.052 1.33a.75.75 0 1 0 1.06 1.06"/><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25M3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0" clip-rule="evenodd"/></svg>`,
@@ -1594,6 +1598,10 @@ export const ciMicrosoftYammer = {
 export const ciMicrosoft = {
     name: 'microsoft',
     data: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#FFB900" d="M22 13h-9v9h9z"/><path fill="#01A4EF" d="M11 13H2v9h9z"/><path fill="#7FBA00" d="M22 2h-9v9h9z"/><path fill="#F25022" d="M11 2H2v9h9z"/></svg>`,
+};
+export const ciMinimizeOutlined = {
+    name: 'minimize-outlined',
+    data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.5 9.75h3.19L5.47 6.53a.75.75 0 1 1 1.06-1.06l3.22 3.22V5.5a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5m8.75 8.75v-3.19l3.22 3.22a.75.75 0 1 0 1.06-1.06l-3.22-3.22h3.19a.75.75 0 0 0 0-1.5h-5a.75.75 0 0 0-.75.75v5a.75.75 0 0 0 1.5 0"/></svg>`,
 };
 export const ciMinusCircleOutlined = {
     name: 'minus-circle-outlined',
@@ -2817,6 +2825,7 @@ export const ciAll = [
     ciMailOutlined,
     ciMarketplaceFilled,
     ciMarketplaceOutlined,
+    ciMaximizeOutlined,
     ciMaybeCircleOutlined,
     ciMegaphoneFilled,
     ciMegaphoneOutlined,
@@ -2839,6 +2848,7 @@ export const ciAll = [
     ciMicrosoftWord,
     ciMicrosoftYammer,
     ciMicrosoft,
+    ciMinimizeOutlined,
     ciMinusCircleOutlined,
     ciModulePlusOutlined,
     ciMoneyOutlined,
