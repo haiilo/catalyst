@@ -11,7 +11,10 @@ import { FormatTimeOptions } from 'cleave-zen';
  */
 @Component({
   tag: 'cat-time',
-  styleUrl: 'cat-time.scss'
+  styleUrl: 'cat-time.scss',
+  shadow: {
+    delegatesFocus: true
+  }
 })
 export class CatTime {
   private readonly language = i18n.getLocale();
@@ -347,44 +350,38 @@ export class CatTime {
                 {this.isAm ? this.localizedDayPeriods.am : this.localizedDayPeriods.pm}
               </cat-button>
             )}
-            <cat-dropdown slot="addon" placement={this.placement}>
-              <cat-button
-                slot="trigger"
-                class="cat-time-toggle"
-                disabled={this.disabled || this.readonly}
-                icon="$cat:timepicker-clock"
-                iconOnly
-                a11yLabel={
-                  this.selectionTime ? `${this.locale.change}, ${this.format(this.selectionTime)}` : this.locale.choose
-                }
-              ></cat-button>
-              <nav slot="content" class="cat-nav">
-                <ul>
-                  {this.timeArray().map(time => {
-                    const isoTime = formatIso(time);
-                    const disabled = isBefore(time, this.min ?? null) || isAfter(time, this.max ?? null);
-                    return (
-                      <li>
-                        <cat-button
-                          class={{
-                            'cat-nav-item': true,
-                            'time-disabled': disabled
-                          }}
-                          disabled={disabled}
-                          active={isoTime === this.value}
-                          color={isoTime === this.value ? 'primary' : 'secondary'}
-                          variant={isoTime === this.value ? 'filled' : 'outlined'}
-                          onCatClick={() => this.select(time)}
-                          data-time={isoTime}
-                        >
-                          {this.format(time)}
-                        </cat-button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
-            </cat-dropdown>
+            <cat-menu
+              slot="addon"
+              placement={this.placement}
+              disabled={this.disabled || this.readonly}
+              triggerIconOnly={true}
+              triggerA11yLabel={
+                this.selectionTime ? `${this.locale.change}, ${this.format(this.selectionTime)}` : this.locale.choose
+              }
+              triggerIcon="$cat:timepicker-clock"
+              triggerClass="cat-time-toggle"
+              triggerVariant="outlined"
+            >
+              {this.timeArray().map(time => {
+                const isoTime = formatIso(time);
+                const disabled = isBefore(time, this.min ?? null) || isAfter(time, this.max ?? null);
+                return (
+                  <cat-menu-item
+                    class={{
+                      'time-disabled': disabled
+                    }}
+                    disabled={disabled}
+                    active={isoTime === this.value}
+                    color={isoTime === this.value ? 'primary' : 'secondary'}
+                    variant={isoTime === this.value ? 'filled' : 'outlined'}
+                    onClick={() => this.select(time)}
+                    data-time={isoTime}
+                  >
+                    {this.format(time)}
+                  </cat-menu-item>
+                );
+              })}
+            </cat-menu>
           </div>
           {this.hasSlottedHint && (
             <span slot="hint">

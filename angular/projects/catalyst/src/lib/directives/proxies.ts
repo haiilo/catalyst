@@ -838,6 +838,7 @@ export declare interface CatInput extends Components.CatInput {
     'noResize',
     'overflow',
     'placement',
+    'triggerA11yLabel',
     'triggerClass',
     'triggerIcon',
     'triggerIconOnly',
@@ -862,6 +863,7 @@ export declare interface CatInput extends Components.CatInput {
     'noResize',
     'overflow',
     'placement',
+    'triggerA11yLabel',
     'triggerClass',
     'triggerIcon',
     'triggerIconOnly',
@@ -906,6 +908,7 @@ export declare interface CatMenu extends Components.CatMenu {
 
 @ProxyCmp({
   inputs: [
+    'active',
     'color',
     'disabled',
     'icon',
@@ -916,7 +919,8 @@ export declare interface CatMenu extends Components.CatMenu {
     'nativeAttributes',
     'testId',
     'url',
-    'urlTarget'
+    'urlTarget',
+    'variant'
   ],
   methods: ['doFocus', 'doBlur']
 })
@@ -926,6 +930,7 @@ export declare interface CatMenu extends Components.CatMenu {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'active',
     'color',
     'disabled',
     'icon',
@@ -936,7 +941,8 @@ export declare interface CatMenu extends Components.CatMenu {
     'nativeAttributes',
     'testId',
     'url',
-    'urlTarget'
+    'urlTarget',
+    'variant'
   ],
   standalone: false
 })

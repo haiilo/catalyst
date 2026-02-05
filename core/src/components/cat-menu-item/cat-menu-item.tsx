@@ -8,7 +8,6 @@ let nextUniqueId = 0;
  */
 @Component({
   tag: 'cat-menu-item',
-  styleUrl: 'cat-menu-item.scss',
   shadow: true
 })
 export class CatMenuItem {
@@ -32,7 +31,17 @@ export class CatMenuItem {
   /**
    * The color of the menu item.
    */
-  @Prop() color?: string;
+  @Prop() color?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
+
+  /**
+   * Whether the menu item is active.
+   */
+  @Prop() active = false;
+
+  /**
+   * The variant of the menu item button.
+   */
+  @Prop() variant: 'filled' | 'outlined' | 'text' = 'text';
 
   /**
    * The loading state of the menu item.
@@ -100,13 +109,16 @@ export class CatMenuItem {
           class="cat-nav-item"
           buttonId={this.id}
           part="menu-item"
-          variant="text"
+          variant={this.variant}
           icon={this.icon}
           iconOnly={this.iconOnly}
           iconRight={this.iconRight}
           url={this.url}
           disabled={this.disabled}
           urlTarget={this.urlTarget}
+          loading={this.loading}
+          color={this.color}
+          active={this.active}
           testId={this.testId}
           nativeAttributes={{
             ...this.nativeAttributes,

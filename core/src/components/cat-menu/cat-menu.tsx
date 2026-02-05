@@ -11,7 +11,6 @@ import { Breakpoint } from '../../utils/breakpoints';
  */
 @Component({
   tag: 'cat-menu',
-  styleUrl: 'cat-menu.scss',
   shadow: true
 })
 export class CatMenu {
@@ -34,7 +33,7 @@ export class CatMenu {
   /**
    * The trigger button size.
    */
-  @Prop() triggerSize: 'xs' | 's' | 'm' | 'l' | 'xl' = 's';
+  @Prop() triggerSize: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 
   /**
    * The trigger button icon.
@@ -50,6 +49,12 @@ export class CatMenu {
    * The trigger button label (for accessibility).
    */
   @Prop() triggerLabel = 'Show menu';
+
+  /**
+   * The trigger button accessibility label (used when triggerIconOnly is true).
+   * If not set, falls back to triggerLabel.
+   */
+  @Prop() triggerA11yLabel?: string;
 
   /**
    * Additional CSS class for the trigger button.
@@ -236,7 +241,7 @@ export class CatMenu {
             size={this.triggerSize}
             icon={this.triggerIcon}
             iconOnly={this.triggerIconOnly}
-            a11yLabel={this.triggerLabel}
+            a11yLabel={this.triggerA11yLabel ?? this.triggerLabel}
             class={this.triggerClass}
             testId={this.triggerTestId}
             nativeAttributes={{
@@ -245,7 +250,9 @@ export class CatMenu {
             }}
             disabled={this.disabled}
             onCatClick={this.onTriggerClick}
-          ></cat-button>
+          >
+            {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
+          </cat-button>
           <div role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
             <slot></slot>
           </div>

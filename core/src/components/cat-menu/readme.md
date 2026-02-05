@@ -24,6 +24,7 @@ through trigger-specific props.
 | `noResize`                | `no-resize`            | Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).                                                               | `boolean`                                                                                                                                                            | `false`                    |
 | `overflow`                | `overflow`             | Allow overflow when dropdown is open.                                                                                                                                                                | `boolean`                                                                                                                                                            | `false`                    |
 | `placement`               | `placement`            | The placement of the dropdown.                                                                                                                                                                       | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'`           |
+| `triggerA11yLabel`        | `trigger-a-1-1y-label` | The trigger button accessibility label (used when triggerIconOnly is true). If not set, falls back to triggerLabel.                                                                                  | `string \| undefined`                                                                                                                                                | `undefined`                |
 | `triggerClass`            | `trigger-class`        | Additional CSS class for the trigger button.                                                                                                                                                         | `string \| undefined`                                                                                                                                                | `undefined`                |
 | `triggerIcon`             | `trigger-icon`         | The trigger button icon.                                                                                                                                                                             | `string`                                                                                                                                                             | `'more-horizontal-filled'` |
 | `triggerIconOnly`         | `trigger-icon-only`    | Show only the icon in the trigger button.                                                                                                                                                            | `"l" \| "m" \| "s" \| "xl" \| "xs" \| boolean`                                                                                                                       | `true`                     |
@@ -78,6 +79,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [cat-time](../cat-time)
+
 ### Depends on
 
 - [cat-dropdown](../cat-dropdown)
@@ -90,6 +95,7 @@ graph TD;
   cat-menu --> cat-button
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-time --> cat-menu
   style cat-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

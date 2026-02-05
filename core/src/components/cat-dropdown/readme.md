@@ -85,7 +85,6 @@ Type: `Promise<void>`
  - [cat-menu](../cat-menu)
  - [cat-select-demo](../cat-select-demo)
  - [cat-tabs](../cat-tabs)
- - [cat-time](../cat-time)
 
 ### Graph
 ```mermaid
@@ -94,7 +93,6 @@ graph TD;
   cat-menu --> cat-dropdown
   cat-select-demo --> cat-dropdown
   cat-tabs --> cat-dropdown
-  cat-time --> cat-dropdown
   style cat-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

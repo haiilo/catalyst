@@ -1097,6 +1097,10 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
+          * The trigger button accessibility label (used when triggerIconOnly is true). If not set, falls back to triggerLabel.
+         */
+        "triggerA11yLabel"?: string;
+        /**
           * Additional CSS class for the trigger button.
          */
         "triggerClass"?: string;
@@ -1121,7 +1125,7 @@ export namespace Components {
         "triggerNativeAttributes"?: { [key: string]: string };
         /**
           * The trigger button size.
-          * @default 's'
+          * @default 'm'
          */
         "triggerSize": 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -1139,9 +1143,14 @@ export namespace Components {
      */
     interface CatMenuItem {
         /**
+          * Whether the menu item is active.
+          * @default false
+         */
+        "active": boolean;
+        /**
           * The color of the menu item.
          */
-        "color"?: string;
+        "color"?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
         /**
           * Specifies that the menu item should be disabled.
           * @default false
@@ -1193,6 +1202,11 @@ export namespace Components {
           * Specifies where to open the linked document.
          */
         "urlTarget"?: '_blank' | '_self';
+        /**
+          * The variant of the menu item button.
+          * @default 'text'
+         */
+        "variant": 'filled' | 'outlined' | 'text';
     }
     /**
      * A navigation component to switch between different pages of paged chunks of
@@ -3890,6 +3904,10 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
         /**
+          * The trigger button accessibility label (used when triggerIconOnly is true). If not set, falls back to triggerLabel.
+         */
+        "triggerA11yLabel"?: string;
+        /**
           * Additional CSS class for the trigger button.
          */
         "triggerClass"?: string;
@@ -3914,7 +3932,7 @@ declare namespace LocalJSX {
         "triggerNativeAttributes"?: { [key: string]: string };
         /**
           * The trigger button size.
-          * @default 's'
+          * @default 'm'
          */
         "triggerSize"?: 'xs' | 's' | 'm' | 'l' | 'xl';
         /**
@@ -3932,9 +3950,14 @@ declare namespace LocalJSX {
      */
     interface CatMenuItem {
         /**
+          * Whether the menu item is active.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
           * The color of the menu item.
          */
-        "color"?: string;
+        "color"?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
         /**
           * Specifies that the menu item should be disabled.
           * @default false
@@ -3978,6 +4001,11 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document.
          */
         "urlTarget"?: '_blank' | '_self';
+        /**
+          * The variant of the menu item button.
+          * @default 'text'
+         */
+        "variant"?: 'filled' | 'outlined' | 'text';
     }
     /**
      * A navigation component to switch between different pages of paged chunks of

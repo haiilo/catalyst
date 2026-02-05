@@ -176,7 +176,6 @@ export class CatDropdown {
     if (trigger) {
       this.cleanupFloatingUi = autoUpdate(trigger, this.content, () => this.update(trigger));
     }
-
     // give CSS transition time to apply
     requestAnimationFrame(() => {
       this._isOpen = true;
@@ -217,9 +216,6 @@ export class CatDropdown {
             });
         this.trap.activate();
       } else {
-        if (this.isFocusVisible) {
-          firstTabbable(this.content)?.focus();
-        }
         this.catOpen.emit();
       }
     });
