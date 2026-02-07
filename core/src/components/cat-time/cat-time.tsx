@@ -11,10 +11,7 @@ import { FormatTimeOptions } from 'cleave-zen';
  */
 @Component({
   tag: 'cat-time',
-  styleUrl: 'cat-time.scss',
-  shadow: {
-    delegatesFocus: true
-  }
+  styleUrl: 'cat-time.scss'
 })
 export class CatTime {
   private readonly language = i18n.getLocale();
@@ -304,7 +301,6 @@ export class CatTime {
   }
 
   render() {
-    this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
       <Host>
         <cat-input

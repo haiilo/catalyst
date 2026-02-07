@@ -612,9 +612,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
     'isOpen',
     'justify',
     'noAutoClose',
-    'noInitialFocus',
     'noResize',
-    'noReturnFocus',
     'overflow',
     'placement'
   ],
@@ -631,9 +629,7 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
     'isOpen',
     'justify',
     'noAutoClose',
-    'noInitialFocus',
     'noResize',
-    'noReturnFocus',
     'overflow',
     'placement'
   ],
@@ -832,6 +828,131 @@ export declare interface CatInput extends Components.CatInput {
    */
   catChangeFiles: EventEmitter<CustomEvent<FileList | null>>;
 }
+
+@ProxyCmp({
+  inputs: [
+    'delayedTriggerInit',
+    'disabled',
+    'justify',
+    'noAutoClose',
+    'noResize',
+    'overflow',
+    'placement',
+    'triggerClass',
+    'triggerIcon',
+    'triggerIconOnly',
+    'triggerLabel',
+    'triggerNativeAttributes',
+    'triggerSize',
+    'triggerTestId',
+    'triggerVariant'
+  ],
+  methods: ['open', 'close', 'toggle']
+})
+@Component({
+  selector: 'cat-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'delayedTriggerInit',
+    'disabled',
+    'justify',
+    'noAutoClose',
+    'noResize',
+    'overflow',
+    'placement',
+    'triggerClass',
+    'triggerIcon',
+    'triggerIconOnly',
+    'triggerLabel',
+    'triggerNativeAttributes',
+    'triggerSize',
+    'triggerTestId',
+    'triggerVariant'
+  ],
+  outputs: ['catOpen', 'catClose', 'catTriggerClick'],
+  standalone: false
+})
+export class CatMenu {
+  protected el: HTMLCatMenuElement;
+  @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catTriggerClick = new EventEmitter<CustomEvent<MouseEvent>>();
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatMenu extends Components.CatMenu {
+  /**
+   * Emitted when the dropdown is opened.
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the dropdown is closed.
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the trigger button is clicked.
+   */
+  catTriggerClick: EventEmitter<CustomEvent<MouseEvent>>;
+}
+
+@ProxyCmp({
+  inputs: [
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'identifier',
+    'loading',
+    'nativeAttributes',
+    'testId',
+    'url',
+    'urlTarget'
+  ],
+  methods: ['doFocus', 'doBlur']
+})
+@Component({
+  selector: 'cat-menu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'identifier',
+    'loading',
+    'nativeAttributes',
+    'testId',
+    'url',
+    'urlTarget'
+  ],
+  standalone: false
+})
+export class CatMenuItem {
+  protected el: HTMLCatMenuItemElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatMenuItem extends Components.CatMenuItem {}
 
 @ProxyCmp({
   inputs: [
