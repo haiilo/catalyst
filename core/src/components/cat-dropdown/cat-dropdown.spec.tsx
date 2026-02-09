@@ -1,7 +1,7 @@
 jest.mock('../../utils/first-tabbable', () => (element: HTMLSlotElement) => element);
 
 const mockAutoUpdateCleanup = jest.fn();
-const mockAutoUpdate = jest.fn((reference, floating, update) => {
+const mockAutoUpdate = jest.fn((_reference, _floating, update) => {
   update();
   return mockAutoUpdateCleanup;
 });
