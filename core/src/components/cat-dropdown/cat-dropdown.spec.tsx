@@ -1,15 +1,22 @@
 jest.mock('../../utils/first-tabbable', () => (element: HTMLSlotElement) => element);
 
 const mockAutoUpdateCleanup = jest.fn();
-const mockAutoUpdate = jest.fn(() => mockAutoUpdateCleanup);
+const mockAutoUpdate = jest.fn((reference, floating, update) => {
+  update();
+  return mockAutoUpdateCleanup;
+});
+const mockFlip = jest.fn(() => ({}));
+const mockOffset = jest.fn(() => ({}));
+const mockShift = jest.fn(() => ({}));
+const mockSize = jest.fn(() => ({}));
 
 jest.mock('@floating-ui/dom', () => ({
   autoUpdate: mockAutoUpdate,
-  computePosition: jest.fn(() => ({})),
-  flip: jest.fn(() => ({})),
-  offset: jest.fn(() => ({})),
-  shift: jest.fn(() => ({})),
-  size: jest.fn(() => ({}))
+  computePosition: jest.fn(() => Promise.resolve({ x: 0, y: 0, placement: 'bottom-start' })),
+  flip: mockFlip,
+  offset: mockOffset,
+  shift: mockShift,
+  size: mockSize
 }));
 
 const mockTrapDeactivate = jest.fn();
@@ -163,6 +170,28 @@ describe('cat-dropdown', () => {
       // Verify cleanup function was called
       expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
       expect(dropdown.isOpen).toBe(false);
+    });
+  });
+
+  describe('flip middleware', () => {
+    it('should call flip middleware with correct arguments', async () => {
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      await dropdown.open();
+      await page.waitForChanges();
+
+      // The flip middleware should be called with specific configuration
+      expect(mockFlip).toHaveBeenCalledWith({
+        crossAxis: 'alignment',
+        fallbackAxisSideDirection: 'end'
+      });
     });
   });
 });
