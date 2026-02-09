@@ -28,6 +28,13 @@ A menu item component that renders as a button with proper ARIA semantics.
 | `variant`          | `variant`    | The variant of the menu item button.                                                                                                                                                                                | `"filled" \| "outlined" \| "text"`                                                      | `'text'`    |
 
 
+## Events
+
+| Event      | Description                                 | Type                      |
+| ---------- | ------------------------------------------- | ------------------------- |
+| `catClick` | Emitted when the trigger button is clicked. | `CustomEvent<MouseEvent>` |
+
+
 ## Methods
 
 ### `doBlur() => Promise<void>`

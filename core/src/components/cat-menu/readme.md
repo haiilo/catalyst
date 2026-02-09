@@ -30,7 +30,7 @@ through trigger-specific props.
 | `triggerIconOnly`         | `trigger-icon-only`    | Show only the icon in the trigger button.                                                                                                                                                            | `"l" \| "m" \| "s" \| "xl" \| "xs" \| boolean`                                                                                                                       | `true`                     |
 | `triggerLabel`            | `trigger-label`        | The trigger button label (for accessibility).                                                                                                                                                        | `string`                                                                                                                                                             | `'Show menu'`              |
 | `triggerNativeAttributes` | --                     | Native attributes for the trigger button.                                                                                                                                                            | `undefined \| { [key: string]: string; }`                                                                                                                            | `undefined`                |
-| `triggerSize`             | `trigger-size`         | The trigger button size.                                                                                                                                                                             | `"l" \| "m" \| "s" \| "xl" \| "xs"`                                                                                                                                  | `'s'`                      |
+| `triggerSize`             | `trigger-size`         | The trigger button size.                                                                                                                                                                             | `"l" \| "m" \| "s" \| "xl" \| "xs"`                                                                                                                                  | `'m'`                      |
 | `triggerTestId`           | `trigger-test-id`      | Test ID for the trigger button.                                                                                                                                                                      | `string \| undefined`                                                                                                                                                | `undefined`                |
 | `triggerVariant`          | `trigger-variant`      | The trigger button variant.                                                                                                                                                                          | `"filled" \| "outlined" \| "text"`                                                                                                                                   | `'text'`                   |
 
@@ -75,6 +75,13 @@ Toggles the menu.
 Type: `Promise<void>`
 
 
+
+
+## Shadow Parts
+
+| Part        | Description |
+| ----------- | ----------- |
+| `"trigger"` |             |
 
 
 ## Dependencies

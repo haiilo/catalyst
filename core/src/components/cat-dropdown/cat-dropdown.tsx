@@ -72,12 +72,28 @@ export class CatDropdown {
   @Prop() overflow = false;
 
   /**
+   * No element in dropdown will receive focus when dropdown is open.
+   * By default, the first element in tab order will receive a focus.
+   * @deprecated
+   * Using noInitialFocus property would be a bad practice from a11y perspective.
+   * We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug.
+   * hasInitialFocus should resolve the cause of the original problem instead.
+   */
+  @Prop() noInitialFocus = false;
+
+  /**
    * Whether the dropdown is open.
    * @readonly
    */
   @Prop() get isOpen(): boolean {
     return this._isOpen ?? false;
   }
+
+  /**
+   * Trigger element will not receive focus when dropdown is closed.
+   * @deprecated the property can be removed, focus is arranged internally
+   */
+  @Prop() noReturnFocus = false;
 
   /**
    * Whether the dropdown trigger should be initialized only before first opening.

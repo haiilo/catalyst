@@ -11,6 +11,7 @@ import { Breakpoint } from '../../utils/breakpoints';
  */
 @Component({
   tag: 'cat-menu',
+  styleUrl: 'cat-menu.scss',
   shadow: true
 })
 export class CatMenu {
@@ -127,13 +128,18 @@ export class CatMenu {
     }
 
     requestAnimationFrame(() => {
-      const activeElement = document.activeElement;
-      const isInMenu = activeElement && this.catMenuItems.some(item => activeElement === item);
-
-      if (!activeElement || !isInMenu) {
+      if (!this.isMenuItemInFocus()) {
         this.dropdown?.close(false);
       }
     });
+  }
+
+  private getDeepActiveElement(): Element | null {
+    let active = document.activeElement;
+    while (active?.shadowRoot?.activeElement && active.nodeName !== 'CAT-MENU-ITEM') {
+      active = active.shadowRoot.activeElement;
+    }
+    return active;
   }
 
   @Listen('keydown', { target: 'document' })
@@ -146,7 +152,7 @@ export class CatMenu {
     if (!targetElements.length) {
       return;
     }
-    const activeIdx = targetElements.findIndex(item => document.activeElement === item);
+    const activeIdx = targetElements.findIndex(item => this.getDeepActiveElement() === item);
 
     let targetIdx: number;
     if (event.key === 'Home') {
@@ -210,10 +216,19 @@ export class CatMenu {
     this.catOpen.emit(event.detail);
     // Set focus to first non-disabled menu item when menu opens
     requestAnimationFrame(() => {
-      const firstEnabledItem = this.catMenuItems.find(item => !item.disabled);
-      firstEnabledItem?.doFocus();
+      if (!this.isMenuItemInFocus()) {
+        const firstEnabledItem = this.catMenuItems.find(item => !item.disabled);
+        firstEnabledItem?.doFocus();
+      }
     });
   };
+
+  private isMenuItemInFocus(): boolean {
+    const activeElement = this.getDeepActiveElement();
+    const isInMenu = activeElement && this.catMenuItems.some(item => activeElement === item);
+
+    return !!(activeElement && isInMenu);
+  }
 
   private syncMenuItems() {
     this.catMenuItems = Array.from(this.hostElement.querySelectorAll('cat-menu-item'));
@@ -237,6 +252,7 @@ export class CatMenu {
         >
           <cat-button
             slot="trigger"
+            part="trigger"
             variant={this.triggerVariant}
             size={this.triggerSize}
             icon={this.triggerIcon}
@@ -253,9 +269,11 @@ export class CatMenu {
           >
             {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
           </cat-button>
-          <div role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
-            <slot></slot>
-          </div>
+          <nav role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
+            <ul>
+              <slot></slot>
+            </ul>
+          </nav>
         </cat-dropdown>
       </Host>
     );

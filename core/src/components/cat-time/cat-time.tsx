@@ -352,6 +352,7 @@ export class CatTime {
             )}
             <cat-menu
               slot="addon"
+              class="cat-time-menu"
               placement={this.placement}
               disabled={this.disabled || this.readonly}
               triggerIconOnly={true}

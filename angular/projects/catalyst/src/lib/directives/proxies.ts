@@ -612,7 +612,9 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
     'isOpen',
     'justify',
     'noAutoClose',
+    'noInitialFocus',
     'noResize',
+    'noReturnFocus',
     'overflow',
     'placement'
   ],
@@ -629,7 +631,9 @@ export declare interface CatDatepickerInline extends Components.CatDatepickerInl
     'isOpen',
     'justify',
     'noAutoClose',
+    'noInitialFocus',
     'noResize',
+    'noReturnFocus',
     'overflow',
     'placement'
   ],
@@ -944,10 +948,12 @@ export declare interface CatMenu extends Components.CatMenu {
     'urlTarget',
     'variant'
   ],
+  outputs: ['catClick'],
   standalone: false
 })
 export class CatMenuItem {
   protected el: HTMLCatMenuItemElement;
+  @Output() catClick = new EventEmitter<CustomEvent<MouseEvent>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -958,7 +964,12 @@ export class CatMenuItem {
   }
 }
 
-export declare interface CatMenuItem extends Components.CatMenuItem {}
+export declare interface CatMenuItem extends Components.CatMenuItem {
+  /**
+   * Emitted when the trigger button is clicked.
+   */
+  catClick: EventEmitter<CustomEvent<MouseEvent>>;
+}
 
 @ProxyCmp({
   inputs: [

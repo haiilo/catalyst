@@ -803,10 +803,22 @@ export namespace Components {
          */
         "noAutoClose": boolean;
         /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
+          * @default false
+         */
+        "noInitialFocus": boolean;
+        /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
           * @default false
          */
         "noResize": boolean;
+        /**
+          * Trigger element will not receive focus when dropdown is closed.
+          * @deprecated the property can be removed, focus is arranged internally
+          * @default false
+         */
+        "noReturnFocus": boolean;
         /**
           * Opens the dropdown.
           * @param isFocusVisible is dropdown should receive visible focus when it's opened.
@@ -2189,6 +2201,10 @@ export interface CatMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatMenuElement;
 }
+export interface CatMenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatMenuItemElement;
+}
 export interface CatPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatPaginationElement;
@@ -2509,10 +2525,21 @@ declare global {
         prototype: HTMLCatMenuElement;
         new (): HTMLCatMenuElement;
     };
+    interface HTMLCatMenuItemElementEventMap {
+        "catClick": MouseEvent;
+    }
     /**
      * A menu item component that renders as a button with proper ARIA semantics.
      */
     interface HTMLCatMenuItemElement extends Components.CatMenuItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatMenuItemElementEventMap>(type: K, listener: (this: HTMLCatMenuItemElement, ev: CatMenuItemCustomEvent<HTMLCatMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatMenuItemElementEventMap>(type: K, listener: (this: HTMLCatMenuItemElement, ev: CatMenuItemCustomEvent<HTMLCatMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLCatMenuItemElement: {
         prototype: HTMLCatMenuItemElement;
@@ -3608,10 +3635,22 @@ declare namespace LocalJSX {
          */
         "noAutoClose"?: boolean;
         /**
+          * No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus.
+          * @deprecated Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.
+          * @default false
+         */
+        "noInitialFocus"?: boolean;
+        /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
           * @default false
          */
         "noResize"?: boolean;
+        /**
+          * Trigger element will not receive focus when dropdown is closed.
+          * @deprecated the property can be removed, focus is arranged internally
+          * @default false
+         */
+        "noReturnFocus"?: boolean;
         /**
           * Emitted when the dropdown is closed.
          */
@@ -3989,6 +4028,10 @@ declare namespace LocalJSX {
           * Attributes that will be added to the native HTML button element
          */
         "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the trigger button is clicked.
+         */
+        "onCatClick"?: (event: CatMenuItemCustomEvent<MouseEvent>) => void;
         /**
           * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */

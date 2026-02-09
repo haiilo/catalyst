@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Host, Element, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
@@ -86,6 +86,11 @@ export class CatMenuItem {
   @Prop() testId?: string;
 
   /**
+   * Emitted when the trigger button is clicked.
+   */
+  @Event() catClick!: EventEmitter<MouseEvent>;
+
+  /**
    * Programmatically move focus to the menu item.
    */
   @Method()
@@ -104,6 +109,7 @@ export class CatMenuItem {
   render() {
     return (
       <Host>
+        <li>
         <cat-button
           ref={el => (this.button = el)}
           class="cat-nav-item"
@@ -125,10 +131,16 @@ export class CatMenuItem {
             role: 'menuitem',
             tabindex: '-1'
           }}
+          onCatClick={this.onCatClick}
         >
           <slot></slot>
         </cat-button>
+        </li>
       </Host>
     );
+  }
+
+  private onCatClick(event: MouseEvent) {
+    this.catClick.emit(event);
   }
 }
