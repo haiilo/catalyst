@@ -343,7 +343,7 @@ export class CatDropdown {
         // Ensure we flip to the perpendicular axis if it doesn't fit
         // on narrow viewports.
         crossAxis: 'alignment',
-        fallbackAxisSideDirection: 'end',
+        fallbackAxisSideDirection: 'end'
       });
       const shiftMiddleware = shift();
 
