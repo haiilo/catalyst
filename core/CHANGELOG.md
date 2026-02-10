@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.2.0...catalyst-core-v14.3.0) (2026-02-10)
+
+
+### Features
+
+* **core:** configure fallback axis for cat-dropdown ([#919](https://github.com/haiilo/catalyst/issues/919)) ([4ab8876](https://github.com/haiilo/catalyst/commit/4ab8876ad57fb7ec55fc72f425d72f8400dd4f28))
+
 ## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.1.0...catalyst-core-v14.2.0) (2026-01-28)
 
 
