@@ -338,10 +338,25 @@ export class CatDropdown {
               }
             })
           ];
+      const middleware = [offset(CatDropdown.OFFSET)];
+      const flipMiddleware = flip({
+        // Ensure we flip to the perpendicular axis if it doesn't fit
+        // on narrow viewports.
+        crossAxis: 'alignment',
+        fallbackAxisSideDirection: 'end'
+      });
+      const shiftMiddleware = shift();
+
+      // Prioritize flip over shift for edge-aligned placements only.
+      if (this.placement.includes('-')) {
+        middleware.push(flipMiddleware, shiftMiddleware);
+      } else {
+        middleware.push(shiftMiddleware, flipMiddleware);
+      }
       computePosition(anchorElement, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), flip(), shift(), ...resize]
+        middleware: [offset(CatDropdown.OFFSET), ...middleware, ...resize]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {
