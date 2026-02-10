@@ -1062,6 +1062,11 @@ export namespace Components {
      */
     interface CatMenu {
         /**
+          * The arrow key navigation direction for menu items.
+          * @default 'vertical'
+         */
+        "arrowNavigation": 'horizontal' | 'vertical';
+        /**
           * Closes the menu.
          */
         "close": () => Promise<void>;
@@ -3895,6 +3900,11 @@ declare namespace LocalJSX {
      * through trigger-specific props.
      */
     interface CatMenu {
+        /**
+          * The arrow key navigation direction for menu items.
+          * @default 'vertical'
+         */
+        "arrowNavigation"?: 'horizontal' | 'vertical';
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
           * @default false

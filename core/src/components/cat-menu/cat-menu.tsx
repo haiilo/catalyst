@@ -27,6 +27,11 @@ export class CatMenu {
   @Prop() placement: Placement = 'bottom-start';
 
   /**
+   * The arrow key navigation direction for menu items.
+   */
+  @Prop() arrowNavigation: 'horizontal' | 'vertical' = 'vertical';
+
+  /**
    * The trigger button variant.
    */
   @Prop() triggerVariant: 'filled' | 'outlined' | 'text' = 'text';
@@ -144,7 +149,12 @@ export class CatMenu {
 
   @Listen('keydown', { target: 'document' })
   onDocumentKeydown(event: KeyboardEvent): void {
-    if (!this.dropdown?.isOpen || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+    const navigationKeys =
+      this.arrowNavigation === 'horizontal'
+        ? ['ArrowRight', 'ArrowLeft', 'Home', 'End']
+        : ['ArrowDown', 'ArrowUp', 'Home', 'End'];
+
+    if (!this.dropdown?.isOpen || !navigationKeys.includes(event.key)) {
       return;
     }
 
@@ -160,7 +170,8 @@ export class CatMenu {
     } else if (event.key === 'End') {
       targetIdx = targetElements.length - 1;
     } else {
-      const activeOff = event.key === 'ArrowDown' ? 1 : -1;
+      const forwardKey = this.arrowNavigation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
+      const activeOff = event.key === forwardKey ? 1 : -1;
       targetIdx = activeIdx < 0 ? 0 : (activeIdx + activeOff + targetElements.length) % targetElements.length;
     }
 
@@ -248,7 +259,7 @@ export class CatMenu {
           overflow={this.overflow}
           delayedTriggerInit={this.delayedTriggerInit}
           onCatOpen={this.onMenuOpen}
-          onCatClose={event => this.catClose.emit(event.detail)}
+          onCatClose={() => this.catClose.emit()}
         >
           <cat-button
             slot="trigger"
@@ -269,7 +280,7 @@ export class CatMenu {
           >
             {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
           </cat-button>
-          <nav role="menu" slot="content" class="cat-menu-list" aria-orientation="vertical">
+          <nav role="menu" slot="content" class="cat-menu-list" aria-orientation={this.arrowNavigation}>
             <ul>
               <slot></slot>
             </ul>

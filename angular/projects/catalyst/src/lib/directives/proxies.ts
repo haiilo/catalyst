@@ -835,6 +835,7 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   inputs: [
+    'arrowNavigation',
     'delayedTriggerInit',
     'disabled',
     'justify',
@@ -860,6 +861,7 @@ export declare interface CatInput extends Components.CatInput {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'arrowNavigation',
     'delayedTriggerInit',
     'disabled',
     'justify',

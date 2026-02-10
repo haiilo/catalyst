@@ -140,7 +140,7 @@ export class CatMenuItem {
     );
   }
 
-  private onCatClick(event: MouseEvent) {
-    this.catClick.emit(event);
+  private onCatClick(event: CustomEvent<MouseEvent>) {
+    this.catClick.emit(event.detail);
   }
 }
