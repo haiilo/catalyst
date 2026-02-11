@@ -110,31 +110,31 @@ export class CatMenuItem {
     return (
       <Host>
         <li>
-        <cat-button
-          ref={el => (this.button = el)}
-          class="cat-nav-item"
-          buttonId={this.id}
-          part="menu-item"
-          variant={this.variant}
-          icon={this.icon}
-          iconOnly={this.iconOnly}
-          iconRight={this.iconRight}
-          url={this.url}
-          disabled={this.disabled}
-          urlTarget={this.urlTarget}
-          loading={this.loading}
-          color={this.color}
-          active={this.active}
-          testId={this.testId}
-          nativeAttributes={{
-            ...this.nativeAttributes,
-            role: 'menuitem',
-            tabindex: '-1'
-          }}
-          onCatClick={this.onCatClick}
-        >
-          <slot></slot>
-        </cat-button>
+          <cat-button
+            ref={el => (this.button = el)}
+            class="cat-nav-item"
+            buttonId={this.id}
+            part="menu-item"
+            variant={this.variant}
+            icon={this.icon}
+            iconOnly={this.iconOnly}
+            iconRight={this.iconRight}
+            url={this.url}
+            disabled={this.disabled}
+            urlTarget={this.urlTarget}
+            loading={this.loading}
+            color={this.color}
+            active={this.active}
+            testId={this.testId}
+            nativeAttributes={{
+              ...this.nativeAttributes,
+              role: 'menuitem',
+              tabindex: '-1'
+            }}
+            onCatClick={this.onCatClick}
+          >
+            <slot></slot>
+          </cat-button>
         </li>
       </Host>
     );

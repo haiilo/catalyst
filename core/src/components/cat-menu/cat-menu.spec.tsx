@@ -93,9 +93,7 @@ describe('cat-menu', () => {
     it('should use triggerA11yLabel when provided', async () => {
       const page = await newSpecPage({
         components: [CatMenu, CatDropdown, CatButton],
-        template: () => (
-          <cat-menu triggerLabel="Options" triggerA11yLabel="Open options menu"></cat-menu>
-        )
+        template: () => <cat-menu triggerLabel="Options" triggerA11yLabel="Open options menu"></cat-menu>
       });
 
       const trigger = page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
