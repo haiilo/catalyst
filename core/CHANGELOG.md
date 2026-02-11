@@ -1,5 +1,24 @@
 # Changelog
 
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.2.0...catalyst-core-v14.3.0) (2026-02-10)
+
+
+### Features
+
+* **core:** configure fallback axis for cat-dropdown ([#919](https://github.com/haiilo/catalyst/issues/919)) ([4ab8876](https://github.com/haiilo/catalyst/commit/4ab8876ad57fb7ec55fc72f425d72f8400dd4f28))
+
+## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.1.0...catalyst-core-v14.2.0) (2026-01-28)
+
+
+### Features
+
+* **core:** render options subscription in cat-select ([#894](https://github.com/haiilo/catalyst/issues/894)) ([585665d](https://github.com/haiilo/catalyst/commit/585665d1a45f9e48a6ba1000e76eb163ab379dc0))
+
+
+### Bug Fixes
+
+* **angular:** add preserveSymlinks for catalyst demo ([#890](https://github.com/haiilo/catalyst/issues/890)) ([83ac992](https://github.com/haiilo/catalyst/commit/83ac9921ec6169574b6e0d68aaa88928b312ee2c))
+
 ## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.5...catalyst-core-v14.1.0) (2026-01-16)
 
 
