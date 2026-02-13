@@ -1,0 +1,77 @@
+---
+title: Avatar
+status: needs adjustments
+---
+
+Avatars are used to represent a person or object.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-avatar initials="JD"></cat-avatar>
+<cat-avatar src="https://i.pravatar.cc/150?img=3" label="John Doe"></cat-avatar>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Sizes
+
+Use the `size` attribute to control the avatar size.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-avatar size="xs" initials="XS"></cat-avatar>
+<cat-avatar size="s" initials="S"></cat-avatar>
+<cat-avatar size="m" initials="M"></cat-avatar>
+<cat-avatar size="l" initials="L"></cat-avatar>
+<cat-avatar size="xl" initials="XL"></cat-avatar>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Variants
+
+Use the `round` attribute for circular avatars.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-avatar initials="JD"></cat-avatar>
+<cat-avatar round initials="JD"></cat-avatar>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/avatar.md</include>

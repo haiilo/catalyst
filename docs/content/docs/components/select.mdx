@@ -1,0 +1,115 @@
+---
+title: Select
+status: not started
+---
+
+Select lets user choose one option from an options menu.
+Consider using select when you have 6 or more options. Select component supports any content type.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-select label="Choose an option">
+  <cat-option value="1">Option 1</cat-option>
+  <cat-option value="2">Option 2</cat-option>
+  <cat-option value="3">Option 3</cat-option>
+</cat-select>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Placeholder
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-select label="Country" placeholder="Select a country">
+  <cat-option value="de">Germany</cat-option>
+  <cat-option value="us">United States</cat-option>
+  <cat-option value="uk">United Kingdom</cat-option>
+</cat-select>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Multiple Selection
+
+Use the `multiple` attribute to allow selecting multiple options.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-select label="Select tags" multiple>
+  <cat-option value="1">Tag 1</cat-option>
+  <cat-option value="2">Tag 2</cat-option>
+  <cat-option value="3">Tag 3</cat-option>
+</cat-select>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## States
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-select label="Normal">
+  <cat-option value="1">Option 1</cat-option>
+</cat-select>
+<cat-select label="Disabled" disabled>
+  <cat-option value="1">Option 1</cat-option>
+</cat-select>
+<cat-select label="Invalid" invalid>
+  <cat-option value="1">Option 1</cat-option>
+</cat-select>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Always provide a label for the select
+- Use the `required` attribute when selection is mandatory
+- The dropdown is keyboard accessible
+
+## API Reference
+
+<include cwd>generated-api/select.md</include>

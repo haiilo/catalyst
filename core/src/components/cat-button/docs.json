@@ -1,0 +1,976 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button",
+  "filePath": "src/components/cat-button/cat-button.tsx",
+  "fileName": "cat-button.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button/usage",
+  "tag": "cat-button",
+  "readme": " # cat-button\n",
+  "overview": "Buttons are used for interface actions. Primary style should be used only\nonce per view for main call-to-action.",
+  "usage": {},
+  "docs": "Buttons are used for interface actions. Primary style should be used only\nonce per view for main call-to-action.",
+  "docsTags": [
+    {
+      "name": "part",
+      "text": "button - The native anchor or button element."
+    },
+    {
+      "name": "part",
+      "text": "content - The textual content of the button."
+    },
+    {
+      "name": "part",
+      "text": "prefix - The prefix icon."
+    },
+    {
+      "name": "part",
+      "text": "suffix - The suffix icon."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-date",
+    "cat-date-inline",
+    "cat-input",
+    "cat-pagination",
+    "cat-select",
+    "cat-select-demo",
+    "cat-tabs",
+    "cat-tag",
+    "cat-time"
+  ],
+  "dependencies": [
+    "cat-icon",
+    "cat-spinner"
+  ],
+  "dependencyGraph": {
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ],
+    "cat-date": [
+      "cat-button"
+    ],
+    "cat-date-inline": [
+      "cat-button"
+    ],
+    "cat-input": [
+      "cat-button"
+    ],
+    "cat-pagination": [
+      "cat-button"
+    ],
+    "cat-select": [
+      "cat-button"
+    ],
+    "cat-select-demo": [
+      "cat-button"
+    ],
+    "cat-tabs": [
+      "cat-button"
+    ],
+    "cat-tag": [
+      "cat-button"
+    ],
+    "cat-time": [
+      "cat-button"
+    ]
+  },
+  "props": [
+    {
+      "name": "a11yCurrent",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "a11y-current",
+      "reflectToAttr": false,
+      "docs": "Sets the `aria-current` attribute on the button.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "a11yLabel",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "a11y-label",
+      "reflectToAttr": false,
+      "docs": "Adds accessible label for the button that is only shown for screen\nreaders. Typically, this label text replaces the visible text on the\nbutton for users who use assistive technology.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "active",
+      "reflectToAttr": false,
+      "docs": "Set the button into an active state.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "buttonGroupPosition",
+      "type": "\"first\" | \"last\" | \"middle\" | undefined",
+      "complexType": {
+        "original": "'first' | 'last' | 'middle'",
+        "resolved": "\"first\" | \"last\" | \"middle\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "button-group-position",
+      "reflectToAttr": false,
+      "docs": "The index of a button that is used inside a cat-button-group component",
+      "docsTags": [],
+      "values": [
+        {
+          "value": "first",
+          "type": "string"
+        },
+        {
+          "value": "last",
+          "type": "string"
+        },
+        {
+          "value": "middle",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "buttonId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "button-id",
+      "reflectToAttr": false,
+      "docs": "Adds a unique identifier for the button. Please note that with this\nparticular component this ID is added inside the web component. If you need\nan ID on the HTML element, use the regular `id` attribute instead.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "color",
+      "type": "\"danger\" | \"info\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+      "complexType": {
+        "original": "'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'",
+        "resolved": "\"danger\" | \"info\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "color",
+      "reflectToAttr": false,
+      "docs": "The color palette of the button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'secondary'"
+        }
+      ],
+      "default": "'secondary'",
+      "values": [
+        {
+          "value": "danger",
+          "type": "string"
+        },
+        {
+          "value": "info",
+          "type": "string"
+        },
+        {
+          "value": "primary",
+          "type": "string"
+        },
+        {
+          "value": "secondary",
+          "type": "string"
+        },
+        {
+          "value": "success",
+          "type": "string"
+        },
+        {
+          "value": "warning",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Specifies that the button should be disabled. A disabled button is unusable\nand un-clickable. Corresponds with the native HTML disabled attribute.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "The name of an icon to be displayed in the button.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+      "complexType": {
+        "original": "boolean | Breakpoint",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+        "references": {
+          "Breakpoint": {
+            "location": "import",
+            "path": "../../utils/breakpoints",
+            "id": "src/utils/breakpoints.ts::Breakpoint"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "icon-only",
+      "reflectToAttr": false,
+      "docs": "Hide the actual button content and only display the icon.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconRight",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-right",
+      "reflectToAttr": false,
+      "docs": "Display the icon on the right.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "loading",
+      "reflectToAttr": false,
+      "docs": "Displays the button in a loading state with a spinner. Just like a disabled\nbutton, an inactive button is unusable and un-clickable. However, it\nretains the current focus state.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the button, which gets paired with the button's value when\nsubmitted as part of a form. Corresponds with the native HTML name\nattribute.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML button element",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeContentAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML button content element",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noEllipsis",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-ellipsis",
+      "reflectToAttr": false,
+      "docs": "Disables ellipse overflowing button content.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "round",
+      "reflectToAttr": false,
+      "docs": "Use round button edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl'",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "submit",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "submit",
+      "reflectToAttr": false,
+      "docs": "Allows the button to submit a form.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "url",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url",
+      "reflectToAttr": false,
+      "docs": "A destination to link to, rendered in the href attribute of a link.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "urlTarget",
+      "type": "\"_blank\" | \"_self\" | undefined",
+      "complexType": {
+        "original": "'_blank' | '_self'",
+        "resolved": "\"_blank\" | \"_self\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url-target",
+      "reflectToAttr": false,
+      "docs": "Specifies where to open the linked document.",
+      "docsTags": [],
+      "values": [
+        {
+          "value": "_blank",
+          "type": "string"
+        },
+        {
+          "value": "_self",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The value of the button, which gets paired with the button's name when\nsubmitted as part of a form. Corresponds with the native HTML value\nattribute.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "variant",
+      "type": "\"filled\" | \"link\" | \"outlined\" | \"text\"",
+      "complexType": {
+        "original": "'filled' | 'outlined' | 'text' | 'link'",
+        "resolved": "\"filled\" | \"link\" | \"outlined\" | \"text\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "variant",
+      "reflectToAttr": false,
+      "docs": "The rendering style of the button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'outlined'"
+        }
+      ],
+      "default": "'outlined'",
+      "values": [
+        {
+          "value": "filled",
+          "type": "string"
+        },
+        {
+          "value": "link",
+          "type": "string"
+        },
+        {
+          "value": "outlined",
+          "type": "string"
+        },
+        {
+          "value": "text",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the button. Use this method instead of\n`button.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doClick",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doClick() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically simulate a click on the button.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the button. Use this method instead of\n`button.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the button loses focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catClick",
+      "detail": "MouseEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "MouseEvent",
+        "resolved": "MouseEvent",
+        "references": {
+          "MouseEvent": {
+            "location": "global",
+            "id": "global::MouseEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the button is clicked.",
+      "docsTags": []
+    },
+    {
+      "event": "catFocus",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the button received focus.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [
+    {
+      "name": "button",
+      "docs": "The native anchor or button element."
+    },
+    {
+      "name": "content",
+      "docs": "The textual content of the button."
+    },
+    {
+      "name": "prefix",
+      "docs": "The prefix icon."
+    },
+    {
+      "name": "suffix",
+      "docs": "The suffix icon."
+    }
+  ],
+  "listeners": [
+    {
+      "event": "click",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

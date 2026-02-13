@@ -1,0 +1,162 @@
+---
+title: Spacing
+description: Margin and padding utility classes
+status: ready
+---
+
+Spacing utilities provide classes for applying consistent margins and padding based on the design token spacing scale.
+
+## Spacing Scale
+
+Values correspond to the `size.spacing` design tokens:
+
+| Size | Token |
+|------|-------|
+| `0` | 0 |
+| `xs` | Extra small |
+| `s` | Small |
+| `m` | Medium |
+| `l` | Large |
+| `xl` | Extra large |
+| `2xl` | 2x extra large |
+| `3xl` | 3x extra large |
+| `auto` | auto (margin only) |
+
+## Margin
+
+### All Sides
+
+| Class | Description |
+|-------|-------------|
+| `cat-m-0` | No margin |
+| `cat-m-xs` | Extra small margin |
+| `cat-m-s` | Small margin |
+| `cat-m-m` | Medium margin |
+| `cat-m-l` | Large margin |
+| `cat-m-xl` | Extra large margin |
+| `cat-m-2xl` | 2x extra large margin |
+| `cat-m-3xl` | 3x extra large margin |
+| `cat-m-auto` | Auto margin |
+
+### Vertical (Top & Bottom)
+
+| Class | Description |
+|-------|-------------|
+| `cat-mv-{size}` | Vertical margin |
+
+### Horizontal (Left & Right)
+
+| Class | Description |
+|-------|-------------|
+| `cat-mh-{size}` | Horizontal margin |
+
+### Individual Sides
+
+| Class | Description |
+|-------|-------------|
+| `cat-mt-{size}` | Margin top |
+| `cat-mb-{size}` | Margin bottom |
+| `cat-ml-{size}` | Margin left |
+| `cat-mr-{size}` | Margin right |
+
+## Padding
+
+### All Sides
+
+| Class | Description |
+|-------|-------------|
+| `cat-p-0` | No padding |
+| `cat-p-xs` | Extra small padding |
+| `cat-p-s` | Small padding |
+| `cat-p-m` | Medium padding |
+| `cat-p-l` | Large padding |
+| `cat-p-xl` | Extra large padding |
+| `cat-p-2xl` | 2x extra large padding |
+| `cat-p-3xl` | 3x extra large padding |
+
+### Vertical (Top & Bottom)
+
+| Class | Description |
+|-------|-------------|
+| `cat-pv-{size}` | Vertical padding |
+
+### Horizontal (Left & Right)
+
+| Class | Description |
+|-------|-------------|
+| `cat-ph-{size}` | Horizontal padding |
+
+### Individual Sides
+
+| Class | Description |
+|-------|-------------|
+| `cat-pt-{size}` | Padding top |
+| `cat-pb-{size}` | Padding bottom |
+| `cat-pl-{size}` | Padding left |
+| `cat-pr-{size}` | Padding right |
+
+## Examples
+
+### Card with Padding
+
+```html
+<div class="cat-p-l cat-border cat-radius-m">
+  Card content with large padding on all sides.
+</div>
+```
+
+### Centered Block
+
+```html
+<div class="cat-mh-auto" style="max-width: 600px;">
+  Horizontally centered content using auto margins.
+</div>
+```
+
+### Spaced List Items
+
+```html
+<ul class="cat-m-0 cat-p-0">
+  <li class="cat-mb-s">Item 1</li>
+  <li class="cat-mb-s">Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+
+### Section Spacing
+
+```html
+<section class="cat-pv-xl cat-ph-m">
+  <h2 class="cat-mb-m">Section Title</h2>
+  <p class="cat-mb-l">Section content.</p>
+</section>
+```
+
+### Reset Default Spacing
+
+```html
+<ul class="cat-m-0 cat-p-0">
+  <!-- List without default browser margins/padding -->
+</ul>
+```
+
+### Asymmetric Padding
+
+```html
+<div class="cat-pt-xl cat-pb-m cat-ph-l">
+  More padding on top than bottom.
+</div>
+```
+
+## Combining with Layout
+
+Spacing utilities work well with layout utilities:
+
+```html
+<div class="cat-flex-row cat-gap-m cat-p-l">
+  <div class="cat-flex-1">Item 1</div>
+  <div class="cat-flex-1">Item 2</div>
+</div>
+```
+
+Note: When using flexbox or grid, prefer `cat-gap-*` utilities over margins for spacing between items.

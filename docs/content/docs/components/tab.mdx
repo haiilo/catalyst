@@ -1,0 +1,77 @@
+---
+title: Tab
+status: not started
+---
+
+A single tab inside a tabs component.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tabs>
+  <cat-tab label="Tab 1">Content for tab 1</cat-tab>
+  <cat-tab label="Tab 2">Content for tab 2</cat-tab>
+  <cat-tab label="Tab 3">Content for tab 3</cat-tab>
+</cat-tabs>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Icons
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tabs>
+  <cat-tab label="Home" icon="$cat:home">Home content</cat-tab>
+  <cat-tab label="Settings" icon="$cat:settings">Settings content</cat-tab>
+</cat-tabs>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Disabled Tab
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tabs>
+  <cat-tab label="Active">Active tab content</cat-tab>
+  <cat-tab label="Disabled" disabled>Disabled tab content</cat-tab>
+</cat-tabs>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/tab.md</include>

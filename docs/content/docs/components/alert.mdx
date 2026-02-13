@@ -1,0 +1,107 @@
+---
+title: Alert
+status: ready
+---
+
+Informs users about important changes or conditions in the interface. Use this
+component if you need to capture the user's attention in a prominent way.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-alert>
+  <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+</cat-alert>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Colors
+
+Use the `color` attribute to set a theme color for the alert, each serving its own semantic purpose. These colors include: primary (default), secondary, danger, warning, success, and info.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-alert color="primary">
+  <p>Primary alert message.</p>
+</cat-alert>
+<cat-alert color="secondary">
+  <p>Secondary alert message.</p>
+</cat-alert>
+<cat-alert color="danger">
+  <p>Danger alert message.</p>
+</cat-alert>
+<cat-alert color="success">
+  <p>Success alert message.</p>
+</cat-alert>
+<cat-alert color="warning">
+  <p>Warning alert message.</p>
+</cat-alert>
+<cat-alert color="info">
+  <p>Info alert message.</p>
+</cat-alert>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+  previewHeight={400}
+/>
+
+## Icons
+
+Every alert comes with a default icon that aligns with the color of the alert. To customize the icon, use the `icon` and `noIcon` attributes.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-alert icon="sparkle-filled">
+  <p>Custom icon alert.</p>
+</cat-alert>
+<cat-alert no-icon>
+  <p>Alert without icon.</p>
+</cat-alert>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+This component aims to meet the WCAG 2.1 AA accessibility guidelines.
+
+- Danger and warning alerts have a `role="alert"` definition that makes sure assistive technologies announce them when they appear.
+- Default, secondary, info and success alert variations have a `role="status"` definition. This makes sure they're being read after danger and warning alerts.
+- Alerts additionally use `tabindex="0"` to make it possible to access them using the tab key or programmatically move focus to them.
+
+## API Reference
+
+<include cwd>generated-api/alert.md</include>

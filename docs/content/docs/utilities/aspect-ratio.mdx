@@ -1,0 +1,78 @@
+---
+title: Aspect Ratio
+description: Maintain consistent aspect ratios for media containers
+status: ready
+---
+
+Aspect ratio utilities help maintain consistent proportions for images, videos, and other media containers. They use the CSS `aspect-ratio` property with absolute positioning for child elements.
+
+## Basic Usage
+
+Apply the base `cat-ratio` class along with a ratio modifier to create a container with a fixed aspect ratio:
+
+```html
+<div class="cat-ratio cat-ratio-16x9">
+  <img src="image.jpg" alt="Example" />
+</div>
+```
+
+## Available Ratios
+
+| Class | Aspect Ratio | Use Case |
+|-------|--------------|----------|
+| `cat-ratio-1x1` | 1:1 | Square thumbnails, avatars |
+| `cat-ratio-3x1` | 3:1 | Wide banners |
+| `cat-ratio-6x1` | 6:1 | Ultra-wide banners |
+| `cat-ratio-4x3` | 4:3 | Traditional photo format |
+| `cat-ratio-16x9` | 16:9 | Video content, widescreen |
+| `cat-ratio-21x9` | 21:9 | Cinematic format |
+
+## Custom Aspect Ratio
+
+You can set a custom aspect ratio using the `--cat-aspect-ratio` CSS custom property:
+
+```html
+<div class="cat-ratio" style="--cat-aspect-ratio: 2.35;">
+  <video src="video.mp4"></video>
+</div>
+```
+
+## Examples
+
+### Image Gallery
+
+```html
+<div class="cat-flex-row cat-gap-m">
+  <div class="cat-ratio cat-ratio-1x1 cat-flex-1">
+    <img src="square.jpg" alt="Square image" />
+  </div>
+  <div class="cat-ratio cat-ratio-16x9 cat-flex-1">
+    <img src="wide.jpg" alt="Wide image" />
+  </div>
+</div>
+```
+
+### Video Embed
+
+```html
+<div class="cat-ratio cat-ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/..." allowfullscreen></iframe>
+</div>
+```
+
+## SCSS Mixin
+
+For custom implementations, use the `cat-ratio` mixin:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/ratio.mixins' as *;
+
+.custom-ratio {
+  @include cat-ratio(calc(16 / 9));
+}
+```
+
+The mixin applies:
+- `position: relative` to the container
+- `aspect-ratio` property with the specified ratio
+- Absolute positioning for direct children to fill the container

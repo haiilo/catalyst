@@ -1,0 +1,102 @@
+---
+title: Border
+description: Border radius and border style utility classes
+status: ready
+---
+
+Border utilities provide classes for controlling border radius and border styles. They use design tokens to ensure consistency with the design system.
+
+## Border Radius
+
+Border radius utilities control the roundness of element corners.
+
+### Radius Scale
+
+| Class | Description |
+|-------|-------------|
+| `cat-radius-0` | No border radius (sharp corners) |
+| `cat-radius-xs` | Extra small radius |
+| `cat-radius-s` | Small radius |
+| `cat-radius-m` | Medium radius |
+| `cat-radius-l` | Large radius |
+| `cat-radius-full` | Fully rounded (pill shape) |
+
+### Examples
+
+```html
+<div class="cat-radius-0">Sharp corners</div>
+<div class="cat-radius-s">Slightly rounded</div>
+<div class="cat-radius-m">Medium rounded</div>
+<div class="cat-radius-full">Pill shape</div>
+```
+
+## Border Styles
+
+Border style utilities add borders with predefined colors from the design tokens.
+
+### Full Border
+
+| Class | Description |
+|-------|-------------|
+| `cat-border` | Default border (1px solid) |
+| `cat-border-light` | Light border color |
+| `cat-border-dark` | Dark border color |
+| `cat-border-none` | Remove border |
+
+### Directional Borders
+
+Apply borders to specific sides:
+
+| Class | Description |
+|-------|-------------|
+| `cat-border-top` | Top border only |
+| `cat-border-right` | Right border only |
+| `cat-border-bottom` | Bottom border only |
+| `cat-border-left` | Left border only |
+
+Each directional border also supports `-light` and `-dark` variants:
+
+```html
+<div class="cat-border-bottom">Default bottom border</div>
+<div class="cat-border-bottom-light">Light bottom border</div>
+<div class="cat-border-bottom-dark">Dark bottom border</div>
+```
+
+## Examples
+
+### Card with Border
+
+```html
+<div class="cat-border cat-radius-m cat-p-l">
+  <h3>Card Title</h3>
+  <p>Card content goes here.</p>
+</div>
+```
+
+### List with Dividers
+
+```html
+<ul class="cat-m-0 cat-p-0">
+  <li class="cat-border-bottom cat-p-m">Item 1</li>
+  <li class="cat-border-bottom cat-p-m">Item 2</li>
+  <li class="cat-p-m">Item 3</li>
+</ul>
+```
+
+### Avatar with Pill Shape
+
+```html
+<img src="avatar.jpg" class="cat-radius-full" alt="User avatar" />
+```
+
+## SCSS Function
+
+For custom implementations, use the `cat-border-radius` function:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/border.mixins' as *;
+
+.custom-element {
+  border-radius: cat-border-radius('m');
+}
+```

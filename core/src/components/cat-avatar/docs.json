@@ -1,0 +1,296 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-avatar",
+  "filePath": "src/components/cat-avatar/cat-avatar.tsx",
+  "fileName": "cat-avatar.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-avatar/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-avatar/usage",
+  "tag": "cat-avatar",
+  "readme": "# cat-avatar\n\n\n",
+  "overview": "Avatars are used to represent a person or object.",
+  "usage": {},
+  "docs": "Avatars are used to represent a person or object.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-select"
+  ],
+  "dependencies": [
+    "cat-icon"
+  ],
+  "dependencyGraph": {
+    "cat-avatar": [
+      "cat-icon"
+    ],
+    "cat-select": [
+      "cat-avatar"
+    ]
+  },
+  "props": [
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "An icon to be used instead of the initials.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "initials",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "initials",
+      "reflectToAttr": false,
+      "docs": "Custom initials for the avatar.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "The label of the avatar.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "round",
+      "reflectToAttr": false,
+      "docs": "Use round avatar edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl'",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the avatar.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "src",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "src",
+      "reflectToAttr": false,
+      "docs": "An optional avatar image.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "url",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url",
+      "reflectToAttr": false,
+      "docs": "A destination to link to, rendered in the href attribute of a link.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "urlTarget",
+      "type": "\"_blank\" | \"_self\" | undefined",
+      "complexType": {
+        "original": "'_blank' | '_self'",
+        "resolved": "\"_blank\" | \"_self\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url-target",
+      "reflectToAttr": false,
+      "docs": "Specifies where to open the linked document.",
+      "docsTags": [],
+      "values": [
+        {
+          "value": "_blank",
+          "type": "string"
+        },
+        {
+          "value": "_self",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [
+    {
+      "name": "--cat-avatar-bg",
+      "annotation": "prop",
+      "docs": "The background color of the avatar."
+    },
+    {
+      "name": "--cat-avatar-fill",
+      "annotation": "prop",
+      "docs": "The text color of the avatar."
+    },
+    {
+      "name": "--cat-avatar-font-size",
+      "annotation": "prop",
+      "docs": "The font size of the avatar."
+    },
+    {
+      "name": "--cat-avatar-size",
+      "annotation": "prop",
+      "docs": "The size of the avatar."
+    }
+  ],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

@@ -1,0 +1,55 @@
+---
+title: Form Group
+status: not started
+---
+
+A form group component to group form fields and labels.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-form-group label="Personal Information">
+  <cat-input label="First Name"></cat-input>
+  <cat-input label="Last Name"></cat-input>
+</cat-form-group>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Horizontal Layout
+
+Use the `horizontal` attribute for side-by-side layout.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-form-group label="Settings" horizontal>
+  <cat-checkbox label="Enable feature"></cat-checkbox>
+</cat-form-group>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/form-group.md</include>

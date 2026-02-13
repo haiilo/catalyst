@@ -1,0 +1,79 @@
+---
+title: Icon
+status: not started
+---
+
+Icons are used to provide additional meaning or in places where text label
+doesn't fit.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-icon icon="$cat:home"></cat-icon>
+<cat-icon icon="$cat:settings"></cat-icon>
+<cat-icon icon="$cat:user"></cat-icon>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Sizes
+
+Use the `size` attribute to control the icon size.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-icon icon="$cat:home" size="xs"></cat-icon>
+<cat-icon icon="$cat:home" size="s"></cat-icon>
+<cat-icon icon="$cat:home" size="m"></cat-icon>
+<cat-icon icon="$cat:home" size="l"></cat-icon>
+<cat-icon icon="$cat:home" size="xl"></cat-icon>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- When icons are decorative, they are hidden from assistive technologies
+- When icons convey meaning, provide an accessible label using `a11y-label`
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-icon icon="$cat:warning" a11y-label="Warning"></cat-icon>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/icon.md</include>

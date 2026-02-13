@@ -1,0 +1,324 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tooltip",
+  "filePath": "src/components/cat-tooltip/cat-tooltip.tsx",
+  "fileName": "cat-tooltip.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tooltip/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tooltip/usage",
+  "tag": "cat-tooltip",
+  "readme": "# cat-tooltip\n\n\n",
+  "overview": "Tooltips display additional information when the user hovers over or\ninteracts with a trigger element. The tooltip can be customized with\ndifferent placements, sizes, and styles.",
+  "usage": {},
+  "docs": "Tooltips display additional information when the user hovers over or\ninteracts with a trigger element. The tooltip can be customized with\ndifferent placements, sizes, and styles.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [
+    {
+      "name": "content",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "content",
+      "reflectToAttr": false,
+      "docs": "The content of the tooltip.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Specifies that the tooltip should be disabled. A disabled tooltip is unusable,\nand invisible. Corresponds with the native HTML disabled attribute.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hideDelay",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hide-delay",
+      "reflectToAttr": false,
+      "docs": "The delay time for hiding tooltip in ms.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "longTouchDuration",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "long-touch-duration",
+      "reflectToAttr": false,
+      "docs": "The duration of tap to show the tooltip.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "1000"
+        }
+      ],
+      "default": "1000",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placement",
+      "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+      "complexType": {
+        "original": "TooltipPlacement",
+        "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+        "references": {
+          "TooltipPlacement": {
+            "location": "local",
+            "path": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tooltip/cat-tooltip.tsx",
+            "id": "src/components/cat-tooltip/cat-tooltip.tsx::TooltipPlacement"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "placement",
+      "reflectToAttr": false,
+      "docs": "The placement of the tooltip.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'top'"
+        }
+      ],
+      "default": "'top'",
+      "values": [
+        {
+          "value": "bottom",
+          "type": "string"
+        },
+        {
+          "value": "bottom-end",
+          "type": "string"
+        },
+        {
+          "value": "bottom-start",
+          "type": "string"
+        },
+        {
+          "value": "left",
+          "type": "string"
+        },
+        {
+          "value": "left-end",
+          "type": "string"
+        },
+        {
+          "value": "left-start",
+          "type": "string"
+        },
+        {
+          "value": "right",
+          "type": "string"
+        },
+        {
+          "value": "right-end",
+          "type": "string"
+        },
+        {
+          "value": "right-start",
+          "type": "string"
+        },
+        {
+          "value": "top",
+          "type": "string"
+        },
+        {
+          "value": "top-end",
+          "type": "string"
+        },
+        {
+          "value": "top-start",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "round",
+      "reflectToAttr": false,
+      "docs": "Use round tooltip edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "showDelay",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "show-delay",
+      "reflectToAttr": false,
+      "docs": "The delay time for showing tooltip in ms.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "250"
+        }
+      ],
+      "default": "250",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\"",
+      "complexType": {
+        "original": "'s' | 'm' | 'l'",
+        "resolved": "\"l\" | \"m\" | \"s\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the tooltip.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": [
+    {
+      "event": "keydown",
+      "target": "window",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

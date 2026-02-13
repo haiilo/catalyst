@@ -1,0 +1,37 @@
+---
+title: What are tokens?
+description: Introduction to design tokens in the Catalyst design system
+---
+
+Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
+
+## Why use tokens?
+
+- **Consistency**: Tokens ensure visual consistency across all components and applications
+- **Maintainability**: Change a token value once, and it updates everywhere
+- **Theming**: Tokens make it easy to support multiple themes (light/dark, brand variations)
+- **Communication**: Tokens provide a shared language between designers and developers
+
+## Token categories
+
+Catalyst includes the following token categories:
+
+- **Color**: Base palette, UI colors, and theme colors
+- **Size**: Spacing, border radius, font sizes, breakpoints, and modal widths
+- **Font**: Font families, weights, and text decorations
+- **Opacity**: Opacity values for various UI states
+- **Time**: Transition durations and delays
+
+## Using tokens
+
+Tokens are available as CSS custom properties (variables) that you can use directly in your stylesheets:
+
+```css
+.my-element {
+  background-color: var(--cat-bg);
+  padding: var(--cat-spacing-m);
+  border-radius: var(--cat-border-radius-m);
+}
+```
+
+See the [Development](/docs/tokens/development) page for more details on how to use tokens in your projects.

@@ -1,9 +1,25 @@
 import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
+import { JsonDocs } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { existsSync } from 'fs';
+import { existsSync, writeFileSync } from 'fs';
+import { join } from 'path';
 import { inlineSvg } from 'stencil-inline-svg';
+
+/**
+ * Custom docs generator that writes a docs.json file per component
+ * into their respective component directories.
+ */
+function generatePerComponentDocs(docs: JsonDocs) {
+  docs.components.forEach(component => {
+    const componentDir = component.dirPath;
+    if (componentDir) {
+      const docsPath = join(componentDir, 'docs.json');
+      writeFileSync(docsPath, JSON.stringify(component, null, 2));
+    }
+  });
+}
 
 function getAssetsTokensPath() {
   const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/dist/assets';
@@ -85,6 +101,15 @@ export const config: Config = {
       strict: true
     },
     {
+      type: 'docs-json',
+      file: 'dist/docs.json'
+    },
+    {
+      type: 'docs-custom',
+      generator: generatePerComponentDocs,
+      strict: true
+    },
+    {
       type: 'www',
       serviceWorker: null, // disable service workers
       copy: [
@@ -111,7 +136,7 @@ export const config: Config = {
   ],
   testing: {
     setupFiles: ['./setupTests.js'],
-    browserHeadless: 'new',
+    browserHeadless: true,
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     transform: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'

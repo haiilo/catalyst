@@ -1,0 +1,79 @@
+---
+title: Tag
+status: not started
+---
+
+An input that allows multiple values to be entered as tags.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tag label="Tags"></cat-tag>
+<cat-tag label="Skills" value='["JavaScript", "TypeScript"]'></cat-tag>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Suggestions
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tag 
+  label="Programming Languages"
+  suggestions='["JavaScript", "TypeScript", "Python", "Rust"]'
+></cat-tag>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## States
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tag label="Normal"></cat-tag>
+<cat-tag label="Disabled" disabled></cat-tag>
+<cat-tag label="Invalid" invalid></cat-tag>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Tags can be removed with keyboard
+- Use clear labels for the tag input
+- Provide feedback when tags are added or removed
+
+## API Reference
+
+<include cwd>generated-api/tag.md</include>

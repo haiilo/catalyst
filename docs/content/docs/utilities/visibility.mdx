@@ -1,0 +1,148 @@
+---
+title: Visibility
+description: Visually hidden utilities for accessibility
+status: ready
+---
+
+Visibility utilities help create accessible interfaces by hiding content visually while keeping it available to screen readers and other assistive technologies.
+
+## Visually Hidden
+
+The `cat-visually-hidden` class hides content visually but keeps it accessible to screen readers. This is essential for providing context to assistive technology users.
+
+| Class | Description |
+|-------|-------------|
+| `cat-visually-hidden` | Hide visually, keep accessible |
+| `cat-visually-hidden-focusable` | Hidden until focused |
+| `cat-visually-hidden-hoverable` | Hidden until parent is hovered |
+
+## Use Cases
+
+### Screen Reader Only Text
+
+Provide additional context for screen reader users:
+
+```html
+<button>
+  <cat-icon icon="close"></cat-icon>
+  <span class="cat-visually-hidden">Close dialog</span>
+</button>
+```
+
+### Skip Links
+
+Create skip links that appear only when focused:
+
+```html
+<a href="#main-content" class="cat-visually-hidden-focusable">
+  Skip to main content
+</a>
+```
+
+### Hidden Labels
+
+Provide form labels without visual display:
+
+```html
+<label class="cat-visually-hidden" for="search">Search</label>
+<input type="search" id="search" placeholder="Search..." />
+```
+
+## Focusable Variant
+
+The `cat-visually-hidden-focusable` class keeps content hidden until it receives focus. This is perfect for skip links and other keyboard-accessible shortcuts.
+
+```html
+<nav>
+  <a href="#main" class="cat-visually-hidden-focusable">Skip to main content</a>
+  <a href="#nav" class="cat-visually-hidden-focusable">Skip to navigation</a>
+  <!-- Regular navigation links -->
+</nav>
+```
+
+When users tab through the page, these links become visible and can be activated.
+
+## Hoverable Variant
+
+The `cat-visually-hidden-hoverable` class shows content when the parent element is hovered or focused. Useful for progressive disclosure of additional information.
+
+```html
+<div class="cat-flex-row cat-items-center cat-gap-s">
+  <span>Item name</span>
+  <button class="cat-visually-hidden-hoverable">
+    <cat-icon icon="edit"></cat-icon>
+  </button>
+</div>
+```
+
+The edit button appears only when hovering over the row.
+
+## Examples
+
+### Accessible Icon Button
+
+```html
+<button class="cat-p-s cat-radius-m">
+  <cat-icon icon="settings"></cat-icon>
+  <span class="cat-visually-hidden">Open settings</span>
+</button>
+```
+
+### Table with Hidden Headers
+
+For responsive tables where column headers are hidden on mobile:
+
+```html
+<table>
+  <thead class="cat-visually-hidden">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table rows -->
+  </tbody>
+</table>
+```
+
+### Action Buttons on Hover
+
+```html
+<li class="cat-flex-row cat-justify-between cat-items-center cat-p-m">
+  <span>List item text</span>
+  <div class="cat-visually-hidden-hoverable cat-flex-row cat-gap-xs">
+    <button><cat-icon icon="edit"></cat-icon></button>
+    <button><cat-icon icon="delete"></cat-icon></button>
+  </div>
+</li>
+```
+
+## SCSS Mixins
+
+For custom implementations, use the visibility mixins:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/visibility.mixins' as *;
+
+.sr-only {
+  @include cat-visually-hidden;
+}
+
+.sr-only-focusable {
+  @include cat-visually-hidden-focusable;
+}
+
+// With a specific container selector
+.list-item-actions {
+  @include cat-visually-hidden-hoverable('.list-item');
+}
+```
+
+## Accessibility Notes
+
+- Always provide text alternatives for icon-only buttons using `cat-visually-hidden`
+- Use `cat-visually-hidden-focusable` for skip links at the beginning of the page
+- Never use `display: none` or `visibility: hidden` for content that should be accessible to screen readers
+- The visually hidden technique maintains the element in the accessibility tree while removing it from visual layout

@@ -1,0 +1,187 @@
+---
+title: Layout
+description: Flexbox, grid, gap, and alignment utilities
+status: ready
+---
+
+Layout utilities provide comprehensive control over element positioning using flexbox and CSS grid. They enable rapid construction of complex layouts without custom CSS.
+
+## Flexbox Direction
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-flex-row` | `display: flex; flex-direction: row` |
+| `cat-flex-row-rev` | `display: flex; flex-direction: row-reverse` |
+| `cat-flex-col` | `display: flex; flex-direction: column` |
+| `cat-flex-col-rev` | `display: flex; flex-direction: column-reverse` |
+
+## Flex Properties
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-flex-1` | `flex: 1 1 0%` (grow and shrink equally) |
+| `cat-flex-auto` | `flex: 1 1 auto` (grow based on content) |
+| `cat-flex-init` | `flex: 0 1 auto` (don't grow, can shrink) |
+| `cat-flex-none` | `flex: none` (don't grow or shrink) |
+
+## Flex Wrap
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-flex-wrap` | `flex-wrap: wrap` |
+| `cat-flex-nowrap` | `flex-wrap: nowrap` |
+
+## Gap
+
+Gap utilities control spacing between flex/grid items. Values correspond to the spacing token scale.
+
+| Class | Description |
+|-------|-------------|
+| `cat-gap-xs` | Extra small gap |
+| `cat-gap-s` | Small gap |
+| `cat-gap-m` | Medium gap |
+| `cat-gap-l` | Large gap |
+| `cat-gap-xl` | Extra large gap |
+| `cat-gap-2xl` | 2x extra large gap |
+| `cat-gap-3xl` | 3x extra large gap |
+
+### Directional Gap
+
+| Class | Description |
+|-------|-------------|
+| `cat-gap-x-{size}` | Horizontal (column) gap only |
+| `cat-gap-y-{size}` | Vertical (row) gap only |
+
+## Alignment
+
+### Justify Content
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-justify-start` | `justify-content: flex-start` |
+| `cat-justify-end` | `justify-content: flex-end` |
+| `cat-justify-center` | `justify-content: center` |
+| `cat-justify-between` | `justify-content: space-between` |
+
+### Justify Items
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-justify-items-start` | `justify-items: flex-start` |
+| `cat-justify-items-end` | `justify-items: flex-end` |
+| `cat-justify-items-center` | `justify-items: center` |
+| `cat-justify-items-stretch` | `justify-items: stretch` |
+
+### Align Content
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-content-start` | `align-content: flex-start` |
+| `cat-content-end` | `align-content: flex-end` |
+| `cat-content-center` | `align-content: center` |
+| `cat-content-between` | `align-content: space-between` |
+
+### Align Items
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-items-start` | `align-items: flex-start` |
+| `cat-items-end` | `align-items: flex-end` |
+| `cat-items-center` | `align-items: center` |
+| `cat-items-stretch` | `align-items: stretch` |
+
+## CSS Grid
+
+### Grid Template Columns
+
+| Class | Description |
+|-------|-------------|
+| `cat-grid-1` | 1 column |
+| `cat-grid-2` | 2 equal columns |
+| `cat-grid-3` | 3 equal columns |
+| ... | ... |
+| `cat-grid-12` | 12 equal columns |
+
+### Grid Column Span
+
+| Class | Description |
+|-------|-------------|
+| `cat-grid-col-1` | Span 1 column |
+| `cat-grid-col-2` | Span 2 columns |
+| ... | ... |
+| `cat-grid-col-12` | Span 12 columns |
+
+### Grid Row Span
+
+| Class | Description |
+|-------|-------------|
+| `cat-grid-row-1` | Span 1 row |
+| `cat-grid-row-2` | Span 2 rows |
+| ... | ... |
+| `cat-grid-row-6` | Span 6 rows |
+
+### Auto-fit Grid
+
+Create responsive grids that automatically adjust columns:
+
+```html
+<div class="cat-grid cat-grid-auto cat-gap-m" style="--grid-min: 200px;">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+## Examples
+
+### Horizontal Navigation
+
+```html
+<nav class="cat-flex-row cat-gap-m cat-items-center">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</nav>
+```
+
+### Card Layout
+
+```html
+<div class="cat-flex-row cat-gap-l cat-flex-wrap">
+  <div class="cat-flex-1">Card 1</div>
+  <div class="cat-flex-1">Card 2</div>
+  <div class="cat-flex-1">Card 3</div>
+</div>
+```
+
+### Centered Content
+
+```html
+<div class="cat-flex-row cat-justify-center cat-items-center" style="height: 200px;">
+  <span>Centered content</span>
+</div>
+```
+
+### Grid Dashboard
+
+```html
+<div class="cat-grid cat-grid-4 cat-gap-m">
+  <div class="cat-grid-col-2">Wide widget</div>
+  <div>Widget</div>
+  <div>Widget</div>
+  <div class="cat-grid-col-4">Full-width widget</div>
+</div>
+```
+
+### Responsive Sidebar Layout
+
+```html
+<div class="cat-flex-col cat-flex-row:l cat-gap-l">
+  <aside class="cat-flex-none" style="width: 250px;">
+    Sidebar
+  </aside>
+  <main class="cat-flex-1">
+    Main content
+  </main>
+</div>
+```

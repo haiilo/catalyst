@@ -1,0 +1,144 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-spinner",
+  "filePath": "src/components/cat-spinner/cat-spinner.tsx",
+  "fileName": "cat-spinner.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-spinner/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-spinner/usage",
+  "tag": "cat-spinner",
+  "readme": "# cat-spinner\n",
+  "overview": "Spinners are used to indicate users that their action is being processed.",
+  "usage": {},
+  "docs": "Spinners are used to indicate users that their action is being processed.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-button",
+    "cat-input",
+    "cat-select"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-button": [
+      "cat-spinner"
+    ],
+    "cat-input": [
+      "cat-spinner"
+    ],
+    "cat-select": [
+      "cat-spinner"
+    ]
+  },
+  "props": [
+    {
+      "name": "a11yLabel",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "a11y-label",
+      "reflectToAttr": false,
+      "docs": "Adds accessible label for the spinner that is only shown for screen\nreaders. The `aria-hidden` attribute will be set if no label is present.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"inline\" | \"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl' | 'inline'",
+        "resolved": "\"inline\" | \"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the spinner.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "inline",
+          "type": "string"
+        },
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

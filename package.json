@@ -34,7 +34,8 @@
     "angular/projects/catalyst-formly",
     "core",
     "react",
-    "tokens"
+    "tokens",
+    "docs"
   ],
   "standard-version": {
     "packageFiles": [
@@ -42,7 +43,8 @@
       "./angular/projects/catalyst-formly/package.json",
       "./core/package.json",
       "./react/package.json",
-      "./tokens/package.json"
+      "./tokens/package.json",
+      "./docs/package.json"
     ],
     "bumpFiles": [
       "./package-lock.json",
@@ -65,6 +67,16 @@
   "pnpm": {
     "patchedDependencies": {
       "@stencil/core@4.38.3": "patches/@stencil__core@4.38.3.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "less",
+      "lmdb",
+      "msgpackr-extract",
+      "puppeteer",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

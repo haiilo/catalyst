@@ -1,0 +1,98 @@
+---
+title: Tooltip
+status: not started
+---
+
+Tooltips display additional information when the user hovers over or
+interacts with a trigger element. The tooltip can be customized with
+different placements, sizes, and styles.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tooltip content="This is a tooltip">
+  <cat-button>Hover me</cat-button>
+</cat-tooltip>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Placement
+
+Use the `placement` attribute to control where the tooltip appears.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tooltip content="Top tooltip" placement="top">
+  <cat-button>Top</cat-button>
+</cat-tooltip>
+<cat-tooltip content="Bottom tooltip" placement="bottom">
+  <cat-button>Bottom</cat-button>
+</cat-tooltip>
+<cat-tooltip content="Left tooltip" placement="left">
+  <cat-button>Left</cat-button>
+</cat-tooltip>
+<cat-tooltip content="Right tooltip" placement="right">
+  <cat-button>Right</cat-button>
+</cat-tooltip>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Rich Content
+
+Use the `slot` for rich tooltip content.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tooltip>
+  <cat-button>Hover for details</cat-button>
+  <div slot="content">
+    <strong>Title</strong>
+    <p>Detailed description goes here.</p>
+  </div>
+</cat-tooltip>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Tooltips are accessible via keyboard focus
+- Content is announced to screen readers
+- Use tooltips for supplementary information only
+
+## API Reference
+
+<include cwd>generated-api/tooltip.md</include>

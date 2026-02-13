@@ -1,0 +1,60 @@
+---
+title: Spinner
+status: not started
+---
+
+Spinners are used to indicate users that their action is being processed.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-spinner></cat-spinner>
+<cat-spinner size="l"></cat-spinner>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Sizes
+
+Use the `size` attribute to control the spinner size.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-spinner size="xs"></cat-spinner>
+<cat-spinner size="s"></cat-spinner>
+<cat-spinner size="m"></cat-spinner>
+<cat-spinner size="l"></cat-spinner>
+<cat-spinner size="xl"></cat-spinner>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Spinners have appropriate ARIA attributes to indicate loading state
+- Use in combination with loading messages for screen readers
+
+## API Reference
+
+<include cwd>generated-api/spinner.md</include>

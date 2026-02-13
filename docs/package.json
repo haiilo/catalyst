@@ -1,0 +1,45 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "generate:api": "tsx scripts/generate-api-docs.ts",
+    "generate:tokens": "tsx scripts/generate-token-docs.ts",
+    "generate": "pnpm generate:api && pnpm generate:tokens",
+    "build": "pnpm generate && next build",
+    "dev": "pnpm generate && next dev",
+    "start": "next start",
+    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "postinstall": "fumadocs-mdx",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@codemirror/lang-html": "^6.4.0",
+    "@codemirror/lang-css": "^6.3.0",
+    "@codemirror/lang-javascript": "^6.2.0",
+    "@codemirror/theme-one-dark": "^6.1.0",
+    "codemirror": "^6.0.0",
+    "fumadocs-core": "16.4.7",
+    "fumadocs-mdx": "14.2.6",
+    "fumadocs-typescript": "^5.0.1",
+    "fumadocs-ui": "16.4.7",
+    "lucide-react": "^0.562.0",
+    "next": "16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^25.0.5",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.1.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}

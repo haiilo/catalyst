@@ -1,0 +1,291 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-scrollable",
+  "filePath": "src/components/cat-scrollable/cat-scrollable.tsx",
+  "fileName": "cat-scrollable.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-scrollable/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-scrollable/usage",
+  "tag": "cat-scrollable",
+  "readme": "# cat-scrollable\n\n\n",
+  "overview": "An element to display scrollable content.",
+  "usage": {},
+  "docs": "An element to display scrollable content.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-select"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-select": [
+      "cat-scrollable"
+    ]
+  },
+  "props": [
+    {
+      "name": "noOverflowX",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-overflow-x",
+      "reflectToAttr": false,
+      "docs": "Flags to disable/enable overflowX.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noOverflowY",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-overflow-y",
+      "reflectToAttr": false,
+      "docs": "Flags to disable/enable overflowY.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noOverscroll",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-overscroll",
+      "reflectToAttr": false,
+      "docs": "Flag to disable/enable overscroll behavior.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noScrolledInit",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-scrolled-init",
+      "reflectToAttr": false,
+      "docs": "Flag to not fire an initial event after content initialization.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noShadowX",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-shadow-x",
+      "reflectToAttr": false,
+      "docs": "Flags to disable/enable scroll shadowX.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noShadowY",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-shadow-y",
+      "reflectToAttr": false,
+      "docs": "Flags to disable/enable scroll shadowY.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "scrolledBuffer",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "scrolled-buffer",
+      "reflectToAttr": false,
+      "docs": "Buffer to be used to calculate the scroll distance.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [
+    {
+      "event": "scrolledBottom",
+      "detail": "void",
+      "bubbles": true,
+      "complexType": {
+        "original": "void",
+        "resolved": "void",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the content is fully scrolled to the bottom.",
+      "docsTags": []
+    },
+    {
+      "event": "scrolledLeft",
+      "detail": "void",
+      "bubbles": true,
+      "complexType": {
+        "original": "void",
+        "resolved": "void",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the content is fully scrolled to the left.",
+      "docsTags": []
+    },
+    {
+      "event": "scrolledRight",
+      "detail": "void",
+      "bubbles": true,
+      "complexType": {
+        "original": "void",
+        "resolved": "void",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the content is fully scrolled to the right.",
+      "docsTags": []
+    },
+    {
+      "event": "scrolledTop",
+      "detail": "void",
+      "bubbles": true,
+      "complexType": {
+        "original": "void",
+        "resolved": "void",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the content is fully scrolled to the top.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

@@ -1,0 +1,306 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tabs",
+  "filePath": "src/components/cat-tabs/cat-tabs.tsx",
+  "fileName": "cat-tabs.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tabs/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tabs/usage",
+  "tag": "cat-tabs",
+  "readme": "# cat-tabs\n\n\n",
+  "overview": "Tabs are used to display multiple panels to be contained within a single\nwindow, using tabs as a navigational element.",
+  "usage": {},
+  "docs": "Tabs are used to display multiple panels to be contained within a single\nwindow, using tabs as a navigational element.",
+  "docsTags": [
+    {
+      "name": "part",
+      "text": "tab - The header of the tab."
+    },
+    {
+      "name": "part",
+      "text": "more - An optional more button to display additional tabs."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-button",
+    "cat-dropdown"
+  ],
+  "dependencyGraph": {
+    "cat-tabs": [
+      "cat-button",
+      "cat-dropdown"
+    ],
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ]
+  },
+  "props": [
+    {
+      "name": "activeTab",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "active-tab",
+      "reflectToAttr": true,
+      "docs": "The ID of the active tab.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "activeTabAlwaysVisible",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "active-tab-always-visible",
+      "reflectToAttr": false,
+      "docs": "Whether the active tab should always be visible. Applied when adaptive is enabled.\nHas less priority than sticky if there is no space to show both.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "adaptive",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "adaptive",
+      "reflectToAttr": false,
+      "docs": "Whether the visible items change according to the available space. A 'More' button is used to reveal hidden items.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "tabsAlign",
+      "type": "\"center\" | \"justify\" | \"left\" | \"right\"",
+      "complexType": {
+        "original": "'left' | 'center' | 'right' | 'justify'",
+        "resolved": "\"center\" | \"justify\" | \"left\" | \"right\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "tabs-align",
+      "reflectToAttr": false,
+      "docs": "The alignment of the tabs.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'left'"
+        }
+      ],
+      "default": "'left'",
+      "values": [
+        {
+          "value": "center",
+          "type": "string"
+        },
+        {
+          "value": "justify",
+          "type": "string"
+        },
+        {
+          "value": "left",
+          "type": "string"
+        },
+        {
+          "value": "right",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setActive",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(id: string) => Promise<void>",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "docs": "The tab id."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "setActive(id: string) => Promise<void>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "docs": "The tab id."
+        }
+      ],
+      "docs": "Activates the tab with the given id.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "id The tab id."
+        }
+      ]
+    },
+    {
+      "name": "setActiveIndex",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(index: number) => Promise<void>",
+        "parameters": [
+          {
+            "name": "index",
+            "type": "number",
+            "docs": "The tab index."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "setActiveIndex(index: number) => Promise<void>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "number",
+          "docs": "The tab index."
+        }
+      ],
+      "docs": "Activates the tab with the given index.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "index The tab index."
+        }
+      ]
+    },
+    {
+      "name": "updateAdaptiveTabs",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "updateAdaptiveTabs() => Promise<void>",
+      "parameters": [],
+      "docs": "Recalculates visible and hidden adaptive tabs.",
+      "docsTags": []
+    }
+  ],
+  "events": [
+    {
+      "event": "catChange",
+      "detail": "{ id: string; index: number; fromDropdown: boolean; }",
+      "bubbles": true,
+      "complexType": {
+        "original": "{ id: string; index: number; fromDropdown: boolean }",
+        "resolved": "{ id: string; index: number; fromDropdown: boolean; }",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when active tab is changed.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [
+    {
+      "name": "more",
+      "docs": "An optional more button to display additional tabs."
+    },
+    {
+      "name": "tab",
+      "docs": "The header of the tab."
+    }
+  ],
+  "listeners": [
+    {
+      "event": "keydown",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-alert",
+  "filePath": "src/components/cat-alert/cat-alert.tsx",
+  "fileName": "cat-alert.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-alert/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-alert/usage",
+  "tag": "cat-alert",
+  "readme": "# cat-alert\n\n\n",
+  "overview": "Informs user about important changes or conditions in the interface. Use this\ncomponent if you need to capture user’s attention in a prominent way.",
+  "usage": {},
+  "docs": "Informs user about important changes or conditions in the interface. Use this\ncomponent if you need to capture user’s attention in a prominent way.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-icon"
+  ],
+  "dependencyGraph": {
+    "cat-alert": [
+      "cat-icon"
+    ]
+  },
+  "props": [
+    {
+      "name": "color",
+      "type": "\"danger\" | \"none\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+      "complexType": {
+        "original": "'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'none'",
+        "resolved": "\"danger\" | \"none\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "color",
+      "reflectToAttr": true,
+      "docs": "The color palette of the alert.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'primary'"
+        }
+      ],
+      "default": "'primary'",
+      "values": [
+        {
+          "value": "danger",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "primary",
+          "type": "string"
+        },
+        {
+          "value": "secondary",
+          "type": "string"
+        },
+        {
+          "value": "success",
+          "type": "string"
+        },
+        {
+          "value": "warning",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "The name of an icon to be displayed in the alert.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noIcon",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-icon",
+      "reflectToAttr": false,
+      "docs": "Whether the icon of the alert is deactivated.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

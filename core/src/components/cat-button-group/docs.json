@@ -1,0 +1,51 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button-group",
+  "filePath": "src/components/cat-button-group/cat-button-group.tsx",
+  "fileName": "cat-button-group.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button-group/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-button-group/usage",
+  "tag": "cat-button-group",
+  "readme": "# cat-button-group\n\n\n",
+  "overview": "Button groups are designed to bring together button controls that are of a\nsimilar nature. For example text formatting controls.",
+  "usage": {},
+  "docs": "Button groups are designed to bring together button controls that are of a\nsimilar nature. For example text formatting controls.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [
+    {
+      "name": "a11yLabel",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "a11y-label",
+      "reflectToAttr": false,
+      "docs": "Adds an accessible label for the button group that\nit is only shown in assistive technologies, like screen readers.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

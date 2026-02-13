@@ -1,0 +1,64 @@
+---
+title: Tabs
+status: not started
+---
+
+Tabs are used to display multiple panels to be contained within a single
+window, using tabs as a navigational element.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tabs>
+  <cat-tab label="Overview">Overview content</cat-tab>
+  <cat-tab label="Details">Details content</cat-tab>
+  <cat-tab label="Settings">Settings content</cat-tab>
+</cat-tabs>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Tabs Only Mode
+
+Use `tabs-only` mode when you want to manage the content yourself.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-tabs tabs-only active-tab="tab1">
+  <cat-tab tab-id="tab1" label="Tab 1"></cat-tab>
+  <cat-tab tab-id="tab2" label="Tab 2"></cat-tab>
+</cat-tabs>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Tabs implement the WAI-ARIA tabs pattern
+- Keyboard navigation with arrow keys
+- Active tab is indicated via `aria-selected`
+
+## API Reference
+
+<include cwd>generated-api/tabs.md</include>

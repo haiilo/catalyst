@@ -1,0 +1,196 @@
+---
+title: Media
+description: Responsive breakpoint mixins for custom styles
+status: ready
+---
+
+Media utilities provide SCSS mixins for creating responsive styles. Unlike other utilities, these are mixins meant to be used in your own SCSS files rather than CSS classes.
+
+## Breakpoints
+
+The following breakpoints are available, derived from the `size.screen` design tokens:
+
+| Breakpoint | Min Width |
+|------------|-----------|
+| `xs` | 540px |
+| `s` | 768px |
+| `m` | 992px |
+| `l` | 1200px |
+| `xl` | 1400px |
+
+## Responsive Mixins
+
+### from()
+
+Apply styles from a breakpoint and up (min-width):
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.my-component {
+  padding: 1rem;
+  
+  @include from('m') {
+    padding: 2rem;
+  }
+  
+  @include from('l') {
+    padding: 3rem;
+  }
+}
+```
+
+### until()
+
+Apply styles up to a breakpoint (max-width - 1px):
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.my-component {
+  // Mobile-only styles
+  @include until('m') {
+    flex-direction: column;
+  }
+}
+```
+
+## Media Type
+
+Both mixins support an optional media type parameter (defaults to `screen`):
+
+```scss
+@include from('m', print) {
+  // Print styles for medium and up
+}
+```
+
+## Interaction Mixins
+
+### pointer()
+
+Target devices based on pointer precision:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.button {
+  padding: 0.75rem 1.5rem;
+  
+  // Larger touch targets for coarse pointers (touch devices)
+  @include pointer(coarse) {
+    padding: 1rem 2rem;
+  }
+}
+```
+
+### hover()
+
+Target devices based on hover capability:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.card {
+  // Only apply hover effects on devices that support hover
+  @include hover(hover) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+```
+
+## Print Mixin
+
+Apply print-specific styles:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.navigation {
+  @include print {
+    display: none;
+  }
+}
+
+.content {
+  @include print {
+    font-size: 12pt;
+    color: black;
+  }
+}
+```
+
+## Examples
+
+### Responsive Grid
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  
+  @include from('s') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include from('l') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @include from('xl') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+```
+
+### Mobile Navigation
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.nav {
+  // Mobile: vertical stack
+  display: flex;
+  flex-direction: column;
+  
+  @include from('m') {
+    // Desktop: horizontal row
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.mobile-menu-button {
+  display: block;
+  
+  @include from('m') {
+    display: none;
+  }
+}
+```
+
+### Touch-Friendly Interactions
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+
+.interactive-element {
+  // Base styles
+  
+  @include pointer(fine) {
+    // Precise pointer (mouse) - smaller hit areas OK
+    padding: 0.5rem;
+  }
+  
+  @include pointer(coarse) {
+    // Touch devices - larger hit areas
+    padding: 1rem;
+    min-height: 44px; // iOS recommended touch target
+  }
+}
+```
