@@ -349,7 +349,7 @@ describe('cat-menu', () => {
       });
 
       const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
-      expect(nav.getAttribute('aria-orientation')).toBe('vertical');
+      expect(nav?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
     it('should render nav with horizontal orientation when arrowNavigation is horizontal', async () => {
@@ -359,7 +359,7 @@ describe('cat-menu', () => {
       });
 
       const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
-      expect(nav.getAttribute('aria-orientation')).toBe('horizontal');
+      expect(nav?.getAttribute('aria-orientation')).toBe('horizontal');
     });
   });
 
