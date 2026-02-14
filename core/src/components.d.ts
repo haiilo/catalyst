@@ -1086,11 +1086,6 @@ export namespace Components {
          */
         "justify": boolean;
         /**
-          * Do not close the dropdown on outside clicks.
-          * @default false
-         */
-        "noAutoClose": boolean;
-        /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
           * @default false
          */
@@ -1114,7 +1109,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * The trigger button accessibility label (used when triggerIconOnly is true). If not set, falls back to triggerLabel.
+          * The trigger button accessibility label. If not set, falls back to triggerLabel.
          */
         "triggerA11yLabel"?: string;
         /**
@@ -1122,18 +1117,22 @@ export namespace Components {
          */
         "triggerClass"?: string;
         /**
-          * The trigger button icon.
-          * @default 'more-horizontal-filled'
+          * The color palette of the trigger button.
+          * @default 'secondary'
          */
-        "triggerIcon": string;
+        "triggerColor": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The trigger button icon.
+         */
+        "triggerIcon"?: string;
         /**
           * Show only the icon in the trigger button.
-          * @default true
+          * @default false
          */
         "triggerIconOnly": boolean | Breakpoint;
         /**
-          * The trigger button label (for accessibility).
-          * @default 'Show menu'
+          * The trigger button label.
+          * @default ''
          */
         "triggerLabel": string;
         /**
@@ -3921,11 +3920,6 @@ declare namespace LocalJSX {
          */
         "justify"?: boolean;
         /**
-          * Do not close the dropdown on outside clicks.
-          * @default false
-         */
-        "noAutoClose"?: boolean;
-        /**
           * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
           * @default false
          */
@@ -3953,7 +3947,7 @@ declare namespace LocalJSX {
          */
         "placement"?: Placement;
         /**
-          * The trigger button accessibility label (used when triggerIconOnly is true). If not set, falls back to triggerLabel.
+          * The trigger button accessibility label. If not set, falls back to triggerLabel.
          */
         "triggerA11yLabel"?: string;
         /**
@@ -3961,18 +3955,22 @@ declare namespace LocalJSX {
          */
         "triggerClass"?: string;
         /**
+          * The color palette of the trigger button.
+          * @default 'secondary'
+         */
+        "triggerColor"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
           * The trigger button icon.
-          * @default 'more-horizontal-filled'
          */
         "triggerIcon"?: string;
         /**
           * Show only the icon in the trigger button.
-          * @default true
+          * @default false
          */
         "triggerIconOnly"?: boolean | Breakpoint;
         /**
-          * The trigger button label (for accessibility).
-          * @default 'Show menu'
+          * The trigger button label.
+          * @default ''
          */
         "triggerLabel"?: string;
         /**

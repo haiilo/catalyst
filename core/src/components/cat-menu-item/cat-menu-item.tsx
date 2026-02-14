@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Host, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
@@ -16,8 +16,6 @@ export class CatMenuItem {
     return this.identifier || this._id;
   }
   private button?: HTMLCatButtonElement;
-
-  @Element() hostElement!: HTMLElement;
 
   /**
    * A unique identifier for the menu item.

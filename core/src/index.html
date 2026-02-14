@@ -240,6 +240,7 @@
               <li><a href="#checkbox">Checkbox</a></li>
               <li><a href="#divider">Divider</a></li>
               <li><a href="#dropdown">Dropdown</a></li>
+              <li><a href="#menu">Menu</a></li>
               <li><a href="#form">Form</a></li>
               <li><a href="#form-group">Form Group</a></li>
               <li><a href="#icon">Icon</a></li>
@@ -664,46 +665,6 @@
               <h2>Dropdown</h2>
 
               <div class="cat-flex cat-item-center cat-gap-s cat-mb-m">
-                <!-- Generic dropdown -->
-                <cat-dropdown>
-                  <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
-                  <nav slot="content">
-                    <ul>
-                      <li class="cat-nav-head">Headline</li>
-                      <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
-                      </li>
-                      <li class="cat-hr"></li>
-                      <li>
-                        <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)"
-                          >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
-                        </cat-button>
-                      </li>
-                    </ul>
-                    <hr />
-                    <ul>
-                      <li>
-                        <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
-                          >Nav item 3</cat-button
-                        >
-                      </li>
-                    </ul>
-                  </nav>
-                </cat-dropdown>
-
                 <!-- Wide dropdown -->
                 <cat-dropdown justify focus-trap="true">
                   <cat-button slot="trigger" color="primary" variant="filled"
@@ -841,7 +802,7 @@
 
               <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
                 <!-- Basic menu -->
-                <cat-menu>
+                <cat-menu trigger-icon="more-horizontal-filled" trigger-icon-only="true">
                   <cat-menu-item icon="edit-outlined">Edit</cat-menu-item>
                   <cat-menu-item icon="copy-outlined">Duplicate</cat-menu-item>
                   <cat-menu-item icon="archive-outlined">Archive</cat-menu-item>
@@ -850,7 +811,7 @@
                 </cat-menu>
 
                 <!-- Menu with custom trigger -->
-                <cat-menu trigger-icon="settings-outlined" trigger-label="Settings menu">
+                <cat-menu trigger-icon="settings-outlined" trigger-icon-only="true" trigger-a11y-label="Settings menu">
                   <cat-menu-item icon="user-outlined">Profile</cat-menu-item>
                   <cat-menu-item icon="sliders-outlined">Preferences</cat-menu-item>
                   <cat-menu-item icon="bell-outlined">Notifications</cat-menu-item>
@@ -858,27 +819,18 @@
                   <cat-menu-item icon="sign-out-outlined">Sign out</cat-menu-item>
                 </cat-menu>
 
-                <!-- Menu with text trigger -->
-                <cat-menu
-                  trigger-variant="filled"
-                  trigger-size="m"
-                  trigger-icon="chevron-down"
-                  trigger-icon-only="false"
-                  trigger-label="Actions menu"
-                >
-                  Actions
-                  <cat-menu-item icon="sparkle-filled">Favorite</cat-menu-item>
-                  <cat-menu-item icon="share-outlined">Share</cat-menu-item>
-                  <cat-menu-item icon="download-outlined">Download</cat-menu-item>
+                <cat-menu trigger-color="primary" trigger-variant="filled" trigger-label="Actions menu" class="not-icon">
+                  <li class="cat-nav-head">Headline</li>
+                  <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                  <cat-menu-item icon="sparkle-filled" color="primary">Nav item 1</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled">Nav item 2</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled" color="warning">Nav item 3</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled" disabled>Nav item 4</cat-menu-item>
+                  <cat-menu-item>Nav item 5 (long)</cat-menu-item>
+                  <li class="cat-hr"></li>
+                  <cat-menu-item color="danger" onclick="console.log(6)">Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-menu-item>
                   <hr />
-                  <cat-menu-item icon="flag-outlined">Report</cat-menu-item>
-                </cat-menu>
-
-                <!-- Menu with disabled items -->
-                <cat-menu trigger-label="Menu with disabled items">
-                  <cat-menu-item icon="check-circle-outlined">Available action</cat-menu-item>
-                  <cat-menu-item icon="lock-outlined" disabled>Locked action</cat-menu-item>
-                  <cat-menu-item icon="eye-outlined">View details</cat-menu-item>
+                  <cat-menu-item variant="outlined" onclick="console.log(3)">Nav item 3</cat-menu-item>
                 </cat-menu>
               </div>
 
@@ -930,65 +882,6 @@
                   <cat-menu-item icon="keyboard-outlined">Alternative menu pattern</cat-menu-item>
                 </cat-menu>
               </div>
-
-              <h3>Advanced Menu Examples</h3>
-              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
-                <!-- Menu with links -->
-                <cat-menu trigger-label="Menu with links">
-                  <cat-menu-item icon="home-outlined" url="/" url-target="_self">Home</cat-menu-item>
-                  <cat-menu-item icon="info-circle-outlined" url="/about" url-target="_self">About</cat-menu-item>
-                  <cat-menu-item icon="link-outlined" url="https://example.com" url-target="_blank"
-                    >External link</cat-menu-item
-                  >
-                </cat-menu>
-
-                <!-- Menu with icons on the right -->
-                <cat-menu trigger-label="Right-aligned icons menu">
-                  <cat-menu-item icon="check-filled" icon-right>Completed</cat-menu-item>
-                  <cat-menu-item icon="clock-outlined" icon-right>Pending</cat-menu-item>
-                  <cat-menu-item icon="x-circle-outlined" icon-right>Failed</cat-menu-item>
-                </cat-menu>
-
-                <!-- Menu demonstrating keyboard navigation -->
-                <cat-menu trigger-label="Keyboard navigation demo">
-                  <cat-menu-item icon="keyboard-outlined">Use Arrow Up/Down to navigate</cat-menu-item>
-                  <cat-menu-item icon="keyboard-outlined">Press Home to jump to first</cat-menu-item>
-                  <cat-menu-item icon="keyboard-outlined">Press End to jump to last</cat-menu-item>
-                  <cat-menu-item icon="keyboard-outlined">Press Escape to close</cat-menu-item>
-                  <cat-menu-item icon="keyboard-outlined">Press Enter to activate</cat-menu-item>
-                </cat-menu>
-
-                <!-- Menu with horizontal navigation -->
-                <cat-menu
-                  arrow-navigation="horizontal"
-                  trigger-label="Horizontal navigation"
-                  trigger-icon="arrow-left-right"
-                >
-                  <cat-menu-item icon="arrow-left">Use Arrow Left/Right to navigate</cat-menu-item>
-                  <cat-menu-item icon="home-outlined">Press Home for first item</cat-menu-item>
-                  <cat-menu-item icon="target-outlined">Press End for last item</cat-menu-item>
-                  <cat-menu-item icon="arrow-right">Horizontal keyboard support</cat-menu-item>
-                </cat-menu>
-              </div>
-
-              <h3>Programmatic Control</h3>
-              <div class="cat-flex cat-items-center cat-gap-s">
-                <cat-menu id="programmatic-menu" trigger-label="Programmatically controlled">
-                  <cat-menu-item icon="sparkle-filled">Menu Item 1</cat-menu-item>
-                  <cat-menu-item icon="sparkle-filled">Menu Item 2</cat-menu-item>
-                  <cat-menu-item icon="sparkle-filled">Menu Item 3</cat-menu-item>
-                </cat-menu>
-                <cat-button onclick="document.getElementById('programmatic-menu').open()"> Open Menu </cat-button>
-                <cat-button onclick="document.getElementById('programmatic-menu').close()"> Close Menu </cat-button>
-                <cat-button onclick="document.getElementById('programmatic-menu').toggle()"> Toggle Menu </cat-button>
-              </div>
-
-              <script>
-                // Example: Listen to menu events
-                const menu = document.getElementById('programmatic-menu');
-                menu.addEventListener('catOpen', () => console.log('Menu opened'));
-                menu.addEventListener('catClose', () => console.log('Menu closed'));
-              </script>
             </section>
 
             <section id="form">

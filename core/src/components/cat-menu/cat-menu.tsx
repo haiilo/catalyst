@@ -44,21 +44,25 @@ export class CatMenu {
   /**
    * The trigger button icon.
    */
-  @Prop() triggerIcon = 'more-horizontal-filled';
+  @Prop() triggerIcon?: string;
 
   /**
    * Show only the icon in the trigger button.
    */
-  @Prop() triggerIconOnly: boolean | Breakpoint = true;
+  @Prop() triggerIconOnly: boolean | Breakpoint = false;
 
   /**
-   * The trigger button label (for accessibility).
+   * The trigger button label.
    */
-  @Prop() triggerLabel = 'Show menu';
+  @Prop() triggerLabel = '';
 
   /**
-   * The trigger button accessibility label (used when triggerIconOnly is true).
-   * If not set, falls back to triggerLabel.
+   * The color palette of the trigger button.
+   */
+  @Prop() triggerColor: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger' = 'secondary';
+
+  /**
+   * The trigger button accessibility label. If not set, falls back to triggerLabel.
    */
   @Prop() triggerA11yLabel?: string;
 
@@ -88,11 +92,6 @@ export class CatMenu {
    * dropdown. The maximum width is still limited by the viewport.
    */
   @Prop() justify = false;
-
-  /**
-   * Do not close the dropdown on outside clicks.
-   */
-  @Prop() noAutoClose = false;
 
   /**
    * Do not change the size of the dropdown to ensure it isn’t too big to fit
@@ -253,7 +252,6 @@ export class CatMenu {
           focusTrap={false}
           placement={this.placement}
           justify={this.justify}
-          noAutoClose={this.noAutoClose}
           arrowNavigation="none"
           noResize={this.noResize}
           overflow={this.overflow}
@@ -268,6 +266,7 @@ export class CatMenu {
             size={this.triggerSize}
             icon={this.triggerIcon}
             iconOnly={this.triggerIconOnly}
+            color={this.triggerColor}
             a11yLabel={this.triggerA11yLabel ?? this.triggerLabel}
             class={this.triggerClass}
             testId={this.triggerTestId}
