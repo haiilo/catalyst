@@ -265,7 +265,7 @@ export class CatMenu {
             variant={this.triggerVariant}
             size={this.triggerSize}
             icon={this.triggerIcon ?? (this.triggerLabel === undefined ? 'more-horizontal-filled' : undefined)}
-            iconOnly={this.triggerIconOnly ?? (this.triggerLabel === undefined)}
+            iconOnly={this.triggerIconOnly ?? this.triggerLabel === undefined}
             color={this.triggerColor}
             a11yLabel={this.triggerA11yLabel ?? this.triggerLabel}
             class={this.triggerClass}
