@@ -49,12 +49,12 @@ export class CatMenu {
   /**
    * Show only the icon in the trigger button.
    */
-  @Prop() triggerIconOnly: boolean | Breakpoint = false;
+  @Prop() triggerIconOnly?: boolean | Breakpoint;
 
   /**
    * The trigger button label.
    */
-  @Prop() triggerLabel = '';
+  @Prop() triggerLabel?: string;
 
   /**
    * The color palette of the trigger button.
@@ -264,8 +264,8 @@ export class CatMenu {
             part="trigger"
             variant={this.triggerVariant}
             size={this.triggerSize}
-            icon={this.triggerIcon}
-            iconOnly={this.triggerIconOnly}
+            icon={this.triggerIcon ?? (this.triggerLabel === undefined ? 'more-horizontal-filled' : undefined)}
+            iconOnly={this.triggerIconOnly ?? (this.triggerLabel === undefined)}
             color={this.triggerColor}
             a11yLabel={this.triggerA11yLabel ?? this.triggerLabel}
             class={this.triggerClass}

@@ -1127,14 +1127,12 @@ export namespace Components {
         "triggerIcon"?: string;
         /**
           * Show only the icon in the trigger button.
-          * @default false
          */
-        "triggerIconOnly": boolean | Breakpoint;
+        "triggerIconOnly"?: boolean | Breakpoint;
         /**
           * The trigger button label.
-          * @default ''
          */
-        "triggerLabel": string;
+        "triggerLabel"?: string;
         /**
           * Native attributes for the trigger button.
          */
@@ -3965,12 +3963,10 @@ declare namespace LocalJSX {
         "triggerIcon"?: string;
         /**
           * Show only the icon in the trigger button.
-          * @default false
          */
         "triggerIconOnly"?: boolean | Breakpoint;
         /**
           * The trigger button label.
-          * @default ''
          */
         "triggerLabel"?: string;
         /**

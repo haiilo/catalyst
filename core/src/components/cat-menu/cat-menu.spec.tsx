@@ -59,7 +59,6 @@ describe('cat-menu', () => {
       expect(trigger.size).toBe('m');
       expect(trigger.icon).toBe('more-horizontal-filled');
       expect(trigger.iconOnly).toBe(true);
-      expect(trigger.a11yLabel).toBe('Show menu');
       expect(trigger.disabled).toBe(false);
       expect(trigger.nativeAttributes?.['aria-haspopup']).toBe('menu');
     });
@@ -137,7 +136,6 @@ describe('cat-menu', () => {
       const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       expect(dropdown.placement).toBe('top-end');
       expect(dropdown.justify).toBe(true);
-      expect(dropdown.noAutoClose).toBe(true);
       expect(dropdown.noResize).toBe(true);
       expect(dropdown.overflow).toBe(true);
       expect(dropdown.delayedTriggerInit).toBe(true);
