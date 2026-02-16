@@ -1,0 +1,6 @@
+env:
+  - variable: BP_NODE_RUN_SCRIPTS
+    value: build:docs
+    availability:
+      - BUILD
+      - RUNTIME
