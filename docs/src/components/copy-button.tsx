@@ -19,7 +19,7 @@ function CopyButton({ value, visible }: CopyButtonProps) {
       type="button"
       onClick={(e) => {
         e.stopPropagation();
-        onClick();
+        onClick(e);
       }}
       aria-label={checked ? 'Copied' : `Copy ${value}`}
       style={{

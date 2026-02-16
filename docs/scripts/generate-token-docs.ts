@@ -217,8 +217,11 @@ function generateSizeFontMarkdown(tokens: TokenGroup): string {
       // Also get corresponding line height if available
       const lineKey = item.path.replace('size.font.', '');
       const parts = lineKey.split('.');
-      const lineValue = lineTokens?.[parts[0]]?.[parts[1]] as Token | undefined;
-      const lineHeight = lineValue ? formatValue(lineValue) : '-';
+      const lineCategory = lineTokens?.[parts[0]];
+      const lineValue = (lineCategory && typeof lineCategory === 'object' && !isToken(lineCategory))
+        ? (lineCategory as TokenGroup)[parts[1]]
+        : undefined;
+      const lineHeight = lineValue && isToken(lineValue) ? formatValue(lineValue) : '-';
       return `| \`${item.path}\` | \`${value}\` | \`${lineHeight}\` |`;
     });
 
@@ -234,22 +237,22 @@ ${rows.join('\n')}`);
 
 // Main generation functions for each category
 function generateColorBase(tokens: TokenGroup): string {
-  const baseTokens = flattenTokens((tokens.color as TokenGroup).base, 'color.base');
+  const baseTokens = flattenTokens((tokens.color as TokenGroup).base as TokenGroup, 'color.base');
   return generateFlatColorMarkdown(baseTokens);
 }
 
 function generateColorUi(tokens: TokenGroup): string {
-  const uiTokens = flattenTokens((tokens.color as TokenGroup).ui, 'color.ui');
+  const uiTokens = flattenTokens((tokens.color as TokenGroup).ui as TokenGroup, 'color.ui');
   return generateColorMarkdown(uiTokens, 'color.ui');
 }
 
 function generateColorTheme(tokens: TokenGroup): string {
-  const themeTokens = flattenTokens((tokens.color as TokenGroup).theme, 'color.theme');
+  const themeTokens = flattenTokens((tokens.color as TokenGroup).theme as TokenGroup, 'color.theme');
   return generateColorMarkdown(themeTokens, 'color.theme');
 }
 
 function generateSizeBorder(tokens: TokenGroup): string {
-  const borderTokens = flattenTokens((tokens.size as TokenGroup).border, 'size.border');
+  const borderTokens = flattenTokens((tokens.size as TokenGroup).border as TokenGroup, 'size.border');
   return generateDimensionMarkdown(borderTokens);
 }
 
@@ -258,32 +261,32 @@ function generateSizeFont(tokens: TokenGroup): string {
 }
 
 function generateSizeModal(tokens: TokenGroup): string {
-  const modalTokens = flattenTokens((tokens.size as TokenGroup).modal, 'size.modal');
+  const modalTokens = flattenTokens((tokens.size as TokenGroup).modal as TokenGroup, 'size.modal');
   return generateDimensionMarkdown(modalTokens);
 }
 
 function generateSizeScreen(tokens: TokenGroup): string {
-  const screenTokens = flattenTokens((tokens.size as TokenGroup).screen, 'size.screen');
+  const screenTokens = flattenTokens((tokens.size as TokenGroup).screen as TokenGroup, 'size.screen');
   return generateDimensionMarkdown(screenTokens);
 }
 
 function generateSizeSpacing(tokens: TokenGroup): string {
-  const spacingTokens = flattenTokens((tokens.size as TokenGroup).spacing, 'size.spacing');
+  const spacingTokens = flattenTokens((tokens.size as TokenGroup).spacing as TokenGroup, 'size.spacing');
   return generateDimensionMarkdown(spacingTokens);
 }
 
 function generateFontFamily(tokens: TokenGroup): string {
-  const familyTokens = flattenTokens((tokens.font as TokenGroup).family, 'font.family');
+  const familyTokens = flattenTokens((tokens.font as TokenGroup).family as TokenGroup, 'font.family');
   return generateGenericMarkdown(familyTokens);
 }
 
 function generateFontWeight(tokens: TokenGroup): string {
-  const weightTokens = flattenTokens((tokens.font as TokenGroup).weight, 'font.weight');
+  const weightTokens = flattenTokens((tokens.font as TokenGroup).weight as TokenGroup, 'font.weight');
   return generateGenericMarkdown(weightTokens);
 }
 
 function generateFontDecoration(tokens: TokenGroup): string {
-  const decorationTokens = flattenTokens((tokens.font as TokenGroup).decoration, 'font.decoration');
+  const decorationTokens = flattenTokens((tokens.font as TokenGroup).decoration as TokenGroup, 'font.decoration');
   return generateGenericMarkdown(decorationTokens);
 }
 
@@ -293,17 +296,17 @@ function generateOpacity(tokens: TokenGroup): string {
 }
 
 function generateTimeTransition(tokens: TokenGroup): string {
-  const transitionTokens = flattenTokens((tokens.time as TokenGroup).transition, 'time.transition');
+  const transitionTokens = flattenTokens((tokens.time as TokenGroup).transition as TokenGroup, 'time.transition');
   return generateGenericMarkdown(transitionTokens);
 }
 
 function generateTimeDelay(tokens: TokenGroup): string {
-  const delayTokens = flattenTokens((tokens.time as TokenGroup).delay, 'time.delay');
+  const delayTokens = flattenTokens((tokens.time as TokenGroup).delay as TokenGroup, 'time.delay');
   return generateGenericMarkdown(delayTokens);
 }
 
 function generateTimeDuration(tokens: TokenGroup): string {
-  const durationTokens = flattenTokens((tokens.time as TokenGroup).duration, 'time.duration');
+  const durationTokens = flattenTokens((tokens.time as TokenGroup).duration as TokenGroup, 'time.duration');
   return generateGenericMarkdown(durationTokens);
 }
 
