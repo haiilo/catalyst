@@ -1,5 +1,5 @@
 scripts:
-  buildCommand: pnpm install --filter @haiilo/catalyst-docs... && pnpm --filter @haiilo/catalyst-docs run build
+  buildCommand: pnpm install --filter @haiilo/catalyst-docs && pnpm --filter @haiilo/catalyst-docs run build
 
 env:
   - variable: PUPPETEER_SKIP_DOWNLOAD
