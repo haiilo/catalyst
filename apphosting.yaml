@@ -1,7 +1,9 @@
-scripts:
-  buildCommand: pnpm install --filter @haiilo/catalyst-docs && pnpm --filter @haiilo/catalyst-docs run build
-
 env:
+  - variable: BP_NODE_RUN_SCRIPTS
+    value: build:docs
+    availability:
+      - BUILD
+      - RUNTIME
   - variable: PUPPETEER_SKIP_DOWNLOAD
     value: "true"
     availability:
