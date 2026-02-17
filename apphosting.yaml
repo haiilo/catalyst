@@ -1,15 +1,16 @@
+scripts:
+  buildCommand: pnpm install --filter @haiilo/catalyst-docs... && pnpm --filter @haiilo/catalyst-docs run build
+
 env:
-  - variable: BP_NODE_RUN_SCRIPTS
-    value: build:docs
-    availability:
-      - BUILD
-      - RUNTIME
-  # Skip browser downloads during install (docs build doesn't need Chrome/Puppeteer/Playwright)
-  - variable: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+  - variable: PUPPETEER_SKIP_DOWNLOAD
     value: "true"
     availability:
       - BUILD
   - variable: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
+    value: "1"
+    availability:
+      - BUILD
+  - variable: SKIP_ANGULAR_POSTINSTALL
     value: "1"
     availability:
       - BUILD
