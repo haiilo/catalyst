@@ -4,3 +4,12 @@ env:
     availability:
       - BUILD
       - RUNTIME
+  # Skip browser downloads during install (docs build doesn't need Chrome/Puppeteer/Playwright)
+  - variable: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+    value: "true"
+    availability:
+      - BUILD
+  - variable: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
+    value: "1"
+    availability:
+      - BUILD
