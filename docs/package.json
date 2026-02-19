@@ -2,7 +2,10 @@
   "name": "@haiilo/catalyst-docs",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
     "generate:api": "tsx scripts/generate-api-docs.ts",
     "generate:tokens": "tsx scripts/generate-token-docs.ts",
