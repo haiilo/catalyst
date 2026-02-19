@@ -58,10 +58,9 @@
     ]
   },
   "engines": {
-    "pnpm": "9.15.4",
+    "pnpm": "^9.0.0",
     "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@9.15.4",
   "devDependencies": {
     "@commitlint/cli": "20.3.0",
     "@commitlint/config-conventional": "20.3.0",
