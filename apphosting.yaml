@@ -1,0 +1,3 @@
+scripts:
+  buildCommand: pnpm --filter @haiilo/catalyst-docs run build
+  runCommand: sh -c "cd docs && pnpm run start"
