@@ -1,4 +1,4 @@
 scripts:
-  buildCommand: pnpm --filter ./docs build
-  runCommand: sh -c "cd docs && pnpm run start"
-  outputDirectory: /docs/.next
+  buildCommand: pnpm run build:docs
+  runCommand: pnpm run start:docs
+  outputDirectory: ./docs/.next

@@ -12,6 +12,7 @@
     "build:angular-formly": "pnpm --filter @haiilo/catalyst-angular-workspace run build catalyst-formly",
     "build:react": "pnpm --filter @haiilo/catalyst-react run build",
     "build:docs": "pnpm --filter @haiilo/catalyst-docs run build",
+    "start:docs": "pnpm --filter @haiilo/catalyst-docs run start",
     "build": "pnpm run build:tokens && pnpm run build:core && pnpm run build:angular && pnpm run build:angular-formly && pnpm run build:react",
     "postbuild": "pnpm --filter @haiilo/catalyst-angular-workspace run prettier",
     "publish:tokens": "pnpm --filter @haiilo/catalyst-tokens publish",
