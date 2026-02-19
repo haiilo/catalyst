@@ -1,4 +1,4 @@
 scripts:
-  buildCommand: pnpm --filter @haiilo/catalyst-docs build
+  buildCommand: pnpm --filter ./docs build
   runCommand: sh -c "cd docs && pnpm run start"
   outputDirectory: /docs/.next
