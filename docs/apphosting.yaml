@@ -1,0 +1,3 @@
+scripts:
+  buildCommand: pnpm run build
+  runCommand: pnpm run start
