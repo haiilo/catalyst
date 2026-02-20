@@ -1,4 +1,4 @@
 scripts:
-  buildCommand: cd docs && pnpm install --ignore-scripts --config.strict-peer-dependencies=false && pnpm postinstall && pnpm build
-  runCommand: node docs/server.js
-  outputDirectory: docs/.next/standalone
+  buildCommand: pnpm install --ignore-scripts --config.strict-peer-dependencies=false && pnpm postinstall && pnpm build
+  runCommand: node server.js
+  outputDirectory: .next/standalone
