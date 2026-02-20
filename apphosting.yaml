@@ -1,5 +1,4 @@
 scripts:
-  installCommand: pnpm install --filter @haiilo/catalyst-docs --ignore-scripts --config.strict-peer-dependencies=false
-  buildCommand: pnpm run build:docs --ignore-scripts --config.strict-peer-dependencies=false
-  runCommand: pnpm run start:docs
-  outputDirectory: ./docs/.next
+  buildCommand: cd docs && pnpm install --ignore-scripts --config.strict-peer-dependencies=false && pnpm postinstall && pnpm build
+  runCommand: node docs/server.js
+  outputDirectory: docs/.next/standalone
