@@ -1,0 +1,15 @@
+# Firebase App Hosting configuration for Next.js in pnpm monorepo
+# This configuration handles the build process for a docs directory within a monorepo
+
+appHosting:
+  build:
+    # The build command runs first to prepare the application
+    # For a pnpm monorepo, we need to:
+    # 1. Install dependencies at the workspace root (where pnpm-workspace.yaml is)
+    # 2. Build the Next.js app in the docs directory
+    buildCommand: "cd .. && pnpm install --ignore-scripts --config.strict-peer-dependencies=false && cd docs && pnpm run build"
+  
+  run:
+    # The run command starts the application server
+    # This runs from the docs directory (rootDir) after build completes
+    runCommand: "pnpm run start"
