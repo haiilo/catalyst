@@ -2,6 +2,7 @@
   "name": "@haiilo/catalyst-workspace",
   "private": true,
   "scripts": {
+    "preinstall": "node ./debug-install-probe.js",
     "prepare": "node ./prepare.js",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
