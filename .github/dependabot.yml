@@ -6,6 +6,17 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/core/"
+    directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      development:
+        dependency-type: "development"
+        update-types:
+          - "patch"
+          - "minor"
+      production:
+        dependency-type: "production"
+        update-types:
+          - "patch"
+          - "minor"

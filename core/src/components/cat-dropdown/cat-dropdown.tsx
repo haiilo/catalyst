@@ -27,6 +27,7 @@ export class CatDropdown {
   private content!: HTMLElement;
   private trap?: focusTrap.FocusTrap;
   private _isOpen: boolean | null = false;
+  private cleanupFloatingUi?: () => void;
   /**
    * Tracking the origin of opening the dropdown and specify if initial focus should be set.
    * Currently we set it only when the origin is keyboard.
@@ -154,6 +155,11 @@ export class CatDropdown {
     this._isOpen = null;
     this.content.style.display = 'block';
     this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
+
+    const trigger = this.anchor || this.trigger;
+    if (trigger) {
+      this.cleanupFloatingUi = autoUpdate(trigger, this.content, () => this.update(trigger));
+    }
     // give CSS transition time to apply
     setTimeout(() => {
       this._isOpen = true;
@@ -222,6 +228,8 @@ export class CatDropdown {
       this.content.classList.remove('show');
       this.content.style.display = '';
       this.trigger?.setAttribute('aria-expanded', 'false');
+      this.cleanupFloatingUi?.();
+      this.cleanupFloatingUi = undefined;
       this.catClose.emit();
     }, timeTransitionS);
   }
@@ -236,6 +244,8 @@ export class CatDropdown {
   disconnectedCallback() {
     this.trap?.deactivate();
     this.trap = undefined;
+    this.cleanupFloatingUi?.();
+    this.cleanupFloatingUi = undefined;
   }
 
   render() {
@@ -268,9 +278,6 @@ export class CatDropdown {
       this.hasInitialFocus = this.isEventOriginFromKeyboard(event as UIEvent);
       this.toggle();
     });
-    if (!this.anchor) {
-      autoUpdate(this.trigger, this.content, () => this.update(this.trigger));
-    }
   }
 
   private isEventOriginFromKeyboard(event: UIEvent): boolean {
@@ -279,9 +286,6 @@ export class CatDropdown {
 
   private initAnchor() {
     this.anchor = (this.anchorSlot?.assignedElements?.() || [])[0];
-    if (this.anchor) {
-      autoUpdate(this.anchor, this.content, () => this.update(this.anchor));
-    }
   }
 
   private findTrigger() {
@@ -334,10 +338,25 @@ export class CatDropdown {
               }
             })
           ];
+      const middleware = [offset(CatDropdown.OFFSET)];
+      const flipMiddleware = flip({
+        // Ensure we flip to the perpendicular axis if it doesn't fit
+        // on narrow viewports.
+        crossAxis: 'alignment',
+        fallbackAxisSideDirection: 'end'
+      });
+      const shiftMiddleware = shift();
+
+      // Prioritize flip over shift for edge-aligned placements only.
+      if (this.placement.includes('-')) {
+        middleware.push(flipMiddleware, shiftMiddleware);
+      } else {
+        middleware.push(shiftMiddleware, flipMiddleware);
+      }
       computePosition(anchorElement, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), flip(), shift(), ...resize]
+        middleware: [offset(CatDropdown.OFFSET), ...middleware, ...resize]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {

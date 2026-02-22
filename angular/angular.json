@@ -25,11 +25,12 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/catalyst/src/test.ts",
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
-            "karmaConfig": "projects/catalyst/karma.conf.js"
+            "watch": false,
+            "browsers": ["chromium"],
+            "runnerConfig": "vitest.config.ts"
           }
         }
       }
@@ -56,11 +57,12 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/catalyst-formly/src/test.ts",
             "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
-            "karmaConfig": "projects/catalyst-formly/karma.conf.js"
+            "watch": false,
+            "browsers": ["chromium"],
+            "runnerConfig": "vitest.config.ts"
           }
         }
       }
@@ -93,7 +95,8 @@
             "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": [],
             "allowedCommonJsDependencies": ["loglevel"],
-            "browser": "projects/catalyst-demo/src/main.ts"
+            "browser": "projects/catalyst-demo/src/main.ts",
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {
@@ -142,19 +145,6 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "catalyst-demo:build"
-          }
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "main": "projects/catalyst-demo/src/test.ts",
-            "polyfills": ["projects/catalyst-demo/src/polyfills.ts"],
-            "tsConfig": "projects/catalyst-demo/tsconfig.spec.json",
-            "karmaConfig": "projects/catalyst-demo/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": ["projects/catalyst-demo/src/favicon.ico", "projects/catalyst-demo/src/assets"],
-            "styles": ["projects/catalyst-demo/src/styles.scss"],
-            "scripts": []
           }
         }
       }

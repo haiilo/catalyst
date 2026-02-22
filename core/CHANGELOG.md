@@ -1,5 +1,61 @@
 # Changelog
 
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.2.0...catalyst-core-v14.3.0) (2026-02-10)
+
+
+### Features
+
+* **core:** configure fallback axis for cat-dropdown ([#919](https://github.com/haiilo/catalyst/issues/919)) ([4ab8876](https://github.com/haiilo/catalyst/commit/4ab8876ad57fb7ec55fc72f425d72f8400dd4f28))
+
+## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.1.0...catalyst-core-v14.2.0) (2026-01-28)
+
+
+### Features
+
+* **core:** render options subscription in cat-select ([#894](https://github.com/haiilo/catalyst/issues/894)) ([585665d](https://github.com/haiilo/catalyst/commit/585665d1a45f9e48a6ba1000e76eb163ab379dc0))
+
+
+### Bug Fixes
+
+* **angular:** add preserveSymlinks for catalyst demo ([#890](https://github.com/haiilo/catalyst/issues/890)) ([83ac992](https://github.com/haiilo/catalyst/commit/83ac9921ec6169574b6e0d68aaa88928b312ee2c))
+
+## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.5...catalyst-core-v14.1.0) (2026-01-16)
+
+
+### Features
+
+* **core:** add possibility to define scrollbar-gutter and scrollbar-color for cat-scrollable ([#888](https://github.com/haiilo/catalyst/issues/888)) ([3bf1fcc](https://github.com/haiilo/catalyst/commit/3bf1fcc4a369846cbd19998fa3e7bb614589cc70))
+
+## [14.0.5](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.4...catalyst-core-v14.0.5) (2026-01-15)
+
+
+### Bug Fixes
+
+* **core:** add non-theme color option to cat-alert ([#860](https://github.com/haiilo/catalyst/issues/860)) ([6dbf872](https://github.com/haiilo/catalyst/commit/6dbf8720736457e2cf54cb44b4752b550cebff5d))
+* **core:** fix textarea resize after setting the value externally ([#884](https://github.com/haiilo/catalyst/issues/884)) ([e0327f1](https://github.com/haiilo/catalyst/commit/e0327f1940d502ea91b624bc1a37da3a857d95c3))
+
+## [14.0.4](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.3...catalyst-core-v14.0.4) (2025-12-23)
+
+
+### Bug Fixes
+
+* **core:** listen for floating element position update only when dropdown or select is open ([#864](https://github.com/haiilo/catalyst/issues/864)) ([7e157c2](https://github.com/haiilo/catalyst/commit/7e157c20de75b635b952ae0e918057cd64e1fcd5))
+
+## [14.0.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.2...catalyst-core-v14.0.3) (2025-12-18)
+
+
+### Bug Fixes
+
+* **core:** fix index.shadow.scss ([#861](https://github.com/haiilo/catalyst/issues/861)) ([5d7d2c3](https://github.com/haiilo/catalyst/commit/5d7d2c3f2817b64a7b645e4fc06e31404e379b84))
+* **core:** put adjustAdaptiveTabs into requestAnimationFrame in syncTabs ([#862](https://github.com/haiilo/catalyst/issues/862)) ([c09b90b](https://github.com/haiilo/catalyst/commit/c09b90be5f428d3f08cb270a35fee666b55e7dd2))
+
+## [14.0.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.1...catalyst-core-v14.0.2) (2025-12-11)
+
+
+### Bug Fixes
+
+* set addGlobalStyleToComponents to false ([#856](https://github.com/haiilo/catalyst/issues/856)) ([5b33756](https://github.com/haiilo/catalyst/commit/5b337567d7c45bd1192dd7da18aa3161b2a32e8c))
+
 ## [14.0.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.0...catalyst-core-v14.0.1) (2025-12-09)
 
 

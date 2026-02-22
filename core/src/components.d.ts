@@ -35,7 +35,7 @@ export namespace Components {
           * The color palette of the alert.
           * @default 'primary'
          */
-        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'none';
         /**
           * The name of an icon to be displayed in the alert.
          */
@@ -2650,7 +2650,7 @@ declare namespace LocalJSX {
           * The color palette of the alert.
           * @default 'primary'
          */
-        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
+        "color"?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'none';
         /**
           * The name of an icon to be displayed in the alert.
          */

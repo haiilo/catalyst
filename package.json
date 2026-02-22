@@ -3,9 +3,6 @@
   "private": true,
   "scripts": {
     "prepare": "node ./prepare.js",
-    "release:patch": "standard-version --release-as patch",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major",
     "build:tokens": "pnpm --filter @haiilo/catalyst-tokens run build",
     "build:core": "pnpm --filter @haiilo/catalyst run build",
     "build:angular": "pnpm --filter @haiilo/catalyst-angular-workspace run build catalyst",
@@ -34,8 +31,7 @@
     "angular/projects/catalyst-formly",
     "core",
     "react",
-    "tokens",
-    "vue"
+    "tokens"
   ],
   "standard-version": {
     "packageFiles": [
@@ -59,9 +55,13 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.1",
-    "@commitlint/config-conventional": "19.8.1",
-    "husky": "8.0.3",
-    "standard-version": "9.5.0"
+    "@commitlint/cli": "20.3.0",
+    "@commitlint/config-conventional": "20.3.0",
+    "husky": "8.0.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@stencil/core@4.38.3": "patches/@stencil__core@4.38.3.patch"
+    }
   }
 }

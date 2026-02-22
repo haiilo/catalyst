@@ -48,6 +48,7 @@ export interface RenderInfo {
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
  * @property render - Renders the items of the select.
+ * @property renderOptions$ - Observable that triggers re-rendering of options when emitted (doesn't support tags).
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectConnector<T extends Item = any> {
@@ -55,6 +56,7 @@ export interface CatSelectConnector<T extends Item = any> {
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
+  renderOptions$?: Observable<void>;
 }
 
 export interface CatSelectState {
@@ -128,9 +130,11 @@ export class CatSelect {
   private errorMapSrc?: ErrorMap | true;
 
   private subscription?: Subscription;
+  private renderSubscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
   private valueChangedBySelection = false;
+  private cleanupFloatingUi?: () => void;
 
   @Element() hostElement!: HTMLElement;
 
@@ -369,9 +373,6 @@ export class CatSelect {
     if (this.input) {
       autosizeInput(this.input, { minWidth: true });
     }
-    if (this.trigger && this.dropdown) {
-      autoUpdate(this.trigger, this.dropdown, () => this.update());
-    }
   }
 
   componentWillLoad(): void {
@@ -588,6 +589,13 @@ export class CatSelect {
           options
         });
       });
+
+    this.renderSubscription?.unsubscribe();
+    if (connector.renderOptions$) {
+      this.renderSubscription = connector.renderOptions$.subscribe(() => {
+        this.rerenderOptions();
+      });
+    }
   }
 
   render() {
@@ -844,7 +852,7 @@ export class CatSelect {
                     initials={item.render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
-                <span class="select-option-text">
+                <span class="select-option-text" part="option">
                   <span class="select-option-label">{getLabel()}</span>
                   <span class="select-option-description">{item.render.description}</span>
                 </span>
@@ -922,6 +930,9 @@ export class CatSelect {
 
   private show() {
     if (!this.state.isOpen && this.connector) {
+      if (this.trigger && this.dropdown) {
+        this.cleanupFloatingUi = autoUpdate(this.trigger, this.dropdown, () => this.update());
+      }
       // reconnect to reset the connection, i.e. the pagination
       this.connect(this.connector);
       this.patchState({ isOpen: true, isFirstLoading: true, options: [] });
@@ -934,6 +945,8 @@ export class CatSelect {
   private hide() {
     if (this.state.isOpen) {
       this.patchState({ isOpen: false, activeOptionIndex: -1 });
+      this.cleanupFloatingUi?.();
+      this.cleanupFloatingUi = undefined;
       this.catClose.emit();
       return true;
     }
@@ -978,6 +991,13 @@ export class CatSelect {
     }
   }
 
+  private rerenderOptions() {
+    const optionItems = this.state.options.map(o => o.item);
+    const updatedOptions = this.toSelectItems(this.connector!, optionItems);
+
+    this.patchState({ options: updatedOptions });
+  }
+
   private toggle(item: { item: Item; render: RenderInfo }) {
     this.isSelected(item.item.id)
       ? this.deselect(item.item.id)
@@ -1000,6 +1020,8 @@ export class CatSelect {
     this.connector = connector ?? this.connector;
     this.subscription?.unsubscribe();
     this.subscription = undefined;
+    this.renderSubscription?.unsubscribe();
+    this.renderSubscription = undefined;
     this.state = INIT_STATE;
   }
 

@@ -29,6 +29,7 @@
     [nativeAttributes]="{ 'data-test': 'test-attribute' }"
     hint="this is a hint"
   ></cat-textarea>
+  <cat-button (catClick)="form.controls.test.setValue('')">CLEAR</cat-button>
   <cat-select
     label="Select"
     formControlName="option"
