@@ -145,6 +145,11 @@ export class CatTextarea {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * The max height of the textarea. If the content exceeds this height, the textarea will become scrollable.
+   */
+  @Prop() maxHeight?: string;
+
+  /**
    * The validation errors for this input. Will render a hint under the input
    * with the translated error message(s) `error.${key}`. If an object is
    * passed, the keys will be used as error keys and the values translation
@@ -321,6 +326,7 @@ export class CatTextarea {
                 required={this.required}
                 rows={this.rows}
                 value={this.value}
+                style={this.maxHeight ? { maxHeight: this.maxHeight } : undefined}
                 onInput={this.onInput.bind(this)}
                 onFocus={this.onFocus.bind(this)}
                 onBlur={this.onBlur.bind(this)}

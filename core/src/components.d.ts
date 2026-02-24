@@ -1666,6 +1666,10 @@ export namespace Components {
          */
         "labelHidden": boolean;
         /**
+          * The max height of the textarea. If the content exceeds this height, the textarea will become scrollable.
+         */
+        "maxHeight"?: string;
+        /**
           * A maximum length (number of characters) for textual values.
          */
         "maxLength"?: number;
@@ -4297,6 +4301,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "labelHidden"?: boolean;
+        /**
+          * The max height of the textarea. If the content exceeds this height, the textarea will become scrollable.
+         */
+        "maxHeight"?: string;
         /**
           * A maximum length (number of characters) for textual values.
          */
