@@ -36,6 +36,7 @@
       'input.showPassword': 'Show password',
       'input.hidePassword': 'Hide password',
       'notification.dismiss': 'Dismiss',
+      'pagination.ariaLabel': 'Pagination',
       'pagination.prev': 'Previous',
       'pagination.page': 'Go to page {{page}}',
       'pagination.next': 'Next',
