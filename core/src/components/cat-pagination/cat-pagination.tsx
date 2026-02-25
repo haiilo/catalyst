@@ -75,7 +75,7 @@ export class CatPagination {
   render() {
     this.hostElement.tabIndex = Number(this.hostElement.getAttribute('tabindex')) || 0;
     return (
-      <nav role="navigation">
+      <nav role="navigation" aria-label={i18n.t('pagination.aria_label')}>
         <ol
           class={{
             [`cat-pagination-${this.size}`]: Boolean(this.size)
