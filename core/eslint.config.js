@@ -34,7 +34,12 @@ module.exports = defineConfig([
       }
     },
 
-    extends: compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:jsx-a11y/recommended', 'prettier'),
+    extends: compat.extends(
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+      'plugin:jsx-a11y/recommended',
+      'prettier'
+    ),
 
     plugins: {
       '@typescript-eslint': typescriptEslint,
@@ -60,9 +65,12 @@ module.exports = defineConfig([
       'jsx-a11y/no-static-element-interactions': 'warn',
       'jsx-a11y/no-noninteractive-tabindex': 'warn',
       // Allow Stencil component patterns
-      'jsx-a11y/anchor-is-valid': ['error', {
-        aspects: ['invalidHref']
-      }]
+      'jsx-a11y/anchor-is-valid': [
+        'error',
+        {
+          aspects: ['invalidHref']
+        }
+      ]
     }
   },
   {
