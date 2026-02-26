@@ -70,6 +70,7 @@
     "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/eslint-plugin": "8.52.0",
     "@typescript-eslint/parser": "8.52.0",
+    "axe-core": "^4.11.1",
     "babel-loader": "9.2.1",
     "eslint": "9.39.2",
     "eslint-config-prettier": "9.1.2",

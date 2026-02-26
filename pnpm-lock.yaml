@@ -222,6 +222,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 8.52.0
         version: 8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      axe-core:
+        specifier: ^4.11.1
+        version: 4.11.1
       babel-loader:
         specifier: 9.2.1
         version: 9.2.1(@babel/core@7.28.5)(webpack@5.105.2)
