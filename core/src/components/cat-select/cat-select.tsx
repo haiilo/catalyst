@@ -872,7 +872,9 @@ export class CatSelect {
               aria-selected={false}
               onFocus={() => this.input?.focus()}
               onClick={() => (isTagOption ? this.createTag(item.render.label) : this.select(item))}
-              onKeyDown={e => e.key === 'Enter' && (isTagOption ? this.createTag(item.render.label) : this.select(item))}
+              onKeyDown={e =>
+                e.key === 'Enter' && (isTagOption ? this.createTag(item.render.label) : this.select(item))
+              }
               tabIndex={-1}
             >
               {item.render.avatar ? (
