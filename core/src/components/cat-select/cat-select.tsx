@@ -637,11 +637,13 @@ export class CatSelect {
               ref={el => (this.trigger = el)}
               id={this.id}
               role="combobox"
+              tabIndex={0}
               aria-expanded={this.state.isOpen || this.isPillboxActive()}
               aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
               aria-required={this.required ? 'true' : false}
               aria-activedescendant={this.activeDescendant}
               onClick={e => this.onClick(e)}
+              onKeyDown={e => e.key === 'Enter' && this.onClick(e as unknown as MouseEvent)}
             >
               <div class="select-wrapper-inner">
                 {this.multiple && this.state.selection.length ? (
@@ -704,6 +706,7 @@ export class CatSelect {
                   class="select-input"
                   role="combobox"
                   ref={el => (this.input = el)}
+                  aria-expanded={this.state.isOpen}
                   aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
                   aria-activedescendant={this.activeDescendant}
                   aria-invalid={this.invalid ? 'true' : undefined}
@@ -779,7 +782,7 @@ export class CatSelect {
                 class="select-options"
                 role="listbox"
                 aria-multiselectable={this.multiple}
-                aria-setsize={this.state.totalElements}
+                aria-label={this.label || 'Options'}
                 id={`select-listbox-${this.id}`}
               >
                 {this.optionsList}
@@ -865,8 +868,11 @@ export class CatSelect {
                 'select-option-single': true,
                 'select-option-active': this.state.activeOptionIndex === i
               }}
+              role="option"
+              aria-selected={false}
               onFocus={() => this.input?.focus()}
               onClick={() => (isTagOption ? this.createTag(item.render.label) : this.select(item))}
+              onKeyDown={e => e.key === 'Enter' && (isTagOption ? this.createTag(item.render.label) : this.select(item))}
               tabIndex={-1}
             >
               {item.render.avatar ? (
