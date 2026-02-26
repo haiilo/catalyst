@@ -11,7 +11,7 @@ describe('cat-tag', () => {
        <div class="label-container"></div>
        <div class="input-wrapper">
         <div class="input-inner-wrapper">
-         <input class="tags-input" id="tags-cat-input-0-input" part="input" role="combobox">
+         <input aria-controls="tags-cat-input-0-list" class="tags-input" id="tags-cat-input-0-input" part="input" role="combobox">
         </div>
        </div>
     `);
