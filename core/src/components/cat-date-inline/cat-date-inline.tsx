@@ -244,7 +244,7 @@ export class CatDateInline {
       <Host aria-label={this.label || undefined}>
         <div class={{ 'label-container': true, 'label-hidden': this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
-            <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
+            <label id={`${this.id}-label`} htmlFor={this.id} part="label">
               <span class="label-wrapper">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
                 <div class="label-metadata">

@@ -4,6 +4,7 @@ const globals = require('globals');
 const tsParser = require('@typescript-eslint/parser');
 const typescriptEslint = require('@typescript-eslint/eslint-plugin');
 const js = require('@eslint/js');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
 
 const { FlatCompat } = require('@eslint/eslintrc');
 
@@ -33,10 +34,11 @@ module.exports = defineConfig([
       }
     },
 
-    extends: compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'),
+    extends: compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:jsx-a11y/recommended', 'prettier'),
 
     plugins: {
-      '@typescript-eslint': typescriptEslint
+      '@typescript-eslint': typescriptEslint,
+      'jsx-a11y': jsxA11y
     },
 
     rules: {
@@ -52,7 +54,15 @@ module.exports = defineConfig([
           allowTernary: true,
           allowShortCircuit: true
         }
-      ]
+      ],
+      // A11y rules - adjusted for Stencil web components
+      'jsx-a11y/click-events-have-key-events': 'warn',
+      'jsx-a11y/no-static-element-interactions': 'warn',
+      'jsx-a11y/no-noninteractive-tabindex': 'warn',
+      // Allow Stencil component patterns
+      'jsx-a11y/anchor-is-valid': ['error', {
+        aspects: ['invalidHref']
+      }]
     }
   },
   {
