@@ -63,7 +63,7 @@ export class CatI18nRegistry {
       this._locale = Intl.getCanonicalLocales(locale)[0];
       log.info(`[CatI18nRegistry::${this.id}] Set locale: ${this._locale}`);
       !silent && window.dispatchEvent(this.buildEvent('cat-i18n-setLocale', { locale, id: this.id }));
-    } catch (err) {
+    } catch {
       log.error(`[CatI18nRegistry::${this.id}] Invalid locale: ${locale}`);
     }
   }
