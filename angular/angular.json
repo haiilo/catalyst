@@ -30,7 +30,9 @@
             "tsConfig": "projects/catalyst/tsconfig.spec.json",
             "watch": false,
             "browsers": ["chromium"],
-            "runnerConfig": "vitest.config.ts"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true,
+            "coverageReporters": ["lcov", "json", "text"]
           }
         }
       }
@@ -62,7 +64,9 @@
             "tsConfig": "projects/catalyst-formly/tsconfig.spec.json",
             "watch": false,
             "browsers": ["chromium"],
-            "runnerConfig": "vitest.config.ts"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true,
+            "coverageReporters": ["lcov", "json", "text"]
           }
         }
       }
