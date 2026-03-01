@@ -104,6 +104,8 @@ Type: `Promise<void>`
  - [cat-date](../cat-date)
  - [cat-date-inline](../cat-date-inline)
  - [cat-input](../cat-input)
+ - [cat-menu](../cat-menu)
+ - [cat-menu-item](../cat-menu-item)
  - [cat-pagination](../cat-pagination)
  - [cat-select](../cat-select)
  - [cat-select-demo](../cat-select-demo)
@@ -124,6 +126,8 @@ graph TD;
   cat-date --> cat-button
   cat-date-inline --> cat-button
   cat-input --> cat-button
+  cat-menu --> cat-button
+  cat-menu-item --> cat-button
   cat-pagination --> cat-button
   cat-select --> cat-button
   cat-select-demo --> cat-button

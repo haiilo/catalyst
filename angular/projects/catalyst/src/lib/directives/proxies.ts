@@ -835,6 +835,146 @@ export declare interface CatInput extends Components.CatInput {
 
 @ProxyCmp({
   inputs: [
+    'arrowNavigation',
+    'delayedTriggerInit',
+    'disabled',
+    'justify',
+    'noResize',
+    'overflow',
+    'placement',
+    'triggerA11yLabel',
+    'triggerClass',
+    'triggerColor',
+    'triggerIcon',
+    'triggerIconOnly',
+    'triggerLabel',
+    'triggerNativeAttributes',
+    'triggerSize',
+    'triggerTestId',
+    'triggerVariant'
+  ],
+  methods: ['open', 'close', 'toggle']
+})
+@Component({
+  selector: 'cat-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'arrowNavigation',
+    'delayedTriggerInit',
+    'disabled',
+    'justify',
+    'noResize',
+    'overflow',
+    'placement',
+    'triggerA11yLabel',
+    'triggerClass',
+    'triggerColor',
+    'triggerIcon',
+    'triggerIconOnly',
+    'triggerLabel',
+    'triggerNativeAttributes',
+    'triggerSize',
+    'triggerTestId',
+    'triggerVariant'
+  ],
+  outputs: ['catOpen', 'catClose', 'catTriggerClick'],
+  standalone: false
+})
+export class CatMenu {
+  protected el: HTMLCatMenuElement;
+  @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
+  @Output() catTriggerClick = new EventEmitter<CustomEvent<MouseEvent>>();
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatMenu extends Components.CatMenu {
+  /**
+   * Emitted when the dropdown is opened.
+   */
+  catOpen: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the dropdown is closed.
+   */
+  catClose: EventEmitter<CustomEvent<FocusEvent>>;
+  /**
+   * Emitted when the trigger button is clicked.
+   */
+  catTriggerClick: EventEmitter<CustomEvent<MouseEvent>>;
+}
+
+@ProxyCmp({
+  inputs: [
+    'active',
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'identifier',
+    'loading',
+    'nativeAttributes',
+    'testId',
+    'url',
+    'urlTarget',
+    'variant'
+  ],
+  methods: ['doFocus', 'doBlur']
+})
+@Component({
+  selector: 'cat-menu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'active',
+    'color',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'iconRight',
+    'identifier',
+    'loading',
+    'nativeAttributes',
+    'testId',
+    'url',
+    'urlTarget',
+    'variant'
+  ],
+  outputs: ['catClick'],
+  standalone: false
+})
+export class CatMenuItem {
+  protected el: HTMLCatMenuItemElement;
+  @Output() catClick = new EventEmitter<CustomEvent<MouseEvent>>();
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatMenuItem extends Components.CatMenuItem {
+  /**
+   * Emitted when the trigger button is clicked.
+   */
+  catClick: EventEmitter<CustomEvent<MouseEvent>>;
+}
+
+@ProxyCmp({
+  inputs: [
     'activePadding',
     'compact',
     'iconNext',

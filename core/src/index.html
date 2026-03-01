@@ -241,6 +241,7 @@
               <li><a href="#checkbox">Checkbox</a></li>
               <li><a href="#divider">Divider</a></li>
               <li><a href="#dropdown">Dropdown</a></li>
+              <li><a href="#menu">Menu</a></li>
               <li><a href="#form">Form</a></li>
               <li><a href="#form-group">Form Group</a></li>
               <li><a href="#icon">Icon</a></li>
@@ -665,48 +666,8 @@
               <h2>Dropdown</h2>
 
               <div class="cat-flex cat-item-center cat-gap-s cat-mb-m">
-                <!-- Generic dropdown -->
-                <cat-dropdown>
-                  <cat-button slot="trigger" color="primary" variant="filled">Button</cat-button>
-                  <nav slot="content">
-                    <ul>
-                      <li class="cat-nav-head">Headline</li>
-                      <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled">Nav item 2</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" icon="sparkle-filled" color="warning">Nav item 3</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item" disabled>Nav item 4</cat-button>
-                      </li>
-                      <li>
-                        <cat-button class="cat-nav-item">Nav item 5 (long)</cat-button>
-                      </li>
-                      <li class="cat-hr"></li>
-                      <li>
-                        <cat-button class="cat-nav-item" color="danger" onclick="console.log(6)"
-                          >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
-                        </cat-button>
-                      </li>
-                    </ul>
-                    <hr />
-                    <ul>
-                      <li>
-                        <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
-                          >Nav item 3</cat-button
-                        >
-                      </li>
-                    </ul>
-                  </nav>
-                </cat-dropdown>
-
                 <!-- Wide dropdown -->
-                <cat-dropdown justify>
+                <cat-dropdown justify focus-trap="true">
                   <cat-button slot="trigger" color="primary" variant="filled"
                     >Button with very long content so that it is very wide</cat-button
                   >
@@ -835,6 +796,95 @@
                   </ul>
                 </nav>
               </cat-dropdown>
+            </section>
+
+            <section id="menu">
+              <h2>Menu</h2>
+
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <!-- Basic menu -->
+                <cat-menu>
+                  <cat-menu-item icon="edit-outlined">Edit</cat-menu-item>
+                  <cat-menu-item icon="copy-outlined">Duplicate</cat-menu-item>
+                  <cat-menu-item icon="archive-outlined">Archive</cat-menu-item>
+                  <hr />
+                  <cat-menu-item icon="trash-outlined" color="danger">Delete</cat-menu-item>
+                </cat-menu>
+
+                <!-- Menu with custom trigger -->
+                <cat-menu trigger-icon="settings-outlined" trigger-a11y-label="Settings menu">
+                  <cat-menu-item icon="user-outlined">Profile</cat-menu-item>
+                  <cat-menu-item icon="sliders-outlined">Preferences</cat-menu-item>
+                  <cat-menu-item icon="bell-outlined">Notifications</cat-menu-item>
+                  <hr />
+                  <cat-menu-item icon="sign-out-outlined">Sign out</cat-menu-item>
+                </cat-menu>
+
+                <cat-menu trigger-color="primary" trigger-variant="filled" trigger-label="Actions menu">
+                  <li class="cat-nav-head">Headline</li>
+                  <li class="cat-nav-text cat-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+                  <cat-menu-item icon="sparkle-filled" color="primary">Nav item 1</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled">Nav item 2</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled" color="warning">Nav item 3</cat-menu-item>
+                  <cat-menu-item icon="sparkle-filled" disabled>Nav item 4</cat-menu-item>
+                  <cat-menu-item>Nav item 5 (long)</cat-menu-item>
+                  <li class="cat-hr"></li>
+                  <cat-menu-item color="danger" onclick="console.log(6)"
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-menu-item
+                  >
+                  <hr />
+                  <cat-menu-item variant="outlined" onclick="console.log(3)">Nav item 3</cat-menu-item>
+                </cat-menu>
+              </div>
+
+              <h3>Menu Placement Examples</h3>
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <cat-menu placement="bottom-start" trigger-label="Bottom start menu">
+                  <cat-menu-item icon="align-left">Bottom start (default)</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+
+                <cat-menu placement="bottom-end" trigger-label="Bottom end menu">
+                  <cat-menu-item icon="align-right">Bottom end</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+
+                <cat-menu placement="top-start" trigger-label="Top start menu">
+                  <cat-menu-item icon="arrow-up">Top start</cat-menu-item>
+                  <cat-menu-item>Item 2</cat-menu-item>
+                  <cat-menu-item>Item 3</cat-menu-item>
+                </cat-menu>
+              </div>
+
+              <h3>Arrow Navigation Modes</h3>
+              <div class="cat-flex cat-items-center cat-gap-s cat-mb-m">
+                <!-- Vertical navigation (default) -->
+                <cat-menu
+                  arrow-navigation="vertical"
+                  trigger-label="Vertical navigation (default)"
+                  trigger-icon="arrows-vertical"
+                >
+                  <cat-menu-item icon="arrow-up-down-filled">Arrow Up/Down navigation</cat-menu-item>
+                  <cat-menu-item icon="list-outlined">Default for dropdown menus</cat-menu-item>
+                  <cat-menu-item icon="menu-outlined">Vertical orientation (ARIA)</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Standard menu pattern</cat-menu-item>
+                </cat-menu>
+
+                <!-- Horizontal navigation -->
+                <cat-menu
+                  arrow-navigation="horizontal"
+                  trigger-label="Horizontal navigation"
+                  trigger-icon="arrows-horizontal"
+                  placement="bottom-start"
+                >
+                  <cat-menu-item icon="arrow-left-right-filled">Arrow Left/Right navigation</cat-menu-item>
+                  <cat-menu-item icon="columns-outlined">Ideal for toolbar menus</cat-menu-item>
+                  <cat-menu-item icon="layout-outlined">Horizontal orientation (ARIA)</cat-menu-item>
+                  <cat-menu-item icon="keyboard-outlined">Alternative menu pattern</cat-menu-item>
+                </cat-menu>
+              </div>
             </section>
 
             <section id="form">
