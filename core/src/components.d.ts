@@ -195,6 +195,11 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
+          * Link behaves as an inline element.
+          * @default false
+         */
+        "inline": boolean;
+        /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
           * @default false
          */
@@ -2791,6 +2796,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "iconRight"?: boolean;
+        /**
+          * Link behaves as an inline element.
+          * @default false
+         */
+        "inline"?: boolean;
         /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
           * @default false
