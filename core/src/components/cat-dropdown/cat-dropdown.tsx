@@ -387,7 +387,7 @@ export class CatDropdown {
       computePosition(anchorElement, this.content, {
         strategy: 'fixed',
         placement: this.placement,
-        middleware: [offset(CatDropdown.OFFSET), ...middleware, ...resize]
+        middleware: [...middleware, ...resize]
       }).then(({ x, y, placement }) => {
         this.content.dataset.placement = placement;
         Object.assign(this.content.style, {
