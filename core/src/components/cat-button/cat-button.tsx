@@ -104,6 +104,11 @@ export class CatButton {
   @Prop() urlTarget?: '_blank' | '_self';
 
   /**
+   * Link behaves as an inline element.
+   */
+  @Prop() inline = false;
+
+  /**
    * The name of an icon to be displayed in the button.
    */
   @Prop() icon?: string;
@@ -267,7 +272,8 @@ export class CatButton {
               'cat-button-round': this.round,
               'cat-button-loading': this.loading,
               'cat-button-disabled': this.disabled,
-              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton,
+              'cat-button-ellipsed': !this.noEllipsis && !this.isIconButton && !this.inline,
+              'cat-button-inline': this.inline,
               [`cat-button-${this.variant}`]: Boolean(this.variant),
               [`cat-button-${this.color}`]: Boolean(this.color),
               [`cat-button-${this.size}`]: Boolean(this.size),
