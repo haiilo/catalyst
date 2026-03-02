@@ -1,7 +1,8 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-nav {
+nav,
+cat-menu {
   hr,
   .cat-hr {
     margin: 0.25rem -0.25rem;

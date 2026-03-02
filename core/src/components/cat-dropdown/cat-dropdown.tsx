@@ -2,11 +2,12 @@ import { autoUpdate, computePosition, flip, offset, Placement, ReferenceElement,
 import { timeTransitionS } from '@haiilo/catalyst-tokens';
 import { Component, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import * as focusTrap from 'focus-trap';
-import type { FocusableElement } from 'tabbable';
+import { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
 
 let nextUniqueId = 0;
+export type DropdownPlacement = Placement;
 
 /**
  * A dropdown component to display a list of actions in a dropdown menu or to
@@ -28,12 +29,13 @@ export class CatDropdown {
   private trap?: focusTrap.FocusTrap;
   private _isOpen: boolean | null = false;
   private cleanupFloatingUi?: () => void;
+  private readonly tabbableOptions = { getShadowRoot: true };
   /**
    * Tracking the origin of opening the dropdown and specify if initial focus should be set.
    * Currently we set it only when the origin is keyboard.
    * We might not need to track this in future when focus-visible support is improved across browsers
    */
-  private hasInitialFocus = false;
+  private isFocusVisible = false;
 
   /**
    * The placement of the dropdown.
@@ -54,6 +56,7 @@ export class CatDropdown {
 
   /**
    * Do not navigate focus inside the dropdown via vertical arrow keys.
+   * @deprecated use cat-menu
    */
   @Prop() arrowNavigation: 'horizontal' | 'vertical' | 'none' = 'vertical';
 
@@ -88,6 +91,7 @@ export class CatDropdown {
 
   /**
    * Trigger element will not receive focus when dropdown is closed.
+   * @deprecated the property can be removed, focus is arranged internally
    */
   @Prop() noReturnFocus = false;
 
@@ -96,6 +100,13 @@ export class CatDropdown {
    * Can be useful when trigger is rendered dynamically.
    */
   @Prop() delayedTriggerInit = false;
+
+  /**
+   * Whether the focus should be trapped inside dropdown popup.
+   * Use it only when the dropdown popup content has role dialog.
+   * @internal
+   */
+  @Prop() focusTrap = true;
 
   /**
    * Emitted when the dropdown is opened.
@@ -110,7 +121,7 @@ export class CatDropdown {
   @Listen('catClick')
   clickHandler(event: CustomEvent<MouseEvent>) {
     if (!this.trigger && this.delayedTriggerInit) {
-      this.hasInitialFocus = this.isEventOriginFromKeyboard(event.detail);
+      this.isFocusVisible = this.isEventOriginFromKeyboard(event.detail);
       this.initTrigger();
       this.toggle();
     }
@@ -125,6 +136,27 @@ export class CatDropdown {
       (event.target as Element)?.slot !== 'trigger' &&
       // check if click was not an element marked with data-dropdown-no-close
       !path.slice(0, path.indexOf(this.content)).find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    ) {
+      this.close();
+    }
+  }
+
+  @Listen('keydown')
+  keydownHandler(event: KeyboardEvent) {
+    if (this.isOpen && event.key === 'Escape') {
+      this.close();
+    }
+  }
+
+  @Listen('click', { target: 'window' })
+  globalClickHandler(event: MouseEvent) {
+    if (
+      this.isOpen &&
+      !this.noAutoClose &&
+      // check if click was outside of the dropdown content
+      !event.composedPath().includes(this.content) &&
+      // check if click was not on an element marked with data-dropdown-no-close
+      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
     ) {
       this.close();
     }
@@ -154,58 +186,54 @@ export class CatDropdown {
 
     this._isOpen = null;
     this.content.style.display = 'block';
-    this.hasInitialFocus = isFocusVisible ?? this.hasInitialFocus;
+    this.isFocusVisible = isFocusVisible ?? this.isFocusVisible;
 
     const trigger = this.anchor || this.trigger;
     if (trigger) {
       this.cleanupFloatingUi = autoUpdate(trigger, this.content, () => this.update(trigger));
     }
     // give CSS transition time to apply
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       this._isOpen = true;
       this.content.classList.add('show');
       this.trigger?.setAttribute('aria-expanded', 'true');
-      this.trap = this.trap
-        ? this.trap.updateContainerElements(this.content)
-        : focusTrap.createFocusTrap(this.content, {
-            tabbableOptions: {
-              getShadowRoot: true
-            },
-            allowOutsideClick: true,
-            clickOutsideDeactivates: event =>
-              !this.noAutoClose &&
-              // check if click was outside of the dropdown content
-              !event.composedPath().includes(this.content) &&
-              // check if click was not on an element marked with data-dropdown-no-close
-              !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close')),
-            onPostDeactivate: () => this.close(),
-            onPostActivate: () => this.catOpen.emit(),
-            setReturnFocus: elem => (this.noReturnFocus ? false : this.trigger || elem),
-            isKeyForward: event => {
-              if (
-                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
-                (this.arrowNavigation === 'vertical' && event.key === 'ArrowDown')
-              ) {
-                event.preventDefault();
-                return true;
+
+      if (this.focusTrap) {
+        this.trap = this.trap
+          ? this.trap.updateContainerElements(this.content)
+          : focusTrap.createFocusTrap(this.content, {
+              tabbableOptions: this.tabbableOptions,
+              allowOutsideClick: true,
+              onPostActivate: () => this.catOpen.emit(),
+              setReturnFocus: elem => (!this.isFocusVisible ? false : this.trigger || elem),
+              isKeyForward: event => {
+                if (
+                  (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
+                  (this.arrowNavigation === 'vertical' && event.key === 'ArrowDown')
+                ) {
+                  event.preventDefault();
+                  return true;
+                }
+                return event.key === 'Tab';
+              },
+              isKeyBackward: event => {
+                if (
+                  (this.arrowNavigation === 'horizontal' && event.key === 'ArrowLeft') ||
+                  (this.arrowNavigation === 'vertical' && event.key === 'ArrowUp')
+                ) {
+                  event.preventDefault();
+                  return true;
+                }
+                return event.key === 'Tab' && event.shiftKey;
+              },
+              initialFocus: () => {
+                return this.isFocusVisible ? undefined : false;
               }
-              return event.key === 'Tab';
-            },
-            isKeyBackward: event => {
-              if (
-                (this.arrowNavigation === 'horizontal' && event.key === 'ArrowLeft') ||
-                (this.arrowNavigation === 'vertical' && event.key === 'ArrowUp')
-              ) {
-                event.preventDefault();
-                return true;
-              }
-              return event.key === 'Tab' && event.shiftKey;
-            },
-            initialFocus: () => {
-              return this.hasInitialFocus && !this.noInitialFocus ? undefined : false;
-            }
-          });
-      this.trap.activate();
+            });
+        this.trap.activate();
+      } else {
+        this.catOpen.emit();
+      }
     });
   }
 
@@ -213,7 +241,7 @@ export class CatDropdown {
    * Closes the dropdown.
    */
   @Method()
-  async close(): Promise<void> {
+  async close(shouldReturnFocus = this.isFocusVisible): Promise<void> {
     if (!this._isOpen) {
       return; // busy or closed
     }
@@ -222,6 +250,9 @@ export class CatDropdown {
     this.trap?.deactivate();
     this.trap = undefined;
     this.content.classList.remove('show');
+    if (shouldReturnFocus) {
+      this.trigger?.focus();
+    }
     // give CSS transition time to apply
     setTimeout(() => {
       this._isOpen = false;
@@ -275,7 +306,7 @@ export class CatDropdown {
     this.trigger.setAttribute('aria-expanded', 'false');
     this.trigger.setAttribute('aria-controls', this.contentId);
     this.trigger.addEventListener('click', (event: Event) => {
-      this.hasInitialFocus = this.isEventOriginFromKeyboard(event as UIEvent);
+      this.isFocusVisible = this.isEventOriginFromKeyboard(event as UIEvent);
       this.toggle();
     });
   }

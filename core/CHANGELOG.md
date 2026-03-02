@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.3.0...catalyst-core-v14.4.0) (2026-02-25)
+
+
+### Features
+
+* **core:** add aria-label to pagination nav element ([#926](https://github.com/haiilo/catalyst/issues/926)) ([7a2e2f8](https://github.com/haiilo/catalyst/commit/7a2e2f85fc9642666d8510c06beb750b21b67026))
+
 ## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.2.0...catalyst-core-v14.3.0) (2026-02-10)
 
 
