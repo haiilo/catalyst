@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v14.4.0...catalyst-react-v14.5.0) (2026-03-02)
+
+
+### Features
+
+* **core:** cat-menu ([#910](https://github.com/haiilo/catalyst/issues/910)) ([c966b1d](https://github.com/haiilo/catalyst/commit/c966b1d2192655da81e99f66aab3fad32f66e724))
+
 ## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v14.3.0...catalyst-react-v14.4.0) (2026-02-25)
 
 
