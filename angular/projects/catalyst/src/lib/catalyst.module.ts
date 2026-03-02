@@ -45,7 +45,9 @@ const CatComponents = [
   Components.CatTime,
   Components.CatToggle,
   Components.CatTooltip,
-  Components.CatTag
+  Components.CatTag,
+  Components.CatMenu,
+  Components.CatMenuItem
 ];
 
 const CatDirectives = [

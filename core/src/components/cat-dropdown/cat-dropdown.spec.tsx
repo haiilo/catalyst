@@ -29,8 +29,10 @@ const mockTrap = {
   })
 };
 
+const mockCreateFocusTrap = jest.fn(() => mockTrap);
+
 jest.mock('focus-trap', () => ({
-  createFocusTrap: jest.fn(() => mockTrap)
+  createFocusTrap: mockCreateFocusTrap
 }));
 
 import { newSpecPage } from '@stencil/core/testing';
@@ -192,6 +194,286 @@ describe('cat-dropdown', () => {
         crossAxis: 'alignment',
         fallbackAxisSideDirection: 'end'
       });
+    });
+  });
+
+  describe('keydownHandler', () => {
+    it('should close dropdown when Escape is pressed and dropdown is open', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      page.root?.dispatchEvent(escapeEvent);
+      await page.waitForChanges();
+      await new Promise(resolve => setTimeout(resolve, 150));
+
+      // then
+      expect(dropdown.isOpen).toBe(false);
+    });
+
+    it('should not close dropdown when non-Escape key is pressed', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when
+      const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+      page.root?.dispatchEvent(enterEvent);
+      await page.waitForChanges();
+
+      // then
+      expect(dropdown.isOpen).toBe(true);
+    });
+  });
+
+  describe('globalClickHandler', () => {
+    it('should close dropdown when clicking outside and dropdown is open', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when - click outside the content
+      page.doc.body.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      await page.waitForChanges();
+      await new Promise(resolve => setTimeout(resolve, 150));
+
+      // then
+      expect(dropdown.isOpen).toBe(false);
+    });
+
+    it('should not close dropdown when clicking inside content', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      const content = page.root?.shadowRoot?.querySelector('.content') as HTMLElement;
+
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when - click inside the content
+      content.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      content.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      await page.waitForChanges();
+
+      // then
+      expect(dropdown.isOpen).toBe(true);
+    });
+
+    it('should not close dropdown when noAutoClose is true', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown no-auto-close>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when - click outside
+      page.doc.body.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      await page.waitForChanges();
+
+      // then
+      expect(dropdown.isOpen).toBe(true);
+    });
+  });
+
+  describe('open method', () => {
+    it('should emit catOpen event when focusTrap is false', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown focus-trap="false">
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      const catOpenSpy = jest.fn();
+      page.root?.addEventListener('catOpen', catOpenSpy);
+
+      // when
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      // then
+      expect(catOpenSpy).toHaveBeenCalled();
+    });
+
+    it('should not create focus trap when focusTrap is false', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown focus-trap="false">
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+
+      // Clear any previous mock calls
+      jest.clearAllMocks();
+
+      // when
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      // then
+      expect(mockCreateFocusTrap).not.toHaveBeenCalled();
+      expect(dropdown.isOpen).toBe(true);
+    });
+
+    it('should create focus trap and emit catOpen in onPostActivate when focusTrap is true', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown focus-trap="true">
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      const catOpenSpy = jest.fn();
+      page.root?.addEventListener('catOpen', catOpenSpy);
+
+      jest.clearAllMocks();
+
+      // when
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      // then
+      expect(mockCreateFocusTrap).toHaveBeenCalled();
+      expect(mockTrapActivate).toHaveBeenCalled();
+    });
+  });
+
+  describe('close method', () => {
+    it('should not return focus to trigger when called with false', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      const trigger = page.root?.querySelector('[slot="trigger"]') as HTMLButtonElement;
+      const focusSpy = jest.spyOn(trigger, 'focus');
+
+      await dropdown.open();
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when
+      await dropdown.close(false);
+      await page.waitForChanges();
+
+      // then
+      expect(focusSpy).not.toHaveBeenCalled();
+    });
+
+    it('should return focus to trigger when called with true', async () => {
+      // given
+      const page = await newSpecPage({
+        components: [CatDropdown],
+        html: `<cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>`
+      });
+
+      const dropdown = page.rootInstance as CatDropdown;
+      const trigger = page.root?.querySelector('[slot="trigger"]') as HTMLButtonElement;
+      const focusSpy = jest.spyOn(trigger, 'focus');
+
+      await dropdown.open(true); // Open with isFocusVisible = true
+      await page.waitForChanges();
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await page.waitForChanges();
+
+      expect(dropdown.isOpen).toBe(true);
+
+      // when - close without argument (should default to isFocusVisible which is true)
+      await dropdown.close();
+      await page.waitForChanges();
+
+      // then
+      expect(focusSpy).toHaveBeenCalled();
     });
   });
 });
