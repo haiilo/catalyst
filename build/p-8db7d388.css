@@ -1774,18 +1774,25 @@ cat-time):not(:last-child) {
 /* stylelint-disable value-keyword-case */
 /* stylelint-enable value-keyword-case */
 nav hr,
-nav .cat-hr {
+nav .cat-hr,
+cat-menu hr,
+cat-menu .cat-hr {
   margin: 0.25rem -0.25rem;
 }
 nav .cat-nav-head,
-nav .cat-nav-text {
+nav .cat-nav-text,
+cat-menu .cat-nav-head,
+cat-menu .cat-nav-text {
   padding: 0.5625rem 0.75rem;
 }
 nav .cat-nav-head > :last-child,
-nav .cat-nav-text > :last-child {
+nav .cat-nav-text > :last-child,
+cat-menu .cat-nav-head > :last-child,
+cat-menu .cat-nav-text > :last-child {
   margin-bottom: 0 !important;
 }
-nav .cat-nav-head {
+nav .cat-nav-head,
+cat-menu .cat-nav-head {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: var(--cat-font-weight-head, 600);
