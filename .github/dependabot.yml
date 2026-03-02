@@ -24,6 +24,6 @@ updates:
         update-types:
           - "patch"
           - "minor"
-      ignore:
-        - dependency-name: "@angular*"
-          update-types: [ "version-update:semver-major" ]
+    ignore:
+      - dependency-name: "@angular*"
+        update-types: [ "version-update:semver-major" ]
