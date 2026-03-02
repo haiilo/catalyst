@@ -2215,6 +2215,10 @@ code {
   vertical-align: top;
 }
 
+cat-button[disabled] {
+  cursor: default;
+}
+
 /**
  * Auto-generated file. Do not edit directly.
  */
