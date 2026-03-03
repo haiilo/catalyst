@@ -206,7 +206,7 @@ export class CatDropdown {
               tabbableOptions: this.tabbableOptions,
               allowOutsideClick: true,
               onPostActivate: () => this.catOpen.emit(),
-              setReturnFocus: elem => ((!this.isFocusVisible || this.noReturnFocus) ? false : this.trigger || elem),
+              setReturnFocus: elem => (!this.isFocusVisible || this.noReturnFocus ? false : this.trigger || elem),
               isKeyForward: event => {
                 if (
                   (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
@@ -298,11 +298,11 @@ export class CatDropdown {
 
   private handleClickOutside(event: MouseEvent): void {
     if (
-        !this.noAutoClose &&
-        // check if click was outside of the dropdown content
-        !event.composedPath().includes(this.content) &&
-        // check if click was not on an element marked with data-dropdown-no-close
-        !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+      !this.noAutoClose &&
+      // check if click was outside of the dropdown content
+      !event.composedPath().includes(this.content) &&
+      // check if click was not on an element marked with data-dropdown-no-close
+      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
     ) {
       this.close();
     }
