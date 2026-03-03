@@ -814,7 +814,7 @@ export namespace Components {
          */
         "noResize": boolean;
         /**
-          * Trigger element will not receive focus when dropdown is closed.
+          * Trigger element will not receive focus when dropdown is closed. Please use this property carefully, consider using cat-menu over using this property
           * @default false
          */
         "noReturnFocus": boolean;
@@ -3647,7 +3647,7 @@ declare namespace LocalJSX {
          */
         "noResize"?: boolean;
         /**
-          * Trigger element will not receive focus when dropdown is closed.
+          * Trigger element will not receive focus when dropdown is closed. Please use this property carefully, consider using cat-menu over using this property
           * @default false
          */
         "noReturnFocus"?: boolean;
