@@ -101,7 +101,6 @@ export declare interface CatBadge extends Components.CatBadge {}
     'icon',
     'iconOnly',
     'iconRight',
-    'inline',
     'loading',
     'name',
     'nativeAttributes',
@@ -134,7 +133,6 @@ export declare interface CatBadge extends Components.CatBadge {}
     'icon',
     'iconOnly',
     'iconRight',
-    'inline',
     'loading',
     'name',
     'nativeAttributes',
@@ -1252,7 +1250,7 @@ export class CatSelect {
   protected el: HTMLCatSelectElement;
   @Output() catOpen = new EventEmitter<CustomEvent<FocusEvent>>();
   @Output() catClose = new EventEmitter<CustomEvent<FocusEvent>>();
-  @Output() catChange = new EventEmitter<CustomEvent<InputEvent>>();
+  @Output() catChange = new EventEmitter<CustomEvent<ICatSelectCatSelectValue>>();
   @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
     c: ChangeDetectorRef,

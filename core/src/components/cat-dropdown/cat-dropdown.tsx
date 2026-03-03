@@ -91,7 +91,7 @@ export class CatDropdown {
 
   /**
    * Trigger element will not receive focus when dropdown is closed.
-   * @deprecated the property can be removed, focus is arranged internally
+   * Please use this property carefully, consider using cat-menu over using this property
    */
   @Prop() noReturnFocus = false;
 
@@ -148,18 +148,19 @@ export class CatDropdown {
     }
   }
 
-  @Listen('click', { target: 'window' })
+  @Listen('click', { target: 'document', capture: true })
   globalClickHandler(event: MouseEvent) {
-    if (
-      this.isOpen &&
-      !this.noAutoClose &&
-      // check if click was outside of the dropdown content
-      !event.composedPath().includes(this.content) &&
-      // check if click was not on an element marked with data-dropdown-no-close
-      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
-    ) {
-      this.close();
-    }
+    this.handleClickOutside(event);
+  }
+
+  @Listen('mousedown', { target: 'document', capture: true })
+  globalMouseDownHandler(event: MouseEvent) {
+    this.handleClickOutside(event);
+  }
+
+  @Listen('touchstart', { target: 'document', capture: true, passive: false })
+  globalTouchStartHandler(event: MouseEvent) {
+    this.handleClickOutside(event);
   }
 
   /**
@@ -205,7 +206,7 @@ export class CatDropdown {
               tabbableOptions: this.tabbableOptions,
               allowOutsideClick: true,
               onPostActivate: () => this.catOpen.emit(),
-              setReturnFocus: elem => (!this.isFocusVisible ? false : this.trigger || elem),
+              setReturnFocus: elem => (!this.isFocusVisible || this.noReturnFocus ? false : this.trigger || elem),
               isKeyForward: event => {
                 if (
                   (this.arrowNavigation === 'horizontal' && event.key === 'ArrowRight') ||
@@ -293,6 +294,18 @@ export class CatDropdown {
         </div>
       </Host>
     );
+  }
+
+  private handleClickOutside(event: MouseEvent): void {
+    if (
+      !this.noAutoClose &&
+      // check if click was outside of the dropdown content
+      !event.composedPath().includes(this.content) &&
+      // check if click was not on an element marked with data-dropdown-no-close
+      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    ) {
+      this.close();
+    }
   }
 
   private get contentId() {

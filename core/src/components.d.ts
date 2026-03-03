@@ -195,11 +195,6 @@ export namespace Components {
          */
         "iconRight": boolean;
         /**
-          * Link behaves as an inline element.
-          * @default false
-         */
-        "inline": boolean;
-        /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
           * @default false
          */
@@ -820,7 +815,6 @@ export namespace Components {
         "noResize": boolean;
         /**
           * Trigger element will not receive focus when dropdown is closed.
-          * @deprecated the property can be removed, focus is arranged internally
           * @default false
          */
         "noReturnFocus": boolean;
@@ -3027,11 +3021,6 @@ declare namespace LocalJSX {
          */
         "iconRight"?: boolean;
         /**
-          * Link behaves as an inline element.
-          * @default false
-         */
-        "inline"?: boolean;
-        /**
           * Displays the button in a loading state with a spinner. Just like a disabled button, an inactive button is unusable and un-clickable. However, it retains the current focus state.
           * @default false
          */
@@ -3659,7 +3648,6 @@ declare namespace LocalJSX {
         "noResize"?: boolean;
         /**
           * Trigger element will not receive focus when dropdown is closed.
-          * @deprecated the property can be removed, focus is arranged internally
           * @default false
          */
         "noReturnFocus"?: boolean;
