@@ -1,5 +1,20 @@
 # Changelog
 
+## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.4.0...catalyst-core-v14.5.0) (2026-03-02)
+
+
+### Features
+
+* **core:** add value to catChange event of cat-select ([#836](https://github.com/haiilo/catalyst/issues/836)) ([ac57fd5](https://github.com/haiilo/catalyst/commit/ac57fd5cdbb9752aec181376b17f9ee2d494ee12))
+* **core:** cat-menu ([#910](https://github.com/haiilo/catalyst/issues/910)) ([c966b1d](https://github.com/haiilo/catalyst/commit/c966b1d2192655da81e99f66aab3fad32f66e724))
+* **core:** make button links behave as inline elements ([#855](https://github.com/haiilo/catalyst/issues/855)) ([a8f0ce1](https://github.com/haiilo/catalyst/commit/a8f0ce15776e8b177bd1dad122dfbbfa8f9659dc))
+
+
+### Bug Fixes
+
+* **core:** remove extra offset(CatDropdown.OFFSET) in dropdown computePosition middleware ([#938](https://github.com/haiilo/catalyst/issues/938)) ([f7222d2](https://github.com/haiilo/catalyst/commit/f7222d2c74c0f4ff1bb2aa1a080fbd9c49fb6a17))
+* **core:** set cursor default for disabled cat-button host ([#923](https://github.com/haiilo/catalyst/issues/923)) ([c9bdf38](https://github.com/haiilo/catalyst/commit/c9bdf385692a5814fb89c970b9c1ea4f1f0e4378))
+
 ## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.3.0...catalyst-core-v14.4.0) (2026-02-25)
 
 
