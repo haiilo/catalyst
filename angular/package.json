@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@angular/animations": "21.2.0",
-    "@angular/cdk": "21.1.0",
+    "@angular/cdk": "21.2.0",
     "@angular/common": "21.2.0",
     "@angular/compiler": "21.2.0",
     "@angular/core": "21.2.0",
@@ -30,8 +30,8 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "21.1.5",
-    "@angular/cli": "21.1.5",
+    "@angular/build": "21.2.0",
+    "@angular/cli": "21.2.0",
     "@angular/compiler-cli": "21.2.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^12.11.1",
