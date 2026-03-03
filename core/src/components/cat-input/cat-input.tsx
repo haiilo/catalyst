@@ -384,6 +384,7 @@ export class CatInput {
                 'input-disabled': this.disabled,
                 'input-invalid': this.invalid
               }}
+              role="presentation"
               onClick={() => this.input.focus()}
             >
               {this.textPrefix && (
