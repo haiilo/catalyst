@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.0...catalyst-angular-v14.5.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* **core:** fixes of 14.5.0 release ([#941](https://github.com/haiilo/catalyst/issues/941)) ([7e7d53f](https://github.com/haiilo/catalyst/commit/7e7d53fc84fc481d77d05db70fb476da0f942417))
+
 ## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.4.0...catalyst-angular-v14.5.0) (2026-03-02)
 
 
