@@ -307,11 +307,13 @@ export class CatDropdown {
   }
 
   private shouldCloseByClickEvent(event: MouseEvent | TouchEvent): boolean {
-    return !this.noAutoClose &&
-        // check if click was outside of the dropdown content
-        !event.composedPath().includes(this.content) &&
-        // check if click was not on an element marked with data-dropdown-no-close
-        !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    return (
+      !this.noAutoClose &&
+      // check if click was outside of the dropdown content
+      !event.composedPath().includes(this.content) &&
+      // check if click was not on an element marked with data-dropdown-no-close
+      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
+    );
   }
 
   private get contentId() {

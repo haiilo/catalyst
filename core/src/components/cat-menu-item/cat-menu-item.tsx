@@ -130,7 +130,7 @@ export class CatMenuItem {
               role: 'menuitem',
               tabindex: '-1'
             }}
-            onCatClick={(event) => this.onCatClick(event)}
+            onCatClick={event => this.onCatClick(event)}
           >
             <slot></slot>
           </cat-button>
