@@ -840,6 +840,33 @@
                   <hr />
                   <cat-menu-item variant="outlined" onclick="console.log(3)">Nav item 3</cat-menu-item>
                 </cat-menu>
+
+                <cat-menu overflow trigger-variant="filled" trigger-label="Example User Menu">
+                  <cat-menu-item>
+                    <div class="cat-flex cat-items-center cat-gap-s">
+                      <cat-avatar initials="MM" size="m" src="https://tinyurl.com/bdcu9va5" round></cat-avatar>
+                      <div class="cat-flex cat-flex-col cat-items-start">
+                        <span>Max Mustermann</span>
+                        <span class="cat-text-s cat-muted">Open profile</span>
+                      </div>
+                    </div>
+                  </cat-menu-item>
+                  <cat-menu-item sub-menu>
+                    <cat-dropdown placement="right-start">
+                      <cat-button slot="trigger" class="cat-nav-item" icon="status-available">Available</cat-button>
+                      <nav slot="content">
+                        <ul>
+                          <li class="cat-nav-head">Headline</li>
+                          <li class="cat-nav-text cat-muted">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                          </li>
+                          <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary">Nav item 1</cat-button>
+                        </ul>
+                      </nav>
+                    </cat-dropdown>
+                  </cat-menu-item>
+                  <cat-menu-item icon="bookmark-outlined">Saved</cat-menu-item>
+                </cat-menu>
               </div>
 
               <h3>Menu Placement Examples</h3>

@@ -1204,6 +1204,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * @default false
+         */
+        "subMenu": boolean;
+        /**
           * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */
         "testId"?: string;
@@ -4034,6 +4038,10 @@ declare namespace LocalJSX {
           * Emitted when the trigger button is clicked.
          */
         "onCatClick"?: (event: CatMenuItemCustomEvent<MouseEvent>) => void;
+        /**
+          * @default false
+         */
+        "subMenu"?: boolean;
         /**
           * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
          */

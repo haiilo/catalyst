@@ -1,6 +1,7 @@
 import { Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
+import { findClosest } from '../../utils/find-closest';
 
 /**
  * A menu component that provides a dropdown with a built-in configurable trigger button
@@ -139,11 +140,11 @@ export class CatMenu {
   }
 
   private getDeepActiveElement(): Element | null {
-    let active = document.activeElement;
-    while (active?.shadowRoot?.activeElement && active.nodeName !== 'CAT-MENU-ITEM') {
+    let active: Element | null = document.activeElement;
+    while (active?.shadowRoot?.activeElement) {
       active = active.shadowRoot.activeElement;
     }
-    return active;
+    return active ? (findClosest('cat-menu-item', active) ?? active) : null;
   }
 
   @Listen('keydown', { target: 'document' })
