@@ -82,6 +82,7 @@ export class CatMenuItem {
    * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
    */
   @Prop() testId?: string;
+  @Prop() subMenu = false;
 
   /**
    * Emitted when the trigger button is clicked.
@@ -129,7 +130,7 @@ export class CatMenuItem {
               role: 'menuitem',
               tabindex: '-1'
             }}
-            onCatClick={this.onCatClick}
+            onCatClick={(event) => this.onCatClick(event)}
           >
             <slot></slot>
           </cat-button>

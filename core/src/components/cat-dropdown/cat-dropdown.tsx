@@ -5,6 +5,7 @@ import * as focusTrap from 'focus-trap';
 import { FocusableElement } from 'tabbable';
 import firstTabbable from '../../utils/first-tabbable';
 import findFirstTabbableIncludeHidden from '../../utils/first-tabbable-with-visibility-hidden';
+import { CatMenuItem } from '../cat-menu-item/cat-menu-item';
 
 let nextUniqueId = 0;
 export type DropdownPlacement = Placement;
@@ -134,6 +135,7 @@ export class CatDropdown {
       path.includes(this.content) &&
       // check if click was not on a trigger for a sub-dropdown
       (event.target as Element)?.slot !== 'trigger' &&
+      !(event.target as unknown as CatMenuItem).subMenu &&
       // check if click was not an element marked with data-dropdown-no-close
       !path.slice(0, path.indexOf(this.content)).find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
     ) {
@@ -205,6 +207,7 @@ export class CatDropdown {
           : focusTrap.createFocusTrap(this.content, {
               tabbableOptions: this.tabbableOptions,
               allowOutsideClick: true,
+              onPostDeactivate: () => this.close(),
               onPostActivate: () => this.catOpen.emit(),
               setReturnFocus: elem => (!this.isFocusVisible || this.noReturnFocus ? false : this.trigger || elem),
               isKeyForward: event => {
@@ -248,7 +251,6 @@ export class CatDropdown {
     }
 
     this._isOpen = null;
-    this.trap?.deactivate();
     this.trap = undefined;
     this.content.classList.remove('show');
     if (shouldReturnFocus) {
@@ -262,6 +264,7 @@ export class CatDropdown {
       this.trigger?.setAttribute('aria-expanded', 'false');
       this.cleanupFloatingUi?.();
       this.cleanupFloatingUi = undefined;
+      this.trap?.deactivate();
       this.catClose.emit();
     }, timeTransitionS);
   }
