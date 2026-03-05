@@ -207,6 +207,7 @@ export class CatDropdown {
           : focusTrap.createFocusTrap(this.content, {
               tabbableOptions: this.tabbableOptions,
               allowOutsideClick: true,
+              clickOutsideDeactivates: event => this.shouldCloseByClickEvent(event),
               onPostDeactivate: () => this.close(),
               onPostActivate: () => this.catOpen.emit(),
               setReturnFocus: elem => (!this.isFocusVisible || this.noReturnFocus ? false : this.trigger || elem),
@@ -251,6 +252,7 @@ export class CatDropdown {
     }
 
     this._isOpen = null;
+    this.trap?.deactivate();
     this.trap = undefined;
     this.content.classList.remove('show');
     if (shouldReturnFocus) {
@@ -264,7 +266,6 @@ export class CatDropdown {
       this.trigger?.setAttribute('aria-expanded', 'false');
       this.cleanupFloatingUi?.();
       this.cleanupFloatingUi = undefined;
-      this.trap?.deactivate();
       this.catClose.emit();
     }, timeTransitionS);
   }
@@ -300,15 +301,17 @@ export class CatDropdown {
   }
 
   private handleClickOutside(event: MouseEvent): void {
-    if (
-      !this.noAutoClose &&
-      // check if click was outside of the dropdown content
-      !event.composedPath().includes(this.content) &&
-      // check if click was not on an element marked with data-dropdown-no-close
-      !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
-    ) {
+    if (this.shouldCloseByClickEvent(event)) {
       this.close();
     }
+  }
+
+  private shouldCloseByClickEvent(event: MouseEvent | TouchEvent): boolean {
+    return !this.noAutoClose &&
+        // check if click was outside of the dropdown content
+        !event.composedPath().includes(this.content) &&
+        // check if click was not on an element marked with data-dropdown-no-close
+        !event.composedPath().find(el => this.hasAttribute(el, 'data-dropdown-no-close'))
   }
 
   private get contentId() {
