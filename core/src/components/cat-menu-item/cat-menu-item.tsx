@@ -1,4 +1,4 @@
-import {Component, h, Host, Prop, Method, Event, EventEmitter, Listen} from '@stencil/core';
+import { Component, h, Host, Prop, Method, Event, EventEmitter, Listen } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
@@ -135,7 +135,7 @@ export class CatMenuItem {
               role: 'menuitem',
               tabindex: '-1'
             }}
-            onCatClick={(event) => this.click(event)}
+            onCatClick={event => this.click(event)}
           >
             <slot></slot>
           </cat-button>
