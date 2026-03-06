@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.1...catalyst-angular-v14.5.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* **core:** support subdropdown in menu ([#945](https://github.com/haiilo/catalyst/issues/945)) ([b6ddf2c](https://github.com/haiilo/catalyst/commit/b6ddf2c1729d33dd8878a9aa8eca9570b70b20ed))
+
 ## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.0...catalyst-angular-v14.5.1) (2026-03-03)
 
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.1...catalyst-core-v14.5.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* **core:** listen for global click only when dropdown is open ([#949](https://github.com/haiilo/catalyst/issues/949)) ([eb00636](https://github.com/haiilo/catalyst/commit/eb00636066bdf57104c7da955312fcf867726c2d))
+* **core:** support subdropdown in menu ([#945](https://github.com/haiilo/catalyst/issues/945)) ([b6ddf2c](https://github.com/haiilo/catalyst/commit/b6ddf2c1729d33dd8878a9aa8eca9570b70b20ed))
+
 ## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.0...catalyst-core-v14.5.1) (2026-03-03)
 
 
