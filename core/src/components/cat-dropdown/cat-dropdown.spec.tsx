@@ -266,6 +266,7 @@ describe('cat-dropdown', () => {
       });
 
       const dropdown = page.rootInstance as CatDropdown;
+      dropdown.focusTrap = false;
       await dropdown.open();
       await page.waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -274,7 +275,7 @@ describe('cat-dropdown', () => {
       expect(dropdown.isOpen).toBe(true);
 
       // when - click outside the content
-      page.doc.body.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      window.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
       await page.waitForChanges();
       await new Promise(resolve => setTimeout(resolve, 150));
 
@@ -330,7 +331,7 @@ describe('cat-dropdown', () => {
       expect(dropdown.isOpen).toBe(true);
 
       // when - click outside
-      page.doc.body.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      window.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
       await page.waitForChanges();
 
       // then
