@@ -38,6 +38,16 @@ export class CatDropdown {
    */
   private isFocusVisible = false;
 
+  private readonly boundWindowClickListener: (event: MouseEvent) => void;
+  private readonly boundWindowMousedownListener: (event: MouseEvent) => void;
+  private readonly boundWindowTouchStartListener: (event: TouchEvent) => void;
+
+  constructor() {
+    this.boundWindowClickListener = this.windowClickListener.bind(this);
+    this.boundWindowMousedownListener = this.windowMousedownListener.bind(this);
+    this.boundWindowTouchStartListener = this.windowTouchStartListener.bind(this);
+  }
+
   /**
    * The placement of the dropdown.
    */
@@ -150,18 +160,15 @@ export class CatDropdown {
     }
   }
 
-  @Listen('click', { target: 'document', capture: true })
-  globalClickHandler(event: MouseEvent) {
+  private windowClickListener(event: MouseEvent) {
     this.handleClickOutside(event);
   }
 
-  @Listen('mousedown', { target: 'document', capture: true })
-  globalMouseDownHandler(event: MouseEvent) {
+  private windowMousedownListener(event: MouseEvent) {
     this.handleClickOutside(event);
   }
 
-  @Listen('touchstart', { target: 'document', capture: true, passive: false })
-  globalTouchStartHandler(event: MouseEvent) {
+  private windowTouchStartListener(event: TouchEvent) {
     this.handleClickOutside(event);
   }
 
@@ -237,6 +244,7 @@ export class CatDropdown {
             });
         this.trap.activate();
       } else {
+        this.addListeners();
         this.catOpen.emit();
       }
     });
@@ -258,6 +266,7 @@ export class CatDropdown {
     if (shouldReturnFocus) {
       this.trigger?.focus();
     }
+    this.removeListeners();
     // give CSS transition time to apply
     setTimeout(() => {
       this._isOpen = false;
@@ -300,7 +309,19 @@ export class CatDropdown {
     );
   }
 
-  private handleClickOutside(event: MouseEvent): void {
+  private addListeners() {
+    window.addEventListener('click', this.boundWindowClickListener);
+    window.addEventListener('mousedown', this.boundWindowMousedownListener);
+    window.addEventListener('touchstart', this.boundWindowTouchStartListener);
+  }
+
+  private removeListeners() {
+    window.removeEventListener('click', this.boundWindowClickListener);
+    window.removeEventListener('mousedown', this.boundWindowMousedownListener);
+    window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
+  }
+
+  private handleClickOutside(event: MouseEvent | TouchEvent): void {
     if (this.shouldCloseByClickEvent(event)) {
       this.close();
     }
