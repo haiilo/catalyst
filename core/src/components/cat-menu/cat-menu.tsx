@@ -284,11 +284,11 @@ export class CatMenu {
           >
             {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
           </cat-button>
-          <nav role="menu" slot="content" class="cat-menu-list" aria-orientation={this.arrowNavigation}>
+          <div role="menu" slot="content" class="cat-menu-list" aria-orientation={this.arrowNavigation}>
             <ul>
               <slot></slot>
             </ul>
-          </nav>
+          </div>
         </cat-dropdown>
       </Host>
     );

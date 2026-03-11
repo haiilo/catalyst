@@ -634,11 +634,12 @@ export class CatSelect {
           </div>
 
           <div class="select-container">
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- keyboard handling is managed by the component's @Listen('keydown') decorator */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events -- keyboard handling is managed by the component's @Listen('keydown') decorator */}
             <div
               class={{ 'select-wrapper': true, 'select-disabled': this.disabled, 'select-invalid': this.invalid }}
               ref={el => (this.trigger = el)}
               id={this.id}
+              tabIndex={this.disabled ? -1 : 0}
               role="combobox"
               aria-expanded={this.state.isOpen || this.isPillboxActive()}
               aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
@@ -863,6 +864,7 @@ export class CatSelect {
               </span>
             </cat-checkbox>
           ) : (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- keyboard navigation handled by parent combobox via @Listen('keydown')
             <div
               class={{
                 'select-option-inner': true,
