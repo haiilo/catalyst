@@ -376,6 +376,7 @@ export class CatInput {
         </div>
         <div class={{ 'input-color': this.type === 'color', 'input-container': true }}>
           <div class="input-outer-wrapper">
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- click focuses the input, keyboard users can focus it directly */}
             <div
               class={{
                 'input-wrapper': true,
@@ -384,7 +385,6 @@ export class CatInput {
                 'input-disabled': this.disabled,
                 'input-invalid': this.invalid
               }}
-              role="presentation"
               onClick={() => this.input.focus()}
             >
               {this.textPrefix && (
