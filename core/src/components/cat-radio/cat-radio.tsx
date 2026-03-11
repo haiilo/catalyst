@@ -155,8 +155,6 @@ export class CatRadio {
             'align-center': this.alignment === 'center',
             'align-end': this.alignment === 'bottom'
           }}
-          role="radio"
-          aria-checked={this.checked ? 'true' : 'false'}
         >
           <span class="radio">
             <input

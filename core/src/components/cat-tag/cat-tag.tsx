@@ -237,7 +237,6 @@ export class CatTag {
               part="input"
               id={`tags-${this.id}-input`}
               class="tags-input"
-              role="combobox"
               ref={el => (this.input = el as HTMLInputElement)}
               aria-invalid={this.invalid ? 'true' : undefined}
               aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
