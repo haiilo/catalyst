@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.2...catalyst-core-v14.5.3) (2026-03-11)
+
+
+### Bug Fixes
+
+* **core:** don't deactivate dropdown focus trap when user clicks on trigger ([#951](https://github.com/haiilo/catalyst/issues/951)) ([a2c7325](https://github.com/haiilo/catalyst/commit/a2c732583be25a4b8a809832ce33307595ffbddd))
+
 ## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.1...catalyst-core-v14.5.2) (2026-03-06)
 
 
