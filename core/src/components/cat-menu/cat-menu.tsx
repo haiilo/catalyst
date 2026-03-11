@@ -133,9 +133,11 @@ export class CatMenu {
     }
 
     requestAnimationFrame(() => {
-      if (!this.isMenuItemInFocus() &&
-          document.activeElement !== document.body &&
-          document.activeElement !== this.hostElement) {
+      if (
+        !this.isMenuItemInFocus() &&
+        document.activeElement !== document.body &&
+        document.activeElement !== this.hostElement
+      ) {
         this.dropdown?.close(false);
       }
     });
