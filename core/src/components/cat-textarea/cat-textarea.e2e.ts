@@ -1,13 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-textarea', () => {
-  beforeAll(() => (console.error = jest.fn()));
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-textarea', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-textarea label="Label"></cat-textarea>');
-
-    const element = await page.find('cat-textarea');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-textarea');
+    await expect(element).toHaveClass('hydrated');
   });
 });
