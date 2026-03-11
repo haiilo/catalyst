@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.5.2...catalyst-tokens-v14.5.3) (2026-03-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-tokens:** Synchronize catalyst versions
+
 ## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.5.1...catalyst-tokens-v14.5.2) (2026-03-06)
 
 
