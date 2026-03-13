@@ -1,11 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-dropdown', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-dropdown', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-dropdown><button slot="trigger"></button><nav slot="content"></nav></cat-dropdown>');
-
-    const element = await page.find('cat-dropdown');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-dropdown');
+    await expect(element).toHaveClass('hydrated');
   });
 });

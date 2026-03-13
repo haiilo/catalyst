@@ -1,13 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-date', () => {
-  beforeAll(() => (console.error = jest.fn()));
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-date', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-date></cat-date>');
-
-    const element = await page.find('cat-date');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-date');
+    await expect(element).toHaveClass('hydrated');
   });
 });

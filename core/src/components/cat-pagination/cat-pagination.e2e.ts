@@ -1,16 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-pagination', () => {
-  beforeAll(() => {
-    console.error = jest.fn();
-    console.warn = jest.fn();
-  });
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-pagination', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-pagination></cat-pagination>');
-
-    const element = await page.find('cat-pagination');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-pagination');
+    await expect(element).toHaveClass('hydrated');
   });
 });

@@ -1,13 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-icon', () => {
-  beforeAll(() => (console.error = jest.fn()));
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-icon', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-icon icon="icon"></cat-icon>');
-
-    const element = await page.find('cat-icon');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-icon');
+    await expect(element).toHaveClass('hydrated');
   });
 });

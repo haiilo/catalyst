@@ -1,11 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-form-group', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-form-group', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-form-group></cat-form-group>');
-
-    const element = await page.find('cat-form-group');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-form-group');
+    await expect(element).toHaveClass('hydrated');
   });
 });

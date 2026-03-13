@@ -1,16 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-tag', () => {
-  beforeAll(() => {
-    console.error = jest.fn();
-    console.warn = jest.fn();
-  });
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-tag', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-tag label="Label"></cat-tag>');
-
-    const element = await page.find('cat-tag');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-tag');
+    await expect(element).toHaveClass('hydrated');
   });
 });
