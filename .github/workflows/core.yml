@@ -108,3 +108,5 @@ jobs:
         run: node node_modules/puppeteer/install.mjs
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
+      - name: E2E Test
+        run: pnpm --filter @haiilo/catalyst run test:e2e
