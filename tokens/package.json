@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild": "pnpm run clean",
     "build": "style-dictionary build --config config.js",
-    "postbuild": "copyfiles -f assets/fonts/* node_modules/source-sans/WOFF*/VF/* dist/assets/fonts",
+    "postbuild": "cpy --flat assets/fonts/* node_modules/source-sans/WOFF*/VF/* dist/assets/fonts",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./dist ./node_modules"
   },
@@ -27,7 +27,7 @@
     "source-sans": "3.52.0"
   },
   "devDependencies": {
-    "copyfiles": "2.4.1",
+    "cpy-cli": "7.0.0",
     "style-dictionary": "3.8.0",
     "style-dictionary-utils": "2.4.1",
     "tinycolor2": "1.6.0"
