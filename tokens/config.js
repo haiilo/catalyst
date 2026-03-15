@@ -119,7 +119,9 @@ export default {
         format: 'scss/map-deep',
         options: {
           fileHeader: 'cat/header',
-          themeable: true
+          outputReferences: true,
+          themeable: true,
+          usesDtcg: true
         }
       }]
     },
