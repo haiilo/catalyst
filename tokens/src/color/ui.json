@@ -4,31 +4,31 @@
       "background": {
         "canvas": {
           "$type": "color",
-          "$value": "{color.base.neutral.100.$value}",
+          "$value": "{color.base.neutral.100}",
           "cssProp": "bg"
         },
-        "surface": { "$type": "color", "$value": "{color.base.white.$value}" },
+        "surface": { "$type": "color", "$value": "{color.base.white}" },
         "surfaceInverted": {
           "$type": "color",
-          "$value": "{color.base.neutral.700.$value}"
+          "$value": "{color.base.neutral.700}"
         },
         "muted": {
           "$type": "color",
-          "$value": "{color.base.neutral.100.$value}"
+          "$value": "{color.base.neutral.100}"
         },
-        "input": { "$type": "color", "$value": "{color.base.white.$value}" },
+        "input": { "$type": "color", "$value": "{color.base.white}" },
         "inputAutofill": { "$type": "color", "$value": "#e8f0fe" },
         "skeleton": {
           "$type": "color",
-          "$value": "{color.base.neutral.200.$value}"
+          "$value": "{color.base.neutral.200}"
         },
         "skeletonHighlight": {
           "$type": "color",
-          "$value": "{color.base.neutral.300.$value}"
+          "$value": "{color.base.neutral.300}"
         },
         "tooltip": {
           "$type": "color",
-          "$value": "{color.base.black.$value}",
+          "$value": "{color.base.black}",
           "cssProp": "bg-tooltip"
         },
         "backdrop": {
@@ -40,17 +40,17 @@
       "border": {
         "light": {
           "$type": "color",
-          "$value": "{color.base.neutral.100.$value}",
+          "$value": "{color.base.neutral.100}",
           "cssProp": "border-color-light"
         },
         "default": {
           "$type": "color",
-          "$value": "{color.base.neutral.200.$value}",
+          "$value": "{color.base.neutral.200}",
           "cssProp": "border-color"
         },
         "dark": {
           "$type": "color",
-          "$value": "{color.base.neutral.300.$value}",
+          "$value": "{color.base.neutral.300}",
           "cssProp": "border-color-dark"
         },
         "focus": {
@@ -60,7 +60,7 @@
         },
         "quote": {
           "$type": "color",
-          "$value": "{color.base.neutral.400.$value}"
+          "$value": "{color.base.neutral.400}"
         },
         "card": {
           "$type": "color",
@@ -71,26 +71,26 @@
       "font": {
         "base": {
           "$type": "color",
-          "$value": "{color.base.black.$value}",
+          "$value": "{color.base.black}",
           "cssProp": "font-color-base"
         },
         "baseInverted": {
           "$type": "color",
-          "$value": "{color.base.white.$value}"
+          "$value": "{color.base.white}"
         },
         "muted": {
           "$type": "color",
-          "$value": "{color.base.neutral.500.$value}",
+          "$value": "{color.base.neutral.500}",
           "cssProp": "font-color-muted"
         },
         "quote": {
           "$type": "color",
-          "$value": "{color.base.neutral.500.$value}",
+          "$value": "{color.base.neutral.500}",
           "cssProp": "font-color-quote"
         },
         "tooltip": {
           "$type": "color",
-          "$value": "{color.base.white.$value}",
+          "$value": "{color.base.white}",
           "cssProp": "font-color-tooltip"
         }
       }
