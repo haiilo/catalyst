@@ -676,15 +676,15 @@
       "radius": {
         "l": {
           "$type": "dimension",
-          "$value": 8
+          "$value": "8px"
         },
         "m": {
           "$type": "dimension",
-          "$value": 4
+          "$value": "4px"
         },
         "s": {
           "$type": "dimension",
-          "$value": 2
+          "$value": "2px"
         }
       }
     },
@@ -692,71 +692,71 @@
       "head": {
         "1": {
           "$type": "dimension",
-          "$value": 28
+          "$value": "28px"
         },
         "2": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "3": {
           "$type": "dimension",
-          "$value": 20
+          "$value": "20px"
         },
         "4": {
           "$type": "dimension",
-          "$value": 18
+          "$value": "18px"
         },
         "5": {
           "$type": "dimension",
-          "$value": 15
+          "$value": "15px"
         },
         "6": {
           "$type": "dimension",
-          "$value": 14
+          "$value": "14px"
         }
       },
       "body": {
         "xl": {
           "$type": "dimension",
-          "$value": 20
+          "$value": "20px"
         },
         "l": {
           "$type": "dimension",
-          "$value": 18
+          "$value": "18px"
         },
         "m": {
           "$type": "dimension",
-          "$value": 15
+          "$value": "15px"
         },
         "s": {
           "$type": "dimension",
-          "$value": 14
+          "$value": "14px"
         },
         "xs": {
           "$type": "dimension",
-          "$value": 12
+          "$value": "12px"
         }
       },
       "mono": {
         "xl": {
           "$type": "dimension",
-          "$value": 18
+          "$value": "18px"
         },
         "l": {
           "$type": "dimension",
-          "$value": 15
+          "$value": "15px"
         },
         "m": {
           "$type": "dimension",
-          "$value": 14
+          "$value": "14px"
         },
         "s": {
           "$type": "dimension",
-          "$value": 12
+          "$value": "12px"
         },
         "xs": {
           "$type": "dimension",
-          "$value": 10
+          "$value": "10px"
         }
       }
     },
@@ -764,130 +764,130 @@
       "head": {
         "1": {
           "$type": "dimension",
-          "$value": 32
+          "$value": "32px"
         },
         "2": {
           "$type": "dimension",
-          "$value": 28
+          "$value": "28px"
         },
         "3": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "4": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "5": {
           "$type": "dimension",
-          "$value": 20
+          "$value": "20px"
         },
         "6": {
           "$type": "dimension",
-          "$value": 16
+          "$value": "16px"
         }
       },
       "body": {
         "xl": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "l": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "m": {
           "$type": "dimension",
-          "$value": 20
+          "$value": "20px"
         },
         "s": {
           "$type": "dimension",
-          "$value": 18
+          "$value": "18px"
         },
         "xs": {
           "$type": "dimension",
-          "$value": 16
+          "$value": "16px"
         }
       },
       "mono": {
         "xl": {
           "$type": "dimension",
-          "$value": 24
+          "$value": "24px"
         },
         "l": {
           "$type": "dimension",
-          "$value": 20
+          "$value": "20px"
         },
         "m": {
           "$type": "dimension",
-          "$value": 18
+          "$value": "18px"
         },
         "s": {
           "$type": "dimension",
-          "$value": 16
+          "$value": "16px"
         },
         "xs": {
           "$type": "dimension",
-          "$value": 14
+          "$value": "14px"
         }
       }
     },
     "modal": {
       "s": {
         "$type": "dimension",
-        "$value": 400
+        "$value": "400px"
       },
       "m": {
         "$type": "dimension",
-        "$value": 600
+        "$value": "600px"
       },
       "l": {
         "$type": "dimension",
-        "$value": 800
+        "$value": "800px"
       }
     },
     "screen": {
       "xs": {
         "$type": "dimension",
-        "$value": 540
+        "$value": "540px"
       },
       "s": {
         "$type": "dimension",
-        "$value": 768
+        "$value": "768px"
       },
       "m": {
         "$type": "dimension",
-        "$value": 992
+        "$value": "992px"
       },
       "l": {
         "$type": "dimension",
-        "$value": 1200
+        "$value": "1200px"
       },
       "xl": {
         "$type": "dimension",
-        "$value": 1400
+        "$value": "1400px"
       }
     },
     "spacing": {
       "xl": {
         "$type": "dimension",
-        "$value": 32
+        "$value": "32px"
       },
       "l": {
         "$type": "dimension",
-        "$value": 24
+        "$value": "24px"
       },
       "m": {
         "$type": "dimension",
-        "$value": 16
+        "$value": "16px"
       },
       "s": {
         "$type": "dimension",
-        "$value": 8
+        "$value": "8px"
       },
       "xs": {
         "$type": "dimension",
-        "$value": 4
+        "$value": "4px"
       }
     }
   },

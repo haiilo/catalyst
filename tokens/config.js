@@ -64,6 +64,25 @@ StyleDictionary.registerTransform({
   transform: token => parseFloat(token.$value)
 });
 
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/asset',
+  filter: token => token.$type === 'asset',
+  transform: token => {
+    return `"${token.$value}"`;
+  }
+});
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/remToPx',
+  filter: token => token.$type === 'dimension' && typeof token.$value === 'string' && token.$value.includes('rem'),
+  transform: token => {
+    const parsedVal = parseFloat(token.$value);
+    return (parsedVal * 16).toFixed(0) + 'px';
+  }
+});
+
 export default {
   source: ['src/**/*.json'],
   platforms: {
@@ -111,7 +130,7 @@ export default {
       }]
     },
     scss: {
-      transforms: ['attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts', 'cat/cssProp'],
+      transforms: ['attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts', 'cat/cssProp', 'cat/asset'],
       prefix: 'cat',
       buildPath: 'dist/scss/',
       files: [{
@@ -142,7 +161,7 @@ export default {
       }]
     },
     figma: {
-      transforms: ['name/kebab', 'dimension/pixelUnitless'],
+      transforms: ['name/kebab', 'cat/remToPx'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'figma.json',
