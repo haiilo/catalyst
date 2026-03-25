@@ -4,47 +4,65 @@
       "primary": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.brand.400}",
+          "$value": {
+            "value": "{color.base.brand.400}"
+          },
           "cssProp": "primary-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.brand.500}",
+          "$value": {
+            "value": "{color.base.brand.500}"
+          },
           "cssProp": "primary-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.brand.600}",
+          "$value": {
+            "value": "{color.base.brand.600}"
+          },
           "cssProp": "primary-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "primary-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "primary-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "primary-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.brand.400}",
+          "$value": {
+            "value": "{color.base.brand.400}"
+          },
           "cssProp": "primary-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.brand.500}",
+          "$value": {
+            "value": "{color.base.brand.500}"
+          },
           "cssProp": "primary-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.brand.600}",
+          "$value": {
+            "value": "{color.base.brand.600}"
+          },
           "cssProp": "primary-text-active"
         }
       },
@@ -83,47 +101,65 @@
       "secondary": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.neutral.400}",
+          "$value": {
+            "value": "{color.base.neutral.400}"
+          },
           "cssProp": "secondary-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.neutral.400}",
+          "$value": {
+            "value": "{color.base.neutral.400}"
+          },
           "cssProp": "secondary-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.neutral.400}",
+          "$value": {
+            "value": "{color.base.neutral.400}"
+          },
           "cssProp": "secondary-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "secondary-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "secondary-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "secondary-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "secondary-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "secondary-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "secondary-text-active"
         }
       },
@@ -153,188 +189,260 @@
       "info": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.blue.400}",
+          "$value": {
+            "value": "{color.base.blue.400}"
+          },
           "cssProp": "info-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.blue.500}",
+          "$value": {
+            "value": "{color.base.blue.500}"
+          },
           "cssProp": "info-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.blue.600}",
+          "$value": {
+            "value": "{color.base.blue.600}"
+          },
           "cssProp": "info-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "info-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "info-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "info-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.blue.400}",
+          "$value": {
+            "value": "{color.base.blue.400}"
+          },
           "cssProp": "info-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.blue.500}",
+          "$value": {
+            "value": "{color.base.blue.500}"
+          },
           "cssProp": "info-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.blue.600}",
+          "$value": {
+            "value": "{color.base.blue.600}"
+          },
           "cssProp": "info-text-active"
         }
       },
       "success": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.green.400}",
+          "$value": {
+            "value": "{color.base.green.400}"
+          },
           "cssProp": "success-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.green.500}",
+          "$value": {
+            "value": "{color.base.green.500}"
+          },
           "cssProp": "success-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.green.600}",
+          "$value": {
+            "value": "{color.base.green.600}"
+          },
           "cssProp": "success-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "success-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "success-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "success-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.green.400}",
+          "$value": {
+            "value": "{color.base.green.400}"
+          },
           "cssProp": "success-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.green.500}",
+          "$value": {
+            "value": "{color.base.green.500}"
+          },
           "cssProp": "success-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.green.600}",
+          "$value": {
+            "value": "{color.base.green.600}"
+          },
           "cssProp": "success-text-active"
         }
       },
       "warning": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.orange.300}",
+          "$value": {
+            "value": "{color.base.orange.300}"
+          },
           "cssProp": "warning-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.orange.200}",
+          "$value": {
+            "value": "{color.base.orange.200}"
+          },
           "cssProp": "warning-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.orange.100}",
+          "$value": {
+            "value": "{color.base.orange.100}"
+          },
           "cssProp": "warning-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "warning-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "warning-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.black}",
+          "$value": {
+            "value": "{color.base.black}"
+          },
           "cssProp": "warning-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.orange.700}",
+          "$value": {
+            "value": "{color.base.orange.700}"
+          },
           "cssProp": "warning-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.orange.700}",
+          "$value": {
+            "value": "{color.base.orange.700}"
+          },
           "cssProp": "warning-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.orange.700}",
+          "$value": {
+            "value": "{color.base.orange.700}"
+          },
           "cssProp": "warning-text-active"
         }
       },
       "danger": {
         "bg": {
           "$type": "color",
-          "$value": "{color.base.red.400}",
+          "$value": {
+            "value": "{color.base.red.400}"
+          },
           "cssProp": "danger-bg"
         },
         "bgHover": {
           "$type": "color",
-          "$value": "{color.base.red.500}",
+          "$value": {
+            "value": "{color.base.red.500}"
+          },
           "cssProp": "danger-bg-hover"
         },
         "bgActive": {
           "$type": "color",
-          "$value": "{color.base.red.600}",
+          "$value": {
+            "value": "{color.base.red.600}"
+          },
           "cssProp": "danger-bg-active"
         },
         "fill": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "danger-fill"
         },
         "fillHover": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "danger-fill-hover"
         },
         "fillActive": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "danger-fill-active"
         },
         "text": {
           "$type": "color",
-          "$value": "{color.base.red.400}",
+          "$value": {
+            "value": "{color.base.red.400}"
+          },
           "cssProp": "danger-text"
         },
         "textHover": {
           "$type": "color",
-          "$value": "{color.base.red.500}",
+          "$value": {
+            "value": "{color.base.red.500}"
+          },
           "cssProp": "danger-text-hover"
         },
         "textActive": {
           "$type": "color",
-          "$value": "{color.base.red.600}",
+          "$value": {
+            "value": "{color.base.red.600}"
+          },
           "cssProp": "danger-text-active"
         }
       }
