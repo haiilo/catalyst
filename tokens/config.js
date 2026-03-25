@@ -53,7 +53,15 @@ StyleDictionary.registerTransform({
   name: 'cat/cssProp',
   transitive: true,
   filter: token => !!token.cssProp,
-  transform: token => `var(--cat-${token.cssProp}, ${token.$value})`
+  transform: token => `var(--cat-${token.cssProp}, ${token.$value.value ? token.$value.value : token.$value})`
+});
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/valueObjects',
+  transitive: true,
+  filter: token => !!token.cssProp,
+  transform: token => token.$value.value ? token.$value.value : token.$value
 });
 
 StyleDictionary.registerTransform({
@@ -87,7 +95,7 @@ export default {
   source: ['src/**/*.json'],
   platforms: {
     js: {
-      transforms: ['attribute/cti', 'name/camel', 'color/hex', 'cat/jsNumber'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/camel', 'color/hex', 'cat/jsNumber'],
       buildPath: 'dist/js/',
       files: [{
         destination: 'variables.js',
@@ -104,7 +112,7 @@ export default {
       }]
     },
     css: {
-      transforms: ['attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -117,7 +125,7 @@ export default {
       }]
     },
     cssHex: {
-      transforms: ['attribute/cti', 'name/kebab', 'html/icon', 'color/css'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/kebab', 'html/icon', 'color/css'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -145,7 +153,7 @@ export default {
       }]
     },
     json: {
-      transforms: ['name/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/json/',
       files: [{
         destination: 'variables.json',
@@ -153,7 +161,7 @@ export default {
       }]
     },
     zeroheight: {
-      transforms: ['name/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'zeroheight.json',
@@ -161,7 +169,7 @@ export default {
       }]
     },
     figma: {
-      transforms: ['name/kebab', 'cat/remToPx'],
+      transforms: ['cat/valueObjects', 'name/kebab', 'cat/remToPx'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'figma.json',
@@ -170,7 +178,7 @@ export default {
       }]
     },
     theme: {
-      transforms: ['name/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'theme.json',
