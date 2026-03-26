@@ -10,6 +10,7 @@ import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
+import { CatIconRegistry } from "./components/cat-icon/cat-icon-registry";
 import { InputType } from "./components/cat-input/input-type";
 import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
 import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
@@ -20,6 +21,7 @@ export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
+export { CatIconRegistry } from "./components/cat-icon/cat-icon-registry";
 export { InputType } from "./components/cat-input/input-type";
 export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
 export { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
@@ -879,6 +881,43 @@ export namespace Components {
           * @default 'm'
          */
         "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    /**
+     * Provides a scoped `CatIconRegistry` instance to all descendant `cat-icon`
+     * components.
+     * Use this component to isolate icon sets in micro-frontend architectures where
+     * multiple MFEs register icons with the same names but different SVG content.
+     * ## Basic usage
+     * ```ts
+     * // In your MFE bootstrap code:
+     * const registry = CatIconRegistry.createInstance();
+     * registry.addIcons(myIcons);
+     * ```
+     * ```html
+     * <!-- Wrap your MFE root: -->
+     * <cat-icon-provider>
+     *   <!-- All cat-icon elements inside here use `registry` -->
+     * </cat-icon-provider>
+     * ```
+     * ## Resolution order for child `cat-icon` elements
+     * 1. The `registry` prop of the nearest `cat-icon-provider` ancestor
+     * 2. The global `catIconRegistry` singleton (framework default icons and any
+     *    icons added via the legacy `catIconRegistry.addIcons()` API)
+     * 3. If neither has the icon, `cat-icon` logs an error and renders nothing
+     * ## Angular example
+     * ```ts
+     * @Component ({ template: `<cat-icon-provider [registry]="registry">...</cat-icon-provider>` })
+     * export class MfeRootComponent {
+     * readonly registry = CatIconRegistry.createInstance();
+     * constructor() { this.registry.addIcons(myIcons); }
+     * }
+     * ```
+     */
+    interface CatIconProvider {
+        /**
+          * The isolated registry instance for this subtree. Create one with `CatIconRegistry.createInstance()`. If omitted, the global `catIconRegistry` is used (same as no provider).
+         */
+        "registry"?: CatIconRegistry;
     }
     /**
      * Inputs are used to allow users to provide text input when the expected input
@@ -2480,6 +2519,43 @@ declare global {
         prototype: HTMLCatIconElement;
         new (): HTMLCatIconElement;
     };
+    /**
+     * Provides a scoped `CatIconRegistry` instance to all descendant `cat-icon`
+     * components.
+     * Use this component to isolate icon sets in micro-frontend architectures where
+     * multiple MFEs register icons with the same names but different SVG content.
+     * ## Basic usage
+     * ```ts
+     * // In your MFE bootstrap code:
+     * const registry = CatIconRegistry.createInstance();
+     * registry.addIcons(myIcons);
+     * ```
+     * ```html
+     * <!-- Wrap your MFE root: -->
+     * <cat-icon-provider>
+     *   <!-- All cat-icon elements inside here use `registry` -->
+     * </cat-icon-provider>
+     * ```
+     * ## Resolution order for child `cat-icon` elements
+     * 1. The `registry` prop of the nearest `cat-icon-provider` ancestor
+     * 2. The global `catIconRegistry` singleton (framework default icons and any
+     *    icons added via the legacy `catIconRegistry.addIcons()` API)
+     * 3. If neither has the icon, `cat-icon` logs an error and renders nothing
+     * ## Angular example
+     * ```ts
+     * @Component ({ template: `<cat-icon-provider [registry]="registry">...</cat-icon-provider>` })
+     * export class MfeRootComponent {
+     * readonly registry = CatIconRegistry.createInstance();
+     * constructor() { this.registry.addIcons(myIcons); }
+     * }
+     * ```
+     */
+    interface HTMLCatIconProviderElement extends Components.CatIconProvider, HTMLStencilElement {
+    }
+    var HTMLCatIconProviderElement: {
+        prototype: HTMLCatIconProviderElement;
+        new (): HTMLCatIconProviderElement;
+    };
     interface HTMLCatInputElementEventMap {
         "catChange": string;
         "catFocus": FocusEvent;
@@ -2848,6 +2924,7 @@ declare global {
         "cat-dropdown": HTMLCatDropdownElement;
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
+        "cat-icon-provider": HTMLCatIconProviderElement;
         "cat-input": HTMLCatInputElement;
         "cat-menu": HTMLCatMenuElement;
         "cat-menu-item": HTMLCatMenuItemElement;
@@ -3715,6 +3792,43 @@ declare namespace LocalJSX {
           * @default 'm'
          */
         "size"?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+    }
+    /**
+     * Provides a scoped `CatIconRegistry` instance to all descendant `cat-icon`
+     * components.
+     * Use this component to isolate icon sets in micro-frontend architectures where
+     * multiple MFEs register icons with the same names but different SVG content.
+     * ## Basic usage
+     * ```ts
+     * // In your MFE bootstrap code:
+     * const registry = CatIconRegistry.createInstance();
+     * registry.addIcons(myIcons);
+     * ```
+     * ```html
+     * <!-- Wrap your MFE root: -->
+     * <cat-icon-provider>
+     *   <!-- All cat-icon elements inside here use `registry` -->
+     * </cat-icon-provider>
+     * ```
+     * ## Resolution order for child `cat-icon` elements
+     * 1. The `registry` prop of the nearest `cat-icon-provider` ancestor
+     * 2. The global `catIconRegistry` singleton (framework default icons and any
+     *    icons added via the legacy `catIconRegistry.addIcons()` API)
+     * 3. If neither has the icon, `cat-icon` logs an error and renders nothing
+     * ## Angular example
+     * ```ts
+     * @Component ({ template: `<cat-icon-provider [registry]="registry">...</cat-icon-provider>` })
+     * export class MfeRootComponent {
+     * readonly registry = CatIconRegistry.createInstance();
+     * constructor() { this.registry.addIcons(myIcons); }
+     * }
+     * ```
+     */
+    interface CatIconProvider {
+        /**
+          * The isolated registry instance for this subtree. Create one with `CatIconRegistry.createInstance()`. If omitted, the global `catIconRegistry` is used (same as no provider).
+         */
+        "registry"?: CatIconRegistry;
     }
     /**
      * Inputs are used to allow users to provide text input when the expected input
@@ -5050,6 +5164,7 @@ declare namespace LocalJSX {
         "cat-dropdown": CatDropdown;
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
+        "cat-icon-provider": CatIconProvider;
         "cat-input": CatInput;
         "cat-menu": CatMenu;
         "cat-menu-item": CatMenuItem;
@@ -5132,6 +5247,38 @@ declare module "@stencil/core" {
              * doesn't fit.
              */
             "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            /**
+             * Provides a scoped `CatIconRegistry` instance to all descendant `cat-icon`
+             * components.
+             * Use this component to isolate icon sets in micro-frontend architectures where
+             * multiple MFEs register icons with the same names but different SVG content.
+             * ## Basic usage
+             * ```ts
+             * // In your MFE bootstrap code:
+             * const registry = CatIconRegistry.createInstance();
+             * registry.addIcons(myIcons);
+             * ```
+             * ```html
+             * <!-- Wrap your MFE root: -->
+             * <cat-icon-provider>
+             *   <!-- All cat-icon elements inside here use `registry` -->
+             * </cat-icon-provider>
+             * ```
+             * ## Resolution order for child `cat-icon` elements
+             * 1. The `registry` prop of the nearest `cat-icon-provider` ancestor
+             * 2. The global `catIconRegistry` singleton (framework default icons and any
+             *    icons added via the legacy `catIconRegistry.addIcons()` API)
+             * 3. If neither has the icon, `cat-icon` logs an error and renders nothing
+             * ## Angular example
+             * ```ts
+             * @Component ({ template: `<cat-icon-provider [registry]="registry">...</cat-icon-provider>` })
+             * export class MfeRootComponent {
+             * readonly registry = CatIconRegistry.createInstance();
+             * constructor() { this.registry.addIcons(myIcons); }
+             * }
+             * ```
+             */
+            "cat-icon-provider": LocalJSX.CatIconProvider & JSXBase.HTMLAttributes<HTMLCatIconProviderElement>;
             /**
              * Inputs are used to allow users to provide text input when the expected input
              * is short. As well as plain text, Input supports various types of text,

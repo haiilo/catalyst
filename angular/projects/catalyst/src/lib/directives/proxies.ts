@@ -716,6 +716,31 @@ export class CatIcon {
 export declare interface CatIcon extends Components.CatIcon {}
 
 @ProxyCmp({
+  inputs: ['registry']
+})
+@Component({
+  selector: 'cat-icon-provider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['registry'],
+  standalone: false
+})
+export class CatIconProvider {
+  protected el: HTMLCatIconProviderElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatIconProvider extends Components.CatIconProvider {}
+
+@ProxyCmp({
   inputs: [
     'accept',
     'autoComplete',

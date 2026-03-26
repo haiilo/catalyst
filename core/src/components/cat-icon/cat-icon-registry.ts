@@ -30,8 +30,12 @@ export class CatIconRegistry {
   // ignore syncing in backwards compatible manner
   syncIcons: boolean = true;
 
-  private constructor() {
+  private constructor(registerDefaults = true) {
     // hide constructor
+
+    if (!registerDefaults) {
+      return;
+    }
 
     // register default icons that are used in the framework by other components
     this.addIcons(
@@ -89,6 +93,32 @@ export class CatIconRegistry {
       CatIconRegistry.instance = new CatIconRegistry();
     }
     return CatIconRegistry.instance;
+  }
+
+  /**
+   * Creates a new isolated registry instance for use in micro frontends.
+   *
+   * Unlike the global singleton, this instance:
+   * - Does not sync icons with other registry instances via window events
+   * - Does not pre-register framework default icons (they are resolved via
+   *   the global singleton fallback in `cat-icon-provider`)
+   *
+   * Use together with `<cat-icon-provider>` to scope icons to a subtree:
+   *
+   * ```ts
+   * const registry = CatIconRegistry.createInstance();
+   * registry.addIcons(myIcons);
+   * // then bind registry to <cat-icon-provider [registry]="registry">
+   * ```
+   */
+  static createInstance(): CatIconRegistry {
+    const instance = new CatIconRegistry(false);
+    instance.syncIcons = false;
+    return instance;
+  }
+
+  hasIcon(name: string, setName?: string): boolean {
+    return this.icons.has(this.buildName(name, setName));
   }
 
   getIcon(name: string, setName?: string): string | undefined {
