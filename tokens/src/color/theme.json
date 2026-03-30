@@ -25,7 +25,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "primary-bg-outlined"
         },
         "fill": {
@@ -127,7 +129,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "secondary-bg-outlined"
         },
         "fill": {
@@ -220,7 +224,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "info-bg-outlined"
         },
         "fill": {
@@ -290,7 +296,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "success-bg-outlined"
         },
         "fill": {
@@ -360,7 +368,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "warning-bg-outlined"
         },
         "fill": {
@@ -430,7 +440,9 @@
         },
         "bgOutlined": {
           "$type": "color",
-          "$value": "{color.base.white}",
+          "$value": {
+            "value": "{color.base.white}"
+          },
           "cssProp": "danger-bg-outlined"
         },
         "fill": {
