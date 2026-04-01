@@ -1,13 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-datepicker', () => {
-  beforeAll(() => (console.error = jest.fn()));
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-datepicker', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-datepicker label="Label"></cat-datepicker>');
-
-    const element = await page.find('cat-datepicker');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-datepicker');
+    await expect(element).toHaveClass('hydrated');
   });
 });

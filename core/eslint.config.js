@@ -97,6 +97,7 @@ module.exports = defineConfig([
     '**/replace.js',
     '**/setupTests.js',
     '**/stencil.config.ts',
+    '**/playwright.config.ts',
     '**/stencil.transformer.js'
   ])
 ]);

@@ -1,21 +1,14 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-select', () => {
-  beforeAll(() => {
-    console.error = jest.fn();
-    console.warn = jest.fn();
-  });
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-select', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-select label="Label"></cat-select>');
-
-    const element = await page.find('cat-select');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-select');
+    await expect(element).toHaveClass('hydrated');
   });
 
-  it('should not emit catChange event on initialization with value', async () => {
-    const page = await newE2EPage();
+  test('should not emit catChange event on initialization with value', async ({ page }) => {
     await page.setContent(`
       <cat-select label="Label" value="option1"></cat-select>
       <script type="module">
@@ -36,8 +29,7 @@ describe('cat-select', () => {
       </script>
     `);
 
-    const select = await page.find('cat-select');
-    const changeSpy = await select.spyOnEvent('catChange');
+    const changeSpy = await page.spyOnEvent('catChange');
 
     await page.waitForChanges();
 

@@ -1,5 +1,5 @@
-const StyleDictionary = require('style-dictionary-utils');
-const tinycolor = require("tinycolor2");
+import { StyleDictionary } from 'style-dictionary-utils';
+import tinycolor from 'tinycolor2';
 
 StyleDictionary.registerFileHeader({
   name: 'cat/header',
@@ -8,12 +8,12 @@ StyleDictionary.registerFileHeader({
 
 StyleDictionary.registerFormat({
   name: 'json/designTokens',
-  formatter: function ({ dictionary }) {
+  format: async function({ dictionary }) {
     const set = (obj, path, token) => {
       const [key, ...restPath] = path;
       obj[key] = restPath.length ? set(obj[key] || {}, restPath, token) : {
         $type: token.$type,
-        $value: token.value
+        $value: token.$value
       };
       return obj;
     }
@@ -26,11 +26,11 @@ StyleDictionary.registerFormat({
 
 StyleDictionary.registerFormat({
   name: 'json/cssProp',
-  formatter: function ({ dictionary }) {
+  format: async function({ dictionary }) {
     const tokens = dictionary.allTokens.reduce((acc, token) => {
       acc[token.cssProp] = {
         $type: token.$type,
-        $value: token.value
+        $value: token.$value
       };
       return acc;
     }, {});
@@ -41,9 +41,9 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/rgbParts',
-  matcher: token => token.$type === 'color',
-  transformer: token => {
-    var rgb = tinycolor(token.value).toRgb();
+  filter: token => token.$type === 'color',
+  transform: token => {
+    var rgb = tinycolor(token.$value).toRgb();
     return rgb.a === 1 ? `${rgb.r}, ${rgb.g}, ${rgb.b}` : `${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`;
   }
 });
@@ -52,23 +52,50 @@ StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/cssProp',
   transitive: true,
-  matcher: token => !!token.cssProp,
-  transformer: token => `var(--cat-${token.cssProp}, ${token.value})`
+  filter: token => !!token.cssProp,
+  transform: token => `var(--cat-${token.cssProp}, ${token.$value.value ? token.$value.value : token.$value})`
+});
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/valueObjects',
+  transitive: true,
+  filter: token => !!token.cssProp,
+  transform: token => token.$value.value ? token.$value.value : token.$value
 });
 
 StyleDictionary.registerTransform({
   type: 'value',
   name: 'cat/jsNumber',
   transitive: true,
-  matcher: token => token.$type === 'dimension' || token.$type === 'duration',
-  transformer: token => parseFloat(token.value)
+  filter: token => token.$type === 'dimension' || token.$type === 'duration',
+  transform: token => parseFloat(token.$value)
 });
 
-module.exports = {
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/asset',
+  filter: token => token.$type === 'asset',
+  transform: token => {
+    return `"${token.$value}"`;
+  }
+});
+
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'cat/remToPx',
+  filter: token => token.$type === 'dimension' && typeof token.$value === 'string' && token.$value.includes('rem'),
+  transform: token => {
+    const parsedVal = parseFloat(token.$value);
+    return (parsedVal * 16).toFixed(0) + 'px';
+  }
+});
+
+export default {
   source: ['src/**/*.json'],
   platforms: {
     js: {
-      transforms: ['attribute/cti', 'name/cti/camel', 'color/hex', 'cat/jsNumber'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/camel', 'color/hex', 'cat/jsNumber'],
       buildPath: 'dist/js/',
       files: [{
         destination: 'variables.js',
@@ -85,7 +112,7 @@ module.exports = {
       }]
     },
     css: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css', 'cat/rgbParts'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -98,7 +125,7 @@ module.exports = {
       }]
     },
     cssHex: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css'],
+      transforms: ['cat/valueObjects', 'attribute/cti', 'name/kebab', 'html/icon', 'color/css'],
       prefix: 'cat',
       buildPath: 'dist/css/',
       files: [{
@@ -111,7 +138,7 @@ module.exports = {
       }]
     },
     scss: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'content/icon', 'color/css', 'cat/rgbParts', 'cat/cssProp'],
+      transforms: ['attribute/cti', 'name/kebab', 'html/icon', 'color/css', 'cat/rgbParts', 'cat/cssProp', 'cat/asset'],
       prefix: 'cat',
       buildPath: 'dist/scss/',
       files: [{
@@ -120,12 +147,13 @@ module.exports = {
         options: {
           fileHeader: 'cat/header',
           outputReferences: true,
-          themeable: true
+          themeable: true,
+          usesDtcg: true
         }
       }]
     },
     json: {
-      transforms: ['name/cti/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/json/',
       files: [{
         destination: 'variables.json',
@@ -133,7 +161,7 @@ module.exports = {
       }]
     },
     zeroheight: {
-      transforms: ['name/cti/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'zeroheight.json',
@@ -141,7 +169,7 @@ module.exports = {
       }]
     },
     figma: {
-      transforms: ['name/cti/kebab', 'dimension/pixelUnitless'],
+      transforms: ['cat/valueObjects', 'name/kebab', 'cat/remToPx'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'figma.json',
@@ -150,7 +178,7 @@ module.exports = {
       }]
     },
     theme: {
-      transforms: ['name/cti/kebab'],
+      transforms: ['cat/valueObjects', 'name/kebab'],
       buildPath: 'dist/export/',
       files: [{
         destination: 'theme.json',

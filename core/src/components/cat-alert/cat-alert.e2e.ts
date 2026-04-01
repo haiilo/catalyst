@@ -1,13 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-alert', () => {
-  beforeAll(() => (console.error = jest.fn()));
-
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-alert', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-alert></cat-alert>');
-
-    const element = await page.find('cat-alert');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-alert');
+    await expect(element).toHaveClass('hydrated');
   });
 });
