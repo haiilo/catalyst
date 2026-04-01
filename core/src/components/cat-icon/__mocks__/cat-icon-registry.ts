@@ -3,6 +3,10 @@ export class CatIconRegistry {
     return new CatIconRegistry();
   }
 
+  attachTo(_element: Element): () => void {
+    return () => {};
+  }
+
   static createInstance(): CatIconRegistry {
     return new CatIconRegistry();
   }

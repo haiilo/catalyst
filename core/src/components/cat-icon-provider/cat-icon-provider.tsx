@@ -1,5 +1,4 @@
-import { Component, h, Listen, Prop } from '@stencil/core';
-import { CatIconRequestDetail } from '../cat-icon/cat-icon-request';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
 import { CatIconRegistry, catIconRegistry } from '../cat-icon/cat-icon-registry';
 
 /**
@@ -19,7 +18,7 @@ import { CatIconRegistry, catIconRegistry } from '../cat-icon/cat-icon-registry'
  *
  * ```html
  * <!-- Wrap your MFE root: -->
- * <cat-icon-provider>
+ * <cat-icon-provider [registry]="registry">
  *   <!-- All cat-icon elements inside here use `registry` -->
  * </cat-icon-provider>
  * ```
@@ -29,15 +28,25 @@ import { CatIconRegistry, catIconRegistry } from '../cat-icon/cat-icon-registry'
  * 1. The `registry` prop of the nearest `cat-icon-provider` ancestor
  * 2. The global `catIconRegistry` singleton (framework default icons and any
  *    icons added via the legacy `catIconRegistry.addIcons()` API)
- * 3. If neither has the icon, `cat-icon` logs an error and renders nothing
+ * 3. If neither has the icon, `cat-icon` renders nothing
  *
- * ## Angular example
+ * ## Imperative alternative (no wrapper element)
+ *
+ * If adding an extra wrapper element is undesirable (e.g. in a bootstrap
+ * component that already owns the MFE root), use `attachTo` directly:
  *
  * ```ts
- * @Component({ template: `<cat-icon-provider [registry]="registry">...</cat-icon-provider>` })
- * export class MfeRootComponent {
+ * @Component({ ... })
+ * export class MfeRootComponent implements OnInit, OnDestroy {
  *   readonly registry = CatIconRegistry.createInstance();
- *   constructor() { this.registry.addIcons(myIcons); }
+ *   private cleanup?: () => void;
+ *
+ *   constructor(private el: ElementRef) {
+ *     this.registry.addIcons(myIcons);
+ *   }
+ *
+ *   ngOnInit() { this.cleanup = this.registry.attachTo(this.el.nativeElement); }
+ *   ngOnDestroy() { this.cleanup?.(); }
  * }
  * ```
  */
@@ -46,6 +55,8 @@ import { CatIconRegistry, catIconRegistry } from '../cat-icon/cat-icon-registry'
   shadow: false
 })
 export class CatIconProvider {
+  @Element() el!: HTMLElement;
+
   /**
    * The isolated registry instance for this subtree.
    * Create one with `CatIconRegistry.createInstance()`.
@@ -53,30 +64,21 @@ export class CatIconProvider {
    */
   @Prop() registry?: CatIconRegistry;
 
-  @Listen('cat-icon-request')
-  handleIconRequest(event: CustomEvent<CatIconRequestDetail>) {
-    // Take ownership of this request so cat-icon does not fall back to the
-    // global registry (which may contain a different version of the icon from
-    // another MFE that shares the same icon names).
-    event.stopPropagation();
-    event.preventDefault();
+  private detach?: () => void;
 
-    const { name, resolve } = event.detail;
+  connectedCallback() {
+    this.reattach();
+  }
 
-    // 1. Scoped registry (MFE-specific icons)
-    if (this.registry?.hasIcon(name)) {
-      resolve(this.registry.getIcon(name) as string);
-      return;
-    }
+  @Watch('registry')
+  reattach() {
+    this.detach?.();
+    this.detach = (this.registry ?? catIconRegistry).attachTo(this.el);
+  }
 
-    // 2. Global registry (framework default icons such as $cat:input-error,
-    //    and any icons registered by the host application)
-    if (catIconRegistry.hasIcon(name)) {
-      resolve(catIconRegistry.getIcon(name) as string);
-    }
-
-    // Icon not found — cat-icon will log an error when it detects the event
-    // was cancelled but resolve was never called.
+  disconnectedCallback() {
+    this.detach?.();
+    this.detach = undefined;
   }
 
   render() {
