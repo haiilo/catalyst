@@ -51,7 +51,6 @@ export class CatIcon {
       return;
     }
 
-    const name = this.icon;
     let resolved = false;
 
     const event = new CustomEvent<CatIconRequestDetail>('cat-icon-request', {
@@ -59,7 +58,7 @@ export class CatIcon {
       composed: true,
       cancelable: true,
       detail: {
-        name,
+        name: this.icon,
         resolve: (svg: string) => {
           this.resolvedSvg = svg;
           resolved = true;
@@ -72,7 +71,7 @@ export class CatIcon {
     if (notCancelled) {
       // No cat-icon-provider in the ancestry — use the global registry directly
       // (preserves the pre-existing behavior for apps that don't use providers).
-      this.resolvedSvg = icons.getIcon(name);
+      this.resolvedSvg = icons.getIcon(this.icon);
     } else if (!resolved) {
       // A provider took ownership but could not find the icon in any registry.
       this.resolvedSvg = undefined;
