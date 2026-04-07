@@ -376,6 +376,7 @@ export class CatInput {
         </div>
         <div class={{ 'input-color': this.type === 'color', 'input-container': true }}>
           <div class="input-outer-wrapper">
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- clicking wrapper focuses the native input; no keyboard handler needed as input itself handles keyboard */}
             <div
               class={{
                 'input-wrapper': true,

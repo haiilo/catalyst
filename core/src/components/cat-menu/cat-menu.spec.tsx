@@ -340,24 +340,24 @@ describe('cat-menu', () => {
   });
 
   describe('menu content', () => {
-    it('should render nav with role="menu" and default vertical orientation', async () => {
+    it('should render div with role="menu" and default vertical orientation', async () => {
       const page = await newSpecPage({
         components: [CatMenu, CatDropdown, CatButton],
         html: `<cat-menu></cat-menu>`
       });
 
-      const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
-      expect(nav?.getAttribute('aria-orientation')).toBe('vertical');
+      const menu = page.root?.shadowRoot?.querySelector('div[role="menu"]');
+      expect(menu?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
-    it('should render nav with horizontal orientation when arrowNavigation is horizontal', async () => {
+    it('should render div with horizontal orientation when arrowNavigation is horizontal', async () => {
       const page = await newSpecPage({
         components: [CatMenu, CatDropdown, CatButton],
         html: `<cat-menu arrow-navigation="horizontal"></cat-menu>`
       });
 
-      const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
-      expect(nav?.getAttribute('aria-orientation')).toBe('horizontal');
+      const menu = page.root?.shadowRoot?.querySelector('div[role="menu"]');
+      expect(menu?.getAttribute('aria-orientation')).toBe('horizontal');
     });
   });
 

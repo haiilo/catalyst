@@ -244,6 +244,7 @@ export class CatDateInline {
       <Host aria-label={this.label || undefined}>
         <div class={{ 'label-container': true, 'label-hidden': this.labelHidden }}>
           {(this.hasSlottedLabel || this.label) && (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- onClick provides focus to datepicker, which is intentional for search-ui
             <label id={`${this.id}-label`} htmlFor={this.id} part="label" onClick={() => this.doFocus()}>
               <span class="label-wrapper">
                 {(this.hasSlottedLabel && <slot name="label"></slot>) || this.label}
