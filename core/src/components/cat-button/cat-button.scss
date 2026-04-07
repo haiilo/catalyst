@@ -48,6 +48,12 @@ $button-sizes: (
     outline: 2px solid cat-token('color.ui.border.focus');
     outline-offset: 1px;
   }
+
+  & > * {
+    // Disable pointer events for all direct children.
+    // This allows the button to receive hover and click events even when its children (like icons or text) are hovered or clicked.
+    pointer-events: none;
+  }
 }
 
 // ----- content
