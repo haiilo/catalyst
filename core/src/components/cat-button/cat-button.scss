@@ -137,8 +137,8 @@ $button-sizes: (
 }
 
 .cat-button-outlined {
-  background-color: cat-token('color.ui.background.surface');
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, cat-token-wrap(var(--base)) 20%, #fff);
+  background-color: cat-token-wrap(var(--outlined-bg));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, cat-token-wrap(var(--base)) 20%, cat-token-wrap(var(--outlined-bg)));
   color: cat-token-wrap(var(--text));
 
   &.cat-button-disabled {
@@ -147,15 +147,15 @@ $button-sizes: (
   }
 
   &:hover:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #fff);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, cat-token-wrap(var(--outlined-bg)));
   }
 
   &.cat-button-active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #fff);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, cat-token-wrap(var(--outlined-bg)));
   }
 
   &:active:not(.cat-button-disabled):not(.cat-button-loading) {
-    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, #fff);
+    background-color: color-mix(in srgb, cat-token-wrap(var(--base)) 10%, cat-token-wrap(var(--outlined-bg)));
   }
 }
 
@@ -201,6 +201,7 @@ $button-sizes: (
     --bg: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     --fill: #{cat-token('color.theme.#{$theme}.fill', $wrap: false)};
     --text: #{cat-token('color.theme.#{$theme}.text', $wrap: false)};
+    --outlined-bg: #{cat-token('color.theme.#{$theme}.bgOutlined', $wrap: false)};
     @if $theme == 'secondary' {
       --base: #{cat-token('color.theme.#{$theme}.bg', $wrap: false)};
     } @else {
