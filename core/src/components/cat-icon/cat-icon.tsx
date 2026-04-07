@@ -69,7 +69,7 @@ export class CatIcon {
     const notCancelled = this.el.dispatchEvent(event);
 
     if (notCancelled) {
-      // No cat-icon-provider in the ancestry — use the global registry directly
+      // No cat-icon-regisrty instance in the ancestry — use the global registry directly
       // (preserves the pre-existing behavior for apps that don't use providers).
       this.resolvedSvg = icons.getIcon(this.icon);
     } else if (!resolved) {

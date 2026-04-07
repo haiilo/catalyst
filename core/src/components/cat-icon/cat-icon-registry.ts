@@ -114,12 +114,6 @@ export class CatIconRegistry {
    * const cleanup = registry.attachTo(mfeRootElement);
    * // call cleanup() when the MFE unmounts
    * ```
-   *
-   * Alternatively, use `<cat-icon-provider>` for a declarative approach:
-   *
-   * ```html
-   * <cat-icon-provider [registry]="registry">…</cat-icon-provider>
-   * ```
    */
   static createInstance(): CatIconRegistry {
     const instance = new CatIconRegistry(false);
@@ -150,8 +144,7 @@ export class CatIconRegistry {
   attachTo(element: Element): () => void {
     const handler = (e: Event) => {
       const event = e as CustomEvent<CatIconRequestDetail>;
-      event.stopPropagation();
-      event.preventDefault();
+      event.stopImmediatePropagation();
 
       const { name, resolve } = event.detail;
 
