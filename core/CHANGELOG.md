@@ -1,5 +1,17 @@
 # Changelog
 
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.3...catalyst-core-v14.6.0) (2026-04-07)
+
+
+### Features
+
+* **core:** make outlined button background customizable ([#963](https://github.com/haiilo/catalyst/issues/963)) ([de09bc6](https://github.com/haiilo/catalyst/commit/de09bc60c5886afbf67109d690723bc21d9a59c5))
+
+
+### Bug Fixes
+
+* **core:** disable pointer event for cat-button direct children ([#966](https://github.com/haiilo/catalyst/issues/966)) ([1d7dbde](https://github.com/haiilo/catalyst/commit/1d7dbde093f00fed4126500a6c52de18021f6a37))
+
 ## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.2...catalyst-core-v14.5.3) (2026-03-11)
 
 

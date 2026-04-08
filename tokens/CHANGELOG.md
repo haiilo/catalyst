@@ -1,5 +1,18 @@
 # Changelog
 
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.5.3...catalyst-tokens-v14.6.0) (2026-04-07)
+
+
+### Features
+
+* **core:** make outlined button background customizable ([#963](https://github.com/haiilo/catalyst/issues/963)) ([de09bc6](https://github.com/haiilo/catalyst/commit/de09bc60c5886afbf67109d690723bc21d9a59c5))
+* **tokens:** update style dictionary ([#961](https://github.com/haiilo/catalyst/issues/961)) ([3314258](https://github.com/haiilo/catalyst/commit/33142586a412fa2222bd893df25dbaf3f92e0085))
+
+
+### Bug Fixes
+
+* **tokens:** fix scss output for design tokens ([#964](https://github.com/haiilo/catalyst/issues/964)) ([9bf9602](https://github.com/haiilo/catalyst/commit/9bf960248a66fd5aacecd91cea4c31d5862dc600))
+
 ## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.5.2...catalyst-tokens-v14.5.3) (2026-03-11)
 
 

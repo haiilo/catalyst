@@ -23,6 +23,13 @@
           },
           "cssProp": "primary-bg-active"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "primary-bg-outlined"
+        },
         "fill": {
           "$type": "color",
           "$value": {
@@ -120,6 +127,13 @@
           },
           "cssProp": "secondary-bg-active"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "secondary-bg-outlined"
+        },
         "fill": {
           "$type": "color",
           "$value": {
@@ -208,6 +222,13 @@
           },
           "cssProp": "info-bg-active"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "info-bg-outlined"
+        },
         "fill": {
           "$type": "color",
           "$value": {
@@ -272,6 +293,13 @@
             "value": "{color.base.green.600}"
           },
           "cssProp": "success-bg-active"
+        },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "success-bg-outlined"
         },
         "fill": {
           "$type": "color",
@@ -338,6 +366,13 @@
           },
           "cssProp": "warning-bg-active"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "warning-bg-outlined"
+        },
         "fill": {
           "$type": "color",
           "$value": {
@@ -402,6 +437,13 @@
             "value": "{color.base.red.600}"
           },
           "cssProp": "danger-bg-active"
+        },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": {
+            "value": "{color.base.white}"
+          },
+          "cssProp": "danger-bg-outlined"
         },
         "fill": {
           "$type": "color",

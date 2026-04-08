@@ -150,6 +150,45 @@ importers:
         specifier: ^2.3.0
         version: 2.8.1
 
+  angular/dist/catalyst:
+    dependencies:
+      '@angular/cdk':
+        specifier: '>=21.0.0'
+        version: 21.1.0(@angular/common@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.0(@angular/animations@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
+      '@angular/core':
+        specifier: '>=21.0.0'
+        version: 21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)
+      '@haiilo/catalyst':
+        specifier: workspace:*
+        version: link:../../../core
+      '@haiilo/catalyst-tokens':
+        specifier: workspace:*
+        version: link:../../../tokens
+      loglevel:
+        specifier: 1.8.1
+        version: 1.8.1
+      rxjs:
+        specifier: ^6.5.3 || ^7.4.0
+        version: 7.8.2
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
+
+  angular/dist/catalyst-formly:
+    dependencies:
+      '@angular/core':
+        specifier: '>=21.0.0'
+        version: 21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)
+      '@haiilo/catalyst-angular':
+        specifier: workspace:*
+        version: link:../../projects/catalyst
+      '@ngx-formly/core':
+        specifier: ^7.0.0
+        version: 7.0.1(@angular/forms@21.2.0(@angular/common@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.0(@angular/animations@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.0(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.0(@angular/compiler@21.2.0)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(rxjs@7.8.2)
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
+
   angular/projects/catalyst:
     dependencies:
       '@angular/cdk':
