@@ -287,13 +287,9 @@ export class CatTextarea {
               </label>
             )}
             {(this.maxLength || this.hasSlottedCounter) && (
-                <div class="character-count" aria-atomic="true" aria-live="polite">
-                  {this.hasSlottedCounter ? (
-                      <slot name="counter"></slot>
-                  ) : (
-                      `${this.value?.length ?? 0}/${this.maxLength}`
-                  )}
-                </div>
+              <div class="character-count" aria-atomic="true" aria-live="polite">
+                {this.hasSlottedCounter ? <slot name="counter"></slot> : `${this.value?.length ?? 0}/${this.maxLength}`}
+              </div>
             )}
           </div>
           <div class="textarea-container">
