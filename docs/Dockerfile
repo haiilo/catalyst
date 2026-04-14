@@ -39,10 +39,11 @@ FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
+ENV PORT=3000
 
 COPY --from=builder /app/docs/.next/standalone ./
 COPY --from=builder /app/docs/.next/static ./docs/.next/static
 COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 3000
-CMD ["node", "docs/server.js"]
+CMD ["node", "server.js"]
