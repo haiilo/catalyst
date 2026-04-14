@@ -12,6 +12,7 @@ on:
       - 'package.json'
       - 'pnpm-workspace.yaml'
       - 'pnpm-lock.yaml'
+  workflow_dispatch:
 
 env:
   REGION: europe-west1
