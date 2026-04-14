@@ -16,7 +16,7 @@ on:
 env:
   REGION: europe-west1
   SERVICE: catalyst-docs
-  IMAGE: europe-west1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/catalyst-docs/catalyst-docs
+  IMAGE: europe-west1-docker.pkg.dev/haiilo-docs-487312/catalyst-docs/catalyst-docs
 
 jobs:
   deploy:
@@ -32,8 +32,7 @@ jobs:
       - name: Auth to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
