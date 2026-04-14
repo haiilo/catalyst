@@ -40,12 +40,12 @@ Consider using select when you have 6 or more options. Select component supports
 
 ## Events
 
-| Event       | Description                                 | Type                      |
-| ----------- | ------------------------------------------- | ------------------------- |
-| `catBlur`   | Emitted when the select loses the focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.          | `CustomEvent<InputEvent>` |
-| `catClose`  | Emitted when the select dropdown is closed. | `CustomEvent<FocusEvent>` |
-| `catOpen`   | Emitted when the select dropdown is opened. | `CustomEvent<FocusEvent>` |
+| Event       | Description                                 | Type                                                                                        |
+| ----------- | ------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `catBlur`   | Emitted when the select loses the focus.    | `CustomEvent<FocusEvent>`                                                                   |
+| `catChange` | Emitted when the value is changed.          | `CustomEvent<CatSelectMultipleTaggingValue \| CatSelectTaggingValue \| string \| string[]>` |
+| `catClose`  | Emitted when the select dropdown is closed. | `CustomEvent<FocusEvent>`                                                                   |
+| `catOpen`   | Emitted when the select dropdown is opened. | `CustomEvent<FocusEvent>`                                                                   |
 
 
 ## Methods
@@ -115,10 +115,11 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part      | Description               |
-| --------- | ------------------------- |
-| `"input"` | The native input element. |
-| `"label"` | The native label element. |
+| Part       | Description               |
+| ---------- | ------------------------- |
+| `"input"`  | The native input element. |
+| `"label"`  | The native label element. |
+| `"option"` |                           |
 
 
 ## Dependencies

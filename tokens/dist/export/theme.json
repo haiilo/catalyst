@@ -11,6 +11,10 @@
     "$type": "color",
     "$value": "#026371"
   },
+  "primary-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
   "primary-fill": {
     "$type": "color",
     "$value": "#ffffff"
@@ -46,6 +50,10 @@
   "secondary-bg-active": {
     "$type": "color",
     "$value": "#697687"
+  },
+  "secondary-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
   },
   "secondary-fill": {
     "$type": "color",
@@ -83,6 +91,10 @@
     "$type": "color",
     "$value": "#0060df"
   },
+  "info-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
   "info-fill": {
     "$type": "color",
     "$value": "#ffffff"
@@ -118,6 +130,10 @@
   "success-bg-active": {
     "$type": "color",
     "$value": "#006946"
+  },
+  "success-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
   },
   "success-fill": {
     "$type": "color",
@@ -155,6 +171,10 @@
     "$type": "color",
     "$value": "#ffdea8"
   },
+  "warning-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
   "warning-fill": {
     "$type": "color",
     "$value": "#000000"
@@ -190,6 +210,10 @@
   "danger-bg-active": {
     "$type": "color",
     "$value": "#ae2a0a"
+  },
+  "danger-bg-outlined": {
+    "$type": "color",
+    "$value": "#ffffff"
   },
   "danger-fill": {
     "$type": "color",

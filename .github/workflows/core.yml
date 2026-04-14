@@ -104,7 +104,10 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm run build:tokens
-      - name: Install Chrome
-        run: node node_modules/puppeteer/install.mjs
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+        working-directory: core
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
+      - name: E2E Test
+        run: pnpm --filter @haiilo/catalyst run test:e2e

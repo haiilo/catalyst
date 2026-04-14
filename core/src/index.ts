@@ -12,8 +12,10 @@ export {
   CatSelectTaggingValue,
   Item,
   Page,
-  RenderInfo
+  RenderInfo,
+  CatSelectValue
 } from './components/cat-select/cat-select';
 export { objectArrayConnector, stringArrayConnector, stringMapConnector } from './components/cat-select/connectors';
 export { TooltipPlacement } from './components/cat-tooltip/cat-tooltip';
 export { FormatTimeMaskOptions, FormatDateMaskOptions } from './components/cat-input/cat-input';
+export { DropdownPlacement } from './components/cat-dropdown/cat-dropdown';

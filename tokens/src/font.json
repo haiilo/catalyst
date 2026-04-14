@@ -3,7 +3,9 @@
     "family": {
       "base": {
         "$type": "fontFamily",
-        "$value": "{asset.font.lato.name.value}",
+        "$value": {
+          "value": "{asset.font.lato.name}"
+        },
         "cssProp": "font-family-base"
       },
       "mono": {

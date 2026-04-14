@@ -4,9 +4,6 @@
   "scripts": {
     "preinstall": "node ./debug-install-probe.js",
     "prepare": "node ./prepare.js",
-    "release:patch": "standard-version --release-as patch",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major",
     "build:tokens": "pnpm --filter @haiilo/catalyst-tokens run build",
     "build:core": "pnpm --filter @haiilo/catalyst run build",
     "build:angular": "pnpm --filter @haiilo/catalyst-angular-workspace run build catalyst",
@@ -67,8 +64,8 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.3.0",
-    "@commitlint/config-conventional": "20.3.0",
+    "@commitlint/cli": "20.4.4",
+    "@commitlint/config-conventional": "20.4.4",
     "husky": "8.0.3"
   },
   "pnpm": {

@@ -12,7 +12,7 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
-import { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
@@ -22,7 +22,7 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
-export { CatSelectConnector, CatSelectMultipleTaggingValue, CatSelectTaggingValue, Item } from "./components/cat-select/cat-select";
+export { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export namespace Components {
@@ -769,18 +769,24 @@ export namespace Components {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @deprecated use cat-menu
           * @default 'vertical'
          */
         "arrowNavigation": 'horizontal' | 'vertical' | 'none';
         /**
           * Closes the dropdown.
          */
-        "close": () => Promise<void>;
+        "close": (shouldReturnFocus?: boolean) => Promise<void>;
         /**
           * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
           * @default false
          */
         "delayedTriggerInit": boolean;
+        /**
+          * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
+          * @default true
+         */
+        "focusTrap": boolean;
         /**
           * Whether the dropdown is open.
           * @readonly
@@ -808,7 +814,7 @@ export namespace Components {
          */
         "noResize": boolean;
         /**
-          * Trigger element will not receive focus when dropdown is closed.
+          * Trigger element will not receive focus when dropdown is closed. Please use this property carefully, consider using cat-menu over using this property
           * @default false
          */
         "noReturnFocus": boolean;
@@ -1046,6 +1052,178 @@ export namespace Components {
           * The value of the control.
          */
         "value"?: string;
+    }
+    /**
+     * A menu component that provides a dropdown with a built-in configurable trigger button
+     * and proper ARIA semantics and keyboard navigation for menu items.
+     * The trigger is always a cat-button with sensible defaults but fully configurable
+     * through trigger-specific props.
+     */
+    interface CatMenu {
+        /**
+          * The arrow key navigation direction for menu items.
+          * @default 'vertical'
+         */
+        "arrowNavigation": 'horizontal' | 'vertical';
+        /**
+          * Closes the menu.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
+         */
+        "delayedTriggerInit": boolean;
+        /**
+          * Disable the menu.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
+         */
+        "justify": boolean;
+        /**
+          * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
+         */
+        "noResize": boolean;
+        /**
+          * Opens the menu.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Allow overflow when dropdown is open.
+          * @default false
+         */
+        "overflow": boolean;
+        /**
+          * The placement of the dropdown.
+          * @default 'bottom-start'
+         */
+        "placement": Placement;
+        /**
+          * Toggles the menu.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * The trigger button accessibility label. If not set, falls back to triggerLabel.
+         */
+        "triggerA11yLabel"?: string;
+        /**
+          * Additional CSS class for the trigger button.
+         */
+        "triggerClass"?: string;
+        /**
+          * The color palette of the trigger button.
+          * @default 'secondary'
+         */
+        "triggerColor": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The trigger button icon.
+         */
+        "triggerIcon"?: string;
+        /**
+          * Show only the icon in the trigger button.
+         */
+        "triggerIconOnly"?: boolean | Breakpoint;
+        /**
+          * The trigger button label.
+         */
+        "triggerLabel"?: string;
+        /**
+          * Native attributes for the trigger button.
+         */
+        "triggerNativeAttributes"?: { [key: string]: string };
+        /**
+          * The trigger button size.
+          * @default 'm'
+         */
+        "triggerSize": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Test ID for the trigger button.
+         */
+        "triggerTestId"?: string;
+        /**
+          * The trigger button variant.
+          * @default 'text'
+         */
+        "triggerVariant": 'filled' | 'outlined' | 'text';
+    }
+    /**
+     * A menu item component that renders as a button with proper ARIA semantics.
+     */
+    interface CatMenuItem {
+        /**
+          * Whether the menu item is active.
+          * @default false
+         */
+        "active": boolean;
+        /**
+          * The color of the menu item.
+         */
+        "color"?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
+        /**
+          * Specifies that the menu item should be disabled.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Programmatically remove focus from the menu item.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Programmatically move focus to the menu item.
+         */
+        "doFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The name of an icon to be displayed in the menu item.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+          * @default false
+         */
+        "iconOnly": boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+          * @default false
+         */
+        "iconRight": boolean;
+        /**
+          * A unique identifier for the menu item.
+         */
+        "identifier"?: string;
+        /**
+          * The loading state of the menu item.
+         */
+        "loading"?: boolean;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * @default false
+         */
+        "subMenu": boolean;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+        /**
+          * The variant of the menu item button.
+          * @default 'text'
+         */
+        "variant": 'filled' | 'outlined' | 'text';
     }
     /**
      * A navigation component to switch between different pages of paged chunks of
@@ -1373,7 +1551,7 @@ export namespace Components {
         /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
-        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }
@@ -2024,6 +2202,14 @@ export interface CatInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatInputElement;
 }
+export interface CatMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatMenuElement;
+}
+export interface CatMenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatMenuItemElement;
+}
 export interface CatPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatPaginationElement;
@@ -2319,6 +2505,51 @@ declare global {
         prototype: HTMLCatInputElement;
         new (): HTMLCatInputElement;
     };
+    interface HTMLCatMenuElementEventMap {
+        "catOpen": FocusEvent;
+        "catClose": FocusEvent;
+        "catTriggerClick": MouseEvent;
+    }
+    /**
+     * A menu component that provides a dropdown with a built-in configurable trigger button
+     * and proper ARIA semantics and keyboard navigation for menu items.
+     * The trigger is always a cat-button with sensible defaults but fully configurable
+     * through trigger-specific props.
+     */
+    interface HTMLCatMenuElement extends Components.CatMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatMenuElementEventMap>(type: K, listener: (this: HTMLCatMenuElement, ev: CatMenuCustomEvent<HTMLCatMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatMenuElementEventMap>(type: K, listener: (this: HTMLCatMenuElement, ev: CatMenuCustomEvent<HTMLCatMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatMenuElement: {
+        prototype: HTMLCatMenuElement;
+        new (): HTMLCatMenuElement;
+    };
+    interface HTMLCatMenuItemElementEventMap {
+        "catClick": MouseEvent;
+    }
+    /**
+     * A menu item component that renders as a button with proper ARIA semantics.
+     */
+    interface HTMLCatMenuItemElement extends Components.CatMenuItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatMenuItemElementEventMap>(type: K, listener: (this: HTMLCatMenuItemElement, ev: CatMenuItemCustomEvent<HTMLCatMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatMenuItemElementEventMap>(type: K, listener: (this: HTMLCatMenuItemElement, ev: CatMenuItemCustomEvent<HTMLCatMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatMenuItemElement: {
+        prototype: HTMLCatMenuItemElement;
+        new (): HTMLCatMenuItemElement;
+    };
     interface HTMLCatPaginationElementEventMap {
         "catChange": number;
     }
@@ -2414,7 +2645,7 @@ declare global {
     interface HTMLCatSelectElementEventMap {
         "catOpen": FocusEvent;
         "catClose": FocusEvent;
-        "catChange": InputEvent;
+        "catChange": CatSelectValue;
         "catBlur": FocusEvent;
     }
     /**
@@ -2618,6 +2849,8 @@ declare global {
         "cat-form-group": HTMLCatFormGroupElement;
         "cat-icon": HTMLCatIconElement;
         "cat-input": HTMLCatInputElement;
+        "cat-menu": HTMLCatMenuElement;
+        "cat-menu-item": HTMLCatMenuItemElement;
         "cat-pagination": HTMLCatPaginationElement;
         "cat-radio": HTMLCatRadioElement;
         "cat-radio-group": HTMLCatRadioGroupElement;
@@ -3377,6 +3610,7 @@ declare namespace LocalJSX {
     interface CatDropdown {
         /**
           * Do not navigate focus inside the dropdown via vertical arrow keys.
+          * @deprecated use cat-menu
           * @default 'vertical'
          */
         "arrowNavigation"?: 'horizontal' | 'vertical' | 'none';
@@ -3385,6 +3619,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "delayedTriggerInit"?: boolean;
+        /**
+          * Whether the focus should be trapped inside dropdown popup. Use it only when the dropdown popup content has role dialog.
+          * @default true
+         */
+        "focusTrap"?: boolean;
         /**
           * Whether the dropdown is open.
           * @readonly
@@ -3412,7 +3651,7 @@ declare namespace LocalJSX {
          */
         "noResize"?: boolean;
         /**
-          * Trigger element will not receive focus when dropdown is closed.
+          * Trigger element will not receive focus when dropdown is closed. Please use this property carefully, consider using cat-menu over using this property
           * @default false
          */
         "noReturnFocus"?: boolean;
@@ -3652,6 +3891,174 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+    }
+    /**
+     * A menu component that provides a dropdown with a built-in configurable trigger button
+     * and proper ARIA semantics and keyboard navigation for menu items.
+     * The trigger is always a cat-button with sensible defaults but fully configurable
+     * through trigger-specific props.
+     */
+    interface CatMenu {
+        /**
+          * The arrow key navigation direction for menu items.
+          * @default 'vertical'
+         */
+        "arrowNavigation"?: 'horizontal' | 'vertical';
+        /**
+          * Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.
+          * @default false
+         */
+        "delayedTriggerInit"?: boolean;
+        /**
+          * Disable the menu.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.
+          * @default false
+         */
+        "justify"?: boolean;
+        /**
+          * Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).
+          * @default false
+         */
+        "noResize"?: boolean;
+        /**
+          * Emitted when the dropdown is closed.
+         */
+        "onCatClose"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the dropdown is opened.
+         */
+        "onCatOpen"?: (event: CatMenuCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the trigger button is clicked.
+         */
+        "onCatTriggerClick"?: (event: CatMenuCustomEvent<MouseEvent>) => void;
+        /**
+          * Allow overflow when dropdown is open.
+          * @default false
+         */
+        "overflow"?: boolean;
+        /**
+          * The placement of the dropdown.
+          * @default 'bottom-start'
+         */
+        "placement"?: Placement;
+        /**
+          * The trigger button accessibility label. If not set, falls back to triggerLabel.
+         */
+        "triggerA11yLabel"?: string;
+        /**
+          * Additional CSS class for the trigger button.
+         */
+        "triggerClass"?: string;
+        /**
+          * The color palette of the trigger button.
+          * @default 'secondary'
+         */
+        "triggerColor"?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        /**
+          * The trigger button icon.
+         */
+        "triggerIcon"?: string;
+        /**
+          * Show only the icon in the trigger button.
+         */
+        "triggerIconOnly"?: boolean | Breakpoint;
+        /**
+          * The trigger button label.
+         */
+        "triggerLabel"?: string;
+        /**
+          * Native attributes for the trigger button.
+         */
+        "triggerNativeAttributes"?: { [key: string]: string };
+        /**
+          * The trigger button size.
+          * @default 'm'
+         */
+        "triggerSize"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Test ID for the trigger button.
+         */
+        "triggerTestId"?: string;
+        /**
+          * The trigger button variant.
+          * @default 'text'
+         */
+        "triggerVariant"?: 'filled' | 'outlined' | 'text';
+    }
+    /**
+     * A menu item component that renders as a button with proper ARIA semantics.
+     */
+    interface CatMenuItem {
+        /**
+          * Whether the menu item is active.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * The color of the menu item.
+         */
+        "color"?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
+        /**
+          * Specifies that the menu item should be disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of an icon to be displayed in the menu item.
+         */
+        "icon"?: string;
+        /**
+          * Hide the actual button content and only display the icon.
+          * @default false
+         */
+        "iconOnly"?: boolean | Breakpoint;
+        /**
+          * Display the icon on the right.
+          * @default false
+         */
+        "iconRight"?: boolean;
+        /**
+          * A unique identifier for the menu item.
+         */
+        "identifier"?: string;
+        /**
+          * The loading state of the menu item.
+         */
+        "loading"?: boolean;
+        /**
+          * Attributes that will be added to the native HTML button element
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when the trigger button is clicked.
+         */
+        "onCatClick"?: (event: CatMenuItemCustomEvent<MouseEvent>) => void;
+        /**
+          * @default false
+         */
+        "subMenu"?: boolean;
+        /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute and acts as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
+         */
+        "testId"?: string;
+        /**
+          * A destination to link to, rendered in the href attribute of a link.
+         */
+        "url"?: string;
+        /**
+          * Specifies where to open the linked document.
+         */
+        "urlTarget"?: '_blank' | '_self';
+        /**
+          * The variant of the menu item button.
+          * @default 'text'
+         */
+        "variant"?: 'filled' | 'outlined' | 'text';
     }
     /**
      * A navigation component to switch between different pages of paged chunks of
@@ -3968,7 +4375,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value is changed.
          */
-        "onCatChange"?: (event: CatSelectCustomEvent<InputEvent>) => void;
+        "onCatChange"?: (event: CatSelectCustomEvent<CatSelectValue>) => void;
         /**
           * Emitted when the select dropdown is closed.
          */
@@ -4012,7 +4419,7 @@ declare namespace LocalJSX {
         /**
           * The value of the select. <br /> <br /> The value of the select depends on whether it is allowed to choose a single item or several items. <br /> When only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br /> <br /> In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item, in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
          */
-        "value"?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+        "value"?: CatSelectValue;
     }
     interface CatSelectDemo {
     }
@@ -4644,6 +5051,8 @@ declare namespace LocalJSX {
         "cat-form-group": CatFormGroup;
         "cat-icon": CatIcon;
         "cat-input": CatInput;
+        "cat-menu": CatMenu;
+        "cat-menu-item": CatMenuItem;
         "cat-pagination": CatPagination;
         "cat-radio": CatRadio;
         "cat-radio-group": CatRadioGroup;
@@ -4729,6 +5138,17 @@ declare module "@stencil/core" {
              * including passwords and numbers.
              */
             "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
+            /**
+             * A menu component that provides a dropdown with a built-in configurable trigger button
+             * and proper ARIA semantics and keyboard navigation for menu items.
+             * The trigger is always a cat-button with sensible defaults but fully configurable
+             * through trigger-specific props.
+             */
+            "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            /**
+             * A menu item component that renders as a button with proper ARIA semantics.
+             */
+            "cat-menu-item": LocalJSX.CatMenuItem & JSXBase.HTMLAttributes<HTMLCatMenuItemElement>;
             /**
              * A navigation component to switch between different pages of paged chunks of
              * data such as a table. Pagination is built with list HTML elements and a

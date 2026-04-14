@@ -1,5 +1,68 @@
 # Changelog
 
+## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.6.0...catalyst-angular-formly-v14.6.1) (2026-04-13)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.5.3...catalyst-angular-formly-v14.6.0) (2026-04-07)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.5.2...catalyst-angular-formly-v14.5.3) (2026-03-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.5.1...catalyst-angular-formly-v14.5.2) (2026-03-06)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.5.0...catalyst-angular-formly-v14.5.1) (2026-03-03)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.4.0...catalyst-angular-formly-v14.5.0) (2026-03-02)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.3.0...catalyst-angular-formly-v14.4.0) (2026-02-25)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.2.0...catalyst-angular-formly-v14.3.0) (2026-02-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
+## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.1.0...catalyst-angular-formly-v14.2.0) (2026-01-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular-formly:** Synchronize catalyst versions
+
 ## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.0.5...catalyst-angular-formly-v14.1.0) (2026-01-16)
 
 

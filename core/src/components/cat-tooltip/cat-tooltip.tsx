@@ -232,10 +232,10 @@ export class CatTooltip {
   }
 
   private showTooltip() {
-    if (this.trigger && this.tooltip) {
-      this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
-    }
     if (!this.inactive) {
+      if (this.trigger && this.tooltip) {
+        this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
+      }
       this.open = true;
       this.tooltip?.classList.add('tooltip-show');
     }

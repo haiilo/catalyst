@@ -1,11 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
-describe('cat-scrollable', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
+test.describe('cat-scrollable', () => {
+  test('renders', async ({ page }) => {
     await page.setContent('<cat-scrollable></cat-scrollable>');
-
-    const element = await page.find('cat-scrollable');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.locator('cat-scrollable');
+    await expect(element).toHaveClass('hydrated');
   });
 });

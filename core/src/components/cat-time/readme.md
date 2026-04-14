@@ -113,19 +113,24 @@ Type: `Promise<void>`
 
 - [cat-input](../cat-input)
 - [cat-button](../cat-button)
-- [cat-dropdown](../cat-dropdown)
+- [cat-menu](../cat-menu)
+- [cat-menu-item](../cat-menu-item)
 
 ### Graph
 ```mermaid
 graph TD;
   cat-time --> cat-input
   cat-time --> cat-button
-  cat-time --> cat-dropdown
+  cat-time --> cat-menu
+  cat-time --> cat-menu-item
   cat-input --> cat-icon
   cat-input --> cat-button
   cat-input --> cat-spinner
   cat-button --> cat-icon
   cat-button --> cat-spinner
+  cat-menu --> cat-dropdown
+  cat-menu --> cat-button
+  cat-menu-item --> cat-button
   style cat-time fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.6.0...catalyst-angular-v14.6.1) (2026-04-13)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.3...catalyst-angular-v14.6.0) (2026-04-07)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.2...catalyst-angular-v14.5.3) (2026-03-11)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.1...catalyst-angular-v14.5.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* **core:** support subdropdown in menu ([#945](https://github.com/haiilo/catalyst/issues/945)) ([b6ddf2c](https://github.com/haiilo/catalyst/commit/b6ddf2c1729d33dd8878a9aa8eca9570b70b20ed))
+
+## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.5.0...catalyst-angular-v14.5.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* **core:** fixes of 14.5.0 release ([#941](https://github.com/haiilo/catalyst/issues/941)) ([7e7d53f](https://github.com/haiilo/catalyst/commit/7e7d53fc84fc481d77d05db70fb476da0f942417))
+
+## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.4.0...catalyst-angular-v14.5.0) (2026-03-02)
+
+
+### Features
+
+* **core:** add value to catChange event of cat-select ([#836](https://github.com/haiilo/catalyst/issues/836)) ([ac57fd5](https://github.com/haiilo/catalyst/commit/ac57fd5cdbb9752aec181376b17f9ee2d494ee12))
+* **core:** cat-menu ([#910](https://github.com/haiilo/catalyst/issues/910)) ([c966b1d](https://github.com/haiilo/catalyst/commit/c966b1d2192655da81e99f66aab3fad32f66e724))
+* **core:** make button links behave as inline elements ([#855](https://github.com/haiilo/catalyst/issues/855)) ([a8f0ce1](https://github.com/haiilo/catalyst/commit/a8f0ce15776e8b177bd1dad122dfbbfa8f9659dc))
+
+## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.3.0...catalyst-angular-v14.4.0) (2026-02-25)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.2.0...catalyst-angular-v14.3.0) (2026-02-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
+## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.1.0...catalyst-angular-v14.2.0) (2026-01-28)
+
+
+### Miscellaneous Chores
+
+* **catalyst-angular:** Synchronize catalyst versions
+
 ## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.0.5...catalyst-angular-v14.1.0) (2026-01-16)
 
 

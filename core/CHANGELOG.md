@@ -1,5 +1,87 @@
 # Changelog
 
+## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.0...catalyst-core-v14.6.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **core:** don't trigger update of tooltip if it's inactive ([#971](https://github.com/haiilo/catalyst/issues/971)) ([7f5a416](https://github.com/haiilo/catalyst/commit/7f5a4165e488ae00957e9ae778754e9d71ac44be))
+
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.3...catalyst-core-v14.6.0) (2026-04-07)
+
+
+### Features
+
+* **core:** make outlined button background customizable ([#963](https://github.com/haiilo/catalyst/issues/963)) ([de09bc6](https://github.com/haiilo/catalyst/commit/de09bc60c5886afbf67109d690723bc21d9a59c5))
+
+
+### Bug Fixes
+
+* **core:** disable pointer event for cat-button direct children ([#966](https://github.com/haiilo/catalyst/issues/966)) ([1d7dbde](https://github.com/haiilo/catalyst/commit/1d7dbde093f00fed4126500a6c52de18021f6a37))
+
+## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.2...catalyst-core-v14.5.3) (2026-03-11)
+
+
+### Bug Fixes
+
+* **core:** don't deactivate dropdown focus trap when user clicks on trigger ([#951](https://github.com/haiilo/catalyst/issues/951)) ([a2c7325](https://github.com/haiilo/catalyst/commit/a2c732583be25a4b8a809832ce33307595ffbddd))
+
+## [14.5.2](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.1...catalyst-core-v14.5.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* **core:** listen for global click only when dropdown is open ([#949](https://github.com/haiilo/catalyst/issues/949)) ([eb00636](https://github.com/haiilo/catalyst/commit/eb00636066bdf57104c7da955312fcf867726c2d))
+* **core:** support subdropdown in menu ([#945](https://github.com/haiilo/catalyst/issues/945)) ([b6ddf2c](https://github.com/haiilo/catalyst/commit/b6ddf2c1729d33dd8878a9aa8eca9570b70b20ed))
+
+## [14.5.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.0...catalyst-core-v14.5.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* **core:** fixes of 14.5.0 release ([#941](https://github.com/haiilo/catalyst/issues/941)) ([7e7d53f](https://github.com/haiilo/catalyst/commit/7e7d53fc84fc481d77d05db70fb476da0f942417))
+
+## [14.5.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.4.0...catalyst-core-v14.5.0) (2026-03-02)
+
+
+### Features
+
+* **core:** add value to catChange event of cat-select ([#836](https://github.com/haiilo/catalyst/issues/836)) ([ac57fd5](https://github.com/haiilo/catalyst/commit/ac57fd5cdbb9752aec181376b17f9ee2d494ee12))
+* **core:** cat-menu ([#910](https://github.com/haiilo/catalyst/issues/910)) ([c966b1d](https://github.com/haiilo/catalyst/commit/c966b1d2192655da81e99f66aab3fad32f66e724))
+* **core:** make button links behave as inline elements ([#855](https://github.com/haiilo/catalyst/issues/855)) ([a8f0ce1](https://github.com/haiilo/catalyst/commit/a8f0ce15776e8b177bd1dad122dfbbfa8f9659dc))
+
+
+### Bug Fixes
+
+* **core:** remove extra offset(CatDropdown.OFFSET) in dropdown computePosition middleware ([#938](https://github.com/haiilo/catalyst/issues/938)) ([f7222d2](https://github.com/haiilo/catalyst/commit/f7222d2c74c0f4ff1bb2aa1a080fbd9c49fb6a17))
+* **core:** set cursor default for disabled cat-button host ([#923](https://github.com/haiilo/catalyst/issues/923)) ([c9bdf38](https://github.com/haiilo/catalyst/commit/c9bdf385692a5814fb89c970b9c1ea4f1f0e4378))
+
+## [14.4.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.3.0...catalyst-core-v14.4.0) (2026-02-25)
+
+
+### Features
+
+* **core:** add aria-label to pagination nav element ([#926](https://github.com/haiilo/catalyst/issues/926)) ([7a2e2f8](https://github.com/haiilo/catalyst/commit/7a2e2f85fc9642666d8510c06beb750b21b67026))
+
+## [14.3.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.2.0...catalyst-core-v14.3.0) (2026-02-10)
+
+
+### Features
+
+* **core:** configure fallback axis for cat-dropdown ([#919](https://github.com/haiilo/catalyst/issues/919)) ([4ab8876](https://github.com/haiilo/catalyst/commit/4ab8876ad57fb7ec55fc72f425d72f8400dd4f28))
+
+## [14.2.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.1.0...catalyst-core-v14.2.0) (2026-01-28)
+
+
+### Features
+
+* **core:** render options subscription in cat-select ([#894](https://github.com/haiilo/catalyst/issues/894)) ([585665d](https://github.com/haiilo/catalyst/commit/585665d1a45f9e48a6ba1000e76eb163ab379dc0))
+
+
+### Bug Fixes
+
+* **angular:** add preserveSymlinks for catalyst demo ([#890](https://github.com/haiilo/catalyst/issues/890)) ([83ac992](https://github.com/haiilo/catalyst/commit/83ac9921ec6169574b6e0d68aaa88928b312ee2c))
+
 ## [14.1.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.0.5...catalyst-core-v14.1.0) (2026-01-16)
 
 

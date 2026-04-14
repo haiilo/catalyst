@@ -48,6 +48,7 @@ export interface RenderInfo {
  * @property resolve - Resolves the value of the select.
  * @property retrieve - Retrieves the options of the select.
  * @property render - Renders the items of the select.
+ * @property renderOptions$ - Observable that triggers re-rendering of options when emitted (doesn't support tags).
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface CatSelectConnector<T extends Item = any> {
@@ -55,6 +56,7 @@ export interface CatSelectConnector<T extends Item = any> {
   resolve: (ids: string[]) => Observable<T[]>;
   retrieve: (term: string, page: number) => Observable<Page<T>>;
   render: (item: T) => RenderInfo;
+  renderOptions$?: Observable<void>;
 }
 
 export interface CatSelectState {
@@ -97,6 +99,8 @@ const INIT_STATE: CatSelectState = {
 let nextUniqueId = 0;
 let nextTagUniqueId = 0;
 
+export type CatSelectValue = string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+
 /**
  * Select lets user choose one option from an options' menu.
  * Consider using select when you have 6 or more options. Select component supports any content type.
@@ -128,6 +132,7 @@ export class CatSelect {
   private errorMapSrc?: ErrorMap | true;
 
   private subscription?: Subscription;
+  private renderSubscription?: Subscription;
   private term$: Subject<string> = new Subject();
   private more$: Subject<void> = new Subject();
   private valueChangedBySelection = false;
@@ -185,7 +190,7 @@ export class CatSelect {
    * In case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,
    * in the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created
    */
-  @Prop({ mutable: true }) value?: string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue;
+  @Prop({ mutable: true }) value?: CatSelectValue;
 
   /**
    * Whether the select is disabled.
@@ -340,7 +345,7 @@ export class CatSelect {
       if (!oldState.isResolving) {
         this.valueChangedBySelection = true;
         this.value = newValue;
-        this.catChange.emit();
+        this.catChange.emit(newValue);
       }
       this.showErrorsIfTimeout();
     }
@@ -359,7 +364,7 @@ export class CatSelect {
   /**
    * Emitted when the value is changed.
    */
-  @Event() catChange!: EventEmitter<InputEvent>;
+  @Event() catChange!: EventEmitter<CatSelectValue>;
 
   /**
    * Emitted when the select loses the focus.
@@ -586,6 +591,13 @@ export class CatSelect {
           options
         });
       });
+
+    this.renderSubscription?.unsubscribe();
+    if (connector.renderOptions$) {
+      this.renderSubscription = connector.renderOptions$.subscribe(() => {
+        this.rerenderOptions();
+      });
+    }
   }
 
   render() {
@@ -842,7 +854,7 @@ export class CatSelect {
                     initials={item.render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
-                <span class="select-option-text">
+                <span class="select-option-text" part="option">
                   <span class="select-option-label">{getLabel()}</span>
                   <span class="select-option-description">{item.render.description}</span>
                 </span>
@@ -981,6 +993,13 @@ export class CatSelect {
     }
   }
 
+  private rerenderOptions() {
+    const optionItems = this.state.options.map(o => o.item);
+    const updatedOptions = this.toSelectItems(this.connector!, optionItems);
+
+    this.patchState({ options: updatedOptions });
+  }
+
   private toggle(item: { item: Item; render: RenderInfo }) {
     this.isSelected(item.item.id)
       ? this.deselect(item.item.id)
@@ -1003,6 +1022,8 @@ export class CatSelect {
     this.connector = connector ?? this.connector;
     this.subscription?.unsubscribe();
     this.subscription = undefined;
+    this.renderSubscription?.unsubscribe();
+    this.renderSubscription = undefined;
     this.state = INIT_STATE;
   }
 

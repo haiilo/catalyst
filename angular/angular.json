@@ -95,7 +95,8 @@
             "styles": ["projects/catalyst-demo/src/styles.scss"],
             "scripts": [],
             "allowedCommonJsDependencies": ["loglevel"],
-            "browser": "projects/catalyst-demo/src/main.ts"
+            "browser": "projects/catalyst-demo/src/main.ts",
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {
