@@ -1,8 +1,0 @@
-appHosting:
-  build:
-    buildCommand: "cd .. && pnpm install --ignore-scripts --config.strict-peer-dependencies=false && cd docs && pnpm run build"
-  run:
-    runCommand: "pnpm run start"
-  outputDirectory: .next/standalone
-options:
-  logging: CLOUD_LOGGING_ONLY
