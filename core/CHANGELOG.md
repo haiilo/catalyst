@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.0...catalyst-core-v14.6.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **core:** don't trigger update of tooltip if it's inactive ([#971](https://github.com/haiilo/catalyst/issues/971)) ([7f5a416](https://github.com/haiilo/catalyst/commit/7f5a4165e488ae00957e9ae778754e9d71ac44be))
+
 ## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.3...catalyst-core-v14.6.0) (2026-04-07)
 
 
