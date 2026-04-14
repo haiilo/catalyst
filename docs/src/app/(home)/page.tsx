@@ -9,7 +9,7 @@ export default function HomePage() {
         <Link href="/docs" className="font-medium underline">
           /docs
         </Link>{' '}
-        and see the awesome catalyst documentation.
+        and see the documentation.
       </p>
     </div>
   );
