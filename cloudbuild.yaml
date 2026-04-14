@@ -1,6 +1,11 @@
 steps:
+  # Diagnostic: verify build context has the full repo
+  - name: 'alpine'
+    args: ['ls', '-la', '/workspace/']
+
   # Build the container image from repo root using docs/Dockerfile
   - name: 'gcr.io/cloud-builders/docker'
+    dir: '.'
     args:
       - 'build'
       - '-f'
