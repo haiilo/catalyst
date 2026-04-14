@@ -43,7 +43,7 @@ ENV PORT=3000
 
 COPY --from=builder /app/docs/.next/standalone ./
 COPY --from=builder /app/docs/.next/static ./docs/.next/static
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/docs/public ./docs/public
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "docs/server.js"]
