@@ -1,14 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatRadioGroup } from './cat-radio-group';
+import { render, h, describe, it, expect } from '@stencil/vitest';
+import './cat-radio-group';
 
 describe('cat-radio-group', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatRadioGroup],
-      html: `<cat-radio-group></cat-radio-group>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-radio-group></cat-radio-group>
+    const { root } = await render(<cat-radio-group />);
+    await expect(root).toEqualLightHtml(`
+      <cat-radio-group class="hydrated"></cat-radio-group>
     `);
   });
 });

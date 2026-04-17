@@ -1,19 +1,20 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatTag } from './cat-tag';
+import { render, h, describe, it, expect } from '@stencil/vitest';
+import './cat-tag';
 
 describe('cat-tag', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatTag],
-      html: `<cat-tag></cat-tag>`
-    });
-    expect(page.root?.shadowRoot).toEqualHtml(`
-       <div class="label-container"></div>
-       <div class="input-wrapper">
-        <div class="input-inner-wrapper">
-         <input class="tags-input" id="tags-cat-input-0-input" part="input" role="combobox">
-        </div>
-       </div>
+    const { root } = await render(<cat-tag />);
+    await expect(root).toEqualHtml(`
+      <cat-tag tabindex="0" class="hydrated">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <div class="label-container"></div>
+          <div class="input-wrapper">
+            <div class="input-inner-wrapper">
+              <input part="input" id="tags-cat-input-0-input" class="tags-input" role="combobox">
+            </div>
+          </div>
+        </mock:shadow-root>
+      </cat-tag>
     `);
   });
 });

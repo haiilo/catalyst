@@ -1,14 +1,12 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatAlert } from './cat-alert';
+import { describe, it, expect } from 'vitest';
+import { render, h } from '@stencil/vitest';
+import './cat-alert';
 
 describe('cat-alert', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatAlert],
-      html: `<cat-alert></cat-alert>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-alert color="primary" role="status" tabindex="0"></cat-alert>
+    const { root } = await render(<cat-alert />);
+    await expect(root).toEqualLightHtml(`
+      <cat-alert tabindex="0" role="status" color="primary" class="hydrated"></cat-alert>
     `);
   });
 });

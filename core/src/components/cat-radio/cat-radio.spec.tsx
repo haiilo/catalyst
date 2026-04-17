@@ -1,14 +1,12 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatRadio } from './cat-radio';
+import { render, h, describe, it, expect } from '@stencil/vitest';
+
+import './cat-radio';
 
 describe('cat-radio', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatRadio],
-      html: `<cat-radio label="Label"></cat-radio>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-radio label="Label" tabindex="0"></cat-radio>
+    const { root } = await render(<cat-radio label="Label" />);
+    await expect(root).toEqualLightHtml(`
+      <cat-radio tabindex="0" class="hydrated"></cat-radio>
     `);
   });
 });

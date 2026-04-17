@@ -1,59 +1,56 @@
-// Mock the icon registry to prevent console errors
-jest.mock('../cat-icon/cat-icon-registry');
+import { vi } from 'vitest';
+import { render, h, describe, it, expect, beforeEach } from '@stencil/vitest';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-import { CatMenu } from './cat-menu';
-import { CatDropdown } from '../cat-dropdown/cat-dropdown';
-import { CatButton } from '../cat-button/cat-button';
-import { CatMenuItem } from '../cat-menu-item/cat-menu-item';
-import { CatIcon } from '../cat-icon/cat-icon';
+vi.mock('../cat-icon/cat-icon-registry');
 
-// Mock the floating-ui dependencies used by cat-dropdown
-jest.mock('@floating-ui/dom', () => ({
-  autoUpdate: jest.fn(() => jest.fn()),
-  computePosition: jest.fn(() => ({})),
-  flip: jest.fn(() => ({})),
-  offset: jest.fn(() => ({})),
-  shift: jest.fn(() => ({})),
-  size: jest.fn(() => ({}))
+import './cat-menu';
+import '../cat-dropdown/cat-dropdown';
+import '../cat-button/cat-button';
+import '../cat-menu-item/cat-menu-item';
+import '../cat-icon/cat-icon';
+
+vi.mock('@floating-ui/dom', () => ({
+  autoUpdate: vi.fn(() => vi.fn()),
+  computePosition: vi.fn(() => ({})),
+  flip: vi.fn(() => ({})),
+  offset: vi.fn(() => ({})),
+  shift: vi.fn(() => ({})),
+  size: vi.fn(() => ({}))
 }));
 
-jest.mock('focus-trap', () => ({
-  createFocusTrap: jest.fn(() => ({
-    activate: jest.fn(),
-    deactivate: jest.fn(),
-    updateContainerElements: jest.fn(function () {
+vi.mock('focus-trap', () => ({
+  createFocusTrap: vi.fn(() => ({
+    activate: vi.fn(),
+    deactivate: vi.fn(),
+    updateContainerElements: vi.fn(function (this: any) {
       return this;
     })
   }))
 }));
 
-jest.mock('../../utils/first-tabbable', () => (element: HTMLSlotElement) => element);
+vi.mock('../../utils/first-tabbable', () => ({
+  default: (element: HTMLSlotElement) => element
+}));
+
+
 
 describe('cat-menu', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatMenu, CatDropdown, CatButton],
-      html: `<cat-menu></cat-menu>`
-    });
-    expect(page.root).toBeTruthy();
-    expect(page.root?.shadowRoot?.querySelector('cat-dropdown')).toBeTruthy();
-    expect(page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]')).toBeTruthy();
+    const { root } = await render(<cat-menu />);
+    expect(root).toBeTruthy();
+    expect(root.shadowRoot?.querySelector('cat-dropdown')).toBeTruthy();
+    expect(root.shadowRoot?.querySelector('cat-button[slot="trigger"]')).toBeTruthy();
   });
 
   describe('trigger button', () => {
     it('should render trigger button with correct default attributes', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root } = await render(<cat-menu />);
 
-      const trigger = page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
       expect(trigger).toBeTruthy();
       expect(trigger.variant).toBe('text');
       expect(trigger.size).toBe('m');
@@ -64,22 +61,19 @@ describe('cat-menu', () => {
     });
 
     it('should apply custom trigger props', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `
-          <cat-menu
-            disabled
-            trigger-variant="filled"
-            trigger-size="l"
-            trigger-icon="gear"
-            trigger-label="Options"
-            trigger-class="custom-class"
-            trigger-test-id="menu-trigger"
-          ></cat-menu>
-        `
-      });
+      const { root } = await render(
+        <cat-menu
+          disabled
+          trigger-variant="filled"
+          trigger-size="l"
+          trigger-icon="gear"
+          trigger-label="Options"
+          trigger-class="custom-class"
+          trigger-test-id="menu-trigger"
+        />
+      );
 
-      const trigger = page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
       expect(trigger.variant).toBe('filled');
       expect(trigger.size).toBe('l');
       expect(trigger.icon).toBe('gear');
@@ -90,28 +84,26 @@ describe('cat-menu', () => {
     });
 
     it('should use triggerA11yLabel when provided', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        template: () => <cat-menu triggerLabel="Options" triggerA11yLabel="Open options menu"></cat-menu>
-      });
+      const { root, waitForChanges } = await render(<cat-menu trigger-label="Options" />);
 
-      const trigger = page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      const menu = root as HTMLCatMenuElement;
+      (menu as any).triggerA11yLabel = 'Open options menu';
+      await waitForChanges();
+
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
       expect(trigger.a11yLabel).toBe('Open options menu');
     });
 
     it('should emit catTriggerClick when trigger is clicked', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root, waitForChanges } = await render(<cat-menu />);
 
-      const catTriggerClickSpy = jest.fn();
-      page.root?.addEventListener('catTriggerClick', catTriggerClickSpy);
+      const catTriggerClickSpy = vi.fn();
+      root.addEventListener('catTriggerClick', catTriggerClickSpy);
 
-      const trigger = page.root?.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
       const mouseEvent = new MouseEvent('click');
       trigger.dispatchEvent(new CustomEvent('catClick', { detail: mouseEvent }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(catTriggerClickSpy).toHaveBeenCalled();
     });
@@ -119,21 +111,18 @@ describe('cat-menu', () => {
 
   describe('dropdown integration', () => {
     it('should render dropdown with correct props', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `
-          <cat-menu
-            placement="top-end"
-            justify
-            no-auto-close
-            no-resize
-            overflow
-            delayed-trigger-init
-          ></cat-menu>
-        `
-      });
+      const { root } = await render(
+        <cat-menu
+          placement="top-end"
+          justify
+          no-auto-close
+          no-resize
+          overflow
+          delayed-trigger-init
+        />
+      );
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       expect(dropdown.placement).toBe('top-end');
       expect(dropdown.justify).toBe(true);
       expect(dropdown.noResize).toBe(true);
@@ -143,35 +132,29 @@ describe('cat-menu', () => {
     });
 
     it('should emit catOpen when dropdown opens', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root, waitForChanges } = await render(<cat-menu />);
 
-      const catOpenSpy = jest.fn();
-      page.root?.addEventListener('catOpen', catOpenSpy);
+      const catOpenSpy = vi.fn();
+      root.addEventListener('catOpen', catOpenSpy);
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       const focusEvent = new FocusEvent('focus');
       dropdown.dispatchEvent(new CustomEvent('catOpen', { detail: focusEvent }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(catOpenSpy).toHaveBeenCalled();
     });
 
     it('should emit catClose when dropdown closes', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root, waitForChanges } = await render(<cat-menu />);
 
-      const catCloseSpy = jest.fn();
-      page.root?.addEventListener('catClose', catCloseSpy);
+      const catCloseSpy = vi.fn();
+      root.addEventListener('catClose', catCloseSpy);
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       const focusEvent = new FocusEvent('blur');
       dropdown.dispatchEvent(new CustomEvent('catClose', { detail: focusEvent }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(catCloseSpy).toHaveBeenCalled();
     });
@@ -179,151 +162,135 @@ describe('cat-menu', () => {
 
   describe('focus management', () => {
     it('should focus first enabled menu item when menu opens', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        html: `
-          <cat-menu>
-            <cat-menu-item value="1">Item 1</cat-menu-item>
-            <cat-menu-item value="2">Item 2</cat-menu-item>
-            <cat-menu-item value="3">Item 3</cat-menu-item>
-          </cat-menu>
-        `
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu>
+          <cat-menu-item>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+          <cat-menu-item>Item 3</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
 
-      const mockDoFocus = jest.fn();
+      const mockDoFocus = vi.fn();
       Object.defineProperty(firstItem, 'doFocus', {
         value: mockDoFocus,
         writable: true,
         configurable: true
       });
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       const focusEvent = new FocusEvent('focus');
 
       dropdown.dispatchEvent(new CustomEvent('catOpen', { detail: focusEvent }));
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockDoFocus).toHaveBeenCalled();
     });
 
     it('should skip disabled items and focus first enabled item', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        html: `
-          <cat-menu>
-            <cat-menu-item value="1" disabled>Item 1</cat-menu-item>
-            <cat-menu-item value="2">Item 2</cat-menu-item>
-            <cat-menu-item value="3">Item 3</cat-menu-item>
-          </cat-menu>
-        `
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu>
+          <cat-menu-item disabled>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+          <cat-menu-item>Item 3</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
-      const mockDoFocusFirst = jest.fn();
+      const mockDoFocusFirst = vi.fn();
       Object.defineProperty(firstItem, 'doFocus', {
         value: mockDoFocusFirst,
         writable: true,
         configurable: true
       });
 
-      const mockDoFocusSecond = jest.fn();
+      const mockDoFocusSecond = vi.fn();
       Object.defineProperty(secondItem, 'doFocus', {
         value: mockDoFocusSecond,
         writable: true,
         configurable: true
       });
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       const focusEvent = new FocusEvent('focus');
 
       dropdown.dispatchEvent(new CustomEvent('catOpen', { detail: focusEvent }));
 
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockDoFocusFirst).not.toHaveBeenCalled();
       expect(mockDoFocusSecond).toHaveBeenCalled();
     });
 
     it('should not focus any item if a menu item is already focused', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        html: `
-          <cat-menu>
-            <cat-menu-item value="1">Item 1</cat-menu-item>
-            <cat-menu-item value="2">Item 2</cat-menu-item>
-          </cat-menu>
-        `
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu>
+          <cat-menu-item>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
-      // Simulate the second menu item being focused by setting document.activeElement
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
-      // Replace doFocus with mocks to track calls
-      const firstItemFocusMock = jest.fn();
+      const firstItemFocusMock = vi.fn();
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const secondItemFocusMock = jest.fn();
+      const secondItemFocusMock = vi.fn();
       Object.defineProperty(secondItem, 'doFocus', {
         value: secondItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
       const focusEvent = new FocusEvent('focus');
 
       dropdown.dispatchEvent(new CustomEvent('catOpen', { detail: focusEvent }));
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Neither item should have doFocus called since an item was already focused
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
 
     it('should handle case when all menu items are disabled', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        html: `
-          <cat-menu>
-            <cat-menu-item value="1" disabled>Item 1</cat-menu-item>
-            <cat-menu-item value="2" disabled>Item 2</cat-menu-item>
-          </cat-menu>
-        `
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu>
+          <cat-menu-item disabled>Item 1</cat-menu-item>
+          <cat-menu-item disabled>Item 2</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
-      // Use Object.defineProperty to mock readonly doFocus methods (official Jest workaround)
-      const firstItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const secondItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const secondItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(secondItem, 'doFocus', {
         value: secondItemFocusMock,
         writable: true,
@@ -331,9 +298,8 @@ describe('cat-menu', () => {
       });
 
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // No menu items should have doFocus called when all are disabled
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
@@ -341,350 +307,290 @@ describe('cat-menu', () => {
 
   describe('menu content', () => {
     it('should render nav with role="menu" and default vertical orientation', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root } = await render(<cat-menu />);
 
-      const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
+      const nav = root.shadowRoot?.querySelector('nav[role="menu"]');
       expect(nav?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
     it('should render nav with horizontal orientation when arrowNavigation is horizontal', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu arrow-navigation="horizontal"></cat-menu>`
-      });
+      const { root } = await render(<cat-menu arrow-navigation="horizontal" />);
 
-      const nav = page.root?.shadowRoot?.querySelector('nav[role="menu"]');
+      const nav = root.shadowRoot?.querySelector('nav[role="menu"]');
       expect(nav?.getAttribute('aria-orientation')).toBe('horizontal');
     });
   });
 
   describe('public methods', () => {
     it('should have open() method that calls dropdown.open()', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root } = await render(<cat-menu />);
 
-      const menu = page.rootInstance as CatMenu;
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const menu = root as HTMLCatMenuElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
 
-      const openMock = jest.fn().mockResolvedValue(undefined);
+      const openMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(dropdown, 'open', {
         value: openMock,
         writable: true,
         configurable: true
       });
 
-      // Call open method
       await menu.open();
 
-      // Verify dropdown.open() was called
       expect(openMock).toHaveBeenCalled();
     });
 
     it('should have close() method that calls dropdown.close()', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root } = await render(<cat-menu />);
 
-      const menu = page.rootInstance as CatMenu;
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const menu = root as HTMLCatMenuElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
 
-      const closeMock = jest.fn().mockResolvedValue(undefined);
+      const closeMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(dropdown, 'close', {
         value: closeMock,
         writable: true,
         configurable: true
       });
 
-      // Call close method
       await menu.close();
 
-      // Verify dropdown.close() was called
       expect(closeMock).toHaveBeenCalled();
     });
 
     it('should have toggle() method that calls dropdown.toggle()', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton],
-        html: `<cat-menu></cat-menu>`
-      });
+      const { root } = await render(<cat-menu />);
 
-      const menu = page.rootInstance as CatMenu;
-      const dropdown = page.root?.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
+      const menu = root as HTMLCatMenuElement;
+      const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;
 
-      const toggleMock = jest.fn().mockResolvedValue(undefined);
+      const toggleMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(dropdown, 'toggle', {
         value: toggleMock,
         writable: true,
         configurable: true
       });
 
-      // Call toggle method
       await menu.toggle();
 
-      // Verify dropdown.toggle() was called
       expect(toggleMock).toHaveBeenCalled();
     });
   });
 
   describe('keyboard navigation', () => {
     it('should handle ArrowDown and ArrowUp for vertical navigation', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        template: () => (
-          <cat-menu arrowNavigation="vertical">
-            <cat-menu-item>Item 1</cat-menu-item>
-            <cat-menu-item>Item 2</cat-menu-item>
-            <cat-menu-item>Item 3</cat-menu-item>
-          </cat-menu>
-        )
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu arrow-navigation="vertical">
+          <cat-menu-item>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+          <cat-menu-item>Item 3</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menu = page.rootInstance as CatMenu;
+      const menu = root as HTMLCatMenuElement;
 
-      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
-      // Mock doFocus methods
-      const firstItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const secondItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const secondItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(secondItem, 'doFocus', {
         value: secondItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      // Open the menu
       await menu.open();
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Simulate first item being focused
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
-      // Press ArrowDown - should focus second item
       const arrowDownEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowDownEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowDownEvent);
+      await waitForChanges();
 
       expect(secondItemFocusMock).toHaveBeenCalled();
 
-      // Clear mocks and simulate second item being focused
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
-      // Press ArrowUp - should focus first item again
       const arrowUpEvent = new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowUpEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowUpEvent);
+      await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
-      // Clear mocks for next test
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
-      // ArrowRight should not change focus in vertical mode
       const arrowRightEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowRightEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowRightEvent);
+      await waitForChanges();
 
-      // Neither item should have doFocus called
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
 
     it('should handle ArrowRight and ArrowLeft for horizontal navigation', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        template: () => (
-          <cat-menu arrowNavigation="horizontal">
-            <cat-menu-item>Item 1</cat-menu-item>
-            <cat-menu-item>Item 2</cat-menu-item>
-            <cat-menu-item>Item 3</cat-menu-item>
-          </cat-menu>
-        )
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu arrow-navigation="horizontal">
+          <cat-menu-item>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+          <cat-menu-item>Item 3</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menu = page.rootInstance as CatMenu;
+      const menu = root as HTMLCatMenuElement;
 
-      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
-      // Mock doFocus methods
-      const firstItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const secondItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const secondItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(secondItem, 'doFocus', {
         value: secondItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      // Open the menu
       await menu.open();
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Simulate first item being focused
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
-      // Press ArrowRight - should focus second item
       const arrowRightEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowRightEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowRightEvent);
+      await waitForChanges();
 
       expect(secondItemFocusMock).toHaveBeenCalled();
 
-      // Clear mocks and simulate second item being focused
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
-      // Press ArrowLeft - should focus first item again
       const arrowLeftEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowLeftEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowLeftEvent);
+      await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
-      // Clear mocks for next test
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
-      // ArrowDown should not change focus in horizontal mode
       const arrowDownEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(arrowDownEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(arrowDownEvent);
+      await waitForChanges();
 
-      // Neither item should have doFocus called
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
 
     it('should handle Home and End keys for both navigation modes', async () => {
-      const page = await newSpecPage({
-        components: [CatMenu, CatDropdown, CatButton, CatMenuItem, CatIcon],
-        html: `
-          <cat-menu>
-            <cat-menu-item>Item 1</cat-menu-item>
-            <cat-menu-item>Item 2</cat-menu-item>
-            <cat-menu-item>Item 3</cat-menu-item>
-          </cat-menu>
-        `
-      });
+      const { root, waitForChanges } = await render(
+        <cat-menu>
+          <cat-menu-item>Item 1</cat-menu-item>
+          <cat-menu-item>Item 2</cat-menu-item>
+          <cat-menu-item>Item 3</cat-menu-item>
+        </cat-menu>
+      );
 
-      const menu = page.rootInstance as CatMenu;
+      const menu = root as HTMLCatMenuElement;
 
-      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      const menuItems = page.root?.querySelectorAll('cat-menu-item');
+      const menuItems = root.querySelectorAll('cat-menu-item');
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
       const thirdItem = menuItems?.[2] as HTMLCatMenuItemElement;
 
-      // Mock doFocus methods
-      const firstItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      const thirdItemFocusMock = jest.fn().mockResolvedValue(undefined);
+      const thirdItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(thirdItem, 'doFocus', {
         value: thirdItemFocusMock,
         writable: true,
         configurable: true
       });
 
-      // Open the menu
       await menu.open();
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      // Simulate second item being focused
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
-      // Press Home - should focus first item
       const homeEvent = new KeyboardEvent('keydown', { key: 'Home', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(homeEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(homeEvent);
+      await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
-      // Clear mock and simulate first item being focused
       firstItemFocusMock.mockClear();
-      Object.defineProperty(page.doc, 'activeElement', {
+      Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
-      // Press End - should focus last item
       const endEvent = new KeyboardEvent('keydown', { key: 'End', bubbles: true, cancelable: true });
-      page.root?.dispatchEvent(endEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(endEvent);
+      await waitForChanges();
 
       expect(thirdItemFocusMock).toHaveBeenCalled();
     });

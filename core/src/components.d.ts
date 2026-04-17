@@ -3136,6 +3136,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
           * Optional hint text(s) to be displayed with the checkbox.
          */
         "hint"?: string | string[];
@@ -3757,6 +3761,10 @@ declare namespace LocalJSX {
           * If the horizontal value is not provided, this fallback value is used. Can be set by form-group.
          */
         "fallbackHorizontal"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
         /**
           * Optional hint text(s) to be displayed with the input.
          */
@@ -4683,6 +4691,10 @@ declare namespace LocalJSX {
          */
         "fallbackHorizontal"?: boolean;
         /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
           * Optional hint text(s) to be displayed with the textarea.
          */
         "hint"?: string | string[];
@@ -4923,6 +4935,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
           * Optional hint text(s) to be displayed with the toggle.
          */
         "hint"?: string | string[];
@@ -5035,39 +5051,470 @@ declare namespace LocalJSX {
          */
         "size"?: 's' | 'm' | 'l';
     }
+
+    interface CatAlertAttributes {
+        "color": 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'none';
+        "icon": string;
+        "noIcon": boolean;
+    }
+    interface CatAvatarAttributes {
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "round": boolean;
+        "label": string;
+        "initials": string;
+        "src": string;
+        "icon": string;
+        "url": string;
+        "urlTarget": '_blank' | '_self';
+    }
+    interface CatBadgeAttributes {
+        "variant": 'filled' | 'outlined';
+        "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "round": boolean;
+        "pulse": boolean;
+        "icon": string;
+        "iconOnly": string;
+        "iconRight": boolean;
+    }
+    interface CatButtonAttributes {
+        "variant": 'filled' | 'outlined' | 'text' | 'link';
+        "color": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        "active": boolean;
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "name": string;
+        "value": string;
+        "disabled": boolean;
+        "loading": boolean;
+        "submit": boolean;
+        "noEllipsis": boolean;
+        "round": boolean;
+        "url": string;
+        "urlTarget": '_blank' | '_self';
+        "icon": string;
+        "iconOnly": string;
+        "iconRight": boolean;
+        "buttonId": string;
+        "a11yLabel": string;
+        "a11yCurrent": string;
+        "testId": string;
+        "buttonGroupPosition": 'first' | 'last' | 'middle';
+    }
+    interface CatButtonGroupAttributes {
+        "a11yLabel": string;
+    }
+    interface CatCheckboxAttributes {
+        "checked": boolean;
+        "indeterminate": boolean;
+        "disabled": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "name": string;
+        "required": boolean;
+        "value": string;
+        "noValue": string;
+        "resolvedValue": string;
+        "hint": string | string[];
+        "labelLeft": boolean;
+        "alignment": 'center' | 'top' | 'bottom';
+        "testId": string;
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+    }
+    interface CatDateAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "autoComplete": string;
+        "clearable": boolean;
+        "disabled": boolean;
+        "hint": string | string[];
+        "icon": string;
+        "iconRight": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "max": string;
+        "min": string;
+        "name": string;
+        "placeholder": string;
+        "textPrefix": string;
+        "textSuffix": string;
+        "readonly": boolean;
+        "required": boolean;
+        "value": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "testId": string;
+        "placement": Placement;
+    }
+    interface CatDateInlineAttributes {
+        "noClear": boolean;
+        "identifier": string;
+        "hint": boolean;
+        "noToday": boolean;
+        "weeks": boolean;
+        "label": string;
+        "labelHidden": boolean;
+        "min": string;
+        "max": string;
+        "range": boolean;
+        "required": boolean;
+        "a11yLabel": string;
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "value": string;
+    }
+    interface CatDatepickerAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "autoComplete": string;
+        "clearable": boolean;
+        "disabled": boolean;
+        "hint": string | string[];
+        "icon": string;
+        "iconRight": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "max": string;
+        "min": string;
+        "mode": CatDatepickerMode;
+        "name": string;
+        "placeholder": string;
+        "textPrefix": string;
+        "textSuffix": string;
+        "readonly": boolean;
+        "required": boolean;
+        "step": number;
+        "attachToElement": boolean;
+        "position": BaseOptions['position'] | Placement;
+        "value": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+    }
+    interface CatDatepickerInlineAttributes {
+        "disabled": boolean;
+        "max": string;
+        "min": string;
+        "mode": CatDatepickerMode;
+        "readonly": boolean;
+        "step": number;
+        "value": string;
+    }
+    interface CatDropdownAttributes {
+        "placement": Placement;
+        "justify": boolean;
+        "noAutoClose": boolean;
+        "arrowNavigation": 'horizontal' | 'vertical' | 'none';
+        "noResize": boolean;
+        "overflow": boolean;
+        "noInitialFocus": boolean;
+        "isOpen": boolean;
+        "noReturnFocus": boolean;
+        "delayedTriggerInit": boolean;
+        "focusTrap": boolean;
+    }
+    interface CatFormGroupAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'auto';
+        "horizontal": boolean;
+        "labelSize": string;
+    }
+    interface CatIconAttributes {
+        "icon": string;
+        "iconSrc": string;
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        "a11yLabel": string;
+    }
+    interface CatInputAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "accept": string;
+        "multiple": boolean;
+        "autoComplete": string;
+        "clearable": boolean;
+        "togglePassword": boolean;
+        "disabled": boolean;
+        "loading": boolean;
+        "hint": string | string[];
+        "icon": string;
+        "iconRight": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "max": string;
+        "maxLength": number;
+        "min": string;
+        "minLength": number;
+        "name": string;
+        "placeholder": string;
+        "textPrefix": string;
+        "textSuffix": string;
+        "readonly": boolean;
+        "required": boolean;
+        "round": boolean;
+        "type": InputType;
+        "value": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "testId": string;
+    }
+    interface CatMenuAttributes {
+        "placement": Placement;
+        "arrowNavigation": 'horizontal' | 'vertical';
+        "triggerVariant": 'filled' | 'outlined' | 'text';
+        "triggerSize": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "triggerIcon": string;
+        "triggerIconOnly": string;
+        "triggerLabel": string;
+        "triggerColor": 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger';
+        "triggerA11yLabel": string;
+        "triggerClass": string;
+        "triggerTestId": string;
+        "disabled": boolean;
+        "justify": boolean;
+        "noResize": boolean;
+        "overflow": boolean;
+        "delayedTriggerInit": boolean;
+    }
+    interface CatMenuItemAttributes {
+        "identifier": string;
+        "icon": string;
+        "color": 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info';
+        "active": boolean;
+        "variant": 'filled' | 'outlined' | 'text';
+        "loading": boolean;
+        "iconOnly": string;
+        "iconRight": boolean;
+        "url": string;
+        "urlTarget": '_blank' | '_self';
+        "disabled": boolean;
+        "testId": string;
+        "subMenu": boolean;
+    }
+    interface CatPaginationAttributes {
+        "page": number;
+        "pageCount": number;
+        "activePadding": number;
+        "sidePadding": number;
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "variant": 'filled' | 'outlined' | 'text';
+        "round": boolean;
+        "compact": boolean;
+        "iconPrev": string;
+        "iconNext": string;
+    }
+    interface CatRadioAttributes {
+        "checked": boolean;
+        "disabled": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "name": string;
+        "required": boolean;
+        "value": string;
+        "hint": string | string[];
+        "labelLeft": boolean;
+        "alignment": 'center' | 'top' | 'bottom';
+        "testId": string;
+    }
+    interface CatRadioGroupAttributes {
+        "name": string;
+        "value": string;
+        "disabled": boolean;
+        "a11yLabel": string;
+        "labelLeft": boolean;
+    }
+    interface CatScrollableAttributes {
+        "noShadowX": boolean;
+        "noShadowY": boolean;
+        "noOverflowX": boolean;
+        "noOverflowY": boolean;
+        "noOverscroll": boolean;
+        "noScrolledInit": boolean;
+        "scrolledBuffer": number;
+    }
+    interface CatSelectAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "multiple": boolean;
+        "debounce": number;
+        "placement": Placement;
+        "value": CatSelectValue;
+        "disabled": boolean;
+        "placeholder": string;
+        "hint": string | string[];
+        "identifier": string;
+        "label": string;
+        "name": string;
+        "labelHidden": boolean;
+        "required": boolean;
+        "clearable": boolean;
+        "tags": boolean;
+        "tagHint": string;
+        "noItems": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "testId": string;
+    }
+    interface CatSkeletonAttributes {
+        "effect": 'plain' | 'sheen' | 'pulse';
+        "variant": 'rectangle' | 'square' | 'circle' | 'head' | 'body';
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "lines": number;
+    }
+    interface CatSpinnerAttributes {
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl' | 'inline';
+        "a11yLabel": string;
+        "value": number;
+    }
+    interface CatTabAttributes {
+        "label": string;
+        "icon": string;
+        "iconOnly": string;
+        "iconRight": boolean;
+        "url": string;
+        "urlTarget": '_blank' | '_self';
+        "deactivated": boolean;
+        "noActive": boolean;
+        "sticky": boolean;
+        "error": boolean;
+        "testId": string;
+    }
+    interface CatTabsAttributes {
+        "activeTab": string;
+        "tabsAlign": 'left' | 'center' | 'right' | 'justify';
+        "adaptive": boolean;
+        "activeTabAlwaysVisible": boolean;
+    }
+    interface CatTagAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "disabled": boolean;
+        "placeholder": string;
+        "hint": string | string[];
+        "identifier": string;
+        "label": string;
+        "name": string;
+        "labelHidden": boolean;
+        "required": boolean;
+        "testId": string;
+        "clearable": boolean;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "addOnBlur": boolean;
+    }
+    interface CatTextareaAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "autoComplete": string;
+        "disabled": boolean;
+        "hint": string | string[];
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "maxLength": number;
+        "minLength": number;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "rows": number;
+        "value": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "testId": string;
+    }
+    interface CatTimeAttributes {
+        "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
+        "horizontal": boolean;
+        "fallbackHorizontal": boolean;
+        "autoComplete": string;
+        "clearable": boolean;
+        "disabled": boolean;
+        "hint": string | string[];
+        "icon": string;
+        "iconRight": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "max": string;
+        "min": string;
+        "name": string;
+        "placeholder": string;
+        "textPrefix": string;
+        "textSuffix": string;
+        "readonly": boolean;
+        "required": boolean;
+        "value": string;
+        "errors": boolean | string[] | ErrorMap;
+        "errorUpdate": string;
+        "testId": string;
+        "placement": Placement;
+        "step": number;
+    }
+    interface CatToggleAttributes {
+        "checked": boolean;
+        "disabled": boolean;
+        "identifier": string;
+        "label": string;
+        "labelHidden": boolean;
+        "name": string;
+        "required": boolean;
+        "value": string;
+        "noValue": string;
+        "resolvedValue": string;
+        "hint": string | string[];
+        "labelLeft": boolean;
+        "alignment": 'center' | 'top' | 'bottom';
+        "testId": string;
+    }
+    interface CatTooltipAttributes {
+        "content": string;
+        "disabled": boolean;
+        "placement": TooltipPlacement;
+        "round": boolean;
+        "size": 's' | 'm' | 'l';
+        "showDelay": number;
+        "hideDelay": number;
+        "longTouchDuration": number;
+    }
+
     interface IntrinsicElements {
-        "cat-alert": CatAlert;
-        "cat-avatar": CatAvatar;
-        "cat-badge": CatBadge;
-        "cat-button": CatButton;
-        "cat-button-group": CatButtonGroup;
+        "cat-alert": Omit<CatAlert, keyof CatAlertAttributes> & { [K in keyof CatAlert & keyof CatAlertAttributes]?: CatAlert[K] } & { [K in keyof CatAlert & keyof CatAlertAttributes as `attr:${K}`]?: CatAlertAttributes[K] } & { [K in keyof CatAlert & keyof CatAlertAttributes as `prop:${K}`]?: CatAlert[K] };
+        "cat-avatar": Omit<CatAvatar, keyof CatAvatarAttributes> & { [K in keyof CatAvatar & keyof CatAvatarAttributes]?: CatAvatar[K] } & { [K in keyof CatAvatar & keyof CatAvatarAttributes as `attr:${K}`]?: CatAvatarAttributes[K] } & { [K in keyof CatAvatar & keyof CatAvatarAttributes as `prop:${K}`]?: CatAvatar[K] };
+        "cat-badge": Omit<CatBadge, keyof CatBadgeAttributes> & { [K in keyof CatBadge & keyof CatBadgeAttributes]?: CatBadge[K] } & { [K in keyof CatBadge & keyof CatBadgeAttributes as `attr:${K}`]?: CatBadgeAttributes[K] } & { [K in keyof CatBadge & keyof CatBadgeAttributes as `prop:${K}`]?: CatBadge[K] };
+        "cat-button": Omit<CatButton, keyof CatButtonAttributes> & { [K in keyof CatButton & keyof CatButtonAttributes]?: CatButton[K] } & { [K in keyof CatButton & keyof CatButtonAttributes as `attr:${K}`]?: CatButtonAttributes[K] } & { [K in keyof CatButton & keyof CatButtonAttributes as `prop:${K}`]?: CatButton[K] };
+        "cat-button-group": Omit<CatButtonGroup, keyof CatButtonGroupAttributes> & { [K in keyof CatButtonGroup & keyof CatButtonGroupAttributes]?: CatButtonGroup[K] } & { [K in keyof CatButtonGroup & keyof CatButtonGroupAttributes as `attr:${K}`]?: CatButtonGroupAttributes[K] } & { [K in keyof CatButtonGroup & keyof CatButtonGroupAttributes as `prop:${K}`]?: CatButtonGroup[K] };
         "cat-card": CatCard;
-        "cat-checkbox": CatCheckbox;
-        "cat-date": CatDate;
-        "cat-date-inline": CatDateInline;
-        "cat-datepicker": CatDatepicker;
-        "cat-datepicker-inline": CatDatepickerInline;
-        "cat-dropdown": CatDropdown;
-        "cat-form-group": CatFormGroup;
-        "cat-icon": CatIcon;
-        "cat-input": CatInput;
-        "cat-menu": CatMenu;
-        "cat-menu-item": CatMenuItem;
-        "cat-pagination": CatPagination;
-        "cat-radio": CatRadio;
-        "cat-radio-group": CatRadioGroup;
-        "cat-scrollable": CatScrollable;
-        "cat-select": CatSelect;
+        "cat-checkbox": Omit<CatCheckbox, keyof CatCheckboxAttributes> & { [K in keyof CatCheckbox & keyof CatCheckboxAttributes]?: CatCheckbox[K] } & { [K in keyof CatCheckbox & keyof CatCheckboxAttributes as `attr:${K}`]?: CatCheckboxAttributes[K] } & { [K in keyof CatCheckbox & keyof CatCheckboxAttributes as `prop:${K}`]?: CatCheckbox[K] };
+        "cat-date": Omit<CatDate, keyof CatDateAttributes> & { [K in keyof CatDate & keyof CatDateAttributes]?: CatDate[K] } & { [K in keyof CatDate & keyof CatDateAttributes as `attr:${K}`]?: CatDateAttributes[K] } & { [K in keyof CatDate & keyof CatDateAttributes as `prop:${K}`]?: CatDate[K] };
+        "cat-date-inline": Omit<CatDateInline, keyof CatDateInlineAttributes> & { [K in keyof CatDateInline & keyof CatDateInlineAttributes]?: CatDateInline[K] } & { [K in keyof CatDateInline & keyof CatDateInlineAttributes as `attr:${K}`]?: CatDateInlineAttributes[K] } & { [K in keyof CatDateInline & keyof CatDateInlineAttributes as `prop:${K}`]?: CatDateInline[K] };
+        "cat-datepicker": Omit<CatDatepicker, keyof CatDatepickerAttributes> & { [K in keyof CatDatepicker & keyof CatDatepickerAttributes]?: CatDatepicker[K] } & { [K in keyof CatDatepicker & keyof CatDatepickerAttributes as `attr:${K}`]?: CatDatepickerAttributes[K] } & { [K in keyof CatDatepicker & keyof CatDatepickerAttributes as `prop:${K}`]?: CatDatepicker[K] };
+        "cat-datepicker-inline": Omit<CatDatepickerInline, keyof CatDatepickerInlineAttributes> & { [K in keyof CatDatepickerInline & keyof CatDatepickerInlineAttributes]?: CatDatepickerInline[K] } & { [K in keyof CatDatepickerInline & keyof CatDatepickerInlineAttributes as `attr:${K}`]?: CatDatepickerInlineAttributes[K] } & { [K in keyof CatDatepickerInline & keyof CatDatepickerInlineAttributes as `prop:${K}`]?: CatDatepickerInline[K] };
+        "cat-dropdown": Omit<CatDropdown, keyof CatDropdownAttributes> & { [K in keyof CatDropdown & keyof CatDropdownAttributes]?: CatDropdown[K] } & { [K in keyof CatDropdown & keyof CatDropdownAttributes as `attr:${K}`]?: CatDropdownAttributes[K] } & { [K in keyof CatDropdown & keyof CatDropdownAttributes as `prop:${K}`]?: CatDropdown[K] };
+        "cat-form-group": Omit<CatFormGroup, keyof CatFormGroupAttributes> & { [K in keyof CatFormGroup & keyof CatFormGroupAttributes]?: CatFormGroup[K] } & { [K in keyof CatFormGroup & keyof CatFormGroupAttributes as `attr:${K}`]?: CatFormGroupAttributes[K] } & { [K in keyof CatFormGroup & keyof CatFormGroupAttributes as `prop:${K}`]?: CatFormGroup[K] };
+        "cat-icon": Omit<CatIcon, keyof CatIconAttributes> & { [K in keyof CatIcon & keyof CatIconAttributes]?: CatIcon[K] } & { [K in keyof CatIcon & keyof CatIconAttributes as `attr:${K}`]?: CatIconAttributes[K] } & { [K in keyof CatIcon & keyof CatIconAttributes as `prop:${K}`]?: CatIcon[K] };
+        "cat-input": Omit<CatInput, keyof CatInputAttributes> & { [K in keyof CatInput & keyof CatInputAttributes]?: CatInput[K] } & { [K in keyof CatInput & keyof CatInputAttributes as `attr:${K}`]?: CatInputAttributes[K] } & { [K in keyof CatInput & keyof CatInputAttributes as `prop:${K}`]?: CatInput[K] };
+        "cat-menu": Omit<CatMenu, keyof CatMenuAttributes> & { [K in keyof CatMenu & keyof CatMenuAttributes]?: CatMenu[K] } & { [K in keyof CatMenu & keyof CatMenuAttributes as `attr:${K}`]?: CatMenuAttributes[K] } & { [K in keyof CatMenu & keyof CatMenuAttributes as `prop:${K}`]?: CatMenu[K] };
+        "cat-menu-item": Omit<CatMenuItem, keyof CatMenuItemAttributes> & { [K in keyof CatMenuItem & keyof CatMenuItemAttributes]?: CatMenuItem[K] } & { [K in keyof CatMenuItem & keyof CatMenuItemAttributes as `attr:${K}`]?: CatMenuItemAttributes[K] } & { [K in keyof CatMenuItem & keyof CatMenuItemAttributes as `prop:${K}`]?: CatMenuItem[K] };
+        "cat-pagination": Omit<CatPagination, keyof CatPaginationAttributes> & { [K in keyof CatPagination & keyof CatPaginationAttributes]?: CatPagination[K] } & { [K in keyof CatPagination & keyof CatPaginationAttributes as `attr:${K}`]?: CatPaginationAttributes[K] } & { [K in keyof CatPagination & keyof CatPaginationAttributes as `prop:${K}`]?: CatPagination[K] };
+        "cat-radio": Omit<CatRadio, keyof CatRadioAttributes> & { [K in keyof CatRadio & keyof CatRadioAttributes]?: CatRadio[K] } & { [K in keyof CatRadio & keyof CatRadioAttributes as `attr:${K}`]?: CatRadioAttributes[K] } & { [K in keyof CatRadio & keyof CatRadioAttributes as `prop:${K}`]?: CatRadio[K] };
+        "cat-radio-group": Omit<CatRadioGroup, keyof CatRadioGroupAttributes> & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes]?: CatRadioGroup[K] } & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes as `attr:${K}`]?: CatRadioGroupAttributes[K] } & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes as `prop:${K}`]?: CatRadioGroup[K] };
+        "cat-scrollable": Omit<CatScrollable, keyof CatScrollableAttributes> & { [K in keyof CatScrollable & keyof CatScrollableAttributes]?: CatScrollable[K] } & { [K in keyof CatScrollable & keyof CatScrollableAttributes as `attr:${K}`]?: CatScrollableAttributes[K] } & { [K in keyof CatScrollable & keyof CatScrollableAttributes as `prop:${K}`]?: CatScrollable[K] };
+        "cat-select": Omit<CatSelect, keyof CatSelectAttributes> & { [K in keyof CatSelect & keyof CatSelectAttributes]?: CatSelect[K] } & { [K in keyof CatSelect & keyof CatSelectAttributes as `attr:${K}`]?: CatSelectAttributes[K] } & { [K in keyof CatSelect & keyof CatSelectAttributes as `prop:${K}`]?: CatSelect[K] };
         "cat-select-demo": CatSelectDemo;
-        "cat-skeleton": CatSkeleton;
-        "cat-spinner": CatSpinner;
-        "cat-tab": CatTab;
-        "cat-tabs": CatTabs;
-        "cat-tag": CatTag;
-        "cat-textarea": CatTextarea;
-        "cat-time": CatTime;
-        "cat-toggle": CatToggle;
-        "cat-tooltip": CatTooltip;
+        "cat-skeleton": Omit<CatSkeleton, keyof CatSkeletonAttributes> & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes]?: CatSkeleton[K] } & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes as `attr:${K}`]?: CatSkeletonAttributes[K] } & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes as `prop:${K}`]?: CatSkeleton[K] };
+        "cat-spinner": Omit<CatSpinner, keyof CatSpinnerAttributes> & { [K in keyof CatSpinner & keyof CatSpinnerAttributes]?: CatSpinner[K] } & { [K in keyof CatSpinner & keyof CatSpinnerAttributes as `attr:${K}`]?: CatSpinnerAttributes[K] } & { [K in keyof CatSpinner & keyof CatSpinnerAttributes as `prop:${K}`]?: CatSpinner[K] };
+        "cat-tab": Omit<CatTab, keyof CatTabAttributes> & { [K in keyof CatTab & keyof CatTabAttributes]?: CatTab[K] } & { [K in keyof CatTab & keyof CatTabAttributes as `attr:${K}`]?: CatTabAttributes[K] } & { [K in keyof CatTab & keyof CatTabAttributes as `prop:${K}`]?: CatTab[K] };
+        "cat-tabs": Omit<CatTabs, keyof CatTabsAttributes> & { [K in keyof CatTabs & keyof CatTabsAttributes]?: CatTabs[K] } & { [K in keyof CatTabs & keyof CatTabsAttributes as `attr:${K}`]?: CatTabsAttributes[K] } & { [K in keyof CatTabs & keyof CatTabsAttributes as `prop:${K}`]?: CatTabs[K] };
+        "cat-tag": Omit<CatTag, keyof CatTagAttributes> & { [K in keyof CatTag & keyof CatTagAttributes]?: CatTag[K] } & { [K in keyof CatTag & keyof CatTagAttributes as `attr:${K}`]?: CatTagAttributes[K] } & { [K in keyof CatTag & keyof CatTagAttributes as `prop:${K}`]?: CatTag[K] };
+        "cat-textarea": Omit<CatTextarea, keyof CatTextareaAttributes> & { [K in keyof CatTextarea & keyof CatTextareaAttributes]?: CatTextarea[K] } & { [K in keyof CatTextarea & keyof CatTextareaAttributes as `attr:${K}`]?: CatTextareaAttributes[K] } & { [K in keyof CatTextarea & keyof CatTextareaAttributes as `prop:${K}`]?: CatTextarea[K] };
+        "cat-time": Omit<CatTime, keyof CatTimeAttributes> & { [K in keyof CatTime & keyof CatTimeAttributes]?: CatTime[K] } & { [K in keyof CatTime & keyof CatTimeAttributes as `attr:${K}`]?: CatTimeAttributes[K] } & { [K in keyof CatTime & keyof CatTimeAttributes as `prop:${K}`]?: CatTime[K] };
+        "cat-toggle": Omit<CatToggle, keyof CatToggleAttributes> & { [K in keyof CatToggle & keyof CatToggleAttributes]?: CatToggle[K] } & { [K in keyof CatToggle & keyof CatToggleAttributes as `attr:${K}`]?: CatToggleAttributes[K] } & { [K in keyof CatToggle & keyof CatToggleAttributes as `prop:${K}`]?: CatToggle[K] };
+        "cat-tooltip": Omit<CatTooltip, keyof CatTooltipAttributes> & { [K in keyof CatTooltip & keyof CatTooltipAttributes]?: CatTooltip[K] } & { [K in keyof CatTooltip & keyof CatTooltipAttributes as `attr:${K}`]?: CatTooltipAttributes[K] } & { [K in keyof CatTooltip & keyof CatTooltipAttributes as `prop:${K}`]?: CatTooltip[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -5078,77 +5525,77 @@ declare module "@stencil/core" {
              * Informs user about important changes or conditions in the interface. Use this
              * component if you need to capture user’s attention in a prominent way.
              */
-            "cat-alert": LocalJSX.CatAlert & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
+            "cat-alert": LocalJSX.IntrinsicElements["cat-alert"] & JSXBase.HTMLAttributes<HTMLCatAlertElement>;
             /**
              * Avatars are used to represent a person or object.
              */
-            "cat-avatar": LocalJSX.CatAvatar & JSXBase.HTMLAttributes<HTMLCatAvatarElement>;
+            "cat-avatar": LocalJSX.IntrinsicElements["cat-avatar"] & JSXBase.HTMLAttributes<HTMLCatAvatarElement>;
             /**
              * Badges are used to inform users of the status of an object or of an action
              * that’s been taken.
              */
-            "cat-badge": LocalJSX.CatBadge & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
+            "cat-badge": LocalJSX.IntrinsicElements["cat-badge"] & JSXBase.HTMLAttributes<HTMLCatBadgeElement>;
             /**
              * Buttons are used for interface actions. Primary style should be used only
              * once per view for main call-to-action.
              */
-            "cat-button": LocalJSX.CatButton & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
+            "cat-button": LocalJSX.IntrinsicElements["cat-button"] & JSXBase.HTMLAttributes<HTMLCatButtonElement>;
             /**
              * Button groups are designed to bring together button controls that are of a
              * similar nature. For example text formatting controls.
              */
-            "cat-button-group": LocalJSX.CatButtonGroup & JSXBase.HTMLAttributes<HTMLCatButtonGroupElement>;
+            "cat-button-group": LocalJSX.IntrinsicElements["cat-button-group"] & JSXBase.HTMLAttributes<HTMLCatButtonGroupElement>;
             /**
              * Cards are surfaces that display content and actions on a single topic. They
              * should be easy to scan for relevant and actionable information.
              */
-            "cat-card": LocalJSX.CatCard & JSXBase.HTMLAttributes<HTMLCatCardElement>;
+            "cat-card": LocalJSX.IntrinsicElements["cat-card"] & JSXBase.HTMLAttributes<HTMLCatCardElement>;
             /**
              * Checkboxes are used to let a user choose one or more options from a limited
              * number of options.
              */
-            "cat-checkbox": LocalJSX.CatCheckbox & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
+            "cat-checkbox": LocalJSX.IntrinsicElements["cat-checkbox"] & JSXBase.HTMLAttributes<HTMLCatCheckboxElement>;
             /**
              * A date input component to select a date from a calendar in a dropdown.
              */
-            "cat-date": LocalJSX.CatDate & JSXBase.HTMLAttributes<HTMLCatDateElement>;
+            "cat-date": LocalJSX.IntrinsicElements["cat-date"] & JSXBase.HTMLAttributes<HTMLCatDateElement>;
             /**
              * An inline date picker component to select a date.
              */
-            "cat-date-inline": LocalJSX.CatDateInline & JSXBase.HTMLAttributes<HTMLCatDateInlineElement>;
-            "cat-datepicker": LocalJSX.CatDatepicker & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
-            "cat-datepicker-inline": LocalJSX.CatDatepickerInline & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
+            "cat-date-inline": LocalJSX.IntrinsicElements["cat-date-inline"] & JSXBase.HTMLAttributes<HTMLCatDateInlineElement>;
+            "cat-datepicker": LocalJSX.IntrinsicElements["cat-datepicker"] & JSXBase.HTMLAttributes<HTMLCatDatepickerElement>;
+            "cat-datepicker-inline": LocalJSX.IntrinsicElements["cat-datepicker-inline"] & JSXBase.HTMLAttributes<HTMLCatDatepickerInlineElement>;
             /**
              * A dropdown component to display a list of actions in a dropdown menu or to
              * show additional content on demand.
              */
-            "cat-dropdown": LocalJSX.CatDropdown & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
+            "cat-dropdown": LocalJSX.IntrinsicElements["cat-dropdown"] & JSXBase.HTMLAttributes<HTMLCatDropdownElement>;
             /**
              * A form group component to group form fields and labels.
              */
-            "cat-form-group": LocalJSX.CatFormGroup & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
+            "cat-form-group": LocalJSX.IntrinsicElements["cat-form-group"] & JSXBase.HTMLAttributes<HTMLCatFormGroupElement>;
             /**
              * Icons are used to provide additional meaning or in places where text label
              * doesn't fit.
              */
-            "cat-icon": LocalJSX.CatIcon & JSXBase.HTMLAttributes<HTMLCatIconElement>;
+            "cat-icon": LocalJSX.IntrinsicElements["cat-icon"] & JSXBase.HTMLAttributes<HTMLCatIconElement>;
             /**
              * Inputs are used to allow users to provide text input when the expected input
              * is short. As well as plain text, Input supports various types of text,
              * including passwords and numbers.
              */
-            "cat-input": LocalJSX.CatInput & JSXBase.HTMLAttributes<HTMLCatInputElement>;
+            "cat-input": LocalJSX.IntrinsicElements["cat-input"] & JSXBase.HTMLAttributes<HTMLCatInputElement>;
             /**
              * A menu component that provides a dropdown with a built-in configurable trigger button
              * and proper ARIA semantics and keyboard navigation for menu items.
              * The trigger is always a cat-button with sensible defaults but fully configurable
              * through trigger-specific props.
              */
-            "cat-menu": LocalJSX.CatMenu & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
+            "cat-menu": LocalJSX.IntrinsicElements["cat-menu"] & JSXBase.HTMLAttributes<HTMLCatMenuElement>;
             /**
              * A menu item component that renders as a button with proper ARIA semantics.
              */
-            "cat-menu-item": LocalJSX.CatMenuItem & JSXBase.HTMLAttributes<HTMLCatMenuItemElement>;
+            "cat-menu-item": LocalJSX.IntrinsicElements["cat-menu-item"] & JSXBase.HTMLAttributes<HTMLCatMenuItemElement>;
             /**
              * A navigation component to switch between different pages of paged chunks of
              * data such as a table. Pagination is built with list HTML elements and a
@@ -5156,68 +5603,68 @@ declare module "@stencil/core" {
              * readers and other assistive technologies. Furthermore, the current page is
              * correctly highlighted using `aria-current`.
              */
-            "cat-pagination": LocalJSX.CatPagination & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
+            "cat-pagination": LocalJSX.IntrinsicElements["cat-pagination"] & JSXBase.HTMLAttributes<HTMLCatPaginationElement>;
             /**
              * Radio Buttons are graphical interface elements that allow user to choose
              * only one of a predefined set of mutually exclusive options.
              */
-            "cat-radio": LocalJSX.CatRadio & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
+            "cat-radio": LocalJSX.IntrinsicElements["cat-radio"] & JSXBase.HTMLAttributes<HTMLCatRadioElement>;
             /**
              * A group of radio buttons.
              */
-            "cat-radio-group": LocalJSX.CatRadioGroup & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
+            "cat-radio-group": LocalJSX.IntrinsicElements["cat-radio-group"] & JSXBase.HTMLAttributes<HTMLCatRadioGroupElement>;
             /**
              * An element to display scrollable content.
              */
-            "cat-scrollable": LocalJSX.CatScrollable & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
+            "cat-scrollable": LocalJSX.IntrinsicElements["cat-scrollable"] & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
             /**
              * Select lets user choose one option from an options' menu.
              * Consider using select when you have 6 or more options. Select component supports any content type.
              */
-            "cat-select": LocalJSX.CatSelect & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
-            "cat-select-demo": LocalJSX.CatSelectDemo & JSXBase.HTMLAttributes<HTMLCatSelectDemoElement>;
+            "cat-select": LocalJSX.IntrinsicElements["cat-select"] & JSXBase.HTMLAttributes<HTMLCatSelectElement>;
+            "cat-select-demo": LocalJSX.IntrinsicElements["cat-select-demo"] & JSXBase.HTMLAttributes<HTMLCatSelectDemoElement>;
             /**
              * Skeletons are used to show where content will eventually be drawn.
              */
-            "cat-skeleton": LocalJSX.CatSkeleton & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
+            "cat-skeleton": LocalJSX.IntrinsicElements["cat-skeleton"] & JSXBase.HTMLAttributes<HTMLCatSkeletonElement>;
             /**
              * Spinners are used to indicate users that their action is being processed.
              */
-            "cat-spinner": LocalJSX.CatSpinner & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
+            "cat-spinner": LocalJSX.IntrinsicElements["cat-spinner"] & JSXBase.HTMLAttributes<HTMLCatSpinnerElement>;
             /**
              * A single tab inside a tabs component.
              */
-            "cat-tab": LocalJSX.CatTab & JSXBase.HTMLAttributes<HTMLCatTabElement>;
+            "cat-tab": LocalJSX.IntrinsicElements["cat-tab"] & JSXBase.HTMLAttributes<HTMLCatTabElement>;
             /**
              * Tabs are used to display multiple panels to be contained within a single
              * window, using tabs as a navigational element.
              */
-            "cat-tabs": LocalJSX.CatTabs & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
+            "cat-tabs": LocalJSX.IntrinsicElements["cat-tabs"] & JSXBase.HTMLAttributes<HTMLCatTabsElement>;
             /**
              * An input that allows multiple values to be entered as tags.
              */
-            "cat-tag": LocalJSX.CatTag & JSXBase.HTMLAttributes<HTMLCatTagElement>;
+            "cat-tag": LocalJSX.IntrinsicElements["cat-tag"] & JSXBase.HTMLAttributes<HTMLCatTagElement>;
             /**
              * Textarea specifies a control that allows user to write text over multiple
              * rows. Used when the expected user input is long. For shorter input, use the
              * input component.
              */
-            "cat-textarea": LocalJSX.CatTextarea & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
+            "cat-textarea": LocalJSX.IntrinsicElements["cat-textarea"] & JSXBase.HTMLAttributes<HTMLCatTextareaElement>;
             /**
              * A time input component to select a time in a dropdown.
              */
-            "cat-time": LocalJSX.CatTime & JSXBase.HTMLAttributes<HTMLCatTimeElement>;
+            "cat-time": LocalJSX.IntrinsicElements["cat-time"] & JSXBase.HTMLAttributes<HTMLCatTimeElement>;
             /**
              * Toggles are graphical interface switches that give user control over a
              * feature or option that can be turned on or off.
              */
-            "cat-toggle": LocalJSX.CatToggle & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
+            "cat-toggle": LocalJSX.IntrinsicElements["cat-toggle"] & JSXBase.HTMLAttributes<HTMLCatToggleElement>;
             /**
              * Tooltips display additional information when the user hovers over or
              * interacts with a trigger element. The tooltip can be customized with
              * different placements, sizes, and styles.
              */
-            "cat-tooltip": LocalJSX.CatTooltip & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
+            "cat-tooltip": LocalJSX.IntrinsicElements["cat-tooltip"] & JSXBase.HTMLAttributes<HTMLCatTooltipElement>;
         }
     }
 }

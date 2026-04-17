@@ -1,14 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatScrollable } from './cat-scrollable';
+import { render, h, describe, it, expect } from '@stencil/vitest';
+import './cat-scrollable';
 
 describe('cat-scrollable', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatScrollable],
-      html: `<cat-scrollable></cat-scrollable>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-scrollable></cat-scrollable>
+    const { root } = await render(<cat-scrollable />);
+    await expect(root).toEqualLightHtml(`
+      <cat-scrollable class="hydrated"></cat-scrollable>
     `);
   });
 });

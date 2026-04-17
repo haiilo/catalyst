@@ -1,14 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatSkeleton } from './cat-skeleton';
+import { render, h, describe, it, expect } from '@stencil/vitest';
+import './cat-skeleton';
 
 describe('cat-skeleton', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatSkeleton],
-      html: `<cat-skeleton></cat-skeleton>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-skeleton></cat-skeleton>
+    const { root } = await render(<cat-skeleton />);
+    await expect(root).toEqualLightHtml(`
+      <cat-skeleton class="hydrated"></cat-skeleton>
     `);
   });
 });

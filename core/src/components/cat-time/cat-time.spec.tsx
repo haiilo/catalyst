@@ -1,17 +1,16 @@
-jest.mock('../cat-i18n/cat-i18n-registry');
+import { vi } from 'vitest';
+import { render, h, describe, it, expect } from '@stencil/vitest';
 
-import { newSpecPage } from '@stencil/core/testing';
-import { CatInput } from '../cat-input/cat-input';
-import { CatTime } from './cat-time';
+vi.mock('../cat-i18n/cat-i18n-registry');
+
+import '../cat-input/cat-input';
+import './cat-time';
 
 describe('cat-time', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatTime, CatInput],
-      html: `<cat-time></cat-time>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-time tabindex="0"></cat-time>
+    const { root } = await render(<cat-time />);
+    await expect(root).toEqualLightHtml(`
+      <cat-time tabindex="0" class="hydrated"></cat-time>
     `);
   });
 });
