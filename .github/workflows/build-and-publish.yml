@@ -7,10 +7,6 @@ on:
         description: 'The npm script to run for publishing (e.g., "publish" or "publish:beta")'
         required: true
         type: string
-    secrets:
-      NPM_TOKEN:
-        description: 'NPM authentication token'
-        required: true
 
 permissions:
   contents: write
@@ -58,5 +54,3 @@ jobs:
 
       - name: Publish to npm
         run: pnpm run ${{ inputs.publish-script }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

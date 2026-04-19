@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   release:
@@ -27,5 +28,3 @@ jobs:
     uses: ./.github/workflows/build-and-publish.yml
     with:
       publish-script: "publish"
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
