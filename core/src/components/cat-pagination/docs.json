@@ -1,0 +1,366 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-pagination",
+  "filePath": "src/components/cat-pagination/cat-pagination.tsx",
+  "fileName": "cat-pagination.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-pagination/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-pagination/usage",
+  "tag": "cat-pagination",
+  "readme": "# cat-pagination\n\n\n",
+  "overview": "A navigation component to switch between different pages of paged chunks of\ndata such as a table. Pagination is built with list HTML elements and a\nwrapping `<nav>` element to identify it as a navigation section to screen\nreaders and other assistive technologies. Furthermore, the current page is\ncorrectly highlighted using `aria-current`.",
+  "usage": {},
+  "docs": "A navigation component to switch between different pages of paged chunks of\ndata such as a table. Pagination is built with list HTML elements and a\nwrapping `<nav>` element to identify it as a navigation section to screen\nreaders and other assistive technologies. Furthermore, the current page is\ncorrectly highlighted using `aria-current`.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-button"
+  ],
+  "dependencyGraph": {
+    "cat-pagination": [
+      "cat-button"
+    ],
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ]
+  },
+  "props": [
+    {
+      "name": "activePadding",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "active-padding",
+      "reflectToAttr": false,
+      "docs": "The number of pages to be shown around the current page.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "1"
+        }
+      ],
+      "default": "1",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "compact",
+      "reflectToAttr": false,
+      "docs": "Use compact pagination mode.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconNext",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-next",
+      "reflectToAttr": false,
+      "docs": "The icon of the \"next\" button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'$cat:pagination-right'"
+        }
+      ],
+      "default": "'$cat:pagination-right'",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconPrev",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-prev",
+      "reflectToAttr": false,
+      "docs": "The icon of the \"previous\" button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'$cat:pagination-left'"
+        }
+      ],
+      "default": "'$cat:pagination-left'",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "page",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "page",
+      "reflectToAttr": false,
+      "docs": "The current page.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "pageCount",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "page-count",
+      "reflectToAttr": false,
+      "docs": "The total number of pages.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "1"
+        }
+      ],
+      "default": "1",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "round",
+      "reflectToAttr": false,
+      "docs": "Use round button edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "sidePadding",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "side-padding",
+      "reflectToAttr": false,
+      "docs": "The number of pages to be shown at the edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "1"
+        }
+      ],
+      "default": "1",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl'",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the buttons.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "variant",
+      "type": "\"filled\" | \"outlined\" | \"text\"",
+      "complexType": {
+        "original": "'filled' | 'outlined' | 'text'",
+        "resolved": "\"filled\" | \"outlined\" | \"text\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "variant",
+      "reflectToAttr": false,
+      "docs": "The rendering style of the buttons.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'text'"
+        }
+      ],
+      "default": "'text'",
+      "values": [
+        {
+          "value": "filled",
+          "type": "string"
+        },
+        {
+          "value": "outlined",
+          "type": "string"
+        },
+        {
+          "value": "text",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [
+    {
+      "event": "catChange",
+      "detail": "number",
+      "bubbles": true,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the page of the pagination has changed.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

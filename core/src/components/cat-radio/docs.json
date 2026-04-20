@@ -1,0 +1,552 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-radio",
+  "filePath": "src/components/cat-radio/cat-radio.tsx",
+  "fileName": "cat-radio.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-radio/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-radio/usage",
+  "tag": "cat-radio",
+  "readme": "# cat-radio\n",
+  "overview": "Radio Buttons are graphical interface elements that allow user to choose\nonly one of a predefined set of mutually exclusive options.",
+  "usage": {},
+  "docs": "Radio Buttons are graphical interface elements that allow user to choose\nonly one of a predefined set of mutually exclusive options.",
+  "docsTags": [
+    {
+      "name": "slot",
+      "text": "hint - Optional hint element to be displayed with the radio."
+    },
+    {
+      "name": "slot",
+      "text": "label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    },
+    {
+      "name": "part",
+      "text": "label - The label content."
+    },
+    {
+      "name": "part",
+      "text": "input - The native input element."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [
+    {
+      "name": "alignment",
+      "type": "\"bottom\" | \"center\" | \"top\"",
+      "complexType": {
+        "original": "'center' | 'top' | 'bottom'",
+        "resolved": "\"bottom\" | \"center\" | \"top\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "alignment",
+      "reflectToAttr": false,
+      "docs": "The alignment of the checkbox.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'top'"
+        }
+      ],
+      "default": "'top'",
+      "values": [
+        {
+          "value": "bottom",
+          "type": "string"
+        },
+        {
+          "value": "center",
+          "type": "string"
+        },
+        {
+          "value": "top",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "checked",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "checked",
+      "reflectToAttr": false,
+      "docs": "Whether this radio is checked.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Whether this radio is disabled.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hint",
+      "type": "string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[]",
+        "resolved": "string | string[] | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text(s) to be displayed with the radio.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "identifier",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "identifier",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "The label of the radio that is visible.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelHidden",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-hidden",
+      "reflectToAttr": false,
+      "docs": "Visually hide the label, but still show it to assistive technologies like screen readers.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelLeft",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-left",
+      "reflectToAttr": false,
+      "docs": "Whether the label should appear to the left of the radio component.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the radio component.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML input element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required",
+      "reflectToAttr": false,
+      "docs": "Whether the radio is required.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "any",
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The value of the radio component.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "any"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the radio button. Use this method\ninstead of `input.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the radio button. Use this method instead of\n`input.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the radio loses focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catChange",
+      "detail": "boolean | string",
+      "bubbles": true,
+      "complexType": {
+        "original": "boolean | string",
+        "resolved": "boolean | string",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the radio is changed.",
+      "docsTags": []
+    },
+    {
+      "event": "catFocus",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the radio received focus.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [
+    {
+      "name": "hint",
+      "docs": "Optional hint element to be displayed with the radio."
+    },
+    {
+      "name": "label",
+      "docs": "The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    }
+  ],
+  "parts": [
+    {
+      "name": "input",
+      "docs": "The native input element."
+    },
+    {
+      "name": "label",
+      "docs": "The label content."
+    }
+  ],
+  "listeners": []
+}

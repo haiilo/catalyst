@@ -1,0 +1,59 @@
+---
+title: Card
+status: not started
+---
+
+Cards are surfaces that display content and actions on a single topic. They
+should be easy to scan for relevant and actionable information.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-card>
+  <h3>Card Title</h3>
+  <p>Card content goes here.</p>
+</cat-card>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Header
+
+Use the `header` slot to add a card header.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-card>
+  <div slot="header">
+    <h3>Card Header</h3>
+  </div>
+  <p>Card content goes here.</p>
+</cat-card>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/card.md</include>

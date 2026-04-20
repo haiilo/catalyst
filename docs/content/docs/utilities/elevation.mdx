@@ -1,0 +1,118 @@
+---
+title: Elevation
+description: Box shadow utilities for depth and visual hierarchy
+status: ready
+---
+
+Elevation utilities apply box shadows to create depth and visual hierarchy. They use a predefined scale from 0 (no shadow) to 7 (highest elevation).
+
+## Elevation Scale
+
+| Class | Level | Use Case |
+|-------|-------|----------|
+| `cat-elevation-none` | - | Remove shadow |
+| `cat-elevation-0` | 0 | No elevation |
+| `cat-elevation-1` | 1 | Subtle lift (cards at rest) |
+| `cat-elevation-2` | 2 | Slight elevation |
+| `cat-elevation-3` | 3 | Moderate elevation (hovering cards) |
+| `cat-elevation-4` | 4 | Higher elevation (dropdowns) |
+| `cat-elevation-5` | 5 | High elevation (modals) |
+| `cat-elevation-6` | 6 | Very high elevation |
+| `cat-elevation-7` | 7 | Maximum elevation |
+
+## Hover Variants
+
+Apply elevation on hover, focus, or focus-within states:
+
+| Class | Description |
+|-------|-------------|
+| `cat-elevation-hover-1` | Level 1 on hover |
+| `cat-elevation-hover-2` | Level 2 on hover |
+| `cat-elevation-hover-3` | Level 3 on hover |
+| `cat-elevation-hover-4` | Level 4 on hover |
+| `cat-elevation-hover-5` | Level 5 on hover |
+| `cat-elevation-hover-6` | Level 6 on hover |
+| `cat-elevation-hover-7` | Level 7 on hover |
+
+## Transition
+
+Use `cat-elevation-transition` to animate elevation changes smoothly:
+
+```html
+<div class="cat-elevation-1 cat-elevation-hover-3 cat-elevation-transition">
+  Hover to lift
+</div>
+```
+
+## Examples
+
+### Card with Hover Effect
+
+```html
+<div class="cat-elevation-1 cat-elevation-hover-3 cat-elevation-transition cat-p-l cat-radius-m">
+  <h3>Card Title</h3>
+  <p>This card lifts on hover.</p>
+</div>
+```
+
+### Dropdown Menu
+
+```html
+<div class="cat-elevation-4 cat-radius-m cat-p-s">
+  <ul>
+    <li>Option 1</li>
+    <li>Option 2</li>
+    <li>Option 3</li>
+  </ul>
+</div>
+```
+
+### Modal Dialog
+
+```html
+<div class="cat-elevation-5 cat-radius-l cat-p-xl">
+  <h2>Modal Title</h2>
+  <p>Modal content goes here.</p>
+</div>
+```
+
+### Interactive List Items
+
+```html
+<ul class="cat-m-0 cat-p-0">
+  <li class="cat-elevation-hover-2 cat-elevation-transition cat-p-m">
+    Hover to elevate
+  </li>
+  <li class="cat-elevation-hover-2 cat-elevation-transition cat-p-m">
+    Hover to elevate
+  </li>
+</ul>
+```
+
+## SCSS Mixin
+
+For custom implementations, use the `cat-elevation` mixin:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/elevation.mixins' as *;
+
+.custom-card {
+  @include cat-elevation(2);
+  
+  &:hover {
+    @include cat-elevation(4);
+  }
+}
+
+.custom-card-animated {
+  @include cat-elevation-transition;
+}
+```
+
+The mixin also supports combining with additional box shadows:
+
+```scss
+.custom-element {
+  @include cat-elevation(2, '0 0 0 2px blue');
+}
+```

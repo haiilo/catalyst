@@ -1,0 +1,122 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-form-group",
+  "filePath": "src/components/cat-form-group/cat-form-group.tsx",
+  "fileName": "cat-form-group.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-form-group/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-form-group/usage",
+  "tag": "cat-form-group",
+  "readme": "# cat-form-group\n\n\n",
+  "overview": "A form group component to group form fields and labels.",
+  "usage": {},
+  "docs": "A form group component to group form fields and labels.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [
+    {
+      "name": "horizontal",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "horizontal",
+      "reflectToAttr": false,
+      "docs": "Whether the label is on top or left.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelSize",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-size",
+      "reflectToAttr": false,
+      "docs": "The space allocated to the input label",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "requiredMarker",
+      "type": "\"auto\" | \"none\" | \"optional\" | \"required\"",
+      "complexType": {
+        "original": "'none' | 'required' | 'optional' | 'auto'",
+        "resolved": "\"auto\" | \"none\" | \"optional\" | \"required\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required-marker",
+      "reflectToAttr": false,
+      "docs": "Whether the labels need a marker to shown if the forms fields are required or optional.<br /><br />\nBy default, it is set to auto, it will display the mark depending on the number of required and optional fields: <br />\n- If there are more required, the optional will be marked.<br />\n- If there are less required, it will mark the required.<br /><br />\nIf a form field had \"!\", the requiredMarked of the field would not change.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'auto'"
+        }
+      ],
+      "default": "'auto'",
+      "values": [
+        {
+          "value": "auto",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "optional",
+          "type": "string"
+        },
+        {
+          "value": "required",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

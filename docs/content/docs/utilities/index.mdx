@@ -1,0 +1,59 @@
+---
+title: Overview
+description: CSS utility classes for rapid UI development
+---
+
+Catalyst provides a comprehensive set of CSS utility classes that enable rapid UI development without writing custom styles. All utility classes use the `cat-` prefix to avoid conflicts with other CSS frameworks.
+
+<CategoryOverview category="utilities" />
+
+## Token Integration
+
+Most utility classes are generated from design tokens, ensuring consistency with the design system. For example:
+
+- Spacing utilities use the `size.spacing` token scale
+- Color utilities use `color.theme` and `color.ui` tokens
+- Border radius utilities use `size.border.radius` tokens
+
+## Naming Convention
+
+Utility classes follow a consistent naming pattern:
+
+```
+cat-{property}-{value}
+cat-{property}-{value}:{breakpoint}
+```
+
+Examples:
+- `cat-m-s` - margin small
+- `cat-flex-row` - flex direction row
+- `cat-bg-primary` - primary background color
+- `cat-none:md` - display none at medium breakpoint
+
+## Usage
+
+Utility classes can be applied directly to HTML elements:
+
+```html
+<div class="cat-flex-row cat-gap-m cat-items-center cat-p-l">
+  <cat-icon icon="info"></cat-icon>
+  <span class="cat-text-muted">Information message</span>
+</div>
+```
+
+## SCSS Mixins
+
+For more complex styling needs, many utilities also provide SCSS mixins that can be used in custom stylesheets:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/media.mixins' as *;
+@use '@haiilo/catalyst/styles/utils/typography.mixins' as *;
+
+.my-component {
+  @include cat-ellipsis(2);
+  
+  @include from('md') {
+    // Styles for medium screens and up
+  }
+}
+```

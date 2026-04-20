@@ -1,0 +1,77 @@
+---
+title: Skeleton
+status: not started
+---
+
+Skeletons are used to show where content will eventually be drawn, providing
+a visual placeholder during loading states.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-skeleton></cat-skeleton>
+<cat-skeleton variant="circle"></cat-skeleton>
+<cat-skeleton variant="text"></cat-skeleton>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Variants
+
+Use the `variant` attribute to change the skeleton shape.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-skeleton variant="rect"></cat-skeleton>
+<cat-skeleton variant="circle"></cat-skeleton>
+<cat-skeleton variant="text"></cat-skeleton>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Custom Sizes
+
+Use the `width` and `height` attributes for custom dimensions.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-skeleton width="200px" height="20px"></cat-skeleton>
+<cat-skeleton variant="circle" width="50px" height="50px"></cat-skeleton>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/skeleton.md</include>

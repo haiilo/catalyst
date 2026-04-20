@@ -1,0 +1,90 @@
+---
+title: Display
+description: Control element display with responsive variants
+status: ready
+---
+
+Display utilities control the CSS `display` property of elements. They include responsive variants that apply at specific breakpoints.
+
+## Basic Display
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-none` | `display: none` |
+| `cat-inline` | `display: inline` |
+| `cat-inline-block` | `display: inline-block` |
+| `cat-block` | `display: block` |
+| `cat-grid` | `display: grid` |
+| `cat-flex` | `display: flex` |
+| `cat-inline-flex` | `display: inline-flex` |
+
+## Responsive Variants
+
+Display utilities support responsive breakpoints using the `:{breakpoint}` suffix:
+
+| Breakpoint | Min Width | Example |
+|------------|-----------|---------|
+| `xs` | 540px | `cat-none:xs` |
+| `s` | 768px | `cat-block:s` |
+| `m` | 992px | `cat-flex:m` |
+| `l` | 1200px | `cat-grid:l` |
+| `xl` | 1400px | `cat-none:xl` |
+
+Responsive classes apply from the specified breakpoint and up (mobile-first).
+
+## Examples
+
+### Hide on Mobile
+
+```html
+<div class="cat-none cat-block:m">
+  Hidden on mobile, visible on medium screens and up
+</div>
+```
+
+### Show Only on Mobile
+
+```html
+<div class="cat-block cat-none:m">
+  Visible on mobile, hidden on medium screens and up
+</div>
+```
+
+### Responsive Layout
+
+```html
+<div class="cat-block cat-flex:m cat-gap-m">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+This layout stacks items vertically on mobile and arranges them horizontally on medium screens and up.
+
+### Mobile Navigation Toggle
+
+```html
+<!-- Mobile menu button -->
+<button class="cat-block cat-none:l">
+  <cat-icon icon="menu"></cat-icon>
+</button>
+
+<!-- Desktop navigation -->
+<nav class="cat-none cat-flex:l cat-gap-m">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</nav>
+```
+
+## Combining with Other Utilities
+
+Display utilities work well with layout utilities:
+
+```html
+<div class="cat-flex cat-flex-col cat-flex-row:m cat-gap-l">
+  <aside class="cat-none cat-block:l">Sidebar</aside>
+  <main class="cat-flex-1">Main content</main>
+</div>
+```

@@ -1,0 +1,1059 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-datepicker",
+  "filePath": "src/components/cat-datepicker/cat-datepicker.tsx",
+  "fileName": "cat-datepicker.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-datepicker/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-datepicker/usage",
+  "tag": "cat-datepicker",
+  "readme": "# cat-datepicker\n\n\n",
+  "overview": "",
+  "usage": {},
+  "docs": "",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-input"
+  ],
+  "dependencyGraph": {
+    "cat-datepicker": [
+      "cat-input"
+    ],
+    "cat-input": [
+      "cat-icon",
+      "cat-button",
+      "cat-spinner"
+    ],
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ]
+  },
+  "props": [
+    {
+      "name": "attachToElement",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "attach-to-element",
+      "reflectToAttr": false,
+      "docs": "Instead of body, appends the calendar to the cat-datepicker element instead",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "auto-complete",
+      "reflectToAttr": false,
+      "docs": "Hint for form autofill feature.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'off'"
+        }
+      ],
+      "default": "'off'",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "clearable",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "clearable",
+      "reflectToAttr": false,
+      "docs": "Whether the input should show a clear button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Whether the input is disabled.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errorUpdate",
+      "type": "boolean | number",
+      "complexType": {
+        "original": "boolean | number",
+        "resolved": "boolean | number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "error-update",
+      "reflectToAttr": false,
+      "docs": "Fine-grained control over when the errors are shown. Can be `false` to\nnever show errors, `true` to show errors on blur, or a number to show\nerrors change with the given delay in milliseconds or immediately on blur.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errors",
+      "type": "boolean | string[] | undefined | { [key: string]: any; }",
+      "complexType": {
+        "original": "boolean | string[] | ErrorMap",
+        "resolved": "boolean | string[] | undefined | { [key: string]: any; }",
+        "references": {
+          "ErrorMap": {
+            "location": "import",
+            "path": "../cat-form-hint/cat-form-hint",
+            "id": "src/components/cat-form-hint/cat-form-hint.tsx::ErrorMap"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "errors",
+      "reflectToAttr": false,
+      "docs": "The validation errors for this input. Will render a hint under the input\nwith the translated error message(s) `error.${key}`. If an object is\npassed, the keys will be used as error keys and the values translation\nparameters.\nIf the value is `true`, the input will be marked as invalid without any\nhints under the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: any; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hint",
+      "type": "string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[]",
+        "resolved": "string | string[] | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text(s) to be displayed with the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "horizontal",
+      "type": "boolean | undefined",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "horizontal",
+      "reflectToAttr": false,
+      "docs": "Whether the label is on top or left.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "The name of an icon to be displayed in the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconRight",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-right",
+      "reflectToAttr": false,
+      "docs": "Display the icon on the right.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "identifier",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "identifier",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "The label for the input.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelHidden",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-hidden",
+      "reflectToAttr": false,
+      "docs": "Visually hide the label, but still show it to assistive technologies like screen readers.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "max",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "max",
+      "reflectToAttr": false,
+      "docs": "A maximum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "min",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "min",
+      "reflectToAttr": false,
+      "docs": "A minimum value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "mode",
+      "type": "\"date\" | \"daterange\" | \"datetime\" | \"time\" | \"week\"",
+      "complexType": {
+        "original": "CatDatepickerMode",
+        "resolved": "\"date\" | \"daterange\" | \"datetime\" | \"time\" | \"week\"",
+        "references": {
+          "CatDatepickerMode": {
+            "location": "import",
+            "path": "./cat-datepicker.mode",
+            "id": "src/components/cat-datepicker/cat-datepicker.mode.ts::CatDatepickerMode"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "mode",
+      "reflectToAttr": false,
+      "docs": "The mode of the datepicker, to select a date, time, both, a date range or a week number.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'date'"
+        }
+      ],
+      "default": "'date'",
+      "values": [
+        {
+          "value": "date",
+          "type": "string"
+        },
+        {
+          "value": "daterange",
+          "type": "string"
+        },
+        {
+          "value": "datetime",
+          "type": "string"
+        },
+        {
+          "value": "time",
+          "type": "string"
+        },
+        {
+          "value": "week",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the form control. Submitted with the form as part of a name/value pair.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML input element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativePickerAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the rendered HTML datepicker element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "placeholder",
+      "reflectToAttr": false,
+      "docs": "The placeholder text to display within the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "position",
+      "type": "\"auto\" | Placement | \"above\" | \"below\" | \"auto left\" | \"auto center\" | \"auto right\" | \"above left\" | \"above center\" | \"above right\" | \"below left\" | \"below center\" | \"below right\" | ((self: Instance, customElement: HTMLElement | undefined) => void) | undefined",
+      "complexType": {
+        "original": "BaseOptions['position'] | Placement",
+        "resolved": "\"auto\" | Placement | \"above\" | \"below\" | \"auto left\" | \"auto center\" | \"auto right\" | \"above left\" | \"above center\" | \"above right\" | \"below left\" | \"below center\" | \"below right\" | ((self: Instance, customElement: HTMLElement | undefined) => void) | undefined",
+        "references": {
+          "BaseOptions": {
+            "location": "import",
+            "path": "flatpickr/dist/types/options",
+            "id": "../node_modules/.pnpm/flatpickr@4.6.13/node_modules/flatpickr/dist/types/options.d.ts::BaseOptions"
+          },
+          "Placement": {
+            "location": "import",
+            "path": "@floating-ui/dom",
+            "id": "../node_modules/.pnpm/@floating-ui+dom@1.6.13/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.ts::Placement"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "position",
+      "reflectToAttr": false,
+      "docs": "Where the calendar is rendered relative to the input vertically and horizontally.\nIn the format of \"[vertical] [horizontal]\". Vertical can be auto, above or below (required).\nHorizontal can be left, center or right.\nIf",
+      "docsTags": [
+        {
+          "name": "attachToElement",
+          "text": "is passed the value should be in Placement format"
+        }
+      ],
+      "values": [
+        {
+          "value": "auto",
+          "type": "string"
+        },
+        {
+          "type": "Placement"
+        },
+        {
+          "value": "above",
+          "type": "string"
+        },
+        {
+          "value": "below",
+          "type": "string"
+        },
+        {
+          "value": "auto left",
+          "type": "string"
+        },
+        {
+          "value": "auto center",
+          "type": "string"
+        },
+        {
+          "value": "auto right",
+          "type": "string"
+        },
+        {
+          "value": "above left",
+          "type": "string"
+        },
+        {
+          "value": "above center",
+          "type": "string"
+        },
+        {
+          "value": "above right",
+          "type": "string"
+        },
+        {
+          "value": "below left",
+          "type": "string"
+        },
+        {
+          "value": "below center",
+          "type": "string"
+        },
+        {
+          "value": "below right",
+          "type": "string"
+        },
+        {
+          "type": "((self: Instance, customElement: HTMLElement"
+        },
+        {
+          "type": "undefined) => void)"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "readonly",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "readonly",
+      "reflectToAttr": false,
+      "docs": "The value is not editable.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required",
+      "reflectToAttr": false,
+      "docs": "A value is required or must be check for the form to be submittable.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "requiredMarker",
+      "type": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+      "complexType": {
+        "original": "'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!'",
+        "resolved": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required-marker",
+      "reflectToAttr": false,
+      "docs": "Whether the label need a marker to shown if the input is required or optional.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'optional'"
+        }
+      ],
+      "default": "'optional'",
+      "values": [
+        {
+          "value": "none!",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "optional!",
+          "type": "string"
+        },
+        {
+          "value": "optional",
+          "type": "string"
+        },
+        {
+          "value": "required!",
+          "type": "string"
+        },
+        {
+          "value": "required",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "step",
+      "reflectToAttr": false,
+      "docs": "The step size to use when changing the time.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "5"
+        }
+      ],
+      "default": "5",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "textPrefix",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "text-prefix",
+      "reflectToAttr": false,
+      "docs": "A textual prefix to be displayed in the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "textSuffix",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "text-suffix",
+      "reflectToAttr": false,
+      "docs": "A textual suffix to be displayed in the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The value as ISO Date string, e.g. 2017-03-04T01:23:43.000Z or as a week number string.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the datepicker. Use this method instead of\n`input.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the datepicker. Use this method instead of\n`input.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the input loses focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catChange",
+      "detail": "string",
+      "bubbles": true,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the value is changed.",
+      "docsTags": []
+    },
+    {
+      "event": "catFocus",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the input received focus.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

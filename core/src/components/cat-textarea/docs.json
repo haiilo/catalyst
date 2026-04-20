@@ -1,0 +1,800 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-textarea",
+  "filePath": "src/components/cat-textarea/cat-textarea.tsx",
+  "fileName": "cat-textarea.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-textarea/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-textarea/usage",
+  "tag": "cat-textarea",
+  "readme": "# cat-textarea\n\n\n",
+  "overview": "Textarea specifies a control that allows user to write text over multiple\nrows. Used when the expected user input is long. For shorter input, use the\ninput component.",
+  "usage": {},
+  "docs": "Textarea specifies a control that allows user to write text over multiple\nrows. Used when the expected user input is long. For shorter input, use the\ninput component.",
+  "docsTags": [
+    {
+      "name": "slot",
+      "text": "hint - Optional hint element to be displayed with the textarea."
+    },
+    {
+      "name": "slot",
+      "text": "label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    },
+    {
+      "name": "slot",
+      "text": "counter - Custom counter element to be displayed in the top right corner of the label."
+    },
+    {
+      "name": "part",
+      "text": "label - The native label element."
+    },
+    {
+      "name": "part",
+      "text": "textarea - The native textarea element."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-icon"
+  ],
+  "dependencyGraph": {
+    "cat-textarea": [
+      "cat-icon"
+    ]
+  },
+  "props": [
+    {
+      "name": "autoComplete",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "auto-complete",
+      "reflectToAttr": false,
+      "docs": "Hint for form autofill feature.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Whether the textarea is disabled.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errorUpdate",
+      "type": "boolean | number",
+      "complexType": {
+        "original": "boolean | number",
+        "resolved": "boolean | number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "error-update",
+      "reflectToAttr": false,
+      "docs": "Fine-grained control over when the errors are shown. Can be `false` to\nnever show errors, `true` to show errors on blur, or a number to show\nerrors change with the given delay in milliseconds or immediately on blur.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errors",
+      "type": "boolean | string[] | undefined | { [key: string]: any; }",
+      "complexType": {
+        "original": "boolean | string[] | ErrorMap",
+        "resolved": "boolean | string[] | undefined | { [key: string]: any; }",
+        "references": {
+          "ErrorMap": {
+            "location": "import",
+            "path": "../cat-form-hint/cat-form-hint",
+            "id": "src/components/cat-form-hint/cat-form-hint.tsx::ErrorMap"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "errors",
+      "reflectToAttr": false,
+      "docs": "The validation errors for this input. Will render a hint under the input\nwith the translated error message(s) `error.${key}`. If an object is\npassed, the keys will be used as error keys and the values translation\nparameters.\nIf the value is `true`, the input will be marked as invalid without any\nhints under the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: any; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hint",
+      "type": "string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[]",
+        "resolved": "string | string[] | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text(s) to be displayed with the textarea.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "horizontal",
+      "type": "boolean | undefined",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "horizontal",
+      "reflectToAttr": false,
+      "docs": "Whether the label is on top or left.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "identifier",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "identifier",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "The label for the textarea.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelHidden",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-hidden",
+      "reflectToAttr": false,
+      "docs": "Visually hide the label, but still show it to assistive technologies like screen readers.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number | undefined",
+      "complexType": {
+        "original": "number",
+        "resolved": "number | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "max-length",
+      "reflectToAttr": false,
+      "docs": "A maximum length (number of characters) for textual values.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "minLength",
+      "type": "number | undefined",
+      "complexType": {
+        "original": "number",
+        "resolved": "number | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "min-length",
+      "reflectToAttr": false,
+      "docs": "A minimum length (number of characters) for textual values.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the form control. Submitted with the form as part of a name/value pair.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML textarea element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "placeholder",
+      "reflectToAttr": false,
+      "docs": "The placeholder text to display within the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "readonly",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "readonly",
+      "reflectToAttr": false,
+      "docs": "The value is not editable.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required",
+      "reflectToAttr": false,
+      "docs": "A value is required or must be check for the form to be submittable.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "requiredMarker",
+      "type": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+      "complexType": {
+        "original": "'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!'",
+        "resolved": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required-marker",
+      "reflectToAttr": false,
+      "docs": "Whether the label need a marker to shown if the textarea is required or optional.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'optional'"
+        }
+      ],
+      "default": "'optional'",
+      "values": [
+        {
+          "value": "none!",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "optional!",
+          "type": "string"
+        },
+        {
+          "value": "optional",
+          "type": "string"
+        },
+        {
+          "value": "required!",
+          "type": "string"
+        },
+        {
+          "value": "required",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "rows",
+      "reflectToAttr": false,
+      "docs": "Specifies the initial number of lines in the textarea.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "3"
+        }
+      ],
+      "default": "3",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The initial value of the control.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "clear",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "clear() => Promise<void>",
+      "parameters": [],
+      "docs": "Clear the textarea.",
+      "docsTags": []
+    },
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the textarea. Use this method instead of\n`textarea.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the textarea. Use this method instead of\n`textarea.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the textarea loses focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catChange",
+      "detail": "string",
+      "bubbles": true,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the value is changed.",
+      "docsTags": []
+    },
+    {
+      "event": "catFocus",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the textarea received focus.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [
+    {
+      "name": "counter",
+      "docs": "Custom counter element to be displayed in the top right corner of the label."
+    },
+    {
+      "name": "hint",
+      "docs": "Optional hint element to be displayed with the textarea."
+    },
+    {
+      "name": "label",
+      "docs": "The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    }
+  ],
+  "parts": [
+    {
+      "name": "label",
+      "docs": "The native label element."
+    },
+    {
+      "name": "textarea",
+      "docs": "The native textarea element."
+    }
+  ],
+  "listeners": []
+}

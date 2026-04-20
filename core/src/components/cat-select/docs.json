@@ -1,0 +1,1042 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select",
+  "filePath": "src/components/cat-select/cat-select.tsx",
+  "fileName": "cat-select.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/usage",
+  "tag": "cat-select",
+  "readme": "# cat-select\n\n\n",
+  "overview": "Select lets user choose one option from an options' menu.\nConsider using select when you have 6 or more options. Select component supports any content type.",
+  "usage": {},
+  "docs": "Select lets user choose one option from an options' menu.\nConsider using select when you have 6 or more options. Select component supports any content type.",
+  "docsTags": [
+    {
+      "name": "slot",
+      "text": "hint - Optional hint element to be displayed with the select."
+    },
+    {
+      "name": "slot",
+      "text": "label - The slotted label. If both the label property and the label slot are present,\nonly the label slot will be displayed."
+    },
+    {
+      "name": "part",
+      "text": "label - The native label element."
+    },
+    {
+      "name": "part",
+      "text": "input - The native input element."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-select-demo"
+  ],
+  "dependencies": [
+    "cat-avatar",
+    "cat-button",
+    "cat-spinner",
+    "cat-icon",
+    "cat-scrollable",
+    "cat-skeleton",
+    "cat-checkbox"
+  ],
+  "dependencyGraph": {
+    "cat-select": [
+      "cat-avatar",
+      "cat-button",
+      "cat-spinner",
+      "cat-icon",
+      "cat-scrollable",
+      "cat-skeleton",
+      "cat-checkbox"
+    ],
+    "cat-avatar": [
+      "cat-icon"
+    ],
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ],
+    "cat-select-demo": [
+      "cat-select"
+    ]
+  },
+  "props": [
+    {
+      "name": "clearable",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "clearable",
+      "reflectToAttr": false,
+      "docs": "Whether the select should show a clear button.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "debounce",
+      "type": "number",
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "debounce",
+      "reflectToAttr": false,
+      "docs": "The debounce time for the search.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "250"
+        }
+      ],
+      "default": "250",
+      "values": [
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Whether the select is disabled.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errorUpdate",
+      "type": "boolean | number",
+      "complexType": {
+        "original": "boolean | number",
+        "resolved": "boolean | number",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "error-update",
+      "reflectToAttr": false,
+      "docs": "Fine-grained control over when the errors are shown. Can be `false` to\nnever show errors, `true` to show errors on blur, or a number to show\nerrors change with the given delay in milliseconds or immediately on blur.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "0"
+        }
+      ],
+      "default": "0",
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "errors",
+      "type": "boolean | string[] | undefined | { [key: string]: any; }",
+      "complexType": {
+        "original": "boolean | string[] | ErrorMap",
+        "resolved": "boolean | string[] | undefined | { [key: string]: any; }",
+        "references": {
+          "ErrorMap": {
+            "location": "import",
+            "path": "../cat-form-hint/cat-form-hint",
+            "id": "src/components/cat-form-hint/cat-form-hint.tsx::ErrorMap"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "errors",
+      "reflectToAttr": false,
+      "docs": "The validation errors for this input. Will render a hint under the input\nwith the translated error message(s) `error.${key}`. If an object is\npassed, the keys will be used as error keys and the values translation\nparameters.\nIf the value is `true`, the input will be marked as invalid without any\nhints under the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: any; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hint",
+      "type": "string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[]",
+        "resolved": "string | string[] | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text(s) to be displayed with the select.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "horizontal",
+      "type": "boolean | undefined",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "horizontal",
+      "reflectToAttr": false,
+      "docs": "Whether the label is on top or left.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "identifier",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "identifier",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "The label for the select.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelHidden",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-hidden",
+      "reflectToAttr": false,
+      "docs": "Visually hide the label, but still show it to assistive technologies like screen readers.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "multiple",
+      "reflectToAttr": false,
+      "docs": "Enable multiple selection.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the form control. Submitted with the form as part of a name/value pair.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML input element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noItems",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-items",
+      "reflectToAttr": false,
+      "docs": "The text to display in the dropdown if no results are found.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "placeholder",
+      "reflectToAttr": false,
+      "docs": "The placeholder text to display within the select.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placement",
+      "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+      "complexType": {
+        "original": "Placement",
+        "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+        "references": {
+          "Placement": {
+            "location": "import",
+            "path": "@floating-ui/dom",
+            "id": "../node_modules/.pnpm/@floating-ui+dom@1.6.13/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.ts::Placement"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "placement",
+      "reflectToAttr": false,
+      "docs": "The placement of the select.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'bottom-start'"
+        }
+      ],
+      "default": "'bottom-start'",
+      "values": [
+        {
+          "value": "bottom",
+          "type": "string"
+        },
+        {
+          "value": "bottom-end",
+          "type": "string"
+        },
+        {
+          "value": "bottom-start",
+          "type": "string"
+        },
+        {
+          "value": "left",
+          "type": "string"
+        },
+        {
+          "value": "left-end",
+          "type": "string"
+        },
+        {
+          "value": "left-start",
+          "type": "string"
+        },
+        {
+          "value": "right",
+          "type": "string"
+        },
+        {
+          "value": "right-end",
+          "type": "string"
+        },
+        {
+          "value": "right-start",
+          "type": "string"
+        },
+        {
+          "value": "top",
+          "type": "string"
+        },
+        {
+          "value": "top-end",
+          "type": "string"
+        },
+        {
+          "value": "top-start",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required",
+      "reflectToAttr": false,
+      "docs": "A value is required or must be checked for the form to be submittable.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "requiredMarker",
+      "type": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+      "complexType": {
+        "original": "'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!'",
+        "resolved": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required-marker",
+      "reflectToAttr": false,
+      "docs": "Whether the label need a marker to shown if the select is required or optional.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'optional'"
+        }
+      ],
+      "default": "'optional'",
+      "values": [
+        {
+          "value": "none!",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "optional!",
+          "type": "string"
+        },
+        {
+          "value": "optional",
+          "type": "string"
+        },
+        {
+          "value": "required!",
+          "type": "string"
+        },
+        {
+          "value": "required",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "tagHint",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "tag-hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text to be displayed on the new item to be added.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "tags",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "tags",
+      "reflectToAttr": false,
+      "docs": "Whether the select should add new items.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "CatSelectMultipleTaggingValue | CatSelectTaggingValue | string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[] | CatSelectTaggingValue | CatSelectMultipleTaggingValue",
+        "resolved": "CatSelectMultipleTaggingValue | CatSelectTaggingValue | string | string[] | undefined",
+        "references": {
+          "CatSelectTaggingValue": {
+            "location": "local",
+            "path": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/cat-select.tsx",
+            "id": "src/components/cat-select/cat-select.tsx::CatSelectTaggingValue"
+          },
+          "CatSelectMultipleTaggingValue": {
+            "location": "local",
+            "path": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/cat-select.tsx",
+            "id": "src/components/cat-select/cat-select.tsx::CatSelectMultipleTaggingValue"
+          }
+        }
+      },
+      "mutable": true,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The value of the select. <br />\n<br />\nThe value of the select depends on whether it is allowed to choose a single item or several items. <br />\nWhen only one item can be selected, the value is the id of the item, in case several items can be selected, the value is an array of ids of the selected items. <br />\n<br />\nIn case the user can add new items to the select (tags activated), the value in the single select is an object (CatSelectTaggingValue) with the id of the item or the name of the created item,\nin the case of multiple select, it is an object (CatSelectMultipleTaggingValue) with the array of the ids of the items selected and the array of the names of the items created",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "CatSelectMultipleTaggingValue"
+        },
+        {
+          "type": "CatSelectTaggingValue"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "clear",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "clear() => Promise<void>",
+      "parameters": [],
+      "docs": "Clear the input.",
+      "docsTags": []
+    },
+    {
+      "name": "connect",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(connector: CatSelectConnector) => Promise<void>",
+        "parameters": [
+          {
+            "name": "connector",
+            "type": "CatSelectConnector<any>",
+            "docs": "- The {@link CatSelectConnector} of the select."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "CatSelectConnector": {
+            "location": "local",
+            "path": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/cat-select.tsx",
+            "id": "src/components/cat-select/cat-select.tsx::CatSelectConnector"
+          },
+          "Observable": {
+            "location": "import",
+            "path": "rxjs",
+            "id": "../node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/types/index.d.ts::Observable"
+          },
+          "Item": {
+            "location": "local",
+            "path": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select/cat-select.tsx",
+            "id": "src/components/cat-select/cat-select.tsx::Item"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "connect(connector: CatSelectConnector) => Promise<void>",
+      "parameters": [
+        {
+          "name": "connector",
+          "type": "CatSelectConnector<any>",
+          "docs": "- The {@link CatSelectConnector} of the select."
+        }
+      ],
+      "docs": "Connect the functions of the select",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "connector - The {@link CatSelectConnector} of the select."
+        }
+      ]
+    },
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the input. Use this method instead of\n`input.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the input. Use this method instead of\n`input.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the select loses the focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catChange",
+      "detail": "InputEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "InputEvent",
+        "resolved": "InputEvent",
+        "references": {
+          "InputEvent": {
+            "location": "global",
+            "id": "global::InputEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the value is changed.",
+      "docsTags": []
+    },
+    {
+      "event": "catClose",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the select dropdown is closed.",
+      "docsTags": []
+    },
+    {
+      "event": "catOpen",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the select dropdown is opened.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [
+    {
+      "name": "hint",
+      "docs": "Optional hint element to be displayed with the select."
+    },
+    {
+      "name": "label",
+      "docs": "The slotted label. If both the label property and the label slot are present,\nonly the label slot will be displayed."
+    }
+  ],
+  "parts": [
+    {
+      "name": "input",
+      "docs": "The native input element."
+    },
+    {
+      "name": "label",
+      "docs": "The native label element."
+    }
+  ],
+  "listeners": [
+    {
+      "event": "blur",
+      "capture": false,
+      "passive": false
+    },
+    {
+      "event": "keydown",
+      "capture": false,
+      "passive": false
+    },
+    {
+      "event": "keyup",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

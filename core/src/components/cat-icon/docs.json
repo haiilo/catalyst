@@ -1,0 +1,203 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-icon",
+  "filePath": "src/components/cat-icon/cat-icon.tsx",
+  "fileName": "cat-icon.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-icon/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-icon/usage",
+  "tag": "cat-icon",
+  "readme": "# cat-icon\n",
+  "overview": "Icons are used to provide additional meaning or in places where text label\ndoesn't fit.",
+  "usage": {},
+  "docs": "Icons are used to provide additional meaning or in places where text label\ndoesn't fit.",
+  "docsTags": [
+    {
+      "name": "part",
+      "text": "icon - The span element wrapping the SVG icon."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-alert",
+    "cat-avatar",
+    "cat-badge",
+    "cat-button",
+    "cat-input",
+    "cat-select",
+    "cat-tag",
+    "cat-textarea"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-alert": [
+      "cat-icon"
+    ],
+    "cat-avatar": [
+      "cat-icon"
+    ],
+    "cat-badge": [
+      "cat-icon"
+    ],
+    "cat-button": [
+      "cat-icon"
+    ],
+    "cat-input": [
+      "cat-icon"
+    ],
+    "cat-select": [
+      "cat-icon"
+    ],
+    "cat-tag": [
+      "cat-icon"
+    ],
+    "cat-textarea": [
+      "cat-icon"
+    ]
+  },
+  "props": [
+    {
+      "name": "a11yLabel",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "a11y-label",
+      "reflectToAttr": false,
+      "docs": "Adds accessible label for the icon that is only shown for screen\nreaders. The `aria-hidden` attribute will be set if no label is present.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "The name of the icon.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconSrc",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-src",
+      "reflectToAttr": false,
+      "docs": "The SVG source of the icon. This takes precenedence over the `icon` name.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"inline\" | \"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl' | 'inline'",
+        "resolved": "\"inline\" | \"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the icon.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "inline",
+          "type": "string"
+        },
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [
+    {
+      "name": "--cat-icon-ratio",
+      "annotation": "prop",
+      "docs": "The aspect ratio of the avatar."
+    }
+  ],
+  "slots": [],
+  "parts": [
+    {
+      "name": "icon",
+      "docs": "The span element wrapping the SVG icon."
+    }
+  ],
+  "listeners": []
+}

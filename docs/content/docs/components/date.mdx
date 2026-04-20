@@ -1,0 +1,61 @@
+---
+title: Date
+status: not started
+---
+
+A date input component to select a date from a calendar in a dropdown.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-date label="Select date"></cat-date>
+<cat-date label="Birthday" value="1990-01-15"></cat-date>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Min/Max Dates
+
+Use `min` and `max` attributes to restrict the date range.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-date 
+  label="Appointment date" 
+  min="2024-01-01" 
+  max="2024-12-31"
+></cat-date>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Always provide a label for the date input
+- The calendar picker is keyboard accessible
+- Dates outside the valid range are disabled
+
+## API Reference
+
+<include cwd>generated-api/date.md</include>

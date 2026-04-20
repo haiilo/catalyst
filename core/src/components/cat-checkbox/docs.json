@@ -1,0 +1,686 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-checkbox",
+  "filePath": "src/components/cat-checkbox/cat-checkbox.tsx",
+  "fileName": "cat-checkbox.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-checkbox/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-checkbox/usage",
+  "tag": "cat-checkbox",
+  "readme": "# cat-checkbox\n\n\n",
+  "overview": "Checkboxes are used to let a user choose one or more options from a limited\nnumber of options.",
+  "usage": {},
+  "docs": "Checkboxes are used to let a user choose one or more options from a limited\nnumber of options.",
+  "docsTags": [
+    {
+      "name": "slot",
+      "text": "hint - Optional hint element to be displayed with the checkbox."
+    },
+    {
+      "name": "slot",
+      "text": "label - The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    },
+    {
+      "name": "part",
+      "text": "label - The label content."
+    },
+    {
+      "name": "part",
+      "text": "input - The native input element."
+    }
+  ],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-select"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-select": [
+      "cat-checkbox"
+    ]
+  },
+  "props": [
+    {
+      "name": "alignment",
+      "type": "\"bottom\" | \"center\" | \"top\"",
+      "complexType": {
+        "original": "'center' | 'top' | 'bottom'",
+        "resolved": "\"bottom\" | \"center\" | \"top\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "alignment",
+      "reflectToAttr": false,
+      "docs": "The alignment of the checkbox.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'top'"
+        }
+      ],
+      "default": "'top'",
+      "values": [
+        {
+          "value": "bottom",
+          "type": "string"
+        },
+        {
+          "value": "center",
+          "type": "string"
+        },
+        {
+          "value": "top",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "checked",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "checked",
+      "reflectToAttr": false,
+      "docs": "Checked state of the checkbox",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "disabled",
+      "reflectToAttr": false,
+      "docs": "Disabled state of the checkbox",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "hint",
+      "type": "string | string[] | undefined",
+      "complexType": {
+        "original": "string | string[]",
+        "resolved": "string | string[] | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "hint",
+      "reflectToAttr": false,
+      "docs": "Optional hint text(s) to be displayed with the checkbox.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string[]"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "identifier",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "identifier",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "indeterminate",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "indeterminate",
+      "reflectToAttr": false,
+      "docs": "Indeterminate state of the checkbox",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": false,
+      "docs": "Label of the checkbox which is presented in the UI",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelHidden",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-hidden",
+      "reflectToAttr": false,
+      "docs": "Visually hide the label, but still show it to assistive technologies like screen readers.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "labelLeft",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label-left",
+      "reflectToAttr": false,
+      "docs": "Whether the label should appear to the left of the checkbox.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "name",
+      "reflectToAttr": false,
+      "docs": "The name of the input.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML input element.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noValue",
+      "type": "any",
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-value",
+      "reflectToAttr": false,
+      "docs": "The value of the unchecked checkbox.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "any"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required",
+      "reflectToAttr": false,
+      "docs": "Required state of the checkbox.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "requiredMarker",
+      "type": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+      "complexType": {
+        "original": "'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!'",
+        "resolved": "\"none!\" | \"none\" | \"optional!\" | \"optional\" | \"required!\" | \"required\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "required-marker",
+      "reflectToAttr": false,
+      "docs": "Whether the label need a marker to shown if the input is required or optional.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'none'"
+        }
+      ],
+      "default": "'none'",
+      "values": [
+        {
+          "value": "none!",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "optional!",
+          "type": "string"
+        },
+        {
+          "value": "optional",
+          "type": "string"
+        },
+        {
+          "value": "required!",
+          "type": "string"
+        },
+        {
+          "value": "required",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "resolvedValue",
+      "type": "any",
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "mutable": true,
+      "attr": "resolved-value",
+      "reflectToAttr": false,
+      "docs": "The resolved value of the checkbox, based on the checked state and value.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "null"
+        }
+      ],
+      "default": "null",
+      "values": [
+        {
+          "type": "any"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "value",
+      "type": "any",
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "value",
+      "reflectToAttr": false,
+      "docs": "The value of the checked checkbox.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "any"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "doBlur",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doBlur() => Promise<void>",
+      "parameters": [],
+      "docs": "Programmatically remove focus from the checkbox. Use this method instead of\n`input.blur()`.",
+      "docsTags": []
+    },
+    {
+      "name": "doFocus",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(options?: FocusOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FocusOptions | undefined",
+            "docs": "An optional object providing options to control aspects of\nthe focusing process."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          },
+          "FocusOptions": {
+            "location": "global",
+            "id": "global::FocusOptions"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "doFocus(options?: FocusOptions) => Promise<void>",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "FocusOptions | undefined",
+          "docs": "An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ],
+      "docs": "Programmatically move focus to the checkbox. Use this method instead of\n`input.focus()`.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "options An optional object providing options to control aspects of\nthe focusing process."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "catBlur",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the checkbox loses focus.",
+      "docsTags": []
+    },
+    {
+      "event": "catChange",
+      "detail": "any",
+      "bubbles": true,
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the checked status of the checkbox is changed.",
+      "docsTags": []
+    },
+    {
+      "event": "catFocus",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the checkbox received focus.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [
+    {
+      "name": "hint",
+      "docs": "Optional hint element to be displayed with the checkbox."
+    },
+    {
+      "name": "label",
+      "docs": "The slotted label. If both the label property and the label slot are present, only the label slot will be displayed."
+    }
+  ],
+  "parts": [
+    {
+      "name": "input",
+      "docs": "The native input element."
+    },
+    {
+      "name": "label",
+      "docs": "The label content."
+    }
+  ],
+  "listeners": []
+}

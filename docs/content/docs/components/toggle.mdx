@@ -1,0 +1,104 @@
+---
+title: Toggle
+status: not started
+---
+
+Toggles are graphical interface switches that give user control over a
+feature or option that can be turned on or off.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-toggle label="Enable notifications"></cat-toggle>
+<cat-toggle label="Dark mode" checked></cat-toggle>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## States
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-toggle label="Off"></cat-toggle>
+<cat-toggle label="On" checked></cat-toggle>
+<cat-toggle label="Disabled" disabled></cat-toggle>
+<cat-toggle label="Disabled On" disabled checked></cat-toggle>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Hint
+
+Use the `hint` attribute to provide additional context.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-toggle 
+  label="Auto-save" 
+  hint="Automatically save your work every 5 minutes."
+></cat-toggle>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Label Position
+
+Use `label-left` to position the label on the left side.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-toggle label="Setting" label-left></cat-toggle>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Toggles should have a clear label describing their function
+- State changes are announced to assistive technologies
+- Toggles are keyboard accessible with Space key
+
+## API Reference
+
+<include cwd>generated-api/toggle.md</include>

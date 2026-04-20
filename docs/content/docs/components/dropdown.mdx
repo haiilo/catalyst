@@ -1,0 +1,64 @@
+---
+title: Dropdown
+status: not started
+---
+
+A dropdown component to display a list of actions in a dropdown menu or to
+show additional content on demand.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-dropdown>
+  <cat-button slot="trigger">Open Menu</cat-button>
+  <div>
+    <p>Dropdown content goes here.</p>
+  </div>
+</cat-dropdown>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Placement
+
+Use the `placement` attribute to control where the dropdown appears.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-dropdown placement="bottom-start">
+  <cat-button slot="trigger">Bottom Start</cat-button>
+  <div>Content</div>
+</cat-dropdown>
+
+<cat-dropdown placement="top-end">
+  <cat-button slot="trigger">Top End</cat-button>
+  <div>Content</div>
+</cat-dropdown>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/dropdown.md</include>

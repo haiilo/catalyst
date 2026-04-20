@@ -1,0 +1,334 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-badge",
+  "filePath": "src/components/cat-badge/cat-badge.tsx",
+  "fileName": "cat-badge.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-badge/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-badge/usage",
+  "tag": "cat-badge",
+  "readme": "# cat-badge\n\n\n",
+  "overview": "Badges are used to inform users of the status of an object or of an action\nthat’s been taken.",
+  "usage": {},
+  "docs": "Badges are used to inform users of the status of an object or of an action\nthat’s been taken.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [
+    "cat-icon"
+  ],
+  "dependencyGraph": {
+    "cat-badge": [
+      "cat-icon"
+    ]
+  },
+  "props": [
+    {
+      "name": "color",
+      "type": "\"danger\" | \"info\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+      "complexType": {
+        "original": "'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'",
+        "resolved": "\"danger\" | \"info\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "color",
+      "reflectToAttr": true,
+      "docs": "The color palette of the badge.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'primary'"
+        }
+      ],
+      "default": "'primary'",
+      "values": [
+        {
+          "value": "danger",
+          "type": "string"
+        },
+        {
+          "value": "info",
+          "type": "string"
+        },
+        {
+          "value": "primary",
+          "type": "string"
+        },
+        {
+          "value": "secondary",
+          "type": "string"
+        },
+        {
+          "value": "success",
+          "type": "string"
+        },
+        {
+          "value": "warning",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": false,
+      "docs": "The name of an icon to be displayed in the button.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+      "complexType": {
+        "original": "boolean | Breakpoint",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+        "references": {
+          "Breakpoint": {
+            "location": "import",
+            "path": "../../utils/breakpoints",
+            "id": "src/utils/breakpoints.ts::Breakpoint"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "icon-only",
+      "reflectToAttr": false,
+      "docs": "Hide the actual button content and only display the icon.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconRight",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-right",
+      "reflectToAttr": false,
+      "docs": "Display the icon on the right.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "pulse",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "pulse",
+      "reflectToAttr": true,
+      "docs": "Draw attention to the badge with a subtle animation.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "round",
+      "reflectToAttr": true,
+      "docs": "Use round badge edges.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl'",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": true,
+      "docs": "The size of the badge.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "variant",
+      "type": "\"filled\" | \"outlined\"",
+      "complexType": {
+        "original": "'filled' | 'outlined'",
+        "resolved": "\"filled\" | \"outlined\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "variant",
+      "reflectToAttr": true,
+      "docs": "The rendering style of the badge.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'filled'"
+        }
+      ],
+      "default": "'filled'",
+      "values": [
+        {
+          "value": "filled",
+          "type": "string"
+        },
+        {
+          "value": "outlined",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [
+    {
+      "name": "prefix",
+      "docs": ""
+    }
+  ],
+  "listeners": []
+}

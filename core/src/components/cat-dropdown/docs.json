@@ -1,0 +1,525 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-dropdown",
+  "filePath": "src/components/cat-dropdown/cat-dropdown.tsx",
+  "fileName": "cat-dropdown.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-dropdown/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-dropdown/usage",
+  "tag": "cat-dropdown",
+  "readme": "# cat-dropdown\n\n\n",
+  "overview": "A dropdown component to display a list of actions in a dropdown menu or to\nshow additional content on demand.",
+  "usage": {},
+  "docs": "A dropdown component to display a list of actions in a dropdown menu or to\nshow additional content on demand.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-date",
+    "cat-select-demo",
+    "cat-tabs",
+    "cat-time"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-date": [
+      "cat-dropdown"
+    ],
+    "cat-select-demo": [
+      "cat-dropdown"
+    ],
+    "cat-tabs": [
+      "cat-dropdown"
+    ],
+    "cat-time": [
+      "cat-dropdown"
+    ]
+  },
+  "props": [
+    {
+      "name": "arrowNavigation",
+      "type": "\"horizontal\" | \"none\" | \"vertical\"",
+      "complexType": {
+        "original": "'horizontal' | 'vertical' | 'none'",
+        "resolved": "\"horizontal\" | \"none\" | \"vertical\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "arrow-navigation",
+      "reflectToAttr": false,
+      "docs": "Do not navigate focus inside the dropdown via vertical arrow keys.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'vertical'"
+        }
+      ],
+      "default": "'vertical'",
+      "values": [
+        {
+          "value": "horizontal",
+          "type": "string"
+        },
+        {
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "value": "vertical",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "delayedTriggerInit",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "delayed-trigger-init",
+      "reflectToAttr": false,
+      "docs": "Whether the dropdown trigger should be initialized only before first opening.\nCan be useful when trigger is rendered dynamically.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "isOpen",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "is-open",
+      "reflectToAttr": false,
+      "docs": "Whether the dropdown is open.",
+      "docsTags": [
+        {
+          "name": "readonly"
+        }
+      ],
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": true,
+      "setter": false
+    },
+    {
+      "name": "justify",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "justify",
+      "reflectToAttr": false,
+      "docs": "Make the dropdown match the width of the reference regardless of its\ncontents. Note that this only applies to the minimum width of the\ndropdown. The maximum width is still limited by the viewport.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noAutoClose",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-auto-close",
+      "reflectToAttr": false,
+      "docs": "Do not close the dropdown on outside clicks.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noInitialFocus",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-initial-focus",
+      "reflectToAttr": false,
+      "docs": "No element in dropdown will receive focus when dropdown is open.\nBy default, the first element in tab order will receive a focus.",
+      "docsTags": [
+        {
+          "name": "deprecated",
+          "text": "Using noInitialFocus property would be a bad practice from a11y perspective.\nWe always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug.\nhasInitialFocus should resolve the cause of the original problem instead."
+        },
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "deprecation": "Using noInitialFocus property would be a bad practice from a11y perspective.\nWe always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug.\nhasInitialFocus should resolve the cause of the original problem instead.",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noResize",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-resize",
+      "reflectToAttr": false,
+      "docs": "Do not change the size of the dropdown to ensure it isn’t too big to fit\nin the viewport (or more specifically, its clipping context).",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noReturnFocus",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-return-focus",
+      "reflectToAttr": false,
+      "docs": "Trigger element will not receive focus when dropdown is closed.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "overflow",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "overflow",
+      "reflectToAttr": false,
+      "docs": "Allow overflow when dropdown is open.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "placement",
+      "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+      "complexType": {
+        "original": "Placement",
+        "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+        "references": {
+          "Placement": {
+            "location": "import",
+            "path": "@floating-ui/dom",
+            "id": "../node_modules/.pnpm/@floating-ui+dom@1.6.13/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.ts::Placement"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "placement",
+      "reflectToAttr": false,
+      "docs": "The placement of the dropdown.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'bottom-start'"
+        }
+      ],
+      "default": "'bottom-start'",
+      "values": [
+        {
+          "value": "bottom",
+          "type": "string"
+        },
+        {
+          "value": "bottom-end",
+          "type": "string"
+        },
+        {
+          "value": "bottom-start",
+          "type": "string"
+        },
+        {
+          "value": "left",
+          "type": "string"
+        },
+        {
+          "value": "left-end",
+          "type": "string"
+        },
+        {
+          "value": "left-start",
+          "type": "string"
+        },
+        {
+          "value": "right",
+          "type": "string"
+        },
+        {
+          "value": "right-end",
+          "type": "string"
+        },
+        {
+          "value": "right-start",
+          "type": "string"
+        },
+        {
+          "value": "top",
+          "type": "string"
+        },
+        {
+          "value": "top-end",
+          "type": "string"
+        },
+        {
+          "value": "top-start",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "close",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "close() => Promise<void>",
+      "parameters": [],
+      "docs": "Closes the dropdown.",
+      "docsTags": []
+    },
+    {
+      "name": "open",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "(isFocusVisible?: boolean) => Promise<void>",
+        "parameters": [
+          {
+            "name": "isFocusVisible",
+            "type": "boolean | undefined",
+            "docs": "is dropdown should receive visible focus when it's opened."
+          }
+        ],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "open(isFocusVisible?: boolean) => Promise<void>",
+      "parameters": [
+        {
+          "name": "isFocusVisible",
+          "type": "boolean | undefined",
+          "docs": "is dropdown should receive visible focus when it's opened."
+        }
+      ],
+      "docs": "Opens the dropdown.",
+      "docsTags": [
+        {
+          "name": "param",
+          "text": "isFocusVisible is dropdown should receive visible focus when it's opened."
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "returns": {
+        "type": "Promise<void>",
+        "docs": ""
+      },
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global",
+            "id": "global::Promise"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "signature": "toggle() => Promise<void>",
+      "parameters": [],
+      "docs": "Toggles the dropdown.",
+      "docsTags": []
+    }
+  ],
+  "events": [
+    {
+      "event": "catClose",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the dropdown is closed.",
+      "docsTags": []
+    },
+    {
+      "event": "catOpen",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the dropdown is opened.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": [
+    {
+      "event": "catClick",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

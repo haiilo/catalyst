@@ -1,0 +1,150 @@
+---
+title: Typography
+description: Text alignment, ellipsis, and text selection utilities
+status: ready
+---
+
+Typography utilities provide classes for controlling text alignment, overflow behavior, and user selection.
+
+## Text Alignment
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-text-left` | `text-align: left` |
+| `cat-text-center` | `text-align: center` |
+| `cat-text-right` | `text-align: right` |
+
+### Examples
+
+```html
+<p class="cat-text-left">Left-aligned text</p>
+<p class="cat-text-center">Centered text</p>
+<p class="cat-text-right">Right-aligned text</p>
+```
+
+## Line Height
+
+| Class | CSS Property |
+|-------|--------------|
+| `cat-line-height-1` | `line-height: 1` |
+
+Useful for icons or single-line elements where default line height adds unwanted spacing.
+
+## Text Overflow (Ellipsis)
+
+Truncate overflowing text with an ellipsis.
+
+### Single Line
+
+| Class | Description |
+|-------|-------------|
+| `cat-ellipsis` | Truncate to single line with ellipsis |
+
+```html
+<p class="cat-ellipsis" style="max-width: 200px;">
+  This is a very long text that will be truncated with an ellipsis.
+</p>
+```
+
+### Multi-line
+
+Truncate after a specific number of lines:
+
+| Class | Description |
+|-------|-------------|
+| `cat-ellipsis-1` | Truncate after 1 line |
+| `cat-ellipsis-2` | Truncate after 2 lines |
+| `cat-ellipsis-3` | Truncate after 3 lines |
+| `cat-ellipsis-4` | Truncate after 4 lines |
+| `cat-ellipsis-5` | Truncate after 5 lines |
+
+```html
+<p class="cat-ellipsis-3" style="max-width: 300px;">
+  This is a longer paragraph that will be truncated after three lines. 
+  Any content beyond the third line will be hidden and replaced with 
+  an ellipsis to indicate there is more content.
+</p>
+```
+
+## Text Selection
+
+Control whether users can select text.
+
+| Class | Description |
+|-------|-------------|
+| `cat-select` | Enable text selection (default) |
+| `cat-no-select` | Disable text selection |
+
+### Examples
+
+```html
+<p class="cat-select">This text can be selected.</p>
+<p class="cat-no-select">This text cannot be selected.</p>
+```
+
+Use `cat-no-select` for UI elements like buttons or drag handles where text selection would interfere with interaction.
+
+## Word Breaking
+
+| Class | Description |
+|-------|-------------|
+| `cat-break-word` | Break long words to prevent overflow |
+
+```html
+<div style="width: 100px;" class="cat-break-word">
+  Supercalifragilisticexpialidocious
+</div>
+```
+
+## Examples
+
+### Truncated Card Description
+
+```html
+<div class="cat-p-m cat-border cat-radius-m">
+  <h3>Card Title</h3>
+  <p class="cat-ellipsis-2 cat-text-muted">
+    This is a card description that might be quite long. 
+    It will be truncated after two lines to keep the card 
+    layout consistent.
+  </p>
+</div>
+```
+
+### Centered Header
+
+```html
+<header class="cat-text-center cat-pv-xl">
+  <h1>Welcome</h1>
+  <p class="cat-text-muted">Subtitle text centered below</p>
+</header>
+```
+
+### Non-Selectable UI Element
+
+```html
+<button class="cat-no-select cat-flex-row cat-items-center cat-gap-s">
+  <cat-icon icon="drag"></cat-icon>
+  <span>Drag to reorder</span>
+</button>
+```
+
+## SCSS Mixins
+
+For custom implementations, use the typography mixins:
+
+```scss
+@use '@haiilo/catalyst/styles/utils/typography.mixins' as *;
+
+.custom-truncate {
+  @include cat-ellipsis(3); // Truncate after 3 lines
+}
+
+.custom-break {
+  @include cat-break-word;
+}
+
+.custom-select {
+  @include cat-select(none); // Disable selection
+}
+```

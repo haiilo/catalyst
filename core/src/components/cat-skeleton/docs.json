@@ -1,0 +1,203 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-skeleton",
+  "filePath": "src/components/cat-skeleton/cat-skeleton.tsx",
+  "fileName": "cat-skeleton.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-skeleton/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-skeleton/usage",
+  "tag": "cat-skeleton",
+  "readme": "# cat-skeleton\n\n\n",
+  "overview": "Skeletons are used to show where content will eventually be drawn.",
+  "usage": {},
+  "docs": "Skeletons are used to show where content will eventually be drawn.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [
+    "cat-select"
+  ],
+  "dependencies": [],
+  "dependencyGraph": {
+    "cat-select": [
+      "cat-skeleton"
+    ]
+  },
+  "props": [
+    {
+      "name": "effect",
+      "type": "\"plain\" | \"pulse\" | \"sheen\"",
+      "complexType": {
+        "original": "'plain' | 'sheen' | 'pulse'",
+        "resolved": "\"plain\" | \"pulse\" | \"sheen\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "effect",
+      "reflectToAttr": false,
+      "docs": "The animation style of the skeleton.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'sheen'"
+        }
+      ],
+      "default": "'sheen'",
+      "values": [
+        {
+          "value": "plain",
+          "type": "string"
+        },
+        {
+          "value": "pulse",
+          "type": "string"
+        },
+        {
+          "value": "sheen",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "lines",
+      "type": "number | undefined",
+      "complexType": {
+        "original": "number",
+        "resolved": "number | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "lines",
+      "reflectToAttr": false,
+      "docs": "The number of text lines to be rendered for \"head\" and \"body\" variants.\nDefaults to 1 for \"head\" and 3 for \"body\". Will be ignored for other\nvariants.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "size",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+      "complexType": {
+        "original": "'xs' | 's' | 'm' | 'l' | 'xl'",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "size",
+      "reflectToAttr": false,
+      "docs": "The size of the skeleton. If the variant is set to \"head\", the size values\n\"xs\" to \"xl\" translate to the head levels `h1` to `h5`.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'m'"
+        }
+      ],
+      "default": "'m'",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "variant",
+      "type": "\"body\" | \"circle\" | \"head\" | \"rectangle\" | \"square\"",
+      "complexType": {
+        "original": "'rectangle' | 'square' | 'circle' | 'head' | 'body'",
+        "resolved": "\"body\" | \"circle\" | \"head\" | \"rectangle\" | \"square\"",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "variant",
+      "reflectToAttr": false,
+      "docs": "The rendering style of the skeleton.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "'rectangle'"
+        }
+      ],
+      "default": "'rectangle'",
+      "values": [
+        {
+          "value": "body",
+          "type": "string"
+        },
+        {
+          "value": "circle",
+          "type": "string"
+        },
+        {
+          "value": "head",
+          "type": "string"
+        },
+        {
+          "value": "rectangle",
+          "type": "string"
+        },
+        {
+          "value": "square",
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [],
+  "styles": [
+    {
+      "name": "--background",
+      "annotation": "prop",
+      "docs": "The background color of the skeleton."
+    },
+    {
+      "name": "--highlight",
+      "annotation": "prop",
+      "docs": "The highlight color of the skeleton."
+    },
+    {
+      "name": "--speed",
+      "annotation": "prop",
+      "docs": "The animation speed."
+    }
+  ],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

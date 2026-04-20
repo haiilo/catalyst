@@ -1,0 +1,128 @@
+---
+title: Color
+description: Background color, text color, and link style utilities
+status: ready
+---
+
+Color utilities provide classes for applying theme colors to backgrounds, text, and links. All colors are derived from design tokens to ensure consistency.
+
+## Background Colors
+
+Background color utilities set the background and appropriate text color for contrast.
+
+### Theme Backgrounds
+
+| Class | Description |
+|-------|-------------|
+| `cat-bg-primary` | Primary theme background |
+| `cat-bg-secondary` | Secondary theme background |
+| `cat-bg-success` | Success/positive background |
+| `cat-bg-danger` | Danger/error background |
+| `cat-bg-warning` | Warning background |
+| `cat-bg-info` | Info background |
+| `cat-bg-muted` | Muted/subtle background |
+
+### Hover Variants
+
+Add hover effects to backgrounds with `-hover` suffix:
+
+```html
+<div class="cat-bg-primary-hover">
+  Hover to see background change
+</div>
+```
+
+## Text Colors
+
+Text color utilities change the color of text content.
+
+### Theme Text Colors
+
+| Class | Description |
+|-------|-------------|
+| `cat-text-primary` | Primary theme text |
+| `cat-text-secondary` | Secondary theme text |
+| `cat-text-success` | Success text |
+| `cat-text-danger` | Danger text |
+| `cat-text-warning` | Warning text |
+| `cat-text-info` | Info text |
+| `cat-text-muted` | Muted/subtle text |
+| `cat-text-active` | Active/highlighted text |
+| `cat-text-reset` | Reset to inherited color |
+
+### Hover Variants
+
+Add hover effects to text with `-hover` suffix:
+
+```html
+<span class="cat-text-primary-hover">
+  Hover to see text color change
+</span>
+```
+
+## Link Styles
+
+Link utilities style text as interactive links with hover states.
+
+| Class | Description |
+|-------|-------------|
+| `cat-link-primary` | Primary link style |
+| `cat-link-secondary` | Secondary link style |
+| `cat-link-success` | Success link style |
+| `cat-link-danger` | Danger link style |
+| `cat-link-warning` | Warning link style |
+| `cat-link-info` | Info link style |
+| `cat-link-reset` | Reset link styles |
+
+Link classes can also be applied to `<button>` elements to style them as links:
+
+```html
+<button class="cat-link-primary">
+  Button styled as link
+</button>
+```
+
+## Examples
+
+### Alert with Theme Background
+
+```html
+<div class="cat-bg-danger cat-p-m cat-radius-m">
+  <strong>Error:</strong> Something went wrong.
+</div>
+```
+
+### Status Indicators
+
+```html
+<span class="cat-text-success">Online</span>
+<span class="cat-text-warning">Away</span>
+<span class="cat-text-danger">Offline</span>
+```
+
+### Interactive Card
+
+```html
+<div class="cat-bg-primary-hover cat-p-l cat-radius-m cat-border">
+  Hover over this card
+</div>
+```
+
+### Navigation Links
+
+```html
+<nav>
+  <a href="#" class="cat-link-primary">Home</a>
+  <a href="#" class="cat-link-secondary">About</a>
+  <a href="#" class="cat-link-secondary">Contact</a>
+</nav>
+```
+
+## Deprecated Classes
+
+The following classes are deprecated and will be removed in a future version:
+
+| Deprecated | Use Instead |
+|------------|-------------|
+| `cat-active` | `cat-text-active` |
+| `cat-muted` | `cat-text-muted` |

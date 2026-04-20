@@ -1,0 +1,62 @@
+---
+title: Pagination
+status: not started
+---
+
+A navigation component to switch between different pages of paged chunks of
+data such as a table. Pagination is built with list HTML elements and a
+wrapping `<nav>` element to identify it as a navigation section to screen
+readers and other assistive technologies.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-pagination page="1" page-count="10"></cat-pagination>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Page Size
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-pagination 
+  page="1" 
+  page-count="10" 
+  page-size="25"
+  page-size-options="[10, 25, 50, 100]"
+></cat-pagination>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- The current page is correctly highlighted using `aria-current`
+- Navigation is wrapped in a `<nav>` element for assistive technologies
+- All interactive elements are keyboard accessible
+
+## API Reference
+
+<include cwd>generated-api/pagination.md</include>

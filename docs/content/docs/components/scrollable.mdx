@@ -1,0 +1,63 @@
+---
+title: Scrollable
+status: not started
+---
+
+An element to display scrollable content with custom scroll indicators.
+
+## Examples
+
+<LivePreview
+  previewHeight={250}
+  files={{
+    "index.html": {
+      code: `<cat-scrollable style="height: 200px;">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+</cat-scrollable>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Horizontal Scrolling
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-scrollable horizontal style="width: 300px;">
+  <div style="display: flex; gap: 1rem; padding: 1rem;">
+    <cat-button>Item 1</cat-button>
+    <cat-button>Item 2</cat-button>
+    <cat-button>Item 3</cat-button>
+    <cat-button>Item 4</cat-button>
+    <cat-button>Item 5</cat-button>
+  </div>
+</cat-scrollable>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## API Reference
+
+<include cwd>generated-api/scrollable.md</include>

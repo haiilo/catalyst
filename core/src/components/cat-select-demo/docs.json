@@ -1,0 +1,50 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select-demo",
+  "filePath": "src/components/cat-select-demo/cat-select-demo.tsx",
+  "fileName": "cat-select-demo.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select-demo/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-select-demo/usage",
+  "tag": "cat-select-demo",
+  "readme": "# cat-select-remote-test\n\n\n",
+  "overview": "",
+  "usage": {},
+  "docs": "",
+  "docsTags": [],
+  "encapsulation": "none",
+  "dependents": [],
+  "dependencies": [
+    "cat-select",
+    "cat-dropdown",
+    "cat-button"
+  ],
+  "dependencyGraph": {
+    "cat-select-demo": [
+      "cat-select",
+      "cat-dropdown",
+      "cat-button"
+    ],
+    "cat-select": [
+      "cat-avatar",
+      "cat-button",
+      "cat-spinner",
+      "cat-icon",
+      "cat-scrollable",
+      "cat-skeleton",
+      "cat-checkbox"
+    ],
+    "cat-avatar": [
+      "cat-icon"
+    ],
+    "cat-button": [
+      "cat-icon",
+      "cat-spinner"
+    ]
+  },
+  "props": [],
+  "methods": [],
+  "events": [],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

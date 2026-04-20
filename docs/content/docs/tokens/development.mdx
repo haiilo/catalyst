@@ -1,0 +1,75 @@
+---
+title: Development
+description: How to use design tokens in your projects
+---
+
+This guide explains how to use Catalyst design tokens in your development workflow.
+
+## Installation
+
+The tokens are included as part of the Catalyst package. If you're using Catalyst components, the tokens are already available.
+
+```bash
+npm install @haiilo/catalyst
+```
+
+## CSS Custom Properties
+
+All tokens are exposed as CSS custom properties with the `--cat-` prefix. Import the CSS file to use them:
+
+```css
+@import '@haiilo/catalyst/dist/catalyst/catalyst.css';
+```
+
+Then use them in your styles:
+
+```css
+.card {
+  background: var(--cat-bg);
+  border: 1px solid var(--cat-border-color-default);
+  border-radius: var(--cat-border-radius-m);
+  padding: var(--cat-spacing-m);
+}
+
+.card-title {
+  color: var(--cat-font-color-base);
+  font-weight: var(--cat-font-weight-head);
+}
+```
+
+## SCSS Variables
+
+If you're using SCSS, you can import the token variables:
+
+```scss
+@import '@haiilo/catalyst-tokens/dist/scss/variables';
+
+.card {
+  background: $cat-bg;
+  padding: $cat-spacing-m;
+}
+```
+
+## JavaScript/TypeScript
+
+For JavaScript or TypeScript projects, you can import token values directly:
+
+```typescript
+import { color, size, font } from '@haiilo/catalyst-tokens';
+
+const styles = {
+  backgroundColor: color.ui.background.surface,
+  padding: size.spacing.m,
+};
+```
+
+## Theming
+
+Tokens support theming through CSS custom property overrides. Override the token values at the root level to create custom themes:
+
+```css
+:root {
+  --cat-primary-bg: #your-brand-color;
+  --cat-font-family-base: 'Your Font', sans-serif;
+}
+```

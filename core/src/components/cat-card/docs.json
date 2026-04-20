@@ -1,0 +1,44 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-card",
+  "filePath": "src/components/cat-card/cat-card.tsx",
+  "fileName": "cat-card.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-card/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-card/usage",
+  "tag": "cat-card",
+  "readme": "# cat-card\n\n\n",
+  "overview": "Cards are surfaces that display content and actions on a single topic. They\nshould be easy to scan for relevant and actionable information.",
+  "usage": {},
+  "docs": "Cards are surfaces that display content and actions on a single topic. They\nshould be easy to scan for relevant and actionable information.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [],
+  "methods": [],
+  "events": [
+    {
+      "event": "catLoad",
+      "detail": "FocusEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "FocusEvent",
+        "resolved": "FocusEvent",
+        "references": {
+          "FocusEvent": {
+            "location": "global",
+            "id": "global::FocusEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when the card and all the children are fully loaded.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": []
+}

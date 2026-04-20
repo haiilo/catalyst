@@ -1,0 +1,83 @@
+---
+title: Checkbox
+status: not started
+---
+
+Checkboxes are used to let a user choose one or more options from a limited
+number of options.
+
+## Examples
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-checkbox label="Accept terms and conditions"></cat-checkbox>
+<cat-checkbox label="Subscribe to newsletter" checked></cat-checkbox>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## States
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-checkbox label="Unchecked"></cat-checkbox>
+<cat-checkbox label="Checked" checked></cat-checkbox>
+<cat-checkbox label="Indeterminate" indeterminate></cat-checkbox>
+<cat-checkbox label="Disabled" disabled></cat-checkbox>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## With Hint
+
+Use the `hint` attribute to provide additional context.
+
+<LivePreview
+  files={{
+    "index.html": {
+      code: `<cat-checkbox 
+  label="Enable notifications" 
+  hint="You will receive email notifications for important updates."
+></cat-checkbox>`
+    },
+    "styles.css": {
+      code: `html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1rem;
+}`
+    }
+  }}
+/>
+
+## Accessibility
+
+- Always provide a label for the checkbox
+- Use the `required` attribute when the field is mandatory
+- Group related checkboxes logically
+
+## API Reference
+
+<include cwd>generated-api/checkbox.md</include>

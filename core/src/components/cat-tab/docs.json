@@ -1,0 +1,414 @@
+{
+  "dirPath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tab",
+  "filePath": "src/components/cat-tab/cat-tab.tsx",
+  "fileName": "cat-tab.tsx",
+  "readmePath": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tab/readme.md",
+  "usagesDir": "/Users/marcus/Haiilo/catalyst/core/src/components/cat-tab/usage",
+  "tag": "cat-tab",
+  "readme": "# cat-tab\n\n\n",
+  "overview": "A single tab inside a tabs component.",
+  "usage": {},
+  "docs": "A single tab inside a tabs component.",
+  "docsTags": [],
+  "encapsulation": "shadow",
+  "dependents": [],
+  "dependencies": [],
+  "dependencyGraph": {},
+  "props": [
+    {
+      "name": "deactivated",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "deactivated",
+      "reflectToAttr": true,
+      "docs": "Specifies that the tab should be deactivated.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "error",
+      "reflectToAttr": true,
+      "docs": "Specifies that the tab content pane contains an error. This will color\nthe tab in an error state and also switch to an error icon if an icon\nis specified.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "icon",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon",
+      "reflectToAttr": true,
+      "docs": "The name of an icon to be displayed in the tab.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+      "complexType": {
+        "original": "boolean | Breakpoint",
+        "resolved": "\"l\" | \"m\" | \"s\" | \"xl\" | \"xs\" | boolean",
+        "references": {
+          "Breakpoint": {
+            "location": "import",
+            "path": "../../utils/breakpoints",
+            "id": "src/utils/breakpoints.ts::Breakpoint"
+          }
+        }
+      },
+      "mutable": false,
+      "attr": "icon-only",
+      "reflectToAttr": true,
+      "docs": "Hide the actual button content and only display the tab.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "value": "l",
+          "type": "string"
+        },
+        {
+          "value": "m",
+          "type": "string"
+        },
+        {
+          "value": "s",
+          "type": "string"
+        },
+        {
+          "value": "xl",
+          "type": "string"
+        },
+        {
+          "value": "xs",
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "iconRight",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "icon-right",
+      "reflectToAttr": true,
+      "docs": "Display the icon on the right.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "label",
+      "reflectToAttr": true,
+      "docs": "The label of the tab.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "''"
+        }
+      ],
+      "default": "''",
+      "values": [
+        {
+          "type": "string"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "nativeAttributes",
+      "type": "undefined | { [key: string]: string; }",
+      "complexType": {
+        "original": "{ [key: string]: string }",
+        "resolved": "undefined | { [key: string]: string; }",
+        "references": {}
+      },
+      "mutable": false,
+      "reflectToAttr": false,
+      "docs": "Attributes that will be added to the native HTML button element",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "undefined"
+        },
+        {
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "noActive",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "no-active",
+      "reflectToAttr": true,
+      "docs": "Specifies that the tab does not have an active state and thus cannot be\nactivated. This does not mean, that the tab is deactivated. The tab can\nstill be clicked and emit the `catClick` event. This is helpful if a tab\nshould only trigger a click action (such as opening a modal).",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "sticky",
+      "type": "boolean",
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "sticky",
+      "reflectToAttr": true,
+      "docs": "Specifies that the tab is always visible in adaptive mode.\nOnly the first sticky tab will be taken into account.\nSticky has advantage on activeTabAlwaysVisible if there is no space to show both.",
+      "docsTags": [
+        {
+          "name": "default",
+          "text": "false"
+        }
+      ],
+      "default": "false",
+      "values": [
+        {
+          "type": "boolean"
+        }
+      ],
+      "optional": false,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "testId",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "test-id",
+      "reflectToAttr": false,
+      "docs": "A unique identifier for the underlying native element that is used for\ntesting purposes. The attribute is added as `data-test` attribute and acts\nas a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "url",
+      "type": "string | undefined",
+      "complexType": {
+        "original": "string",
+        "resolved": "string | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url",
+      "reflectToAttr": true,
+      "docs": "A destination to link to, rendered in the href attribute of a link.",
+      "docsTags": [],
+      "values": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    },
+    {
+      "name": "urlTarget",
+      "type": "\"_blank\" | \"_self\" | undefined",
+      "complexType": {
+        "original": "'_blank' | '_self'",
+        "resolved": "\"_blank\" | \"_self\" | undefined",
+        "references": {}
+      },
+      "mutable": false,
+      "attr": "url-target",
+      "reflectToAttr": true,
+      "docs": "Specifies where to open the linked document.",
+      "docsTags": [],
+      "values": [
+        {
+          "value": "_blank",
+          "type": "string"
+        },
+        {
+          "value": "_self",
+          "type": "string"
+        },
+        {
+          "type": "undefined"
+        }
+      ],
+      "optional": true,
+      "required": false,
+      "getter": false,
+      "setter": false
+    }
+  ],
+  "methods": [],
+  "events": [
+    {
+      "event": "catClick",
+      "detail": "MouseEvent",
+      "bubbles": true,
+      "complexType": {
+        "original": "MouseEvent",
+        "resolved": "MouseEvent",
+        "references": {
+          "MouseEvent": {
+            "location": "global",
+            "id": "global::MouseEvent"
+          }
+        }
+      },
+      "cancelable": true,
+      "composed": true,
+      "docs": "Emitted when tab is clicked.",
+      "docsTags": []
+    }
+  ],
+  "styles": [],
+  "slots": [],
+  "parts": [],
+  "listeners": [
+    {
+      "event": "click",
+      "capture": false,
+      "passive": false
+    }
+  ]
+}

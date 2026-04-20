@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "aspect-ratio",
+    "border",
+    "color",
+    "display",
+    "elevation",
+    "layout",
+    "media",
+    "spacing",
+    "typography",
+    "visibility"
+  ]
+}
