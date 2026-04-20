@@ -50,7 +50,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.13",
     "@haiilo/catalyst-tokens": "workspace:*",
-    "@stencil/core": "4.42.0",
+    "@stencil/core": "4.43.3",
     "autosize": "6.0.1",
     "autosize-input": "1.0.2",
     "cleave-zen": "0.0.17",
@@ -68,7 +68,7 @@
     "@stencil/playwright": "0.2.3",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.2.3",
-    "@stencil/vitest": "1.11.3",
+    "@stencil/vitest": "1.11.4",
     "@types/autosize": "^4.0.3",
     "@types/node": "^20.14.2",
     "@types/toastify-js": "^1.12.3",
