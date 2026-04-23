@@ -33,8 +33,6 @@ vi.mock('../../utils/first-tabbable', () => ({
   default: (element: HTMLSlotElement) => element
 }));
 
-
-
 describe('cat-menu', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -113,14 +111,7 @@ describe('cat-menu', () => {
   describe('dropdown integration', () => {
     it('should render dropdown with correct props', async () => {
       const { root } = await render(
-        <cat-menu
-          placement="top-end"
-          justify
-          no-auto-close
-          no-resize
-          overflow
-          delayed-trigger-init
-        />
+        <cat-menu placement="top-end" justify no-auto-close no-resize overflow delayed-trigger-init />
       );
 
       const dropdown = root.shadowRoot?.querySelector('cat-dropdown') as HTMLCatDropdownElement;

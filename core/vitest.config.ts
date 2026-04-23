@@ -6,16 +6,14 @@ export default defineVitestConfig({
   test: {
     projects: [
       {
-        plugins: [
-          stencilVitestPlugin(),
-        ],
+        plugins: [stencilVitestPlugin()],
         // esbuild: { target: 'esnext' },
         test: {
           name: 'plugin',
           environment: 'stencil',
           include: ['src/**/*.spec.{ts,tsx}'],
-          setupFiles: ['./vitest-setup-plugin.ts'],
-        },
+          setupFiles: ['./vitest-setup-plugin.ts']
+        }
       }
     ]
   }

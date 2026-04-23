@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 
 vi.mock('../cat-i18n/cat-i18n-registry');
 
-import  './cat-datepicker';
+import './cat-datepicker';
 
 describe('cat-datepicker', () => {
   it('renders', async () => {

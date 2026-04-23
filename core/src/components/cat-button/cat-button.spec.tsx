@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@stencil/vitest';
 import { h } from '@stencil/core';
-import'./cat-button';
+import './cat-button';
 
 describe('cat-button', () => {
   it('renders', async () => {

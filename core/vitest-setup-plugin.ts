@@ -11,6 +11,8 @@ if (!globalThis.MutationObserver) {
     constructor(_callback: MutationCallback) {}
     observe() {}
     disconnect() {}
-    takeRecords(): MutationRecord[] { return []; }
+    takeRecords(): MutationRecord[] {
+      return [];
+    }
   };
 }

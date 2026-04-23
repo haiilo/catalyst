@@ -30,7 +30,6 @@ vi.mock('focus-trap', () => ({
 
 import './cat-dropdown';
 
-
 describe('cat-dropdown', () => {
   beforeEach(() => {
     vi.clearAllMocks();

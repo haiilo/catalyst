@@ -11,15 +11,17 @@ vi.mock('autosize-input', () => ({
   default: vi.fn()
 }));
 
-const mockAutoUpdateCleanup =  vi.fn();
+const mockAutoUpdateCleanup = vi.fn();
 const mockAutoUpdate = vi.hoisted(() => vi.fn(() => mockAutoUpdateCleanup));
-const mockComputePosition = vi.hoisted(() => vi.fn(() =>
+const mockComputePosition = vi.hoisted(() =>
+  vi.fn(() =>
     Promise.resolve({
       x: 0,
       y: 0,
       placement: 'bottom-start'
     })
-));
+  )
+);
 
 vi.mock('@floating-ui/dom', () => ({
   autoUpdate: mockAutoUpdate,
