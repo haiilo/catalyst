@@ -1,8 +1,25 @@
-import { vi } from 'vitest';
-import { render, h, describe, it, expect, beforeEach } from '@stencil/vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-vi.mock('../cat-i18n/cat-i18n-registry');
-vi.mock('autosize-input', () => vi.fn());
+vi.mock('../cat-i18n/cat-i18n-registry', () => ({
+  catI18nRegistry: {
+    t: vi.fn(() => {})
+  }
+}));
+vi.mock('autosize-input', () => ({
+  default: vi.fn()
+}));
+
+const mockAutoUpdateCleanup =  vi.fn();
+const mockAutoUpdate = vi.hoisted(() => vi.fn(() => mockAutoUpdateCleanup));
+const mockComputePosition = vi.hoisted(() => vi.fn(() =>
+    Promise.resolve({
+      x: 0,
+      y: 0,
+      placement: 'bottom-start'
+    })
+));
 
 vi.mock('@floating-ui/dom', () => ({
   autoUpdate: mockAutoUpdate,
@@ -10,16 +27,6 @@ vi.mock('@floating-ui/dom', () => ({
   flip: vi.fn(() => ({})),
   offset: vi.fn(() => ({}))
 }));
-
-const mockAutoUpdateCleanup = vi.fn();
-const mockAutoUpdate = vi.fn(() => mockAutoUpdateCleanup);
-const mockComputePosition = vi.fn(() =>
-  Promise.resolve({
-    x: 0,
-    y: 0,
-    placement: 'bottom-start'
-  })
-);
 
 import './cat-select';
 import { stringArrayConnector } from './connectors';
@@ -45,7 +52,6 @@ describe('cat-select', () => {
 
       root.addEventListener('catChange', catChangeSpy);
 
-      await select.componentOnReady();
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
       await waitForChanges();
 
@@ -63,7 +69,6 @@ describe('cat-select', () => {
       const select = root as HTMLCatSelectElement;
       const catChangeSpy = vi.fn();
 
-      await select.componentOnReady();
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
       await waitForChanges();
 
@@ -81,7 +86,6 @@ describe('cat-select', () => {
       const { root, waitForChanges } = await render(<cat-select label="Label" />);
 
       const select = root as HTMLCatSelectElement;
-      await select.componentOnReady();
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
       await waitForChanges();
 

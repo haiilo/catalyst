@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render, h } from '@stencil/vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 import './cat-alert';
 
 describe('cat-alert', () => {

@@ -1,5 +1,6 @@
-import { vi } from 'vitest';
-import { render, h, describe, it, expect, beforeEach } from '@stencil/vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
 vi.mock('../../utils/first-tabbable', () => ({
   default: (element: HTMLSlotElement) => element
@@ -43,8 +44,8 @@ describe('cat-dropdown', () => {
       </cat-dropdown>
     );
     await expect(root).toEqualLightHtml(`
-     <cat-dropdown class="hydrated">
-       <button slot="trigger" aria-haspopup="true" aria-expanded="false" aria-controls="cat-dropdown-0"></button>
+     <cat-dropdown id="0" class="hydrated">
+       <button slot="trigger"></button>
        <nav slot="content"></nav>
      </cat-dropdown>
     `);
@@ -85,7 +86,6 @@ describe('cat-dropdown', () => {
       );
 
       const dropdown = root as HTMLCatDropdownElement;
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise(resolve => setTimeout(resolve, 150));
@@ -115,7 +115,6 @@ describe('cat-dropdown', () => {
       );
 
       const dropdown = root as HTMLCatDropdownElement;
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -140,7 +139,6 @@ describe('cat-dropdown', () => {
       );
 
       const dropdown = root as HTMLCatDropdownElement;
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -167,7 +165,6 @@ describe('cat-dropdown', () => {
 
       const dropdown = root as HTMLCatDropdownElement;
       dropdown.focusTrap = false;
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -193,7 +190,6 @@ describe('cat-dropdown', () => {
       const dropdown = root as HTMLCatDropdownElement;
       const content = root.shadowRoot?.querySelector('.content') as HTMLElement;
 
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -217,7 +213,6 @@ describe('cat-dropdown', () => {
       );
 
       const dropdown = root as HTMLCatDropdownElement;
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -245,7 +240,6 @@ describe('cat-dropdown', () => {
       const catOpenSpy = vi.fn();
       root.addEventListener('catOpen', catOpenSpy);
 
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -264,7 +258,6 @@ describe('cat-dropdown', () => {
 
       const dropdown = root as HTMLCatDropdownElement;
 
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -292,7 +285,6 @@ describe('cat-dropdown', () => {
       const trigger = root.querySelector('[slot="trigger"]') as HTMLButtonElement;
       const focusSpy = vi.spyOn(trigger, 'focus');
 
-      await dropdown.componentOnReady();
       await dropdown.open();
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
@@ -318,7 +310,6 @@ describe('cat-dropdown', () => {
       const trigger = root.querySelector('[slot="trigger"]') as HTMLButtonElement;
       const focusSpy = vi.spyOn(trigger, 'focus');
 
-      await dropdown.componentOnReady();
       await dropdown.open(true);
       await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));

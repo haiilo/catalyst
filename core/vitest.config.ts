@@ -16,7 +16,7 @@ export default defineVitestConfig({
           include: ['src/**/*.spec.{ts,tsx}'],
           setupFiles: ['./vitest-setup-plugin.ts'],
         },
-      },
+      }
     ]
   }
 });

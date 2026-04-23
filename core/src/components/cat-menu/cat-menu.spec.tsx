@@ -1,5 +1,6 @@
-import { vi } from 'vitest';
-import { render, h, describe, it, expect, beforeEach } from '@stencil/vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
 vi.mock('../cat-icon/cat-icon-registry');
 

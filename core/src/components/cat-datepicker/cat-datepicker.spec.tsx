@@ -1,5 +1,7 @@
-import { vi } from 'vitest';
-import { render, h, describe, it, expect } from '@stencil/vitest';
+import { vi, describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
+
 vi.mock('../cat-i18n/cat-i18n-registry');
 
 import  './cat-datepicker';

@@ -1,7 +1,12 @@
-import { vi } from 'vitest';
-import { render, h, describe, it, expect } from '@stencil/vitest';
+import { describe, it, expect, vi } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-vi.mock('../cat-i18n/cat-i18n-registry.ts', () => ({}));
+vi.mock('../cat-i18n/cat-i18n-registry.ts', () => ({
+  catI18nRegistry: {
+    t: vi.fn(() => {})
+  }
+}));
 
 import './cat-input';
 

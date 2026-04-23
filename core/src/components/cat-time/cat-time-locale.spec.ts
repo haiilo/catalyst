@@ -1,4 +1,4 @@
-import { describe, it, expect } from '@stencil/vitest';
+import { describe, it, expect } from 'vitest';
 import { getHour12 } from './cat-time-locale';
 
 describe('cat-time locale', () => {

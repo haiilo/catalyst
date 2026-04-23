@@ -1,10 +1,13 @@
-import { describe, it, expect } from '@stencil/vitest';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
 import { CatFormHint } from './cat-form-hint';
+import { h } from '@stencil/core';
 
 describe('CatFormHint', () => {
   it('renders', async () => {
-    // CatFormHint is a functional component, not a web component.
-    // Test by rendering a host that uses it.
-    expect(CatFormHint).toBeDefined();
+    const { root } = await render(<CatFormHint id="host-id"/>);
+    await expect(root).toEqualLightHtml(`
+      <div aria-live="polite" id="host-id-hint" class="hint-section"></div>
+    `);
   });
 });

@@ -68,7 +68,7 @@
     "@stencil/playwright": "0.2.3",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.2.3",
-    "@stencil/vitest": "1.11.4",
+    "@stencil/vitest": "1.11.6",
     "@types/autosize": "^4.0.3",
     "@types/node": "^20.14.2",
     "@types/toastify-js": "^1.12.3",

@@ -1,4 +1,6 @@
-import { render, h, describe, it, expect } from '@stencil/vitest';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 import './cat-radio-group';
 
 describe('cat-radio-group', () => {
