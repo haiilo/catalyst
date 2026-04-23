@@ -23,7 +23,7 @@ vi.mock('focus-trap', () => ({
   createFocusTrap: vi.fn(() => ({
     activate: vi.fn(),
     deactivate: vi.fn(),
-    updateContainerElements: vi.fn(function (this: any) {
+    updateContainerElements: vi.fn(() => {
       return this;
     })
   }))
@@ -83,10 +83,7 @@ describe('cat-menu', () => {
     });
 
     it('should use triggerA11yLabel when provided', async () => {
-      const { root, waitForChanges } = await render(<cat-menu trigger-label="Options" />);
-
-      const menu = root as HTMLCatMenuElement;
-      (menu as any).triggerA11yLabel = 'Open options menu';
+      const { root, waitForChanges } = await render(<cat-menu trigger-label="Options" triggerA11yLabel="Open options menu" />);
       await waitForChanges();
 
       const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;

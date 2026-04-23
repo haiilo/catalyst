@@ -7,7 +7,7 @@ vi.mock('../../utils/first-tabbable', () => ({
 }));
 
 vi.mock('@floating-ui/dom', () => ({
-  autoUpdate: vi.fn((_reference: any, _floating: any, update: any) => {
+  autoUpdate: vi.fn((_reference, _floating, update) => {
     update();
     return vi.fn();
   }),
@@ -22,7 +22,7 @@ vi.mock('focus-trap', () => ({
   createFocusTrap: vi.fn(() => ({
     activate: vi.fn(),
     deactivate: vi.fn(),
-    updateContainerElements: vi.fn(function (this: any) {
+    updateContainerElements: vi.fn(() => {
       return this;
     })
   }))
