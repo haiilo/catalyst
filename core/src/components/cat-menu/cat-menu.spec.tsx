@@ -83,7 +83,9 @@ describe('cat-menu', () => {
     });
 
     it('should use triggerA11yLabel when provided', async () => {
-      const { root, waitForChanges } = await render(<cat-menu trigger-label="Options" triggerA11yLabel="Open options menu" />);
+      const { root, waitForChanges } = await render(
+        <cat-menu trigger-label="Options" triggerA11yLabel="Open options menu" />
+      );
       await waitForChanges();
 
       const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
