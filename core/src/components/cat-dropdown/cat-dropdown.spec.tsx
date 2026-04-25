@@ -7,10 +7,12 @@ vi.mock('../../utils/first-tabbable', () => ({
 }));
 
 const mockAutoUpdateCleanup = vi.fn();
-const mockAutoUpdate = vi.hoisted(() => vi.fn((_reference, _floating, update) => {
-  update();
-  return mockAutoUpdateCleanup;
-}));
+const mockAutoUpdate = vi.hoisted(() =>
+  vi.fn((_reference, _floating, update) => {
+    update();
+    return mockAutoUpdateCleanup;
+  })
+);
 const mockFlip = vi.hoisted(() => vi.fn(() => ({})));
 const mockOffset = vi.hoisted(() => vi.fn(() => ({})));
 const mockShift = vi.hoisted(() => vi.fn(() => ({})));
@@ -30,7 +32,7 @@ const mockTrapActivate = vi.fn();
 const mockTrap = {
   activate: mockTrapActivate,
   deactivate: mockTrapDeactivate,
-  updateContainerElements: vi.fn(() =>  {
+  updateContainerElements: vi.fn(() => {
     return this;
   })
 };
@@ -76,10 +78,10 @@ describe('cat-dropdown', () => {
 
     it('should set up autoUpdate when dropdown is opened', async () => {
       const { root, instance } = await render(
-          <cat-dropdown>
-            <button slot="trigger" data-trigger></button>
-            <nav slot="content"></nav>
-          </cat-dropdown>
+        <cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>
       );
 
       const triggerElement = root?.querySelector('[slot="trigger"]');
@@ -98,11 +100,11 @@ describe('cat-dropdown', () => {
 
     it('should set up autoUpdate with anchor element when anchor is provided', async () => {
       const { root, instance } = await render(
-          <cat-dropdown>
-            <div slot="anchor" id="test-anchor"></div>
-            <button slot="trigger" data-trigger></button>
-            <nav slot="content"></nav>
-          </cat-dropdown>
+        <cat-dropdown>
+          <div slot="anchor" id="test-anchor"></div>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>
       );
 
       const anchorElement = root?.querySelector('[slot="anchor"]');
@@ -120,10 +122,10 @@ describe('cat-dropdown', () => {
 
     it('should clean up on component disconnect', async () => {
       const { instance, waitForChanges } = await render(
-          <cat-dropdown>
-            <button slot="trigger" data-trigger></button>
-            <nav slot="content"></nav>
-          </cat-dropdown>
+        <cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>
       );
 
       await instance.open();
@@ -172,10 +174,10 @@ describe('cat-dropdown', () => {
   describe('flip middleware', () => {
     it('should call flip middleware with correct arguments', async () => {
       const { waitForChanges, instance } = await render(
-          <cat-dropdown>
-            <button slot="trigger" data-trigger></button>
-            <nav slot="content"></nav>
-          </cat-dropdown>
+        <cat-dropdown>
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>
       );
 
       await instance.open();
@@ -378,10 +380,10 @@ describe('cat-dropdown', () => {
     it('should create focus trap and emit catOpen in onPostActivate when focusTrap is true', async () => {
       // given
       const { root, instance, waitForChanges } = await render(
-          <cat-dropdown focus-trap="true">
-            <button slot="trigger" data-trigger></button>
-            <nav slot="content"></nav>
-          </cat-dropdown>
+        <cat-dropdown focus-trap="true">
+          <button slot="trigger" data-trigger></button>
+          <nav slot="content"></nav>
+        </cat-dropdown>
       );
 
       const catOpenSpy = vi.fn();

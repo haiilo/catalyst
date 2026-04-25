@@ -21,7 +21,9 @@ describe('MediaMatcher', () => {
   });
 
   beforeEach(() => {
-    vi.mocked(Platform).mockImplementation(function (){ return platform; });
+    vi.mocked(Platform).mockImplementation(function () {
+      return platform;
+    });
     platform = { FIREFOX: true } as Platform;
     mediaMatcher = new MediaMatcher();
   });

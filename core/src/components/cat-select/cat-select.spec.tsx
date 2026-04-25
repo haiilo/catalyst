@@ -32,7 +32,7 @@ vi.mock('@floating-ui/dom', () => ({
 
 import './cat-select';
 import { stringArrayConnector } from './connectors';
-import {of, Subject} from "rxjs";
+import { of, Subject } from 'rxjs';
 
 describe('cat-select', () => {
   beforeEach(() => {
@@ -203,11 +203,11 @@ describe('cat-select', () => {
       const connector = {
         resolve: (ids: string[]) => of(items.filter(item => ids.includes(item.id))),
         retrieve: (term: string) =>
-            of({
-              content: items.filter(item => item.label.toLowerCase().includes(term.toLowerCase())),
-              last: true,
-              totalElements: items.length
-            }),
+          of({
+            content: items.filter(item => item.label.toLowerCase().includes(term.toLowerCase())),
+            last: true,
+            totalElements: items.length
+          }),
         render: (item: { label: string }) => {
           renderCallCount++;
           return {
