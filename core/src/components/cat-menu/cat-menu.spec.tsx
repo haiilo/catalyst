@@ -2,6 +2,7 @@ import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { render } from '@stencil/vitest';
 import { h } from '@stencil/core';
 
+// Mock the icon registry to prevent console errors
 vi.mock('../cat-icon/cat-icon-registry');
 
 import './cat-menu';
@@ -10,6 +11,7 @@ import '../cat-button/cat-button';
 import '../cat-menu-item/cat-menu-item';
 import '../cat-icon/cat-icon';
 
+// Mock the floating-ui dependencies used by cat-dropdown
 vi.mock('@floating-ui/dom', () => ({
   autoUpdate: vi.fn(() => vi.fn()),
   computePosition: vi.fn(() => ({})),
@@ -232,11 +234,13 @@ describe('cat-menu', () => {
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
+      // Simulate the second menu item being focused by setting document.activeElement
       Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
+      // Replace doFocus with mocks to track calls
       const firstItemFocusMock = vi.fn();
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
@@ -258,6 +262,7 @@ describe('cat-menu', () => {
       await new Promise(resolve => requestAnimationFrame(resolve));
       await waitForChanges();
 
+      // Neither item should have doFocus called since an item was already focused
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
@@ -274,6 +279,7 @@ describe('cat-menu', () => {
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
+      // Use Object.defineProperty to mock readonly doFocus methods (official Jest workaround)
       const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
@@ -291,6 +297,7 @@ describe('cat-menu', () => {
       await new Promise(resolve => requestAnimationFrame(resolve));
       await waitForChanges();
 
+      // No menu items should have doFocus called when all are disabled
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
@@ -326,8 +333,10 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Call open method
       await menu.open();
 
+      // Verify dropdown.open() was called
       expect(openMock).toHaveBeenCalled();
     });
 
@@ -344,8 +353,10 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Call close method
       await menu.close();
 
+      // Verify dropdown.close() was called
       expect(closeMock).toHaveBeenCalled();
     });
 
@@ -362,8 +373,10 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Call toggle method
       await menu.toggle();
 
+      // Verify dropdown.toggle() was called
       expect(toggleMock).toHaveBeenCalled();
     });
   });
@@ -380,6 +393,7 @@ describe('cat-menu', () => {
 
       const menu = root as HTMLCatMenuElement;
 
+      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
       await waitForChanges();
 
@@ -387,6 +401,7 @@ describe('cat-menu', () => {
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
+      // Mock doFocus methods
       const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
@@ -401,23 +416,28 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Open the menu
       await menu.open();
       await waitForChanges();
 
+      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
       await waitForChanges();
 
+      // Simulate first item being focused
       Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
+      // Press ArrowDown - should focus second item
       const arrowDownEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowDownEvent);
       await waitForChanges();
 
       expect(secondItemFocusMock).toHaveBeenCalled();
 
+      // Clear mocks and simulate second item being focused
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
       Object.defineProperty(document, 'activeElement', {
@@ -425,12 +445,14 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Press ArrowUp - should focus first item again
       const arrowUpEvent = new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowUpEvent);
       await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
+      // Clear mocks for next test
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
       Object.defineProperty(document, 'activeElement', {
@@ -438,10 +460,12 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // ArrowRight should not change focus in vertical mode
       const arrowRightEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowRightEvent);
       await waitForChanges();
 
+      // Neither item should have doFocus called
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
@@ -457,6 +481,7 @@ describe('cat-menu', () => {
 
       const menu = root as HTMLCatMenuElement;
 
+      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
       await waitForChanges();
 
@@ -464,6 +489,7 @@ describe('cat-menu', () => {
       const firstItem = menuItems?.[0] as HTMLCatMenuItemElement;
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
 
+      // Mock doFocus methods
       const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
@@ -478,23 +504,28 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Open the menu
       await menu.open();
       await waitForChanges();
 
+      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
       await waitForChanges();
 
+      // Simulate first item being focused
       Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
+      // Press ArrowRight - should focus second item
       const arrowRightEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowRightEvent);
       await waitForChanges();
 
       expect(secondItemFocusMock).toHaveBeenCalled();
 
+      // Clear mocks and simulate second item being focused
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
       Object.defineProperty(document, 'activeElement', {
@@ -502,12 +533,14 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Press ArrowLeft - should focus first item again
       const arrowLeftEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowLeftEvent);
       await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
+      // Clear mocks for next test
       firstItemFocusMock.mockClear();
       secondItemFocusMock.mockClear();
       Object.defineProperty(document, 'activeElement', {
@@ -515,10 +548,12 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // ArrowDown should not change focus in horizontal mode
       const arrowDownEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
       root.dispatchEvent(arrowDownEvent);
       await waitForChanges();
 
+      // Neither item should have doFocus called
       expect(firstItemFocusMock).not.toHaveBeenCalled();
       expect(secondItemFocusMock).not.toHaveBeenCalled();
     });
@@ -534,6 +569,7 @@ describe('cat-menu', () => {
 
       const menu = root as HTMLCatMenuElement;
 
+      // Wait for MutationObserver to populate catMenuItems
       await new Promise(resolve => setTimeout(resolve, 100));
       await waitForChanges();
 
@@ -542,6 +578,7 @@ describe('cat-menu', () => {
       const secondItem = menuItems?.[1] as HTMLCatMenuItemElement;
       const thirdItem = menuItems?.[2] as HTMLCatMenuItemElement;
 
+      // Mock doFocus methods
       const firstItemFocusMock = vi.fn().mockResolvedValue(undefined);
       Object.defineProperty(firstItem, 'doFocus', {
         value: firstItemFocusMock,
@@ -556,29 +593,35 @@ describe('cat-menu', () => {
         configurable: true
       });
 
+      // Open the menu
       await menu.open();
       await waitForChanges();
 
+      // Wait for requestAnimationFrame to execute in dropdown.open()
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
       await waitForChanges();
 
+      // Simulate second item being focused
       Object.defineProperty(document, 'activeElement', {
         get: () => secondItem,
         configurable: true
       });
 
+      // Press Home - should focus first item
       const homeEvent = new KeyboardEvent('keydown', { key: 'Home', bubbles: true, cancelable: true });
       root.dispatchEvent(homeEvent);
       await waitForChanges();
 
       expect(firstItemFocusMock).toHaveBeenCalled();
 
+      // Clear mock and simulate first item being focused
       firstItemFocusMock.mockClear();
       Object.defineProperty(document, 'activeElement', {
         get: () => firstItem,
         configurable: true
       });
 
+      // Press End - should focus last item
       const endEvent = new KeyboardEvent('keydown', { key: 'End', bubbles: true, cancelable: true });
       root.dispatchEvent(endEvent);
       await waitForChanges();

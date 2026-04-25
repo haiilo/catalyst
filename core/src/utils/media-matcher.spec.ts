@@ -1,17 +1,15 @@
 import { vi } from 'vitest';
 import { describe, it, expect, beforeEach, beforeAll } from '@stencil/vitest';
 
-vi.mock('./platform', () => {
-  const Platform = vi.fn().mockImplementation(function (this: Record<string, unknown>) {
-    return this;
-  });
-  return { Platform };
-});
+vi.mock('./platform', () => ({ Platform: vi.fn() }));
 
 import { MediaMatcher } from './media-matcher';
 import { Platform } from './platform';
 
 describe('MediaMatcher', () => {
+  let mediaMatcher: MediaMatcher;
+  let platform: Platform;
+
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -23,30 +21,19 @@ describe('MediaMatcher', () => {
   });
 
   beforeEach(() => {
-    vi.mocked(Platform).mockImplementation(function (this: Record<string, unknown>) {
-      return this;
-    } as unknown as new () => Platform);
+    vi.mocked(Platform).mockImplementation(function (){ return platform; });
+    platform = { FIREFOX: true } as Platform;
+    mediaMatcher = new MediaMatcher();
   });
 
   it('correctly returns a MediaQueryList to check for matches', () => {
-    vi.mocked(Platform).mockImplementation(function (this: Record<string, unknown>) {
-      Object.assign(this, { FIREFOX: true });
-      return this;
-    } as unknown as new () => Platform);
-
-    const mediaMatcher = new MediaMatcher();
     expect(mediaMatcher.matchMedia('(min-width: 1px)').matches).toBeTruthy();
   });
 
   it('should add CSS rules for provided queries when the platform is webkit or blink', () => {
     const width = '123456px';
-
-    vi.mocked(Platform).mockImplementation(function (this: Record<string, unknown>) {
-      Object.assign(this, { FIREFOX: false, WEBKIT: true });
-      return this;
-    } as unknown as new () => Platform);
-
-    const mediaMatcher = new MediaMatcher();
+    platform.FIREFOX = false;
+    platform.WEBKIT = true;
 
     expect(getStyleTagByString(width)).toBeFalsy();
     mediaMatcher.matchMedia(`(width: ${width})`);

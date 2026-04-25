@@ -32,6 +32,7 @@ vi.mock('@floating-ui/dom', () => ({
 
 import './cat-select';
 import { stringArrayConnector } from './connectors';
+import {of, Subject} from "rxjs";
 
 describe('cat-select', () => {
   beforeEach(() => {
@@ -60,9 +61,27 @@ describe('cat-select', () => {
       expect(catChangeSpy).not.toHaveBeenCalled();
     });
 
-    it.skip('should emit catChange event when selection state changes from user interaction', async () => {
-      // Cannot test: patchState is a private internal method not exposed on the element proxy.
-      // Only @Method()-decorated methods are accessible; internal class methods are not.
+    it('should emit catChange event when selection state changes from user interaction', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+
+      let eventEmitted = false;
+
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
+
+      root?.addEventListener('catChange', () => {
+        eventEmitted = true;
+      });
+
+      // Directly update selection state (simulating what happens after user interaction)
+      // This mimics the internal flow when user clicks an option
+      instance['patchState']({
+        selection: [{ item: { id: 'option1' }, render: { label: 'option1' } }],
+        tempSelection: []
+      });
+      await waitForChanges();
+
+      expect(eventEmitted).toBe(true);
     });
 
     it('should not emit catChange event when value is changed programmatically', async () => {
@@ -94,19 +113,51 @@ describe('cat-select', () => {
       expect(mockAutoUpdate).not.toHaveBeenCalled();
     });
 
-    it.skip('should set up autoUpdate when dropdown is opened', async () => {
-      // Cannot test: @floating-ui/dom is bundled inline in the dist bundle;
-      // vi.mock('@floating-ui/dom') does not intercept bundled code.
+    it('should set up autoUpdate when dropdown is opened', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
+
+      // Open dropdown by clicking on the trigger element
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      const dropdown = root?.shadowRoot?.querySelector('.select-dropdown');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+      const callArgs = mockAutoUpdate.mock.calls[0] as unknown[];
+      expect(callArgs[0]).toBe(trigger); // First arg should be trigger element
+      expect(callArgs[1]).toBe(dropdown); // Second arg should be dropdown element
     });
 
-    it.skip('should call cleanup function when dropdown is closed', async () => {
-      // Cannot test: @floating-ui/dom is bundled inline in the dist bundle;
-      // vi.mock('@floating-ui/dom') does not intercept bundled code.
+    it('should call cleanup function when dropdown is closed', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
+
+      // Open dropdown by clicking
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+
+      // Close dropdown by clicking again
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      // Verify cleanup function was called
+      expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
     });
 
     it('should not set up autoUpdate if connector is not connected', async () => {
       const { root, waitForChanges } = await render(<cat-select label="Label" />);
 
+      // Don't connect a connector
+
+      // Try to open dropdown without a connector by clicking
       const trigger = root.shadowRoot?.querySelector('.select-wrapper');
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       await waitForChanges();
@@ -114,16 +165,79 @@ describe('cat-select', () => {
       expect(mockAutoUpdate).not.toHaveBeenCalled();
     });
 
-    it.skip('should close and cleanup autoUpdate on blur', async () => {
-      // Cannot test: @floating-ui/dom is bundled inline in the dist bundle;
-      // vi.mock('@floating-ui/dom') does not intercept bundled code.
+    it('should close and cleanup autoUpdate on blur', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
+
+      // Open dropdown by clicking
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
+
+      // Simulate blur event to close dropdown
+      const blurEvent = new FocusEvent('blur');
+      root?.dispatchEvent(blurEvent);
+      await waitForChanges();
+
+      // Should clean up autoUpdate
+      expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('renderOptions$', () => {
-    it.skip('should re-render options when renderOptions$ emits with updated external data', async () => {
-      // Cannot test: search() is a private internal method not exposed on the element proxy.
-      // Only @Method()-decorated methods are accessible; internal class methods are not.
+    it('should re-render options when renderOptions$ emits with updated external data', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+
+      const renderSubject = new Subject<void>();
+
+      let renderCallCount = 0;
+      let useUpdatedDescription = false;
+      const items = [
+        { id: '1', label: 'Option 1', description: 'Description 1' },
+        { id: '2', label: 'Option 2', description: 'Description 2' }
+      ];
+
+      const connector = {
+        resolve: (ids: string[]) => of(items.filter(item => ids.includes(item.id))),
+        retrieve: (term: string) =>
+            of({
+              content: items.filter(item => item.label.toLowerCase().includes(term.toLowerCase())),
+              last: true,
+              totalElements: items.length
+            }),
+        render: (item: { label: string }) => {
+          renderCallCount++;
+          return {
+            label: item.label,
+            description: useUpdatedDescription ? 'Updated description' : 'Original description'
+          };
+        },
+        renderOptions$: renderSubject.asObservable()
+      };
+
+      await instance.connect(connector);
+
+      // Trigger input event to populate options
+      const input = root?.shadowRoot?.querySelector('input');
+      input?.dispatchEvent(new Event('input', { bubbles: true }));
+      await waitForChanges();
+
+      const initialOptions = instance['state'].options;
+      expect(initialOptions[0].render.description).toBe('Original description');
+
+      const initialRenderCount = renderCallCount;
+
+      useUpdatedDescription = true;
+
+      renderSubject.next();
+      await waitForChanges();
+
+      expect(renderCallCount).toBeGreaterThan(initialRenderCount);
+      const updatedOptions = instance['state'].options;
+      expect(updatedOptions[0].render.description).toBe('Updated description');
     });
   });
 });
