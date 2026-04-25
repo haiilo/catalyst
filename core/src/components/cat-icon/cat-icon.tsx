@@ -1,4 +1,5 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { CatIconRequestDetail } from './cat-icon-request';
 import { catIconRegistry as icons } from './cat-icon-registry';
 
 /**
@@ -13,6 +14,10 @@ import { catIconRegistry as icons } from './cat-icon-registry';
   shadow: true
 })
 export class CatIcon {
+  @Element() el!: HTMLElement;
+
+  @State() private resolvedSvg?: string;
+
   /**
    * The name of the icon.
    */
@@ -34,10 +39,49 @@ export class CatIcon {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  componentWillLoad() {
+    this.resolveIcon();
+  }
+
+  @Watch('icon')
+  @Watch('iconSrc')
+  resolveIcon() {
+    if (this.iconSrc || !this.icon) {
+      this.resolvedSvg = undefined;
+      return;
+    }
+
+    let resolved = false;
+
+    const event = new CustomEvent<CatIconRequestDetail>('cat-icon-request', {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        name: this.icon,
+        resolve: (svg: string) => {
+          this.resolvedSvg = svg;
+          resolved = true;
+        }
+      }
+    });
+
+    const notCancelled = this.el.dispatchEvent(event);
+
+    if (notCancelled) {
+      // No cat-icon-regisrty instance in the ancestry — use the global registry directly
+      // (preserves the pre-existing behavior for apps that don't use providers).
+      this.resolvedSvg = icons.getIcon(this.icon);
+    } else if (!resolved) {
+      // A provider took ownership but could not find the icon in any registry.
+      this.resolvedSvg = undefined;
+    }
+  }
+
   render() {
     return (
       <span
-        innerHTML={this.iconSrc || (this.icon ? icons.getIcon(this.icon) : '')}
+        innerHTML={this.iconSrc || this.resolvedSvg || ''}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"

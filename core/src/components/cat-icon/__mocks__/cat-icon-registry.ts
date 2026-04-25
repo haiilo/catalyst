@@ -3,6 +3,18 @@ export class CatIconRegistry {
     return new CatIconRegistry();
   }
 
+  attachTo(_element: Element): () => void {
+    return () => {};
+  }
+
+  static createInstance(): CatIconRegistry {
+    return new CatIconRegistry();
+  }
+
+  hasIcon(_name: string, _setName?: string): boolean {
+    return false;
+  }
+
   getIcon(_name: string, _setName?: string): string | undefined {
     return undefined;
   }

@@ -20,6 +20,7 @@ import eyeOpenOutlined from '@haiilo/catalyst-icons/src/eye-open-outlined.svg';
 import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg';
 import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
 import log from 'loglevel';
+import { CatIconRequestDetail } from './cat-icon-request';
 
 export class CatIconRegistry {
   private static instance: CatIconRegistry;
@@ -30,8 +31,12 @@ export class CatIconRegistry {
   // ignore syncing in backwards compatible manner
   syncIcons: boolean = true;
 
-  private constructor() {
+  private constructor(registerDefaults = true) {
     // hide constructor
+
+    if (!registerDefaults) {
+      return;
+    }
 
     // register default icons that are used in the framework by other components
     this.addIcons(
@@ -89,6 +94,78 @@ export class CatIconRegistry {
       CatIconRegistry.instance = new CatIconRegistry();
     }
     return CatIconRegistry.instance;
+  }
+
+  /**
+   * Creates a new isolated registry instance for use in micro frontends.
+   *
+   * Unlike the global singleton, this instance:
+   * - Does not sync icons with other registry instances via window events
+   * - Does not pre-register framework default icons (they are resolved via
+   *   the global singleton fallback in `attachTo`)
+   *
+   * Use `attachTo` to scope icons to a DOM subtree without adding a wrapper
+   * element:
+   *
+   * ```ts
+   * // In your MFE bootstrap:
+   * const registry = CatIconRegistry.createInstance();
+   * registry.addIcons(myIcons);
+   * const cleanup = registry.attachTo(mfeRootElement);
+   * // call cleanup() when the MFE unmounts
+   * ```
+   */
+  static createInstance(): CatIconRegistry {
+    const instance = new CatIconRegistry(false);
+    instance.syncIcons = false;
+    return instance;
+  }
+
+  /**
+   * Attaches a `cat-icon-request` listener to `element`, making this registry
+   * the icon provider for all `cat-icon` descendants of that element.
+   *
+   * Resolution order:
+   * 1. This registry instance (scoped icons)
+   * 2. The global `catIconRegistry` singleton (framework defaults / host app
+   *    icons) — only when this instance is not the global singleton itself
+   *
+   * Returns a cleanup function that removes the listener. Call it when the
+   * element is removed from the DOM (e.g. MFE unmount, `disconnectedCallback`).
+   *
+   * ```ts
+   * const registry = CatIconRegistry.createInstance();
+   * registry.addIcons(myIcons);
+   * const cleanup = registry.attachTo(document.querySelector('mfe-root')!);
+   * // later…
+   * cleanup();
+   * ```
+   */
+  attachTo(element: Element): () => void {
+    const handler = (e: Event) => {
+      const event = e as CustomEvent<CatIconRequestDetail>;
+      event.stopImmediatePropagation();
+
+      const { name, resolve } = event.detail;
+
+      // 1. This (scoped) registry
+      if (this.hasIcon(name)) {
+        resolve(this.getIcon(name) as string);
+        return;
+      }
+
+      // 2. Global registry fallback (framework defaults, host-app icons)
+      if (this !== catIconRegistry && catIconRegistry.hasIcon(name)) {
+        resolve(catIconRegistry.getIcon(name) as string);
+      }
+    };
+
+    element.addEventListener('cat-icon-request', handler);
+    return () => element.removeEventListener('cat-icon-request', handler);
+  }
+
+  hasIcon(name: string, setName?: string): boolean {
+    return this.icons.has(this.buildName(name, setName));
   }
 
   getIcon(name: string, setName?: string): string | undefined {
