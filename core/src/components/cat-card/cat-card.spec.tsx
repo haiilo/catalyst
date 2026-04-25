@@ -1,14 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatCard } from './cat-card';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
+import './cat-card';
 
 describe('cat-card', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatCard],
-      html: `<cat-card></cat-card>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-card></cat-card>
+    const { root } = await render(<cat-card />);
+    await expect(root).toEqualLightHtml(`
+      <cat-card class="hydrated"></cat-card>
     `);
   });
 });

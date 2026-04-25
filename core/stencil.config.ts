@@ -110,12 +110,5 @@ export const config: Config = {
       componentCorePackage: '@haiilo/catalyst',
       proxiesFile: '../react/src/components/stencil-generated/index.ts'
     })
-  ],
-  testing: {
-    setupFiles: ['./setupTests.js'],
-    transform: {
-      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': './stencil.transformer.js'
-    },
-    transformIgnorePatterns: ['node_modules/(?!(?:.pnpm/)?(@haiilo))']
-  }
+  ]
 };

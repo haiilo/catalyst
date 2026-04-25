@@ -1,16 +1,16 @@
-jest.mock('../cat-i18n/cat-i18n-registry');
+import { describe, it, expect, vi } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-import { newSpecPage } from '@stencil/core/testing';
-import { CatTextarea } from './cat-textarea';
+vi.mock('../cat-i18n/cat-i18n-registry');
+
+import './cat-textarea';
 
 describe('cat-textarea', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatTextarea],
-      html: `<cat-textarea label="Label"></cat-textarea>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-textarea label="Label" tabindex="0"></cat-textarea>
+    const { root } = await render(<cat-textarea label="Label" />);
+    await expect(root).toEqualLightHtml(`
+      <cat-textarea tabindex="0" class="hydrated"></cat-textarea>
     `);
   });
 });

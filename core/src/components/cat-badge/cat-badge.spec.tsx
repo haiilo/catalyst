@@ -1,14 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatBadge } from './cat-badge';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
+import './cat-badge';
 
 describe('cat-badge', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatBadge],
-      html: `<cat-badge></cat-badge>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-badge color="primary" size="m" variant="filled"></cat-badge>
+    const { root } = await render(<cat-badge />);
+    await expect(root).toEqualLightHtml(`
+      <cat-badge variant="filled" color="primary" size="m" class="hydrated"></cat-badge>
     `);
   });
 });

@@ -1,6 +1,7 @@
+import { describe, it, expect } from 'vitest';
 import { getHour12 } from './cat-time-locale';
 
-fdescribe('cat-time locale', () => {
+describe('cat-time locale', () => {
   it('returns 12 hours as true for en language', async () => {
     expect(getHour12('en')).toBe(true);
   });

@@ -1,4 +1,8 @@
-jest.mock('./platform', () => ({ Platform: jest.fn() }));
+import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, beforeAll } from '@stencil/vitest';
+
+vi.mock('./platform', () => ({ Platform: vi.fn() }));
+
 import { MediaMatcher } from './media-matcher';
 import { Platform } from './platform';
 
@@ -9,7 +13,7 @@ describe('MediaMatcher', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
-      value: jest.fn().mockImplementation(query => ({
+      value: vi.fn().mockImplementation(query => ({
         matches: true,
         media: query
       }))
@@ -17,7 +21,9 @@ describe('MediaMatcher', () => {
   });
 
   beforeEach(() => {
-    jest.mocked(Platform).mockImplementation(() => platform);
+    vi.mocked(Platform).mockImplementation(function () {
+      return platform;
+    });
     platform = { FIREFOX: true } as Platform;
     mediaMatcher = new MediaMatcher();
   });

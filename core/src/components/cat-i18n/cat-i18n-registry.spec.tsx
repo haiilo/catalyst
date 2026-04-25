@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { catI18nRegistry } from './cat-i18n-registry';
 
 describe('CatI18nRegistry', () => {

@@ -1,105 +1,102 @@
-jest.mock('../cat-i18n/cat-i18n-registry');
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-jest.mock('autosize-input', () => jest.fn());
-
-const mockAutoUpdateCleanup = jest.fn();
-const mockAutoUpdate = jest.fn(() => mockAutoUpdateCleanup);
-const mockComputePosition = jest.fn(() =>
-  Promise.resolve({
-    x: 0,
-    y: 0,
-    placement: 'bottom-start'
-  })
-);
-
-jest.mock('@floating-ui/dom', () => ({
-  autoUpdate: mockAutoUpdate,
-  computePosition: mockComputePosition,
-  flip: jest.fn(() => ({})),
-  offset: jest.fn(() => ({}))
+vi.mock('../cat-i18n/cat-i18n-registry', () => ({
+  catI18nRegistry: {
+    t: vi.fn(() => {})
+  }
+}));
+vi.mock('autosize-input', () => ({
+  default: vi.fn()
 }));
 
-import { newSpecPage } from '@stencil/core/testing';
-import { CatSelect } from './cat-select';
+const mockAutoUpdateCleanup = vi.fn();
+const mockAutoUpdate = vi.hoisted(() => vi.fn(() => mockAutoUpdateCleanup));
+const mockComputePosition = vi.hoisted(() =>
+  vi.fn(() =>
+    Promise.resolve({
+      x: 0,
+      y: 0,
+      placement: 'bottom-start'
+    })
+  )
+);
+
+vi.mock('@floating-ui/dom', () => ({
+  autoUpdate: mockAutoUpdate,
+  computePosition: mockComputePosition,
+  flip: vi.fn(() => ({})),
+  offset: vi.fn(() => ({}))
+}));
+
+import './cat-select';
 import { stringArrayConnector } from './connectors';
-import { Subject, of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 describe('cat-select', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatSelect],
-      html: `<cat-select label="Label"></cat-select>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-select label="Label" tabindex="0"></cat-select>
+    const { root } = await render(<cat-select label="Label" />);
+    await expect(root).toEqualLightHtml(`
+      <cat-select tabindex="0" class="hydrated"></cat-select>
     `);
   });
 
   describe('catChange', () => {
     it('should not emit catChange event on initialization with value', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label" value="option1"></cat-select>`
-      });
+      const { root, waitForChanges } = await render(<cat-select label="Label" value="option1" />);
 
-      const select = page.rootInstance as CatSelect;
-      const catChangeSpy = jest.fn();
+      const select = root as HTMLCatSelectElement;
+      const catChangeSpy = vi.fn();
 
-      page.root?.addEventListener('catChange', catChangeSpy);
+      root.addEventListener('catChange', catChangeSpy);
 
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(catChangeSpy).not.toHaveBeenCalled();
     });
 
     it('should emit catChange event when selection state changes from user interaction', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
       let eventEmitted = false;
 
-      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
 
-      page.root?.addEventListener('catChange', () => {
+      root?.addEventListener('catChange', () => {
         eventEmitted = true;
       });
 
       // Directly update selection state (simulating what happens after user interaction)
       // This mimics the internal flow when user clicks an option
-      select['patchState']({
+      instance['patchState']({
         selection: [{ item: { id: 'option1' }, render: { label: 'option1' } }],
         tempSelection: []
       });
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(eventEmitted).toBe(true);
     });
 
     it('should not emit catChange event when value is changed programmatically', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
-      const catChangeSpy = jest.fn();
+      const select = root as HTMLCatSelectElement;
+      const catChangeSpy = vi.fn();
 
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      page.root?.addEventListener('catChange', catChangeSpy);
+      root.addEventListener('catChange', catChangeSpy);
 
       select.value = 'option2';
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(catChangeSpy).not.toHaveBeenCalled();
     });
@@ -107,33 +104,26 @@ describe('cat-select', () => {
 
   describe('autoUpdate lifecycle', () => {
     it('should not set up autoUpdate on component load', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
+      const select = root as HTMLCatSelectElement;
       await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockAutoUpdate).not.toHaveBeenCalled();
     });
 
     it('should set up autoUpdate when dropdown is opened', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
-      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
 
       // Open dropdown by clicking on the trigger element
-      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
-      const dropdown = page.root?.shadowRoot?.querySelector('.select-dropdown');
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      const dropdown = root?.shadowRoot?.querySelector('.select-dropdown');
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
       const callArgs = mockAutoUpdate.mock.calls[0] as unknown[];
@@ -142,66 +132,55 @@ describe('cat-select', () => {
     });
 
     it('should call cleanup function when dropdown is closed', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
-      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
 
       // Open dropdown by clicking
-      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
 
       // Close dropdown by clicking again
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // Verify cleanup function was called
       expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
     });
 
     it('should not set up autoUpdate if connector is not connected', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges } = await render(<cat-select label="Label" />);
 
       // Don't connect a connector
 
       // Try to open dropdown without a connector by clicking
-      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      const trigger = root.shadowRoot?.querySelector('.select-wrapper');
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(mockAutoUpdate).not.toHaveBeenCalled();
     });
 
     it('should close and cleanup autoUpdate on blur', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
-      await select.connect(stringArrayConnector(['option1', 'option2', 'option3']));
-      await page.waitForChanges();
+      await instance.connect(stringArrayConnector(['option1', 'option2', 'option3']));
+      await waitForChanges();
 
       // Open dropdown by clicking
-      const trigger = page.root?.shadowRoot?.querySelector('.select-wrapper');
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
       trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
 
       // Simulate blur event to close dropdown
       const blurEvent = new FocusEvent('blur');
-      page.root?.dispatchEvent(blurEvent);
-      await page.waitForChanges();
+      root?.dispatchEvent(blurEvent);
+      await waitForChanges();
 
       // Should clean up autoUpdate
       expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
@@ -210,12 +189,8 @@ describe('cat-select', () => {
 
   describe('renderOptions$', () => {
     it('should re-render options when renderOptions$ emits with updated external data', async () => {
-      const page = await newSpecPage({
-        components: [CatSelect],
-        html: `<cat-select label="Label"></cat-select>`
-      });
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
 
-      const select = page.rootInstance as CatSelect;
       const renderSubject = new Subject<void>();
 
       let renderCallCount = 0;
@@ -243,14 +218,14 @@ describe('cat-select', () => {
         renderOptions$: renderSubject.asObservable()
       };
 
-      await select.connect(connector);
+      await instance.connect(connector);
 
       // Trigger input event to populate options
-      const input = page.root?.shadowRoot?.querySelector('input');
+      const input = root?.shadowRoot?.querySelector('input');
       input?.dispatchEvent(new Event('input', { bubbles: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
-      const initialOptions = select['state'].options;
+      const initialOptions = instance['state'].options;
       expect(initialOptions[0].render.description).toBe('Original description');
 
       const initialRenderCount = renderCallCount;
@@ -258,10 +233,10 @@ describe('cat-select', () => {
       useUpdatedDescription = true;
 
       renderSubject.next();
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(renderCallCount).toBeGreaterThan(initialRenderCount);
-      const updatedOptions = select['state'].options;
+      const updatedOptions = instance['state'].options;
       expect(updatedOptions[0].render.description).toBe('Updated description');
     });
   });

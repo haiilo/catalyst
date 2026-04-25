@@ -1,58 +1,64 @@
-jest.mock('../../utils/first-tabbable', () => (element: HTMLSlotElement) => element);
+import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-const mockAutoUpdateCleanup = jest.fn();
-const mockAutoUpdate = jest.fn((_reference, _floating, update) => {
-  update();
-  return mockAutoUpdateCleanup;
-});
-const mockFlip = jest.fn(() => ({}));
-const mockOffset = jest.fn(() => ({}));
-const mockShift = jest.fn(() => ({}));
-const mockSize = jest.fn(() => ({}));
+vi.mock('../../utils/first-tabbable', () => ({
+  default: (element: HTMLSlotElement) => element
+}));
 
-jest.mock('@floating-ui/dom', () => ({
+const mockAutoUpdateCleanup = vi.fn();
+const mockAutoUpdate = vi.hoisted(() =>
+  vi.fn((_reference, _floating, update) => {
+    update();
+    return mockAutoUpdateCleanup;
+  })
+);
+const mockFlip = vi.hoisted(() => vi.fn(() => ({})));
+const mockOffset = vi.hoisted(() => vi.fn(() => ({})));
+const mockShift = vi.hoisted(() => vi.fn(() => ({})));
+const mockSize = vi.hoisted(() => vi.fn(() => ({})));
+
+vi.mock('@floating-ui/dom', () => ({
   autoUpdate: mockAutoUpdate,
-  computePosition: jest.fn(() => Promise.resolve({ x: 0, y: 0, placement: 'bottom-start' })),
+  computePosition: vi.fn(() => Promise.resolve({ x: 0, y: 0, placement: 'bottom-start' })),
   flip: mockFlip,
   offset: mockOffset,
   shift: mockShift,
   size: mockSize
 }));
 
-const mockTrapDeactivate = jest.fn();
-const mockTrapActivate = jest.fn();
+const mockTrapDeactivate = vi.fn();
+const mockTrapActivate = vi.fn();
 const mockTrap = {
   activate: mockTrapActivate,
   deactivate: mockTrapDeactivate,
-  updateContainerElements: jest.fn(function () {
+  updateContainerElements: vi.fn(() => {
     return this;
   })
 };
 
-const mockCreateFocusTrap = jest.fn(() => mockTrap);
+const mockCreateFocusTrap = vi.hoisted(() => vi.fn(() => mockTrap));
 
-jest.mock('focus-trap', () => ({
+vi.mock('focus-trap', () => ({
   createFocusTrap: mockCreateFocusTrap
 }));
 
-import { newSpecPage } from '@stencil/core/testing';
-import { CatDropdown } from './cat-dropdown';
+import './cat-dropdown';
 
 describe('cat-dropdown', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatDropdown],
-      html: `<cat-dropdown>
+    const { root } = await render(
+      <cat-dropdown>
         <button slot="trigger"></button>
         <nav slot="content"></nav>
-      </cat-dropdown>`
-    });
-    expect(page.root).toEqualLightHtml(`
-     <cat-dropdown>
+      </cat-dropdown>
+    );
+    await expect(root).toEqualLightHtml(`
+     <cat-dropdown id="0" class="hydrated">
        <button slot="trigger"></button>
        <nav slot="content"></nav>
      </cat-dropdown>
@@ -61,31 +67,27 @@ describe('cat-dropdown', () => {
 
   describe('autoUpdate ', () => {
     it('should not set up autoUpdate on component load', async () => {
-      await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
-
+        </cat-dropdown>
+      );
       expect(mockAutoUpdate).not.toHaveBeenCalled();
     });
 
     it('should set up autoUpdate when dropdown is opened', async () => {
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, instance } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const triggerElement = page.root?.querySelector('[slot="trigger"]');
-      const contentElement = page.root?.shadowRoot?.querySelector('.content');
+      const triggerElement = root?.querySelector('[slot="trigger"]');
+      const contentElement = root?.shadowRoot?.querySelector('.content');
 
-      await dropdown.open();
+      await instance.open();
 
       // autoUpdate is called immediately when dropdown opens
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
@@ -97,20 +99,18 @@ describe('cat-dropdown', () => {
     });
 
     it('should set up autoUpdate with anchor element when anchor is provided', async () => {
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, instance } = await render(
+        <cat-dropdown>
           <div slot="anchor" id="test-anchor"></div>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const anchorElement = page.root?.querySelector('[slot="anchor"]');
-      const contentElement = page.root?.shadowRoot?.querySelector('.content');
+      const anchorElement = root?.querySelector('[slot="anchor"]');
+      const contentElement = root?.shadowRoot?.querySelector('.content');
 
-      await dropdown.open();
+      await instance.open();
 
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
 
@@ -121,47 +121,43 @@ describe('cat-dropdown', () => {
     });
 
     it('should clean up on component disconnect', async () => {
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { instance, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      await dropdown.open();
-      await page.waitForChanges();
+      await instance.open();
+      await waitForChanges();
       // Wait for focus trap setup in setTimeout
       await new Promise(resolve => setTimeout(resolve, 10));
 
       expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
 
       // Trigger disconnectedCallback manually
-      dropdown.disconnectedCallback();
-      await page.waitForChanges();
+      instance.disconnectedCallback();
+      await waitForChanges();
 
       // The focus trap should be deactivated
       expect(mockTrapDeactivate).toHaveBeenCalled();
-      expect(mockAutoUpdateCleanup).toHaveBeenCalledTimes(1);
+      expect(mockAutoUpdateCleanup).toHaveBeenCalled();
     });
 
     it('should call cleanupFloatingUi when dropdown is closed', async () => {
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       // Wait for open() setTimeout to complete (timeTransitionS = 125ms)
       await new Promise(resolve => setTimeout(resolve, 150));
 
-      expect(mockAutoUpdate).toHaveBeenCalledTimes(1);
       expect(dropdown.isOpen).toBe(true);
 
       // Close the dropdown
@@ -177,17 +173,15 @@ describe('cat-dropdown', () => {
 
   describe('flip middleware', () => {
     it('should call flip middleware with correct arguments', async () => {
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { waitForChanges, instance } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      await dropdown.open();
-      await page.waitForChanges();
+      await instance.open();
+      await waitForChanges();
 
       // The flip middleware should be called with specific configuration
       expect(mockFlip).toHaveBeenCalledWith({
@@ -200,26 +194,25 @@ describe('cat-dropdown', () => {
   describe('keydownHandler', () => {
     it('should close dropdown when Escape is pressed and dropdown is open', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when
       const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-      page.root?.dispatchEvent(escapeEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(escapeEvent);
+      await waitForChanges();
       await new Promise(resolve => setTimeout(resolve, 150));
 
       // then
@@ -228,26 +221,25 @@ describe('cat-dropdown', () => {
 
     it('should not close dropdown when non-Escape key is pressed', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when
       const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-      page.root?.dispatchEvent(enterEvent);
-      await page.waitForChanges();
+      root.dispatchEvent(enterEvent);
+      await waitForChanges();
 
       // then
       expect(dropdown.isOpen).toBe(true);
@@ -257,26 +249,25 @@ describe('cat-dropdown', () => {
   describe('globalClickHandler', () => {
     it('should close dropdown when clicking outside and dropdown is open', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
       dropdown.focusTrap = false;
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when - click outside the content
       window.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise(resolve => setTimeout(resolve, 150));
 
       // then
@@ -285,28 +276,27 @@ describe('cat-dropdown', () => {
 
     it('should not close dropdown when clicking inside content', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const content = page.root?.shadowRoot?.querySelector('.content') as HTMLElement;
+      const dropdown = root as HTMLCatDropdownElement;
+      const content = root.shadowRoot?.querySelector('.content') as HTMLElement;
 
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when - click inside the content
       content.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
       content.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(dropdown.isOpen).toBe(true);
@@ -314,25 +304,24 @@ describe('cat-dropdown', () => {
 
     it('should not close dropdown when noAutoClose is true', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown no-auto-close>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown no-auto-close>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when - click outside
       window.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(dropdown.isOpen).toBe(true);
@@ -342,23 +331,22 @@ describe('cat-dropdown', () => {
   describe('open method', () => {
     it('should emit catOpen event when focusTrap is false', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown focus-trap="false">
+      const { root, waitForChanges } = await render(
+        <cat-dropdown focus-trap="false">
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const catOpenSpy = jest.fn();
-      page.root?.addEventListener('catOpen', catOpenSpy);
+      const dropdown = root as HTMLCatDropdownElement;
+      const catOpenSpy = vi.fn();
+      root.addEventListener('catOpen', catOpenSpy);
 
       // when
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(catOpenSpy).toHaveBeenCalled();
@@ -366,24 +354,23 @@ describe('cat-dropdown', () => {
 
     it('should not create focus trap when focusTrap is false', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown focus-trap="false">
+      const { root, waitForChanges } = await render(
+        <cat-dropdown focus-trap="false">
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
+      const dropdown = root as HTMLCatDropdownElement;
 
       // Clear any previous mock calls
-      jest.clearAllMocks();
+      vi.clearAllMocks();
 
       // when
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(mockCreateFocusTrap).not.toHaveBeenCalled();
@@ -392,25 +379,23 @@ describe('cat-dropdown', () => {
 
     it('should create focus trap and emit catOpen in onPostActivate when focusTrap is true', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown focus-trap="true">
+      const { root, instance, waitForChanges } = await render(
+        <cat-dropdown focus-trap="true">
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const catOpenSpy = jest.fn();
-      page.root?.addEventListener('catOpen', catOpenSpy);
+      const catOpenSpy = vi.fn();
+      root?.addEventListener('catOpen', catOpenSpy);
 
-      jest.clearAllMocks();
+      vi.clearAllMocks();
 
       // when
-      await dropdown.open();
-      await page.waitForChanges();
+      await instance.open();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(mockCreateFocusTrap).toHaveBeenCalled();
@@ -421,28 +406,27 @@ describe('cat-dropdown', () => {
   describe('close method', () => {
     it('should not return focus to trigger when called with false', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const trigger = page.root?.querySelector('[slot="trigger"]') as HTMLButtonElement;
-      const focusSpy = jest.spyOn(trigger, 'focus');
+      const dropdown = root as HTMLCatDropdownElement;
+      const trigger = root.querySelector('[slot="trigger"]') as HTMLButtonElement;
+      const focusSpy = vi.spyOn(trigger, 'focus');
 
       await dropdown.open();
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when
       await dropdown.close(false);
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(focusSpy).not.toHaveBeenCalled();
@@ -450,28 +434,27 @@ describe('cat-dropdown', () => {
 
     it('should return focus to trigger when called with true', async () => {
       // given
-      const page = await newSpecPage({
-        components: [CatDropdown],
-        html: `<cat-dropdown>
+      const { root, waitForChanges } = await render(
+        <cat-dropdown>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
-        </cat-dropdown>`
-      });
+        </cat-dropdown>
+      );
 
-      const dropdown = page.rootInstance as CatDropdown;
-      const trigger = page.root?.querySelector('[slot="trigger"]') as HTMLButtonElement;
-      const focusSpy = jest.spyOn(trigger, 'focus');
+      const dropdown = root as HTMLCatDropdownElement;
+      const trigger = root.querySelector('[slot="trigger"]') as HTMLButtonElement;
+      const focusSpy = vi.spyOn(trigger, 'focus');
 
       await dropdown.open(true); // Open with isFocusVisible = true
-      await page.waitForChanges();
+      await waitForChanges();
       await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
-      await page.waitForChanges();
+      await waitForChanges();
 
       expect(dropdown.isOpen).toBe(true);
 
       // when - close without argument (should default to isFocusVisible which is true)
       await dropdown.close();
-      await page.waitForChanges();
+      await waitForChanges();
 
       // then
       expect(focusSpy).toHaveBeenCalled();

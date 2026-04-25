@@ -1,15 +1,13 @@
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
 import { CatFormHint } from './cat-form-hint';
+import { h } from '@stencil/core';
 
 describe('CatFormHint', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [],
-      template: () => <CatFormHint id="host-id"></CatFormHint>
-    });
-    expect(page.root).toEqualLightHtml(`
-     <div class="hint-section" id="host-id-hint" aria-live="polite"></div>
+    const { root } = await render(<CatFormHint id="host-id" />);
+    await expect(root).toEqualLightHtml(`
+      <div aria-live="polite" id="host-id-hint" class="hint-section"></div>
     `);
   });
 });
