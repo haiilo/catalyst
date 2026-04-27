@@ -282,18 +282,14 @@ export class CatTextarea {
                         ({i18n.t('input.required')})
                       </span>
                     )}
-                    {(this.maxLength || this.hasSlottedCounter) && (
-                      <div class="label-character-count" aria-hidden="true">
-                        {this.hasSlottedCounter ? (
-                          <slot name="counter"></slot>
-                        ) : (
-                          `${this.value?.length ?? 0}/${this.maxLength}`
-                        )}
-                      </div>
-                    )}
                   </div>
                 </span>
               </label>
+            )}
+            {(this.maxLength || this.hasSlottedCounter) && (
+              <div class="character-count" aria-atomic="true" aria-live="polite">
+                {this.hasSlottedCounter ? <slot name="counter"></slot> : `${this.value?.length ?? 0}/${this.maxLength}`}
+              </div>
             )}
           </div>
           <div class="textarea-container">
