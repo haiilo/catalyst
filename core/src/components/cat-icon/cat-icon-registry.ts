@@ -29,14 +29,11 @@ export class CatIconRegistry {
   private readonly icons: Map<string, string> = new Map();
 
   // ignore syncing in backwards compatible manner
+  // @deprecated: create isolated registry instance via createInstance to avoid conflicts between different icons versions
   syncIcons: boolean = true;
 
-  private constructor(registerDefaults = true) {
+  private constructor() {
     // hide constructor
-
-    if (!registerDefaults) {
-      return;
-    }
 
     // register default icons that are used in the framework by other components
     this.addIcons(
@@ -101,8 +98,6 @@ export class CatIconRegistry {
    *
    * Unlike the global singleton, this instance:
    * - Does not sync icons with other registry instances via window events
-   * - Does not pre-register framework default icons (they are resolved via
-   *   the global singleton fallback in `attachTo`)
    *
    * Use `attachTo` to scope icons to a DOM subtree without adding a wrapper
    * element:
@@ -116,9 +111,7 @@ export class CatIconRegistry {
    * ```
    */
   static createInstance(): CatIconRegistry {
-    const instance = new CatIconRegistry(false);
-    instance.syncIcons = false;
-    return instance;
+    return new CatIconRegistry();
   }
 
   /**
@@ -128,10 +121,10 @@ export class CatIconRegistry {
    * Resolution order:
    * 1. This registry instance (scoped icons)
    * 2. The global `catIconRegistry` singleton (framework defaults / host app
-   *    icons) — only when this instance is not the global singleton itself
+   *    icons)
    *
    * Returns a cleanup function that removes the listener. Call it when the
-   * element is removed from the DOM (e.g. MFE unmount, `disconnectedCallback`).
+   * element is removed from the DOM (e.g. MFE unmount/destroy/disconnect).
    *
    * ```ts
    * const registry = CatIconRegistry.createInstance();
@@ -155,7 +148,7 @@ export class CatIconRegistry {
       }
 
       // 2. Global registry fallback (framework defaults, host-app icons)
-      if (this !== catIconRegistry && catIconRegistry.hasIcon(name)) {
+      if (catIconRegistry.hasIcon(name)) {
         resolve(catIconRegistry.getIcon(name) as string);
       }
     };
@@ -164,7 +157,7 @@ export class CatIconRegistry {
     return () => element.removeEventListener('cat-icon-request', handler);
   }
 
-  hasIcon(name: string, setName?: string): boolean {
+  private hasIcon(name: string, setName?: string): boolean {
     return this.icons.has(this.buildName(name, setName));
   }
 

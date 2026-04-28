@@ -1,9 +1,9 @@
 /**
  * Detail payload for the `cat-icon-request` custom event.
  *
- * `cat-icon` dispatches this event (bubbling, composed, cancelable) to let an
+ * `cat-icon` dispatches this event (bubbling, composed) to let an
  * ancestor CatIconRegistry instance resolve the SVG for the requested icon name.
- * The provider calls `resolve(svg)` synchronously and calls `preventDefault()`
+ * The provider calls `resolve(svg)` synchronously and calls `stopImmediatePropagation()`
  * to signal that the request was handled.  If no provider cancels the event,
  * `cat-icon` falls back to the global `catIconRegistry`.
  */
