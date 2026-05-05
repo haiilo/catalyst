@@ -83,6 +83,16 @@ export class CatMenu {
   @Prop() triggerNativeAttributes?: { [key: string]: string };
 
   /**
+   * Round flag for the trigger button.
+   */
+  @Prop() triggerRound?: boolean;
+
+  /**
+   * Icon right flag for the trigger button.
+   */
+  @Prop() triggerIconRight?: boolean;
+
+  /**
    * Disable the menu.
    */
   @Prop() disabled = false;
@@ -281,6 +291,8 @@ export class CatMenu {
             }}
             disabled={this.disabled}
             onCatClick={this.onTriggerClick}
+            round={this.triggerRound}
+            iconRight={this.triggerIconRight}
           >
             {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
           </cat-button>
