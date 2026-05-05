@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.7.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.1...catalyst-core-v14.7.0) (2026-05-05)
+
+
+### Features
+
+* **core:** add trigger attributes ([#978](https://github.com/haiilo/catalyst/issues/978)) ([c12fd1d](https://github.com/haiilo/catalyst/commit/c12fd1db48b286d311463c4a078af0651afa015a))
+
 ## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.0...catalyst-core-v14.6.1) (2026-04-13)
 
 
