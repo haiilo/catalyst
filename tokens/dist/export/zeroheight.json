@@ -402,6 +402,10 @@
           "$type": "color",
           "$value": "#026371"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
         "fill": {
           "$type": "color",
           "$value": "#ffffff"
@@ -477,6 +481,10 @@
         "bgActive": {
           "$type": "color",
           "$value": "#697687"
+        },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
         },
         "fill": {
           "$type": "color",
@@ -554,6 +562,10 @@
           "$type": "color",
           "$value": "#0060df"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
         "fill": {
           "$type": "color",
           "$value": "#ffffff"
@@ -591,6 +603,10 @@
         "bgActive": {
           "$type": "color",
           "$value": "#006946"
+        },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
         },
         "fill": {
           "$type": "color",
@@ -630,6 +646,10 @@
           "$type": "color",
           "$value": "#ffdea8"
         },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
         "fill": {
           "$type": "color",
           "$value": "#000000"
@@ -667,6 +687,10 @@
         "bgActive": {
           "$type": "color",
           "$value": "#ae2a0a"
+        },
+        "bgOutlined": {
+          "$type": "color",
+          "$value": "#ffffff"
         },
         "fill": {
           "$type": "color",

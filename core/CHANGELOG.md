@@ -1,5 +1,31 @@
 # Changelog
 
+## [14.7.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.1...catalyst-core-v14.7.0) (2026-05-05)
+
+
+### Features
+
+* **core:** add trigger attributes ([#978](https://github.com/haiilo/catalyst/issues/978)) ([c12fd1d](https://github.com/haiilo/catalyst/commit/c12fd1db48b286d311463c4a078af0651afa015a))
+
+## [14.6.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.0...catalyst-core-v14.6.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **core:** don't trigger update of tooltip if it's inactive ([#971](https://github.com/haiilo/catalyst/issues/971)) ([7f5a416](https://github.com/haiilo/catalyst/commit/7f5a4165e488ae00957e9ae778754e9d71ac44be))
+
+## [14.6.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.3...catalyst-core-v14.6.0) (2026-04-07)
+
+
+### Features
+
+* **core:** make outlined button background customizable ([#963](https://github.com/haiilo/catalyst/issues/963)) ([de09bc6](https://github.com/haiilo/catalyst/commit/de09bc60c5886afbf67109d690723bc21d9a59c5))
+
+
+### Bug Fixes
+
+* **core:** disable pointer event for cat-button direct children ([#966](https://github.com/haiilo/catalyst/issues/966)) ([1d7dbde](https://github.com/haiilo/catalyst/commit/1d7dbde093f00fed4126500a6c52de18021f6a37))
+
 ## [14.5.3](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.5.2...catalyst-core-v14.5.3) (2026-03-11)
 
 
