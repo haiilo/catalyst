@@ -27,13 +27,15 @@ export class CatIconRegistry {
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly icons: Map<string, string> = new Map();
+  private isScoped = false;
 
   // ignore syncing in backwards compatible manner
   // @deprecated: create isolated registry instance via createInstance to avoid conflicts between different icons versions
   syncIcons: boolean = true;
 
-  private constructor() {
+  private constructor(isScoped = false) {
     // hide constructor
+      this.isScoped = isScoped;
 
     // register default icons that are used in the framework by other components
     this.addIcons(
@@ -74,13 +76,13 @@ export class CatIconRegistry {
     // this registry.
     window.addEventListener('cat-icons-added', event => {
       const { detail } = (event as CustomEvent) || {};
-      if (this.syncIcons && detail && detail.id !== this.id) {
+      if (this.syncIcons && detail && detail.id !== this.id && !this.isScoped) {
         this.addIcons(detail.icons, detail.setName, true);
       }
     });
     window.addEventListener('cat-icons-removed', event => {
       const { detail } = (event as CustomEvent) || {};
-      if (this.syncIcons && detail && detail.id !== this.id) {
+      if (this.syncIcons && detail && detail.id !== this.id && !this.isScoped) {
         this.removeIcons(detail.names, detail.setName, true);
       }
     });
@@ -111,7 +113,7 @@ export class CatIconRegistry {
    * ```
    */
   static createInstance(): CatIconRegistry {
-    return new CatIconRegistry();
+    return new CatIconRegistry(true);
   }
 
   /**
@@ -129,7 +131,7 @@ export class CatIconRegistry {
    * ```ts
    * const registry = CatIconRegistry.createInstance();
    * registry.addIcons(myIcons);
-   * const cleanup = registry.attachTo(document.querySelector('mfe-root')!);
+   * const cleanup = registry.attachTo(document.querySelector('mfe-root'));
    * // later…
    * cleanup();
    * ```
@@ -137,6 +139,7 @@ export class CatIconRegistry {
   attachTo(element: Element): () => void {
     const handler = (e: Event) => {
       const event = e as CustomEvent<CatIconRequestDetail>;
+      event.preventDefault();
       event.stopImmediatePropagation();
 
       const { name, resolve } = event.detail;

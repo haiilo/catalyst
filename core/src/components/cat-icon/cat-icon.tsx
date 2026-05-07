@@ -1,5 +1,6 @@
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { CatIconRequestDetail } from './cat-icon-request';
+import { catIconRegistry as icons } from './cat-icon-registry';
 
 /**
  * Icons are used to provide additional meaning or in places where text label
@@ -52,6 +53,7 @@ export class CatIcon {
 
     const event = new CustomEvent<CatIconRequestDetail>('cat-icon-request', {
       bubbles: true,
+      cancelable: true,
       composed: true,
       detail: {
         name: this.icon,
@@ -60,8 +62,13 @@ export class CatIcon {
         }
       }
     });
+    const notCancelled = this.el.dispatchEvent(event);
 
-    this.el.dispatchEvent(event);
+    if (notCancelled) {
+      // No cat-icon-regisrty instance in the ancestry — use the global registry directly
+      // (preserves the pre-existing behavior for apps that don't use providers).
+      this.resolvedSvg = icons.getIcon(this.icon);
+    }
   }
 
   render() {
