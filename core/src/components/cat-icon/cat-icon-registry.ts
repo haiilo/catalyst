@@ -35,7 +35,7 @@ export class CatIconRegistry {
 
   private constructor(isScoped = false) {
     // hide constructor
-      this.isScoped = isScoped;
+    this.isScoped = isScoped;
 
     // register default icons that are used in the framework by other components
     this.addIcons(
