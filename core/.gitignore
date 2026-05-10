@@ -1,6 +1,7 @@
 dist/
 www/
 loader/
+coverage/
 
 *~
 *.sw[mnpcod]
