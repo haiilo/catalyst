@@ -43,7 +43,7 @@
     "ng-packagr": "21.0.0",
     "playwright": "^1.57.0",
     "prettier": "3.7.4",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vitest": "4.1.5"
   }
 }
