@@ -65,12 +65,12 @@ describe('cat-menu', () => {
       const { root } = await render(
         <cat-menu
           disabled
-          trigger-variant="filled"
-          trigger-size="l"
-          trigger-icon="gear"
-          trigger-label="Options"
-          trigger-class="custom-class"
-          trigger-test-id="menu-trigger"
+          triggerVariant="filled"
+          triggerSize="l"
+          triggerIcon="gear"
+          triggerLabel="Options"
+          triggerClass="custom-class"
+          triggerTestId="menu-trigger"
         />
       );
 
@@ -86,7 +86,7 @@ describe('cat-menu', () => {
 
     it('should use triggerA11yLabel when provided', async () => {
       const { root, waitForChanges } = await render(
-        <cat-menu trigger-label="Options" triggerA11yLabel="Open options menu" />
+        <cat-menu triggerLabel="Options" triggerA11yLabel="Open options menu" />
       );
       await waitForChanges();
 
@@ -312,7 +312,7 @@ describe('cat-menu', () => {
     });
 
     it('should render nav with horizontal orientation when arrowNavigation is horizontal', async () => {
-      const { root } = await render(<cat-menu arrow-navigation="horizontal" />);
+      const { root } = await render(<cat-menu arrowNavigation="horizontal" />);
 
       const nav = root.shadowRoot?.querySelector('nav[role="menu"]');
       expect(nav?.getAttribute('aria-orientation')).toBe('horizontal');
@@ -384,7 +384,7 @@ describe('cat-menu', () => {
   describe('keyboard navigation', () => {
     it('should handle ArrowDown and ArrowUp for vertical navigation', async () => {
       const { root, waitForChanges } = await render(
-        <cat-menu arrow-navigation="vertical">
+        <cat-menu arrowNavigation="vertical">
           <cat-menu-item>Item 1</cat-menu-item>
           <cat-menu-item>Item 2</cat-menu-item>
           <cat-menu-item>Item 3</cat-menu-item>
@@ -472,7 +472,7 @@ describe('cat-menu', () => {
 
     it('should handle ArrowRight and ArrowLeft for horizontal navigation', async () => {
       const { root, waitForChanges } = await render(
-        <cat-menu arrow-navigation="horizontal">
+        <cat-menu arrowNavigation="horizontal">
           <cat-menu-item>Item 1</cat-menu-item>
           <cat-menu-item>Item 2</cat-menu-item>
           <cat-menu-item>Item 3</cat-menu-item>

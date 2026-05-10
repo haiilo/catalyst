@@ -332,7 +332,7 @@ describe('cat-dropdown', () => {
     it('should emit catOpen event when focusTrap is false', async () => {
       // given
       const { root, waitForChanges } = await render(
-        <cat-dropdown focus-trap="false">
+        <cat-dropdown focusTrap={false}>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
         </cat-dropdown>
@@ -355,7 +355,7 @@ describe('cat-dropdown', () => {
     it('should not create focus trap when focusTrap is false', async () => {
       // given
       const { root, waitForChanges } = await render(
-        <cat-dropdown focus-trap="false">
+        <cat-dropdown focusTrap={false}>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
         </cat-dropdown>
@@ -380,7 +380,7 @@ describe('cat-dropdown', () => {
     it('should create focus trap and emit catOpen in onPostActivate when focusTrap is true', async () => {
       // given
       const { root, instance, waitForChanges } = await render(
-        <cat-dropdown focus-trap="true">
+        <cat-dropdown focusTrap={true}>
           <button slot="trigger" data-trigger></button>
           <nav slot="content"></nav>
         </cat-dropdown>
