@@ -1129,6 +1129,10 @@ export namespace Components {
          */
         "triggerIconOnly"?: boolean | Breakpoint;
         /**
+          * Icon right flag for the trigger button.
+         */
+        "triggerIconRight"?: boolean;
+        /**
           * The trigger button label.
          */
         "triggerLabel"?: string;
@@ -1136,6 +1140,10 @@ export namespace Components {
           * Native attributes for the trigger button.
          */
         "triggerNativeAttributes"?: { [key: string]: string };
+        /**
+          * Round flag for the trigger button.
+         */
+        "triggerRound"?: boolean;
         /**
           * The trigger button size.
           * @default 'm'
@@ -3968,6 +3976,10 @@ declare namespace LocalJSX {
          */
         "triggerIconOnly"?: boolean | Breakpoint;
         /**
+          * Icon right flag for the trigger button.
+         */
+        "triggerIconRight"?: boolean;
+        /**
           * The trigger button label.
          */
         "triggerLabel"?: string;
@@ -3975,6 +3987,10 @@ declare namespace LocalJSX {
           * Native attributes for the trigger button.
          */
         "triggerNativeAttributes"?: { [key: string]: string };
+        /**
+          * Round flag for the trigger button.
+         */
+        "triggerRound"?: boolean;
         /**
           * The trigger button size.
           * @default 'm'
