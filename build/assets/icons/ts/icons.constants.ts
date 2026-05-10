@@ -1301,6 +1301,13 @@ export const ciDashFilled: {
   name: 'dash-filled',
   data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="4" height="16" x="10" y="4" rx="2"/></svg>`,
 };
+export const ciDashboardOutlined: {
+  name: 'dashboard-outlined';
+  data: string;
+} = {
+  name: 'dashboard-outlined',
+  data: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M9.5 11.25c.966 0 1.75.784 1.75 1.75v6a1.75 1.75 0 0 1-1.75 1.75H5A1.75 1.75 0 0 1 3.25 19v-6c0-.966.784-1.75 1.75-1.75zM5 12.75a.25.25 0 0 0-.25.25v6c0 .138.112.25.25.25h4.5a.25.25 0 0 0 .25-.25v-6a.25.25 0 0 0-.25-.25zm14 1.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 19 20.75h-4.5A1.75 1.75 0 0 1 12.75 19v-3c0-.966.784-1.75 1.75-1.75zm-4.5 1.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25H19a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25zM19 3.25c.966 0 1.75.784 1.75 1.75v6A1.75 1.75 0 0 1 19 12.75h-4.5A1.75 1.75 0 0 1 12.75 11V5c0-.966.784-1.75 1.75-1.75zm-4.5 1.5a.25.25 0 0 0-.25.25v6c0 .138.112.25.25.25H19a.25.25 0 0 0 .25-.25V5a.25.25 0 0 0-.25-.25zm-5-1.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 9.5 9.75H5A1.75 1.75 0 0 1 3.25 8V5c0-.966.784-1.75 1.75-1.75zM5 4.75a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h4.5A.25.25 0 0 0 9.75 8V5a.25.25 0 0 0-.25-.25z" clip-rule="evenodd"/></svg>`,
+};
 export const ciDayforce: {
   name: 'dayforce';
   data: string;
@@ -2770,6 +2777,13 @@ export const ciMention: {
 } = {
   name: 'mention',
   data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.25 12a.75.75 0 0 0 1.5 0zm-.753-4.979.625-.415zM10.32 3.158l-.14-.736zM5.71 5.565l.524.536-.525-.536Zm1.144 13.818.429-.615zm4.944 1.615-.017.75h.016zM16 21.75a.75.75 0 0 0 0-1.5zM16.75 8a.75.75 0 0 0-1.5 0zM16 12h-.75A3.25 3.25 0 0 1 12 15.25v1.5A4.75 4.75 0 0 0 16.75 12zm-4 4v-.75A3.25 3.25 0 0 1 8.75 12h-1.5A4.75 4.75 0 0 0 12 16.75zm-4-4h.75A3.25 3.25 0 0 1 12 8.75v-1.5A4.75 4.75 0 0 0 7.25 12zm4-4v.75A3.25 3.25 0 0 1 15.25 12h1.5A4.75 4.75 0 0 0 12 7.25zm9 4h.75a9.75 9.75 0 0 0-1.628-5.394l-.625.415-.624.415A8.25 8.25 0 0 1 20.25 12zm-1.503-4.979.625-.415a9.75 9.75 0 0 0-4.34-3.593l-.29.692-.292.691a8.25 8.25 0 0 1 3.673 3.04zm-4.006-3.316.291-.692a9.75 9.75 0 0 0-5.603-.591l.14.736.14.737a8.25 8.25 0 0 1 4.741.501zm-5.172-.547-.14-.736a9.75 9.75 0 0 0-4.995 2.606l.524.537.525.536a8.25 8.25 0 0 1 4.226-2.206zM5.71 5.565l-.525-.537a9.75 9.75 0 0 0-2.719 4.935l.734.157.733.156a8.25 8.25 0 0 1 2.3-4.175l-.524-.536ZM3.2 10.12l-.734-.157a9.75 9.75 0 0 0 .465 5.615l.698-.275.698-.276a8.25 8.25 0 0 1-.394-4.75zm.429 5.183-.698.275a9.75 9.75 0 0 0 3.494 4.42l.429-.615.429-.615a8.25 8.25 0 0 1-2.956-3.74zm3.225 4.08-.43.615a9.75 9.75 0 0 0 5.357 1.75l.017-.75.016-.75a8.25 8.25 0 0 1-4.531-1.48zm4.944 1.615v.75L16 21.75v-1.5l-4.203-.002zM21 11.714h-.75V13.5h1.5v-1.786zM16 13.5h.75V8h-1.5v5.5zm2.5 2.5v-.75a1.75 1.75 0 0 1-1.75-1.75h-1.5a3.25 3.25 0 0 0 3.25 3.25zm2.5-2.5h-.75a1.75 1.75 0 0 1-1.75 1.75v1.5a3.25 3.25 0 0 0 3.25-3.25z"/></svg>`,
+};
+export const ciMenuApp: {
+  name: 'menu-app';
+  data: string;
+} = {
+  name: 'menu-app',
+  data: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 15.25a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1 0-1.5zm3.12-4.48a.75.75 0 0 1 0 1.5H2.88a.75.75 0 0 1 0-1.5zM18 6.25a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1 0-1.5z"/></svg>`,
 };
 export const ciMenuLeftOutlined: {
   name: 'menu-left-outlined';
@@ -4638,6 +4652,7 @@ export type coyoIcon =
   | 'danger-filled'
   | 'danger-outlined'
   | 'dash-filled'
+  | 'dashboard-outlined'
   | 'dayforce'
   | 'dots-circle-outlined'
   | 'double-chevron-down'
@@ -4848,6 +4863,7 @@ export type coyoIcon =
   | 'megaphone-filled'
   | 'megaphone-outlined'
   | 'mention'
+  | 'menu-app'
   | 'menu-left-outlined'
   | 'menu-outlined'
   | 'menu-right-outlined'
@@ -5281,6 +5297,7 @@ export const ciAll = [
   ciDangerFilled,
   ciDangerOutlined,
   ciDashFilled,
+  ciDashboardOutlined,
   ciDayforce,
   ciDotsCircleOutlined,
   ciDoubleChevronDown,
@@ -5491,6 +5508,7 @@ export const ciAll = [
   ciMegaphoneFilled,
   ciMegaphoneOutlined,
   ciMention,
+  ciMenuApp,
   ciMenuLeftOutlined,
   ciMenuOutlined,
   ciMenuRightOutlined,
