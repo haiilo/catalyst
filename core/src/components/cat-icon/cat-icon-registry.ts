@@ -140,21 +140,26 @@ export class CatIconRegistry {
   attachTo(element: Element): () => void {
     const handler = (e: Event) => {
       const event = e as CustomEvent<CatIconRequestDetail>;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-
       const { name, resolve } = event.detail;
+      let icon: string | undefined;
 
       // 1. This (scoped) registry
       if (this.hasIcon(name)) {
-        resolve(this.getIcon(name) as string);
-        return;
+        icon = this.getIcon(name);
       }
 
       // 2. Global registry fallback (framework defaults, host-app icons)
-      if (catIconRegistry.hasIcon(name)) {
-        resolve(catIconRegistry.getIcon(name) as string);
+      if (!icon && catIconRegistry.hasIcon(name)) {
+        icon = catIconRegistry.getIcon(name);
       }
+
+      if (!icon) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      resolve(icon);
     };
 
     element.addEventListener('cat-icon-request', handler);
