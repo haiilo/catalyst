@@ -1,15 +1,20 @@
-jest.mock('./cat-icon-registry');
-import { newSpecPage } from '@stencil/core/testing';
-import { CatIcon } from './cat-icon';
+import { vi, describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
+
+vi.mock('./cat-icon-registry', () => ({
+  catIconRegistry: {
+    getIcon: vi.fn(() => {})
+  }
+}));
+
+import './cat-icon';
 
 describe('cat-icon', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatIcon],
-      html: `<cat-icon icon="icon"></cat-icon>`
-    });
-    expect(page.root?.shadowRoot).toEqualLightHtml(`
-      <span aria-hidden="true" class="icon icon-m" part="icon"></span>
+    const { root } = await render(<cat-icon icon="icon" />);
+    await expect(root.shadowRoot).toEqualHtml(`
+      <span aria-hidden="true" part="icon" class="icon icon-m"></span>
     `);
   });
 });

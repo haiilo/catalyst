@@ -1,11 +1,14 @@
-const { defineConfig, globalIgnores } = require('eslint/config');
+import { defineConfig, globalIgnores } from 'eslint/config';
+import globals from 'globals';
+import tsParser from '@typescript-eslint/parser';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
-const globals = require('globals');
-const tsParser = require('@typescript-eslint/parser');
-const typescriptEslint = require('@typescript-eslint/eslint-plugin');
-const js = require('@eslint/js');
-
-const { FlatCompat } = require('@eslint/eslintrc');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -15,7 +18,7 @@ const compat = new FlatCompat({
 const WARN = 1,
   ERROR = 2;
 
-module.exports = defineConfig([
+export default defineConfig([
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
@@ -77,9 +80,9 @@ module.exports = defineConfig([
     '**/.eslintrc.js',
     '**/eslint.config.js',
     '**/replace.js',
-    '**/setupTests.js',
     '**/stencil.config.ts',
     '**/playwright.config.ts',
-    '**/stencil.transformer.js'
+    '**/vitest-setup-plugin.ts',
+    '**/vitest.config.ts'
   ])
 ]);
