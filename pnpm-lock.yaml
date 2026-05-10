@@ -12,8 +12,8 @@ importers:
         specifier: 20.4.4
         version: 20.4.4(@types/node@20.19.40)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
       '@commitlint/config-conventional':
-        specifier: 20.4.4
-        version: 20.4.4
+        specifier: 21.0.0
+        version: 21.0.0
       husky:
         specifier: 8.0.3
         version: 8.0.3
@@ -62,7 +62,7 @@ importers:
     devDependencies:
       '@angular/build':
         specifier: 21.2.7
-        version: 21.2.7(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(@angular/compiler@21.2.8)(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@20.19.40)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.4)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.14)(sass-embedded@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3)))
+        version: 21.2.7(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(@angular/compiler@21.2.8)(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@20.19.40)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.4)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.14)(sass-embedded@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.5)
       '@angular/cli':
         specifier: 21.2.7
         version: 21.2.7(@types/node@20.19.40)(chokidar@5.0.0)
@@ -105,45 +105,6 @@ importers:
       vitest:
         specifier: 4.1.5
         version: 4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))
-
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=21.0.0'
-        version: 21.2.5(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.2
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^7.0.0
-        version: 7.0.1(@angular/forms@21.2.8(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(rxjs@7.8.2)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   angular/projects/catalyst:
     dependencies:
@@ -243,7 +204,7 @@ importers:
         version: 3.2.3(@stencil/core@4.43.3)
       '@stencil/vitest':
         specifier: 1.11.6
-        version: 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5))(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))
+        version: 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5)(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5)
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
@@ -666,9 +627,9 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-conventional@20.4.4':
-    resolution: {integrity: sha512-Usg+XXbPNG2GtFWTgRURNWCge1iH1y6jQIvvklOdAbyn2t8ajfVwZCnf5t5X4gUsy17BOiY+myszGsSMIvhOVA==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-conventional@21.0.0':
+    resolution: {integrity: sha512-QJX/rPK4Yu3f5J4OCIBy5aXq2e0EEdwSDFZ3NQvFAXTm3gs12ipyZ+yjhZxm3hHn6DB8wuv3zhFTL1I2tYzUBA==}
+    engines: {node: '>=22.12.0'}
 
   '@commitlint/config-validator@20.5.0':
     resolution: {integrity: sha512-T/Uh6iJUzyx7j35GmHWdIiGRQB+ouZDk0pwAaYq4SXgB54KZhFdJ0vYmxiW6AMYICTIWuyMxDBl1jK74oFp/Gw==}
@@ -729,6 +690,10 @@ packages:
   '@commitlint/types@20.5.0':
     resolution: {integrity: sha512-ZJoS8oSq2CAZEpc/YI9SulLrdiIyXeHb/OGqGrkUP6Q7YV+0ouNAa7GjqRdXeQPncHQIDz/jbCTlHScvYvO/gA==}
     engines: {node: '>=v18'}
+
+  '@commitlint/types@21.0.0':
+    resolution: {integrity: sha512-6nEz+M7I90iix4sviA8NLwskOuyt0M98KUU2aYgiKbn46jMSxUm1l2ACtzRd9ec+y38aKyJhW4Fp6NW0z35kJQ==}
+    engines: {node: '>=22.12.0'}
 
   '@conventional-changelog/git-client@2.7.0':
     resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
@@ -5476,8 +5441,8 @@ snapshots:
       '@angular/core': 21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)
       tslib: 2.8.1
 
-  ? '@angular/build@21.2.7(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(@angular/compiler@21.2.8)(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@20.19.40)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.4)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.14)(sass-embedded@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3)))'
-  : dependencies:
+  '@angular/build@21.2.7(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(@angular/compiler@21.2.8)(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.8(@angular/animations@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.8(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.8(@angular/compiler@21.2.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@20.19.40)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.4)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.8(@angular/compiler@21.2.8)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.14)(sass-embedded@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.5)':
+    dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.2102.7(chokidar@5.0.0)
       '@angular/compiler': 21.2.8
@@ -5811,9 +5776,9 @@ snapshots:
       - conventional-commits-parser
       - typescript
 
-  '@commitlint/config-conventional@20.4.4':
+  '@commitlint/config-conventional@21.0.0':
     dependencies:
-      '@commitlint/types': 20.5.0
+      '@commitlint/types': 21.0.0
       conventional-changelog-conventionalcommits: 9.3.1
 
   '@commitlint/config-validator@20.5.0':
@@ -5902,6 +5867,11 @@ snapshots:
       escalade: 3.2.0
 
   '@commitlint/types@20.5.0':
+    dependencies:
+      conventional-commits-parser: 6.4.0
+      picocolors: 1.1.1
+
+  '@commitlint/types@21.0.0':
     dependencies:
       conventional-commits-parser: 6.4.0
       picocolors: 1.1.1
@@ -7081,13 +7051,13 @@ snapshots:
       '@stencil/core': 4.43.3
       sass-embedded: 1.99.0
 
-  '@stencil/vitest@1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5))(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))':
+  '@stencil/vitest@1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5)(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5)':
     dependencies:
       '@stencil/core': 4.43.3
       jiti: 2.7.0
       local-pkg: 1.1.2
       vitest: 4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))
-      vitest-environment-stencil: 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5))(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))
+      vitest-environment-stencil: 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5)(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5)
     optionalDependencies:
       '@playwright/test': 1.55.1
       '@vitest/browser-playwright': 4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5)
@@ -7270,7 +7240,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5)':
     dependencies:
-      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3)))
+      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5)
       '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))
       playwright: 1.59.1
       tinyrainbow: 3.1.0
@@ -7283,7 +7253,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5)':
     dependencies:
-      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))
+      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5)
       '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))
       playwright: 1.59.1
       tinyrainbow: 3.1.0
@@ -7295,7 +7265,7 @@ snapshots:
       - vite
     optional: true
 
-  '@vitest/browser@4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3)))':
+  '@vitest/browser@4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5)':
     dependencies:
       '@blazediff/core': 1.9.1
       '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))
@@ -7312,7 +7282,7 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))':
+  '@vitest/browser@4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5)':
     dependencies:
       '@blazediff/core': 1.9.1
       '@vitest/mocker': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))
@@ -7344,7 +7314,7 @@ snapshots:
       tinyrainbow: 3.1.0
       vitest: 4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))
     optionalDependencies:
-      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3)))
+      '@vitest/browser': 4.1.5(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.97.3))(vitest@4.1.5)
 
   '@vitest/expect@4.1.5':
     dependencies:
@@ -10384,10 +10354,10 @@ snapshots:
       sass: 1.99.0
       sass-embedded: 1.99.0
 
-  vitest-environment-stencil@1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5))(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))):
+  vitest-environment-stencil@1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5)(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5):
     dependencies:
       '@stencil/core': 4.43.3
-      '@stencil/vitest': 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5(playwright@1.59.1)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0))(vitest@4.1.5))(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5(@types/node@20.19.40)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@27.4.0)(vite@7.3.2(@types/node@20.19.40)(jiti@2.7.0)(less@4.6.4)(sass-embedded@1.99.0)(sass@1.99.0)))
+      '@stencil/vitest': 1.11.6(@playwright/test@1.55.1)(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.5)(jsdom@27.4.0)(playwright@1.59.1)(vitest@4.1.5)
     transitivePeerDependencies:
       - '@playwright/test'
       - '@stencil/mock-doc'
