@@ -40,7 +40,8 @@ describe('cat-icon', () => {
     });
     const catIcon = page.root!;
     const events: CustomEvent[] = [];
-    document.body.addEventListener('cat-icon-request', e => events.push(e as CustomEvent));
+    const handler = (e: Event) => events.push(e as CustomEvent);
+    document.body.addEventListener('cat-icon-request', handler);
 
     catIcon.setAttribute('icon', 'home');
     await page.waitForChanges();
@@ -50,6 +51,6 @@ describe('cat-icon', () => {
     expect(iconEvents[0].cancelable).toBe(true);
     expect(iconEvents[0].bubbles).toBe(true);
 
-    document.body.removeEventListener('cat-icon-request', e => events.push(e as CustomEvent));
+    document.body.removeEventListener('cat-icon-request', handler);
   });
 });
