@@ -27,7 +27,6 @@ export class CatIconRegistry {
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly icons: Map<string, string> = new Map();
-  private isScoped = false;
 
   // ignore syncing in backwards compatible manner
   // @deprecated: create isolated registry instance via createInstance to avoid conflicts between different icons versions
@@ -35,7 +34,6 @@ export class CatIconRegistry {
 
   private constructor(isScoped = false) {
     // hide constructor
-    this.isScoped = isScoped;
 
     // register default icons that are used in the framework by other components
     this.addIcons(
@@ -73,19 +71,22 @@ export class CatIconRegistry {
     // one application from overwriting the registry in the other, we listen for
     // events that are dispatched when icons are added or removed in other
     // applications and add or remove icons if the event was not dispatched by
-    // this registry.
-    window.addEventListener('cat-icons-added', event => {
-      const { detail } = (event as CustomEvent) || {};
-      if (this.syncIcons && detail && detail.id !== this.id && !this.isScoped) {
-        this.addIcons(detail.icons, detail.setName, true);
-      }
-    });
-    window.addEventListener('cat-icons-removed', event => {
-      const { detail } = (event as CustomEvent) || {};
-      if (this.syncIcons && detail && detail.id !== this.id && !this.isScoped) {
-        this.removeIcons(detail.names, detail.setName, true);
-      }
-    });
+    // this registry. Scoped instances (created via createInstance()) do not
+    // participate in cross-registry syncing, so we skip these listeners for them.
+    if (!isScoped) {
+      window.addEventListener('cat-icons-added', event => {
+        const { detail } = (event as CustomEvent) || {};
+        if (this.syncIcons && detail && detail.id !== this.id) {
+          this.addIcons(detail.icons, detail.setName, true);
+        }
+      });
+      window.addEventListener('cat-icons-removed', event => {
+        const { detail } = (event as CustomEvent) || {};
+        if (this.syncIcons && detail && detail.id !== this.id) {
+          this.removeIcons(detail.names, detail.setName, true);
+        }
+      });
+    }
   }
 
   static getInstance(): CatIconRegistry {
