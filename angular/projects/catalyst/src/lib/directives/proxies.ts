@@ -847,8 +847,10 @@ export declare interface CatInput extends Components.CatInput {
     'triggerColor',
     'triggerIcon',
     'triggerIconOnly',
+    'triggerIconRight',
     'triggerLabel',
     'triggerNativeAttributes',
+    'triggerRound',
     'triggerSize',
     'triggerTestId',
     'triggerVariant'
@@ -873,8 +875,10 @@ export declare interface CatInput extends Components.CatInput {
     'triggerColor',
     'triggerIcon',
     'triggerIconOnly',
+    'triggerIconRight',
     'triggerLabel',
     'triggerNativeAttributes',
+    'triggerRound',
     'triggerSize',
     'triggerTestId',
     'triggerVariant'
