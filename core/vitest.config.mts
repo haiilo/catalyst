@@ -21,7 +21,7 @@ export default defineVitestConfig({
         test: {
           name: 'browser',
           include: ['src/**/*.screenshot.{ts,tsx}'],
-          setupFiles: ['./vitest-setup-dist.ts'],
+          setupFiles: ['./vitest-setup-screenshots.ts'],
           browser: {
             enabled: true,
             provider: playwright(),
