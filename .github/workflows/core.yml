@@ -116,5 +116,6 @@ jobs:
           name: screenshot-diffs
           path: core/.vitest-attachments/
           if-no-files-found: ignore
+          include-hidden-files: true
       - name: E2E Test
         run: pnpm --filter @haiilo/catalyst run test:e2e
