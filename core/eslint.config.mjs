@@ -83,6 +83,7 @@ export default defineConfig([
     '**/stencil.config.ts',
     '**/playwright.config.ts',
     '**/vitest-setup-plugin.ts',
-    '**/vitest.config.ts'
+    '**/vitest.config.ts',
+    '**/vitest-setup-screenshots.ts'
   ])
 ]);
