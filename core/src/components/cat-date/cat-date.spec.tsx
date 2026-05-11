@@ -1,18 +1,18 @@
-jest.mock('../cat-i18n/cat-i18n-registry');
+import { vi, describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
 
-import { newSpecPage } from '@stencil/core/testing';
-import { CatDateInline } from '../cat-date-inline/cat-date-inline';
-import { CatInput } from '../cat-input/cat-input';
-import { CatDate } from './cat-date';
+vi.mock('../cat-i18n/cat-i18n-registry');
+
+import '../cat-date-inline/cat-date-inline';
+import '../cat-input/cat-input';
+import './cat-date';
 
 describe('cat-date', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatDate, CatInput, CatDateInline],
-      html: `<cat-date></cat-date>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-date tabindex="0"></cat-date>
+    const { root } = await render(<cat-date />);
+    await expect(root).toEqualLightHtml(`
+      <cat-date tabindex="0" class="hydrated"></cat-date>
     `);
   });
 });

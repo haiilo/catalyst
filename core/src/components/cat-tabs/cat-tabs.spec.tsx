@@ -1,14 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { CatTabs } from './cat-tabs';
+import { describe, it, expect } from 'vitest';
+import { render } from '@stencil/vitest';
+import { h } from '@stencil/core';
+import './cat-tabs';
 
 describe('cat-tabs', () => {
   it('renders', async () => {
-    const page = await newSpecPage({
-      components: [CatTabs],
-      html: `<cat-tabs></cat-tabs>`
-    });
-    expect(page.root).toEqualLightHtml(`
-      <cat-tabs tabindex="0"></cat-tabs>
+    const { root } = await render(<cat-tabs />);
+    await expect(root).toEqualLightHtml(`
+      <cat-tabs tabindex="0" class="hydrated"></cat-tabs>
     `);
   });
 });
