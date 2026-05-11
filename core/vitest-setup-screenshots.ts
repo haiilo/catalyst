@@ -1,4 +1,5 @@
 import { beforeAll } from 'vitest';
+import './dist/catalyst/catalyst.css';
 
 beforeAll(async () => {
   // Load the lazy-loader for this project
