@@ -109,5 +109,12 @@ jobs:
         working-directory: core
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
+      - name: Upload screenshot artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-diffs
+          path: core/.vitest-attachments/
+          if-no-files-found: ignore
       - name: E2E Test
         run: pnpm --filter @haiilo/catalyst run test:e2e
