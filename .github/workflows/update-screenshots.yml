@@ -58,6 +58,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
           else
-            git commit -m "chore: update reference screenshots [skip ci]"
+            git commit -m "chore: update reference screenshots"
             git push
           fi
