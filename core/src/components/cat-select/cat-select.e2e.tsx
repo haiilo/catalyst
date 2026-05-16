@@ -12,14 +12,15 @@ describe('cat-select', () => {
     const { root, spyOnEvent } = await render(<cat-select label="Label" value="option1" />);
     (root as HTMLCatSelectElement).connect({
       resolve: (ids: string[]) => of([{ id: 'option1', label: 'Option 1' }].filter(item => ids.includes(item.id))),
-      retrieve: () => of({
-        content: [
-          { id: 'option1', label: 'Option 1' },
-          { id: 'option2', label: 'Option 2' },
-          { id: 'option3', label: 'Option 3' }
-        ],
-        last: true
-      }),
+      retrieve: () =>
+        of({
+          content: [
+            { id: 'option1', label: 'Option 1' },
+            { id: 'option2', label: 'Option 2' },
+            { id: 'option3', label: 'Option 3' }
+          ],
+          last: true
+        }),
       render: (item: { label: string }) => ({ label: item.label })
     });
     const changeSpy = spyOnEvent('catChange');

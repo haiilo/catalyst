@@ -45,7 +45,7 @@ describe('cat-input', () => {
   });
 
   it('should display error state', async () => {
-    const { root } = await render(<cat-input errors={["Field is required"]} />);
+    const { root } = await render(<cat-input errors={['Field is required']} />);
     expect((root as HTMLCatInputElement).errors).toEqual(['Field is required']);
   });
 
