@@ -23,7 +23,8 @@
     "publish": "pnpm run publish:tokens && pnpm run publish:core && pnpm run publish:angular && pnpm run publish:angular-formly && pnpm run publish:react",
     "publish:beta": "pnpm run publish:tokens:beta && pnpm run publish:core:beta && pnpm run publish:angular:beta && pnpm run publish:angular-formly:beta && pnpm run publish:react:beta",
     "clean": "pnpm run -r clean",
-    "reset": "pnpm run -r reset && rm -rf ./node_modules"
+    "reset": "pnpm run -r reset && rm -rf ./node_modules",
+    "test:screenshot:update": "pnpm --filter @haiilo/catalyst run test:screenshot --update-snapshots"
   },
   "workspaces": [
     "angular",
