@@ -103,6 +103,35 @@ or
 6. Create PR `beta` > `main`. **While merging make sure the commit message is** [conventional](https://www.conventionalcommits.org/en/v1.0.0/). Otherwise, your changes will be ignored by regular release.
 7. Go with regular release steps.
 
+## Screenshot tests
+
+Visual regression tests live alongside components as `*.screenshot.tsx` files and use `toMatchScreenshot()` to compare against reference images stored in `__screenshots__` directories.
+
+> [!IMPORTANT]
+> Reference screenshots **must only be generated on `ubuntu-latest` via CI**. Screenshots generated locally (on any OS) might differ due to font rendering differences and **must never be committed**. Local screenshot runs are for debugging purposes only.
+
+### Running screenshot tests locally (debugging only)
+
+Screenshot tests are intentionally excluded from `pnpm run test`. To debug a failing screenshot test locally:
+
+```
+pnpm run test:screenshot        # from core/
+```
+
+Inspect the diff images produced in `core/.vitest-attachments/` — but do not commit any generated screenshots.
+
+### Creating or updating reference screenshots
+
+When you add a new screenshot test or intentionally change a component's appearance, regenerate the reference images using the **Update Screenshots** GitHub Actions workflow:
+
+1. Push your branch to GitHub.
+2. Go to **Actions → Update Screenshots → Run workflow** and select your branch.
+3. The workflow runs on `ubuntu-latest`, commits the updated `__screenshots__` files back to your branch, then triggers the core CI workflow to verify everything passes.
+
+### Reviewing failed screenshots in CI
+
+When a screenshot test fails in CI, the actual and diff images are uploaded as an artifact named `screenshot-diffs`. Download it from the failed workflow run under **Actions → Core → \<run\> → Artifacts**.
+
 ## Code contributors
 
 This project exists thanks to all the people who contribute.

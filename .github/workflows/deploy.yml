@@ -27,7 +27,7 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
       - name: Install and Build
         run: |
-          pnpm install
+          pnpm install --ignore-scripts
           pnpm run build:tokens
           pnpm run build:core
       - name: Find and Replace

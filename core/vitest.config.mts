@@ -16,12 +16,26 @@ export default defineVitestConfig({
           setupFiles: ['./vitest-setup-plugin.ts']
         }
       },
-      // Browser tests
+      // Browser e2e tests
+      {
+        test: {
+          name: 'e2e',
+          include: ['src/**/*.e2e.{ts,tsx}'],
+          setupFiles: ['./vitest-setup-browser.ts'],
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            headless: true,
+            instances: [{ browser: 'chromium' }]
+          }
+        }
+      },
+      // Browser screenshot tests
       {
         test: {
           name: 'browser',
           include: ['src/**/*.screenshot.{ts,tsx}'],
-          setupFiles: ['./vitest-setup-screenshots.ts'],
+          setupFiles: ['./vitest-setup-browser.ts'],
           browser: {
             enabled: true,
             provider: playwright(),

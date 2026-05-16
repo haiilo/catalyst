@@ -81,9 +81,8 @@ export default defineConfig([
     '**/eslint.config.js',
     '**/replace.js',
     '**/stencil.config.ts',
-    '**/playwright.config.ts',
     '**/vitest-setup-plugin.ts',
     '**/vitest.config.ts',
-    '**/vitest-setup-screenshots.ts'
+    '**/vitest-setup-browser.ts'
   ])
 ]);

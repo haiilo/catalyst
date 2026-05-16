@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install
-        run: pnpm install
+        run: pnpm install --ignore-scripts
       - name: Build
         run: pnpm run build:tokens
       - name: Commit files
