@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install
-        run: pnpm install --ignore-scripts
+        run: pnpm install --ignore-scripts --shamefully-hoist
       - name: Build
         run: |
           pnpm run build:tokens
@@ -69,7 +69,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install
-        run: pnpm install --ignore-scripts
+        run: pnpm install --ignore-scripts --shamefully-hoist
       - name: Lint
         run: |
           pnpm --filter @haiilo/catalyst run prettier:check
@@ -101,7 +101,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install
-        run: pnpm install --ignore-scripts
+        run: pnpm install --ignore-scripts --shamefully-hoist
       - name: Build
         run: pnpm run build:tokens
       - name: Install Playwright
