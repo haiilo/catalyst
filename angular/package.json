@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test catalyst --browsers ChromiumHeadless && ng test catalyst-formly --browsers ChromiumHeadless",
-    "postinstall": "playwright install chromium --with-deps",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
     "clean": "rm -rf ./.angular ./dist",

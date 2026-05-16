@@ -71,13 +71,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install
-        run: pnpm install --ignore-scripts
+        run: pnpm install
 
       - name: Build
         run: pnpm run build
 
       - name: Install (again - testing...)
-        run: pnpm install --ignore-scripts
+        run: pnpm install
 
       - name: Publish to npm
         run: |
