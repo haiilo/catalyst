@@ -1,0 +1,63 @@
+name: Update Screenshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build:tokens && pnpm run build:core
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+        working-directory: core
+
+      - name: Update screenshots
+        run: pnpm run test:screenshot:update
+
+      - name: Commit updated screenshots
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add 'core/src/**/__screenshots__'
+          if git diff --cached --quiet; then
+            echo "No screenshot changes to commit."
+          else
+            git commit -m "chore: update reference screenshots [skip ci]"
+            git push
+          fi
