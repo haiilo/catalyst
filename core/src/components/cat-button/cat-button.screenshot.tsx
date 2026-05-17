@@ -9,39 +9,67 @@ describe('cat-button', () => {
   });
 
   it('outlined secondary', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="secondary">Outlined Secondary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="secondary">
+        Outlined Secondary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined secondary hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="secondary">Outlined Secondary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="secondary">
+        Outlined Secondary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined secondary active', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="secondary" active>Outlined Secondary Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="secondary" active>
+        Outlined Secondary Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined secondary disabled', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="secondary" disabled>Outlined Secondary Disabled</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="secondary" disabled>
+        Outlined Secondary Disabled
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined primary', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="primary">Outlined Primary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="primary">
+        Outlined Primary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined primary hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="primary">Outlined Primary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="primary">
+        Outlined Primary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined primary custom', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="primary">Outlined Primary Custom</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="primary">
+        Outlined Primary Custom
+      </cat-button>
+    );
     (root as HTMLElement).style.setProperty('--cat-primary-text', '91, 94, 219');
     (root as HTMLElement).style.setProperty('--cat-primary-text-hover', '78, 81, 191');
     (root as HTMLElement).style.setProperty('--cat-primary-text-active', '65, 67, 159');
@@ -50,219 +78,383 @@ describe('cat-button', () => {
   });
 
   it('outlined danger', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="danger">Outlined Danger</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="danger">
+        Outlined Danger
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined danger hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="danger">Outlined Danger Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="danger">
+        Outlined Danger Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined info', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="info">Outlined Info</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="info">
+        Outlined Info
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined info hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="info">Outlined Info Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="info">
+        Outlined Info Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined success', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="success">Outlined Success</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="success">
+        Outlined Success
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined success hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="success">Outlined Success Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="success">
+        Outlined Success Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined warning', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="warning">Outlined Warning</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="warning">
+        Outlined Warning
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('outlined warning hover', async () => {
-    const { root } = await render(<cat-button variant="outlined" color="warning">Outlined Warning Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="outlined" color="warning">
+        Outlined Warning Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled secondary', async () => {
-    const { root } = await render(<cat-button variant="filled" color="secondary">Filled Secondary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="secondary">
+        Filled Secondary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled secondary active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="secondary" active>Filled Secondary Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="secondary" active>
+        Filled Secondary Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled secondary hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="secondary">Filled Secondary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="secondary">
+        Filled Secondary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled secondary disabled', async () => {
-    const { root } = await render(<cat-button variant="filled" color="secondary" disabled>Filled Secondary Disabled</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="secondary" disabled>
+        Filled Secondary Disabled
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled primary', async () => {
-    const { root } = await render(<cat-button variant="filled" color="primary">Filled Primary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="primary">
+        Filled Primary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled primary active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="primary" active>Filled Primary Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="primary" active>
+        Filled Primary Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled primary hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="primary">Filled Primary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="primary">
+        Filled Primary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled danger', async () => {
-    const { root } = await render(<cat-button variant="filled" color="danger">Filled Danger</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="danger">
+        Filled Danger
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled danger active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="danger" active>Filled Danger Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="danger" active>
+        Filled Danger Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled danger hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="danger">Filled Danger Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="danger">
+        Filled Danger Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled info', async () => {
-    const { root } = await render(<cat-button variant="filled" color="info">Filled Info</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="info">
+        Filled Info
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled info active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="info" active>FilledInfo Danger Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="info" active>
+        FilledInfo Danger Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled info hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="info">Filled Info Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="info">
+        Filled Info Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled success', async () => {
-    const { root } = await render(<cat-button variant="filled" color="success">Filled Success</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="success">
+        Filled Success
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled success active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="success" active>Filled Success Danger Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="success" active>
+        Filled Success Danger Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled success hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="success">Filled Success Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="success">
+        Filled Success Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('filled warning', async () => {
-    const { root } = await render(<cat-button variant="filled" color="warning">Filled Warning</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="warning">
+        Filled Warning
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled warning active', async () => {
-    const { root } = await render(<cat-button variant="filled" color="warning" active>Filled Warning Danger Active</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="warning" active>
+        Filled Warning Danger Active
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('filled warning hover', async () => {
-    const { root } = await render(<cat-button variant="filled" color="warning">Filled Warning Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="filled" color="warning">
+        Filled Warning Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('text secondary', async () => {
-    const { root } = await render(<cat-button variant="text" color="secondary">Text Secondary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="secondary">
+        Text Secondary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('text secondary hover', async () => {
-    const { root } = await render(<cat-button variant="text" color="secondary">Text Secondary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="secondary">
+        Text Secondary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('text primary', async () => {
-    const { root } = await render(<cat-button variant="text" color="primary">Text Primary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="primary">
+        Text Primary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('text danger', async () => {
-    const { root } = await render(<cat-button variant="text" color="danger">Text Danger</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="danger">
+        Text Danger
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('text info', async () => {
-    const { root } = await render(<cat-button variant="text" color="info">Text Info</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="info">
+        Text Info
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('text success', async () => {
-    const { root } = await render(<cat-button variant="text" color="success">Text Success</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="success">
+        Text Success
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('text warning', async () => {
-    const { root } = await render(<cat-button variant="text" color="warning">Text Warning</cat-button>);
+    const { root } = await render(
+      <cat-button variant="text" color="warning">
+        Text Warning
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link secondary', async () => {
-    const { root } = await render(<cat-button variant="link" color="secondary">Link Secondary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="secondary">
+        Link Secondary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link secondary hover', async () => {
-    const { root } = await render(<cat-button variant="link" color="secondary">Link Secondary Hover</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="secondary">
+        Link Secondary Hover
+      </cat-button>
+    );
     await page.elementLocator(root).hover();
     await expect(root).toMatchScreenshot();
   });
 
   it('link primary', async () => {
-    const { root } = await render(<cat-button variant="link" color="primary">Link Primary</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="primary">
+        Link Primary
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link danger', async () => {
-    const { root } = await render(<cat-button variant="link" color="danger">Link Danger</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="danger">
+        Link Danger
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link info', async () => {
-    const { root } = await render(<cat-button variant="link" color="info">Link Info</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="info">
+        Link Info
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link success', async () => {
-    const { root } = await render(<cat-button variant="link" color="success">Link Success</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="success">
+        Link Success
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
   it('link warning', async () => {
-    const { root } = await render(<cat-button variant="link" color="warning">Link Warning</cat-button>);
+    const { root } = await render(
+      <cat-button variant="link" color="warning">
+        Link Warning
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
@@ -302,7 +494,11 @@ describe('cat-button', () => {
   });
 
   it('with icon right', async () => {
-    const { root } = await render(<cat-button icon="$cat:select-open" iconRight>Icon Right</cat-button>);
+    const { root } = await render(
+      <cat-button icon="$cat:select-open" iconRight>
+        Icon Right
+      </cat-button>
+    );
     await expect(root).toMatchScreenshot();
   });
 
