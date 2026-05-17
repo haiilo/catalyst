@@ -45,8 +45,8 @@ export default defineVitestConfig({
               toMatchScreenshot: {
                 comparatorName: 'pixelmatch',
                 comparatorOptions: {
-                  threshold: 0.5,
-                  allowedMismatchedPixels: 100
+                  threshold: 0.05,
+                  allowedMismatchedPixels: 50
                 },
                 resolveScreenshotPath: ({
                   arg,
