@@ -20,7 +20,8 @@ $cat-input-height: 2.5rem;
   flex-basis: var(--label-size, 33.33%);
 }
 
-.label-wrapper {
+.label-wrapper,
+.label-container {
   display: flex;
   gap: 0.25rem;
 }
@@ -35,15 +36,17 @@ $cat-input-height: 2.5rem;
 }
 
 .label-optional,
-.label-character-count {
+.character-count {
   display: inline-flex;
   align-items: center;
   max-height: 1.25rem;
   @include cat-body('xs', null);
 }
 
-.label-character-count {
+.character-count {
   margin-left: auto;
+  flex-shrink: 0;
+  color: cat-token('color.ui.font.muted');
 }
 
 .input-horizontal,
@@ -70,7 +73,7 @@ $cat-input-height: 2.5rem;
   .label-metadata {
     justify-content: flex-start;
 
-    .label-character-count {
+    .character-count {
       margin-left: 0;
     }
   }
