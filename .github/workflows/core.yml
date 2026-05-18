@@ -10,7 +10,6 @@ on:
   pull_request:
     paths:
       - "core/**"
-  workflow_dispatch:
 
 jobs:
   build:
