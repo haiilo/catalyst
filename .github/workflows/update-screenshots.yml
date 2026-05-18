@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update-screenshots:
@@ -12,8 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GH_PAT }}
 
       - name: Setup node
         uses: actions/setup-node@v4
@@ -58,4 +57,11 @@ jobs:
           else
             git commit -m "chore: update reference screenshots"
             git push
+            echo "SCREENSHOTS_UPDATED=true" >> $GITHUB_ENV
           fi
+
+      - name: Trigger core workflow
+        if: env.SCREENSHOTS_UPDATED == 'true'
+        run: gh workflow run core.yml --ref ${{ github.ref_name }}
+        env:
+          GH_TOKEN: ${{ github.token }}
