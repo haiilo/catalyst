@@ -104,10 +104,17 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm run build:tokens
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-        working-directory: core
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
+      - name: Screenshot Test
+        run: pnpm --filter @haiilo/catalyst run test:screenshot
+      - name: Upload screenshot artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-diffs
+          path: core/.vitest-attachments/
+          if-no-files-found: ignore
+          include-hidden-files: true
       - name: E2E Test
         run: pnpm --filter @haiilo/catalyst run test:e2e

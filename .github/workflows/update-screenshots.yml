@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - name: Setup node
         uses: actions/setup-node@v4
@@ -43,10 +45,6 @@ jobs:
       - name: Build
         run: pnpm run build:tokens && pnpm run build:core
 
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-        working-directory: core
-
       - name: Update screenshots
         run: pnpm run test:screenshot:update
 
@@ -58,6 +56,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
           else
-            git commit -m "chore: update reference screenshots [skip ci]"
+            git commit -m "chore: update reference screenshots"
             git push
           fi
