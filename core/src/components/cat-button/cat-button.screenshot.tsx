@@ -503,12 +503,12 @@ describe('cat-button', () => {
   });
 
   it('icon only', async () => {
-    const { root } = await render(<cat-button icon="$cat:select-open" iconOnly a11y-label="Check" />);
+    const { root } = await render(<cat-button icon="$cat:select-open" iconOnly />);
     await expect(root).toMatchScreenshot();
   });
 
-  it('round icon only', async () => {
-    const { root } = await render(<cat-button icon="$cat:select-open" iconOnly round a11y-label="Check" />);
+  it('round', async () => {
+    const { root } = await render(<cat-button round>Round</cat-button>);
     await expect(root).toMatchScreenshot();
   });
 
