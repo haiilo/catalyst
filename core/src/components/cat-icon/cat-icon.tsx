@@ -1,5 +1,6 @@
-import { Component, h, Prop } from '@stencil/core';
-import { catIconRegistry as icons } from './cat-icon-registry';
+import { Component, Element, h, Prop } from '@stencil/core';
+import { CAT_ICON_SET_ATTR, catIconRegistry as icons } from './cat-icon-registry';
+import { findClosest } from '../../utils/find-closest';
 
 /**
  * Icons are used to provide additional meaning or in places where text label
@@ -13,6 +14,10 @@ import { catIconRegistry as icons } from './cat-icon-registry';
   shadow: true
 })
 export class CatIcon {
+  @Element() el!: HTMLElement;
+
+  private setName?: string;
+
   /**
    * The name of the icon.
    */
@@ -34,10 +39,21 @@ export class CatIcon {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
+  connectedCallback() {
+    this.setName = this.findSetName();
+  }
+
   render() {
+    const svg =
+      this.iconSrc ||
+      (this.icon
+        ? this.setName && icons.hasIcon(this.icon, this.setName)
+          ? icons.getIcon(this.icon, this.setName)
+          : icons.getIcon(this.icon)
+        : '');
     return (
       <span
-        innerHTML={this.iconSrc || (this.icon ? icons.getIcon(this.icon) : '')}
+        innerHTML={svg}
         aria-label={this.a11yLabel}
         aria-hidden={this.a11yLabel ? null : 'true'}
         part="icon"
@@ -47,5 +63,9 @@ export class CatIcon {
         }}
       ></span>
     );
+  }
+
+  private findSetName(): string | undefined {
+    return findClosest(`[${CAT_ICON_SET_ATTR}]`, this.el)?.getAttribute(CAT_ICON_SET_ATTR) ?? undefined;
   }
 }
