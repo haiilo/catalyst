@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { CatIconRegistry, CAT_ICON_SET_ATTR, catIconRegistry } from './cat-icon-registry';
 
 describe('CAT_ICON_SET_ATTR', () => {
@@ -18,6 +18,14 @@ describe('CatIconRegistry', () => {
   });
 
   describe('addIcons / hasIcon / getIcon', () => {
+    afterEach(() => {
+      const registry = CatIconRegistry.getInstance();
+      registry.removeIcons(['test-icon', 'fluent-test']);
+      registry.removeIcons(['scoped-icon'], 'mfe1');
+      registry.removeIcons(['shared-name'], 'setA');
+      registry.removeIcons(['shared-name'], 'setB');
+    });
+
     it('returns icon after adding it', () => {
       const registry = CatIconRegistry.getInstance();
       registry.addIcons({ 'test-icon': '<svg/>' });
@@ -61,6 +69,10 @@ describe('CatIconRegistry', () => {
   });
 
   describe('removeIcons', () => {
+    afterEach(() => {
+      CatIconRegistry.getInstance().removeIcons(['dual-icon']);
+    });
+
     it('removes icons by name', () => {
       const registry = CatIconRegistry.getInstance();
       registry.addIcons({ 'remove-me': '<svg/>' });
@@ -91,6 +103,10 @@ describe('CatIconRegistry', () => {
       document.body.appendChild(element);
     });
 
+    afterEach(() => {
+      element.remove();
+    });
+
     it('attachSet sets the correct attribute on the element', () => {
       const registry = CatIconRegistry.getInstance();
       registry.attachSet(element, 'my-mfe');
@@ -116,12 +132,15 @@ describe('CatIconRegistry', () => {
   });
 
   describe('window event syncing', () => {
+    afterEach(() => {
+      CatIconRegistry.getInstance().removeIcons(['synced-icon', 'remove-via-event']);
+    });
+
     it('syncs icons added in another registry instance via window event', () => {
       const registry = CatIconRegistry.getInstance();
-      const foreignId = 'foreign-registry';
       window.dispatchEvent(
         new CustomEvent('cat-icons-added', {
-          detail: { id: foreignId, icons: { 'synced-icon': '<svg id="synced"/>' }, setName: undefined }
+          detail: { id: 'foreign-registry', icons: { 'synced-icon': '<svg id="synced"/>' }, setName: undefined }
         })
       );
       expect(registry.hasIcon('synced-icon')).toBe(true);
