@@ -83,5 +83,6 @@ jobs:
           pnpm run build:angular-formly
       - name: Install Playwright
         run: npx playwright install --with-deps
+        working-directory: angular
       - name: Test
         run: pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
