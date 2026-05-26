@@ -16,7 +16,7 @@ import { findClosest } from '../../utils/find-closest';
 export class CatIcon {
   @Element() el!: HTMLElement;
 
-  private setName?: string;
+  private setName: string | null = null;
 
   /**
    * The name of the icon.
@@ -65,7 +65,7 @@ export class CatIcon {
     );
   }
 
-  private findSetName(): string | undefined {
-    return findClosest(`[${CAT_ICON_SET_ATTR}]`, this.el)?.getAttribute(CAT_ICON_SET_ATTR) ?? undefined;
+  private findSetName(): string | null {
+    return findClosest(`[${CAT_ICON_SET_ATTR}]`, this.el)?.getAttribute(CAT_ICON_SET_ATTR) ?? null;
   }
 }
