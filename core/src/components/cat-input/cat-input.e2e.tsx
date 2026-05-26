@@ -11,8 +11,13 @@ describe('cat-input', () => {
   it('should input type="number" allow typing numeric characters', async () => {
     const { root } = await render(<cat-input type="number" />);
     const input = root.shadowRoot!.querySelector('input') as HTMLInputElement;
-    // Entering a mix of allowed and disallowed characters
-    await userEvent.type(input, '1a2.1@#');
+    // Focus first, then use keyboard() which sends real keydown/keypress/keyup events
+    // so the browser natively filters invalid characters for type="number"
+    await userEvent.click(input);
+    const testSequence = ['1', 'a', '2', '.', '1', '@', '#'];
+    for (const key of testSequence) {
+      await userEvent.keyboard(key);
+    }
     expect(input.value).toBe('12.1');
   });
 
