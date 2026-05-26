@@ -21,13 +21,17 @@ import infoCircleFilled from '@haiilo/catalyst-icons/src/info-circle-filled.svg'
 import starCircleFilled from '@haiilo/catalyst-icons/src/star-circle-filled.svg';
 import log from 'loglevel';
 
+export const CAT_ICON_SET_ATTR = 'data-cat-icon-set';
+
 export class CatIconRegistry {
   private static instance: CatIconRegistry;
 
   private readonly id = (Math.random() + 1).toString(36).substring(2);
   private readonly icons: Map<string, string> = new Map();
 
-  // ignore syncing in backwards compatible manner
+  /**
+   * @deprecated Use named icon sets via `addIcons(icons, setName)` and `attachSet(element, setName)` for MFE isolation instead of relying on window event syncing.
+   */
   syncIcons: boolean = true;
 
   private constructor() {
@@ -91,6 +95,10 @@ export class CatIconRegistry {
     return CatIconRegistry.instance;
   }
 
+  hasIcon(name: string, setName?: string): boolean {
+    return this.icons.has(this.buildName(name, setName));
+  }
+
   getIcon(name: string, setName?: string): string | undefined {
     const icon = this.icons.get(this.buildName(name, setName));
     if (!icon) {
@@ -119,6 +127,24 @@ export class CatIconRegistry {
       }`
     );
     !silent && window.dispatchEvent(this.buildEvent('cat-icons-removed', { id: this.id, names, setName }));
+    return this;
+  }
+
+  /**
+   * Marks a DOM element as the root of a named icon set. All `cat-icon`
+   * components inside this element will resolve icons from `setName` first
+   * before falling back to the global (no-setName) registry.
+   */
+  attachSet(element: Element, setName: string): CatIconRegistry {
+    element.setAttribute(CAT_ICON_SET_ATTR, setName);
+    return this;
+  }
+
+  /**
+   * Removes the icon-set marker from a DOM element.
+   */
+  detachSet(element: Element): CatIconRegistry {
+    element.removeAttribute(CAT_ICON_SET_ATTR);
     return this;
   }
 
