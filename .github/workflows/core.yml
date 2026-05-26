@@ -105,6 +105,9 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm run build:tokens
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+        working-directory: core
       - name: Test
         run: pnpm --filter @haiilo/catalyst run test
       - name: Screenshot Test

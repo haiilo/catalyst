@@ -44,6 +44,10 @@ jobs:
       - name: Build
         run: pnpm run build:tokens && pnpm run build:core
 
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+        working-directory: core
+
       - name: Update screenshots
         run: pnpm run test:screenshot:update
 
