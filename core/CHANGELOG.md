@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.8.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.7.0...catalyst-core-v14.8.0) (2026-05-26)
+
+
+### Features
+
+* **core:** implement scoped cat-icons via attachSet + set name ([#987](https://github.com/haiilo/catalyst/issues/987)) ([9394434](https://github.com/haiilo/catalyst/commit/939443417f2dee8855d9b5a75fe27e5164d8f2d4))
+
 ## [14.7.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.6.1...catalyst-core-v14.7.0) (2026-05-05)
 
 
