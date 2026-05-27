@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.9.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.8.0...catalyst-core-v14.9.0) (2026-05-27)
+
+
+### Features
+
+* **core:** make textarea counter independent from label ([#969](https://github.com/haiilo/catalyst/issues/969)) ([8539211](https://github.com/haiilo/catalyst/commit/853921196f7fff90139269ed5a36f6d81126a68d))
+
 ## [14.8.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.7.0...catalyst-core-v14.8.0) (2026-05-26)
 
 
