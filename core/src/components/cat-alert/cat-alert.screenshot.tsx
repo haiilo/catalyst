@@ -6,7 +6,7 @@ describe('cat-alert screenshot', () => {
     const { root } = await render(
       <cat-alert color="success">
         <p>
-          Lorem ipsum dolor <a href="https://google.de">dolore magna</a> sit amet.
+          Lorem ipsum dolores <a href="https://google.de">dolore magna</a> sit amet.
         </p>
       </cat-alert>
     );
