@@ -107,26 +107,34 @@ or
 
 Visual regression tests live alongside components as `*.screenshot.tsx` files and use `toMatchScreenshot()` to compare against reference images stored in `__screenshots__` directories.
 
-> [!IMPORTANT]
-> Reference screenshots **must only be generated on `ubuntu-latest` via CI**. Screenshots generated locally (on any OS) might differ due to font rendering differences and **must never be committed**. Local screenshot runs are for debugging purposes only.
+Both local and CI reference screenshots are committed to the repository so that developers can run and verify screenshot tests on their own machines without needing a CI run.
 
-### Running screenshot tests locally (debugging only)
+- Screenshots generated on **macOS** (local development) have the suffix **`-darwin`**.
+- Screenshots generated on **Linux** (CI / `ubuntu-latest`) have the suffix **`-linux`**.
 
-Screenshot tests are intentionally excluded from `pnpm run test`. To debug a failing screenshot test locally:
+### Running screenshot tests locally
+
+Screenshot tests are intentionally excluded from `pnpm run test`. To run them locally:
 
 ```
 pnpm run test:screenshot        # from core/
 ```
 
-Inspect the diff images produced in `core/.vitest-attachments/` — but do not commit any generated screenshots.
+To update the local (macOS) reference screenshots after an intentional visual change:
 
-### Creating or updating reference screenshots
+```
+pnpm run test:screenshot:update # from core/
+```
 
-When you add a new screenshot test or intentionally change a component's appearance, regenerate the reference images using the **Update Screenshots** GitHub Actions workflow:
+This regenerates the `-darwin` screenshots and commits them alongside your changes.
+
+### Creating or updating CI reference screenshots
+
+When you add a new screenshot test or intentionally change a component's appearance, regenerate the CI reference images using the **Update Screenshots** GitHub Actions workflow:
 
 1. Push your branch to GitHub.
 2. Go to **Actions → Update Screenshots → Run workflow** and select your branch.
-3. The workflow runs on `ubuntu-latest`, commits the updated `__screenshots__` files back to your branch, then triggers the core CI workflow to verify everything passes.
+3. The workflow runs on `ubuntu-latest`, commits the updated `-linux` `__screenshots__` files back to your branch, then triggers the core CI workflow to verify everything passes.
 
 ### Reviewing failed screenshots in CI
 
