@@ -57,7 +57,8 @@ export default defineVitestConfig({
                   testFileDirectory,
                   root,
                   platform
-                }) => `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}-${platform}${ext}`
+                }) =>
+                  `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}-${platform}${ext}`
               }
             }
           }
