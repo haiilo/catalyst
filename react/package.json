@@ -3,6 +3,10 @@
   "version": "14.8.0",
   "description": "React wrapper for Catalyst Design System",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haiilo/catalyst.git"
+  },
   "publishConfig": {
     "access": "public"
   },
