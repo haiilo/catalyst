@@ -21,16 +21,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./tag-transformer": {
-      "types": "./dist/components/tag-transformer.d.ts",
-      "import": "./dist/components/tag-transformer.js"
-    }
-  },
   "files": [
     "dist/"
   ],
