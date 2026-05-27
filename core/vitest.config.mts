@@ -46,7 +46,7 @@ export default defineVitestConfig({
                 comparatorName: 'pixelmatch',
                 comparatorOptions: {
                   threshold: 0.05,
-                  allowedMismatchedPixels: 50
+                  allowedMismatchedPixels: 0.5
                 },
                 resolveScreenshotPath: ({
                   arg,
@@ -55,8 +55,9 @@ export default defineVitestConfig({
                   testFileName,
                   screenshotDirectory,
                   testFileDirectory,
-                  root
-                }) => `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}${ext}`
+                  root,
+                  platform
+                }) => `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}-${platform}${ext}`
               }
             }
           }
