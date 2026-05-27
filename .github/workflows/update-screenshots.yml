@@ -56,7 +56,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add -A -- ':(glob)core/src/**/__screenshots__'
+          find core/src -type d -name '__screenshots__' -print0 | xargs -0 -r git add -A --
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
           else
