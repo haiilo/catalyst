@@ -1,8 +1,12 @@
 {
   "name": "@haiilo/catalyst-angular",
-  "version": "14.7.0",
+  "version": "14.9.0",
   "description": "Angular wrapper for Catalyst Design System",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haiilo/catalyst.git"
+  },
   "scripts": {
     "reset": "rm -rf ./node_modules"
   },
