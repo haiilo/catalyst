@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - name: Setup node
         uses: actions/setup-node@v4
@@ -54,10 +56,10 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          find core/src -type f -path '*/__screenshots__/*' | xargs git add
+          find core/src -type d -name '__screenshots__' -print0 | xargs -0 -r git add -A --
           if git diff --cached --quiet; then
             echo "No screenshot changes to commit."
           else
-            git commit -m "chore: update reference screenshots [skip ci]"
+            git commit -m "chore: update reference screenshots"
             git push
           fi
