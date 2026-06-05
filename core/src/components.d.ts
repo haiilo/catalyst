@@ -892,8 +892,9 @@ export namespace Components {
         "accept"?: string;
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the input.
          */
@@ -1440,6 +1441,11 @@ export namespace Components {
      */
     interface CatSelect {
         /**
+          * Hint for form autofill feature.
+          * @default 'off'
+         */
+        "autoComplete": string;
+        /**
           * Clear the input.
          */
         "clear": () => Promise<void>;
@@ -1796,8 +1802,9 @@ export namespace Components {
     interface CatTextarea {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
-        "autoComplete"?: string;
+        "autoComplete": string;
         /**
           * Clear the textarea.
          */
@@ -3740,6 +3747,7 @@ declare namespace LocalJSX {
         "accept"?: string;
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete"?: string;
         /**
@@ -4326,6 +4334,11 @@ declare namespace LocalJSX {
      */
     interface CatSelect {
         /**
+          * Hint for form autofill feature.
+          * @default 'off'
+         */
+        "autoComplete"?: string;
+        /**
           * Whether the select should show a clear button.
           * @default false
          */
@@ -4686,6 +4699,7 @@ declare namespace LocalJSX {
     interface CatTextarea {
         /**
           * Hint for form autofill feature.
+          * @default 'off'
          */
         "autoComplete"?: string;
         /**
@@ -5363,6 +5377,7 @@ declare namespace LocalJSX {
         "value": CatSelectValue;
         "disabled": boolean;
         "placeholder": string;
+        "autoComplete": string;
         "hint": string | string[];
         "identifier": string;
         "label": string;

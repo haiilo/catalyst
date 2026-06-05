@@ -1195,6 +1195,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
 
 @ProxyCmp({
   inputs: [
+    'autoComplete',
     'clearable',
     'debounce',
     'disabled',
@@ -1226,6 +1227,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
+    'autoComplete',
     'clearable',
     'debounce',
     'disabled',

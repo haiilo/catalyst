@@ -1,5 +1,5 @@
 import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Placement } from '@floating-ui/utils';
+import type { Placement } from '@floating-ui/dom';
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import isTouchScreen from '../../utils/is-touch-screen';
 

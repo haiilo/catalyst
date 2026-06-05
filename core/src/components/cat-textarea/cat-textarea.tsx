@@ -77,7 +77,7 @@ export class CatTextarea {
   /**
    * Hint for form autofill feature.
    */
-  @Prop() autoComplete?: string;
+  @Prop() autoComplete = 'off';
 
   /**
    * Whether the textarea is disabled.
@@ -309,6 +309,7 @@ export class CatTextarea {
                 id={this.id}
                 disabled={this.disabled}
                 autocomplete={this.autoComplete}
+                data-1p-ignore={this.autoComplete === 'off' ? '' : undefined}
                 maxlength={this.maxLength}
                 minlength={this.minLength}
                 name={this.name}

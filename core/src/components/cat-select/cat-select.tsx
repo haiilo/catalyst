@@ -203,6 +203,11 @@ export class CatSelect {
   @Prop() placeholder?: string;
 
   /**
+   * Hint for form autofill feature.
+   */
+  @Prop() autoComplete = 'off';
+
+  /**
    * Optional hint text(s) to be displayed with the select.
    */
   @Prop() hint?: string | string[];
@@ -706,6 +711,8 @@ export class CatSelect {
                   class="select-input"
                   role="combobox"
                   ref={el => (this.input = el)}
+                  autocomplete={this.autoComplete}
+                  data-1p-ignore={this.autoComplete === 'off' ? '' : undefined}
                   aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
                   aria-activedescendant={this.activeDescendant}
                   aria-invalid={this.invalid ? 'true' : undefined}
