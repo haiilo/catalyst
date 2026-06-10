@@ -97,7 +97,7 @@ export class CatInput {
   /**
    * Hint for form autofill feature.
    */
-  @Prop() autoComplete?: string;
+  @Prop() autoComplete = 'off';
 
   /**
    * Whether the input should show a clear button.
@@ -414,6 +414,7 @@ export class CatInput {
                     'has-toggle-password': this.togglePassword && !this.disabled && !this.readonly && !!this.value
                   }}
                   autocomplete={this.autoComplete}
+                  data-1p-ignore={this.autoComplete === 'off' ? '' : undefined}
                   disabled={this.disabled}
                   accept={this.type === 'file' ? this.accept : undefined}
                   multiple={this.type === 'file' ? this.multiple : undefined}
