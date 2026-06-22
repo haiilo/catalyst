@@ -240,4 +240,167 @@ describe('cat-select', () => {
       expect(updatedOptions[0].render.description).toBe('Updated description');
     });
   });
+
+  describe('truncation tooltips', () => {
+    describe('option label truncation', () => {
+      it('should mark an option as truncated when scrollHeight exceeds clientHeight', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+        await instance.connect(stringArrayConnector(['option1', 'option2']));
+
+        const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+        trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await waitForChanges();
+
+        const labelEl = root?.shadowRoot?.querySelector<HTMLElement>('.select-option-label[data-option-key="option1"]');
+        if (labelEl) {
+          Object.defineProperty(labelEl, 'scrollHeight', { value: 50, configurable: true });
+          Object.defineProperty(labelEl, 'clientHeight', { value: 24, configurable: true });
+        }
+
+        instance['checkOptionsTruncation']();
+        await waitForChanges();
+
+        expect(instance['truncatedOptionKeys'].has('option1')).toBe(true);
+        expect(instance['truncatedOptionKeys'].has('option2')).toBe(false);
+      });
+
+      it('should not mark an option as truncated when scrollHeight equals clientHeight', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+        await instance.connect(stringArrayConnector(['option1']));
+
+        const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+        trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await waitForChanges();
+
+        const labelEl = root?.shadowRoot?.querySelector<HTMLElement>('.select-option-label[data-option-key="option1"]');
+        if (labelEl) {
+          Object.defineProperty(labelEl, 'scrollHeight', { value: 24, configurable: true });
+          Object.defineProperty(labelEl, 'clientHeight', { value: 24, configurable: true });
+        }
+
+        instance['checkOptionsTruncation']();
+        await waitForChanges();
+
+        expect(instance['truncatedOptionKeys'].has('option1')).toBe(false);
+      });
+
+      it('should clear truncatedOptionKeys when dropdown closes', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+        await instance.connect(stringArrayConnector(['option1']));
+
+        instance['truncatedOptionKeys'] = new Set(['option1']);
+
+        const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+        trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await waitForChanges();
+        trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await waitForChanges();
+
+        expect(instance['truncatedOptionKeys'].size).toBe(0);
+      });
+    });
+
+    describe('pill label truncation', () => {
+      it('should mark a pill as truncated when scrollWidth exceeds clientWidth', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" multiple />);
+        await instance.connect(stringArrayConnector(['option1', 'option2']));
+
+        instance['patchState']({
+          selection: [
+            { item: { id: 'option1' }, render: { label: 'option1' } },
+            { item: { id: 'option2' }, render: { label: 'option2' } }
+          ],
+          tempSelection: []
+        });
+        await waitForChanges();
+
+        const pillSpan = root?.shadowRoot?.querySelector<HTMLElement>('span[data-pill-index="0"]');
+        if (pillSpan) {
+          Object.defineProperty(pillSpan, 'scrollWidth', { value: 100, configurable: true });
+          Object.defineProperty(pillSpan, 'clientWidth', { value: 60, configurable: true });
+        }
+
+        instance['checkInputTruncation']();
+        await waitForChanges();
+
+        expect(instance['truncatedPillIndices'].has(0)).toBe(true);
+        expect(instance['truncatedPillIndices'].has(1)).toBe(false);
+      });
+
+      it('should not mark a pill as truncated when scrollWidth equals clientWidth', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" multiple />);
+        await instance.connect(stringArrayConnector(['option1']));
+
+        instance['patchState']({
+          selection: [{ item: { id: 'option1' }, render: { label: 'option1' } }],
+          tempSelection: []
+        });
+        await waitForChanges();
+
+        const pillSpan = root?.shadowRoot?.querySelector<HTMLElement>('span[data-pill-index="0"]');
+        if (pillSpan) {
+          Object.defineProperty(pillSpan, 'scrollWidth', { value: 60, configurable: true });
+          Object.defineProperty(pillSpan, 'clientWidth', { value: 60, configurable: true });
+        }
+
+        instance['checkInputTruncation']();
+        await waitForChanges();
+
+        expect(instance['truncatedPillIndices'].has(0)).toBe(false);
+      });
+    });
+
+    describe('single-select input truncation', () => {
+      it('should mark input as truncated when scrollWidth exceeds clientWidth', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+        await instance.connect(stringArrayConnector(['option1']));
+        await waitForChanges();
+
+        const input = root?.shadowRoot?.querySelector<HTMLInputElement>('input.select-input');
+        if (input) {
+          Object.defineProperty(input, 'scrollWidth', { value: 200, configurable: true });
+          Object.defineProperty(input, 'clientWidth', { value: 80, configurable: true });
+        }
+
+        instance['checkInputTruncation']();
+        await waitForChanges();
+
+        expect(instance['singleValueTruncated']).toBe(true);
+      });
+
+      it('should not mark input as truncated when scrollWidth equals clientWidth', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+        await instance.connect(stringArrayConnector(['option1']));
+        await waitForChanges();
+
+        const input = root?.shadowRoot?.querySelector<HTMLInputElement>('input.select-input');
+        if (input) {
+          Object.defineProperty(input, 'scrollWidth', { value: 80, configurable: true });
+          Object.defineProperty(input, 'clientWidth', { value: 80, configurable: true });
+        }
+
+        instance['checkInputTruncation']();
+        await waitForChanges();
+
+        expect(instance['singleValueTruncated']).toBe(false);
+      });
+
+      it('should not set singleValueTruncated in multiple mode', async () => {
+        const { root, waitForChanges, instance } = await render(<cat-select label="Label" multiple />);
+        await instance.connect(stringArrayConnector(['option1']));
+        await waitForChanges();
+
+        const input = root?.shadowRoot?.querySelector<HTMLInputElement>('input.select-input');
+        if (input) {
+          Object.defineProperty(input, 'scrollWidth', { value: 200, configurable: true });
+          Object.defineProperty(input, 'clientWidth', { value: 80, configurable: true });
+        }
+
+        instance['checkInputTruncation']();
+        await waitForChanges();
+
+        expect(instance['singleValueTruncated']).toBe(false);
+      });
+    });
+  });
 });

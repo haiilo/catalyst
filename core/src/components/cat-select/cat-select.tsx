@@ -137,6 +137,8 @@ export class CatSelect {
   private more$: Subject<void> = new Subject();
   private valueChangedBySelection = false;
   private cleanupFloatingUi?: () => void;
+  private needsOptionsTruncationCheck = false;
+  private needsInputTruncationCheck = false;
 
   @Element() hostElement!: HTMLElement;
 
@@ -149,6 +151,12 @@ export class CatSelect {
   @State() hasSlottedHint = false;
 
   @State() errorMap?: ErrorMap | true;
+
+  @State() truncatedOptionKeys = new Set<string>();
+
+  @State() truncatedPillIndices = new Set<number>();
+
+  @State() singleValueTruncated = false;
 
   /**
    * Whether the label need a marker to shown if the select is required or optional.
@@ -316,6 +324,12 @@ export class CatSelect {
     const changed = (key: keyof CatSelectState) => newState[key] !== oldState[key];
     if (changed('isOpen')) {
       this.update();
+      if (!newState.isOpen) {
+        this.truncatedOptionKeys = new Set();
+      }
+    }
+    if (changed('options') && newState.isOpen) {
+      this.needsOptionsTruncationCheck = true;
     }
     if (changed('activeOptionIndex') && this.state.activeOptionIndex >= 0) {
       this.dropdown
@@ -376,10 +390,28 @@ export class CatSelect {
    */
   @Event() catBlur!: EventEmitter<FocusEvent>;
 
+  componentDidRender(): void {
+    if (this.needsOptionsTruncationCheck) {
+      this.needsOptionsTruncationCheck = false;
+      requestAnimationFrame(() => this.checkOptionsTruncation());
+    }
+    if (this.needsInputTruncationCheck) {
+      this.needsInputTruncationCheck = false;
+      this.checkInputTruncation();
+    }
+  }
+
   componentDidLoad(): void {
     if (this.input) {
       autosizeInput(this.input, { minWidth: true });
     }
+    this.checkInputTruncation();
+    new ResizeObserver(() => {
+      this.checkInputTruncation();
+      if (this.state.isOpen) {
+        this.checkOptionsTruncation();
+      }
+    }).observe(this.hostElement);
   }
 
   componentWillLoad(): void {
@@ -658,7 +690,13 @@ export class CatSelect {
                     aria-orientation="horizontal"
                     class="select-pills"
                   >
-                    {this.state.selection.map((item, i) => (
+                  {this.state.selection.map((item, i) => (
+                    <cat-tooltip
+                      key={`pill-tooltip-${i}`}
+                      content={item.render.label}
+                      placement="top"
+                      disabled={!this.truncatedPillIndices.has(i)}
+                    >
                       <span
                         class={{
                           pill: true,
@@ -678,7 +716,7 @@ export class CatSelect {
                             initials={item.render.avatar.initials ?? ''}
                           ></cat-avatar>
                         ) : null}
-                        <span>{item.render.label}</span>
+                        <span data-pill-index={String(i)}>{item.render.label}</span>
                         {!this.disabled && (
                           <cat-button
                             size="xs"
@@ -692,7 +730,8 @@ export class CatSelect {
                           ></cat-button>
                         )}
                       </span>
-                    ))}
+                    </cat-tooltip>
+                  ))}
                   </div>
                 ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
                   <cat-avatar
@@ -703,26 +742,32 @@ export class CatSelect {
                     initials={this.state.selection[0].render.avatar.initials ?? ''}
                   ></cat-avatar>
                 ) : null}
-                <input
-                  data-test={this.testId}
-                  {...this.nativeAttributes}
-                  part="input"
-                  id={`select-${this.id}-input`}
-                  class="select-input"
-                  role="combobox"
-                  ref={el => (this.input = el)}
-                  autocomplete={this.autoComplete}
-                  data-1p-ignore={this.autoComplete === 'off' ? '' : undefined}
-                  aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
-                  aria-activedescendant={this.activeDescendant}
-                  aria-invalid={this.invalid ? 'true' : undefined}
-                  aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
-                  aria-autocomplete="list"
-                  onInput={this.onInput.bind(this)}
-                  value={!this.multiple ? this.state.term : undefined}
-                  placeholder={this.placeholder}
-                  disabled={this.disabled || this.state.isResolving}
-                ></input>
+                <cat-tooltip
+                  content={!this.multiple && this.state.selection.length ? this.state.selection[0].render.label : ''}
+                  placement="top"
+                  disabled={this.multiple || !this.state.selection.length || !this.singleValueTruncated}
+                >
+                  <input
+                    data-test={this.testId}
+                    {...this.nativeAttributes}
+                    part="input"
+                    id={`select-${this.id}-input`}
+                    class="select-input"
+                    role="combobox"
+                    ref={el => (this.input = el)}
+                    autocomplete={this.autoComplete}
+                    data-1p-ignore={this.autoComplete === 'off' ? '' : undefined}
+                    aria-controls={this.isPillboxActive() ? `select-pillbox-${this.id}` : `select-listbox-${this.id}`}
+                    aria-activedescendant={this.activeDescendant}
+                    aria-invalid={this.invalid ? 'true' : undefined}
+                    aria-describedby={this.hasHint ? this.id + '-hint' : undefined}
+                    aria-autocomplete="list"
+                    onInput={this.onInput.bind(this)}
+                    value={!this.multiple ? this.state.term : undefined}
+                    placeholder={this.placeholder}
+                    disabled={this.disabled || this.state.isResolving}
+                  ></input>
+                </cat-tooltip>
               </div>
               {this.state.isResolving && <cat-spinner></cat-spinner>}
               {this.invalid && (
@@ -862,7 +907,15 @@ export class CatSelect {
                   ></cat-avatar>
                 ) : null}
                 <span class="select-option-text" part="option">
-                  <span class="select-option-label">{getLabel()}</span>
+                  <cat-tooltip
+                    content={getLabel()}
+                    placement="top"
+                    disabled={!this.truncatedOptionKeys.has(item.item.id)}
+                  >
+                    <span class="select-option-label" data-option-key={item.item.id}>
+                      {getLabel()}
+                    </span>
+                  </cat-tooltip>
                   <span class="select-option-description">{item.render.description}</span>
                 </span>
               </span>
@@ -888,7 +941,15 @@ export class CatSelect {
                 ></cat-avatar>
               ) : null}
               <span class="select-option-text">
-                <span class="select-option-label">{getLabel()}</span>
+                <cat-tooltip
+                  content={getLabel()}
+                  placement="top"
+                  disabled={!this.truncatedOptionKeys.has(item.item.id)}
+                >
+                  <span class="select-option-label" data-option-key={String(item.item.id)}>
+                    {getLabel()}
+                  </span>
+                </cat-tooltip>
                 <span class="select-option-description">{item.render.description}</span>
               </span>
             </div>
@@ -927,6 +988,7 @@ export class CatSelect {
       this.patchState({ isResolving: false, selection, term, activeOptionIndex: -1 });
       this.term$.next(term);
       this.input && (this.input.value = term);
+      this.needsInputTruncationCheck = true;
     });
   }
 
@@ -989,6 +1051,7 @@ export class CatSelect {
       }
     }
     this.setTransparentCaret();
+    this.needsInputTruncationCheck = true;
   }
 
   private deselect(id: string) {
@@ -998,6 +1061,7 @@ export class CatSelect {
         activeSelectionIndex: -1
       });
     }
+    this.needsInputTruncationCheck = true;
   }
 
   private rerenderOptions() {
@@ -1087,6 +1151,29 @@ export class CatSelect {
 
   private patchState(update: Partial<CatSelectState>) {
     this.state = { ...this.state, ...update };
+  }
+
+  private checkOptionsTruncation(): void {
+    const keys = new Set<string>();
+    this.dropdown?.querySelectorAll<HTMLElement>('.select-option-label[data-option-key]').forEach(el => {
+      if (el.scrollHeight > el.clientHeight) {
+        keys.add(el.dataset.optionKey!);
+      }
+    });
+    this.truncatedOptionKeys = keys;
+  }
+
+  private checkInputTruncation(): void {
+    const indices = new Set<number>();
+    this.trigger?.querySelectorAll<HTMLElement>('span[data-pill-index]').forEach(el => {
+      if (el.scrollWidth > el.clientWidth) {
+        indices.add(Number(el.dataset.pillIndex));
+      }
+    });
+    this.truncatedPillIndices = indices;
+    if (!this.multiple && this.input) {
+      this.singleValueTruncated = this.input.scrollWidth > this.input.clientWidth;
+    }
   }
 
   private isPillboxActive() {
