@@ -397,7 +397,7 @@ export class CatSelect {
     }
     if (this.needsInputTruncationCheck) {
       this.needsInputTruncationCheck = false;
-      this.checkInputTruncation();
+      requestAnimationFrame(() => this.checkInputTruncation());
     }
   }
 
@@ -405,7 +405,7 @@ export class CatSelect {
     if (this.input) {
       autosizeInput(this.input, { minWidth: true });
     }
-    this.checkInputTruncation();
+    requestAnimationFrame(() => this.checkInputTruncation());
     new ResizeObserver(() => {
       this.checkInputTruncation();
       if (this.state.isOpen) {
@@ -883,6 +883,7 @@ export class CatSelect {
           class="select-option"
           id={`select-${this.id}-option-${i}`}
           aria-selected={isOptionSelected ? 'true' : 'false'}
+          key={item.item.id}
         >
           {this.multiple ? (
             <cat-checkbox
