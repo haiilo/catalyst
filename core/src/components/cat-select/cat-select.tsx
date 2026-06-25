@@ -698,7 +698,7 @@ export class CatSelect {
                   >
                     {this.state.selection.map((item, i) => (
                       <cat-tooltip
-                        key={`pill-tooltip-${i}`}
+                        key={item.item.id}
                         content={item.render.label}
                         placement="top"
                         disabled={!this.truncatedPillIndices.has(i)}
@@ -954,7 +954,7 @@ export class CatSelect {
                   placement="top"
                   disabled={!this.truncatedOptionKeys.has(item.item.id)}
                 >
-                  <span class="select-option-label" data-option-key={String(item.item.id)}>
+                  <span class="select-option-label" data-option-key={item.item.id}>
                     {getLabel()}
                   </span>
                 </cat-tooltip>

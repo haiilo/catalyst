@@ -168,14 +168,10 @@ export class CatTooltip {
   }
 
   private removeListeners() {
-    if (this.trigger !== 'hover') {
-      this.triggerEl?.removeEventListener('focusin', this.boundShowListener);
-      this.triggerEl?.removeEventListener('focusout', this.boundHideListener);
-    }
-    if (this.trigger !== 'focus') {
-      this.triggerEl?.removeEventListener('mouseenter', this.boundShowListener);
-      this.triggerEl?.removeEventListener('mouseleave', this.boundHideListener);
-    }
+    this.triggerEl?.removeEventListener('focusin', this.boundShowListener);
+    this.triggerEl?.removeEventListener('focusout', this.boundHideListener);
+    this.triggerEl?.removeEventListener('mouseenter', this.boundShowListener);
+    this.triggerEl?.removeEventListener('mouseleave', this.boundHideListener);
 
     if (isTouchScreen) {
       window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
