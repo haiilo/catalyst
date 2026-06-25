@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.10.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.9.0...catalyst-core-v14.10.0) (2026-06-25)
+
+
+### Features
+
+* **core:** cat-select added tooltips for truncated options on hover ([0676574](https://github.com/haiilo/catalyst/commit/067657492824159777429efe5284b81aba200493))
+* disable autocomplete by default ([#996](https://github.com/haiilo/catalyst/issues/996)) ([0bd8588](https://github.com/haiilo/catalyst/commit/0bd858840fb3b77d181b7dd1e4dff34d3c69acc1))
+
 ## [14.9.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.8.0...catalyst-core-v14.9.0) (2026-05-27)
 
 
