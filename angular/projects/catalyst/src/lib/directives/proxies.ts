@@ -1791,14 +1791,34 @@ export declare interface CatToggle extends Components.CatToggle {
 }
 
 @ProxyCmp({
-  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size']
+  inputs: [
+    'content',
+    'disabled',
+    'hideDelay',
+    'longTouchDuration',
+    'placement',
+    'round',
+    'showDelay',
+    'size',
+    'trigger'
+  ]
 })
 @Component({
   selector: 'cat-tooltip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['content', 'disabled', 'hideDelay', 'longTouchDuration', 'placement', 'round', 'showDelay', 'size'],
+  inputs: [
+    'content',
+    'disabled',
+    'hideDelay',
+    'longTouchDuration',
+    'placement',
+    'round',
+    'showDelay',
+    'size',
+    'trigger'
+  ],
   standalone: false
 })
 export class CatTooltip {

@@ -139,6 +139,7 @@ export class CatSelect {
   private cleanupFloatingUi?: () => void;
   private needsOptionsTruncationCheck = false;
   private needsInputTruncationCheck = false;
+  private resizeObserver?: ResizeObserver;
 
   @Element() hostElement!: HTMLElement;
 
@@ -406,12 +407,13 @@ export class CatSelect {
       autosizeInput(this.input, { minWidth: true });
     }
     requestAnimationFrame(() => this.checkInputTruncation());
-    new ResizeObserver(() => {
+    this.resizeObserver = new ResizeObserver(() => {
       this.checkInputTruncation();
       if (this.state.isOpen) {
         this.checkOptionsTruncation();
       }
-    }).observe(this.hostElement);
+    });
+    this.resizeObserver.observe(this.hostElement);
   }
 
   componentWillLoad(): void {
@@ -421,6 +423,10 @@ export class CatSelect {
   componentWillRender(): void {
     this.hasSlottedLabel = !!this.hostElement.querySelector('[slot="label"]');
     this.hasSlottedHint = !!this.hostElement.querySelector('[slot="hint"]');
+  }
+
+  disconnectedCallback(): void {
+    this.resizeObserver?.disconnect();
   }
 
   @Listen('blur')
@@ -690,48 +696,48 @@ export class CatSelect {
                     aria-orientation="horizontal"
                     class="select-pills"
                   >
-                  {this.state.selection.map((item, i) => (
-                    <cat-tooltip
-                      key={`pill-tooltip-${i}`}
-                      content={item.render.label}
-                      placement="top"
-                      disabled={!this.truncatedPillIndices.has(i)}
-                    >
-                      <span
-                        class={{
-                          pill: true,
-                          'select-no-open': true,
-                          'select-option-active': this.state.activeSelectionIndex === i
-                        }}
-                        role="option"
-                        aria-selected="true"
-                        id={`select-${this.id}-selection-${i}`}
+                    {this.state.selection.map((item, i) => (
+                      <cat-tooltip
+                        key={`pill-tooltip-${i}`}
+                        content={item.render.label}
+                        placement="top"
+                        disabled={!this.truncatedPillIndices.has(i)}
                       >
-                        {item.render.avatar ? (
-                          <cat-avatar
-                            label={item.render.label}
-                            round={item.render.avatar.round}
-                            src={item.render.avatar.src}
-                            icon={item.render.avatar.icon}
-                            initials={item.render.avatar.initials ?? ''}
-                          ></cat-avatar>
-                        ) : null}
-                        <span data-pill-index={String(i)}>{item.render.label}</span>
-                        {!this.disabled && (
-                          <cat-button
-                            size="xs"
-                            variant="text"
-                            icon="$cat:select-clear"
-                            iconOnly
-                            a11yLabel={i18n.t('select.deselect')}
-                            onClick={() => this.deselect(item.item.id)}
-                            tabIndex={-1}
-                            data-dropdown-no-close
-                          ></cat-button>
-                        )}
-                      </span>
-                    </cat-tooltip>
-                  ))}
+                        <span
+                          class={{
+                            pill: true,
+                            'select-no-open': true,
+                            'select-option-active': this.state.activeSelectionIndex === i
+                          }}
+                          role="option"
+                          aria-selected="true"
+                          id={`select-${this.id}-selection-${i}`}
+                        >
+                          {item.render.avatar ? (
+                            <cat-avatar
+                              label={item.render.label}
+                              round={item.render.avatar.round}
+                              src={item.render.avatar.src}
+                              icon={item.render.avatar.icon}
+                              initials={item.render.avatar.initials ?? ''}
+                            ></cat-avatar>
+                          ) : null}
+                          <span data-pill-index={i}>{item.render.label}</span>
+                          {!this.disabled && (
+                            <cat-button
+                              size="xs"
+                              variant="text"
+                              icon="$cat:select-clear"
+                              iconOnly
+                              a11yLabel={i18n.t('select.deselect')}
+                              onClick={() => this.deselect(item.item.id)}
+                              tabIndex={-1}
+                              data-dropdown-no-close
+                            ></cat-button>
+                          )}
+                        </span>
+                      </cat-tooltip>
+                    ))}
                   </div>
                 ) : this.state.selection.length && this.state.selection[0].render.avatar ? (
                   <cat-avatar
