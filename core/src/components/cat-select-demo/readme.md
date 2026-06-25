@@ -19,6 +19,7 @@ graph TD;
   cat-select-demo --> cat-select
   cat-select-demo --> cat-dropdown
   cat-select-demo --> cat-button
+  cat-select --> cat-tooltip
   cat-select --> cat-avatar
   cat-select --> cat-button
   cat-select --> cat-spinner

@@ -131,6 +131,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [cat-tooltip](../cat-tooltip)
 - [cat-avatar](../cat-avatar)
 - [cat-button](../cat-button)
 - [cat-spinner](../cat-spinner)
@@ -142,6 +143,7 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  cat-select --> cat-tooltip
   cat-select --> cat-avatar
   cat-select --> cat-button
   cat-select --> cat-spinner

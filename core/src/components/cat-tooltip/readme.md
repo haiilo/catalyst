@@ -25,6 +25,19 @@ different placements, sizes, and styles.
 | `size`              | `size`                | The size of the tooltip.                                                                                                                           | `"l" \| "m" \| "s"`                                                                                                                                                  | `'m'`   |
 
 
+## Dependencies
+
+### Used by
+
+ - [cat-select](../cat-select)
+
+### Graph
+```mermaid
+graph TD;
+  cat-select --> cat-tooltip
+  style cat-tooltip fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Made with love in Hamburg, Germany

@@ -22,7 +22,7 @@ export class CatTooltip {
   private static readonly SHIFT_PADDING = 4;
   private readonly id = `cat-tooltip-${nextUniqueId++}`;
   private tooltip?: HTMLElement;
-  private trigger?: Element;
+  private triggerEl?: Element;
   private showTimeout?: number;
   private hideTimeout?: number;
   private touchTimeout?: number;
@@ -88,6 +88,14 @@ export class CatTooltip {
    */
   @Prop() longTouchDuration = 1000;
 
+  /**
+   * The trigger event(s) that show and hide the tooltip.
+   * - 'hover-focus': show on both mouse hover and keyboard focus (default)
+   * - 'hover': show on mouse hover only
+   * - 'focus': show on keyboard focus only
+   */
+  @Prop() trigger: 'hover' | 'focus' | 'hover-focus' = 'hover-focus';
+
   @Listen('keydown', { target: 'window' })
   handleKeyDown({ key }: KeyboardEvent) {
     key === 'Escape' && this.hideTooltip();
@@ -95,9 +103,9 @@ export class CatTooltip {
 
   componentDidLoad(): void {
     const slot = this.hostElement.shadowRoot?.querySelector('slot');
-    this.trigger = slot?.assignedElements?.()?.[0];
-    if (this.trigger && !this.trigger.hasAttribute('aria-describedby')) {
-      this.trigger.setAttribute('aria-describedby', this.id);
+    this.triggerEl = slot?.assignedElements?.()?.[0];
+    if (this.triggerEl && !this.triggerEl.hasAttribute('aria-describedby')) {
+      this.triggerEl.setAttribute('aria-describedby', this.id);
     }
 
     this.addListeners();
@@ -143,34 +151,42 @@ export class CatTooltip {
   }
 
   private addListeners() {
-    this.trigger?.addEventListener('focusin', this.boundShowListener);
-    this.trigger?.addEventListener('focusout', this.boundHideListener);
-    this.trigger?.addEventListener('mouseenter', this.boundShowListener);
-    this.trigger?.addEventListener('mouseleave', this.boundHideListener);
+    if (this.trigger !== 'hover') {
+      this.triggerEl?.addEventListener('focusin', this.boundShowListener);
+      this.triggerEl?.addEventListener('focusout', this.boundHideListener);
+    }
+    if (this.trigger !== 'focus') {
+      this.triggerEl?.addEventListener('mouseenter', this.boundShowListener);
+      this.triggerEl?.addEventListener('mouseleave', this.boundHideListener);
+    }
 
     if (isTouchScreen) {
       window.addEventListener('touchstart', this.boundWindowTouchStartListener);
-      this.trigger?.addEventListener('touchstart', this.boundTouchStartListener);
-      this.trigger?.addEventListener('touchend', this.boundTouchEndListener);
+      this.triggerEl?.addEventListener('touchstart', this.boundTouchStartListener);
+      this.triggerEl?.addEventListener('touchend', this.boundTouchEndListener);
     }
   }
 
   private removeListeners() {
-    this.trigger?.removeEventListener('mouseenter', this.boundShowListener);
-    this.trigger?.removeEventListener('mouseleave', this.boundHideListener);
-    this.trigger?.removeEventListener('focusin', this.boundShowListener);
-    this.trigger?.removeEventListener('focusout', this.boundHideListener);
+    if (this.trigger !== 'hover') {
+      this.triggerEl?.removeEventListener('focusin', this.boundShowListener);
+      this.triggerEl?.removeEventListener('focusout', this.boundHideListener);
+    }
+    if (this.trigger !== 'focus') {
+      this.triggerEl?.removeEventListener('mouseenter', this.boundShowListener);
+      this.triggerEl?.removeEventListener('mouseleave', this.boundHideListener);
+    }
 
     if (isTouchScreen) {
       window.removeEventListener('touchstart', this.boundWindowTouchStartListener);
-      this.trigger?.removeEventListener('touchstart', this.boundTouchStartListener);
-      this.trigger?.removeEventListener('touchend', this.boundTouchEndListener);
+      this.triggerEl?.removeEventListener('touchstart', this.boundTouchStartListener);
+      this.triggerEl?.removeEventListener('touchend', this.boundTouchEndListener);
     }
   }
 
   private async update() {
-    if (this.trigger && this.tooltip) {
-      await computePosition(this.trigger, this.tooltip, {
+    if (this.triggerEl && this.tooltip) {
+      await computePosition(this.triggerEl, this.tooltip, {
         strategy: 'fixed',
         placement: this.placement,
         middleware: [
@@ -233,8 +249,8 @@ export class CatTooltip {
 
   private showTooltip() {
     if (!this.inactive) {
-      if (this.trigger && this.tooltip) {
-        this.cleanupFloatingUi = autoUpdate(this.trigger, this.tooltip, () => this.update());
+      if (this.triggerEl && this.tooltip) {
+        this.cleanupFloatingUi = autoUpdate(this.triggerEl, this.tooltip, () => this.update());
       }
       this.open = true;
       this.tooltip?.classList.add('tooltip-show');

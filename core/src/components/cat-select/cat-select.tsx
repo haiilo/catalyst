@@ -743,6 +743,7 @@ export class CatSelect {
                   ></cat-avatar>
                 ) : null}
                 <cat-tooltip
+                  trigger="hover"
                   content={!this.multiple && this.state.selection.length ? this.state.selection[0].render.label : ''}
                   placement="top"
                   disabled={this.multiple || !this.state.selection.length || !this.singleValueTruncated}
