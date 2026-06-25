@@ -698,7 +698,6 @@ export class CatSelect {
                   >
                     {this.state.selection.map((item, i) => (
                       <cat-tooltip
-                        key={item.item.id}
                         content={item.render.label}
                         placement="top"
                         disabled={!this.truncatedPillIndices.has(i)}
@@ -884,6 +883,7 @@ export class CatSelect {
         return item.render.label;
       };
 
+      // key in <li> element is a stencil dom directive, it prevents stale checked state when options reload
       return (
         <li
           role="option"
