@@ -2179,6 +2179,11 @@ export namespace Components {
           * @default 'm'
          */
         "size": 's' | 'm' | 'l';
+        /**
+          * The trigger event(s) that show and hide the tooltip. - 'hover-focus': show on both mouse hover and keyboard focus (default) - 'hover': show on mouse hover only - 'focus': show on keyboard focus only
+          * @default 'hover-focus'
+         */
+        "trigger": 'hover' | 'focus' | 'hover-focus';
     }
 }
 export interface CatButtonCustomEvent<T> extends CustomEvent<T> {
@@ -5080,6 +5085,11 @@ declare namespace LocalJSX {
           * @default 'm'
          */
         "size"?: 's' | 'm' | 'l';
+        /**
+          * The trigger event(s) that show and hide the tooltip. - 'hover-focus': show on both mouse hover and keyboard focus (default) - 'hover': show on mouse hover only - 'focus': show on keyboard focus only
+          * @default 'hover-focus'
+         */
+        "trigger"?: 'hover' | 'focus' | 'hover-focus';
     }
 
     interface CatAlertAttributes {
@@ -5513,6 +5523,7 @@ declare namespace LocalJSX {
         "showDelay": number;
         "hideDelay": number;
         "longTouchDuration": number;
+        "trigger": 'hover' | 'focus' | 'hover-focus';
     }
 
     interface IntrinsicElements {
