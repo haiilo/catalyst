@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: 20.4.4
-        version: 20.4.4(@types/node@20.19.43)(conventional-commits-parser@7.0.0)(typescript@5.9.3)
+        version: 20.4.4(@types/node@20.19.43)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
       '@commitlint/config-conventional':
-        specifier: 20.4.4
-        version: 20.4.4
+        specifier: 21.2.0
+        version: 21.2.0
       husky:
         specifier: 8.0.3
         version: 8.0.3
@@ -56,7 +56,7 @@ importers:
     devDependencies:
       '@angular/build':
         specifier: 21.2.17
-        version: 21.2.17(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(@angular/compiler@21.2.17)(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@20.19.43)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.7)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.16)(sass-embedded@1.100.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3)))
+        version: 21.2.17(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(@angular/compiler@21.2.17)(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@20.19.43)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.7)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.16)(sass-embedded@1.100.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.8)
       '@angular/cli':
         specifier: 21.2.17
         version: 21.2.17(@types/node@20.19.43)(chokidar@5.0.0)
@@ -99,45 +99,6 @@ importers:
       vitest:
         specifier: 4.1.8
         version: 4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))
-
-  angular/dist/catalyst:
-    dependencies:
-      '@angular/cdk':
-        specifier: '>=21.0.0'
-        version: 21.2.14(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst':
-        specifier: workspace:*
-        version: link:../../../core
-      '@haiilo/catalyst-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
-      loglevel:
-        specifier: 1.8.1
-        version: 1.8.1
-      rxjs:
-        specifier: ^6.5.3 || ^7.4.0
-        version: 7.8.2
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
-  angular/dist/catalyst-formly:
-    dependencies:
-      '@angular/core':
-        specifier: '>=21.0.0'
-        version: 21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)
-      '@haiilo/catalyst-angular':
-        specifier: workspace:*
-        version: link:../../projects/catalyst
-      '@ngx-formly/core':
-        specifier: ^7.0.0
-        version: 7.0.1(@angular/forms@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(rxjs@7.8.2)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   angular/projects/catalyst:
     dependencies:
@@ -231,7 +192,7 @@ importers:
         version: 3.2.3(@stencil/core@4.43.3)
       '@stencil/vitest':
         specifier: 1.11.6
-        version: 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8))(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))
+        version: 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8)(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8)
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
@@ -646,9 +607,9 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-conventional@20.4.4':
-    resolution: {integrity: sha512-Usg+XXbPNG2GtFWTgRURNWCge1iH1y6jQIvvklOdAbyn2t8ajfVwZCnf5t5X4gUsy17BOiY+myszGsSMIvhOVA==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-conventional@21.2.0':
+    resolution: {integrity: sha512-Qf8WRDVcyVd14if6VTWenebxFbKnVnbzPUJjlzjkyJGeHK2xCGd63Dr1XZzj0plXKQb9P0BfOxoc1HVeCo2BWQ==}
+    engines: {node: '>=22.12.0'}
 
   '@commitlint/config-validator@20.5.0':
     resolution: {integrity: sha512-T/Uh6iJUzyx7j35GmHWdIiGRQB+ouZDk0pwAaYq4SXgB54KZhFdJ0vYmxiW6AMYICTIWuyMxDBl1jK74oFp/Gw==}
@@ -710,6 +671,10 @@ packages:
     resolution: {integrity: sha512-ZJoS8oSq2CAZEpc/YI9SulLrdiIyXeHb/OGqGrkUP6Q7YV+0ouNAa7GjqRdXeQPncHQIDz/jbCTlHScvYvO/gA==}
     engines: {node: '>=v18'}
 
+  '@commitlint/types@21.2.0':
+    resolution: {integrity: sha512-7zVFCDB2reMvJH5dmbKnOQPjZEvjdJTH8jc0U/PIPU1r3/+vf5pD1HlfitV2MWsWXrvu7u39iY1lyLUPOaN0Gw==}
+    engines: {node: '>=22.12.0'}
+
   '@conventional-changelog/git-client@2.7.0':
     resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
     engines: {node: '>=18'}
@@ -721,6 +686,10 @@ packages:
         optional: true
       conventional-commits-parser:
         optional: true
+
+  '@conventional-changelog/template@1.2.0':
+    resolution: {integrity: sha512-12qHxvlKjHmP0PQ+17EREgC7lWyLwbph1RKcZQZ7k7ZWGmrxfxC9gadHGfvzr0g0u8BhiBGg3tks93txodlyRQ==}
+    engines: {node: '>=22'}
 
   '@csstools/color-helpers@6.1.0':
     resolution: {integrity: sha512-064IFJdjTfUqnjpCVpMOdbr8FLQBhinbZj6yRv2An2E41O/pLEXqfFRWqGq/SxlE5PEUYTlvWsG2r8MswAVvkg==}
@@ -2810,9 +2779,9 @@ packages:
     resolution: {integrity: sha512-6gfI3otXK5Ph5DfCOI1dblr+kN3FAm5a97hYoQkqNZxOaYa5WKfXH+AnpsmS+iUH2mgVC2Cg2Qw9m5OKcmNrIg==}
     engines: {node: '>=18'}
 
-  conventional-changelog-conventionalcommits@9.3.1:
-    resolution: {integrity: sha512-dTYtpIacRpcZgrvBYvBfArMmK2xvIpv2TaxM0/ZI5CBtNUzvF2x0t15HsbRABWprS6UPmvj+PzHVjSx4qAVKyw==}
-    engines: {node: '>=18'}
+  conventional-changelog-conventionalcommits@10.2.0:
+    resolution: {integrity: sha512-UtlM9GqolY7OmlQh5L/UEVoKsTUpTgUVy1PU8JN5gl5Ydaejb7WRklGliG1SKPxxj7hzA173eG3Kt5fYWE2pmg==}
+    engines: {node: '>=22'}
 
   conventional-commits-parser@6.4.0:
     resolution: {integrity: sha512-tvRg7FIBNlyPzjdG8wWRlPHQJJHI7DylhtRGeU9Lq+JuoPh5BKpPRX83ZdLrvXuOSu5Eo/e7SzOQhU4Hd2Miuw==}
@@ -5404,7 +5373,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular/build@21.2.17(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(@angular/compiler@21.2.17)(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@20.19.43)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.7)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.16)(sass-embedded@1.100.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3)))':
+  '@angular/build@21.2.17(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(@angular/compiler@21.2.17)(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.17(@angular/common@21.2.17(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.17(@angular/compiler@21.2.17)(rxjs@7.8.2)(zone.js@0.15.1)))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@20.19.43)(chokidar@5.0.0)(jiti@2.7.0)(less@4.6.7)(ng-packagr@21.0.0(@angular/compiler-cli@21.2.17(@angular/compiler@21.2.17)(typescript@5.9.3))(tslib@2.8.1)(typescript@5.9.3))(postcss@8.5.16)(sass-embedded@1.100.0)(tslib@2.8.1)(typescript@5.9.3)(vitest@4.1.8)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.2102.17(chokidar@5.0.0)
@@ -5743,12 +5712,12 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@commitlint/cli@20.4.4(@types/node@20.19.43)(conventional-commits-parser@7.0.0)(typescript@5.9.3)':
+  '@commitlint/cli@20.4.4(@types/node@20.19.43)(conventional-commits-parser@6.4.0)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.5.0
       '@commitlint/lint': 20.5.3
       '@commitlint/load': 20.5.3(@types/node@20.19.43)(typescript@5.9.3)
-      '@commitlint/read': 20.5.0(conventional-commits-parser@7.0.0)
+      '@commitlint/read': 20.5.0(conventional-commits-parser@6.4.0)
       '@commitlint/types': 20.5.0
       tinyexec: 1.2.4
       yargs: 17.7.3
@@ -5758,10 +5727,10 @@ snapshots:
       - conventional-commits-parser
       - typescript
 
-  '@commitlint/config-conventional@20.4.4':
+  '@commitlint/config-conventional@21.2.0':
     dependencies:
-      '@commitlint/types': 20.5.0
-      conventional-changelog-conventionalcommits: 9.3.1
+      '@commitlint/types': 21.2.0
+      conventional-changelog-conventionalcommits: 10.2.0
 
   '@commitlint/config-validator@20.5.0':
     dependencies:
@@ -5815,11 +5784,11 @@ snapshots:
       conventional-changelog-angular: 8.3.1
       conventional-commits-parser: 6.4.0
 
-  '@commitlint/read@20.5.0(conventional-commits-parser@7.0.0)':
+  '@commitlint/read@20.5.0(conventional-commits-parser@6.4.0)':
     dependencies:
       '@commitlint/top-level': 20.4.3
       '@commitlint/types': 20.5.0
-      git-raw-commits: 5.0.1(conventional-commits-parser@7.0.0)
+      git-raw-commits: 5.0.1(conventional-commits-parser@6.4.0)
       minimist: 1.2.8
       tinyexec: 1.2.4
     transitivePeerDependencies:
@@ -5853,13 +5822,20 @@ snapshots:
       conventional-commits-parser: 6.4.0
       picocolors: 1.1.1
 
-  '@conventional-changelog/git-client@2.7.0(conventional-commits-parser@7.0.0)':
+  '@commitlint/types@21.2.0':
+    dependencies:
+      conventional-commits-parser: 7.0.0
+      picocolors: 1.1.1
+
+  '@conventional-changelog/git-client@2.7.0(conventional-commits-parser@6.4.0)':
     dependencies:
       '@simple-libs/child-process-utils': 1.0.2
       '@simple-libs/stream-utils': 1.2.0
       semver: 7.8.5
     optionalDependencies:
-      conventional-commits-parser: 7.0.0
+      conventional-commits-parser: 6.4.0
+
+  '@conventional-changelog/template@1.2.0': {}
 
   '@csstools/color-helpers@6.1.0': {}
 
@@ -6987,8 +6963,7 @@ snapshots:
 
   '@simple-libs/stream-utils@1.2.0': {}
 
-  '@simple-libs/stream-utils@2.0.0':
-    optional: true
+  '@simple-libs/stream-utils@2.0.0': {}
 
   '@sinclair/typebox@0.34.49': {}
 
@@ -7020,13 +6995,13 @@ snapshots:
       '@stencil/core': 4.43.3
       sass-embedded: 1.100.0
 
-  '@stencil/vitest@1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8))(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))':
+  '@stencil/vitest@1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8)(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8)':
     dependencies:
       '@stencil/core': 4.43.3
       jiti: 2.7.0
       local-pkg: 1.2.1
       vitest: 4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))
-      vitest-environment-stencil: 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8))(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))
+      vitest-environment-stencil: 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8)(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8)
     optionalDependencies:
       '@vitest/browser-playwright': 4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8)
       jsdom: 27.4.0
@@ -7206,7 +7181,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8)':
     dependencies:
-      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))
+      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8)
       '@vitest/mocker': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))
       playwright: 1.61.1
       tinyrainbow: 3.1.0
@@ -7219,7 +7194,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8)':
     dependencies:
-      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3)))
+      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8)
       '@vitest/mocker': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))
       playwright: 1.61.1
       tinyrainbow: 3.1.0
@@ -7230,7 +7205,7 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))':
+  '@vitest/browser@4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8)':
     dependencies:
       '@blazediff/core': 1.9.1
       '@vitest/mocker': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))
@@ -7247,7 +7222,7 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3)))':
+  '@vitest/browser@4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8)':
     dependencies:
       '@blazediff/core': 1.9.1
       '@vitest/mocker': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))
@@ -7278,7 +7253,7 @@ snapshots:
       tinyrainbow: 3.1.0
       vitest: 4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))
     optionalDependencies:
-      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3)))
+      '@vitest/browser': 4.1.8(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.97.3))(vitest@4.1.8)
 
   '@vitest/expect@4.1.8':
     dependencies:
@@ -7717,9 +7692,9 @@ snapshots:
     dependencies:
       compare-func: 2.0.0
 
-  conventional-changelog-conventionalcommits@9.3.1:
+  conventional-changelog-conventionalcommits@10.2.0:
     dependencies:
-      compare-func: 2.0.0
+      '@conventional-changelog/template': 1.2.0
 
   conventional-commits-parser@6.4.0:
     dependencies:
@@ -7730,7 +7705,6 @@ snapshots:
     dependencies:
       '@simple-libs/stream-utils': 2.0.0
       meow: 14.1.0
-    optional: true
 
   convert-source-map@1.9.0: {}
 
@@ -8325,9 +8299,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  git-raw-commits@5.0.1(conventional-commits-parser@7.0.0):
+  git-raw-commits@5.0.1(conventional-commits-parser@6.4.0):
     dependencies:
-      '@conventional-changelog/git-client': 2.7.0(conventional-commits-parser@7.0.0)
+      '@conventional-changelog/git-client': 2.7.0(conventional-commits-parser@6.4.0)
       meow: 13.2.0
     transitivePeerDependencies:
       - conventional-commits-filter
@@ -10292,10 +10266,10 @@ snapshots:
       sass: 1.97.3
       sass-embedded: 1.100.0
 
-  vitest-environment-stencil@1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8))(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))):
+  vitest-environment-stencil@1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8)(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8):
     dependencies:
       '@stencil/core': 4.43.3
-      '@stencil/vitest': 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8(playwright@1.61.1)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0))(vitest@4.1.8))(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8(@types/node@20.19.43)(@vitest/browser-playwright@4.1.8)(@vitest/coverage-v8@4.1.8)(@vitest/ui@4.1.8)(jsdom@27.4.0)(vite@7.3.5(@types/node@20.19.43)(jiti@2.7.0)(less@4.6.7)(sass-embedded@1.100.0)(sass@1.101.0)))
+      '@stencil/vitest': 1.11.6(@stencil/core@4.43.3)(@vitest/browser-playwright@4.1.8)(jsdom@27.4.0)(playwright@1.61.1)(vitest@4.1.8)
     transitivePeerDependencies:
       - '@playwright/test'
       - '@stencil/mock-doc'
