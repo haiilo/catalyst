@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.11.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.10.0...catalyst-core-v14.11.0) (2026-06-30)
+
+
+### Features
+
+* **core:** disabled tooltip replaced with empty text tooltip for cat-select ([#1008](https://github.com/haiilo/catalyst/issues/1008)) ([3a68bba](https://github.com/haiilo/catalyst/commit/3a68bba7c373e56dff964b616bd1f252d88af229))
+
 ## [14.10.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.9.0...catalyst-core-v14.10.0) (2026-06-25)
 
 
