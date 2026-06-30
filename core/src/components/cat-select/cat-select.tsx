@@ -698,9 +698,8 @@ export class CatSelect {
                   >
                     {this.state.selection.map((item, i) => (
                       <cat-tooltip
-                        content={item.render.label}
+                        content={this.truncatedPillIndices.has(i) ? item.render.label : ''}
                         placement="top"
-                        disabled={!this.truncatedPillIndices.has(i)}
                       >
                         <span
                           class={{
@@ -749,9 +748,8 @@ export class CatSelect {
                 ) : null}
                 <cat-tooltip
                   trigger="hover"
-                  content={!this.multiple && this.state.selection.length ? this.state.selection[0].render.label : ''}
+                  content={!this.multiple && this.state.selection.length && this.singleValueTruncated ? this.state.selection[0].render.label : ''}
                   placement="top"
-                  disabled={this.multiple || !this.state.selection.length || !this.singleValueTruncated}
                 >
                   <input
                     data-test={this.testId}
@@ -916,9 +914,8 @@ export class CatSelect {
                 ) : null}
                 <span class="select-option-text" part="option">
                   <cat-tooltip
-                    content={getLabel()}
+                    content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''}
                     placement="top"
-                    disabled={!this.truncatedOptionKeys.has(item.item.id)}
                   >
                     <span class="select-option-label" data-option-key={item.item.id}>
                       {getLabel()}
@@ -950,9 +947,8 @@ export class CatSelect {
               ) : null}
               <span class="select-option-text">
                 <cat-tooltip
-                  content={getLabel()}
+                  content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''}
                   placement="top"
-                  disabled={!this.truncatedOptionKeys.has(item.item.id)}
                 >
                   <span class="select-option-label" data-option-key={item.item.id}>
                     {getLabel()}
