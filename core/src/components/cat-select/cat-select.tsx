@@ -697,10 +697,7 @@ export class CatSelect {
                     class="select-pills"
                   >
                     {this.state.selection.map((item, i) => (
-                      <cat-tooltip
-                        content={this.truncatedPillIndices.has(i) ? item.render.label : ''}
-                        placement="top"
-                      >
+                      <cat-tooltip content={this.truncatedPillIndices.has(i) ? item.render.label : ''} placement="top">
                         <span
                           class={{
                             pill: true,
@@ -748,7 +745,11 @@ export class CatSelect {
                 ) : null}
                 <cat-tooltip
                   trigger="hover"
-                  content={!this.multiple && this.state.selection.length && this.singleValueTruncated ? this.state.selection[0].render.label : ''}
+                  content={
+                    !this.multiple && this.state.selection.length && this.singleValueTruncated
+                      ? this.state.selection[0].render.label
+                      : ''
+                  }
                   placement="top"
                 >
                   <input
@@ -913,10 +914,7 @@ export class CatSelect {
                   ></cat-avatar>
                 ) : null}
                 <span class="select-option-text" part="option">
-                  <cat-tooltip
-                    content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''}
-                    placement="top"
-                  >
+                  <cat-tooltip content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''} placement="top">
                     <span class="select-option-label" data-option-key={item.item.id}>
                       {getLabel()}
                     </span>
@@ -946,10 +944,7 @@ export class CatSelect {
                 ></cat-avatar>
               ) : null}
               <span class="select-option-text">
-                <cat-tooltip
-                  content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''}
-                  placement="top"
-                >
+                <cat-tooltip content={this.truncatedOptionKeys.has(item.item.id) ? getLabel() : ''} placement="top">
                   <span class="select-option-label" data-option-key={item.item.id}>
                     {getLabel()}
                   </span>
