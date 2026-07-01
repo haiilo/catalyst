@@ -27,8 +27,8 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "21.2.17",
-    "@angular/cli": "21.2.17",
+    "@angular/build": "21.2.18",
+    "@angular/cli": "21.2.18",
     "@angular/compiler-cli": "21.2.17",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.0.0",
@@ -37,7 +37,7 @@
     "@vitest/ui": "4.1.8",
     "esbuild-plugin-ignore": "^1.1.1",
     "jsdom": "^27.4.0",
-    "ng-packagr": "21.0.0",
+    "ng-packagr": "21.2.5",
     "playwright": "^1.57.0",
     "prettier": "3.7.4",
     "typescript": "5.9.3",
