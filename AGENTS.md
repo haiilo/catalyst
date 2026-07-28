@@ -4,10 +4,11 @@ This guide enables AI agents (and developers) to work effectively in the Catalys
 
 ## Skills
 
-Two skills are available for deeper guidance. Load them when needed:
+The following skills are available for deeper guidance. Load them when needed:
 
 - **`catalyst-onboarding`** — orientation to repo structure, component anatomy, tokens, PR review, and troubleshooting. Load first if unfamiliar with the codebase.
 - **`catalyst-component-development`** — full step-by-step workflow for creating or modifying a component. Load when ready to build.
+- **`catalyst-pr-review`** — step-by-step PR review workflow with full checklist. Load when reviewing a PR.
 
 ## About Catalyst
 
@@ -480,34 +481,7 @@ Similar workflows exist for `angular.yml`, `react.yml`, `tokens.yml`.
 
 ### Review a PR
 
-#### Automated (CI catches these)
-- [ ] Build passes (no type errors, no SCSS compile failures)
-- [ ] Lint passes (prettier, ESLint, stylelint)
-- [ ] All tests pass (spec, screenshot, e2e)
-
-#### Manual (human review catches these)
-- [ ] Commit message: valid type, valid scope, clear description
-- [ ] Component API:
-  - [ ] Boolean props default to `false`
-  - [ ] String unions use established scales (sizes, colors)
-  - [ ] Multi-word props are camelCase
-  - [ ] All `@Prop()` have JSDoc
-  - [ ] All `@Event()` prefixed `cat*`, typed correctly
-  - [ ] All `@Method()` are `async`, return `Promise<void>`
-  - [ ] Interactive components have `testId` + `nativeAttributes`
-- [ ] SCSS:
-  - [ ] No hardcoded colors (use `cat-token()`)
-  - [ ] No raw font-size (use `@include cat-body()` / `@include cat-head()`)
-  - [ ] No hardcoded border-radius (use `cat-border-radius()`)
-  - [ ] `:host` is layout root, not wrapped in div
-  - [ ] `:host([hidden]) { display: none; }` present
-- [ ] Tests:
-  - [ ] New visual variant → screenshot test added
-  - [ ] New interaction → e2e test added
-  - [ ] New prop → spec test added
-- [ ] Shadow DOM:
-  - [ ] Ancestor traversal uses `findClosest()`, not native `closest()`
-  - [ ] Outside-click detection uses `event.composedPath()`
+Load the `catalyst-pr-review` skill. It walks through CI verification and the full manual checklist step by step.
 
 ## Troubleshooting
 
