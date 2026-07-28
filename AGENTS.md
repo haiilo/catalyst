@@ -9,6 +9,7 @@ The following skills are available for deeper guidance. Load them when needed:
 - **`catalyst-onboarding`** — orientation to repo structure, component anatomy, tokens, PR review, and troubleshooting. Load first if unfamiliar with the codebase.
 - **`catalyst-component-development`** — full step-by-step workflow for creating or modifying a component. Load when ready to build.
 - **`catalyst-pr-review`** — step-by-step PR review workflow with full checklist. Load when reviewing a PR.
+- **`catalyst-release`** — stable and beta release workflow via release-please. Load when preparing or troubleshooting a release.
 
 ## About Catalyst
 
@@ -385,26 +386,7 @@ Similar workflows exist for `angular.yml`, `react.yml`, `tokens.yml`.
 
 ### Release Process
 
-**Automated (recommended):**
-
-1. Merge commits with valid conventional commit messages to `main`
-2. release-please creates/updates a Release PR automatically
-3. Review and merge the Release PR
-4. release-please tags, creates GitHub release, and publishes to npm
-
-**For pre-releases (beta):**
-
-1. Ensure `beta` branch is up-to-date with `main`
-2. Create feature branch from `beta`
-3. Push and merge PR to `beta`
-4. release-please creates pre-release PR on `beta`
-5. Merge pre-release PR
-6. When ready: create PR from `beta` → `main` (with conventional commit message)
-7. Merge to `main` to trigger regular release
-
-**Check manifest for current version:**
-- `.release-please-manifest.json` — prod versions
-- `.release-please-manifest.beta.json` — beta versions
+Load the `catalyst-release` skill. It covers stable and beta release workflows, version bump rules, pre-merge checks, and troubleshooting.
 
 ## Common Tasks
 
