@@ -1,510 +1,248 @@
-# Catalyst Design System — AI Agent Instructions
+# AGENTS.md
 
-This guide enables AI agents (and developers) to work effectively in the Catalyst monorepo.
+Agent instructions for Catalyst Design System. This file complements package READMEs; use the closest nested `AGENTS.md` if one is added later.
 
-## Skills
+## Project overview
 
-The following skills are available for deeper guidance. Load them when needed:
+Catalyst is a pnpm monorepo that publishes five related packages:
 
-- **`catalyst-onboarding`** — orientation to repo structure, component anatomy, tokens, PR review, and troubleshooting. Load first if unfamiliar with the codebase.
-- **`catalyst-component-development`** — full step-by-step workflow for creating or modifying a component. Load when ready to build.
-- **`catalyst-pr-review`** — step-by-step PR review workflow with full checklist. Load when reviewing a PR.
-- **`catalyst-release`** — stable and beta release workflow via release-please. Load when preparing or troubleshooting a release.
+| Directory                           | Package                           | Purpose                        |
+|-------------------------------------|-----------------------------------|--------------------------------|
+| `tokens/`                           | `@haiilo/catalyst-tokens`         | Style Dictionary design tokens |
+| `core/`                             | `@haiilo/catalyst`                | Stencil web components         |
+| `angular/`                          | `@haiilo/catalyst-angular`        | Angular bindings               |
+| `angular/projects/catalyst-formly/` | `@haiilo/catalyst-angular-formly` | Angular Formly types           |
+| `react/`                            | `@haiilo/catalyst-react`          | React bindings                 |
 
-## About Catalyst
+Technology: TypeScript, Stencil, Angular, React, SCSS, Style Dictionary, Vitest, Playwright, pnpm, and GitHub Actions. Build dependencies in this order:
 
-**Catalyst** is a design system built as a monorepo with five published packages:
+```text
+tokens -> core -> angular -> angular-formly
+tokens -> core -> react
+```
 
-| Package | Type | Purpose |
-|---------|------|---------|
-| `@haiilo/catalyst-tokens` | NPM | Design tokens (Style Dictionary) |
-| `@haiilo/catalyst` | NPM | Core web components (Stencil) |
-| `@haiilo/catalyst-angular` | NPM | Angular bindings for core components |
-| `@haiilo/catalyst-angular-formly` | NPM | Angular Formly custom field types |
-| `@haiilo/catalyst-react` | NPM | React bindings for core components |
+## Repository skills
 
-**Tech stack:**
-- **Package manager:** pnpm (v9+)
-- **Node:** v20+
-- **Component framework:** Stencil (TypeScript)
-- **Styling:** SCSS + Style Dictionary tokens
-- **Testing:** Vitest, Playwright (screenshot + e2e)
-- **CI/CD:** GitHub Actions + release-please
-- **Release strategy:** Semantic versioning, all packages bumped together
+Use these optional skills for deeper guidance when working in this repository:
+
+- `catalyst-onboarding` — orient to repository structure and package workflows.
+- `catalyst-component-development` — create or modify Catalyst components.
+- `catalyst-pr-review` — review changes against repository standards.
+- `stenciljs-component-development` — apply Stencil implementation patterns.
+
+Skill files live under `.agents/skills/`. Follow this file and package documentation when a skill is unavailable.
+
+## Repository navigation
+
+- Tokens: `tokens/src/`, `tokens/config.js`
+- Core components/utilities: `core/src/components/cat-*/`, `core/src/utils/`
+- Angular source/demos: `angular/projects/`
+- React bindings: `react/src/`
+- CI: `.github/workflows/`; releases: `release-please-config*.json`, `.release-please-manifest*.json`
+- Package documentation: each package's `README.md`
+
+Do not edit generated output under `dist/`, `core/loader/`, `core/www/`, or
+`.stencil/` unless a workflow explicitly requires it. Generated files are normally recreated by package scripts.
 
 ## Setup
 
-### Prerequisites
+Requirements are declared in the root `package.json`: Node `>=20`, pnpm `>=9`. CI uses the Node version in `.nvmrc` (`24`) and pnpm 9; use those versions locally.
 
 ```bash
-# Install Node 20+ (or use .nvmrc)
 nvm use
-
-# Install pnpm 9+
-npm install -g pnpm@9
-
-# Install workspace dependencies
+pnpm --version
 pnpm install
 ```
 
-### Useful aliases (optional)
+Run commands from repository root unless a command says otherwise. Keep
+`pnpm-lock.yaml` synchronized with dependency changes. Do not use npm or Yarn for workspace installation.
+
+## Development commands
+
+### Build
 
 ```bash
-alias pn='pnpm'
-alias pnr='pnpm run'
-alias pni='pnpm install'
-alias pnb='pnpm build'
-alias pnt='pnpm test'
-```
-
-### Build order
-
-Packages must be built in dependency order:
-
-```bash
-pnpm run build:tokens   # First: design tokens
-pnpm run build:core     # Second: web components (depend on tokens)
-pnpm run build:angular  # Third: Angular bindings
-pnpm run build:angular-formly  # Fourth: Angular Formly types
-pnpm run build:react    # Fifth: React bindings
-```
-
-Or build all at once:
-
-```bash
-pnpm run build
-```
-
-## File Structure
-
-```
-catalyst/
-├── tokens/                    # Design tokens (Style Dictionary)
-│   └── src/tokens.json
-├── core/                      # Core web components (Stencil)
-│   └── src/components/
-│       ├── cat-button/
-│       │   ├── cat-button.tsx
-│       │   ├── cat-button.spec.tsx        # Unit tests
-│       │   ├── cat-button.e2e.tsx         # Interaction tests
-│       │   ├── cat-button.screenshot.tsx  # Visual regression
-│       │   ├── cat-button.scss
-│       │   └── __screenshots__/           # Reference images
-│       └── [other components]/
-├── angular/                   # Angular bindings
-├── react/                     # React bindings
-├── .github/workflows/         # CI/CD jobs
-│   ├── core.yml              # Test + lint for core package
-│   ├── angular.yml
-│   ├── react.yml
-│   ├── tokens.yml
-│   └── release.yml           # Automated release via release-please
-├── .commitlintrc.json         # Commit message validation
-├── .husky/                    # Git hooks (pre-commit, commit-msg)
-└── README.md
-```
-
-## Guardrails — Core Patterns to Follow
-
-These rules are **derived from the existing codebase** and are enforced by CI or convention.
-
-### 1. Commit Messages (enforced by commitlint)
-
-All commits must follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-<type>(<scope>): <description>
-
-[optional body]
-[optional footer]
-```
-
-**Valid types:** `feat`, `fix`, `chore`, `docs`, `style`, `refactor`, `perf`, `test`
-
-**Valid scopes** (only these allowed):
-- `core` — core web components
-- `angular` — Angular bindings
-- `angular-formly` — Angular Formly types
-- `react` — React bindings
-- `tokens` — design tokens
-- `release` — release-related changes
-
-**Examples:**
-```bash
-feat(core): add clearable prop to cat-input
-fix(angular): correct CVA for cat-select
-chore(tokens): update color palette
-```
-
-**Why it matters:** scope selection triggers version bumps in release-please. A `feat(core)` commits bumps **all packages** (minor version), while `chore(tokens)` may not trigger a release.
-
-**Pre-commit enforcement:** Husky runs commitlint on every commit. To bypass (not recommended): `git commit --no-verify`.
-
-### 2. Component API Design
-
-**Props:**
-- Boolean props **must default to `false`**, never optional: `active = false`, not `active?: boolean`
-- String unions use established scales only:
-  - Sizes: `'xs' | 's' | 'm' | 'l' | 'xl'`
-  - Colors: `'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'`
-- Multi-word props use camelCase: `iconOnly`, `labelHidden`
-- Every `@Prop()` **must have JSDoc** (becomes API documentation)
-- Deprecated props: add `@deprecated` note in JSDoc; never remove
-
-**Events:**
-- All events prefixed `cat`: `catClick`, `catChange`, `catFocus`, `catBlur`
-- Payload typed to match event type: `EventEmitter<MouseEvent>`, `EventEmitter<string>`
-- Use definite assignment: `catChange!: EventEmitter<string>` (not optional)
-
-**Methods:**
-- Native wraps: `doFocus()`, `doBlur()`, `doClick()` — JSDoc explains "use instead of native"
-- State transitions (no `do`): `open()`, `close()`, `clear()`
-- **All methods must be `async` and return `Promise<void>`**
-
-**Required boilerplate** (every interactive component):
-```tsx
-@Element() el!: HTMLElement;
-
-@Prop() testId?: string;
-@Prop() nativeAttributes?: { [key: string]: string };
-
-render() {
-  return (
-    <button
-      data-test={this.testId}
-      {...this.nativeAttributes}
-    >
-      {/* content */}
-    </button>
-  );
-}
-```
-
-**CSS Parts:**
-- Declared in JSDoc: `@part button - The native button element.`
-- Applied in render: `<button part="button">`
-- Cover: interactive native element, visible sub-regions (label, prefix, suffix)
-- Skip: layout wrappers, state-only elements
-
-**Example:**
-```tsx
-/**
- * A clickable button for triggering actions.
- *
- * @part button - The native button element.
- * @part content - The button text.
- * @part icon - The optional icon.
- */
-@Component({
-  tag: 'cat-button',
-  styleUrl: 'cat-button.scss',
-  shadow: { delegatesFocus: true }
-})
-export class CatButton {
-  @Prop() disabled = false;
-  @Prop() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
-  @Prop() testId?: string;
-  @Prop() nativeAttributes?: { [key: string]: string };
-
-  @Event() catClick!: EventEmitter<MouseEvent>;
-
-  @Method() async doFocus(): Promise<void> {
-    this.button?.focus();
-  }
-}
-```
-
-### 3. SCSS Styling
-
-**Imports:**
-```scss
-@use 'variables' as *;
-@use 'mixins' as *;
-```
-
-**No hardcoded values:**
-- Colors: **always use `cat-token('color.*')`**
-- Border-radius: **use `cat-border-radius('s' | 'm' | 'l')`** (exception: `10rem` for pill shapes)
-- Font sizing: **use `@include cat-body()`, `@include cat-head()` mixins**
-- Transitions: **use `cat-token('time.transition.*')`**
-
-**Shadow DOM:**
-- `:host` is the top-level layout selector — no wrapping div for layout
-- Include `:host([hidden]) { display: none; }` if component affects display
-- Vendor prefixes: wrap with `/* stylelint-disable property-no-vendor-prefix */ ... /* stylelint-enable */`
-
-**Example:**
-```scss
-@use 'variables' as *;
-@use 'mixins' as *;
-
-:host {
-  display: inline-block;
-  max-width: 100%;
-}
-
-:host([hidden]) {
-  display: none;
-}
-
-.button {
-  border-radius: cat-border-radius('m');
-  color: cat-token('color.text.primary');
-  transition: background-color cat-token('time.transition.s') linear;
-
-  &:focus-visible {
-    outline: 2px solid cat-token('color.ui.border.focus');
-  }
-}
-```
-
-### 4. Shadow DOM Utilities
-
-These utils exist because Shadow DOM breaks native APIs. Use them:
-
-| Utility | Why | When |
-|---------|-----|------|
-| `findClosest(selector, el)` | Native `closest()` stops at shadow boundaries | Finding ancestors (parent form, wrapper) |
-| `delegatesFocus: true` in `@Component()` | Focus on host auto-delegates to first focusable element | All interactive components |
-| `event.composedPath()` | `event.target` is retargeted at shadow boundaries | Outside-click detection, drag-drop |
-| Slot detection in `componentWillRender` | Can't query slots inside shadow root synchronously | Detect if label/icon/etc. was slotted |
-
-**Example:**
-```tsx
-import { findClosest } from '../../utils/find-closest';
-
-export class CatInput {
-  @Element() el!: HTMLElement;
-
-  componentWillLoad() {
-    // Find parent form
-    const form = findClosest('form', this.el);
-  }
-
-  handleClick(event: MouseEvent) {
-    // Check if click happened outside the component
-    const path = event.composedPath();
-    const isInside = path.includes(this.el);
-  }
-}
-```
-
-### 5. Testing Requirements
-
-All components must have three test files:
-
-| File | Runner | What | Minimum bar |
-|------|--------|------|------------|
-| `*.spec.tsx` | Vitest + JSDOM | HTML structure, prop → render, event emission | Renders without error. Structure matches for key prop combinations. |
-| `*.e2e.tsx` | Vitest + Playwright | User interactions, focus, form behavior | `.toHaveClass('hydrated')`. Plus interactions needing real browser (typing, clicking, focus). |
-| `*.screenshot.tsx` | Vitest + Playwright | Visual appearance per variant | Only for visual variants. Cover all variant × color × state combos. Reset hover in `afterEach`. |
-
-**CI runs all three:**
-```yaml
-pnpm run test          # spec + e2e
-pnpm run test:screenshot
-```
-
-**Screenshot references:**
-- macOS local: `__screenshots__/*-darwin.png`
-- CI (Linux): `__screenshots__/*-linux.png`
-- Both committed to repo
-
-**When screenshot test fails in CI:**
-1. Download `screenshot-diffs` artifact from workflow
-2. Review actual vs expected
-3. If intentional: run `pnpm run test:screenshot:update` locally (updates `-darwin` images) or trigger "Update Screenshots" workflow (updates `-linux` images)
-
-**Example:**
-```tsx
-// cat-button.spec.tsx
-describe('cat-button', () => {
-  it('renders with disabled prop', async () => {
-    const { root } = await render(<cat-button disabled />);
-    expect(root.querySelector('button')).toHaveAttribute('disabled');
-  });
-});
-
-// cat-button.e2e.tsx
-describe('cat-button e2e', () => {
-  it('emits catClick on click', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<cat-button>Click me</cat-button>');
-    const spy = await page.spyOnEvent('catClick');
-    await page.click('cat-button');
-    expect(spy).toHaveReceivedEvent();
-  });
-});
-
-// cat-button.screenshot.tsx
-describe('cat-button screenshot', () => {
-  it('renders all sizes', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <cat-button size="xs">XS</cat-button>
-      <cat-button size="m">M</cat-button>
-      <cat-button size="xl">XL</cat-button>
-    `);
-    expect(await page.screenshot()).toMatchScreenshot();
-  });
-});
-```
-
-## CI/CD
-
-### Local checks before pushing
-
-```bash
-# Format all files (run from core/)
-pnpm --filter @haiilo/catalyst run prettier
-
-# Lint and fix (run from core/)
-pnpm --filter @haiilo/catalyst run lint --fix
-pnpm --filter @haiilo/catalyst run lint:style --fix
-
-# Build all packages
-pnpm run build
-
-# Run all tests
-pnpm run test
-```
-
-### GitHub Actions Workflows
-
-Push triggers automatic CI. All three jobs must pass to merge:
-
-**`.github/workflows/core.yml` (on changes to `core/`)**
-1. **build** — `pnpm run build:tokens && pnpm run build:core`
-2. **lint** — prettier, ESLint, stylelint
-3. **test** — spec, screenshot, e2e tests
-
-Similar workflows exist for `angular.yml`, `react.yml`, `tokens.yml`.
-
-**`.github/workflows/release.yml` (merge to `main` or `beta`)**
-- Triggered by release-please PR merge
-- Updates CHANGELOG, creates git tag, publishes to npm
-
-### Release Process
-
-Load the `catalyst-release` skill. It covers stable and beta release workflows, version bump rules, pre-merge checks, and troubleshooting.
-
-## Common Tasks
-
-### Add a new component to core
-
-1. **Create directory:**
-   ```bash
-   mkdir core/src/components/cat-mycomponent
-   ```
-
-2. **Create files:**
-   ```
-   cat-mycomponent.tsx         # Component
-   cat-mycomponent.spec.tsx    # Unit tests
-   cat-mycomponent.e2e.tsx     # E2E tests
-   cat-mycomponent.screenshot.tsx  # Visual tests
-   cat-mycomponent.scss        # Styles
-   ```
-
-3. **Implement component:**
-   - Follow component API design (props, events, methods, parts)
-   - Use Shadow DOM utilities (`findClosest`, `delegatesFocus`)
-   - Use token-based styling (no hardcoded colors)
-   - Include JSDoc for all public props/events/methods
-
-4. **Write tests:**
-   - spec: HTML structure for key prop combinations
-   - e2e: user interactions
-   - screenshot: all visual variants
-
-5. **Build and test:**
-   ```bash
-   pnpm run build
-   pnpm run test
-   ```
-
-6. **Commit:**
-   ```bash
-   git add .
-   git commit -m "feat(core): add cat-mycomponent"
-   ```
-
-### Add a new design token
-
-1. **Edit `tokens/src/tokens.json`**
-2. **Build:**
-   ```bash
-   pnpm run build:tokens
-   pnpm run build:core
-   ```
-3. **Commit:**
-   ```bash
-   git commit -m "chore(tokens): add new color token"
-   ```
-
-### Update a component
-
-1. **Make changes** in the component, styles, and tests
-2. **Update tests** if behavior changed
-3. **Update screenshots** if appearance changed:
-   ```bash
-   pnpm run test:screenshot:update  # Local (macOS)
-   ```
-   Or trigger "Update Screenshots" workflow for CI reference
-4. **Build and test:**
-   ```bash
-   pnpm run build
-   pnpm run test
-   ```
-5. **Commit:**
-   ```bash
-   git commit -m "fix(core): correct focus behavior in cat-input"
-   ```
-
-### Review a PR
-
-Load the `catalyst-pr-review` skill. It walks through CI verification and the full manual checklist step by step.
-
-## Troubleshooting
-
-### Build fails with "not found" error
-**Cause:** Dependency order wrong. Always build in order: tokens → core → angular/react
-
-**Fix:**
-```bash
+pnpm run build                 # all packages, in dependency order
 pnpm run build:tokens
 pnpm run build:core
 pnpm run build:angular
+pnpm run build:angular-formly
+pnpm run build:react
 ```
 
-### Screenshot test fails locally but passes in CI
-**Cause:** macOS screenshots (`-darwin`) differ from Linux (`-linux`). Both are committed; CI uses Linux.
+Core development server and watch mode:
 
-**Fix:** Run the test again locally, or manually verify it's an OS-specific rendering difference (not a bug).
-
-### Commit hook rejects message
-**Cause:** Message doesn't follow conventional commits or uses invalid scope.
-
-**Fix:**
 ```bash
-git commit --amend -m "feat(core): description"
+pnpm --filter @haiilo/catalyst run start
+pnpm --filter @haiilo/catalyst run build:watch
 ```
 
-### release-please doesn't trigger a release
-**Cause:** No commits with valid conventional commit messages since last release.
+Angular development server and watch mode:
 
-**Fix:** Ensure PR has commits like `feat(core): ...` or `fix(angular): ...`
+```bash
+pnpm --filter @haiilo/catalyst-angular-workspace run start
+pnpm --filter @haiilo/catalyst-angular-workspace run watch
+```
 
-## Resources
+Build output is package-specific: tokens use `tokens/dist`, core uses
+`core/dist`, Angular uses `angular/dist`, and React uses `react/dist`.
 
-- **[Conventional Commits](https://www.conventionalcommits.org/)** — commit message format
-- **[release-please](https://github.com/googleapis/release-please)** — automated versioning
-- **[Stencil docs](https://stenciljs.com/)** — web component framework
-- **[Style Dictionary](https://amzn.github.io/style-dictionary/)** — design token system
-- **[Vitest](https://vitest.dev/)** — test runner
-- **[Playwright](https://playwright.dev/)** — E2E testing
+### Formatting and linting
 
-## Questions or Issues?
+CI checks core with Prettier, ESLint, and Stylelint:
 
-For questions about this guide, ask the tech lead or open an issue on GitHub.
+```bash
+pnpm --filter @haiilo/catalyst run prettier:check
+pnpm --filter @haiilo/catalyst run lint
+pnpm --filter @haiilo/catalyst run lint:style
+```
 
+To format or autofix during development, use `prettier`, `lint -- --fix`, and
+`lint:style -- --fix` on the core filter. Angular exposes `prettier:check`.
+
+```bash
+pnpm --filter @haiilo/catalyst run prettier
+pnpm --filter @haiilo/catalyst run lint -- --fix
+pnpm --filter @haiilo/catalyst run lint:style -- --fix
+pnpm --filter @haiilo/catalyst-angular-workspace run prettier:check
+```
+
+Run the applicable formatter and linter after changes. Do not suppress lint rules without a repository-specific reason.
+
+## Testing
+
+### Core
+
+Core tests are configured in `core/vitest.config.mts`:
+
+- `*.spec.tsx`: Stencil/Vitest plugin tests
+- `*.e2e.tsx`: headless Chromium browser interaction tests
+- `*.screenshot.tsx`: headless Chromium visual regression tests
+
+```bash
+pnpm --filter @haiilo/catalyst run test
+pnpm --filter @haiilo/catalyst run test:e2e
+pnpm --filter @haiilo/catalyst run test:screenshot
+pnpm --filter @haiilo/catalyst run test:watch
+```
+
+Install browser dependencies when needed:
+
+```bash
+pnpm --dir core exec playwright install --with-deps
+```
+
+Run one test file or test name through Vitest from `core/`, for example:
+
+```bash
+pnpm --dir core exec vitest run src/components/cat-button/cat-button.spec.tsx
+pnpm --dir core exec vitest run -t "renders with disabled prop"
+```
+
+Screenshot references live in component `__screenshots__/` directories. Local macOS references end in `-darwin`; CI Linux references end in `-linux`. After an intentional visual change:
+
+```bash
+pnpm run test:screenshot:update
+```
+
+This updates local references. Use the manually triggered **Update Screenshots**
+workflow to regenerate Linux references. Do not update snapshots to hide an unexplained rendering or behavior regression.
+
+### Angular
+
+```bash
+pnpm --filter @haiilo/catalyst-angular-workspace run test
+pnpm --filter @haiilo/catalyst-angular-workspace run test:ci
+```
+
+`test:ci` runs both `catalyst` and `catalyst-formly` with ChromiumHeadless.
+
+### React and tokens
+
+React exposes build/type checking rather than a test script:
+
+```bash
+pnpm --filter @haiilo/catalyst-react run build
+pnpm --filter @haiilo/catalyst-react run tsc
+```
+
+Tokens are validated through their build:
+
+```bash
+pnpm run build:tokens
+```
+
+Always add or update tests for behavior changes. Keep component tests beside their implementation under `core/src/components/`.
+
+## Implementation conventions
+
+### Core components
+
+For a new or changed component, inspect a nearby component with similar behavior first. Keep implementation, styles, documentation, and applicable
+`*.spec.tsx`, `*.e2e.tsx`, and `*.screenshot.tsx` files together.
+
+Follow these project conventions:
+
+- Use `cat-*` tags and PascalCase class names.
+- Document public `@Prop`, `@Event`, and `@Method` APIs with JSDoc.
+- Boolean props have explicit `false` defaults.
+- Use camelCase for multi-word props and `cat` prefixes for custom events.
+- Type event payloads with `EventEmitter<T>` and definite assignment.
+- Public Stencil methods are asynchronous and return `Promise<void>`.
+- Use `delegatesFocus: true` for interactive shadow components where focus should enter the native control.
+- Use `findClosest` across shadow boundaries and `event.composedPath()` for retargeted events/outside-click handling.
+- Expose CSS parts only for meaningful public sub-elements; document each part in component JSDoc and apply its `part` attribute in render output.
+- Use `:host` for component layout and token/mixin helpers for colors, typography, radius, and transitions. Avoid hardcoded design values.
+- Use `@use 'variables' as *;` and `@use 'mixins' as *;` in component SCSS.
+
+Do not introduce `as any`, TypeScript ignore directives, empty catch blocks, placeholder implementations, or unrelated refactors.
+
+### Tokens and bindings
+
+- Add or update source tokens, then run `pnpm run build:tokens`.
+- Rebuild core after token changes: `pnpm run build:tokens && pnpm run build:core`.
+- Build Angular and Formly after core changes before testing consumers.
+- Build React after core changes; React depends on the workspace core package.
+- Do not hand-edit generated bindings or package `dist` output.
+
+## Git and pull requests
+
+- Work on a feature branch; do not commit directly to `main` or `beta`.
+- Never force-push shared branches or rewrite shared history.
+- Never commit secrets, `.env` files, generated credentials, or agent-tooling configuration directories.
+- Keep unrelated working-tree changes untouched.
+- Commit messages must use Conventional Commits with one of these scopes:
+  `angular`, `angular-formly`, `core`, `react`, `tokens`, or `release`.
+
+Examples:
+
+```text
+feat(core): add segmented control
+fix(angular): correct value accessor
+chore(tokens): update color token
+```
+
+Before opening a PR, run relevant build, tests, formatter, and linters.
+
+Address critical and major findings before requesting review. PR descriptions should explain why change is needed and mention visual, API, or generated-output.
+
+## CI and releases
+
+Workflows are path-sensitive. Core CI runs build, lint, unit, screenshot, and e2e checks. Angular CI builds tokens/core/bindings and runs Angular tests. React CI builds tokens/core/React. Tokens CI builds tokens and commits generated token output. Main-branch deployment publishes core documentation to GitHub Pages.
+
+Releases are managed by release-please on `main` (stable) and `beta`
+(prerelease), followed by automated npm publishing. Do not publish packages or modify release configuration unless explicitly requested.
+
+## Troubleshooting
+
+- **Workspace package not found:** run `pnpm install`, then rebuild in order:
+  `pnpm run build:tokens && pnpm run build:core`.
+- **Browser test cannot launch:** run the Playwright install command above.
+- **Screenshot mismatch:** inspect actual/diff artifacts before updating references; macOS and Linux references are intentionally separate.
+- **Angular consumer testing:** run the full build, then use packages from
+  `angular/dist/catalyst` or `angular/dist/catalyst-formly` as documented in the root README.
+- **Commit rejected:** check Conventional Commit type and allowed lowercase scope in `.commitlintrc.json`.
+
+## Documentation
+
+Read root/package `README.md` files for consumer setup and release details. Design documentation: https://design.haiilo.com
