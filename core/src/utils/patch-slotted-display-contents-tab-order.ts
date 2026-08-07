@@ -34,7 +34,9 @@ const patchSlottedDisplayContentsTabOrder = (hostElement: HTMLElement): (() => v
       if (deepActiveElement() !== before) {
         return; // focus already moved, nothing to do
       }
-      const candidates = tabbable(document.body, { getShadowRoot: true });
+      const candidates = tabbable(document.body, { getShadowRoot: true }).filter(
+          element => !element.shadowRoot?.delegatesFocus
+      );
       const index = before instanceof HTMLElement ? candidates.indexOf(before) : -1;
       if (index >= 0 && index + 1 < candidates.length) {
         candidates[index + 1].focus();
