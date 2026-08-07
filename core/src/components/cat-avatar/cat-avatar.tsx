@@ -1,5 +1,6 @@
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import loadImg from '../../utils/load-img';
+import patchSlottedDisplayContentsTabOrder from '../../utils/patch-slotted-display-contents-tab-order';
 
 /**
  * Avatars are used to represent a person or object.
@@ -15,6 +16,8 @@ export class CatAvatar {
   @State() backgroundImage?: string;
 
   @Element() hostElement!: HTMLElement;
+
+  private cleanupTabOrderPatch?: () => void;
 
   /**
    * The size of the avatar.
@@ -70,6 +73,15 @@ export class CatAvatar {
 
   componentWillLoad(): void {
     this.onSrcChanged(this.src);
+  }
+
+  connectedCallback(): void {
+    this.cleanupTabOrderPatch = patchSlottedDisplayContentsTabOrder(this.hostElement);
+  }
+
+  disconnectedCallback(): void {
+    this.cleanupTabOrderPatch?.();
+    this.cleanupTabOrderPatch = undefined;
   }
 
   render() {
