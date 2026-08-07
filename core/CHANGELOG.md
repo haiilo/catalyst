@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.11.1](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.11.0...catalyst-core-v14.11.1) (2026-08-07)
+
+
+### Bug Fixes
+
+* **core:** fix tab order for slotted elements with display contents style in firefox ([#1022](https://github.com/haiilo/catalyst/issues/1022)) ([b41e4bd](https://github.com/haiilo/catalyst/commit/b41e4bdcb6def06b465d22004a62cfb1c68e6d84))
+
 ## [14.11.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.10.0...catalyst-core-v14.11.0) (2026-06-30)
 
 
