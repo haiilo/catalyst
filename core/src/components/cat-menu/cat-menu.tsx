@@ -1,6 +1,7 @@
 import { Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
+import { deepActiveElement } from '../../utils/deep-active-element';
 import { findClosest } from '../../utils/find-closest';
 
 /**
@@ -154,10 +155,7 @@ export class CatMenu {
   }
 
   private getDeepActiveElement(): Element | null {
-    let active: Element | null = document.activeElement;
-    while (active?.shadowRoot?.activeElement) {
-      active = active.shadowRoot.activeElement;
-    }
+    const active = deepActiveElement();
     return active ? (findClosest('cat-menu-item', active) ?? active) : null;
   }
 
