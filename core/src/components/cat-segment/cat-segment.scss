@@ -34,9 +34,10 @@ $segment-heights: (
   white-space: nowrap;
   color: cat-token('color.theme.secondary.text');
   border-radius: cat-border-radius('l');
-  transition: background cat-token('time.transition.s') linear,
-  box-shadow cat-token('time.transition.s') linear,
-  color cat-token('time.transition.s') linear;
+  transition:
+    background cat-token('time.transition.s') linear,
+    box-shadow cat-token('time.transition.s') linear,
+    color cat-token('time.transition.s') linear;
 
   &.cat-segment-active {
     background: cat-token('color.ui.background.surface');
