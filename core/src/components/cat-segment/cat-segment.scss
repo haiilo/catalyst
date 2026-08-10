@@ -1,0 +1,95 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'sass:map';
+
+$segment-heights: (
+  'xl': 3.25rem,
+  'l': 2.75rem,
+  'm': 2rem,
+  's': 1.75rem,
+  'xs': 1.5rem
+);
+
+// TODO: a11y (create skill/add to review skill?)
+// -> add a11y label (e.g. for icon only)
+
+:host {
+  display: contents;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.cat-segment {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  color: cat-token('color.theme.secondary.text');
+  border-radius: cat-border-radius('l');
+  transition: background cat-token('time.transition.s') linear,
+  box-shadow cat-token('time.transition.s') linear,
+  color cat-token('time.transition.s') linear;
+
+  &.cat-segment-active {
+    background: cat-token('color.ui.background.surface');
+    color: cat-token('color.theme.primary.text');
+    font-weight: 700;
+    @include cat-elevation(3);
+  }
+
+  &:focus-visible {
+    outline: 2px solid cat-token('color.ui.border.focus');
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    color: cat-token('color.ui.font.muted', 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:not(:disabled) {
+    &:hover {
+      background: cat-token('color.ui.background.surface', 0.5);
+    }
+  }
+}
+
+.cat-segment-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin size($size, $fontSize, $padding, $gap: 0.25rem) {
+  $-line-height: cat-token('size.line.body.#{$fontSize}');
+
+  $-total-height: map.get($segment-heights, $size);
+  $-padding-v: ($-total-height - $-line-height) * 0.5;
+  $-padding-h: $padding;
+
+  .cat-segment-#{$size} {
+    width: 12.5em; // TODO wait for final size from UX
+    padding: $-padding-v $-padding-h;
+    @include cat-body($fontSize, null);
+    gap: $gap;
+
+    &.cat-segment-icon-only {
+      height: $-total-height;
+    }
+  }
+}
+
+@include size('xs', 's', 0.25rem);
+@include size('s', 'm', 0.5rem);
+@include size('m', 'm', 0.75rem);
+@include size('l', 'm', 1rem, 0.5rem);
+@include size('xl', 'l', 1.25rem, 0.75rem);
