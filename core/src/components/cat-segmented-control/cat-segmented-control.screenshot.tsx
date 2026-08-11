@@ -65,7 +65,9 @@ describe('cat-segmented-control screenshot', () => {
       <div style={WRAPPER_STYLE}>
         <cat-segmented-control>
           <cat-segment value="one">Option 1</cat-segment>
-          <cat-segment value="two" testId="two-segment">Option 2</cat-segment>
+          <cat-segment value="two" testId="two-segment">
+            Option 2
+          </cat-segment>
           <cat-segment value="three">Option 3</cat-segment>
         </cat-segmented-control>
       </div>
@@ -119,7 +121,9 @@ describe('cat-segmented-control screenshot', () => {
       <div style={WRAPPER_STYLE}>
         <cat-segmented-control>
           <cat-segment value="one">Option 1</cat-segment>
-          <cat-segment value="two" disabled>Option 2</cat-segment>
+          <cat-segment value="two" disabled>
+            Option 2
+          </cat-segment>
           <cat-segment value="three">Option 3</cat-segment>
         </cat-segmented-control>
       </div>
@@ -175,5 +179,4 @@ describe('cat-segmented-control screenshot', () => {
 
     await expect(root).toMatchScreenshot();
   });
-
 });
