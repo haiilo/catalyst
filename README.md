@@ -117,13 +117,13 @@ Both local and CI reference screenshots are committed to the repository so that 
 Screenshot tests are intentionally excluded from `pnpm run test`. To run them locally:
 
 ```
-pnpm run test:screenshot        # from core/
+pnpm run test:screenshot        # from repo root
 ```
 
 To update the local (macOS) reference screenshots after an intentional visual change:
 
 ```
-pnpm run test:screenshot:update # from core/
+pnpm run test:screenshot:update # from repo root
 ```
 
 This regenerates the `-darwin` screenshots and commits them alongside your changes.
