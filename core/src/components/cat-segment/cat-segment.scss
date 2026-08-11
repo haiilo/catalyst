@@ -10,9 +10,6 @@ $segment-heights: (
   'xs': 1.5rem
 );
 
-// TODO: a11y (create skill/add to review skill?)
-// -> add a11y label (e.g. for icon only)
-
 :host {
   display: contents;
 }
@@ -78,7 +75,7 @@ $segment-heights: (
   $-padding-h: $padding;
 
   .cat-segment-#{$size} {
-    width: 12.5em; // TODO wait for final size from UX
+    width: 12.5em;
     padding: $-padding-v $-padding-h;
     @include cat-body($fontSize, null);
     gap: $gap;

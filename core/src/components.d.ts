@@ -12,6 +12,7 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
+import { SegmentSize } from "./components/cat-segment/cat-segment";
 import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -22,6 +23,7 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
+export { SegmentSize } from "./components/cat-segment/cat-segment";
 export { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -1440,6 +1442,14 @@ export namespace Components {
      */
     interface CatSegment {
         /**
+          * Refers to the element that is controlled (e.g. displayed or hidden) by this segment. Typically, this is the ID of a tab panel that is shown when this segment is active.
+         */
+        "a11yControls"?: string;
+        /**
+          * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
+         */
+        "a11yLabel"?: string;
+        /**
           * @default false
          */
         "active": boolean;
@@ -1461,7 +1471,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * When true, hides the label and shows the icon only. Requires icon.
+          * When true, hides the label and shows the icon only. Requires icon and a11y-label.
           * @default false
          */
         "iconOnly": boolean;
@@ -1472,7 +1482,7 @@ export namespace Components {
         /**
           * @default 'm'
          */
-        "size": Size;
+        "size": SegmentSize;
         /**
           * Renders as data-test on the button element.
          */
@@ -2750,6 +2760,8 @@ declare global {
     };
     interface HTMLCatSegmentElementEventMap {
         "catSegmentClick": string;
+        "catSegmentFocus": string;
+        "catSegmentBlur": string;
     }
     /**
      * A single segment within a cat-segmented-control.
@@ -2770,6 +2782,8 @@ declare global {
     };
     interface HTMLCatSegmentedControlElementEventMap {
         "catChange": string;
+        "catFocus": string;
+        "catBlur": string;
     }
     /**
      * A segmented control for selecting one option from a mutually-exclusive set.
@@ -4468,6 +4482,14 @@ declare namespace LocalJSX {
      */
     interface CatSegment {
         /**
+          * Refers to the element that is controlled (e.g. displayed or hidden) by this segment. Typically, this is the ID of a tab panel that is shown when this segment is active.
+         */
+        "a11yControls"?: string;
+        /**
+          * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
+         */
+        "a11yLabel"?: string;
+        /**
           * @default false
          */
         "active"?: boolean;
@@ -4481,7 +4503,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * When true, hides the label and shows the icon only. Requires icon.
+          * When true, hides the label and shows the icon only. Requires icon and a11y-label.
           * @default false
          */
         "iconOnly"?: boolean;
@@ -4489,11 +4511,13 @@ declare namespace LocalJSX {
           * Spread onto the native button element.
          */
         "nativeAttributes"?: { [key: string]: string };
+        "onCatSegmentBlur"?: (event: CatSegmentCustomEvent<string>) => void;
         "onCatSegmentClick"?: (event: CatSegmentCustomEvent<string>) => void;
+        "onCatSegmentFocus"?: (event: CatSegmentCustomEvent<string>) => void;
         /**
           * @default 'm'
          */
-        "size"?: Size;
+        "size"?: SegmentSize;
         /**
           * Renders as data-test on the button element.
          */
@@ -4521,9 +4545,17 @@ declare namespace LocalJSX {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * Emitted when a segment loses focus. Payload is the segment value.
+         */
+        "onCatBlur"?: (event: CatSegmentedControlCustomEvent<string>) => void;
+        /**
           * Emitted when the selected segment changes. Payload is the new segment value.
          */
         "onCatChange"?: (event: CatSegmentedControlCustomEvent<string>) => void;
+        /**
+          * Emitted when a segment gains focus. Payload is the segment value.
+         */
+        "onCatFocus"?: (event: CatSegmentedControlCustomEvent<string>) => void;
         /**
           * The size of the control, propagated to all child segments.
           * @default 'm'
@@ -5587,7 +5619,9 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "icon": string;
         "iconOnly": boolean;
-        "size": Size;
+        "a11yLabel": string;
+        "a11yControls": string;
+        "size": SegmentSize;
         "testId": string;
         "value": string;
     }

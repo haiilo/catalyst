@@ -14,7 +14,7 @@ export class CatSegmentedControl {
   private segments: HTMLCatSegmentElement[] = [];
   private mutationObserver?: MutationObserver;
 
-  @Element() el!: HTMLElement;
+  @Element() hostElement!: HTMLElement;
 
   /**
    * The value of the currently selected segment.
@@ -51,6 +51,16 @@ export class CatSegmentedControl {
    */
   @Event() catChange!: EventEmitter<string>;
 
+  /**
+   * Emitted when a segment gains focus. Payload is the segment value.
+   */
+  @Event() catFocus!: EventEmitter<string>;
+
+  /**
+   * Emitted when a segment loses focus. Payload is the segment value.
+   */
+  @Event() catBlur!: EventEmitter<string>;
+
   @Watch('value')
   onValueChange(newValue?: string) {
     this.segments.forEach(s => (s.active = s.value === newValue));
@@ -73,7 +83,7 @@ export class CatSegmentedControl {
         this.sync();
       }
     });
-    this.mutationObserver.observe(this.el, { childList: true, attributes: true, subtree: true });
+    this.mutationObserver.observe(this.hostElement, { childList: true, attributes: true, subtree: true });
   }
 
   disconnectedCallback() {
@@ -84,6 +94,16 @@ export class CatSegmentedControl {
   onSegmentClick(event: CustomEvent<string>) {
     this.value = event.detail;
     this.catChange.emit(this.value);
+  }
+
+  @Listen('catSegmentFocus')
+  onSegmentFocus(event: CustomEvent<string>) {
+    this.catFocus.emit(event.detail);
+  }
+
+  @Listen('catSegmentBlur')
+  onSegmentBlur(event: CustomEvent<string>) {
+    this.catBlur.emit(event.detail);
   }
 
   @Listen('keydown')
@@ -117,7 +137,7 @@ export class CatSegmentedControl {
   }
 
   private sync() {
-    this.segments = Array.from(this.el.querySelectorAll('cat-segment'));
+    this.segments = Array.from(this.hostElement.querySelectorAll('cat-segment'));
     this.onValueChange(this.value);
     this.onSizeChange(this.size);
     this.onDisabledChange(this.disabled);
