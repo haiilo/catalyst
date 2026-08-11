@@ -158,4 +158,40 @@ describe('cat-segment', () => {
     await root.doBlur();
     expect(blur).toHaveBeenCalledOnce();
   });
+
+  it('emits focus and blur events with its value', async () => {
+    const { root } = await render(<cat-segment value="day">Day</cat-segment>);
+    const focusListener = vi.fn();
+    const blurListener = vi.fn();
+    root.addEventListener('catSegmentFocus', focusListener);
+    root.addEventListener('catSegmentBlur', blurListener);
+
+    root.shadowRoot?.querySelector<HTMLButtonElement>('button')?.focus();
+    expect(focusListener).toHaveBeenCalledOnce();
+    expect(focusListener.mock.calls[0][0]).toMatchObject({ detail: 'day' });
+
+    root.shadowRoot?.querySelector<HTMLButtonElement>('button')?.blur();
+    expect(blurListener).toHaveBeenCalledOnce();
+    expect(blurListener.mock.calls[0][0]).toMatchObject({ detail: 'day' });
+  });
+
+  it('sets aria-label', async () => {
+    const { root } = await render<HTMLCatSegmentElement>(
+      <cat-segment value="day" a11yLabel="Test aria label">
+        Day
+      </cat-segment>
+    );
+    const btn = root.shadowRoot?.querySelector<HTMLButtonElement>('button');
+    expect(btn?.getAttribute('aria-label')).toBe('Test aria label');
+  });
+
+  it('sets aria-controls', async () => {
+    const { root } = await render<HTMLCatSegmentElement>(
+      <cat-segment value="day" a11yControls="panel1">
+        Day
+      </cat-segment>
+    );
+    const btn = root.shadowRoot?.querySelector<HTMLButtonElement>('button');
+    expect(btn?.getAttribute('aria-controls')).toBe('panel1');
+  });
 });

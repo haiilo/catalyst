@@ -25,7 +25,9 @@ A segmented control for selecting one option from a mutually-exclusive set.
 
 | Event       | Description                                                                  | Type                  |
 | ----------- | ---------------------------------------------------------------------------- | --------------------- |
+| `catBlur`   | Emitted when a segment loses focus. Payload is the segment value.            | `CustomEvent<string>` |
 | `catChange` | Emitted when the selected segment changes. Payload is the new segment value. | `CustomEvent<string>` |
+| `catFocus`  | Emitted when a segment gains focus. Payload is the segment value.            | `CustomEvent<string>` |
 
 
 ## Shadow Parts
