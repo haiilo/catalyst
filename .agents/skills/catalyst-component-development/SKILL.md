@@ -146,23 +146,54 @@ Run `pnpm --filter @haiilo/catalyst test` and confirm all three files pass.
 
 ---
 
-## Step 6 — Verify Angular bindings
+## Step 6 — Register Angular exports
 
-Run both builds regardless of whether you think the contract changed:
+Stencil generates Angular proxies but does not register them in
+`CatalystModule`. Add every new public component to `CatComponents` in
+`angular/projects/catalyst/src/lib/catalyst.module.ts`; composed components
+need entries for the parent and each public child.
+
+**Completion criterion:** every new public component has a corresponding
+`Components.Cat<Name>` entry in `CatComponents`, which the existing spreads
+include in both `declarations` and `exports`.
+
+## Step 7 — Verify Angular bindings
+
+Run both builds:
 
 1. `pnpm --filter @haiilo/catalyst build`
-2. `pnpm --filter @haiilo/catalyst-angular build`
+2. `pnpm run build:angular`
 
-Inspect `angular/projects/catalyst-components/src/directives/` — any new or
-modified props and events must appear in the generated directive. Never edit
-files in `angular/` by hand. For breaking change rules see [CONTRACT.md](CONTRACT.md).
+Inspect the generated directive at
+`angular/projects/catalyst/src/lib/directives/proxies.ts`; new or modified
+props and events must appear there. Never edit generated files. See
+[CONTRACT.md](CONTRACT.md) for breaking changes.
 
-**Completion criterion:** both builds exit 0. Generated directive reflects the
-current component contract.
+`pnpm run build:core` generates this Angular proxy and the React proxy at
+`react/src/components/stencil-generated/index.ts`. Review both files and commit
+their changes with the component. CI regenerates them for validation but does
+not commit them. Never discard generated binding changes or edit them manually.
+
+**Completion criterion:** both builds exit 0. Generated Angular directive and
+React proxy reflect the current component contract, and their tracked changes
+are included in the component change.
 
 ---
 
-## Step 7 — Done checklist
+## Step 8 — Verify React bindings
+
+After the core build, verify every new public component has a `Cat<Name>` export
+in the generated
+`react/src/components/stencil-generated/index.ts`, then run:
+
+```bash
+pnpm run build:react
+```
+
+**Completion criterion:** React proxy exports exist for every new public
+component and `pnpm run build:react` exits 0.
+
+## Step 9 — Done checklist
 
 Before considering the work complete, verify every item:
 
@@ -173,6 +204,10 @@ Before considering the work complete, verify every item:
 - [ ] No hardcoded color, radius, or transition value in SCSS — all via tokens
 - [ ] `:host([hidden]) { display: none; }` present in SCSS
 - [ ] Three test files pass (`pnpm --filter @haiilo/catalyst test`)
-- [ ] Angular build passes (`pnpm --filter @haiilo/catalyst-angular build`)
+- [ ] Every new public component is registered in `CatComponents` in `CatalystModule`
+- [ ] Angular build passes (`pnpm run build:angular`)
+- [ ] React proxy export exists for every new public component
+- [ ] React build passes (`pnpm run build:react`)
+- [ ] Generated Angular and React binding changes are reviewed and committed
 - [ ] No `as any`, `@ts-ignore`, or empty catch blocks introduced
 - [ ] `readme.md` is present (content auto-generated on build; placeholder is fine)
