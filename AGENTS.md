@@ -6,11 +6,11 @@ Agent instructions for Catalyst Design System. This file complements `README.md`
 
 Before working:
 
-1. Read this file and inspect repository status. Preserve unrelated changes.
-2. Identify task type and load the matching skill from `.agents/skills/` by reading its `SKILL.md` and required references.
-3. Tell the user which skill you selected and why.
-4. If task is vague, user is new, or user asks for guidance: explain relevant repository area, ask one focused question, and propose a short plan. Do not edit files until scope is agreed.
-5. If task is concrete and implementation is requested: follow skill workflow, add/update tests, validate, inspect diff, and report results.
+1. Identify task type and load the matching skill from `.agents/skills/` by reading its `SKILL.md` and required references.
+2. Tell the user which skill you selected and why.
+3. Before implementation, show a concise plan. Include one short reason after each step when useful. Ask the user to approve the plan.
+4. Wait for approval before editing files or running implementation commands. Read-only inspection needed to create the plan is allowed.
+5. After approval, follow skill workflow, add/update tests, validate, inspect diff, and report results.
 
 ### Skill routing
 
@@ -22,7 +22,7 @@ Before working:
 | PR or branch review                                                 | `catalyst-pr-review`                                                 |
 | Tokens, Angular, React, bug fixes, refactoring, or other work       | `catalyst-onboarding`, then relevant package README and nearby code  |
 
-If no skill exactly matches, use the closest skill and state the adaptation. Never claim to have loaded a skill without reading it. Do not treat “load skills” as permission to edit.
+If no skill exactly matches, use the closest skill and state the adaptation. Never claim to have loaded a skill without reading it. Do not treat “load skills” or a concrete task description as permission to edit before plan approval.
 
 ## Project map
 

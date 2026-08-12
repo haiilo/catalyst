@@ -12,13 +12,19 @@
 
 ## Agentic Development
 
-Use this prompt when starting work with an agent:
+Recommendation: install the following skills on your agent for effective Catalyst development (not contained in this repo, to be installed from a public registry):
+
+- test-driven development
+- brainstorming
+- systematic debugging
+
+Repository-specific skills are available in `.agents/skills/`. Your agent should find and pick the appropriate skill for the task. Just follow its workflow.
+
+Use a simple prompt like this when starting work with an agent:
 
 ```
-Use repository guidance and skills. Help me [describe task]. 
+I am new to this repo. Help me [describe the task].
 ```
-
-For guidance, say “guide me” or “I’m new.” The agent should explain its skill choice and plan before editing when task scope is unclear.
 
 ## Setup
 
