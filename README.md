@@ -69,7 +69,17 @@ Steps:
 1. Make changes;
 2. Run `pnpm build`;
 
-Extra steps for testing the changes in angular package:
+`pnpm run build:core` regenerates Angular and React binding files through
+Stencil output targets. Review and commit generated changes with component:
+
+- `angular/projects/catalyst/src/lib/directives/proxies.ts`
+- `react/src/components/stencil-generated/index.ts`
+
+`pnpm run build:angular` and `pnpm run build:react` validate and compile those
+bindings. CI does not commit generated binding changes. Do not edit generated
+files manually.
+
+Extra steps for testing the changes in Angular package:
 1.  Run `pnpm install` again;
 2. For 
    - [angular](angular/projects/catalyst) Go to `/angular/dist/catalyst`;
