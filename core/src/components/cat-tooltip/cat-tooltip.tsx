@@ -2,6 +2,7 @@ import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/d
 import type { Placement } from '@floating-ui/dom';
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import isTouchScreen from '../../utils/is-touch-screen';
+import patchSlottedDisplayContentsTabOrder from '../../utils/patch-slotted-display-contents-tab-order';
 
 let nextUniqueId = 0;
 
@@ -28,6 +29,7 @@ export class CatTooltip {
   private touchTimeout?: number;
   private inactive = false;
   private cleanupFloatingUi?: () => void;
+  private cleanupTabOrderPatch?: () => void;
 
   private readonly boundShowListener: () => void;
   private readonly boundHideListener: () => void;
@@ -113,6 +115,7 @@ export class CatTooltip {
 
   connectedCallback(): void {
     this.addListeners();
+    this.cleanupTabOrderPatch = patchSlottedDisplayContentsTabOrder(this.hostElement);
   }
 
   componentWillRender(): void {
@@ -122,6 +125,8 @@ export class CatTooltip {
   disconnectedCallback(): void {
     this.removeListeners();
     this.hideTooltip();
+    this.cleanupTabOrderPatch?.();
+    this.cleanupTabOrderPatch = undefined;
   }
 
   render() {
