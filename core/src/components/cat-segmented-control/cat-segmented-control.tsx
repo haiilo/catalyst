@@ -79,7 +79,9 @@ export class CatSegmentedControl {
   componentDidLoad() {
     this.sync();
     this.mutationObserver = new MutationObserver(mutations => {
-      if (mutations.some(m => m.target.nodeName === 'CAT-SEGMENT')) {
+      if (
+        mutations.some(m => m.type === 'childList' || (m.type === 'attributes' && m.target.nodeName === 'CAT-SEGMENT'))
+      ) {
         this.sync();
       }
     });
