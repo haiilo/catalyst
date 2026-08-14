@@ -26,7 +26,11 @@ Use a simple prompt like this when starting work with an agent:
 I am new to this repo. Help me [describe the task].
 ```
 
-## Setup
+### Code Review
+
+When you submit a PR, please trigger Copilot's code review workflow on the PR before reaching out to a human reviewer. You can also ask the agent to review your code before submitting a PR.
+
+## Local Setup
 
 Please take a look at the official design documentation at
 https://design.haiilo.com and follow the [Getting Started](https://design.haiilo.com/7a807c8eb/p/12e811-getting-started)
