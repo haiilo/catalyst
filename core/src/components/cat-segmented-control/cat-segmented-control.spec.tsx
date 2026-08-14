@@ -136,6 +136,43 @@ describe('cat-segmented-control', () => {
     ).toBe(true);
   });
 
+  it('does not prevent arrow-key default when all segments are disabled', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control disabled>
+        <cat-segment value="one">Option 1</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+    const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
+
+    root.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+  });
+
+  it('does not prevent arrow-key default when focus is outside enabled segments', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control>
+        <cat-segment value="one">Option 1</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+    const segment = root.querySelector<HTMLCatSegmentElement>('cat-segment');
+    segment!.doFocus = vi.fn();
+    const outside = document.createElement('button');
+    document.body.append(outside);
+    outside.focus();
+    const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
+
+    root.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+    expect(segment!.doFocus).not.toHaveBeenCalled();
+    outside.remove();
+  });
+
   it('does not emit selection change for focus or blur events', async () => {
     const { root } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>

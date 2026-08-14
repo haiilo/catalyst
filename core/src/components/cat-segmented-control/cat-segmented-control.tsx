@@ -113,9 +113,11 @@ export class CatSegmentedControl {
 
     const enabled = this.segments.filter(s => !s.disabled);
     const idx = enabled.indexOf(document.activeElement as HTMLCatSegmentElement);
+    if (enabled.length === 0 || idx === -1) return;
+
     const offset = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
     const target = enabled[(idx + offset + enabled.length) % enabled.length];
-    target?.doFocus();
+    target.doFocus();
     event.preventDefault();
   }
 
