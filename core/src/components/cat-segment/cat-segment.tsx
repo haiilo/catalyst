@@ -86,6 +86,7 @@ export class CatSegment {
       <Host>
         <button
           part="button"
+          type="button"
           role="radio"
           ref={el => (this.button = el)}
           class={{
