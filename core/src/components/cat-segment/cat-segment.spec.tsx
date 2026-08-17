@@ -17,7 +17,7 @@ describe('cat-segment', () => {
 
     expect(btn).toHaveClass('cat-segment-m');
     expect(btn).not.toHaveClass('cat-segment-active');
-    expect(btn?.getAttribute('aria-pressed')).toBe('false');
+    expect(btn?.getAttribute('aria-checked')).toBe('false');
   });
 
   it('applies size class', async () => {
@@ -38,7 +38,7 @@ describe('cat-segment', () => {
     );
     const btn = root.shadowRoot?.querySelector('button');
     expect(btn).toHaveClass('cat-segment-active');
-    expect(btn?.getAttribute('aria-pressed')).toBe('true');
+    expect(btn?.getAttribute('aria-checked')).toBe('true');
   });
 
   it('renders disabled attribute when disabled', async () => {
@@ -142,7 +142,7 @@ describe('cat-segment', () => {
 
     const btn = root.shadowRoot?.querySelector('button');
     expect(btn).toHaveClasses(['cat-segment-active', 'cat-segment-xl']);
-    expect(btn?.getAttribute('aria-pressed')).toBe('true');
+    expect(btn?.getAttribute('aria-checked')).toBe('true');
     expect(btn).toHaveAttribute('disabled');
   });
 

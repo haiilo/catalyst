@@ -64,6 +64,7 @@ export class CatSegmentedControl {
   @Watch('value')
   onValueChange(newValue?: string) {
     this.segments.forEach(s => (s.active = s.value === newValue));
+    this.updateTabIndex();
   }
 
   @Watch('size')
@@ -94,7 +95,7 @@ export class CatSegmentedControl {
 
   @Listen('catSegmentClick')
   onSegmentClick(event: CustomEvent<string>) {
-    this.value = event.detail;
+    this.selectSegment(event.detail);
     this.catChange.emit(this.value);
   }
 
@@ -114,11 +115,13 @@ export class CatSegmentedControl {
     if (!keys.includes(event.key)) return;
 
     const enabled = this.segments.filter(s => !s.disabled);
-    const idx = enabled.indexOf(document.activeElement as HTMLCatSegmentElement);
+    const activeSegment = this.segments.find(segment => event.composedPath().includes(segment));
+    const idx = enabled.indexOf(activeSegment!);
     if (enabled.length === 0 || idx === -1) return;
 
     const offset = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
     const target = enabled[(idx + offset + enabled.length) % enabled.length];
+    this.selectSegment(target.value);
     target.doFocus();
     event.preventDefault();
   }
@@ -128,7 +131,7 @@ export class CatSegmentedControl {
       <Host>
         <div
           part="control"
-          role="group"
+          role="radiogroup"
           aria-label={this.a11yLabel}
           class={{ 'cat-segmented-control': true }}
           data-test={this.testId}
@@ -145,5 +148,18 @@ export class CatSegmentedControl {
     this.onValueChange(this.value);
     this.onSizeChange(this.size);
     this.onDisabledChange(this.disabled);
+  }
+
+  private updateTabIndex() {
+    const enabled = this.segments.filter(s => !s.disabled);
+    const active = enabled.find(s => s.active) ?? enabled[0];
+
+    this.segments.forEach(segment => (segment.rovingTabIndex = segment === active ? 0 : -1));
+  }
+
+  private selectSegment(value: string) {
+    this.value = value;
+    this.segments.forEach(segment => (segment.active = segment.value === value));
+    this.updateTabIndex();
   }
 }

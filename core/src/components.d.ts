@@ -1480,6 +1480,10 @@ export namespace Components {
          */
         "nativeAttributes"?: { [key: string]: string };
         /**
+          * @default 0
+         */
+        "rovingTabIndex": number;
+        /**
           * @default 'm'
          */
         "size": SegmentSize;
@@ -4515,6 +4519,10 @@ declare namespace LocalJSX {
         "onCatSegmentClick"?: (event: CatSegmentCustomEvent<string>) => void;
         "onCatSegmentFocus"?: (event: CatSegmentCustomEvent<string>) => void;
         /**
+          * @default 0
+         */
+        "rovingTabIndex"?: number;
+        /**
           * @default 'm'
          */
         "size"?: SegmentSize;
@@ -5622,6 +5630,7 @@ declare namespace LocalJSX {
         "a11yLabel": string;
         "a11yControls": string;
         "size": SegmentSize;
+        "rovingTabIndex": number;
         "testId": string;
         "value": string;
     }

@@ -100,11 +100,48 @@ describe('cat-segmented-control', () => {
     );
 
     await waitForChanges();
-    const group = root.shadowRoot?.querySelector('[role="group"]');
+    const group = root.shadowRoot?.querySelector('[role="radiogroup"]');
 
     expect(group?.getAttribute('aria-label')).toBe('Test aria label');
     expect(group?.getAttribute('data-test')).toBe('test-id');
     expect(group?.getAttribute('data-context')).toBe('settings');
+  });
+
+  it('renders radio state and roving tabindex', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control value="two">
+        <cat-segment value="one">Option 1</cat-segment>
+        <cat-segment value="two">Option 2</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+
+    const segments = Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment'));
+    expect(root.value).toBe('two');
+    expect(segments).toHaveLength(2);
+  });
+
+  it('selects and focuses the next enabled segment with ArrowRight', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control value="one">
+        <cat-segment value="one">Option 1</cat-segment>
+        <cat-segment value="two">Option 2</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+    const segments = Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment'));
+    segments[1].doFocus = vi.fn();
+    segments[0].shadowRoot?.querySelector('button')?.focus();
+    const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true, composed: true });
+
+    segments[0].dispatchEvent(event);
+    await waitForChanges();
+
+    expect(segments[1].active).toBe(true);
+    expect(segments[1].doFocus).toHaveBeenCalledOnce();
+    expect(event.defaultPrevented).toBe(true);
   });
 
   it('propagates size to all segments', async () => {

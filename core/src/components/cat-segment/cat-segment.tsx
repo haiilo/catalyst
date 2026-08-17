@@ -45,6 +45,9 @@ export class CatSegment {
   /** @internal Set by cat-segmented-control. Size of the segment. */
   @Prop({ mutable: true }) size: SegmentSize = 'm';
 
+  /** @internal Set by cat-segmented-control for radio roving tabindex. */
+  @Prop({ mutable: true }) rovingTabIndex = 0;
+
   /** Renders as data-test on the button element. */
   @Prop() testId?: string;
 
@@ -83,6 +86,7 @@ export class CatSegment {
       <Host>
         <button
           part="button"
+          role="radio"
           ref={el => (this.button = el)}
           class={{
             'cat-segment': true,
@@ -91,8 +95,9 @@ export class CatSegment {
             'cat-segment-icon-only': this.iconOnly && showIcon
           }}
           disabled={this.disabled}
+          tabIndex={this.rovingTabIndex}
           aria-label={this.a11yLabel}
-          aria-pressed={String(this.active)}
+          aria-checked={String(this.active)}
           aria-controls={this.a11yControls}
           data-test={this.testId}
           onClick={this.handleClick.bind(this)}
