@@ -84,7 +84,7 @@ describe('cat-segmented-control screenshot', () => {
     await expect(root).toMatchScreenshot();
   });
 
-  it('focus on segment', async () => {
+  it('focus on group', async () => {
     const { root } = await render<HTMLCatSegmentedControlElement>(
       <div style={WRAPPER_STYLE}>
         <cat-segmented-control>
@@ -95,9 +95,27 @@ describe('cat-segmented-control screenshot', () => {
       </div>
     );
 
-    // tab twice to focus the second segment (two)
+    // tab to move focus into the group, which will focus the first segment
     await userEvent.tab();
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('select second segment via keyboard', async () => {
+    const { root } = await render<HTMLCatSegmentedControlElement>(
+      <div style={WRAPPER_STYLE}>
+        <cat-segmented-control>
+          <cat-segment value="one">Option 1</cat-segment>
+          <cat-segment value="two">Option 2</cat-segment>
+          <cat-segment value="three">Option 3</cat-segment>
+        </cat-segmented-control>
+      </div>
+    );
+
+    // tab to move focus into the group, which will focus the first segment
     await userEvent.tab();
+    // select the second segment via keyboard
+    await userEvent.keyboard('{ArrowRight}');
 
     await expect(root).toMatchScreenshot();
   });
