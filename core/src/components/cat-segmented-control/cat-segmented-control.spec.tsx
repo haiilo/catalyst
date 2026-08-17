@@ -28,7 +28,7 @@ describe('cat-segmented-control', () => {
     const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>
         <cat-segment value="one">Option 1</cat-segment>
-        <cat-segment value="two" testId="optionTwo">
+        <cat-segment value="two" test-id="optionTwo">
           Option 2
         </cat-segment>
       </cat-segmented-control>
@@ -37,7 +37,7 @@ describe('cat-segmented-control', () => {
     const changeListener = vi.fn();
     root.addEventListener('catChange', changeListener);
 
-    const segment = root.querySelector<HTMLCatSegmentElement>('[testid="optionTwo"]');
+    const segment = root.querySelector<HTMLCatSegmentElement>('[test-id="optionTwo"]');
 
     expect(segment).not.toBeNull();
     segment?.dispatchEvent(new CustomEvent('catSegmentClick', { detail: 'two', bubbles: true, composed: true }));
