@@ -70,7 +70,7 @@ Steps:
 2. Run `pnpm build`;
 
 `pnpm run build:core` regenerates Angular and React binding files through
-Stencil output targets. Review and commit generated changes with component:
+Stencil output targets. Review and commit generated changes with components:
 
 - `angular/projects/catalyst/src/lib/directives/proxies.ts`
 - `react/src/components/stencil-generated/index.ts`

@@ -132,6 +132,8 @@ describe('cat-segmented-control', () => {
 
     await waitForChanges();
     const segments = Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment'));
+    const changeListener = vi.fn();
+    root.addEventListener('catChange', changeListener);
     segments[1].doFocus = vi.fn();
     segments[0].shadowRoot?.querySelector('button')?.focus();
     const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true, composed: true });
@@ -140,8 +142,25 @@ describe('cat-segmented-control', () => {
     await waitForChanges();
 
     expect(segments[1].active).toBe(true);
+    expect(changeListener).toHaveBeenCalledOnce();
     expect(segments[1].doFocus).toHaveBeenCalledOnce();
     expect(event.defaultPrevented).toBe(true);
+  });
+
+  it('preserves required group semantics over native attributes', async () => {
+    const { root } = await render(
+      <cat-segmented-control
+        a11yLabel="Required label"
+        nativeAttributes={{ role: 'button', 'aria-label': 'Override', class: 'override' }}
+      >
+        <cat-segment value="one">Option 1</cat-segment>
+      </cat-segmented-control>
+    );
+    const group = root.shadowRoot?.querySelector('div');
+
+    expect(group?.getAttribute('role')).toBe('radiogroup');
+    expect(group?.getAttribute('aria-label')).toBe('Required label');
+    expect(group).toHaveClass('cat-segmented-control');
   });
 
   it('propagates size to all segments', async () => {

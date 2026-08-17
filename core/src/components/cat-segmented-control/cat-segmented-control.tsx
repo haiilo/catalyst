@@ -112,7 +112,6 @@ export class CatSegmentedControl {
   @Listen('catSegmentClick')
   onSegmentClick(event: CustomEvent<string>) {
     this.selectSegment(event.detail);
-    this.catChange.emit(this.value);
   }
 
   @Listen('catSegmentFocus')
@@ -147,11 +146,11 @@ export class CatSegmentedControl {
       <Host>
         <div
           part="control"
+          {...this.nativeAttributes}
           role="radiogroup"
           aria-label={this.a11yLabel}
           class={{ 'cat-segmented-control': true }}
           data-test={this.testId}
-          {...this.nativeAttributes}
         >
           <slot></slot>
         </div>
@@ -174,8 +173,11 @@ export class CatSegmentedControl {
   }
 
   private selectSegment(value: string) {
+    if (this.value === value) return;
+
     this.value = value;
     this.segments.forEach(segment => (segment.active = segment.value === value));
     this.updateTabIndex();
+    this.catChange.emit(value);
   }
 }

@@ -85,6 +85,7 @@ export class CatSegment {
     return (
       <Host>
         <button
+          {...this.nativeAttributes}
           part="button"
           type="button"
           role="radio"
@@ -104,7 +105,6 @@ export class CatSegment {
           onClick={this.handleClick.bind(this)}
           onFocus={this.handleFocus.bind(this)}
           onBlur={this.handleBlur.bind(this)}
-          {...this.nativeAttributes}
         >
           {showIcon && <cat-icon icon={this.icon} size={this.iconSize}></cat-icon>}
           {showLabel && (

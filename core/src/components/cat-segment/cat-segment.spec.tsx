@@ -91,16 +91,23 @@ describe('cat-segment', () => {
     expect(root.shadowRoot?.querySelector('cat-icon')?.getAttribute('size')).toBe(iconSize);
   });
 
-  it('applies test id and native attributes to the button', async () => {
+  it('applies test id and preserves required button semantics over native attributes', async () => {
     const { root } = await render(
-      <cat-segment value="testValue" testId="segment" nativeAttributes={{ 'aria-label': 'Day segment', name: 'day' }}>
+      <cat-segment
+        value="testValue"
+        testId="segment"
+        nativeAttributes={{ role: 'button', type: 'submit', 'aria-checked': 'false', tabIndex: '5', name: 'day' }}
+      >
         Day
       </cat-segment>
     );
     const btn = root.shadowRoot?.querySelector('button');
 
     expect(btn?.getAttribute('data-test')).toBe('segment');
-    expect(btn?.getAttribute('aria-label')).toBe('Day segment');
+    expect(btn?.getAttribute('role')).toBe('radio');
+    expect(btn?.getAttribute('type')).toBe('button');
+    expect(btn?.getAttribute('aria-checked')).toBe('false');
+    expect(btn?.getAttribute('tabindex')).toBe('0');
     expect(btn?.getAttribute('name')).toBe('day');
   });
 
