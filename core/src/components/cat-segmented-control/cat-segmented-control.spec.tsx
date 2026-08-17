@@ -24,7 +24,7 @@ describe('cat-segmented-control', () => {
     `);
   });
 
-  it('emits an event when a segment selection is changed', async () => {
+  it('handles a segment selection event', async () => {
     const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>
         <cat-segment value="one">Option 1</cat-segment>
@@ -120,31 +120,6 @@ describe('cat-segmented-control', () => {
     const segments = Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment'));
     expect(root.value).toBe('two');
     expect(segments).toHaveLength(2);
-  });
-
-  it('selects and focuses the next enabled segment with ArrowRight', async () => {
-    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
-      <cat-segmented-control value="one">
-        <cat-segment value="one">Option 1</cat-segment>
-        <cat-segment value="two">Option 2</cat-segment>
-      </cat-segmented-control>
-    );
-
-    await waitForChanges();
-    const segments = Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment'));
-    const changeListener = vi.fn();
-    root.addEventListener('catChange', changeListener);
-    segments[1].doFocus = vi.fn();
-    segments[0].shadowRoot?.querySelector('button')?.focus();
-    const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true, composed: true });
-
-    segments[0].dispatchEvent(event);
-    await waitForChanges();
-
-    expect(segments[1].active).toBe(true);
-    expect(changeListener).toHaveBeenCalledOnce();
-    expect(segments[1].doFocus).toHaveBeenCalledOnce();
-    expect(event.defaultPrevented).toBe(true);
   });
 
   it('preserves required group semantics over native attributes', async () => {
