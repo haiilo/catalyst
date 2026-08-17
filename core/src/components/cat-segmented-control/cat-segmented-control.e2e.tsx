@@ -7,8 +7,8 @@ describe('cat-segmented-control', () => {
     await expect.element(root).toHaveClass('hydrated');
   });
 
-  it('moves focus with arrow keys and wraps at control boundaries', async () => {
-    const { root } = await render(
+  it('moves selection with arrow keys and wraps at control boundaries', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>
         <cat-segment value="one">Option 1</cat-segment>
         <cat-segment value="two">Option 2</cat-segment>
@@ -19,21 +19,27 @@ describe('cat-segmented-control', () => {
     const buttons = segments.map(segment => segment.shadowRoot?.querySelector<HTMLButtonElement>('button'));
 
     buttons[0]?.focus();
-    root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true }));
-    await Promise.resolve();
-    expect(segments[1].shadowRoot?.activeElement).toBe(buttons[1]);
+    buttons[0]?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true }));
+    await waitForChanges();
+    expect(root.value).toBe('two');
+    expect(buttons[0]?.getAttribute('aria-checked')).toBe('false');
+    expect(buttons[1]?.getAttribute('aria-checked')).toBe('true');
 
-    root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, composed: true }));
-    await Promise.resolve();
-    expect(segments[0].shadowRoot?.activeElement).toBe(buttons[0]);
+    buttons[1]?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, composed: true }));
+    await waitForChanges();
+    expect(root.value).toBe('one');
+    expect(buttons[0]?.getAttribute('aria-checked')).toBe('true');
+    expect(buttons[1]?.getAttribute('aria-checked')).toBe('false');
 
-    root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, composed: true }));
-    await Promise.resolve();
-    expect(segments[2].shadowRoot?.activeElement).toBe(buttons[2]);
+    buttons[0]?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, composed: true }));
+    await waitForChanges();
+    expect(root.value).toBe('three');
+    expect(buttons[0]?.getAttribute('aria-checked')).toBe('false');
+    expect(buttons[2]?.getAttribute('aria-checked')).toBe('true');
   });
 
   it('skips disabled segments during keyboard navigation', async () => {
-    const { root } = await render(
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>
         <cat-segment value="one">Option 1</cat-segment>
         <cat-segment value="two" disabled>
@@ -46,11 +52,12 @@ describe('cat-segmented-control', () => {
     const buttons = segments.map(segment => segment.shadowRoot?.querySelector<HTMLButtonElement>('button'));
 
     buttons[0]?.focus();
-    root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true }));
-    await Promise.resolve();
+    buttons[0]?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true }));
+    await waitForChanges();
 
-    expect(segments[2].shadowRoot?.activeElement).toBe(buttons[2]);
-    expect(segments[1].shadowRoot?.activeElement).not.toBe(buttons[1]);
+    expect(root.value).toBe('three');
+    expect(buttons[2]?.getAttribute('aria-checked')).toBe('true');
+    expect(buttons[1]?.getAttribute('aria-checked')).toBe('false');
   });
 
   it('forwards focus and blur events from segments', async () => {
