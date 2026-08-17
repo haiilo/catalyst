@@ -173,6 +173,25 @@ describe('cat-segmented-control', () => {
     ).toBe(true);
   });
 
+  it('restores segments when control is re-enabled', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control>
+        <cat-segment value="one">Option 1</cat-segment>
+        <cat-segment value="two">Option 2</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+    root.disabled = true;
+    await waitForChanges();
+    root.disabled = false;
+    await waitForChanges();
+
+    expect(
+      Array.from(root.querySelectorAll<HTMLCatSegmentElement>('cat-segment')).every(segment => !segment.disabled)
+    ).toBe(true);
+  });
+
   it('does not prevent arrow-key default when all segments are disabled', async () => {
     const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control disabled>
