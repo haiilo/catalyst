@@ -1,0 +1,77 @@
+# dropdown
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Overview
+
+A dropdown component to display a list of actions in a dropdown menu or to
+show additional content on demand.
+
+## Properties
+
+| Property             | Attribute              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                                                 | Default          |
+| -------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `arrowNavigation`    | `arrow-navigation`     | <span style="color:red">**[DEPRECATED]**</span> use menu<br/><br/>Do not navigate focus inside the dropdown via vertical arrow keys.                                                                                                                                                                                                                                                                                                                                                                 | `"horizontal" \| "none" \| "vertical"`                                                                                                                               | `'vertical'`     |
+| `delayedTriggerInit` | `delayed-trigger-init` | Whether the dropdown trigger should be initialized only before first opening. Can be useful when trigger is rendered dynamically.                                                                                                                                                                                                                                                                                                                                                                        | `boolean`                                                                                                                                                            | `false`          |
+| `isOpen`             | `is-open`              | Whether the dropdown is open.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `boolean`                                                                                                                                                            | `undefined`      |
+| `justify`            | `justify`              | Make the dropdown match the width of the reference regardless of its contents. Note that this only applies to the minimum width of the dropdown. The maximum width is still limited by the viewport.                                                                                                                                                                                                                                                                                                     | `boolean`                                                                                                                                                            | `false`          |
+| `noAutoClose`        | `no-auto-close`        | Do not close the dropdown on outside clicks.                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `boolean`                                                                                                                                                            | `false`          |
+| `noInitialFocus`     | `no-initial-focus`     | <span style="color:red">**[DEPRECATED]**</span> Using noInitialFocus property would be a bad practice from a11y perspective. We always want visible focus to jump inside the dropdown when user uses keyboard and noInitialFocus allows to turn it off which might introduce a bug. hasInitialFocus should resolve the cause of the original problem instead.<br/><br/>No element in dropdown will receive focus when dropdown is open. By default, the first element in tab order will receive a focus. | `boolean`                                                                                                                                                            | `false`          |
+| `noResize`           | `no-resize`            | Do not change the size of the dropdown to ensure it isn’t too big to fit in the viewport (or more specifically, its clipping context).                                                                                                                                                                                                                                                                                                                                                                   | `boolean`                                                                                                                                                            | `false`          |
+| `noReturnFocus`      | `no-return-focus`      | Trigger element will not receive focus when dropdown is closed. Please use this property carefully, consider using menu over using this property                                                                                                                                                                                                                                                                                                                                                     | `boolean`                                                                                                                                                            | `false`          |
+| `overflow`           | `overflow`             | Allow overflow when dropdown is open.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `boolean`                                                                                                                                                            | `false`          |
+| `placement`          | `placement`            | The placement of the dropdown.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
+
+
+## Events
+
+| Event      | Description                          | Type                      |
+| ---------- | ------------------------------------ | ------------------------- |
+| `catClose` | Emitted when the dropdown is closed. | `CustomEvent<FocusEvent>` |
+| `catOpen`  | Emitted when the dropdown is opened. | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+`close(shouldReturnFocus?: boolean) => Promise<void>`
+
+Closes the dropdown.
+
+Parameters
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| `shouldReturnFocus` | `boolean` |             |
+
+Returns
+
+Type: `Promise<void>`
+
+
+
+`open(isFocusVisible?: boolean) => Promise<void>`
+
+Opens the dropdown.
+
+Parameters
+
+| Name             | Type                   | Description                                                |
+| ---------------- | ---------------------- | ---------------------------------------------------------- |
+| `isFocusVisible` | `boolean \| undefined` | is dropdown should receive visible focus when it's opened. |
+
+Returns
+
+Type: `Promise<void>`
+
+
+
+`toggle() => Promise<void>`
+
+Toggles the dropdown.
+
+Returns
+
+Type: `Promise<void>`
