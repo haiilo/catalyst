@@ -27,7 +27,7 @@
     "build": "stencil build --docs",
     "build:watch": "stencil build --docs --watch",
     "build:ci": "stencil build --ci",
-    "postbuild": "node replace",
+    "postbuild": "node replace && node scripts/postprocess-docs.mjs",
     "postbuild:ci": "node replace",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil-test --project plugin",
