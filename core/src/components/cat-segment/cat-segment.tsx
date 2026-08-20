@@ -91,7 +91,7 @@ export class CatSegment {
             'cat-segment-icon-only': this.iconOnly && showIcon
           }}
           disabled={this.disabled}
-          tabIndex={this.rovingTabIndex}
+          tabindex={this.rovingTabIndex}
           aria-label={this.a11yLabel}
           aria-checked={String(this.active)}
           data-test={this.testId}

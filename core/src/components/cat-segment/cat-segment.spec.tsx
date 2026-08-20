@@ -96,7 +96,7 @@ describe('cat-segment', () => {
       <cat-segment
         value="testValue"
         testId="segment"
-        nativeAttributes={{ role: 'button', type: 'submit', 'aria-checked': 'false', tabIndex: '5', name: 'day' }}
+        nativeAttributes={{ role: 'button', type: 'submit', 'aria-checked': 'false', tabindex: '5', name: 'day' }}
       >
         Day
       </cat-segment>
