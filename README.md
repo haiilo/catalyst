@@ -2,29 +2,43 @@
 
 [![Deploy](https://github.com/haiilo/catalyst/actions/workflows/deploy.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/deploy.yml)
 
-| Package | Description | Status | Docs |
-| ------- | ----------- | ------ | ---- |
-| `@haiilo/catalyst`           | Core web components               | [![Core](https://github.com/haiilo/catalyst/actions/workflows/core.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/core.yml) | [README](https://github.com/haiilo/catalyst/blob/main/core/README.md) |
-| `@haiilo/catalyst-tokens`    | Style Dictionary design tokens    | [![Tokens](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml) | [README](https://github.com/haiilo/catalyst/blob/main/tokens/README.md) |
-| `@haiilo/catalyst-angular`   | Angular bindings for components   | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
-| `@haiilo/catalyst-angular-formly`   | Angular custom types for [Formly](https://formly.dev/)   | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
-| `@haiilo/catalyst-react`     | React bindings for components     | [![React](https://github.com/haiilo/catalyst/actions/workflows/react.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/react.yml) | [README](https://github.com/haiilo/catalyst/blob/main/react/README.md) |
+| Package                           | Description                                            | Status                                                                                                                                                     | Docs                                                                     |
+|-----------------------------------|--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `@haiilo/catalyst`                | Core web components                                    | [![Core](https://github.com/haiilo/catalyst/actions/workflows/core.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/core.yml)          | [README](https://github.com/haiilo/catalyst/blob/main/core/README.md)    |
+| `@haiilo/catalyst-tokens`         | Style Dictionary design tokens                         | [![Tokens](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/tokens.yml)    | [README](https://github.com/haiilo/catalyst/blob/main/tokens/README.md)  |
+| `@haiilo/catalyst-angular`        | Angular bindings for components                        | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
+| `@haiilo/catalyst-angular-formly` | Angular custom types for [Formly](https://formly.dev/) | [![Angular](https://github.com/haiilo/catalyst/actions/workflows/angular.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/angular.yml) | [README](https://github.com/haiilo/catalyst/blob/main/angular/README.md) |
+| `@haiilo/catalyst-react`          | React bindings for components                          | [![React](https://github.com/haiilo/catalyst/actions/workflows/react.yml/badge.svg)](https://github.com/haiilo/catalyst/actions/workflows/react.yml)       | [README](https://github.com/haiilo/catalyst/blob/main/react/README.md)   |
 
-## Setup
+## Agentic Development
+
+Recommendation: install the following skills on your agent for effective Catalyst development (not contained in this repo, to be installed from a public registry):
+
+- test-driven development
+- brainstorming
+- systematic debugging
+
+Repository-specific skills are available in `.agents/skills/`. Your agent should find and pick the appropriate skill for the task. Just follow its workflow.
+
+Use a simple prompt like this when starting work with an agent:
+
+```
+I am new to this repo. Help me [describe the task].
+```
+
+### Code Review
+
+When you submit a PR, please trigger Copilot's code review workflow on the PR before reaching out to a human reviewer. You can also ask the agent to review your code before submitting a PR.
+
+## Local Setup
 
 Please take a look at the official design documentation at
 https://design.haiilo.com and follow the [Getting Started](https://design.haiilo.com/7a807c8eb/p/12e811-getting-started)
 guide to learn how to setup your project locally.
 
-When installing dependencies with `npm` or `Yarn` Classic, all packages are
-hoisted to the root of the modules directory. As a result, source code has
-access to dependencies that are not added as dependencies to the project. In the
-past, this has resulted in a number of indeterministic errors, that are very
-hard to debug. As a consequence, this monorepo uses `pnpm` as a package manager.
-Please follow the [installation guide](https://pnpm.io/installation) to get
-started.
+When installing dependencies with `npm` or `Yarn` Classic, all packages are hoisted to the root of the modules directory. As a result, source code has access to dependencies that are not added as dependencies to the project. In the past, this has resulted in a number of indeterministic errors, that are very hard to debug. As a consequence, this monorepo uses `pnpm` as a package manager. Please follow the [installation guide](https://pnpm.io/installation) to get started.
 
-When working with `pnpm`, we recommend to set the following aliases in your 
+When working with `pnpm`, we recommend to set the following aliases in your
 `.bashrc`, `.zshrc`, or `config.fish`:
 
 ```
@@ -44,7 +58,7 @@ The entire release process is automated via Google's [release please](https://gi
 
 Every commit that is prefixed with [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines triggers the creation (or update) of a release PR in the GitHub project. The PR is labeled with "[autorelease: pending](https://github.com/haiilo/catalyst/pulls?q=is%3Apr+is%3Aopen+label%3A%22autorelease%3A+pending%22)". These Release PRs are kept up-to-date as additional work is merged. When you're ready to tag a release, simply merge the release PR. When the Release PR is merged, release-please takes the following steps:
 
-* Updates the `CHANGELOG` file(s), along with other language specific files (for example `package.json`).
+* Updates the `CHANGELOG` file (s), along with other language specific files (for example `package.json`).
 * Tags the commit with the version number.
 * Creates a GitHub Release based on the tag.
 
@@ -63,9 +77,11 @@ All projects in the repository are using [semantic-release](https://www.npmjs.co
 **Note:** Make sure you are logged in with your npm account and you have permissions to release under the haiilo organisation. Otherwise contact one of the collaborators to request access.
 
 ## Local development
+
 Since the catalyst project is monorepo and managing multiple packages via workspaces, we can't simply refer the output folders in file protocol, we need to prepare it first and resolve workspace dependencies.
 
 Steps:
+
 1. Make changes;
 2. Run `pnpm build`;
 
@@ -80,26 +96,32 @@ bindings. CI does not commit generated binding changes. Do not edit generated
 files manually.
 
 Extra steps for testing the changes in Angular package:
-1.  Run `pnpm install` again;
-2. For 
-   - [angular](angular/projects/catalyst) Go to `/angular/dist/catalyst`;
-   - [angular-formly](angular/projects/catalyst-formly) Go to `/angular/dist/catalyst-formly`; 
+1. Run `pnpm install` again;
+2. For
+
+- [angular](angular/projects/catalyst) Go to `/angular/dist/catalyst`;
+- [angular-formly](angular/projects/catalyst-formly) Go to `/angular/dist/catalyst-formly`;
+
 3. Run `pnpm pack`;
 
 In consumer project:
-In package json replace those packages you want to test with file protocol path: 
+In package json replace those packages you want to test with file protocol path:
+
 ```
 "@haiilo/catalyst": "file:../../../catalyst/core",
 "@haiilo/catalyst-angular": "file:../../../catalyst/angular/dist/catalyst/haiilo-catalyst-angular-13.4.0.tgz",
 ```
+
 or
+
 ```
 "@haiilo/catalyst": "file:../../../catalyst/core",
 "@haiilo/catalyst-react": "file:../../../catalyst/react/dist",
 ```
 
 ## Pre-releases
-> [!WARNING]  
+
+> [!WARNING]
 > Making a successful pre-release requires several careful manual steps, if you are not sure, better to go with regular release.
 >
 > At the moment Release Please is used for pre-releases as well as for releases
@@ -109,7 +131,9 @@ or
 3. Make the changes in you feature branch, open PR, wait for green pipeline and approve, merge your PR to `beta`;
 4. Release Please creates or updates already existed pre-release PR.
 5. When you're ready to tag a pre-release, simply merge the pre-release PR.
->IMPORTANT! After testing of your pre-release branch is done you need to release you changes.
+
+> IMPORTANT! After testing of your pre-release branch is done you need to release you changes.
+
 6. Create PR `beta` > `main`. **While merging make sure the commit message is** [conventional](https://www.conventionalcommits.org/en/v1.0.0/). Otherwise, your changes will be ignored by regular release.
 7. Go with regular release steps.
 
