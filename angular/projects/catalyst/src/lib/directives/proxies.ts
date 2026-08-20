@@ -1194,7 +1194,7 @@ export declare interface CatScrollable extends Components.CatScrollable {
 }
 
 @ProxyCmp({
-  inputs: ['a11yControls', 'a11yLabel', 'disabled', 'icon', 'iconOnly', 'nativeAttributes', 'testId', 'value'],
+  inputs: ['a11yLabel', 'disabled', 'icon', 'iconOnly', 'nativeAttributes', 'testId', 'value'],
   methods: ['doFocus', 'doBlur']
 })
 @Component({
@@ -1203,7 +1203,6 @@ export declare interface CatScrollable extends Components.CatScrollable {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
-    'a11yControls',
     'a11yLabel',
     'disabled',
     'icon',

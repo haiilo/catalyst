@@ -36,12 +36,6 @@ export class CatSegment {
    */
   @Prop({ attribute: 'a11y-label' }) a11yLabel?: string;
 
-  /**
-   * Refers to the element that is controlled (e.g. displayed or hidden) by this segment. Typically, this is the ID of
-   * a tab panel that is shown when this segment is active.
-   */
-  @Prop({ attribute: 'a11y-controls' }) a11yControls?: string;
-
   /** @internal Set by cat-segmented-control. Size of the segment. */
   @Prop({ mutable: true }) size: SegmentSize = 'm';
 
@@ -100,7 +94,6 @@ export class CatSegment {
           tabIndex={this.rovingTabIndex}
           aria-label={this.a11yLabel}
           aria-checked={String(this.active)}
-          aria-controls={this.a11yControls}
           data-test={this.testId}
           onClick={this.handleClick.bind(this)}
           onFocus={this.handleFocus.bind(this)}

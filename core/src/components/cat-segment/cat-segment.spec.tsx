@@ -191,14 +191,4 @@ describe('cat-segment', () => {
     const btn = root.shadowRoot?.querySelector<HTMLButtonElement>('button');
     expect(btn?.getAttribute('aria-label')).toBe('Test aria label');
   });
-
-  it('sets aria-controls', async () => {
-    const { root } = await render<HTMLCatSegmentElement>(
-      <cat-segment value="day" a11yControls="panel1">
-        Day
-      </cat-segment>
-    );
-    const btn = root.shadowRoot?.querySelector<HTMLButtonElement>('button');
-    expect(btn?.getAttribute('aria-controls')).toBe('panel1');
-  });
 });

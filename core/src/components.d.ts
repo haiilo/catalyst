@@ -1442,10 +1442,6 @@ export namespace Components {
      */
     interface CatSegment {
         /**
-          * Refers to the element that is controlled (e.g. displayed or hidden) by this segment. Typically, this is the ID of a tab panel that is shown when this segment is active.
-         */
-        "a11yControls"?: string;
-        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
@@ -4486,10 +4482,6 @@ declare namespace LocalJSX {
      */
     interface CatSegment {
         /**
-          * Refers to the element that is controlled (e.g. displayed or hidden) by this segment. Typically, this is the ID of a tab panel that is shown when this segment is active.
-         */
-        "a11yControls"?: string;
-        /**
           * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
          */
         "a11yLabel"?: string;
@@ -5628,7 +5620,6 @@ declare namespace LocalJSX {
         "icon": string;
         "iconOnly": boolean;
         "a11yLabel": string;
-        "a11yControls": string;
         "size": SegmentSize;
         "rovingTabIndex": number;
         "testId": string;
