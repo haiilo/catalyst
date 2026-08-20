@@ -3,7 +3,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch }
 /**
  * A segmented control for selecting one option from a mutually-exclusive set.
  *
- * @part control - The tray wrapper element.
+ * @part group - The grouping wrapper element.
  */
 @Component({
   tag: 'cat-segmented-control',
@@ -143,7 +143,7 @@ export class CatSegmentedControl {
     return (
       <Host>
         <div
-          part="control"
+          part="group"
           {...this.nativeAttributes}
           role="radiogroup"
           aria-label={this.a11yLabel}

@@ -35,6 +35,7 @@ A segmented control for selecting one option from a mutually-exclusive set.
 | Part        | Description               |
 | ----------- | ------------------------- |
 | `"control"` | The tray wrapper element. |
+| `"group"`   |                           |
 
 
 ----------------------------------------------
