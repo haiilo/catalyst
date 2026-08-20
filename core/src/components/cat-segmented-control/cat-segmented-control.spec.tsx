@@ -206,6 +206,22 @@ describe('cat-segmented-control', () => {
     expect(segment?.disabled).toBe(true);
   });
 
+  it('ignores child-list mutations inside segments', async () => {
+    const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
+      <cat-segmented-control>
+        <cat-segment value="one">Option 1</cat-segment>
+      </cat-segmented-control>
+    );
+
+    await waitForChanges();
+    const segment = root.querySelector<HTMLCatSegmentElement>('cat-segment');
+    segment!.size = 'xl';
+    segment!.append(document.createElement('span'));
+    await waitForChanges();
+
+    expect(segment?.size).toBe('xl');
+  });
+
   it('does not prevent arrow-key default when all segments are disabled', async () => {
     const { root, waitForChanges } = await render<HTMLCatSegmentedControlElement>(
       <cat-segmented-control>

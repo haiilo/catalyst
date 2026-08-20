@@ -96,9 +96,7 @@ export class CatSegmentedControl {
   componentDidLoad() {
     this.sync();
     this.mutationObserver = new MutationObserver(mutations => {
-      if (
-        mutations.some(m => m.type === 'childList' || (m.type === 'attributes' && m.target.nodeName === 'CAT-SEGMENT'))
-      ) {
+      if (mutations.some(mutation => this.isSegmentMutation(mutation))) {
         this.sync();
       }
     });
@@ -163,6 +161,19 @@ export class CatSegmentedControl {
     this.onValueChange(this.value);
     this.onSizeChange(this.size);
     this.onDisabledChange(this.disabled);
+  }
+
+  private isSegmentMutation(mutation: MutationRecord): boolean {
+    if (mutation.type === 'attributes') {
+      return mutation.target.nodeName === 'CAT-SEGMENT';
+    }
+
+    return [...mutation.addedNodes, ...mutation.removedNodes].some(node => {
+      if (node.nodeType !== Node.ELEMENT_NODE) return false;
+
+      const element = node as Element;
+      return element.matches('cat-segment') || element.querySelector('cat-segment') !== null;
+    });
   }
 
   private updateTabIndex() {
