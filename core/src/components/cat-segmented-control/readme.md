@@ -32,10 +32,9 @@ A segmented control for selecting one option from a mutually-exclusive set.
 
 ## Shadow Parts
 
-| Part        | Description               |
-| ----------- | ------------------------- |
-| `"control"` | The tray wrapper element. |
-| `"group"`   |                           |
+| Part      | Description                   |
+| --------- | ----------------------------- |
+| `"group"` | The grouping wrapper element. |
 
 
 ----------------------------------------------
