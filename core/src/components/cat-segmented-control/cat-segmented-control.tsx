@@ -12,7 +12,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch }
 })
 export class CatSegmentedControl {
   private segments: HTMLCatSegmentElement[] = [];
-  private readonly groupDisabledSegments = new WeakSet<HTMLCatSegmentElement>();
+  private readonly disabledByGroup = new WeakSet<HTMLCatSegmentElement>();
   private mutationObserver?: MutationObserver;
 
   @Element() hostElement!: HTMLElement;
@@ -78,7 +78,7 @@ export class CatSegmentedControl {
     if (disabled) {
       this.segments.forEach(segment => {
         if (!segment.disabled) {
-          this.groupDisabledSegments.add(segment);
+          this.disabledByGroup.add(segment);
           segment.disabled = true;
         }
       });
@@ -86,8 +86,8 @@ export class CatSegmentedControl {
     }
 
     this.segments.forEach(segment => {
-      if (this.groupDisabledSegments.has(segment)) {
-        this.groupDisabledSegments.delete(segment);
+      if (this.disabledByGroup.has(segment)) {
+        this.disabledByGroup.delete(segment);
         segment.disabled = false;
       }
     });
