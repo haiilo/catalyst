@@ -85,8 +85,17 @@ Steps:
 1. Make changes;
 2. Run `pnpm build`;
 
-Extra steps for testing the changes in angular package:
+`pnpm run build:core` regenerates Angular and React binding files through
+Stencil output targets. Review and commit generated changes with components:
 
+- `angular/projects/catalyst/src/lib/directives/proxies.ts`
+- `react/src/components/stencil-generated/index.ts`
+
+`pnpm run build:angular` and `pnpm run build:react` validate and compile those
+bindings. CI does not commit generated binding changes. Do not edit generated
+files manually.
+
+Extra steps for testing the changes in Angular package:
 1. Run `pnpm install` again;
 2. For
 
@@ -142,13 +151,13 @@ Both local and CI reference screenshots are committed to the repository so that 
 Screenshot tests are intentionally excluded from `pnpm run test`. To run them locally:
 
 ```
-pnpm run test:screenshot        # from core/
+pnpm run test:screenshot        # from repo root
 ```
 
 To update the local (macOS) reference screenshots after an intentional visual change:
 
 ```
-pnpm run test:screenshot:update # from core/
+pnpm run test:screenshot:update # from repo root
 ```
 
 This regenerates the `-darwin` screenshots and commits them alongside your changes.

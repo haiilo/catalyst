@@ -1,2 +1,5 @@
 .idea
 node_modules
+
+# e2e screenshots are for error reporting only and not part of the source code
+**/__screenshots__/**/*.e2e.tsx/**

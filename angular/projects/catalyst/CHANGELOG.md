@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.12.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.11.1...catalyst-angular-v14.12.0) (2026-08-20)
+
+
+### Features
+
+* **core:** add segmented control component ([#1025](https://github.com/haiilo/catalyst/issues/1025)) ([dffa8f2](https://github.com/haiilo/catalyst/commit/dffa8f24dea62b559f2103184d6e0195309f7691))
+
 ## [14.11.1](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.11.0...catalyst-angular-v14.11.1) (2026-08-07)
 
 
