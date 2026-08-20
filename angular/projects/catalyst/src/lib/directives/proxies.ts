@@ -1194,6 +1194,82 @@ export declare interface CatScrollable extends Components.CatScrollable {
 }
 
 @ProxyCmp({
+  inputs: ['a11yLabel', 'disabled', 'icon', 'iconOnly', 'nativeAttributes', 'testId', 'value'],
+  methods: ['doFocus', 'doBlur']
+})
+@Component({
+  selector: 'cat-segment',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [
+    'a11yLabel',
+    'disabled',
+    'icon',
+    'iconOnly',
+    'nativeAttributes',
+    'testId',
+    { name: 'value', required: true }
+  ],
+  standalone: false
+})
+export class CatSegment {
+  protected el: HTMLCatSegmentElement;
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatSegment extends Components.CatSegment {}
+
+@ProxyCmp({
+  inputs: ['a11yLabel', 'disabled', 'nativeAttributes', 'size', 'testId', 'value']
+})
+@Component({
+  selector: 'cat-segmented-control',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['a11yLabel', 'disabled', 'nativeAttributes', 'size', 'testId', 'value'],
+  outputs: ['catChange', 'catFocus', 'catBlur'],
+  standalone: false
+})
+export class CatSegmentedControl {
+  protected el: HTMLCatSegmentedControlElement;
+  @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catFocus = new EventEmitter<CustomEvent<string>>();
+  @Output() catBlur = new EventEmitter<CustomEvent<string>>();
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone
+  ) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface CatSegmentedControl extends Components.CatSegmentedControl {
+  /**
+   * Emitted when the selected segment changes. Payload is the new segment value.
+   */
+  catChange: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when a segment gains focus. Payload is the segment value.
+   */
+  catFocus: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when a segment loses focus. Payload is the segment value.
+   */
+  catBlur: EventEmitter<CustomEvent<string>>;
+}
+
+@ProxyCmp({
   inputs: [
     'autoComplete',
     'clearable',

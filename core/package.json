@@ -33,6 +33,8 @@
     "test": "stencil-test --project plugin",
     "test:screenshot": "stencil-test --project browser",
     "test:e2e": "stencil-test --project e2e",
+    "posttest": "node replace && pnpm --filter @haiilo/catalyst-angular-workspace run prettier",
+    "posttest:screenshot": "node replace && pnpm --filter @haiilo/catalyst-angular-workspace run prettier",
     "posttest:e2e": "node replace && pnpm --filter @haiilo/catalyst-angular-workspace run prettier",
     "test:watch": "stencil-test watch",
     "generate": "stencil generate",

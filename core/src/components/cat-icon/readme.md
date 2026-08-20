@@ -41,6 +41,7 @@ doesn't fit.
  - [cat-badge](../cat-badge)
  - [cat-button](../cat-button)
  - [cat-input](../cat-input)
+ - [cat-segment](../cat-segment)
  - [cat-select](../cat-select)
  - [cat-tag](../cat-tag)
  - [cat-textarea](../cat-textarea)
@@ -53,6 +54,7 @@ graph TD;
   cat-badge --> cat-icon
   cat-button --> cat-icon
   cat-input --> cat-icon
+  cat-segment --> cat-icon
   cat-select --> cat-icon
   cat-tag --> cat-icon
   cat-textarea --> cat-icon
