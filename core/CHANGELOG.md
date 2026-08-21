@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.13.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.12.0...catalyst-core-v14.13.0) (2026-08-21)
+
+
+### Features
+
+* **core:** disable render property for cat-select option ([#1030](https://github.com/haiilo/catalyst/issues/1030)) ([3059708](https://github.com/haiilo/catalyst/commit/30597085dffbc68d2dbcfb52fc0cfa2730c329f3))
+
 ## [14.12.0](https://github.com/haiilo/catalyst/compare/catalyst-core-v14.11.1...catalyst-core-v14.12.0) (2026-08-20)
 
 
