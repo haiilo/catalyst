@@ -35,6 +35,8 @@ export interface Page<T> {
 export interface RenderInfo {
   label: string;
   description?: string;
+  /** Marks the option as disabled, preventing it from being selected or focused via keyboard navigation. */
+  disabled?: boolean;
   avatar?: {
     src?: string;
     round?: boolean;
@@ -872,6 +874,7 @@ export class CatSelect {
   private get optionsList() {
     return this.state.options.map((item, i) => {
       const isTagOption = this.tags && item.item.id === `select-${this.id}-option-tag`;
+      const isOptionDisabled = !!item.render.disabled;
 
       const isOptionSelected = this.isSelected(item.item.id) || (this.tags && this.isTagSelected(item.render.label));
 
@@ -886,15 +889,17 @@ export class CatSelect {
       return (
         <li
           role="option"
-          class="select-option"
+          class={{ 'select-option': true, 'select-option-disabled': isOptionDisabled }}
           id={`select-${this.id}-option-${i}`}
           aria-selected={isOptionSelected ? 'true' : 'false'}
+          aria-disabled={isOptionDisabled ? 'true' : undefined}
           key={item.item.id}
         >
           {this.multiple ? (
             <cat-checkbox
               class={{ 'select-option-active': this.state.activeOptionIndex === i }}
               checked={isOptionSelected}
+              disabled={isOptionDisabled}
               tabIndex={-1}
               labelLeft
               onFocus={() => this.input?.focus()}
@@ -931,7 +936,12 @@ export class CatSelect {
                 'select-option-active': this.state.activeOptionIndex === i
               }}
               onFocus={() => this.input?.focus()}
-              onClick={() => (isTagOption ? this.createTag(item.render.label) : this.select(item))}
+              onClick={() => {
+                if (isOptionDisabled) {
+                  return;
+                }
+                isTagOption ? this.createTag(item.render.label) : this.select(item);
+              }}
               tabIndex={-1}
             >
               {item.render.avatar ? (
@@ -1033,6 +1043,9 @@ export class CatSelect {
   }
 
   private select(item: { item: Item; render: RenderInfo }) {
+    if (item.render.disabled) {
+      return;
+    }
     if (!this.isSelected(item.item.id)) {
       let newSelection;
       if (this.multiple) {
@@ -1071,6 +1084,9 @@ export class CatSelect {
   }
 
   private toggle(item: { item: Item; render: RenderInfo }) {
+    if (item.render.disabled) {
+      return;
+    }
     this.isSelected(item.item.id)
       ? this.deselect(item.item.id)
       : this.tags && this.isTagSelected(item.render.label)
@@ -1194,24 +1210,28 @@ export class CatSelect {
     this.input?.focus();
 
     switch (event.key) {
-      case 'ArrowDown':
+      case 'ArrowDown': {
         preventDefault = true;
-        this.state.isOpen
-          ? this.patchState({
-              activeOptionIndex: Math.min(this.state.activeOptionIndex + 1, this.state.options.length - 1),
-              activeSelectionIndex: -1
-            })
-          : this.show();
+        if (this.state.isOpen) {
+          const nextIndex = this.findEnabledOptionIndex(1);
+          if (nextIndex < this.state.options.length) {
+            this.patchState({ activeOptionIndex: nextIndex, activeSelectionIndex: -1 });
+          }
+        } else {
+          this.show();
+        }
         break;
-      case 'ArrowUp':
+      }
+      case 'ArrowUp': {
         preventDefault = true;
-        this.state.activeOptionIndex >= 0
-          ? this.patchState({
-              activeOptionIndex: Math.max(this.state.activeOptionIndex - 1, -1),
-              activeSelectionIndex: -1
-            })
-          : this.hide();
+        if (this.state.activeOptionIndex >= 0) {
+          const prevIndex = Math.max(this.findEnabledOptionIndex(-1), -1);
+          this.patchState({ activeOptionIndex: prevIndex, activeSelectionIndex: -1 });
+        } else {
+          this.hide();
+        }
         break;
+      }
       case 'ArrowLeft':
         if (this.input?.selectionStart === 0) {
           preventDefault = true;
@@ -1239,6 +1259,19 @@ export class CatSelect {
       event.preventDefault();
       event.stopPropagation();
     }
+  }
+
+  /**
+   * Finds the next option index relative to `activeOptionIndex`, moving in `direction`, that is not disabled.
+   * Returns an out-of-bounds index (< 0 or >= options.length) if no enabled option is found.
+   */
+  private findEnabledOptionIndex(direction: 1 | -1): number {
+    const options = this.state.options;
+    let index = this.state.activeOptionIndex + direction;
+    while (index >= 0 && index < options.length && options[index].render.disabled) {
+      index += direction;
+    }
+    return index;
   }
 
   private get tagTextHelp() {

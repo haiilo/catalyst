@@ -253,6 +253,19 @@ cat-spinner {
   background-color: cat-token('color.theme.secondary.bg', 0.05);
 }
 
+.select-option-disabled {
+  color: cat-token('color.ui.font.muted');
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  .select-option-single {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
 .select-option-active {
   outline: 2px solid cat-token('color.ui.border.focus');
   outline-offset: -2px;
