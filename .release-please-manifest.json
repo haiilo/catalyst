@@ -1,7 +1,7 @@
 {
-  "tokens": "14.12.0",
-  "core": "14.12.0",
-  "angular/projects/catalyst": "14.12.0",
-  "angular/projects/catalyst-formly": "14.12.0",
-  "react": "14.12.0"
+  "tokens": "14.13.0",
+  "core": "14.13.0",
+  "angular/projects/catalyst": "14.13.0",
+  "angular/projects/catalyst-formly": "14.13.0",
+  "react": "14.13.0"
 }
