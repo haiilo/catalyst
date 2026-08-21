@@ -31,7 +31,7 @@ vi.mock('@floating-ui/dom', () => ({
 }));
 
 import './cat-select';
-import { stringArrayConnector } from './connectors';
+import { objectArrayConnector, stringArrayConnector } from './connectors';
 import { of, Subject } from 'rxjs';
 
 describe('cat-select', () => {
@@ -401,6 +401,96 @@ describe('cat-select', () => {
 
         expect(instance['singleValueTruncated']).toBe(false);
       });
+    });
+  });
+
+  describe('disabled options', () => {
+    it('should not select a disabled option on click in single-select mode', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+      await instance.connect(
+        objectArrayConnector([
+          { id: 'option1', label: 'Option 1', disabled: true },
+          { id: 'option2', label: 'Option 2' }
+        ])
+      );
+
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      const disabledOption = root?.shadowRoot?.querySelector<HTMLElement>(
+        '.select-option-disabled .select-option-single'
+      );
+      disabledOption?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      expect(instance['state'].selection).toHaveLength(0);
+    });
+
+    it('should mark a disabled option with select-option-disabled class and aria-disabled', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" />);
+      await instance.connect(
+        objectArrayConnector([
+          { id: 'option1', label: 'Option 1', disabled: true },
+          { id: 'option2', label: 'Option 2' }
+        ])
+      );
+
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      const options = root?.shadowRoot?.querySelectorAll('li.select-option');
+      expect(options?.[0].classList.contains('select-option-disabled')).toBe(true);
+      expect(options?.[0].getAttribute('aria-disabled')).toBe('true');
+      expect(options?.[1].classList.contains('select-option-disabled')).toBe(false);
+      expect(options?.[1].hasAttribute('aria-disabled')).toBe(false);
+    });
+
+    it('should not toggle a disabled option in multiple-select mode', async () => {
+      const { root, waitForChanges, instance } = await render(<cat-select label="Label" multiple />);
+      await instance.connect(
+        objectArrayConnector([
+          { id: 'option1', label: 'Option 1', disabled: true },
+          { id: 'option2', label: 'Option 2' }
+        ])
+      );
+
+      const trigger = root?.shadowRoot?.querySelector('.select-wrapper');
+      trigger?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await waitForChanges();
+
+      const checkbox = root?.shadowRoot?.querySelector('cat-checkbox');
+      expect(checkbox?.getAttribute('disabled')).not.toBeNull();
+
+      instance['toggle']({ item: { id: 'option1' }, render: { label: 'Option 1', disabled: true } });
+      await waitForChanges();
+
+      expect(instance['state'].selection).toHaveLength(0);
+    });
+
+    it('should skip disabled options when navigating with arrow keys', async () => {
+      const { instance, waitForChanges } = await render(<cat-select label="Label" />);
+      await instance.connect(
+        objectArrayConnector([
+          { id: 'option1', label: 'Option 1' },
+          { id: 'option2', label: 'Option 2', disabled: true },
+          { id: 'option3', label: 'Option 3' }
+        ])
+      );
+
+      instance['show']();
+      await waitForChanges();
+      instance['patchState']({ activeOptionIndex: 0 });
+
+      instance['onArrowKeyDown']({
+        key: 'ArrowDown',
+        preventDefault: vi.fn(),
+        stopPropagation: vi.fn()
+      } as unknown as KeyboardEvent);
+      await waitForChanges();
+
+      expect(instance['state'].activeOptionIndex).toBe(2);
     });
   });
 });
