@@ -1,10 +1,12 @@
-import { Component, h, Host, Prop, Method, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Method, Event, EventEmitter, Listen } from '@stencil/core';
 import { Breakpoint } from '../../utils/breakpoints';
 
 let nextUniqueId = 0;
 
 /**
  * A menu item component that renders as a button with proper ARIA semantics.
+ *
+ * @part menu-item - The underlying menu item button.
  */
 @Component({
   tag: 'cat-menu-item',
@@ -16,6 +18,8 @@ export class CatMenuItem {
     return this.identifier || this._id;
   }
   private button?: HTMLCatButtonElement;
+
+  @Element() hostElement!: HTMLElement;
 
   /**
    * A unique identifier for the menu item.
@@ -82,6 +86,10 @@ export class CatMenuItem {
    * as a shorthand for `nativeAttributes={ 'data-test': 'test-Id' }`.
    */
   @Prop() testId?: string;
+
+  /**
+   * Whether this item contains a nested dropdown trigger.
+   */
   @Prop() subMenu = false;
 
   /**
@@ -99,6 +107,10 @@ export class CatMenuItem {
    */
   @Method()
   async doFocus(options?: FocusOptions): Promise<void> {
+    if (this.subMenu) {
+      await this.subMenuTrigger?.doFocus(options);
+      return;
+    }
     this.button?.doFocus(options);
   }
 
@@ -107,44 +119,58 @@ export class CatMenuItem {
    */
   @Method()
   async doBlur(): Promise<void> {
+    if (this.subMenu) {
+      await this.subMenuTrigger?.doBlur();
+      return;
+    }
     this.button?.doBlur();
+  }
+
+  private get subMenuTrigger(): HTMLCatButtonElement | undefined {
+    return (
+      this.hostElement.querySelector<HTMLCatButtonElement>('cat-dropdown > cat-button[slot="trigger"]') ?? undefined
+    );
+  }
+
+  private click(event: CustomEvent<MouseEvent>) {
+    event.stopPropagation();
   }
 
   render() {
     return (
       <Host>
         <li>
-          <cat-button
-            ref={el => (this.button = el)}
-            class="cat-nav-item"
-            buttonId={this.id}
-            part="menu-item"
-            variant={this.variant}
-            icon={this.icon}
-            iconOnly={this.iconOnly}
-            iconRight={this.iconRight}
-            url={this.url}
-            disabled={this.disabled}
-            urlTarget={this.urlTarget}
-            loading={this.loading}
-            color={this.color}
-            active={this.active}
-            testId={this.testId}
-            nativeAttributes={{
-              ...this.nativeAttributes,
-              role: 'menuitem',
-              tabindex: '-1'
-            }}
-            onCatClick={event => this.click(event)}
-          >
+          {this.subMenu ? (
             <slot></slot>
-          </cat-button>
+          ) : (
+            <cat-button
+              ref={el => (this.button = el)}
+              class="cat-nav-item"
+              buttonId={this.id}
+              part="menu-item"
+              variant={this.variant}
+              icon={this.icon}
+              iconOnly={this.iconOnly}
+              iconRight={this.iconRight}
+              url={this.url}
+              disabled={this.disabled}
+              urlTarget={this.urlTarget}
+              loading={this.loading}
+              color={this.color}
+              active={this.active}
+              testId={this.testId}
+              nativeAttributes={{
+                ...this.nativeAttributes,
+                role: 'menuitem',
+                tabindex: '-1'
+              }}
+              onCatClick={event => this.click(event)}
+            >
+              <slot></slot>
+            </cat-button>
+          )}
         </li>
       </Host>
     );
-  }
-
-  private click(event: CustomEvent<MouseEvent>) {
-    event.stopPropagation();
   }
 }
