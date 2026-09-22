@@ -253,6 +253,7 @@
               <li><a href="#pagination">Pagination</a></li>
               <li><a href="#radio">Radio</a></li>
               <li><a href="#scrollable">Scrollable</a></li>
+              <li><a href="#segmented-control">Segmented Control</a></li>
               <li><a href="#select">Select</a></li>
               <li><a href="#skeleton">Skeleton</a></li>
               <li><a href="#spinner">Spinner</a></li>
@@ -358,11 +359,11 @@
               <cat-badge icon="sparkle-filled" icon-right size="xl">Size XL</cat-badge>
               <br />
               <br />
-              <cat-badge icon="sparkle-filled" icon-only="xs" size="xs">sdfdsf sdfsdf </cat-badge>
-              <cat-badge icon="sparkle-filled" icon-only="s" size="s">sdfdsf sdfsdf </cat-badge>
-              <cat-badge icon="sparkle-filled" icon-only="m" size="m">sdfdsf sdfsdf </cat-badge>
-              <cat-badge icon="sparkle-filled" icon-only="l" size="l">sdfdsf sdfsdf </cat-badge>
-              <cat-badge icon="sparkle-filled" icon-only="xl" size="xl">sdfdsf sdfsdf </cat-badge>
+              <cat-badge icon="sparkle-filled" icon-only="xs" size="xs">sdfdsf sdfsdf</cat-badge>
+              <cat-badge icon="sparkle-filled" icon-only="s" size="s">sdfdsf sdfsdf</cat-badge>
+              <cat-badge icon="sparkle-filled" icon-only="m" size="m">sdfdsf sdfsdf</cat-badge>
+              <cat-badge icon="sparkle-filled" icon-only="l" size="l">sdfdsf sdfsdf</cat-badge>
+              <cat-badge icon="sparkle-filled" icon-only="xl" size="xl">sdfdsf sdfsdf</cat-badge>
 
               <h3>Round</h3>
               <cat-badge round="true">Round</cat-badge>
@@ -446,8 +447,8 @@
               <cat-button url="http://www.google.de" url-target="_blank">Google (ext.)</cat-button>
 
               <div class="cat-mt-s">
-                <cat-button inline="true" variant="link" url="http://www.google.de">Link 1</cat-button
-                ><cat-button inline="true" variant="link" url="http://www.google.de">Link 2</cat-button>
+                <cat-button inline="true" variant="link" url="http://www.google.de">Link 1</cat-button>
+                <cat-button inline="true" variant="link" url="http://www.google.de">Link 2</cat-button>
               </div>
 
               <h3>Active</h3>
@@ -457,8 +458,8 @@
               <br /><br />
               <cat-button icon="sparkle-filled" active="true" variant="filled" color="secondary">Secondary</cat-button>
               <cat-button icon="sparkle-filled" active="true" variant="outlined" color="secondary"
-                >Secondary</cat-button
-              >
+                >Secondary
+              </cat-button>
               <cat-button icon="sparkle-filled" active="true" variant="text" color="secondary">Secondary</cat-button>
               <br /><br />
               <cat-button icon="sparkle-filled" active="true" variant="filled" color="info">Info</cat-button>
@@ -483,11 +484,11 @@
               <cat-button icon="sparkle-filled" disabled="true" variant="text" color="primary">Primary</cat-button>
               <br /><br />
               <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="secondary"
-                >Secondary</cat-button
-              >
+                >Secondary
+              </cat-button>
               <cat-button icon="sparkle-filled" disabled="true" variant="outlined" color="secondary"
-                >Secondary</cat-button
-              >
+                >Secondary
+              </cat-button>
               <cat-button icon="sparkle-filled" disabled="true" variant="text" color="secondary">Secondary</cat-button>
               <br /><br />
               <cat-button icon="sparkle-filled" disabled="true" variant="filled" color="info">Info</cat-button>
@@ -618,8 +619,8 @@
                     <ul>
                       <li>
                         <cat-button class="cat-nav-item" variant="outlined" color="secondary" onclick="console.log(3)"
-                          >Nav item 3</cat-button
-                        >
+                          >Nav item 3
+                        </cat-button>
                       </li>
                     </ul>
                   </nav>
@@ -676,8 +677,8 @@
                 <!-- Wide dropdown -->
                 <cat-dropdown justify focus-trap="true">
                   <cat-button slot="trigger" color="primary" variant="filled"
-                    >Button with very long content so that it is very wide</cat-button
-                  >
+                    >Button with very long content so that it is very wide
+                  </cat-button>
                   <nav slot="content">
                     <ul>
                       <li class="cat-nav-head">Headline</li>
@@ -721,33 +722,55 @@
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
                               </li>
                               <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary"
-                                >Nav item 1</cat-button
-                              >
+                                >Nav item 1
+                              </cat-button>
                             </ul>
                           </nav>
                         </cat-dropdown>
                       </li>
-                      <li><cat-button class="cat-nav-item" icon="bookmark-outlined">Saved</cat-button></li>
-                      <li><cat-button class="cat-nav-item" icon="w-document-outlined">Files</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="bookmark-outlined">Saved</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="w-document-outlined">Files</cat-button>
+                      </li>
                       <hr />
                       <li class="cat-nav-head">Platform</li>
-                      <li><cat-button class="cat-nav-item" icon="settings-outlined">Administration</cat-button></li>
-                      <li><cat-button class="cat-nav-item" icon="bar-chart-outlined">Analytics</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="settings-outlined">Administration</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="bar-chart-outlined">Analytics</cat-button>
+                      </li>
                       <li>
                         <cat-button class="cat-nav-item" icon="w-hero-teaser-outlined">Manage hero teaser</cat-button>
                       </li>
-                      <li><cat-button class="cat-nav-item" icon="w-alert-outlined">Reported content</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="w-alert-outlined">Reported content</cat-button>
+                      </li>
                       <hr />
                       <li class="cat-nav-head">Settings</li>
-                      <li><cat-button class="cat-nav-item" icon="sliders-outlined">Account</cat-button></li>
-                      <li><cat-button class="cat-nav-item" icon="bell-outlined">Notifications</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="sliders-outlined">Account</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="bell-outlined">Notifications</cat-button>
+                      </li>
                       <hr />
                       <li class="cat-nav-head">Support</li>
-                      <li><cat-button class="cat-nav-item" icon="restart-outlined">Restart tour</cat-button></li>
-                      <li><cat-button class="cat-nav-item" icon="question-mark-circle-outlined">Help</cat-button></li>
-                      <li><cat-button class="cat-nav-item" icon="info-circle-outlined">About</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="restart-outlined">Restart tour</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="question-mark-circle-outlined">Help</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="info-circle-outlined">About</cat-button>
+                      </li>
                       <hr />
-                      <li><cat-button class="cat-nav-item" icon="sign-out-outlined">Log out</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item" icon="sign-out-outlined">Log out</cat-button>
+                      </li>
                     </ul>
                   </nav>
                 </cat-dropdown>
@@ -759,8 +782,12 @@
                   <cat-button slot="trigger">Click me</cat-button>
                   <nav slot="content">
                     <ul>
-                      <li><cat-button class="cat-nav-item">Item A</cat-button></li>
-                      <li><cat-button class="cat-nav-item">Item B</cat-button></li>
+                      <li>
+                        <cat-button class="cat-nav-item">Item A</cat-button>
+                      </li>
+                      <li>
+                        <cat-button class="cat-nav-item">Item B</cat-button>
+                      </li>
                     </ul>
                   </nav>
                 </cat-dropdown>
@@ -782,8 +809,8 @@
                     <li>
                       <cat-dropdown placement="right-start">
                         <cat-button slot="trigger" class="cat-nav-item" icon="sparkle-filled" color="primary"
-                          >Click one more time</cat-button
-                        >
+                          >Click one more time
+                        </cat-button>
                         <nav slot="content">
                           <ul>
                             <li class="cat-nav-head">Headline</li>
@@ -791,8 +818,8 @@
                               Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
                             </li>
                             <cat-button class="cat-nav-item" icon="sparkle-filled" color="primary"
-                              >Nav item 1</cat-button
-                            >
+                              >Nav item 1
+                            </cat-button>
                           </ul>
                         </nav>
                       </cat-dropdown>
@@ -837,8 +864,8 @@
                   <cat-menu-item>Nav item 5 (long)</cat-menu-item>
                   <li class="cat-hr"></li>
                   <cat-menu-item color="danger" onclick="console.log(6)"
-                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f</cat-menu-item
-                  >
+                    >Nsdhfgjhsfg js fgjsdhgf jshdgf sdhgf jsdgf jhsdg fjhsdg fjhsgd fjshgdfjs dfgjsd f
+                  </cat-menu-item>
                   <hr />
                   <cat-menu-item variant="outlined" onclick="console.log(3)">Nav item 3</cat-menu-item>
                 </cat-menu>
@@ -1106,6 +1133,7 @@
               <cat-button id="notification-trigger">Show Notifications</cat-button>
               <script type="module">
                 import { catNotificationService } from '/build/index.esm.js';
+
                 document.getElementById('notification-trigger').onclick = function () {
                   catNotificationService.show('Item saved', {
                     autoClose: false,
@@ -1192,6 +1220,108 @@
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
               </cat-scrollable>
+            </section>
+
+            <section id="segmented-control">
+              <h2>Segmented Control</h2>
+
+              <h3>Default</h3>
+              <cat-segmented-control>
+                <cat-segment value="one">Option 1</cat-segment>
+                <cat-segment value="two">Option 2</cat-segment>
+                <cat-segment value="three">Option 3 with overflowing content</cat-segment>
+              </cat-segmented-control>
+
+              <h3>Sizes</h3>
+              <cat-segmented-control size="xs">
+                <cat-segment value="one">XS Option 1</cat-segment>
+                <cat-segment value="two">XS Option 2</cat-segment>
+                <cat-segment value="three">XS Option 3</cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="s">
+                <cat-segment value="one">S Option 1</cat-segment>
+                <cat-segment value="two">S Option 2</cat-segment>
+                <cat-segment value="three">S Option 3</cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="m">
+                <cat-segment value="one">M Option 1</cat-segment>
+                <cat-segment value="two">M Option 2</cat-segment>
+                <cat-segment value="three">M Option 3</cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="l">
+                <cat-segment value="one">L Option 1</cat-segment>
+                <cat-segment value="two">L Option 2</cat-segment>
+                <cat-segment value="three">L Option 3</cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="xl">
+                <cat-segment value="one">XL Option 1</cat-segment>
+                <cat-segment value="two">XL Option 2</cat-segment>
+                <cat-segment value="three">XL Option 3</cat-segment>
+              </cat-segmented-control>
+
+              <h3>Disabled</h3>
+              <cat-segmented-control disabled>
+                <cat-segment value="one">Option 1</cat-segment>
+                <cat-segment value="two">Option 2</cat-segment>
+                <cat-segment value="three">Option 3</cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control>
+                <cat-segment value="one">Option 1</cat-segment>
+                <cat-segment value="two" disabled>Option 2</cat-segment>
+                <cat-segment value="three">Option 3</cat-segment>
+              </cat-segmented-control>
+
+              <h3>Icons</h3>
+              <cat-segmented-control>
+                <cat-segment value="home" icon="bookmark-filled">Option 1</cat-segment>
+                <cat-segment value="settings" icon="camera-filled">Option 2</cat-segment>
+                <cat-segment value="star" icon="star-filled">Option 3</cat-segment>
+              </cat-segmented-control>
+
+              <h3>Icon Only</h3>
+              <cat-segmented-control size="xs">
+                <cat-segment value="home" icon="bookmark-filled" icon-only a11y-label="Option 1"></cat-segment>
+                <cat-segment value="settings" icon="camera-filled" icon-only a11y-label="Option 2"></cat-segment>
+                <cat-segment value="star" icon="star-filled" icon-only a11y-label="Option 3"></cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="s">
+                <cat-segment value="home" icon="bookmark-filled" icon-only a11y-label="Option 1"></cat-segment>
+                <cat-segment value="settings" icon="camera-filled" icon-only a11y-label="Option 2"></cat-segment>
+                <cat-segment value="star" icon="star-filled" icon-only a11y-label="Option 3"></cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="m">
+                <cat-segment value="home" icon="bookmark-filled" icon-only a11y-label="Option 1"></cat-segment>
+                <cat-segment value="settings" icon="camera-filled" icon-only a11y-label="Option 2"></cat-segment>
+                <cat-segment value="star" icon="star-filled" icon-only a11y-label="Option 3"></cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="l">
+                <cat-segment value="home" icon="bookmark-filled" icon-only a11y-label="Option 1"></cat-segment>
+                <cat-segment value="settings" icon="camera-filled" icon-only a11y-label="Option 2"></cat-segment>
+                <cat-segment value="star" icon="star-filled" icon-only a11y-label="Option 3"></cat-segment>
+              </cat-segmented-control>
+              <br />
+              <br />
+              <cat-segmented-control size="xl">
+                <cat-segment value="home" icon="bookmark-filled" icon-only a11y-label="Option 1"></cat-segment>
+                <cat-segment value="settings" icon="camera-filled" icon-only a11y-label="Option 2"></cat-segment>
+                <cat-segment value="star" icon="star-filled" icon-only a11y-label="Option 3"></cat-segment>
+              </cat-segmented-control>
             </section>
 
             <section id="select">

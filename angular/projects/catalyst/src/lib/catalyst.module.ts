@@ -36,6 +36,8 @@ const CatComponents = [
   Components.CatRadio,
   Components.CatRadioGroup,
   Components.CatScrollable,
+  Components.CatSegment,
+  Components.CatSegmentedControl,
   Components.CatSelect,
   Components.CatSkeleton,
   Components.CatSpinner,

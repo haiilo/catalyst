@@ -12,6 +12,7 @@ import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
 import { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
+import { SegmentSize } from "./components/cat-segment/cat-segment";
 import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -22,6 +23,7 @@ export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mo
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
 export { FormatDateMaskOptions, FormatTimeMaskOptions } from "./components/cat-input/cat-input";
+export { SegmentSize } from "./components/cat-segment/cat-segment";
 export { CatSelectConnector, CatSelectValue, Item } from "./components/cat-select/cat-select";
 export { Observable } from "rxjs";
 export { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
@@ -1436,6 +1438,92 @@ export namespace Components {
         "scrolledBuffer": number;
     }
     /**
+     * A single segment within a cat-segmented-control.
+     */
+    interface CatSegment {
+        /**
+          * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
+         */
+        "a11yLabel"?: string;
+        /**
+          * @default false
+         */
+        "active": boolean;
+        /**
+          * Whether this segment is disabled.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Removes focus from the segment button.
+         */
+        "doBlur": () => Promise<void>;
+        /**
+          * Sets focus on the segment button.
+         */
+        "doFocus": () => Promise<void>;
+        /**
+          * Icon name to display (same registry as cat-button).
+         */
+        "icon"?: string;
+        /**
+          * When true, hides the label and shows the icon only. Requires icon and a11y-label.
+          * @default false
+         */
+        "iconOnly": boolean;
+        /**
+          * Spread onto the native button element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * @default 0
+         */
+        "rovingTabIndex": number;
+        /**
+          * @default 'm'
+         */
+        "size": SegmentSize;
+        /**
+          * Renders as data-test on the button element.
+         */
+        "testId"?: string;
+        /**
+          * The unique value of this segment within the group.
+         */
+        "value": string;
+    }
+    /**
+     * A segmented control for selecting one option from a mutually-exclusive set.
+     */
+    interface CatSegmentedControl {
+        /**
+          * Accessible label for the group (screen readers only).
+         */
+        "a11yLabel"?: string;
+        /**
+          * Whether the entire control is disabled.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Spread onto the root element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * The size of the control, propagated to all child segments.
+          * @default 'm'
+         */
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Renders as data-test on the root element.
+         */
+        "testId"?: string;
+        /**
+          * The value of the currently selected segment.
+         */
+        "value"?: string;
+    }
+    /**
      * Select lets user choose one option from an options' menu.
      * Consider using select when you have 6 or more options. Select component supports any content type.
      */
@@ -2246,6 +2334,14 @@ export interface CatScrollableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatScrollableElement;
 }
+export interface CatSegmentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatSegmentElement;
+}
+export interface CatSegmentedControlCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCatSegmentedControlElement;
+}
 export interface CatSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCatSelectElement;
@@ -2662,6 +2758,50 @@ declare global {
         prototype: HTMLCatScrollableElement;
         new (): HTMLCatScrollableElement;
     };
+    interface HTMLCatSegmentElementEventMap {
+        "catSegmentClick": string;
+        "catSegmentFocus": string;
+        "catSegmentBlur": string;
+    }
+    /**
+     * A single segment within a cat-segmented-control.
+     */
+    interface HTMLCatSegmentElement extends Components.CatSegment, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatSegmentElementEventMap>(type: K, listener: (this: HTMLCatSegmentElement, ev: CatSegmentCustomEvent<HTMLCatSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatSegmentElementEventMap>(type: K, listener: (this: HTMLCatSegmentElement, ev: CatSegmentCustomEvent<HTMLCatSegmentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatSegmentElement: {
+        prototype: HTMLCatSegmentElement;
+        new (): HTMLCatSegmentElement;
+    };
+    interface HTMLCatSegmentedControlElementEventMap {
+        "catChange": string;
+        "catFocus": string;
+        "catBlur": string;
+    }
+    /**
+     * A segmented control for selecting one option from a mutually-exclusive set.
+     */
+    interface HTMLCatSegmentedControlElement extends Components.CatSegmentedControl, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCatSegmentedControlElementEventMap>(type: K, listener: (this: HTMLCatSegmentedControlElement, ev: CatSegmentedControlCustomEvent<HTMLCatSegmentedControlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCatSegmentedControlElementEventMap>(type: K, listener: (this: HTMLCatSegmentedControlElement, ev: CatSegmentedControlCustomEvent<HTMLCatSegmentedControlElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCatSegmentedControlElement: {
+        prototype: HTMLCatSegmentedControlElement;
+        new (): HTMLCatSegmentedControlElement;
+    };
     interface HTMLCatSelectElementEventMap {
         "catOpen": FocusEvent;
         "catClose": FocusEvent;
@@ -2875,6 +3015,8 @@ declare global {
         "cat-radio": HTMLCatRadioElement;
         "cat-radio-group": HTMLCatRadioGroupElement;
         "cat-scrollable": HTMLCatScrollableElement;
+        "cat-segment": HTMLCatSegmentElement;
+        "cat-segmented-control": HTMLCatSegmentedControlElement;
         "cat-select": HTMLCatSelectElement;
         "cat-select-demo": HTMLCatSelectDemoElement;
         "cat-skeleton": HTMLCatSkeletonElement;
@@ -2889,6 +3031,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+
     /**
      * Informs user about important changes or conditions in the interface. Use this
      * component if you need to capture user’s attention in a prominent way.
@@ -4334,6 +4478,99 @@ declare namespace LocalJSX {
         "scrolledBuffer"?: number;
     }
     /**
+     * A single segment within a cat-segmented-control.
+     */
+    interface CatSegment {
+        /**
+          * Adds accessible label for the button that is only shown for screen readers. Typically, this label text replaces the visible text on the button for users who use assistive technology.
+         */
+        "a11yLabel"?: string;
+        /**
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * Whether this segment is disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Icon name to display (same registry as cat-button).
+         */
+        "icon"?: string;
+        /**
+          * When true, hides the label and shows the icon only. Requires icon and a11y-label.
+          * @default false
+         */
+        "iconOnly"?: boolean;
+        /**
+          * Spread onto the native button element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        "onCatSegmentBlur"?: (event: CatSegmentCustomEvent<string>) => void;
+        "onCatSegmentClick"?: (event: CatSegmentCustomEvent<string>) => void;
+        "onCatSegmentFocus"?: (event: CatSegmentCustomEvent<string>) => void;
+        /**
+          * @default 0
+         */
+        "rovingTabIndex"?: number;
+        /**
+          * @default 'm'
+         */
+        "size"?: SegmentSize;
+        /**
+          * Renders as data-test on the button element.
+         */
+        "testId"?: string;
+        /**
+          * The unique value of this segment within the group.
+         */
+        "value": string;
+    }
+    /**
+     * A segmented control for selecting one option from a mutually-exclusive set.
+     */
+    interface CatSegmentedControl {
+        /**
+          * Accessible label for the group (screen readers only).
+         */
+        "a11yLabel"?: string;
+        /**
+          * Whether the entire control is disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Spread onto the root element.
+         */
+        "nativeAttributes"?: { [key: string]: string };
+        /**
+          * Emitted when a segment loses focus. Payload is the segment value.
+         */
+        "onCatBlur"?: (event: CatSegmentedControlCustomEvent<string>) => void;
+        /**
+          * Emitted when the selected segment changes. Payload is the new segment value.
+         */
+        "onCatChange"?: (event: CatSegmentedControlCustomEvent<string>) => void;
+        /**
+          * Emitted when a segment gains focus. Payload is the segment value.
+         */
+        "onCatFocus"?: (event: CatSegmentedControlCustomEvent<string>) => void;
+        /**
+          * The size of the control, propagated to all child segments.
+          * @default 'm'
+         */
+        "size"?: 'xs' | 's' | 'm' | 'l' | 'xl';
+        /**
+          * Renders as data-test on the root element.
+         */
+        "testId"?: string;
+        /**
+          * The value of the currently selected segment.
+         */
+        "value"?: string;
+    }
+    /**
      * Select lets user choose one option from an options' menu.
      * Consider using select when you have 6 or more options. Select component supports any content type.
      */
@@ -5377,6 +5614,24 @@ declare namespace LocalJSX {
         "noScrolledInit": boolean;
         "scrolledBuffer": number;
     }
+    interface CatSegmentAttributes {
+        "active": boolean;
+        "disabled": boolean;
+        "icon": string;
+        "iconOnly": boolean;
+        "a11yLabel": string;
+        "size": SegmentSize;
+        "rovingTabIndex": number;
+        "testId": string;
+        "value": string;
+    }
+    interface CatSegmentedControlAttributes {
+        "value": string;
+        "size": 'xs' | 's' | 'm' | 'l' | 'xl';
+        "disabled": boolean;
+        "a11yLabel": string;
+        "testId": string;
+    }
     interface CatSelectAttributes {
         "requiredMarker": 'none' | 'required' | 'optional' | 'none!' | 'optional!' | 'required!';
         "horizontal": boolean;
@@ -5548,6 +5803,8 @@ declare namespace LocalJSX {
         "cat-radio": Omit<CatRadio, keyof CatRadioAttributes> & { [K in keyof CatRadio & keyof CatRadioAttributes]?: CatRadio[K] } & { [K in keyof CatRadio & keyof CatRadioAttributes as `attr:${K}`]?: CatRadioAttributes[K] } & { [K in keyof CatRadio & keyof CatRadioAttributes as `prop:${K}`]?: CatRadio[K] };
         "cat-radio-group": Omit<CatRadioGroup, keyof CatRadioGroupAttributes> & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes]?: CatRadioGroup[K] } & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes as `attr:${K}`]?: CatRadioGroupAttributes[K] } & { [K in keyof CatRadioGroup & keyof CatRadioGroupAttributes as `prop:${K}`]?: CatRadioGroup[K] };
         "cat-scrollable": Omit<CatScrollable, keyof CatScrollableAttributes> & { [K in keyof CatScrollable & keyof CatScrollableAttributes]?: CatScrollable[K] } & { [K in keyof CatScrollable & keyof CatScrollableAttributes as `attr:${K}`]?: CatScrollableAttributes[K] } & { [K in keyof CatScrollable & keyof CatScrollableAttributes as `prop:${K}`]?: CatScrollable[K] };
+        "cat-segment": Omit<CatSegment, keyof CatSegmentAttributes> & { [K in keyof CatSegment & keyof CatSegmentAttributes]?: CatSegment[K] } & { [K in keyof CatSegment & keyof CatSegmentAttributes as `attr:${K}`]?: CatSegmentAttributes[K] } & { [K in keyof CatSegment & keyof CatSegmentAttributes as `prop:${K}`]?: CatSegment[K] } & OneOf<"value", CatSegment["value"], CatSegmentAttributes["value"]>;
+        "cat-segmented-control": Omit<CatSegmentedControl, keyof CatSegmentedControlAttributes> & { [K in keyof CatSegmentedControl & keyof CatSegmentedControlAttributes]?: CatSegmentedControl[K] } & { [K in keyof CatSegmentedControl & keyof CatSegmentedControlAttributes as `attr:${K}`]?: CatSegmentedControlAttributes[K] } & { [K in keyof CatSegmentedControl & keyof CatSegmentedControlAttributes as `prop:${K}`]?: CatSegmentedControl[K] };
         "cat-select": Omit<CatSelect, keyof CatSelectAttributes> & { [K in keyof CatSelect & keyof CatSelectAttributes]?: CatSelect[K] } & { [K in keyof CatSelect & keyof CatSelectAttributes as `attr:${K}`]?: CatSelectAttributes[K] } & { [K in keyof CatSelect & keyof CatSelectAttributes as `prop:${K}`]?: CatSelect[K] };
         "cat-select-demo": CatSelectDemo;
         "cat-skeleton": Omit<CatSkeleton, keyof CatSkeletonAttributes> & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes]?: CatSkeleton[K] } & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes as `attr:${K}`]?: CatSkeletonAttributes[K] } & { [K in keyof CatSkeleton & keyof CatSkeletonAttributes as `prop:${K}`]?: CatSkeleton[K] };
@@ -5661,6 +5918,14 @@ declare module "@stencil/core" {
              * An element to display scrollable content.
              */
             "cat-scrollable": LocalJSX.IntrinsicElements["cat-scrollable"] & JSXBase.HTMLAttributes<HTMLCatScrollableElement>;
+            /**
+             * A single segment within a cat-segmented-control.
+             */
+            "cat-segment": LocalJSX.IntrinsicElements["cat-segment"] & JSXBase.HTMLAttributes<HTMLCatSegmentElement>;
+            /**
+             * A segmented control for selecting one option from a mutually-exclusive set.
+             */
+            "cat-segmented-control": LocalJSX.IntrinsicElements["cat-segmented-control"] & JSXBase.HTMLAttributes<HTMLCatSegmentedControlElement>;
             /**
              * Select lets user choose one option from an options' menu.
              * Consider using select when you have 6 or more options. Select component supports any content type.

@@ -294,7 +294,8 @@ export class CatSelectTest {
         avatar: {
           src: `https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`,
           round: true
-        }
+        },
+        disabled: country.id === '2'
       })
     };
   }
