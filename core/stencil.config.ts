@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { existsSync } from 'fs';
 import { inlineSvg } from 'stencil-inline-svg';
+import { postprocessDocs } from './scripts/postprocess-docs.mjs';
 
 function getAssetsTokensPath() {
   const assetsTokensPath = './node_modules/@haiilo/catalyst-tokens/dist/assets';
@@ -81,8 +82,15 @@ export const config: Config = {
     },
     {
       type: 'docs-readme',
-      footer: 'Made with love in Hamburg, Germany',
-      strict: true
+      dir: '../docs',
+      strict: true,
+      overwriteExisting: true
+    },
+    {
+      type: 'docs-custom',
+      generator: () => {
+        postprocessDocs();
+      }
     },
     {
       type: 'www',
