@@ -14,6 +14,7 @@ An inline date picker component to select a date.
 | Property         | Attribute         | Description                                                                                                            | Type                                                                                       | Default      |
 | ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ |
 | `a11yLabel`      | `a11y-label`      | Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker. | `string \| undefined`                                                                      | `undefined`  |
+| `dayVariants`    | --                | Optional semantic visual variant for individual dates, keyed by local ISO date.                                        | `"danger" \| "warning" \| string \| undefined`                                             | `undefined`  |
 | `hint`           | `hint`            | Shows an arrow keys navigation hint.                                                                                   | `boolean`                                                                                  | `false`      |
 | `identifier`     | `identifier`      | A unique identifier for the input.                                                                                     | `string \| undefined`                                                                      | `undefined`  |
 | `label`          | `label`           | The label for the input.                                                                                               | `string`                                                                                   | `''`         |
@@ -31,9 +32,10 @@ An inline date picker component to select a date.
 
 ## Events
 
-| Event       | Description                        | Type                  |
-| ----------- | ---------------------------------- | --------------------- |
-| `catChange` | Emitted when the value is changed. | `CustomEvent<string>` |
+| Event           | Description                                                | Type                             |
+| --------------- | ---------------------------------------------------------- | -------------------------------- |
+| `catChange`     | Emitted when the value is changed.                         | `CustomEvent<string>`            |
+| `catViewChange` | Emitted when the visible inclusive calendar range changes. | `CustomEvent<CatDateViewChange>` |
 
 
 ## Methods

@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, St
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
+import type { CatDateViewChange } from './cat-date-view-change';
 import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
@@ -108,9 +109,19 @@ export class CatDateInline {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Optional semantic visual variant for individual dates, keyed by local ISO date.
+   */
+  @Prop() dayVariants?: Record<string, 'warning' | 'danger'>;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
+
+  /**
+   * Emitted when the visible inclusive calendar range changes.
+   */
+  @Event() catViewChange!: EventEmitter<CatDateViewChange>;
 
   private get focusedDate() {
     const [all, year, month, day] =
@@ -143,6 +154,10 @@ export class CatDateInline {
         ?.doFocus();
       this.focusDate = null;
     }
+  }
+
+  componentDidLoad() {
+    this.emitViewChange();
   }
 
   @Listen('keydown')
@@ -221,6 +236,7 @@ export class CatDateInline {
     const [minDate, maxDate] = this.getMinMaxDate();
     const [dateStart] = this.getValue();
     this.viewDate = dateStart ?? clampDate(minDate, this.locale.now(), maxDate);
+    this.emitViewChange();
   }
 
   /**
@@ -325,6 +341,8 @@ export class CatDateInline {
             )}
             <div class="picker-grid-days">
               {dateGrid.map(day => {
+                const date = this.locale.toLocalISO(day);
+                const variant = this.dayVariants?.[date];
                 const isStartDate = isSameDay(dateStart, day);
                 const isEndDate = isSameDay(dateEnd, day);
                 const isRange = !!dateStart && !!dateEnd && day > dateStart && day < dateEnd;
@@ -340,6 +358,9 @@ export class CatDateInline {
                       'date-start': this.range && isStartDate,
                       'date-range': this.range && isRange,
                       'date-end': this.range && isEndDate,
+                      'date-selected': isStartDate || isEndDate,
+                      'date-variant-warning': variant === 'warning',
+                      'date-variant-danger': variant === 'danger',
                       'date-focusable': this.canFocus(day),
                       'date-disabled': !this.canClick(day)
                     }}
@@ -350,7 +371,7 @@ export class CatDateInline {
                     color={isStartDate || isEndDate || isToday ? 'primary' : 'secondary'}
                     disabled={!this.canClick(day)}
                     onClick={() => this.select(day)}
-                    data-date={this.locale.toLocalISO(day)}
+                    data-date={date}
                   >
                     {day.getDate()}
                   </cat-button>
@@ -380,7 +401,11 @@ export class CatDateInline {
   private focus(date: Date, focus = true) {
     const [minDate, maxDate] = this.getMinMaxDate();
     const focusDate = clampDate(minDate, date, maxDate);
+    const previousViewDate = this.viewDate;
     this.viewDate = new Date(focusDate.getFullYear(), focusDate.getMonth());
+    if (!isSameMonth(previousViewDate, this.viewDate)) {
+      this.emitViewChange();
+    }
     if (focus) {
       this.focusDate = focusDate;
       this.hostElement.shadowRoot
@@ -403,6 +428,15 @@ export class CatDateInline {
     const maxDate = new Date(targetYear, targetMonth, maxDay);
     this.viewDate = clampDate(minDate, date, maxDate);
     this.setAriaLive(this.getHeadline());
+    this.emitViewChange();
+  }
+
+  private emitViewChange() {
+    const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
+    this.catViewChange.emit({
+      from: this.locale.toLocalISO(dateGrid[0]),
+      to: this.locale.toLocalISO(dateGrid[dateGrid.length - 1])
+    });
   }
 
   private setAriaLive(text?: string) {

@@ -19,3 +19,4 @@ export { objectArrayConnector, stringArrayConnector, stringMapConnector } from '
 export { TooltipPlacement } from './components/cat-tooltip/cat-tooltip';
 export { FormatTimeMaskOptions, FormatDateMaskOptions } from './components/cat-input/cat-input';
 export { DropdownPlacement } from './components/cat-dropdown/cat-dropdown';
+export type { CatDateViewChange } from './components/cat-date-inline/cat-date-view-change';

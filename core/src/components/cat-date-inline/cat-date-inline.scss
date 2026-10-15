@@ -119,6 +119,15 @@
   opacity: 0.25;
 }
 
+.date-variant-warning:not(.date-selected):not(.date-today)::part(button),
+.date-variant-danger:not(.date-selected):not(.date-today)::part(button) {
+  background-color: var(--cat-date-day-warning-background, #{cat-token('color.theme.warning.bg', 0.5)}) !important;
+}
+
+.date-variant-danger:not(.date-selected):not(.date-today)::part(button) {
+  background-color: var(--cat-date-day-danger-background, #{cat-token('color.theme.danger.bg', 0.5)}) !important;
+}
+
 .picker-foot {
   display: flex;
   align-items: center;

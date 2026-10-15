@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
+import { CatDateViewChange } from "./components/cat-date-inline/cat-date-view-change";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
@@ -19,6 +20,7 @@ import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
+export { CatDateViewChange } from "./components/cat-date-inline/cat-date-view-change";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
@@ -383,6 +385,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+         */
+        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        /**
           * Whether the input is disabled.
           * @default false
          */
@@ -509,6 +515,10 @@ export namespace Components {
           * Clear the picker.
          */
         "clear": () => Promise<void>;
+        /**
+          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+         */
+        "dayVariants"?: Record<string, 'warning' | 'danger'>;
         /**
           * Programmatically move focus to the inline datepicker, i,e, the first focusable date.
           * @param options An optional object providing options to control aspects of the focusing process.
@@ -2479,6 +2489,7 @@ declare global {
     };
     interface HTMLCatDateElementEventMap {
         "catChange": string;
+        "catViewChange": CatDateViewChange;
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
@@ -2501,6 +2512,7 @@ declare global {
     };
     interface HTMLCatDateInlineElementEventMap {
         "catChange": string;
+        "catViewChange": CatDateViewChange;
     }
     /**
      * An inline date picker component to select a date.
@@ -3394,6 +3406,10 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+         */
+        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        /**
           * Whether the input is disabled.
           * @default false
          */
@@ -3471,6 +3487,10 @@ declare namespace LocalJSX {
          */
         "onCatFocus"?: (event: CatDateCustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the visible inclusive calendar range changes.
+         */
+        "onCatViewChange"?: (event: CatDateCustomEvent<CatDateViewChange>) => void;
+        /**
           * The placeholder text to display within the input.
          */
         "placeholder"?: string;
@@ -3520,6 +3540,10 @@ declare namespace LocalJSX {
          */
         "a11yLabel"?: string;
         /**
+          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+         */
+        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        /**
           * Shows an arrow keys navigation hint.
           * @default false
          */
@@ -3560,6 +3584,10 @@ declare namespace LocalJSX {
           * Emitted when the value is changed.
          */
         "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
+        /**
+          * Emitted when the visible inclusive calendar range changes.
+         */
+        "onCatViewChange"?: (event: CatDateInlineCustomEvent<CatDateViewChange>) => void;
         /**
           * Allow the selection of a range of dates, i.e. start and end date.
           * @default false

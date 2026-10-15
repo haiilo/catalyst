@@ -13,6 +13,7 @@ import {
 import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@haiilo/catalyst';
+import type { CatDateViewChange } from '@haiilo/catalyst';
 
 @ProxyCmp({
   inputs: ['color', 'icon', 'noIcon']
@@ -318,6 +319,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   inputs: [
     'autoComplete',
     'clearable',
+    'dayVariants',
     'disabled',
     'errorUpdate',
     'errors',
@@ -376,12 +378,13 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'textSuffix',
     'value'
   ],
-  outputs: ['catChange', 'catFocus', 'catBlur'],
+  outputs: ['catChange', 'catViewChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatDate {
   protected el: HTMLCatDateElement;
   @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catViewChange = new EventEmitter<CustomEvent<CatDateViewChange>>();
   @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
   @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
@@ -399,6 +402,7 @@ export declare interface CatDate extends Components.CatDate {
    * Emitted when the value is changed.
    */
   catChange: EventEmitter<CustomEvent<string>>;
+  catViewChange: EventEmitter<CustomEvent<CatDateViewChange>>;
   /**
    * Emitted when the input received focus.
    */
@@ -412,6 +416,7 @@ export declare interface CatDate extends Components.CatDate {
 @ProxyCmp({
   inputs: [
     'a11yLabel',
+    'dayVariants',
     'hint',
     'identifier',
     'label',
@@ -449,12 +454,13 @@ export declare interface CatDate extends Components.CatDate {
     'value',
     'weeks'
   ],
-  outputs: ['catChange'],
+  outputs: ['catChange', 'catViewChange'],
   standalone: false
 })
 export class CatDateInline {
   protected el: HTMLCatDateInlineElement;
   @Output() catChange = new EventEmitter<CustomEvent<string>>();
+  @Output() catViewChange = new EventEmitter<CustomEvent<CatDateViewChange>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -470,6 +476,7 @@ export declare interface CatDateInline extends Components.CatDateInline {
    * Emitted when the value is changed.
    */
   catChange: EventEmitter<CustomEvent<string>>;
+  catViewChange: EventEmitter<CustomEvent<CatDateViewChange>>;
 }
 
 @ProxyCmp({
