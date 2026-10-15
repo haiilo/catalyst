@@ -3,6 +3,15 @@
 @use '_snippets/form-label';
 
 :host {
+  /**
+   * @prop --cat-date-day-primary-background: Background color for primary date variants.
+   * @prop --cat-date-day-secondary-background: Background color for secondary date variants.
+   * @prop --cat-date-day-info-background: Background color for info date variants.
+   * @prop --cat-date-day-success-background: Background color for success date variants.
+   * @prop --cat-date-day-warning-background: Background color for warning date variants.
+   * @prop --cat-date-day-danger-background: Background color for danger date variants.
+   * @prop --cat-date-day-danger-border-color: Border color for danger date variants.
+   */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -119,13 +128,22 @@
   opacity: 0.25;
 }
 
-.date-variant-warning:not(.date-selected):not(.date-today)::part(button),
-.date-variant-danger:not(.date-selected):not(.date-today)::part(button) {
-  background-color: var(--cat-date-day-warning-background, #{cat-token('color.theme.warning.bg', 0.5)}) !important;
+@mixin date-variant($variant) {
+  .date-variant-#{$variant}:not(.date-selected):not(.date-today) {
+    background-color: var(--cat-date-day-#{$variant}-background, #{cat-token('color.theme.#{$variant}.bg', 0.5)});
+    border-radius: cat-border-radius('m');
+  }
 }
 
+@include date-variant('primary');
+@include date-variant('secondary');
+@include date-variant('info');
+@include date-variant('success');
+@include date-variant('warning');
+@include date-variant('danger');
+
 .date-variant-danger:not(.date-selected):not(.date-today)::part(button) {
-  background-color: var(--cat-date-day-danger-background, #{cat-token('color.theme.danger.bg', 0.5)}) !important;
+  box-shadow: inset 0 0 0 1.5px var(--cat-date-day-danger-border-color, transparent);
 }
 
 .picker-foot {

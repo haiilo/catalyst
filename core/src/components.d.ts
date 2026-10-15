@@ -6,9 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Breakpoint } from "./utils/breakpoints";
+import { CatDateDayVariant } from "./components/cat-date-inline/cat-date-day-variant";
 import { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 import { Placement } from "@floating-ui/dom";
-import { CatDateViewChange } from "./components/cat-date-inline/cat-date-view-change";
+import { CatDateViewRange } from "./components/cat-date-inline/cat-date-view-range";
 import { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 import { BaseOptions } from "flatpickr/dist/types/options";
 import { InputType } from "./components/cat-input/input-type";
@@ -18,9 +19,10 @@ import { CatSelectConnector, CatSelectValue, Item } from "./components/cat-selec
 import { Observable } from "rxjs";
 import { TooltipPlacement } from "./components/cat-tooltip/cat-tooltip";
 export { Breakpoint } from "./utils/breakpoints";
+export { CatDateDayVariant } from "./components/cat-date-inline/cat-date-day-variant";
 export { ErrorMap } from "./components/cat-form-hint/cat-form-hint";
 export { Placement } from "@floating-ui/dom";
-export { CatDateViewChange } from "./components/cat-date-inline/cat-date-view-change";
+export { CatDateViewRange } from "./components/cat-date-inline/cat-date-view-range";
 export { CatDatepickerMode } from "./components/cat-datepicker/cat-datepicker.mode";
 export { BaseOptions } from "flatpickr/dist/types/options";
 export { InputType } from "./components/cat-input/input-type";
@@ -385,9 +387,9 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+          * Applies a semantic theme variant to each matching local ISO date.
          */
-        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        "dayVariants"?: Record<string, CatDateDayVariant>;
         /**
           * Whether the input is disabled.
           * @default false
@@ -516,9 +518,9 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+          * Applies a semantic theme variant to each matching local ISO date.
          */
-        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        "dayVariants"?: Record<string, CatDateDayVariant>;
         /**
           * Programmatically move focus to the inline datepicker, i,e, the first focusable date.
           * @param options An optional object providing options to control aspects of the focusing process.
@@ -2489,7 +2491,7 @@ declare global {
     };
     interface HTMLCatDateElementEventMap {
         "catChange": string;
-        "catViewChange": CatDateViewChange;
+        "catDateViewChange": CatDateViewRange;
         "catFocus": FocusEvent;
         "catBlur": FocusEvent;
     }
@@ -2512,7 +2514,7 @@ declare global {
     };
     interface HTMLCatDateInlineElementEventMap {
         "catChange": string;
-        "catViewChange": CatDateViewChange;
+        "catDateViewChange": CatDateViewRange;
     }
     /**
      * An inline date picker component to select a date.
@@ -3406,9 +3408,9 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+          * Applies a semantic theme variant to each matching local ISO date.
          */
-        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        "dayVariants"?: Record<string, CatDateDayVariant>;
         /**
           * Whether the input is disabled.
           * @default false
@@ -3483,13 +3485,13 @@ declare namespace LocalJSX {
          */
         "onCatChange"?: (event: CatDateCustomEvent<string>) => void;
         /**
+          * Emitted with the visible inclusive calendar range and whenever that range changes.
+         */
+        "onCatDateViewChange"?: (event: CatDateCustomEvent<CatDateViewRange>) => void;
+        /**
           * Emitted when the input received focus.
          */
         "onCatFocus"?: (event: CatDateCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when the visible inclusive calendar range changes.
-         */
-        "onCatViewChange"?: (event: CatDateCustomEvent<CatDateViewChange>) => void;
         /**
           * The placeholder text to display within the input.
          */
@@ -3540,9 +3542,9 @@ declare namespace LocalJSX {
          */
         "a11yLabel"?: string;
         /**
-          * Optional semantic visual variant for individual dates, keyed by local ISO date.
+          * Applies a semantic theme variant to each matching local ISO date.
          */
-        "dayVariants"?: Record<string, 'warning' | 'danger'>;
+        "dayVariants"?: Record<string, CatDateDayVariant>;
         /**
           * Shows an arrow keys navigation hint.
           * @default false
@@ -3585,9 +3587,9 @@ declare namespace LocalJSX {
          */
         "onCatChange"?: (event: CatDateInlineCustomEvent<string>) => void;
         /**
-          * Emitted when the visible inclusive calendar range changes.
+          * Emitted with the visible inclusive calendar range and whenever that range changes.
          */
-        "onCatViewChange"?: (event: CatDateInlineCustomEvent<CatDateViewChange>) => void;
+        "onCatDateViewChange"?: (event: CatDateInlineCustomEvent<CatDateViewRange>) => void;
         /**
           * Allow the selection of a range of dates, i.e. start and end date.
           * @default false

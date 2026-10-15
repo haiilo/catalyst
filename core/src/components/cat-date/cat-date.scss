@@ -2,6 +2,15 @@
 @use 'mixins' as *;
 
 :host {
+  /**
+   * @prop --cat-date-day-primary-background: Background color for primary date variants.
+   * @prop --cat-date-day-secondary-background: Background color for secondary date variants.
+   * @prop --cat-date-day-info-background: Background color for info date variants.
+   * @prop --cat-date-day-success-background: Background color for success date variants.
+   * @prop --cat-date-day-warning-background: Background color for warning date variants.
+   * @prop --cat-date-day-danger-background: Background color for danger date variants.
+   * @prop --cat-date-day-danger-border-color: Border color for danger date variants.
+   */
   display: block;
 }
 

@@ -15,7 +15,7 @@ A date input component to select a date from a calendar in a dropdown.
 | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | `autoComplete`     | `auto-complete`   | Hint for form autofill feature.                                                                                                                                                                                                                                                                                                 | `string`                                                                                                                                                             | `'off'`        |
 | `clearable`        | `clearable`       | Whether the input should show a clear button.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                                                                                            | `false`        |
-| `dayVariants`      | --                | Optional semantic visual variant for individual dates, keyed by local ISO date.                                                                                                                                                                                                                                                 | `"danger" \| "warning" \| string \| undefined`                                                                                                                       | `undefined`    |
+| `dayVariants`      | --                | Applies a semantic theme variant to each matching local ISO date.                                                                                                                                                                                                                                                               | `"danger" \| "info" \| "primary" \| "secondary" \| "success" \| "warning" \| string \| undefined` | `undefined`    |
 | `disabled`         | `disabled`        | Whether the input is disabled.                                                                                                                                                                                                                                                                                                  | `boolean`                                                                                                                                                            | `false`        |
 | `errorUpdate`      | `error-update`    | Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.                                                                                                         | `boolean \| number`                                                                                                                                                  | `0`            |
 | `errors`           | `errors`          | The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input. | `boolean \| string[] \| undefined \| { [key: string]: any; }`                                                                                                        | `undefined`    |
@@ -47,8 +47,8 @@ A date input component to select a date from a calendar in a dropdown.
 | --------------- | ---------------------------------------------------------- | -------------------------------- |
 | `catBlur`       | Emitted when the input loses focus.                        | `CustomEvent<FocusEvent>`        |
 | `catChange`     | Emitted when the value is changed.                         | `CustomEvent<string>`            |
+| `catDateViewChange` | Emitted with the visible inclusive calendar range and whenever that range changes. | `CustomEvent<CatDateViewRange>` |
 | `catFocus`      | Emitted when the input received focus.                     | `CustomEvent<FocusEvent>`        |
-| `catViewChange` | Emitted when the visible inclusive calendar range changes. | `CustomEvent<CatDateViewChange>` |
 
 
 ## Methods
@@ -90,6 +90,19 @@ Programmatically move focus to the input. Use this method instead of
 Type: `Promise<void>`
 
 
+
+
+## CSS Custom Properties
+
+| Name                                  | Description                                   |
+| ------------------------------------- | --------------------------------------------- |
+| `--cat-date-day-danger-background`    | Background color for danger date variants.    |
+| `--cat-date-day-danger-border-color`  | Border color for danger date variants.        |
+| `--cat-date-day-info-background`      | Background color for info date variants.      |
+| `--cat-date-day-primary-background`   | Background color for primary date variants.   |
+| `--cat-date-day-secondary-background` | Background color for secondary date variants. |
+| `--cat-date-day-success-background`   | Background color for success date variants.   |
+| `--cat-date-day-warning-background`   | Background color for warning date variants.   |
 
 
 ## Dependencies

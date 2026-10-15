@@ -20,31 +20,42 @@ describe('cat-date-inline', () => {
     `);
   });
 
-  it('renders day states for local ISO dates', async () => {
-    const today = new Date();
-    const date = [today.getFullYear(), today.getMonth() + 1, today.getDate()]
-      .map((part, index) => (index === 0 ? String(part) : String(part).padStart(2, '0')))
-      .join('-');
-    const { root } = await render(<cat-date-inline dayVariants={{ [date]: 'danger' }} />);
+  it('renders each semantic variant for local ISO dates', async () => {
+    const variants = ['primary', 'secondary', 'info', 'success', 'warning', 'danger'] as const;
+    const now = new Date();
+    const dateKeys = variants.map((_, index) => {
+      const date = new Date(now.getFullYear(), now.getMonth(), index + 1);
+      return [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+        .map((part, partIndex) => (partIndex === 0 ? String(part) : String(part).padStart(2, '0')))
+        .join('-');
+    });
+    const dayVariants = Object.fromEntries(dateKeys.map((date, index) => [date, variants[index]]));
+    const { root } = await render(<cat-date-inline dayVariants={dayVariants} />);
 
-    expect(root.shadowRoot?.querySelector(`[data-date="${date}"]`)).toHaveClass('date-variant-danger');
+    dateKeys.forEach((date, index) => {
+      expect(root.shadowRoot?.querySelector(`[data-date="${date}"]`)).toHaveClass(`date-variant-${variants[index]}`);
+    });
   });
 
   it('emits the visible inclusive range when navigating', async () => {
-    const { root } = await render(<cat-date-inline />);
+    const { root, waitForChanges } = await render(<cat-date-inline />);
     const viewChange = vi.fn();
-    root.addEventListener('catViewChange', viewChange);
+    root.addEventListener('catDateViewChange', viewChange);
 
     (root.shadowRoot?.querySelectorAll('cat-button')[2] as HTMLElement).click();
-    await new Promise(resolve => setTimeout(resolve));
+    await waitForChanges();
 
-    expect(viewChange).toHaveBeenCalledWith(
-      expect.objectContaining({
-        detail: {
-          from: expect.any(String),
-          to: expect.any(String)
-        }
-      })
-    );
+    const inline = root as HTMLCatDateInlineElement;
+    await inline.resetView();
+    await waitForChanges();
+    await inline.resetView();
+
+    expect(viewChange).toHaveBeenCalledTimes(2);
+    const emittedRanges = viewChange.mock.calls.map(([event]) => event.detail);
+    emittedRanges.forEach(range => {
+      expect(range.from).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(range.to).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    });
+    expect(emittedRanges[0]).not.toEqual(emittedRanges[1]);
   });
 });

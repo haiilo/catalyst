@@ -2,7 +2,8 @@ import { Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, State } from '@stencil/core';
 import { getLocale } from '../cat-date-inline/cat-date-locale';
 import { clampDate } from '../cat-date-inline/cat-date-math';
-import type { CatDateViewChange } from '../cat-date-inline/cat-date-view-change';
+import type { CatDateDayVariant } from '../cat-date-inline/cat-date-day-variant';
+import type { CatDateViewRange } from '../cat-date-inline/cat-date-view-range';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { DateUnit, FormatDateOptions } from 'cleave-zen';
@@ -135,9 +136,9 @@ export class CatDate {
   @Prop({ mutable: true }) value?: string;
 
   /**
-   * Optional semantic visual variant for individual dates, keyed by local ISO date.
+   * Applies a semantic theme variant to each matching local ISO date.
    */
-  @Prop() dayVariants?: Record<string, 'warning' | 'danger'>;
+  @Prop() dayVariants?: Record<string, CatDateDayVariant>;
 
   /**
    * The validation errors for this input. Will render a hint under the input
@@ -193,9 +194,9 @@ export class CatDate {
   @Event() catChange!: EventEmitter<string>;
 
   /**
-   * Emitted when the visible inclusive calendar range changes.
+   * Emitted with the visible inclusive calendar range and whenever that range changes.
    */
-  @Event() catViewChange!: EventEmitter<CatDateViewChange>;
+  @Event() catDateViewChange!: EventEmitter<CatDateViewRange>;
 
   /**
    * Emitted when the input received focus.
@@ -326,9 +327,9 @@ export class CatDate {
                 weeks
                 noClear
                 onCatChange={this.onDateChange.bind(this)}
-                onCatViewChange={(e: CustomEvent<CatDateViewChange>) => {
+                onCatDateViewChange={(e: CustomEvent<CatDateViewRange>) => {
                   e.stopPropagation();
-                  this.catViewChange.emit(e.detail);
+                  this.catDateViewChange.emit(e.detail);
                 }}
               ></cat-date-inline>
             </div>

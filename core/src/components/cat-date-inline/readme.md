@@ -14,7 +14,7 @@ An inline date picker component to select a date.
 | Property         | Attribute         | Description                                                                                                            | Type                                                                                       | Default      |
 | ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ |
 | `a11yLabel`      | `a11y-label`      | Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker. | `string \| undefined`                                                                      | `undefined`  |
-| `dayVariants`    | --                | Optional semantic visual variant for individual dates, keyed by local ISO date.                                        | `"danger" \| "warning" \| string \| undefined`                                             | `undefined`  |
+| `dayVariants`    | --                | Applies a semantic theme variant to each matching local ISO date.                                                      | `"danger" \| "info" \| "primary" \| "secondary" \| "success" \| "warning" \| string \| undefined` | `undefined`  |
 | `hint`           | `hint`            | Shows an arrow keys navigation hint.                                                                                   | `boolean`                                                                                  | `false`      |
 | `identifier`     | `identifier`      | A unique identifier for the input.                                                                                     | `string \| undefined`                                                                      | `undefined`  |
 | `label`          | `label`           | The label for the input.                                                                                               | `string`                                                                                   | `''`         |
@@ -35,7 +35,7 @@ An inline date picker component to select a date.
 | Event           | Description                                                | Type                             |
 | --------------- | ---------------------------------------------------------- | -------------------------------- |
 | `catChange`     | Emitted when the value is changed.                         | `CustomEvent<string>`            |
-| `catViewChange` | Emitted when the visible inclusive calendar range changes. | `CustomEvent<CatDateViewChange>` |
+| `catDateViewChange` | Emitted with the visible inclusive calendar range and whenever that range changes. | `CustomEvent<CatDateViewRange>` |
 
 
 ## Methods
@@ -99,6 +99,19 @@ Type: `Promise<void>`
 | Part      | Description               |
 | --------- | ------------------------- |
 | `"label"` | The native label element. |
+
+
+## CSS Custom Properties
+
+| Name                                  | Description                                   |
+| ------------------------------------- | --------------------------------------------- |
+| `--cat-date-day-danger-background`    | Background color for danger date variants.    |
+| `--cat-date-day-danger-border-color`  | Border color for danger date variants.        |
+| `--cat-date-day-info-background`      | Background color for info date variants.      |
+| `--cat-date-day-primary-background`   | Background color for primary date variants.   |
+| `--cat-date-day-secondary-background` | Background color for secondary date variants. |
+| `--cat-date-day-success-background`   | Background color for success date variants.   |
+| `--cat-date-day-warning-background`   | Background color for warning date variants.   |
 
 
 ## Dependencies

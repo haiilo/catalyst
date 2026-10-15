@@ -13,7 +13,6 @@ import {
 import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@haiilo/catalyst';
-import type { CatDateViewChange } from '@haiilo/catalyst';
 
 @ProxyCmp({
   inputs: ['color', 'icon', 'noIcon']
@@ -354,6 +353,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   inputs: [
     'autoComplete',
     'clearable',
+    'dayVariants',
     'disabled',
     'errorUpdate',
     'errors',
@@ -378,13 +378,13 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
     'textSuffix',
     'value'
   ],
-  outputs: ['catChange', 'catViewChange', 'catFocus', 'catBlur'],
+  outputs: ['catChange', 'catDateViewChange', 'catFocus', 'catBlur'],
   standalone: false
 })
 export class CatDate {
   protected el: HTMLCatDateElement;
   @Output() catChange = new EventEmitter<CustomEvent<string>>();
-  @Output() catViewChange = new EventEmitter<CustomEvent<CatDateViewChange>>();
+  @Output() catDateViewChange = new EventEmitter<CustomEvent<ICatDateCatDateViewRange>>();
   @Output() catFocus = new EventEmitter<CustomEvent<FocusEvent>>();
   @Output() catBlur = new EventEmitter<CustomEvent<FocusEvent>>();
   constructor(
@@ -397,12 +397,17 @@ export class CatDate {
   }
 }
 
+import type { CatDateViewRange as ICatDateCatDateViewRange } from '@haiilo/catalyst';
+
 export declare interface CatDate extends Components.CatDate {
   /**
    * Emitted when the value is changed.
    */
   catChange: EventEmitter<CustomEvent<string>>;
-  catViewChange: EventEmitter<CustomEvent<CatDateViewChange>>;
+  /**
+   * Emitted with the visible inclusive calendar range and whenever that range changes.
+   */
+  catDateViewChange: EventEmitter<CustomEvent<ICatDateCatDateViewRange>>;
   /**
    * Emitted when the input received focus.
    */
@@ -440,6 +445,7 @@ export declare interface CatDate extends Components.CatDate {
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
     'a11yLabel',
+    'dayVariants',
     'hint',
     'identifier',
     'label',
@@ -454,13 +460,13 @@ export declare interface CatDate extends Components.CatDate {
     'value',
     'weeks'
   ],
-  outputs: ['catChange', 'catViewChange'],
+  outputs: ['catChange', 'catDateViewChange'],
   standalone: false
 })
 export class CatDateInline {
   protected el: HTMLCatDateInlineElement;
   @Output() catChange = new EventEmitter<CustomEvent<string>>();
-  @Output() catViewChange = new EventEmitter<CustomEvent<CatDateViewChange>>();
+  @Output() catDateViewChange = new EventEmitter<CustomEvent<ICatDateInlineCatDateViewRange>>();
   constructor(
     c: ChangeDetectorRef,
     r: ElementRef,
@@ -471,12 +477,17 @@ export class CatDateInline {
   }
 }
 
+import type { CatDateViewRange as ICatDateInlineCatDateViewRange } from '@haiilo/catalyst';
+
 export declare interface CatDateInline extends Components.CatDateInline {
   /**
    * Emitted when the value is changed.
    */
   catChange: EventEmitter<CustomEvent<string>>;
-  catViewChange: EventEmitter<CustomEvent<CatDateViewChange>>;
+  /**
+   * Emitted with the visible inclusive calendar range and whenever that range changes.
+   */
+  catDateViewChange: EventEmitter<CustomEvent<ICatDateInlineCatDateViewRange>>;
 }
 
 @ProxyCmp({
