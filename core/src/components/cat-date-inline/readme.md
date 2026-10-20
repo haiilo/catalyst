@@ -1,6 +1,26 @@
 # cat-date-inline
 
+## Per-day variants
 
+`dayVariants` maps local `YYYY-MM-DD` dates to `CatDateDayVariant`: `primary`,
+`secondary`, `info`, `success`, `warning`, or `danger`. Pass an object, not a
+single variant string or an HTML attribute. Selected dates and today keep their
+usual styling; disabled dates remain disabled.
+
+```ts
+const picker = document.querySelector('cat-date-inline');
+picker.dayVariants = { '2026-10-20': 'warning', '2026-10-21': 'danger' };
+```
+
+In Angular, pass the object through a property binding:
+
+```html
+<cat-date-inline [dayVariants]="dayVariants" (catDateViewChange)="onViewChange($event)"></cat-date-inline>
+```
+
+`catDateViewChange` reports `{ from, to }` as inclusive local ISO dates for the
+visible grid, including days from adjacent months. Consumers decide what to
+fetch and which variants to assign.
 
 <!-- Auto Generated Below -->
 
@@ -14,6 +34,7 @@ An inline date picker component to select a date.
 | Property         | Attribute         | Description                                                                                                            | Type                                                                                       | Default      |
 | ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ |
 | `a11yLabel`      | `a11y-label`      | Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker. | `string \| undefined`                                                                      | `undefined`  |
+| `dayVariants`    | --                | Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.                       | `undefined \| { [date: string]: CatDateDayVariant; }`                                      | `undefined`  |
 | `hint`           | `hint`            | Shows an arrow keys navigation hint.                                                                                   | `boolean`                                                                                  | `false`      |
 | `identifier`     | `identifier`      | A unique identifier for the input.                                                                                     | `string \| undefined`                                                                      | `undefined`  |
 | `label`          | `label`           | The label for the input.                                                                                               | `string`                                                                                   | `''`         |
@@ -31,9 +52,10 @@ An inline date picker component to select a date.
 
 ## Events
 
-| Event       | Description                        | Type                  |
-| ----------- | ---------------------------------- | --------------------- |
-| `catChange` | Emitted when the value is changed. | `CustomEvent<string>` |
+| Event               | Description                                                                        | Type                            |
+| ------------------- | ---------------------------------------------------------------------------------- | ------------------------------- |
+| `catChange`         | Emitted when the value is changed.                                                 | `CustomEvent<string>`           |
+| `catDateViewChange` | Emitted with the visible inclusive calendar range and whenever that range changes. | `CustomEvent<CatDateViewRange>` |
 
 
 ## Methods
@@ -97,6 +119,19 @@ Type: `Promise<void>`
 | Part      | Description               |
 | --------- | ------------------------- |
 | `"label"` | The native label element. |
+
+
+## CSS Custom Properties
+
+| Name                                  | Description                                   |
+| ------------------------------------- | --------------------------------------------- |
+| `--cat-date-day-danger-background`    | Background color for danger date variants.    |
+| `--cat-date-day-danger-border-color`  | Border color for danger date variants.        |
+| `--cat-date-day-info-background`      | Background color for info date variants.      |
+| `--cat-date-day-primary-background`   | Background color for primary date variants.   |
+| `--cat-date-day-secondary-background` | Background color for secondary date variants. |
+| `--cat-date-day-success-background`   | Background color for success date variants.   |
+| `--cat-date-day-warning-background`   | Background color for warning date variants.   |
 
 
 ## Dependencies

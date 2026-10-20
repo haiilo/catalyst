@@ -1,6 +1,26 @@
 # cat-date
 
+## Per-day variants
 
+`dayVariants` maps local `YYYY-MM-DD` dates to `CatDateDayVariant`: `primary`,
+`secondary`, `info`, `success`, `warning`, or `danger`. Pass an object, not a
+single variant string or an HTML attribute. Selected dates and today keep their
+usual styling; disabled dates remain disabled.
+
+```ts
+const picker = document.querySelector('cat-date');
+picker.dayVariants = { '2026-10-20': 'warning', '2026-10-21': 'danger' };
+```
+
+In Angular, pass the object through a property binding:
+
+```html
+<cat-date [dayVariants]="dayVariants" (catDateViewChange)="onViewChange($event)"></cat-date>
+```
+
+`catDateViewChange` reports `{ from, to }` as inclusive local ISO dates for the
+visible grid, including days from adjacent months. Consumers decide what to
+fetch and which variants to assign.
 
 <!-- Auto Generated Below -->
 
@@ -15,6 +35,7 @@ A date input component to select a date from a calendar in a dropdown.
 | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | `autoComplete`     | `auto-complete`   | Hint for form autofill feature.                                                                                                                                                                                                                                                                                                 | `string`                                                                                                                                                             | `'off'`        |
 | `clearable`        | `clearable`       | Whether the input should show a clear button.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                                                                                            | `false`        |
+| `dayVariants`      | --                | Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.                                                                                                                                                                                                                                | `undefined \| { [date: string]: CatDateDayVariant; }`                                                                                                                | `undefined`    |
 | `disabled`         | `disabled`        | Whether the input is disabled.                                                                                                                                                                                                                                                                                                  | `boolean`                                                                                                                                                            | `false`        |
 | `errorUpdate`      | `error-update`    | Fine-grained control over when the errors are shown. Can be `false` to never show errors, `true` to show errors on blur, or a number to show errors change with the given delay in milliseconds or immediately on blur.                                                                                                         | `boolean \| number`                                                                                                                                                  | `0`            |
 | `errors`           | `errors`          | The validation errors for this input. Will render a hint under the input with the translated error message(s) `error.${key}`. If an object is passed, the keys will be used as error keys and the values translation parameters. If the value is `true`, the input will be marked as invalid without any hints under the input. | `boolean \| string[] \| undefined \| { [key: string]: any; }`                                                                                                        | `undefined`    |
@@ -42,11 +63,12 @@ A date input component to select a date from a calendar in a dropdown.
 
 ## Events
 
-| Event       | Description                            | Type                      |
-| ----------- | -------------------------------------- | ------------------------- |
-| `catBlur`   | Emitted when the input loses focus.    | `CustomEvent<FocusEvent>` |
-| `catChange` | Emitted when the value is changed.     | `CustomEvent<string>`     |
-| `catFocus`  | Emitted when the input received focus. | `CustomEvent<FocusEvent>` |
+| Event               | Description                                                                        | Type                            |
+| ------------------- | ---------------------------------------------------------------------------------- | ------------------------------- |
+| `catBlur`           | Emitted when the input loses focus.                                                | `CustomEvent<FocusEvent>`       |
+| `catChange`         | Emitted when the value is changed.                                                 | `CustomEvent<string>`           |
+| `catDateViewChange` | Emitted with the visible inclusive calendar range and whenever that range changes. | `CustomEvent<CatDateViewRange>` |
+| `catFocus`          | Emitted when the input received focus.                                             | `CustomEvent<FocusEvent>`       |
 
 
 ## Methods
@@ -88,6 +110,19 @@ Programmatically move focus to the input. Use this method instead of
 Type: `Promise<void>`
 
 
+
+
+## CSS Custom Properties
+
+| Name                                  | Description                                   |
+| ------------------------------------- | --------------------------------------------- |
+| `--cat-date-day-danger-background`    | Background color for danger date variants.    |
+| `--cat-date-day-danger-border-color`  | Border color for danger date variants.        |
+| `--cat-date-day-info-background`      | Background color for info date variants.      |
+| `--cat-date-day-primary-background`   | Background color for primary date variants.   |
+| `--cat-date-day-secondary-background` | Background color for secondary date variants. |
+| `--cat-date-day-success-background`   | Background color for success date variants.   |
+| `--cat-date-day-warning-background`   | Background color for warning date variants.   |
 
 
 ## Dependencies

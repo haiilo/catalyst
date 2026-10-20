@@ -1,7 +1,9 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
+import type { CatDateDayVariant } from './cat-date-day-variant';
 import { getLocale } from './cat-date-locale';
 import { addDays, addMonth, clampDate, isSameDay, isSameMonth, isSameYear } from './cat-date-math';
+import type { CatDateViewRange } from './cat-date-view-range';
 import firstTabbable from '../../utils/first-tabbable';
 
 let nextUniqueId = 0;
@@ -26,8 +28,9 @@ export class CatDateInline {
 
   private readonly language = i18n.getLocale();
   private readonly locale = getLocale(this.language);
-  // additonally store the focus date to ensure correct focus after potential re-render
+  // Preserve the focused date so it can be restored after a re-render.
   private focusDate: Date | null = null;
+  private lastEmittedViewRange?: CatDateViewRange;
 
   @Element() hostElement!: HTMLElement;
 
@@ -108,9 +111,19 @@ export class CatDateInline {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
+   */
+  @Prop() dayVariants?: { [date: string]: CatDateDayVariant };
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
+
+  /**
+   * Emitted with the visible inclusive calendar range and whenever that range changes.
+   */
+  @Event() catDateViewChange!: EventEmitter<CatDateViewRange>;
 
   private get focusedDate() {
     const [all, year, month, day] =
@@ -137,12 +150,13 @@ export class CatDateInline {
 
   componentDidRender() {
     if (this.focusDate) {
-      // re-focus the previously focused date after re-render
+      // Restore focus to the previously focused date after re-render.
       this.hostElement.shadowRoot
         ?.querySelector<HTMLCatButtonElement>(`[data-date="${this.locale.toLocalISO(this.focusDate)}"]`)
         ?.doFocus();
       this.focusDate = null;
     }
+    this.emitDateViewChange();
   }
 
   @Listen('keydown')
@@ -325,6 +339,8 @@ export class CatDateInline {
             )}
             <div class="picker-grid-days">
               {dateGrid.map(day => {
+                const date = this.locale.toLocalISO(day);
+                const variant = this.dayVariants?.[date];
                 const isStartDate = isSameDay(dateStart, day);
                 const isEndDate = isSameDay(dateEnd, day);
                 const isRange = !!dateStart && !!dateEnd && day > dateStart && day < dateEnd;
@@ -340,6 +356,8 @@ export class CatDateInline {
                       'date-start': this.range && isStartDate,
                       'date-range': this.range && isRange,
                       'date-end': this.range && isEndDate,
+                      'date-selected': isStartDate || isEndDate,
+                      [`date-variant-${variant}`]: !!variant,
                       'date-focusable': this.canFocus(day),
                       'date-disabled': !this.canClick(day)
                     }}
@@ -350,7 +368,7 @@ export class CatDateInline {
                     color={isStartDate || isEndDate || isToday ? 'primary' : 'secondary'}
                     disabled={!this.canClick(day)}
                     onClick={() => this.select(day)}
-                    data-date={this.locale.toLocalISO(day)}
+                    data-date={date}
                   >
                     {day.getDate()}
                   </cat-button>
@@ -403,6 +421,19 @@ export class CatDateInline {
     const maxDate = new Date(targetYear, targetMonth, maxDay);
     this.viewDate = clampDate(minDate, date, maxDate);
     this.setAriaLive(this.getHeadline());
+  }
+
+  private emitDateViewChange() {
+    const dateGrid = this.dateGrid(this.viewDate.getFullYear(), this.viewDate.getMonth());
+    const visibleRange = {
+      from: this.locale.toLocalISO(dateGrid[0]),
+      to: this.locale.toLocalISO(dateGrid[dateGrid.length - 1])
+    };
+    if (this.lastEmittedViewRange?.from === visibleRange.from && this.lastEmittedViewRange.to === visibleRange.to) {
+      return;
+    }
+    this.lastEmittedViewRange = visibleRange;
+    this.catDateViewChange.emit(visibleRange);
   }
 
   private setAriaLive(text?: string) {

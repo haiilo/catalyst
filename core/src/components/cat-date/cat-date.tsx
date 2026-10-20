@@ -2,6 +2,8 @@ import { Placement } from '@floating-ui/dom';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, State } from '@stencil/core';
 import { getLocale } from '../cat-date-inline/cat-date-locale';
 import { clampDate } from '../cat-date-inline/cat-date-math';
+import type { CatDateDayVariant } from '../cat-date-inline/cat-date-day-variant';
+import type { CatDateViewRange } from '../cat-date-inline/cat-date-view-range';
 import { ErrorMap } from '../cat-form-hint/cat-form-hint';
 import { catI18nRegistry as i18n } from '../cat-i18n/cat-i18n-registry';
 import { DateUnit, FormatDateOptions } from 'cleave-zen';
@@ -134,6 +136,11 @@ export class CatDate {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
+   */
+  @Prop() dayVariants?: { [date: string]: CatDateDayVariant };
+
+  /**
    * The validation errors for this input. Will render a hint under the input
    * with the translated error message(s) `error.${key}`. If an object is
    * passed, the keys will be used as error keys and the values translation
@@ -185,6 +192,11 @@ export class CatDate {
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<string>;
+
+  /**
+   * Emitted with the visible inclusive calendar range and whenever that range changes.
+   */
+  @Event() catDateViewChange!: EventEmitter<CatDateViewRange>;
 
   /**
    * Emitted when the input received focus.
@@ -310,10 +322,15 @@ export class CatDate {
                 min={this.min}
                 max={this.max}
                 value={this.value}
+                dayVariants={this.dayVariants}
                 hint
                 weeks
                 noClear
                 onCatChange={this.onDateChange.bind(this)}
+                onCatDateViewChange={(e: CustomEvent<CatDateViewRange>) => {
+                  e.stopPropagation();
+                  this.catDateViewChange.emit(e.detail);
+                }}
               ></cat-date-inline>
             </div>
           </cat-dropdown>

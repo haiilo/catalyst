@@ -19,3 +19,5 @@ export { objectArrayConnector, stringArrayConnector, stringMapConnector } from '
 export { TooltipPlacement } from './components/cat-tooltip/cat-tooltip';
 export { FormatTimeMaskOptions, FormatDateMaskOptions } from './components/cat-input/cat-input';
 export { DropdownPlacement } from './components/cat-dropdown/cat-dropdown';
+export type { CatDateDayVariant } from './components/cat-date-inline/cat-date-day-variant';
+export type { CatDateViewRange } from './components/cat-date-inline/cat-date-view-range';
