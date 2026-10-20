@@ -387,9 +387,9 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Applies a semantic theme variant to each matching local ISO date.
+          * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
-        "dayVariants"?: Record<string, CatDateDayVariant>;
+        "dayVariants"?: { [date: string]: CatDateDayVariant };
         /**
           * Whether the input is disabled.
           * @default false
@@ -518,9 +518,9 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * Applies a semantic theme variant to each matching local ISO date.
+          * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
-        "dayVariants"?: Record<string, CatDateDayVariant>;
+        "dayVariants"?: { [date: string]: CatDateDayVariant };
         /**
           * Programmatically move focus to the inline datepicker, i,e, the first focusable date.
           * @param options An optional object providing options to control aspects of the focusing process.
@@ -3408,9 +3408,9 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Applies a semantic theme variant to each matching local ISO date.
+          * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
-        "dayVariants"?: Record<string, CatDateDayVariant>;
+        "dayVariants"?: { [date: string]: CatDateDayVariant };
         /**
           * Whether the input is disabled.
           * @default false
@@ -3542,9 +3542,9 @@ declare namespace LocalJSX {
          */
         "a11yLabel"?: string;
         /**
-          * Applies a semantic theme variant to each matching local ISO date.
+          * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
-        "dayVariants"?: Record<string, CatDateDayVariant>;
+        "dayVariants"?: { [date: string]: CatDateDayVariant };
         /**
           * Shows an arrow keys navigation hint.
           * @default false

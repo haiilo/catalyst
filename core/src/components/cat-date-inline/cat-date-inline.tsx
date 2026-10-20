@@ -111,9 +111,9 @@ export class CatDateInline {
   @Prop({ mutable: true }) value?: string;
 
   /**
-   * Applies a semantic theme variant to each matching local ISO date.
+   * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
    */
-  @Prop() dayVariants?: Record<string, CatDateDayVariant>;
+  @Prop() dayVariants?: { [date: string]: CatDateDayVariant };
 
   /**
    * Emitted when the value is changed.
