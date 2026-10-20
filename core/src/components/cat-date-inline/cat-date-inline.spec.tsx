@@ -37,6 +37,28 @@ describe('cat-date-inline', () => {
     });
   });
 
+  it('emits the rendered inclusive range on initial load', async () => {
+    const viewChange = vi.fn();
+    const { root } = await render(<cat-date-inline value="2026-12-15" onCatDateViewChange={viewChange} />);
+
+    const dates = root.shadowRoot?.querySelectorAll<HTMLElement>('[data-date]');
+    expect(viewChange).toHaveBeenCalledTimes(1);
+    expect(viewChange).toHaveBeenCalledWith(
+      expect.objectContaining({ detail: { from: dates?.[0].dataset.date, to: dates?.[dates.length - 1].dataset.date } })
+    );
+  });
+
+  it('does not emit a range change when day variants trigger a render', async () => {
+    const { root, waitForChanges } = await render(<cat-date-inline />);
+    const viewChange = vi.fn();
+    root.addEventListener('catDateViewChange', viewChange);
+
+    (root as HTMLCatDateInlineElement).dayVariants = { '2026-10-20': 'warning' };
+    await waitForChanges();
+
+    expect(viewChange).not.toHaveBeenCalled();
+  });
+
   it('emits the visible inclusive range when navigating', async () => {
     const { root, waitForChanges } = await render(<cat-date-inline />);
     const viewChange = vi.fn();
@@ -49,6 +71,7 @@ describe('cat-date-inline', () => {
     await inline.resetView();
     await waitForChanges();
     await inline.resetView();
+    await waitForChanges();
 
     expect(viewChange).toHaveBeenCalledTimes(2);
     const emittedRanges = viewChange.mock.calls.map(([event]) => event.detail);

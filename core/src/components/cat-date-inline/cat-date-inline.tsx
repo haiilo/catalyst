@@ -156,9 +156,6 @@ export class CatDateInline {
         ?.doFocus();
       this.focusDate = null;
     }
-  }
-
-  componentDidLoad() {
     this.emitDateViewChange();
   }
 
@@ -238,7 +235,6 @@ export class CatDateInline {
     const [minDate, maxDate] = this.getMinMaxDate();
     const [dateStart] = this.getValue();
     this.viewDate = dateStart ?? clampDate(minDate, this.locale.now(), maxDate);
-    this.emitDateViewChange();
   }
 
   /**
@@ -402,11 +398,7 @@ export class CatDateInline {
   private focus(date: Date, focus = true) {
     const [minDate, maxDate] = this.getMinMaxDate();
     const focusDate = clampDate(minDate, date, maxDate);
-    const previousViewDate = this.viewDate;
     this.viewDate = new Date(focusDate.getFullYear(), focusDate.getMonth());
-    if (!isSameMonth(previousViewDate, this.viewDate)) {
-      this.emitDateViewChange();
-    }
     if (focus) {
       this.focusDate = focusDate;
       this.hostElement.shadowRoot
@@ -429,7 +421,6 @@ export class CatDateInline {
     const maxDate = new Date(targetYear, targetMonth, maxDay);
     this.viewDate = clampDate(minDate, date, maxDate);
     this.setAriaLive(this.getHeadline());
-    this.emitDateViewChange();
   }
 
   private emitDateViewChange() {
