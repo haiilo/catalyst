@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.13.0...catalyst-angular-v14.14.0) (2026-10-20)
+
+
+### Features
+
+* **core:** add generic date variants to date picker ([#1041](https://github.com/haiilo/catalyst/issues/1041)) ([90af4ce](https://github.com/haiilo/catalyst/commit/90af4cea4b07cf323a836c01ab143b7b61b6c224))
+
 ## [14.13.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.12.0...catalyst-angular-v14.13.0) (2026-08-21)
 
 
