@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { render, h, waitForStable } from '@stencil/vitest';
-import { page, userEvent } from 'vitest/browser';
+import { page, userEvent } from '@vitest/browser/context';
 import { catI18nRegistry } from '../cat-i18n/cat-i18n-registry';
 
 describe('cat-textarea', () => {
