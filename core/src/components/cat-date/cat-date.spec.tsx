@@ -23,6 +23,13 @@ describe('cat-date', () => {
     expect(root.shadowRoot?.querySelector('cat-date-inline')?.dayVariants).toEqual(dayVariants);
   });
 
+  it('forwards day native attributes to the inline date picker', async () => {
+    const dayNativeAttributes = { '2026-10-20': { 'aria-description': 'Special day' } };
+    const { root } = await render(<cat-date dayNativeAttributes={dayNativeAttributes} />);
+
+    expect(root.shadowRoot?.querySelector('cat-date-inline')?.dayNativeAttributes).toEqual(dayNativeAttributes);
+  });
+
   it('forwards the visible date range from cat-date-inline', async () => {
     const { root } = await render(<cat-date />);
     const viewChange = vi.fn();
