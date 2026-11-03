@@ -111,6 +111,11 @@ export class CatDateInline {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+   */
+  @Prop() dayNativeAttributes?: { [date: string]: { [key: string]: string } };
+
+  /**
    * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
    */
   @Prop() dayVariants?: { [date: string]: CatDateDayVariant };
@@ -361,7 +366,10 @@ export class CatDateInline {
                       'date-focusable': this.canFocus(day),
                       'date-disabled': !this.canClick(day)
                     }}
-                    nativeAttributes={!this.canFocus(day) ? { tabindex: '-1' } : {}}
+                    nativeAttributes={{
+                      ...this.dayNativeAttributes?.[date],
+                      tabindex: this.canFocus(day) ? '0' : '-1'
+                    }}
                     variant={isStartDate || isEndDate ? 'filled' : isToday ? 'outlined' : 'text'}
                     a11yLabel={this.locale.toLocalStr(day)}
                     active={isStartDate || isEndDate || isRange}

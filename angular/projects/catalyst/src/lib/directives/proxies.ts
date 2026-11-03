@@ -318,6 +318,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   inputs: [
     'autoComplete',
     'clearable',
+    'dayNativeAttributes',
     'dayVariants',
     'disabled',
     'errorUpdate',
@@ -353,6 +354,7 @@ export declare interface CatCheckbox extends Components.CatCheckbox {
   inputs: [
     'autoComplete',
     'clearable',
+    'dayNativeAttributes',
     'dayVariants',
     'disabled',
     'errorUpdate',
@@ -421,6 +423,7 @@ export declare interface CatDate extends Components.CatDate {
 @ProxyCmp({
   inputs: [
     'a11yLabel',
+    'dayNativeAttributes',
     'dayVariants',
     'hint',
     'identifier',
@@ -445,6 +448,7 @@ export declare interface CatDate extends Components.CatDate {
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [
     'a11yLabel',
+    'dayNativeAttributes',
     'dayVariants',
     'hint',
     'identifier',

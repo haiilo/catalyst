@@ -10,6 +10,7 @@ vi.mock('../cat-i18n/cat-i18n-registry', () => ({
 }));
 
 import '../cat-input/cat-input';
+import '../cat-button/cat-button';
 import './cat-date-inline';
 
 describe('cat-date-inline', () => {
@@ -46,6 +47,24 @@ describe('cat-date-inline', () => {
     expect(viewChange).toHaveBeenCalledWith(
       expect.objectContaining({ detail: { from: dates?.[0].dataset.date, to: dates?.[dates.length - 1].dataset.date } })
     );
+  });
+
+  it('passes day attributes while preserving labels and tab order', async () => {
+    const { root } = await render(
+      <cat-date-inline
+        value="2026-10-20"
+        dayNativeAttributes={{
+          '2026-10-20': { 'aria-description': 'Special day', tabindex: '-1' },
+          '2026-10-21': { tabindex: '0' }
+        }}
+      />
+    );
+    const selected = root.shadowRoot?.querySelector<HTMLCatButtonElement>('[data-date="2026-10-20"]');
+    const next = root.shadowRoot?.querySelector<HTMLCatButtonElement>('[data-date="2026-10-21"]');
+
+    expect(selected?.a11yLabel).toBe('Tuesday, October 20, 2026');
+    expect(selected?.nativeAttributes).toEqual({ 'aria-description': 'Special day', tabindex: '0' });
+    expect(next?.nativeAttributes).toEqual({ tabindex: '-1' });
   });
 
   it('does not emit a range change when day variants trigger a render', async () => {

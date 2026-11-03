@@ -136,6 +136,11 @@ export class CatDate {
   @Prop({ mutable: true }) value?: string;
 
   /**
+   * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+   */
+  @Prop() dayNativeAttributes?: { [date: string]: { [key: string]: string } };
+
+  /**
    * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
    */
   @Prop() dayVariants?: { [date: string]: CatDateDayVariant };
@@ -323,6 +328,7 @@ export class CatDate {
                 max={this.max}
                 value={this.value}
                 dayVariants={this.dayVariants}
+                dayNativeAttributes={this.dayNativeAttributes}
                 hint
                 weeks
                 noClear

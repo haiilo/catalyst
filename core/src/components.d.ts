@@ -387,6 +387,10 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+         */
+        "dayNativeAttributes"?: { [date: string]: { [key: string]: string } };
+        /**
           * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
         "dayVariants"?: { [date: string]: CatDateDayVariant };
@@ -517,6 +521,10 @@ export namespace Components {
           * Clear the picker.
          */
         "clear": () => Promise<void>;
+        /**
+          * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+         */
+        "dayNativeAttributes"?: { [date: string]: { [key: string]: string } };
         /**
           * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
@@ -3408,6 +3416,10 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+         */
+        "dayNativeAttributes"?: { [date: string]: { [key: string]: string } };
+        /**
           * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
         "dayVariants"?: { [date: string]: CatDateDayVariant };
@@ -3541,6 +3553,10 @@ declare namespace LocalJSX {
           * Adds accessible label for the datepicker. The label will be read by assistive technology upon focusing the datepicker.
          */
         "a11yLabel"?: string;
+        /**
+          * Attributes for native day buttons, keyed by local ISO date (YYYY-MM-DD).
+         */
+        "dayNativeAttributes"?: { [date: string]: { [key: string]: string } };
         /**
           * Maps local ISO dates (YYYY-MM-DD) to semantic theme variants, e.g. `{ '2026-10-20': 'danger' }`.
          */
