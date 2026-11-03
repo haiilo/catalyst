@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.15.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.14.0...catalyst-angular-v14.15.0) (2026-11-03)
+
+
+### Features
+
+* **core:** accessibility date picker ([#1043](https://github.com/haiilo/catalyst/issues/1043)) ([1003560](https://github.com/haiilo/catalyst/commit/10035608fb8a4ddd2a3936b143bd5e22a5a02bac))
+
 ## [14.14.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-v14.13.0...catalyst-angular-v14.14.0) (2026-10-20)
 
 
