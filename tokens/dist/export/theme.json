@@ -243,6 +243,26 @@
     "$type": "color",
     "$value": "#f2f4f7"
   },
+  "bg-surface": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
+  "bg-muted": {
+    "$type": "color",
+    "$value": "#f2f4f7"
+  },
+  "bg-input": {
+    "$type": "color",
+    "$value": "#ffffff"
+  },
+  "bg-skeleton": {
+    "$type": "color",
+    "$value": "#ebecf0"
+  },
+  "bg-skeleton-highlight": {
+    "$type": "color",
+    "$value": "#d7dbe0"
+  },
   "bg-tooltip": {
     "$type": "color",
     "$value": "#000000"
