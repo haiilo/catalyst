@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.16.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.15.0...catalyst-tokens-v14.16.0) (2026-11-10)
+
+
+### Features
+
+* **tokens:** add css prop for tokens ([#1045](https://github.com/haiilo/catalyst/issues/1045)) ([5ac1f2e](https://github.com/haiilo/catalyst/commit/5ac1f2e5af5685844be2db39034062ee2ac0875f))
+
 ## [14.15.0](https://github.com/haiilo/catalyst/compare/catalyst-tokens-v14.14.0...catalyst-tokens-v14.15.0) (2026-11-03)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.16.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v14.15.0...catalyst-react-v14.16.0) (2026-11-10)
+
+
+### Miscellaneous Chores
+
+* **catalyst-react:** Synchronize catalyst versions
+
 ## [14.15.0](https://github.com/haiilo/catalyst/compare/catalyst-react-v14.14.0...catalyst-react-v14.15.0) (2026-11-03)
 
 
