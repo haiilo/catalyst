@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "cpy-cli": "7.0.0",
-    "style-dictionary": "5.3.3",
+    "style-dictionary": "5.4.4",
     "style-dictionary-utils": "6.0.1",
     "tinycolor2": "1.6.0"
   },
