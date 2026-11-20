@@ -7,9 +7,23 @@ on:
       - beta
     paths:
       - "core/**"
+      - "tokens/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/core.yml"
   pull_request:
     paths:
       - "core/**"
+      - "tokens/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/core.yml"
 
 jobs:
   build:
