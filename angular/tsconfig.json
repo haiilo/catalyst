@@ -2,7 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
@@ -18,8 +17,8 @@
     "target": "es2024",
     "module": "preserve",
     "paths": {
-      "@haiilo/catalyst-angular": ["dist/catalyst", "dist/catalyst/*"],
-      "@haiilo/catalyst-angular-formly": ["dist/catalyst-formly", "dist/catalyst-formly/*"]
+      "@haiilo/catalyst-angular": ["./dist/catalyst", "./dist/catalyst/*"],
+      "@haiilo/catalyst-angular-formly": ["./dist/catalyst-formly", "./dist/catalyst-formly/*"]
     }
   },
   "angularCompilerOptions": {
