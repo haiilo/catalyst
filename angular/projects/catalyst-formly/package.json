@@ -14,7 +14,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": ">=21.0.0",
+    "@angular/core": ">=22.0.0",
     "@haiilo/catalyst-angular": "workspace:*",
     "@ngx-formly/core": "^7.0.0"
   },
