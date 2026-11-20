@@ -1,4 +1,11 @@
-import { AfterContentInit, Component, ContentChild, Input, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  Input,
+  ViewEncapsulation,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateValueAccessor } from '../directives/date-value-accessor';
 import { TimeValueAccessor } from '../directives/time-value-accessor';
@@ -15,6 +22,7 @@ import { TimeValueAccessor } from '../directives/time-value-accessor';
       multi: true
     }
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DatetimeComponent implements AfterContentInit, ControlValueAccessor {

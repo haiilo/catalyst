@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 export type CatRadioType = {
@@ -31,6 +31,7 @@ export type CatRadioType = {
     >
     </cat-radio>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class CatRadioFieldType extends FieldType<FieldTypeConfig> {}

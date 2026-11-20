@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -26,6 +26,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     >
     </cat-textarea>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class CatTextareaFieldType extends FieldType<FieldTypeConfig> {}
