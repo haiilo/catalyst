@@ -7,9 +7,21 @@ on:
       - beta
     paths:
       - "react/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/react.yml"
   pull_request:
     paths:
       - "react/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/react.yml"
 
 jobs:
   build:

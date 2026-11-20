@@ -7,9 +7,21 @@ on:
       - beta
     paths:
       - "angular/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/angular.yml"
   pull_request:
     paths:
       - "angular/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".nvmrc"
+      - ".npmrc"
+      - ".github/workflows/angular.yml"
 
 permissions:
   contents: read
