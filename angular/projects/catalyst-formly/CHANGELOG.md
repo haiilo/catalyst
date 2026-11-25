@@ -1,5 +1,16 @@
 # Changelog
 
+## [15.0.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.16.0...catalyst-angular-formly-v15.0.0) (2026-11-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **angular:** @haiilo/catalyst-angular and @haiilo/catalyst-angular-formly now require @angular/core >=22.0.0 (and @angular/cdk >=22.0.0 for the former).
+
+### Features
+
+* **angular:** upgrade angular to v22 ([#1047](https://github.com/haiilo/catalyst/issues/1047)) ([908680e](https://github.com/haiilo/catalyst/commit/908680ea22960c94405505896036ee1d27e99591))
+
 ## [14.16.0](https://github.com/haiilo/catalyst/compare/catalyst-angular-formly-v14.15.0...catalyst-angular-formly-v14.16.0) (2026-11-10)
 
 
