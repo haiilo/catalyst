@@ -8,7 +8,8 @@ export default defineVitestConfig({
     projects: [
       {
         plugins: [stencilVitestPlugin()],
-        // esbuild: { target: 'esnext' },
+        // vite 8 (oxc) injects __self/__source props in dev mode, which Stencil renders as DOM attributes
+        oxc: { jsx: { development: false, pragma: 'h', pragmaFrag: 'Fragment' } },
         test: {
           name: 'plugin',
           environment: 'stencil',
