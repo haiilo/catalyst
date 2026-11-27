@@ -10,4 +10,18 @@ describe('cat-radio-group', () => {
       <cat-radio-group class="hydrated"></cat-radio-group>
     `);
   });
+
+  it('renders testId as data-test on the radio group', async () => {
+    const { root } = await render<HTMLCatRadioGroupElement>(<cat-radio-group testId="test-id" />);
+    const group = root.shadowRoot?.querySelector('[role="radiogroup"]');
+
+    expect(group?.getAttribute('data-test')).toBe('test-id');
+  });
+
+  it('does not render data-test without testId', async () => {
+    const { root } = await render<HTMLCatRadioGroupElement>(<cat-radio-group />);
+    const group = root.shadowRoot?.querySelector('[role="radiogroup"]');
+
+    expect(group?.hasAttribute('data-test')).toBe(false);
+  });
 });

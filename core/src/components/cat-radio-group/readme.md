@@ -11,13 +11,14 @@ A group of radio buttons.
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                        | Type                  | Default     |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
-| `a11yLabel` | `a11y-label` | Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers. | `string \| undefined` | `undefined` |
-| `disabled`  | `disabled`   | Whether this radio group is disabled.                                                                              | `boolean`             | `false`     |
-| `labelLeft` | `label-left` | Whether the label of the radios should appear to the left of them.                                                 | `boolean`             | `false`     |
-| `name`      | `name`       | The name of the radio group component.                                                                             | `string \| undefined` | `undefined` |
-| `value`     | `value`      | The value of the radio group.                                                                                      | `any`                 | `undefined` |
+| Property    | Attribute    | Description                                                                                                                               | Type                  | Default     |
+| ----------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `a11yLabel` | `a11y-label` | Adds an accessible label for the radio group that it is only shown in assistive technologies, like screen readers.                        | `string \| undefined` | `undefined` |
+| `disabled`  | `disabled`   | Whether this radio group is disabled.                                                                                                     | `boolean`             | `false`     |
+| `labelLeft` | `label-left` | Whether the label of the radios should appear to the left of them.                                                                        | `boolean`             | `false`     |
+| `name`      | `name`       | The name of the radio group component.                                                                                                    | `string \| undefined` | `undefined` |
+| `testId`    | `test-id`    | A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute. | `string \| undefined` | `undefined` |
+| `value`     | `value`      | The value of the radio group.                                                                                                             | `any`                 | `undefined` |
 
 
 ## Events
