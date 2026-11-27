@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Catalyst Design System documentation
+    url: https://design.haiilo.com
+    about: Issues for Catalyst are no longer tracked on GitHub. Haiilo employees, please report bugs and feature requests in our internal issue tracker.
