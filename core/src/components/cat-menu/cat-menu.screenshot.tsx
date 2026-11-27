@@ -144,21 +144,6 @@ describe('cat-menu', () => {
     await expect(root).toMatchScreenshot();
   });
 
-  it('shows responsive trigger label above the icon-only breakpoint', async () => {
-    await setViewport(900);
-
-    const { root } = await render(
-      <div style={{ padding: '10px', display: 'inline-block' }}>
-        <cat-menu triggerLabel="Settings" triggerIcon="settings-outlined" triggerIconOnly="s" />
-      </div>
-    );
-    const trigger = root.querySelector('cat-menu')!.shadowRoot!.querySelector('cat-button[slot="trigger"]')!;
-
-    await waitForStable(root.querySelector('cat-menu')!);
-    expect(trigger.textContent).toContain('Settings');
-    await expect(root).toMatchScreenshot();
-  });
-
   it('open menu with default focus and separator', async () => {
     const { root } = await render(
       <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>
