@@ -1,0 +1,29 @@
+{
+  "name": "@haiilo/catalyst-react-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo page for the Catalyst React bindings",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "pnpm run tsc && vite build",
+    "preview": "vite preview",
+    "tsc": "tsc -p . --noEmit",
+    "clean": "rm -rf ./dist",
+    "reset": "rm -rf ./dist ./node_modules"
+  },
+  "dependencies": {
+    "@haiilo/catalyst": "workspace:*",
+    "@haiilo/catalyst-icons": "^2.6.1",
+    "@haiilo/catalyst-react": "workspace:*",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  }
+}
