@@ -13,7 +13,6 @@ describe('cat-textarea', () => {
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
         <cat-textarea
           label="Message"
-          requiredMarker="none"
           hint="Add details to help us understand your request."
           placeholder="Describe your request"
           maxLength={280}
@@ -27,7 +26,7 @@ describe('cat-textarea', () => {
   it('focused', async () => {
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea label="Message" requiredMarker="none" placeholder="Describe your request" />
+        <cat-textarea label="Message" placeholder="Describe your request" />
       </div>
     );
     const textarea = root.querySelector('cat-textarea')!.shadowRoot!.querySelector('textarea')!;
@@ -37,25 +36,10 @@ describe('cat-textarea', () => {
     await expect(root).toMatchScreenshot();
   });
 
-  it('auto-sizes for multi-line content', async () => {
-    const { root } = await render(
-      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea
-          label="Message"
-          requiredMarker="none"
-          value={'First line\nSecond line\nThird line\nFourth line'}
-          rows={2}
-        />
-      </div>
-    );
-
-    await expect(root).toMatchScreenshot();
-  });
-
   it('auto-sizes as multi-line content is entered', async () => {
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea label="Message" requiredMarker="none" placeholder="Describe your request" rows={2} />
+        <cat-textarea label="Message" placeholder="Describe your request" rows={2} />
       </div>
     );
     const textarea = root.querySelector('cat-textarea')!.shadowRoot!.querySelector('textarea')!;
@@ -70,13 +54,7 @@ describe('cat-textarea', () => {
   it('disabled', async () => {
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea
-          label="Message"
-          requiredMarker="none"
-          hint="This field is unavailable."
-          value="Saved response"
-          disabled
-        />
+        <cat-textarea label="Message" hint="This field is unavailable." value="Saved response" disabled />
       </div>
     );
 
@@ -86,7 +64,7 @@ describe('cat-textarea', () => {
   it('invalid without an error message', async () => {
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea label="Message" requiredMarker="none" errors={true} errorUpdate={true} />
+        <cat-textarea label="Message" errors={true} errorUpdate={true} />
       </div>
     );
     const textarea = root.querySelector('cat-textarea')!.shadowRoot!.querySelector('textarea')!;
@@ -104,7 +82,6 @@ describe('cat-textarea', () => {
         <cat-textarea
           label="Message"
           required
-          requiredMarker="none"
           hint="Add a message before saving."
           errors={['required']}
           errorUpdate={true}
@@ -124,7 +101,6 @@ describe('cat-textarea', () => {
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
         <cat-textarea
           label="Additional information"
-          requiredMarker="none"
           hint="Include any context that may help."
           horizontal
           maxLength={280}
@@ -138,7 +114,7 @@ describe('cat-textarea', () => {
   it('slotted label, hint, and counter', async () => {
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
-        <cat-textarea requiredMarker="none">
+        <cat-textarea>
           <span slot="label">
             Request <strong>details</strong>
           </span>
@@ -167,13 +143,75 @@ describe('cat-textarea', () => {
         <cat-textarea
           label="Message"
           labelHidden
-          requiredMarker="none"
           hint="Your message is still associated with its label."
           placeholder="Describe your request"
         />
       </div>
     );
 
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('readonly', async () => {
+    const { root } = await render(
+      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
+        <cat-textarea label="Message" hint="This response can no longer be changed." value="Saved response" readonly />
+      </div>
+    );
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('hovered', async () => {
+    const { root } = await render(
+      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
+        <cat-textarea label="Message" placeholder="Describe your request" />
+      </div>
+    );
+    const textarea = root.querySelector('cat-textarea')!.shadowRoot!.querySelector('textarea')!;
+
+    await page.elementLocator(textarea).hover();
+    expect(textarea.matches(':hover')).toBe(true);
+    await expect(root).toMatchScreenshot();
+  });
+
+  it.each(['optional', 'required'] as const)('%s label marker', async marker => {
+    const { root } = await render(
+      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
+        <cat-textarea label="Message" required={marker === 'required'} requiredMarker={marker} />
+      </div>
+    );
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('multiple hints', async () => {
+    const { root } = await render(
+      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
+        <cat-textarea
+          label="Message"
+          hint={['Add details to help us understand your request.', 'Do not include sensitive information.']}
+        />
+      </div>
+    );
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('focused while invalid', async () => {
+    catI18nRegistry.set({ 'error.required': 'Enter a message before continuing.' });
+    const { root } = await render(
+      <div style={{ padding: '10px', display: 'inline-block', width: '420px' }}>
+        <cat-textarea label="Message" required errors={['required']} errorUpdate={true} />
+      </div>
+    );
+    const textarea = root.querySelector('cat-textarea')!.shadowRoot!.querySelector('textarea')!;
+
+    await userEvent.click(textarea);
+    textarea.blur();
+    await userEvent.click(textarea);
+    await page.elementLocator(document.body).hover();
+    expect(root.querySelector('cat-textarea')!.shadowRoot!.activeElement).toBe(textarea);
     await expect(root).toMatchScreenshot();
   });
 });

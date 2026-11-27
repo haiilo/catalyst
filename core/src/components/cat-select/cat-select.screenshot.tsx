@@ -26,6 +26,7 @@ type SelectProps = Partial<
     | 'multiple'
     | 'noItems'
     | 'placeholder'
+    | 'placement'
     | 'required'
     | 'requiredMarker'
     | 'tagHint'
@@ -159,7 +160,12 @@ describe('cat-select screenshot', () => {
 
   it('renders invalid state with error message', async () => {
     catI18nRegistry.set({ 'error.required': 'Select a team before continuing.' });
-    const { root, select } = await renderSelect({ label: 'Team', errors: ['required'], errorUpdate: true });
+    const { root, select } = await renderSelect({
+      label: 'Team',
+      required: true,
+      errors: ['required'],
+      errorUpdate: true
+    });
     await select.doFocus();
     await select.doBlur();
     await waitForStable(select);
@@ -404,6 +410,70 @@ describe('cat-select screenshot', () => {
     await openSelect(select);
     const dropdown = select.shadowRoot!.querySelector<HTMLElement>('.select-dropdown')!;
     await expect.poll(() => dropdown.dataset.placement).toBe('top-start');
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('renders disabled control with selected value', async () => {
+    const { root } = await renderSelect({ label: 'Team', value: 'beta', disabled: true });
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('renders disabled multiple select with pills', async () => {
+    const { root } = await renderSelect({ label: 'Teams', multiple: true, value: ['alpha', 'gamma'], disabled: true });
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('opens option list with top-start placement', async () => {
+    const { root, select } = await renderSelect(
+      { label: 'Team', placement: 'top-start' },
+      OPTIONS,
+      '280px',
+      '100%',
+      '220px'
+    );
+    await openSelect(select);
+    const dropdown = select.shadowRoot!.querySelector<HTMLElement>('.select-dropdown')!;
+    await expect.poll(() => dropdown.dataset.placement).toBe('top-start');
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('renders clearable multiple select', async () => {
+    const { root } = await renderSelect({ label: 'Teams', multiple: true, value: ['alpha', 'gamma'], clearable: true });
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('wraps many pills onto multiple lines', async () => {
+    const options = ['Design', 'Platform', 'Marketing', 'Sales', 'Support', 'Finance', 'Legal'].map(label => ({
+      id: label.toLowerCase(),
+      label
+    }));
+    const { root } = await renderSelect(
+      { label: 'Teams', multiple: true, value: options.map(({ id }) => id), clearable: true },
+      options
+    );
+
+    await expect(root).toMatchScreenshot();
+  });
+
+  it('renders focused invalid state', async () => {
+    catI18nRegistry.set({ 'error.required': 'Select a team before continuing.' });
+    const { root, select } = await renderSelect({
+      label: 'Team',
+      required: true,
+      errors: ['required'],
+      errorUpdate: true
+    });
+    await select.doFocus();
+    await select.doBlur();
+    await waitForStable(select);
+    await select.doFocus();
+    await waitForStable(select);
+    expect(select.shadowRoot!.activeElement).toBe(select.shadowRoot!.querySelector('input'));
 
     await expect(root).toMatchScreenshot();
   });

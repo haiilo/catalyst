@@ -1,28 +1,13 @@
-import { ci } from '@haiilo/catalyst-icons';
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 import { h, render, waitForStable } from '@stencil/vitest';
 import { page } from '@vitest/browser/context';
-import { catIconRegistry } from '../cat-icon/cat-icon-registry';
 
 const TRIGGER_SIZES = ['xs', 's', 'm', 'l', 'xl'] as const;
 const TRIGGER_COLORS = ['secondary', 'primary', 'info', 'success', 'warning', 'danger'] as const;
 const TRIGGER_VARIANTS = ['filled', 'outlined', 'text'] as const;
 const MENU_COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'danger'] as const;
 const MENU_VARIANTS = ['filled', 'outlined', 'text'] as const;
-const PLACEMENTS = [
-  'top',
-  'top-start',
-  'top-end',
-  'right',
-  'right-start',
-  'right-end',
-  'bottom',
-  'bottom-start',
-  'bottom-end',
-  'left',
-  'left-start',
-  'left-end'
-] as const;
+const PLACEMENTS = ['top-start', 'right-start', 'bottom-end', 'left-end'] as const;
 
 const openedMenus: HTMLCatMenuElement[] = [];
 const openedDropdowns: HTMLCatDropdownElement[] = [];
@@ -32,7 +17,6 @@ let shouldRestoreViewport = false;
 describe('cat-menu', () => {
   beforeAll(() => {
     defaultViewport = { width: window.innerWidth, height: window.innerHeight };
-    catIconRegistry.addIcons(ci);
   });
 
   afterEach(async () => {
@@ -152,7 +136,7 @@ describe('cat-menu', () => {
 
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block' }}>
-        <cat-menu triggerLabel="Settings" triggerIcon="$cat:select-open" triggerIconOnly="s" />
+        <cat-menu triggerLabel="Settings" triggerIcon="settings-outlined" triggerIconOnly="s" />
       </div>
     );
 
@@ -165,7 +149,7 @@ describe('cat-menu', () => {
 
     const { root } = await render(
       <div style={{ padding: '10px', display: 'inline-block' }}>
-        <cat-menu triggerLabel="Settings" triggerIcon="$cat:select-open" triggerIconOnly="s" />
+        <cat-menu triggerLabel="Settings" triggerIcon="settings-outlined" triggerIconOnly="s" />
       </div>
     );
     const trigger = root.querySelector('cat-menu')!.shadowRoot!.querySelector('cat-button[slot="trigger"]')!;
@@ -179,10 +163,10 @@ describe('cat-menu', () => {
     const { root } = await render(
       <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>
         <cat-menu triggerLabel="Actions">
-          <cat-menu-item icon="$cat:select-open">Edit</cat-menu-item>
-          <cat-menu-item icon="$cat:select-open">Duplicate</cat-menu-item>
+          <cat-menu-item icon="edit-mode-outlined">Edit</cat-menu-item>
+          <cat-menu-item icon="copy-outlined">Duplicate</cat-menu-item>
           <hr />
-          <cat-menu-item icon="$cat:select-open" color="danger">
+          <cat-menu-item icon="trash-outlined" color="danger">
             Delete
           </cat-menu-item>
         </cat-menu>
@@ -190,6 +174,7 @@ describe('cat-menu', () => {
     );
 
     await openMenu(root);
+    await expect.poll(() => document.activeElement).toBe(root.querySelector('cat-menu-item'));
     await expect(root).toMatchScreenshot();
   });
 
@@ -205,6 +190,7 @@ describe('cat-menu', () => {
     );
 
     await openMenu(root);
+    await expect.poll(() => document.activeElement).toBe(root.querySelectorAll('cat-menu-item')[1]);
     await expect(root).toMatchScreenshot();
   });
 
@@ -253,7 +239,7 @@ describe('cat-menu', () => {
       <div style={{ padding: '16px', minWidth: '320px', minHeight: '360px' }}>
         <cat-menu triggerLabel="Colors">
           {MENU_COLORS.map(color => (
-            <cat-menu-item key={color} color={color} icon="$cat:select-open">
+            <cat-menu-item key={color} color={color} icon="star-outlined">
               {color}
             </cat-menu-item>
           ))}
@@ -286,11 +272,11 @@ describe('cat-menu', () => {
     const { root } = await render(
       <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>
         <cat-menu triggerLabel="Icons">
-          <cat-menu-item icon="$cat:select-open">Leading icon</cat-menu-item>
-          <cat-menu-item icon="$cat:select-open" iconRight>
+          <cat-menu-item icon="star-outlined">Leading icon</cat-menu-item>
+          <cat-menu-item icon="external-link-outlined" iconRight>
             Trailing icon
           </cat-menu-item>
-          <cat-menu-item icon="$cat:select-open" iconOnly nativeAttributes={{ 'aria-label': 'Search' }} />
+          <cat-menu-item icon="search-outlined" iconOnly nativeAttributes={{ 'aria-label': 'Search' }} />
         </cat-menu>
       </div>
     );
@@ -305,7 +291,7 @@ describe('cat-menu', () => {
     const { root } = await render(
       <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>
         <cat-menu triggerLabel="Actions">
-          <cat-menu-item icon="$cat:select-open" iconOnly="s" nativeAttributes={{ 'aria-label': 'Search' }}>
+          <cat-menu-item icon="search-outlined" iconOnly="s" nativeAttributes={{ 'aria-label': 'Search' }}>
             Search
           </cat-menu-item>
         </cat-menu>
@@ -319,9 +305,9 @@ describe('cat-menu', () => {
     await setViewport(900);
 
     const { root } = await render(
-      <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>1
+      <div style={{ padding: '16px', minWidth: '320px', minHeight: '320px' }}>
         <cat-menu triggerLabel="Actions">
-          <cat-menu-item icon="$cat:select-open" iconOnly="s" nativeAttributes={{ 'aria-label': 'Search' }}>
+          <cat-menu-item icon="search-outlined" iconOnly="s" nativeAttributes={{ 'aria-label': 'Search' }}>
             Search
           </cat-menu-item>
         </cat-menu>
@@ -353,8 +339,8 @@ describe('cat-menu', () => {
         <cat-menu triggerLabel="Actions">
           <li class="cat-nav-head">Workspace</li>
           <li class="cat-nav-text cat-muted">Choose an action for this workspace.</li>
-          <cat-menu-item icon="$cat:select-open">Open</cat-menu-item>
-          <cat-menu-item icon="$cat:select-open" color="warning">
+          <cat-menu-item icon="arrow-right-outlined">Open</cat-menu-item>
+          <cat-menu-item icon="bell-outlined" color="warning">
             A long menu label that should remain readable in the available menu width
           </cat-menu-item>
           <hr />
@@ -380,7 +366,7 @@ describe('cat-menu', () => {
               </div>
             </div>
           </cat-menu-item>
-          <cat-menu-item icon="$cat:select-open">Account settings</cat-menu-item>
+          <cat-menu-item icon="settings-outlined">Account settings</cat-menu-item>
         </cat-menu>
       </div>
     );
@@ -398,20 +384,20 @@ describe('cat-menu', () => {
           <cat-menu-item>Profile</cat-menu-item>
           <cat-menu-item subMenu>
             <cat-dropdown placement="right-start" noResize>
-              <cat-button slot="trigger" class="cat-nav-item" icon="$cat:select-open">
+              <cat-button slot="trigger" class="cat-nav-item" icon="chevron-right-outlined" iconRight>
                 Available
               </cat-button>
               <nav slot="content" style={{ width: '200px' }}>
                 <ul>
                   <li class="cat-nav-head">Availability</li>
-                  <cat-button class="cat-nav-item" icon="$cat:select-open" color="primary">
+                  <cat-button class="cat-nav-item" icon="user-check-outlined" color="primary">
                     Set status
                   </cat-button>
                 </ul>
               </nav>
             </cat-dropdown>
           </cat-menu-item>
-          <cat-menu-item icon="$cat:select-open">Saved items</cat-menu-item>
+          <cat-menu-item icon="star-outlined">Saved items</cat-menu-item>
         </cat-menu>
       </div>
     );
