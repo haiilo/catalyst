@@ -292,7 +292,7 @@ export class CatMenu {
             round={this.triggerRound}
             iconRight={this.triggerIconRight}
           >
-            {this.triggerIconOnly !== true && <slot name="trigger-label">{this.triggerLabel}</slot>}
+            {!this.triggerIconOnly && <slot name="trigger-label">{this.triggerLabel}</slot>}
           </cat-button>
           <nav role="menu" slot="content" class="cat-menu-list" aria-orientation={this.arrowNavigation}>
             <ul>
