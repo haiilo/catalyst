@@ -1127,14 +1127,14 @@ export declare interface CatRadio extends Components.CatRadio {
 }
 
 @ProxyCmp({
-  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value']
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'testId', 'value']
 })
 @Component({
   selector: 'cat-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'value'],
+  inputs: ['a11yLabel', 'disabled', 'labelLeft', 'name', 'testId', 'value'],
   outputs: ['catChange', 'catFocus', 'catBlur'],
   standalone: false
 })

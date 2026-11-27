@@ -1413,6 +1413,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute.
+         */
+        "testId"?: string;
+        /**
           * The value of the radio group.
          */
         "value"?: any;
@@ -4463,6 +4467,10 @@ declare namespace LocalJSX {
          */
         "onCatFocus"?: (event: CatRadioGroupCustomEvent<FocusEvent>) => void;
         /**
+          * A unique identifier for the underlying native element that is used for testing purposes. The attribute is added as `data-test` attribute.
+         */
+        "testId"?: string;
+        /**
           * The value of the radio group.
          */
         "value"?: any;
@@ -5650,6 +5658,7 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "a11yLabel": string;
         "labelLeft": boolean;
+        "testId": string;
     }
     interface CatScrollableAttributes {
         "noShadowX": boolean;

@@ -42,6 +42,12 @@ export class CatRadioGroup {
   @Prop() labelLeft = false;
 
   /**
+   * A unique identifier for the underlying native element that is used for
+   * testing purposes. The attribute is added as `data-test` attribute.
+   */
+  @Prop() testId?: string;
+
+  /**
    * Emitted when the value is changed.
    */
   @Event() catChange!: EventEmitter<boolean | string>;
@@ -133,7 +139,7 @@ export class CatRadioGroup {
 
   render() {
     return (
-      <div role="radiogroup" aria-label={this.a11yLabel}>
+      <div role="radiogroup" aria-label={this.a11yLabel} data-test={this.testId}>
         <slot></slot>
       </div>
     );
