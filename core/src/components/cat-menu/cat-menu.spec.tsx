@@ -94,6 +94,24 @@ describe('cat-menu', () => {
       expect(trigger.a11yLabel).toBe('Open options menu');
     });
 
+    it('should pass the trigger label to the button when icon-only depends on a breakpoint', async () => {
+      const { root } = await render(<cat-menu triggerLabel="Settings" triggerIcon="gear" triggerIconOnly="s" />);
+
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      const labelSlot = trigger.querySelector('slot[name="trigger-label"]');
+      expect(trigger.iconOnly).toBe('s');
+      expect(labelSlot).toBeTruthy();
+      expect(labelSlot?.textContent).toBe('Settings');
+    });
+
+    it('should not pass the trigger label to the button when always icon-only', async () => {
+      const { root } = await render(<cat-menu triggerLabel="Settings" triggerIcon="gear" triggerIconOnly={true} />);
+
+      const trigger = root.shadowRoot?.querySelector('cat-button[slot="trigger"]') as HTMLCatButtonElement;
+      expect(trigger.iconOnly).toBe(true);
+      expect(trigger.querySelector('slot[name="trigger-label"]')).toBeNull();
+    });
+
     it('should emit catTriggerClick when trigger is clicked', async () => {
       const { root, waitForChanges } = await render(<cat-menu />);
 
